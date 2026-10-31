@@ -1,11 +1,14 @@
 // Thiên phú quái (docs/rules/monster-talents.md): điểm, giá nâng, điều kiện nâng và hook đang có
-// tác dụng. Điểm không lưu trong save: suy từ maxLevelReached và tầng thức tỉnh (quy tắc 3), trừ phần
-// đã dùng cho các nút. Tách khỏi roster/ để traitHooks.ts (nguồn hook "talent") import được.
+// tác dụng. Điểm không lưu trong save: suy từ maxLevelReached, tầng thức tỉnh và số lần luân hồi
+// (quy tắc 3), trừ phần đã dùng cho các nút. Tách khỏi roster/ để traitHooks.ts (nguồn hook "talent") import được.
 
 import { raceMatchesAny } from './races'
 import type { GameData, Monster, TalentNodeDef } from '../model'
 
-type TalentMonster = Pick<Monster, 'raceId' | 'maxLevelReached' | 'awakening' | 'talentRanks'>
+type TalentMonster = Pick<
+  Monster,
+  'raceId' | 'maxLevelReached' | 'awakening' | 'rebirths' | 'talentRanks'
+>
 
 /** Nhánh có mở cho quái không: nhánh chung luôn mở, nhánh race chỉ khi race khớp. */
 export function isTalentBranchOpen(
@@ -17,11 +20,16 @@ export function isTalentBranchOpen(
   return raceIds === undefined || raceMatchesAny(data, monster.raceId, raceIds)
 }
 
-/** Tổng điểm thiên phú quái đã nhận: ⌊maxLevelReached / levelsPerPoint⌋ + awakening × pointsPerAwakening. */
+/**
+ * Tổng điểm thiên phú quái đã nhận: ⌊maxLevelReached / levelsPerPoint⌋ + awakening ×
+ * pointsPerAwakening + rebirths × pointsPerRebirth.
+ */
 export function talentPointsEarned(data: GameData, monster: TalentMonster): number {
-  const { levelsPerPoint, pointsPerAwakening } = data.config.talents
+  const { levelsPerPoint, pointsPerAwakening, pointsPerRebirth } = data.config.talents
   return (
-    Math.floor(monster.maxLevelReached / levelsPerPoint) + monster.awakening * pointsPerAwakening
+    Math.floor(monster.maxLevelReached / levelsPerPoint) +
+    monster.awakening * pointsPerAwakening +
+    monster.rebirths * pointsPerRebirth
   )
 }
 

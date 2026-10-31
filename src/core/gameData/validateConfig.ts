@@ -233,6 +233,7 @@ export function checkConfig(data: GameData, issues: string[]): void {
   push(checkInteger(config.fusion?.inheritSkills, 'fusion.inheritSkills', 0))
   push(checkNumber(config.sacrifice?.costPerLevel, 'sacrifice.costPerLevel', 0))
   push(checkNumber(config.sacrifice?.statPercentPerStack, 'sacrifice.statPercentPerStack', 0))
+  // config.rebirth kiểm tra ở validateRebirth.ts.
   checkShopConfig(data, issues)
   checkMarketConfig(data, issues)
   // config.starter kiểm tra ở validateStarters.ts.

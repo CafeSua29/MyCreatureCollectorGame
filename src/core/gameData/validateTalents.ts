@@ -6,7 +6,7 @@ import type { GameData, TalentNodeDef } from '../model'
 import { asObject, checkInteger } from '../shared'
 import { checkDrops, checkEffects, checkKnownFields } from './checks'
 
-const CONFIG_FIELDS = ['levelsPerPoint', 'pointsPerAwakening', 'bossDrops']
+const CONFIG_FIELDS = ['levelsPerPoint', 'pointsPerAwakening', 'pointsPerRebirth', 'bossDrops']
 const BRANCH_FIELDS = ['id', 'raceIds']
 const NODE_FIELDS = ['id', 'branchId', 'requires', 'maxRank', 'costPerRank', 'hooks']
 
@@ -20,6 +20,7 @@ function checkTalentConfig(data: GameData, issues: string[]): void {
   checkKnownFields(config, CONFIG_FIELDS, 'config.talents', 'config', issues)
   issues.push(...checkInteger(config.levelsPerPoint, at('levelsPerPoint'), 1))
   issues.push(...checkInteger(config.pointsPerAwakening, at('pointsPerAwakening'), 0))
+  issues.push(...checkInteger(config.pointsPerRebirth, at('pointsPerRebirth'), 0))
   if (!Array.isArray(config.bossDrops)) issues.push(`${at('bossDrops')} phải là danh sách`)
   else checkDrops(data, config.bossDrops, at('bossDrops'), issues)
 }

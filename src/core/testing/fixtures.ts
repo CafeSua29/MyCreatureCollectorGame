@@ -8,6 +8,7 @@ import type { FloorSite } from '../world'
 import { POLARITY_CHANGES, type PolarityChange } from '../monster'
 import { defined } from './assertions'
 import { soulRelicTestConfig, soulRelicTestItems } from './soulFixtures'
+import { gatheringTestConfig, gatheringTestItems } from './gatheringFixtures'
 import { toBig, type BigValue } from '../shared'
 import {
   CONTENT_KINDS,
@@ -99,6 +100,16 @@ export function makeRawData(): RawGameData {
       fusion: { inheritSkills: 2 },
       // Hiến tế (docs/rules/sacrifice.md): số như dữ liệu thật.
       sacrifice: { costPerLevel: 20, statPercentPerStack: 1 },
+      // Luân hồi (docs/rules/rebirth.md): số như dữ liệu thật.
+      rebirth: {
+        minLevelBase: 100,
+        costBase: 10000,
+        pillItemId: 'rebirthPill',
+        pillsPerRebirth: 1,
+        statPercentPerRebirth: 10,
+        genePercent: 10,
+        floorBossDrops: []
+      },
       // Sức chứa (docs/rules/capacity.md): số như dữ liệu thật.
       capacity: {
         storage: { base: 200, perExpansion: 50, costBase: 1000, realmBonus: 50 },
@@ -329,7 +340,9 @@ export function makeRawData(): RawGameData {
           healParty: 1,
           event: 1,
           safari: 24,
-          zoneStep: 1
+          zoneStep: 1,
+          fishing: 1,
+          mining: 2
         }
       },
       // Ngày đêm và mùa: giờ thời khắc và hệ số giống balance thật, nhưng không suy giờ hoạt động
@@ -628,7 +641,7 @@ export function makeRawData(): RawGameData {
         atavismCostPerLevel: 100
       },
       // Thiên phú (docs/rules/monster-talents.md): không rơi để RNG của test cũ không đổi.
-      talents: { levelsPerPoint: 5, pointsPerAwakening: 1, bossDrops: [] },
+      talents: { levelsPerPoint: 5, pointsPerAwakening: 1, pointsPerRebirth: 3, bossDrops: [] },
       // Bản mệnh thú (docs/rules/tamer.md): số như dữ liệu thật.
       bond: {
         minAffinity: 200,
@@ -728,6 +741,7 @@ export function makeRawData(): RawGameData {
         guardianRareRolls: 2,
         cooldownDays: 3
       },
+      gathering: gatheringTestConfig(),
       // Cuồng bạo (docs/rules/frenzy.md): ngưỡng 0 = không bao giờ kích hoạt để RNG / số của test cũ
       // không đổi; test cuồng bạo tự đặt số.
       frenzy: {
@@ -1765,6 +1779,7 @@ export function makeRawData(): RawGameData {
       { id: 'skillBook', category: 'skillBook' },
       // Nguyên liệu đột phá: không bán để không đổi danh sách hàng của test khác.
       { id: 'breakthroughPill', category: 'material', price: 100 },
+      { id: 'rebirthPill', category: 'material', price: 5000 },
       // Bí Cảnh Lệnh (docs/rules/trials.md): không bán ở cửa hàng để hàng của test cũ không đổi.
       { id: FIXTURE_TRIAL_TOKEN_ID, category: 'material', price: 100 },
       // Hồn tinh: không bán, không rơi (bảng rơi rỗng) để RNG / hàng của test cũ không đổi.
@@ -1808,7 +1823,8 @@ export function makeRawData(): RawGameData {
         price: 10000,
         effects: [{ type: 'fuseProtect', params: {} }]
       },
-      ...soulRelicTestItems()
+      ...soulRelicTestItems(),
+      ...gatheringTestItems()
     ],
     // Thứ tự = tầng: field = tầng 1 (level 1), lair = tầng 2 (level 3, boss tầng level 4),
     // pairs = tầng 3 (level 5). Tầng 4 quay lại field.
@@ -1820,7 +1836,9 @@ export function makeRawData(): RawGameData {
         drops: [{ itemId: 'potion', chance: 100 }],
         bossDrops: [],
         floorBossSpeciesId: 'strongling',
-        bosses: [{ speciesId: 'strongling', drops: [{ itemId: 'masterBall', chance: 100 }] }]
+        bosses: [{ speciesId: 'strongling', drops: [{ itemId: 'masterBall', chance: 100 }] }],
+        // Câu cá / khai thác (docs/rules/gathering.md); quái và bảng vật phẩm ở config.gathering.
+        gathering: { fishing: true, mining: true }
       },
       {
         id: 'lair',
@@ -2101,6 +2119,7 @@ function baseFields(): Omit<
     bloodlines: [],
     polarity: null,
     sacrificeStacks: 0,
+    rebirths: 0,
     implantEffects: {},
     implantAttempts: 0,
     implantFails: 0

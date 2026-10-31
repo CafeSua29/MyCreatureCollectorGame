@@ -400,8 +400,8 @@ export function flee(data: GameData, state: GameState): GameState {
   if (battle.trainer) throw new ActionError('trainerBattleRestricted', { command: 'flee' })
   // Bí cảnh / tháp không chạy trốn: bỏ bí cảnh giữa hai trận (docs/rules/trials.md).
   if (battle.trial) throw new ActionError('trialRestricted', { command: 'flee' })
-  // Trận event không chạy được / thú triều (docs/rules/events.md).
-  if (battle.special && !specialRule(battle.special).canFlee(battle.special)) {
+  // Trận event không chạy được / thú triều (docs/rules/events.md), phục kích lượt đầu (gathering.md).
+  if (battle.special && !specialRule(battle.special).canFlee(battle.special, battle)) {
     throw new ActionError('specialBattleRestricted', { command: 'flee' })
   }
   const d = cloneDraft(state)

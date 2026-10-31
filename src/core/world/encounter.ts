@@ -242,6 +242,7 @@ export function rollMonster(
     polarity: null,
     // Chưa từng được hiến tế (docs/rules/sacrifice.md).
     sacrificeStacks: 0,
+    rebirths: 0,
     // Chưa từng được cấy ghép (docs/rules/implant.md).
     implantBonusStats: uniformBigStats(0),
     implantEffects: {},
@@ -324,6 +325,21 @@ export function rollSpawnAge(
   return [{ ...monster, ageDays }, rng]
 }
 
+/** Quái hoang thường theo spec: loài, level..., rồi tuổi và cực như quái hoang. */
+function rollWildFromSpec(
+  data: GameData,
+  rng: RngState,
+  { site, spec, id }: { site: FloorSite; spec: MonsterRollSpec; id: string }
+): [Monster, RngState] {
+  let monster: Monster
+  ;[monster, rng] = rollMonster(data, rng, spec, id)
+  ;[monster, rng] = rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)
+  return rollSpawnPolarity(data, rng, monster, {
+    floor: site.floor,
+    chance: data.config.polarity.wildChance
+  })
+}
+
 /** Sinh một quái hoang thường của tầng (loài theo map của tầng). */
 export function generateWildMonster(
   data: GameData,
@@ -331,13 +347,39 @@ export function generateWildMonster(
   site: FloorSite,
   id: string
 ): [Monster, RngState] {
+  const spec = floorRollSpec(data, site, site.biome.encounters)
+  return rollWildFromSpec(data, rng, { site, spec, id })
+}
+
+/**
+ * Trận câu cá / khai thác (docs/rules/gathering.md): một quái thường từ danh sách của chỗ thu thập
+ * (trọng số đã theo cấp dụng cụ), level quái thường của tầng + `levelOffset` (tối thiểu 1). Không
+ * gặp boss, không gặp 2 quái.
+ */
+export function generateGatheringEncounter(
+  data: GameData,
+  rng: RngState,
+  {
+    site,
+    encounters,
+    levelOffset,
+    nextMonsterId
+  }: {
+    site: FloorSite
+    encounters: readonly EncounterEntry[]
+    levelOffset: number
+    nextMonsterId: number
+  }
+): Encounter {
+  const base = floorRollSpec(data, site, encounters)
+  const spec: MonsterRollSpec = {
+    ...base,
+    levelMin: Math.max(1, base.levelMin + levelOffset),
+    levelMax: Math.max(1, base.levelMax + levelOffset)
+  }
   let monster: Monster
-  ;[monster, rng] = rollMonster(data, rng, floorRollSpec(data, site, site.biome.encounters), id)
-  ;[monster, rng] = rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)
-  return rollSpawnPolarity(data, rng, monster, {
-    floor: site.floor,
-    chance: data.config.polarity.wildChance
-  })
+  ;[monster, rng] = rollWildFromSpec(data, rng, { site, spec, id: `m${nextMonsterId}` })
+  return { enemies: [monster], isBoss: false, rng, nextMonsterId: nextMonsterId + 1 }
 }
 
 /** Tuổi rồi cực của boss (tung sau cùng, sau mọi luật boss khác). */

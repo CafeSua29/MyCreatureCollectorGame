@@ -46,6 +46,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [affinity.md](docs/rules/affinity.md): độ thân mật
 - [bloodline.md](docs/rules/bloodline.md): huyết mạch và phản tổ
 - [trait-crystals.md](docs/rules/trait-crystals.md): extract / inject trait (tinh thể trait ở NPC thị trấn)
+- [rebirth.md](docs/rules/rebirth.md): luân hồi quái (về level 1, +% mọi chỉ số vĩnh viễn, gen, điểm thiên phú, trẻ lại)
 - [sacrifice.md](docs/rules/sacrifice.md): hiến tế (quái phụ cùng race / lineage mất đi, quái chính +1% mọi chỉ số mỗi stack)
 - [implant.md](docs/rules/implant.md): Phòng Thí Nghiệm: cấy ghép (huyết thanh cộng chỉ số gốc hoặc hiệu ứng hook, thất bại trừ / hiệu ứng ngược, thất bại lần 3 mất quái)
 - [capacity.md](docs/rules/capacity.md): sức chứa kho quái / túi trang bị (mở rộng bằng tiền, theo cảnh giới; chặn khi đầy, xác nhận bỏ món thừa)
@@ -89,6 +90,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [recruit.md](docs/rules/recruit.md): thu phục (xin theo sau trận, boss quy phục, Thị Uy, mồi dụ)
 - [safari-zone.md](docs/rules/safari-zone.md): khu bảo tồn (chỉ bắt, mồi / đá, danh sách loài theo đợt)
 - [zones.md](docs/rules/zones.md): hiểm địa (khu có điều kiện vào, quái hiếm, khám phá từng bước, boss canh giữ, đồ theo chủ đề)
+- [gathering.md](docs/rules/gathering.md): câu cá và khai thác trên tầng (dụng cụ theo cấp, mồi câu, phục kích)
 - [dex.md](docs/rules/dex.md): bộ sưu tập (đã gặp / sở hữu, mốc thưởng, thưởng sưu tập, chí mạng theo Dex)
 - [exp-candy.md](docs/rules/exp-candy.md): Kẹo EXP và Kẹo Hiếm
 - [fusing.md](docs/rules/fusing.md): fusing, kế thừa skill, fuse thất bại và bùa fuse

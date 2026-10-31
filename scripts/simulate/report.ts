@@ -15,6 +15,7 @@ import { SIM_PARTS, type SimPart, type TimedJobResult } from './jobs'
 import type { TribulationRow } from './tribulation'
 import type { SafariRow } from './safari'
 import type { ZoneRow } from './zones'
+import type { GatheringRow } from './gathering'
 
 export interface Table {
   headers: string[]
@@ -193,6 +194,7 @@ const PROGRESSION_HEADERS = [
   'awakenings',
   'tribulationFails',
   'humanForms',
+  'rebirths',
   'treasures',
   'soulUpgrades',
   'soulPercent',
@@ -284,6 +286,7 @@ function unlockRow(teamId: string, unlock: FloorUnlock): string[] {
     String(unlock.awakenings),
     String(unlock.tribulationFails),
     String(unlock.humanForms),
+    String(unlock.rebirths),
     String(unlock.treasuresUsed),
     String(unlock.soulUpgrades),
     formatRatio(unlock.soulPercent),
@@ -641,6 +644,7 @@ function addJobTotals(totals: BattleTotalsByKind, result: TimedJobResult['result
       break
     case 'safari':
     case 'zones':
+    case 'gathering':
     case 'lineage':
       break
   }
@@ -743,6 +747,48 @@ export function zonesTable(rows: readonly ZoneRow[]): Table {
       perVisit(row.suppliesUsed, row),
       perVisit(row.supplyCost, row),
       ((row.lootValue + row.money - row.supplyCost) / Math.max(1, row.hours)).toFixed(1)
+    ])
+  }
+}
+
+/**
+ * Câu cá / khai thác theo tầng × cách chơi (gathering.ts): map, % lần ra trận, tỉ lệ thắng, % loài
+ * hiếm, level địch trung bình, giờ, đồ / tiền / mồi mỗi lần, giá trị ròng mỗi giờ game (so với dòng
+ * `wild` cùng tầng: farm quái hoang thường ở cùng map).
+ */
+export function gatheringTable(rows: readonly GatheringRow[]): Table {
+  const perCast = (value: number, row: GatheringRow): string =>
+    (value / Math.max(1, row.casts)).toFixed(1)
+  return {
+    headers: [
+      'floor',
+      'run',
+      'biome',
+      'casts',
+      'battleRate',
+      'battleWinRate',
+      'rareRate',
+      'enemyLevel',
+      'hours/cast',
+      'items/cast',
+      'money/cast',
+      'lure/cast',
+      'netValue/hour'
+    ],
+    rows: rows.map((row) => [
+      String(row.floor),
+      row.run.id,
+      row.biomeId,
+      String(row.casts),
+      formatPercent(row.battles, row.casts),
+      formatPercent(row.battlesWon, row.battles),
+      formatPercent(row.rareEncounters, row.battles),
+      (row.enemyLevelSum / Math.max(1, row.battles)).toFixed(1),
+      perCast(row.hours, row),
+      perCast(row.itemValue, row),
+      perCast(row.money, row),
+      perCast(row.lureCost, row),
+      ((row.itemValue + row.money - row.lureCost) / Math.max(1, row.hours)).toFixed(1)
     ])
   }
 }

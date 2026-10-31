@@ -46766,6 +46766,11 @@
     "shopWeight": 2
   },
   {
+    "id": "rebirthPill",
+    "category": "material",
+    "price": 5000
+  },
+  {
     "id": "enhanceStone",
     "category": "material",
     "price": 100,
@@ -49210,6 +49215,92 @@
       }
     ],
     "townPrice": 30000
+  },
+  {
+    "id": "oldRod",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "fishingRodTier",
+        "value": 1
+      }
+    ],
+    "townPrice": 1000
+  },
+  {
+    "id": "goodRod",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "fishingRodTier",
+        "value": 2
+      }
+    ],
+    "townPrice": 20000,
+    "townMinFloor": 10
+  },
+  {
+    "id": "superRod",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "fishingRodTier",
+        "value": 3
+      }
+    ],
+    "townPrice": 200000,
+    "townMinFloor": 30
+  },
+  {
+    "id": "ironPickaxe",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "pickaxeTier",
+        "value": 1
+      }
+    ],
+    "townPrice": 1000
+  },
+  {
+    "id": "steelPickaxe",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "pickaxeTier",
+        "value": 2
+      }
+    ],
+    "townPrice": 20000,
+    "townMinFloor": 10
+  },
+  {
+    "id": "spiritPickaxe",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "pickaxeTier",
+        "value": 3
+      }
+    ],
+    "townPrice": 200000,
+    "townMinFloor": 30
+  },
+  {
+    "id": "fishingLure",
+    "category": "fishingLure",
+    "price": 10,
+    "shop": true,
+    "shopWeight": 12,
+    "rarityFactor": 0.8
+  },
+  {
+    "id": "spiritFishingLure",
+    "category": "fishingLure",
+    "price": 30,
+    "shop": true,
+    "shopWeight": 5,
+    "rarityFactor": 0.5
   },
   {
     "id": "dexDiploma",

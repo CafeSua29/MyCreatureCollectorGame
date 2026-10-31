@@ -45,6 +45,7 @@ function stackItemPrice(data: GameData, itemId: string, highestFloor: number): D
     case 'soulCrystal':
     case 'bait':
     case 'dish':
+    case 'fishingLure':
       return item.fixedPrice ? toBig(item.price) : toBig(item.price).times(highestFloor)
     case 'equipment':
       throw new Error(`Trang bị "${itemId}" tính giá theo từng món (equipmentBasePrice)`)

@@ -196,6 +196,8 @@ describe('dao động ngày và hàng được giá', () => {
     const present = new Set(Object.values(data.items).map((item) => item.category))
     present.delete('keyItem')
     present.delete('equipment')
+    // Bùa không bán lại được (fixture có cần câu / cuốc, docs/rules/gathering.md).
+    present.delete('charm')
     expect(hot).toEqual(present)
     expect(marketHotCategory(data, 9)).toBe(marketHotCategory(data, 9))
     expect(marketHotCategory({ ...data, items: {} }, 0)).toBeNull()

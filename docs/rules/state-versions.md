@@ -83,3 +83,5 @@ Mỗi lần đổi cấu trúc `GameState` / quái: tăng `SAVE_VERSION`, viết
 - v77 = sức chứa (2026-10-31): thêm `capacity = { storage, bag }` = số lần mở rộng đủ chứa những gì đang có (làm tròn lên bội số `perExpansion`); trứng được `battlesLeft = 0` (chờ chỗ nở); action mới `expandCapacity`; log trận `equipmentLost` / `rosterFull` / `eggWaiting`, log event `monsterRefused` / `equipmentLost` (`capacity.md`).
 - v78 = ấp trứng có hoàn cảnh (bước 6i, 2026-10-31): trứng thêm `infusions = []` (hệ linh thạch đã đặt); action mới `infuseEgg`, `buyCharm` (`breeding-eggs.md`).
 - v79 = linh thực (bước 6k, 2026-10-31): thêm `cooking = { level: 1, exp: 0, lastCraft: null, meal: null }`; action mới `eatDish` (`cooking.md`).
+- v80 = luân hồi (bước 6m, 2026-10-31): mọi quái (đội, kho, trứng, quái hoang, quái đã bắt, quái đang gặp ở khu bảo tồn) thêm `rebirths = 0`; action mới `rebirthMonster`; mốc lý lịch `reborn` hết bị chặn (`rebirth.md`).
+- v81 = câu cá và khai thác (bước 6n, 2026-11-01): thêm `gathering = { lastResult: null }`; action mới `fish` / `mine`; `battle.special` loại mới `gathering` (`gathering.md`).

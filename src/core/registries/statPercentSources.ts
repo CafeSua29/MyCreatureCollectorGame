@@ -99,6 +99,8 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   polarity: { percent: polarityStatPercent },
   // Hiến tế (docs/rules/sacrifice.md): mọi chỉ số kể cả max HP, stack × statPercentPerStack.
   sacrifice: { percent: (data, monster) => uniformPercent(sacrificeStatPercent(data, monster)) },
+  // Luân hồi (docs/rules/rebirth.md): mọi chỉ số kể cả max HP, số lần × statPercentPerRebirth.
+  rebirth: { percent: (data, monster) => uniformPercent(rebirthStatPercent(data, monster)) },
   // Hiệu ứng cấy ghép có hook % chỉ số (docs/rules/implant.md; đi qua hook, nguồn hook `implant`).
   implant: {}
 }
@@ -106,6 +108,11 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
 /** % mọi chỉ số quái đang được cộng từ hiến tế (tuyến tính theo stack). */
 export function sacrificeStatPercent(data: GameData, monster: Monster): number {
   return monster.sacrificeStacks * data.config.sacrifice.statPercentPerStack
+}
+
+/** % mọi chỉ số quái đang được cộng từ luân hồi (tuyến tính theo số lần). */
+export function rebirthStatPercent(data: GameData, monster: Monster): number {
+  return monster.rebirths * data.config.rebirth.statPercentPerRebirth
 }
 
 /** % chỉ số của hồn tinh: bỏ chỉ số cấp 0. */

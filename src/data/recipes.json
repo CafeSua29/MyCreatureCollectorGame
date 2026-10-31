@@ -228,6 +228,32 @@
     "exp": 10
   },
   {
+    "id": "rebirthPill",
+    "output": {
+      "itemId": "rebirthPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 3
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "groupId": "demonCore",
+        "count": 3,
+        "sameItem": true
+      }
+    ],
+    "money": 5000,
+    "minLevel": 8,
+    "successChance": 60,
+    "exp": 30
+  },
+  {
     "id": "humanFormPill",
     "output": {
       "itemId": "humanFormPill",

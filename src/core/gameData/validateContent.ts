@@ -207,7 +207,7 @@ function checkHits(skill: Skill, where: string, issues: string[]): void {
 }
 
 /** Danh sách loài + trọng số (quái hoang của biome): loài thường, trọng số > 0. */
-function checkEncounters(
+export function checkEncounters(
   data: GameData,
   encounters: readonly EncounterEntry[] | undefined,
   where: string,

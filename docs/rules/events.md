@@ -47,7 +47,7 @@ Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết qu�
 ## Modifier
 
 - `events.modifiers`: `{ modifierId, battlesLeft }` (null = tới khi rời thị trấn). Cùng modifier đến lần nữa làm mới thời hạn; khác modifier thì cùng áp, hệ số **nhân** với nhau (mỗi modifier 1 + tổng % / 100, không dưới 0; `eventModifierMultiplier`).
-- **Trận trên tầng** (`countsAsFloorBattle`): trận quái hoang / boss (kể cả `challengeBoss`) / ngự thú sư gặp trên tầng / trận event; không tính bí cảnh, tháp, độ kiếp, đạo quán, giải đấu, đấu trường, thú triều, hiểm địa (luật `isFloorBattle` theo loại trận đặc biệt; trận không phải trận trên tầng cũng không mở tầng, `zones.md`). Hết trận trên tầng (thắng, thua, chạy) modifier theo số trận bớt 1, về 0 thì mất. Modifier thị trấn mất khi rời thị trấn.
+- **Trận trên tầng** (`countsAsFloorBattle`): trận quái hoang / boss (kể cả `challengeBoss`) / ngự thú sư gặp trên tầng / trận event; trận câu cá / khai thác (`gathering.md`) cũng tính; không tính bí cảnh, tháp, độ kiếp, đạo quán, giải đấu, đấu trường, thú triều, hiểm địa (luật `isFloorBattle` theo loại trận đặc biệt; trận không phải trận trên tầng cũng không mở tầng, `zones.md`). Hết trận trên tầng (thắng, thua, chạy) modifier theo số trận bớt 1, về 0 thì mất. Modifier thị trấn mất khi rời thị trấn.
 - Tác dụng: tỉ lệ boss / shiny của trận trên tầng (nhân cùng kỹ năng đồng hành ở `requireBattleStart`), tiền thắng và hệ số rơi của trận trên tầng (`floorModifierMultiplier`), giá mua ở cửa hàng thị trấn (`shopBuyPrice`, làm tròn xuống), tỉ lệ event, môi trường cố định của trận trên tầng (`fixedField`: sau môi trường của map, trước luật bí cảnh; log `fieldChanged` nguồn `event`).
 
 ## Cửa hàng tạm

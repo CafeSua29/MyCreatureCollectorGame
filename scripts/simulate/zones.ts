@@ -5,6 +5,7 @@
 // trận, boss canh giữ, giờ, giá trị đồ nhận được và giá đồ đã dùng mỗi lượt vào.
 
 import {
+  canLeaveBag,
   createGameState,
   gameReducer,
   getMaxHp,
@@ -46,13 +47,15 @@ export interface ZoneRow {
   supplyCost: number
 }
 
-const priceOf = (data: GameData, itemId: string, floor: number): number =>
+/** Giá gốc (theo tầng) của một item gộp chồng (dùng chung với gathering.ts). */
+export const priceOf = (data: GameData, itemId: string, floor: number): number =>
   itemBasePrice(data, { storage: 'stack', itemId }, floor).toNumber()
 
-/** Tổng giá gốc (theo tầng) của item gộp chồng trong túi. */
-function stackValue(data: GameData, inventory: Inventory, floor: number): number {
+/** Tổng giá gốc (theo tầng) của item gộp chồng trong túi (bỏ món không rời túi: bùa, chìa khóa). */
+export function stackValue(data: GameData, inventory: Inventory, floor: number): number {
   let total = 0
   for (const [itemId, count] of Object.entries(inventory.stacks)) {
+    if (!canLeaveBag(data.items[itemId].category)) continue
     total += priceOf(data, itemId, floor) * count
   }
   return total

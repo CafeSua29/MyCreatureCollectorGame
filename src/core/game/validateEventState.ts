@@ -6,6 +6,7 @@ import type { EventDef, GameData } from '../model'
 import { validateShop } from '../shop'
 import { asObject, checkInteger, checkNumber } from '../shared'
 import { checkZoneBattle } from './validateZoneState'
+import { checkGatheringBattle } from './validateGatheringState'
 
 type Raw = Record<string, unknown>
 
@@ -199,7 +200,7 @@ export function validateEventState(data: GameData, state: Raw): string[] {
 /**
  * battle.special: null, trận event (event tồn tại, noFlee, hệ số tiền ≥ 0), đợt thú triều / thú
  * vương (trận chưa kết thúc thì là đợt kế tiếp của thú triều đang diễn ra, khớp tiến độ) hoặc trận
- * hiểm địa (validateZoneState.ts).
+ * hiểm địa (validateZoneState.ts), trận câu cá / khai thác (validateGatheringState.ts).
  */
 export function checkBattleSpecial(
   data: GameData,
@@ -219,8 +220,14 @@ export function checkBattleSpecial(
     checkZoneBattle(data, battle, state, issues)
     return
   }
+  if (special?.kind === 'gathering') {
+    checkGatheringBattle(battle, issues)
+    return
+  }
   if (special?.kind !== 'beastTide') {
-    issues.push('battle.special phải là null hoặc { kind: "event" | "beastTide" | "zone" }')
+    issues.push(
+      'battle.special phải là null hoặc { kind: "event" | "beastTide" | "zone" | "gathering" }'
+    )
     return
   }
   issues.push(...checkInteger(special.waves, 'battle.special.waves', 1))

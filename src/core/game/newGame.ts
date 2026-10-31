@@ -25,6 +25,7 @@ import {
   SAVE_VERSION,
   newAlchemyState,
   newCookingState,
+  newGatheringState,
   newSmithingState,
   newTrainerState
 } from './reducer'
@@ -170,6 +171,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     lab: newLabState(),
     capacity: newCapacityState(),
     zones: newZoneState(),
+    gathering: newGatheringState(),
     dex: newDexState(),
     garden: { plots: Array.from({ length: data.config.alchemy.initialPlots }, () => null) },
     quests: { board: [], active: [], nextQuestId: 1 },

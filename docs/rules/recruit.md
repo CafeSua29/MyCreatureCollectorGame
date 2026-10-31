@@ -6,7 +6,7 @@ Cách có quái **ngoài bóng**, như Dragon Quest Monsters (quái bị hạ xi
 
 ## Trận có thể thu phục
 
-- `isRecruitBattle`: trận quái hoang / boss trên tầng. **Không** thu phục ở trận ngự thú sư NPC, bí cảnh / tháp, trận event / thú triều (`special`), độ kiếp.
+- `isRecruitBattle`: trận quái hoang / boss trên tầng, kể cả trận câu cá / khai thác (`gathering.md`). **Không** thu phục ở trận ngự thú sư NPC, bí cảnh / tháp, trận event / thú triều / hiểm địa, độ kiếp (trận đặc biệt theo `canRecruit` của `SPECIAL_BATTLE_RULES`).
 - Quái thu phục (mọi cách): **HP đầy**, hết trạng thái, bỏ max HP đổi trong trận, thân mật khởi đầu `affinity.start.recruit` (70), lý lịch nguồn gốc `{ kind: 'recruit', method }` (`method`: `afterBattle` / `intimidate` / `bossSubmit`; `monster-history.md`), **chưa khế ước** (khế ước là bước riêng, mục "Khế ước" ở `tamer.md`). Boss thu phục giữ `bossMultiplier` và nhận trait "Huyết thống boss" như bắt boss. Tính một lần "bắt quái" cho nhiệm vụ (`quests.md`, event `caught`).
 - **Không có giới hạn level** (chủ project chốt 2026-10-25): quái level nào cũng xin theo / quy phục / Thị Uy được; giới hạn level chỉ áp lúc khế ước (`tamer.md`).
 - **Sức chứa** (`capacity.md`): đội đủ và kho đầy thì không xin theo / quy phục (`recruitChance` = 0), `acceptRecruit` / Thị Uy báo `rosterFull`.

@@ -12,8 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [rebirth.md](docs/roadmap/rebirth.md): Luân hồi quái (về level 1, +% vĩnh viễn, trẻ lại)
-- [fishing-mining.md](docs/roadmap/fishing-mining.md): Câu cá và khai thác trên tầng
 - [instability.md](docs/roadmap/instability.md): Độ bất ổn tầng (thuộc tính bất lợi tự chọn, thưởng thêm)
 - [deities.md](docs/roadmap/deities.md): Thần linh và ân sủng theo map
 - [world-boss.md](docs/roadmap/world-boss.md): Boss thế giới (thưởng theo tổng sát thương, theo lịch ngày)
@@ -116,8 +114,8 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       6j. Hồn tinh. **Đã xong** ở bước 5l+.10 (luật ở `docs/rules/soul-levels.md`).
       6k. Linh thực. **Đã xong** (2026-10-31; luật ở `docs/rules/cooking.md`; nguồn % `meal` chỉ trong trận như thưởng sưu tập; % thân mật chỉ khi thắng trận; thêm công thức nấu mồi dụ; kỹ năng đồng hành nấu ăn chưa có).
       6l. ~~Bánh breed~~: **bỏ khỏi kế hoạch** (chủ project chốt 2026-10-31; xóa `breeding-cakes.md`).
-      6m. Luân hồi quái (`rebirth.md`; sau Thức tỉnh).
-      6n. Câu cá và khai thác (`fishing-mining.md`; cần nguyên liệu của luyện đan).
+      6m. Luân hồi quái. **Đã xong** (2026-10-31; luật ở `docs/rules/rebirth.md`; hồi đầy máu khi luân hồi, gen +10% ít nhất +1, đan rơi 10% từ boss tầng / chợ đen / luyện đan cấp 8).
+      6n. Câu cá và khai thác. **Đã xong** (2026-11-01; luật ở `docs/rules/gathering.md`; dụng cụ là bùa cấp mua một lần thay `keyItem`, quái suy từ loài của map theo hệ / nhóm race thay bảng `fishingTable` từng map, bảng vật phẩm chung ở config có món theo hệ map, lần không có trận chỉ tốn giờ, không đếm thời hạn theo trận).
    7. Tự động đánh. **Đã xong** phần core ở bước 5l+.7 (luật ở `docs/rules/auto-battle.md`).
       7b. Đấu với ngự thú sư NPC. **Đã xong** ở bước 5l+.8 (luật ở `docs/rules/trainers.md`).
       7c. Bí cảnh và tháp thí luyện. **Đã xong** ở bước 5l+.9 (`docs/rules/trials.md`).

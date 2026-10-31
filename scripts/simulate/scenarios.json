@@ -316,6 +316,53 @@
       "cures": 2
     }
   },
+  "gathering": {
+    "teamId": "full6",
+    "floors": [5, 10, 30],
+    "casts": 60,
+    "runs": [
+      {
+        "id": "wild",
+        "method": "wild"
+      },
+      {
+        "id": "fishOld",
+        "method": "fishing",
+        "toolItemId": "oldRod"
+      },
+      {
+        "id": "fishGood",
+        "method": "fishing",
+        "toolItemId": "goodRod"
+      },
+      {
+        "id": "fishSuper",
+        "method": "fishing",
+        "toolItemId": "superRod"
+      },
+      {
+        "id": "fishSuperLure",
+        "method": "fishing",
+        "toolItemId": "superRod",
+        "lureItemId": "spiritFishingLure"
+      },
+      {
+        "id": "mineIron",
+        "method": "mining",
+        "toolItemId": "ironPickaxe"
+      },
+      {
+        "id": "mineSteel",
+        "method": "mining",
+        "toolItemId": "steelPickaxe"
+      },
+      {
+        "id": "mineSpirit",
+        "method": "mining",
+        "toolItemId": "spiritPickaxe"
+      }
+    ]
+  },
   "breeding": {
     "speciesId": "emberling",
     "floor": 1,

@@ -617,6 +617,7 @@ export function applyItemToMonster(
     case 'soulCrystal':
     case 'bait':
     case 'dish':
+    case 'fishingLure':
     case 'charm':
       return null
     default:

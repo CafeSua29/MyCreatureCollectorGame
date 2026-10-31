@@ -17,6 +17,7 @@ export {
 } from './trainerBattles'
 export { abandonTrial, challengeTower, challengeTrial, enterTrial } from './trials'
 export { enterZone, exploreZone, leaveZone } from './zones'
+export { gather } from './gathering'
 export { assertReadyForBattle } from './trainerBattles'
 export { failBeastTide } from './specialBattles'
 export {

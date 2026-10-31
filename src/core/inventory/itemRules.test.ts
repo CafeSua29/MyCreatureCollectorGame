@@ -50,7 +50,8 @@ describe('itemStorage', () => {
       skillBook: 'book',
       bait: 'stack',
       charm: 'stack',
-      dish: 'stack'
+      dish: 'stack',
+      fishingLure: 'stack'
     })
   })
 
@@ -115,7 +116,8 @@ describe('itemDropsFromMonsters', () => {
       skillBook: true,
       bait: true,
       charm: false,
-      dish: true
+      dish: true,
+      fishingLure: true
     })
   })
 })

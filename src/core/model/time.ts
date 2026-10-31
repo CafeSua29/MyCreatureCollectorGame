@@ -69,7 +69,10 @@ export const TIMED_ACTIVITIES = [
   // Cả lượt vào khu bảo tồn (docs/rules/safari-zone.md), tính lúc ra khu.
   'safari',
   // Một bước khám phá hiểm địa không phải trận (docs/rules/zones.md); trận tính như trận thường.
-  'zoneStep'
+  'zoneStep',
+  // Một lần câu cá / khai thác không mở trận (docs/rules/gathering.md); trận tính như trận thường.
+  'fishing',
+  'mining'
 ] as const
 
 export type TimedActivity = (typeof TIMED_ACTIVITIES)[number]

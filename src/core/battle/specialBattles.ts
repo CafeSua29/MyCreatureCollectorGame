@@ -1,4 +1,5 @@
-// Trận đặc biệt (docs/rules/events.md): trận do event mở, đợt thú triều, trận hiểm địa (zones.md). Luật theo loại (chạy, bắt,
+// Trận đặc biệt (docs/rules/events.md): trận do event mở, đợt thú triều, trận hiểm địa (zones.md),
+// trận câu cá / khai thác (gathering.md). Luật theo loại (chạy, bắt,
 // tiền thưởng, phạt thua, việc sau trận) ở SPECIAL_BATTLE_RULES; thêm loại = thêm một mục. Kèm sổ
 // sách của trận trên tầng: thời hạn modifier, trận thắng của chuỗi event, hệ số của modifier.
 
@@ -27,7 +28,10 @@ interface SpecialBattleRule<K extends SpecialBattleKind> {
    * trận event có; thú triều (ở thị trấn) và hiểm địa (map riêng) không.
    */
   isFloorBattle: boolean
-  canFlee(special: Extract<SpecialBattle, { kind: K }>): boolean
+  /** Chạy được ở lượt hiện tại của trận không. */
+  canFlee(special: Extract<SpecialBattle, { kind: K }>, battle: BattleState): boolean
+  /** Có quái xin theo / boss quy phục / Thị Uy (docs/rules/recruit.md) như trận quái hoang. */
+  canRecruit: boolean
   canCapture(special: Extract<SpecialBattle, { kind: K }>): boolean
   /** Hệ số tiền thắng trận. */
   moneyMultiplier(special: Extract<SpecialBattle, { kind: K }>): number
@@ -92,6 +96,7 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
   event: {
     isFloorBattle: true,
     canFlee: (special) => !special.noFlee,
+    canRecruit: false,
     canCapture: () => true,
     moneyMultiplier: (special) => special.moneyMultiplier,
     lossPenaltyPercent: () => null,
@@ -101,6 +106,7 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
   beastTide: {
     isFloorBattle: false,
     canFlee: () => false,
+    canRecruit: false,
     // Chỉ bắt được thú vương; bắt được cũng là hạ thú vương (hết thú triều).
     canCapture: (special) => special.king,
     moneyMultiplier: () => 1,
@@ -131,6 +137,7 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
   zone: {
     isFloorBattle: false,
     canFlee: () => true,
+    canRecruit: false,
     canCapture: () => true,
     moneyMultiplier: () => 1,
     lossPenaltyPercent: () => null,
@@ -149,6 +156,18 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
       log(d, { type: 'zoneFailed', zoneId: d.battle.special.zoneId })
       d.zones = closeZoneVisit(data, d)
     }
+  },
+  // Câu cá / khai thác (docs/rules/gathering.md): trận quái hoang trên tầng; phục kích thì không
+  // chạy được ở lượt đầu.
+  gathering: {
+    isFloorBattle: true,
+    canFlee: (special, battle) => !special.ambush || battle.turn > 1,
+    canRecruit: true,
+    canCapture: () => true,
+    moneyMultiplier: () => 1,
+    lossPenaltyPercent: () => null,
+    onWin: noop,
+    onLoss: noop
   }
 }
 

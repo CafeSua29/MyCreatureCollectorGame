@@ -30,7 +30,12 @@ import {
   type TalentView
 } from '../monster'
 import { contentName } from '../gameData'
-import { evolutionInfo, type EvolutionInfo } from '../progression'
+import {
+  evolutionInfo,
+  rebirthRequirements,
+  type EvolutionInfo,
+  type RebirthRequirements
+} from '../progression'
 import {
   affinityTierOf,
   ageStage,
@@ -52,7 +57,8 @@ import {
   yearsLeft,
   type EvolutionScene,
   polarityStatPercent,
-  sacrificeStatPercent
+  sacrificeStatPercent,
+  rebirthStatPercent
 } from '../registries'
 import { BIG_ZERO, cloneData, maxBig, type Decimal } from '../shared'
 import { equipmentSlotCount } from '../inventory'
@@ -236,6 +242,8 @@ export interface MonsterView {
   polarity: PolarityView | null
   /** Hiến tế: số stack và % mọi chỉ số đang được cộng (docs/rules/sacrifice.md). */
   sacrifice: { stacks: number; statPercent: number }
+  /** Luân hồi: số lần, % mọi chỉ số đang cộng, điều kiện lần sau (docs/rules/rebirth.md). */
+  rebirth: { count: number; statPercent: number; next: RebirthRequirements }
   /** Cấy ghép: tổng đã cấy, tỉ lệ lần tới, số lần thất bại / tối đa (docs/rules/implant.md). */
   implant: ImplantView
 }
@@ -562,6 +570,11 @@ export function buildMonsterView(
     sacrifice: {
       stacks: monster.sacrificeStacks,
       statPercent: sacrificeStatPercent(data, monster)
+    },
+    rebirth: {
+      count: monster.rebirths,
+      statPercent: rebirthStatPercent(data, monster),
+      next: rebirthRequirements(data.config.rebirth, monster.rebirths)
     },
     implant: {
       bonusStats: { ...monster.implantBonusStats },

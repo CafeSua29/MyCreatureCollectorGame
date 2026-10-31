@@ -40,7 +40,8 @@ const MARKET_CATEGORY_RULES: Readonly<Record<ItemCategory, boolean>> = {
   soulCrystal: true,
   bait: true,
   charm: false,
-  dish: true
+  dish: true,
+  fishingLure: true
 }
 
 /** Category của item gộp được: tinh thể / sách là category chung `traitCrystal` / `skillBook`. */

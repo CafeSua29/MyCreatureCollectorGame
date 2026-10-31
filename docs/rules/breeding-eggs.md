@@ -34,6 +34,7 @@
   - **Shiny:** cả bố và mẹ shiny → con **chắc chắn** shiny; đúng một bên shiny → tỉ lệ `shinyChanceOneParent`; không ai shiny → `shinyChance`. Con shiny thì `shinyStacks` = **cao nhất của bố mẹ** (tối thiểu 1), trait shiny cấp tương ứng (qua `addShinyStacks`).
   - **Huyết mạch** (`bloodline.md`): mẹ (không fuse) có huyết mạch chính ≥ 50% thì 0,1% con là một loài tổ của nhóm đó (tung ngay sau khi chọn loài con, chỉ tốn RNG khi đủ điều kiện); độ thuần con = trung bình bố mẹ −5..+8 (nhóm cả hai 0 thì không có), 1% đột biến phản tổ +30 huyết mạch chính (tung sau cùng).
   - **Hiến tế** (`sacrifice.md`): con luôn `sacrificeStacks = 0` (bố mẹ không mất nên truyền là nhân bản stack).
+  - **Luân hồi** (`rebirth.md`): con luôn `rebirths = 0`, cùng lý do.
   - **Cấy ghép** (`implant.md`): con luôn `implantBonusStats` = 0, `implantEffects` = `{}`, `implantAttempts` = `implantFails` = 0 (cùng lý do như hiến tế).
 - **Sức chứa** (`capacity.md`): trứng tới lúc nở mà đội đủ và kho đầy thì vẫn là trứng (`battlesLeft` dừng ở 0, log `eggWaiting`), nở ở trận thắng sau khi có chỗ.
   - **Âm / Dương** (`polarity.md`, tung sau cùng): bố mẹ cùng cực thì con cùng cực (trait cực tính random lại); khác cực / một bên không cực thì con không cực.

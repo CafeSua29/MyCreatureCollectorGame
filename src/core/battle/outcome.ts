@@ -499,6 +499,10 @@ function grantAncestorEssences(data: GameData, d: Draft, defeated: readonly Mons
 const polarityBossDrops = (data: GameData, d: Draft): DropEntry[] =>
   d.battle.floor >= data.config.polarity.unlockFloor ? data.config.polarity.bossDrops : []
 
+/** Luân Hồi Đan rơi từ boss tầng của map (docs/rules/rebirth.md). */
+const rebirthBossDrops = (data: GameData, d: Draft, boss: Monster): DropEntry[] =>
+  isFloorBossOfMap(data, d, boss) ? data.config.rebirth.floorBossDrops : []
+
 const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(lifespanBossDrops),
   onlyInBossBattle(expCandyBossDrops),
@@ -516,7 +520,8 @@ const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(forgeBossDrops),
   onlyInBossBattle(talentBossDrops),
   onlyInBossBattle(bloodlineBossDrops),
-  onlyInBossBattle(polarityBossDrops)
+  onlyInBossBattle(polarityBossDrops),
+  onlyInBossBattle(rebirthBossDrops)
 ]
 
 /** EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ). */

@@ -109,11 +109,6 @@ const ORIGIN_RULES: Record<HistoryOriginKind, FieldRules> = {
 
 interface MilestoneRule {
   fields: FieldRules
-  /**
-   * File roadmap của tính năng tạo mốc này khi tính năng chưa làm: save chứa mốc bị chặn ("chưa
-   * hỗ trợ"). Làm xong tính năng thì bỏ trường này.
-   */
-  pendingRoadmap?: string
 }
 
 const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
@@ -129,7 +124,7 @@ const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
   tribulationFailed: { fields: { tier: positiveInteger, failures: positiveInteger } },
   humanFormed: { fields: {} },
   contracted: { fields: { realm: nonNegativeInteger } },
-  reborn: { fields: { count: positiveInteger }, pendingRoadmap: 'rebirth.md' },
+  reborn: { fields: { count: positiveInteger } },
   mutatedEvolution: { fields: SPECIES_CHANGE },
   imprintPerfected: { fields: {} },
   atavized: { fields: SPECIES_CHANGE },
@@ -170,8 +165,6 @@ function checkMilestone(data: GameData, value: unknown, where: string): string[]
   // Đã kiểm tra là object có kind hợp lệ ở trên.
   const milestone = value as Milestone
   issues.push(...checkInteger(milestone.day, `${where}.day`, 0))
-  const pending = MILESTONE_RULES[milestone.kind].pendingRoadmap
-  if (pending) issues.push(`${where}: mốc "${milestone.kind}" chưa hỗ trợ (chờ ${pending})`)
   return issues
 }
 

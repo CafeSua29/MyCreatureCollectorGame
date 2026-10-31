@@ -154,6 +154,7 @@ describe('các bảng kết quả', () => {
       awakenings: 2,
       tribulationFails: 1,
       humanForms: 1,
+      rebirths: 1,
       treasuresUsed: 4,
       soulUpgrades: 5,
       soulPercent: 1.5,
@@ -281,7 +282,7 @@ describe('các bảng kết quả', () => {
         unlocks: []
       }
     ])
-    const blanks = new Array<string>(68).fill('')
+    const blanks = new Array<string>(69).fill('')
     expect(table.rows).toEqual([
       [
         't',
@@ -310,6 +311,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1.50',
         '2',
+        '1',
         '1',
         '1',
         '4',
@@ -383,6 +385,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1.50',
         '2',
+        '1',
         '1',
         '1',
         '4',
@@ -496,6 +499,7 @@ describe('tóm tắt lần chạy', () => {
       ['tribulation', '1', '0.4', '0', '0', '0', '3', '9', '0'],
       ['safari', '0', '0.0', '0', '0', '0', '0', '0', '0'],
       ['zones', '0', '0.0', '0', '0', '0', '0', '0', '0'],
+      ['gathering', '0', '0.0', '0', '0', '0', '0', '0', '0'],
       ['lineage', '0', '0.0', '0', '0', '0', '0', '0', '0']
     ])
   })

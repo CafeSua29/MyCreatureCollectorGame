@@ -47,10 +47,17 @@ import {
 import { applyStageChange } from './stageChanges'
 import { enemyTarget } from './battleItems'
 import { isDynamaxed } from './transform'
+import { specialRule } from './specialBattles'
 
-/** Trận có thể thu phục: quái hoang / boss trên tầng (không NPC, bí cảnh, event, độ kiếp). */
+/**
+ * Trận có thể thu phục: quái hoang / boss trên tầng, kể cả câu cá / khai thác (không NPC, bí cảnh,
+ * event, thú triều, hiểm địa, độ kiếp; luật theo loại ở SPECIAL_BATTLE_RULES).
+ */
 export const isRecruitBattle = (battle: BattleState): boolean =>
-  !battle.trainer && !battle.trial && !battle.special && !battle.tribulation
+  !battle.trainer &&
+  !battle.trial &&
+  (!battle.special || specialRule(battle.special).canRecruit) &&
+  !battle.tribulation
 
 /** Tổng % thu phục cho quái này: kỹ năng đồng hành + mồi dụ (khẩu vị theo quái). */
 function recruitBonusPercent(

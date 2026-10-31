@@ -11,6 +11,7 @@ import {
   abandonTrial,
   enterZone,
   exploreZone,
+  gather,
   leaveZone,
   challengeTower,
   challengeTrial,
@@ -74,7 +75,15 @@ import {
 import { createInventory, discardItem } from '../inventory'
 import { buyCharm, buyItem, sellItem } from '../shop'
 import { bindContract, newTamerState, tamerBreakthrough } from '../tamer'
-import { fuse, implant, infuseEgg, newLabState, sacrifice, warmEggsAtRest } from '../progression'
+import {
+  fuse,
+  implant,
+  infuseEgg,
+  newLabState,
+  rebirthMonster,
+  sacrifice,
+  warmEggsAtRest
+} from '../progression'
 import { applySkillBook, learnPendingSkill, relearnSkill, skipPendingSkill } from '../monster'
 import {
   equipItem,
@@ -111,10 +120,10 @@ import {
   castEquipment,
   imbueEquipment
 } from '../roster'
-import type { GameAction, GameData, GameState, Location, Monster } from '../model'
+import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 79
+export const SAVE_VERSION = 81
 
 export function createGameState(options: {
   seed: number
@@ -180,6 +189,7 @@ export function createGameState(options: {
     lab: newLabState(),
     capacity: newCapacityState(),
     zones: newZoneState(),
+    gathering: newGatheringState(),
     dex: newDexState(),
     garden: {
       plots: Array.from({ length: options.gardenPlots ?? DEFAULT_GARDEN_PLOTS }, () => null)
@@ -262,6 +272,22 @@ function exploreZoneWithTime(data: GameData, state: GameState): GameState {
   return explored.battle ? explored : advanceTime(data, explored, data.config.clock.hours.zoneStep)
 }
 
+/**
+ * Câu cá / khai thác (docs/rules/gathering.md): lần không mở trận tốn clock.hours theo cách thu thập;
+ * lần mở trận tính giờ lúc rời trận như trận thường.
+ */
+function gatherWithTime(
+  data: GameData,
+  state: GameState,
+  { method, lureItemId }: { method: GatheringMethod; lureItemId?: unknown }
+): GameState {
+  const gathered = gather(data, state, { method, lureItemId })
+  return gathered.battle ? gathered : advanceTime(data, gathered, data.config.clock.hours[method])
+}
+
+/** Câu cá / khai thác lúc bắt đầu: chưa có kết quả nào. */
+export const newGatheringState = (): GameState['gathering'] => ({ lastResult: null })
+
 /** Action trong khu bảo tồn: ra khu (lượt vào khu kết thúc) thì cả lượt tốn clock.hours.safari. */
 function withSafariTime(data: GameData, before: GameState, after: GameState): GameState {
   const ended = before.safari.visit !== null && after.safari.visit === null
@@ -342,6 +368,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return enterZone(data, state, action.zoneId)
     case 'exploreZone':
       return exploreZoneWithTime(data, state)
+    case 'fish':
+      return gatherWithTime(data, state, { method: 'fishing', lureItemId: action.lureItemId })
+    case 'mine':
+      return gatherWithTime(data, state, { method: 'mining' })
     case 'leaveZone':
       return leaveZone(data, state)
     case 'submitTurn':
@@ -406,6 +436,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return fuse(data, state, action)
     case 'sacrifice':
       return sacrifice(data, state, action)
+    case 'rebirthMonster':
+      return rebirthMonster(data, state, action.monsterId)
     case 'implant':
       return implant(data, state, action)
     case 'expandCapacity':

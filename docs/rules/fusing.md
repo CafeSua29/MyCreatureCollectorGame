@@ -28,6 +28,7 @@
   - **Trait boss** gộp cấp (cộng cấp của cả hai). **`bossMultiplier` = cao nhất** của hai quái.
   - **`shinyStacks` cộng dồn**, trait shiny cấp = tổng (qua `addShinyStacks`).
   - **`sacrificeStacks` cộng dồn** (stack hiến tế của quái phụ, không +1; `sacrifice.md`).
+  - **`rebirths`**: của quái gốc + ⌊½ của quái phụ⌋ (`rebirth.md`).
   - **Cấy ghép giữ của quái gốc** (`implantBonusStats`, `implantEffects`, `implantAttempts`, `implantFails`; hiệu ứng của quái phụ mất); phần cấy của quái phụ đã nằm trong chỉ số `withFusingBonus` của nó nên ½ tự truyền qua `fusingBonusStats` (`implant.md`).
   - `lineage` thêm `baseSpeciesId` và lineage của quái phụ, **không lặp loài**.
   - Giữ: hệ Tera, Gmax Factor, cấp Dynamax (quái fuse không Mega / Gigantamax được, Dynamax / Tera thì được; `transformation.md`); level, EXP, gen, gender (kể cả `none`: quái gốc không giới tính thì quái fuse cũng vậy), biệt danh, máu đã mất (max HP tăng nên HP hiện tại tăng theo), skill chờ học. Xóa `pendingEvolutionIds` (quái fuse không tiến hóa).

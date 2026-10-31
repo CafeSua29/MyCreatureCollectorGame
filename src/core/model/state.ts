@@ -27,6 +27,7 @@ import type { SafariState } from './safari'
 import type { LabState } from './implant'
 import type { CapacityState } from './capacity'
 import type { ZoneState } from './zones'
+import type { GatheringState } from './gathering'
 import type { DexState } from './dex'
 
 // ---------- State game (được lưu vào save) ----------
@@ -111,6 +112,8 @@ export interface GameState {
   capacity: CapacityState
   /** Hiểm địa: lượt vào đang diễn ra, ngày mở lại của từng hiểm địa (docs/rules/zones.md). */
   zones: ZoneState
+  /** Kết quả câu cá / khai thác gần nhất (docs/rules/gathering.md). */
+  gathering: GatheringState
   /** Bộ sưu tập: loài đã gặp / đã sở hữu, mốc thưởng đã nhận (docs/rules/dex.md). */
   dex: DexState
   battle: BattleState | null

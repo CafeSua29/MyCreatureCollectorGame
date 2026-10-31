@@ -507,6 +507,12 @@ function addSacrificeStacks(save: SaveObject): SaveObject {
   return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 75 }
 }
 
+/** v79 → v80 (luân hồi, docs/rules/rebirth.md): mọi quái (kể cả trứng) chưa luân hồi lần nào. */
+function addRebirths(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, rebirths: 0 })
+  return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 80 }
+}
+
 /**
  * v75 → v76 (cấy ghép, docs/rules/implant.md): mọi quái (kể cả trứng) chưa cấy; Phòng Thí Nghiệm
  * chưa có hàng, đổi hàng ngay lần qua ngày đầu tiên (restockDay 0).
@@ -1009,7 +1015,10 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
     ...save,
     version: 79,
     cooking: { level: 1, exp: '0', lastCraft: null, meal: null }
-  })
+  }),
+  79: addRebirths,
+  // v80 → v81: câu cá và khai thác (docs/rules/gathering.md): chưa có kết quả thu thập nào.
+  80: (save) => ({ ...save, version: 81, gathering: { lastResult: null } })
 }
 
 /**

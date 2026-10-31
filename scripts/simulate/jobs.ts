@@ -20,6 +20,7 @@ import {
 import { runTribulationSweep, type TribulationRow } from './tribulation'
 import { runSafari, type SafariRow } from './safari'
 import { runZone, type ZoneRow } from './zones'
+import { runGathering, type GatheringRow } from './gathering'
 
 export type SimJob =
   | { type: 'sweep'; variantId: string; teamId: string; floor: number }
@@ -36,6 +37,8 @@ export type SimJob =
   | { type: 'safari'; floor: number; policy: SafariPolicy }
   /** Hiểm địa ở một tầng (zones.ts). */
   | { type: 'zones'; zoneId: string; floor: number }
+  /** Câu cá / khai thác / quái hoang so sánh ở một tầng với một cách chơi (gathering.ts). */
+  | { type: 'gathering'; floor: number; runId: string }
 
 /** Các phần của lần chạy (in thời gian từng phần, chọn phần chạy bằng --parts). */
 export const SIM_PARTS = [
@@ -47,6 +50,7 @@ export const SIM_PARTS = [
   'tribulation',
   'safari',
   'zones',
+  'gathering',
   'lineage'
 ] as const
 
@@ -62,6 +66,7 @@ export type SimJobResult =
   | { type: 'tribulation'; rows: TribulationRow[] }
   | { type: 'safari'; row: SafariRow }
   | { type: 'zones'; row: ZoneRow }
+  | { type: 'gathering'; row: GatheringRow }
 
 export interface TimedJobResult {
   part: SimPart
@@ -150,6 +155,13 @@ export function listJobs(scenarios: Scenarios, data?: GameData): SimJob[] {
       for (const floor of floors) jobs.push({ type: 'zones', zoneId, floor })
     }
   }
+  if (scenarios.gathering) {
+    for (const floor of scenarios.gathering.floors) {
+      for (const run of scenarios.gathering.runs) {
+        jobs.push({ type: 'gathering', floor, runId: run.id })
+      }
+    }
+  }
   jobs.push({ type: 'breeding' }, { type: 'fusion' })
   return jobs
 }
@@ -168,6 +180,7 @@ const PART_PRIORITY: Record<SimPart, number> = {
   tribulation: 2,
   safari: 1,
   zones: 2,
+  gathering: 1,
   sweep: 1,
   lineage: 0
 }
@@ -240,6 +253,21 @@ export function runJob(context: JobContext, job: SimJob): SimJobResult {
         limits: { maxTurns: scenarios.maxTurns, maxTurnsBoss: scenarios.maxTurnsBoss }
       })
       return { type: 'zones', row }
+    }
+    case 'gathering': {
+      const spec = scenarios.gathering
+      if (!spec) throw new Error('Mô phỏng: kịch bản không có gathering')
+      const run = spec.runs.find((entry) => entry.id === job.runId)
+      if (!run) throw new Error(`Mô phỏng: không có cách chơi thu thập "${job.runId}"`)
+      const row = runGathering(context.dataForVariant(scenarios.variants[0].id), {
+        floor: job.floor,
+        run,
+        team: findTeam(scenarios, spec.teamId),
+        casts: spec.casts,
+        seed: scenarios.seed,
+        limits: { maxTurns: scenarios.maxTurns }
+      })
+      return { type: 'gathering', row }
     }
   }
 }
@@ -357,6 +385,7 @@ function jobTeamId(job: SimJob): string | null {
     case 'fusion':
     case 'safari':
     case 'zones':
+    case 'gathering':
       return null
   }
 }
@@ -481,6 +510,7 @@ export interface CollectedResults {
   tribulation: TribulationRow[]
   safari: SafariRow[]
   zones: ZoneRow[]
+  gathering: GatheringRow[]
 }
 
 /** Gom kết quả các việc (đã theo thứ tự listJobs) thành từng phần. */
@@ -494,7 +524,8 @@ export function collectResults(results: readonly SimJobResult[]): CollectedResul
     progressionFloors: [],
     tribulation: [],
     safari: [],
-    zones: []
+    zones: [],
+    gathering: []
   }
   for (const result of results) {
     switch (result.type) {
@@ -524,6 +555,9 @@ export function collectResults(results: readonly SimJobResult[]): CollectedResul
         break
       case 'zones':
         collected.zones.push(result.row)
+        break
+      case 'gathering':
+        collected.gathering.push(result.row)
         break
     }
   }

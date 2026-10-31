@@ -44,6 +44,7 @@ import { validateSafariState } from './validateSafariState'
 import { validateLabState } from './validateLabState'
 import { validateCapacityState } from './validateCapacityState'
 import { validateZoneState } from './validateZoneState'
+import { validateGatheringState } from './validateGatheringState'
 import { validateDexState } from './validateDexState'
 import { validateEquipmentState } from './validateEquipmentState'
 import { checkTeamBonuses, validateFormationState } from './validateTeamState'
@@ -697,6 +698,7 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   )
   issues.push(...validateEventState(data, state))
   issues.push(...validateZoneState(data, state))
+  issues.push(...validateGatheringState(data, state))
   issues.push(...validateLabState(data, state.lab))
   issues.push(...validateCapacityState(data, state))
   issues.push(...validateRecruitState(data, state))

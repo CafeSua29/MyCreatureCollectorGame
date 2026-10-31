@@ -2181,7 +2181,10 @@
         "weight": 10
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "reikland",
@@ -9986,7 +9989,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting"]
+    "elementIds": ["rock", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "hochland",
@@ -13332,7 +13338,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal"]
+    "elementIds": ["water", "flying", "normal"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "sylvania",
@@ -21258,7 +21267,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying"]
+    "elementIds": ["ice", "rock", "flying"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "iceCourt",
@@ -22373,7 +22386,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "trollCountry",
@@ -23488,7 +23504,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost", "poison"]
+    "elementIds": ["ice", "water", "ghost", "poison"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "norsca",
@@ -24610,7 +24629,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying", "dark"]
+    "elementIds": ["ice", "rock", "flying", "dark"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "gianthomeMountains",
@@ -25716,7 +25739,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying", "fighting"]
+    "elementIds": ["ice", "rock", "flying", "fighting"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "seaOfClaws",
@@ -26831,7 +26858,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "flying", "electric"]
+    "elementIds": ["water", "flying", "electric"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "marienburg",
@@ -27945,7 +27975,11 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "steel"]
+    "elementIds": ["water", "flying", "normal", "steel"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "skavenblight",
@@ -29068,7 +29102,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground", "dark"]
+    "elementIds": ["poison", "water", "ground", "dark"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "greyMountains",
@@ -30170,7 +30208,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting"]
+    "elementIds": ["rock", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "worldsEdgeMountains",
@@ -31284,7 +31325,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting", "steel"]
+    "elementIds": ["rock", "ground", "flying", "fighting", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "karakEightPeaks",
@@ -32390,7 +32434,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel"]
+    "elementIds": ["rock", "ground", "dark", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "silverRoad",
@@ -33496,7 +33543,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting"]
+    "elementIds": ["rock", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "blackFirePass",
@@ -34602,7 +34652,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting", "fire"]
+    "elementIds": ["rock", "ground", "flying", "fighting", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "badlands",
@@ -35756,7 +35809,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "ground", "fire", "fighting", "dark"]
+    "elementIds": ["normal", "ground", "fire", "fighting", "dark"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "mountainsOfMourn",
@@ -36862,7 +36918,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying", "fighting"]
+    "elementIds": ["ice", "rock", "flying", "fighting"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "darkLands",
@@ -37980,7 +38040,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground", "dark"]
+    "elementIds": ["fire", "rock", "ground", "dark"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "plainOfZharr",
@@ -39110,7 +39173,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["steel", "electric", "poison", "fire"]
+    "elementIds": ["steel", "electric", "poison", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "borderPrinces",
@@ -40228,7 +40294,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "ground", "fire", "fighting"]
+    "elementIds": ["normal", "ground", "fire", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "tilea",
@@ -42453,7 +42522,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "ground", "fire", "fighting"]
+    "elementIds": ["normal", "ground", "fire", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "araby",
@@ -43531,7 +43603,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "landOfTheDead",
@@ -44641,7 +44716,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire", "ghost"]
+    "elementIds": ["ground", "rock", "fire", "ghost"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "greatDesert",
@@ -45723,7 +45801,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "blackPyramidOfNagash",
@@ -46841,7 +46922,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["ground", "ghost", "steel", "rock", "dark"]
+    "elementIds": ["ground", "ghost", "steel", "rock", "dark"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "lustria",
@@ -49066,7 +49150,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "ghost"]
+    "elementIds": ["water", "flying", "normal", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "galleonsGraveyard",
@@ -50173,7 +50260,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "dark", "dragon", "ghost"]
+    "elementIds": ["water", "dark", "dragon", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "southlands",
@@ -52399,7 +52489,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost", "dark"]
+    "elementIds": ["ice", "water", "ghost", "dark"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "blackspineMountains",
@@ -53549,7 +53642,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting", "dark"]
+    "elementIds": ["rock", "ground", "flying", "fighting", "dark"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "ulthuan",
@@ -57013,7 +57109,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground", "dragon"]
+    "elementIds": ["fire", "rock", "ground", "dragon"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "avelorn",
@@ -60425,7 +60524,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["rock", "psychic", "steel", "fairy"]
+    "elementIds": ["rock", "psychic", "steel", "fairy"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "chrace",
@@ -61527,7 +61629,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting"]
+    "elementIds": ["rock", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "eyeOfTheVortex",
@@ -64870,7 +64975,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting", "steel"]
+    "elementIds": ["rock", "ground", "flying", "fighting", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "jadeSea",
@@ -65984,7 +66092,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "dragon"]
+    "elementIds": ["water", "flying", "normal", "dragon"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "ind",
@@ -69368,7 +69479,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["dark", "poison", "rock", "fire"]
+    "elementIds": ["dark", "poison", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "realmOfKhorne",
@@ -70478,7 +70592,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground", "fighting"]
+    "elementIds": ["fire", "rock", "ground", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "realmOfNurgle",
@@ -71593,7 +71710,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground"]
+    "elementIds": ["poison", "water", "ground"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "realmOfTzeentch",
@@ -77212,7 +77333,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel", "fairy"]
+    "elementIds": ["rock", "ground", "dark", "steel", "fairy"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "rockTunnel",
@@ -78318,7 +78442,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel"]
+    "elementIds": ["rock", "ground", "dark", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "pokemonTower",
@@ -80567,7 +80694,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["steel", "electric", "poison", "fire"]
+    "elementIds": ["steel", "electric", "poison", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "seafoamIslands",
@@ -81682,7 +81812,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "cinnabarVolcano",
@@ -82764,7 +82897,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "victoryRoadKanto",
@@ -83874,7 +84010,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel", "fighting"]
+    "elementIds": ["rock", "ground", "dark", "steel", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "ceruleanCave",
@@ -84988,7 +85127,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["rock", "psychic", "steel", "fairy"]
+    "elementIds": ["rock", "psychic", "steel", "fairy"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "safariZone",
@@ -88340,7 +88482,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "flying", "electric"]
+    "elementIds": ["water", "flying", "electric"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "icePath",
@@ -89455,7 +89600,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "dragonsDen",
@@ -90562,7 +90710,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "dark", "dragon"]
+    "elementIds": ["water", "dark", "dragon"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "mtSilver",
@@ -91672,7 +91823,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying", "fighting"]
+    "elementIds": ["ice", "rock", "flying", "fighting"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "burnedTower",
@@ -92798,7 +92953,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["ground", "ghost", "steel", "rock", "fire"]
+    "elementIds": ["ground", "ghost", "steel", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "lakeOfRage",
@@ -93908,7 +94066,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal"]
+    "elementIds": ["water", "flying", "normal"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "petalburgWoods",
@@ -96108,7 +96269,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "route111Desert",
@@ -97186,7 +97350,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "meteorFalls",
@@ -98292,7 +98459,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel", "dragon"]
+    "elementIds": ["rock", "ground", "dark", "steel", "dragon"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "mtPyre",
@@ -100526,7 +100696,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "seafloorCavern",
@@ -101633,7 +101806,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "dark", "dragon"]
+    "elementIds": ["water", "dark", "dragon"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "skyPillar",
@@ -106095,7 +106271,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground"]
+    "elementIds": ["poison", "water", "ground"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "mtCoronet",
@@ -107205,7 +107385,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting"]
+    "elementIds": ["rock", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "snowpointRoutes",
@@ -108311,7 +108494,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying"]
+    "elementIds": ["ice", "rock", "flying"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "oldChateau",
@@ -110536,7 +110723,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel"]
+    "elementIds": ["rock", "ground", "dark", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "starkMountain",
@@ -111618,7 +111808,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "spearPillar",
@@ -116050,7 +116243,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "relicCastle",
@@ -117168,7 +117364,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["ground", "ghost", "steel", "rock"]
+    "elementIds": ["ground", "ghost", "steel", "rock"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "chargestoneCave",
@@ -118286,7 +118485,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["rock", "psychic", "steel", "fairy", "electric"]
+    "elementIds": ["rock", "psychic", "steel", "fairy", "electric"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "twistMountain",
@@ -119396,7 +119598,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying"]
+    "elementIds": ["ice", "rock", "flying"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "dragonspiralTower",
@@ -120514,7 +120720,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["ground", "ghost", "steel", "rock", "dragon"]
+    "elementIds": ["ground", "ghost", "steel", "rock", "dragon"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "giantChasm",
@@ -121629,7 +121838,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost", "dragon"]
+    "elementIds": ["ice", "water", "ghost", "dragon"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "santaluneForest",
@@ -123861,7 +124073,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["rock", "psychic", "steel", "fairy"]
+    "elementIds": ["rock", "psychic", "steel", "fairy"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "frostCavern",
@@ -124976,7 +125191,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "lostHotel",
@@ -126110,7 +126328,10 @@
         "weight": 60
       }
     ],
-    "elementIds": ["steel", "electric", "poison", "fire", "ghost"]
+    "elementIds": ["steel", "electric", "poison", "fire", "ghost"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "terminusCave",
@@ -127220,7 +127441,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel", "dragon"]
+    "elementIds": ["rock", "ground", "dark", "steel", "dragon"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "lushJungle",
@@ -129425,7 +129649,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "hainaDesert",
@@ -130511,7 +130738,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "mountLanakila",
@@ -131621,7 +131851,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying"]
+    "elementIds": ["ice", "rock", "flying"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "vastPoniCanyon",
@@ -132739,7 +132973,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting", "dragon"]
+    "elementIds": ["rock", "ground", "flying", "fighting", "dragon"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "ultraSpace",
@@ -138346,7 +138583,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "fighting"]
+    "elementIds": ["water", "flying", "normal", "fighting"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "crownTundra",
@@ -139469,7 +139709,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "dynamaxAdventureDen",
@@ -140583,7 +140826,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel"]
+    "elementIds": ["rock", "ground", "dark", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "asadoDesert",
@@ -141665,7 +141911,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "glaseadoMountain",
@@ -142779,7 +143028,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying"]
+    "elementIds": ["ice", "rock", "flying"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "casseroyaLake",
@@ -143897,7 +144150,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "dragon"]
+    "elementIds": ["water", "flying", "normal", "dragon"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "tagtreeThicket",
@@ -146137,7 +146393,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["rock", "psychic", "steel", "fairy", "dragon"]
+    "elementIds": ["rock", "psychic", "steel", "fairy", "dragon"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "kitakami",
@@ -149505,7 +149764,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground"]
+    "elementIds": ["poison", "water", "ground"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "cobaltCoastlands",
@@ -150623,7 +150886,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal"]
+    "elementIds": ["water", "flying", "normal"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "coronetHighlands",
@@ -151733,7 +151999,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "fighting"]
+    "elementIds": ["rock", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "alabasterIcelands",
@@ -152852,7 +153121,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["ice", "water", "ghost"]
+    "elementIds": ["ice", "water", "ghost"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "orreDesert",
@@ -153970,7 +154242,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire", "dark"]
+    "elementIds": ["ground", "rock", "fire", "dark"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "tropicalRainforest",
@@ -156199,7 +156474,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "grass", "electric", "bug"]
+    "elementIds": ["water", "grass", "electric", "bug"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "tropicalSavanna",
@@ -157313,7 +157591,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "ground", "fire", "fighting"]
+    "elementIds": ["normal", "ground", "fire", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "hotDesert",
@@ -158395,7 +158676,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "coldDesert",
@@ -159493,7 +159777,11 @@
         "weight": 20
       }
     ],
-    "elementIds": ["ground", "ice", "rock"]
+    "elementIds": ["ground", "ice", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "semiAridSteppe",
@@ -160599,7 +160887,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["normal", "ground", "flying", "fighting"]
+    "elementIds": ["normal", "ground", "flying", "fighting"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "mediterraneanScrubland",
@@ -161713,7 +162004,10 @@
         "weight": 30
       }
     ],
-    "elementIds": ["grass", "rock", "normal", "bug"]
+    "elementIds": ["grass", "rock", "normal", "bug"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "humidSubtropicalForest",
@@ -162835,7 +163129,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy", "water"]
+    "elementIds": ["grass", "bug", "normal", "fairy", "water"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "oceanicMoorland",
@@ -163950,7 +164247,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug", "water"]
+    "elementIds": ["normal", "grass", "flying", "bug", "water"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "subtropicalHighland",
@@ -167329,7 +167629,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["ice", "grass", "normal", "dark"]
+    "elementIds": ["ice", "grass", "normal", "dark"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "arcticTundra",
@@ -168443,7 +168746,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["ice", "normal", "ground"]
+    "elementIds": ["ice", "normal", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "polarIceCap",
@@ -169550,7 +169856,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ice", "water", "rock"]
+    "elementIds": ["ice", "water", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "alpineHighland",
@@ -170656,7 +170966,11 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ice", "rock", "flying"]
+    "elementIds": ["ice", "rock", "flying"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "alpineMeadow",
@@ -171775,7 +172089,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug", "rock"]
+    "elementIds": ["normal", "grass", "flying", "bug", "rock"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "highPlateau",
@@ -172881,7 +173198,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["normal", "ground", "flying", "fighting", "rock"]
+    "elementIds": ["normal", "ground", "flying", "fighting", "rock"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "canyon",
@@ -173983,7 +174303,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying"]
+    "elementIds": ["rock", "ground", "flying"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "riverValley",
@@ -175097,7 +175420,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "grass", "bug", "flying"]
+    "elementIds": ["water", "grass", "bug", "flying"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "rollingHills",
@@ -177331,7 +177657,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug", "ground"]
+    "elementIds": ["normal", "grass", "flying", "bug", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "sandDunes",
@@ -178413,7 +178742,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire"]
+    "elementIds": ["ground", "rock", "fire"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "saltFlat",
@@ -179519,7 +179851,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "steel"]
+    "elementIds": ["ground", "rock", "steel"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "desertOasis",
@@ -180633,7 +180968,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ground", "rock", "fire", "water", "grass"]
+    "elementIds": ["ground", "rock", "fire", "water", "grass"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "erodedBadlands",
@@ -181751,7 +182090,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "flying", "dark"]
+    "elementIds": ["rock", "ground", "flying", "dark"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "karstTowers",
@@ -182861,7 +183203,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "water", "grass"]
+    "elementIds": ["rock", "water", "grass"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "limestoneCavern",
@@ -183971,7 +184317,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "ground", "dark", "steel", "water"]
+    "elementIds": ["rock", "ground", "dark", "steel", "water"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "sinkhole",
@@ -185089,7 +185439,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["rock", "water", "grass", "dark"]
+    "elementIds": ["rock", "water", "grass", "dark"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "stratovolcano",
@@ -186175,7 +186529,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "lavaField",
@@ -187257,7 +187614,10 @@
         "weight": 50
       }
     ],
-    "elementIds": ["fire", "rock", "ground"]
+    "elementIds": ["fire", "rock", "ground"],
+    "gathering": {
+      "mining": true
+    }
   },
   {
     "id": "geyserBasin",
@@ -188379,7 +188739,11 @@
         "weight": 60
       }
     ],
-    "elementIds": ["fire", "water", "ground"]
+    "elementIds": ["fire", "water", "ground"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "glacier",
@@ -189486,7 +189850,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["ice", "water", "rock"]
+    "elementIds": ["ice", "water", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "fjord",
@@ -190608,7 +190976,11 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "ice", "rock"]
+    "elementIds": ["water", "flying", "normal", "ice", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "sandyBeach",
@@ -191722,7 +192094,11 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "ground"]
+    "elementIds": ["water", "flying", "normal", "ground"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "seaCliffs",
@@ -192840,7 +193216,11 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "rock"]
+    "elementIds": ["water", "flying", "normal", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "riverDelta",
@@ -193958,7 +194338,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["water", "grass", "bug", "poison"]
+    "elementIds": ["water", "grass", "bug", "poison"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "estuary",
@@ -195076,7 +195459,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["water", "grass", "bug", "poison"]
+    "elementIds": ["water", "grass", "bug", "poison"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "mangroveForest",
@@ -196194,7 +196580,10 @@
         "weight": 20
       }
     ],
-    "elementIds": ["water", "grass", "bug", "poison"]
+    "elementIds": ["water", "grass", "bug", "poison"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "saltMarsh",
@@ -197309,7 +197698,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground"]
+    "elementIds": ["poison", "water", "ground"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "peatBog",
@@ -198428,7 +198821,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground", "ghost"]
+    "elementIds": ["poison", "water", "ground", "ghost"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "freshwaterLake",
@@ -199542,7 +199939,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "grass", "bug", "flying"]
+    "elementIds": ["water", "grass", "bug", "flying"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "waterfallGorge",
@@ -200660,7 +201060,11 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "grass", "bug", "flying", "rock"]
+    "elementIds": ["water", "grass", "bug", "flying", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "tropicalArchipelago",
@@ -201778,7 +202182,10 @@
         "weight": 40
       }
     ],
-    "elementIds": ["water", "flying", "normal", "grass"]
+    "elementIds": ["water", "flying", "normal", "grass"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "coralAtoll",
@@ -202888,7 +203295,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "fairy", "poison", "rock"]
+    "elementIds": ["water", "fairy", "poison", "rock"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "kelpForest",
@@ -203986,7 +204397,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "grass", "poison"]
+    "elementIds": ["water", "grass", "poison"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "openOcean",
@@ -205101,7 +205515,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "flying", "electric"]
+    "elementIds": ["water", "flying", "electric"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "deepSeaTrench",
@@ -206208,7 +206625,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "dark", "dragon"]
+    "elementIds": ["water", "dark", "dragon"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "hydrothermalVents",
@@ -207327,7 +207747,11 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "fire", "steel", "poison"]
+    "elementIds": ["water", "fire", "steel", "poison"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "polarSea",
@@ -208430,7 +208854,10 @@
         "weight": 100
       }
     ],
-    "elementIds": ["water", "ice"]
+    "elementIds": ["water", "ice"],
+    "gathering": {
+      "fishing": true
+    }
   },
   {
     "id": "temperateDeciduousForest",
@@ -214019,7 +214446,11 @@
         "weight": 30
       }
     ],
-    "elementIds": ["poison", "water", "ground", "dragon"]
+    "elementIds": ["poison", "water", "ground", "dragon"],
+    "gathering": {
+      "fishing": true,
+      "mining": true
+    }
   },
   {
     "id": "iceAgeSteppe",
@@ -215137,6 +215568,9 @@
         "weight": 40
       }
     ],
-    "elementIds": ["ice", "normal", "ground"]
+    "elementIds": ["ice", "normal", "ground"],
+    "gathering": {
+      "mining": true
+    }
   }
 ]

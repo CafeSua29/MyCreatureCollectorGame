@@ -57,6 +57,7 @@ import { checkAwakeningData } from './validateAwakening'
 import { checkHumanFormData } from './validateHumanForm'
 import { checkTreasureData } from './validateTreasures'
 import { checkSoulLevelData } from './validateSoulLevels'
+import { checkRebirthData } from './validateRebirth'
 import { checkEffortData } from './validateEffort'
 import { checkSpiritVirusConfig } from './validateSpiritVirus'
 import { checkPolarityData } from './validatePolarity'
@@ -72,6 +73,7 @@ import { checkExpeditionData } from './validateExpeditions'
 import { checkTrainerData } from './validateTrainers'
 import { checkTrialData } from './validateTrials'
 import { checkZoneData } from './validateZones'
+import { checkGatheringData } from './validateGathering'
 import { checkEventData } from './validateEvents'
 import { checkAutoBattleData } from './validateAutoBattle'
 import { checkTransformData } from './validateTransform'
@@ -263,6 +265,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkRecruitData(data, issues)
   checkSafariData(data, issues)
   checkImplantData(data, issues)
+  checkRebirthData(data, issues)
   checkCapacityData(data, issues)
   checkWeights(data, issues)
   checkDexData(data, issues)
@@ -273,6 +276,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkTrainerData(data, issues)
   checkTrialData(data, issues)
   checkZoneData(data, issues)
+  checkGatheringData(data, issues)
   checkEventData(data, issues)
   // Sau cùng: danh sách loài của ô khởi đầu chỉ dựng khi phần dữ liệu khác hợp lệ.
   checkStarterData(data, issues)

@@ -77,6 +77,8 @@ export interface ActionErrorParams {
   notInShop: NoParams
   /** Bùa không bán ở cửa hàng (không có townPrice) hoặc đã có trong túi. */
   charmNotForSale: { itemId: string; reason: 'notSold' | 'owned' }
+  /** Bùa chỉ bán khi tầng cao nhất đã mở ≥ `minFloor` (cần câu / cuốc cấp cao). */
+  charmFloorLocked: { itemId: string; minFloor: number }
   // ---------- Ấp trứng (docs/rules/breeding-eggs.md) ----------
   eggNotFound: { eggId: string }
   /** Vật phẩm không phải linh thạch theo hệ (config.alchemy.elementStoneItemIds). */
@@ -140,6 +142,9 @@ export interface ActionErrorParams {
   sacrificeMismatch: { baseId: string; subId: string }
   /** Stack hiến tế sau khi cộng vượt giới hạn số nguyên an toàn. */
   sacrificeStackLimit: { max: number }
+  // ---------- Luân hồi (docs/rules/rebirth.md) ----------
+  /** Level chưa đủ cho lần luân hồi kế tiếp. */
+  levelTooLowForRebirth: { need: number; have: number }
   // ---------- Cấy ghép (docs/rules/implant.md) ----------
   /** Không có huyết thanh ở vị trí này trong danh sách hàng của Phòng Thí Nghiệm. */
   serumNotFound: { serumIndex: number }
@@ -292,6 +297,13 @@ export interface ActionErrorParams {
   /** Đang trong hiểm địa: không hồi máu ở thị trấn, không rời thị trấn, không vào phó bản khác. */
   zoneInProgress: NoParams
   noZoneVisit: NoParams
+  // ---------- Câu cá và khai thác (docs/rules/gathering.md) ----------
+  /** Map của tầng đang đứng không có chỗ câu cá / mỏ. */
+  gatheringUnavailable: { method: string; biomeId: string }
+  /** Chưa có dụng cụ (cần câu / cuốc). */
+  gatheringToolMissing: { method: string }
+  /** Vật phẩm không phải mồi câu (category fishingLure). */
+  notFishingLure: { itemId: string }
   // ---------- Bản mệnh thú (docs/rules/tamer.md) ----------
   /** Không thả / làm quái phụ / hiến tế bản mệnh (đổi bản mệnh trước). */
   isBondBeast: { monsterId: string }
@@ -459,6 +471,7 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   sacrificeMismatch: ({ baseId, subId }) =>
     `Quái "${subId}" không cùng race và cùng lineage với quái chính "${baseId}"`,
   sacrificeStackLimit: ({ max }) => `Số stack hiến tế không được vượt ${max}`,
+  levelTooLowForRebirth: ({ need, have }) => `Cần level ${need} để luân hồi, đang ${have}`,
   serumNotFound: ({ serumIndex }) => `Phòng Thí Nghiệm không có huyết thanh thứ ${serumIndex}`,
   rosterFull: ({ capacity }) => `Đội đã đủ và kho quái đã đầy (${capacity} con)`,
   bagFull: ({ capacity }) => `Túi trang bị đã đầy (${capacity} chỗ)`,
@@ -477,6 +490,7 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
     reason === 'owned'
       ? `Đã có bùa "${itemId}", mỗi loại chỉ mua một lần`
       : `Cửa hàng không bán bùa "${itemId}"`,
+  charmFloorLocked: ({ itemId, minFloor }) => `Bùa "${itemId}" bán từ khi mở tầng ${minFloor}`,
   eggNotFound: ({ eggId }) => `Không có trứng "${eggId}"`,
   notSpiritStone: ({ itemId }) => `Vật phẩm "${itemId}" không phải linh thạch`,
   eggInfusionsFull: ({ eggId, max }) => `Trứng "${eggId}" đã đặt đủ ${max} linh thạch`,
@@ -575,6 +589,11 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   zoneInProgress: () =>
     'Đang trong hiểm địa (không hồi máu, không rời thị trấn, không vào phó bản khác)',
   noZoneVisit: () => 'Không trong hiểm địa nào',
+  gatheringUnavailable: ({ method, biomeId }) =>
+    `Map "${biomeId}" không có chỗ ${method === 'fishing' ? 'câu cá' : 'khai thác'}`,
+  gatheringToolMissing: ({ method }) =>
+    `Chưa có ${method === 'fishing' ? 'cần câu' : 'cuốc'} để ${method === 'fishing' ? 'câu cá' : 'khai thác'}`,
+  notFishingLure: ({ itemId }) => `"${itemId}" không phải mồi câu`,
   isBondBeast: ({ monsterId }) => `Quái "${monsterId}" là bản mệnh thú (đổi bản mệnh trước)`,
   bondAffinityTooLow: ({ monsterId, need, have }) =>
     `Quái "${monsterId}" thân mật ${have}, cần ${need} để kết bản mệnh`,

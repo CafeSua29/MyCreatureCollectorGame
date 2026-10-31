@@ -130,7 +130,7 @@ describe('validateHistory', () => {
     expect(issuesOf('starter')).toEqual(['h.origin phải là object'])
   })
 
-  it('báo lỗi mốc: ngày âm / lẻ, trường sai, mốc của tính năng chưa làm', () => {
+  it('báo lỗi mốc: ngày âm / lẻ, trường sai', () => {
     const issuesOf = (milestone: unknown): string[] =>
       check(history({ milestones: [milestone as Milestone] }))
     expect(issuesOf({ day: -1, kind: 'hatched' })).toHaveLength(1)
@@ -145,9 +145,9 @@ describe('validateHistory', () => {
     // Thức tỉnh đã làm (bước 5l+.1): mốc hợp lệ.
     expect(issuesOf({ day: 1, kind: 'awakened', tier: 1 })).toEqual([])
     expect(issuesOf({ day: 1, kind: 'tribulationFailed', tier: 1, failures: 0 })).toHaveLength(1)
-    expect(issuesOf({ day: 1, kind: 'reborn', count: 1 })).toEqual([
-      'h.milestones[0]: mốc "reborn" chưa hỗ trợ (chờ rebirth.md)'
-    ])
+    // Luân hồi đã làm (bước 6m): mốc hợp lệ, count ≥ 1.
+    expect(issuesOf({ day: 1, kind: 'reborn', count: 1 })).toEqual([])
+    expect(issuesOf({ day: 1, kind: 'reborn', count: 0 })).toHaveLength(1)
   })
 
   it('báo lỗi trường gặp, số mốc vượt giới hạn, trường lạ', () => {

@@ -50,6 +50,7 @@ import { allocateTalents } from './talents'
 import { tuneTeamTraits } from './traitCrystals'
 import { implantSharePercent, implantTeam } from './implant'
 import { sacrificeSpareFodder } from './sacrifice'
+import { rebirthWhenPossible } from './rebirth'
 import { castWithCores, enhanceTeamGear, imbueTeamGear, salvageSurplus } from './forge'
 import { runAlchemy } from './alchemy'
 import { runCooking } from './cooking'
@@ -144,6 +145,8 @@ export interface FloorUnlock {
   tribulationFails: number
   /** Số quái đội mẫu hóa hình trong lúc ở tầng này. */
   humanForms: number
+  /** Số lần luân hồi quái đội mẫu trong lúc ở tầng này (rebirth.ts). */
+  rebirths: number
   /** Số thiên tài địa bảo đã cho ăn trong lúc ở tầng này (treasures.ts). */
   treasuresUsed: number
   /** Số lần nâng hồn tinh trong lúc ở tầng này (soulLevels.ts). */
@@ -321,6 +324,7 @@ const newCounter = (): FloorCounter => ({
   awakenings: 0,
   tribulationFails: 0,
   humanForms: 0,
+  rebirths: 0,
   treasuresUsed: 0,
   soulUpgrades: 0,
   talentUpgrades: 0,
@@ -730,6 +734,9 @@ function afterBattle(
     const formed = takeHumanFormWhenPossible(data, run.state, teamIds)
     run.state = formed.state
     run.counter.humanForms += formed.taken
+    const reborn = rebirthWhenPossible(data, run.state, teamIds)
+    run.state = reborn.state
+    run.counter.rebirths += reborn.rebirths
     // Fuse, breeding, trận pháp (growth.ts): sau đột phá / độ kiếp, trước hồn tinh và việc NPC
     // (người chơi ưu tiên fuse hơn hồn tinh).
     if (growth) runGrowth(data, run, teamIds)

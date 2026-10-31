@@ -9,6 +9,7 @@ import type { SerumEffectDef } from './implant'
 import type { EventDef, EventModifierDef } from './events'
 import type { QuestTemplate } from './quests'
 import type { RecipeDef } from './alchemy'
+import type { BiomeGathering } from './gathering'
 import type { BalanceConfig } from './config'
 import type { SkillStyleOverrides } from './moveStyles'
 import type { PartialStats, StatName, Stats } from './stats'
@@ -1031,7 +1032,8 @@ export const ITEM_CATEGORIES = [
   'soulCrystal',
   'bait',
   'charm',
-  'dish'
+  'dish',
+  'fishingLure'
 ] as const
 
 export type ItemCategory = (typeof ITEM_CATEGORIES)[number]
@@ -1246,7 +1248,14 @@ export interface KeyItem extends ItemBase {
 }
 
 /** Loại hiệu ứng của bùa (docs/rules/dex.md mục "Bùa"); luật gộp ở registries/charms.ts. */
-export const CHARM_EFFECT_TYPES = ['shinyChanceMultiplier', 'eggStepBonus', 'restEggSteps'] as const
+export const CHARM_EFFECT_TYPES = [
+  'shinyChanceMultiplier',
+  'eggStepBonus',
+  'restEggSteps',
+  // Cấp dụng cụ câu cá / khai thác (docs/rules/gathering.md): lấy cấp cao nhất đang có.
+  'fishingRodTier',
+  'pickaxeTier'
+] as const
 
 export type CharmEffectType = (typeof CHARM_EFFECT_TYPES)[number]
 
@@ -1262,12 +1271,14 @@ export interface CharmEffect {
 /**
  * Bùa (như Shiny Charm / Oval Charm của Pokémon): có trong túi là có tác dụng, không dùng / bán /
  * vứt, không rơi; nhận từ thưởng Dex. Có `townPrice` thì mua được một lần ở cửa hàng thị trấn với
- * giá cố định đó (action buyCharm, kiểu Ôn Dưỡng Lò).
+ * giá cố định đó (action buyCharm, kiểu Ôn Dưỡng Lò); `townMinFloor` = tầng cao nhất cần đạt mới mua
+ * được (cần câu / cuốc cấp cao, docs/rules/gathering.md).
  */
 export interface CharmItem extends ItemBase {
   category: 'charm'
   effects: CharmEffect[]
   townPrice?: number
+  townMinFloor?: number
 }
 
 /**
@@ -1393,6 +1404,15 @@ export interface DishItem extends PricedItemBase {
   battles: number
 }
 
+/**
+ * Mồi câu (docs/rules/gathering.md): tiêu một cái mỗi lần câu cá (`fish { lureItemId }`); số mũ hiếm
+ * của cần câu × `rarityFactor` (< 1 thì loài / món hiếm dễ ra hơn).
+ */
+export interface FishingLureItem extends PricedItemBase {
+  category: 'fishingLure'
+  rarityFactor: number
+}
+
 /** Trường khẩu vị (thiên tài địa bảo, mồi dụ); isFavoriteItem đọc chung. */
 export type FavoriteFields = Pick<ConsumableItem, 'favoriteRaceIds' | 'favoriteElementIds'>
 
@@ -1417,6 +1437,7 @@ export type Item =
   | BaitItem
   | CharmItem
   | DishItem
+  | FishingLureItem
 
 /** Item thuộc một category cụ thể. */
 export type ItemOfCategory<C extends ItemCategory> = Extract<Item, { category: C }>
@@ -1499,6 +1520,11 @@ export interface Biome {
    * "Ấp trứng có hoàn cảnh"); bỏ trống = không là linh địa của hệ nào.
    */
   elementIds?: string[]
+  /**
+   * Câu cá / khai thác ở map này (docs/rules/gathering.md): mỗi cách có danh sách quái gặp được và
+   * bảng vật phẩm; bỏ trống cách nào thì map không làm được cách đó.
+   */
+  gathering?: BiomeGathering
 }
 
 /** Món gốc kèm trọng số (danh sách trang bị rơi của map). */

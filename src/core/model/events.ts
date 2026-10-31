@@ -6,6 +6,7 @@ import type { Decimal } from '../shared'
 import type { DropEntry, EffectDef, EquipmentRarity, NormalRarity } from './content'
 import type { ShopEntry } from './state'
 import type { ItemReward } from './trainers'
+import type { GatheringMethod } from './gathering'
 import type { DayPhase, MoonPhase, Season } from './time'
 
 /**
@@ -197,13 +198,18 @@ export type EventLogEntry =
   | { type: 'beastTideArrived'; waves: number }
   | { type: 'beastTideRetreated'; moneyLost: Decimal; shopClosedUntilDay: number }
 
-/** Trận đặc biệt (BattleState.special): trận do event mở, một đợt thú triều. */
+/** Trận đặc biệt (BattleState.special): trận do event mở, một đợt thú triều, hiểm địa, câu cá / khai thác. */
 export type SpecialBattle =
   | { kind: 'event'; eventId: string; noFlee: boolean; moneyMultiplier: number }
   /** Đợt thú triều thứ `wave`; `king` = trận thú vương (bắt được, hạ / bắt là hết thú triều). */
   | { kind: 'beastTide'; wave: number; waves: number; king: boolean }
   /** Trận trong hiểm địa (docs/rules/zones.md); `guardian` = boss canh giữ ở bước cuối. */
   | { kind: 'zone'; zoneId: string; guardian: boolean }
+  /**
+   * Trận câu cá / khai thác trên tầng (docs/rules/gathering.md); `ambush` = bị phục kích (không chạy
+   * được ở lượt đầu).
+   */
+  | { kind: 'gathering'; method: GatheringMethod; ambush: boolean }
 
 export type SpecialBattleKind = SpecialBattle['kind']
 

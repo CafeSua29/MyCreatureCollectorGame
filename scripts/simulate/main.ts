@@ -42,6 +42,7 @@ import {
   tribulationTable,
   safariTable,
   zonesTable,
+  gatheringTable,
   type Table
 } from './report'
 import { lifespanTable } from './lifespan'
@@ -107,7 +108,8 @@ function outputTables(results: CollectedResults): [string, string, SimPart, Tabl
     progressionFloors,
     tribulation,
     safari,
-    zones
+    zones,
+    gathering
   } = results
   const lifespan = progression.map((result) => ({
     teamId: runLabel(result),
@@ -154,6 +156,7 @@ function outputTables(results: CollectedResults): [string, string, SimPart, Tabl
     ['Độ kiếp', 'tribulation.csv', 'tribulation', tribulationTable(tribulation)],
     ['Khu bảo tồn', 'safari.csv', 'safari', safariTable(safari)],
     ['Hiểm địa', 'zones.csv', 'zones', zonesTable(zones)],
+    ['Câu cá và khai thác', 'gathering.csv', 'gathering', gatheringTable(gathering)],
     ['Breed / fuse nhiều đời', 'lineage.csv', 'lineage', lineageTable(lineage)]
   ]
 }

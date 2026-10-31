@@ -229,6 +229,25 @@ export interface ZoneSpec {
   supplies: ZoneSupplies
 }
 
+/**
+ * Một cách chơi của phần thu thập (gathering.ts): câu cá / khai thác với dụng cụ (bùa) và mồi câu, hoặc
+ * `wild` = trận quái hoang thường ở cùng map để so (không dụng cụ, không mồi).
+ */
+export interface GatheringRun {
+  id: string
+  method: 'fishing' | 'mining' | 'wild'
+  toolItemId: string | null
+  lureItemId: string | null
+}
+
+/** Câu cá và khai thác (gathering.ts): đội `teamId` ở mỗi tầng, mỗi cách chơi `casts` lần. */
+export interface GatheringSpec {
+  teamId: string
+  floors: number[]
+  casts: number
+  runs: GatheringRun[]
+}
+
 export interface Scenarios {
   seed: number
   floors: { from: number; to: number }
@@ -255,6 +274,8 @@ export interface Scenarios {
   safari: SafariSpec | null
   /** null = không đo hiểm địa. */
   zones: ZoneSpec | null
+  /** null = không đo câu cá / khai thác. */
+  gathering: GatheringSpec | null
   breeding: BreedingSpec
   fusion: FusionSpec
 }
@@ -276,6 +297,7 @@ const SCENARIO_FIELDS = fieldList<Scenarios>({
   tribulation: true,
   safari: true,
   zones: true,
+  gathering: true,
   breeding: true,
   fusion: true
 })
@@ -414,6 +436,7 @@ export function parseScenarios(data: GameData, value: unknown): Scenarios {
       root.tribulation === undefined ? null : readTribulation(r, root.tribulation, teams),
     safari: root.safari === undefined ? null : readSafari(r, root.safari),
     zones: root.zones === undefined ? null : readZones(r, data, root.zones, teams),
+    gathering: root.gathering === undefined ? null : readGathering(r, data, root.gathering, teams),
     breeding: readBreeding(r, root.breeding),
     fusion: readFusion(r, root.fusion)
   }
@@ -747,6 +770,55 @@ function readZones(
     visits: r.integer(obj.visits, `${path}.visits`, 1),
     supplies: readZoneSupplies(r, data, obj.supplies)
   }
+}
+
+const GATHERING_RUN_METHODS = ['fishing', 'mining', 'wild'] as const
+
+function readGatheringRun(r: Reader, data: GameData, value: unknown, at: string): GatheringRun {
+  const run = r.object(value, at, ['id', 'method', 'toolItemId', 'lureItemId'])
+  const id = r.string(run.id, `${at}.id`)
+  const method = GATHERING_RUN_METHODS.find((known) => known === run.method)
+  if (!method) r.issues.push(`${at}.method phải là ${GATHERING_RUN_METHODS.join(', ')}`)
+  const item = (field: 'toolItemId' | 'lureItemId'): string | null => {
+    if (run[field] === undefined) return null
+    const itemId = r.string(run[field], `${at}.${field}`)
+    if (itemId && !Object.hasOwn(data.items, itemId)) {
+      r.issues.push(`${at}.${field}: không có vật phẩm "${itemId}"`)
+    }
+    return itemId
+  }
+  return {
+    id,
+    method: method ?? 'wild',
+    toolItemId: item('toolItemId'),
+    lureItemId: item('lureItemId')
+  }
+}
+
+function readGathering(
+  r: Reader,
+  data: GameData,
+  value: unknown,
+  teams: readonly TeamSpec[]
+): GatheringSpec {
+  const path = 'gathering'
+  const obj = r.object(value, path, ['teamId', 'floors', 'casts', 'runs'])
+  const teamId = r.string(obj.teamId, `${path}.teamId`)
+  if (teamId && !teams.some((team) => team.id === teamId)) {
+    r.issues.push(`${path}.teamId: không có đội "${teamId}"`)
+  }
+  const floors = r
+    .array(obj.floors, `${path}.floors`)
+    .map((floor, i) => r.integer(floor, `${path}.floors[${i}]`, 1))
+  if (floors.length === 0) r.issues.push(`${path}.floors phải có ít nhất một tầng`)
+  const runs = r
+    .array(obj.runs, `${path}.runs`)
+    .map((entry, i) => readGatheringRun(r, data, entry, `${path}.runs[${i}]`))
+  if (runs.length === 0) r.issues.push(`${path}.runs phải có ít nhất một cách chơi`)
+  if (new Set(runs.map((run) => run.id)).size !== runs.length) {
+    r.issues.push(`${path}.runs: id cách chơi bị trùng`)
+  }
+  return { teamId, floors, casts: r.integer(obj.casts, `${path}.casts`, 1), runs }
 }
 
 function readZoneSupplies(r: Reader, data: GameData, value: unknown): ZoneSupplies {

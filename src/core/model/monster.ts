@@ -82,6 +82,11 @@ export interface Monster {
    */
   sacrificeStacks: number
   /**
+   * Số lần luân hồi (docs/rules/rebirth.md), nguyên ≥ 0, không trần: mỗi lần + % mọi chỉ số và
+   * điểm thiên phú. Fuse cộng ½ của quái phụ (làm tròn xuống); breeding không truyền.
+   */
+  rebirths: number
+  /**
    * Tổng cấy ghép của từng chỉ số (docs/rules/implant.md): cộng cùng chỗ với gen (không nhân
    * geneWeight), được phép âm (cấy thất bại trừ). Breeding không truyền.
    */

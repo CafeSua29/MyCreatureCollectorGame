@@ -284,6 +284,8 @@ export function makeOffspring(
     polarity: null,
     // Breeding không truyền stack hiến tế (bố mẹ không mất, truyền thì nhân bản; sacrifice.md).
     sacrificeStacks: 0,
+    // Luân hồi không truyền (docs/rules/rebirth.md).
+    rebirths: 0,
     // Không truyền cấy ghép, cùng lý do như hiến tế (docs/rules/implant.md).
     implantBonusStats: uniformBigStats(0),
     implantEffects: {},

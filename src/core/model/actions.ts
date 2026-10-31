@@ -121,6 +121,12 @@ export type GameAction =
   | { type: 'enterZone'; zoneId: string }
   | { type: 'exploreZone' }
   | { type: 'leaveZone' }
+  /**
+   * Câu cá / khai thác ở tầng đang đứng (docs/rules/gathering.md): cần map có chỗ câu / mỏ và dụng
+   * cụ; câu cá dùng được một mồi câu `lureItemId`.
+   */
+  | { type: 'fish'; lureItemId?: string }
+  | { type: 'mine' }
   /** Gọi boss tầng của tầng đang đứng: miễn phí, không giới hạn số lần. */
   | { type: 'challengeBoss' }
   /**
@@ -186,6 +192,11 @@ export type GameAction =
    * lineage với quái chính) mất đi, quái chính nhận stack hiến tế; nhiều quái phụ = hàng loạt.
    */
   | { type: 'sacrifice'; baseId: string; subIds: readonly string[]; discardOverflow?: boolean }
+  /**
+   * NPC luân hồi ở thị trấn (docs/rules/rebirth.md): quái về level 1, nhận % vĩnh viễn, gen, điểm
+   * thiên phú, trẻ lại.
+   */
+  | { type: 'rebirthMonster'; monsterId: string }
   /**
    * Phòng Thí Nghiệm ở thị trấn (docs/rules/implant.md): cấy huyết thanh thứ `serumIndex` của danh
    * sách hàng vào quái; thất bại trừ chỉ số, thất bại lần cuối mất quái.

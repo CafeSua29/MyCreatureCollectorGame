@@ -17,7 +17,7 @@ Code: `model/talents.ts` (kiểu), `registries/talents.ts` (điểm, giá, `tale
 ## Luật
 
 - **Trường trên quái** `talentRanks: { [nodeId]: rank }` (rank nguyên ≥ 1; nút chưa nâng không có mục). **Điểm không lưu** (quy tắc 3): suy từ nguyên liệu.
-  - **Điểm nhận** `talentPointsEarned` = ⌊`maxLevelReached` / `levelsPerPoint`⌋ + `awakening` × `pointsPerAwakening` (+1 mỗi 5 level, +1 mỗi tầng thức tỉnh), không trần. Theo `maxLevelReached` nên reset level (luân hồi, phi thăng) không mất điểm. Luân hồi +3 điểm: chưa có (chờ `rebirth.md`).
+  - **Điểm nhận** `talentPointsEarned` = ⌊`maxLevelReached` / `levelsPerPoint`⌋ + `awakening` × `pointsPerAwakening` + `rebirths` × `pointsPerRebirth` (+1 mỗi 5 level, +1 mỗi tầng thức tỉnh, +3 mỗi lần luân hồi, `rebirth.md`), không trần. Theo `maxLevelReached` nên reset level (luân hồi, phi thăng) không mất điểm.
   - **Điểm đã dùng** `talentPointsSpent` = Σ `costPerRank` × (1 + 2 + … + cấp); **điểm còn** = nhận − đã dùng. Có thể âm nếu dữ liệu tăng giá nút sau khi đã nâng: khi đó chỉ không nâng thêm được, không mất cấp, save vẫn hợp lệ.
   - Lệch roadmap: roadmap ghi trường `talents: { points, ranks }`; bỏ `points` vì suy được (migrate chỉ cần `{}`, tẩy chỉ cần xóa cấp, không lệch khi đổi `levelsPerPoint`).
 - **Nâng nút** `allocateTalent { monsterId, nodeId }`: ngoài trận, **ở đâu cũng được** (không cần NPC), quái đội hoặc kho, **kể cả đang thám hiểm** (không đổi gì ngoài quái). Cấp n → n + 1 tốn `costPerRank × (n + 1)` điểm; phải đủ nút yêu cầu, chưa đạt `maxRank`, nhánh đang mở. Lỗi: `unknownTalent { nodeId }`, `talentBranchClosed { nodeId, raceId }`, `talentMaxRank { nodeId, maxRank }`, `talentRequires { nodeId, requiredId, rank }`, `notEnoughTalentPoints { need, have }`, `inBattle`, `monsterNotOwned`. Điểm duy nhất cho câu hỏi "nâng được không": `talentBlocker` (dùng cho action, `MonsterView` và mô phỏng).
@@ -30,6 +30,5 @@ Code: `model/talents.ts` (kiểu), `registries/talents.ts` (điểm, giá, `tale
 
 ## Chưa có
 
-- Luân hồi +3 điểm (chờ `rebirth.md`: cộng `rebirths × pointsPerRebirth` vào `talentPointsEarned`).
 - Ngự thú sư NPC / boss có thiên phú (chưa có luật; hiện quái NPC rỗng).
 - UI thiên phú (chờ UI, `ui-overhaul.md`).

@@ -31,6 +31,7 @@ import type { SafariConfig } from './safari'
 import type { ImplantConfig } from './implant'
 import type { CapacityConfig } from './capacity'
 import type { ZoneConfig } from './zones'
+import type { GatheringConfig } from './gathering'
 import type { CriticalTier, DexConfig } from './dex'
 import type { StatName } from './stats'
 import type { TransformKind } from './transform'
@@ -94,6 +95,7 @@ export interface BalanceConfig {
   fuseChance: FuseChanceConfig
   fusion: FusionConfig
   sacrifice: SacrificeConfig
+  rebirth: RebirthConfig
   crystal: CrystalConfig
   skillBook: SkillBookConfig
   shop: ShopConfig
@@ -181,6 +183,8 @@ export interface BalanceConfig {
   capacity: CapacityConfig
   /** Hiểm địa (docs/rules/zones.md). */
   zones: ZoneConfig
+  /** Câu cá và khai thác (docs/rules/gathering.md). */
+  gathering: GatheringConfig
 }
 
 /**
@@ -673,6 +677,23 @@ export interface SacrificeConfig {
   costPerLevel: number
   /** % mọi chỉ số mỗi stack hiến tế (tuyến tính). */
   statPercentPerStack: number
+}
+
+/** Luân hồi quái (docs/rules/rebirth.md). Lần thứ n = rebirths + 1. */
+export interface RebirthConfig {
+  /** Level tối thiểu lần thứ n = minLevelBase × n. */
+  minLevelBase: number
+  /** Giá lần thứ n = costBase × n². */
+  costBase: number
+  /** Luân Hồi Đan (category material); lần thứ n cần pillsPerRebirth × n viên. */
+  pillItemId: string
+  pillsPerRebirth: number
+  /** % mọi chỉ số mỗi lần đã luân hồi (tuyến tính, cộng vào tổng % ở bước áp trait). */
+  statPercentPerRebirth: number
+  /** Gen mọi chỉ số + genePercent % gen hiện tại mỗi lần luân hồi. */
+  genePercent: number
+  /** Luân Hồi Đan rơi từ boss tầng của map. */
+  floorBossDrops: DropEntry[]
 }
 
 /**

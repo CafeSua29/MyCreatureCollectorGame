@@ -221,6 +221,8 @@ export function fuseMonsters(
     shinyStacks: 0,
     // Hiến tế: giữ stack của mình + stack của quái phụ, không +1 (docs/rules/sacrifice.md).
     sacrificeStacks: base.sacrificeStacks + sub.sacrificeStacks,
+    // Luân hồi: giữ của mình + ½ của quái phụ, làm tròn xuống (docs/rules/rebirth.md).
+    rebirths: base.rebirths + Math.floor(sub.rebirths / 2),
     // Cấy ghép: quái gốc giữ của mình (giữ qua ...base); phần cấy của quái phụ đã nằm trong chỉ số
     // withFusingBonus của nó nên tự truyền ½ qua fusingBonusStats (docs/rules/implant.md).
     bossMultiplier: Math.max(base.bossMultiplier, sub.bossMultiplier),

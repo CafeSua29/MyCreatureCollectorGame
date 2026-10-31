@@ -78,8 +78,8 @@ export function buyItem(
 }
 
 /**
- * Mua bùa bán ở cửa hàng thị trấn (bùa có townPrice, kiểu Ôn Dưỡng Lò): luôn có hàng, giá cố định,
- * mỗi loại một lần (bùa có trong túi là có tác dụng, cái thứ hai vô dụng).
+ * Mua bùa bán ở cửa hàng thị trấn (bùa có townPrice, kiểu Ôn Dưỡng Lò): luôn có hàng (từ tầng
+ * townMinFloor nếu có), giá cố định, mỗi loại một lần (bùa có trong túi là có tác dụng, cái thứ hai vô dụng).
  */
 export function buyCharm(data: GameData, state: GameState, itemId: string): GameState {
   requireShop(state)
@@ -90,6 +90,8 @@ export function buyCharm(data: GameData, state: GameState, itemId: string): Game
   if (getRefCount(state.inventory, { storage: 'stack', itemId }) > 0) {
     throw new ActionError('charmNotForSale', { itemId, reason: 'owned' })
   }
+  const minFloor = item.townMinFloor ?? 1
+  if (state.highestFloor < minFloor) throw new ActionError('charmFloorLocked', { itemId, minFloor })
   const paid = spendMoney(state, toBig(item.townPrice))
   return { ...paid, inventory: addByRef(state.inventory, { storage: 'stack', itemId }, 1) }
 }

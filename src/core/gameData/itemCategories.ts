@@ -108,6 +108,12 @@ function checkBait(item: RawItem, where: string, data: GameData, issues: string[
   checkFavorites(item, where, data, issues)
 }
 
+/** Mồi câu: giá, hệ số số mũ hiếm ≥ 0 (0 = san đều mọi loài / món). */
+function checkFishingLure(item: RawItem, where: string, _data: GameData, issues: string[]): void {
+  checkPrice(item, where, issues)
+  issues.push(...checkNumber(item.rarityFactor, `${where}: rarityFactor`, 0))
+}
+
 /** Món ăn: giá, hiệu ứng không rỗng theo MEAL_EFFECTS, thời hạn nguyên ≥ 1 trận. */
 function checkDish(item: RawItem, where: string, data: GameData, issues: string[]): void {
   checkPrice(item, where, issues)
@@ -196,11 +202,16 @@ function checkFusionAid(item: RawItem, where: string, data: GameData, issues: st
 
 /**
  * Bùa: ≥ 1 hiệu ứng, loại thuộc CHARM_EFFECT_TYPES, không trùng loại, giá trị theo luật của loại;
- * townPrice (nếu có) là số nguyên > 0.
+ * townPrice (nếu có) là số nguyên > 0, townMinFloor (nếu có, cần townPrice) là số nguyên ≥ 1.
  */
 function checkCharm(item: RawItem, where: string, _data: GameData, issues: string[]): void {
   if (item.townPrice !== undefined) {
     issues.push(...checkInteger(item.townPrice, `${where}: townPrice`, 1))
+  }
+  if (item.townMinFloor !== undefined) {
+    if (item.townPrice === undefined)
+      issues.push(`${where}: townMinFloor chỉ dùng khi có townPrice`)
+    issues.push(...checkInteger(item.townMinFloor, `${where}: townMinFloor`, 1))
   }
   if (!Array.isArray(item.effects) || item.effects.length === 0) {
     issues.push(`${where}: effects phải là danh sách không rỗng`)
@@ -495,7 +506,7 @@ const ITEM_CATEGORY_RULES: Readonly<Record<ItemCategory, ItemCategoryRule>> = {
   keyItem: { fields: [] },
   // Bùa (docs/rules/dex.md): không có giá bán, hiệu ứng theo CHARM_EFFECT_RULES; townPrice = giá mua
   // một lần ở cửa hàng thị trấn.
-  charm: { fields: ['effects', 'townPrice'], check: checkCharm },
+  charm: { fields: ['effects', 'townPrice', 'townMinFloor'], check: checkCharm },
   megaStone: { fields: [...PRICED_FIELDS, 'formId', 'auto'], check: checkMegaStone },
   teraShard: { fields: [...PRICED_FIELDS, 'elementId'], check: checkTeraShard },
   zCrystal: {
@@ -524,7 +535,9 @@ const ITEM_CATEGORY_RULES: Readonly<Record<ItemCategory, ItemCategoryRule>> = {
     check: checkBait
   },
   // Món ăn linh thực (docs/rules/cooking.md): ăn qua action eatDish.
-  dish: { fields: [...PRICED_FIELDS, 'effects', 'battles'], check: checkDish }
+  dish: { fields: [...PRICED_FIELDS, 'effects', 'battles'], check: checkDish },
+  // Mồi câu (docs/rules/gathering.md): tiêu qua action fish.
+  fishingLure: { fields: [...PRICED_FIELDS, 'rarityFactor'], check: checkFishingLure }
 }
 
 /** Kiểm tra một item theo luật category của nó. */

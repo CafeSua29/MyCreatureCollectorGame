@@ -32,6 +32,8 @@ export interface TalentConfig {
   levelsPerPoint: number
   /** Điểm mỗi tầng thức tỉnh. */
   pointsPerAwakening: number
+  /** Điểm mỗi lần luân hồi (docs/rules/rebirth.md). */
+  pointsPerRebirth: number
   /** Vong Ưu Thủy và đồ tẩy thiên phú rơi thêm từ boss. */
   bossDrops: DropEntry[]
 }

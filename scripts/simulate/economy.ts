@@ -165,7 +165,9 @@ function isUsefulStack(data: GameData, item: Item): boolean {
     case 'recipeScroll':
       return true
     case 'material':
-      return item.id === data.config.trials.tokenItemId
+      return (
+        item.id === data.config.trials.tokenItemId || item.id === data.config.rebirth.pillItemId
+      )
     case 'consumable':
       return effectTypes(item).some((type) =>
         ['addExp', 'levelUp', 'healPercent', 'revive', 'addAffinity'].includes(type)

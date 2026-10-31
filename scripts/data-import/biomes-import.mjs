@@ -4,7 +4,7 @@
 // Chạy: node scripts/data-import/biomes-import.mjs (Node thuần, chạy lại an toàn: kết quả tất định).
 // Biome làm tay (map `existing`: meadow, volcano; bản gốc ở trường `base` của file nguồn, script
 // không đọc lại biomes.json): giữ loài, boss tầng, đồ rơi; thêm loài và boss ngẫu nhiên theo cùng
-// luật với map mới. Luật ở biomeAssign.mjs.
+// luật với map mới. Luật ở biomeAssign.mjs; cờ câu cá / khai thác ở gathering.mjs.
 
 import fs from 'node:fs'
 import path from 'node:path'
@@ -24,6 +24,7 @@ import {
   RANDOM_BOSSES_PER_MAP,
   wildCandidates
 } from './biomeAssign.mjs'
+import { withGathering } from './gathering.mjs'
 
 const root = path.resolve(import.meta.dirname, '../..')
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'))
@@ -50,9 +51,16 @@ const usedFloorBosses = new Set(
 )
 
 const report = { maps: [], speciesWithoutMap: [] }
+// Cờ câu cá / khai thác theo luật ở gathering.mjs (docs/rules/gathering.md).
+const gatheringLookup = {
+  byId,
+  groupOf: new Map(readJson('src/data/races.json').map((race) => [race.id, race.groupId])),
+  config: balance.gathering
+}
 const biomes = maps.map((map) => {
   const ids = assigned.get(map.id)
-  return map.base ? extendExisting(map, map.base, ids) : buildBiome(map, ids)
+  const biome = map.base ? extendExisting(map, map.base, ids) : buildBiome(map, ids)
+  return withGathering(biome, gatheringLookup)
 })
 
 /** Map mới: loài, boss, đồ rơi, môi trường theo luật. */

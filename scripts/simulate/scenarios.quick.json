@@ -154,6 +154,27 @@
       "cures": 2
     }
   },
+  "gathering": {
+    "teamId": "full6",
+    "floors": [5],
+    "casts": 5,
+    "runs": [
+      {
+        "id": "wild",
+        "method": "wild"
+      },
+      {
+        "id": "fishOld",
+        "method": "fishing",
+        "toolItemId": "oldRod"
+      },
+      {
+        "id": "mineIron",
+        "method": "mining",
+        "toolItemId": "ironPickaxe"
+      }
+    ]
+  },
   "breeding": {
     "speciesId": "emberling",
     "floor": 1,

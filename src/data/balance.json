@@ -315,6 +315,20 @@
     "costPerLevel": 20,
     "statPercentPerStack": 1
   },
+  "rebirth": {
+    "minLevelBase": 100,
+    "costBase": 10000,
+    "pillItemId": "rebirthPill",
+    "pillsPerRebirth": 1,
+    "statPercentPerRebirth": 10,
+    "genePercent": 10,
+    "floorBossDrops": [
+      {
+        "itemId": "rebirthPill",
+        "chance": 10
+      }
+    ]
+  },
   "capacity": {
     "storage": {
       "base": 200,
@@ -760,7 +774,9 @@
       "healParty": 1,
       "event": 1,
       "safari": 24,
-      "zoneStep": 1
+      "zoneStep": 1,
+      "fishing": 1,
+      "mining": 2
     }
   },
   "calendar": {
@@ -2025,6 +2041,7 @@
   "talents": {
     "levelsPerPoint": 5,
     "pointsPerAwakening": 1,
+    "pointsPerRebirth": 3,
     "bossDrops": [
       {
         "itemId": "forgetWater",
@@ -2047,6 +2064,12 @@
           "weight": 3,
           "min": 1,
           "max": 2
+        },
+        {
+          "itemId": "rebirthPill",
+          "weight": 2,
+          "min": 1,
+          "max": 1
         },
         {
           "itemId": "greatFusionCharm",
@@ -2784,6 +2807,450 @@
     "springHealPercent": 40,
     "guardianRareRolls": 2,
     "cooldownDays": 3
+  },
+  "gathering": {
+    "fishing": {
+      "battleChance": 60,
+      "elementIds": ["water"],
+      "raceGroupIds": ["aquatic"],
+      "items": [
+        {
+          "itemId": "spiritStoneWater",
+          "weight": 30,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "essenceAquatic",
+          "weight": 15,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "waterTeraShard",
+          "weight": 10,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "waterStone",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "blackTortoiseShell",
+          "weight": 4,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "iceHeartLotus",
+          "weight": 4,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "ice"
+        },
+        {
+          "itemId": "deepSeaTooth",
+          "weight": 3,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "deepSeaScale",
+          "weight": 3,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "demonCoreWater",
+          "weight": 3,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "prismScale",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 3
+        },
+        {
+          "itemId": "waterZCrystal",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 3
+        }
+      ],
+      "tiers": [
+        {
+          "rarityExponent": 1,
+          "levelOffset": -5,
+          "itemRolls": 1
+        },
+        {
+          "rarityExponent": 0.8,
+          "levelOffset": 0,
+          "itemRolls": 1
+        },
+        {
+          "rarityExponent": 0.6,
+          "levelOffset": 5,
+          "itemRolls": 2
+        }
+      ]
+    },
+    "mining": {
+      "battleChance": 20,
+      "elementIds": ["ground", "rock", "steel"],
+      "raceGroupIds": ["mineral"],
+      "items": [
+        {
+          "itemId": "enhanceStone",
+          "weight": 30,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "spiritStoneRock",
+          "weight": 8,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "spiritStoneGround",
+          "weight": 8,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "spiritStoneNormal",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "normal"
+        },
+        {
+          "itemId": "spiritStoneFire",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "fire"
+        },
+        {
+          "itemId": "spiritStoneWater",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "water"
+        },
+        {
+          "itemId": "spiritStoneElectric",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "electric"
+        },
+        {
+          "itemId": "spiritStoneGrass",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "grass"
+        },
+        {
+          "itemId": "spiritStoneIce",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "ice"
+        },
+        {
+          "itemId": "spiritStoneFighting",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "fighting"
+        },
+        {
+          "itemId": "spiritStonePoison",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "poison"
+        },
+        {
+          "itemId": "spiritStoneFlying",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "flying"
+        },
+        {
+          "itemId": "spiritStonePsychic",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "psychic"
+        },
+        {
+          "itemId": "spiritStoneBug",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "bug"
+        },
+        {
+          "itemId": "spiritStoneGhost",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "ghost"
+        },
+        {
+          "itemId": "spiritStoneDragon",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "dragon"
+        },
+        {
+          "itemId": "spiritStoneDark",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "dark"
+        },
+        {
+          "itemId": "spiritStoneSteel",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "steel"
+        },
+        {
+          "itemId": "spiritStoneFairy",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "fairy"
+        },
+        {
+          "itemId": "spiritStoneLight",
+          "weight": 6,
+          "min": 1,
+          "max": 1,
+          "mapElementId": "light"
+        },
+        {
+          "itemId": "essenceMineral",
+          "weight": 10,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "rockTeraShard",
+          "weight": 4,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "groundTeraShard",
+          "weight": 4,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "steelTeraShard",
+          "weight": 4,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "ovalStone",
+          "weight": 3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "earthStone",
+          "weight": 4,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "fireStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "fire"
+        },
+        {
+          "itemId": "waterStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "water"
+        },
+        {
+          "itemId": "thunderStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "electric"
+        },
+        {
+          "itemId": "leafStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "grass"
+        },
+        {
+          "itemId": "iceStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "ice"
+        },
+        {
+          "itemId": "moonStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "fairy"
+        },
+        {
+          "itemId": "moonStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "psychic"
+        },
+        {
+          "itemId": "shinyStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "light"
+        },
+        {
+          "itemId": "duskStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "dark"
+        },
+        {
+          "itemId": "duskStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "ghost"
+        },
+        {
+          "itemId": "dawnStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "normal"
+        },
+        {
+          "itemId": "sunStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1,
+          "minTier": 2,
+          "mapElementId": "flying"
+        },
+        {
+          "itemId": "refiningStone",
+          "weight": 3,
+          "min": 1,
+          "max": 1,
+          "minTier": 3
+        },
+        {
+          "itemId": "demonCoreRock",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "demonCoreGround",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "demonCoreSteel",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "metalAlloy",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 3
+        },
+        {
+          "itemId": "blackAugurite",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 3
+        },
+        {
+          "itemId": "peatBlock",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 3
+        }
+      ],
+      "tiers": [
+        {
+          "rarityExponent": 1,
+          "levelOffset": 0,
+          "itemRolls": 1
+        },
+        {
+          "rarityExponent": 0.8,
+          "levelOffset": 3,
+          "itemRolls": 1
+        },
+        {
+          "rarityExponent": 0.6,
+          "levelOffset": 5,
+          "itemRolls": 1
+        }
+      ]
+    }
   },
   "bloodline": {
     "wildPurityWeights": [
