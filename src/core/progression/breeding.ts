@@ -15,6 +15,8 @@
 // - Shiny: cả hai shiny → chắc chắn; một bên shiny → shinyChanceOneParent; không ai →
 //   shinyChance. Con shiny thì shinyStacks = max của bố mẹ (tối thiểu 1).
 // - Tính cách: random đều; bố / mẹ lắp Bất Biến Thạch thì nhận của bên đó (docs/rules/natures.md).
+// - Huyết mạch (docs/rules/bloodline.md): mẹ đủ độ thuần có tỉ lệ sinh loài tổ; độ thuần của con theo
+//   trung bình bố mẹ, có đột biến phản tổ.
 
 import { recordQuestEvent } from '../quests'
 import { wrapEgg } from './eggs'
@@ -27,6 +29,8 @@ import {
   mergeTraitLevel,
   newLifeFields,
   rollChildAbilitySlot,
+  rollAncestorBirth,
+  rollChildBloodlines,
   rollChildNature,
   rollGender,
   skillCapacity,
@@ -205,6 +209,10 @@ export function makeOffspring(
   const bases = mother.fused ? [motherBase.id] : baseFormsOf(data, motherBase.id)
   let speciesId = bases[0]
   if (bases.length > 1) [speciesId, rng] = pick(rng, bases)
+  // Sinh loài tổ (docs/rules/bloodline.md): chỉ tốn RNG khi mẹ đủ độ thuần.
+  let ancestorId: string | undefined
+  ;[ancestorId, rng] = rollAncestorBirth(data, rng, mother)
+  if (ancestorId !== undefined) speciesId = ancestorId
   const species = data.species[speciesId] as NormalSpecies
 
   let mutation: boolean
@@ -288,7 +296,9 @@ export function makeOffspring(
     // Con breeding 0 điểm thiên phú (docs/rules/monster-talents.md).
     talentRanks: {},
     // Con không nhiễm linh dịch (docs/rules/spirit-virus.md).
-    spiritVirus: null
+    spiritVirus: null,
+    // Tung sau cùng (rollChildBloodlines) theo độ thuần của bố mẹ.
+    bloodlines: []
   }
 
   child = withEggSkills(data, child, inheritedEggSkills(species, father, mother))
@@ -322,7 +332,9 @@ export function makeOffspring(
   ;[natureId, rng] = rollChildNature(data, rng, [father, mother])
   let abilitySlot: AbilitySlot = mother.abilitySlot
   if (species.abilities) [abilitySlot, rng] = rollChildAbilitySlot(data, rng, mother)
-  return [{ ...child, teraElementId, natureId, abilitySlot }, rng]
+  let bloodlines: Monster['bloodlines']
+  ;[bloodlines, rng] = rollChildBloodlines(data, rng, { speciesId: species.id, father, mother })
+  return [{ ...child, teraElementId, natureId, abilitySlot, bloodlines }, rng]
 }
 
 /** NPC breeding ở thị trấn: trả tiền, nhận một trứng. */

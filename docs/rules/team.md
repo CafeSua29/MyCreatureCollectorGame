@@ -10,19 +10,19 @@ Code: `registries/teamBonuses.ts` (điều kiện quái `MONSTER_CONDITIONS`, y�
 
 - Dạng `{ type, ...tham số }`, dùng chung cho `match` của cộng hưởng / trận pháp và hai bên `pair` của hợp kích kỹ: `element { elementId }`, `race { raceId }`, `species { speciesIds }`. Xét trên hệ / race hiện tại của quái (trong trận có thể bị đổi bởi trait Siralim).
 - Thêm loại = thêm handler (`fields`, `validateParams`, `parse`, `matches`); trường lạ hoặc loại lạ báo lỗi dữ liệu (`checkTypedParams`).
-- Chưa có: `bloodline { groupId }` (chờ `docs/roadmap/bloodline.md`, ghi ở đó).
+- `bloodline { groupId, minPurity? }`: huyết mạch chính thuộc nhóm, độ thuần ≥ `minPurity` (trong (0, 100]) nếu có (`bloodline.md`).
 
 ## Cộng hưởng (tự động)
 
 - `synergies.json`: `{ id, match, tiers: [{ count, hooks }] }`. `count` nguyên ≥ 1, tăng dần, tối đa `partySize`; `hooks` là hook trait thường.
 - **Đếm trên cả đội** (tối đa 6, kể cả quái gục và dự bị) lúc vào trận; **bậc cao nhất đủ điều kiện thắng** (không cộng dồn bậc). Áp cho **quái khớp đang trên sân**.
-- Dữ liệu hiện có (sinh bởi script, số tạm): mỗi race `race<Id>` 2 / 4 / 6 quái → +5 / +12 / +20% chỉ số chính của race (`statBias` cao nhất không gồm hp; hòa thì mọi chỉ số hòa); mỗi hệ `element<Id>` 2 / 4 / 6 quái → +5 / +10 / +15% sát thương skill hệ đó (`elementDamageDealt`).
+- Dữ liệu hiện có (sinh bởi script, số tạm): mỗi nhóm huyết mạch `bloodline<Nhóm>` 2 / 4 / 6 quái (`bloodline.md`); mỗi race `race<Id>` 2 / 4 / 6 quái → +5 / +12 / +20% chỉ số chính của race (`statBias` cao nhất không gồm hp; hòa thì mọi chỉ số hòa); mỗi hệ `element<Id>` 2 / 4 / 6 quái → +5 / +10 / +15% sát thương skill hệ đó (`elementDamageDealt`).
 
 ## Trận pháp (chọn)
 
 - `formations.json`: `{ id, requires: [{ type, ... }], match?, hooks }`. Đội đủ **mọi** `requires` thì quái trên sân khớp `match` (bỏ trống = mọi quái) nhận `hooks`. Đội không đủ thì trận pháp **không có tác dụng** (không chặn trận).
-- `FORMATION_REQUIREMENTS` (đếm trên cả đội, kể cả quái gục): `distinctElements { count }` (số hệ khác nhau, quái hai hệ đếm cả hai), `sameRace { count }` (một race bất kỳ có ≥ count quái), `race { raceId, count }`, `elements { elementIds }` (đội có đủ mọi hệ).
-- Hiện có: Tứ Tượng Trận `fourSymbols` (≥ 4 hệ: +8% mọi chỉ số khác hp), Long Môn Trận `dragonGate` (≥ 3 quái race rồng: quái rồng +15% công / đặc công), Lục Hợp Trận `sixHarmonies` (≥ 6 hệ: +12% thủ / thủ đặc biệt), Ngũ Hành Trận `fiveElements` (đủ lửa / nước / cỏ / thép / đất: miễn bị hạ bậc mọi chỉ số, `statLowerImmunity`).
+- `FORMATION_REQUIREMENTS` (đếm trên cả đội, kể cả quái gục): `distinctElements { count }` (số hệ khác nhau, quái hai hệ đếm cả hai), `sameRace { count }` (một race bất kỳ có ≥ count quái), `race { raceId, count }`, `elements { elementIds }` (đội có đủ mọi hệ), theo huyết mạch (`bloodline.md`): `bloodline { groupId, count, minPurity? }`, `bloodlines { groupIds }` (đủ mọi nhóm), `distinctBloodlines { count }` (số nhóm huyết mạch chính khác nhau), `sameMainBloodline { count, minPurity? }` (một nhóm bất kỳ đủ số quái).
+- Hiện có: Tứ Tượng Trận `fourSymbols` (≥ 4 hệ: +8% mọi chỉ số khác hp), Long Môn Trận `dragonGate` (≥ 3 quái race rồng: quái rồng +15% công / đặc công), Lục Hợp Trận `sixHarmonies` (≥ 6 hệ: +12% thủ / thủ đặc biệt), Ngũ Hành Trận `fiveElements` (đủ lửa / nước / cỏ / thép / đất: miễn bị hạ bậc mọi chỉ số, `statLowerImmunity`). Trận pháp huyết mạch (17 trận nhóm, Tứ Linh, Vạn Huyết Quy Tông, Thuần Huyết): `bloodline.md`; trận đồ nhóm rơi từ boss thuộc nhóm.
 - **Trận đồ** (category `formationScroll { price, formationId }`, gộp chồng, không dùng trực tiếp): action `learnFormation { itemId }` (ngoài trận, ở đâu cũng được) tiêu 1 trận đồ, thêm trận pháp vào `formations.known`. Mỗi trận pháp đúng một trận đồ (kiểm tra dữ liệu). Trận đồ bán được, áp giá thị trường động. Lỗi: `inBattle`, `unknownItem`, `notFormationScroll`, `formationAlreadyKnown`, `notEnoughItem`.
 - `setFormation { formationId | null }` (ngoài trận, miễn phí): chọn trận pháp đã học hoặc bỏ. Lỗi: `inBattle`, `formationNotKnown`, `formationUnchanged`.
 - Nguồn trận đồ: boss tầng của map rơi (`config.formations.floorBossDrops`, mỗi trận đồ 3%; trong `EXTRA_DROP_TABLES`). Lần đầu thắng quán chủ đạo quán (một món trong `config.trainers.gym.firstClearItemIds`, `trainers.md`). Chợ đen (`events.md`); thưởng thắng hết thú triều (một trận đồ ngẫu nhiên).
@@ -44,7 +44,8 @@ Code: `registries/teamBonuses.ts` (điều kiện quái `MONSTER_CONDITIONS`, y�
 - **Sát thương:** công thức chung với **công / đặc công = trung bình của hai quái** (chỉ số trong trận, gồm bậc trận và bối cảnh của từng quái), **STAB lớn hơn của hai quái**; mọi bước trait / trạng thái / môi trường / chí mạng / accuracy theo quái chậm hơn (quái tung). Không đổi theo biến hình (không thành chiêu Max), không khóa skill kiểu Choice Band. Độ thuần thục (`skill-mastery.md`) không áp.
 - **AI** (`chooseCombo` trong `battle/ai.ts`): phe có đúng 2 quái trên sân và có hợp kích dùng được: chấm mỗi hợp kích như một skill của quái chậm hơn có đồng đội (cách nhắm tốt nhất), rồi tung theo trọng số giữa "đánh riêng" (tổng điểm lựa chọn tốt nhất của hai quái) và từng hợp kích. Không có hợp kích điểm > 0 thì không tốn RNG. Hành động thêm của trait không chọn hợp kích (`allowCombos: false`).
 - Hiện có (số tạm): Hỏa Lâm Liệu Nguyên `comboWildfire` (lửa + cỏ; lửa, special 150, đặt Biển lửa `seaOfFire` lên phe địch: 4 lượt, mất 12,5% max HP cuối lượt, hệ lửa miễn), Thủy Hỏa Vân Yên `comboSteamCloud` (nước + lửa; nước 150, sương mù), Thanh Mộc Xuân Vũ `comboSpringRain` (cỏ + nước; cỏ 150, mưa), Lôi Phong Kích `comboThunderGale` (điện + bay; điện 140 cả địch, −1 tốc độ), Song Long Xuất Hải `comboTwinDragons` (rồng + rồng; rồng physical 160), Thánh Quang Phổ Chiếu `comboHolyRadiance` (ánh sáng + tiên; ánh sáng 130 cả địch, Safeguard phe ta).
-- Chưa có: UI tự điền lệnh cho quái còn lại (bước UI), hợp kích theo huyết mạch (chờ `bloodline.md`).
+- Hợp kích theo huyết mạch: 17 song huyết + 11 giữa nhóm (`bloodline.md`).
+- Chưa có: UI tự điền lệnh cho quái còn lại (bước UI).
 
 ## State và save
 

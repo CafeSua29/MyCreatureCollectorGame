@@ -1,5 +1,6 @@
 // Hàm DUY NHẤT tính chỉ số quái. Thứ tự (xem CLAUDE.md):
-//   (gốc loài + gen × geneWeight) × độ lệch race × bossMultiplier × hệ số thức tỉnh
+//   (gốc loài pha huyết mạch + gen × geneWeight) × độ lệch race × bossMultiplier × hệ số thức tỉnh
+//     (gốc pha huyết mạch: max(gốc, (1 − p) × gốc + p × gốc tổ), docs/rules/bloodline.md)
 //   → × (1 + (level − 1) × growth[race][stat])
 //   → + fusingBonusStats
 //   → áp trait: cộng tổng flat, rồi nhân (1 + tổng percent / 100; percent cộng mọi nguồn của
@@ -30,7 +31,8 @@ import {
   HOOK_SOURCE_GROUPS,
   STAT_PERCENT_SOURCES,
   sizeStatMultiplier,
-  type TraitContext
+  type TraitContext,
+  bloodlineBaseStats
 } from '../registries'
 import { DataError, maxBig, toBig, type BigValue, type Decimal } from '../shared'
 import {
@@ -320,6 +322,7 @@ interface CoreStepsEntry {
   raceId: string
   bossMultiplier: number
   awakening: number
+  bloodlines: Monster['bloodlines']
   level: number
   genes: BigStats
   fusingBonusStats: BigStats
@@ -351,6 +354,7 @@ function coreSteps(data: GameData, monster: Monster, species: NormalSpecies): Co
     cached.raceId === monster.raceId &&
     cached.bossMultiplier === monster.bossMultiplier &&
     cached.awakening === monster.awakening &&
+    cached.bloodlines === monster.bloodlines &&
     cached.level === monster.level &&
     sameBigStats(cached.genes, monster.genes) &&
     sameBigStats(cached.fusingBonusStats, monster.fusingBonusStats)
@@ -366,6 +370,7 @@ function coreSteps(data: GameData, monster: Monster, species: NormalSpecies): Co
     raceId: monster.raceId,
     bossMultiplier: monster.bossMultiplier,
     awakening: monster.awakening,
+    bloodlines: monster.bloodlines,
     level: monster.level,
     genes: { ...monster.genes },
     fusingBonusStats: { ...monster.fusingBonusStats },
@@ -384,11 +389,12 @@ function computeCoreSteps(data: GameData, monster: Monster, species: NormalSpeci
   const race = data.races[monster.raceId]
   // Thức tỉnh nhân ở bước gốc cùng bossMultiplier (docs/rules/awakening.md).
   const awakeningMultiplier = awakeningStatMultiplier(config.awakening, monster.awakening)
+  const speciesBase = bloodlineBaseStats(data, monster, species.baseStats)
 
   const base = mapBigStats((stat) =>
     monster.genes[stat]
       .times(config.geneWeight)
-      .plus(species.baseStats[stat])
+      .plus(speciesBase[stat])
       .times(race.statBias[stat])
       .times(monster.bossMultiplier)
       .times(awakeningMultiplier)

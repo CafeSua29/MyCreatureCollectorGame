@@ -4,6 +4,7 @@
 // dừng sớm khi tỉ lệ thắng đã đủ chắc (earlyStop.ts).
 
 import {
+  bloodlineGroupsOf,
   BIG_ZERO,
   calendarAt,
   createGameState,
@@ -122,6 +123,16 @@ export interface FloorSweepOptions {
   uncontracted?: boolean
   /** Cảnh giới ngự thú sư của biến thể; null / không ghi = giả định theo tầng. */
   tamerRealm?: number | null
+  /** Độ thuần giả định của đội mẫu (biến thể `assumedPurity`); null / không ghi = như tung. */
+  assumedPurity?: number | null
+}
+
+/** Mỗi quái mang huyết mạch chính là nhóm đầu của loài với độ thuần `purity` (bloodline.md). */
+export function withAssumedPurity(data: GameData, party: Monster[], purity: number): Monster[] {
+  return party.map((monster) => {
+    const [groupId] = bloodlineGroupsOf(data, monster.baseSpeciesId)
+    return groupId === undefined ? monster : { ...monster, bloodlines: [{ groupId, purity }] }
+  })
 }
 
 /** Đội của lần quét: snapshot của chơi liên tục, hoặc đội mẫu dựng theo tầng kèm các giả định. */
@@ -130,7 +141,9 @@ function sweepParty(data: GameData, options: FloorSweepOptions): Monster[] {
   if (snapshot) return [...snapshot.party]
   // Thân mật, điểm nỗ lực và thuần thục giả định theo tầng (mục "Thân mật", "Điểm nỗ lực",
   // "Thuần thục skill" ở simulation-features.md).
-  const built = buildTeam(data, team, floor, deriveSeed(seed, 'team', team.id, floor))
+  const rolled = buildTeam(data, team, floor, deriveSeed(seed, 'team', team.id, floor))
+  const built =
+    options.assumedPurity == null ? rolled : withAssumedPurity(data, rolled, options.assumedPurity)
   return withAssumedMastery(
     data,
     withAssumedEffort(data, withAssumedAffinity(data, built, floor), floor),

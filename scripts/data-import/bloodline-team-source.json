@@ -1,0 +1,442 @@
+{
+  "meta": {
+    "purpose": "Nội dung phối hợp đội theo huyết mạch (docs/rules/bloodline.md, docs/rules/team.md): cộng hưởng mỗi nhóm, hợp kích song huyết mỗi nhóm, hợp kích giữa các nhóm (Long Phượng, Long Hổ, Huyền Vũ...), trận pháp mỗi nhóm và trận pháp nhiều nhóm. Nhập bằng scripts/data-import/bloodlines-import.mjs.",
+    "synergy": "Cộng hưởng `bloodline<Id>`: 2 / 4 / 6 quái mang huyết mạch chính của nhóm. Hook = hook trận được của trait huyết mạch nhóm (bỏ phần hp) × tierScales; statusImmunity chỉ từ bậc 4.",
+    "combo": "Hợp kích song huyết: hai quái mang huyết mạch chính của nhóm, độ thuần ≥ comboMinPurity (đã có trait huyết mạch). Hợp kích giữa nhóm: mỗi bên một nhóm, cùng ngưỡng.",
+    "formation": "Trận pháp nhóm `<id>Clan`: ≥ 3 quái mang huyết mạch chính của nhóm, quái của nhóm nhận hook trait (bỏ hp) × clanScale. Trận đồ nhóm rơi từ boss thuộc nhóm (config.bloodline.scrollDropChance), chắc chắn từ loài tổ."
+  },
+  "tierScales": [1, 2, 3],
+  "clanScale": 3,
+  "comboMinPurity": 25,
+  "scrollPrice": 3000,
+  "groups": {
+    "dragon": {
+      "combo": {
+        "id": "comboDragonRoar",
+        "name": "Long Ngâm Cửu Thiên",
+        "nameEn": "Nine-Heaven Dragon Roar",
+        "elementId": "dragon",
+        "category": "special",
+        "power": 160,
+        "target": "enemy",
+        "effects": [
+          {
+            "type": "statStage",
+            "params": { "who": "target", "stat": "spDefense", "delta": -1, "chance": 50 }
+          }
+        ]
+      },
+      "clan": { "name": "Long Tộc Trận", "nameEn": "Dragon Clan Formation" }
+    },
+    "phoenix": {
+      "combo": {
+        "id": "comboPhoenixNirvana",
+        "name": "Phượng Hoàng Niết Bàn",
+        "nameEn": "Phoenix Nirvana",
+        "elementId": "fire",
+        "category": "special",
+        "power": 140,
+        "target": "enemy",
+        "effects": [
+          { "type": "applyStatus", "params": { "statusId": "burn", "chance": 30 } },
+          { "type": "heal", "params": { "percent": 25 } }
+        ]
+      },
+      "clan": { "name": "Phượng Tộc Trận", "nameEn": "Phoenix Clan Formation" }
+    },
+    "roc": {
+      "combo": {
+        "id": "comboRocTempest",
+        "name": "Côn Bằng Phù Diêu",
+        "nameEn": "Roc Whirlwind Ascent",
+        "elementId": "flying",
+        "category": "physical",
+        "power": 150,
+        "target": "enemy",
+        "effects": [
+          { "type": "statStage", "params": { "who": "self", "stat": "speed", "delta": 1 } }
+        ]
+      },
+      "clan": { "name": "Bằng Tộc Trận", "nameEn": "Roc Clan Formation" }
+    },
+    "fox": {
+      "combo": {
+        "id": "comboFoxIllusion",
+        "name": "Cửu Vĩ Huyễn Mộng",
+        "nameEn": "Nine-Tailed Illusion",
+        "elementId": "psychic",
+        "category": "special",
+        "power": 140,
+        "target": "enemy",
+        "effects": [{ "type": "applyStatus", "params": { "statusId": "confusion", "chance": 30 } }]
+      },
+      "clan": { "name": "Hồ Tộc Trận", "nameEn": "Fox Clan Formation" }
+    },
+    "wolf": {
+      "combo": {
+        "id": "comboWolfPack",
+        "name": "Bầy Sói Vây Săn",
+        "nameEn": "Wolf Pack Hunt",
+        "elementId": "dark",
+        "category": "physical",
+        "power": 150,
+        "target": "enemy",
+        "effects": [
+          {
+            "type": "statStage",
+            "params": { "who": "target", "stat": "defense", "delta": -1, "chance": 50 }
+          }
+        ]
+      },
+      "clan": { "name": "Lang Tộc Trận", "nameEn": "Wolf Clan Formation" }
+    },
+    "tiger": {
+      "combo": {
+        "id": "comboTigerRoar",
+        "name": "Mãnh Hổ Hạ Sơn",
+        "nameEn": "Tiger Descends the Mountain",
+        "elementId": "normal",
+        "category": "physical",
+        "power": 160,
+        "target": "enemy",
+        "effects": [
+          { "type": "statStage", "params": { "who": "target", "stat": "attack", "delta": -1 } }
+        ]
+      },
+      "clan": { "name": "Hổ Tộc Trận", "nameEn": "Tiger Clan Formation" }
+    },
+    "turtle": {
+      "combo": {
+        "id": "comboTortoiseShell",
+        "name": "Huyền Quy Trấn Hải",
+        "nameEn": "Black Tortoise Sea Ward",
+        "elementId": "water",
+        "category": "physical",
+        "power": 140,
+        "target": "enemy",
+        "effects": [
+          { "type": "statStage", "params": { "who": "self", "stat": "defense", "delta": 1 } }
+        ]
+      },
+      "clan": { "name": "Quy Tộc Trận", "nameEn": "Tortoise Clan Formation" }
+    },
+    "serpent": {
+      "combo": {
+        "id": "comboSerpentVenom",
+        "name": "Vạn Xà Phệ Độc",
+        "nameEn": "Myriad Serpent Venom",
+        "elementId": "poison",
+        "category": "special",
+        "power": 140,
+        "target": "enemy",
+        "effects": [{ "type": "applyStatus", "params": { "statusId": "badPoison", "chance": 50 } }]
+      },
+      "clan": { "name": "Xà Tộc Trận", "nameEn": "Serpent Clan Formation" }
+    },
+    "qilin": {
+      "combo": {
+        "id": "comboQilinBlessing",
+        "name": "Kỳ Lân Giáng Phúc",
+        "nameEn": "Qilin's Blessing",
+        "elementId": "light",
+        "category": "special",
+        "power": 140,
+        "target": "enemy",
+        "effects": [
+          { "type": "statStage", "params": { "who": "self", "stat": "spDefense", "delta": 1 } }
+        ]
+      },
+      "clan": { "name": "Lân Tộc Trận", "nameEn": "Qilin Clan Formation" }
+    },
+    "bull": {
+      "combo": {
+        "id": "comboBullStampede",
+        "name": "Thiết Ngưu Phá Trận",
+        "nameEn": "Iron Bull Stampede",
+        "elementId": "ground",
+        "category": "physical",
+        "power": 150,
+        "target": "enemy",
+        "effects": [
+          { "type": "statStage", "params": { "who": "target", "stat": "speed", "delta": -1 } }
+        ]
+      },
+      "clan": { "name": "Ngưu Tộc Trận", "nameEn": "Bull Clan Formation" }
+    },
+    "sea": {
+      "combo": {
+        "id": "comboAbyssTide",
+        "name": "Uyên Hải Cuồng Đào",
+        "nameEn": "Abyssal Raging Tide",
+        "elementId": "water",
+        "category": "special",
+        "power": 150,
+        "target": "enemy",
+        "effects": [{ "type": "setField", "params": { "layer": "weather", "fieldId": "rain" } }]
+      },
+      "clan": { "name": "Hải Tộc Trận", "nameEn": "Abyssal Clan Formation" }
+    },
+    "insect": {
+      "combo": {
+        "id": "comboSwarmWeb",
+        "name": "Vạn Trùng Phệ Thể",
+        "nameEn": "Devouring Swarm",
+        "elementId": "bug",
+        "category": "physical",
+        "power": 150,
+        "target": "enemy",
+        "effects": [
+          {
+            "type": "statStage",
+            "params": { "who": "target", "stat": "speed", "delta": -1, "chance": 50 }
+          }
+        ]
+      },
+      "clan": { "name": "Trùng Tộc Trận", "nameEn": "Insect Clan Formation" }
+    },
+    "undead": {
+      "combo": {
+        "id": "comboCorpseFeast",
+        "name": "Thi Vương Hấp Huyết",
+        "nameEn": "Corpse King's Feast",
+        "elementId": "ghost",
+        "category": "special",
+        "power": 150,
+        "target": "enemy",
+        "effects": [{ "type": "drain", "params": { "percent": 50 } }]
+      },
+      "clan": { "name": "Thi Tộc Trận", "nameEn": "Undead Clan Formation" }
+    },
+    "demon": {
+      "combo": {
+        "id": "comboDemonHellfire",
+        "name": "Ma Diễm Phần Thiên",
+        "nameEn": "Demonic Skyburning Flame",
+        "elementId": "dark",
+        "category": "special",
+        "power": 160,
+        "target": "enemy",
+        "effects": [{ "type": "applyStatus", "params": { "statusId": "burn", "chance": 30 } }]
+      },
+      "clan": { "name": "Ma Tộc Trận", "nameEn": "Demon Clan Formation" }
+    },
+    "giant": {
+      "combo": {
+        "id": "comboGiantQuake",
+        "name": "Cự Nhân Băng Sơn",
+        "nameEn": "Giant's Mountain Breaker",
+        "elementId": "rock",
+        "category": "physical",
+        "power": 160,
+        "target": "enemy",
+        "effects": [
+          {
+            "type": "statStage",
+            "params": { "who": "target", "stat": "defense", "delta": -1, "chance": 50 }
+          }
+        ]
+      },
+      "clan": { "name": "Cự Nhân Tộc Trận", "nameEn": "Giant Clan Formation" }
+    },
+    "plant": {
+      "combo": {
+        "id": "comboSylvanRoots",
+        "name": "Cổ Mộc Hút Linh",
+        "nameEn": "Ancient Root Siphon",
+        "elementId": "grass",
+        "category": "special",
+        "power": 150,
+        "target": "enemy",
+        "effects": [{ "type": "drain", "params": { "percent": 50 } }]
+      },
+      "clan": { "name": "Mộc Tộc Trận", "nameEn": "Sylvan Clan Formation" }
+    },
+    "saurian": {
+      "combo": {
+        "id": "comboPrimevalStomp",
+        "name": "Cổ Thú Chấn Địa",
+        "nameEn": "Primeval Earthshaker",
+        "elementId": "ground",
+        "category": "physical",
+        "power": 140,
+        "target": "allEnemies",
+        "effects": []
+      },
+      "clan": { "name": "Cổ Thú Tộc Trận", "nameEn": "Primeval Clan Formation" }
+    }
+  },
+  "crossCombos": [
+    {
+      "id": "comboDragonPhoenix",
+      "groups": ["dragon", "phoenix"],
+      "name": "Long Phượng Trình Tường",
+      "nameEn": "Dragon and Phoenix Omen",
+      "elementId": "fire",
+      "category": "special",
+      "power": 170,
+      "target": "allEnemies",
+      "effects": [{ "type": "setSideField", "params": { "side": "own", "fieldId": "safeguard" } }]
+    },
+    {
+      "id": "comboDragonTiger",
+      "groups": ["dragon", "tiger"],
+      "name": "Long Tranh Hổ Đấu",
+      "nameEn": "Dragon and Tiger Clash",
+      "elementId": "dragon",
+      "category": "physical",
+      "power": 180,
+      "target": "enemy",
+      "effects": [
+        { "type": "statStage", "params": { "who": "target", "stat": "defense", "delta": -1 } }
+      ]
+    },
+    {
+      "id": "comboBlackTortoise",
+      "groups": ["turtle", "serpent"],
+      "name": "Huyền Vũ Hiện Thế",
+      "nameEn": "Black Tortoise Manifest",
+      "elementId": "water",
+      "category": "special",
+      "power": 170,
+      "target": "enemy",
+      "effects": [{ "type": "setSideField", "params": { "side": "own", "fieldId": "reflect" } }]
+    },
+    {
+      "id": "comboQilinPhoenix",
+      "groups": ["qilin", "phoenix"],
+      "name": "Lân Phượng Hiến Thụy",
+      "nameEn": "Qilin and Phoenix Auspice",
+      "elementId": "light",
+      "category": "special",
+      "power": 170,
+      "target": "allEnemies",
+      "effects": [{ "type": "setSideField", "params": { "side": "own", "fieldId": "lightScreen" } }]
+    },
+    {
+      "id": "comboGarudaNaga",
+      "groups": ["roc", "serpent"],
+      "name": "Kim Sí Bắt Long Xà",
+      "nameEn": "Garuda Seizes the Naga",
+      "elementId": "flying",
+      "category": "physical",
+      "power": 180,
+      "target": "enemy",
+      "effects": [
+        {
+          "type": "statStage",
+          "params": { "who": "target", "stat": "defense", "delta": -1, "chance": 50 }
+        }
+      ]
+    },
+    {
+      "id": "comboFoxWolf",
+      "groups": ["fox", "wolf"],
+      "name": "Hồ Lang Cấu Kết",
+      "nameEn": "Fox and Wolf Conspiracy",
+      "elementId": "dark",
+      "category": "special",
+      "power": 160,
+      "target": "enemy",
+      "effects": [{ "type": "applyStatus", "params": { "statusId": "confusion", "chance": 30 } }]
+    },
+    {
+      "id": "comboNightParade",
+      "groups": ["undead", "demon"],
+      "name": "Bách Quỷ Dạ Hành",
+      "nameEn": "Night Parade of a Hundred Demons",
+      "elementId": "ghost",
+      "category": "special",
+      "power": 150,
+      "target": "allEnemies",
+      "effects": [
+        {
+          "type": "statStage",
+          "params": { "who": "target", "stat": "spDefense", "delta": -1, "chance": 30 }
+        }
+      ]
+    },
+    {
+      "id": "comboDragonKingTide",
+      "groups": ["dragon", "sea"],
+      "name": "Long Vương Hưng Lãng",
+      "nameEn": "Dragon King's Surge",
+      "elementId": "water",
+      "category": "special",
+      "power": 170,
+      "target": "allEnemies",
+      "effects": [{ "type": "setField", "params": { "layer": "weather", "fieldId": "rain" } }]
+    },
+    {
+      "id": "comboTitanWorld",
+      "groups": ["giant", "saurian"],
+      "name": "Cự Thú Khai Thiên",
+      "nameEn": "Titans Split the Sky",
+      "elementId": "rock",
+      "category": "physical",
+      "power": 170,
+      "target": "allEnemies",
+      "effects": []
+    },
+    {
+      "id": "comboWorldTree",
+      "groups": ["plant", "insect"],
+      "name": "Thế Giới Thụ Cộng Sinh",
+      "nameEn": "World Tree Symbiosis",
+      "elementId": "grass",
+      "category": "special",
+      "power": 150,
+      "target": "enemy",
+      "effects": [{ "type": "heal", "params": { "percent": 25 } }]
+    },
+    {
+      "id": "comboBehemothKraken",
+      "groups": ["bull", "sea"],
+      "name": "Lục Hải Cự Thú",
+      "nameEn": "Behemoth and Leviathan",
+      "elementId": "ground",
+      "category": "physical",
+      "power": 170,
+      "target": "enemy",
+      "effects": [
+        { "type": "statStage", "params": { "who": "target", "stat": "speed", "delta": -1 } }
+      ]
+    }
+  ],
+  "formations": [
+    {
+      "id": "fourSpirits",
+      "name": "Tứ Linh Trận",
+      "nameEn": "Four Benevolent Spirits Formation",
+      "requires": [{ "type": "bloodlines", "groupIds": ["dragon", "qilin", "turtle", "phoenix"] }],
+      "hooks": [
+        {
+          "type": "statModifier",
+          "params": {
+            "percent": { "attack": 10, "defense": 10, "spAttack": 10, "spDefense": 10, "speed": 10 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "myriadBloodlines",
+      "name": "Vạn Huyết Quy Tông",
+      "nameEn": "Myriad Bloodlines Formation",
+      "requires": [{ "type": "distinctBloodlines", "count": 4 }],
+      "hooks": [
+        {
+          "type": "statModifier",
+          "params": {
+            "percent": { "attack": 6, "defense": 6, "spAttack": 6, "spDefense": 6, "speed": 6 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "pureBloodArray",
+      "name": "Thuần Huyết Trận",
+      "nameEn": "Pure Blood Formation",
+      "requires": [{ "type": "sameMainBloodline", "count": 2, "minPurity": 75 }],
+      "hooks": [{ "type": "critStage", "params": { "stages": 1 } }]
+    }
+  ]
+}

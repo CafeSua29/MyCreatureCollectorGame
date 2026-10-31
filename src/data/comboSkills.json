@@ -159,5 +159,851 @@
         }
       }
     ]
+  },
+  {
+    "id": "comboDragonRoar",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "dragon",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "dragon",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "dragon",
+    "category": "special",
+    "power": 160,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "spDefense",
+          "delta": -1,
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboPhoenixNirvana",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "phoenix",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "phoenix",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "fire",
+    "category": "special",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "burn",
+          "chance": 30
+        }
+      },
+      {
+        "type": "heal",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboRocTempest",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "roc",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "roc",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "flying",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "self",
+          "stat": "speed",
+          "delta": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboFoxIllusion",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "fox",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "fox",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "psychic",
+    "category": "special",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "confusion",
+          "chance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboWolfPack",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "wolf",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "wolf",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "dark",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "defense",
+          "delta": -1,
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboTigerRoar",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "tiger",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "tiger",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "normal",
+    "category": "physical",
+    "power": 160,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "attack",
+          "delta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboTortoiseShell",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "turtle",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "turtle",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "water",
+    "category": "physical",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "self",
+          "stat": "defense",
+          "delta": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboSerpentVenom",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "serpent",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "serpent",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "poison",
+    "category": "special",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "badPoison",
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboQilinBlessing",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "qilin",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "qilin",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "light",
+    "category": "special",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "self",
+          "stat": "spDefense",
+          "delta": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboBullStampede",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "bull",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "bull",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "ground",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "speed",
+          "delta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboAbyssTide",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "sea",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "sea",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "water",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "setField",
+        "params": {
+          "layer": "weather",
+          "fieldId": "rain"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboSwarmWeb",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "insect",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "insect",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "bug",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "speed",
+          "delta": -1,
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboCorpseFeast",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "undead",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "undead",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "ghost",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "drain",
+        "params": {
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboDemonHellfire",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "demon",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "demon",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "dark",
+    "category": "special",
+    "power": 160,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "burn",
+          "chance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboGiantQuake",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "giant",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "giant",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "rock",
+    "category": "physical",
+    "power": 160,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "defense",
+          "delta": -1,
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboSylvanRoots",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "plant",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "plant",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "grass",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "drain",
+        "params": {
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboPrimevalStomp",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "saurian",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "saurian",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "ground",
+    "category": "physical",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": []
+  },
+  {
+    "id": "comboDragonPhoenix",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "dragon",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "phoenix",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "fire",
+    "category": "special",
+    "power": 170,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "own",
+          "fieldId": "safeguard"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboDragonTiger",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "dragon",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "tiger",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "dragon",
+    "category": "physical",
+    "power": 180,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "defense",
+          "delta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboBlackTortoise",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "turtle",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "serpent",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "water",
+    "category": "special",
+    "power": 170,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "own",
+          "fieldId": "reflect"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboQilinPhoenix",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "qilin",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "phoenix",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "light",
+    "category": "special",
+    "power": 170,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "own",
+          "fieldId": "lightScreen"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboGarudaNaga",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "roc",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "serpent",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "flying",
+    "category": "physical",
+    "power": 180,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "defense",
+          "delta": -1,
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboFoxWolf",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "fox",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "wolf",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "dark",
+    "category": "special",
+    "power": 160,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "confusion",
+          "chance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboNightParade",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "undead",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "demon",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "ghost",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "spDefense",
+          "delta": -1,
+          "chance": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboDragonKingTide",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "dragon",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "sea",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "water",
+    "category": "special",
+    "power": 170,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": [
+      {
+        "type": "setField",
+        "params": {
+          "layer": "weather",
+          "fieldId": "rain"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboTitanWorld",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "giant",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "saurian",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "rock",
+    "category": "physical",
+    "power": 170,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": []
+  },
+  {
+    "id": "comboWorldTree",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "plant",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "insect",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "grass",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "heal",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboBehemothKraken",
+    "pair": [
+      {
+        "type": "bloodline",
+        "groupId": "bull",
+        "minPurity": 25
+      },
+      {
+        "type": "bloodline",
+        "groupId": "sea",
+        "minPurity": 25
+      }
+    ],
+    "elementId": "ground",
+    "category": "physical",
+    "power": 170,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "speed",
+          "delta": -1
+        }
+      }
+    ]
   }
 ]

@@ -5,6 +5,7 @@
 // Tách khỏi traitHooks.ts để file đó import được (nguồn hook "synergy" / "formation") mà không vòng.
 
 import { raceMatches, raceRefIds } from './races'
+import { MAX_PURITY, mainBloodline } from './bloodlines'
 import { asObject, assertNever, checkInteger } from '../shared'
 import type {
   FormationRequirementDef,
@@ -71,14 +72,40 @@ const species: MonsterConditionHandler<{ speciesIds: readonly string[] }> = {
   matches: ({ speciesIds }, monster) => speciesIds.includes(monster.speciesId)
 }
 
-/**
- * Điều kiện trên một quái theo loại. Chưa có: huyết mạch `bloodline { groupId }` (chờ
- * docs/roadmap/bloodline.md).
- */
+/** `minPurity` tùy chọn: điểm % trong (0, 100]. */
+function checkMinPurity(value: unknown): string[] {
+  if (value === undefined) return []
+  return typeof value === 'number' && value > 0 && value <= MAX_PURITY
+    ? []
+    : [`minPurity phải trong (0, 100], nhận ${String(value)}`]
+}
+
+/** Huyết mạch chính của quái thuộc nhóm và đủ độ thuần (bỏ trống minPurity = có là được). */
+const hasMainBloodline = (monster: Monster, groupId: string, minPurity = 0): boolean => {
+  const main = mainBloodline(monster)
+  return main?.groupId === groupId && main.purity >= minPurity
+}
+
+// Huyết mạch chính thuộc nhóm groupId, độ thuần ≥ minPurity nếu có (docs/rules/bloodline.md).
+const bloodline: MonsterConditionHandler<{ groupId: string; minPurity?: number }> = {
+  fields: ['groupId', 'minPurity'],
+  validateParams: (params, data) => [
+    ...checkId(params.groupId, 'groupId', data.bloodlines, 'nhóm huyết mạch'),
+    ...checkMinPurity(params.minPurity)
+  ],
+  parse: (params) => ({
+    groupId: params.groupId as string,
+    minPurity: params.minPurity as number | undefined
+  }),
+  matches: ({ groupId, minPurity }, monster) => hasMainBloodline(monster, groupId, minPurity)
+}
+
+/** Điều kiện trên một quái theo loại. */
 export const MONSTER_CONDITIONS: Readonly<Record<string, MonsterConditionHandler>> = {
   element,
   race,
-  species
+  species,
+  bloodline
 }
 
 /** Quái thỏa điều kiện không (điều kiện đã kiểm tra lúc khởi động). */
@@ -136,12 +163,75 @@ const elements: FormationRequirementHandler<{ elementIds: readonly string[] }> =
     elementIds.every((id) => team.some((monster) => monster.elementIds.includes(id)))
 }
 
+// ≥ count quái có huyết mạch chính thuộc nhóm (độ thuần ≥ minPurity nếu có; bloodline.md).
+const bloodlineCount: FormationRequirementHandler<{
+  groupId: string
+  count: number
+  minPurity?: number
+}> = {
+  fields: ['groupId', 'count', 'minPurity'],
+  validateParams: (params, data) => [
+    ...checkId(params.groupId, 'groupId', data.bloodlines, 'nhóm huyết mạch'),
+    ...countAtLeast(params),
+    ...checkMinPurity(params.minPurity)
+  ],
+  parse: (params) => ({
+    groupId: params.groupId as string,
+    count: params.count as number,
+    minPurity: params.minPurity as number | undefined
+  }),
+  isMet: ({ groupId, count, minPurity }, team) =>
+    team.filter((m) => hasMainBloodline(m, groupId, minPurity)).length >= count
+}
+
+// Đội có đủ mọi nhóm (mỗi nhóm ít nhất một quái mang huyết mạch chính đó), như Tứ Linh.
+const bloodlines: FormationRequirementHandler<{ groupIds: readonly string[] }> = {
+  fields: ['groupIds'],
+  validateParams: (params, data) =>
+    checkIdList(params.groupIds, 'groupIds', data.bloodlines, { label: 'nhóm huyết mạch' }),
+  parse: (params) => ({ groupIds: params.groupIds as string[] }),
+  isMet: ({ groupIds }, team) =>
+    groupIds.every((groupId) => team.some((m) => hasMainBloodline(m, groupId)))
+}
+
+// Số nhóm huyết mạch chính khác nhau trong đội ≥ count.
+const distinctBloodlines: FormationRequirementHandler<{ count: number }> = {
+  fields: ['count'],
+  validateParams: countAtLeast,
+  parse: (params) => ({ count: params.count as number }),
+  isMet: ({ count }, team) =>
+    new Set(team.flatMap((m) => mainBloodline(m)?.groupId ?? [])).size >= count
+}
+
+// Một nhóm bất kỳ có ≥ count quái mang huyết mạch chính của nó, độ thuần ≥ minPurity nếu có.
+const sameMainBloodline: FormationRequirementHandler<{ count: number; minPurity?: number }> = {
+  fields: ['count', 'minPurity'],
+  validateParams: (params) => [...countAtLeast(params), ...checkMinPurity(params.minPurity)],
+  parse: (params) => ({
+    count: params.count as number,
+    minPurity: params.minPurity as number | undefined
+  }),
+  isMet({ count, minPurity = 0 }, team) {
+    const byGroup = new Map<string, number>()
+    for (const monster of team) {
+      const main = mainBloodline(monster)
+      if (main && main.purity >= minPurity)
+        byGroup.set(main.groupId, (byGroup.get(main.groupId) ?? 0) + 1)
+    }
+    return [...byGroup.values()].some((n) => n >= count)
+  }
+}
+
 /** Yêu cầu của trận pháp với cả đội theo loại. */
 export const FORMATION_REQUIREMENTS: Readonly<Record<string, FormationRequirementHandler>> = {
   distinctElements,
   sameRace,
   race: raceCount,
-  elements
+  elements,
+  bloodline: bloodlineCount,
+  bloodlines,
+  distinctBloodlines,
+  sameMainBloodline
 }
 
 /** Kiểm tra một điều kiện / yêu cầu `{ type, ...params }` theo registry của nó. */

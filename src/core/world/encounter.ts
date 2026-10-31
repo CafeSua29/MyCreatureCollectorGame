@@ -2,17 +2,24 @@
 
 import {
   addShinyStacks,
-  canHaveGmaxFactor,
   expForLevel,
   newLifeFields,
   rollGender,
   rollAbilitySlot,
   rollNature,
+  rollWildBloodlines,
   uniformBigStats,
   emptySoulLevels,
   emptyEffortValues
 } from '../monster'
-import { activeTimeMultiplier, ageDaysAtPercent, isLargeMonster } from '../registries'
+import {
+  activeTimeMultiplier,
+  ageDaysAtPercent,
+  bloodlineGroupsOf,
+  isLargeMonster,
+  purityOf,
+  withPurity
+} from '../registries'
 import {
   BIG_ZERO,
   floorBig,
@@ -42,7 +49,7 @@ import {
   type EquipmentItem,
   type PercentRange
 } from '../model'
-import { equipmentInstanceId, rollEquipment, uniquePoolOf } from '../inventory'
+import { canHaveGmaxFactor, equipmentInstanceId, rollEquipment, uniquePoolOf } from '../inventory'
 import { floorBossLevel, floorGeneMultiplier, floorLevelRange, type FloorSite } from './floors'
 
 /** Skill quái biết khi ở level này: các skill học gần nhất, tối đa maxSkills. */
@@ -144,8 +151,8 @@ export interface MonsterRollSpec {
 
 /**
  * Random một quái theo spec. Thứ tự tung: loài → level → gender → gen → trait → shiny → hệ Tera →
- * tính cách → ô ability (chỉ loài có ability) (luật mới thêm vào cuối để không làm đổi các giá trị
- * random phía trước). Hệ Tera random trong hệ
+ * tính cách → ô ability (chỉ loài có ability) → huyết mạch (chỉ loài thuộc nhóm) (luật mới thêm vào
+ * cuối để không làm đổi các giá trị random phía trước). Hệ Tera random trong hệ
  * của chính nó (như Pokémon); boss tung lại theo luật boss (rollBossTransformTraits). Quái mới
  * ở tuổi 0; quái hoang / boss tung tuổi sau cùng bằng rollSpawnAge.
  */
@@ -227,7 +234,9 @@ export function rollMonster(
     // Chưa nâng thiên phú (docs/rules/monster-talents.md).
     talentRanks: {},
     // Quái hoang chưa từng nhiễm linh dịch (docs/rules/spirit-virus.md).
-    spiritVirus: null
+    spiritVirus: null,
+    // Tung sau cùng (rollWildBloodlines).
+    bloodlines: []
   }
   let shiny: boolean
   ;[shiny, rng] = rollPercent(rng, spec.shinyChance)
@@ -239,7 +248,10 @@ export function rollMonster(
   // Loài không có ability thì ô không có tác dụng: không tung để giữ chuỗi random.
   let abilitySlot: AbilitySlot = 'first'
   if (species.abilities) [abilitySlot, rng] = rollAbilitySlot(data, rng)
-  return [{ ...monster, teraElementId, natureId, abilitySlot }, rng]
+  // Huyết mạch (docs/rules/bloodline.md): loài không thuộc nhóm nào thì không tốn RNG.
+  let bloodlines: Monster['bloodlines']
+  ;[bloodlines, rng] = rollWildBloodlines(data, rng, species.id)
+  return [{ ...monster, teraElementId, natureId, abilitySlot, bloodlines }, rng]
 }
 
 const biomeShinyChance = (data: GameData, biome: Biome): number =>
@@ -328,7 +340,13 @@ function rollBossMultiplier(
     biome.bossMultiplierMin ?? config.boss.multiplierMin,
     biome.bossMultiplierMax ?? config.boss.multiplierMax
   )
-  return [{ ...monster, bossMultiplier: multiplier }, rng]
+  // Boss cộng thêm độ thuần vào mọi nhóm huyết mạch của nó (docs/rules/bloodline.md).
+  const bonus = data.config.bloodline.bossPurityBonus
+  const bloodlines = bloodlineGroupsOf(data, monster.baseSpeciesId).reduce(
+    (list, groupId) => withPurity(data, list, groupId, purityOf(monster, groupId) + bonus),
+    monster.bloodlines
+  )
+  return [{ ...monster, bossMultiplier: multiplier, bloodlines }, rng]
 }
 
 /**

@@ -154,6 +154,10 @@
       "id": "current"
     },
     {
+      "id": "blood50",
+      "assumedPurity": 50
+    },
+    {
       "id": "noHitLocations",
       "withoutSkillFields": ["reach"],
       "config": {

@@ -16,7 +16,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
 - [polarity.md](docs/roadmap/polarity.md): Âm / Dương hóa (chỉ số theo cực, trait cực tính, tương khắc)
 - [implant.md](docs/roadmap/implant.md): Phòng Thí Nghiệm: cấy ghép
-- [bloodline.md](docs/roadmap/bloodline.md): Huyết mạch và Phản tổ (nhóm huyết mạch, độ thuần, pha trộn chỉ số với loài tổ, đột biến khi breed, phản tổ biến hình). Nguồn: `scripts/data-import/bloodlines-source.json`
 - [egg-incubation.md](docs/roadmap/egg-incubation.md): Ấp trứng có hoàn cảnh (linh thạch, linh địa, Ôn Dưỡng Lò)
 - [cooking.md](docs/roadmap/cooking.md): Linh thực: nấu ăn, buff cả đội N trận
 - [breeding-cakes.md](docs/roadmap/breeding-cakes.md): Bánh breed (2 trứng, gen, đột biến, 3 trait, shiny)
@@ -90,7 +89,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       5l. Kỹ năng đồng hành. **Đã xong** (luật ở `docs/rules/partner-skills.md`; hiệu ứng tỉ lệ event / sức thám hiểm / tỉ lệ luyện đan chờ ba hệ thống dưới).
       **5l+. Làm ngay sau 5l** (chủ project chốt 2026-10-24: làm luôn ba hệ thống mà kỹ năng đồng hành còn chờ, kèm mọi phần phụ thuộc chưa có), theo thứ tự phụ thuộc; các bước này được kéo lên trước 5m, ở danh sách dưới chỉ còn dòng trỏ về đây:
       1. Thức tỉnh và độ kiếp. **Đã xong** (luật ở `docs/rules/awakening.md`; Thức tỉnh đan qua luyện đan chờ bước 4, Hiện nguyên hình trong độ kiếp chờ bước 2).
-      2. Hóa hình. **Đã xong** (luật ở `docs/rules/human-form.md`; Hóa Hình Đan qua luyện đan chờ bước 4, phản tổ chờ `bloodline.md`).
+      2. Hóa hình. **Đã xong** (luật ở `docs/rules/human-form.md`; Hóa Hình Đan qua luyện đan chờ bước 4, phản tổ đã làm ở `docs/rules/bloodline.md`).
       3. Thiên tài địa bảo. **Đã xong** (luật ở `docs/rules/treasures.md`; nguồn luyện đan / linh điền chờ bước 4, chợ đen đã có ở bước 11).
       4. Luyện đan và linh điền. **Đã xong** (luật ở `docs/rules/alchemy.md`; chợ đen bán đan phương đã có ở bước 11; dược liệu theo biome dùng chung `wildDrops`).
       5. Bảng nhiệm vụ. **Đã xong** (luật ở `docs/rules/quests.md`; nhiệm vụ tông môn chờ `sects.md`).
@@ -116,7 +115,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
    6. Extract / inject trait.
       6b. Hiến tế (`sacrifice`).
       6c. Phòng Thí Nghiệm: cấy ghép (`implant`).
-      6d. Huyết mạch và Phản tổ (`bloodline.md`; sau hiến tế vì dùng chung luồng cộng độ thuần).
+      6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần chuyển sang `sacrifice.md`).
       6e. Thức tỉnh và độ kiếp. **Đã xong** ở bước 5l+.1 (luật ở `docs/rules/awakening.md`).
       6f. Hóa hình. **Đã xong** ở bước 5l+.2 (luật ở `docs/rules/human-form.md`).
       6g. Thiên tài địa bảo. **Đã xong** ở bước 5l+.3 (luật ở `docs/rules/treasures.md`).

@@ -88,6 +88,7 @@ import {
   learnFormation,
   setFormation,
   setHumanForm,
+  atavize,
   setTactic,
   takeHumanForm,
   upgradeSoulLevel,
@@ -108,7 +109,7 @@ import {
 import type { GameAction, GameData, GameState, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 72
+export const SAVE_VERSION = 73
 
 export function createGameState(options: {
   seed: number
@@ -299,6 +300,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return takeHumanForm(data, state, action.monsterId)
     case 'setHumanForm':
       return setHumanForm(data, state, action)
+    case 'atavize':
+      return atavize(data, state, action)
     case 'challengeBoss':
       return challengeBoss(data, state)
     case 'challengeGym':

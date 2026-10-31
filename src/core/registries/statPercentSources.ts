@@ -143,6 +143,7 @@ function imprintStatPercent(data: GameData, monster: Monster): number {
 export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSourceId>> = {
   trait: 'traits',
   race: 'traits',
+  bloodline: 'traits',
   ability: 'traits',
   gained: 'traits',
   status: 'statuses',

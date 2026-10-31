@@ -40,7 +40,7 @@ Chưa có: `trade` (`npc-trades.md`), `gacha`... Mục đó làm thì thêm nhá
 | `reborn`               | `count`                                           | chờ `rebirth.md`                                                                                                                                         |
 | `mutatedEvolution`     | `fromSpeciesId`, `toSpeciesId`                    | tiến hóa dị biến (`evolveMonster`, `evolution-skills.md`)                                                                                                |
 | `imprintPerfected`     |                                                   | dưỡng dục chốt đúng 100% (`advanceImprint` ở `monster/imprint.ts`, `imprinting.md`)                                                                      |
-| `atavized`             | `fromSpeciesId`, `toSpeciesId`                    | chờ `bloodline.md` (phản tổ)                                                                                                                             |
+| `atavized`             | `fromSpeciesId`, `toSpeciesId`                    | phản tổ (`bloodline.md`)                                                                                                                                 |
 | `died`                 | `cause` (`DEATH_CAUSES`: `oldAge`, `tribulation`) | chết hẳn (`createSoul`, `soul-relics.md`): chỉ có trong lý lịch của hồn phách / hồn khí                                                                  |
 
 Mốc "chờ" có sẵn trong type, nhưng save chứa nó bị kiểm tra chặn ("chưa hỗ trợ (chờ X)", `MilestoneRule.pendingRoadmap`). Làm xong tính năng: gọi `addMilestone` đúng chỗ, bỏ `pendingRoadmap` của mốc đó, chuyển dòng sang "Ghi ở".

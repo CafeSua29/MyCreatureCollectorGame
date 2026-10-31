@@ -27,6 +27,7 @@ import natures from './natures.json'
 import bodyParts from './bodyParts.json'
 import aptitudeTiers from './aptitudeTiers.json'
 import speciesRanks from './speciesRanks.json'
+import bloodlines from './bloodlines.json'
 import partnerSkills from './partnerSkills.json'
 import recipes from './recipes.json'
 import quests from './quests.json'
@@ -96,6 +97,7 @@ export const rawGameData = {
   bodyParts,
   aptitudeTiers,
   speciesRanks,
+  bloodlines,
   partnerSkills,
   recipes,
   quests,

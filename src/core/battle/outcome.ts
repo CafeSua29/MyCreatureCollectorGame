@@ -4,8 +4,10 @@ import { recordQuestEvent, refillQuestBoard } from '../quests'
 import { autoEvolve, createBossEgg, hatchMonster, tickEggs } from '../progression'
 import {
   addEffortValues,
+  applyPurityGains,
   addMilestone,
   battleEffortGain,
+  bossKillPurityGains,
   expReward,
   fulfillImprint,
   gainExp,
@@ -19,6 +21,8 @@ import {
 import { BIG_ZERO, maxBig, nextInt, pick, pickWeighted, rollPercent, type Decimal } from '../shared'
 import {
   ageExpMultiplier,
+  ancestorGroupsOf,
+  bloodlineGroupsOf,
   charmEffect,
   changeAffinity,
   sideMoneyMultiplier,
@@ -189,13 +193,17 @@ export function applyWin(data: GameData, d: Draft): void {
     return infected
   })
 
-  // Thắng trận boss: quái đã ra sân (kể cả đã gục) tính thêm một boss đã hạ (điều kiện tiến hóa).
+  // Thắng trận boss: quái đã ra sân (kể cả đã gục) tính thêm một boss đã hạ (điều kiện tiến hóa),
+  // nhận độ thuần ở nhóm huyết mạch chung với boss (docs/rules/bloodline.md); loài tổ bị hạ / bị bắt
+  // chắc chắn rơi Tinh huyết của nhóm mình.
   if (d.battle.isBoss) {
+    const gains = bossKillPurityGains(data, defeated)
     d.party = d.party.map((monster) =>
       participants.includes(monster.id)
-        ? { ...monster, bossDefeats: monster.bossDefeats + 1 }
+        ? applyPurityGains(data, { ...monster, bossDefeats: monster.bossDefeats + 1 }, gains)
         : monster
     )
+    grantAncestorEssences(data, d, defeated)
   }
 
   // Tự tiến hóa: mọi quái trong đội đủ điều kiện (kể cả không ra sân hoặc đã gục); điều kiện map /
@@ -434,6 +442,33 @@ const talentBossDrops = (data: GameData): DropEntry[] => data.config.talents.bos
 /** Đá cường hóa / Tẩy luyện thạch rơi từ boss (docs/rules/equipment-forge.md). */
 const forgeBossDrops = (data: GameData): DropEntry[] => data.config.forge.bossDrops
 
+/**
+ * Tinh huyết và trận đồ huyết mạch rơi từ boss: mỗi nhóm huyết mạch của loài boss một bảng Tinh huyết
+ * và (nhóm có trận đồ) một bảng trận đồ (docs/rules/bloodline.md).
+ */
+function bloodlineBossDrops(data: GameData, _d: Draft, boss: Monster): DropEntry[] {
+  const { essenceDropChance, scrollDropChance } = data.config.bloodline
+  return bloodlineGroupsOf(data, boss.baseSpeciesId).flatMap((groupId) => {
+    const { essenceItemId, scrollItemId } = data.bloodlines[groupId]
+    const essence = { itemId: essenceItemId, chance: essenceDropChance }
+    return scrollItemId ? [essence, { itemId: scrollItemId, chance: scrollDropChance }] : [essence]
+  })
+}
+
+/**
+ * Boss là loài tổ (bị hạ hoặc bị bắt): chắc chắn một Tinh huyết và trận đồ (nếu có) mỗi nhóm nó là
+ * tổ, không tốn RNG.
+ */
+function grantAncestorEssences(data: GameData, d: Draft, defeated: readonly Monster[]): void {
+  for (const boss of defeated) {
+    for (const groupId of ancestorGroupsOf(data, boss.baseSpeciesId)) {
+      const { essenceItemId, scrollItemId } = data.bloodlines[groupId]
+      gainDrop(d, essenceItemId, 1)
+      if (scrollItemId) gainDrop(d, scrollItemId, 1)
+    }
+  }
+}
+
 const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(lifespanBossDrops),
   onlyInBossBattle(expCandyBossDrops),
@@ -449,7 +484,8 @@ const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(trialTokenBossDrops),
   soulCrystalDrops,
   onlyInBossBattle(forgeBossDrops),
-  onlyInBossBattle(talentBossDrops)
+  onlyInBossBattle(talentBossDrops),
+  onlyInBossBattle(bloodlineBossDrops)
 ]
 
 /** EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ). */

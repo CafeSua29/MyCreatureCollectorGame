@@ -11,7 +11,7 @@ import {
   type TraitKind
 } from '../model'
 import { asObject, checkInteger, checkNumber, isFiniteNumber } from '../shared'
-import { checkKnownFields, checkStackItemId } from './checks'
+import { checkKnownFields } from './checks'
 
 /** Bảng trọng số số đòn: khoảng nguyên 1 ≤ min ≤ max, không trùng, đủ trọng số > 0 cho mỗi số đòn. */
 function checkHitCountWeights(
@@ -232,25 +232,7 @@ export function checkConfig(data: GameData, issues: string[]): void {
   push(checkInteger(config.fusion?.inheritSkills, 'fusion.inheritSkills', 0))
   checkShopConfig(data, issues)
   checkMarketConfig(data, issues)
-  const starter = config.starter ?? ({} as GameData['config']['starter'])
-  if (!Array.isArray(starter.speciesIds) || starter.speciesIds.length === 0) {
-    issues.push('config.starter.speciesIds cần ít nhất một loài')
-  } else {
-    for (const speciesId of starter.speciesIds) {
-      if (data.species[speciesId]?.kind !== 'normal') {
-        issues.push(`config.starter.speciesIds: loài không tồn tại "${speciesId}"`)
-      }
-    }
-    if (new Set(starter.speciesIds).size !== starter.speciesIds.length) {
-      issues.push('config.starter.speciesIds bị lặp')
-    }
-  }
-  push(checkInteger(starter.level, 'starter.level', 1))
-  push(checkNumber(starter.money, 'starter.money', 0))
-  for (const [itemId, count] of Object.entries(starter.items ?? {})) {
-    issues.push(...checkStackItemId(data, itemId, 'config.starter.items'))
-    push(checkInteger(count, `starter.items.${itemId}`, 1))
-  }
+  // config.starter kiểm tra ở validateStarters.ts.
   push(checkInteger(config.partySize, 'partySize', 1))
   push(checkInteger(config.maxSkills, 'maxSkills', 1))
   push(checkNumber(config.restCostPerLevel, 'restCostPerLevel', 0))

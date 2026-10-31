@@ -21,7 +21,7 @@ Code: `model/humanForm.ts` (`isHumanShape`), `HUMAN_FORM_ON_TRANSFORM` (`model/t
 
 - `Monster.humanForm`: `'locked'` | `'beast'` (đã hóa hình, đang ở bản thể) | `'human'` (đang ở nhân hình); `validateMonster` kiểm tra giá trị và cấm `'human'` khi race có `humanForm: false`.
 - Đổi dạng: `setHumanForm { monsterId, form: 'beast' | 'human' }`, ngoài trận, ở đâu cũng được, miễn phí. Lỗi: chưa hóa hình hoặc đổi sang nhân hình khi race không cho (sau phản tổ) `humanFormNotTaken { monsterId }`, đúng dạng đang có `humanFormUnchanged { monsterId, form }`, dạng lạ `malformedAction`.
-- **Fuse:** quái gốc giữ trạng thái của mình. **Tiến hóa** giữ. **Phản tổ** (chưa làm, `bloodline.md`): race của loài tổ không cho nhân hình thì về `'beast'`.
+- **Fuse:** quái gốc giữ trạng thái của mình. **Tiến hóa** giữ. **Phản tổ** (`bloodline.md`): race của loài tổ không cho nhân hình thì về `'beast'`.
 - **Thọ nguyên:** đã hóa hình (cả bản thể) × `lifespanMultiplier` (1,5; mục `humanForm` của `LIFESPAN_MODIFIERS`).
 - **Mang hình người** (`isHumanShape`): `humanForm = 'human'` và trong trận chưa biến hình loại `revert` (`HUMAN_FORM_ON_TRANSFORM`: Mega, Dynamax, Hiện nguyên hình về bản thể tới hết trận, kể cả khi biến hình đã kết thúc; Tera giữ nhân hình).
   - **% chỉ số nhân hình** `statPercents` (HP −10%, công −5%, thủ −10%, đặc công +15%, đặc thủ +10%, tốc độ +15%): nguồn % `humanForm`, cộng ở bước áp trait.
@@ -44,4 +44,4 @@ Code: `model/humanForm.ts` (`isHumanShape`), `HUMAN_FORM_ON_TRANSFORM` (`model/t
 
 - Phần `tribulation`: quái độ kiếp đã thức tỉnh (tầng ≥ 2) mà race cho hóa hình thì ở nhân hình (AI Hiện nguyên hình được). Chơi liên tục: "người chơi" hóa hình quái đủ điều kiện khi ở thị trấn (mua đan nếu cửa hàng bán), cột `humanForms` ở `progression.csv` (`simulation-features.md`).
 
-- Hóa Hình Đan luyện được (đan phương, `alchemy.md`). Chưa có: phản tổ về bản thể (chờ `bloodline.md`); boss tầng cao ở nhân hình (chưa chốt, hỏi chủ project khi cần).
+- Hóa Hình Đan luyện được (đan phương, `alchemy.md`). Chưa có: boss tầng cao ở nhân hình (chưa chốt, hỏi chủ project khi cần).

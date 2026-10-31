@@ -1,6 +1,6 @@
 {
   "meta": {
-    "purpose": "Đề xuất nhóm huyết mạch cho tính năng Phản tổ (docs/roadmap/bloodline.md). Không nạp vào game; khi làm thì chuyển thành src/data/bloodlines.json theo định dạng trong roadmap.",
+    "purpose": "Nguồn nhóm huyết mạch (docs/rules/bloodline.md): scripts/data-import/bloodlines-import.mjs nhập vào src/data/bloodlines.json, traits.json, items.json, balance.json, i18n.",
     "groups": 17,
     "speciesWithBloodline": 4512,
     "speciesInManyGroups": 220,
@@ -719,7 +719,7 @@
       ],
       "trait": {
         "id": "dragonBloodline",
-        "name": "Long uy",
+        "name": "Long huyết",
         "nameEn": "Dragon Majesty",
         "kind": "bloodline",
         "hooks": [
@@ -4388,7 +4388,7 @@
       "trait": {
         "id": "insectBloodline",
         "name": "Trùng giáp",
-        "nameEn": "Chitin Shell",
+        "nameEn": "Chitin Carapace",
         "kind": "bloodline",
         "hooks": [
           {

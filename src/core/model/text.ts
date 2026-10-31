@@ -25,6 +25,7 @@ export const CONTENT_KINDS = [
   'bodyParts',
   'aptitudeTiers',
   'speciesRanks',
+  'bloodlines',
   'partnerSkills',
   'quests',
   'expeditions',

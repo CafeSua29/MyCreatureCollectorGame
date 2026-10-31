@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createGameData, toBig, validateGameState, type GameState } from '@core'
 import { makeData, makeMonster, makeGameState, makeRawData, withFixtureText } from '@core/testing'
-import { addSkillUsage, emptySkillUsage, runBattle, skillGroup } from './battleRunner'
+import { addSkillUsage, backToFloor, emptySkillUsage, runBattle, skillGroup } from './battleRunner'
 
 // Fixture: tầng 3 (biome "pairs") luôn gặp 2 quái hoang level 5 (quái level 1 cho 0 EXP).
 const data = makeData()
@@ -116,5 +116,29 @@ describe('addSkillUsage', () => {
     addSkillUsage(total, { player: { damage: 2 }, enemy: { status: 1 } })
     addSkillUsage(total, { player: { damage: 3, status: 1 }, enemy: {} })
     expect(total).toEqual({ player: { damage: 5, status: 1 }, enemy: { status: 1 } })
+  })
+})
+
+describe('backToFloor (sau trận event trước trận đo)', () => {
+  const data = makeData()
+  const onFloor = (damageTaken: number): GameState => ({
+    ...makeGameState({
+      seed: 1,
+      party: [makeMonster({ id: 'a', damageTaken })],
+      location: { type: 'floor', floor: 1 }
+    }),
+    money: toBig(1e6)
+  })
+
+  it('event thắng mà cả đội gục, vẫn ở tầng: về thị trấn hồi máu rồi quay lại tầng', () => {
+    const before = onFloor(0)
+    const after = backToFloor(data, onFloor(999), before)
+    expect(after.location).toEqual({ type: 'floor', floor: 1 })
+    expect(after.party[0].damageTaken.toNumber()).toBe(0)
+  })
+
+  it('còn ở tầng và không bị thương: giữ nguyên', () => {
+    const state = onFloor(0)
+    expect(backToFloor(data, state, state)).toBe(state)
   })
 })

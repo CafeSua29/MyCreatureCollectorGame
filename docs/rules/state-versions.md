@@ -76,3 +76,4 @@ Mỗi lần đổi cấu trúc `GameState` / quái: tăng `SAVE_VERSION`, viết
 - v70 = linh dịch (bước 5u, 2026-10-31): mọi quái (đội, kho, trứng, quái hoang, quái đang gặp ở khu bảo tồn) thêm `spiritVirus = null` (`spirit-virus.md`).
 - v71 = khám phá điểm yếu và mất thế (2026-10-31): `dex.hitParts = {}` (id loài → bộ phận đã đánh trúng); trạng thái tạm có thể có `offBalanceUntilTurn` (tùy chọn) (`hit-locations.md`).
 - v72 = chết thật (2026-10-31): `options.permadeathEnabled = false`; hồn phách / lý lịch có thể có kiểu chết `battle` (`options.md`).
+- v73 = huyết mạch (2026-10-31): mọi quái (đội, kho, trứng, quái hoang, quái đã bắt, quái đang gặp ở khu bảo tồn) thêm `bloodlines = []`; action mới `atavize` (`bloodline.md`).

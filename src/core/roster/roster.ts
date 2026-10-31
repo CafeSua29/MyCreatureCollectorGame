@@ -44,6 +44,10 @@ import {
   lifePercent,
   lifespanYears,
   raceTraitIds,
+  bloodlineGroupsOf,
+  bloodlineTraitLevel,
+  mainBloodline,
+  MAX_PURITY,
   yearsLeft,
   type EvolutionScene
 } from '../registries'
@@ -57,6 +61,7 @@ import {
   type AgeStage,
   type AwakeningMilestone,
   type AbilitySlot,
+  type BloodlinePurity,
   type GameData,
   type HumanFormState,
   type PartialStats,
@@ -82,6 +87,8 @@ import {
 // Xuất lại cho bên ngoài core (script mô phỏng chấm tư chất quái chưa sở hữu).
 export { aptitudeFloor, aptitudeOf, type Aptitude } from '../registries'
 export { baseStatTotal, speciesRankOf, monsterSpeciesRankOf } from '../registries'
+// Huyết mạch (docs/rules/bloodline.md): script mô phỏng đo độ thuần, UI hiển thị.
+export { bloodlineGroupsOf, mainBloodline } from '../registries'
 export { monsterWeightKg, speciesWeightKg } from '../registries'
 export {
   MONSTER_SIZES,
@@ -219,6 +226,26 @@ export interface MonsterView {
   talents: TalentView
   /** Linh dịch: đang nhiễm (số ngày còn) / miễn dịch / null (docs/rules/spirit-virus.md). */
   spiritVirus: SpiritVirus | null
+  /** Huyết mạch: chính (có hiệu lực) và các nhóm khác chỉ tích lũy (docs/rules/bloodline.md). */
+  bloodline: BloodlineView
+}
+
+/** Huyết mạch cho MonsterView. */
+export interface BloodlineView {
+  /** Huyết mạch chính; null = chưa có độ thuần ở nhóm nào. */
+  main: {
+    groupId: string
+    purity: number
+    /** Cấp trait huyết mạch (0 = chưa đạt mốc nào) và id trait. */
+    traitLevel: number
+    traitId: string
+    /** Loài tổ chọn được khi phản tổ (đủ 100% và không fuse); rỗng nếu chưa phản tổ được. */
+    atavizeOptions: string[]
+  } | null
+  /** Các nhóm khác (đúng thứ tự bloodlines.json). */
+  others: BloodlinePurity[]
+  /** Mọi nhóm loài gốc thuộc (kể cả nhóm độ thuần 0). */
+  groupIds: string[]
 }
 
 /** Tư chất cho MonsterView: tỉ lệ gen và id bậc. */
@@ -497,7 +524,25 @@ export function buildMonsterView(
     effort: effortView(data, monster),
     ability: { slot: monster.abilitySlot, traitId: abilityTraitId(data, monster) },
     talents: talentView(data, monster),
-    spiritVirus: monster.spiritVirus
+    spiritVirus: monster.spiritVirus,
+    bloodline: bloodlineView(data, monster)
+  }
+}
+
+function bloodlineView(data: GameData, monster: Monster): BloodlineView {
+  const main = mainBloodline(monster)
+  const groupIds = [...bloodlineGroupsOf(data, monster.baseSpeciesId)]
+  if (!main) return { main: null, others: [], groupIds }
+  const canAtavize = !monster.fused && main.purity >= MAX_PURITY
+  return {
+    main: {
+      ...main,
+      traitLevel: bloodlineTraitLevel(data, main.purity),
+      traitId: data.bloodlines[main.groupId].traitId,
+      atavizeOptions: canAtavize ? [...data.bloodlines[main.groupId].ancestorSpeciesIds] : []
+    },
+    others: monster.bloodlines.filter((entry) => entry.groupId !== main.groupId),
+    groupIds
   }
 }
 

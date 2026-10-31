@@ -9,6 +9,7 @@
 
 import { assertNever, DataError, maxBig, toBig, type Decimal } from '../shared'
 import type { AgeStage, GameData, Monster } from '../model'
+import { bloodlineLifespanMultiplier } from './bloodlines'
 import { forEachTraitHook } from './traitHooks'
 import { percentToMultiplier } from './traitHookUtils'
 
@@ -44,7 +45,9 @@ export const LIFESPAN_MODIFIERS: Readonly<Record<string, LifespanModifier>> = {
     toBig(data.config.awakening.lifespanMultiplier).pow(monster.awakening),
   /** Đã hóa hình, cả khi đang ở bản thể (docs/rules/human-form.md). */
   humanForm: (data, monster) =>
-    monster.humanForm === 'locked' ? 1 : data.config.humanForm.lifespanMultiplier
+    monster.humanForm === 'locked' ? 1 : data.config.humanForm.lifespanMultiplier,
+  /** Huyết mạch chính pha thọ nguyên loài tổ, chỉ tăng (docs/rules/bloodline.md). */
+  bloodline: bloodlineLifespanMultiplier
 }
 
 /** Thọ nguyên gốc (năm) của loài gốc; loài thiếu thọ nguyên là dữ liệu hỏng. */

@@ -96,6 +96,8 @@ export type GameAction =
   /** Hóa hình (ở thị trấn) / đổi nhân hình ↔ bản thể (ngoài trận; docs/rules/human-form.md). */
   | { type: 'takeHumanForm'; monsterId: string }
   | { type: 'setHumanForm'; monsterId: string; form: 'beast' | 'human' }
+  /** Phản tổ: huyết mạch chính 100% thì biến thành một loài tổ của nhóm (thị trấn; bloodline.md). */
+  | { type: 'atavize'; monsterId: string; ancestorSpeciesId: string }
   /** Độ kiếp lên tầng thức tỉnh kế tiếp (ở thị trấn; docs/rules/awakening.md). */
   | { type: 'startTribulation'; monsterId: string }
   /**

@@ -3,9 +3,10 @@
 // và ghi CSV. Chỗ duy nhất của script đụng file và console (ngoài worker).
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { availableParallelism } from 'node:os'
+import { totalmem } from 'node:os'
 import { resolve } from 'node:path'
-import { autoWorkers, parseCliArgs } from './cli'
+import { getHeapStatistics } from 'node:v8'
+import { parseCliArgs, planWorkers, type MachineResources } from './cli'
 import {
   collectResults,
   createJobContext,
@@ -49,16 +50,21 @@ import { parseScenarios } from './scenarios'
 import { runInWorkers } from './workerPool'
 
 const OUTPUT_DIR = 'scripts/simulate/out'
+const BYTES_PER_MB = 1024 * 1024
 
 function print(text: string): void {
   // eslint-disable-next-line no-console -- đầu ra của script mô phỏng là bảng trên console
   console.log(text)
 }
 
-/** args: [đường dẫn kịch bản] [--workers N] [--parts a,b] [--teams a,b] (cli.ts). */
-export async function main(args: readonly string[]): Promise<void> {
+/**
+ * args: [đường dẫn kịch bản] [--workers N] [--parts a,b] [--teams a,b] (cli.ts); cpuThreads: số
+ * luồng CPU tiến trình đã được ghim (limitCpu ở run.mjs).
+ */
+export async function main(args: readonly string[], cpuThreads: number): Promise<void> {
   const started = performance.now()
   const options = parseCliArgs(args)
+  const machine = machineResources(cpuThreads)
   const { raw, data } = loadGameData()
   const scenarios = parseScenarios(
     data,
@@ -67,11 +73,11 @@ export async function main(args: readonly string[]): Promise<void> {
   const selection = { parts: options.parts, teams: options.teams }
   const jobs = filterJobs(listJobs(scenarios, data), selection)
   const context = createJobContext({ raw, data, scenarios })
-  const phase1 = await runJobs(context, jobs, options.workers)
+  const phase1 = await runJobs(context, jobs, machine, options.workers)
   // Pha 2 cần đội thật của chơi liên tục (quét tầng bằng đội thật).
   const progressionResults = collectResults(phase1.map((t) => t.result)).progression
   const phase2Jobs = filterJobs(listProgressionSweepJobs(scenarios, progressionResults), selection)
-  const phase2 = await runJobs(context, phase2Jobs, options.workers)
+  const phase2 = await runJobs(context, phase2Jobs, machine, options.workers)
   const timed = [...phase1, ...phase2]
   const ran = new Set<SimPart>(timed.map((t) => t.part))
 
@@ -152,17 +158,24 @@ function outputTables(results: CollectedResults): [string, string, SimPart, Tabl
   ]
 }
 
+function machineResources(cpuThreads: number): MachineResources {
+  return {
+    cpuThreads,
+    totalMemoryMb: totalmem() / BYTES_PER_MB,
+    mainHeapLimitMb: getHeapStatistics().heap_size_limit / BYTES_PER_MB
+  }
+}
+
 async function runJobs(
   context: JobContext,
   jobs: readonly SimJob[],
+  machine: MachineResources,
   requestedWorkers: number | null
 ): Promise<TimedJobResult[]> {
   if (jobs.length === 0) return []
-  const workers = Math.min(
-    requestedWorkers ?? autoWorkers(availableParallelism(), jobs.length),
-    jobs.length
-  )
-  print(`Chạy ${jobs.length} việc trên ${workers} worker.`)
+  const { workers, workerHeapMb } = planWorkers(machine, jobs.length, requestedWorkers)
+  const heapNote = workerHeapMb === null ? '' : ` (heap tối đa ${workerHeapMb} MB mỗi worker)`
+  print(`Chạy ${jobs.length} việc trên ${workers} worker${heapNote}.`)
   let lastPrinted = 0
   const onDone = (done: number, total: number): void => {
     // In tiến độ khoảng mỗi 10% (thứ tự xong không cố định nên chỉ in số đếm).
@@ -171,8 +184,14 @@ async function runJobs(
       print(`  xong ${done}/${total} việc`)
     }
   }
-  if (workers > 1) {
-    return runInWorkers(context.scenarios, jobs, workers, { onDone, priority: jobPriority })
+  if (workerHeapMb !== null) {
+    return runInWorkers(
+      { scenarios: context.scenarios, jobs, count: workers, workerHeapMb },
+      {
+        onDone,
+        priority: jobPriority
+      }
+    )
   }
   return runInOrder(jobs, 1, async (job) => runTimedJob(context, job), { onDone })
 }

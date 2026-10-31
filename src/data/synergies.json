@@ -2104,5 +2104,914 @@
         ]
       }
     ]
+  },
+  {
+    "id": "bloodlineDragon",
+    "match": {
+      "type": "bloodline",
+      "groupId": "dragon"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 5,
+                "spAttack": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 10,
+                "spAttack": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 15,
+                "spAttack": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlinePhoenix",
+    "match": {
+      "type": "bloodline",
+      "groupId": "phoenix"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 3
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 6
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 9
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineRoc",
+    "match": {
+      "type": "bloodline",
+      "groupId": "roc"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 8,
+                "attack": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 16,
+                "attack": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 24,
+                "attack": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineFox",
+    "match": {
+      "type": "bloodline",
+      "groupId": "fox"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 6,
+                "speed": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 12,
+                "speed": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 18,
+                "speed": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineWolf",
+    "match": {
+      "type": "bloodline",
+      "groupId": "wolf"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 6,
+                "speed": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 12,
+                "speed": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 18,
+                "speed": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineTiger",
+    "match": {
+      "type": "bloodline",
+      "groupId": "tiger"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 8,
+                "speed": 2
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 16,
+                "speed": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 24,
+                "speed": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineTurtle",
+    "match": {
+      "type": "bloodline",
+      "groupId": "turtle"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -5
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 4,
+                "spDefense": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -10
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 8,
+                "spDefense": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 12,
+                "spDefense": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineSerpent",
+    "match": {
+      "type": "bloodline",
+      "groupId": "serpent"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 4,
+                "spAttack": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["poison", "badPoison"]
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 8,
+                "spAttack": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["poison", "badPoison"]
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 12,
+                "spAttack": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineQilin",
+    "match": {
+      "type": "bloodline",
+      "groupId": "qilin"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 5,
+                "spAttack": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 10,
+                "spAttack": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 15,
+                "spAttack": 9
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineBull",
+    "match": {
+      "type": "bloodline",
+      "groupId": "bull"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineSea",
+    "match": {
+      "type": "bloodline",
+      "groupId": "sea"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineInsect",
+    "match": {
+      "type": "bloodline",
+      "groupId": "insect"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 6,
+                "speed": 3
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 12,
+                "speed": 6
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 18,
+                "speed": 9
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineUndead",
+    "match": {
+      "type": "bloodline",
+      "groupId": "undead"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 3
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 6
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 9
+            }
+          },
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineDemon",
+    "match": {
+      "type": "bloodline",
+      "groupId": "demon"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 5,
+                "spAttack": 5
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 10,
+                "spAttack": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 15,
+                "spAttack": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineGiant",
+    "match": {
+      "type": "bloodline",
+      "groupId": "giant"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlinePlant",
+    "match": {
+      "type": "bloodline",
+      "groupId": "plant"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 6
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodlineSaurian",
+    "match": {
+      "type": "bloodline",
+      "groupId": "saurian"
+    },
+    "tiers": [
+      {
+        "count": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 6,
+                "defense": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 12,
+                "defense": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "count": 6,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 18,
+                "defense": 12
+              }
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

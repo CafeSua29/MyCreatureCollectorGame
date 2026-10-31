@@ -3,6 +3,7 @@
 // applyItemToMonster chọn cách áp theo category của item.
 
 import { raceMatchesAny } from './races'
+import { addPurity, purityOf } from './bloodlines'
 import {
   asObject,
   assertNever,
@@ -14,13 +15,13 @@ import {
   createRng,
   type RngState
 } from '../shared'
+import { canHaveGmaxFactor } from '../inventory'
 import { autoEvolve, evolveVia, stoneEvolution } from '../progression'
 import {
   ABILITY_SLOT_CHANGES,
   addEffortValues,
   changedAbilitySlot,
   type AbilitySlotChange,
-  canHaveGmaxFactor,
   effortTotal,
   emptyEffortValues,
   expCandyScale,
@@ -334,6 +335,26 @@ const addAffinity: ItemEffectHandler = {
   }
 }
 
+// ---------- addPurity: + độ thuần một nhóm huyết mạch (Tinh huyết, docs/rules/bloodline.md) ----------
+
+const addPurityEffect: ItemEffectHandler = {
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    const issues =
+      typeof obj.groupId === 'string' && Object.hasOwn(data.bloodlines, obj.groupId)
+        ? []
+        : [`groupId: nhóm huyết mạch không tồn tại "${String(obj.groupId)}"`]
+    return [...issues, ...checkNumber(obj.amount, 'amount', Number.MIN_VALUE)]
+  },
+  // Chỉ quái thuộc nhóm; đã 100% thì không có tác dụng (không mất vật phẩm).
+  apply(params, { data, monster }) {
+    const { groupId, amount } = params as { groupId: string; amount: number }
+    const changed = addPurity(data, monster, groupId, amount)
+    return purityOf(changed, groupId) === purityOf(monster, groupId) ? null : changed
+  }
+}
+
 // ---------- addExp: + EXP theo tầng cao nhất (Kẹo EXP) ----------
 
 const addExp: ItemEffectHandler = {
@@ -388,6 +409,7 @@ export const ITEM_EFFECTS: Readonly<Record<string, ItemEffectHandler>> = {
   addExp,
   levelUp,
   addAffinity,
+  addPurity: addPurityEffect,
   ...TREASURE_EFFECTS
 }
 

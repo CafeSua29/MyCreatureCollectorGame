@@ -1,8 +1,21 @@
 import { describe, expect, it } from 'vitest'
 import { addItems, equipmentSlotCount, type GameState, type Monster } from '@core'
-import { makeData, makeEquipment, makeGameState, makeMonster, makeZMoveData } from '@core/testing'
+import {
+  makeBloodlineData,
+  makeData,
+  makeEquipment,
+  makeGameState,
+  makeMonster,
+  makeZMoveData
+} from '@core/testing'
 import { shouldStopEarly } from './earlyStop'
-import { floorMapsFor, sweepFloor, withLeadZCrystal, type FloorSweepOptions } from './floorSweep'
+import {
+  floorMapsFor,
+  sweepFloor,
+  withAssumedPurity,
+  withLeadZCrystal,
+  type FloorSweepOptions
+} from './floorSweep'
 
 const data = makeData()
 
@@ -164,5 +177,16 @@ describe('withLeadZCrystal', () => {
     expect(
       equipment.some((entry) => entry.storage === 'instance' && entry.instance.id === 'e0')
     ).toBe(false)
+  })
+})
+
+describe('withAssumedPurity (biến thể assumedPurity)', () => {
+  it('quái thuộc nhóm mang huyết mạch chính là nhóm đầu của loài; loài không thuộc nhóm giữ nguyên', () => {
+    const blood = makeBloodlineData()
+    const nymph = makeMonster({ id: 'a', speciesId: 'nymph', baseSpeciesId: 'nymph' })
+    const plain = makeMonster({ id: 'b' })
+    const [withBlood, unchanged] = withAssumedPurity(blood, [nymph, plain], 50)
+    expect(withBlood.bloodlines).toEqual([{ groupId: 'wyrm', purity: 50 }])
+    expect(unchanged).toBe(plain)
   })
 })

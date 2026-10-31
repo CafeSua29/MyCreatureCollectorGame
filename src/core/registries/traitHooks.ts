@@ -56,6 +56,7 @@ import { uniformPercent } from './statPercentSources'
 import { SURVIVAL_TRAIT_HOOKS, type LethalSurvival } from './survivalTraitHooks'
 import { STAGE_TRAIT_HOOKS, type StageTraitEffect, type StageTraitEvent } from './stageTraitHooks'
 import { percentToMultiplier, scaleStats, validatePartialStats } from './traitHookUtils'
+import { bloodlineTraitOf } from './bloodlines'
 import { affinityTierOf } from './affinityTiers'
 import { activeTalents } from './talents'
 import { teamBonusHooks } from './teamBonuses'
@@ -654,7 +655,8 @@ export const HOOK_SOURCE_KINDS = [
   'formation',
   'partner',
   'frenzy',
-  'collection'
+  'collection',
+  'bloodline'
 ] as const
 
 export type HookSourceKind = (typeof HOOK_SOURCE_KINDS)[number]
@@ -674,6 +676,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
       return kind
     case 'trait':
     case 'race':
+    case 'bloodline':
     case 'ability':
     case 'gained':
     case 'aura':
@@ -909,6 +912,12 @@ function ownHooks(
   }
   for (const id of raceTraitIds(data, monster)) {
     push(data.traits[id].hooks, 1, id, { kind: 'race', ownerId })
+  }
+  // Trait huyết mạch (docs/rules/bloodline.md): suy từ huyết mạch chính, cấp theo mốc độ thuần.
+  const bloodlineTrait = bloodlineTraitOf(data, monster)
+  if (bloodlineTrait) {
+    const { id, level } = bloodlineTrait
+    push(data.traits[id].hooks, levelEffectScale(step, level), id, { kind: 'bloodline', ownerId })
   }
   // Ability theo loài (docs/rules/abilities.md): như trait cấp 1, không đổi theo cấp.
   const abilityId = abilitySuppressed

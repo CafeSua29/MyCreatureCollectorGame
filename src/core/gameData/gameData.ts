@@ -48,6 +48,8 @@ import { checkNatureData } from './validateNatures'
 import { checkBodyPartData } from './validateBodyParts'
 import { checkAptitudeTiers } from './validateAptitude'
 import { checkSpeciesRankData } from './validateSpeciesRank'
+import { checkBloodlineData } from './validateBloodlines'
+import { checkStarterData } from './validateStarters'
 import { checkPartnerSkillData } from './validatePartnerSkills'
 import { checkAwakeningData } from './validateAwakening'
 import { checkHumanFormData } from './validateHumanForm'
@@ -185,6 +187,7 @@ export function createGameData(raw: RawGameData): GameData {
     bodyParts: indexById(raw.bodyParts, 'bodyParts', issues),
     aptitudeTiers: indexById(raw.aptitudeTiers, 'aptitudeTiers', issues),
     speciesRanks: indexById(raw.speciesRanks, 'speciesRanks', issues),
+    bloodlines: indexById(raw.bloodlines, 'bloodlines', issues),
     partnerSkills: indexById(raw.partnerSkills, 'partnerSkills', issues),
     recipes: indexById(raw.recipes, 'recipes', issues),
     quests: indexById(raw.quests, 'quests', issues),
@@ -237,6 +240,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkBodyPartData(data, issues)
   checkAptitudeTiers(data, issues)
   checkSpeciesRankData(data, issues)
+  checkBloodlineData(data, issues)
   checkPartnerSkillData(data, issues)
   checkAwakeningData(data, issues)
   checkHumanFormData(data, issues)
@@ -263,6 +267,8 @@ export function createGameData(raw: RawGameData): GameData {
   checkTrialData(data, issues)
   checkZoneData(data, issues)
   checkEventData(data, issues)
+  // Sau cùng: danh sách loài của ô khởi đầu chỉ dựng khi phần dữ liệu khác hợp lệ.
+  checkStarterData(data, issues)
   checkTexts(data, issues)
   if (issues.length > 0) throw new DataError(issues)
   return data

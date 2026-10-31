@@ -199,6 +199,9 @@ export interface ActionErrorParams {
   cannotTakeHumanForm: { monsterId: string; reason: 'race' | 'awakeningTooLow' | 'alreadyTaken' }
   /** Đổi dạng khi chưa hóa hình / race không cho nhân hình; đổi đúng dạng đang có. */
   humanFormNotTaken: { monsterId: string }
+  purityTooLow: { monsterId: string; purity: number; required: number }
+  notAncestor: { monsterId: string; speciesId: string }
+  fusedCannotAtavize: { monsterId: string }
   humanFormUnchanged: { monsterId: string; form: string }
   /** Skill ở ô nhân hình đang khóa (quái không ở nhân hình). */
   humanFormSkillLocked: { monsterId: string; skillId: string }
@@ -464,6 +467,11 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   cannotTakeHumanForm: ({ monsterId, reason }) =>
     `Quái "${monsterId}" chưa hóa hình được (${reason})`,
   humanFormNotTaken: ({ monsterId }) => `Quái "${monsterId}" chưa hóa hình hoặc không có nhân hình`,
+  purityTooLow: ({ monsterId, purity, required }) =>
+    `Quái "${monsterId}" có huyết mạch chính ${purity}%, cần ${required}% để phản tổ`,
+  notAncestor: ({ monsterId, speciesId }) =>
+    `"${speciesId}" không phải loài tổ của huyết mạch chính của quái "${monsterId}"`,
+  fusedCannotAtavize: ({ monsterId }) => `Quái fuse "${monsterId}" không phản tổ được`,
   humanFormUnchanged: ({ monsterId, form }) => `Quái "${monsterId}" đang ở dạng "${form}"`,
   humanFormSkillLocked: ({ monsterId, skillId }) =>
     `Skill "${skillId}" của "${monsterId}" chỉ dùng được ở nhân hình`,

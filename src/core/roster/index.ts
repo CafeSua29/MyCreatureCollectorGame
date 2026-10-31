@@ -3,6 +3,7 @@
 export * from './equipActions'
 export * from './forgeActions'
 export * from './formationActions'
+export * from './bloodlineActions'
 export * from './humanFormActions'
 export * from './owned'
 export * from './roster'

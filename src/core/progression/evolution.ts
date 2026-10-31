@@ -20,7 +20,8 @@ import {
   isHolding,
   partySlotsOf,
   partySlotsUsed,
-  type EvolutionScene
+  type EvolutionScene,
+  keepValidBloodlines
 } from '../registries'
 import {
   dayOf,
@@ -192,7 +193,9 @@ export function evolveMonster(
         ? 'beast'
         : monster.humanForm,
     elementIds: [...target.elementIds],
-    pendingEvolutionIds: []
+    pendingEvolutionIds: [],
+    // Nhóm huyết mạch theo cả chuỗi tiến hóa nên thường giữ đủ; nhóm loài mới không thuộc thì bỏ.
+    bloodlines: keepValidBloodlines(data, monster.bloodlines, target.id)
   }
   const newSkills = target.learnset
     .filter((entry) => entry.level <= monster.level)

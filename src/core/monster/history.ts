@@ -124,7 +124,7 @@ const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
   reborn: { fields: { count: positiveInteger }, pendingRoadmap: 'rebirth.md' },
   mutatedEvolution: { fields: SPECIES_CHANGE },
   imprintPerfected: { fields: {} },
-  atavized: { fields: SPECIES_CHANGE, pendingRoadmap: 'bloodline.md' },
+  atavized: { fields: SPECIES_CHANGE },
   died: { fields: { cause: deathCauseField } }
 }
 

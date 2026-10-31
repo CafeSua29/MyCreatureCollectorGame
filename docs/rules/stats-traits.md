@@ -5,7 +5,7 @@
 ## Thứ tự tính chỉ số
 
 ```
-(gốc loài + gen × geneWeight) × độ lệch race × bossMultiplier × hệ số thức tỉnh
+(gốc loài pha huyết mạch + gen × geneWeight) × độ lệch race × bossMultiplier × hệ số thức tỉnh
   → nhân hệ số level: × (1 + (level − 1) × growth[race][stat])
   → cộng fusingBonusStats
   → áp trait (cộng / nhân %; % cộng mọi nguồn: trait, trang bị, trạng thái...)
@@ -15,6 +15,7 @@
   → áp bậc tăng/giảm trong trận
 ```
 
+- **Gốc pha huyết mạch** (`bloodline.md`): `max(gốc, (1 − p) × gốc + p × gốc tổ)` từng chỉ số theo huyết mạch chính (`bloodlineBaseStats`); không có huyết mạch thì là gốc loài.
 - **Cấy ghép** (đã chốt, **chưa làm**, xem "Phòng Thí Nghiệm: cấy ghép" trong Lộ trình): `implantBonusStats` sẽ được cộng **cùng chỗ với gen**, **không nhân `geneWeight`**: `(gốc loài + gen × geneWeight + implantBonusStats) × độ lệch race × bossMultiplier → ...`. Kết quả của bước này vẫn tối thiểu 1, vì phần cấy ghép có thể âm.
 - **Mega** (`transformation.md`): đang Mega thì "gốc loài" ở bước đầu lấy từ loài dạng Mega thay cho `baseSpeciesId`; mọi bước sau giữ nguyên. Biến hình lưu trên quái (`battleTransform`) nên max HP / chỉ số như nhau ở mọi nơi tính.
 - Gen được **cộng vào chỉ số gốc trước**, để breeding giúp loài yếu đuổi kịp loài mạnh bằng cách cộng thêm, đồng thời boss, race và level vẫn nhân lên cả phần gen.
@@ -56,7 +57,7 @@
 
 - Quái mới có **3 ô trait** (trait có lợi hoặc bất lợi). Mỗi lần làm quái gốc khi fuse **+1 ô**, tối đa **6**. Số ô lưu trên từng quái (`traitSlots`); con breeding nhận số ô cao nhất của bố mẹ (nên quái thường cũng có thể hơn 3 ô). Config: `traitSlots: { initial: 3, max: 6 }`.
 - **Ô trống là cố ý.** Số ô (`traitSlots`) và số trait đang có là hai thứ riêng: quái có thể có ô trống (ví dụ con breeding chỉ có tối đa 2 trait nhưng nhận tới 6 ô từ bố mẹ). Đây không phải lỗi, không tự lấp ô trống. Cách lấp ô: fuse (trait random lại theo số ô), và sau này **inject tinh thể trait** (xem "Extract / inject trait" trong Lộ trình tiếp theo).
-- Trait **shiny**, **Huyết thống boss**, **trait race** và **ability theo loài** (`abilities.md`) không tính vào giới hạn.
+- Trait **shiny**, **Huyết thống boss**, **trait race**, **trait huyết mạch** (loại `bloodline`, suy từ huyết mạch chính, cấp theo mốc độ thuần, nguồn hook `bloodline` thuộc nhóm % `traits`; `bloodline.md`) và **ability theo loài** (`abilities.md`) không tính vào giới hạn.
 - Mỗi trait khai báo trong JSON: `id`, loại (`positive`, `negative`, `rare`, `shiny`, `boss`, `race`), nhóm loại trừ, và các hook tác động: tính chỉ số, khi gây sát thương, khi nhận sát thương, cuối lượt, tỉ lệ bắt, tỉ lệ fuse thành công khi làm quái gốc (`fuseChanceBonus { points }`, điểm % × hệ số cấp; mục "Fuse thất bại và bùa fuse" ở `fusing.md`), miễn trạng thái (`statusImmunity { statusIds }`, không đổi theo cấp)... Tên ở `i18n/<ngôn ngữ>/traits.json`.
 - Hook trait theo hệ và môi trường (`registries/fieldTraitHooks.ts`, luật ở mục "Môi trường" của `battle-environment.md`): `elementDamageTaken { elementIds, percent }` (−100% khai báo = miễn nhiễm thật), `airborne` (không chạm đất), `statModifierInWeather { weatherIds, percent }`, `terrainStatModifier { terrainIds, percent }`, `regenInWeather { weatherIds, percent }`, `setFieldOnEntry { layer, fieldId, turns? }`, `fieldDamageImmunity`, `absorbElement` (mục "Trait cuối lượt và trạng thái" của `battle-traits.md`). Quy ước cấp: chỉ nhân % (chỉ số, hồi máu, sát thương nhận); số lượt, id môi trường, hook bật / tắt và miễn nhiễm −100% không đổi theo cấp.
 - **Hook trait chỉ số có điều kiện và theo đồng đội** (`registries/conditionalTraitHooks.ts`), cộng % ở bước áp trait như trait thường:

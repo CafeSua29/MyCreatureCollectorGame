@@ -19,8 +19,8 @@
 
 ## Màn chọn quái khởi đầu (đã chốt)
 
-- Quái khởi đầu: **Rồng Lửa Nhí / Mầm Tiên / Trâu Sóng** (Lửa / Cỏ / Nước), khai báo ở `config.starter.speciesIds` (theo thứ tự hiển thị).
-- **Gen, trait và tỉ lệ shiny random theo seed như quái hoang** (shiny dùng `config.shiny.wildChance`; ra shiny thì có trait shiny như mọi quái), level `config.starter.level` (5). Bấm "Game mới" tạo seed mới → `rollStarters` random sẵn một ứng viên mỗi loài; thẻ hiển thị **đúng con sẽ nhận** (chỉ số tính bằng `computeStats`). Xác nhận → `createNewGame` random lại từ cùng seed (tất định) nên ra đúng con đã xem. Muốn "reroll" thì quay lại và bấm "Game mới" lần nữa.
+- Ứng viên: mỗi ô của `config.starter.slots` một loài random theo seed (luật ở `starters.md`), thẻ theo thứ tự ô.
+- **Gen, trait và tỉ lệ shiny random theo seed như quái hoang** (shiny dùng `config.shiny.wildChance`; ra shiny thì có trait shiny như mọi quái), level `config.starter.level` (5). Bấm "Game mới" tạo seed mới → `rollStarters` random sẵn một ứng viên mỗi ô; thẻ hiển thị **đúng con sẽ nhận** (chỉ số tính bằng `computeStats`). Xác nhận → `createNewGame` random lại từ cùng seed (tất định) nên ra đúng con đã xem. Muốn "reroll" thì quay lại và bấm "Game mới" lần nữa.
 - Người chơi chọn thêm: **giới tính** (mặc định là giới tính đã random của ứng viên; loài không giới tính thì ẩn lựa chọn này, thẻ hiện "Không giới tính") và **biệt danh** tùy chọn (luật như `renameMonster`: cắt khoảng trắng, rỗng = không có, tối đa `maxNicknameLength`).
 - Thanh chỉ số của các thẻ dùng chung một thang (chỉ số lớn nhất trong các thẻ) để so sánh.
 - Game mới: ở **thị trấn**, đội gồm quái khởi đầu (id `m1`, `nextMonsterId` = 2), tiền `config.starter.money`, vật phẩm `config.starter.items`, cửa hàng đã random hàng (sau khi random quái khởi đầu), `version` hiện tại.

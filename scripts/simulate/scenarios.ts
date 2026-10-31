@@ -87,6 +87,12 @@ export interface Variant {
    * như Song thú hợp thể, docs/rules/battle-merge.md); null = giả định theo tầng.
    */
   tamerRealm: number | null
+  /**
+   * Độ thuần giả định của đội mẫu khi quét tầng (docs/rules/bloodline.md): mỗi quái mang huyết mạch
+   * chính là nhóm đầu của loài với độ thuần này (loài không thuộc nhóm nào thì không có); null = như
+   * tung lúc dựng đội.
+   */
+  assumedPurity: number | null
 }
 
 /** Trường skill biến thể được bỏ (skill-synergy-hold.md, move-styles.md, hit-locations.md). */
@@ -458,7 +464,8 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     'withoutPartnerSkills',
     'tactic',
     'uncontracted',
-    'tamerRealm'
+    'tamerRealm',
+    'assumedPurity'
   ])
   return {
     id: r.string(obj.id, `${path}.id`),
@@ -477,7 +484,11 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     uncontracted:
       obj.uncontracted === undefined ? false : r.boolean(obj.uncontracted, `${path}.uncontracted`),
     tamerRealm:
-      obj.tamerRealm === undefined ? null : r.integer(obj.tamerRealm, `${path}.tamerRealm`, 0)
+      obj.tamerRealm === undefined ? null : r.integer(obj.tamerRealm, `${path}.tamerRealm`, 0),
+    assumedPurity:
+      obj.assumedPurity === undefined
+        ? null
+        : r.number(obj.assumedPurity, `${path}.assumedPurity`, 1, 100)
   }
 }
 

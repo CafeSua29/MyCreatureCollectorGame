@@ -173,7 +173,7 @@ function checkFormSpecies(data: GameData, species: NormalSpecies, issues: string
 
 /**
  * Dạng Mega / gmax chỉ là dạng biến hình trong trận: không gặp ngoài tự nhiên, không làm boss, không
- * là quái khởi đầu, không phải đích tiến hóa (nên không nở từ trứng, không sở hữu được).
+ * phải đích tiến hóa (nên không nở từ trứng, không sở hữu được).
  */
 function checkBattleOnlyForms(data: GameData, issues: string[]): void {
   const isForm = (speciesId: string): boolean => {
@@ -189,9 +189,6 @@ function checkBattleOnlyForms(data: GameData, issues: string[]): void {
     for (const speciesId of new Set(used.filter(isForm))) {
       issues.push(`Biome "${biome.id}": dạng biến hình "${speciesId}" không được gặp / làm boss`)
     }
-  }
-  for (const speciesId of data.config.starter?.speciesIds ?? []) {
-    if (isForm(speciesId)) issues.push(`config.starter: dạng biến hình "${speciesId}"`)
   }
   for (const species of Object.values(data.species)) {
     if (species.kind !== 'normal') continue

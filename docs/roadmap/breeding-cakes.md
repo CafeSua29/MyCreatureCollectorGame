@@ -13,7 +13,7 @@ Như bánh của Palworld 1.0: vật phẩm dùng **khi breed** để đổi k�
 | --------------------- | ----------------------------------------------------------------------------------- |
 | Bánh Linh Chi         | gen của con tung lệch lên: phần "tăng / giảm theo %" nghiêng về tăng (+10 điểm %)   |
 | Bánh Song Sinh        | ra **2 trứng** (con thứ hai tung độc lập)                                           |
-| Bánh Biến Dị          | tỉ lệ đột biến (gen mọi chỉ số tăng) ×3; tỉ lệ đột biến phản tổ ×2 (`bloodline.md`) |
+| Bánh Biến Dị          | tỉ lệ đột biến (gen mọi chỉ số tăng) ×3; tỉ lệ đột biến phản tổ ×2 (`docs/rules/bloodline.md`, `atavismMutationChance` trong `rollChildBloodlines`) |
 | Bánh Truyền Thừa      | con giữ tối đa **3 trait** thay vì 2 (vẫn 1 trait mỗi bên + 1 random từ hai bên)    |
 | Bánh Kim Quang (hiếm) | tỉ lệ shiny của con ×5                                                              |
 

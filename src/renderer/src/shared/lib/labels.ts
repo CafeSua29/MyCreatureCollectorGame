@@ -26,7 +26,8 @@ export const TRAIT_KIND_LABELS: Record<TraitKind, string> = {
   rare: 'Hiếm',
   shiny: 'Shiny',
   boss: 'Boss',
-  race: 'Chủng tộc'
+  race: 'Chủng tộc',
+  bloodline: 'Huyết mạch'
 }
 
 /** Vị trí trong tóm tắt save (màn Tải game). */

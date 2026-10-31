@@ -2,7 +2,10 @@
 // npm run simulate [đường dẫn kịch bản] [--workers N] [--parts a,b] [--teams a,b].
 
 import { parseArgs } from 'node:util'
+import { MACHINE_SHARE } from './cpuLimit.mjs'
 import { SIM_PARTS, type SimPart } from './jobs'
+
+export { MACHINE_SHARE }
 
 export const DEFAULT_SCENARIOS = 'scripts/simulate/scenarios.json'
 
@@ -54,12 +57,54 @@ function readParts(value: string | undefined): SimPart[] | null {
 const MIN_JOBS_PER_WORKER = 3
 
 /**
- * Số worker tự chọn: số luồng CPU − 1 (chừa một luồng cho máy) nhưng không quá
+ * Bộ nhớ ngoài heap của một luồng (mã đã biên dịch, buffer, stack), cộng vào khi chia RAM. Ước
+ * lượng rộng tay để tổng RSS không vượt phần RAM được dùng.
+ */
+const THREAD_OVERHEAD_MB = 256
+
+/** Heap tối thiểu của một worker; RAM không đủ chia chừng này thì bớt worker. */
+const MIN_WORKER_HEAP_MB = 1024
+
+/**
+ * Số worker tự chọn: số luồng CPU được dùng (limitCpu, cpuLimit.mjs) nhưng không quá
  * ⌊số việc / MIN_JOBS_PER_WORKER⌋, tối thiểu 1.
  */
-export function autoWorkers(availableParallelism: number, jobCount: number): number {
+export function autoWorkers(cpuThreads: number, jobCount: number): number {
   const byJobs = Math.floor(jobCount / MIN_JOBS_PER_WORKER)
-  return Math.max(1, Math.min(availableParallelism - 1, byJobs))
+  return Math.max(1, Math.min(cpuThreads, byJobs))
+}
+
+export interface MachineResources {
+  /** Số luồng CPU được dùng, tiến trình đã được ghim vào chừng này luồng (limitCpu, cpuLimit.mjs). */
+  cpuThreads: number
+  totalMemoryMb: number
+  /** Trần heap của luồng chính (luồng chính vẫn giữ dữ liệu và kết quả khi có worker). */
+  mainHeapLimitMb: number
+}
+
+export interface WorkerPlan {
+  /** 1 = chạy tuần tự trong luồng chính. */
+  workers: number
+  /** Trần heap (old generation) mỗi worker; null khi không tạo worker. */
+  workerHeapMb: number | null
+}
+
+/**
+ * Chọn số worker và trần heap mỗi worker sao cho cả lần chạy dùng tối đa MACHINE_SHARE CPU và RAM.
+ * `--workers N` lớn hơn trần thì bị hạ xuống trần.
+ */
+export function planWorkers(
+  machine: MachineResources,
+  jobCount: number,
+  requested: number | null
+): WorkerPlan {
+  const memoryBudgetMb =
+    machine.totalMemoryMb * MACHINE_SHARE - machine.mainHeapLimitMb - THREAD_OVERHEAD_MB
+  const memoryCap = Math.floor(memoryBudgetMb / (MIN_WORKER_HEAP_MB + THREAD_OVERHEAD_MB))
+  const wanted = requested ?? autoWorkers(machine.cpuThreads, jobCount)
+  const workers = Math.max(1, Math.min(wanted, machine.cpuThreads, memoryCap, jobCount))
+  if (workers === 1) return { workers, workerHeapMb: null }
+  return { workers, workerHeapMb: Math.floor(memoryBudgetMb / workers - THREAD_OVERHEAD_MB) }
 }
 
 /** Đọc tham số; sai thì ném Error kèm cách dùng. */

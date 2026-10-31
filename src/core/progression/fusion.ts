@@ -34,6 +34,7 @@ import {
   assertNotBusy,
   betterSpiritVirus,
   computeStats,
+  fuseBloodlines,
   mapBigStats,
   mergeTraitLevel,
   soulFuseRefund,
@@ -216,6 +217,8 @@ export function fuseMonsters(
     affinity: Math.max(base.affinity, sub.affinity),
     // Linh dịch: giữ trạng thái tốt hơn của hai quái (docs/rules/spirit-virus.md).
     spiritVirus: betterSpiritVirus(base.spiritVirus, sub.spiritVirus),
+    // Huyết mạch: cộng một phần độ thuần của quái phụ (docs/rules/bloodline.md).
+    bloodlines: fuseBloodlines(data, base, sub),
     pendingEvolutionIds: [],
     // Hấp thu thọ nguyên (mục "Tuổi và thọ nguyên"): quái gốc giữ tuổi, nhận % số năm còn lại của
     // quái phụ; tắt thọ nguyên thì không hấp thu.

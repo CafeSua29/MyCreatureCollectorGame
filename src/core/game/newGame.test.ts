@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import { rawGameData } from '@data'
 import { createGameData } from '../gameData'
+import { canHaveGmaxFactor } from '../inventory'
 import { validateMonster } from '../monster'
+import { starterSlotPool } from '../registries'
 import { ActionError, toBig } from '../shared'
 import { rollShopStock } from '../shop'
 import { rollFloorBiome } from '../world'
@@ -9,7 +11,7 @@ import { migrateState } from './migrate'
 import { createNewGame, rollStarters } from './newGame'
 import { SAVE_VERSION, gameReducer } from './reducer'
 import { validateGameState } from './validateGameState'
-import { makeData, makeRawData, makeInventory, expectActionError } from '../testing'
+import { defined, makeData, makeRawData, makeInventory, expectActionError } from '../testing'
 
 // Fixture: quái khởi đầu weakling / twig, level 5, 500 tiền, 5 bóng + 3 thuốc.
 const data = makeData()
@@ -17,12 +19,20 @@ const data = makeData()
 describe('rollStarters', () => {
   it('một ứng viên mỗi loài khởi đầu, đúng thứ tự, level cố định, hợp lệ', () => {
     const { candidates } = rollStarters(data, 42)
-    expect(candidates.map((m) => m.speciesId)).toEqual(['weakling', 'twig'])
+    // Vị trí hiển thị random: so theo tập loài.
+    expect(candidates.map((m) => m.speciesId).sort()).toEqual(['twig', 'weakling'])
     for (const monster of candidates) {
       expect(monster.level).toEqual(5)
       expect(monster.exp).toEqual(125)
       expect(validateMonster(data, monster)).toEqual([])
     }
+  })
+
+  it('vị trí hiển thị các ô được xáo theo seed (ô nào cũng có thể đứng đầu)', () => {
+    const firsts = new Set<string>()
+    for (let seed = 1; seed <= 20; seed++)
+      firsts.add(rollStarters(data, seed).candidates[0].speciesId)
+    expect([...firsts].sort()).toEqual(['twig', 'weakling'])
   })
 
   it('cùng seed cùng ứng viên; seed khác thì gen khác', () => {
@@ -39,6 +49,29 @@ describe('rollStarters', () => {
         Object.values(m.genes).map((gene) => gene.toString())
       )
     expect(genesOf(1)).not.toEqual(genesOf(2))
+  })
+
+  it('ô random trong danh sách của ô, không trùng loài ô trước, ô hết loài thì bỏ', () => {
+    const raw = makeRawData()
+    const pool = ['weakling', 'twig', 'pebble']
+    raw.config.starter.slots = [
+      { conditions: [{ kind: 'species', speciesIds: pool }] },
+      { conditions: [{ kind: 'species', speciesIds: pool }] },
+      { conditions: [{ kind: 'species', speciesIds: pool }] },
+      // Hết loài: cả ba loài đã ra ở ba ô trước.
+      { conditions: [{ kind: 'species', speciesIds: pool }] }
+    ]
+    const custom = createGameData(raw)
+    const seen = new Set<string>()
+    for (let seed = 1; seed <= 30; seed++) {
+      const ids = rollStarters(custom, seed).candidates.map((m) => m.speciesId)
+      expect([...ids].sort()).toEqual([...pool].sort())
+      seen.add(ids[0])
+    }
+    // Vị trí đầu ra được mọi loài (loài random đều và vị trí cũng xáo).
+    expect([...seen].sort()).toEqual([...pool].sort())
+    // Loài fixture không mang được Gmax Factor.
+    expect(rollStarters(custom, 1).candidates.every((m) => !m.gmaxFactor)).toBe(true)
   })
 
   it('có tỉ lệ shiny như quái hoang (config.shiny.wildChance)', () => {
@@ -65,7 +98,10 @@ describe('createNewGame', () => {
   }
 
   it('nhận đúng con đã xem ở màn chọn, áp giới tính và biệt danh', () => {
-    const preview = rollStarters(data, 99).candidates[1]
+    const preview = defined(
+      rollStarters(data, 99).candidates.find((m) => m.speciesId === 'twig'),
+      'ứng viên twig'
+    )
     const state = createNewGame(data, options)
     // Quái khởi đầu nhận lý lịch "starter" lúc vào game (ngày 0, ở thị trấn).
     const history = {
@@ -147,10 +183,26 @@ describe('createNewGame', () => {
     )
   })
 
-  it('dữ liệu thật: 3 quái khởi đầu Lửa / Cỏ / Nước', () => {
+  it('dữ liệu thật: mỗi ô một loài dạng đầu khác nhau, đúng danh sách của ô, có Gmax Factor nếu mang được', () => {
     const real = createGameData(rawGameData)
+    let hasGmax = false
+    for (let seed = 1; seed <= 8; seed++) {
+      const { candidates: rolled } = rollStarters(real, seed)
+      expect(rolled).toHaveLength(real.config.starter.slots.length)
+      expect(new Set(rolled.map((m) => m.speciesId)).size).toBe(rolled.length)
+      // Vị trí đã xáo: mỗi ô có đúng ứng viên của mình ở đâu đó trong danh sách.
+      for (const slot of real.config.starter.slots) {
+        const pool = starterSlotPool(real, slot)
+        expect(rolled.some((m) => pool.includes(m.speciesId))).toBe(true)
+      }
+      for (const monster of rolled) {
+        expect(monster.gmaxFactor).toBe(canHaveGmaxFactor(real, monster.speciesId))
+        expect(validateMonster(real, monster)).toEqual([])
+      }
+      hasGmax ||= rolled.some((m) => m.gmaxFactor)
+    }
+    expect(hasGmax).toBe(true)
     const { candidates } = rollStarters(real, 1)
-    expect(candidates.map((m) => m.elementIds[0])).toEqual(['fire', 'grass', 'water'])
     // Bảng nhiệm vụ đủ nhiệm vụ ngay từ đầu (docs/rules/quests.md); linh điền theo config.
     const state = createNewGame(real, {
       seed: 1,

@@ -2,7 +2,7 @@
 
 > Một phần tài liệu project. Mục lục và quy tắc chung: `CLAUDE.md` ở thư mục gốc. Các tham chiếu "mục X" / "xem X" tra tên mục trong `docs/index.md` (mục lục chi tiết).
 
-Màn chọn quái khởi đầu (`ui.md`, hiện cố định 3 loài ở `config.starter.speciesIds`) có thêm lựa chọn **mở khóa dần** qua các lần chơi. Đây là tiến trình **xuyên save** (meta), nên lưu **ngoài save game**. Làm sau "Thành tựu và danh hiệu".
+Màn chọn quái khởi đầu (`ui.md`, hiện random theo ô `config.starter.slots`, `starters.md`) có thêm lựa chọn **mở khóa dần** qua các lần chơi. Đây là tiến trình **xuyên save** (meta), nên lưu **ngoài save game**. Làm sau "Thành tựu và danh hiệu".
 
 ## Lưu trữ
 
@@ -12,7 +12,7 @@ Màn chọn quái khởi đầu (`ui.md`, hiện cố định 3 loài ở `confi
 
 - Dữ liệu `config.starter.unlocks` (hoặc file mới `starterUnlocks.json`): `{ speciesId, condition }`, điều kiện theo registry: `dexCaught { count }` (Dex, ở bất kỳ save nào), `achievement { id, tier }`, `highestFloor { floor }`, `ascensions { count }`, `ownedSpecies { speciesId }` (từng sở hữu loài đó ở một save nào: mở chính loài đó làm khởi đầu, dạng đầu tiên của chuỗi).
 - Mở khóa khi một action trong game đạt điều kiện; renderer ghi vào `profile.json`, hiện thông báo.
-- **Màn chọn:** 3 loài mặc định luôn có; loài đã mở thêm hiện theo nhóm (hệ / nguồn), có ô tìm kiếm. Quái khởi đầu theo luật cũ (level 5, gen / trait / shiny random theo seed); loài mở khóa từ `ownedSpecies` **không** mang theo gen của con cũ.
+- **Màn chọn:** các ô random mặc định luôn có; loài đã mở thêm hiện theo nhóm (hệ / nguồn), có ô tìm kiếm. Quái khởi đầu theo luật cũ (level 5, gen / trait / shiny random theo seed); loài mở khóa từ `ownedSpecies` **không** mang theo gen của con cũ.
 - Đề xuất mở khóa đầu: 3 bộ khởi đầu Pokémon mỗi thế hệ (theo `dexCaught`), rồng con D&D (`highestFloor 50`), một linh thú Sơn Hải Kinh (`ascensions 1`). Chủ project sửa danh sách trong JSON.
 - Không đổi `GameState`.
 

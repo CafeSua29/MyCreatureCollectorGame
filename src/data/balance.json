@@ -451,7 +451,34 @@
     "uniquePoolDropChance": 5
   },
   "starter": {
-    "speciesIds": ["emberling", "sproutling", "tidehorn"],
+    "slots": [
+      {
+        "conditions": [
+          {
+            "kind": "lineHasForm",
+            "formKinds": ["mega", "gmax"]
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "kind": "bloodline"
+          }
+        ]
+      },
+      {
+        "conditions": [
+          {
+            "kind": "evolvesToRank",
+            "rankId": "S"
+          }
+        ]
+      },
+      {
+        "conditions": []
+      }
+    ],
     "level": 5,
     "money": 500,
     "items": {
@@ -962,6 +989,18 @@
       },
       {
         "itemId": "fiveElementsScroll",
+        "chance": 3
+      },
+      {
+        "itemId": "fourSpiritsScroll",
+        "chance": 3
+      },
+      {
+        "itemId": "myriadBloodlinesScroll",
+        "chance": 3
+      },
+      {
+        "itemId": "pureBloodArrayScroll",
         "chance": 3
       }
     ]
@@ -2595,5 +2634,39 @@
     "springHealPercent": 40,
     "guardianRareRolls": 2,
     "cooldownDays": 3
+  },
+  "bloodline": {
+    "wildPurityWeights": [
+      {
+        "min": 0,
+        "max": 0,
+        "weight": 70
+      },
+      {
+        "min": 1,
+        "max": 10,
+        "weight": 25
+      },
+      {
+        "min": 11,
+        "max": 30,
+        "weight": 5
+      }
+    ],
+    "bossPurityBonus": 20,
+    "breedDownPoints": 5,
+    "breedUpPoints": 8,
+    "atavismMutationChance": 1,
+    "atavismMutationPoints": 30,
+    "ancestorBirthChance": 0.1,
+    "ancestorBirthMinPurity": 50,
+    "essenceDropChance": 25,
+    "bossKillPurity": 1,
+    "ancestorKillPurity": 3,
+    "fusePurityPercent": 50,
+    "mixAtFullPurity": 1,
+    "milestones": [25, 50, 75, 100],
+    "atavismCostPerLevel": 100,
+    "scrollDropChance": 3
   }
 }

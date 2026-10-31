@@ -2407,5 +2407,22 @@
   "embodyAspectTeal": "Embody Aspect (Teal)",
   "embodyAspectHearthflame": "Embody Aspect (Hearthflame)",
   "embodyAspectWellspring": "Embody Aspect (Wellspring)",
-  "embodyAspectCornerstone": "Embody Aspect (Cornerstone)"
+  "embodyAspectCornerstone": "Embody Aspect (Cornerstone)",
+  "dragonBloodline": "Dragon Majesty",
+  "phoenixBloodline": "Phoenix Flame",
+  "rocBloodline": "Roc Wings",
+  "foxBloodline": "Fox Allure",
+  "wolfBloodline": "Wolf Instinct",
+  "tigerBloodline": "Tiger Might",
+  "turtleBloodline": "Tortoise Shell",
+  "serpentBloodline": "Serpent Spirit",
+  "qilinBloodline": "Qilin Blessing",
+  "bullBloodline": "Bull Strength",
+  "seaBloodline": "Abyssal Depth",
+  "insectBloodline": "Chitin Carapace",
+  "undeadBloodline": "Corpse Aura",
+  "demonBloodline": "Demon Blaze",
+  "giantBloodline": "Giant Strength",
+  "plantBloodline": "Sylvan Spirit",
+  "saurianBloodline": "Primeval Power"
 }

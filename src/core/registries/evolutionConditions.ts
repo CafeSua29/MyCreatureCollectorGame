@@ -4,7 +4,7 @@
 // Params được validateParams kiểm tra lúc khởi động nên isMet ép kiểu params trực tiếp.
 
 import { raceMatches, raceRefIds } from './races'
-import { asObject, checkEnumList, checkInteger } from '../shared'
+import { asObject, checkEnumList, checkInteger, checkNumber } from '../shared'
 import {
   AGE_STAGES,
   DAY_PHASES,
@@ -18,6 +18,7 @@ import {
 } from '../model'
 import { checkFieldIdList, checkIdList } from './paramChecks'
 import { ageStage } from './lifespan'
+import { MAX_PURITY, purityOf } from './bloodlines'
 import { aptitudeTierRank, hasAptitudeAtLeast } from './aptitude'
 import { checkHourOfDay, dayPhaseOf, moonPhaseOf, seasonOf } from './calendar'
 
@@ -285,6 +286,22 @@ const awakening: EvolutionConditionHandler = {
   isMet: (params, { monster }) => monster.awakening >= (params as { min: number }).min
 }
 
+// Độ thuần nhóm huyết mạch groupId ≥ min (điểm %, docs/rules/bloodline.md).
+const bloodlinePurity: EvolutionConditionHandler = {
+  scope: 'monster',
+  validateParams: (params, data) =>
+    withObject(params, (obj) => [
+      ...(typeof obj.groupId === 'string' && Object.hasOwn(data.bloodlines, obj.groupId)
+        ? []
+        : [`groupId: nhóm huyết mạch không tồn tại "${String(obj.groupId)}"`]),
+      ...checkNumber(obj.min, 'min', Number.MIN_VALUE, MAX_PURITY)
+    ]),
+  isMet: (params, { monster }) => {
+    const { groupId, min } = params as { groupId: string; min: number }
+    return purityOf(monster, groupId) >= min
+  }
+}
+
 const ageStageCondition: EvolutionConditionHandler = {
   scope: 'monster',
   validateParams: (params) =>
@@ -361,6 +378,7 @@ export const EVOLUTION_CONDITIONS: Readonly<Record<string, EvolutionConditionHan
   heldItem,
   bossDefeats,
   awakening,
+  bloodlinePurity,
   ageStage: ageStageCondition,
   partnerInParty,
   aptitude,

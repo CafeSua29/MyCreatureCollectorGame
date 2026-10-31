@@ -6,13 +6,21 @@ import { newTamerState } from '../tamer'
 import { defaultGameOptions, rollExpeditionBoard } from '../progression'
 import { refillQuestBoard } from '../quests'
 import { newSafariState, newZoneState, rollFloorBiome, rollMonster } from '../world'
-import { createInventory } from '../inventory'
+import { canHaveGmaxFactor, createInventory } from '../inventory'
 import { rollShopStock } from '../shop'
-import { ActionError, BIG_ONE, malformedAction, createRng, toBig, type RngState } from '../shared'
+import {
+  ActionError,
+  BIG_ONE,
+  malformedAction,
+  createRng,
+  shuffle,
+  toBig,
+  type RngState
+} from '../shared'
 import { newDexState, normalizeNickname, syncDex } from '../roster'
 import { startHistory } from '../monster'
 import { bindContract } from '../tamer'
-import { ageDaysAtPercent } from '../registries'
+import { ageDaysAtPercent, starterSlotPool } from '../registries'
 import { SAVE_VERSION, newAlchemyState, newSmithingState, newTrainerState } from './reducer'
 import {
   dayOf,
@@ -27,8 +35,10 @@ import {
 const STARTER_ID = 'm1'
 
 /**
- * Random một ứng viên cho mỗi loài khởi đầu (theo thứ tự trong config): level cố định,
- * gen, trait và tỉ lệ shiny như quái hoang (config.shiny.wildChance).
+ * Random một ứng viên cho mỗi ô khởi đầu (docs/rules/starters.md): loài random đều trong danh sách
+ * của ô, không trùng loài ô trước (ô hết loài thì bỏ), rồi xáo vị trí hiển thị; level cố định,
+ * gen, trait và tỉ lệ shiny như quái hoang (config.shiny.wildChance); loài mang được Gmax Factor
+ * thì luôn có.
  */
 export function rollStarters(
   data: GameData,
@@ -38,13 +48,17 @@ export function rollStarters(
   const { starter } = data.config
   let rng = createRng(seed)
   const candidates: Monster[] = []
-  for (const speciesId of starter.speciesIds) {
+  for (const slot of starter.slots) {
+    const pool = starterSlotPool(data, slot).filter(
+      (speciesId) => !candidates.some((m) => m.speciesId === speciesId)
+    )
+    if (pool.length === 0) continue
     let monster: Monster
     ;[monster, rng] = rollMonster(
       data,
       rng,
       {
-        encounters: [{ speciesId, weight: 1 }],
+        encounters: pool.map((speciesId) => ({ speciesId, weight: 1 })),
         levelMin: starter.level,
         levelMax: starter.level,
         geneMultiplier: BIG_ONE,
@@ -55,9 +69,12 @@ export function rollStarters(
     )
     // Tuổi khởi đầu cố định (không tốn RNG): % thọ nguyên của config.lifespan.spawnAgePercent.
     const ageDays = ageDaysAtPercent(data, monster, data.config.lifespan.spawnAgePercent.starter)
-    candidates.push({ ...monster, ageDays })
+    const gmaxFactor = canHaveGmaxFactor(data, monster.speciesId)
+    candidates.push({ ...monster, ageDays, gmaxFactor })
   }
-  return { candidates, rng }
+  // Vị trí các ô trên màn chọn cũng random (không có "ô 1 luôn là Mega"), để người chơi tự khám phá.
+  const [shuffled, afterShuffle] = shuffle(rng, candidates)
+  return { candidates: shuffled, rng: afterShuffle }
 }
 
 export interface NewGameOptions {

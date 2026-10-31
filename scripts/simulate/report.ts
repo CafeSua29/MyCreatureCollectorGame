@@ -493,6 +493,8 @@ export function lineageTable(rows: readonly LineageRow[]): Table {
       'reachChance',
       'skillPower',
       'inheritedSkills',
+      'bloodline',
+      'purity',
       'note'
     ],
     rows: rows.map((row) => [
@@ -508,6 +510,8 @@ export function lineageTable(rows: readonly LineageRow[]): Table {
       row.reachChance === null ? '' : `${row.reachChance.toPrecision(3)}%`,
       String(row.skillPower),
       row.inheritedSkills === null ? '' : String(row.inheritedSkills),
+      row.bloodlineGroupId,
+      String(row.bloodlinePurity),
       row.note
     ])
   }

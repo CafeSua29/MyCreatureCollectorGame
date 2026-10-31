@@ -27,14 +27,14 @@ import {
   memoInReadOnlyScope
 } from '../shared'
 import { checkElementIds, isTeraElement } from '../gameData'
-import { isBookableSkill, validateEquippedItems } from '../inventory'
-import { canHaveGmaxFactor } from './forms'
+import { canHaveGmaxFactor, isBookableSkill, validateEquippedItems } from '../inventory'
 import { checkLifeFields } from './life'
 import { validateHistory } from './history'
 import { validateImprint } from './imprint'
 import { validateSkillMastery } from './mastery'
 import { validateTalentRanks } from './talents'
 import { validateSpiritVirus } from './spiritVirus'
+import { validateBloodlines } from './bloodline'
 
 /** Object chỉ số → số nguyên ≥ 0 (cấp hồn tinh, điểm nỗ lực). */
 function checkCountStats(value: unknown, field: string): string[] {
@@ -305,6 +305,7 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   // đây để đổi trần trong config không làm hỏng save cũ.
   issues.push(...checkCountStats(monster.effortValues, at('effortValues')))
   issues.push(...validateSpiritVirus(monster.spiritVirus, at('spiritVirus')))
+  issues.push(...validateBloodlines(data, monster, at('bloodlines')))
   if (!(ABILITY_SLOTS as readonly unknown[]).includes(monster.abilitySlot)) {
     issues.push(`${at('abilitySlot')} phải là ${ABILITY_SLOTS.join(' / ')}`)
   }

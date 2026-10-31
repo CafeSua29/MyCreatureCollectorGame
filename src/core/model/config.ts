@@ -5,6 +5,7 @@ import type {
   EquipmentRarity,
   NormalRarity,
   CrystalTraitKind,
+  FormKind,
   GlobalFieldLayer,
   TraitKind
 } from './content'
@@ -148,6 +149,8 @@ export interface BalanceConfig {
   effort: EffortConfig
   /** Linh dịch, như Pokérus (docs/rules/spirit-virus.md). */
   spiritVirus: SpiritVirusConfig
+  /** Huyết mạch và phản tổ (docs/rules/bloodline.md). */
+  bloodline: BloodlineConfig
   /** Thiên phú quái (docs/rules/monster-talents.md). */
   talents: TalentConfig
   /** Hệ thống event, chợ đen, thú triều (docs/rules/events.md). */
@@ -258,6 +261,45 @@ export interface EffortConfig {
    * dần, bậc đầu mốc 0), dồn vào chỉ số gốc cao nhất.
    */
   derivedYield: DerivedEffortTier[]
+}
+
+/** Một khoảng độ thuần tung cho quái hoang, theo trọng số. */
+export interface PurityRollTier {
+  min: number
+  max: number
+  weight: number
+}
+
+/** Mọi tỉ lệ tính bằng %, độ thuần tính bằng điểm % (docs/rules/bloodline.md). */
+export interface BloodlineConfig {
+  /** Độ thuần mỗi nhóm của quái hoang / boss / trứng boss: chọn khoảng theo trọng số rồi tung đều. */
+  wildPurityWeights: PurityRollTier[]
+  /** Boss cộng thêm vào mọi nhóm của nó. */
+  bossPurityBonus: number
+  /** Con breeding: trung bình bố mẹ + số nguyên đều trong [−breedDownPoints, +breedUpPoints]. */
+  breedDownPoints: number
+  breedUpPoints: number
+  /** Đột biến phản tổ khi breed: tỉ lệ và điểm cộng vào huyết mạch chính của con. */
+  atavismMutationChance: number
+  atavismMutationPoints: number
+  /** Mẹ có huyết mạch chính ≥ ancestorBirthMinPurity: tỉ lệ con là một loài tổ của nhóm đó. */
+  ancestorBirthChance: number
+  ancestorBirthMinPurity: number
+  /** Tỉ lệ boss rơi Tinh huyết mỗi nhóm của nó (loài tổ của nhóm thì chắc chắn rơi). */
+  essenceDropChance: number
+  /** Tỉ lệ boss rơi trận đồ của mỗi nhóm của nó có trận đồ (loài tổ thì chắc chắn rơi). */
+  scrollDropChance: number
+  /** Thắng trận boss: quái tham chiến cùng nhóm với địch nhận thêm (địch là loài tổ: ancestorKillPurity). */
+  bossKillPurity: number
+  ancestorKillPurity: number
+  /** Fuse: quái gốc nhận % độ thuần của quái phụ ở nhóm mà quái gốc cũng thuộc. */
+  fusePurityPercent: number
+  /** Hệ số pha trộn chỉ số gốc ở độ thuần 100%. */
+  mixAtFullPurity: number
+  /** Mốc độ thuần (tăng dần): số mốc đã đạt = cấp trait huyết mạch. */
+  milestones: number[]
+  /** Giá phản tổ = atavismCostPerLevel × level. */
+  atavismCostPerLevel: number
 }
 
 export interface SpiritVirusConfig {
@@ -691,9 +733,35 @@ export interface ShopConfig {
   crystalWeights: Record<CrystalTraitKind, number>
 }
 
+/**
+ * Điều kiện của một ô quái khởi đầu (docs/rules/starters.md), xét trên loài dạng đầu có tiến hóa.
+ * Handler ở registries/starterConditions.ts (STARTER_CONDITIONS).
+ */
+export type StarterCondition =
+  /** Chuỗi tiến hóa (chính nó hoặc dạng sau) có dạng thuộc `formKinds` (Mega, Gigantamax...). */
+  | { kind: 'lineHasForm'; formKinds: FormKind[] }
+  /** Chính nó hoặc một dạng sau đạt phẩm cấp loài ≥ `rankId` (tiềm năng cao). */
+  | { kind: 'evolvesToRank'; rankId: string }
+  /** Thuộc danh sách loài cho trước. */
+  | { kind: 'species'; speciesIds: string[] }
+  /** Thuộc ít nhất một nhóm huyết mạch (phản tổ được về sau; docs/rules/bloodline.md). */
+  | { kind: 'bloodline' }
+
+export const STARTER_CONDITION_KINDS = [
+  'lineHasForm',
+  'evolvesToRank',
+  'species',
+  'bloodline'
+] as const
+
+/** Một ô ứng viên khởi đầu: random đều trong loài thỏa mọi điều kiện (rỗng = mọi loài hợp lệ). */
+export interface StarterSlot {
+  conditions: StarterCondition[]
+}
+
 export interface StarterConfig {
-  /** Các loài người chơi được chọn khi bắt đầu game (theo thứ tự hiển thị). */
-  speciesIds: string[]
+  /** Mỗi ô ra một ứng viên (theo thứ tự hiển thị), không trùng loài với ô trước. */
+  slots: StarterSlot[]
   level: number
   money: number
   /** Vật phẩm ban đầu: id → số lượng. */

@@ -459,7 +459,15 @@ export type Species = NormalSpecies | FusedSpecies
 
 // ---------- Trait ----------
 
-export const TRAIT_KINDS = ['positive', 'negative', 'rare', 'shiny', 'boss', 'race'] as const
+export const TRAIT_KINDS = [
+  'positive',
+  'negative',
+  'rare',
+  'shiny',
+  'boss',
+  'race',
+  'bloodline'
+] as const
 
 export type TraitKind = (typeof TRAIT_KINDS)[number]
 
@@ -471,7 +479,7 @@ export interface TraitKindRule {
   hasCrystal: boolean
   /** Được phép có trong `config.wild.traitKindWeights` (tung cho quái hoang). */
   wildRollable: boolean
-  /** Suy ra từ dữ liệu (trait race theo `raceId`), không bao giờ lưu trong `monster.traits`. */
+  /** Suy ra từ dữ liệu (trait race theo `raceId`, trait huyết mạch), không bao giờ lưu trong `monster.traits`. */
   derived: boolean
 }
 
@@ -482,7 +490,9 @@ export const TRAIT_KIND_RULES = {
   rare: { usesSlot: true, hasCrystal: true, wildRollable: true, derived: false },
   shiny: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: false },
   boss: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: false },
-  race: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: true }
+  race: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: true },
+  // Trait huyết mạch suy từ huyết mạch chính (docs/rules/bloodline.md).
+  bloodline: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: true }
 } as const satisfies Readonly<Record<TraitKind, TraitKindRule>>
 
 /** Loại trait có tinh thể (bảng giá / trọng số tinh thể theo loại phải đủ các loại này). */
@@ -1491,6 +1501,26 @@ export interface SpeciesRankDef {
   from: number
 }
 
+/**
+ * Nhóm huyết mạch (src/data/bloodlines.json; tên ở i18n; docs/rules/bloodline.md). Thành viên: loài
+ * thường có loài trong chuỗi tiến hóa khớp `raceIds` / `elementIds` / `speciesIds`, trừ
+ * `excludeSpeciesIds` và trừ loài tổ của nhóm.
+ */
+export interface BloodlineDef {
+  id: string
+  ancestorSpeciesIds: string[]
+  raceIds?: string[]
+  elementIds?: string[]
+  speciesIds?: string[]
+  excludeSpeciesIds?: string[]
+  /** Trait loại `bloodline` của nhóm (cấp theo mốc độ thuần). */
+  traitId: string
+  /** Tinh huyết của nhóm: vật phẩm tiêu hao có hiệu ứng addPurity đúng nhóm này. */
+  essenceItemId: string
+  /** Trận đồ của nhóm (rơi từ boss thuộc nhóm, chắc chắn từ loài tổ); bỏ trống = không có. */
+  scrollItemId?: string
+}
+
 export interface WeightedItem {
   itemId: string
   weight: number
@@ -1624,6 +1654,7 @@ export interface RawGameData {
   bodyParts: BodyPartDef[]
   aptitudeTiers: AptitudeTierDef[]
   speciesRanks: SpeciesRankDef[]
+  bloodlines: BloodlineDef[]
   partnerSkills: PartnerSkillDef[]
   recipes: RecipeDef[]
   quests: QuestTemplate[]
@@ -1674,6 +1705,8 @@ export interface GameData {
   aptitudeTiers: Record<string, AptitudeTierDef>
   /** Phẩm cấp loài theo thứ tự tăng dần của `from` (docs/rules/species-rank.md). */
   speciesRanks: Record<string, SpeciesRankDef>
+  /** Nhóm huyết mạch (docs/rules/bloodline.md); thứ tự key = thứ tự trong JSON (hòa độ thuần). */
+  bloodlines: Record<string, BloodlineDef>
   /** Kỹ năng đồng hành (docs/rules/partner-skills.md). */
   partnerSkills: Record<string, PartnerSkillDef>
   /** Công thức luyện đan (docs/rules/alchemy.md). */

@@ -244,4 +244,17 @@ export interface Monster {
    * hoang null; tiến hóa giữ; fuse giữ trạng thái tốt hơn của hai quái.
    */
   spiritVirus: SpiritVirus | null
+  /**
+   * Độ thuần huyết mạch theo nhóm (docs/rules/bloodline.md): số trong (0, 100], tối đa 1 chữ số thập
+   * phân, không lặp nhóm, chỉ nhóm loài gốc là thành viên, thứ tự theo bloodlines.json. Nhóm 0 không
+   * ghi. Quái hoang tung; con breeding theo bố mẹ; fuse cộng một phần của quái phụ; tiến hóa giữ (bỏ
+   * nhóm loài mới không thuộc).
+   */
+  bloodlines: BloodlinePurity[]
+}
+
+/** Độ thuần của một nhóm huyết mạch trên quái. */
+export interface BloodlinePurity {
+  groupId: string
+  purity: number
 }

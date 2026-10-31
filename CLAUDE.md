@@ -44,6 +44,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [trait-dsl.md](docs/rules/trait-dsl.md): ngôn ngữ trait, trait / spell / buff Siralim, minion, Timeline
 - [tamer.md](docs/rules/tamer.md): ngự thú sư, khế ước, cảnh giới, kỹ năng ngự thú sư (`tamer/`)
 - [affinity.md](docs/rules/affinity.md): độ thân mật
+- [bloodline.md](docs/rules/bloodline.md): huyết mạch và phản tổ
 - [awakening.md](docs/rules/awakening.md): thức tỉnh và độ kiếp
 - [human-form.md](docs/rules/human-form.md): hóa hình
 - [treasures.md](docs/rules/treasures.md): thiên tài địa bảo
@@ -88,6 +89,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [breeding-eggs.md](docs/rules/breeding-eggs.md): breeding, trứng
 - [shiny-boss.md](docs/rules/shiny-boss.md): shiny, boss, trứng boss
 - [saves.md](docs/rules/saves.md): lưu / đọc save, Xuất / Nhập (`game/save.ts`, `main/saves/`)
+- [starters.md](docs/rules/starters.md): quái khởi đầu (ô random theo điều kiện, dạng đầu có tiến hóa)
 - [ui.md](docs/rules/ui.md): UI hiện có, kiểm tra UI bằng Playwright (`src/renderer/`)
 - [testing.md](docs/rules/testing.md): fixture test
 - [balance-numbers.md](docs/rules/balance-numbers.md): luật chung về số, số cơ bản; số theo tính năng ở `balance-content.md`, `balance-capture.md`, `balance-systems.md`, `balance-traits.md`, điều tra ở `balance-history.md`

@@ -5,8 +5,8 @@
 // Thêm loại mới = thêm vào TRANSFORM_KINDS + một handler ở đây (Record báo lỗi nếu thiếu).
 // Đặt trong battle/ (không ở registries/) vì handler cần tra dạng loài của monster/.
 
-import { formsOf, megaFormsByStone } from '../monster'
-import { heldZCrystals } from '../inventory'
+import { megaFormsByStone } from '../monster'
+import { formsOf, heldZCrystals } from '../inventory'
 import { isLargeMonster } from '../registries'
 import {
   STELLAR,

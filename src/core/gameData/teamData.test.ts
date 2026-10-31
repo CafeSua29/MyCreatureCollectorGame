@@ -24,7 +24,7 @@ describe('dữ liệu phối hợp đội', () => {
         { count: 3, hooks: [{ type: 'statModifier', params: { percent: { attack: 5 } } }] },
         { count: 7, hooks: [{ type: 'aura', params: {} }] }
       ]
-      raw.synergies[1].match = { type: 'bloodline' }
+      raw.synergies[1].match = { type: 'luck' }
     })
     expect(issues).toEqual([
       'Cộng hưởng "bruteKin": match: trường "extra" không thuộc loại "race"',
@@ -33,7 +33,7 @@ describe('dữ liệu phối hợp đội', () => {
       'Cộng hưởng "bruteKin": tiers[1]: count phải tăng dần',
       'Cộng hưởng "bruteKin": tiers[2]: count tối đa bằng số quái trong đội (6)',
       'Cộng hưởng "bruteKin": tiers[2]: hooks[0]: hook "aura" không dùng được trong cộng hưởng',
-      'Cộng hưởng "fireAttuned": match: loại "bloodline" chưa có trong registry'
+      'Cộng hưởng "fireAttuned": match: loại "luck" chưa có trong registry'
     ])
   })
 

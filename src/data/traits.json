@@ -54222,5 +54222,289 @@
         }
       }
     ]
+  },
+  {
+    "id": "dragonBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 5,
+            "attack": 5,
+            "spAttack": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "phoenixBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "rocBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 8,
+            "attack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "foxBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 6,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wolfBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 6,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "tigerBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 8,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "turtleBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -5
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4,
+            "spDefense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["poison", "badPoison"]
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4,
+            "spAttack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "qilinBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 5,
+            "spDefense": 5,
+            "spAttack": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "bullBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 8,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "seaBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 5,
+            "spDefense": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 6,
+            "speed": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "undeadBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 5,
+            "spAttack": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "giantBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 8,
+            "attack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "plantBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "saurianBloodline",
+    "kind": "bloodline",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 6,
+            "defense": 4
+          }
+        }
+      }
+    ]
   }
 ]

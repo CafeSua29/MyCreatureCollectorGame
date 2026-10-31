@@ -11,6 +11,7 @@ import { rollMonster } from '../world'
 import { breedBlocker, evolveMonster, fuse, makeOffspring } from '../progression'
 import { createNewGame, gameReducer, rollStarters } from '../game'
 import {
+  defined,
   expectActionError,
   makeData,
   makeMonster,
@@ -258,12 +259,18 @@ describe('thuốc đổi giới tính', () => {
 describe('game mới', () => {
   const genderlessStarter = (() => {
     const raw = makeRawData()
-    raw.config.starter.speciesIds = ['pebble', 'weakling']
+    raw.config.starter.slots = [
+      { conditions: [{ kind: 'species', speciesIds: ['pebble'] }] },
+      { conditions: [{ kind: 'species', speciesIds: ['weakling'] }] }
+    ]
     return createGameData(raw)
   })()
 
   it('quái khởi đầu không giới tính: ứng viên none, chỉ nhận gender none', () => {
-    const [candidate] = rollStarters(genderlessStarter, 5).candidates
+    const candidate = defined(
+      rollStarters(genderlessStarter, 5).candidates.find((m) => m.speciesId === 'pebble'),
+      'ứng viên pebble'
+    )
     expect(candidate.gender).toBe('none')
     const options = { seed: 5, starterSpeciesId: 'pebble', nickname: null }
     const state = createNewGame(genderlessStarter, { ...options, gender: 'none' })

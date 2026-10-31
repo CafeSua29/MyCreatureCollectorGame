@@ -20,6 +20,7 @@ import {
   fuseMonsters,
   fuseSuccessChance,
   inheritableSkillIds,
+  mainBloodline,
   makeOffspring,
   newFusionSpecies,
   pick,
@@ -57,6 +58,9 @@ export interface LineageRow {
   skillPower: number
   /** Fuse: số skill kế thừa ở lần fuse ra đời này; breed / đời 0: null. */
   inheritedSkills: number | null
+  /** Huyết mạch chính (docs/rules/bloodline.md): id nhóm và độ thuần; không có thì '' và 0. */
+  bloodlineGroupId: string
+  bloodlinePurity: number
   /** Ghi chú khi không làm được đời này (ví dụ không có con cái, hết loài mới). */
   note: string
 }
@@ -122,6 +126,7 @@ function makeRow(
 ): LineageRow {
   const statTotal = sumStats(computeStats(data, base.monster).final)
   const aptitude = aptitudeOf(data, base.monster, base.floor)
+  const main = mainBloodline(base.monster)
   return {
     kind: base.kind,
     generation: base.generation,
@@ -135,6 +140,8 @@ function makeRow(
     reachChance: base.reachChance ?? null,
     skillPower: sumSkillPower(data, base.monster),
     inheritedSkills: base.inheritedSkills ?? null,
+    bloodlineGroupId: main?.groupId ?? '',
+    bloodlinePurity: main?.purity ?? 0,
     note: base.note ?? ''
   }
 }

@@ -481,6 +481,12 @@ function addSpiritVirus(save: SaveObject): SaveObject {
   return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 70 }
 }
 
+/** v72 → v73 (huyết mạch, docs/rules/bloodline.md): mọi quái (kể cả trứng) chưa có độ thuần nào. */
+function addBloodlines(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, bloodlines: [] })
+  return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 73 }
+}
+
 /** v64 → v65 (ability theo loài, docs/rules/abilities.md): mọi quái (kể cả trứng) ô ability thứ nhất. */
 function addAbilitySlot(save: SaveObject): SaveObject {
   const first = (m: RawMonster): RawMonster => ({ ...m, abilitySlot: 'first' })
@@ -919,7 +925,8 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
     ...save,
     version: 72,
     options: { ...asObject(save.options), permadeathEnabled: false }
-  })
+  }),
+  72: addBloodlines
 }
 
 /**

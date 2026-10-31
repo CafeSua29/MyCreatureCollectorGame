@@ -154,6 +154,13 @@ Tách từ `simulation.md` (cách chạy, luật dùng kết quả, kịch bản
 - Cột `economy` ở `progression.csv`: `sold` (món đã bán), `affinity` (vật phẩm thân mật đã dùng), `mega` (lần cầm đá Mega), `zCrystal` (lần cầm Z-Crystal), `critItem` (đồ cầm chí mạng đã mua và cầm), `plots` (ô linh điền mua), `bond` (lần kết bản mệnh), `dex` (mốc Bộ sưu tập đã nhận, `claimDexRewardsWhenPossible`), `contract` / `contractFail` / `escape` (khế ước thành công / thất bại / quái bỏ trốn: "người chơi" khế ước quái đội mẫu chưa khế ước khi tỉ lệ ≥ `minContractChance` 60%, `contractTeamWhenPossible`; `tamer.md` mục "Khế ước").
 - Không mô phỏng (ảnh hưởng nhỏ tới cân bằng hoặc đã đo riêng): Bạc Hà Tính Cách (±10% một chỉ số), học lại skill ở NPC, đổi hệ Tera, chiến thuật tự đánh (đã có biến thể A/B ở quét tầng), đổi nhân hình / bản thể, chọn quái đầu đội theo kỹ năng đồng hành.
 
+## Huyết mạch (`lineage.ts`, quét tầng)
+
+- `lineage.csv` thêm cột `bloodline` / `purity`: huyết mạch chính của quái mỗi đời breed / fuse (`bloodline.md`). Mẹ đời 0 và bố mỗi đời tung độ thuần như quái hoang (`rollMonster`), "người chơi" chọn con theo gen (không chọn theo độ thuần), nên cột đo độ thuần trôi khi breed không chủ đích.
+- Biến thể A/B `noBloodline` (config `wildPurityWeights` chỉ 0, `bossPurityBonus` 0: không quái nào có huyết mạch) đã đo một lần ngày 2026-10-31 (kết quả ở `balance-systems.md`) rồi bỏ khỏi `scenarios.json` để mô phỏng đỡ tốn; thêm lại (khai báo ở trên) khi đổi số độ thuần quái hoang / boss.
+- Biến thể `blood50` (`assumedPurity: 50`, cờ biến thể mới `assumedPurity`, `withAssumedPurity` ở `floorSweep.ts`): mỗi quái của đội mẫu mang huyết mạch chính là nhóm đầu của loài với độ thuần 50% (trait cấp 2, pha chỉ số 50%, cộng hưởng nhóm khi ≥ 2 quái cùng nhóm, hợp kích song huyết khi đủ thân mật). Trận pháp không đo (quét tầng không đặt trận pháp).
+- `backToFloor` (`battleRunner.ts`): trận event trước trận đo mà đội bị thương thì về thị trấn hồi máu rồi quay lại tầng, kể cả khi event thắng mà vẫn ở tầng (trước đây chỉ hồi khi bị đưa về thị trấn, nên có lúc lần thử lại báo `noHealthyMonster`; lộ ra khi huyết mạch đổi chuỗi RNG).
+
 ## Breed / fuse nhiều đời (`lineage.ts`)
 
 Chỉ đo gen, chỉ số và giá; gọi thẳng hàm thuần (`makeOffspring`, `fuseMonsters`), không qua NPC thị trấn (không đo kinh tế, thời gian ấp trứng). Chưa đánh trận với quái sau breed / fuse.

@@ -55,6 +55,7 @@ Bước 5f (2026-10-24, save v30). Code: `registries/evolutionConditions.ts`, `p
 - **Đồ chỉ để tiến hóa:** đồ cầm (`held`) được có `hooks: []` (vật phẩm tiến hóa Pokémon cầm khi lên level / trao đổi, Dị Biến Thạch).
 - Ngoài trận trên tầng, `useItem` (đá, kẹo) xét điều kiện theo nơi đang đứng; dùng ở thị trấn thì hướng có điều kiện map / môi trường "không có tác dụng", không mất đá.
 - Điều kiện `awakening { min }` (scope `monster`, tầng thức tỉnh ≥ min; `awakening.md`). Điều kiện theo lúc tiến hóa (scope `moment`, giờ game của `EvolutionScene.time`): `timeOfDay { phases }`, `hourRange { fromHour, toHour }`, `season { seasons }`, `moonPhase { phases }` (`calendar.md`); chọn hướng chờ coi điều kiện `place` / `moment` là đủ (`assumeScene`). Chưa có: `bloodlinePurity { groupId, min }` (chờ `bloodline.md`); nội dung chờ ở `docs/roadmap/evolution-content.md`. Tiến hóa đặc biệt của Pokémon, 11 cặp dị biến và nhánh có điều kiện của nguồn khác đã nhập (`content-sources.md`).
+- Điều kiện `bloodlinePurity { groupId, min }` (scope `monster`, độ thuần nhóm huyết mạch ≥ min; `bloodline.md`). Tiến hóa giữ huyết mạch: nhóm tính theo cả chuỗi tiến hóa, nhóm loài mới không thuộc thì bỏ (`keepValidBloodlines`).
 
 ## Skill chờ học và học lại
 

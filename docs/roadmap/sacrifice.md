@@ -15,4 +15,5 @@ Tên chọn để không lẫn với Fuse: quái phụ **hiến mình**, quái c
 - **Truyền qua fuse:** quái gốc giữ stacks của mình **cộng thêm stacks của quái phụ** (không +1 thêm, vì đó là fuse chứ không phải hiến tế).
 - **Breeding không truyền:** con luôn có `sacrificeStacks = 0`. Lý do (đã chốt): breeding không làm mất bố mẹ, nếu truyền thì breed liên tục sẽ nhân bản stacks miễn phí. Fuse thì được truyền vì quái phụ mất đi (stacks chỉ chuyển chỗ, không nhân bản).
 - **Hiến tế hàng loạt:** chọn nhiều quái phụ theo bộ lọc (mục "Thao tác hàng loạt"), mỗi con tính như một lần hiến tế (stacks và giá cộng dồn), là **một action** của core.
+- **Huyết mạch** (`docs/rules/bloodline.md`, đã làm): quái phụ cùng nhóm huyết mạch thì quái chính nhận `sacrificePurityPercent` (25%, thêm vào `config.bloodline`) độ thuần của quái phụ ở các nhóm loài gốc của quái chính thuộc (cộng qua `withPurity` như `fuseBloodlines`).
 - `MonsterView` hiện `sacrificeStacks` và % đang được cộng. State đổi (trường mới trên quái) nên **tăng version save**, migrate đặt `sacrificeStacks = 0` cho mọi quái.

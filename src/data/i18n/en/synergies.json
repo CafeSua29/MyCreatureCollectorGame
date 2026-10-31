@@ -42,5 +42,22 @@
   "elementDark": "Attuned: Dark",
   "elementSteel": "Attuned: Steel",
   "elementFairy": "Attuned: Fairy",
-  "elementLight": "Attuned: Light"
+  "elementLight": "Attuned: Light",
+  "bloodlineDragon": "Kindred Blood: Dragon Bloodline",
+  "bloodlinePhoenix": "Kindred Blood: Phoenix Bloodline",
+  "bloodlineRoc": "Kindred Blood: Roc Bloodline",
+  "bloodlineFox": "Kindred Blood: Fox Bloodline",
+  "bloodlineWolf": "Kindred Blood: Wolf Bloodline",
+  "bloodlineTiger": "Kindred Blood: Tiger Bloodline",
+  "bloodlineTurtle": "Kindred Blood: Tortoise Bloodline",
+  "bloodlineSerpent": "Kindred Blood: Serpent Bloodline",
+  "bloodlineQilin": "Kindred Blood: Qilin Bloodline",
+  "bloodlineBull": "Kindred Blood: Bull Bloodline",
+  "bloodlineSea": "Kindred Blood: Abyssal Bloodline",
+  "bloodlineInsect": "Kindred Blood: Insect Bloodline",
+  "bloodlineUndead": "Kindred Blood: Undead Bloodline",
+  "bloodlineDemon": "Kindred Blood: Demon Bloodline",
+  "bloodlineGiant": "Kindred Blood: Giant Bloodline",
+  "bloodlinePlant": "Kindred Blood: Sylvan Bloodline",
+  "bloodlineSaurian": "Kindred Blood: Primeval Bloodline"
 }

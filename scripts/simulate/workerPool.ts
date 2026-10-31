@@ -10,16 +10,26 @@ import type { WorkerReply } from './worker'
 
 const WORKER_ENTRY = 'scripts/simulate/worker.mjs'
 
+export interface WorkerRun {
+  scenarios: Scenarios
+  jobs: readonly SimJob[]
+  count: number
+  /** Trần heap mỗi worker (planWorkers trong cli.ts), để cả lần chạy không vượt phần RAM được dùng. */
+  workerHeapMb: number
+}
+
 /** Chạy jobs trên `count` worker, kết quả theo thứ tự jobs; luôn tắt worker khi xong hoặc lỗi. */
 export async function runInWorkers(
-  scenarios: Scenarios,
-  jobs: readonly SimJob[],
-  count: number,
+  { scenarios, jobs, count, workerHeapMb }: WorkerRun,
   options: RunInOrderOptions<SimJob>
 ): Promise<TimedJobResult[]> {
   const workers = Array.from(
     { length: count },
-    () => new Worker(resolve(WORKER_ENTRY), { workerData: scenarios })
+    () =>
+      new Worker(resolve(WORKER_ENTRY), {
+        workerData: scenarios,
+        resourceLimits: { maxOldGenerationSizeMb: workerHeapMb }
+      })
   )
   try {
     return await runInOrder(jobs, count, (job, lane) => sendJob(workers[lane], job), options)

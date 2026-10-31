@@ -11,6 +11,7 @@
 - Quái sau fuse: đổi sang loài chung, đặt `fused = true`, thêm loài của quái phụ (và lineage của nó) vào `lineage`. **Giữ race, hệ nguyên tố và skill của quái gốc**, cộng skill chọn kế thừa của quái phụ (mục "Kế thừa skill" bên dưới). `baseSpeciesId` giữ loài của quái gốc.
 - **Thân mật** (`affinity.md`): quái gốc lấy thân mật cao hơn của hai quái.
 - **Tuổi và thọ nguyên** (`lifespan.md`): quái gốc giữ tuổi (`ageDays`) và level cao nhất từng đạt, nhận thêm `lifespan.fuseAbsorbPercent` (25%) **số năm còn lại** của quái phụ vào `lifespanBonusYears` ("hấp thu thọ nguyên"); tắt thọ nguyên thì không hấp thu.
+- **Huyết mạch** (`bloodline.md`): quái gốc giữ độ thuần của mình, cộng `bloodline.fusePurityPercent` (50%) độ thuần của quái phụ ở các nhóm loài gốc của quái gốc cũng thuộc; nhóm khác của quái phụ mất.
 - **Chi tiết đã chốt** (`src/core/progression/fusion.ts`):
   - Chỉ fuse ở **NPC thị trấn**, ngoài trận. Race, hệ, gender nào cũng được; quái đã fuse làm gốc hay phụ đều được, miễn thỏa **điều kiện fuse** bên dưới. Quái gốc và phụ ở đội hoặc kho, phải là hai con khác nhau; đội vẫn phải còn ít nhất 1 con **trong trường hợp xấu nhất** (mất cả hai quái; có Bùa Hộ Mệnh thì chỉ mất quái phụ), kiểm tra trước khi tung, vi phạm thì `partyWouldBeEmpty`. Giá = `fuseCostPerLevel × (level gốc + level phụ)`.
   - **Điều kiện fuse (xét theo loài, không theo race):**

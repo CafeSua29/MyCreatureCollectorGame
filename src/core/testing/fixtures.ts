@@ -150,7 +150,11 @@ export function makeRawData(): RawGameData {
         uniquePoolDropChance: 5
       },
       starter: {
-        speciesIds: ['weakling', 'twig'],
+        // Mỗi ô một loài cố định để test tất định.
+        slots: [
+          { conditions: [{ kind: 'species', speciesIds: ['weakling'] }] },
+          { conditions: [{ kind: 'species', speciesIds: ['twig'] }] }
+        ],
         level: 5,
         money: 500,
         items: { ball: 5, potion: 3 }
@@ -524,6 +528,30 @@ export function makeRawData(): RawGameData {
         immuneExpPercent: 25,
         effortMultiplier: 2,
         genesPerWin: 1
+      },
+      // Huyết mạch (docs/rules/bloodline.md): số như dữ liệu thật; fixture mặc định không có nhóm nào
+      // (withBloodlines thêm nhóm mẫu) nên RNG của test cũ không đổi.
+      bloodline: {
+        wildPurityWeights: [
+          { min: 0, max: 0, weight: 70 },
+          { min: 1, max: 10, weight: 25 },
+          { min: 11, max: 30, weight: 5 }
+        ],
+        bossPurityBonus: 20,
+        breedDownPoints: 5,
+        breedUpPoints: 8,
+        atavismMutationChance: 1,
+        atavismMutationPoints: 30,
+        ancestorBirthChance: 0.1,
+        ancestorBirthMinPurity: 50,
+        essenceDropChance: 25,
+        scrollDropChance: 3,
+        bossKillPurity: 1,
+        ancestorKillPurity: 3,
+        fusePurityPercent: 50,
+        mixAtFullPurity: 1,
+        milestones: [25, 50, 75, 100],
+        atavismCostPerLevel: 100
       },
       // Thiên phú (docs/rules/monster-talents.md): không rơi để RNG của test cũ không đổi.
       talents: { levelsPerPoint: 5, pointsPerAwakening: 1, bossDrops: [] },
@@ -1043,6 +1071,7 @@ export function makeRawData(): RawGameData {
         formationIds: []
       }
     ],
+    bloodlines: [],
     speciesRanks: [
       { id: 'G', from: 0 },
       { id: 'F', from: 200 },
@@ -1935,7 +1964,8 @@ function baseFields(): Omit<
     bond: false,
     contractDays: 0,
     talentRanks: {},
-    spiritVirus: null
+    spiritVirus: null,
+    bloodlines: []
   }
 }
 

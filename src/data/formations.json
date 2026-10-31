@@ -83,5 +83,510 @@
         }
       }
     ]
+  },
+  {
+    "id": "dragonClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "dragon",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "dragon"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 15,
+            "spAttack": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "phoenixClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "phoenix",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "phoenix"
+    },
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 9
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "rocClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "roc",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "roc"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 24,
+            "attack": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "foxClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "fox",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "fox"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 18,
+            "speed": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wolfClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "wolf",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "wolf"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 18,
+            "speed": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "tigerClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "tiger",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "tiger"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 24,
+            "speed": 6
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "turtleClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "turtle",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "turtle"
+    },
+    "hooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -15
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 12,
+            "spDefense": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "serpent",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "serpent"
+    },
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["poison", "badPoison"]
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 12,
+            "spAttack": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "qilinClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "qilin",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "qilin"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spDefense": 15,
+            "spAttack": 9
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "bullClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "bull",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "bull"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "seaClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "sea",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "sea"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spDefense": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "insect",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "insect"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 18,
+            "speed": 9
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "undeadClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "undead",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "undead"
+    },
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 9
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "demon",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "demon"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 15,
+            "spAttack": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "giantClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "giant",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "giant"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "plantClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "plant",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "plant"
+    },
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 9
+        }
+      }
+    ]
+  },
+  {
+    "id": "saurianClan",
+    "requires": [
+      {
+        "type": "bloodline",
+        "groupId": "saurian",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "bloodline",
+      "groupId": "saurian"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 18,
+            "defense": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fourSpirits",
+    "requires": [
+      {
+        "type": "bloodlines",
+        "groupIds": ["dragon", "qilin", "turtle", "phoenix"]
+      }
+    ],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 10,
+            "defense": 10,
+            "spAttack": 10,
+            "spDefense": 10,
+            "speed": 10
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "myriadBloodlines",
+    "requires": [
+      {
+        "type": "distinctBloodlines",
+        "count": 4
+      }
+    ],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 6,
+            "defense": 6,
+            "spAttack": 6,
+            "spDefense": 6,
+            "speed": 6
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pureBloodArray",
+    "requires": [
+      {
+        "type": "sameMainBloodline",
+        "count": 2,
+        "minPurity": 75
+      }
+    ],
+    "hooks": [
+      {
+        "type": "critStage",
+        "params": {
+          "stages": 1
+        }
+      }
+    ]
   }
 ]

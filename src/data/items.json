@@ -51528,5 +51528,451 @@
       "fromSpeciesIds": ["necrozmaDuskMane", "necrozmaDawnWings"],
       "formId": "necrozmaUltra"
     }
+  },
+  {
+    "id": "dragonEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "dragon",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "phoenixEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "phoenix",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "rocEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "roc",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "foxEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "fox",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "wolfEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "wolf",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "tigerEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "tiger",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "turtleEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "turtle",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "serpent",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "qilinEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "qilin",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "bullEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "bull",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "seaEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "sea",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "insect",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "undeadEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "undead",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "demonEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "demon",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "giantEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "giant",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "plantEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "plant",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "saurianEssence",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addPurity",
+        "params": {
+          "groupId": "saurian",
+          "amount": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "dragonClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "dragonClan"
+  },
+  {
+    "id": "phoenixClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "phoenixClan"
+  },
+  {
+    "id": "rocClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "rocClan"
+  },
+  {
+    "id": "foxClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "foxClan"
+  },
+  {
+    "id": "wolfClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "wolfClan"
+  },
+  {
+    "id": "tigerClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "tigerClan"
+  },
+  {
+    "id": "turtleClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "turtleClan"
+  },
+  {
+    "id": "serpentClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "serpentClan"
+  },
+  {
+    "id": "qilinClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "qilinClan"
+  },
+  {
+    "id": "bullClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "bullClan"
+  },
+  {
+    "id": "seaClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "seaClan"
+  },
+  {
+    "id": "insectClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "insectClan"
+  },
+  {
+    "id": "undeadClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "undeadClan"
+  },
+  {
+    "id": "demonClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "demonClan"
+  },
+  {
+    "id": "giantClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "giantClan"
+  },
+  {
+    "id": "plantClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "plantClan"
+  },
+  {
+    "id": "saurianClanScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "saurianClan"
+  },
+  {
+    "id": "fourSpiritsScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "fourSpirits"
+  },
+  {
+    "id": "myriadBloodlinesScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "myriadBloodlines"
+  },
+  {
+    "id": "pureBloodArrayScroll",
+    "category": "formationScroll",
+    "price": 3000,
+    "fixedPrice": true,
+    "formationId": "pureBloodArray"
   }
 ]

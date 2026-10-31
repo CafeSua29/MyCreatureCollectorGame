@@ -247,13 +247,19 @@ export function runBattle(
 }
 
 /**
- * Trận event thua đưa về thị trấn: hồi máu rồi quay lại tầng trước trận để gặp lại (như người chơi
- * thật). Vẫn ở tầng thì giữ nguyên.
+ * Trận event (thắng hay thua) trước trận đo: đội bị thương thì về thị trấn hồi máu rồi quay lại tầng
+ * trước trận để gặp lại (như người chơi thật); event thắng mà cả đội gục vẫn ở tầng nên cũng phải hồi,
+ * không thì lần thử lại không còn quái đánh. Không bị thương và còn ở tầng thì giữ nguyên.
  */
-function backToFloor(data: GameData, state: GameState, before: GameState): GameState {
-  if (before.location.type !== 'floor' || state.location.type === 'floor') return state
+export function backToFloor(data: GameData, state: GameState, before: GameState): GameState {
+  if (before.location.type !== 'floor') return state
   const hurt = state.party.some((m) => m.damageTaken.gt(0) || m.statuses.length > 0)
-  const healed = hurt ? simAct(data, state, { type: 'healParty' }) : state
+  if (!hurt && state.location.type === 'floor') return state
+  const inTown =
+    state.location.type === 'town'
+      ? state
+      : simAct(data, state, { type: 'travel', to: { type: 'town' } })
+  const healed = hurt ? simAct(data, inTown, { type: 'healParty' }) : inTown
   return simAct(data, healed, { type: 'travel', to: before.location })
 }
 
