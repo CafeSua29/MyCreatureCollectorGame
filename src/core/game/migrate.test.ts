@@ -67,7 +67,7 @@ function lifeMigrated(state: GameState): GameState {
   return {
     ...state,
     time: migrateData.config.clock.startHour,
-    options: { lifespanEnabled: true },
+    options: { lifespanEnabled: true, permadeathEnabled: false },
     dayEvents: [],
     party: state.party.map(lifeMigratedMonster),
     storage: state.storage.map(lifeMigratedMonster),

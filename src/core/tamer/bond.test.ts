@@ -153,7 +153,7 @@ describe('chặn và đạo thương', () => {
     const old = { ...friend(), bond: true, aging: true, ageDays: 1_000_000 }
     const base = {
       ...town([old, friend('b')]),
-      options: { lifespanEnabled: true },
+      options: { lifespanEnabled: true, permadeathEnabled: false },
       tamer: { ...town().tamer, bondDay: 0 }
     }
     const state = { ...base, party: base.party.map((m) => ({ ...m, aging: true })) }

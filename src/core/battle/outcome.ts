@@ -84,6 +84,7 @@ import {
 } from './specialBattles'
 import { restoreItemLedger } from './itemLedger'
 import { brokenPartDropMultiplier, knockoutCoreMultiplier } from './hitLocations'
+import { buryFallen, refillAfterBattleDeaths } from './permadeath'
 
 /** Kết thúc trận; quái đã bắt vào đội (còn chỗ) hoặc vào kho. */
 export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
@@ -103,10 +104,13 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   d.battle.stages = {}
   d.battle.volatiles = {}
   clearBattleOnly(data, d)
+  // Chết thật (docs/rules/options.md): quái gục rời đội trước để quái vừa bắt có chỗ trong đội.
+  buryFallen(data, d)
   // Cùng thứ tự với lúc báo nơi về khi bắt (partyAfterJoining).
   const joined = partyAfterJoining(data, d.party, d.battle.captured)
   d.storage.push(...d.battle.captured.filter((monster) => !joined.includes(monster)))
   d.party = joined
+  refillAfterBattleDeaths(data, d)
   // Linh dịch (docs/rules/spirit-virus.md): như Pokérus, sau mọi trận (thắng, thua, chạy) có thể
   // nhiễm rồi lây trong đội (kể cả quái vừa bắt đã vào đội).
   ;[d.party, d.rng] = spreadSpiritVirusAfterBattle(data, d.rng, d.party)

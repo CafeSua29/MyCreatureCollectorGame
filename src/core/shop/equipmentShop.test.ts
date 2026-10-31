@@ -115,7 +115,7 @@ describe('danh sách hàng có trang bị', () => {
     for (let seed = 0; seed < 200; seed++) {
       const roll = rollShopStock(swordOnly, createRng(seed), {
         highestFloor: 1,
-        options: { lifespanEnabled: false },
+        options: { lifespanEnabled: false, permadeathEnabled: false },
         nextItemId: 7,
         inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [] }
       })

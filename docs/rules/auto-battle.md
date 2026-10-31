@@ -14,7 +14,7 @@ Code: chọn lệnh `suggestBattleCommands(data, state, { transforms?, combos? }
 
 ## Tự farm
 
-- `nextAutoFarmStep(data, state, { minHpPercent, autoRest })` sau mỗi trận: **dừng** khi trận vừa đánh có quái ta gục / gặp shiny / gặp boss / trứng nở (đọc log của trận còn trong state), có quái chờ chọn tiến hóa hoặc chờ học skill, có quái `manual`, đội có quái đang gục; máu cả đội (`partyHpPercent`: tổng máu còn ÷ tổng max HP) dưới ngưỡng thì **nghỉ** (`rest`) nếu bật và đủ tiền, không thì dừng (`lowHp` / `cannotAffordRest`); còn lại **farm tiếp**. Mã dừng `AutoFarmStop`.
+- `nextAutoFarmStep(data, state, { minHpPercent, autoRest })` sau mỗi trận: **dừng** khi trận vừa đánh có quái ta chết thật (`monsterDied`, `options.md`) / gục / gặp shiny / gặp boss / trứng nở (đọc log của trận còn trong state), có quái chờ chọn tiến hóa hoặc chờ học skill, có quái `manual`, đội có quái đang gục; máu cả đội (`partyHpPercent`: tổng máu còn ÷ tổng max HP) dưới ngưỡng thì **nghỉ** (`rest`) nếu bật và đủ tiền, không thì dừng (`lowHp` / `cannotAffordRest`); còn lại **farm tiếp**. Mã dừng `AutoFarmStop`.
 - `manualMonsterOnField(state)`: quái `manual` đang trên sân (tự đánh 1 lượt chờ người chơi ra lệnh cho nó).
 - Dừng khi gặp event: có `events.pending` thì mọi action khác bị chặn (`events.md`), vòng tự đánh ở UI dừng lại cho người chơi chọn; người chơi bấm dừng là việc của UI.
 

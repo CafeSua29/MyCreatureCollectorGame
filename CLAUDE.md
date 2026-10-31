@@ -60,6 +60,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [skill-mastery.md](docs/rules/skill-mastery.md): độ thuần thục skill
 - [team.md](docs/rules/team.md): cộng hưởng đội, trận pháp, hợp kích
 - [imprinting.md](docs/rules/imprinting.md): dưỡng dục
+- [options.md](docs/rules/options.md): tùy chọn luật chơi theo từng game (mặc định tắt): thọ nguyên, chết thật
 - [lifespan.md](docs/rules/lifespan.md): tuổi, thọ nguyên, đồng hồ game, việc theo ngày
 - [calendar.md](docs/rules/calendar.md): ngày đêm, mùa, tuần trăng (gặp loài, thời tiết, tiến hóa, event theo lịch)
 - [soul-relics.md](docs/rules/soul-relics.md): hồn phách và hồn khí (quái chết hẳn)

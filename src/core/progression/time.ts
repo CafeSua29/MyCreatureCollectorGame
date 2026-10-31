@@ -3,8 +3,7 @@
 // (DAILY_TASKS). Mục sau có việc theo ngày (thị trường động, đấu giá, linh điền...) thêm một mục
 // vào DAILY_TASKS, không sửa advanceTime.
 
-import { ActionError, malformedAction } from '../shared'
-import { isFainted, keepAlive, tickSpiritVirusDay } from '../monster'
+import { tickSpiritVirusDay } from '../monster'
 import {
   HOURS_PER_DAY,
   dayOf,
@@ -13,7 +12,6 @@ import {
   type DayPhase,
   type GameData,
   type GameState,
-  type Monster,
   type MoonPhase,
   type Season
 } from '../model'
@@ -100,26 +98,4 @@ export function hoursUntilWake(data: GameData, time: number): number {
   const { wakeHour } = data.config.clock
   const hour = hourOf(time)
   return hour < wakeHour ? wakeHour - hour : HOURS_PER_DAY - hour + wakeHour
-}
-
-/**
- * Bật / tắt thọ nguyên (ngoài trận): mọi quái đang sở hữu (cả trong trứng) đổi cờ aging. Tắt thì
- * tuổi đứng yên và mất hiệu ứng tuổi; bật lại thì tuổi tiếp tục từ chỗ cũ.
- */
-export function setLifespanEnabled(data: GameData, state: GameState, enabled: boolean): GameState {
-  if (typeof enabled !== 'boolean') throw malformedAction('enabled phải là boolean')
-  if (state.battle) throw new ActionError('inBattle')
-  if (state.options.lifespanEnabled === enabled) {
-    throw new ActionError('optionUnchanged', { option: 'lifespanEnabled', enabled })
-  }
-  // Bật lại có thể làm max HP tụt (ấu niên, lão niên): quái đang sống không bị gục vì vậy.
-  const toggle = (monster: Monster): Monster =>
-    keepAlive(data, !isFainted(data, monster), { ...monster, aging: enabled })
-  return {
-    ...state,
-    options: { ...state.options, lifespanEnabled: enabled },
-    party: state.party.map(toggle),
-    storage: state.storage.map(toggle),
-    eggs: state.eggs.map((egg) => ({ ...egg, monster: { ...egg.monster, aging: enabled } }))
-  }
 }

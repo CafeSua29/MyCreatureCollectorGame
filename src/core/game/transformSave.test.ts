@@ -150,7 +150,7 @@ describe('vật phẩm chìa khóa', () => {
     const roll = (stacks: Record<string, number>): string[] =>
       rollShopStock(shopData, createRng(1), {
         highestFloor: 1,
-        options: { lifespanEnabled: false },
+        options: { lifespanEnabled: false, permadeathEnabled: false },
         nextItemId: 1,
         inventory: makeInventory(stacks)
       }).stock.map((entry) => (entry.storage === 'stack' ? entry.itemId : ''))

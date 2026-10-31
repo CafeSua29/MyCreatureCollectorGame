@@ -200,6 +200,8 @@ export function sweepFloor(data: GameData, options: FloorSweepOptions): FloorRes
   for (let i = 0; i < options.battles; i++) {
     if (shouldStopEarly(result.won, result.played, options.earlyStop)) break
     const fresh = createGameState({
+      // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
+      lifespanEnabled: true,
       seed: deriveSeed(seed, 'battle', team.id, floor, kind, i),
       party,
       location: { type: 'floor', floor },

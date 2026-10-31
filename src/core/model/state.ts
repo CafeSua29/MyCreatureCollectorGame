@@ -20,7 +20,7 @@ import type { MoveStyle } from './moveStyles'
 import type { BattleStages, StageStat, StatName } from './stats'
 import type { PlannedTransform, TransformKind } from './transform'
 import type { BattleTamer, TamerState } from './tamer'
-import type { DayEvent, GameOptions } from './time'
+import type { DayEvent, GameOptions, PartyRefillEvent } from './time'
 import type { SoulImprint, SoulRemnant } from './soul'
 import type { RecruitMethod, RecruitState } from './recruit'
 import type { SafariState } from './safari'
@@ -1072,6 +1072,12 @@ export type BattleEvent =
   | { type: 'awakened'; monsterId: string; tier: number }
   | { type: 'tribulationFailed'; monsterId: string; tier: number; failures: number }
   | { type: 'diedInTribulation'; monsterId: string }
+  /**
+   * Chết thật (docs/rules/options.md): quái gục trong trận chết hẳn lúc trận kết thúc, để lại hồn
+   * phách id = monsterId; đội trống thì có quái thay (PartyRefillEvent).
+   */
+  | { type: 'diedInBattle'; monsterId: string }
+  | PartyRefillEvent
   /** EXP ngự thú sư nhận khi thắng trận (kể cả phần mở tầng mới). */
   | { type: 'tamerExpGained'; amount: Decimal }
   /** Ngự thú sư NPC (docs/rules/trainers.md): gặp NPC, tiến độ đạo quán, giải đấu, đấu trường. */

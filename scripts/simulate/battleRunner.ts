@@ -6,6 +6,7 @@
 // gặp thay cho trận được giải quyết (events.ts) rồi gặp lại tới khi ra trận.
 
 import {
+  isFainted,
   isLargeMonster,
   BIG_ZERO,
   itemBasePrice,
@@ -21,6 +22,7 @@ import {
   type GameData,
   type GameState,
   type GlobalFieldLayer,
+  type Monster,
   type Skill,
   type TamerCommand
 } from '@core'
@@ -76,6 +78,11 @@ export interface BattleStats {
   intimidateWins: number
   /** Vị trí ra đòn / tầm chiêu trong trận (docs/rules/hit-locations.md). */
   hitLocations: HitLocationCounts
+  /**
+   * Quái ta đã ra sân mà gục lúc trận kết thúc: số quái sẽ chết hẳn nếu bật chết thật
+   * (docs/rules/options.md; mô phỏng chạy với chết thật tắt).
+   */
+  playerFallen: number
 }
 
 /**
@@ -214,7 +221,7 @@ export function runBattle(
       // Hết lượt: về state trước trận, giữ RNG và bộ phận đã khám phá (Dex) trong trận.
       return {
         state: { ...before, rng: state.rng, dex: { ...before.dex, hitParts: state.dex.hitParts } },
-        stats: timeoutStats(data, battle, turns)
+        stats: timeoutStats(data, battle, turns, state.party)
       }
     }
     // Kỹ năng ngự thú sư theo AI gợi ý (null = không dùng lượt này), trừ khi "người chơi" tự ra lệnh.
@@ -233,7 +240,10 @@ export function runBattle(
   const decision = options.recruit?.(state) ?? null
   const decided = decision ? run(state, decision) : state
   const battle = currentBattle(decided)
-  return { state: run(decided, { type: 'leaveBattle' }), stats: collectStats(data, battle, turns) }
+  return {
+    state: run(decided, { type: 'leaveBattle' }),
+    stats: collectStats(data, battle, turns, decided.party)
+  }
 }
 
 /**
@@ -252,9 +262,16 @@ function currentBattle(state: GameState): BattleState {
   return state.battle
 }
 
-function timeoutStats(data: GameData, battle: BattleState, turns: number): BattleStats {
+function timeoutStats(
+  data: GameData,
+  battle: BattleState,
+  turns: number,
+  party: readonly Monster[]
+): BattleStats {
   return {
-    ...collectStats(data, battle, turns),
+    ...collectStats(data, battle, turns, party),
+    // Trận hết lượt bị bỏ như chưa đánh.
+    playerFallen: 0,
     outcome: 'timeout',
     money: BIG_ZERO,
     exp: BIG_ZERO,
@@ -265,7 +282,12 @@ function timeoutStats(data: GameData, battle: BattleState, turns: number): Battl
   }
 }
 
-function collectStats(data: GameData, battle: BattleState, turns: number): BattleStats {
+function collectStats(
+  data: GameData,
+  battle: BattleState,
+  turns: number,
+  party: readonly Monster[]
+): BattleStats {
   const enemyIds = new Set(battle.enemies.map((m) => m.id))
   const skillUses = emptySkillUsage()
   let money = BIG_ZERO
@@ -343,6 +365,8 @@ function collectStats(data: GameData, battle: BattleState, turns: number): Battl
     ballsThrown: battle.log.filter((event) => event.type === 'throwBall').length,
     frenzies,
     largeEnemy: [...battle.enemies, ...battle.captured].some((m) => isLargeMonster(data, m)),
+    playerFallen: party.filter((m) => battle.participants.includes(m.id) && isFainted(data, m))
+      .length,
     playerMerged: battle.log.some((event) => event.type === 'merged' && event.side === 'player'),
     playerZMove: battle.log.some(
       (event) => event.type === 'zMoveUsed' && !enemyIds.has(event.monsterId)

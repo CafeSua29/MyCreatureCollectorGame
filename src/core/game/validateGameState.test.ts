@@ -271,9 +271,9 @@ describe('validateGameState: trạng thái bất thường', () => {
     expect(
       issuesAfter((s) => {
         s.party[0].statuses = [{ statusId: 'poison', turnsLeft: 2 }]
-        // Game mới bật thọ nguyên: quái trong kho cũng phải già đi (aging khớp options).
+        // Game mới tắt thọ nguyên: quái trong kho cũng không già đi (aging khớp options).
         s.storage = [
-          makeMonster({ id: 'm90', aging: true, statuses: [{ statusId: 'sleep', turnsLeft: 1 }] })
+          makeMonster({ id: 'm90', aging: false, statuses: [{ statusId: 'sleep', turnsLeft: 1 }] })
         ]
         s.nextMonsterId = 91
       })

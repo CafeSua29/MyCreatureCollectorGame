@@ -22,7 +22,7 @@ import { aptitudeFloor } from '../registries'
 import { ActionError, BIG_ONE, spendMoney, type ActionErrorParams } from '../shared'
 import { assertNoInstance } from '../world'
 import { dayOf, type GameData, type GameState, type Monster } from '../model'
-import { log, removeFromField, type Draft } from './draft'
+import { log, removeDeadFromBattle, type Draft } from './draft'
 
 /** Lệnh bị cấm trong trận độ kiếp (mã lỗi `tribulationRestricted`). */
 export type TribulationRestriction = ActionErrorParams['tribulationRestricted']['command']
@@ -147,6 +147,8 @@ export function settleTribulation(data: GameData, d: Draft, outcome: 'won' | 'lo
   const tribulation = d.battle.tribulation
   if (!tribulation) return
   const index = d.party.findIndex((m) => m.id === tribulation.monsterId)
+  // Đã chết thật lúc kết thúc trận (gục khi bật chết thật, docs/rules/options.md).
+  if (index < 0) return
   const monster = d.party[index]
   const result =
     outcome === 'won'
@@ -157,10 +159,5 @@ export function settleTribulation(data: GameData, d: Draft, outcome: 'won' | 'lo
     return
   }
   // Chết hẳn: rời đội và mọi chỗ trận còn trỏ tới nó (trận đã kết thúc).
-  d.party.splice(index, 1)
-  const { battle } = d
-  removeFromField(d, 'player', monster.id)
-  battle.participants = battle.participants.filter((id) => id !== monster.id)
-  delete battle.records[monster.id]
-  delete battle.usedOnce[monster.id]
+  removeDeadFromBattle(d, monster.id)
 }

@@ -78,6 +78,8 @@ function townState(data: GameData, monster: Monster, seed: number): GameState {
   const config = data.config.awakening
   const need = awakeningRequirements(config, monster.awakening)
   const state = createGameState({
+    // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
+    lifespanEnabled: true,
     seed,
     party: [monster],
     location: { type: 'town' },

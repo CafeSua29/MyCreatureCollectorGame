@@ -48,8 +48,11 @@ export const ACTIVE_TIMES = ['diurnal', 'nocturnal', 'crepuscular', 'cathemeral'
 
 export type ActiveTime = (typeof ACTIVE_TIMES)[number]
 
-/** Tùy chọn luật chơi bật / tắt của từng game (lưu trong save, đổi bằng action của core). */
-export const GAME_OPTION_FLAGS = ['lifespanEnabled'] as const
+/**
+ * Tùy chọn luật chơi bật / tắt của từng game (lưu trong save, đổi bằng action `setGameOption`; game
+ * mới mặc định tắt hết, docs/rules/options.md).
+ */
+export const GAME_OPTION_FLAGS = ['lifespanEnabled', 'permadeathEnabled'] as const
 
 export type GameOptionFlag = (typeof GAME_OPTION_FLAGS)[number]
 
@@ -77,6 +80,14 @@ export const AGE_STAGES = ['young', 'adult', 'old'] as const
 export type AgeStage = (typeof AGE_STAGES)[number]
 
 /**
+ * Đội trống vì quái chết hẳn (tọa hóa, chết thật trong trận): quái mạnh nhất trong kho tự vào đội;
+ * kho cũng trống thì hồn phách mới nhất tự ấp thành trứng truyền thừa và nở ngay vào đội. Có ở cả
+ * sự kiện theo ngày lẫn log trận.
+ */
+export type PartyRefillEvent =
+  { type: 'legacyEggHatched'; monsterId: string } | { type: 'monsterAutoJoined'; monsterId: string }
+
+/**
  * Sự kiện xảy ra khi thời gian trôi (việc theo ngày), ngoài log trận. GameState.dayEvents giữ các
  * sự kiện của lần trôi thời gian gần nhất để UI báo người chơi.
  */
@@ -86,10 +97,7 @@ export type DayEvent =
    * (docs/rules/soul-relics.md).
    */
   | { type: 'diedOfOldAge'; monsterId: string; speciesId: string; nickname: string | null }
-  /** Không còn quái nào: hồn phách mới nhất tự ấp thành trứng truyền thừa và nở ngay vào đội. */
-  | { type: 'legacyEggHatched'; monsterId: string }
-  /** Đội trống vì quái tọa hóa: quái mạnh nhất trong kho tự vào đội. */
-  | { type: 'monsterAutoJoined'; monsterId: string }
+  | PartyRefillEvent
   /** Lần đầu vượt mốc cảnh báo (% thọ nguyên đã sống). */
   | { type: 'nearingLifespanEnd'; monsterId: string; yearsLeft: Decimal }
   /** Quái đang dưỡng dục đòi chăm sóc (docs/rules/imprinting.md). */

@@ -52,7 +52,8 @@ import {
   chooseEvolution,
   hoursUntilWake,
   petMonster,
-  setLifespanEnabled
+  setGameOption,
+  defaultGameOptions
 } from '../progression'
 import {
   applyBait,
@@ -107,7 +108,7 @@ import {
 import type { GameAction, GameData, GameState, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 71
+export const SAVE_VERSION = 72
 
 export function createGameState(options: {
   seed: number
@@ -124,8 +125,10 @@ export function createGameState(options: {
   floorBiomeIds: readonly string[]
   /** Đồng hồ game (giờ); mặc định 0. */
   time?: number
-  /** Bật thọ nguyên; mặc định bật. Quái trong party phải có cờ aging khớp. */
+  /** Bật thọ nguyên; mặc định tắt. Quái trong party phải có cờ aging khớp. */
   lifespanEnabled?: boolean
+  /** Bật chết thật (docs/rules/options.md); mặc định tắt. */
+  permadeathEnabled?: boolean
   /** Cảnh giới ngự thú sư (mặc định 0); quái trong party được khế ước theo cảnh giới này. */
   tamerRealm?: number
   /** Số ô linh điền (mặc định DEFAULT_GARDEN_PLOTS; game mới lấy config.alchemy.initialPlots). */
@@ -150,7 +153,10 @@ export function createGameState(options: {
     nextItemId: 1,
     teraOrbCharged: true,
     time: options.time ?? 0,
-    options: { lifespanEnabled: options.lifespanEnabled ?? true },
+    options: defaultGameOptions({
+      lifespanEnabled: options.lifespanEnabled ?? false,
+      permadeathEnabled: options.permadeathEnabled ?? false
+    }),
     dayEvents: [],
     tamer: newTamerState(realm),
     formations: { known: [], active: null },
@@ -361,8 +367,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       )
     case 'healParty':
       return advanceTime(data, healParty(data, state), data.config.clock.hours.healParty)
-    case 'setLifespanEnabled':
-      return setLifespanEnabled(data, state, action.enabled)
+    case 'setGameOption':
+      return setGameOption(data, state, action.option, action.enabled)
     case 'chooseEvolution':
       return chooseEvolution(data, state, action.monsterId, action.speciesId)
     case 'learnPendingSkill':

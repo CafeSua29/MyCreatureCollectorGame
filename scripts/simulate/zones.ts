@@ -198,6 +198,8 @@ export function runZone(
   }
   const packing = packingList(data, zoneId, supplies)
   let state = createGameState({
+    // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
+    lifespanEnabled: true,
     seed: runSeed,
     party: buildTeam(data, team, floor, runSeed),
     floorBiomeIds: floorMapsFor(data, { floor, biomeId: null, seed: runSeed }),

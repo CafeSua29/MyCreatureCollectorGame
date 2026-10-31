@@ -6,10 +6,10 @@ import type { MonsterHistory } from './history'
 import type { BigStats } from './stats'
 
 /**
- * Kiểu chết vĩnh viễn để lại hồn phách. Mục sau có kiểu chết mới (cấy ghép thất bại, implant.md)
- * thêm vào đây.
+ * Kiểu chết vĩnh viễn để lại hồn phách (`battle`: gục trong trận khi bật chết thật, options.md).
+ * Mục sau có kiểu chết mới (cấy ghép thất bại, implant.md) thêm vào đây.
  */
-export const DEATH_CAUSES = ['oldAge', 'tribulation'] as const
+export const DEATH_CAUSES = ['oldAge', 'tribulation', 'battle'] as const
 
 export type DeathCause = (typeof DEATH_CAUSES)[number]
 

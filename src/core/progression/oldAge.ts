@@ -1,11 +1,18 @@
 // Việc theo ngày của thọ nguyên (mục "Thọ tận" ở lifespan.md): mọi quái đang sở hữu già thêm một
 // ngày; hết thọ nguyên thì tọa hóa (rời đội / kho, đồ về túi, để lại hồn phách, soul-relics.md); lần
-// đầu vượt mốc thì cảnh báo; đội trống thì có quái thay.
+// đầu vượt mốc thì cảnh báo; đội trống thì có quái thay (refillEmptyParty, dùng chung với chết thật).
 
 import { woundIfBondDied } from '../tamer'
 import { dieForever, isFainted, keepAlive } from '../monster'
 import { aptitudeFloor, hasReachedLifespanEnd, lifePercent, yearsLeft } from '../registries'
-import { dayOf, type DayEvent, type GameData, type GameState, type Monster } from '../model'
+import {
+  dayOf,
+  type DayEvent,
+  type GameData,
+  type GameState,
+  type Monster,
+  type PartyRefillEvent
+} from '../model'
 import { hatchMonster } from './eggs'
 import { soulToEgg } from './soulRelics'
 
@@ -56,35 +63,50 @@ export function ageOneDay(data: GameData, state: GameState, events: DayEvent[]):
   if (wound.bondId) {
     events.push({ type: 'bondBroken', monsterId: wound.bondId, woundUntilDay: wound.woundUntilDay })
   }
-  const next = { ...state, inventory, party, storage, tamer: wound.tamer }
-  return refillEmptyParty(data, next, events)
+  const refilled = refillEmptyParty(data, {
+    ...state,
+    inventory,
+    party,
+    storage,
+    tamer: wound.tamer
+  })
+  if (refilled.event) events.push(refilled.event)
+  return refilled.state
 }
 
 /**
- * Đội không được trống: quái level cao nhất trong kho (bằng level thì con đứng trước) tự vào đội;
- * kho cũng trống thì hồn phách mới nhất tự ấp thành trứng truyền thừa và nở ngay vào đội.
+ * Đội không được trống sau khi quái chết hẳn (tọa hóa, chết thật trong trận): quái level cao nhất
+ * trong kho (bằng level thì con đứng trước) tự vào đội; kho cũng trống thì hồn phách mới nhất tự ấp
+ * thành trứng truyền thừa và nở ngay vào đội. Trả sự kiện để nơi gọi báo (null = đội không trống).
  */
-function refillEmptyParty(data: GameData, state: GameState, events: DayEvent[]): GameState {
-  if (state.party.length > 0) return state
+export function refillEmptyParty(
+  data: GameData,
+  state: GameState
+): { state: GameState; event: PartyRefillEvent | null } {
+  if (state.party.length > 0) return { state, event: null }
   if (state.storage.length > 0) {
     const strongest = state.storage.reduce((best, monster) =>
       monster.level > best.level ? monster : best
     )
-    events.push({ type: 'monsterAutoJoined', monsterId: strongest.id })
     return {
-      ...state,
-      party: [strongest],
-      storage: state.storage.filter((monster) => monster !== strongest)
+      state: {
+        ...state,
+        party: [strongest],
+        storage: state.storage.filter((monster) => monster !== strongest)
+      },
+      event: { type: 'monsterAutoJoined', monsterId: strongest.id }
     }
   }
   const soul = state.inventory.souls.at(-1)
-  // Đội chỉ trống khi có quái vừa tọa hóa, nên luôn có hồn phách.
-  if (!soul) return state
+  // Đội chỉ trống khi có quái vừa chết hẳn, nên luôn có hồn phách.
+  if (!soul) return { state, event: null }
   const { state: incubated, egg } = soulToEgg(data, state, soul.id)
-  events.push({ type: 'legacyEggHatched', monsterId: egg.monster.id })
   const [hatched, rng] = hatchMonster(data, incubated.rng, {
     monster: egg.monster,
     day: dayOf(state.time)
   })
-  return { ...incubated, rng, party: [hatched] }
+  return {
+    state: { ...incubated, rng, party: [hatched] },
+    event: { type: 'legacyEggHatched', monsterId: egg.monster.id }
+  }
 }

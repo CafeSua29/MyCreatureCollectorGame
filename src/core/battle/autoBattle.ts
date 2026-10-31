@@ -30,6 +30,7 @@ export interface AutoFarmSettings {
 /** Lý do dừng tự farm (UI hiện theo mã). */
 export type AutoFarmStop =
   | 'monsterFainted'
+  | 'monsterDied'
   | 'lowHp'
   | 'cannotAffordRest'
   | 'shinyMet'
@@ -42,7 +43,7 @@ export type AutoFarmStop =
 export type AutoFarmStep =
   { kind: 'continue' } | { kind: 'rest' } | { kind: 'stop'; reason: AutoFarmStop }
 
-/** Sự kiện của trận vừa đánh làm tự farm dừng (gặp shiny / boss, quái ta gục, trứng nở). */
+/** Sự kiện của trận vừa đánh làm tự farm dừng (gặp shiny / boss, quái ta gục / chết, trứng nở). */
 function stopFromLog(
   log: readonly BattleEvent[],
   playerIds: readonly string[]
@@ -50,6 +51,8 @@ function stopFromLog(
   for (const event of log) {
     if (event.type === 'shinyAppeared') return 'shinyMet'
     if (event.type === 'bossAppeared') return 'bossMet'
+    // Chết thật: quái đã rời đội nên xét trước sự kiện gục.
+    if (event.type === 'diedInBattle') return 'monsterDied'
     if (event.type === 'faint' && playerIds.includes(event.monsterId)) return 'monsterFainted'
     if (event.type === 'eggHatched') return 'eggHatched'
   }

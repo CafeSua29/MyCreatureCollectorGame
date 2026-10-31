@@ -913,7 +913,13 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   69: addSpiritVirus,
   // v70 → v71: Dex thêm hitParts (bộ phận đã đánh trúng, khám phá điểm yếu; hit-locations.md),
   // trạng thái tạm thêm offBalanceUntilTurn (mất thế, tùy chọn): save cũ chưa đánh trúng gì.
-  70: (save) => ({ ...save, version: 71, dex: { ...asObject(save.dex), hitParts: {} } })
+  70: (save) => ({ ...save, version: 71, dex: { ...asObject(save.dex), hitParts: {} } }),
+  // v71 → v72 (chết thật, docs/rules/options.md): save cũ tắt chết thật.
+  71: (save) => ({
+    ...save,
+    version: 72,
+    options: { ...asObject(save.options), permadeathEnabled: false }
+  })
 }
 
 /**

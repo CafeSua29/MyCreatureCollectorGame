@@ -3,7 +3,7 @@
 
 import { newEventState } from '../events'
 import { newTamerState } from '../tamer'
-import { rollExpeditionBoard } from '../progression'
+import { defaultGameOptions, rollExpeditionBoard } from '../progression'
 import { refillQuestBoard } from '../quests'
 import { newSafariState, newZoneState, rollFloorBiome, rollMonster } from '../world'
 import { createInventory } from '../inventory'
@@ -33,7 +33,7 @@ const STARTER_ID = 'm1'
 export function rollStarters(
   data: GameData,
   seed: number,
-  lifespanEnabled = true
+  lifespanEnabled = false
 ): { candidates: Monster[]; rng: RngState } {
   const { starter } = data.config
   let rng = createRng(seed)
@@ -65,14 +65,20 @@ export interface NewGameOptions {
   starterSpeciesId: string
   gender: Gender
   nickname: string | null
-  /** Bật thọ nguyên cho game này (mục "Tuổi và thọ nguyên"); bỏ trống = bật. */
+  /** Bật thọ nguyên cho game này (lifespan.md); bỏ trống = tắt. */
   lifespanEnabled?: boolean
+  /** Bật chết thật cho game này (options.md); bỏ trống = tắt. */
+  permadeathEnabled?: boolean
 }
 
 /** Game mới ở thị trấn, mới mở tầng 1, đội gồm quái khởi đầu đã chọn, kèm tiền và vật phẩm ban đầu. */
 export function createNewGame(data: GameData, options: NewGameOptions): GameState {
   const { starter } = data.config
-  const lifespanEnabled = options.lifespanEnabled ?? true
+  const gameOptions = defaultGameOptions({
+    lifespanEnabled: options.lifespanEnabled ?? false,
+    permadeathEnabled: options.permadeathEnabled ?? false
+  })
+  const { lifespanEnabled } = gameOptions
   const { candidates, rng: afterStarters } = rollStarters(data, options.seed, lifespanEnabled)
   const chosen = candidates.find((m) => m.speciesId === options.starterSpeciesId)
   if (!chosen) throw new ActionError('notStarter', { speciesId: options.starterSpeciesId })
@@ -101,7 +107,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     highestFloor: 1,
     nextItemId: 1,
     inventory,
-    options: { lifespanEnabled },
+    options: gameOptions,
     party: [monster]
   })
   const [firstBiomeId, afterBiome] = rollFloorBiome(data, shop.rng)
@@ -125,7 +131,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     nextItemId: shop.nextItemId,
     teraOrbCharged: true,
     time: data.config.clock.startHour,
-    options: { lifespanEnabled },
+    options: gameOptions,
     dayEvents: [],
     tamer: newTamerState(),
     formations: { known: [], active: null },

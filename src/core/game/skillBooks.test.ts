@@ -50,7 +50,7 @@ describe('kệ sách của cửa hàng', () => {
       highestFloor: 1,
       nextItemId: 1,
       inventory: makeInventory(),
-      options: { lifespanEnabled: false }
+      options: { lifespanEnabled: false, permadeathEnabled: false }
     })
 
   it('shopMax = 0: không có sách, RNG như khi chưa có kệ sách', () => {
@@ -102,7 +102,7 @@ describe('kệ sách của cửa hàng', () => {
         highestFloor: 1,
         nextItemId: 1,
         inventory: makeInventory(),
-        options: { lifespanEnabled: false },
+        options: { lifespanEnabled: false, permadeathEnabled: false },
         party: [pine]
       })
       const [entry] = stock.filter((candidate) => candidate.storage === 'book')

@@ -67,7 +67,7 @@ Mọi thứ người chơi có trong túi đều là **item**: thuốc, bóng, �
 - **Không rơi từ quái:** category nào được nằm trong bảng rơi của biome / boss do `itemDropsFromMonsters` (`inventory/itemRules.ts`) quyết định; hiện `fusionAid`, `keyItem` và `charm` không được rơi (kiểm tra dữ liệu báo lỗi).
 - **Không rời túi:** `canLeaveBag` (`inventory/itemRules.ts`): vật phẩm chìa khóa và bùa không bán / vứt được (`keyItemLocked`).
 - **Món cần vật phẩm chìa khóa:** item có giá ghi `requiresKeyItemId` chỉ vào danh sách hàng của cửa hàng khi túi có vật phẩm chìa khóa đó (`rollShopStock` nhận túi đồ).
-- **Món theo tùy chọn luật chơi:** item có giá ghi `requiresOption` (một tùy chọn trong `GAME_OPTION_FLAGS`, hiện có `lifespanEnabled`) chỉ vào danh sách hàng và bảng rơi khi tùy chọn đó đang bật (`isItemOffered`, `rollShopStock` nhận `options`); món đã có trong túi vẫn giữ và dùng được. Đang dùng cho Thọ Nguyên Đan (`lifespan.md`).
+- **Món theo tùy chọn luật chơi:** item có giá ghi `requiresOption` (một tùy chọn trong `GAME_OPTION_FLAGS`, hiện có `lifespanEnabled`, `permadeathEnabled`; `options.md`) chỉ vào danh sách hàng và bảng rơi khi tùy chọn đó đang bật (`isItemOffered`, `rollShopStock` nhận `options`); món đã có trong túi vẫn giữ và dùng được. Đang dùng cho Thọ Nguyên Đan (`lifespan.md`).
 - **Vứt, bán, mua** dùng **một bộ action chung** cho mọi category, nhận **định danh item** `ItemRef` (mục "Cửa hàng và vứt vật phẩm").
 
 ## Cửa hàng và vứt vật phẩm

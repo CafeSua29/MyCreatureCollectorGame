@@ -8,7 +8,7 @@ Code: `model/soul.ts` (`SoulRemnant`, `SoulImprint`, `DEATH_CAUSES`, `SoulRelicC
 
 ## Hồn phách
 
-- **Mọi cái chết vĩnh viễn** gọi `dieForever(data, inventory, monster, { aptitudeFloor, day, cause })`: đồ đang lắp về túi (`returnEquipment`), hồn phách vào **cuối** `inventory.souls` (cũ trước mới). Nơi gọi tự bỏ quái khỏi đội / kho và xử lý bản mệnh. Hiện có: tọa hóa (`cause: 'oldAge'`, `lifespan.md`), độ kiếp thất bại lần cuối (`'tribulation'`, `awakening.md`). Chưa có: cấy ghép thất bại lần 3 (chờ `implant.md`: thêm `'implant'` vào `DEATH_CAUSES` rồi gọi `dieForever`), chết hẳn của Nuzlocke / Hardcore (chờ `challenge-modes.md`).
+- **Mọi cái chết vĩnh viễn** gọi `dieForever(data, inventory, monster, { aptitudeFloor, day, cause })`: đồ đang lắp về túi (`returnEquipment`), hồn phách vào **cuối** `inventory.souls` (cũ trước mới). Nơi gọi tự bỏ quái khỏi đội / kho và xử lý bản mệnh. Hiện có: tọa hóa (`cause: 'oldAge'`, `lifespan.md`), độ kiếp thất bại lần cuối (`'tribulation'`, `awakening.md`), gục trong trận khi bật chết thật (`'battle'`, `options.md`; Nuzlocke sau này dùng lại). Chưa có: cấy ghép thất bại lần 3 (chờ `implant.md`: thêm `'implant'` vào `DEATH_CAUSES` rồi gọi `dieForever`).
 - **Hồn phách** (`SoulRemnant`, không gộp chồng): ảnh chụp lúc chết `{ id (= id quái, id quái không bao giờ dùng lại), speciesId, baseSpeciesId, raceId, nickname, level, genes, traits, shinyStacks, contractRealm, aptitudeTierId, history }`.
   - `traits`: chỉ trait **chiếm ô** (giữ cấp; trait shiny / boss / race không giữ).
   - `aptitudeTierId`: bậc tư chất lúc chết, so với tầng mốc lúc đó (`aptitudeOf` + `aptitudeFloor`, `aptitude.md`); chụp lại vì tầng mốc tăng làm bậc tụt.
@@ -33,7 +33,7 @@ Code: `model/soul.ts` (`SoulRemnant`, `SoulImprint`, `DEATH_CAUSES`, `SoulRelicC
 
 ## Đội trống
 
-Quái cuối cùng trong đội và cả kho cùng tọa hóa: **hồn phách mới nhất** tự ấp thành trứng truyền thừa và **nở ngay** vào đội (`refillEmptyParty` gọi `soulToEgg` rồi `hatchMonster`; log `legacyEggHatched { monsterId }`), không cần ở thị trấn. Còn quái trong kho thì quái level cao nhất tự vào đội như cũ (`lifespan.md`).
+Quái cuối cùng trong đội và cả kho cùng tọa hóa (hoặc cả đội chết thật trong trận, `options.md`): **hồn phách mới nhất** tự ấp thành trứng truyền thừa và **nở ngay** vào đội (`refillEmptyParty` gọi `soulToEgg` rồi `hatchMonster`; log `legacyEggHatched { monsterId }`), không cần ở thị trấn. Còn quái trong kho thì quái level cao nhất tự vào đội như cũ (`lifespan.md`).
 
 ## Kiểm tra
 

@@ -4,7 +4,7 @@
 
 Như truyện tu tiên / ngự thú: mỗi quái có **tuổi** và **thọ nguyên** (tuổi thọ tối đa). Hết thọ nguyên thì **tọa hóa** (chết hẳn) và để lại **hồn phách** (ấp thành trứng truyền thừa hoặc luyện hồn khí, `soul-relics.md`). Thọ nguyên tăng theo level, boss, trait và **Thọ Nguyên Đan**. Mọi số là **số tạm** trong `balance.json` (khóa `clock`, `lifespan`; script mô phỏng tự chỉnh theo `simulation.md`). Bước 5c (2026-10-23).
 
-Code: `registries/lifespan.ts` (điểm duy nhất của thọ nguyên / tuổi / giai đoạn tuổi, registry `LIFESPAN_MODIFIERS`), `registries/lifespanTraitHooks.ts` (hook `lifespanPercent`), `monster/life.ts` (trường tuổi của quái mới, kiểm tra; xuất lại hàm thọ nguyên cho bên ngoài core), `progression/time.ts` (đồng hồ, `advanceTime`, `DAILY_TASKS`, `setLifespanEnabled`), `progression/oldAge.ts` (việc theo ngày: già đi, tọa hóa), `monster/soul.ts` (`dieForever`), `progression/eggs.ts` (`createLegacyEgg`), `game/validateTimeState.ts`, `gameData/validateLifespan.ts`.
+Code: `registries/lifespan.ts` (điểm duy nhất của thọ nguyên / tuổi / giai đoạn tuổi, registry `LIFESPAN_MODIFIERS`), `registries/lifespanTraitHooks.ts` (hook `lifespanPercent`), `monster/life.ts` (trường tuổi của quái mới, kiểm tra; xuất lại hàm thọ nguyên cho bên ngoài core), `progression/time.ts` (đồng hồ, `advanceTime`, `DAILY_TASKS`), `progression/gameOptions.ts` (bật / tắt, `options.md`), `progression/oldAge.ts` (việc theo ngày: già đi, tọa hóa), `monster/soul.ts` (`dieForever`), `progression/eggs.ts` (`createLegacyEgg`), `game/validateTimeState.ts`, `gameData/validateLifespan.ts`.
 
 ## Đồng hồ game
 
@@ -16,7 +16,7 @@ Code: `registries/lifespan.ts` (điểm duy nhất của thọ nguyên / tuổi 
 
 ## Bật / tắt thọ nguyên
 
-- Theo từng game: `GameState.options.lifespanEnabled` (mặc định bật; chọn ở game mới `createNewGame({ lifespanEnabled })`; đổi bất cứ lúc nào ngoài trận bằng action `setLifespanEnabled { enabled }`; đúng như đang có thì `optionUnchanged { option, enabled }`). Tùy chọn luật chơi nằm trong save, không ở `saves/settings.json`.
+- Theo từng game: `GameState.options.lifespanEnabled` (**mặc định tắt**, chủ project chốt 2026-10-31; chọn ở game mới `createNewGame({ lifespanEnabled })`; đổi bất cứ lúc nào ngoài trận bằng action `setGameOption { option: 'lifespanEnabled', enabled }`). Luật chung của tùy chọn luật chơi ở `options.md`.
 - Mỗi quái mang cờ **`aging`** luôn bằng `options.lifespanEnabled` (đổi cùng lúc cho đội, kho, quái trong trứng; quái sinh ra lấy theo state: `FloorSite.aging`, `MonsterRollSpec.aging`; `validateGameState` kiểm tra khớp). Nhờ vậy hiệu ứng tuổi tính được từ chính quái (không cần state), max HP như nhau ở mọi nơi (giống `battleMaxHpDelta`).
 - **Khi tắt:** tuổi đứng yên (`ageDays` không tăng), không có giai đoạn tuổi (chỉ số / EXP như thành niên), không tọa hóa, không cảnh báo, breeding không xét tuổi, fuse không hấp thu thọ nguyên, `MonsterView.life` = `null`. Bật lại thì tuổi chạy tiếp từ chỗ cũ (không cần dịch ngày). Thọ Nguyên Đan không có trong cửa hàng / bảng rơi (món đang có vẫn giữ, dùng vẫn cộng năm). Đồng hồ vẫn chạy.
 - Bật / tắt làm max HP đổi (ấu niên, lão niên): quái đang sống không bị gục, còn ít nhất 1 máu (`keepAlive` ở `monster/hp.ts`).
@@ -56,12 +56,12 @@ Code: `registries/lifespan.ts` (điểm duy nhất của thọ nguyên / tuổi 
 
 - Việc theo ngày `aging` (`ageOneDay`): mỗi quái `aging` trong đội / kho +1 ngày tuổi; tuổi (ngày) ≥ thọ nguyên (ngày) thì **tọa hóa**: rời đội / kho, log `diedOfOldAge`, `dieForever` (đồ đang lắp / đồ cầm / đá Mega về túi, **hồn phách** vào túi với `cause: 'oldAge'`; `soul-relics.md`). Không tự tạo trứng: người chơi ấp hồn phách thành **trứng truyền thừa** hoặc luyện hồn khí ở NPC luyện đan (luật trứng truyền thừa ở `soul-relics.md`). Chỉ xét khi thời gian trôi, không bao giờ giữa trận.
 - **Cảnh báo:** % đã sống vượt `warnPercent` (90%) trong ngày vừa qua (so trước / sau cùng một thọ nguyên) thì log `nearingLifespanEnd`. Thọ nguyên tụt giữa hai ngày (nhận trait Đoản mệnh) làm quái nhảy qua mốc thì không cảnh báo (chủ project chấp nhận).
-- **Đội không trống:** quái cuối cùng trong đội tọa hóa thì quái **level cao nhất** trong kho (bằng level lấy con đứng trước) tự vào đội (`monsterAutoJoined`); kho cũng trống thì **hồn phách mới nhất** tự ấp thành trứng truyền thừa và nở ngay vào đội (`legacyEggHatched`; bắt đầu dưỡng dục như mọi quái nở, `imprinting.md`).
+- **Đội không trống** (`refillEmptyParty`, dùng chung với chết thật, `options.md`): quái cuối cùng trong đội tọa hóa thì quái **level cao nhất** trong kho (bằng level lấy con đứng trước) tự vào đội (`monsterAutoJoined`); kho cũng trống thì **hồn phách mới nhất** tự ấp thành trứng truyền thừa và nở ngay vào đội (`legacyEggHatched`; bắt đầu dưỡng dục như mọi quái nở, `imprinting.md`).
 
 ## Tuổi khi xuất hiện
 
 - Quái hoang: random theo ngày trong 10–40% thọ nguyên; boss: 30–80% (thọ nguyên đã nhân `bossMultiplier`). Tung **sau cùng** khi sinh quái (`rollSpawnAge` ở `world/encounter.ts`, sau cả hệ số boss và trường biến hình), nên không đổi các giá trị random phía trước. Khi tắt thọ nguyên: lấy giữa khoảng, không tốn RNG.
-- Quái khởi đầu: 10% (cố định, không tốn RNG). Con breeding, trứng boss, trứng truyền thừa: tuổi 0 lúc nở. Tuổi theo % làm tròn **lên** (`ageDaysAtPercent`) để đạt đúng mốc (quái khởi đầu 10% là thành niên), kẹp ở số nguyên an toàn.
+- Quái khởi đầu: 10% (cố định, không tốn RNG; `rollStarters` nhận cờ thọ nguyên, mặc định tắt như game mới). Con breeding, trứng boss, trứng truyền thừa: tuổi 0 lúc nở. Tuổi theo % làm tròn **lên** (`ageDaysAtPercent`) để đạt đúng mốc (quái khởi đầu 10% là thành niên), kẹp ở số nguyên an toàn.
 - **Breeding:** bố hoặc mẹ ấu niên thì `breedBlocker` trả `tooYoungToBreed`. Con nhận cờ `aging` của mẹ.
 - **Fuse:** quái gốc giữ tuổi và nhận `fuseAbsorbPercent` (25%) **số năm còn lại** (`yearsLeft`) của quái phụ vào `lifespanBonusYears` ("hấp thu thọ nguyên"); tắt thọ nguyên thì không hấp thu.
 
@@ -83,5 +83,5 @@ Code: `registries/lifespan.ts` (điểm duy nhất của thọ nguyên / tuổi 
 ## Kiểm tra
 
 - Quái (`checkLifeFields`): `ageDays` nguyên ≥ 0, `aging` boolean, `maxLevelReached` nguyên ≥ 1, `lifespanBonusYears` `Decimal` ≥ 0, `itemUseCounts` object: id vật phẩm tồn tại, số lần nguyên ≥ 1.
-- State (`validateTimeState`): `time` nguyên ≥ 0; `options` đủ tùy chọn của `GAME_OPTION_FLAGS`, mỗi tùy chọn boolean, không tùy chọn lạ; `dayEvents` danh sách sự kiện đúng loại, đủ trường; `aging` của mọi quái (đội, kho, trứng, quái trong trận) bằng `options.lifespanEnabled`.
+- State (`validateTimeState`): `time` nguyên ≥ 0; `options` (`options.md`); `dayEvents` danh sách sự kiện đúng loại, đủ trường; `aging` của mọi quái (đội, kho, trứng, quái trong trận) bằng `options.lifespanEnabled`.
 - Dữ liệu (`checkLifespanData`): `lifespan` của loài (trên); `clock.startHour` / `wakeHour` giờ nguyên 0–23, `clock.hours` nguyên ≥ 0 cho đủ `TIMED_ACTIVITIES`; `lifespan.*` trong khoảng hợp lệ (`oldFromPercent` ≤ 99, khoảng tuổi `min ≤ max` trong [0, 100], `pillResistance` trong [0, 1]), bảng rơi như bảng rơi biome. `requiresOption` của item phải là một tùy chọn trong `GAME_OPTION_FLAGS`.

@@ -105,7 +105,7 @@ describe('createNewGame', () => {
     const shop = rollShopStock(data, rollStarters(data, 99).rng, {
       highestFloor: 1,
       nextItemId: 1,
-      options: { lifespanEnabled: true },
+      options: { lifespanEnabled: true, permadeathEnabled: false },
       inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [] }
     })
     expect(state.shop.stock).toEqual(shop.stock)

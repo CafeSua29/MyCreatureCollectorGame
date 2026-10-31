@@ -113,6 +113,8 @@ export function runSafari(
     traits: []
   })
   const start = createGameState({
+    // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
+    lifespanEnabled: true,
     seed: runSeed,
     party: [partyMonster],
     floorBiomeIds,

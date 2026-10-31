@@ -160,6 +160,19 @@ export function removeFromField(d: Draft, side: BattleSide, monsterId: string): 
 }
 
 /**
+ * Quái ta chết hẳn sau trận đã kết thúc (độ kiếp, chết thật): bỏ khỏi đội và mọi chỗ trận còn trỏ
+ * tới nó.
+ */
+export function removeDeadFromBattle(d: Draft, monsterId: string): void {
+  d.party = d.party.filter((monster) => monster.id !== monsterId)
+  const { battle } = d
+  removeFromField(d, 'player', monsterId)
+  battle.participants = battle.participants.filter((id) => id !== monsterId)
+  delete battle.records[monsterId]
+  delete battle.usedOnce[monsterId]
+}
+
+/**
  * Xếp quái vào ô lúc mở trận theo thứ tự: quái thường vào ô trống đầu tiên, quái lớn chỉ khi mọi ô
  * còn trống (lấy hết ô); không đủ chỗ thì bỏ qua, quái sau vẫn được xét.
  */

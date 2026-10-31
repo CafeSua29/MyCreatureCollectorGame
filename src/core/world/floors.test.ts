@@ -36,7 +36,7 @@ describe('biomeOfFloor', () => {
   it('đọc map của tầng trong floorBiomeIds (phần tử N − 1), không theo thứ tự file', () => {
     const state = {
       floorBiomeIds: ['pairs', 'pairs', 'field'],
-      options: { lifespanEnabled: true },
+      options: { lifespanEnabled: true, permadeathEnabled: false },
       time: 30
     }
     expect([1, 2, 3].map((floor) => biomeOfFloor(data, state, floor).id)).toEqual([

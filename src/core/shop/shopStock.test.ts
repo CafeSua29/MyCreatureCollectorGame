@@ -29,7 +29,7 @@ function removeShopItems(raw: RawGameData): void {
 function rollStock(gameData: GameData, rng: RngState): [ShopEntry[], RngState] {
   const { stock, rng: next } = rollShopStock(gameData, rng, {
     highestFloor: 1,
-    options: { lifespanEnabled: false },
+    options: { lifespanEnabled: false, permadeathEnabled: false },
     nextItemId: 1,
     inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [] }
   })

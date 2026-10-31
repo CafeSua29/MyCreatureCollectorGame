@@ -369,6 +369,8 @@ export function runProgression(data: GameData, options: ProgressionOptions): Pro
   const run: Run = {
     // Tầng 1 tung map như game mới; tầng sau do reducer tung khi mở tầng.
     state: createGameState({
+      // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
+      lifespanEnabled: true,
       seed: deriveSeed(seed, 'progression', team.id),
       party,
       location: { type: 'floor', floor: 1 },
@@ -483,6 +485,7 @@ function playBattle(
   run.growth.recruits += stats.recruits
   run.growth.intimidates += stats.intimidates
   run.growth.intimidateWins += stats.intimidateWins
+  run.lifespan.battleFallen += stats.playerFallen
   run.state = state
   // Trận vừa rời (leaveBattle) làm thời gian trôi.
   recordDayEvents(run.lifespan, state, { battle: run.battles + 1, teamIds })

@@ -13,7 +13,8 @@ import {
   makeLifespanData,
   makeMonster
 } from '../testing'
-import { advanceTime, calendarAt, hoursUntilWake, setLifespanEnabled } from './time'
+import { advanceTime, calendarAt, hoursUntilWake } from './time'
+import { setGameOption } from './gameOptions'
 import { dayOf, hourOf } from '../model'
 
 // Quái fixture level 1 thọ 101 năm = 1010 ngày (10 ngày một năm).
@@ -151,7 +152,11 @@ describe('tọa hóa: để lại hồn phách', () => {
   it('quái không già đi không bao giờ tọa hóa', () => {
     const state = lateNight({ seed: 3, party: [{ ...makeMonster(), ageDays: LIFESPAN_DAYS * 5 }] })
     expect(
-      advanceTime(data, { ...state, options: { lifespanEnabled: false } }, 1).party
+      advanceTime(
+        data,
+        { ...state, options: { lifespanEnabled: false, permadeathEnabled: false } },
+        1
+      ).party
     ).toHaveLength(1)
   })
 })
@@ -167,7 +172,7 @@ describe('keepAlive: max HP tụt không làm quái đang sống gục', () => {
   })
 })
 
-describe('setLifespanEnabled', () => {
+describe('setGameOption: thọ nguyên', () => {
   it('tắt: mọi quái (cả trứng) ngừng già, tuổi giữ nguyên; bật lại tuổi chạy tiếp', () => {
     const egg = { id: 'm5', monster: aged(0, { id: 'm5' }), battlesLeft: 3 }
     const state = {
@@ -175,13 +180,13 @@ describe('setLifespanEnabled', () => {
       storage: [aged(400, { id: 'm6' })],
       eggs: [egg]
     }
-    const off = setLifespanEnabled(data, state, false)
+    const off = setGameOption(data, state, 'lifespanEnabled', false)
     expect(off.options.lifespanEnabled).toBe(false)
     expect([...off.party, ...off.storage, off.eggs[0].monster].every((m) => !m.aging)).toBe(true)
     expect(validateGameState(data, off)).toEqual([])
     const later = advanceTime(data, off, 24 * 30)
     expect(later.party[0].ageDays).toBe(300)
-    const on = setLifespanEnabled(data, later, true)
+    const on = setGameOption(data, later, 'lifespanEnabled', true)
     expect(on.party[0].ageDays).toBe(300)
     expect(advanceTime(data, on, 24).party[0].ageDays).toBe(301)
     expect(validateGameState(data, on)).toEqual([])
@@ -191,22 +196,26 @@ describe('setLifespanEnabled', () => {
     const young = { ...makeMonster(), ageDays: 1 }
     const full = getMaxHp(data, young)
     const state = lifespanState({ seed: 1, party: [{ ...young, damageTaken: full.minus(1) }] })
-    const off = { ...state, options: { lifespanEnabled: false } }
-    const on = setLifespanEnabled(data, off, true)
+    const off = { ...state, options: { lifespanEnabled: false, permadeathEnabled: false } }
+    const on = setGameOption(data, off, 'lifespanEnabled', true)
     const monster = on.party[0]
     expect(monster.damageTaken.eq(getMaxHp(data, monster).minus(1))).toBe(true)
   })
 
   it('lỗi: trong trận, đã đúng như vậy, tham số sai', () => {
     const battle = makeBattleState([makeMonster()], [makeMonster({ id: 'w1' })])
-    expectActionError(() => setLifespanEnabled(data, battle, true), 'inBattle')
+    expectActionError(() => setGameOption(data, battle, 'lifespanEnabled', true), 'inBattle')
     const state = lifespanState({ seed: 1, party: [aged(1)] })
-    expectActionError(() => setLifespanEnabled(data, state, true), 'optionUnchanged', {
-      option: 'lifespanEnabled',
-      enabled: true
-    })
     expectActionError(
-      () => setLifespanEnabled(data, state, 'no' as unknown as boolean),
+      () => setGameOption(data, state, 'lifespanEnabled', true),
+      'optionUnchanged',
+      {
+        option: 'lifespanEnabled',
+        enabled: true
+      }
+    )
+    expectActionError(
+      () => setGameOption(data, state, 'lifespanEnabled', 'no' as unknown as boolean),
       'malformedAction'
     )
     expect(defined(state.party[0]).aging).toBe(true)

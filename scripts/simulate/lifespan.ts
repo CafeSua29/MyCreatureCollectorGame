@@ -41,6 +41,8 @@ export interface LifespanTracker {
    */
   previewRarities: string[]
   previewCostPercent: number | null
+  /** Quái ta gục lúc trận kết thúc: số quái sẽ chết hẳn nếu bật chết thật (options.md). */
+  battleFallen: number
 }
 
 export const newLifespanTracker = (): LifespanTracker => ({
@@ -50,7 +52,8 @@ export const newLifespanTracker = (): LifespanTracker => ({
   relicRarities: [],
   soulEggs: 0,
   previewRarities: [],
-  previewCostPercent: null
+  previewCostPercent: null,
+  battleFallen: 0
 })
 
 /** Ghi bậc hồn khí và giá luyện (% tiền đang có) nếu mọi quái đội mẫu chết lúc kết thúc lần chơi. */
@@ -158,7 +161,7 @@ export interface LifespanRow {
 
 /**
  * Mỗi lần chơi: số quái đội mẫu / quái trong kho tọa hóa, trận và tầng của lần tọa hóa đầu tiên trong
- * đội mẫu, số lần cảnh báo, số đan đã dùng.
+ * đội mẫu, số lần cảnh báo, số đan đã dùng, số quái sẽ chết thật nếu bật (battleFallen).
  */
 export function lifespanTable(rows: readonly LifespanRow[]): Table {
   return {
@@ -176,7 +179,8 @@ export function lifespanTable(rows: readonly LifespanRow[]): Table {
       'relicRarities',
       'soulEggs',
       'previewRarities',
-      'previewCostPercent'
+      'previewCostPercent',
+      'battleFallen'
     ],
     rows: rows.map(({ teamId, usePills, totalBattles, tracker }) => {
       const team = tracker.deaths.filter((death) => death.inTeam)
@@ -194,7 +198,8 @@ export function lifespanTable(rows: readonly LifespanRow[]): Table {
         tracker.relicRarities.join(' '),
         String(tracker.soulEggs),
         tracker.previewRarities.join(' '),
-        tracker.previewCostPercent === null ? '' : String(tracker.previewCostPercent)
+        tracker.previewCostPercent === null ? '' : String(tracker.previewCostPercent),
+        String(tracker.battleFallen)
       ]
     })
   }

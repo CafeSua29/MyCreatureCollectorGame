@@ -6,6 +6,7 @@ import type { ItemRef, Location } from './state'
 import type { TamerCommand } from './tamer'
 import type { TransformKind } from './transform'
 import type { StatName } from './stats'
+import type { GameOptionFlag } from './time'
 
 // ---------- Action ----------
 
@@ -183,8 +184,8 @@ export type GameAction =
   /** Dùng vật phẩm lên quái trong đội hoặc kho; count > 1 chỉ với kẹo EXP (bỏ trống = 1). */
   /** skillId: skill chọn lúc dùng (vật phẩm cần skill, docs/rules/treasures.md). */
   | { type: 'useItem'; itemId: string; monsterId: string; count?: number; skillId?: string }
-  /** Bật / tắt thọ nguyên của game này (ngoài trận, ở đâu cũng được; mục "Tuổi và thọ nguyên"). */
-  | { type: 'setLifespanEnabled'; enabled: boolean }
+  /** Bật / tắt tùy chọn luật chơi của game này (ngoài trận, ở đâu cũng được; options.md). */
+  | { type: 'setGameOption'; option: GameOptionFlag; enabled: boolean }
   /** Vứt item (ngoài trận, ở đâu cũng được): không nhận gì. */
   | { type: 'discardItem'; item: ItemRef; count: number }
   /** Cửa hàng ở thị trấn: bán item có giá, nhận % giá. */

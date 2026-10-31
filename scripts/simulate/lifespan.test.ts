@@ -34,13 +34,14 @@ describe('recordDayEvents', () => {
       ]
     }
     recordDayEvents(tracker, state, { battle: 12, teamIds })
+    tracker.battleFallen = 2
     expect(tracker.deaths).toEqual([
       { monsterId: 'm1', speciesId: 'weakling', battle: 12, highestFloor: 3, inTeam: true },
       { monsterId: 'm7', speciesId: 'twig', battle: 12, highestFloor: 3, inTeam: false }
     ])
     expect(
       lifespanTable([{ teamId: 't', usePills: false, totalBattles: 40, tracker }]).rows
-    ).toEqual([['t', 'no', '40', '1', '12', '3', '1', '0', '0', '0', '', '0', '', '']])
+    ).toEqual([['t', 'no', '40', '1', '12', '3', '1', '0', '0', '0', '', '0', '', '', '2']])
   })
 })
 
