@@ -1,0 +1,62 @@
+[
+  {
+    "id": "bubble",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "iceBall",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "mudBomb",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "ominousWind",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "recover",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "roost",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "softBoiled",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "splash",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "dracoMeteor",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "steelBeam",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "voltTackle",
+    "learners": 0,
+    "species": []
+  },
+  {
+    "id": "takeHeart",
+    "learners": 0,
+    "species": []
+  }
+]

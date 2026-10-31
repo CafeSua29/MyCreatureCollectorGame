@@ -1,0 +1,56 @@
+{
+  "newSkills": 173,
+  "newSpecies": 496,
+  "plannedEffects": [
+    {
+      "skillId": "muskSpray",
+      "effect": "poison"
+    },
+    {
+      "skillId": "venomFang",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "venomSpit",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "toxicSkinBurst",
+      "effect": "poison 20%"
+    },
+    {
+      "skillId": "eelShock",
+      "effect": "paralysis 20%"
+    },
+    {
+      "skillId": "barbedSting",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "spiderBite",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "stingerTail",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "acidBurst",
+      "effect": "poison 20%"
+    },
+    {
+      "skillId": "desertJolt",
+      "effect": "paralysis 20%"
+    },
+    {
+      "skillId": "wispFlame",
+      "effect": "burn 20%"
+    }
+  ],
+  "byOrigin": {
+    "living": 344,
+    "extinct": 77,
+    "cryptid": 26,
+    "myth": 49
+  }
+}

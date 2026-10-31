@@ -1,0 +1,80 @@
+{
+  "meta": "Skill triệu hồi của nguồn khác (summons-extra-import.mjs); xem \"Nội dung triệu hồi thêm lại\" ở content-data.md",
+  "executeSpells": {
+    "hpBelowPercent": 10,
+    "hitChance": 70
+  },
+  "otherSourceSummons": [
+    {
+      "source": "dnd",
+      "skillId": "animateDead",
+      "learners": 6
+    },
+    {
+      "source": "dnd",
+      "skillId": "conjureAnimals",
+      "learners": 6
+    },
+    {
+      "source": "dnd",
+      "skillId": "summonFiend",
+      "learners": 6
+    },
+    {
+      "source": "warcraft",
+      "skillId": "feralSpirit",
+      "learners": 6
+    },
+    {
+      "source": "warcraft",
+      "skillId": "summonImp",
+      "learners": 6
+    },
+    {
+      "source": "warcraft",
+      "skillId": "armyOfTheDead",
+      "learners": 6
+    },
+    {
+      "source": "elderScrolls",
+      "skillId": "conjureFamiliar",
+      "learners": 6
+    },
+    {
+      "source": "elderScrolls",
+      "skillId": "raiseZombie",
+      "learners": 6
+    },
+    {
+      "source": "diablo",
+      "skillId": "raiseSkeleton",
+      "learners": 6
+    },
+    {
+      "source": "diablo",
+      "skillId": "summonGolem",
+      "learners": 6
+    },
+    {
+      "source": "terraria",
+      "skillId": "spiderStaff",
+      "learners": 6
+    },
+    {
+      "source": "terraria",
+      "skillId": "impStaff",
+      "learners": 6
+    },
+    {
+      "source": "minecraft",
+      "skillId": "summonVex",
+      "learners": 6
+    },
+    {
+      "source": "warcraft",
+      "skillId": "raiseDead",
+      "reused": true,
+      "learners": 6
+    }
+  ]
+}

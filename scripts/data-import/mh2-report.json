@@ -1,0 +1,18 @@
+{
+  "byOrigin": {
+    "fantasy": 103
+  },
+  "bySource": {
+    "monsterHunter": 103
+  },
+  "newSpecies": 103,
+  "newSkills": 0,
+  "plannedEffects": [],
+  "skippedExisting": [],
+  "sourceTagged": [],
+  "evolutionLinks": [
+    "zamite → zamtrios @25",
+    "sabrecub → greatSabrecat @25",
+    "guardromon → andromon @30"
+  ]
+}

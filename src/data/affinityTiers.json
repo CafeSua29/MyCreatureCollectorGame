@@ -1,0 +1,103 @@
+[
+  {
+    "id": "stranger",
+    "from": 0,
+    "hooks": []
+  },
+  {
+    "id": "familiar",
+    "from": 100,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "trusted",
+    "from": 150,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 5,
+          "exceptFullHp": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "soulmate",
+    "from": 200,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 10,
+          "exceptFullHp": true
+        }
+      },
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "telepathy",
+    "from": 255,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 15,
+          "exceptFullHp": true
+        }
+      },
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 20
+        }
+      },
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  }
+]

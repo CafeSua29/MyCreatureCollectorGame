@@ -1,0 +1,1896 @@
+{
+  "source": "monsterSanctuary",
+  "origin": "fantasy",
+  "update": {
+    "elements": true,
+    "stats": true
+  },
+  "species": [
+    {
+      "name": "Spectral Wolf",
+      "elements": ["ghost", "normal"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 55,
+        "attack": 46,
+        "defense": 37,
+        "spAttack": 46,
+        "spDefense": 41,
+        "speed": 64
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Spirit Beast Monster",
+      "flavor": "In tales from the Old World, the Spectral Wolf is described as the most cunning of the Familiars and he was said to be the guardian patron of the snowy mountains and dark forests. As with all the other Spectral Familiars, Wolf was revered and respected too, but his relation to the people of the Old World seems more complicated. The dark forests of the Wolf were feared and avoided, but at the same time, the shamans called on the power of the Wolf to protect the newborns from warlocks and other dark influences."
+    },
+    {
+      "name": "Spectral Toad",
+      "elements": ["water", "ghost"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 62,
+        "attack": 36,
+        "defense": 45,
+        "spAttack": 36,
+        "spDefense": 40,
+        "speed": 71
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Aquatic Spirit Monster",
+      "flavor": "In the Old World, the Spectral Toad was regarded as the wisest and most generous of the Familiars. He was revered in the lands near the mighty rivers and in the coastal areas. There is debate whether the Spectral Toad is the same Toad that had been worshipped by practitioners of witchcraft since the beginning of time. The Warlock's Toad, as it is sometimes called, was associated with the misty swamps and the mysterious, forlorn places within the deepest reaches of the wilds where humans fear to tread. Finding the Warlock's Toad was said to be a perilous journey, but one which might reward the aspiring wizard with arcane secrets."
+    },
+    {
+      "name": "Spectral Eagle",
+      "elements": ["ghost", "flying"],
+      "raceId": "raptor",
+      "stats": {
+        "hp": 55,
+        "attack": 55,
+        "defense": 28,
+        "spAttack": 55,
+        "spDefense": 41,
+        "speed": 55
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Aerial Spirit Bird Monster",
+      "flavor": "The people of the Old World regarded the Spectral Eagle as the bravest of the Spectral Familiars. He was said to be an embodiment of the sun, having control of the winds and the weather. Some particularly colorful stories also speak of hidden realms above the clouds that were ruled by the Spectral Eagle alone. Nonetheless, he had great importance to sailors, the traders of the port cities and the people of the great deserts. To this day, pirate captains keep birds of colorful splendor as their pets as a way to honor the Spectral Eagle."
+    },
+    {
+      "name": "Spectral Lion",
+      "elements": ["ghost", "normal"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 54,
+        "attack": 45,
+        "defense": 45,
+        "spAttack": 45,
+        "spDefense": 45,
+        "speed": 54
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Spirit Beast Monster",
+      "flavor": "Tales from the Old World make the Spectral Lion out to be the noblest and most heroic of the Familiars, ruling over the great prairies and tropical jungles. Some ancient texts of a civilization long forgotten even attribute the creation of the deserts to him. There are a great many tales of him fighting against evil and hunting down demons, but the stories also often warn that you should never draw the Lion's wrath upon yourself. The Lion was believed to guard those who were devoted to him and those of pure heart. If you gained his trust, he would protect you and your family from all perils."
+    },
+    {
+      "name": "Magmapillar",
+      "elements": ["bug", "fire"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 39,
+        "attack": 13,
+        "defense": 39,
+        "spAttack": 52,
+        "spDefense": 45,
+        "speed": 103
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Insect Monster",
+      "flavor": "This gigantic caterpillar has evolved beyond all predators of the animal kingdom, but even more impressive is its ability to generate intense heat and even flame by way of metabolic heat. Unlike other insects, the Magmapillar doesn't have to bask in the sun to maintain its body temperature, although Magmapillars can sometimes be seen lying together in groups to increase their collective heat. Once a Magmapillar reach a certain age, it creates a cocoon of searing hot silk around itself. Any living thing that comes close to this cocoon gets burned to a crisp."
+    },
+    {
+      "name": "Rocky",
+      "elements": ["ghost", "ground"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 43,
+        "attack": 43,
+        "defense": 75,
+        "spAttack": 32,
+        "spDefense": 54,
+        "speed": 43
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Ancient Nature Spirit Monster",
+      "flavor": "Despite their name, there is mystery surrounding what these well-meaning nature spirits are made of. Their exterior is hard and unyielding like rock, and anyone who tries to lift a Rocky will break their back trying to raise its extremely heavy body. But then how would it be possible for plants and flowers to sprout out of their bodies? The only explanation is that Rockies are capable of controlling nature to a degree that is unequaled by any other Monster - their very existence combines the qualities of rock, earth, and plant life."
+    },
+    {
+      "name": "Vaero",
+      "elements": ["flying", "normal"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 57,
+        "attack": 71,
+        "defense": 28,
+        "spAttack": 14,
+        "spDefense": 21,
+        "speed": 99
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Aerial Bird Monster",
+      "flavor": "Their appearance vaguely resembles a blue jay, although they are much larger and heavier. A Vaero in its prime rivals any bird of prey's size and they can constantly beat their wings for several days without getting tired. However, it is their immense strength and their aptitude for magic that classify them as Monsters - something that the regular hunter or animal wrangler is unequipped to handle."
+    },
+    {
+      "name": "Catzerker",
+      "elements": ["normal", "fighting"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 58,
+        "attack": 81,
+        "defense": 23,
+        "spAttack": 46,
+        "spDefense": 35,
+        "speed": 46
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Beast Warrior Monster",
+      "flavor": "These courageous feline creatures roam the mountains for wild beasts to slay. They originated from an ordinary kitten that set out to find its lost master."
+    },
+    {
+      "name": "Yowie",
+      "elements": ["normal", "water"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 85,
+        "attack": 36,
+        "defense": 36,
+        "spAttack": 36,
+        "spDefense": 36,
+        "speed": 60
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Beast Monster",
+      "flavor": "The Yowies used to avoid humans at all costs, going to great lengths not to show themselves. However, ever since they were brought to the Sanctuary, they have become more jovial as well as battlesome, happily taking challenges from starting Monster Keepers. The Yowie is speculated to be a distant relative of humans."
+    },
+    {
+      "name": "Steam Golem",
+      "elements": ["steel", "fire"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 108,
+        "attack": 108,
+        "defense": 152,
+        "spAttack": 22,
+        "spDefense": 87,
+        "speed": 43
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Construct Monster",
+      "flavor": "These mechanized workers were engineered by mechanics who dabbled in alchemy. The Steam Golems eventually rebelled against their masters and destroyed the factories they were placed in. Although they cannot speak, it seems that they are able to communicate with each other - even across vast distances."
+    },
+    {
+      "name": "Monk",
+      "elements": ["ghost", "fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 100,
+        "attack": 100,
+        "defense": 60,
+        "spAttack": 60,
+        "spDefense": 60,
+        "speed": 140
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Spirit Warrior Monster",
+      "flavor": "These mysterious humanoids never speak and live in solitude. It's said that they dwell in secret places, in caves hidden behind waterfalls where they might even establish makeshift monasteries. However, there are many stories of Monks coming to the aid of injured mountain climbers, nourishing them back to health and guiding them along the treacherous mountain paths."
+    },
+    {
+      "name": "Grummy",
+      "elements": ["water", "psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 64,
+        "attack": 21,
+        "defense": 43,
+        "spAttack": 43,
+        "spDefense": 43,
+        "speed": 75
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Aquatic Occult Monster",
+      "flavor": "These creatures from the dark corners of the ocean are known for their various supernatural qualities. They outlive humans by far, although scholars can't seem to agree on how long a Grummy can live for exactly. Old tales from the coastal areas say that a Grummy never forgets and never forgives, even as centuries pass and empires rise and fall. The skin of a Grummy is thick, spongy and toxic to a deadly degree, no matter how it is cooked or prepared. The insides of a Grummy are more similar to polyps than fishes or mammals."
+    },
+    {
+      "name": "Tengu",
+      "elements": ["ghost", "psychic"],
+      "raceId": "harpyfolk",
+      "stats": {
+        "hp": 52,
+        "attack": 41,
+        "defense": 21,
+        "spAttack": 62,
+        "spDefense": 41,
+        "speed": 73
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Nature Spirit Mage Monster",
+      "flavor": "Mischievous creatures that seem to only have a single redeeming quality: their love for dance and song. However, they only approach a human when they wish to play a childish prank on them or impress them with their magical powers. It is known that you should always entertain a Tengu's japes and never do anything to infuriate them - unless you want to test the Tengu's mastery of fire and poison."
+    },
+    {
+      "name": "Fungi",
+      "elements": ["ground", "normal"],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 88,
+        "attack": 38,
+        "defense": 13,
+        "spAttack": 38,
+        "spDefense": 25,
+        "speed": 88
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Nature Monster",
+      "flavor": "A biological miracle in the form of a sentient fungus that grew arms, muscles, and the capacity for volatile poison attacks. This allows the Fungi to protect itself against those who'd take mushrooms for easy pickings. Additionally, Fungis are able to generate a multitude of spores that spawn a variety of large, edible mushrooms. These oversized mushrooms can be harvested without danger and they provide plenty of nutritious nourishment. Many dishes that use these mushrooms carry \"Fungi\" in their name although they are only indirectly linked to this Monster."
+    },
+    {
+      "name": "Frosty",
+      "elements": ["ghost", "water"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 12,
+        "attack": 12,
+        "defense": 47,
+        "spAttack": 83,
+        "spDefense": 65,
+        "speed": 71
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Ancient Nature Spirit Monster",
+      "flavor": "Frosties burn with a freezing cold, extinguishing all heat around them - a supernatural phenomenon without a doubt. Neither wizards nor alchemists have ever managed to produce a flame that freezes the air around it, but many have tried."
+    },
+    {
+      "name": "Minitaur",
+      "elements": ["normal", "fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 136,
+        "attack": 158,
+        "defense": 68,
+        "spAttack": 23,
+        "spDefense": 45,
+        "speed": 90
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Beast Warrior Monster",
+      "flavor": "These five feet tall bovine warriors expertly wield their oversized war axes like no human could. Beyond their martial prowess, they also wield spells of different kinds to enhance their destructive potential and protect their kin. An enraged Minitaur at their full potential might summon a Stone Rain as destructive as the impact of a meteor."
+    },
+    {
+      "name": "Specter",
+      "elements": ["ghost", "psychic"],
+      "raceId": "wraith",
+      "stats": {
+        "hp": 72,
+        "attack": 36,
+        "defense": 72,
+        "spAttack": 108,
+        "spDefense": 90,
+        "speed": 143
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Spirit Occult Mage Monster",
+      "flavor": "A blazing phantom that bears the shape of a human's skeleton. It is believed that its flames are capable of burning away both flesh and spirit - that if you get too close to a hostile Specter's fire, you might lose a part of your soul. According to the accounts of unfortunate Keeper Rangers, it would burn away into a puff of smoke that smells like brimstone. Furthermore, these unfortunate Keepers experienced an unnatural chill in their bones, which would only dissipate after a few days."
+    },
+    {
+      "name": "Crackle Knight",
+      "elements": ["ghost", "steel"],
+      "raceId": "human",
+      "stats": {
+        "hp": 35,
+        "attack": 62,
+        "defense": 53,
+        "spAttack": 53,
+        "spDefense": 53,
+        "speed": 35
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Spirit Construct Warrior Monster",
+      "flavor": "A living set of armor with the power of lightning, which is often found brooding in abandoned castle ruins. However, the Crackle Knight has no lack of personality, as there are many stories of the Crackle Knights' sense of honor and their noble nature. Once a Monster Keeper has earned the respect of a Crackle Knight, it is not uncommon for that Crackle Knight to make it its life goal to protect its master from all perils."
+    },
+    {
+      "name": "G'rulu",
+      "elements": ["water", "psychic"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 70,
+        "attack": 20,
+        "defense": 40,
+        "spAttack": 60,
+        "spDefense": 50,
+        "speed": 50
+      },
+      "tier": "small",
+      "catchRate": 60,
+      "category": "Aquatic Occult Monster",
+      "flavor": "The dungeon-stalking G'rulu represents an altered form of the deep-sea Grummy. After this transformation, the G'rulu retains its mastery over the tides, but it prefers to inhabit dry places, with a preference towards man-made lairs. There are old stories of G'rulus creating such lairs within the underwater caves of the Old World. According to the ancient demon tome Ahrimaaya, the G'rulus are said to perform dark rituals in these lairs in an attempt to awaken their immortal master, the Great Graamu."
+    },
+    {
+      "name": "Mad Eye",
+      "elements": ["psychic", "fire"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 105,
+        "attack": 35,
+        "defense": 53,
+        "spAttack": 88,
+        "spDefense": 70,
+        "speed": 70
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Occult Monster",
+      "flavor": "A group of these creatures is referred to as an \"audience of Mad Eyes\". They seem to share a telepathic link with each other while in close proximity. A whole audience of Mad Eyes will always focus on anything strange and unknown to them, as if they could discern its nature by staring at it long enough. Curiously, each Mad Eye possesses a second brain in their tail which sometimes works against the Mad Eye's interests."
+    },
+    {
+      "name": "Nightwing",
+      "elements": ["normal", "flying"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 34,
+        "attack": 120,
+        "defense": 34,
+        "spAttack": 51,
+        "spDefense": 43,
+        "speed": 137
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Beast Monster",
+      "flavor": "The Nightwing is possibly the most stealthy predator that nature has ever produced. It produces no audible sound and it seems as if it's able to meld with the shadows - a combination of extremely keen instincts and magic. It is known to feed on the blood of humans, animals and even other Monsters. It is believed to be able to see in the dark, sense the blood of any warm-blooded being from miles away, and hear the breathing sound of a sleeping human or animal."
+    },
+    {
+      "name": "Toxiquus",
+      "elements": ["water", "flying"],
+      "raceId": "equid",
+      "stats": {
+        "hp": 125,
+        "attack": 18,
+        "defense": 18,
+        "spAttack": 107,
+        "spDefense": 63,
+        "speed": 89
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Nature Monster",
+      "flavor": "The Toxiquus was first found in polluted areas of the ocean. They travel close to the water surface as well as the deep waters, collecting toxic waste and the poison of other predators alike. They store it within a toxin sac in their belly to use these hazardous substances for their own purposes at a later time. That is not the only peculiar purpose that the Toxiquus's large belly serves, as they may also suck in large quantities of air to propel themselves above the water and hover. Last but not least, the males of this species also carry and hatch eggs within a pouch hidden in their belly."
+    },
+    {
+      "name": "Beetloid",
+      "elements": ["steel", "bug"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 55,
+        "attack": 36,
+        "defense": 128,
+        "spAttack": 73,
+        "spDefense": 100,
+        "speed": 128
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Construct Insect Monster",
+      "flavor": "The Beetloid is quite a terrifying creature, which is why the Keepers try to keep their population low. Its horn and lower abdomen are mainly comprised of a unique type of metal called beetlium. The lower abdomen resembles an electromagnetic coil, consisting of many beetlium threads. It allows the Beetloid to charge and store a deadly amount of electricity, whereas the horn is used as a lightning rod to protect it from incoming lightning. A fight between two Beetloids in their prime is quite a sight to behold - if one lives to tell the tale."
+    },
+    {
+      "name": "Druid Oak",
+      "elements": ["ghost", "psychic"],
+      "raceId": "tree",
+      "stats": {
+        "hp": 140,
+        "attack": 35,
+        "defense": 35,
+        "spAttack": 35,
+        "spDefense": 35,
+        "speed": 140
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Spirit Mage Monster",
+      "flavor": "Druid Oaks might be one of the toughest, most resilient and long-lived Monsters of the Sanctuary. It is near impossible to pierce a Druid Oak's body. And while they are sensitive to fire, they can never be burned entirely - they always regenerate from any damage they sustain."
+    },
+    {
+      "name": "Magmamoth",
+      "elements": ["bug", "fire"],
+      "raceId": "lepidopteran",
+      "stats": {
+        "hp": 41,
+        "attack": 95,
+        "defense": 41,
+        "spAttack": 95,
+        "spDefense": 68,
+        "speed": 81
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Insect Monster",
+      "flavor": "As though the Magmapillar hadn't already evolved far beyond all predators of the animal kingdom, the Magmamoth represents its final adult form - the imago. In addition to its innate ability to generate heat, it gains mastery over the winds thanks to its double set of powerful wings. However, it barely uses its physical power to fly - instead, it generates hot air that pushes its wings and body upwards. Using this method of propulsion, it can ascend to the heavens and vanish out of eyesight within a minute."
+    },
+    {
+      "name": "Molebear",
+      "elements": ["normal", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 103,
+        "attack": 103,
+        "defense": 103,
+        "spAttack": 17,
+        "spDefense": 60,
+        "speed": 34
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Beast Monster",
+      "flavor": "Quite possibly one of the highest evolved beasts of the animal kingdom, however the sharp claws and spikes of the Molebear mainly serve as defensive tools, as the Molebear's diet consists of plants it forages and insects it finds in the ground. Molebears feel most at home in the underground caverns that they create themselves over years of effort. During the winter, the Molebears stay hidden in the deepest reaches of these caves, where they are safe from the freezing colds above."
+    },
+    {
+      "name": "Glowfly",
+      "elements": ["bug", "fire"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 16,
+        "attack": 16,
+        "defense": 66,
+        "spAttack": 82,
+        "spDefense": 74,
+        "speed": 165
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Insect Monster",
+      "flavor": "Deceptively small, the Glowfly has often been seen as a regular insect, although its light outshines any common firefly by far. And while most bioluminescent creatures produce light without heat, the Glowfly's light emulates a miniature sun, cooling itself only through the constant beating of its wings."
+    },
+    {
+      "name": "Goblin Brute",
+      "elements": ["dark", "fighting"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 70,
+        "attack": 70,
+        "defense": 88,
+        "spAttack": 18,
+        "spDefense": 53,
+        "speed": 123
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Goblin Warrior Monster",
+      "flavor": "Equipped with a flimsy-looking club and shield, this warrior of the Goblin tribe doesn’t look like they’d put up much of a fight. However, the Goblin Brute shouldn’t be underestimated. For one, their equipment is carved out of the sturdy, enchanted wood of the ' trees. And secondly, Goblin Brutes possess outstanding fighting skills, even when they have little to fight with - being able to transform any mundane object into a deadly weapon."
+    },
+    {
+      "name": "Goblin Hood",
+      "elements": ["dark", "fighting"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 75,
+        "attack": 131,
+        "defense": 37,
+        "spAttack": 19,
+        "spDefense": 28,
+        "speed": 131
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Goblin Warrior Monster",
+      "flavor": "Their deadly aim is rivalled only by their survival instincts - for Goblins are a crafty folk who find ways to survive in any corner of this world. The Goblin Hood represents this quality more than any other type of Goblin. They are the hunters, trappers and survivalists of the tribe. Thanks to ingenuity and just a pinch of makeshift sorcery, they are able to hunt down almost any beast - with only a minimum of Goblin casualties."
+    },
+    {
+      "name": "Goblin Warlock",
+      "elements": ["dark", "psychic"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 66,
+        "attack": 16,
+        "defense": 33,
+        "spAttack": 115,
+        "spDefense": 74,
+        "speed": 115
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Goblin Mage Monster",
+      "flavor": "Wielding a powerful staff and wearing the skull of a large rodent, the Goblin Warlock represents the tribe's witch doctor, shaman and scholar. They also teach the young, or at least they make an effort to do so. The most important subject of Goblin school is history, and every Goblin child gets taught about the creation of their kind through the human warlock Ryslind. Very few of them are able to recall the story - those are the ones who become Goblin Warlocks."
+    },
+    {
+      "name": "Goblin King",
+      "elements": ["dark", "fighting"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 135,
+        "attack": 77,
+        "defense": 39,
+        "spAttack": 77,
+        "spDefense": 58,
+        "speed": 135
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Goblin Warrior Monster",
+      "flavor": "A great number of Goblin \"tribes\" populate the , although each tribe functions more like a big family. There is too much squabbling and infighting among the Goblins to form a true tribe. Only when a Champion emerges from among the Goblins will the many tribe-families come together under one ruler - the Goblin King."
+    },
+    {
+      "name": "Raduga",
+      "elements": ["flying", "fire"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 87,
+        "attack": 43,
+        "defense": 65,
+        "spAttack": 108,
+        "spDefense": 87,
+        "speed": 130
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aerial Nature Bird Monster",
+      "flavor": "The most majestic of all bird-like Monsters, save perhaps for the Spectral Eagle. But whereas the Spectral Eagle governs the powers of storm and sun, the Raduga symbolizes universal balance. Its distinct long tail feathers symbolize the four main elements of nature, and its mere presence fills all beings around it with hope and vigor."
+    },
+    {
+      "name": "Ice Blob",
+      "elements": ["poison", "water"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 69,
+        "attack": 17,
+        "defense": 51,
+        "spAttack": 103,
+        "spDefense": 77,
+        "speed": 103
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Slime Monster",
+      "flavor": "An aura of winter surrounds these orb-like rotund creatures, and a cold breeze follows them wherever they go. Any Keeper with aspirations to climb the should be warned not to underestimate the Ice Blobs. Despite their dangerous nature, many Keepers believe that the Ice Blob doesn't seek to harm Keepers, and that they just can't help freezing all that surrounds them. Once an Ice Blob grows accustomed to a Keeper, they become slightly warmer to them - or perhaps the Keeper becomes more resistant to cold. In either case, a Keeper should always wear gloves while handling an Ice Blob, and no matter what: Don't lick it!"
+    },
+    {
+      "name": "Caraglow",
+      "elements": ["normal", "psychic"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 68,
+        "attack": 68,
+        "defense": 27,
+        "spAttack": 108,
+        "spDefense": 68,
+        "speed": 81
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Beast Mage Monster",
+      "flavor": "Small, feline and fun-loving creatures that love to play around in the dark areas of the Monster Sanctuary. Many Keepers see the Caraglow as a sign of good luck while exploring dark caves. Caraglows happily guide lost Keepers out of caves and caverns, travelling ahead of them while carrying their lights by the handle in their mouths. Despite being friendly towards travellers and Keepers, a Caraglow is extremely protective of their burrow and will attempt to guide travellers away from it. Should that fail, the Caraglow will defend their burrow by attacking trespassers with its sharp claws."
+    },
+    {
+      "name": "Aurumtail",
+      "elements": ["normal", "flying"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 71,
+        "attack": 28,
+        "defense": 71,
+        "spAttack": 57,
+        "spDefense": 64,
+        "speed": 128
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Reptile Beast Monster",
+      "flavor": "A curious mix of reptilian and canine physiology with a unique set of skills. In particular, the Aurumtail's ability to find precious ores and minerals is singular among the inhabitants of the Monster Sanctuary. This ability might have developed due to the Aurumtail's peculiar feeding habits: Its primary diet consists of Mana which it obtains from specific minerals found in caves and underground. This renders their body fragile to physical forces, but gives them an almost impenetrable resistance to magical influences."
+    },
+    {
+      "name": "Megataur",
+      "elements": ["normal", "fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 116,
+        "attack": 87,
+        "defense": 43,
+        "spAttack": 72,
+        "spDefense": 58,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Beast Warrior Monster",
+      "flavor": "This boreal breed of gargantuan beast-men has perfectly adapted to the dire and challenging conditions of the frosty mountaintops of . This resulted in strength, endurance and sturdiness that are unparalleled within the entire Monster Sanctuary. While the Megataur is surprisingly mild-tempered, those who enter their territory are advised not to enrage them - once their anger is ignited, there is only one way to save yourself: flee at once. Within their territory, the Megataurs reign supremely."
+    },
+    {
+      "name": "Mogwai",
+      "elements": ["normal", "psychic"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 69,
+        "attack": 83,
+        "defense": 41,
+        "spAttack": 83,
+        "spDefense": 62,
+        "speed": 83
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Beast Mage Monster",
+      "flavor": "Small, furry creatures that seem docile and well-meaning at first glance. Turning one's back to a Mogwai reveals their impish or even diabolical nature. Getting hit by a snowball in the back while the Mogwai retreats with a goatlike laughter is one of the milder types of Mogwai misdeeds. Give too much trust to a Mogwai and you might end up chasing after that same Mogwai as it's running off with your backpack and supplies. The Mogwais used to hoard their stolen goods in secret caves that they dug under their remote mountain villages."
+    },
+    {
+      "name": "Crystal Snail",
+      "elements": ["water", "ground"],
+      "raceId": "mollusk",
+      "stats": {
+        "hp": 26,
+        "attack": 52,
+        "defense": 129,
+        "spAttack": 65,
+        "spDefense": 97,
+        "speed": 52
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Aquatic Nature Monster",
+      "flavor": "The most well-known resident of the crystal caves of . In fact, Crystal Snails are the source of the brilliant crystals found in those caves. Crystal Snails dig into the ground and consume the minerals that they find there, which allows them to grow the pristine crystals on their back. The crystals provide the Crystal Snails a protective cover from predators, but the Crystal Snails can also use them to fight back as well. Crystal Snails are completely deaf, so Keepers have to communicate with them in sign language."
+    },
+    {
+      "name": "Akhlut",
+      "elements": ["water", "normal"],
+      "raceId": "cetacean",
+      "stats": {
+        "hp": 117,
+        "attack": 117,
+        "defense": 50,
+        "spAttack": 84,
+        "spDefense": 67,
+        "speed": 84
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aquatic Beast Monster",
+      "flavor": "Once regarded as kings of the ocean and referred to as \"killers of whales\" by sailors. Beyond their status as an apex predator, they are also often reported to have a connection to the afterworld."
+    },
+    {
+      "name": "Blade Widow",
+      "elements": ["bug", "fighting"],
+      "raceId": "arachnid",
+      "stats": {
+        "hp": 50,
+        "attack": 118,
+        "defense": 84,
+        "spAttack": 17,
+        "spDefense": 50,
+        "speed": 101
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Insect Warrior Monster",
+      "flavor": "It is quite dangerous to come face to face with these mantis-like creatures, as they are known to prey on just about anything that stumbles into their territory. They are even known to feast on their own kind in certain situations. Almost all of the Blade Widows found in nature are female, as the males of the species are usually much smaller and their lifespans are quite limited. Once a Blade Widow's powerful eyes have found a target, the Blade Widow becomes utterly ruthless."
+    },
+    {
+      "name": "Ninki",
+      "elements": ["dragon", "water"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 93,
+        "attack": 62,
+        "defense": 31,
+        "spAttack": 62,
+        "spDefense": 47,
+        "speed": 124
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Reptile Dragon Monster",
+      "flavor": "The Ninki represents the first form of the Ninki Nanka, the fearsome river dragon. Ninkis are almost never seen in the wilds, as their mothers are fiercely protective of them. It is said to bring bad luck to see a Ninki in the wild, as the mother will likely be angered that a human managed to come so close to her young. The scales and fur of Ninkis are always covered in a layer of mud, which is the source of their longevity and their healing powers. Therefore, a Ninki shouldn't be exposed to great heat or strong currents - or else their mud layer might dry off."
+    },
+    {
+      "name": "Ninki Nanka",
+      "elements": ["dragon", "fire"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 130,
+        "attack": 58,
+        "defense": 29,
+        "spAttack": 58,
+        "spDefense": 43,
+        "speed": 101
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Reptile Dragon Monster",
+      "flavor": "A mighty river dragon that is said to live for hundreds of years. The key difference between a Ninki and a Ninki Nanka is that the mud layer that coats the Ninki Nanka's scales and fur contains volcanic minerals, which grants them even more resilience and power. A Ninki enters adulthood by bathing in a primordial pool of volcanic mud that lies hidden deep underneath the earth."
+    },
+    {
+      "name": "Vasuki",
+      "elements": ["fire", "ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 53,
+        "attack": 105,
+        "defense": 39,
+        "spAttack": 92,
+        "spDefense": 66,
+        "speed": 66
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Reptile Monster",
+      "flavor": "A large snake with two heads that act independently of each other. Observing a Vasuki's heads often teaches one a good lesson about the importance of cooperation - for a Vasuki is most deadly when it strikes at the same foe with both heads at once."
+    },
+    {
+      "name": "Kame",
+      "elements": ["water", "fighting"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 59,
+        "attack": 88,
+        "defense": 118,
+        "spAttack": 15,
+        "spDefense": 66,
+        "speed": 74
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Reptile Warrior Monster",
+      "flavor": "Kames are large bipedal turtles famous for their mastery of martial arts. They are as comfortable on land as they are in water, able to move surprisingly quick either way. Their power stems from their mastery over Chi: latent energy which flows inside all living beings. Kames have evolved with a natural ability to control Chi to increase the power of their strikes and to manifest their Chi outside their body in the form of sudden heat blasts."
+    },
+    {
+      "name": "Sycophantom",
+      "elements": ["ghost", "normal"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 109,
+        "attack": 47,
+        "defense": 31,
+        "spAttack": 93,
+        "spDefense": 62,
+        "speed": 78
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spirit Beast Monster",
+      "flavor": "A mischievous spirit that is believed to be born of an elephant calf that was brought down by human hunters. Now it is doomed to spend eternity in the form of a young elephant, which explains the Sychophantoms' juvenile behavior. It seems that they are determined only to manipulate others for their own personal gain, or to spread evil in the world that was so unkind to them. It's usually not difficult to outwit a Sycophantom however, which means they often end up doing favors for others, while forgetting to follow through with the actual manipulation part afterwards."
+    },
+    {
+      "name": "Imori",
+      "elements": ["fighting", "fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 32,
+        "attack": 127,
+        "defense": 95,
+        "spAttack": 16,
+        "spDefense": 55,
+        "speed": 95
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Reptile Warrior Monster",
+      "flavor": "Imoris are courageous, armor-clad lizard warriors with a strong sense of honor. An Imori makes a great bodyguard, who will fight to defend their charge even when they are outnumbered. The Imoris' technique aims to gradually injure and weaken the enemy with quick spear jabs. Their strikes are so fast and precise that it takes several seconds for their foes to realize that they've been wounded."
+    },
+    {
+      "name": "Qilin",
+      "elements": ["ghost", "normal"],
+      "raceId": "divineBeast",
+      "stats": {
+        "hp": 123,
+        "attack": 88,
+        "defense": 35,
+        "spAttack": 88,
+        "spDefense": 62,
+        "speed": 123
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Spirit Beast Monster",
+      "flavor": "A rare, solitary creature that avoids contact with humans and other Monsters at almost all times. It seems that a Qilin is most at ease while it's enjoying a moment of pure solitude in nature. Qilins are therefore considered to be gentle and pure-hearted, without any intention to bother or disturb other living beings."
+    },
+    {
+      "name": "Sizzle Knight",
+      "elements": ["ghost", "steel"],
+      "raceId": "human",
+      "stats": {
+        "hp": 49,
+        "attack": 74,
+        "defense": 86,
+        "spAttack": 62,
+        "spDefense": 74,
+        "speed": 74
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spirit Construct Warrior Monster",
+      "flavor": "What happens when you expose a gloomy Crackle Knight to the incandescence that fills the halls of the ? Most don't even care enough to look up. However, some Crackle Knights take a strange liking to the miniature sun that illuminates the - so much so that they change their entire nature. As Sizzle Knights of , they become much more jovial and expressive. They cannot talk, but sometimes you can hear a low chuckle coming from their helmets when they are in a joyful mood."
+    },
+    {
+      "name": "Koi",
+      "elements": ["water", "normal"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 76,
+        "attack": 61,
+        "defense": 31,
+        "spAttack": 76,
+        "spDefense": 53,
+        "speed": 122
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Aerial Monster",
+      "flavor": "Not to be confused by the ordinary (albeit equally beautiful) fish that goes by the same name, the Monster Kois aren't shackled by their namesakes' earthly boundaries. They can swim in any direction they choose, and in a way that seems completely effortless. It doesn't matter whether they're swimming upstream, diving into the darkest depths, or gliding through thin air - it all seems all the same to them. They are therefore seen as living symbols of pure freedom and the ability to choose your own destiny."
+    },
+    {
+      "name": "Tanuki",
+      "elements": ["normal", "psychic"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 71,
+        "attack": 71,
+        "defense": 57,
+        "spAttack": 71,
+        "spDefense": 64,
+        "speed": 85
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Beast Mage Monster",
+      "flavor": "Tanukis are shapeshifting creatures with a strong connection to nature. They have often been mistaken for large racoons or bears, because they are quite adept at fooling humans. They travel throughout the entire Monster Sanctuary, but you never know if you're looking at a Tanuki, since they rarely show their true form. As a result, some Monster Keepers have become so paranoid that they believe some of the people of Monster Sanctuary are actually Tanukis in disguise."
+    },
+    {
+      "name": "Kanko",
+      "elements": ["ghost", "normal"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 111,
+        "attack": 133,
+        "defense": 44,
+        "spAttack": 22,
+        "spDefense": 33,
+        "speed": 177
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aerial Spirit Beast Monster",
+      "flavor": "Kankos were summoned and bound to our world by shamans. The only way to bring forth a Kanko is through the embers and smoke of a pipe, which is why they are also referred to as \"pipe foxes\". They exude an aura of protection against evil spirits and are fiercely defensive when guarding the one they consider their master. They are formidable against even the largest of evil spirits."
+    },
+    {
+      "name": "Dodo",
+      "elements": ["normal", "flying"],
+      "raceId": "galliform",
+      "stats": {
+        "hp": 92,
+        "attack": 66,
+        "defense": 53,
+        "spAttack": 79,
+        "spDefense": 66,
+        "speed": 66
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Beast Bird Monster",
+      "flavor": "Dodos are big, fluffy, earthbound birds with remarkably good-natured dispositions. Perhaps they once were capable of flight, but now their wings are mainly used by the adult Dodos to protect their chicks from harsh sunlight. Both the male and the female Dodo cooperate when it comes to incubating their eggs and rearing their young. It has even been seen in nature that a same-sex couple of Dodos adopt an orphaned egg and happily treat it as their own."
+    },
+    {
+      "name": "Kongamato",
+      "elements": ["fire", "flying"],
+      "raceId": "pterosaur",
+      "stats": {
+        "hp": 66,
+        "attack": 92,
+        "defense": 26,
+        "spAttack": 105,
+        "spDefense": 66,
+        "speed": 66
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Aerial Reptile Monster",
+      "flavor": "The name of this Monster means \"breaker of boats\", which it was given due to its sheer strength. What most don't know, however, is that it is actually capable of crushing an entire boat to splinters through its super sonic scream. Another remarkable quality of them is the fact that - unlike bird chicks which require to be reared and taught carefully - Kongamatos hatch with fully developed wings and are able to take flight in a matter of seconds after hatching. Therefore, they are seen as more solitary and individualistic creatures than birds."
+    },
+    {
+      "name": "Ucan",
+      "elements": ["water", "normal"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 41,
+        "attack": 69,
+        "defense": 124,
+        "spAttack": 55,
+        "spDefense": 90,
+        "speed": 41
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Beast Monster",
+      "flavor": "Ucans are giant hostile crab-like Monsters that posses a few peculiar traits. Their thick, unruly fur mainly serves the purposes of heat insulation and protection against the elements, allowing them to adapt to all types of different environments. Their ancient fossils can be found all across the world, including the snowy arctic and the vast blazing deserts. Their exoskeletons are extremely tough, but they don't grow with their wearers - meaning a Ucan has to shed its exoskeleton several times in its life and grow a new one each time."
+    },
+    {
+      "name": "Brawlish",
+      "elements": ["water", "fighting"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 140,
+        "attack": 88,
+        "defense": 53,
+        "spAttack": 18,
+        "spDefense": 35,
+        "speed": 88
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Warrior Monster",
+      "flavor": "Brawlish are burly, hot-tempered fish that spend a lot of their time outside of water, being able to breathe through their skin. They use their powerful, muscular arms to move on land. Every adult Brawlish eventually digs a burrow above the water, which gives the Brawlish shelter during its sleep and helps it regulates its temperature. When the mating season arrives, both male and female Brawlish attempt to impress each other by performing push-ups, sit-ups, high jumps, backflips or even by lifting heavy objects."
+    },
+    {
+      "name": "Thornish",
+      "elements": ["water", "ground"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 125,
+        "attack": 71,
+        "defense": 71,
+        "spAttack": 18,
+        "spDefense": 45,
+        "speed": 89
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Monster",
+      "flavor": "Some would say that the best defense is a good offense - but for the Thornish, the opposite is closer to the truth. They possess several defense mechanisms that severely harm those who'd try attacking a Thornish: sharp spines which can inflict deep wounds, a set of razor fangs, a particularly vengeful and ruthless disposition that kicks in at the slightest push, and - last but not least - the most poisonous substance on this world, which is prevalent in almost every single cell and organ of the Thornish."
+    },
+    {
+      "name": "Nautilid",
+      "elements": ["water", "psychic"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 46,
+        "attack": 15,
+        "defense": 76,
+        "spAttack": 92,
+        "spDefense": 84,
+        "speed": 107
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aquatic Occult Monster",
+      "flavor": "Nautilids bear their name due to their superficial similarity to the marine mollusc nautilus. However, they are closer related to squids. They are blue-blooded, have multiple hearts and they may shoot clouds of ink to blind their foes, although they also developed a set of other defense mechanisms that aid them against all types of predators. Its \"face\" is more like a mask: a thick, bony plate which protects the Nautilid's actual face. When it wants to eat, it has to slightly lift up its mask."
+    },
+    {
+      "name": "Silvaero",
+      "elements": ["flying", "water"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 88,
+        "attack": 74,
+        "defense": 29,
+        "spAttack": 74,
+        "spDefense": 52,
+        "speed": 103
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Bird Monster",
+      "flavor": "Silvaeros are an evolutionary offshoot of Vaeros, which have become much larger due to the natural phenomenon of island gigantism. Some even believe that the Silvaeros used to be much larger before they came to the Monster Sanctuary - but it's hard to say, due to the many conflicting accounts and exaggerated stories. The feathers of the Silvaero are practically charged with magical energy, capable of invoking the full force of the winds of winter. In particular, the silver feathers of the Silvaero are sometimes kept by Monster Keepers as lucky charms."
+    },
+    {
+      "name": "Elderjel",
+      "elements": ["water", "psychic"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 146,
+        "attack": 21,
+        "defense": 21,
+        "spAttack": 104,
+        "spDefense": 62,
+        "speed": 166
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aquatic Occult Monster",
+      "flavor": "Elderjels are the only living biological entities in our world that are able to reverse their own aging process. Once they reach the final phase of their life cycle, the cells in their body undergo a miraculous process, which puts the Elderjel back into an earlier stage of its life. They can do this an indefinite number of times, even when they are injured or starving."
+    },
+    {
+      "name": "Manticorb",
+      "elements": ["normal", "psychic"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 76,
+        "attack": 15,
+        "defense": 46,
+        "spAttack": 92,
+        "spDefense": 69,
+        "speed": 122
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Beast Mage Monster",
+      "flavor": "Lacking appreciable teeth or claws with which to fight, the Manticorb defends itself entirely by magical means. Its thick, fluffy coat serves to absorb large amounts of errant Mana from the surrounding atmosphere, which it can cast at will from the tip of its tail, much like a wand. It carries so much magical energy inside its small body that its large eye even emits light in dark places. A skilled Manticorb can become quite adept in wielding multiple attack elements, and predators are quick to learn that the warning stripes are no joke."
+    },
+    {
+      "name": "Goblin Miner",
+      "elements": ["dark", "fire"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 65,
+        "attack": 113,
+        "defense": 81,
+        "spAttack": 16,
+        "spDefense": 48,
+        "speed": 97
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Goblin Monster",
+      "flavor": "Goblin Miners are Goblins who have chosen to work in the gloomy and tepid mines of the . It's quite surprising how organized Goblins can be when they work towards a common goal - in fact, the Goblin Miners even have a union. A Goblin Miner's pickaxe is his most prized possession, as the union assigns each Miner a single pickaxe that they are required to keep using until they go into retirement. However, retirement usually never happens due to the dangerous working conditions. It is the union's miserly business practices and their complete disregard of work ethics that have made them the Sanctuary's top supplier of coal and valuable minerals."
+    },
+    {
+      "name": "Salahammer",
+      "elements": ["fighting", "fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 101,
+        "attack": 58,
+        "defense": 58,
+        "spAttack": 58,
+        "spDefense": 58,
+        "speed": 87
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Reptile Warrior Monster",
+      "flavor": "Throughout history, Salahammers have been known as master smiths, using their internal fires to fuel their forge. It is believed that some Salahammers are obsessed with the creation of the perfect weapon, which may even cut through diamond with ease, while other Salahammers instead seek out to create an indestructible suit of armor, which would protect its wearer from all harm."
+    },
+    {
+      "name": "Lava Blob",
+      "elements": ["poison", "fire"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 70,
+        "attack": 84,
+        "defense": 28,
+        "spAttack": 84,
+        "spDefense": 56,
+        "speed": 98
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Slime Monster",
+      "flavor": "Lava Blobs are the fiery, explosive and much less stable descendants of the common Blobs of the . It appears as if their bodies are in a constant state of fluidity, always about to lose their shape and fall apart, however Lava Blobs always manage to keep it together which many believe to be quite an admirable feat. When they get particularly excited, they might leave a drop of themselves behind which slowly burns into the ground. Once it has cooled down, it provides the earth with valuable minerals and gives it healing properties."
+    },
+    {
+      "name": "Glowdra",
+      "elements": ["dragon", "bug"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 30,
+        "attack": 15,
+        "defense": 75,
+        "spAttack": 105,
+        "spDefense": 90,
+        "speed": 105
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Dragon Insect Monster",
+      "flavor": "The Glowdra represents the mythical, dragon-type evolution of the humble Glowfly. They are expert fliers, with a tendency to migrate all over the world over their century-long lifespans. When they jet across the night sky, they are sometimes mistaken for shooting stars. In the Old World, only one in a thousand Glowflies would evolve into a Glowdra."
+    },
+    {
+      "name": "Draconov",
+      "elements": ["dragon", "normal"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 100,
+        "attack": 71,
+        "defense": 28,
+        "spAttack": 71,
+        "spDefense": 50,
+        "speed": 100
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Reptile Dragon Monster",
+      "flavor": "Draconovs are the whelps of the Draco family of Monsters. Nonetheless, they are fierce dragons in their own right - all it takes to unlock their full potential is a wise Keeper. Unlike their evolved forms, Draconovs will never judge their Keepers if they show signs of insecurity or weakness."
+    },
+    {
+      "name": "Dracogran",
+      "elements": ["dragon", "fire"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 101,
+        "attack": 78,
+        "defense": 45,
+        "spAttack": 78,
+        "spDefense": 62,
+        "speed": 56
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Reptile Dragon Monster",
+      "flavor": "When one studies the Dracograns, It becomes obvious very quickly that these are hot-blooded reptiles - in fact, their blood would burn through most materials known to us. Dracograns are also known for their pride, as they only accept Keepers in charge of them who have proven themselves."
+    },
+    {
+      "name": "Asura",
+      "elements": ["psychic", "fighting"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 135,
+        "attack": 135,
+        "defense": 58,
+        "spAttack": 19,
+        "spDefense": 39,
+        "speed": 135
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Occult Warrior Monster",
+      "flavor": "Asuras are fierce, mythical beings that can have positive as well as negative qualities. Their depictions in art are a popular topic among scholars and priests. According to their interpretations, the many arms of Asuras signify that they may learn and master many different skills. Supposedly, their hands are always empty so that they may freely grasp at that which they don't have."
+    },
+    {
+      "name": "Skorch",
+      "elements": ["dragon", "fire"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 109,
+        "attack": 16,
+        "defense": 31,
+        "spAttack": 93,
+        "spDefense": 62,
+        "speed": 109
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Dragon Monster",
+      "flavor": "Known as \"candle dragons\", Skorches are the smallest and most unassuming dragon-type Monsters. They also have overly cheery and friendly dispositions, and it is said that a Skorch would never fight for itself. For those reasons, Skorches were long considered to be only fit as pets. However, if a Skorch is treated for years with love and respect by a human, something grows inside of them. When the time comes, and the Skorch's Keeper is threatened, it is as if the Skorch's very soul suddenly lights up. The Skorch becomes incredibly fierce and fiery, it's fighting strength only limited by the bond to its Keeper."
+    },
+    {
+      "name": "Stolby",
+      "elements": ["psychic", "flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 75,
+        "attack": 15,
+        "defense": 45,
+        "spAttack": 105,
+        "spDefense": 75,
+        "speed": 105
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Bird Mage Monster",
+      "flavor": "Small of body and long of leg, these curious avian apparitions may sometimes be spotted stalking the darker corners of the Sanctuary. Stolbies are always gathering new insights into the other denizens of the Sanctuary as well as materials for their spells. They are extremely knowledgeable in the fields of herbalism and gemology, and apply these skills in battle both by proliferating dreadful toxins among their enemies, and swiftly healing their allies."
+    },
+    {
+      "name": "Ornithopter",
+      "elements": ["steel", "flying"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 32,
+        "attack": 16,
+        "defense": 129,
+        "spAttack": 32,
+        "spDefense": 81,
+        "speed": 129
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Aerial Construct <!--attack types     --> Monster",
+      "flavor": "Ornithopters are mechanical beings capable of perpetual flight. They are kept in motion through mysterious mechanisms that are hidden within the barrel-shaped body. Being one of the most puzzling inventions in history, they have inspired many attempts to copy their design or improve on it, which have all failed so far."
+    },
+    {
+      "name": "Polterofen",
+      "elements": ["ghost", "steel"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 48,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 84
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spirit Construct <!--attack types     --> Monster",
+      "flavor": "Polterofens are old-fashioned ovens that came alive through supernatural means. According to popular belief, some household objects may be rewarded with a soul after serving for a hundred years. Most Polterofens, however, only come alive once their owners decide to replace them with a newer model. As a result, the Polterofen becomes enraged and turns against its owner. Other Polterofens, on the other hand, only turn alive after their owners have moved to another house. Left behind, those Polterofens become filled with grief and sometimes set out to find their original owners."
+    },
+    {
+      "name": "Oculus",
+      "elements": ["bug", "steel"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 42,
+        "attack": 14,
+        "defense": 84,
+        "spAttack": 84,
+        "spDefense": 84,
+        "speed": 112
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Insect Construct <!--attack types     --> Monster",
+      "flavor": "Oculi are a technological marvel without equal in the Sanctuary as well as in the Old World. An Oculus's eye is made of several state-of-the-art lenses of transparent adamantium that can be moved at will, granting the Oculus vision acuity that is possibly beyond any other being in existence."
+    },
+    {
+      "name": "Mimic",
+      "elements": ["psychic", "ghost"],
+      "raceId": "mimic",
+      "stats": {
+        "hp": 71,
+        "attack": 125,
+        "defense": 71,
+        "spAttack": 18,
+        "spDefense": 45,
+        "speed": 89
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Spirit Construct Monster",
+      "flavor": "Mimics are spirits that are cursed to remain inside of treasure chests. With nothing better to do, they tend to sit still and wait patiently for adventurers to approach, longing for the opportunity to let out their anger on them."
+    },
+    {
+      "name": "Goblin Pilot",
+      "elements": ["dark", "steel"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 69,
+        "attack": 121,
+        "defense": 121,
+        "spAttack": 17,
+        "spDefense": 69,
+        "speed": 121
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Goblin Construct <!--attack types     --> Monster",
+      "flavor": "Whoever claims that Goblins aren't meant for greatness has probably never encountered a Goblin Pilot. It's hard to say at this point whether this potential can ever be harnessed for the good of the Sanctuary, since there have been almost no records so far of Goblin Pilots being trained by Monster Keepers. Until then, Goblin Pilots will unfortunately only be known for their aptitude for wanton mayhem, large-scale demolitions and rude gestures."
+    },
+    {
+      "name": "Shockhopper",
+      "elements": ["flying", "psychic"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 58,
+        "attack": 14,
+        "defense": 58,
+        "spAttack": 116,
+        "spDefense": 87,
+        "speed": 87
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Bird Mage <!--attack types     --> Monster",
+      "flavor": "Shockhoppers used to make their homes on remote icy islands. Never having had contact with humans, they were very friendly to visitors. Their feathers were short and coursed with static electricity at all times, giving anyone quite the shock when they tried to pet the fuzzy little penguins. They could use their electricity to propel themselves into the air to leap from rock to rock, aiding in evading predators."
+    },
+    {
+      "name": "Targoat",
+      "elements": ["normal", "fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 103,
+        "attack": 86,
+        "defense": 69,
+        "spAttack": 17,
+        "spDefense": 43,
+        "speed": 103
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Beast Warrior <!--attack types     --> Monster",
+      "flavor": "Native to the , Targoats are known for being defenders of Monsters they are close to, even risking their own lives for them. They have a thick coat of fur and thick skin, as well as abnormally hard bones - allowing them to take lots of attacks with little injury. They are very prideful of their fur and their bulk, which often leads to them jumping into danger head-on. The oldest Targoat in captivity was recorded at living for 105 years. However, most Targoats don't die of old age - they usually die defending others."
+    },
+    {
+      "name": "Dracozul",
+      "elements": ["dragon", "water"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 67,
+        "attack": 93,
+        "defense": 67,
+        "spAttack": 93,
+        "spDefense": 80,
+        "speed": 120
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aerial Reptile Dragon Monster",
+      "flavor": "Dracozuls are known primarily for two things: their beautiful azure-colored scales that shimmer brilliantly in the light, and their unruly ferocity. Despite being the only cold-blooded member of the Draco family, they are possibly the wildest out of all of them. When the Keeper of a Dracozul becomes too old, it is advised for them to give their Dracozul away - to prevent the Dracozul from breaking free through force."
+    },
+    {
+      "name": "Troll",
+      "elements": ["psychic", "normal"],
+      "raceId": "troll",
+      "stats": {
+        "hp": 103,
+        "attack": 120,
+        "defense": 69,
+        "spAttack": 17,
+        "spDefense": 43,
+        "speed": 69
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Beast <!--attack types     --> Monster",
+      "flavor": "Trolls are infamous cave dwellers and gluttons. They will eat almost anything and are often painted as abhorrent scavengers. Their main diet, however, consists of rocks that are rich in minerals. Trolls will quite literally eat their way through the earth in search of such rocks. Due to spending most of their lives underground, they abhor nothing more than sunlight."
+    },
+    {
+      "name": "Brutus",
+      "elements": ["normal", "fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 143,
+        "attack": 204,
+        "defense": 82,
+        "spAttack": 20,
+        "spDefense": 51,
+        "speed": 20
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Beast Warrior <!--attack types     --> Monster",
+      "flavor": "When it comes to brute strength, no other Monster can rival Brutus. What many don't know, however, is that they are also very intelligent. They can use tools, but they usually prefer to use their brawn to achieve their goals. They can also learn sign language, but they mostly just sign \"Brutus strong\" and \"you lose\". A newborn Brutus spends the first six or seven years of its life riding on its mother's back. Later, they set off on their own into the wilds to find their own territory to conquer."
+    },
+    {
+      "name": "Mega Rock",
+      "elements": ["ghost", "fire"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 69,
+        "attack": 96,
+        "defense": 124,
+        "spAttack": 28,
+        "spDefense": 76,
+        "speed": 28
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Nature Spirit Monster",
+      "flavor": "What do you get when naive, but powerful nature spirits are forced to defend their habitats from complete destruction? Mega Rocks are the imposing answer to that question. Simply put, a Mega Rock is created when a Rocky's inherent talent for nature manipulation is pushed beyond its limits."
+    },
+    {
+      "name": "Argiope",
+      "elements": ["bug", "ground"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 50,
+        "attack": 75,
+        "defense": 63,
+        "spAttack": 75,
+        "spDefense": 69,
+        "speed": 88
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Insect <!--attack types     --> Monster",
+      "flavor": "Argiopes are giant spider-like Monsters with a distinctive exoskeleton that is made of silver. Because of their calculating and patient nature, Argiopes usually bide their time and wait for their prey to come to them. Argiopes spread tiny invisible threads throughout their territories that alert them of any trespasser. Once alerted, Argiopes will silently stalk their target and ambush them at just the right moment. They possess small wing-like limbs on their back, which allow them to redirect their jumps in mid-air. Thanks to this ability, as well as their excellent vision and split-second reactions, it's almost impossible to escape from an Argiope. If need be, Argiopes can also throw their webs like a net to immobilize their foes."
+    },
+    {
+      "name": "Arachlich",
+      "elements": ["psychic", "water"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 44,
+        "attack": 15,
+        "defense": 44,
+        "spAttack": 118,
+        "spDefense": 81,
+        "speed": 118
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Mage <!--attack types     --> Monster",
+      "flavor": "Arachliches are highly intelligent undead Monsters that have attained immortality through sorcery. Their spell power is unequaled throughout the world, but they rarely use their full potential. Doing so would drain away their precious power that they have accumulated over centuries. Even while under the control of a Monster Keeper, Arachliches only use a fraction of their true power. Arachliches always maintain an unusual amount of free will. In fact, some fear that Arachliches merely pretend to be under their Keepers' control, following their Keepers for the opportunity to gain more power."
+    },
+    {
+      "name": "Moccus",
+      "elements": ["psychic", "normal"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 114,
+        "attack": 71,
+        "defense": 28,
+        "spAttack": 71,
+        "spDefense": 50,
+        "speed": 85
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Beast <!--attack types     --> Monster",
+      "flavor": "Moccuses are boars that were once mummified and entombed, but came to life again and escaped their constraints with undying vigor. Moccuses carry a great number of toxins and parasitic spores inside their bodies that they unleash wherever they go. They also possess magic that lies at the border between life and death."
+    },
+    {
+      "name": "Promethean",
+      "elements": ["psychic", "steel"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 93,
+        "attack": 140,
+        "defense": 62,
+        "spAttack": 31,
+        "spDefense": 47,
+        "speed": 47
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Construct <!--attack types     --> Monster",
+      "flavor": "Prometheans are undead that were brought to life through a combination of Alchemy and the Old World's \"science.\" Electricity is the most vital component to their existence, so a number of devices are attached to their bodies to keep the electricity in their body in check."
+    },
+    {
+      "name": "Draconoir",
+      "elements": ["dragon", "ground"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 95,
+        "attack": 108,
+        "defense": 41,
+        "spAttack": 108,
+        "spDefense": 74,
+        "speed": 95
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aerial Reptile Dragon Monster",
+      "flavor": "Draconoirs are one of the more elusive evolutionary paths of Draconov. From among the Draco family, Draconoirs are blessed with highest wisdom and longevity. However, they only share their wisdom with those who are very wise themselves."
+    },
+    {
+      "name": "Spinner",
+      "elements": ["psychic", "bug"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 98,
+        "attack": 112,
+        "defense": 28,
+        "spAttack": 112,
+        "spDefense": 70,
+        "speed": 98
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Occult Insect <!--attack types     --> Monster",
+      "flavor": "Spinners are among the most mysterious Monsters of the Sanctuary. In fact, nothing concrete can be said about their biological nature. Some believe that they are simply spider-like creatures, while others believe that they are supernatural entities born from the shadows. The third theory states that a Spinner is an amalgam of an innumerable number of small spiders that are controlled by a single shadowy hivemind."
+    },
+    {
+      "name": "Plague Egg",
+      "elements": ["flying", "psychic"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 30,
+        "attack": 15,
+        "defense": 75,
+        "spAttack": 105,
+        "spDefense": 90,
+        "speed": 105
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Bird Mage <!--attack types     --> Monster",
+      "flavor": "These oval creatures bear an appearance similar to the garb of an ancient order which practices alchemy. Plague Eggs are usually reclusive and only rarely appear to attempt to cure illnesses and injuries on unattended patients. However, interrupting their \"operations\" or attempting to capture them will provoke them to attack with magic, which curses and interrupts the biological functions of living creatures. Their cures sometimes resemble ominous experiments - for instance, they might save a human's life, but at the price of their legs. Conversely, sometimes they add enhancements to their patient's bodies, such as additional limbs or wings, but neglect to treat their illnesses. Thankfully, when raised by Keepers, they do not practice such behavior."
+    },
+    {
+      "name": "Sutsune",
+      "elements": ["psychic", "normal"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 58,
+        "attack": 104,
+        "defense": 23,
+        "spAttack": 104,
+        "spDefense": 63,
+        "speed": 69
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Occult Beast Mage Monster",
+      "flavor": "Sutsune are beautiful, elegant, and deadly female vulpine demons. According to ancient stories, Sutsune are able to transform into common foxes or young women; only upon closer inspection one might spot some deformities such as horns hidden underneath the hair or fur. Often, however, it was already too late at that point, since the Sutsune had already snuck in close enough to fulfil her nefarious plan. A Sutsune is said to be as likely to kill as she is to enthrall a man's heart so as to subjugate him for her purposes."
+    },
+    {
+      "name": "Darnation",
+      "elements": ["bug", "fighting"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 48,
+        "attack": 129,
+        "defense": 113,
+        "spAttack": 16,
+        "spDefense": 65,
+        "speed": 48
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Insect Warrior <!--attack types     --> Monster",
+      "flavor": "The ruthless Darnation is a vicious predator that utilizes its hard exoskeleton and its uniquely adapted offensive capabilities to secure its apex position. A Darnation is able to utilize chemical compounds within its body to produce multiple bizarre effects. It can coat its hook-like arms with a powerful corroding acid to eat away at its foe's defenses as well as swiftly dig through the earth. More surprisingly, a Darnation is also capable of producing volatile compounds that create powerful short range explosions, which often catch prey or would-be predators off-guard."
+    },
+    {
+      "name": "Thanatos",
+      "elements": ["ghost", "psychic"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 89,
+        "attack": 89,
+        "defense": 13,
+        "spAttack": 89,
+        "spDefense": 51,
+        "speed": 89
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spirit Occult Mage Monster",
+      "flavor": "Thanatoi are believed to be demonic entities that come to our world to steal the souls of humans. They are often credited as being the source of the Grim Reaper myth. However, whereas the Grim Reaper is said to bear a grisly, but impartial undead visage, those who look a Thanatos in the face are greeted to an eerie face of a smiling clown. The only way to return the souls a Thanatos stole is by defeating it."
+    },
+    {
+      "name": "Rainbow Blob",
+      "elements": ["poison", "fire"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 80,
+        "attack": 67,
+        "defense": 27,
+        "spAttack": 93,
+        "spDefense": 60,
+        "speed": 93
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Slime <!--attack types     --> Monster",
+      "flavor": "Rainbow Blobs are the rarest and most colorful offspring of the Blobs of Monster Sanctuary. They possess the combined qualities and abilities of the three more common Blobs, and they inexplicably also have power over lightning. Being able to heat up the air around them, as well as to summon a cool breeze, they'd make a great addition for any home. To this date, however, only a handful of Monster Keepers in history are known to have possessed Rainbow Blobs. None of them gave away any hints as to where they got their Rainbow Blobs from."
+    },
+    {
+      "name": "Changeling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 70,
+        "attack": 70,
+        "defense": 70,
+        "spAttack": 70,
+        "spDefense": 70,
+        "speed": 70
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "All types <!--attack types     --> Monster",
+      "flavor": "Changelings are the ever-changing true shapeshifters of the Monster kingdom. Each Changeling contains the traits of every single Monster that is known to us. The matter that makes up their body is fluid and metallic at the same time, like liquid quicksilver, but it's also able to perfectly mimic biological structures and processes."
+    },
+    {
+      "name": "King Blob",
+      "elements": ["poison", "water"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 170,
+        "attack": 51,
+        "defense": 34,
+        "spAttack": 85,
+        "spDefense": 60,
+        "speed": 119
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Slime <!--attack types     --> Monster",
+      "flavor": "King Blobs are the proud monarchs of the Blob family. They are much larger than any of the other Blobs, bear a slime-drenched crown and scepter, and they are known to be able to command other Blobs to do their bidding."
+    },
+    {
+      "name": "Worm",
+      "elements": ["fighting", "fire"],
+      "raceId": "annelid",
+      "stats": {
+        "hp": 50,
+        "attack": 151,
+        "defense": 50,
+        "spAttack": 17,
+        "spDefense": 34,
+        "speed": 118
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Worm Warrior <!--attack types     --> Monster",
+      "flavor": "Three inches tall and armed to the teeth, Worms are one of the most peculiar and puzzling Monster species. Worms live in strictly separated groups, which are at war with each other at virtually all times. They carry out these wars with highly advanced weaponry, some of which resembles miniature versions of weapons that have been developed in the Old World. Some of their weapons, however, do not resemble anything a human mind would ever engineer."
+    },
+    {
+      "name": "Vodinoy",
+      "elements": ["water", "fighting"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 96,
+        "attack": 154,
+        "defense": 96,
+        "spAttack": 19,
+        "spDefense": 58,
+        "speed": 96
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aquatic Warrior Monster",
+      "flavor": "Vodinoys are fierce, resilient mermen that can sometimes be found in ponds and rivers near villages, although their home is said to lie in the deepest ocean depths, where no human has ever been."
+    },
+    {
+      "name": "Aazerach",
+      "elements": ["ghost", "psychic"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 90,
+        "attack": 18,
+        "defense": 36,
+        "spAttack": 143,
+        "spDefense": 90,
+        "speed": 143
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Spirit Occult Reptile Monster",
+      "flavor": "Aazerachs are demonic beings of pure magic that come from another world. Since they are able to freely cross the barrier between their world and ours, an occult summoning circle is necessary to trap them. Although Aazerachs seem to have eyes on their heads, they are actually blind. They detect living beings through some unknown supernatural sense."
+    },
+    {
+      "name": "Diavola",
+      "elements": ["psychic", "fire"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 85,
+        "attack": 128,
+        "defense": 57,
+        "spAttack": 100,
+        "spDefense": 78,
+        "speed": 71
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Nature Occult <!--attack types     --> Monster",
+      "flavor": "Diavolae are plant-like predators of demonic origin. In their dormant state, they are usually found in the middle of an empty clearing, as no other plants, animals, or Monsters would come close to them. They use their appearance to lure unsuspecting explorers in. They are also capable, however, of shifting into an active state by pulling their roots out of the ground and using them as limbs."
+    },
+    {
+      "name": "Gryphonix",
+      "elements": ["normal", "flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 106,
+        "attack": 90,
+        "defense": 45,
+        "spAttack": 90,
+        "spDefense": 68,
+        "speed": 121
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Aerial Beast Bird Monster",
+      "flavor": "Gryphonixes are stout, fiery hybrid Monsters with the body of a lion and the wings and head of an eagle. Despite their rarity, they are one of the most well-known and celebrated Monsters, as is evidenced by their many depictions all across the Old World. They are known to be loyal defenders, having been employed by different human civilizations to protect great rulers, ancestral tombs, and caches of gold. Some even believed that the mere presence of a Gryphonix symbol could ward of evil."
+    },
+    {
+      "name": "Vertraag",
+      "elements": ["ghost", "psychic"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 123,
+        "attack": 18,
+        "defense": 35,
+        "spAttack": 123,
+        "spDefense": 79,
+        "speed": 141
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Ancient Spirit Mage Monster",
+      "flavor": "Vertraag is the name of a powerful god of time, although the Vertraag that some Monster Keepers claim to have encountered was perhaps just an avatar of Vertraag that has manifested in our world for unknown reasons. Vertraag is said to be a deity who's always scheming and working to fulfill some millennia-spanning plan, no mere mortal possibly being able to discern his end goals."
+    },
+    {
+      "name": "Mad Lord",
+      "elements": ["psychic", "fire"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 116,
+        "attack": 92,
+        "defense": 69,
+        "spAttack": 92,
+        "spDefense": 81,
+        "speed": 69
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Occult <!--attack types     --> Monster",
+      "flavor": "The Mad Lord is the mysterious, powerful ruler of the Mad Eyes. If one were to believe the writings of the mad Keeper Master Azhar, the Mad Lord's middle eye sees all that transpires in our world, the left eye peers into the past, the right eye watches over the stars, and the sword eye gazes into the minds of all mortals."
+    },
+    {
+      "name": "Ascendant",
+      "elements": ["ghost", "fighting"],
+      "raceId": "natureSpirit",
+      "stats": {
+        "hp": 88,
+        "attack": 53,
+        "defense": 53,
+        "spAttack": 106,
+        "spDefense": 79,
+        "speed": 141
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Spirit Warrior Mage Monster",
+      "flavor": "It is said that Ascendants are Monks that have attained a higher state of existence through ceaseless meditation. Most Ascendants immediately leave our world behind, as they no longer have any concerns for material affairs. Very few Ascendants stay behind to help Monks and humans come to see the universal truths that are known only to them. Instead, of seeing the world like we do, the large almond-shaped eyes of Ascendants reveal the underlying truths, structures and systems that govern our world."
+    },
+    {
+      "name": "Fumagus",
+      "elements": ["psychic", "ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 87,
+        "attack": 43,
+        "defense": 29,
+        "spAttack": 87,
+        "spDefense": 58,
+        "speed": 116
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Mage Monster",
+      "flavor": "With short limbs and stout bodies, these fungal wizards are often underestimated. Those who have come in contact with Fumagi have made many wild claims about their powers. Among other things, they are supposedly able to cause terrifying hallucinations, bestow visions of the past and the future, and even bring about profound changes of heart. Fumagi are therefore seen as the most wondrous and unpredictable among the magic-wielding Monsters of the Sanctuary."
+    },
+    {
+      "name": "Rampede",
+      "elements": ["normal", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 87,
+        "attack": 116,
+        "defense": 101,
+        "spAttack": 14,
+        "spDefense": 58,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Reptile Beast Monster",
+      "flavor": "A ferocious omnivore from a long forgotten age. It is believed that Rampedes were highly territorial and lonesome creatures - each adult Rampede reigning over a large territory of the Old World uncontested. Trespassers would be chased down with reckless abandon. Rampedes were deceptively quick for a creature so bulky, and its tail doubled as a counterbalance, making it surprisingly nimble. The heavy armor on its back insinuates that even bigger, more dangerous creatures roamed the Old World in ancient times."
+    },
+    {
+      "name": "Rathops",
+      "elements": ["normal", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 120,
+        "attack": 75,
+        "defense": 105,
+        "spAttack": 15,
+        "spDefense": 60,
+        "speed": 45
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Reptile Beast Monster",
+      "flavor": "The Rathops was a large reptile that roamed the Old World in ancient times. It fed mostly on plants and the occasional Crystal Snail, which had been the most dominant species up until the emergence of the Rathops. The Rathopses lived in great herds, although even a single Rathops could fend off the largest and most dangerous predators of the time - which included the earthbound ancestors of the Draco family. In fact, numerous fossils of such predators have been found that bear the telltale mark of the Rathops's massive horns."
+    },
+    {
+      "name": "Krakaturtle",
+      "elements": ["fire", "water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 63,
+        "attack": 16,
+        "defense": 95,
+        "spAttack": 79,
+        "spDefense": 87,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Nature Reptile Monster",
+      "flavor": "Krakaturtles are an ancient species have supposedly been around since the beginning of the world, although this is highly contested among scholars. Adult Krakaturtles may grow to enormous sizes in the Old World, becoming large islands out at sea. There is a lot of mystery surrounding the Krakaturtles and, in particular, their life cycles. Small Krakaturtles have occasionally been seen inside the Sanctuary, but almost never outside it. It is therefore believed by some that there exists a hidden part of the Monster Sanctuary that shelters the breeding grounds of the Krakaturtles. Some even believe that our entire world is on the back of a giant Krakaturtle that is drifting through space."
+    },
+    {
+      "name": "Tar Blob",
+      "elements": ["poison", "ground"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 62,
+        "attack": 86,
+        "defense": 62,
+        "spAttack": 86,
+        "spDefense": 74,
+        "speed": 49
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Slime Monster",
+      "flavor": "Tar Blobs make their homes in molten pits of tar. They require a certain amount of warmth in order to remain pliable. They become sluggish in cold, and can even run the risk of becoming brittle and cracking. Overall peaceful and quite passive, Tar Blobs will wait for hapless prey to stumble into their lairs and become stuck. Tar Blobs then assemble the leftovers bones into ossiferous weapons and armor."
+    },
+    {
+      "name": "Amberlgna",
+      "elements": ["bug", "ground"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 93,
+        "attack": 16,
+        "defense": 47,
+        "spAttack": 78,
+        "spDefense": 62,
+        "speed": 124
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Ancient Aerial Insect Monster",
+      "flavor": "Amberlgna were an ancient species of giant mosquito-like Monsters. Fossils finds of them are highly sought after for the unique properties of the nectar that can be found in their abdominal reservoirs. Amberlgna drank the sap of ancient trees, and it's hypothesized that their unique digestive process created an extremely delicious, vitamin-rich nectar that has been found to cure a myriad of ailments. The kings of the Old World would pay enormous amounts of gold for a single drop of this nectar."
+    },
+    {
+      "name": "Dracomer",
+      "elements": ["water", "dragon"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 134,
+        "attack": 74,
+        "defense": 45,
+        "spAttack": 74,
+        "spDefense": 59,
+        "speed": 134
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Ancient Aquatic Dragon Monster",
+      "flavor": "These draconic leviathans ruled the dark, vast seas of ancient times. Based on the bones that were found in the Old World, Dracomers were heavier and larger than any of the other members of the Draco family."
+    },
+    {
+      "name": "Terradrile",
+      "elements": ["flying", "ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 62,
+        "attack": 93,
+        "defense": 140,
+        "spAttack": 62,
+        "spDefense": 101,
+        "speed": 62
+      },
+      "tier": "peak",
+      "catchRate": 20,
+      "category": "Ancient Worm Monster",
+      "flavor": "These giant worms are among the first Monsters that ever evolved on our world. A Terradrile secretes a magnetic mucus through its skin. Rocks of various sizes cling to its body and are used primarily as armor. Older specimens are able to harness electromagnetism even further, being able to levitate rocks. Those rocks can be spun around, and thus act as a drill, to burrow into the ground at a rapid rate."
+    },
+    {
+      "name": "Bard",
+      "elements": ["flying", "fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 57,
+        "attack": 134,
+        "defense": 57,
+        "spAttack": 19,
+        "spDefense": 38,
+        "speed": 115
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Bird Warrior Monster",
+      "flavor": "Bards are intelligent, feathered Monsters with a legendary talent for music. They are unique among all magic-wielding beings in that they use melodies and songs to cast spells. Humans have been trying to replicate this feat by composing ever more beautiful and intricate pieces of music, but to no avail - nothing compares to a Bard's performance. A soothing melody can cure grievous maladies, a mocking chant can cut deeper than any blade, and an epic ballad may transport its listeners to distant places."
+    },
+    {
+      "name": "Tundrus",
+      "elements": ["normal", "ground"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 53,
+        "attack": 79,
+        "defense": 79,
+        "spAttack": 79,
+        "spDefense": 79,
+        "speed": 53
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Nature Beast <!--attack types     --> Monster"
+    }
+  ]
+}

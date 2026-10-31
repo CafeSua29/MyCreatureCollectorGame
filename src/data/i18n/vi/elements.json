@@ -1,0 +1,21 @@
+{
+  "normal": "Thường",
+  "fire": "Lửa",
+  "water": "Nước",
+  "electric": "Điện",
+  "grass": "Cỏ",
+  "ice": "Băng",
+  "fighting": "Võ",
+  "poison": "Độc",
+  "ground": "Đất",
+  "flying": "Bay",
+  "psychic": "Tâm linh",
+  "bug": "Bọ",
+  "rock": "Đá",
+  "ghost": "Ma",
+  "dragon": "Rồng",
+  "dark": "Bóng tối",
+  "steel": "Thép",
+  "fairy": "Tiên",
+  "light": "Ánh sáng"
+}

@@ -1,0 +1,2599 @@
+{
+  "geneWeight": 2,
+  "shinyMultiplier": 1.5,
+  "levelEffectStep": 0.2,
+  "traitSlots": {
+    "initial": 3,
+    "max": 6
+  },
+  "battleStage": {
+    "min": -6,
+    "max": 6,
+    "base": 2,
+    "accuracyBase": 3
+  },
+  "fusedSpeciesId": "fused",
+  "partySize": 6,
+  "maxSkills": 4,
+  "battle": {
+    "damageFactor": 0.3,
+    "struggleSkillId": "struggle",
+    "stabMultiplier": 1.5,
+    "critChance": 6.25,
+    "critStageChances": [12.5, 50, 100],
+    "critMultiplier": 1.5,
+    "randomMin": 0.85,
+    "randomMax": 1,
+    "spreadMultiplier": 0.75,
+    "fleeChance": 75,
+    "hitCountWeights": [
+      {
+        "min": 2,
+        "max": 5,
+        "weights": [35, 35, 15, 15]
+      }
+    ],
+    "defend": {
+      "priority": 4,
+      "damageTakenPercent": -50
+    },
+    "provoke": {
+      "priority": 4,
+      "damageTakenPercent": -25
+    },
+    "traitChain": {
+      "maxDepth": 3,
+      "maxActions": 10,
+      "maxRepeats": 10
+    },
+    "stagePercentSteps": [35, 75]
+  },
+  "status": {
+    "bossDamageMultiplier": 0.5
+  },
+  "field": {
+    "defaults": {
+      "weather": "clear",
+      "terrain": "none"
+    },
+    "sunWeatherId": "sun"
+  },
+  "ai": {
+    "koBonus": 0.5,
+    "lowHpTargetWeight": 0.2,
+    "stageValuePerStep": 0.15,
+    "healWeight": 1,
+    "statusWeights": {
+      "poison": 0.3,
+      "badPoison": 0.45,
+      "burn": 0.2,
+      "paralysis": 0.2,
+      "sleep": 0.35,
+      "freeze": 0.4,
+      "sleeping": 0.3,
+      "smackedDown": 0.05,
+      "charged": 0.1,
+      "boosterEnergy": 0.3,
+      "chiStrike": 0.1,
+      "raging": 0.05,
+      "throatChopped": 0.1,
+      "saltCure": 0.3,
+      "syrupy": 0.15,
+      "glaiveRushed": 0.05,
+      "curse": 0.35,
+      "infatuated": 0.3,
+      "tormented": 0.1,
+      "imprisoning": 0.05,
+      "healBlocked": 0.1,
+      "drowsy": 0.3,
+      "nightmare": 0.3,
+      "identified": 0.05,
+      "miracleEyed": 0.05,
+      "lockedOn": 0.05,
+      "laserFocused": 0.1,
+      "telekinesis": 0.05,
+      "magnetRise": 0.05,
+      "powdered": 0.05,
+      "electrified": 0.05,
+      "helped": 0.1,
+      "embargo": 0.1,
+      "bound": 0.25,
+      "cantEscape": 0.05,
+      "octolocked": 0.3,
+      "ingrained": 0.2,
+      "aquaRing": 0.2,
+      "noRetreat": 0.05,
+      "agile": 0.2,
+      "arcane": 0.2,
+      "barrierBuff": 0.2,
+      "berserk": 0.2,
+      "defensive": 0.2,
+      "invisible": 0.2,
+      "immune": 0.2,
+      "leeching": 0.2,
+      "mending": 0.2,
+      "proficient": 0.2,
+      "protected": 0.2,
+      "rebirthBuff": 0.2,
+      "repelling": 0.2,
+      "savageBuff": 0.2,
+      "shelled": 0.2,
+      "splashing": 0.2,
+      "taunting": 0.2,
+      "warded": 0.2,
+      "bleeding": 0.25,
+      "blighted": 0.25,
+      "blind": 0.25,
+      "bomb": 0.25,
+      "confused": 0.25,
+      "cursed": 0.25,
+      "disarmed": 0.25,
+      "feared": 0.25,
+      "frozen": 0.25,
+      "inverted": 0.25,
+      "scorned": 0.25,
+      "silenced": 0.25,
+      "snared": 0.25,
+      "stone": 0.25,
+      "vulnerable": 0.25,
+      "weak": 0.25,
+      "flinch": 0.1,
+      "confusion": 0.25,
+      "seeded": 0.3,
+      "minimized": 0.05
+    },
+    "fieldWeight": 0.3,
+    "defendWeight": 0.15,
+    "provokeWeight": 0.1,
+    "minionWeight": 0.2,
+    "spellEffectWeight": 0.15,
+    "transformMinGain": 0.15,
+    "reviveBonus": 0.5,
+    "tamerSkillMinScore": 0.2,
+    "holdTurnWeight": 0.15
+  },
+  "rewards": {
+    "expFactor": 0.5,
+    "minExp": 1,
+    "moneyPerLevel": 5,
+    "losePenaltyPercent": 10
+  },
+  "wild": {
+    "geneMin": 1,
+    "geneMax": 15,
+    "traitCountWeights": [50, 35, 15],
+    "traitKindWeights": {
+      "positive": 79,
+      "negative": 11,
+      "rare": 10
+    }
+  },
+  "floors": {
+    "levelPerFloor": 10,
+    "geneGrowthPerFloor": 1.1
+  },
+  "restCostPerLevel": 2,
+  "weight": {
+    "defaultRaceKg": 50,
+    "referenceStatTotal": 444,
+    "statExponent": 2
+  },
+  "size": {
+    "largeWeightKg": 1000,
+    "statMultipliers": {
+      "hp": 2
+    },
+    "damageMultiplier": 2,
+    "largePartySlots": 2
+  },
+  "hitLocations": {
+    "defaultBodyParts": ["head", "torso", "legs"],
+    "maxWeakPoints": 2,
+    "weakPointDamagePercent": 50,
+    "weakPointChanceMultiplier": 2,
+    "weakPointBreakMultiplier": 2,
+    "swoopTurns": 1,
+    "offBalanceTurns": 1,
+    "offBalanceCritStage": 1,
+    "aiUnknownWeakPercent": 100
+  },
+  "capture": {
+    "hpFloorPercent": 10,
+    "pityPercentPerMiss": 5,
+    "shakeChecks": 4,
+    "criticalTiers": [
+      {
+        "ownedPercent": 3,
+        "multiplier": 0.5
+      },
+      {
+        "ownedPercent": 17,
+        "multiplier": 1
+      },
+      {
+        "ownedPercent": 33,
+        "multiplier": 1.5
+      },
+      {
+        "ownedPercent": 50,
+        "multiplier": 2
+      },
+      {
+        "ownedPercent": 67,
+        "multiplier": 2.5
+      }
+    ],
+    "criticalDivisor": 6
+  },
+  "dex": {
+    "milestones": [
+      {
+        "id": "dex10",
+        "percent": 10,
+        "moneyPerFloor": 2000,
+        "items": {
+          "ultraBall": 5
+        }
+      },
+      {
+        "id": "dex25",
+        "percent": 25,
+        "moneyPerFloor": 5000,
+        "items": {
+          "ultraBall": 10
+        }
+      },
+      {
+        "id": "dex50",
+        "percent": 50,
+        "moneyPerFloor": 10000,
+        "items": {
+          "masterBall": 1,
+          "ovalCharm": 1
+        }
+      },
+      {
+        "id": "dex100",
+        "percent": 100,
+        "moneyPerFloor": 50000,
+        "items": {
+          "masterBall": 3,
+          "shinyCharm": 1,
+          "dexDiploma": 1
+        }
+      }
+    ],
+    "collectionStep": 100,
+    "collectionStatPercent": 1,
+    "regionalReward": {
+      "moneyPerFloor": 3000,
+      "items": {
+        "rareCandy": 3,
+        "ultraBall": 5
+      }
+    }
+  },
+  "maxNicknameLength": 20,
+  "relearnCostPerLevel": 10,
+  "shiny": {
+    "traitId": "shiny",
+    "wildChance": 0.2
+  },
+  "boss": {
+    "traitId": "bossBlood",
+    "chance": 3,
+    "multiplierMin": 2,
+    "multiplierMax": 5,
+    "eggChance": 30
+  },
+  "egg": {
+    "hatchBattlesMin": 5,
+    "hatchBattlesMax": 10
+  },
+  "breeding": {
+    "costPerLevel": 20,
+    "shinyChance": 1,
+    "shinyChanceOneParent": 10,
+    "mutationChance": 2,
+    "geneDownPercent": 10,
+    "geneUpPercent": 15
+  },
+  "abilities": {
+    "wildHiddenChance": 2,
+    "inheritChance": 80,
+    "inheritHiddenChance": 60
+  },
+  "fuseCostPerLevel": 50,
+  "fuseChance": {
+    "raceChances": {
+      "same": 90,
+      "breedable": 60,
+      "other": 30
+    },
+    "lineageFactor": 0.9
+  },
+  "fusion": {
+    "inheritSkills": 2
+  },
+  "crystal": {
+    "extractCostBase": 100,
+    "kindCostMultipliers": {
+      "positive": 1,
+      "negative": 1,
+      "rare": 3
+    }
+  },
+  "skillBook": {
+    "priceBase": 200,
+    "pricePerPower": 5,
+    "reusablePriceMultiplier": 10,
+    "universalElementIds": ["normal"],
+    "rarities": [
+      {
+        "id": "common",
+        "minLearners": 31,
+        "priceMultiplier": 1,
+        "shopWeight": 40
+      },
+      {
+        "id": "uncommon",
+        "minLearners": 11,
+        "priceMultiplier": 1.5,
+        "shopWeight": 30
+      },
+      {
+        "id": "rare",
+        "minLearners": 4,
+        "priceMultiplier": 2.5,
+        "shopWeight": 18
+      },
+      {
+        "id": "epic",
+        "minLearners": 2,
+        "priceMultiplier": 4,
+        "shopWeight": 8
+      },
+      {
+        "id": "legendary",
+        "minLearners": 0,
+        "priceMultiplier": 6,
+        "shopWeight": 4
+      }
+    ],
+    "rarityPowerSteps": [100, 130],
+    "shopMin": 3,
+    "shopMax": 5,
+    "shopMaxPower": 80,
+    "partyMultiplier": 5,
+    "bossDropChance": 20,
+    "reusableDropChance": 2
+  },
+  "shop": {
+    "stockMin": 5,
+    "stockMax": 10,
+    "sellPercent": 50,
+    "crystalBuyMultiplier": 2,
+    "crystalWeights": {
+      "positive": 60,
+      "negative": 15,
+      "rare": 10
+    }
+  },
+  "market": {
+    "minFactor": 0.3,
+    "recoveryPerDay": 0.8,
+    "removeBelow": 0.5,
+    "dayFactorMin": 0.9,
+    "dayFactorMax": 1.1,
+    "hotMultiplier": 1.5,
+    "dropTiers": [
+      {
+        "maxPrice": 100,
+        "dropPerUnit": 0.002
+      },
+      {
+        "maxPrice": 1000,
+        "dropPerUnit": 0.005
+      },
+      {
+        "maxPrice": 10000,
+        "dropPerUnit": 0.02
+      },
+      {
+        "dropPerUnit": 0.05
+      }
+    ]
+  },
+  "equipment": {
+    "baseSlots": 3,
+    "floorMilestones": [20, 50],
+    "dropChance": 3,
+    "bossDropChance": 25,
+    "rarityWeights": {
+      "common": 60,
+      "uncommon": 25,
+      "rare": 12,
+      "epic": 3,
+      "legendary": 0.5
+    },
+    "bossRarityWeights": {
+      "common": 20,
+      "uncommon": 30,
+      "rare": 30,
+      "epic": 15,
+      "legendary": 5
+    },
+    "shopRarityWeights": {
+      "common": 60,
+      "uncommon": 30,
+      "rare": 8,
+      "epic": 2
+    },
+    "floorBoostFrom": "rare",
+    "floorRarityFactor": 0.1,
+    "rarityPriceMultipliers": {
+      "common": 1,
+      "uncommon": 2,
+      "rare": 4,
+      "epic": 10,
+      "legendary": 25,
+      "unique": 50
+    },
+    "affixCounts": {
+      "common": 0,
+      "uncommon": 0,
+      "rare": 1,
+      "epic": 2,
+      "legendary": 3,
+      "unique": 2
+    },
+    "uniqueCarriedDropChance": 10,
+    "uniquePoolDropChance": 5
+  },
+  "starter": {
+    "speciesIds": ["emberling", "sproutling", "tidehorn"],
+    "level": 5,
+    "money": 500,
+    "items": {
+      "basicBall": 5,
+      "potion": 3
+    }
+  },
+  "transform": {
+    "keyItems": {
+      "mega": "megaRing",
+      "dynamax": "dynamaxBand",
+      "tera": "teraOrb"
+    },
+    "mega": {
+      "stoneDropChance": 10
+    },
+    "dynamax": {
+      "turns": 3,
+      "hpMultiplierBase": 1.5,
+      "hpMultiplierPerLevel": 0.05,
+      "maxLevel": 10,
+      "powerTable": {
+        "steps": [
+          {
+            "below": 45,
+            "power": 90
+          },
+          {
+            "below": 55,
+            "power": 100
+          },
+          {
+            "below": 65,
+            "power": 110
+          },
+          {
+            "below": 75,
+            "power": 120
+          },
+          {
+            "below": 110,
+            "power": 130
+          },
+          {
+            "below": 150,
+            "power": 140
+          }
+        ],
+        "top": 150
+      },
+      "lowPowerTable": {
+        "steps": [
+          {
+            "below": 45,
+            "power": 70
+          },
+          {
+            "below": 55,
+            "power": 75
+          },
+          {
+            "below": 65,
+            "power": 80
+          },
+          {
+            "below": 75,
+            "power": 85
+          },
+          {
+            "below": 110,
+            "power": 90
+          },
+          {
+            "below": 150,
+            "power": 95
+          }
+        ],
+        "top": 100
+      },
+      "lowPowerElementIds": ["fighting", "poison"],
+      "bossGmaxFactorChance": 50
+    },
+    "tera": {
+      "sameStabMultiplier": 2,
+      "minPower": 60,
+      "stellarOriginalMultiplier": 2,
+      "stellarOtherMultiplier": 1.2,
+      "stellarBlastPower": 100,
+      "stellarBlastEffectiveness": 2,
+      "stellarBlastSelfStages": [
+        {
+          "stat": "attack",
+          "delta": -1
+        },
+        {
+          "stat": "spAttack",
+          "delta": -1
+        }
+      ],
+      "changeCost": 50,
+      "bossOwnElementChance": 50,
+      "stellarFromFloor": 50,
+      "stellarChance": 1,
+      "shardDrop": {
+        "chance": 50,
+        "min": 3,
+        "max": 6
+      },
+      "relearnSkillIds": ["teraBlast"]
+    },
+    "boss": {
+      "base": 10,
+      "perFloor": 1,
+      "weights": {
+        "mega": 1,
+        "dynamax": 1,
+        "tera": 1,
+        "trueForm": 0,
+        "merge": 0,
+        "ultraBurst": 1
+      }
+    },
+    "bossDrops": [
+      {
+        "itemId": "maxSoup",
+        "chance": 5
+      },
+      {
+        "itemId": "dynamaxCandy",
+        "chance": 10
+      }
+    ],
+    "zMove": {
+      "keyItemId": "zRing",
+      "powerTable": {
+        "steps": [
+          {
+            "below": 60,
+            "power": 100
+          },
+          {
+            "below": 70,
+            "power": 120
+          },
+          {
+            "below": 80,
+            "power": 140
+          },
+          {
+            "below": 90,
+            "power": 160
+          },
+          {
+            "below": 100,
+            "power": 175
+          },
+          {
+            "below": 110,
+            "power": 180
+          },
+          {
+            "below": 120,
+            "power": 185
+          },
+          {
+            "below": 130,
+            "power": 190
+          },
+          {
+            "below": 140,
+            "power": 195
+          }
+        ],
+        "top": 200
+      },
+      "variableHitsPowerFactor": 3,
+      "protectDamagePercent": 25,
+      "crystalDropChance": 10
+    },
+    "merge": {
+      "turns": 3,
+      "lowerSharePercent": 25,
+      "minAffinity": 200
+    }
+  },
+  "clock": {
+    "startHour": 6,
+    "wakeHour": 6,
+    "hours": {
+      "wildBattle": 2,
+      "bossBattle": 4,
+      "travel": 1,
+      "healParty": 1,
+      "event": 1,
+      "safari": 24,
+      "zoneStep": 1
+    }
+  },
+  "calendar": {
+    "phaseStartHours": {
+      "dawn": 6,
+      "day": 7,
+      "dusk": 17,
+      "night": 18
+    },
+    "activeTimeMultipliers": {
+      "diurnal": {
+        "dawn": 1,
+        "day": 2,
+        "dusk": 1,
+        "night": 0.5
+      },
+      "nocturnal": {
+        "dawn": 1,
+        "day": 0.5,
+        "dusk": 1,
+        "night": 2
+      },
+      "crepuscular": {
+        "dawn": 2,
+        "day": 1,
+        "dusk": 2,
+        "night": 1
+      },
+      "cathemeral": {
+        "dawn": 1,
+        "day": 1,
+        "dusk": 1,
+        "night": 1
+      }
+    },
+    "activeTimeByRace": {
+      "undead": "nocturnal",
+      "demon": "nocturnal",
+      "ghost": "nocturnal",
+      "wisp": "nocturnal",
+      "chiropteran": "nocturnal",
+      "owl": "nocturnal",
+      "avian": "diurnal",
+      "cervid": "crepuscular",
+      "lagomorph": "crepuscular"
+    },
+    "activeTimeByElement": {
+      "ghost": "nocturnal",
+      "dark": "nocturnal",
+      "grass": "diurnal",
+      "bug": "diurnal"
+    },
+    "seasonWeatherMultipliers": {
+      "spring": {
+        "rain": 2
+      },
+      "summer": {
+        "sun": 2,
+        "thunderstorm": 2
+      },
+      "autumn": {
+        "fog": 2
+      },
+      "winter": {
+        "snow": 3,
+        "blizzard": 3
+      }
+    }
+  },
+  "lifespan": {
+    "daysPerYear": 10,
+    "levelPercent": 1,
+    "youngBelowPercent": 10,
+    "oldFromPercent": 70,
+    "young": {
+      "statPercent": -15,
+      "expPercent": 50
+    },
+    "old": {
+      "statPercentAtEnd": -30,
+      "expPercent": -30
+    },
+    "warnPercent": 90,
+    "spawnAgePercent": {
+      "wild": {
+        "min": 10,
+        "max": 40
+      },
+      "boss": {
+        "min": 30,
+        "max": 80
+      },
+      "starter": 10
+    },
+    "fuseAbsorbPercent": 25,
+    "legacyEgg": {
+      "genePercent": 50
+    },
+    "pillResistance": 0.8,
+    "bossDrops": [
+      {
+        "itemId": "lesserLongevityPill",
+        "chance": 10
+      },
+      {
+        "itemId": "longevityPill",
+        "chance": 3
+      }
+    ],
+    "floorBossDrops": [
+      {
+        "itemId": "greaterLongevityPill",
+        "chance": 5
+      }
+    ]
+  },
+  "history": {
+    "maxMilestones": 50
+  },
+  "expCandy": {
+    "bossDropTiers": [
+      {
+        "fromFloor": 1,
+        "drops": [
+          {
+            "itemId": "expCandyS",
+            "chance": 30
+          }
+        ]
+      },
+      {
+        "fromFloor": 20,
+        "drops": [
+          {
+            "itemId": "expCandyM",
+            "chance": 30
+          }
+        ]
+      },
+      {
+        "fromFloor": 50,
+        "drops": [
+          {
+            "itemId": "expCandyL",
+            "chance": 30
+          }
+        ]
+      }
+    ],
+    "floorBossDrops": [
+      {
+        "itemId": "rareCandy",
+        "chance": 3
+      }
+    ]
+  },
+  "tamer": {
+    "expShare": 10,
+    "floorUnlockExpPercent": 100,
+    "expBase": 300000,
+    "expPower": 2,
+    "breakthrough": {
+      "costBase": 5000,
+      "itemId": "breakthroughPill",
+      "baseChance": 100,
+      "chanceStep": 5,
+      "minChance": 30
+    },
+    "statPercentPerRealm": 3,
+    "lifespanPercentPerRealm": 10,
+    "contract": {
+      "levelBase": 100,
+      "levelPerRealm": 100,
+      "slotsBase": 8,
+      "slotsPerRealm": 4,
+      "baseStatPercent": 5,
+      "baseLifespanPercent": 0,
+      "chance": {
+        "base": 90,
+        "levelPenalty": 40,
+        "rankPenalty": 4,
+        "bossPenalty": 15,
+        "affinityBonus": 20,
+        "min": 10,
+        "max": 100
+      },
+      "failure": {
+        "affinityLoss": 30,
+        "backlashDays": 3,
+        "escapeChance": 20
+      },
+      "dissolveAffinityLoss": 50,
+      "dissolveBacklashDays": 2,
+      "soulLinkTiers": [
+        {
+          "id": "attuned",
+          "days": 7,
+          "minAffinity": 100,
+          "statPercent": 2,
+          "manaCostReduction": 10
+        },
+        {
+          "id": "resonant",
+          "days": 30,
+          "minAffinity": 150,
+          "statPercent": 4,
+          "manaCostReduction": 20
+        },
+        {
+          "id": "oneMind",
+          "days": 100,
+          "minAffinity": 200,
+          "statPercent": 7,
+          "manaCostReduction": 30
+        }
+      ],
+      "disobey": {
+        "base": 1,
+        "levelScale": 5,
+        "overLimitScale": 30,
+        "max": 50,
+        "affinityReduction": 0.8
+      }
+    },
+    "manaBase": 50,
+    "manaPerRealm": 10,
+    "realmMilestones": [2, 5, 10],
+    "floorBossDrops": [
+      {
+        "itemId": "breakthroughPill",
+        "chance": 30
+      }
+    ]
+  },
+  "affinity": {
+    "max": 255,
+    "start": {
+      "starter": 70,
+      "caught": 50,
+      "egg": 120,
+      "recruit": 70
+    },
+    "gain": {
+      "win": 1,
+      "participated": 2,
+      "rest": 1,
+      "potion": 2,
+      "candy": 1
+    },
+    "loss": {
+      "faint": 1
+    },
+    "wildDrops": [
+      {
+        "itemId": "spiritHoney",
+        "chance": 2
+      }
+    ],
+    "bossDrops": [
+      {
+        "itemId": "bondFruit",
+        "chance": 20
+      }
+    ],
+    "floorBossDrops": [
+      {
+        "itemId": "heartDew",
+        "chance": 10
+      }
+    ]
+  },
+  "imprint": {
+    "requestEveryDays": 2,
+    "fallbackDays": 30,
+    "maxStatPercent": 15,
+    "foods": ["spiritHoney", "spiritFruit"],
+    "favoriteFoodWeight": 3,
+    "requestWeights": {
+      "feed": 1,
+      "battle": 1,
+      "rest": 1,
+      "pet": 1
+    }
+  },
+  "evolution": {
+    "bossDrops": [
+      {
+        "itemId": "mutationStone",
+        "chance": 3
+      }
+    ],
+    "floorBossDrops": [
+      {
+        "itemId": "mutationStone",
+        "chance": 10
+      }
+    ]
+  },
+  "formations": {
+    "floorBossDrops": [
+      {
+        "itemId": "fourSymbolsScroll",
+        "chance": 3
+      },
+      {
+        "itemId": "dragonGateScroll",
+        "chance": 3
+      },
+      {
+        "itemId": "sixHarmoniesScroll",
+        "chance": 3
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "chance": 3
+      }
+    ]
+  },
+  "combo": {
+    "minAffinity": 150
+  },
+  "mastery": {
+    "baseExp": 4,
+    "expPower": 2.5,
+    "useExp": 1,
+    "knockoutExp": 2,
+    "powerStep": 0.05,
+    "accuracyPerLevel": 1,
+    "milestones": [
+      {
+        "level": 10,
+        "secondaryChancePercent": 10
+      },
+      {
+        "level": 25,
+        "secondaryChancePercent": 10
+      },
+      {
+        "level": 50,
+        "minHitsBonus": 1
+      }
+    ]
+  },
+  "moveStyles": {
+    "unlockMastery": 10,
+    "strong": {
+      "powerMultiplier": 1.3,
+      "secondaryChanceShift": 20,
+      "stageBonus": 1,
+      "statusTurnsBonus": 1,
+      "priorityShift": -1,
+      "nextTurnSpeedMultiplier": 0.7
+    },
+    "agile": {
+      "powerMultiplier": 0.7,
+      "secondaryChanceShift": -10,
+      "stageBonus": 0,
+      "statusTurnsBonus": 0,
+      "priorityShift": 1,
+      "nextTurnSpeedMultiplier": 1.3
+    }
+  },
+  "nature": {
+    "percent": 10,
+    "bossDrops": [
+      {
+        "itemId": "mintHardy",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintLonely",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintBrave",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintAdamant",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintNaughty",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintBold",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintDocile",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintRelaxed",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintImpish",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintLax",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintTimid",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintHasty",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintSerious",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintJolly",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintNaive",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintModest",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintMild",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintQuiet",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintBashful",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintRash",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintCalm",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintGentle",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintSassy",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintCareful",
+        "chance": 0.4
+      },
+      {
+        "itemId": "mintQuirky",
+        "chance": 0.4
+      }
+    ]
+  },
+  "speciesRank": {
+    "legendaryCatchRate": 5,
+    "legendaryBonus": 1
+  },
+  "partnerSkill": {
+    "strengthPerTier": 0.25
+  },
+  "awakening": {
+    "statStepPercent": 10,
+    "lifespanMultiplier": 1.5,
+    "levelPerTier": 50,
+    "costBase": 1000,
+    "pillsPerTier": 1,
+    "milestones": [
+      {
+        "tier": 1,
+        "reward": "skill"
+      },
+      {
+        "tier": 3,
+        "reward": "traitSlot"
+      },
+      {
+        "tier": 5,
+        "reward": "skill"
+      },
+      {
+        "tier": 10,
+        "reward": "traitSlot"
+      }
+    ],
+    "repeatEvery": 5,
+    "divineSkills": {
+      "normal": ["megatonImplode", "beeQuiet"],
+      "fire": ["vCreate", "butcher"],
+      "water": ["hydroLaser", "waterSpout"],
+      "electric": ["lightningBolt", "divineThunder"],
+      "grass": ["madness", "overcharge"],
+      "ice": ["frostHammer", "blizzardSpike"],
+      "fighting": ["fistOfTorun", "focusPunch"],
+      "poison": ["belch", "gunkShot"],
+      "ground": ["rockLance", "groundSmash"],
+      "flying": ["braveBird", "cycloneStrike"],
+      "psychic": ["livingRing", "psychoBoost"],
+      "bug": ["megahorn", "ohmuCharge"],
+      "rock": ["headSmash", "boulder"],
+      "ghost": ["ghostlyScimitar", "livingMace"],
+      "dragon": ["dragonEnergy", "dragonMeteor"],
+      "dark": ["divineDisaster", "darkLaser"],
+      "steel": ["gigatonHammer", "doomDesire"],
+      "fairy": ["lightOfRuin", "fleurCannon"],
+      "light": ["holyStrike", "burstStream"]
+    },
+    "maxFailures": 5,
+    "injuryStatPercent": -20,
+    "injuryBattles": 5,
+    "bossDrops": [],
+    "floorBossDrops": [],
+    "tribulation": {
+      "speciesId": "heavenlyTribulation",
+      "levelOffset": 0,
+      "multiplierBase": 1,
+      "multiplierPerTier": 0.15,
+      "weather": "rain",
+      "terrain": "electricTerrain",
+      "maxTurns": 50
+    },
+    "pillItemIds": {
+      "normal": "awakeningPillNormal",
+      "fire": "awakeningPillFire",
+      "water": "awakeningPillWater",
+      "electric": "awakeningPillElectric",
+      "grass": "awakeningPillGrass",
+      "ice": "awakeningPillIce",
+      "fighting": "awakeningPillFighting",
+      "poison": "awakeningPillPoison",
+      "ground": "awakeningPillGround",
+      "flying": "awakeningPillFlying",
+      "psychic": "awakeningPillPsychic",
+      "bug": "awakeningPillBug",
+      "rock": "awakeningPillRock",
+      "ghost": "awakeningPillGhost",
+      "dragon": "awakeningPillDragon",
+      "dark": "awakeningPillDark",
+      "steel": "awakeningPillSteel",
+      "fairy": "awakeningPillFairy",
+      "light": "awakeningPillLight"
+    },
+    "bossPillChance": 30,
+    "floorBossPillChance": 30
+  },
+  "humanForm": {
+    "minAwakening": 1,
+    "pillItemId": "humanFormPill",
+    "costPerLevel": 200,
+    "lifespanMultiplier": 1.5,
+    "statPercents": {
+      "hp": -10,
+      "attack": -5,
+      "defense": -10,
+      "spAttack": 15,
+      "spDefense": 10,
+      "speed": 15
+    },
+    "trueForm": {
+      "statPercentBase": 20,
+      "statPercentPerAwakening": 5
+    },
+    "dropFromFloor": 20,
+    "floorBossDrops": [
+      {
+        "itemId": "humanFormPill",
+        "chance": 5
+      }
+    ]
+  },
+  "treasures": {
+    "resistance": 0.9,
+    "favoriteMultiplier": 2,
+    "favoriteAffinity": 5,
+    "wildDrops": [
+      {
+        "itemId": "heavenSpiritFruit",
+        "chance": 1
+      },
+      {
+        "itemId": "bloodBodhi",
+        "chance": 0.3
+      },
+      {
+        "itemId": "tigerBoneFruit",
+        "chance": 0.3
+      },
+      {
+        "itemId": "blackTortoiseShell",
+        "chance": 0.3
+      },
+      {
+        "itemId": "spiritHeartFruit",
+        "chance": 0.3
+      },
+      {
+        "itemId": "iceHeartLotus",
+        "chance": 0.3
+      },
+      {
+        "itemId": "windSpiritGrass",
+        "chance": 0.3
+      }
+    ],
+    "bossDrops": [
+      {
+        "itemId": "enlightenmentTea",
+        "chance": 10
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "chance": 3
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "chance": 1
+      }
+    ],
+    "demonCoreItemIds": {
+      "normal": "demonCoreNormal",
+      "fire": "demonCoreFire",
+      "water": "demonCoreWater",
+      "electric": "demonCoreElectric",
+      "grass": "demonCoreGrass",
+      "ice": "demonCoreIce",
+      "fighting": "demonCoreFighting",
+      "poison": "demonCorePoison",
+      "ground": "demonCoreGround",
+      "flying": "demonCoreFlying",
+      "psychic": "demonCorePsychic",
+      "bug": "demonCoreBug",
+      "rock": "demonCoreRock",
+      "ghost": "demonCoreGhost",
+      "dragon": "demonCoreDragon",
+      "dark": "demonCoreDark",
+      "steel": "demonCoreSteel",
+      "fairy": "demonCoreFairy",
+      "light": "demonCoreLight"
+    },
+    "demonCoreChance": 15,
+    "demonCoreWildChance": 3
+  },
+  "alchemy": {
+    "expBase": 10,
+    "expPower": 2,
+    "levelBonusPercent": 1,
+    "initialPlots": 2,
+    "plotBasePrice": 5000,
+    "plotPriceGrowth": 2,
+    "raceEssenceItemIds": {
+      "dragon": "essenceDragon",
+      "orc": "essenceOrc",
+      "elf": "essenceElf",
+      "buffalo": "essenceBuffalo",
+      "dinosaur": "essenceDinosaur",
+      "beast": "essenceBeast",
+      "humanoid": "essenceHumanoid",
+      "aquatic": "essenceAquatic",
+      "avian": "essenceAvian",
+      "insect": "essenceInsect",
+      "plant": "essencePlant",
+      "mineral": "essenceMineral",
+      "amorphous": "essenceAmorphous",
+      "shapeshifter": "essenceShapeshifter",
+      "reptile": "essenceReptile",
+      "dwarf": "essenceDwarf",
+      "undead": "essenceUndead",
+      "demon": "essenceDemon",
+      "giant": "essenceGiant",
+      "halfling": "essenceHalfling",
+      "elemental": "essenceElemental",
+      "aberration": "essenceAberration",
+      "spirit": "essenceSpirit",
+      "celestial": "essenceCelestial",
+      "deity": "essenceDeity"
+    },
+    "elementStoneItemIds": {
+      "normal": "spiritStoneNormal",
+      "fire": "spiritStoneFire",
+      "water": "spiritStoneWater",
+      "electric": "spiritStoneElectric",
+      "grass": "spiritStoneGrass",
+      "ice": "spiritStoneIce",
+      "fighting": "spiritStoneFighting",
+      "poison": "spiritStonePoison",
+      "ground": "spiritStoneGround",
+      "flying": "spiritStoneFlying",
+      "psychic": "spiritStonePsychic",
+      "bug": "spiritStoneBug",
+      "rock": "spiritStoneRock",
+      "ghost": "spiritStoneGhost",
+      "dragon": "spiritStoneDragon",
+      "dark": "spiritStoneDark",
+      "steel": "spiritStoneSteel",
+      "fairy": "spiritStoneFairy",
+      "light": "spiritStoneLight"
+    },
+    "essenceChance": 4,
+    "stoneChance": 4,
+    "wildDrops": [
+      {
+        "itemId": "lingzhi",
+        "chance": 1.5
+      },
+      {
+        "itemId": "ginseng",
+        "chance": 1.5
+      },
+      {
+        "itemId": "snowLotus",
+        "chance": 1.5
+      },
+      {
+        "itemId": "fleeceflower",
+        "chance": 1.5
+      }
+    ],
+    "bossDrops": [
+      {
+        "itemId": "recipeScrollMyriadLongevityPill",
+        "chance": 2
+      },
+      {
+        "itemId": "recipeScrollHumanFormPill",
+        "chance": 2
+      }
+    ]
+  },
+  "quests": {
+    "boardSize": 5,
+    "maxActive": 3
+  },
+  "expeditions": {
+    "boardMin": 3,
+    "boardMax": 5,
+    "refreshDays": 7,
+    "minSuccess": 0.5,
+    "maxSuccess": 1.5,
+    "expPerDayPerFloor": 20,
+    "injuryChance": 5,
+    "affinityPerDay": 1
+  },
+  "autoBattle": {
+    "tactics": {
+      "balanced": {
+        "damage": 1,
+        "foeEffects": 1,
+        "allyEffects": 1,
+        "penalty": 1,
+        "guard": 1
+      },
+      "allOut": {
+        "damage": 1.5,
+        "foeEffects": 0.7,
+        "allyEffects": 0.5,
+        "penalty": 1,
+        "guard": 0.3
+      },
+      "cautious": {
+        "damage": 0.8,
+        "foeEffects": 0.8,
+        "allyEffects": 1.5,
+        "penalty": 2,
+        "guard": 1.5
+      },
+      "support": {
+        "damage": 0.6,
+        "foeEffects": 1.5,
+        "allyEffects": 1.5,
+        "penalty": 1,
+        "guard": 1
+      },
+      "manual": {
+        "damage": 1,
+        "foeEffects": 1,
+        "allyEffects": 1,
+        "penalty": 1,
+        "guard": 1
+      }
+    }
+  },
+  "trainers": {
+    "encounterChance": 10,
+    "rewardDrops": [
+      {
+        "itemId": "expCandyS",
+        "chance": 25
+      },
+      {
+        "itemId": "expCandyM",
+        "chance": 5
+      }
+    ],
+    "ai": {
+      "switchRatio": 0.35,
+      "switchMinScore": 0.3
+    },
+    "gym": {
+      "every": 10,
+      "trainerCount": {
+        "min": 2,
+        "max": 3
+      },
+      "leaderClassId": "gymLeader",
+      "repeatRewardPercent": 25,
+      "firstClearItemIds": [
+        "fourSymbolsScroll",
+        "dragonGateScroll",
+        "sixHarmoniesScroll",
+        "fiveElementsScroll",
+        "recipeScrollMyriadLongevityPill",
+        "recipeScrollHumanFormPill"
+      ],
+      "keyItemFloors": {
+        "teraOrb": 10,
+        "megaRing": 20,
+        "dynamaxBand": 30,
+        "zRing": 40
+      }
+    },
+    "tournament": {
+      "everyDays": 30,
+      "rounds": [
+        {
+          "levelOffset": 0,
+          "rewardMultiplier": 2
+        },
+        {
+          "levelOffset": 2,
+          "rewardMultiplier": 3
+        },
+        {
+          "levelOffset": 4,
+          "rewardMultiplier": 5
+        }
+      ],
+      "championRewards": [
+        {
+          "itemId": "expCandyL",
+          "count": 3
+        },
+        {
+          "itemId": "rareCandy",
+          "count": 1
+        }
+      ]
+    },
+    "arena": {
+      "levelPerRank": 0.5,
+      "milestoneEvery": 10,
+      "milestoneRewards": [
+        {
+          "itemId": "expCandyM",
+          "count": 3
+        }
+      ]
+    }
+  },
+  "trials": {
+    "tokenItemId": "secretRealmToken",
+    "tokenBossDrops": [
+      {
+        "itemId": "secretRealmToken",
+        "chance": 15
+      }
+    ],
+    "realm": {
+      "floorOffset": -2,
+      "battleCount": {
+        "min": 5,
+        "max": 10
+      },
+      "ruleCount": {
+        "min": 1,
+        "max": 3
+      },
+      "trainerChance": 35,
+      "healPercent": 50,
+      "chest": {
+        "itemRolls": 2,
+        "itemRollsPerBattle": 1,
+        "items": [
+          {
+            "itemId": "expCandyM",
+            "weight": 20,
+            "min": 1,
+            "max": 3
+          },
+          {
+            "itemId": "expCandyL",
+            "weight": 8,
+            "min": 1,
+            "max": 2
+          },
+          {
+            "itemId": "rareCandy",
+            "weight": 3,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "lingzhi",
+            "weight": 10,
+            "min": 1,
+            "max": 3
+          },
+          {
+            "itemId": "ginseng",
+            "weight": 10,
+            "min": 1,
+            "max": 3
+          },
+          {
+            "itemId": "snowLotus",
+            "weight": 6,
+            "min": 1,
+            "max": 2
+          },
+          {
+            "itemId": "fleeceflower",
+            "weight": 6,
+            "min": 1,
+            "max": 2
+          },
+          {
+            "itemId": "longevityPill",
+            "weight": 4,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "greaterLongevityPill",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "breakthroughPill",
+            "weight": 4,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillNormal",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillFire",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillWater",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillElectric",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillGrass",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillIce",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillFighting",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillPoison",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillGround",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillFlying",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillPsychic",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillBug",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillRock",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillGhost",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillDragon",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillDark",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillSteel",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillFairy",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillLight",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "recipeScrollMyriadLongevityPill",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "recipeScrollHumanFormPill",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "fourSymbolsScroll",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "dragonGateScroll",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "sixHarmoniesScroll",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "fiveElementsScroll",
+            "weight": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "soulCrystalSmall",
+            "weight": 8,
+            "min": 2,
+            "max": 5
+          },
+          {
+            "itemId": "soulCrystalLarge",
+            "weight": 3,
+            "min": 1,
+            "max": 1
+          }
+        ],
+        "equipmentCount": 1,
+        "equipmentRarityWeights": {
+          "rare": 70,
+          "epic": 25,
+          "legendary": 5
+        },
+        "skillBookCount": 1,
+        "reusableBookChance": 15
+      }
+    },
+    "tower": {
+      "ruleCount": {
+        "min": 0,
+        "max": 2
+      },
+      "floorScale": 1,
+      "levelOffset": 3,
+      "bossEvery": 10,
+      "floorRewards": [
+        {
+          "itemId": "expCandyS",
+          "count": 2
+        }
+      ],
+      "milestoneEvery": 10,
+      "milestoneRewards": [
+        {
+          "itemId": "rareCandy",
+          "count": 1
+        },
+        {
+          "itemId": "secretRealmToken",
+          "count": 1
+        },
+        {
+          "itemId": "soulCrystalLarge",
+          "count": 1
+        }
+      ]
+    }
+  },
+  "soulLevels": {
+    "percentPerLevel": 3,
+    "costBase": 100,
+    "fuseRefundPercent": 50,
+    "wildDrops": [
+      {
+        "itemId": "soulCrystalSmall",
+        "chance": 4
+      }
+    ],
+    "bossDrops": [
+      {
+        "itemId": "soulCrystalSmall",
+        "chance": 60
+      },
+      {
+        "itemId": "soulCrystalLarge",
+        "chance": 15
+      }
+    ]
+  },
+  "effort": {
+    "maxPerStat": 252,
+    "maxTotal": 510,
+    "percentPerPoint": 0.1,
+    "derivedYield": [
+      {
+        "minBaseStatTotal": 0,
+        "points": 1
+      },
+      {
+        "minBaseStatTotal": 380,
+        "points": 2
+      },
+      {
+        "minBaseStatTotal": 525,
+        "points": 3
+      }
+    ]
+  },
+  "spiritVirus": {
+    "infectPercent": 0.00457763671875,
+    "spreadPercent": 33.333333333333336,
+    "minDays": 1,
+    "maxDays": 4,
+    "infectedExpPercent": 100,
+    "immuneExpPercent": 25,
+    "effortMultiplier": 2,
+    "genesPerWin": 1
+  },
+  "talents": {
+    "levelsPerPoint": 5,
+    "pointsPerAwakening": 1,
+    "bossDrops": [
+      {
+        "itemId": "forgetWater",
+        "chance": 10
+      }
+    ]
+  },
+  "events": {
+    "wildBattleChance": 10,
+    "exploreChance": 30,
+    "townChance": 15,
+    "blackMarket": {
+      "count": {
+        "min": 3,
+        "max": 5
+      },
+      "items": [
+        {
+          "itemId": "fusionCharm",
+          "weight": 3,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "greatFusionCharm",
+          "weight": 2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "ultraFusionCharm",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "fusionAmulet",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "greaterLongevityPill",
+          "weight": 3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "myriadLongevityPill",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "recipeScrollMyriadLongevityPill",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "recipeScrollHumanFormPill",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "fourSymbolsScroll",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "dragonGateScroll",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "sixHarmoniesScroll",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "fiveElementsScroll",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "secretRealmToken",
+          "weight": 4,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "rareCandy",
+          "weight": 4,
+          "min": 1,
+          "max": 3
+        },
+        {
+          "itemId": "expCandyL",
+          "weight": 2,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "expCandyXL",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "heartDew",
+          "weight": 3,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "mutationStone",
+          "weight": 2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "dragonBloodFruit",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "marrowCleansingPill",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreNormal",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreFire",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreWater",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreElectric",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreGrass",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreIce",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreFighting",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCorePoison",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreGround",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreFlying",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCorePsychic",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreBug",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreRock",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreGhost",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreDragon",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreDark",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreSteel",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreFairy",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "demonCoreLight",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "burnDrive",
+          "weight": 0.1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "chillDrive",
+          "weight": 0.1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "douseDrive",
+          "weight": 0.1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "shockDrive",
+          "weight": 0.1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "abilityPatch",
+          "weight": 0.2,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintHardy",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintLonely",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintBrave",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintAdamant",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintNaughty",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintBold",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintDocile",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintRelaxed",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintImpish",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintLax",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintTimid",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintHasty",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintSerious",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintJolly",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintNaive",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintModest",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintMild",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintQuiet",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintBashful",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintRash",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintCalm",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintGentle",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintSassy",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintCareful",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "mintQuirky",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "masterBall",
+          "weight": 0.3,
+          "min": 1,
+          "max": 1
+        }
+      ],
+      "equipment": {
+        "weight": 15,
+        "rarityWeights": {
+          "rare": 6,
+          "epic": 3,
+          "legendary": 1
+        },
+        "minRollPercent": 50
+      },
+      "skillBooks": {
+        "weight": 8,
+        "reusableChance": 3
+      }
+    },
+    "beastTide": {
+      "intervalDays": {
+        "min": 30,
+        "max": 50
+      },
+      "warningDays": 3,
+      "waves": {
+        "min": 5,
+        "max": 20
+      },
+      "kingAfterPercent": 40,
+      "kingStrength": 1.5,
+      "floorOffset": -1,
+      "strengthPerWavePercent": 5,
+      "lossMoneyPercent": 10,
+      "closedDays": 3,
+      "waveDrops": [
+        {
+          "itemId": "soulCrystalSmall",
+          "chance": 50
+        },
+        {
+          "itemId": "soulCrystalLarge",
+          "chance": 10
+        },
+        {
+          "itemId": "superPotion",
+          "chance": 30
+        }
+      ],
+      "completion": {
+        "items": [
+          {
+            "itemId": "rareCandy",
+            "count": 2
+          },
+          {
+            "itemId": "soulCrystalLarge",
+            "count": 2
+          }
+        ],
+        "pickOneItemIds": [
+          "fourSymbolsScroll",
+          "dragonGateScroll",
+          "sixHarmoniesScroll",
+          "fiveElementsScroll"
+        ],
+        "skillBooks": 1,
+        "egg": true
+      }
+    }
+  },
+  "bond": {
+    "minAffinity": 200,
+    "resonanceMultiplier": 3,
+    "lifespanMultiplier": 2,
+    "manaCostPercent": 50,
+    "rebindCostPerRealm": 5000,
+    "rebindAffinityLoss": 100,
+    "rebindCooldownDays": 30,
+    "woundDays": 30,
+    "woundManaPercent": 50
+  },
+  "soulRelic": {
+    "forgeCostPerLevel": 50,
+    "rarityByAptitude": {
+      "mortal": "common",
+      "good": "uncommon",
+      "superior": "rare",
+      "refined": "epic",
+      "heavenly": "legendary",
+      "divine": "unique"
+    }
+  },
+  "forge": {
+    "enhanceStoneItemId": "enhanceStone",
+    "refiningStoneItemId": "refiningStone",
+    "enhanceBase": 50,
+    "rerollCost": {
+      "common": 1,
+      "uncommon": 1,
+      "rare": 2,
+      "epic": 3,
+      "legendary": 5,
+      "unique": 8
+    },
+    "salvageStones": {
+      "common": 1,
+      "uncommon": 2,
+      "rare": 4,
+      "epic": 8,
+      "legendary": 16,
+      "unique": 30
+    },
+    "salvageRefundPercent": 50,
+    "salvageRefiningChance": {
+      "common": 2,
+      "uncommon": 5,
+      "rare": 15,
+      "epic": 30,
+      "legendary": 60,
+      "unique": 100
+    },
+    "salvageSoulPoints": {
+      "common": 1,
+      "uncommon": 2,
+      "rare": 3,
+      "epic": 5,
+      "legendary": 8,
+      "unique": 12
+    },
+    "bossDrops": [
+      {
+        "itemId": "enhanceStone",
+        "chance": 60
+      },
+      {
+        "itemId": "refiningStone",
+        "chance": 10
+      }
+    ],
+    "expBase": 10,
+    "expPower": 2,
+    "levelBonusPercent": 1,
+    "enhanceExp": 1,
+    "coreEnhance": {
+      "groupId": "demonCore",
+      "fromLevel": 10,
+      "step": 10
+    },
+    "cast": {
+      "minLevel": 1,
+      "maxCores": 10,
+      "money": 200,
+      "exp": 10,
+      "rarityWeights": {
+        "common": 50,
+        "uncommon": 30,
+        "rare": 15,
+        "epic": 4,
+        "legendary": 1
+      },
+      "coreFactor": 0.3,
+      "levelFactor": 0.05
+    },
+    "imbue": {
+      "lineIds": {
+        "normal": "affixImbueNormal",
+        "fire": "affixImbueFire",
+        "water": "affixImbueWater",
+        "electric": "affixImbueElectric",
+        "grass": "affixImbueGrass",
+        "ice": "affixImbueIce",
+        "fighting": "affixImbueFighting",
+        "poison": "affixImbuePoison",
+        "ground": "affixImbueGround",
+        "flying": "affixImbueFlying",
+        "psychic": "affixImbuePsychic",
+        "bug": "affixImbueBug",
+        "rock": "affixImbueRock",
+        "ghost": "affixImbueGhost",
+        "dragon": "affixImbueDragon",
+        "dark": "affixImbueDark",
+        "steel": "affixImbueSteel",
+        "fairy": "affixImbueFairy",
+        "light": "affixImbueLight"
+      },
+      "cores": {
+        "common": 1,
+        "uncommon": 2,
+        "rare": 3,
+        "epic": 5,
+        "legendary": 8,
+        "unique": 12
+      },
+      "money": 300,
+      "exp": 5
+    }
+  },
+  "frenzy": {
+    "roles": {
+      "tamed": {
+        "hpThresholdPercent": 50,
+        "statPercent": 30,
+        "extraActionChance": 25
+      },
+      "unbound": {
+        "hpThresholdPercent": 25,
+        "statPercent": 15,
+        "extraActionChance": 10
+      },
+      "wild": {
+        "hpThresholdPercent": 50,
+        "statPercent": 15,
+        "extraActionChance": 10
+      },
+      "boss": {
+        "hpThresholdPercent": 50,
+        "statPercent": 20,
+        "extraActionChance": 15
+      }
+    }
+  },
+  "recruit": {
+    "baseChance": 5,
+    "bossChance": 0.5,
+    "rankFalloff": 0.85,
+    "baitFavoriteMultiplier": 2,
+    "intimidate": {
+      "slope": 0.5,
+      "offset": -0.25,
+      "maxChance": 0.8,
+      "failStages": {
+        "attack": 1,
+        "spAttack": 1
+      }
+    }
+  },
+  "safari": {
+    "entryFeeBase": 500,
+    "balls": 30,
+    "encounters": 20,
+    "ballCatchMultiplier": 3,
+    "rotationDays": 7,
+    "rosterSize": 10,
+    "unmappedChance": 5,
+    "rarityWeightBase": 20,
+    "rarityExponent": 2,
+    "rankFalloff": 0.7,
+    "fleeBase": 10,
+    "fleeRarity": 20,
+    "lures": {
+      "bait": {
+        "catchMultiplier": 0.8,
+        "fleeMultiplier": 0.5,
+        "turns": 3
+      },
+      "rock": {
+        "catchMultiplier": 2,
+        "fleeMultiplier": 1.5,
+        "turns": 3
+      }
+    }
+  },
+  "itemGroups": {
+    "demonCore": [
+      "demonCoreNormal",
+      "demonCoreFire",
+      "demonCoreWater",
+      "demonCoreElectric",
+      "demonCoreGrass",
+      "demonCoreIce",
+      "demonCoreFighting",
+      "demonCorePoison",
+      "demonCoreGround",
+      "demonCoreFlying",
+      "demonCorePsychic",
+      "demonCoreBug",
+      "demonCoreRock",
+      "demonCoreGhost",
+      "demonCoreDragon",
+      "demonCoreDark",
+      "demonCoreSteel",
+      "demonCoreFairy",
+      "demonCoreLight"
+    ]
+  },
+  "zones": {
+    "floorOffset": -3,
+    "steps": {
+      "min": 5,
+      "max": 8
+    },
+    "stepWeights": {
+      "battle": 55,
+      "elite": 10,
+      "treasure": 20,
+      "rareTreasure": 5,
+      "spring": 10
+    },
+    "springHealPercent": 40,
+    "guardianRareRolls": 2,
+    "cooldownDays": 3
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "bySource": {
+    "shanHaiJing": 24,
+    "chineseFolklore": 34,
+    "xianxia": 12,
+    "battleThroughHeavens": 6,
+    "mortalJourney": 3,
+    "zhuXian": 1,
+    "genshin": 19,
+    "japaneseFolklore": 55,
+    "koreanFolklore": 12,
+    "vietnameseFolklore": 12,
+    "attackOnTitan": 2,
+    "onePiece": 6,
+    "naruto": 4,
+    "bleach": 4,
+    "dragonBall": 1,
+    "sekiro": 3,
+    "monsterRancher": 2,
+    "jujutsuKaisen": 1,
+    "toriko": 6,
+    "hunterXHunter": 4,
+    "madeInAbyss": 4,
+    "castlevania": 3,
+    "residentEvil": 2
+  },
+  "byOrigin": {
+    "myth": 137,
+    "fantasy": 83
+  },
+  "newSpecies": 220,
+  "newSkills": 195,
+  "plannedEffects": [
+    {
+      "skillId": "bifangFlame",
+      "effect": "burn 20%"
+    },
+    {
+      "skillId": "zhenVenom",
+      "effect": "poison 50%"
+    },
+    {
+      "skillId": "corpsePoisonClaw",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "netherworldVenom",
+      "effect": "poison 50%"
+    },
+    {
+      "skillId": "frostVenomBite",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "raijuPounce",
+      "effect": "paralysis 20%"
+    },
+    {
+      "skillId": "lanternFlare",
+      "effect": "burn 10%"
+    },
+    {
+      "skillId": "filthLick",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "electroStrike",
+      "effect": "paralysis 10%"
+    }
+  ],
+  "sourceTagged": [
+    "easternDragon: chineseFolklore",
+    "fenghuang: chineseFolklore",
+    "qilin: chineseFolklore",
+    "nineTailedFox: shanHaiJing",
+    "kitsune: japaneseFolklore",
+    "baku: japaneseFolklore",
+    "tanuki: japaneseFolklore",
+    "tengu: japaneseFolklore",
+    "oni: japaneseFolklore",
+    "kappa: japaneseFolklore",
+    "thuongLuong: vietnameseFolklore",
+    "goldenTurtle: vietnameseFolklore"
+  ],
+  "evolutionLinks": [
+    "bakeneko → nekomata @25",
+    "karasuTengu → tengu @30",
+    "goldenCarp → easternDragon @35"
+  ]
+}

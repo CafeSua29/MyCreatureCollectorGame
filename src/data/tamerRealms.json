@@ -1,0 +1,32 @@
+[
+  {
+    "id": "apprentice"
+  },
+  {
+    "id": "novice"
+  },
+  {
+    "id": "intermediate"
+  },
+  {
+    "id": "advanced"
+  },
+  {
+    "id": "master"
+  },
+  {
+    "id": "grandmaster"
+  },
+  {
+    "id": "sovereign"
+  },
+  {
+    "id": "emperor"
+  },
+  {
+    "id": "saint"
+  },
+  {
+    "id": "deity"
+  }
+]

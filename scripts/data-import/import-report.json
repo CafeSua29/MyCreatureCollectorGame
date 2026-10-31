@@ -1,0 +1,2078 @@
+{
+  "skippedMoves": [
+    {
+      "id": "10000000VoltThunderbolt",
+      "name": "10,000,000 Volt Thunderbolt",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "acidDownpour",
+      "name": "Acid Downpour",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "acupressure",
+      "name": "Acupressure",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "afterYou",
+      "name": "After You",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "allOutPummeling",
+      "name": "All-Out Pummeling",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "allySwitch",
+      "name": "Ally Switch",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "aquaRing",
+      "name": "Aqua Ring",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "aromatherapy",
+      "name": "Aromatherapy",
+      "reason": "mục tiêu allyTeam (hiệu ứng sân)"
+    },
+    {
+      "id": "assist",
+      "name": "Assist",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "attract",
+      "name": "Attract",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "auroraVeil",
+      "name": "Aurora Veil",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "baddyBad",
+      "name": "Baddy Bad",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "banefulBunker",
+      "name": "Baneful Bunker",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "batonPass",
+      "name": "Baton Pass",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "bellyDrum",
+      "name": "Belly Drum",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "bestow",
+      "name": "Bestow",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "bide",
+      "name": "Bide",
+      "reason": "chiêu gây sát thương không nhắm địch"
+    },
+    {
+      "id": "blackHoleEclipse",
+      "name": "Black Hole Eclipse",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "block",
+      "name": "Block",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "bloomDoom",
+      "name": "Bloom Doom",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "bouncyBubble",
+      "name": "Bouncy Bubble",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "breakneckBlitz",
+      "name": "Breakneck Blitz",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "burningBulwark",
+      "name": "Burning Bulwark",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "buzzyBuzz",
+      "name": "Buzzy Buzz",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "camouflage",
+      "name": "Camouflage",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "catastropika",
+      "name": "Catastropika",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "celebrate",
+      "name": "Celebrate",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "chillyReception",
+      "name": "Chilly Reception",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "clangorousSoulblaze",
+      "name": "Clangorous Soulblaze",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "comeuppance",
+      "name": "Comeuppance",
+      "reason": "mục tiêu scripted (hiệu ứng sân)"
+    },
+    {
+      "id": "confuseRay",
+      "name": "Confuse Ray",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "continentalCrush",
+      "name": "Continental Crush",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "conversion",
+      "name": "Conversion",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "conversion2",
+      "name": "Conversion 2",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "copycat",
+      "name": "Copycat",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "corkscrewCrash",
+      "name": "Corkscrew Crash",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "corrosiveGas",
+      "name": "Corrosive Gas",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "counter",
+      "name": "Counter",
+      "reason": "mục tiêu scripted (hiệu ứng sân)"
+    },
+    {
+      "id": "courtChange",
+      "name": "Court Change",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "craftyShield",
+      "name": "Crafty Shield",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "curse",
+      "name": "Curse",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "darkVoid",
+      "name": "Dark Void",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "defog",
+      "name": "Defog",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "destinyBond",
+      "name": "Destiny Bond",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "detect",
+      "name": "Detect",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "devastatingDrake",
+      "name": "Devastating Drake",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "disable",
+      "name": "Disable",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "doodle",
+      "name": "Doodle",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "doubleTeam",
+      "name": "Double Team",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "dragonCheer",
+      "name": "Dragon Cheer",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "dragonRage",
+      "name": "Dragon Rage",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "electricTerrain",
+      "name": "Electric Terrain",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "electrify",
+      "name": "Electrify",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "embargo",
+      "name": "Embargo",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "encore",
+      "name": "Encore",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "endure",
+      "name": "Endure",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "entrainment",
+      "name": "Entrainment",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "extremeEvoboost",
+      "name": "Extreme Evoboost",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "fairyLock",
+      "name": "Fairy Lock",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "fissure",
+      "name": "Fissure",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "flash",
+      "name": "Flash",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "floatyFall",
+      "name": "Floaty Fall",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "floralHealing",
+      "name": "Floral Healing",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "flowerShield",
+      "name": "Flower Shield",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "focusEnergy",
+      "name": "Focus Energy",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "followMe",
+      "name": "Follow Me",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "foresight",
+      "name": "Foresight",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "forestsCurse",
+      "name": "Forest's Curse",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "freezyFrost",
+      "name": "Freezy Frost",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "gastroAcid",
+      "name": "Gastro Acid",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "gearUp",
+      "name": "Gear Up",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "genesisSupernova",
+      "name": "Genesis Supernova",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gigavoltHavoc",
+      "name": "Gigavolt Havoc",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "glare",
+      "name": "Glare",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "glitzyGlow",
+      "name": "Glitzy Glow",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "gMaxBefuddle",
+      "name": "G-Max Befuddle",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxCannonade",
+      "name": "G-Max Cannonade",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxCentiferno",
+      "name": "G-Max Centiferno",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxChiStrike",
+      "name": "G-Max Chi Strike",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxCuddle",
+      "name": "G-Max Cuddle",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxDepletion",
+      "name": "G-Max Depletion",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxDrumSolo",
+      "name": "G-Max Drum Solo",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxFinale",
+      "name": "G-Max Finale",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxFireball",
+      "name": "G-Max Fireball",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxFoamBurst",
+      "name": "G-Max Foam Burst",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxGoldRush",
+      "name": "G-Max Gold Rush",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxGravitas",
+      "name": "G-Max Gravitas",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxHydrosnipe",
+      "name": "G-Max Hydrosnipe",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxMalodor",
+      "name": "G-Max Malodor",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxMeltdown",
+      "name": "G-Max Meltdown",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxOneBlow",
+      "name": "G-Max One Blow",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxRapidFlow",
+      "name": "G-Max Rapid Flow",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxReplenish",
+      "name": "G-Max Replenish",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxResonance",
+      "name": "G-Max Resonance",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxSandblast",
+      "name": "G-Max Sandblast",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxSmite",
+      "name": "G-Max Smite",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxSnooze",
+      "name": "G-Max Snooze",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxSteelsurge",
+      "name": "G-Max Steelsurge",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxStonesurge",
+      "name": "G-Max Stonesurge",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxStunShock",
+      "name": "G-Max Stun Shock",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxSweetness",
+      "name": "G-Max Sweetness",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxTartness",
+      "name": "G-Max Tartness",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxTerror",
+      "name": "G-Max Terror",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxVineLash",
+      "name": "G-Max Vine Lash",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxVolcalith",
+      "name": "G-Max Volcalith",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxVoltCrash",
+      "name": "G-Max Volt Crash",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxWildfire",
+      "name": "G-Max Wildfire",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "gMaxWindRage",
+      "name": "G-Max Wind Rage",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "grassWhistle",
+      "name": "Grass Whistle",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "grassyTerrain",
+      "name": "Grassy Terrain",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "gravity",
+      "name": "Gravity",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "grudge",
+      "name": "Grudge",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "guardianOfAlola",
+      "name": "Guardian of Alola",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "guardSplit",
+      "name": "Guard Split",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "guardSwap",
+      "name": "Guard Swap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "guillotine",
+      "name": "Guillotine",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "hail",
+      "name": "Hail",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "happyHour",
+      "name": "Happy Hour",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "haze",
+      "name": "Haze",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "healBell",
+      "name": "Heal Bell",
+      "reason": "mục tiêu allyTeam (hiệu ứng sân)"
+    },
+    {
+      "id": "healBlock",
+      "name": "Heal Block",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "healingWish",
+      "name": "Healing Wish",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "healOrder",
+      "name": "Heal Order",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "healPulse",
+      "name": "Heal Pulse",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "heartSwap",
+      "name": "Heart Swap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "helpingHand",
+      "name": "Helping Hand",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "holdHands",
+      "name": "Hold Hands",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "hornDrill",
+      "name": "Horn Drill",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "howl",
+      "name": "Howl",
+      "reason": "mục tiêu allies (hiệu ứng sân)"
+    },
+    {
+      "id": "hydroVortex",
+      "name": "Hydro Vortex",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "hypnosis",
+      "name": "Hypnosis",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "imprison",
+      "name": "Imprison",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "infernoOverdrive",
+      "name": "Inferno Overdrive",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "ingrain",
+      "name": "Ingrain",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "instruct",
+      "name": "Instruct",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "ionDeluge",
+      "name": "Ion Deluge",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "jungleHealing",
+      "name": "Jungle Healing",
+      "reason": "mục tiêu allies (hiệu ứng sân)"
+    },
+    {
+      "id": "kinesis",
+      "name": "Kinesis",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "kingsShield",
+      "name": "King's Shield",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "laserFocus",
+      "name": "Laser Focus",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "letsSnuggleForever",
+      "name": "Let's Snuggle Forever",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "lifeDew",
+      "name": "Life Dew",
+      "reason": "mục tiêu allies (hiệu ứng sân)"
+    },
+    {
+      "id": "lightScreen",
+      "name": "Light Screen",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "lightThatBurnsTheSky",
+      "name": "Light That Burns the Sky",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "lockOn",
+      "name": "Lock-On",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "lovelyKiss",
+      "name": "Lovely Kiss",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "luckyChant",
+      "name": "Lucky Chant",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "lunarBlessing",
+      "name": "Lunar Blessing",
+      "reason": "mục tiêu allies (hiệu ứng sân)"
+    },
+    {
+      "id": "lunarDance",
+      "name": "Lunar Dance",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "magicCoat",
+      "name": "Magic Coat",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "magicPowder",
+      "name": "Magic Powder",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "magicRoom",
+      "name": "Magic Room",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "magneticFlux",
+      "name": "Magnetic Flux",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "magnetRise",
+      "name": "Magnet Rise",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "maliciousMoonsault",
+      "name": "Malicious Moonsault",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "matBlock",
+      "name": "Mat Block",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "maxAirstream",
+      "name": "Max Airstream",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxDarkness",
+      "name": "Max Darkness",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxFlare",
+      "name": "Max Flare",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxFlutterby",
+      "name": "Max Flutterby",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxGeyser",
+      "name": "Max Geyser",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxGuard",
+      "name": "Max Guard",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxHailstorm",
+      "name": "Max Hailstorm",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxKnuckle",
+      "name": "Max Knuckle",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxLightning",
+      "name": "Max Lightning",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxMindstorm",
+      "name": "Max Mindstorm",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxOoze",
+      "name": "Max Ooze",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxOvergrowth",
+      "name": "Max Overgrowth",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxPhantasm",
+      "name": "Max Phantasm",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxQuake",
+      "name": "Max Quake",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxRockfall",
+      "name": "Max Rockfall",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxStarfall",
+      "name": "Max Starfall",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxSteelspike",
+      "name": "Max Steelspike",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxStrike",
+      "name": "Max Strike",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "maxWyrmwind",
+      "name": "Max Wyrmwind",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "meanLook",
+      "name": "Mean Look",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "meFirst",
+      "name": "Me First",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "menacingMoonrazeMaelstrom",
+      "name": "Menacing Moonraze Maelstrom",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "metalBurst",
+      "name": "Metal Burst",
+      "reason": "mục tiêu scripted (hiệu ứng sân)"
+    },
+    {
+      "id": "metronome",
+      "name": "Metronome",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "milkDrink",
+      "name": "Milk Drink",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "mimic",
+      "name": "Mimic",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "mindReader",
+      "name": "Mind Reader",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "minimize",
+      "name": "Minimize",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "miracleEye",
+      "name": "Miracle Eye",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "mirrorCoat",
+      "name": "Mirror Coat",
+      "reason": "mục tiêu scripted (hiệu ứng sân)"
+    },
+    {
+      "id": "mirrorMove",
+      "name": "Mirror Move",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "mist",
+      "name": "Mist",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "mistyTerrain",
+      "name": "Misty Terrain",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "moonlight",
+      "name": "Moonlight",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "morningSun",
+      "name": "Morning Sun",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "mudSport",
+      "name": "Mud Sport",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "naturePower",
+      "name": "Nature Power",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "neverEndingNightmare",
+      "name": "Never-Ending Nightmare",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "nightmare",
+      "name": "Nightmare",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "nightShade",
+      "name": "Night Shade",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "obstruct",
+      "name": "Obstruct",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "oceanicOperetta",
+      "name": "Oceanic Operetta",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "octolock",
+      "name": "Octolock",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "odorSleuth",
+      "name": "Odor Sleuth",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "painSplit",
+      "name": "Pain Split",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "partingShot",
+      "name": "Parting Shot",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "perishSong",
+      "name": "Perish Song",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "pikaPapow",
+      "name": "Pika Papow",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "poisonGas",
+      "name": "Poison Gas",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "poisonPowder",
+      "name": "Poison Powder",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "powder",
+      "name": "Powder",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "powerShift",
+      "name": "Power Shift",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "powerSplit",
+      "name": "Power Split",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "powerSwap",
+      "name": "Power Swap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "powerTrick",
+      "name": "Power Trick",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "protect",
+      "name": "Protect",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "psychicTerrain",
+      "name": "Psychic Terrain",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "psychoShift",
+      "name": "Psycho Shift",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "psychUp",
+      "name": "Psych Up",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "pulverizingPancake",
+      "name": "Pulverizing Pancake",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "purify",
+      "name": "Purify",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "quash",
+      "name": "Quash",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "quickGuard",
+      "name": "Quick Guard",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "ragePowder",
+      "name": "Rage Powder",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "rainDance",
+      "name": "Rain Dance",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "recover",
+      "name": "Recover",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "recycle",
+      "name": "Recycle",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "reflect",
+      "name": "Reflect",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "reflectType",
+      "name": "Reflect Type",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "refresh",
+      "name": "Refresh",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "rest",
+      "name": "Rest",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "revivalBlessing",
+      "name": "Revival Blessing",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "rolePlay",
+      "name": "Role Play",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "roost",
+      "name": "Roost",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "rototiller",
+      "name": "Rototiller",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "safeguard",
+      "name": "Safeguard",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "sandAttack",
+      "name": "Sand Attack",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sandstorm",
+      "name": "Sandstorm",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "sappySeed",
+      "name": "Sappy Seed",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "savageSpinOut",
+      "name": "Savage Spin-Out",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "searingSunrazeSmash",
+      "name": "Searing Sunraze Smash",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "seismicToss",
+      "name": "Seismic Toss",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "shatteredPsyche",
+      "name": "Shattered Psyche",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "shedTail",
+      "name": "Shed Tail",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sheerCold",
+      "name": "Sheer Cold",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "shoreUp",
+      "name": "Shore Up",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "silkTrap",
+      "name": "Silk Trap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "simpleBeam",
+      "name": "Simple Beam",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sing",
+      "name": "Sing",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sinisterArrowRaid",
+      "name": "Sinister Arrow Raid",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "sizzlySlide",
+      "name": "Sizzly Slide",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "sketch",
+      "name": "Sketch",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "skillSwap",
+      "name": "Skill Swap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "slackOff",
+      "name": "Slack Off",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sleepPowder",
+      "name": "Sleep Powder",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sleepTalk",
+      "name": "Sleep Talk",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "smokescreen",
+      "name": "Smokescreen",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "snatch",
+      "name": "Snatch",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "snowscape",
+      "name": "Snowscape",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "soak",
+      "name": "Soak",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "softBoiled",
+      "name": "Soft-Boiled",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sonicBoom",
+      "name": "Sonic Boom",
+      "reason": "sát thương cố định / hạ gục một đòn"
+    },
+    {
+      "id": "soulStealing7StarStrike",
+      "name": "Soul-Stealing 7-Star Strike",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "sparklySwirl",
+      "name": "Sparkly Swirl",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "speedSwap",
+      "name": "Speed Swap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "spiderWeb",
+      "name": "Spider Web",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "spikes",
+      "name": "Spikes",
+      "reason": "mục tiêu foeSide (hiệu ứng sân)"
+    },
+    {
+      "id": "spikyShield",
+      "name": "Spiky Shield",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "spite",
+      "name": "Spite",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "splash",
+      "name": "Splash",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "splinteredStormshards",
+      "name": "Splintered Stormshards",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "splishySplash",
+      "name": "Splishy Splash",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "spore",
+      "name": "Spore",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "spotlight",
+      "name": "Spotlight",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "stealthRock",
+      "name": "Stealth Rock",
+      "reason": "mục tiêu foeSide (hiệu ứng sân)"
+    },
+    {
+      "id": "stickyWeb",
+      "name": "Sticky Web",
+      "reason": "mục tiêu foeSide (hiệu ứng sân)"
+    },
+    {
+      "id": "stockpile",
+      "name": "Stockpile",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "stokedSparksurfer",
+      "name": "Stoked Sparksurfer",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "strengthSap",
+      "name": "Strength Sap",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "struggle",
+      "name": "Struggle",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "stuffCheeks",
+      "name": "Stuff Cheeks",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "stunSpore",
+      "name": "Stun Spore",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "substitute",
+      "name": "Substitute",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "subzeroSlammer",
+      "name": "Subzero Slammer",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "sunnyDay",
+      "name": "Sunny Day",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "supersonic",
+      "name": "Supersonic",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "supersonicSkystrike",
+      "name": "Supersonic Skystrike",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "swallow",
+      "name": "Swallow",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sweetKiss",
+      "name": "Sweet Kiss",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "sweetScent",
+      "name": "Sweet Scent",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "switcheroo",
+      "name": "Switcheroo",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "synthesis",
+      "name": "Synthesis",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "takeHeart",
+      "name": "Take Heart",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "taunt",
+      "name": "Taunt",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "teatime",
+      "name": "Teatime",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "tectonicRage",
+      "name": "Tectonic Rage",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "teeterDance",
+      "name": "Teeter Dance",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "telekinesis",
+      "name": "Telekinesis",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "teleport",
+      "name": "Teleport",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "thunderWave",
+      "name": "Thunder Wave",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "tidyUp",
+      "name": "Tidy Up",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "topsyTurvy",
+      "name": "Topsy-Turvy",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "torment",
+      "name": "Torment",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "toxic",
+      "name": "Toxic",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "toxicSpikes",
+      "name": "Toxic Spikes",
+      "reason": "mục tiêu foeSide (hiệu ứng sân)"
+    },
+    {
+      "id": "transform",
+      "name": "Transform",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "trick",
+      "name": "Trick",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "trickOrTreat",
+      "name": "Trick-or-Treat",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "trickRoom",
+      "name": "Trick Room",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "twinkleTackle",
+      "name": "Twinkle Tackle",
+      "reason": "Z / Max / Struggle"
+    },
+    {
+      "id": "veeveeVolley",
+      "name": "Veevee Volley",
+      "reason": "không chuẩn"
+    },
+    {
+      "id": "venomDrench",
+      "name": "Venom Drench",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "waterSport",
+      "name": "Water Sport",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "whirlwind",
+      "name": "Whirlwind",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "wideGuard",
+      "name": "Wide Guard",
+      "reason": "mục tiêu allySide (hiệu ứng sân)"
+    },
+    {
+      "id": "willOWisp",
+      "name": "Will-O-Wisp",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "wish",
+      "name": "Wish",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "wonderRoom",
+      "name": "Wonder Room",
+      "reason": "mục tiêu all (hiệu ứng sân)"
+    },
+    {
+      "id": "worrySeed",
+      "name": "Worry Seed",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "yawn",
+      "name": "Yawn",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "zippyZap",
+      "name": "Zippy Zap",
+      "reason": "không chuẩn"
+    }
+  ],
+  "convertedEvolutions": [
+    {
+      "from": "pichu",
+      "to": "pikachu",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "cleffa",
+      "to": "clefairy",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "igglybuff",
+      "to": "jigglypuff",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "meowthAlola",
+      "to": "persianAlola",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "kadabra",
+      "to": "alakazam",
+      "original": "trade"
+    },
+    {
+      "from": "machoke",
+      "to": "machamp",
+      "original": "trade"
+    },
+    {
+      "from": "graveler",
+      "to": "golem",
+      "original": "trade"
+    },
+    {
+      "from": "gravelerAlola",
+      "to": "golemAlola",
+      "original": "trade"
+    },
+    {
+      "from": "slowpokeGalar",
+      "to": "slowbroGalar",
+      "original": "useItem + Galarica Cuff"
+    },
+    {
+      "from": "haunter",
+      "to": "gengar",
+      "original": "trade"
+    },
+    {
+      "from": "happiny",
+      "to": "chansey",
+      "original": "levelHold + Oval Stone (during the day)"
+    },
+    {
+      "from": "mimeJr",
+      "to": "mrMime",
+      "original": "levelMove"
+    },
+    {
+      "from": "munchlax",
+      "to": "snorlax",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "golbat",
+      "to": "crobat",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "togepi",
+      "to": "togetic",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "azurill",
+      "to": "marill",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "bonsly",
+      "to": "sudowoodo",
+      "original": "levelMove"
+    },
+    {
+      "from": "poliwhirl",
+      "to": "politoed",
+      "original": "trade + King's Rock"
+    },
+    {
+      "from": "eevee",
+      "to": "espeon",
+      "original": "levelFriendship (during the day)"
+    },
+    {
+      "from": "eevee",
+      "to": "umbreon",
+      "original": "levelFriendship (at night)"
+    },
+    {
+      "from": "slowpoke",
+      "to": "slowking",
+      "original": "trade + King's Rock"
+    },
+    {
+      "from": "slowpokeGalar",
+      "to": "slowkingGalar",
+      "original": "useItem + Galarica Wreath"
+    },
+    {
+      "from": "onix",
+      "to": "steelix",
+      "original": "trade + Metal Coat"
+    },
+    {
+      "from": "scyther",
+      "to": "scizor",
+      "original": "trade + Metal Coat"
+    },
+    {
+      "from": "mantyke",
+      "to": "mantine",
+      "original": "levelExtra (with a Remoraid in party)"
+    },
+    {
+      "from": "seadra",
+      "to": "kingdra",
+      "original": "trade + Dragon Scale"
+    },
+    {
+      "from": "porygon",
+      "to": "porygon2",
+      "original": "trade + Up-Grade"
+    },
+    {
+      "from": "chansey",
+      "to": "blissey",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "budew",
+      "to": "roselia",
+      "original": "levelFriendship (during the day)"
+    },
+    {
+      "from": "feebas",
+      "to": "milotic",
+      "original": "trade + Prism Scale"
+    },
+    {
+      "from": "chingling",
+      "to": "chimecho",
+      "original": "levelFriendship (at night)"
+    },
+    {
+      "from": "clamperl",
+      "to": "huntail",
+      "original": "trade + Deep Sea Tooth"
+    },
+    {
+      "from": "clamperl",
+      "to": "gorebyss",
+      "original": "trade + Deep Sea Scale"
+    },
+    {
+      "from": "aipom",
+      "to": "ambipom",
+      "original": "levelMove"
+    },
+    {
+      "from": "buneary",
+      "to": "lopunny",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "riolu",
+      "to": "lucario",
+      "original": "levelFriendship (during the day)"
+    },
+    {
+      "from": "sneasel",
+      "to": "weavile",
+      "original": "levelHold + Razor Claw (at night)"
+    },
+    {
+      "from": "lickitung",
+      "to": "lickilicky",
+      "original": "levelMove"
+    },
+    {
+      "from": "rhydon",
+      "to": "rhyperior",
+      "original": "trade + Protector"
+    },
+    {
+      "from": "tangela",
+      "to": "tangrowth",
+      "original": "levelMove"
+    },
+    {
+      "from": "electabuzz",
+      "to": "electivire",
+      "original": "trade + Electirizer"
+    },
+    {
+      "from": "magmar",
+      "to": "magmortar",
+      "original": "trade + Magmarizer"
+    },
+    {
+      "from": "yanma",
+      "to": "yanmega",
+      "original": "levelMove"
+    },
+    {
+      "from": "gligar",
+      "to": "gliscor",
+      "original": "levelHold + Razor Fang (at night)"
+    },
+    {
+      "from": "piloswine",
+      "to": "mamoswine",
+      "original": "levelMove"
+    },
+    {
+      "from": "porygon2",
+      "to": "porygonZ",
+      "original": "trade + Dubious Disc"
+    },
+    {
+      "from": "nosepass",
+      "to": "probopass",
+      "original": "levelExtra (near a special magnetic field)"
+    },
+    {
+      "from": "dusclops",
+      "to": "dusknoir",
+      "original": "trade + Reaper Cloth"
+    },
+    {
+      "from": "boldore",
+      "to": "gigalith",
+      "original": "trade"
+    },
+    {
+      "from": "woobat",
+      "to": "swoobat",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "gurdurr",
+      "to": "conkeldurr",
+      "original": "trade"
+    },
+    {
+      "from": "swadloon",
+      "to": "leavanny",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "karrablast",
+      "to": "escavalier",
+      "original": "trade (with a Shelmet)"
+    },
+    {
+      "from": "shelmet",
+      "to": "accelgor",
+      "original": "trade (with a Karrablast)"
+    },
+    {
+      "from": "spritzee",
+      "to": "aromatisse",
+      "original": "trade + Sachet"
+    },
+    {
+      "from": "swirlix",
+      "to": "slurpuff",
+      "original": "trade + Whipped Dream"
+    },
+    {
+      "from": "eevee",
+      "to": "sylveon",
+      "original": "levelExtra (with a Fairy-type move and two levels of Affection)"
+    },
+    {
+      "from": "phantump",
+      "to": "trevenant",
+      "original": "trade"
+    },
+    {
+      "from": "pumpkaboo",
+      "to": "gourgeist",
+      "original": "trade"
+    },
+    {
+      "from": "pumpkabooSmall",
+      "to": "gourgeistSmall",
+      "original": "trade"
+    },
+    {
+      "from": "pumpkabooLarge",
+      "to": "gourgeistLarge",
+      "original": "trade"
+    },
+    {
+      "from": "pumpkabooSuper",
+      "to": "gourgeistSuper",
+      "original": "trade"
+    },
+    {
+      "from": "steenee",
+      "to": "tsareena",
+      "original": "levelMove"
+    },
+    {
+      "from": "typeNull",
+      "to": "silvally",
+      "original": "levelFriendship"
+    },
+    {
+      "from": "poipole",
+      "to": "naganadel",
+      "original": "levelMove"
+    },
+    {
+      "from": "applin",
+      "to": "flapple",
+      "original": "useItem + Tart Apple"
+    },
+    {
+      "from": "applin",
+      "to": "appletun",
+      "original": "useItem + Sweet Apple"
+    },
+    {
+      "from": "clobbopus",
+      "to": "grapploct",
+      "original": "levelMove"
+    },
+    {
+      "from": "sinistea",
+      "to": "polteageist",
+      "original": "useItem + Cracked Pot"
+    },
+    {
+      "from": "farfetchdGalar",
+      "to": "sirfetchd",
+      "original": "other (Land 3 critical hits in 1 battle)"
+    },
+    {
+      "from": "yamaskGalar",
+      "to": "runerigus",
+      "original": "other (Have 49+ HP lost and walk under stone sculpture in Dusty Bowl)"
+    },
+    {
+      "from": "milcery",
+      "to": "alcremie",
+      "original": "other (spin while holding a Sweet)"
+    },
+    {
+      "from": "snom",
+      "to": "frosmoth",
+      "original": "levelFriendship (at night)"
+    },
+    {
+      "from": "kubfu",
+      "to": "urshifu",
+      "original": "other (Defeat the Single Strike Tower)"
+    },
+    {
+      "from": "kubfu",
+      "to": "urshifuRapidStrike",
+      "original": "other (Defeat the Rapid Strike Tower)"
+    },
+    {
+      "from": "stantler",
+      "to": "wyrdeer",
+      "original": "other (Use Agile style Psyshield Bash 20 times)"
+    },
+    {
+      "from": "scyther",
+      "to": "kleavor",
+      "original": "useItem (Black Augurite)"
+    },
+    {
+      "from": "ursaring",
+      "to": "ursaluna",
+      "original": "other (Peat Block when there's a full moon)"
+    },
+    {
+      "from": "sneaselHisui",
+      "to": "sneasler",
+      "original": "levelHold + Razor Claw (during the day)"
+    },
+    {
+      "from": "qwilfishHisui",
+      "to": "overqwil",
+      "original": "other (Use Strong style Barb Barrage 20 times)"
+    },
+    {
+      "from": "pawmo",
+      "to": "pawmot",
+      "original": "other (walk 1000 steps in Let's Go)"
+    },
+    {
+      "from": "charcadet",
+      "to": "armarouge",
+      "original": "useItem + Auspicious Armor"
+    },
+    {
+      "from": "charcadet",
+      "to": "ceruledge",
+      "original": "useItem + Malicious Armor"
+    },
+    {
+      "from": "bramblin",
+      "to": "brambleghast",
+      "original": "other (Walk 1000 steps in Let's Go)"
+    },
+    {
+      "from": "rellor",
+      "to": "rabsca",
+      "original": "other (walk 1000 steps in Let's Go)"
+    },
+    {
+      "from": "primeape",
+      "to": "annihilape",
+      "original": "other (Use Rage Fist 20 times and level-up)"
+    },
+    {
+      "from": "girafarig",
+      "to": "farigiraf",
+      "original": "levelMove"
+    },
+    {
+      "from": "dunsparce",
+      "to": "dudunsparce",
+      "original": "levelMove"
+    },
+    {
+      "from": "bisharp",
+      "to": "kingambit",
+      "original": "other (Defeat 3 Bisharp leading Pawniard and level-up)"
+    },
+    {
+      "from": "gimmighoul",
+      "to": "gholdengo",
+      "original": "other (Level up with 999 Coins in the bag)"
+    },
+    {
+      "from": "applin",
+      "to": "dipplin",
+      "original": "useItem + Syrupy Apple"
+    },
+    {
+      "from": "poltchageist",
+      "to": "sinistcha",
+      "original": "useItem + Unremarkable Teacup"
+    },
+    {
+      "from": "duraludon",
+      "to": "archaludon",
+      "original": "useItem + Metal Alloy"
+    },
+    {
+      "from": "dipplin",
+      "to": "hydrapple",
+      "original": "levelMove"
+    }
+  ],
+  "notes": ["Pokémon: 1316 loài và dạng"],
+  "overriddenSkills": ["ember", "flameBurst", "tackle", "vineWhip"],
+  "keptOriginalSkills": [
+    {
+      "id": "leechSeed",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    },
+    {
+      "id": "roar",
+      "reason": "chiêu trạng thái chưa có hiệu ứng tương ứng"
+    }
+  ]
+}

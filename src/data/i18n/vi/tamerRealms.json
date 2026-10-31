@@ -1,0 +1,12 @@
+{
+  "apprentice": "Học Đồ",
+  "novice": "Sơ Cấp",
+  "intermediate": "Trung Cấp",
+  "advanced": "Cao Cấp",
+  "master": "Đại Sư",
+  "grandmaster": "Tông Sư",
+  "sovereign": "Vương Giả",
+  "emperor": "Hoàng Giả",
+  "saint": "Thánh Giả",
+  "deity": "Thần Giả"
+}

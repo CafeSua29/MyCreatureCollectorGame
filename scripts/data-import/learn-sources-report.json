@@ -1,0 +1,35 @@
+{
+  "newMoves": [
+    "blazingTorque",
+    "combatTorque",
+    "noxiousTorque",
+    "magicalTorque",
+    "wickedTorque"
+  ],
+  "missingSource": [],
+  "learnsets": {},
+  "noLevelLearners": [
+    "blazingTorque",
+    "combatTorque",
+    "noxiousTorque",
+    "magicalTorque",
+    "wickedTorque"
+  ],
+  "statusEffects": {
+    "flinch": 30,
+    "confusion": 16
+  },
+  "firstTurnOnly": [
+    "fakeOut",
+    "firstImpression"
+  ],
+  "bookSkillIds": {
+    "species": 1354,
+    "entries": 56252
+  },
+  "eggSkillIds": {
+    "species": 528,
+    "entries": 3516
+  },
+  "dropped": []
+}

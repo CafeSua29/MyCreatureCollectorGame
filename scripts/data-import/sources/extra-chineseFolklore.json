@@ -1,0 +1,12 @@
+{
+  "source": "chineseFolklore",
+  "origin": "myth",
+  "species": [
+    {
+      "name": "Tianquan",
+      "elements": ["fire", "light"],
+      "raceId": "mythicBeast",
+      "tier": "large"
+    }
+  ]
+}

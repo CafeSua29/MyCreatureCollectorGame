@@ -1,0 +1,930 @@
+[
+  {
+    "id": "potion",
+    "output": {
+      "itemId": "potion",
+      "count": 3
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 95,
+    "exp": 2
+  },
+  {
+    "id": "superPotion",
+    "output": {
+      "itemId": "superPotion",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "revive",
+    "output": {
+      "itemId": "revive",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 1
+      }
+    ],
+    "money": 50,
+    "minLevel": 3,
+    "successChance": 75,
+    "exp": 8
+  },
+  {
+    "id": "antidote",
+    "output": {
+      "itemId": "antidote",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 95,
+    "exp": 2
+  },
+  {
+    "id": "fullHeal",
+    "output": {
+      "itemId": "fullHeal",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 1
+      }
+    ],
+    "money": 50,
+    "minLevel": 3,
+    "successChance": 80,
+    "exp": 6
+  },
+  {
+    "id": "lesserLongevityPill",
+    "output": {
+      "itemId": "lesserLongevityPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "fleeceflower",
+        "count": 1
+      }
+    ],
+    "money": 100,
+    "minLevel": 2,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "longevityPill",
+    "output": {
+      "itemId": "longevityPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 3
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneLight",
+        "count": 1
+      }
+    ],
+    "money": 500,
+    "minLevel": 5,
+    "successChance": 70,
+    "exp": 15
+  },
+  {
+    "id": "greaterLongevityPill",
+    "output": {
+      "itemId": "greaterLongevityPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 6
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 4
+      },
+      {
+        "itemId": "essenceDragon",
+        "count": 2
+      }
+    ],
+    "money": 3000,
+    "minLevel": 10,
+    "successChance": 60,
+    "exp": 40
+  },
+  {
+    "id": "myriadLongevityPill",
+    "output": {
+      "itemId": "myriadLongevityPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceDeity",
+        "count": 3
+      },
+      {
+        "itemId": "essenceDragon",
+        "count": 3
+      },
+      {
+        "itemId": "ginseng",
+        "count": 10
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 10
+      },
+      {
+        "groupId": "demonCore",
+        "count": 2
+      }
+    ],
+    "money": 20000,
+    "minLevel": 20,
+    "successChance": 50,
+    "exp": 120,
+    "scroll": true
+  },
+  {
+    "id": "breakthroughPill",
+    "output": {
+      "itemId": "breakthroughPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceCelestial",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "groupId": "demonCore",
+        "count": 3,
+        "sameItem": true
+      }
+    ],
+    "money": 500,
+    "minLevel": 4,
+    "successChance": 75,
+    "exp": 10
+  },
+  {
+    "id": "humanFormPill",
+    "output": {
+      "itemId": "humanFormPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceSpirit",
+        "count": 2
+      },
+      {
+        "itemId": "essenceHumanoid",
+        "count": 2
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 3
+      },
+      {
+        "groupId": "demonCore",
+        "count": 2
+      }
+    ],
+    "money": 5000,
+    "minLevel": 12,
+    "successChance": 55,
+    "exp": 50,
+    "scroll": true
+  },
+  {
+    "id": "mutationStone",
+    "output": {
+      "itemId": "mutationStone",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceAberration",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneDark",
+        "count": 1
+      }
+    ],
+    "money": 1000,
+    "minLevel": 8,
+    "successChance": 60,
+    "exp": 25
+  },
+  {
+    "id": "heartDew",
+    "output": {
+      "itemId": "heartDew",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneFairy",
+        "count": 1
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 7,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "heavenSpiritFruit",
+    "output": {
+      "itemId": "heavenSpiritFruit",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneGrass",
+        "count": 1
+      }
+    ],
+    "money": 200,
+    "minLevel": 3,
+    "successChance": 80,
+    "exp": 6
+  },
+  {
+    "id": "tigerBoneFruit",
+    "output": {
+      "itemId": "tigerBoneFruit",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceBeast",
+        "count": 2
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      }
+    ],
+    "money": 300,
+    "minLevel": 5,
+    "successChance": 70,
+    "exp": 12
+  },
+  {
+    "id": "windSpiritGrass",
+    "output": {
+      "itemId": "windSpiritGrass",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceAvian",
+        "count": 2
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      }
+    ],
+    "money": 300,
+    "minLevel": 5,
+    "successChance": 70,
+    "exp": 12
+  },
+  {
+    "id": "enlightenmentTea",
+    "output": {
+      "itemId": "enlightenmentTea",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStonePsychic",
+        "count": 1
+      }
+    ],
+    "money": 200,
+    "minLevel": 4,
+    "successChance": 80,
+    "exp": 8
+  },
+  {
+    "id": "gatherSpiritPill",
+    "output": {
+      "itemId": "gatherSpiritPill",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "groupId": "demonCore",
+        "count": 2
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      }
+    ],
+    "money": 500,
+    "minLevel": 6,
+    "successChance": 70,
+    "exp": 15
+  },
+  {
+    "id": "smithEnhanceStone",
+    "station": "smithing",
+    "output": {
+      "itemId": "enhanceStone",
+      "count": 5
+    },
+    "inputs": [
+      {
+        "groupId": "demonCore",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 95,
+    "exp": 3
+  },
+  {
+    "id": "smithRefiningStone",
+    "station": "smithing",
+    "output": {
+      "itemId": "refiningStone",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "groupId": "demonCore",
+        "count": 2
+      }
+    ],
+    "money": 300,
+    "minLevel": 1,
+    "successChance": 85,
+    "exp": 6
+  },
+  {
+    "id": "awakeningPillNormal",
+    "output": {
+      "itemId": "awakeningPillNormal",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreNormal",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneNormal",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillFire",
+    "output": {
+      "itemId": "awakeningPillFire",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreFire",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneFire",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillWater",
+    "output": {
+      "itemId": "awakeningPillWater",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreWater",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneWater",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillElectric",
+    "output": {
+      "itemId": "awakeningPillElectric",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreElectric",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneElectric",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillGrass",
+    "output": {
+      "itemId": "awakeningPillGrass",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreGrass",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneGrass",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillIce",
+    "output": {
+      "itemId": "awakeningPillIce",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreIce",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneIce",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillFighting",
+    "output": {
+      "itemId": "awakeningPillFighting",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreFighting",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneFighting",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillPoison",
+    "output": {
+      "itemId": "awakeningPillPoison",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCorePoison",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStonePoison",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillGround",
+    "output": {
+      "itemId": "awakeningPillGround",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreGround",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneGround",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillFlying",
+    "output": {
+      "itemId": "awakeningPillFlying",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreFlying",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneFlying",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillPsychic",
+    "output": {
+      "itemId": "awakeningPillPsychic",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCorePsychic",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStonePsychic",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillBug",
+    "output": {
+      "itemId": "awakeningPillBug",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreBug",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneBug",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillRock",
+    "output": {
+      "itemId": "awakeningPillRock",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreRock",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneRock",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillGhost",
+    "output": {
+      "itemId": "awakeningPillGhost",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreGhost",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneGhost",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillDragon",
+    "output": {
+      "itemId": "awakeningPillDragon",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreDragon",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneDragon",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillDark",
+    "output": {
+      "itemId": "awakeningPillDark",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreDark",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneDark",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillSteel",
+    "output": {
+      "itemId": "awakeningPillSteel",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreSteel",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneSteel",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillFairy",
+    "output": {
+      "itemId": "awakeningPillFairy",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreFairy",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneFairy",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillLight",
+    "output": {
+      "itemId": "awakeningPillLight",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreLight",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneLight",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  }
+]

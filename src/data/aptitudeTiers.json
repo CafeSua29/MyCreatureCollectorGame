@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mortal",
+    "from": 0
+  },
+  {
+    "id": "good",
+    "from": 0.3
+  },
+  {
+    "id": "superior",
+    "from": 0.6
+  },
+  {
+    "id": "refined",
+    "from": 0.9
+  },
+  {
+    "id": "heavenly",
+    "from": 1.2
+  },
+  {
+    "id": "divine",
+    "from": 2
+  }
+]

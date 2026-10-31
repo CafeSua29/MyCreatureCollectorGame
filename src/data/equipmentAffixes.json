@@ -1,0 +1,2756 @@
+[
+  {
+    "id": "affixHp",
+    "weight": 10,
+    "hook": {
+      "type": "statModifier",
+      "params": {}
+    },
+    "valueParam": ["percent.hp"],
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["stat"]
+  },
+  {
+    "id": "affixAttack",
+    "weight": 10,
+    "hook": {
+      "type": "statModifier",
+      "params": {}
+    },
+    "valueParam": ["percent.attack"],
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["stat"]
+  },
+  {
+    "id": "affixDefense",
+    "weight": 10,
+    "hook": {
+      "type": "statModifier",
+      "params": {}
+    },
+    "valueParam": ["percent.defense"],
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["stat"]
+  },
+  {
+    "id": "affixSpAttack",
+    "weight": 10,
+    "hook": {
+      "type": "statModifier",
+      "params": {}
+    },
+    "valueParam": ["percent.spAttack"],
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["stat"]
+  },
+  {
+    "id": "affixSpDefense",
+    "weight": 10,
+    "hook": {
+      "type": "statModifier",
+      "params": {}
+    },
+    "valueParam": ["percent.spDefense"],
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["stat"]
+  },
+  {
+    "id": "affixSpeed",
+    "weight": 10,
+    "hook": {
+      "type": "statModifier",
+      "params": {}
+    },
+    "valueParam": ["percent.speed"],
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["stat"]
+  },
+  {
+    "id": "affixCritChance",
+    "weight": 5,
+    "hook": {
+      "type": "critChanceModifier",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 12,
+        "max": 24
+      },
+      "uncommon": {
+        "min": 24,
+        "max": 36
+      },
+      "rare": {
+        "min": 36,
+        "max": 53
+      },
+      "epic": {
+        "min": 53,
+        "max": 72
+      },
+      "legendary": {
+        "min": 72,
+        "max": 96
+      },
+      "unique": {
+        "min": 84,
+        "max": 120
+      }
+    }
+  },
+  {
+    "id": "affixCritDamage",
+    "weight": 5,
+    "hook": {
+      "type": "critDamageModifier",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 6,
+        "max": 12
+      },
+      "uncommon": {
+        "min": 12,
+        "max": 18
+      },
+      "rare": {
+        "min": 18,
+        "max": 26
+      },
+      "epic": {
+        "min": 26,
+        "max": 36
+      },
+      "legendary": {
+        "min": 36,
+        "max": 48
+      },
+      "unique": {
+        "min": 42,
+        "max": 60
+      }
+    }
+  },
+  {
+    "id": "affixAccuracy",
+    "weight": 5,
+    "hook": {
+      "type": "accuracyModifier",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 2,
+        "max": 4
+      },
+      "uncommon": {
+        "min": 4,
+        "max": 5
+      },
+      "rare": {
+        "min": 5,
+        "max": 8
+      },
+      "epic": {
+        "min": 8,
+        "max": 11
+      },
+      "legendary": {
+        "min": 11,
+        "max": 14
+      },
+      "unique": {
+        "min": 13,
+        "max": 18
+      }
+    }
+  },
+  {
+    "id": "affixEvasion",
+    "weight": 5,
+    "hook": {
+      "type": "evasion",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 1,
+        "max": 2
+      },
+      "uncommon": {
+        "min": 2,
+        "max": 4
+      },
+      "rare": {
+        "min": 4,
+        "max": 5
+      },
+      "epic": {
+        "min": 5,
+        "max": 7
+      },
+      "legendary": {
+        "min": 7,
+        "max": 10
+      },
+      "unique": {
+        "min": 8,
+        "max": 12
+      }
+    }
+  },
+  {
+    "id": "affixLifesteal",
+    "weight": 5,
+    "hook": {
+      "type": "lifesteal",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    }
+  },
+  {
+    "id": "affixRegen",
+    "weight": 5,
+    "hook": {
+      "type": "regen",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 1,
+        "max": 1
+      },
+      "uncommon": {
+        "min": 1,
+        "max": 2
+      },
+      "rare": {
+        "min": 2,
+        "max": 3
+      },
+      "epic": {
+        "min": 3,
+        "max": 4
+      },
+      "legendary": {
+        "min": 4,
+        "max": 5
+      },
+      "unique": {
+        "min": 4,
+        "max": 6
+      }
+    }
+  },
+  {
+    "id": "affixDamageTaken",
+    "weight": 5,
+    "hook": {
+      "type": "damageTakenModifier",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    }
+  },
+  {
+    "id": "affixSecondaryChance",
+    "weight": 5,
+    "hook": {
+      "type": "secondaryEffectChance",
+      "params": {}
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 6,
+        "max": 12
+      },
+      "uncommon": {
+        "min": 12,
+        "max": 18
+      },
+      "rare": {
+        "min": 18,
+        "max": 26
+      },
+      "epic": {
+        "min": 26,
+        "max": 36
+      },
+      "legendary": {
+        "min": 36,
+        "max": 48
+      },
+      "unique": {
+        "min": 42,
+        "max": 60
+      }
+    }
+  },
+  {
+    "id": "affixBuffOnDamage",
+    "weight": 3,
+    "hook": {
+      "type": "trigger",
+      "params": {
+        "on": "damaged",
+        "scope": "self",
+        "effects": [
+          {
+            "do": "status",
+            "to": "self",
+            "random": "buff"
+          }
+        ]
+      }
+    },
+    "valueParam": "chance",
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["buffOnDamage"]
+  },
+  {
+    "id": "affixDebuffOnDamage",
+    "weight": 3,
+    "hook": {
+      "type": "trigger",
+      "params": {
+        "on": "attack",
+        "scope": "self",
+        "effects": [
+          {
+            "do": "status",
+            "to": "other",
+            "random": "debuff"
+          }
+        ]
+      }
+    },
+    "valueParam": "chance",
+    "ranges": {
+      "common": {
+        "min": 3,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 21,
+        "max": 30
+      }
+    },
+    "tags": ["debuffOnDamage"]
+  },
+  {
+    "id": "affixStrengthVsNormal",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["normal"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromNormal",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["normal"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsFire",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["fire"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromFire",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["fire"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsWater",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["water"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromWater",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["water"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsElectric",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["electric"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromElectric",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["electric"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsGrass",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["grass"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromGrass",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["grass"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsIce",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["ice"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromIce",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["ice"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsFighting",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["fighting"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromFighting",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["fighting"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsPoison",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["poison"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromPoison",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["poison"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsGround",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["ground"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromGround",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["ground"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsFlying",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["flying"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromFlying",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["flying"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsPsychic",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["psychic"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromPsychic",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["psychic"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsBug",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["bug"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromBug",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["bug"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsRock",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["rock"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromRock",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["rock"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsGhost",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["ghost"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromGhost",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["ghost"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsDragon",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["dragon"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromDragon",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["dragon"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsDark",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["dark"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromDark",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["dark"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsSteel",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["steel"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromSteel",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["steel"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsFairy",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["fairy"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromFairy",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["fairy"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixStrengthVsLight",
+    "weight": 1,
+    "hook": {
+      "type": "damageVsElement",
+      "params": {
+        "elementIds": ["light"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 5,
+        "max": 9
+      },
+      "uncommon": {
+        "min": 9,
+        "max": 13
+      },
+      "rare": {
+        "min": 13,
+        "max": 20
+      },
+      "epic": {
+        "min": 20,
+        "max": 27
+      },
+      "legendary": {
+        "min": 27,
+        "max": 36
+      },
+      "unique": {
+        "min": 31,
+        "max": 45
+      }
+    },
+    "tags": ["elementStrengthDealt"]
+  },
+  {
+    "id": "affixStrengthFromLight",
+    "weight": 1,
+    "hook": {
+      "type": "damageFromElement",
+      "params": {
+        "elementIds": ["light"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": -3,
+        "max": -2
+      },
+      "uncommon": {
+        "min": -5,
+        "max": -3
+      },
+      "rare": {
+        "min": -7,
+        "max": -5
+      },
+      "epic": {
+        "min": -9,
+        "max": -7
+      },
+      "legendary": {
+        "min": -12,
+        "max": -9
+      },
+      "unique": {
+        "min": -15,
+        "max": -11
+      }
+    },
+    "tags": ["elementStrengthTaken"]
+  },
+  {
+    "id": "affixImbueNormal",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["normal"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueFire",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["fire"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueWater",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["water"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueElectric",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["electric"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueGrass",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["grass"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueIce",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["ice"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueFighting",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["fighting"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbuePoison",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["poison"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueGround",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["ground"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueFlying",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["flying"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbuePsychic",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["psychic"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueBug",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["bug"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueRock",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["rock"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueGhost",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["ghost"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueDragon",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["dragon"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueDark",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["dark"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueSteel",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["steel"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueFairy",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["fairy"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  },
+  {
+    "id": "affixImbueLight",
+    "weight": 0,
+    "hook": {
+      "type": "elementDamageDealt",
+      "params": {
+        "elementIds": ["light"]
+      }
+    },
+    "valueParam": "percent",
+    "ranges": {
+      "common": {
+        "min": 4,
+        "max": 6
+      },
+      "uncommon": {
+        "min": 6,
+        "max": 9
+      },
+      "rare": {
+        "min": 9,
+        "max": 13
+      },
+      "epic": {
+        "min": 13,
+        "max": 18
+      },
+      "legendary": {
+        "min": 18,
+        "max": 24
+      },
+      "unique": {
+        "min": 22,
+        "max": 30
+      }
+    },
+    "tags": ["elementImbue"]
+  }
+]

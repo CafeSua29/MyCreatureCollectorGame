@@ -1,0 +1,172 @@
+{
+  "seed": 20261020,
+  "floors": {
+    "from": 1,
+    "to": 3
+  },
+  "wildBattlesPerFloor": 30,
+  "bossBattlesPerFloor": 10,
+  "maxTurns": 200,
+  "teams": [
+    {
+      "id": "solo",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 60
+    },
+    {
+      "id": "duo",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "sproutling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 60
+    },
+    {
+      "id": "full6",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "sproutling",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "tidehorn",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "ashgrunt",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "pyrodrake",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "tidehorn",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 20
+    }
+  ],
+  "variants": [
+    {
+      "id": "current"
+    }
+  ],
+  "assumedMastery": {
+    "expPerFloor": 30
+  },
+  "progression": {
+    "teamIds": ["duo", "full6"],
+    "bossPolicy": {
+      "type": "levelTarget",
+      "marginStart": 0,
+      "marginStepOnLoss": 2,
+      "minWinsBetween": 3,
+      "maxMargin": 60,
+      "maxMarginPercent": 75
+    },
+    "farm": {
+      "window": 20,
+      "dropBelow": 50,
+      "returnAt": 80
+    },
+    "maxBattles": 300,
+    "genesFollowFloor": true,
+    "pillModes": [true, false],
+    "growthModes": [true, false],
+    "sweep": {
+      "wildBattles": 30,
+      "bossBattles": 10
+    }
+  },
+  "bossLevelSearch": {
+    "targets": [50],
+    "maxOffset": 30,
+    "battles": 10
+  },
+  "biomeSweep": {
+    "teamIds": ["duo"],
+    "floors": [1],
+    "wildBattles": 10,
+    "bossBattles": 5
+  },
+  "tribulation": {
+    "teamId": "solo",
+    "tiers": [1],
+    "levelOffsets": [0],
+    "battles": 5
+  },
+  "safari": {
+    "floors": [1],
+    "visits": 20,
+    "policies": ["balls", "rock", "bait", "rareOnly"]
+  },
+  "zones": {
+    "teamId": "full6",
+    "runs": [
+      {
+        "zoneId": "zoneFire",
+        "floors": [3]
+      }
+    ],
+    "visits": 3,
+    "supplies": {
+      "reviveItemId": "revive",
+      "revives": 3,
+      "healItemId": "superPotion",
+      "heals": 6,
+      "healBelowPercent": 50,
+      "cureItemId": "fullHeal",
+      "cures": 2
+    }
+  },
+  "breeding": {
+    "speciesId": "emberling",
+    "floor": 1,
+    "measureLevel": 50,
+    "genes": "wild",
+    "generations": 5,
+    "offspringPerGeneration": 5
+  },
+  "fusion": {
+    "speciesId": "emberling",
+    "floor": 1,
+    "level": 50,
+    "genes": "wild",
+    "fusions": 5
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "origin": "living",
+  "species": [
+    {
+      "name": "Blood Python (Snake)",
+      "elements": ["normal", "poison"],
+      "raceId": "serpent",
+      "tier": "medium"
+    },
+    {
+      "name": "Silverfish (Insect)",
+      "elements": ["bug"],
+      "raceId": "insectoid",
+      "tier": "small"
+    }
+  ]
+}

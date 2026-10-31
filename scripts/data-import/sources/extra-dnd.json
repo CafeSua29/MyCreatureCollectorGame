@@ -1,0 +1,24 @@
+{
+  "source": "dnd",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Ghast",
+      "elements": ["ghost", "dark"],
+      "raceId": "ghoul",
+      "tier": "medium"
+    },
+    {
+      "name": "Ki-rin",
+      "elements": ["light", "flying"],
+      "raceId": "divineBeast",
+      "tier": "large"
+    },
+    {
+      "name": "Devourer",
+      "elements": ["ghost", "psychic"],
+      "raceId": "wraith",
+      "tier": "large"
+    }
+  ]
+}

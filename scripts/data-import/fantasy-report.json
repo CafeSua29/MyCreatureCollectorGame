@@ -1,0 +1,127 @@
+{
+  "newSkills": 239,
+  "newSpecies": 699,
+  "plannedEffects": [
+    {
+      "skillId": "plagueCloud",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "shadowflame",
+      "effect": "burn 20%"
+    },
+    {
+      "skillId": "staticStorm",
+      "effect": "paralysis 20%"
+    },
+    {
+      "skillId": "sporeCloud",
+      "effect": "sleep 20%"
+    },
+    {
+      "skillId": "panFlute",
+      "effect": "sleep 10%"
+    },
+    {
+      "skillId": "fireBreath",
+      "effect": "burn 10%"
+    },
+    {
+      "skillId": "lightningBreath",
+      "effect": "paralysis 10%"
+    },
+    {
+      "skillId": "plagueCenser",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "poisonTailFlip",
+      "effect": "poison 40%"
+    },
+    {
+      "skillId": "badBreath",
+      "effect": "poison + sleep"
+    },
+    {
+      "skillId": "hellfireTrail",
+      "effect": "burn 20%"
+    },
+    {
+      "skillId": "blasterGaze",
+      "effect": "paralysis 30%"
+    },
+    {
+      "skillId": "rotBreath",
+      "effect": "poison 40%"
+    },
+    {
+      "skillId": "phyrexianOil",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "taintStrike",
+      "effect": "poison 20%"
+    },
+    {
+      "skillId": "electroShocker",
+      "effect": "paralysis 20%"
+    },
+    {
+      "skillId": "radiationSting",
+      "effect": "poison 30%"
+    },
+    {
+      "skillId": "paralyzingLick",
+      "effect": "paralysis 50%"
+    }
+  ],
+  "bySource": {
+    "generic": 52,
+    "warhammer": 73,
+    "lotr": 28,
+    "warcraft": 45,
+    "elderScrolls": 29,
+    "harryPotter": 17,
+    "got": 5,
+    "narnia": 4,
+    "dnd": 48,
+    "witcher": 19,
+    "darkSouls": 9,
+    "monsterHunter": 38,
+    "finalFantasy": 23,
+    "dragonQuest": 16,
+    "diablo": 11,
+    "eldenRing": 23,
+    "berserk": 2,
+    "mtg": 18,
+    "dragonAge": 7,
+    "digimon": 57,
+    "minecraft": 21,
+    "zelda": 15,
+    "mario": 16,
+    "kirby": 1,
+    "metroid": 5,
+    "starcraft": 10,
+    "halo": 5,
+    "alien": 4,
+    "predator": 1,
+    "doom": 9,
+    "fallout": 11,
+    "starWars": 14,
+    "dune": 2,
+    "lovecraft": 7,
+    "gremlins": 2,
+    "jurassicWorld": 2,
+    "avatarLastAirbender": 12,
+    "avatarPandora": 9,
+    "ghibli": 3,
+    "hollowKnight": 7,
+    "bloodborne": 8,
+    "smt": 6,
+    "yugioh": 5
+  },
+  "byOrigin": {
+    "fantasy": 627,
+    "scifi": 72
+  }
+}

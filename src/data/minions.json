@@ -1,0 +1,1071 @@
+[
+  {
+    "id": "amalgamation",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 5,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 5,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "animatedGem",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "cast",
+              "pool": "ownSpell"
+            }
+          ],
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "conquest",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "side",
+              "random": "buff"
+            }
+          ],
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "death",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "kill",
+              "to": "lowestHpFoe",
+              "belowHpPercent": 30
+            }
+          ],
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "direWolves",
+    "maxStacks": 5,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "stat": "speed",
+                "of": "self",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "doppelganger",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "extraTurn",
+              "to": "self"
+            }
+          ],
+          "chance": 25,
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "extraTurn",
+              "to": "self"
+            }
+          ],
+          "chance": 25,
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "famine",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "maxHp",
+              "to": "other",
+              "amount": {
+                "event": true,
+                "percent": 30
+              },
+              "lose": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spiderlings",
+    "maxStacks": 9,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "hp": "current",
+                "of": "self",
+                "percent": 50
+              }
+            },
+            {
+              "do": "removeMinions",
+              "to": "self",
+              "minionId": "spiderlings"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "unstableHorror",
+    "maxStacks": 9,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 5,
+            "defense": 5,
+            "spAttack": 5,
+            "spDefense": 5,
+            "speed": 5
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "defend",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 10
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "provoke",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 10
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "war",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "event": true,
+                "percent": 50
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "writhelings",
+    "maxStacks": 5,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "randomFoe",
+              "random": "debuff",
+              "perStack": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "zombies",
+    "maxStacks": 9,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "attack",
+                "of": "self",
+                "percent": 50
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "microbots",
+    "maxStacks": 9,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "spAttack",
+                "of": "self",
+                "percent": 50
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "asmodeus",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "guaranteedCritical",
+        "params": {
+          "categories": ["physical"]
+        }
+      },
+      {
+        "type": "undodgeable",
+        "params": {
+          "categories": ["physical"]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "otherFoes",
+              "amount": {
+                "event": true,
+                "percent": 50
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "beelzebub",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "kill",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "minion",
+              "to": "self",
+              "pool": [
+                "asmodeus",
+                "beelzebub",
+                "belphegor",
+                "leviathan",
+                "lucifer",
+                "mammon",
+                "satanachia"
+              ],
+              "stacks": 1
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "belphegor",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "cast",
+              "to": "other",
+              "sameSkill": true
+            }
+          ],
+          "when": [
+            {
+              "if": "singleTarget"
+            },
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "brimFiends",
+    "maxStacks": 9,
+    "leaveChance": 5,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "categories": ["physical"]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "removeMinions",
+              "to": "self",
+              "minionId": "brimFiends"
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "chaosSatyrs",
+    "maxStacks": 9,
+    "leaveChance": 5,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "defend",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 15
+              }
+            },
+            {
+              "do": "removeMinions",
+              "to": "self",
+              "minionId": "chaosSatyrs"
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "provoke",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 15
+              }
+            },
+            {
+              "do": "removeMinions",
+              "to": "self",
+              "minionId": "chaosSatyrs"
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "fireImps",
+    "maxStacks": 9,
+    "leaveChance": 5,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 30,
+          "categories": ["special", "status"]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "removeMinions",
+              "to": "self",
+              "minionId": "fireImps"
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "leviathan",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "kill",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "minion",
+              "to": "self",
+              "minionId": "brimFiends",
+              "stacks": 5
+            },
+            {
+              "do": "minion",
+              "to": "self",
+              "minionId": "chaosSatyrs",
+              "stacks": 5
+            },
+            {
+              "do": "minion",
+              "to": "self",
+              "minionId": "fireImps",
+              "stacks": 5
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "lucifer",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "attack",
+              "to": "randomFoe",
+              "damagePercent": 100,
+              "times": 3
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "mammon",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -50
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "shelled"
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "satanachia",
+    "maxStacks": 1,
+    "leaveChance": 35,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "cast",
+              "lastCast": true,
+              "times": 3
+            }
+          ]
+        }
+      }
+    ],
+    "excludeFromRandom": true
+  },
+  {
+    "id": "ratSwarm",
+    "maxStacks": 9,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "attack",
+                "of": "self",
+                "percent": 20
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "seaHorrors",
+    "maxStacks": 5,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "snared"
+            }
+          ],
+          "chance": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "warBeasts",
+    "maxStacks": 5,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "attack",
+              "to": "other",
+              "damagePercent": 15
+            }
+          ],
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancestralSpirits",
+    "maxStacks": 5,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 5,
+            "spDefense": 5
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 3
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spectralRiders",
+    "maxStacks": 3,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "speed",
+                "of": "self",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "squigLoons",
+    "maxStacks": 9,
+    "leaveChance": 50,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "attack",
+                "of": "self",
+                "percent": 15
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dryads",
+    "maxStacks": 5,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 3
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attacked",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "snared"
+            }
+          ],
+          "chance": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentSwarm",
+    "maxStacks": 9,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison"
+            }
+          ],
+          "chance": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "illusion",
+    "maxStacks": 1,
+    "leaveChance": 25,
+    "excludeFromRandom": true,
+    "hooks": [
+      {
+        "type": "traitPotency",
+        "params": {
+          "percent": 200
+        }
+      }
+    ]
+  },
+  {
+    "id": "torunJunior",
+    "maxStacks": 1,
+    "leaveChance": 0,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "highest",
+                "of": "self",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "golem",
+    "maxStacks": 1,
+    "leaveChance": 15,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 20,
+            "spDefense": 20
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attacked",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "stat": "defense",
+                "of": "self",
+                "percent": 20
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "vex",
+    "maxStacks": 3,
+    "leaveChance": 50,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "spAttack",
+                "of": "self",
+                "percent": 20
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "animatedWeapon",
+    "maxStacks": 3,
+    "leaveChance": 25,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "attack",
+                "of": "self",
+                "percent": 1,
+                "per": {
+                  "of": "equipmentStatPercent",
+                  "stat": "attack",
+                  "bonus": 20
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

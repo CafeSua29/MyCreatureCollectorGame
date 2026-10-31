@@ -1,0 +1,12 @@
+{
+  "apprentice": "Apprentice",
+  "novice": "Novice",
+  "intermediate": "Intermediate",
+  "advanced": "Advanced",
+  "master": "Master",
+  "grandmaster": "Grandmaster",
+  "sovereign": "Sovereign",
+  "emperor": "Emperor",
+  "saint": "Saint",
+  "deity": "Deity"
+}

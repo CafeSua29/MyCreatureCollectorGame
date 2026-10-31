@@ -1,0 +1,1835 @@
+[
+  {
+    "id": "felid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.26,
+      "defense": 0.81,
+      "spAttack": 0.81,
+      "spDefense": 0.9,
+      "speed": 1.32
+    },
+    "traitIds": ["catReflexes", "pounce", "nineLives"],
+    "weightKg": 50
+  },
+  {
+    "id": "canid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.21,
+      "defense": 0.9,
+      "spAttack": 0.81,
+      "spDefense": 0.86,
+      "speed": 1.26
+    },
+    "traitIds": ["packHunter", "keenNose", "loyalHowl"],
+    "weightKg": 30
+  },
+  {
+    "id": "ursid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.25,
+      "attack": 1.32,
+      "defense": 0.99,
+      "spAttack": 0.77,
+      "spDefense": 0.9,
+      "speed": 0.84
+    },
+    "traitIds": ["bearHide", "hibernation", "maulingPaw"],
+    "weightKg": 250
+  },
+  {
+    "id": "mustelid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 1.21,
+      "defense": 0.77,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.32
+    },
+    "traitIds": ["slinky", "mustelidFerocious", "muskSpray"],
+    "weightKg": 5
+  },
+  {
+    "id": "rodent",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 0.8,
+      "attack": 1.05,
+      "defense": 0.77,
+      "spAttack": 0.9,
+      "spDefense": 0.95,
+      "speed": 1.38
+    },
+    "traitIds": ["gnawingTeeth", "scurry", "rodentScurry"],
+    "weightKg": 1
+  },
+  {
+    "id": "lagomorph",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 0.94,
+      "defense": 0.81,
+      "spAttack": 0.9,
+      "spDefense": 0.99,
+      "speed": 1.44
+    },
+    "traitIds": ["bunnyHop", "wary", "quickHop"],
+    "weightKg": 3
+  },
+  {
+    "id": "primate",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.16,
+      "defense": 0.81,
+      "spAttack": 1.17,
+      "spDefense": 0.9,
+      "speed": 1.14
+    },
+    "traitIds": ["nimbleHands", "troopBond", "toolUser"],
+    "weightKg": 40
+  },
+  {
+    "id": "equid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.1,
+      "defense": 0.86,
+      "spAttack": 0.72,
+      "spDefense": 0.9,
+      "speed": 1.32
+    },
+    "traitIds": ["gallop", "stamina", "enduringGallop"],
+    "weightKg": 400
+  },
+  {
+    "id": "buffalo",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.3,
+      "attack": 1.16,
+      "defense": 1.22,
+      "spAttack": 0.72,
+      "spDefense": 0.95,
+      "speed": 0.72
+    },
+    "traitIds": ["buffaloStampede", "hornedCharge", "buffaloStrength", "buffaloHide"],
+    "weightKg": 600,
+    "partnerSkillId": "herdShield"
+  },
+  {
+    "id": "cervid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.05,
+      "defense": 0.81,
+      "spAttack": 0.9,
+      "spDefense": 1.03,
+      "speed": 1.32
+    },
+    "traitIds": ["antlerCharge", "alertEars", "antlerGuard"],
+    "weightKg": 150
+  },
+  {
+    "id": "suid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.2,
+      "attack": 1.1,
+      "defense": 1.03,
+      "spAttack": 0.81,
+      "spDefense": 0.9,
+      "speed": 0.9
+    },
+    "traitIds": ["tusks", "suidThickSkin", "rooting"],
+    "weightKg": 100
+  },
+  {
+    "id": "proboscid",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.4,
+      "attack": 1.32,
+      "defense": 1.03,
+      "spAttack": 0.86,
+      "spDefense": 0.95,
+      "speed": 0.66
+    },
+    "traitIds": ["mightyTrunk", "elephantMemory", "trunkStrength"],
+    "weightKg": 4000
+  },
+  {
+    "id": "pachyderm",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.25,
+      "attack": 1.21,
+      "defense": 1.26,
+      "spAttack": 0.72,
+      "spDefense": 0.9,
+      "speed": 0.66
+    },
+    "traitIds": ["armoredHide", "pachydermRampage", "pachydermArmoredHide"],
+    "weightKg": 2000
+  },
+  {
+    "id": "chiropteran",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 0.8,
+      "attack": 1.1,
+      "defense": 0.72,
+      "spAttack": 1.03,
+      "spDefense": 0.95,
+      "speed": 1.32
+    },
+    "traitIds": ["chiropteranEcholocation", "nightWing", "nightFlyer"],
+    "weightKg": 1
+  },
+  {
+    "id": "marsupial",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.05,
+      "defense": 0.86,
+      "spAttack": 0.9,
+      "spDefense": 0.95,
+      "speed": 1.26
+    },
+    "traitIds": ["pouch", "hopKick", "pouchCare"],
+    "weightKg": 30
+  },
+  {
+    "id": "xenarthran",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.05,
+      "defense": 1.22,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 0.72
+    },
+    "traitIds": ["armoredBand", "slowMetabolism", "diggingClaws"],
+    "weightKg": 30
+  },
+  {
+    "id": "insectivore",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.05,
+      "defense": 1.13,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.08
+    },
+    "traitIds": ["quills", "burrow", "spinyCoat"],
+    "weightKg": 1
+  },
+  {
+    "id": "megafauna",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.3,
+      "attack": 1.32,
+      "defense": 0.99,
+      "spAttack": 0.77,
+      "spDefense": 0.9,
+      "speed": 0.84
+    },
+    "traitIds": ["iceAgeCoat", "colossalTusks", "iceAgeHide"],
+    "weightKg": 2000
+  },
+  {
+    "id": "fangedBeast",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.38,
+      "defense": 0.77,
+      "spAttack": 0.9,
+      "spDefense": 0.81,
+      "speed": 1.2
+    },
+    "traitIds": ["brawler", "tenacious", "savageBite"],
+    "weightKg": 1500
+  },
+  {
+    "id": "mythicBeast",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.05,
+      "defense": 0.9,
+      "spAttack": 1.17,
+      "spDefense": 1.03,
+      "speed": 1.14
+    },
+    "traitIds": ["spiritedBeast", "auspicious", "legendaryBlood"],
+    "weightKg": 300
+  },
+  {
+    "id": "wildBeast",
+    "groupId": "beast",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.1,
+      "defense": 0.9,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.2
+    },
+    "traitIds": ["survivalist", "wildFangs", "wildBeastSurvivalist"],
+    "weightKg": 80
+  },
+  {
+    "id": "raptor",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.86,
+      "attack": 1.25,
+      "defense": 0.9,
+      "spAttack": 0.85,
+      "spDefense": 0.9,
+      "speed": 1.37
+    },
+    "traitIds": ["talons", "diveStrike", "talonGrip"],
+    "weightKg": 5
+  },
+  {
+    "id": "owl",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1,
+      "defense": 0.9,
+      "spAttack": 1.15,
+      "spDefense": 1.03,
+      "speed": 1.11
+    },
+    "traitIds": ["nightVision", "silentFlight", "silentWings"],
+    "weightKg": 1.5
+  },
+  {
+    "id": "bird",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.77,
+      "attack": 1,
+      "defense": 0.81,
+      "spAttack": 1,
+      "spDefense": 0.95,
+      "speed": 1.43
+    },
+    "traitIds": ["birdsong", "flit", "songbird"],
+    "weightKg": 0.1
+  },
+  {
+    "id": "waterfowl",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 1.03,
+      "attack": 0.9,
+      "defense": 0.9,
+      "spAttack": 1,
+      "spDefense": 0.99,
+      "speed": 1.17
+    },
+    "traitIds": ["waterfowlWaterproof", "migratory", "diving"],
+    "weightKg": 3
+  },
+  {
+    "id": "galliform",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.99,
+      "attack": 1.05,
+      "defense": 1.03,
+      "spAttack": 1,
+      "spDefense": 0.9,
+      "speed": 1.04
+    },
+    "traitIds": ["peck", "hardy", "groundForager"],
+    "weightKg": 2
+  },
+  {
+    "id": "penguin",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 1.13,
+      "attack": 1,
+      "defense": 1.03,
+      "spAttack": 1,
+      "spDefense": 0.99,
+      "speed": 0.78
+    },
+    "traitIds": ["blubber", "huddle", "coldPlunge"],
+    "weightKg": 20
+  },
+  {
+    "id": "seabird",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.81,
+      "attack": 1,
+      "defense": 0.81,
+      "spAttack": 1.1,
+      "spDefense": 0.9,
+      "speed": 1.43
+    },
+    "traitIds": ["oceanGlide", "fishDive", "seaWind"],
+    "weightKg": 3
+  },
+  {
+    "id": "ratite",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 1.13,
+      "attack": 1.2,
+      "defense": 0.95,
+      "spAttack": 0.7,
+      "spDefense": 0.9,
+      "speed": 1.23
+    },
+    "traitIds": ["sprinter", "powerKick", "powerfulKick"],
+    "weightKg": 90
+  },
+  {
+    "id": "parrot",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.85,
+      "defense": 0.81,
+      "spAttack": 1.25,
+      "spDefense": 0.95,
+      "speed": 1.3
+    },
+    "traitIds": ["mimicVoice", "brightPlumage", "mimicSong"],
+    "weightKg": 1
+  },
+  {
+    "id": "mythicBird",
+    "groupId": "avian",
+    "statBias": {
+      "hp": 0.95,
+      "attack": 0.9,
+      "defense": 0.9,
+      "spAttack": 1.25,
+      "spDefense": 0.99,
+      "speed": 1.3
+    },
+    "traitIds": ["undyingFlame", "heavenlyWing", "rebirthFlame"],
+    "weightKg": 50
+  },
+  {
+    "id": "serpent",
+    "groupId": "reptile",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.21,
+      "defense": 0.98,
+      "spAttack": 0.9,
+      "spDefense": 1,
+      "speed": 1.02
+    },
+    "traitIds": ["venomFang", "coil", "serpentConstrict"],
+    "weightKg": 5
+  },
+  {
+    "id": "lizard",
+    "groupId": "reptile",
+    "statBias": {
+      "hp": 0.95,
+      "attack": 1.1,
+      "defense": 1.03,
+      "spAttack": 0.9,
+      "spDefense": 1,
+      "speed": 1.06
+    },
+    "traitIds": ["tailDrop", "sunBask", "lizardTailDrop"],
+    "weightKg": 3
+  },
+  {
+    "id": "turtle",
+    "groupId": "reptile",
+    "statBias": {
+      "hp": 1.21,
+      "attack": 1.1,
+      "defense": 1.55,
+      "spAttack": 0.9,
+      "spDefense": 1,
+      "speed": 0.51
+    },
+    "traitIds": ["shellGuard", "longLived", "retreatShell"],
+    "weightKg": 50
+  },
+  {
+    "id": "crocodilian",
+    "groupId": "reptile",
+    "statBias": {
+      "hp": 1.16,
+      "attack": 1.38,
+      "defense": 1.26,
+      "spAttack": 0.77,
+      "spDefense": 1,
+      "speed": 0.64
+    },
+    "traitIds": ["deathRoll", "crocodilianAmbush", "crocodilianDeathRoll"],
+    "weightKg": 400
+  },
+  {
+    "id": "anuran",
+    "groupId": "reptile",
+    "statBias": {
+      "hp": 0.95,
+      "attack": 1.1,
+      "defense": 0.92,
+      "spAttack": 0.99,
+      "spDefense": 1,
+      "speed": 1.06
+    },
+    "traitIds": ["leap", "moistSkin", "longTongue"],
+    "weightKg": 0.2
+  },
+  {
+    "id": "caudate",
+    "groupId": "reptile",
+    "statBias": {
+      "hp": 1.26,
+      "attack": 0.94,
+      "defense": 1.15,
+      "spAttack": 0.9,
+      "spDefense": 1.15,
+      "speed": 0.72
+    },
+    "traitIds": ["limbRegrowth", "toxicSkin", "caudateLimbRegrowth"],
+    "weightKg": 1
+  },
+  {
+    "id": "fish",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 0.99,
+      "attack": 0.9,
+      "defense": 0.9,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 1.13
+    },
+    "traitIds": ["schooling", "gills", "fishSchooling"],
+    "weightKg": 5
+  },
+  {
+    "id": "shark",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.26,
+      "defense": 1,
+      "spAttack": 0.88,
+      "spDefense": 0.94,
+      "speed": 1.03
+    },
+    "traitIds": ["bloodScent", "electroSense", "sharkBloodScent"],
+    "weightKg": 300
+  },
+  {
+    "id": "cetacean",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.43,
+      "attack": 0.86,
+      "defense": 0.85,
+      "spAttack": 1.26,
+      "spDefense": 1.1,
+      "speed": 0.9
+    },
+    "traitIds": ["sonar", "leviathanBulk", "blowhole"],
+    "weightKg": 5000
+  },
+  {
+    "id": "pinniped",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.26,
+      "attack": 0.99,
+      "defense": 1,
+      "spAttack": 0.99,
+      "spDefense": 1.1,
+      "speed": 0.81
+    },
+    "traitIds": ["thickBlubber", "flippers", "blubberLayer"],
+    "weightKg": 200
+  },
+  {
+    "id": "sirenian",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.49,
+      "attack": 0.72,
+      "defense": 1.1,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 0.54
+    },
+    "traitIds": ["gentleGiant", "seagrassGraze", "sirenianGentleGiant"],
+    "weightKg": 500
+  },
+  {
+    "id": "cephalopod",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 0.99,
+      "attack": 0.9,
+      "defense": 0.8,
+      "spAttack": 1.32,
+      "spDefense": 1.1,
+      "speed": 0.99
+    },
+    "traitIds": ["inkCloud", "tentacles", "cephalopodInkCloud"],
+    "weightKg": 20
+  },
+  {
+    "id": "crustacean",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.08,
+      "defense": 1.35,
+      "spAttack": 0.88,
+      "spDefense": 1.1,
+      "speed": 0.68
+    },
+    "traitIds": ["claws", "hardShell", "pincerGrip"],
+    "weightKg": 2
+  },
+  {
+    "id": "cnidarian",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 0.72,
+      "defense": 0.85,
+      "spAttack": 1.26,
+      "spDefense": 1.26,
+      "speed": 0.9
+    },
+    "traitIds": ["stinger", "drifting", "nematocyst"],
+    "weightKg": 1
+  },
+  {
+    "id": "mollusk",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 0.9,
+      "defense": 1.35,
+      "spAttack": 1.1,
+      "spDefense": 1.21,
+      "speed": 0.5
+    },
+    "traitIds": ["shellRetreat", "slimeTrail", "molluskSlimeTrail"],
+    "weightKg": 0.5
+  },
+  {
+    "id": "leviathan",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.43,
+      "attack": 0.99,
+      "defense": 1,
+      "spAttack": 1.26,
+      "spDefense": 1.1,
+      "speed": 0.68
+    },
+    "traitIds": ["abyssal", "tidalBulk", "abyssalPressure"],
+    "weightKg": 1500
+  },
+  {
+    "id": "carapaceon",
+    "groupId": "aquatic",
+    "statBias": {
+      "hp": 1.21,
+      "attack": 0.9,
+      "defense": 1.35,
+      "spAttack": 0.99,
+      "spDefense": 1.1,
+      "speed": 0.63
+    },
+    "traitIds": ["skullShell", "pincerCrush", "hardCarapace"],
+    "weightKg": 3000
+  },
+  {
+    "id": "beetle",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.26,
+      "defense": 1.43,
+      "spAttack": 0.77,
+      "spDefense": 0.9,
+      "speed": 0.88
+    },
+    "traitIds": ["elytra", "hornLift", "beetleHornLift"],
+    "weightKg": 0.05
+  },
+  {
+    "id": "lepidopteran",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.88,
+      "defense": 0.88,
+      "spAttack": 1.17,
+      "spDefense": 0.9,
+      "speed": 1.21
+    },
+    "traitIds": ["scaleDust", "metamorphosis", "lepidopteranScaleDust"],
+    "weightKg": 0.01
+  },
+  {
+    "id": "hymenopteran",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.77,
+      "attack": 1.26,
+      "defense": 0.99,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.26
+    },
+    "traitIds": ["sting", "hymenopteranColony", "venomStinger"],
+    "weightKg": 0.01
+  },
+  {
+    "id": "arachnid",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.77,
+      "attack": 1.21,
+      "defense": 1.1,
+      "spAttack": 0.99,
+      "spDefense": 0.86,
+      "speed": 1.16
+    },
+    "traitIds": ["silkWeb", "venomTail", "silkSnare"],
+    "weightKg": 0.05
+  },
+  {
+    "id": "orthopteran",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.21,
+      "defense": 0.94,
+      "spAttack": 0.9,
+      "spDefense": 0.81,
+      "speed": 1.32
+    },
+    "traitIds": ["scythe", "hopper", "powerLeap"],
+    "weightKg": 0.01
+  },
+  {
+    "id": "odonate",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.77,
+      "attack": 1.16,
+      "defense": 0.88,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.43
+    },
+    "traitIds": ["odonateCompoundEyes", "hover", "hoverStrike"],
+    "weightKg": 0.01
+  },
+  {
+    "id": "myriapod",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.21,
+      "defense": 1.26,
+      "spAttack": 0.9,
+      "spDefense": 0.81,
+      "speed": 1.05
+    },
+    "traitIds": ["manyLegs", "toxicMandibles", "myriapodManyLegs"],
+    "weightKg": 0.1
+  },
+  {
+    "id": "larva",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 1.13,
+      "attack": 0.88,
+      "defense": 1.21,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 0.83
+    },
+    "traitIds": ["cocoon", "voracious", "larvaMetamorphosis"],
+    "weightKg": 0.05
+  },
+  {
+    "id": "neopteron",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.21,
+      "defense": 1.05,
+      "spAttack": 0.81,
+      "spDefense": 0.9,
+      "speed": 1.16
+    },
+    "traitIds": ["chitinPlate", "broodQueen", "neopteraWings"],
+    "weightKg": 500
+  },
+  {
+    "id": "insectoid",
+    "groupId": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.1,
+      "defense": 1.1,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.1
+    },
+    "traitIds": ["tinyBody", "insectInstinct", "chitinPlates"],
+    "weightKg": 0.05
+  },
+  {
+    "id": "theropod",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.2,
+      "attack": 1.5,
+      "defense": 0.94,
+      "spAttack": 0.9,
+      "spDefense": 0.81,
+      "speed": 0.92
+    },
+    "traitIds": ["apexBite", "hunterStride", "apexJaws"],
+    "weightKg": 3000
+  },
+  {
+    "id": "sauropod",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.68,
+      "attack": 1.14,
+      "defense": 1.21,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 0.48
+    },
+    "traitIds": ["tailWhip", "titanBulk", "sauropodTailWhip"],
+    "weightKg": 30000
+  },
+  {
+    "id": "ornithischian",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.26,
+      "attack": 1.14,
+      "defense": 1.43,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 0.64
+    },
+    "traitIds": ["frillShield", "hornCharge", "herdDefense"],
+    "weightKg": 5000
+  },
+  {
+    "id": "pterosaur",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.02,
+      "attack": 1.2,
+      "defense": 0.88,
+      "spAttack": 0.95,
+      "spDefense": 0.9,
+      "speed": 1.12
+    },
+    "traitIds": ["ancientWings", "skyStrike", "thermalGlide"],
+    "weightKg": 50
+  },
+  {
+    "id": "marineReptile",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.32,
+      "attack": 1.32,
+      "defense": 0.94,
+      "spAttack": 0.9,
+      "spDefense": 0.86,
+      "speed": 0.88
+    },
+    "traitIds": ["deepPredator", "paddleFins", "deepBreath"],
+    "weightKg": 3000
+  },
+  {
+    "id": "ancientCreature",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.2,
+      "attack": 1.08,
+      "defense": 1.26,
+      "spAttack": 0.9,
+      "spDefense": 0.99,
+      "speed": 0.72
+    },
+    "traitIds": ["livingFossil", "primordial", "ancientCreatureLivingFossil"],
+    "weightKg": 10
+  },
+  {
+    "id": "kaiju",
+    "groupId": "dinosaur",
+    "statBias": {
+      "hp": 1.5,
+      "attack": 1.38,
+      "defense": 1.1,
+      "spAttack": 0.99,
+      "spDefense": 0.9,
+      "speed": 0.48
+    },
+    "traitIds": ["monstrousHide", "roar", "colossalStride"],
+    "weightKg": 1000
+  },
+  {
+    "id": "westernDragon",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.2,
+      "defense": 1,
+      "spAttack": 1.2,
+      "spDefense": 1,
+      "speed": 0.9
+    },
+    "traitIds": ["dragonBreath", "treasureHoard", "dragonHoard"],
+    "weightKg": 2000
+  },
+  {
+    "id": "easternDragon",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.08,
+      "defense": 0.9,
+      "spAttack": 1.38,
+      "spDefense": 1.05,
+      "speed": 1.03
+    },
+    "traitIds": ["cloudRider", "rainBringer", "easternDragonCloudRider"],
+    "weightKg": 1500
+  },
+  {
+    "id": "wyvern",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.32,
+      "defense": 1,
+      "spAttack": 1.02,
+      "spDefense": 0.95,
+      "speed": 0.99
+    },
+    "traitIds": ["wyvernTail", "aerialDive", "wyvernVenomTail"],
+    "weightKg": 1500
+  },
+  {
+    "id": "fangedWyvern",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.38,
+      "defense": 0.85,
+      "spAttack": 1.02,
+      "spDefense": 1,
+      "speed": 1.08
+    },
+    "traitIds": ["wolfishAgility", "sharpFangs", "frenziedFangs"],
+    "weightKg": 1200
+  },
+  {
+    "id": "bruteWyvern",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.21,
+      "attack": 1.5,
+      "defense": 1.1,
+      "spAttack": 0.96,
+      "spDefense": 1,
+      "speed": 0.68
+    },
+    "traitIds": ["brutishJaw", "berserker", "bruteCharge"],
+    "weightKg": 3000
+  },
+  {
+    "id": "piscineWyvern",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.16,
+      "attack": 1.14,
+      "defense": 0.9,
+      "spAttack": 1.26,
+      "spDefense": 1,
+      "speed": 0.99
+    },
+    "traitIds": ["sandSwim", "finCutter", "piscineWyvernSandSwim"],
+    "weightKg": 2000
+  },
+  {
+    "id": "birdWyvern",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 0.94,
+      "attack": 1.26,
+      "defense": 0.85,
+      "spAttack": 1.2,
+      "spDefense": 1,
+      "speed": 1.13
+    },
+    "traitIds": ["raptorPack", "quickPeck", "birdWyvernQuickPeck"],
+    "weightKg": 600
+  },
+  {
+    "id": "snakeWyvern",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.21,
+      "attack": 1.14,
+      "defense": 0.9,
+      "spAttack": 1.2,
+      "spDefense": 1,
+      "speed": 0.99
+    },
+    "traitIds": ["crushingCoil", "rattlingScales", "coilingBody"],
+    "weightKg": 3000
+  },
+  {
+    "id": "elderDragon",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 1.21,
+      "attack": 1.2,
+      "defense": 1,
+      "spAttack": 1.26,
+      "spDefense": 1.1,
+      "speed": 0.77
+    },
+    "traitIds": ["elderPresence", "elderDragonCalamity", "ancientDominion"],
+    "weightKg": 10000
+  },
+  {
+    "id": "drake",
+    "groupId": "dragon",
+    "statBias": {
+      "hp": 0.99,
+      "attack": 1.26,
+      "defense": 0.95,
+      "spAttack": 1.2,
+      "spDefense": 1,
+      "speed": 0.99
+    },
+    "traitIds": ["lesserScales", "youngFire", "youngFlame"],
+    "weightKg": 300
+  },
+  {
+    "id": "tree",
+    "groupId": "plant",
+    "statBias": {
+      "hp": 1.25,
+      "attack": 0.9,
+      "defense": 1.25,
+      "spAttack": 0.99,
+      "spDefense": 1.1,
+      "speed": 0.54
+    },
+    "traitIds": ["bark", "treeDeepRoots", "barkSkin"],
+    "weightKg": 500
+  },
+  {
+    "id": "flower",
+    "groupId": "plant",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.9,
+      "defense": 0.85,
+      "spAttack": 1.32,
+      "spDefense": 1.21,
+      "speed": 0.9
+    },
+    "traitIds": ["pollen", "fragrance", "pollenBurst"],
+    "weightKg": 2
+  },
+  {
+    "id": "fungus",
+    "groupId": "plant",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 0.9,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 1.26,
+      "speed": 0.72
+    },
+    "traitIds": ["sporeCloud", "decompose", "fungusSporeCloud"],
+    "weightKg": 1
+  },
+  {
+    "id": "algae",
+    "groupId": "plant",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 0.81,
+      "defense": 0.85,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 1.03
+    },
+    "traitIds": ["kelpBody", "algalBloom", "bloom"],
+    "weightKg": 1
+  },
+  {
+    "id": "golem",
+    "groupId": "mineral",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.2,
+      "defense": 1.43,
+      "spAttack": 0.68,
+      "spDefense": 1.2,
+      "speed": 0.56
+    },
+    "traitIds": ["rockFist", "graniteCore", "runeCore"],
+    "weightKg": 500
+  },
+  {
+    "id": "crystal",
+    "groupId": "mineral",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 0.8,
+      "defense": 1.3,
+      "spAttack": 1.08,
+      "spDefense": 1.32,
+      "speed": 0.7
+    },
+    "traitIds": ["prismatic", "crystalResonance", "crystalPrism"],
+    "weightKg": 50
+  },
+  {
+    "id": "metal",
+    "groupId": "mineral",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.1,
+      "defense": 1.5,
+      "spAttack": 0.8,
+      "spDefense": 1.08,
+      "speed": 0.66
+    },
+    "traitIds": ["steelBody", "magnetic", "magnetized"],
+    "weightKg": 200
+  },
+  {
+    "id": "livingObject",
+    "groupId": "mineral",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 1,
+      "defense": 1.11,
+      "spAttack": 0.96,
+      "spDefense": 1.2,
+      "speed": 0.84
+    },
+    "traitIds": ["tsukumogami", "harmless", "animated"],
+    "weightKg": 5
+  },
+  {
+    "id": "machine",
+    "groupId": "mineral",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.15,
+      "defense": 1.17,
+      "spAttack": 0.88,
+      "spDefense": 1.02,
+      "speed": 0.84
+    },
+    "traitIds": ["programmed", "overclock", "machineOverclock"],
+    "weightKg": 300
+  },
+  {
+    "id": "slime",
+    "groupId": "amorphous",
+    "statBias": {
+      "hp": 1,
+      "attack": 0.9,
+      "defense": 0.9,
+      "spAttack": 1.2,
+      "spDefense": 1.1,
+      "speed": 1
+    },
+    "traitIds": ["jellyBody", "absorbent", "splitBody"],
+    "weightKg": 20
+  },
+  {
+    "id": "annelid",
+    "groupId": "amorphous",
+    "statBias": {
+      "hp": 1.2,
+      "attack": 0.99,
+      "defense": 0.81,
+      "spAttack": 0.96,
+      "spDefense": 1.1,
+      "speed": 1
+    },
+    "traitIds": ["bloodsucker", "burrower", "burrowDeep"],
+    "weightKg": 0.5
+  },
+  {
+    "id": "changeling",
+    "groupId": "shapeshifter",
+    "statBias": {
+      "hp": 1,
+      "attack": 1,
+      "defense": 1,
+      "spAttack": 1,
+      "spDefense": 1,
+      "speed": 1
+    },
+    "traitIds": ["mimicry", "deceive", "stolenFace"],
+    "weightKg": 50,
+    "partnerSkillId": "mimicLure"
+  },
+  {
+    "id": "lycanthrope",
+    "groupId": "shapeshifter",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.25,
+      "defense": 1,
+      "spAttack": 0.75,
+      "spDefense": 0.9,
+      "speed": 1.05
+    },
+    "traitIds": ["moonFrenzy", "silverBane", "feralTransformation"],
+    "weightKg": 120
+  },
+  {
+    "id": "mimic",
+    "groupId": "shapeshifter",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.15,
+      "defense": 1.25,
+      "spAttack": 1,
+      "spDefense": 1,
+      "speed": 0.7
+    },
+    "traitIds": ["disguise", "snapTrap", "lureBait"],
+    "weightKg": 30
+  },
+  {
+    "id": "zombie",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 1.17,
+      "attack": 1.21,
+      "defense": 1,
+      "spAttack": 0.94,
+      "spDefense": 0.9,
+      "speed": 0.59
+    },
+    "traitIds": ["rot", "painless", "shamblingHorde"],
+    "weightKg": 70
+  },
+  {
+    "id": "skeleton",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 0.72,
+      "attack": 1.21,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 0.86,
+      "speed": 1.03
+    },
+    "traitIds": ["skeletonHollowBones", "boneArmor", "skeletonBoneArmor"],
+    "weightKg": 30
+  },
+  {
+    "id": "vampire",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 0.86,
+      "attack": 1.16,
+      "defense": 0.85,
+      "spAttack": 1.21,
+      "spDefense": 0.9,
+      "speed": 1.03
+    },
+    "traitIds": ["bloodDrain", "nightLord", "vampireNightLord"],
+    "weightKg": 70
+  },
+  {
+    "id": "wraith",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.99,
+      "defense": 0.75,
+      "spAttack": 1.32,
+      "spDefense": 0.9,
+      "speed": 0.99
+    },
+    "traitIds": ["wraithIncorporeal", "dread", "soulChill"],
+    "weightKg": 1
+  },
+  {
+    "id": "lich",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 0.72,
+      "attack": 0.88,
+      "defense": 1,
+      "spAttack": 1.43,
+      "spDefense": 1.03,
+      "speed": 0.86
+    },
+    "traitIds": ["phylactery", "lichNecromancy", "lichPhylactery"],
+    "weightKg": 60
+  },
+  {
+    "id": "mummy",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 0.99,
+      "attack": 1.1,
+      "defense": 1.2,
+      "spAttack": 1.1,
+      "spDefense": 0.9,
+      "speed": 0.68
+    },
+    "traitIds": ["wrappings", "pharaohCurse", "ancientWraps"],
+    "weightKg": 60
+  },
+  {
+    "id": "ghoul",
+    "groupId": "undead",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.32,
+      "defense": 0.85,
+      "spAttack": 0.94,
+      "spDefense": 0.9,
+      "speed": 0.95
+    },
+    "traitIds": ["corpseFeast", "paralyzingClaw", "ghoulCorpseFeast"],
+    "weightKg": 70
+  },
+  {
+    "id": "ghost",
+    "groupId": "spirit",
+    "statBias": {
+      "hp": 0.81,
+      "attack": 0.9,
+      "defense": 0.77,
+      "spAttack": 1.32,
+      "spDefense": 1.15,
+      "speed": 1.05
+    },
+    "traitIds": ["ghostEthereal", "haunting", "ghostHaunting"],
+    "weightKg": 1
+  },
+  {
+    "id": "yokai",
+    "groupId": "spirit",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.95,
+      "defense": 0.9,
+      "spAttack": 1.21,
+      "spDefense": 1.03,
+      "speed": 1.1
+    },
+    "traitIds": ["mischief", "yokaiArts", "shapeTrick"],
+    "weightKg": 30
+  },
+  {
+    "id": "fey",
+    "groupId": "spirit",
+    "statBias": {
+      "hp": 0.77,
+      "attack": 0.9,
+      "defense": 0.72,
+      "spAttack": 1.32,
+      "spDefense": 1.15,
+      "speed": 1.15
+    },
+    "traitIds": ["glamour", "faeLuck", "feyGlamour"],
+    "weightKg": 20
+  },
+  {
+    "id": "wisp",
+    "groupId": "spirit",
+    "statBias": {
+      "hp": 0.68,
+      "attack": 0.9,
+      "defense": 0.72,
+      "spAttack": 1.26,
+      "spDefense": 1.15,
+      "speed": 1.3
+    },
+    "traitIds": ["flicker", "ghostFire", "willOWisp"],
+    "weightKg": 0.1
+  },
+  {
+    "id": "natureSpirit",
+    "groupId": "spirit",
+    "statBias": {
+      "hp": 1.03,
+      "attack": 0.81,
+      "defense": 0.9,
+      "spAttack": 1.15,
+      "spDefense": 1.32,
+      "speed": 0.85
+    },
+    "traitIds": ["localGuardian", "natureBlessing", "forestBlessing"],
+    "weightKg": 50
+  },
+  {
+    "id": "fiend",
+    "groupId": "demon",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.2,
+      "defense": 0.95,
+      "spAttack": 1.2,
+      "spDefense": 0.9,
+      "speed": 1.05
+    },
+    "traitIds": ["infernalHide", "soulHunger", "infernalPact"],
+    "weightKg": 200,
+    "partnerSkillId": "infernalPact",
+    "frenzyProne": true
+  },
+  {
+    "id": "imp",
+    "groupId": "demon",
+    "statBias": {
+      "hp": 0.8,
+      "attack": 1.2,
+      "defense": 0.81,
+      "spAttack": 1.26,
+      "spDefense": 0.9,
+      "speed": 1.31
+    },
+    "traitIds": ["trickster", "impFire", "impishLuck"],
+    "weightKg": 20
+  },
+  {
+    "id": "oni",
+    "groupId": "demon",
+    "statBias": {
+      "hp": 1.15,
+      "attack": 1.5,
+      "defense": 1,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 0.89
+    },
+    "traitIds": ["ironClub", "oniRage", "oniHide"],
+    "weightKg": 300
+  },
+  {
+    "id": "elementalSpirit",
+    "groupId": "elemental",
+    "statBias": {
+      "hp": 1,
+      "attack": 0.9,
+      "defense": 1,
+      "spAttack": 1.25,
+      "spDefense": 1.1,
+      "speed": 1
+    },
+    "traitIds": ["elementalSurge", "elementalWard", "elementalAffinity"],
+    "weightKg": 100,
+    "partnerSkillId": "elementalFocus"
+  },
+  {
+    "id": "djinn",
+    "groupId": "elemental",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.9,
+      "defense": 0.85,
+      "spAttack": 1.44,
+      "spDefense": 1.1,
+      "speed": 1.1
+    },
+    "traitIds": ["wish", "smokeForm", "sandWind"],
+    "weightKg": 300
+  },
+  {
+    "id": "eldritch",
+    "groupId": "aberration",
+    "statBias": {
+      "hp": 0.95,
+      "attack": 0.85,
+      "defense": 0.95,
+      "spAttack": 1.3,
+      "spDefense": 1.2,
+      "speed": 1
+    },
+    "traitIds": ["eldritchGaze", "mutation", "unknowable"],
+    "weightKg": 100,
+    "partnerSkillId": "strangeGleam",
+    "frenzyProne": true
+  },
+  {
+    "id": "chimera",
+    "groupId": "aberration",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.02,
+      "defense": 0.95,
+      "spAttack": 1.17,
+      "spDefense": 1.02,
+      "speed": 1
+    },
+    "traitIds": ["hybridVigor", "manyHeads", "chimeraHybridVigor"],
+    "weightKg": 300
+  },
+  {
+    "id": "angel",
+    "groupId": "celestial",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1,
+      "defense": 1,
+      "spAttack": 1.15,
+      "spDefense": 1.15,
+      "speed": 1
+    },
+    "traitIds": ["halo", "grace", "radiantWings"],
+    "weightKg": 80
+  },
+  {
+    "id": "god",
+    "groupId": "deity",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.1,
+      "defense": 1.1,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 1.1
+    },
+    "traitIds": ["omnipresence", "godWorship", "omnipotence"],
+    "weightKg": 500
+  },
+  {
+    "id": "divineBeast",
+    "groupId": "deity",
+    "statBias": {
+      "hp": 1.21,
+      "attack": 1.21,
+      "defense": 1.1,
+      "spAttack": 0.99,
+      "spDefense": 0.99,
+      "speed": 1.16
+    },
+    "traitIds": ["sacredBody", "heavenMandate", "sacredGuardian"],
+    "weightKg": 800
+  },
+  {
+    "id": "demigod",
+    "groupId": "deity",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.26,
+      "defense": 1.1,
+      "spAttack": 0.99,
+      "spDefense": 1.05,
+      "speed": 1.16
+    },
+    "traitIds": ["heroicBlood", "mortalWill", "heroicLineage"],
+    "weightKg": 150
+  },
+  {
+    "id": "human",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.1,
+      "defense": 1,
+      "spAttack": 1,
+      "spDefense": 1,
+      "speed": 1
+    },
+    "traitIds": ["quickLearner", "humanTeamwork", "adaptable"],
+    "weightKg": 70
+  },
+  {
+    "id": "elf",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 0.94,
+      "defense": 0.8,
+      "spAttack": 1.3,
+      "spDefense": 1.15,
+      "speed": 1.15
+    },
+    "traitIds": ["elfElvenGrace", "elvenSpirit", "elvenGrace"],
+    "weightKg": 60,
+    "partnerSkillId": "natureCall"
+  },
+  {
+    "id": "dwarf",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1.15,
+      "attack": 1.16,
+      "defense": 1.3,
+      "spAttack": 0.8,
+      "spDefense": 1.05,
+      "speed": 0.7
+    },
+    "traitIds": ["forgeHardened", "stoutBody", "stubborn"],
+    "weightKg": 70,
+    "partnerSkillId": "prospector"
+  },
+  {
+    "id": "orc",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1.15,
+      "attack": 1.38,
+      "defense": 1.05,
+      "spAttack": 0.7,
+      "spDefense": 0.85,
+      "speed": 1
+    },
+    "traitIds": ["warcry", "orcRage", "orcGrit"],
+    "weightKg": 120,
+    "partnerSkillId": "warCry"
+  },
+  {
+    "id": "halfling",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 0.8,
+      "attack": 0.94,
+      "defense": 0.9,
+      "spAttack": 1.05,
+      "spDefense": 1.15,
+      "speed": 1.25
+    },
+    "traitIds": ["luckyBreak", "quickWitted", "halflingLuck"],
+    "weightKg": 30,
+    "partnerSkillId": "luckyFeet"
+  },
+  {
+    "id": "giant",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1.45,
+      "attack": 1.43,
+      "defense": 1.1,
+      "spAttack": 0.7,
+      "spDefense": 0.85,
+      "speed": 0.6
+    },
+    "traitIds": ["earthshaker", "giantEarthshaker", "giantBody"],
+    "weightKg": 2000,
+    "partnerSkillId": "titanStrength",
+    "frenzyProne": true
+  },
+  {
+    "id": "goblin",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 0.8,
+      "attack": 1.16,
+      "defense": 0.85,
+      "spAttack": 1,
+      "spDefense": 0.9,
+      "speed": 1.2
+    },
+    "traitIds": ["scavenger", "sneakAttack", "dirtyTricks"],
+    "weightKg": 30
+  },
+  {
+    "id": "troll",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1.3,
+      "attack": 1.32,
+      "defense": 1,
+      "spAttack": 0.7,
+      "spDefense": 1,
+      "speed": 0.85
+    },
+    "traitIds": ["trollRegen", "thickHead", "stoneSleep"],
+    "weightKg": 400
+  },
+  {
+    "id": "beastfolk",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.26,
+      "defense": 1,
+      "spAttack": 0.85,
+      "spDefense": 0.9,
+      "speed": 1.15
+    },
+    "traitIds": ["feralInstinct", "beastSense", "wildBlood"],
+    "weightKg": 70
+  },
+  {
+    "id": "centaur",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.21,
+      "defense": 0.85,
+      "spAttack": 1,
+      "spDefense": 0.85,
+      "speed": 1.25
+    },
+    "traitIds": ["gallopCharge", "mountedArcher", "tramplingHooves"],
+    "weightKg": 400
+  },
+  {
+    "id": "insectfolk",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 1.16,
+      "defense": 1.2,
+      "spAttack": 1,
+      "spDefense": 0.85,
+      "speed": 1.05
+    },
+    "traitIds": ["chitinArmor", "swarmTactics", "compoundSight"],
+    "weightKg": 80
+  },
+  {
+    "id": "merfolk",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1,
+      "attack": 0.94,
+      "defense": 0.9,
+      "spAttack": 1.15,
+      "spDefense": 1.1,
+      "speed": 1.05
+    },
+    "traitIds": ["sirenSong", "tideKin", "tideCaller"],
+    "weightKg": 80
+  },
+  {
+    "id": "lizardfolk",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.21,
+      "defense": 1.15,
+      "spAttack": 0.85,
+      "spDefense": 0.85,
+      "speed": 1
+    },
+    "traitIds": ["scaledWarrior", "lizardfolkColdBlooded", "scaleWarrior"],
+    "weightKg": 90
+  },
+  {
+    "id": "harpyfolk",
+    "groupId": "humanoid",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 1.16,
+      "defense": 0.8,
+      "spAttack": 1,
+      "spDefense": 1,
+      "speed": 1.3
+    },
+    "traitIds": ["windDancer", "shrillCry", "shriek"],
+    "weightKg": 40
+  },
+  {
+    "id": "alienRace",
+    "groupId": "alien",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.05,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 1,
+      "speed": 1.05
+    },
+    "traitIds": ["advancedTech", "telepathy", "starfarer"],
+    "weightKg": 70
+  },
+  {
+    "id": "hive",
+    "groupId": "alien",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.21,
+      "defense": 0.85,
+      "spAttack": 1.1,
+      "spDefense": 0.85,
+      "speed": 1.21
+    },
+    "traitIds": ["hiveHiveMind", "acidBlood", "hiveLink"],
+    "weightKg": 100
+  },
+  {
+    "id": "android",
+    "groupId": "alien",
+    "statBias": {
+      "hp": 0.85,
+      "attack": 1.05,
+      "defense": 1.15,
+      "spAttack": 1.16,
+      "spDefense": 1.1,
+      "speed": 1
+    },
+    "traitIds": ["cybernetic", "targeting", "targetingSystem"],
+    "weightKg": 150
+  },
+  {
+    "id": "mutant",
+    "groupId": "alien",
+    "statBias": {
+      "hp": 1.15,
+      "attack": 1.16,
+      "defense": 0.9,
+      "spAttack": 1.1,
+      "spDefense": 0.85,
+      "speed": 1.05
+    },
+    "traitIds": ["radiation", "mutantVigor", "radiantMutation"],
+    "weightKg": 120
+  }
+]

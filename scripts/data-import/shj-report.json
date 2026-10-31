@@ -1,0 +1,36 @@
+{
+  "byOrigin": {
+    "myth": 162
+  },
+  "bySource": {
+    "shanHaiJing": 162
+  },
+  "newSpecies": 162,
+  "newSkills": 19,
+  "plannedEffects": [
+    {
+      "skillId": "omenOfPlague",
+      "effect": "poison 20%"
+    },
+    {
+      "skillId": "omenOfFire",
+      "effect": "burn 20%"
+    }
+  ],
+  "skippedExisting": [],
+  "sourceTagged": [
+    "kunpeng: chineseFolklore",
+    "taowu: chineseFolklore",
+    "baize: chineseFolklore",
+    "xiezhi: chineseFolklore",
+    "luduan: chineseFolklore",
+    "bixie: chineseFolklore",
+    "tianlu: chineseFolklore",
+    "chongmingBird: chineseFolklore",
+    "shangyang: chineseFolklore",
+    "huodou: chineseFolklore",
+    "jiuying: chineseFolklore",
+    "taotie: chineseFolklore"
+  ],
+  "evolutionLinks": []
+}

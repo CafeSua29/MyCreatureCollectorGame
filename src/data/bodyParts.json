@@ -1,0 +1,164 @@
+[
+  {
+    "id": "head",
+    "accuracyPercent": -25,
+    "damagePercent": 0,
+    "critStage": 1,
+    "hitEffects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "flinch",
+          "chance": 10
+        }
+      }
+    ],
+    "breakPercent": 30,
+    "breakEffects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "confusion"
+        }
+      }
+    ],
+    "breakDropPercent": 25,
+    "knockoutCorePercent": -50
+  },
+  {
+    "id": "torso",
+    "accuracyPercent": 0,
+    "damagePercent": 0,
+    "critStage": 0,
+    "hitEffects": [],
+    "breakPercent": 50,
+    "breakEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "defense",
+          "delta": -1
+        }
+      }
+    ],
+    "breakDropPercent": 25,
+    "knockoutCorePercent": 0
+  },
+  {
+    "id": "arms",
+    "accuracyPercent": -10,
+    "damagePercent": -10,
+    "critStage": 0,
+    "hitEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "attack",
+          "delta": -1,
+          "chance": 20
+        }
+      }
+    ],
+    "breakPercent": 30,
+    "breakEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "attack",
+          "delta": -2
+        }
+      }
+    ],
+    "breakDropPercent": 25,
+    "knockoutCorePercent": 0
+  },
+  {
+    "id": "legs",
+    "accuracyPercent": -10,
+    "damagePercent": -10,
+    "critStage": 0,
+    "hitEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "speed",
+          "delta": -1,
+          "chance": 20
+        }
+      }
+    ],
+    "breakPercent": 30,
+    "breakEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "speed",
+          "delta": -2
+        }
+      }
+    ],
+    "breakDropPercent": 25,
+    "knockoutCorePercent": 0
+  },
+  {
+    "id": "wings",
+    "accuracyPercent": -15,
+    "damagePercent": -10,
+    "critStage": 0,
+    "hitEffects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "smackedDown",
+          "chance": 30
+        }
+      }
+    ],
+    "breakPercent": 25,
+    "breakEffects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "smackedDown"
+        }
+      }
+    ],
+    "breakDropPercent": 25,
+    "knockoutCorePercent": 0
+  },
+  {
+    "id": "tail",
+    "accuracyPercent": -15,
+    "damagePercent": -10,
+    "critStage": 0,
+    "hitEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "evasion",
+          "delta": -1,
+          "chance": 20
+        }
+      }
+    ],
+    "breakPercent": 25,
+    "breakEffects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "evasion",
+          "delta": -1
+        }
+      }
+    ],
+    "breakDropPercent": 50,
+    "knockoutCorePercent": 0
+  }
+]

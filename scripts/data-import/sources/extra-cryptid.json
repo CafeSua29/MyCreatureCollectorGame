@@ -1,0 +1,11 @@
+{
+  "origin": "cryptid",
+  "species": [
+    {
+      "name": "Ningyo (Cryptid)",
+      "elements": ["water", "psychic"],
+      "raceId": "merfolk",
+      "tier": "medium"
+    }
+  ]
+}

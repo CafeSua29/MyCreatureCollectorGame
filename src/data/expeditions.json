@@ -1,0 +1,290 @@
+[
+  {
+    "id": "copperMine",
+    "kind": "mining",
+    "durationDays": 2,
+    "requirements": [
+      {
+        "type": "teamSize",
+        "min": 1,
+        "max": 3
+      }
+    ],
+    "powerPerFloor": 150,
+    "moneyPerFloor": 300,
+    "drops": [
+      {
+        "itemId": "spiritStoneRock",
+        "chance": 40,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "spiritStoneGround",
+        "chance": 40,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "spiritStoneSteel",
+        "chance": 40,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "essenceMineral",
+        "chance": 20,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "enhanceStone",
+        "chance": 40,
+        "min": 1,
+        "max": 3
+      }
+    ],
+    "eggChance": 0
+  },
+  {
+    "id": "crystalCavern",
+    "kind": "mining",
+    "durationDays": 4,
+    "requirements": [
+      {
+        "type": "teamSize",
+        "min": 2,
+        "max": 4
+      },
+      {
+        "type": "minLevel",
+        "level": 20
+      }
+    ],
+    "powerPerFloor": 400,
+    "moneyPerFloor": 800,
+    "drops": [
+      {
+        "itemId": "spiritStoneIce",
+        "chance": 35,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "spiritStoneElectric",
+        "chance": 35,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "spiritStoneLight",
+        "chance": 35,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "spiritStoneDark",
+        "chance": 35,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "expCandyS",
+        "chance": 15,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "enhanceStone",
+        "chance": 50,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "itemId": "refiningStone",
+        "chance": 15,
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "eggChance": 0
+  },
+  {
+    "id": "herbValley",
+    "kind": "herbs",
+    "durationDays": 2,
+    "requirements": [
+      {
+        "type": "teamSize",
+        "min": 1,
+        "max": 3
+      }
+    ],
+    "powerPerFloor": 150,
+    "moneyPerFloor": 200,
+    "drops": [
+      {
+        "itemId": "lingzhi",
+        "chance": 60,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "itemId": "ginseng",
+        "chance": 40,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "fleeceflower",
+        "chance": 50,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "itemId": "seedLingzhi",
+        "chance": 20,
+        "min": 1,
+        "max": 2
+      }
+    ],
+    "eggChance": 0
+  },
+  {
+    "id": "snowPeak",
+    "kind": "herbs",
+    "durationDays": 5,
+    "requirements": [
+      {
+        "type": "teamSize",
+        "min": 2,
+        "max": 4
+      },
+      {
+        "type": "element",
+        "elementId": "ice"
+      }
+    ],
+    "powerPerFloor": 500,
+    "moneyPerFloor": 600,
+    "drops": [
+      {
+        "itemId": "snowLotus",
+        "chance": 60,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "chance": 15,
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "eggChance": 0
+  },
+  {
+    "id": "beastHunt",
+    "kind": "hunting",
+    "durationDays": 3,
+    "requirements": [
+      {
+        "type": "teamSize",
+        "min": 2,
+        "max": 4
+      }
+    ],
+    "powerPerFloor": 300,
+    "moneyPerFloor": 500,
+    "drops": [
+      {
+        "itemId": "essenceBeast",
+        "chance": 50,
+        "min": 1,
+        "max": 3
+      },
+      {
+        "itemId": "essenceAvian",
+        "chance": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "tigerBoneFruit",
+        "chance": 10,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "soulCrystalSmall",
+        "chance": 25,
+        "min": 1,
+        "max": 3
+      }
+    ],
+    "eggChance": 4
+  },
+  {
+    "id": "ancientRuins",
+    "kind": "exploring",
+    "durationDays": 6,
+    "requirements": [
+      {
+        "type": "teamSize",
+        "min": 3,
+        "max": 4
+      },
+      {
+        "type": "minLevel",
+        "level": 30
+      }
+    ],
+    "powerPerFloor": 700,
+    "moneyPerFloor": 1500,
+    "drops": [
+      {
+        "itemId": "essenceSpirit",
+        "chance": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "essenceUndead",
+        "chance": 30,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "expCandyM",
+        "chance": 15,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "chance": 20,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "itemId": "secretRealmToken",
+        "chance": 15,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "itemId": "soulCrystalSmall",
+        "chance": 40,
+        "min": 2,
+        "max": 4
+      },
+      {
+        "itemId": "soulCrystalLarge",
+        "chance": 10,
+        "min": 1,
+        "max": 1
+      }
+    ],
+    "eggChance": 6
+  }
+]

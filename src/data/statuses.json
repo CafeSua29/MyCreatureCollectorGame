@@ -1,0 +1,1348 @@
+[
+  {
+    "id": "poison",
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 12.5
+        }
+      }
+    ],
+    "exclusiveGroup": "poison",
+    "kind": "debuff",
+    "catchMultiplier": 1.5
+  },
+  {
+    "id": "badPoison",
+    "exclusiveGroup": "poison",
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 6.25,
+          "escalating": true
+        }
+      }
+    ],
+    "kind": "debuff",
+    "catchMultiplier": 1.5,
+    "resetsOnLeave": true
+  },
+  {
+    "id": "burn",
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 6.25
+        }
+      },
+      {
+        "type": "damageDealtMultiplier",
+        "params": {
+          "category": "physical",
+          "multiplier": 0.5
+        }
+      }
+    ],
+    "kind": "debuff",
+    "catchMultiplier": 1.5
+  },
+  {
+    "id": "paralysis",
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 25
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 0.5
+        }
+      }
+    ],
+    "kind": "debuff",
+    "catchMultiplier": 1.5
+  },
+  {
+    "id": "sleep",
+    "duration": {
+      "min": 1,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 100
+        }
+      }
+    ],
+    "kind": "debuff",
+    "catchMultiplier": 2.5
+  },
+  {
+    "id": "sleeping",
+    "duration": {
+      "min": 1,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 100
+        }
+      },
+      {
+        "type": "endsOnDamage",
+        "params": {}
+      }
+    ],
+    "kind": "debuff",
+    "catchMultiplier": 2.5
+  },
+  {
+    "id": "freeze",
+    "kind": "debuff",
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 100
+        }
+      },
+      {
+        "type": "endBeforeMove",
+        "params": {
+          "chance": 20
+        }
+      },
+      {
+        "type": "endsOnElementHit",
+        "params": {
+          "elementIds": ["fire"]
+        }
+      }
+    ],
+    "catchMultiplier": 2.5
+  },
+  {
+    "id": "agile",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 25
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "arcane",
+    "kind": "buff",
+    "hooks": [
+      {
+        "type": "endsAfterAction",
+        "params": {
+          "categories": ["special", "status"]
+        }
+      }
+    ],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "categories": ["special", "status"]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "barrierBuff",
+    "kind": "buff",
+    "hooks": [
+      {
+        "type": "barrier",
+        "params": {
+          "capPercent": 200
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "berserk",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "defensive",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "autoGuard",
+        "params": {
+          "command": "defend"
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "invisible",
+    "kind": "buff",
+    "hooks": [
+      {
+        "type": "untargetable",
+        "params": {}
+      },
+      {
+        "type": "endsAfterAction",
+        "params": {}
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "immune",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "debuffImmunity",
+        "params": {}
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "leeching",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 25
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "mending",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 30
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "proficient",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 15,
+            "spAttack": 15
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "protected",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "rebirthBuff",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "rebirth",
+        "params": {
+          "hpPercent": 50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "repelling",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "negateDamage",
+        "params": {
+          "chance": 50,
+          "source": "spell"
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "savageBuff",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 25,
+          "categories": ["physical"]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "shelled",
+    "kind": "buff",
+    "hooks": [
+      {
+        "type": "shell",
+        "params": {}
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "splashing",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "otherFoes",
+              "amount": {
+                "event": true,
+                "percent": 50
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "taunting",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "autoGuard",
+        "params": {
+          "command": "provoke"
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "warded",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "blockStatLoss",
+        "params": {}
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "bleeding",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 30,
+          "basis": "current"
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "blighted",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "healBlock",
+        "params": {
+          "damagePercent": 25
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "blind",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "randomTarget",
+        "params": {}
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "bomb",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "detonate",
+        "params": {
+          "percent": 25
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "confused",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "confusion",
+        "params": {
+          "chance": 50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "cursed",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "recoil",
+        "params": {
+          "stat": "attack",
+          "percent": 100
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "disarmed",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "damageDealtMultiplier",
+        "params": {
+          "category": "physical",
+          "multiplier": 0.5
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "feared",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "blockStatGain",
+        "params": {}
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "frozen",
+    "kind": "debuff",
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 100
+        }
+      },
+      {
+        "type": "thaw",
+        "params": {
+          "chance": 25,
+          "doubling": true
+        }
+      }
+    ],
+    "battleOnly": true,
+    "catchMultiplier": 2.5
+  },
+  {
+    "id": "inverted",
+    "kind": "debuff",
+    "hooks": [
+      {
+        "type": "invert",
+        "params": {
+          "amountPercentOfMaxHp": 50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "scorned",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [
+      {
+        "type": "blockCategories",
+        "params": {
+          "categories": ["physical"]
+        }
+      }
+    ],
+    "exclusiveGroup": "scornSilence",
+    "overwritesGroup": true,
+    "battleOnly": true
+  },
+  {
+    "id": "silenced",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [
+      {
+        "type": "blockCategories",
+        "params": {
+          "categories": ["special", "status"]
+        }
+      }
+    ],
+    "exclusiveGroup": "scornSilence",
+    "overwritesGroup": true,
+    "battleOnly": true
+  },
+  {
+    "id": "snared",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "stuckAtBottom",
+        "params": {
+          "breakChance": 10
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "stone",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "cannotDodge",
+        "params": {}
+      },
+      {
+        "type": "cannotCrit",
+        "params": {}
+      }
+    ],
+    "battleOnly": true,
+    "catchMultiplier": 2.5
+  },
+  {
+    "id": "vulnerable",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": 50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "weak",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": -50
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "flinch",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "battleOnly": true,
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 100
+        }
+      }
+    ]
+  },
+  {
+    "id": "confusion",
+    "kind": "debuff",
+    "duration": {
+      "min": 2,
+      "max": 5
+    },
+    "hooks": [
+      {
+        "type": "selfHit",
+        "params": {
+          "chance": 33,
+          "power": 40
+        }
+      }
+    ],
+    "battleOnly": true,
+    "endsOnLeave": true
+  },
+  {
+    "id": "smackedDown",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "traitHooks": [
+      {
+        "type": "grounded",
+        "params": {
+          "removesImmunityFromElementIds": ["ground"]
+        }
+      }
+    ],
+    "hooks": []
+  },
+  {
+    "id": "bound",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "endsWhenSourceLeaves": true,
+    "duration": {
+      "min": 4,
+      "max": 5
+    },
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 12.5
+        }
+      }
+    ],
+    "traitHooks": [
+      {
+        "type": "trapped",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "cantEscape",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "endsWhenSourceLeaves": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trapped",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "octolocked",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "endsWhenSourceLeaves": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trapped",
+        "params": {}
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense", "spDefense"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ingrained",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trapped",
+        "params": {}
+      },
+      {
+        "type": "regen",
+        "params": {
+          "percent": 6.25
+        }
+      },
+      {
+        "type": "grounded",
+        "params": {
+          "removesImmunityFromElementIds": ["ground"]
+        }
+      },
+      {
+        "type": "anchored",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "aquaRing",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 6.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "noRetreat",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trapped",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "embargo",
+    "kind": "debuff",
+    "battleOnly": true,
+    "disablesItems": true,
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": []
+  },
+  {
+    "id": "curse",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "infatuated",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "endsWhenSourceLeaves": true,
+    "hooks": [
+      {
+        "type": "skipTurn",
+        "params": {
+          "chance": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "tormented",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "blocksRepeatSkill": true,
+    "hooks": []
+  },
+  {
+    "id": "imprisoning",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "imprisons": true,
+    "hooks": []
+  },
+  {
+    "id": "healBlocked",
+    "kind": "debuff",
+    "battleOnly": true,
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "blocksHealing": true,
+    "hooks": []
+  },
+  {
+    "id": "drowsy",
+    "kind": "debuff",
+    "battleOnly": true,
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "onEndStatusId": "sleep",
+    "hooks": []
+  },
+  {
+    "id": "nightmare",
+    "kind": "debuff",
+    "battleOnly": true,
+    "requiresStatusId": "sleep",
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "identified",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "identified",
+        "params": {
+          "elementIds": ["normal", "fighting"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "miracleEyed",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "identified",
+        "params": {
+          "elementIds": ["psychic"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lockedOn",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "sureHit",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "laserFocused",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "guaranteedCritical",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "telekinesis",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "airborne",
+        "params": {}
+      },
+      {
+        "type": "surelyHit",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "magnetRise",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "airborne",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "powdered",
+    "kind": "debuff",
+    "battleOnly": true,
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "explodesOnElement": {
+      "elementIds": ["fire"],
+      "percent": 25
+    },
+    "hooks": []
+  },
+  {
+    "id": "electrified",
+    "kind": "debuff",
+    "battleOnly": true,
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "skillElementOverride": "electric",
+    "hooks": []
+  },
+  {
+    "id": "helped",
+    "kind": "buff",
+    "battleOnly": true,
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [
+      {
+        "type": "damageDealtMultiplier",
+        "params": {
+          "category": "physical",
+          "multiplier": 1.5
+        }
+      },
+      {
+        "type": "damageDealtMultiplier",
+        "params": {
+          "category": "special",
+          "multiplier": 1.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "throatChopped",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "blocksSoundSkills": true,
+    "hooks": []
+  },
+  {
+    "id": "saltCure",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 12.5,
+          "byElement": {
+            "elementIds": ["water", "steel"],
+            "percent": 25
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "syrupy",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "endsWhenSourceLeaves": true,
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "glaiveRushed",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": 100
+        }
+      },
+      {
+        "type": "surelyHit",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "raging",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [
+      {
+        "type": "endsAfterAction",
+        "params": {}
+      }
+    ],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "chiStrike",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "critStage",
+        "params": {
+          "stages": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "charged",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [
+      {
+        "type": "endsAfterAction",
+        "params": {}
+      }
+    ],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 100,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "seeded",
+    "kind": "debuff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "drainsToSource": true,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 12.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "minimized",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "marker": true,
+    "hooks": []
+  },
+  {
+    "id": "boosterEnergy",
+    "kind": "buff",
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "highestStatBoost",
+        "params": {
+          "percent": 30,
+          "speedPercent": 50
+        }
+      }
+    ]
+  }
+]

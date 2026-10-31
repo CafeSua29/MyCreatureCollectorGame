@@ -1,0 +1,573 @@
+[
+  {
+    "id": "dragon",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.2,
+      "defense": 1,
+      "spAttack": 1.2,
+      "spDefense": 1,
+      "speed": 0.9
+    },
+    "growth": {
+      "hp": 0.12,
+      "attack": 0.12,
+      "defense": 0.1,
+      "spAttack": 0.12,
+      "spDefense": 0.1,
+      "speed": 0.08
+    },
+    "traitIds": ["dragonScales", "dragonMajesty", "draconicScales", "dragonPride"],
+    "partnerSkillId": "draconicAura",
+    "humanForm": true,
+    "breedsWith": [
+      "amorphous",
+      "aquatic",
+      "avian",
+      "beast",
+      "deity",
+      "dinosaur",
+      "insect",
+      "mineral",
+      "plant"
+    ],
+    "frenzyProne": true,
+    "weightKg": 250,
+    "bodyParts": ["head", "torso", "legs", "wings", "tail"],
+    "weakPoints": ["head", "wings"]
+  },
+  {
+    "id": "dinosaur",
+    "statBias": {
+      "hp": 1.2,
+      "attack": 1.2,
+      "defense": 1.1,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 0.8
+    },
+    "growth": {
+      "hp": 0.13,
+      "attack": 0.12,
+      "defense": 0.11,
+      "spAttack": 0.08,
+      "spDefense": 0.09,
+      "speed": 0.07
+    },
+    "traitIds": ["ancientJaws", "colossalFrame", "primevalBulk", "ancientRoar"],
+    "partnerSkillId": "apexLure",
+    "humanForm": true,
+    "breedsWith": ["aquatic", "beast", "dragon", "mineral", "plant"],
+    "frenzyProne": true,
+    "weightKg": 1500,
+    "bodyParts": ["head", "torso", "legs", "tail"],
+    "weakPoints": ["head"]
+  },
+  {
+    "id": "beast",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.1,
+      "defense": 0.9,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.2
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.11,
+      "defense": 0.09,
+      "spAttack": 0.08,
+      "spDefense": 0.09,
+      "speed": 0.12
+    },
+    "traitIds": ["predatorInstinct", "beastLegs", "wildVigor", "predatorSense"],
+    "partnerSkillId": "packSwiftness",
+    "humanForm": true,
+    "breedsWith": ["aquatic", "avian", "dinosaur", "dragon", "humanoid", "mineral", "plant"],
+    "weightKg": 80,
+    "bodyParts": ["head", "torso", "legs", "tail"],
+    "weakPoints": ["legs"]
+  },
+  {
+    "id": "humanoid",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.1,
+      "defense": 1,
+      "spAttack": 1,
+      "spDefense": 1,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.11,
+      "defense": 0.1,
+      "spAttack": 0.1,
+      "spDefense": 0.1,
+      "speed": 0.09
+    },
+    "traitIds": ["versatile", "cunning", "humanoidIngenuity", "teamwork"],
+    "partnerSkillId": "merchantSense",
+    "humanForm": false,
+    "breedsWith": ["amorphous", "aquatic", "avian", "beast", "insect", "plant"],
+    "weightKg": 70,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": ["head"]
+  },
+  {
+    "id": "aquatic",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 0.9,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 0.9
+    },
+    "growth": {
+      "hp": 0.11,
+      "attack": 0.09,
+      "defense": 0.1,
+      "spAttack": 0.11,
+      "spDefense": 0.11,
+      "speed": 0.08
+    },
+    "traitIds": ["slickBody", "wetBody", "tidalBody", "currentRider"],
+    "partnerSkillId": "tidalGuard",
+    "humanForm": true,
+    "breedsWith": [
+      "amorphous",
+      "avian",
+      "beast",
+      "dinosaur",
+      "dragon",
+      "humanoid",
+      "insect",
+      "plant"
+    ],
+    "weightKg": 60,
+    "bodyParts": ["head", "torso", "tail"],
+    "weakPoints": ["tail"]
+  },
+  {
+    "id": "avian",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1,
+      "defense": 0.9,
+      "spAttack": 1,
+      "spDefense": 0.9,
+      "speed": 1.3
+    },
+    "growth": {
+      "hp": 0.09,
+      "attack": 0.1,
+      "defense": 0.08,
+      "spAttack": 0.1,
+      "spDefense": 0.09,
+      "speed": 0.13
+    },
+    "traitIds": ["windWings", "hawkEye", "hollowBones", "skyborne"],
+    "partnerSkillId": "swiftEscape",
+    "humanForm": true,
+    "breedsWith": ["aquatic", "beast", "dragon", "humanoid"],
+    "weightKg": 15,
+    "bodyParts": ["head", "torso", "legs", "wings", "tail"],
+    "weakPoints": ["wings"]
+  },
+  {
+    "id": "insect",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.1,
+      "defense": 1.1,
+      "spAttack": 0.9,
+      "spDefense": 0.9,
+      "speed": 1.1
+    },
+    "growth": {
+      "hp": 0.08,
+      "attack": 0.11,
+      "defense": 0.11,
+      "spAttack": 0.08,
+      "spDefense": 0.09,
+      "speed": 0.11
+    },
+    "traitIds": ["chitinShell", "swarming", "exoskeleton", "broodSwarm"],
+    "partnerSkillId": "broodWarmth",
+    "humanForm": true,
+    "breedsWith": ["aquatic", "dragon", "humanoid", "mineral", "plant"],
+    "weightKg": 5,
+    "bodyParts": ["head", "torso", "legs", "wings"],
+    "weakPoints": ["legs"]
+  },
+  {
+    "id": "plant",
+    "statBias": {
+      "hp": 1,
+      "attack": 0.9,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 0.9
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.08,
+      "defense": 0.1,
+      "spAttack": 0.11,
+      "spDefense": 0.12,
+      "speed": 0.08
+    },
+    "traitIds": ["rootedBody", "photosynthesis", "sunFeeding", "rootedLife"],
+    "partnerSkillId": "photosynthesis",
+    "humanForm": true,
+    "breedsWith": [
+      "amorphous",
+      "aquatic",
+      "beast",
+      "dinosaur",
+      "dragon",
+      "humanoid",
+      "insect",
+      "mineral"
+    ],
+    "weightKg": 30,
+    "bodyParts": ["head", "torso", "legs"],
+    "weakPoints": ["head"]
+  },
+  {
+    "id": "mineral",
+    "statBias": {
+      "hp": 1,
+      "attack": 1,
+      "defense": 1.3,
+      "spAttack": 0.8,
+      "spDefense": 1.2,
+      "speed": 0.7
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.1,
+      "defense": 0.14,
+      "spAttack": 0.07,
+      "spDefense": 0.12,
+      "speed": 0.06
+    },
+    "traitIds": ["stoneBody", "inorganic", "mineralMass", "unyielding"],
+    "partnerSkillId": "gemSense",
+    "humanForm": true,
+    "breedsWith": ["amorphous", "beast", "dinosaur", "dragon", "humanoid", "insect", "plant"],
+    "weightKg": 300,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": []
+  },
+  {
+    "id": "amorphous",
+    "statBias": {
+      "hp": 1,
+      "attack": 0.9,
+      "defense": 0.9,
+      "spAttack": 1.2,
+      "spDefense": 1.1,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.08,
+      "defense": 0.09,
+      "spAttack": 0.12,
+      "spDefense": 0.11,
+      "speed": 0.1
+    },
+    "traitIds": ["slimyBody", "amorphousRegrowth", "formless", "absorbentBody"],
+    "partnerSkillId": "adaptiveGrowth",
+    "humanForm": true,
+    "breedsWith": ["aquatic", "dragon", "humanoid", "mineral", "plant"],
+    "weightKg": 20,
+    "bodyParts": ["torso"],
+    "weakPoints": []
+  },
+  {
+    "id": "shapeshifter",
+    "statBias": {
+      "hp": 1,
+      "attack": 1,
+      "defense": 1,
+      "spAttack": 1,
+      "spDefense": 1,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.1,
+      "defense": 0.1,
+      "spAttack": 0.1,
+      "spDefense": 0.1,
+      "speed": 0.1
+    },
+    "traitIds": ["illusoryForm", "fluidMotion", "adaptiveForm", "falseFace"],
+    "partnerSkillId": "mimicLure",
+    "humanForm": true,
+    "breedsWith": [
+      "aberration",
+      "amorphous",
+      "aquatic",
+      "avian",
+      "beast",
+      "celestial",
+      "deity",
+      "demon",
+      "dinosaur",
+      "dragon",
+      "elemental",
+      "humanoid",
+      "insect",
+      "mineral",
+      "plant",
+      "reptile",
+      "spirit",
+      "undead"
+    ],
+    "weightKg": 40,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": ["head"]
+  },
+  {
+    "id": "reptile",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1.1,
+      "defense": 1.15,
+      "spAttack": 0.9,
+      "spDefense": 1,
+      "speed": 0.85
+    },
+    "growth": {
+      "hp": 0.11,
+      "attack": 0.11,
+      "defense": 0.12,
+      "spAttack": 0.08,
+      "spDefense": 0.1,
+      "speed": 0.08
+    },
+    "traitIds": ["hardScales", "reptileBlood", "scaledHide", "patientHunter"],
+    "partnerSkillId": "scaleArmor",
+    "humanForm": true,
+    "breedsWith": ["dinosaur", "dragon"],
+    "weightKg": 50,
+    "bodyParts": ["head", "torso", "legs", "tail"],
+    "weakPoints": ["tail"]
+  },
+  {
+    "id": "undead",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 1.1,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 0.9,
+      "speed": 0.9
+    },
+    "growth": {
+      "hp": 0.09,
+      "attack": 0.11,
+      "defense": 0.1,
+      "spAttack": 0.11,
+      "spDefense": 0.09,
+      "speed": 0.09
+    },
+    "traitIds": ["corpseBody", "deathless", "restlessDead", "graveChill"],
+    "partnerSkillId": "deathlyFocus",
+    "humanForm": true,
+    "breedsWith": [],
+    "weightKg": 60,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": ["head"]
+  },
+  {
+    "id": "demon",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.2,
+      "defense": 0.95,
+      "spAttack": 1.2,
+      "spDefense": 0.9,
+      "speed": 1.05
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.12,
+      "defense": 0.09,
+      "spAttack": 0.12,
+      "spDefense": 0.09,
+      "speed": 0.1
+    },
+    "traitIds": ["hellfire", "holyBane", "hellbornMight", "corruptingTouch"],
+    "partnerSkillId": "infernalPact",
+    "humanForm": true,
+    "breedsWith": ["deity", "dragon"],
+    "frenzyProne": true,
+    "weightKg": 150,
+    "bodyParts": ["head", "torso", "arms", "legs", "wings", "tail"],
+    "weakPoints": ["wings"]
+  },
+  {
+    "id": "elemental",
+    "statBias": {
+      "hp": 1,
+      "attack": 0.9,
+      "defense": 1,
+      "spAttack": 1.25,
+      "spDefense": 1.1,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.08,
+      "defense": 0.1,
+      "spAttack": 0.13,
+      "spDefense": 0.11,
+      "speed": 0.1
+    },
+    "traitIds": ["elementalEssence", "elementalBody", "primalCore", "elementalForm"],
+    "partnerSkillId": "elementalFocus",
+    "humanForm": true,
+    "breedsWith": ["deity", "mineral"],
+    "weightKg": 40,
+    "bodyParts": ["torso"],
+    "weakPoints": []
+  },
+  {
+    "id": "aberration",
+    "statBias": {
+      "hp": 0.95,
+      "attack": 0.85,
+      "defense": 0.95,
+      "spAttack": 1.3,
+      "spDefense": 1.2,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.09,
+      "attack": 0.08,
+      "defense": 0.09,
+      "spAttack": 0.13,
+      "spDefense": 0.12,
+      "speed": 0.1
+    },
+    "traitIds": ["deformity", "unpredictable", "alienAnatomy", "maddeningPresence"],
+    "partnerSkillId": "strangeGleam",
+    "humanForm": true,
+    "breedsWith": ["amorphous"],
+    "frenzyProne": true,
+    "weightKg": 100,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": ["head"]
+  },
+  {
+    "id": "spirit",
+    "statBias": {
+      "hp": 0.9,
+      "attack": 0.9,
+      "defense": 0.9,
+      "spAttack": 1.15,
+      "spDefense": 1.15,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.09,
+      "attack": 0.09,
+      "defense": 0.09,
+      "spAttack": 0.12,
+      "spDefense": 0.11,
+      "speed": 0.1
+    },
+    "traitIds": ["spiritBody", "qiAbsorption", "incorporeal", "spiritSight"],
+    "partnerSkillId": "spiritGuide",
+    "humanForm": true,
+    "breedsWith": ["celestial", "deity", "elemental", "humanoid", "undead"],
+    "weightKg": 1,
+    "bodyParts": ["torso"],
+    "weakPoints": []
+  },
+  {
+    "id": "celestial",
+    "statBias": {
+      "hp": 1.05,
+      "attack": 1,
+      "defense": 1,
+      "spAttack": 1.15,
+      "spDefense": 1.15,
+      "speed": 1
+    },
+    "growth": {
+      "hp": 0.1,
+      "attack": 0.1,
+      "defense": 0.1,
+      "spAttack": 0.12,
+      "spDefense": 0.12,
+      "speed": 0.1
+    },
+    "traitIds": ["holyLight", "purgingLight", "holyAura", "graceOfHeaven"],
+    "partnerSkillId": "heavenlyWisdom",
+    "humanForm": false,
+    "breedsWith": ["deity", "humanoid", "shapeshifter", "spirit"],
+    "weightKg": 80,
+    "bodyParts": ["head", "torso", "arms", "legs", "wings"],
+    "weakPoints": ["wings"]
+  },
+  {
+    "id": "deity",
+    "statBias": {
+      "hp": 1.1,
+      "attack": 1.1,
+      "defense": 1.1,
+      "spAttack": 1.1,
+      "spDefense": 1.1,
+      "speed": 1.1
+    },
+    "growth": {
+      "hp": 0.12,
+      "attack": 0.12,
+      "defense": 0.12,
+      "spAttack": 0.12,
+      "spDefense": 0.12,
+      "speed": 0.12
+    },
+    "traitIds": ["divineAura", "divinePower", "divinity", "miracle"],
+    "partnerSkillId": "divineFavor",
+    "humanForm": true,
+    "breedsWith": ["celestial", "demon", "dragon", "elemental", "shapeshifter", "spirit"],
+    "weightKg": 500,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": []
+  },
+  {
+    "id": "alien",
+    "statBias": {
+      "hp": 1,
+      "attack": 1.05,
+      "defense": 1,
+      "spAttack": 1.1,
+      "spDefense": 1,
+      "speed": 1.05
+    },
+    "growth": {
+      "hp": 0.09,
+      "attack": 0.08,
+      "defense": 0.09,
+      "spAttack": 0.13,
+      "spDefense": 0.12,
+      "speed": 0.1
+    },
+    "traitIds": ["alienPhysiology", "alienIntellect", "otherworldly", "advancedBiology"],
+    "partnerSkillId": "strangeGleam",
+    "humanForm": false,
+    "breedsWith": ["aberration", "humanoid"],
+    "weightKg": 80,
+    "bodyParts": ["head", "torso", "arms", "legs"],
+    "weakPoints": ["head"]
+  }
+]

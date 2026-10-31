@@ -1,0 +1,51 @@
+# Bí cảnh và tháp thí luyện
+
+> Một phần tài liệu project. Mục lục và quy tắc chung: `CLAUDE.md` ở thư mục gốc. Các tham chiếu "mục X" / "xem X" tra tên mục trong `docs/index.md` (mục lục chi tiết).
+
+Phó bản có **luật riêng** để thử đội theo cách khác các tầng thường. Số là số tạm ở `balance.json` khóa `trials` (bảng số ở `balance-systems.md`).
+
+Code: model `model/trials.ts`; registry luật `registries/trialRules.ts` (`TRIAL_RULES`, tra cứu `hasTrialRule` / `trialFixedField` / `trialEnemyMultiplier` / `trialFighters`, tung luật `rollTrialRules`); sinh bí cảnh / tầng tháp `world/trials.ts` (`rollSecretRealm`, `realmSite`, `towerFloorPlan`, `towerPowerFloor`); action `battle/trials.ts`; việc sau trận `battle/trialOutcome.ts` (`TRIAL_KIND_RULES`); kiểm tra `gameData/validateTrials.ts`, `game/validateTrialState.ts`; dữ liệu `src/data/trialRules.json` (tên luật ở i18n `trialRules`).
+
+## Luật bí cảnh (`trialRules.json`)
+
+- `{ id, type, params, weight }`, `type` theo registry `TRIAL_RULES` (thêm loại = thêm một handler; params lạ báo lỗi):
+
+| Loại              | Params                               | Tác dụng                                                                                                                                                                                                                                                   |
+| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `noItems`         |                                      | Không dùng vật phẩm trong trận (`trialRestricted { command: 'item' }`), không dùng vật phẩm ngoài trận giữa các trận                                                                                                                                       |
+| `monoElement`     |                                      | Chỉ quái mang hệ của luật vào trận (`playerFighters`); hệ tung đều trong các hệ của quái còn sống lúc vào bí cảnh; không còn quái hợp lệ: `noEligibleFighter { elementIds }`. **Không có ở tháp** (tầng tháp tất định, hệ không có trong đội thì chặn mãi) |
+| `fixedField`      | `weather?`, `terrain?` (ít nhất một) | Lớp có ghi cố định cả trận, đặt sau môi trường của map (log `fieldChanged` nguồn `trial`)                                                                                                                                                                  |
+| `bossOnly`        |                                      | Mọi trận của bí cảnh là boss (boss ngẫu nhiên của map, map không có thì boss tầng)                                                                                                                                                                         |
+| `noTransforms`    |                                      | Không phe nào biến hình (`transformUnavailable` lý do `trialRule`), kể cả Primal                                                                                                                                                                           |
+| `noTamerSkills`   |                                      | Không phe nào có ngự thú sư trong trận (`battle.tamers` cả hai null; không EXP ngự thú sư)                                                                                                                                                                 |
+| `enemyMultiplier` | `value` ≥ 1                          | Chỉ số quái địch × value (nhân vào `bossMultiplier` lúc mở trận; nhiều luật thì nhân dồn)                                                                                                                                                                  |
+| `noHealing`       |                                      | Không hồi máu sau mỗi trận thắng, không dùng vật phẩm ngoài trận giữa các trận                                                                                                                                                                             |
+
+- Tung luật (`rollTrialRules`): số luật đều trong khoảng, mỗi luật theo `weight` (0 = không tung), **không trùng loại**; luật cần hệ mà không có hệ thì bỏ. Luật đã tung lưu `{ ruleId, elementId }` (`elementId` chỉ luật một hệ). Log `trialRules { ruleIds }` đầu mỗi trận.
+- Chưa có: `levelCap` của roadmap cũ (quái vượt level bị tính như level giới hạn): `computeStats` / `getMaxHp` chưa nhận level ghi đè theo trận, max HP sẽ lệch với `damageTaken`; làm khi cần thì thêm level theo bối cảnh trận cho mọi chỗ tính chỉ số trong trận.
+
+## Bí cảnh
+
+- **Vào** `enterTrial` (thị trấn, ngoài trận, còn quái đánh được, không dự giải, chưa trong bí cảnh): tiêu **một Bí Cảnh Lệnh** (`trials.tokenItemId`, category `material`; thiếu: `notEnoughItem`), sinh `GameState.trial = { floor, biomeId, rules, battleCount, cleared: 0 }`: tầng sức mạnh = tầng cao nhất + `floorOffset` (−2, tối thiểu tầng 1: boss tầng cao nhất chưa hạ, boss cuối của bí cảnh là boss tầng nên lấy dưới tầng đã vượt; mô phỏng ở `balance-systems.md`), map chủ đề đều trên mọi map, số trận đều trong `battleCount` [5, 10], luật đều trong `ruleCount` [1, 3]. Chưa mở trận.
+- **Đánh** `challengeTrial` (thị trấn): trận thứ `cleared + 1`. Trận cuối: **boss tầng của map chủ đề**; luật `bossOnly`: mọi trận là boss; còn lại `trainerChance` % (35) là ngự thú sư NPC của map (`rollBiomeTrainerClass`, chế độ `trial`), không thì quái hoang của map (`generateEncounter`, có thể ra boss ngẫu nhiên như tầng thường). Quái sinh theo tầng sức mạnh (level, gen, bậc trang bị); không áp kỹ năng đồng hành lên tỉ lệ gặp.
+- Trận bí cảnh / tháp: `BattleState.trial = { kind: 'realm' | 'tower', biomeId, rules }` (tháp thêm `towerFloor`); `battle.floor` = tầng sức mạnh (có thể cao hơn tầng đã mở). **Không bắt** (`trialRestricted { command: 'ball' }`), **không chạy** (`{ command: 'flee' }`). Map của trận (đồ rơi, boss tầng của map, tiến hóa theo map, power spot) tra bằng `battleBiome` (điểm duy nhất). Boss của bí cảnh / tháp **không mở tầng**. Phần thưởng mỗi trận như trận thường (tiền, EXP, đồ rơi, thân mật).
+- **Thắng** một trận: `cleared + 1` (log `trialProgress`), **mọi quái trong đội kể cả quái đã gục** hồi `healPercent` % (50) max HP (quái gục đứng dậy với phần máu đó; log `heal`; luật `noHealing` thì không). Thắng trận cuối: log `trialCompleted`, **rương bí cảnh**, `trial` về null.
+- **Thua** (cả đội vào trận gục): bí cảnh kết thúc (`trialFailed`), mất lệnh, **không mất tiền**, giữ mọi thứ đã nhận. **Bỏ cuộc** `abandonTrial` (ngoài trận): như thua.
+- Đang đi bí cảnh: **không nghỉ, không NPC hồi máu, không rời thị trấn, không vào trận khác** (đấu trường, giải đấu, tháp, độ kiếp, hiểm địa, khu bảo tồn; `trialInProgress`, điểm duy nhất `assertNoInstance` dùng chung với hiểm địa `zones.md`). Vật phẩm ngoài trận dùng được trừ khi có luật `noItems` / `noHealing`. Lưu game giữa hai trận được.
+- **Rương bí cảnh** (`realm.chest`): `itemRolls + itemRollsPerBattle × số trận` lượt tung món theo trọng số (`items: { itemId, weight, min, max }`; món chỉ có khi bật tùy chọn bỏ qua khi tắt): Kẹo EXP M / L, Kẹo Hiếm, dược liệu, Thọ Nguyên Đan, Phá Cảnh Đan, Thức tỉnh đan, đan phương, trận đồ; `equipmentCount` trang bị theo danh sách rơi của map chủ đề, bậc theo `equipmentRarityWeights` (rare / epic / legendary, × hệ số bậc theo tầng sức mạnh); `skillBookCount` sách kỹ năng: skill trong learnset các loài của map chủ đề (trừ skill không có sách), skill đội học được mà chưa biết × `skillBook.partyMultiplier`, `reusableBookChance` % là Chân kinh.
+- **Nguồn Bí Cảnh Lệnh**: mọi boss rơi (`tokenBossDrops`, 15 %, × hệ số rơi; kể cả boss trong bí cảnh / tháp), thám hiểm Di tích cổ (15 %), mốc tháp thí luyện, chợ đen (`events.md`).
+
+## Tháp thí luyện
+
+- `challengeTower` (thị trấn, ngoài trận, không dự giải, không trong bí cảnh): thách tầng `tower.highest + 1`. Mỗi tầng là **một trận cố định, tất định theo số tầng** (`towerFloorPlan`: RNG riêng từ băm số tầng): map đều trên mọi map, luật đều trong `tower.ruleCount` [0, 2] (chỉ luật dùng được ở tháp), đội địch sinh từ RNG của tầng; trận (và món unique của boss) chạy bằng RNG của save. Tầng sức mạnh = ⌈tầng tháp × `floorScale`⌉ (1). Mỗi `bossEvery` (10) tầng là **boss tầng của map**; còn lại ngự thú sư NPC lớp thường (đều), level + `levelOffset` (3); môi trường tự nhiên của map.
+- **Thắng**: `tower.highest` = tầng đó (log `towerFloorCleared`), thưởng `floorRewards` (Kẹo EXP S ×2), mỗi `milestoneEvery` (10) tầng thêm `milestoneRewards` (Kẹo Hiếm ×1, Bí Cảnh Lệnh ×1). Mỗi tầng chỉ thắng một lần nên thưởng luôn là lần đầu. **Thua không mất gì** (không mất tiền, giữ tầng).
+- Giờ của trận bí cảnh / tháp: như trận quái hoang / boss (`clock.hours`).
+
+## Save
+
+- `GameState.trial: SecretRealm | null`, `GameState.tower: { highest }` (game mới: null, 0); `BattleState.trial`. Kiểm tra: luật tồn tại, luật một hệ có hệ tồn tại, luật khác `elementId` null; `cleared < battleCount`; đang đi bí cảnh thì ở thị trấn; `tower.highest` nguyên ≥ 0; trận bí cảnh chưa kết thúc thì đang có bí cảnh; trận tháp là tầng `highest + 1` (đã thắng: `highest`); trận bí cảnh / tháp không là trận độ kiếp; trận NPC có luật `noTamerSkills` được không có ngự thú sư phe NPC; `battle.floor` của trận bí cảnh / tháp không bị giới hạn bởi tầng đã mở.
+- v46 migrate: `trial: null`, `tower: { highest: 0 }`, trận dở `trial: null` (`state.md`).
+
+## Chưa có
+
+- `levelCap` (xem mục Luật bí cảnh), danh hiệu theo tầng tháp (chờ `titles.md`), hiển thị (chờ UI, `ui-overhaul.md`).

@@ -1,0 +1,11 @@
+{
+  "note": "Chỉ liệt kê callback / trường Showdown chưa có trường cơ chế game tương ứng (bảng HANDLED). plain: skill chưa có hiệu ứng nào; partial: có một phần; missing: id Showdown chưa nhập",
+  "counts": {
+    "plain": 0,
+    "partial": 0,
+    "missing": 0
+  },
+  "plain": {},
+  "partial": {},
+  "missing": []
+}

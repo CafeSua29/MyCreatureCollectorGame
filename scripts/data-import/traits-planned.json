@@ -1,0 +1,19 @@
+[
+  {
+    "id": "strengthInNumbers",
+    "name": "Sức mạnh số đông",
+    "kind": "positive",
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 10
+          }
+        }
+      }
+    ],
+    "nameEn": "Strength in Numbers",
+    "source": "tww3"
+  }
+]

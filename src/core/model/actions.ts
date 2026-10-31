@@ -1,0 +1,236 @@
+// Action: mọi thứ người chơi làm, đi qua gameReducer.
+
+import type { MoveStyle } from './moveStyles'
+import type { Tactic } from './monster'
+import type { ItemRef, Location } from './state'
+import type { TamerCommand } from './tamer'
+import type { TransformKind } from './transform'
+import type { StatName } from './stats'
+
+// ---------- Action ----------
+
+export type BattleCommand =
+  | {
+      slot: number
+      kind: 'skill'
+      skillId: string
+      /** Ô của mục tiêu (enemy/ally). */ target?: number
+      /**
+       * Quái dự bị vào thay khi skill làm quái dùng rút về (hiệu ứng switchOut); bỏ trống = quái
+       * dự bị còn sống đầu tiên theo thứ tự đội. Skill không rút về thì không được ghi.
+       */
+      switchTo?: string
+      /**
+       * Thế mạnh / thế nhanh (docs/rules/move-styles.md): skill có `styles` và đã thuần thục đủ
+       * cấp; bỏ trống = thế thường.
+       */
+      style?: MoveStyle
+      /**
+       * Biến hình trước pha skill (không tốn lượt, mục "Biến hình trong trận"). Đang Dynamax thì
+       * skillId vẫn là skill gốc, trận tự đổi sang chiêu Max.
+       */
+      transform?: TransformKind
+      /** Mega: dạng Mega muốn dùng khi quái cầm nhiều đá hợp lệ (bắt buộc khi đó). */
+      formSpeciesId?: string
+      /** Nhắm đồng đội bằng skill có `onAlly` (Pollen Puff: hồi máu thay vì gây sát thương). */
+      targetAlly?: true
+      /**
+       * Dùng skill thành Z-Move (docs/rules/z-moves.md): quái cầm Z-Crystal hợp skill, phe chưa
+       * dùng Z-Move trong trận; skillId vẫn là skill gốc.
+       */
+      zMove?: true
+      /**
+       * Bộ phận của địch được nhắm (id trong bodyParts.json; docs/rules/hit-locations.md): chỉ skill
+       * gây sát thương nhắm một địch; bỏ trống = không nhắm.
+       */
+      aim?: string
+    }
+  | { slot: number; kind: 'switch'; monsterId: string }
+  /** Dùng vật phẩm: thuốc nhắm quái của ta (cả dự bị), bóng nhắm quái hoang trên sân. */
+  | { slot: number; kind: 'item'; itemId: string; targetId: string }
+  /**
+   * Phòng thủ (Defend của Siralim): đi trước, nhận ít sát thương hơn tới đầu lượt sau. Khiêu
+   * khích (Provoke): đi trước, skill đơn mục tiêu của địch phải nhắm vào nó tới đầu lượt sau.
+   */
+  | { slot: number; kind: 'defend' }
+  | { slot: number; kind: 'provoke' }
+  /**
+   * Hợp kích kỹ (docs/rules/team.md): cả hai quái trên sân cùng ghi lệnh này (cùng comboId và
+   * target), tốn lượt của cả hai; chiêu tung ở lượt của quái chậm hơn.
+   */
+  | { slot: number; kind: 'combo'; comboId: string; target?: number }
+
+export type GameAction =
+  /** Đánh quái hoang ở tầng đang đứng (có thể gặp event thay cho trận; docs/rules/events.md). */
+  | { type: 'startWildBattle' }
+  /**
+   * Hệ thống event (docs/rules/events.md): khám phá ở tầng (tìm event, không thì ra trận quái
+   * hoang), chọn lựa chọn của event đang chờ, mua ở cửa hàng tạm của event, thủ thành / thách đấu
+   * thú vương / rút lui khi thú triều.
+   */
+  | { type: 'explore' }
+  | { type: 'chooseEventOption'; optionId: string }
+  | { type: 'buyEventItem'; item: ItemRef; count: number }
+  | { type: 'defendTown' }
+  | { type: 'challengeBeastKing' }
+  | { type: 'retreatBeastTide' }
+  /** Chiến thuật tự đánh của quái (ngoài trận, ở đâu cũng được; docs/rules/auto-battle.md). */
+  | { type: 'setTactic'; monsterId: string; tactic: Tactic }
+  /** Thám hiểm (docs/rules/expeditions.md): phái đi ở thị trấn, gọi về ở đâu cũng được. */
+  | { type: 'startExpedition'; expeditionId: string; monsterIds: string[] }
+  | { type: 'recallExpedition'; expeditionActiveId: string }
+  /** Bảng nhiệm vụ (docs/rules/quests.md): nhận / nhận thưởng ở thị trấn, hủy ở đâu cũng được. */
+  | { type: 'acceptQuest'; questId: string }
+  | { type: 'abandonQuest'; questId: string }
+  | { type: 'claimQuest'; questId: string }
+  /** Luyện đan và linh điền (ở thị trấn; docs/rules/alchemy.md). */
+  | { type: 'craft'; recipeId: string; times: number }
+  | { type: 'learnRecipe'; itemId: string }
+  | { type: 'plantSeed'; plotIndex: number; itemId: string }
+  | { type: 'harvest'; plotIndex: number }
+  | { type: 'buyPlot' }
+  /** Hồn phách ở NPC luyện đan (thị trấn; docs/rules/soul-relics.md). */
+  | { type: 'incubateSoul'; soulId: string }
+  | { type: 'forgeSoulRelic'; soulId: string }
+  /** Hóa hình (ở thị trấn) / đổi nhân hình ↔ bản thể (ngoài trận; docs/rules/human-form.md). */
+  | { type: 'takeHumanForm'; monsterId: string }
+  | { type: 'setHumanForm'; monsterId: string; form: 'beast' | 'human' }
+  /** Độ kiếp lên tầng thức tỉnh kế tiếp (ở thị trấn; docs/rules/awakening.md). */
+  | { type: 'startTribulation'; monsterId: string }
+  /**
+   * Ngự thú sư NPC (docs/rules/trainers.md): đạo quán ở tầng có đạo quán; giải đấu và đấu trường
+   * ở thị trấn.
+   */
+  | { type: 'challengeGym' }
+  | { type: 'enterTournament' }
+  | { type: 'challengeTournament' }
+  | { type: 'forfeitTournament' }
+  | { type: 'challengeArena' }
+  /**
+   * Bí cảnh (ở thị trấn, tiêu một Bí Cảnh Lệnh) và tháp thí luyện (ở thị trấn; docs/rules/trials.md).
+   */
+  | { type: 'enterTrial' }
+  | { type: 'challengeTrial' }
+  | { type: 'abandonTrial' }
+  | { type: 'challengeTower' }
+  /** Hiểm địa (ở thị trấn; docs/rules/zones.md): vào khi đạt điều kiện, khám phá bước kế, rời. */
+  | { type: 'enterZone'; zoneId: string }
+  | { type: 'exploreZone' }
+  | { type: 'leaveZone' }
+  /** Gọi boss tầng của tầng đang đứng: miễn phí, không giới hạn số lần. */
+  | { type: 'challengeBoss' }
+  /**
+   * Một lệnh cho mỗi ô có quái ta còn sống; `tamer`: tối đa một lệnh ngự thú sư (không chiếm lượt
+   * quái, docs/rules/tamer.md).
+   */
+  | { type: 'submitTurn'; commands: BattleCommand[]; tamer?: TamerCommand }
+  | { type: 'flee' }
+  | { type: 'replaceFainted'; replacements: { slot: number; monsterId: string }[] }
+  | { type: 'leaveBattle' }
+  /**
+   * Thu phục (docs/rules/recruit.md): nhận / từ chối quái xin theo của trận vừa thắng (trước
+   * leaveBattle; rời trận mà chưa chọn là từ chối).
+   */
+  | { type: 'acceptRecruit' }
+  | { type: 'declineRecruit' }
+  /** Dùng mồi dụ (vật phẩm category `bait`) ngoài trận. */
+  | { type: 'useBait'; itemId: string }
+  /** Nhận thưởng mốc Bộ sưu tập (docs/rules/dex.md). */
+  | { type: 'claimDexReward'; milestoneId: string }
+  | { type: 'claimRegionalDexReward'; biomeId: string }
+  /** Khu bảo tồn (docs/rules/safari-zone.md): vào khu ở thị trấn, tốn phí. */
+  | { type: 'enterSafari' }
+  | { type: 'throwSafariBall' }
+  /** Ném mồi: itemId = mồi dụ trong túi (đúng khẩu vị thì không giảm tỉ lệ bắt); bỏ trống = mồi thường. */
+  | { type: 'throwSafariBait'; itemId?: string }
+  | { type: 'throwSafariRock' }
+  /** Bỏ quái đang gặp, sang lượt gặp kế. */
+  | { type: 'skipSafariEncounter' }
+  /** Rời khu ngay, mất lượt gặp và bóng còn lại. */
+  | { type: 'leaveSafari' }
+  | { type: 'rest' }
+  | { type: 'travel'; to: Location }
+  /** NPC hồi máu ở thị trấn: miễn phí. */
+  | { type: 'healParty' }
+  | { type: 'chooseEvolution'; monsterId: string; speciesId: string }
+  /** forgetSkillId bắt buộc khi đã đủ ô skill. */
+  | { type: 'learnPendingSkill'; monsterId: string; skillId: string; forgetSkillId?: string }
+  | { type: 'skipPendingSkill'; monsterId: string; skillId: string }
+  /** NPC breeding ở thị trấn: tốn tiền, tạo trứng. */
+  | { type: 'breed'; fatherId: string; motherId: string }
+  /**
+   * NPC fusing ở thị trấn: quái phụ mất đi, quái gốc mạnh lên; có thể thất bại. Tùy chọn tối đa
+   * 1 bùa tăng tỉ lệ (`boostItemId`) và 1 Bùa Hộ Mệnh (`protectItemId`), tiêu hao mỗi lần fuse.
+   * `inheritSkillIds`: skill của quái phụ kế thừa (tối đa config.fusion.inheritSkills); quái gốc đủ
+   * ô thì `forgetSkillIds` quên lần lượt để học ngay, thiếu thì skill còn lại vào chờ học.
+   */
+  | {
+      type: 'fuse'
+      baseId: string
+      subId: string
+      boostItemId?: string
+      protectItemId?: string
+      inheritSkillIds?: readonly string[]
+      forgetSkillIds?: readonly string[]
+    }
+  /** NPC học lại skill ở thị trấn: tốn tiền. */
+  | { type: 'relearnSkill'; monsterId: string; skillId: string; forgetSkillId?: string }
+  /**
+   * Dùng sách kỹ năng lên quái trong đội hoặc kho (ngoài trận; docs/rules/skill-books.md): item là
+   * định danh `{ storage: 'book', skillId, reusable }`.
+   */
+  | { type: 'useSkillBook'; monsterId: string; item: ItemRef }
+  /** Dùng vật phẩm lên quái trong đội hoặc kho; count > 1 chỉ với kẹo EXP (bỏ trống = 1). */
+  /** skillId: skill chọn lúc dùng (vật phẩm cần skill, docs/rules/treasures.md). */
+  | { type: 'useItem'; itemId: string; monsterId: string; count?: number; skillId?: string }
+  /** Bật / tắt thọ nguyên của game này (ngoài trận, ở đâu cũng được; mục "Tuổi và thọ nguyên"). */
+  | { type: 'setLifespanEnabled'; enabled: boolean }
+  /** Vứt item (ngoài trận, ở đâu cũng được): không nhận gì. */
+  | { type: 'discardItem'; item: ItemRef; count: number }
+  /** Cửa hàng ở thị trấn: bán item có giá, nhận % giá. */
+  | { type: 'sellItem'; item: ItemRef; count: number }
+  /** Cửa hàng ở thị trấn: mua món đang có trong danh sách hàng. */
+  | { type: 'buyItem'; item: ItemRef; count: number }
+  // Quản lý quái (chỉ ngoài trận)
+  | { type: 'moveToStorage'; monsterId: string }
+  | { type: 'moveToParty'; monsterId: string }
+  | { type: 'swapWithStorage'; partyMonsterId: string; storageMonsterId: string }
+  /** Danh sách id mới của đội, phải là hoán vị của đội hiện tại. */
+  | { type: 'reorderParty'; monsterIds: string[] }
+  | { type: 'releaseMonster'; monsterId: string }
+  /** Lắp món trong túi (trang bị, đồ cầm) lên quái vào ô trống tiếp theo (ngoài trận). */
+  | { type: 'equipItem'; monsterId: string; item: ItemRef }
+  /** Tháo món ở ô `slotIndex` (0 = ô đầu) của quái về túi (ngoài trận). */
+  | { type: 'unequipItem'; monsterId: string; slotIndex: number }
+  /** NPC Thợ rèn ở thị trấn (docs/rules/equipment-forge.md): món trong túi hoặc đang lắp, cấp +1. */
+  | { type: 'enhanceEquipment'; instanceId: string }
+  /** Thợ rèn: tung lại mọi dòng phụ không khóa của món (trong túi hoặc đang lắp). */
+  | { type: 'rerollEquipmentAffixes'; instanceId: string; lockedLineIndexes?: number[] }
+  /** Thợ rèn: phân giải các món trong túi (món đang lắp phải tháo trước). */
+  | { type: 'salvageEquipment'; instanceIds: string[] }
+  /** Đúc trang bị (luyện khí) từ món gốc thường và `cores` yêu đan cùng hệ `elementId`. */
+  | { type: 'castEquipment'; itemId: string; elementId: string; cores: number }
+  /** Phụ linh: gắn / thay dòng linh hệ `elementId` (tốn yêu đan cùng hệ). */
+  | { type: 'imbueEquipment'; instanceId: string; elementId: string }
+  /** NPC ở thị trấn: đổi hệ Tera của quái, tốn Mảnh Tera của hệ đích. */
+  | { type: 'changeTeraElement'; monsterId: string; elementId: string }
+  /** NPC Tượng Lực ở thị trấn (docs/rules/soul-levels.md): +1 cấp hồn tinh một chỉ số. */
+  | { type: 'upgradeSoulLevel'; monsterId: string; stat: StatName }
+  /** Nâng một nút thiên phú của quái thêm 1 cấp, ngoài trận (docs/rules/monster-talents.md). */
+  | { type: 'allocateTalent'; monsterId: string; nodeId: string }
+  /** Kết / đổi bản mệnh thú ở thị trấn (docs/rules/tamer.md mục "Bản mệnh thú"). */
+  | { type: 'bindBond'; monsterId: string }
+  /** Khế ước quái đang sở hữu (thị trấn; có thể thất bại; docs/rules/tamer.md mục "Khế ước"). */
+  | { type: 'formContract'; monsterId: string }
+  /** Giải trừ khế ước (thị trấn; mất thân mật). */
+  | { type: 'dissolveContract'; monsterId: string }
+  /** Đột phá cảnh giới ngự thú sư ở thị trấn (docs/rules/tamer.md): có thể thất bại. */
+  | { type: 'tamerBreakthrough' }
+  /** nickname null hoặc chuỗi rỗng = xóa biệt danh. */
+  | { type: 'renameMonster'; monsterId: string; nickname: string | null }
+  /** Tiêu một trận đồ trong túi để học trận pháp của nó (ngoài trận; docs/rules/team.md). */
+  | { type: 'learnFormation'; itemId: string }
+  /** Chọn trận pháp đã học (null = bỏ trận pháp; ngoài trận, miễn phí). */
+  | { type: 'setFormation'; formationId: string | null }
+  /** Vuốt ve quái đang dưỡng dục (ngoài trận, miễn phí; docs/rules/imprinting.md). */
+  | { type: 'petMonster'; monsterId: string }

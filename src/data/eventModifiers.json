@@ -1,0 +1,61 @@
+[
+  {
+    "id": "meteorShower",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 400
+        }
+      }
+    ],
+    "duration": {
+      "kind": "battles",
+      "count": 10
+    }
+  },
+  {
+    "id": "stormClouds",
+    "effects": [
+      {
+        "type": "fixedField",
+        "params": {
+          "weather": "rain"
+        }
+      }
+    ],
+    "duration": {
+      "kind": "battles",
+      "count": 5
+    }
+  },
+  {
+    "id": "fair",
+    "effects": [
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": -30
+        }
+      }
+    ],
+    "duration": {
+      "kind": "town"
+    }
+  },
+  {
+    "id": "bloodMoon",
+    "effects": [
+      {
+        "type": "bossChancePercent",
+        "params": {
+          "percent": 200
+        }
+      }
+    ],
+    "duration": {
+      "kind": "battles",
+      "count": 20
+    }
+  }
+]

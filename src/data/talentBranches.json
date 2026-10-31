@@ -1,0 +1,531 @@
+[
+  {
+    "id": "offense"
+  },
+  {
+    "id": "defense"
+  },
+  {
+    "id": "support"
+  },
+  {
+    "id": "felidArts",
+    "raceIds": ["felid"]
+  },
+  {
+    "id": "canidArts",
+    "raceIds": ["canid"]
+  },
+  {
+    "id": "ursidArts",
+    "raceIds": ["ursid"]
+  },
+  {
+    "id": "mustelidArts",
+    "raceIds": ["mustelid"]
+  },
+  {
+    "id": "rodentArts",
+    "raceIds": ["rodent"]
+  },
+  {
+    "id": "lagomorphArts",
+    "raceIds": ["lagomorph"]
+  },
+  {
+    "id": "primateArts",
+    "raceIds": ["primate"]
+  },
+  {
+    "id": "equidArts",
+    "raceIds": ["equid"]
+  },
+  {
+    "id": "buffaloArts",
+    "raceIds": ["buffalo"]
+  },
+  {
+    "id": "cervidArts",
+    "raceIds": ["cervid"]
+  },
+  {
+    "id": "suidArts",
+    "raceIds": ["suid"]
+  },
+  {
+    "id": "proboscidArts",
+    "raceIds": ["proboscid"]
+  },
+  {
+    "id": "pachydermArts",
+    "raceIds": ["pachyderm"]
+  },
+  {
+    "id": "chiropteranArts",
+    "raceIds": ["chiropteran"]
+  },
+  {
+    "id": "marsupialArts",
+    "raceIds": ["marsupial"]
+  },
+  {
+    "id": "xenarthranArts",
+    "raceIds": ["xenarthran"]
+  },
+  {
+    "id": "insectivoreArts",
+    "raceIds": ["insectivore"]
+  },
+  {
+    "id": "megafaunaArts",
+    "raceIds": ["megafauna"]
+  },
+  {
+    "id": "fangedBeastArts",
+    "raceIds": ["fangedBeast"]
+  },
+  {
+    "id": "mythicBeastArts",
+    "raceIds": ["mythicBeast"]
+  },
+  {
+    "id": "wildBeastArts",
+    "raceIds": ["wildBeast"]
+  },
+  {
+    "id": "raptorArts",
+    "raceIds": ["raptor"]
+  },
+  {
+    "id": "owlArts",
+    "raceIds": ["owl"]
+  },
+  {
+    "id": "birdArts",
+    "raceIds": ["bird"]
+  },
+  {
+    "id": "waterfowlArts",
+    "raceIds": ["waterfowl"]
+  },
+  {
+    "id": "galliformArts",
+    "raceIds": ["galliform"]
+  },
+  {
+    "id": "penguinArts",
+    "raceIds": ["penguin"]
+  },
+  {
+    "id": "seabirdArts",
+    "raceIds": ["seabird"]
+  },
+  {
+    "id": "ratiteArts",
+    "raceIds": ["ratite"]
+  },
+  {
+    "id": "parrotArts",
+    "raceIds": ["parrot"]
+  },
+  {
+    "id": "mythicBirdArts",
+    "raceIds": ["mythicBird"]
+  },
+  {
+    "id": "serpentArts",
+    "raceIds": ["serpent"]
+  },
+  {
+    "id": "lizardArts",
+    "raceIds": ["lizard"]
+  },
+  {
+    "id": "turtleArts",
+    "raceIds": ["turtle"]
+  },
+  {
+    "id": "crocodilianArts",
+    "raceIds": ["crocodilian"]
+  },
+  {
+    "id": "anuranArts",
+    "raceIds": ["anuran"]
+  },
+  {
+    "id": "caudateArts",
+    "raceIds": ["caudate"]
+  },
+  {
+    "id": "fishArts",
+    "raceIds": ["fish"]
+  },
+  {
+    "id": "sharkArts",
+    "raceIds": ["shark"]
+  },
+  {
+    "id": "cetaceanArts",
+    "raceIds": ["cetacean"]
+  },
+  {
+    "id": "pinnipedArts",
+    "raceIds": ["pinniped"]
+  },
+  {
+    "id": "sirenianArts",
+    "raceIds": ["sirenian"]
+  },
+  {
+    "id": "cephalopodArts",
+    "raceIds": ["cephalopod"]
+  },
+  {
+    "id": "crustaceanArts",
+    "raceIds": ["crustacean"]
+  },
+  {
+    "id": "cnidarianArts",
+    "raceIds": ["cnidarian"]
+  },
+  {
+    "id": "molluskArts",
+    "raceIds": ["mollusk"]
+  },
+  {
+    "id": "leviathanArts",
+    "raceIds": ["leviathan"]
+  },
+  {
+    "id": "carapaceonArts",
+    "raceIds": ["carapaceon"]
+  },
+  {
+    "id": "beetleArts",
+    "raceIds": ["beetle"]
+  },
+  {
+    "id": "lepidopteranArts",
+    "raceIds": ["lepidopteran"]
+  },
+  {
+    "id": "hymenopteranArts",
+    "raceIds": ["hymenopteran"]
+  },
+  {
+    "id": "arachnidArts",
+    "raceIds": ["arachnid"]
+  },
+  {
+    "id": "orthopteranArts",
+    "raceIds": ["orthopteran"]
+  },
+  {
+    "id": "odonateArts",
+    "raceIds": ["odonate"]
+  },
+  {
+    "id": "myriapodArts",
+    "raceIds": ["myriapod"]
+  },
+  {
+    "id": "larvaArts",
+    "raceIds": ["larva"]
+  },
+  {
+    "id": "neopteronArts",
+    "raceIds": ["neopteron"]
+  },
+  {
+    "id": "insectoidArts",
+    "raceIds": ["insectoid"]
+  },
+  {
+    "id": "theropodArts",
+    "raceIds": ["theropod"]
+  },
+  {
+    "id": "sauropodArts",
+    "raceIds": ["sauropod"]
+  },
+  {
+    "id": "ornithischianArts",
+    "raceIds": ["ornithischian"]
+  },
+  {
+    "id": "pterosaurArts",
+    "raceIds": ["pterosaur"]
+  },
+  {
+    "id": "marineReptileArts",
+    "raceIds": ["marineReptile"]
+  },
+  {
+    "id": "ancientCreatureArts",
+    "raceIds": ["ancientCreature"]
+  },
+  {
+    "id": "kaijuArts",
+    "raceIds": ["kaiju"]
+  },
+  {
+    "id": "westernDragonArts",
+    "raceIds": ["westernDragon"]
+  },
+  {
+    "id": "easternDragonArts",
+    "raceIds": ["easternDragon"]
+  },
+  {
+    "id": "wyvernArts",
+    "raceIds": ["wyvern"]
+  },
+  {
+    "id": "fangedWyvernArts",
+    "raceIds": ["fangedWyvern"]
+  },
+  {
+    "id": "bruteWyvernArts",
+    "raceIds": ["bruteWyvern"]
+  },
+  {
+    "id": "piscineWyvernArts",
+    "raceIds": ["piscineWyvern"]
+  },
+  {
+    "id": "birdWyvernArts",
+    "raceIds": ["birdWyvern"]
+  },
+  {
+    "id": "snakeWyvernArts",
+    "raceIds": ["snakeWyvern"]
+  },
+  {
+    "id": "elderDragonArts",
+    "raceIds": ["elderDragon"]
+  },
+  {
+    "id": "drakeArts",
+    "raceIds": ["drake"]
+  },
+  {
+    "id": "treeArts",
+    "raceIds": ["tree"]
+  },
+  {
+    "id": "flowerArts",
+    "raceIds": ["flower"]
+  },
+  {
+    "id": "fungusArts",
+    "raceIds": ["fungus"]
+  },
+  {
+    "id": "algaeArts",
+    "raceIds": ["algae"]
+  },
+  {
+    "id": "golemArts",
+    "raceIds": ["golem"]
+  },
+  {
+    "id": "crystalArts",
+    "raceIds": ["crystal"]
+  },
+  {
+    "id": "metalArts",
+    "raceIds": ["metal"]
+  },
+  {
+    "id": "livingObjectArts",
+    "raceIds": ["livingObject"]
+  },
+  {
+    "id": "machineArts",
+    "raceIds": ["machine"]
+  },
+  {
+    "id": "slimeArts",
+    "raceIds": ["slime"]
+  },
+  {
+    "id": "annelidArts",
+    "raceIds": ["annelid"]
+  },
+  {
+    "id": "changelingArts",
+    "raceIds": ["changeling"]
+  },
+  {
+    "id": "lycanthropeArts",
+    "raceIds": ["lycanthrope"]
+  },
+  {
+    "id": "mimicArts",
+    "raceIds": ["mimic"]
+  },
+  {
+    "id": "zombieArts",
+    "raceIds": ["zombie"]
+  },
+  {
+    "id": "skeletonArts",
+    "raceIds": ["skeleton"]
+  },
+  {
+    "id": "vampireArts",
+    "raceIds": ["vampire"]
+  },
+  {
+    "id": "wraithArts",
+    "raceIds": ["wraith"]
+  },
+  {
+    "id": "lichArts",
+    "raceIds": ["lich"]
+  },
+  {
+    "id": "mummyArts",
+    "raceIds": ["mummy"]
+  },
+  {
+    "id": "ghoulArts",
+    "raceIds": ["ghoul"]
+  },
+  {
+    "id": "ghostArts",
+    "raceIds": ["ghost"]
+  },
+  {
+    "id": "yokaiArts",
+    "raceIds": ["yokai"]
+  },
+  {
+    "id": "feyArts",
+    "raceIds": ["fey"]
+  },
+  {
+    "id": "wispArts",
+    "raceIds": ["wisp"]
+  },
+  {
+    "id": "natureSpiritArts",
+    "raceIds": ["natureSpirit"]
+  },
+  {
+    "id": "fiendArts",
+    "raceIds": ["fiend"]
+  },
+  {
+    "id": "impArts",
+    "raceIds": ["imp"]
+  },
+  {
+    "id": "oniArts",
+    "raceIds": ["oni"]
+  },
+  {
+    "id": "elementalSpiritArts",
+    "raceIds": ["elementalSpirit"]
+  },
+  {
+    "id": "djinnArts",
+    "raceIds": ["djinn"]
+  },
+  {
+    "id": "eldritchArts",
+    "raceIds": ["eldritch"]
+  },
+  {
+    "id": "chimeraArts",
+    "raceIds": ["chimera"]
+  },
+  {
+    "id": "angelArts",
+    "raceIds": ["angel"]
+  },
+  {
+    "id": "godArts",
+    "raceIds": ["god"]
+  },
+  {
+    "id": "divineBeastArts",
+    "raceIds": ["divineBeast"]
+  },
+  {
+    "id": "demigodArts",
+    "raceIds": ["demigod"]
+  },
+  {
+    "id": "humanArts",
+    "raceIds": ["human"]
+  },
+  {
+    "id": "elfArts",
+    "raceIds": ["elf"]
+  },
+  {
+    "id": "dwarfArts",
+    "raceIds": ["dwarf"]
+  },
+  {
+    "id": "orcArts",
+    "raceIds": ["orc"]
+  },
+  {
+    "id": "halflingArts",
+    "raceIds": ["halfling"]
+  },
+  {
+    "id": "giantArts",
+    "raceIds": ["giant"]
+  },
+  {
+    "id": "goblinArts",
+    "raceIds": ["goblin"]
+  },
+  {
+    "id": "trollArts",
+    "raceIds": ["troll"]
+  },
+  {
+    "id": "beastfolkArts",
+    "raceIds": ["beastfolk"]
+  },
+  {
+    "id": "centaurArts",
+    "raceIds": ["centaur"]
+  },
+  {
+    "id": "insectfolkArts",
+    "raceIds": ["insectfolk"]
+  },
+  {
+    "id": "merfolkArts",
+    "raceIds": ["merfolk"]
+  },
+  {
+    "id": "lizardfolkArts",
+    "raceIds": ["lizardfolk"]
+  },
+  {
+    "id": "harpyfolkArts",
+    "raceIds": ["harpyfolk"]
+  },
+  {
+    "id": "alienRaceArts",
+    "raceIds": ["alienRace"]
+  },
+  {
+    "id": "hiveArts",
+    "raceIds": ["hive"]
+  },
+  {
+    "id": "androidArts",
+    "raceIds": ["android"]
+  },
+  {
+    "id": "mutantArts",
+    "raceIds": ["mutant"]
+  }
+]

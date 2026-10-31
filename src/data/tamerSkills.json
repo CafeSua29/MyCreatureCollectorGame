@@ -1,0 +1,170 @@
+[
+  {
+    "id": "healingArt",
+    "unlockRealm": 0,
+    "manaCost": 20,
+    "cooldown": 2,
+    "target": "ally",
+    "effects": [
+      {
+        "type": "healPercent",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "clarityChant",
+    "unlockRealm": 0,
+    "manaCost": 15,
+    "cooldown": 2,
+    "target": "ally",
+    "effects": [
+      {
+        "type": "cureStatus",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "encourage",
+    "unlockRealm": 2,
+    "manaCost": 25,
+    "cooldown": 3,
+    "target": "allyOnField",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "self",
+          "stat": "attack",
+          "delta": 1
+        }
+      },
+      {
+        "type": "statStage",
+        "params": {
+          "who": "self",
+          "stat": "spAttack",
+          "delta": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "guardArt",
+    "unlockRealm": 3,
+    "manaCost": 30,
+    "cooldown": 4,
+    "target": "field",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "own",
+          "fieldId": "reflect",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "bindingArt",
+    "unlockRealm": 4,
+    "manaCost": 30,
+    "cooldown": 3,
+    "target": "field",
+    "effects": [
+      {
+        "type": "sideStatStage",
+        "params": {
+          "side": "foe",
+          "stats": ["speed"],
+          "delta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "diamondShield",
+    "unlockRealm": 5,
+    "manaCost": 30,
+    "cooldown": 4,
+    "target": "field",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "own",
+          "fieldId": "lightScreen",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "soulRecall",
+    "unlockRealm": 6,
+    "manaCost": 50,
+    "cooldown": 0,
+    "usesPerBattle": 1,
+    "target": "ally",
+    "effects": [
+      {
+        "type": "revive",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "pactResonance",
+    "unlockRealm": 8,
+    "manaCost": 40,
+    "cooldown": 4,
+    "target": "field",
+    "effects": [
+      {
+        "type": "sideStatStage",
+        "params": {
+          "side": "ally",
+          "stats": ["speed"],
+          "delta": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "calmMind",
+    "unlockRealm": 3,
+    "manaCost": 20,
+    "cooldown": 3,
+    "target": "allyOnField",
+    "effects": [
+      {
+        "type": "reduceHold",
+        "params": {
+          "turns": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "intimidate",
+    "unlockRealm": 0,
+    "manaCost": 30,
+    "cooldown": 0,
+    "usesPerBattle": 1,
+    "target": "wildFoe"
+  },
+  {
+    "id": "twinBeastMerge",
+    "unlockRealm": 3,
+    "manaCost": 60,
+    "cooldown": 0,
+    "usesPerBattle": 1,
+    "target": "merge"
+  }
+]

@@ -1,0 +1,344 @@
+[
+  {
+    "id": "draconicAura",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "attack": 5,
+            "defense": 5,
+            "spAttack": 5,
+            "spDefense": 5,
+            "speed": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "warCry",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "attack": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "natureCall",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "herdShield",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "defense": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "apexLure",
+    "effects": [
+      {
+        "type": "bossChancePercent",
+        "params": {
+          "percent": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "packSwiftness",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "speed": 8
+          }
+        }
+      },
+      {
+        "type": "expeditionPowerPercent",
+        "params": {
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "merchantSense",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "tidalGuard",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "spDefense": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "swiftEscape",
+    "effects": [
+      {
+        "type": "fleeChancePercent",
+        "params": {
+          "percent": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "broodWarmth",
+    "effects": [
+      {
+        "type": "eggStepBonus",
+        "params": {
+          "count": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "photosynthesis",
+    "effects": [
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "gemSense",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "adaptiveGrowth",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 8
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "mimicLure",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "scaleArmor",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "defense": 5,
+            "spDefense": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "prospector",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "deathlyFocus",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "spAttack": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "infernalPact",
+    "effects": [
+      {
+        "type": "bossChancePercent",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "titanStrength",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "attack": 5,
+            "defense": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "luckyFeet",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "fleeChancePercent",
+        "params": {
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "elementalFocus",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": {
+            "spAttack": 5,
+            "spDefense": 5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "strangeGleam",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "spiritGuide",
+    "effects": [
+      {
+        "type": "eventChancePercent",
+        "params": {
+          "percent": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenlyWisdom",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "divineFavor",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 50
+        }
+      }
+    ]
+  }
+]

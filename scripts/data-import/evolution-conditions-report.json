@@ -1,0 +1,748 @@
+{
+  "changed": [
+    {
+      "from": "rattataAlola",
+      "before": {
+        "speciesId": "raticateAlola",
+        "level": 20
+      },
+      "after": {
+        "speciesId": "raticateAlola",
+        "level": 20,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "cubone",
+      "before": {
+        "speciesId": "marowakAlola",
+        "level": 28,
+        "itemId": "alolaCharm"
+      },
+      "after": {
+        "speciesId": "marowakAlola",
+        "level": 28,
+        "itemId": "alolaCharm",
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "eevee",
+      "before": {
+        "speciesId": "espeon",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "espeon",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "eevee",
+      "before": {
+        "speciesId": "umbreon",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "umbreon",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "gligar",
+      "before": {
+        "speciesId": "gliscor",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "razorFang",
+              "consume": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "gliscor",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "razorFang",
+              "consume": true
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "sneasel",
+      "before": {
+        "speciesId": "weavile",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "razorClaw",
+              "consume": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "weavile",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "razorClaw",
+              "consume": true
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "sneaselHisui",
+      "before": {
+        "speciesId": "sneasler",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "razorClaw",
+              "consume": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "sneasler",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "razorClaw",
+              "consume": true
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "ursaring",
+      "before": {
+        "speciesId": "ursaluna",
+        "level": 25,
+        "itemId": "peatBlock",
+        "mutation": {
+          "speciesId": "ursalunaBloodmoon",
+          "chance": 2,
+          "catalystItemId": "mutationStone",
+          "catalystChance": 25
+        }
+      },
+      "after": {
+        "speciesId": "ursaluna",
+        "level": 25,
+        "itemId": "peatBlock",
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          },
+          {
+            "type": "moonPhase",
+            "params": {
+              "phases": ["full"]
+            }
+          }
+        ],
+        "mutation": {
+          "speciesId": "ursalunaBloodmoon",
+          "chance": 2,
+          "catalystItemId": "mutationStone",
+          "catalystChance": 25
+        }
+      }
+    },
+    {
+      "from": "linooneGalar",
+      "before": {
+        "speciesId": "obstagoon",
+        "level": 35
+      },
+      "after": {
+        "speciesId": "obstagoon",
+        "level": 35,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "budew",
+      "before": {
+        "speciesId": "roselia",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "roselia",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "chingling",
+      "before": {
+        "speciesId": "chimecho",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "chimecho",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "happiny",
+      "before": {
+        "speciesId": "chansey",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "ovalStone",
+              "consume": true
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "chansey",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "heldItem",
+            "params": {
+              "itemId": "ovalStone",
+              "consume": true
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "riolu",
+      "before": {
+        "speciesId": "lucario",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "lucario",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "tyrunt",
+      "before": {
+        "speciesId": "tyrantrum",
+        "level": 39
+      },
+      "after": {
+        "speciesId": "tyrantrum",
+        "level": 39,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "amaura",
+      "before": {
+        "speciesId": "aurorus",
+        "level": 39
+      },
+      "after": {
+        "speciesId": "aurorus",
+        "level": 39,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "yungoos",
+      "before": {
+        "speciesId": "gumshoos",
+        "level": 20
+      },
+      "after": {
+        "speciesId": "gumshoos",
+        "level": 20,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "rockruff",
+      "before": {
+        "speciesId": "lycanroc",
+        "level": 25,
+        "mutation": {
+          "speciesId": "lycanrocDusk",
+          "chance": 2,
+          "catalystItemId": "mutationStone",
+          "catalystChance": 25
+        }
+      },
+      "after": {
+        "speciesId": "lycanroc",
+        "level": 25,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ],
+        "mutation": {
+          "speciesId": "lycanrocDusk",
+          "chance": 2,
+          "catalystItemId": "mutationStone",
+          "catalystChance": 25
+        }
+      }
+    },
+    {
+      "from": "rockruff",
+      "before": {
+        "speciesId": "lycanrocMidnight",
+        "level": 25
+      },
+      "after": {
+        "speciesId": "lycanrocMidnight",
+        "level": 25,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "fomantis",
+      "before": {
+        "speciesId": "lurantis",
+        "level": 34
+      },
+      "after": {
+        "speciesId": "lurantis",
+        "level": 34,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["dawn", "day", "dusk"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "snom",
+      "before": {
+        "speciesId": "frosmoth",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          }
+        ]
+      },
+      "after": {
+        "speciesId": "frosmoth",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "affinity",
+            "params": {
+              "min": 160
+            }
+          },
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "from": "greavard",
+      "before": {
+        "speciesId": "houndstone",
+        "level": 30
+      },
+      "after": {
+        "speciesId": "houndstone",
+        "level": 30,
+        "conditions": [
+          {
+            "type": "timeOfDay",
+            "params": {
+              "phases": ["night"]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "kept": [
+    {
+      "from": "primeape",
+      "to": "annihilape",
+      "reason": "không có tương đương: \"Use Rage Fist 20 times and level-up\""
+    },
+    {
+      "from": "kadabra",
+      "to": "alakazam",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "machoke",
+      "to": "machamp",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "graveler",
+      "to": "golem",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "gravelerAlola",
+      "to": "golemAlola",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "farfetchdGalar",
+      "to": "sirfetchd",
+      "reason": "không có tương đương: \"Land 3 critical hits in 1 battle\""
+    },
+    {
+      "from": "haunter",
+      "to": "gengar",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "qwilfishHisui",
+      "to": "overqwil",
+      "reason": "không có tương đương: \"Use Strong style Barb Barrage 20 times\""
+    },
+    {
+      "from": "stantler",
+      "to": "wyrdeer",
+      "reason": "không có tương đương: \"Use Agile style Psyshield Bash 20 times\""
+    },
+    {
+      "from": "tyrogue",
+      "to": "hitmonlee",
+      "reason": "điều kiện không quy đổi: \"with an Atk stat > its Def stat\""
+    },
+    {
+      "from": "tyrogue",
+      "to": "hitmonchan",
+      "reason": "điều kiện không quy đổi: \"with an Atk stat < its Def stat\""
+    },
+    {
+      "from": "tyrogue",
+      "to": "hitmontop",
+      "reason": "điều kiện không quy đổi: \"with an Atk stat equal to its Def stat\""
+    },
+    {
+      "from": "bonsly",
+      "to": "sudowoodo",
+      "reason": "thiếu skill \"Mimic\""
+    },
+    {
+      "from": "mimeJr",
+      "to": "mrMime",
+      "reason": "thiếu skill \"Mimic\""
+    },
+    {
+      "from": "mimeJr",
+      "to": "mrMimeGalar",
+      "reason": "thiếu skill \"Mimic\""
+    },
+    {
+      "from": "boldore",
+      "to": "gigalith",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "gurdurr",
+      "to": "conkeldurr",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "yamaskGalar",
+      "to": "runerigus",
+      "reason": "không có tương đương: \"Have 49+ HP lost and walk under stone sculpture in Dusty Bowl\""
+    },
+    {
+      "from": "bisharp",
+      "to": "kingambit",
+      "reason": "không có tương đương: \"Defeat 3 Bisharp leading Pawniard and level-up\""
+    },
+    {
+      "from": "inkay",
+      "to": "malamar",
+      "reason": "điều kiện không quy đổi: \"with the console turned upside-down\""
+    },
+    {
+      "from": "phantump",
+      "to": "trevenant",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "pumpkaboo",
+      "to": "gourgeist",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "pumpkabooSmall",
+      "to": "gourgeistSmall",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "pumpkabooLarge",
+      "to": "gourgeistLarge",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "pumpkabooSuper",
+      "to": "gourgeistSuper",
+      "reason": "trao đổi: giữ level"
+    },
+    {
+      "from": "milcery",
+      "to": "alcremie",
+      "reason": "không có tương đương: \"spin while holding a Sweet\""
+    },
+    {
+      "from": "kubfu",
+      "to": "urshifu",
+      "reason": "không có tương đương: \"Defeat the Single Strike Tower\""
+    },
+    {
+      "from": "kubfu",
+      "to": "urshifuRapidStrike",
+      "reason": "không có tương đương: \"Defeat the Rapid Strike Tower\""
+    },
+    {
+      "from": "pawmo",
+      "to": "pawmot",
+      "reason": "không có tương đương: \"walk 1000 steps in Let's Go\""
+    },
+    {
+      "from": "bramblin",
+      "to": "brambleghast",
+      "reason": "không có tương đương: \"Walk 1000 steps in Let's Go\""
+    },
+    {
+      "from": "rellor",
+      "to": "rabsca",
+      "reason": "không có tương đương: \"walk 1000 steps in Let's Go\""
+    },
+    {
+      "from": "gimmighoul",
+      "to": "gholdengo",
+      "reason": "không có tương đương: \"Level up with 999 Coins in the bag\""
+    }
+  ],
+  "skipped": []
+}

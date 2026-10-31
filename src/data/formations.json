@@ -1,0 +1,87 @@
+[
+  {
+    "id": "fourSymbols",
+    "requires": [
+      {
+        "type": "distinctElements",
+        "count": 4
+      }
+    ],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 8,
+            "defense": 8,
+            "spAttack": 8,
+            "spDefense": 8,
+            "speed": 8
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "dragonGate",
+    "requires": [
+      {
+        "type": "race",
+        "raceId": "dragon",
+        "count": 3
+      }
+    ],
+    "match": {
+      "type": "race",
+      "raceId": "dragon"
+    },
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 15,
+            "spAttack": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sixHarmonies",
+    "requires": [
+      {
+        "type": "distinctElements",
+        "count": 6
+      }
+    ],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 12,
+            "spDefense": 12
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fiveElements",
+    "requires": [
+      {
+        "type": "elements",
+        "elementIds": ["fire", "water", "grass", "steel", "ground"]
+      }
+    ],
+    "hooks": [
+      {
+        "type": "statLowerImmunity",
+        "params": {
+          "stats": "all"
+        }
+      }
+    ]
+  }
+]

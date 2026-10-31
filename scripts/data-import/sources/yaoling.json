@@ -1,0 +1,4171 @@
+{
+  "source": "yaoling",
+  "origin": "fantasy",
+  "update": {
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Moustrike",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ratzor",
+          "level": 10
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ratzor",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Rodenja",
+          "level": 32
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rodenja",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Shadowtail",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bunbow",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Herbunny",
+          "level": 8
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Herbunny",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Florbunny",
+          "level": 28
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Florbunny",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Terrigaze",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Rockoon",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Chukoon",
+          "level": 12
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Chukoon",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Rekkoon",
+          "level": 33
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rekkoon",
+      "elements": ["normal", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Grinhurl",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Muzzlewack",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Barktooth",
+          "level": 9
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Barktooth",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Clubfang",
+          "level": 40
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Clubfang",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rictushriek",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Lurkwulf",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Bandiwulf",
+          "level": 20
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Bandiwulf",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Wulfgang",
+          "level": 38
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Wulfgang",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Dreadprawl",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Zpear",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lizpear",
+          "level": 14
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lizpear",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Lizgard",
+          "level": 34
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lizgard",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Wraithlash",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Lume",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lumina",
+          "level": 12
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lumina",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Owlumina",
+          "level": 35
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Owlumina",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Noculipse",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Duskit",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Duskat",
+          "level": 15
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Duskat",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Artepuss",
+          "level": 38
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Artepuss",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Umbravix",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Keenine",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Howledge",
+          "level": 15
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Howledge",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Shroudfang",
+          "level": 36
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Shroudfang",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ravedge",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bax",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Rushorn",
+          "level": 28
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rushorn",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Quakehorn",
+          "level": 48
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Quakehorn",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Doomhorn",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Floop",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Fronderer",
+          "level": 16
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Fronderer",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Vigilantoad",
+          "level": 37
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vigilantoad",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scarleapt",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Crowlet",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Phancrow",
+          "level": 18
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Phancrow",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Brimwing",
+          "level": 42
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Brimwing",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Crowlamity",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Swotter",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Meditott",
+          "level": 28
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Meditott",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Otterzen",
+          "level": 46
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Otterzen",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rakshott",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Cinderkit",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Kitzember",
+          "level": 20
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Kitzember",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Flamenix",
+          "level": 42
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Flamenix",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vixtress",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Pangoling",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Panguardin",
+          "level": 36
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Panguardin",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Pangocoil",
+          "level": 55
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pangocoil",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Marrogash",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Laventot",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lavenfly",
+          "level": 11
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lavenfly",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Lavenqueen",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lavenqueen",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Flamender",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Mosswisp",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pedalmoth",
+          "level": 18
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pedalmoth",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Mossokis",
+          "level": 42
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Mossokis",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Mesmermoz",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Mintling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Changling",
+          "level": 21
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Changling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Cointaur",
+          "level": 36
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cointaur",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Mormetal",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Scorplune",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Analune",
+          "level": 22
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Analune",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Anuyi",
+          "level": 35
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Anuyi",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Anula",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Seeper",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lashsprout",
+          "level": 21
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lashsprout",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Inscyther",
+          "level": 32
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Inscyther",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Reaploom",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Shockle",
+      "elements": ["electric", "normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Voltzard",
+          "level": 17
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Voltzard",
+      "elements": ["electric", "normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Zapsilisk",
+          "level": 36
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Zapsilisk",
+      "elements": ["electric", "normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Malvanic",
+      "elements": ["electric", "normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Battusk",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Vampwing",
+          "level": 17
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vampwing",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Nocula",
+          "level": 29
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Nocula",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Fangraze",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Rattlesong",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Serpentune",
+          "level": 36
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Serpentune",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Toxithrall",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Toxithrall",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cursela",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Salachid",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Serepent",
+          "level": 22
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Serepent",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Vespernox",
+          "level": 43
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vespernox",
+      "elements": ["poison", "light"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Malivoo",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Cuttodile",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Cleaverdile",
+          "level": 19
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cleaverdile",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Crocovile",
+          "level": 42
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Crocovile",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Massacroc",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Rhinebeat",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Rhinebrate",
+          "level": 22
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rhinebrate",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Rhinegong",
+          "level": 34
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rhinegong",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Infernus",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Lullahorn",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Songhorn",
+          "level": 22
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Songhorn",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Baalody",
+          "level": 37
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Baalody",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Sedusa",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Galestride",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Rumbstead",
+          "level": 21
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rumbstead",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Gallopurge",
+          "level": 38
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Gallopurge",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Samurampt",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Drifpine",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Quillguard",
+          "level": 17
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Quillguard",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Hedgemon",
+          "level": 33
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Hedgemon",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ferropale",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Grimpaw",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Tilash",
+          "level": 23
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Tilash",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Noxsho",
+          "level": 35
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Noxsho",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cynigash",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Clubcub",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Polarmace",
+          "level": 21
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Polarmace",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Ursalanche",
+          "level": 28
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ursalanche",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Tedditerror",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Arruda",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Aruhadi",
+          "level": 20
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Aruhadi",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Sirius",
+          "level": 41
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Sirius",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Sinrudis",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Yaka",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Yaken",
+          "level": 21
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yaken",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Yakuro",
+          "level": 39
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yakuro",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Fiendstead",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bobo",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Moco",
+          "level": 12
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Moco",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Shalo",
+          "level": 26
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Shalo",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vexo",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Masstiff",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gigantiff",
+          "level": 38
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Gigantiff",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Colostiff",
+          "level": 52
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Colostiff",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Masterror",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Droplet",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Narcinie",
+          "level": 35
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Narcinie",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Aquora",
+          "level": 47
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Aquora",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Byssbloom",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Poshell",
+      "elements": ["fire", "light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Shelchemy",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Shelchemy",
+      "elements": ["fire", "light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Elixishell",
+          "level": 66
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Elixishell",
+      "elements": ["fire", "light"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Venomper",
+      "elements": ["fire", "light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Spearfin",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Tridefin",
+          "level": 36
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Tridefin",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Ripplance",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ripplance",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Mawserrate",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bubber",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gurglio",
+          "level": 22
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Gurglio",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Reinkoil",
+          "level": 37
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Reinkoil",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Achermaw",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bubliss",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Melochat",
+          "level": 38
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Melochat",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Achorus",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Achorus",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Sirena",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Gunster",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Shelgun",
+          "level": 38
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Shelgun",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Cannonlob",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cannonlob",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scorchrack",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Crabrock",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Rockrab",
+          "level": 27
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rockrab",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Drillpinch",
+          "level": 49
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Drillpinch",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Moltcan",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Lotsy",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lolla",
+          "level": 27
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lolla",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Lotmosa",
+          "level": 49
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lotmosa",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Nyxsa",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Orby",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Icephere",
+          "level": 27
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Icephere",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Blizzball",
+          "level": 44
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Blizzball",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Glacieraith",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Boltee",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Shocklass",
+          "level": 23
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Shocklass",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Jestricity",
+          "level": 40
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Jestricity",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Harlewatt",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Songcada",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Serenada",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Serenada",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Eternica",
+          "level": 46
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Eternica",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Enchantress",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Wandersun",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Brawlersun",
+          "level": 48
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Brawlersun",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Domisun",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Domisun",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Wu Kong",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Fawnduo",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Retaineer",
+          "level": 43
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Retaineer",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Adepdoe",
+          "level": 52
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Adepdoe",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Inferdoe",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Pawnda",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Panbrawl",
+          "level": 44
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Panbrawl",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Pandover",
+          "level": 55
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pandover",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pandevil",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Scaleaf",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Vinecoil",
+          "level": 56
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vinecoil",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Vergalia",
+          "level": 67
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vergalia",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Hellthorn",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Weavy",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Spinnit",
+          "level": 49
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Spinnit",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Danseama",
+          "level": 59
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Danseama",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Arachloom",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Whippy",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Whuppa",
+          "level": 49
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Whuppa",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Whipstache",
+          "level": 59
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Whipstache",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Fettermaw",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Shask",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Spectrask",
+          "level": 52
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Spectrask",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Masqueraith",
+          "level": 63
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Masqueraith",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Wraithstress",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Duskeen",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Scentinel",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scentinel",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Nocturoam",
+          "level": 59
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Nocturoam",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Stygifang",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Lingeraze",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pupisight",
+          "level": 55
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pupisight",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Seekerite",
+          "level": 65
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Seekerite",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Liegeling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Totodd",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Totanger",
+          "level": 52
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Totanger",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Emotem",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Emotem",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Malevotem",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Lanty",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lampid",
+          "level": 54
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lampid",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Lumicarp",
+          "level": 64
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lumicarp",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lampdra",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Roslet",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Bloomaid",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Bloomaid",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Florstress",
+          "level": 57
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Florstress",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Carnitress",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Seallu",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pineseal",
+          "level": 58
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pineseal",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Sealighten",
+          "level": 64
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Sealighten",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Necroseal",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Jatu",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pilikal",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pilikal",
+      "elements": ["normal", "light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Jakalace",
+          "level": 61
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Jakalace",
+      "elements": ["normal", "light"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Tyrakal",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Plateling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Guarmetal",
+          "level": 39
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Guarmetal",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Wardendure",
+          "level": 56
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Wardendure",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Religeist",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bangbang",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Boomboom",
+          "level": 50
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Boomboom",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Dongdong",
+          "level": 62
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Dongdong",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Doomdoom",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Astar",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Stellux",
+          "level": 57
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Stellux",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Aegistelle",
+          "level": 64
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Aegistelle",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Aegisvex",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Wanny",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Cresenla",
+          "level": 40
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cresenla",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Celesprita",
+          "level": 58
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Celesprita",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Celenyx",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Poundor",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Crusheron",
+          "level": 56
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Crusheron",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Malletmaw",
+          "level": 66
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Malletmaw",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Malstrum",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Senzor",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Furend",
+          "level": 47
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Furend",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Excaladin",
+          "level": 65
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Excaladin",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Durandoom",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Bungo",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Vagabun",
+          "level": 12
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vagabun",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Harogue",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Harogue",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Vorbane",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Flenny",
+      "elements": ["fire", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Foxire",
+          "level": 12
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Foxire",
+      "elements": ["fire", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Furniere",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Furniere",
+      "elements": ["fire", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pyravix",
+      "elements": ["fire", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Meep",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Merlaw",
+          "level": 12
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Merlaw",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Merking",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Merking",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Abysseer",
+      "elements": ["ice", "dark"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Tifur",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Tigrunt",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Tigrunt",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Khanger",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Khanger",
+      "elements": ["fire", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Khan of Flames",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Wyrmy",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Scalyx",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scalyx",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Eysdrax",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Eysdrax",
+      "elements": ["poison", "light"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Thousand-Gaze",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Frosly",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Galie",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Galie",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Alluair",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Alluair",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ninetails",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Tunie",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lyrotun",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lyrotun",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Axeman",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Axeman",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Rocklorde",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Cardiling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Scarpy",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scarpy",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Solcrow",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Solcrow",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Raven",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Didi",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Mecha Bird",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Methy",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Crystara",
+          "level": 57
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Crystara",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Bodora",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Naplin",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lilybra",
+          "level": 37
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lilybra",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Dreamara",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Plouse",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Tillamole",
+          "level": 58
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Tillamole",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Zapling",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Boltdra",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Boltdra",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Skeledra",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Zotten*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Zowu*",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Zowu*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Dark Zowu*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Luplaze*",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Wulfury*",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Wulfury*",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Glimdeer*",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Felyra*",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Felyrus*",
+          "level": 57
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Felyrus*",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Solkin*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Umbradur*",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Umbradur*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Emervix*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lynxia*",
+          "level": 61
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Lynxia*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Myrxia*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Goose*",
+      "elements": ["flying"],
+      "raceId": "waterfowl",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "King Goose*",
+          "level": 53
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "King Goose*",
+      "elements": ["flying"],
+      "raceId": "waterfowl",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ghoulse*",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Cottender",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Flufflin",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Flufflin",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Duun",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Terratress",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Terratress",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Brikeep",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Bouldifort",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Bouldifort",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Prikkle",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Scorvern",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scorvern",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Punchure",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pricklout",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pricklout",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yaki",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Yaksha",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yaksha",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Pyrehelm",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Swifful",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Volticon",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Volticon",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Verdicrest",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Spectling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Swordling",
+          "level": 72
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Swordling",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Boltling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Daggerling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Clamira",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Miraby",
+          "level": 30
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Miraby",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Phamirling",
+          "level": 60
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Phamirling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Angemira",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Shyne",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Axilight",
+          "level": 71
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Axilight",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Raijaw*",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Fulguraze*",
+          "level": 57
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Fulguraze*",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Spiritad*",
+      "elements": ["poison", "light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Swamprog*",
+          "level": 81
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Swamprog*",
+      "elements": ["poison", "light"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Bullgrog*",
+      "elements": ["poison", "light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Inkling",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Smogra",
+          "level": 82
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Smogra",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Obscura",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Scribby",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Brushira",
+          "level": 83
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Brushira",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Quillora",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Fluffale*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Whaletan*",
+          "level": 84
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Whaletan*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Talox",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Grittalon",
+          "level": 81
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Grittalon",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Glacryn",
+      "elements": ["ice", "steel"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Finette",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Marisette",
+          "level": 82
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Marisette",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Serafinn",
+      "elements": ["fire", "electric"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Barrix*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Barraxus*",
+          "level": 80
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Barraxus*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Peckon",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Farragon",
+          "level": 85
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Farragon",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Drymara",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Crystarrow",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Crystilade",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Stalaknight",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Oomy*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ossa",
+          "level": 45
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ossa",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ribelle",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ossara",
+          "level": 80
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Ossara",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Usandra",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Syribee",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Buzzelle",
+          "level": 32
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Buzzelle",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Buzzap",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Sitton*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gravold*",
+          "level": 40
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Gravold*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Relitomb*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Demon Yaoling"
+    },
+    {
+      "name": "Gruburn*",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scorchion",
+      "elements": ["fire", "light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Fiary",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Flamora",
+          "level": 92
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Flamora",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Magmote",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Magmight",
+          "level": 92
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Magmight",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Molgron*",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Cutfinch",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Razoril",
+          "level": 61
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Razoril",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Erops",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Unta",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Scorvalon",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yumew*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Yinzo*",
+          "level": 98
+        }
+      ],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yinzo*",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Yaoling"
+    },
+    {
+      "name": "Yuza",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Yaoling"
+    }
+  ]
+}

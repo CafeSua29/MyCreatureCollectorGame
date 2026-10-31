@@ -1,0 +1,1036 @@
+[
+  {
+    "id": "clear",
+    "layer": "weather",
+    "hooks": []
+  },
+  {
+    "id": "none",
+    "layer": "terrain",
+    "hooks": []
+  },
+  {
+    "id": "rain",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["water"],
+          "multiplier": 1.5
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 0.5
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "sun",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 1.5
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["water"],
+          "multiplier": 0.5
+        }
+      },
+      {
+        "type": "blockStatus",
+        "params": {
+          "statusIds": ["freeze"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "sandstorm",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 6.25,
+          "immuneElementIds": ["rock", "ground", "steel"]
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "spDefense",
+          "multiplier": 1.5,
+          "elementIds": ["rock"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "snow",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "defense",
+          "multiplier": 1.5,
+          "elementIds": ["ice"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "fog",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 0.85
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "grassyTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["grass"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "turnEndHeal",
+        "params": {
+          "percent": 6.25,
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "electricTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["electric"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "blockStatus",
+        "params": {
+          "statusIds": ["sleep"],
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "mistyTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["dragon"],
+          "multiplier": 0.5,
+          "grounded": "defender"
+        }
+      },
+      {
+        "type": "blockStatus",
+        "params": {
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "psychicTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["psychic"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "blizzard",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["ice"],
+          "multiplier": 1.3
+        }
+      },
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 0.9,
+          "exceptElementIds": ["ice"]
+        }
+      },
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 6.25,
+          "immuneElementIds": ["ice"]
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "defense",
+          "multiplier": 1.5,
+          "elementIds": ["ice"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "thunderstorm",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["water", "electric"],
+          "multiplier": 1.3
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 0.7
+        }
+      },
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 1.2,
+          "elementIds": ["electric"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "strongWinds",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["flying"],
+          "multiplier": 1.3
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 1.2,
+          "elementIds": ["flying"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "heavyRain",
+    "layer": "weather",
+    "actsAs": ["rain"],
+    "primal": true,
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["water"],
+          "multiplier": 1.5
+        }
+      },
+      {
+        "type": "blockElementSkills",
+        "params": {
+          "elementIds": ["fire"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "harshSunlight",
+    "layer": "weather",
+    "actsAs": ["sun"],
+    "primal": true,
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 1.5
+        }
+      },
+      {
+        "type": "blockElementSkills",
+        "params": {
+          "elementIds": ["water"]
+        }
+      },
+      {
+        "type": "blockStatus",
+        "params": {
+          "statusIds": ["freeze"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mysteriousWinds",
+    "layer": "weather",
+    "primal": true,
+    "hooks": [
+      {
+        "type": "neutralizeWeakness",
+        "params": {
+          "elementIds": ["flying"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ashfall",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 1.2
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["grass"],
+          "multiplier": 0.8
+        }
+      },
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 0.9,
+          "exceptElementIds": ["fire", "ground"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "toxicMiasma",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["poison"],
+          "multiplier": 1.3
+        }
+      },
+      {
+        "type": "turnEndStatusChance",
+        "params": {
+          "statusId": "poison",
+          "chance": 10,
+          "immuneElementIds": ["poison", "steel"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "darkness",
+    "layer": "weather",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["dark", "ghost"],
+          "multiplier": 1.3
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["light"],
+          "multiplier": 0.7
+        }
+      },
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 0.9,
+          "exceptElementIds": ["dark", "ghost"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "volcanicTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 6.25,
+          "immuneElementIds": ["fire"],
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "swampTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["poison"],
+          "multiplier": 1.2,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 0.75,
+          "exceptElementIds": ["water", "poison", "grass"],
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "frozenGround",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["ice"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 0.75,
+          "exceptElementIds": ["ice"],
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "deepWater",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["water"],
+          "multiplier": 1.3
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 0.7
+        }
+      },
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 0.75,
+          "exceptElementIds": ["water"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "cursedGround",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["ghost", "dark"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "healMultiplier",
+        "params": {
+          "multiplier": 0.5,
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "holyGround",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["light", "fairy"],
+          "multiplier": 1.3,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["ghost", "dark"],
+          "multiplier": 0.7,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "blockStatus",
+        "params": {
+          "statusIds": ["poison", "badPoison"],
+          "grounded": true
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "crystalTerrain",
+    "layer": "terrain",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["psychic", "rock"],
+          "multiplier": 1.2,
+          "grounded": "attacker"
+        }
+      },
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 1.1,
+          "categories": ["status"]
+        }
+      }
+    ],
+    "duration": 5
+  },
+  {
+    "id": "reflect",
+    "layer": "side",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "damageTakenMultiplier",
+        "params": {
+          "categories": ["physical"],
+          "multiplier": 0.5,
+          "allyMultiplier": 0.6669921875
+        }
+      }
+    ]
+  },
+  {
+    "id": "lightScreen",
+    "layer": "side",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "damageTakenMultiplier",
+        "params": {
+          "categories": ["special"],
+          "multiplier": 0.5,
+          "allyMultiplier": 0.6669921875
+        }
+      }
+    ]
+  },
+  {
+    "id": "auroraVeil",
+    "layer": "side",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "damageTakenMultiplier",
+        "params": {
+          "categories": ["physical", "special"],
+          "multiplier": 0.5,
+          "allyMultiplier": 0.6669921875
+        }
+      }
+    ]
+  },
+  {
+    "id": "tailwind",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "safeguard",
+    "layer": "side",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "blockStatus",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "mist",
+    "layer": "side",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "blockStatLower",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "seaOfFire",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 12.5,
+          "immuneElementIds": ["fire"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spikes",
+    "layer": "side",
+    "maxLayers": 3,
+    "hooks": [
+      {
+        "type": "entryDamage",
+        "params": {
+          "percentByLayer": [12.5, 16.666666666666668, 25],
+          "grounded": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "stealthRock",
+    "layer": "side",
+    "hooks": [
+      {
+        "type": "entryDamage",
+        "params": {
+          "percentByLayer": [12.5],
+          "elementId": "rock"
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxicSpikes",
+    "layer": "side",
+    "maxLayers": 2,
+    "hooks": [
+      {
+        "type": "entryStatus",
+        "params": {
+          "statusIdByLayer": ["poison", "badPoison"],
+          "grounded": true,
+          "absorbedByElementIds": ["poison"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "stickyWeb",
+    "layer": "side",
+    "hooks": [
+      {
+        "type": "entryStage",
+        "params": {
+          "stat": "speed",
+          "delta": -1,
+          "grounded": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "trickRoom",
+    "layer": "room",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "reverseSpeedOrder",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "wonderRoom",
+    "layer": "room",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "swapDefenses",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "gravity",
+    "layer": "room",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "forceGrounded",
+        "params": {
+          "removesImmunityFromElementIds": ["ground"]
+        }
+      },
+      {
+        "type": "banSkills",
+        "params": {
+          "skillIds": [
+            "bounce",
+            "fly",
+            "flyingPress",
+            "highJumpKick",
+            "jumpKick",
+            "skyDrop",
+            "splash",
+            "magnetRise",
+            "telekinesis"
+          ]
+        }
+      },
+      {
+        "type": "accuracyMultiplier",
+        "params": {
+          "multiplier": 1.6666666666666667
+        }
+      }
+    ]
+  },
+  {
+    "id": "mudSport",
+    "layer": "room",
+    "duration": 5,
+    "onReuse": "refresh",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["electric"],
+          "multiplier": 0.33
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterSport",
+    "layer": "room",
+    "duration": 5,
+    "onReuse": "refresh",
+    "hooks": [
+      {
+        "type": "elementDamageMultiplier",
+        "params": {
+          "elementIds": ["fire"],
+          "multiplier": 0.33
+        }
+      }
+    ]
+  },
+  {
+    "id": "ionDeluge",
+    "layer": "room",
+    "duration": 1,
+    "onReuse": "refresh",
+    "hooks": [
+      {
+        "type": "convertElement",
+        "params": {
+          "fromElementIds": ["normal"],
+          "elementId": "electric"
+        }
+      }
+    ]
+  },
+  {
+    "id": "fairyLock",
+    "layer": "room",
+    "duration": 2,
+    "onReuse": "refresh",
+    "hooks": [
+      {
+        "type": "preventEscape",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "luckyChant",
+    "layer": "side",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "blockCritical",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "quickGuard",
+    "layer": "side",
+    "duration": 1,
+    "hooks": [
+      {
+        "type": "protectFrom",
+        "params": {
+          "minPriority": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "wideGuard",
+    "layer": "side",
+    "duration": 1,
+    "hooks": [
+      {
+        "type": "protectFrom",
+        "params": {
+          "targets": ["allEnemies"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "craftyShield",
+    "layer": "side",
+    "duration": 1,
+    "hooks": [
+      {
+        "type": "protectFrom",
+        "params": {
+          "categories": ["status"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "matBlock",
+    "layer": "side",
+    "duration": 1,
+    "hooks": [
+      {
+        "type": "protectFrom",
+        "params": {
+          "categories": ["physical", "special"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "magicRoom",
+    "layer": "room",
+    "duration": 5,
+    "hooks": [
+      {
+        "type": "disableHeldItems",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "happyHour",
+    "layer": "side",
+    "hooks": [
+      {
+        "type": "moneyMultiplier",
+        "params": {
+          "multiplier": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "rainbow",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "secondaryChance",
+        "params": {
+          "multiplier": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "swamp",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "statMultiplier",
+        "params": {
+          "stat": "speed",
+          "multiplier": 0.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "gmaxVineLash",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 16.67,
+          "immuneElementIds": ["grass"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "gmaxWildfire",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 16.67,
+          "immuneElementIds": ["fire"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "gmaxCannonade",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 16.67,
+          "immuneElementIds": ["water"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "gmaxVolcalith",
+    "layer": "side",
+    "duration": 4,
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 16.67,
+          "immuneElementIds": ["rock"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "gmaxSteelsurge",
+    "layer": "side",
+    "hooks": [
+      {
+        "type": "entryDamage",
+        "params": {
+          "percentByLayer": [12.5],
+          "elementId": "steel"
+        }
+      }
+    ]
+  }
+]

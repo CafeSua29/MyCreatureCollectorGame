@@ -1,0 +1,435 @@
+// Kiểm tra một quái so với dữ liệu game (loài, trait, skill, shiny, ô trait...).
+
+import { traitSlotCap } from './awakening'
+import { skillCapacity } from './humanForm'
+import { checkShinyConsistency } from './shiny'
+import { isGenderlessSpecies } from './gender'
+import { validateStatuses } from './status'
+import {
+  ABILITY_SLOTS,
+  GENDERS,
+  STAT_NAMES,
+  HUMAN_FORM_STATES,
+  TACTICS,
+  TRANSFORM_KINDS,
+  TRAIT_KIND_RULES,
+  usesTraitSlot,
+  type GameData,
+  type Monster,
+  type NormalSpecies
+} from '../model'
+import {
+  asObject,
+  checkBig,
+  checkInteger,
+  checkNumber,
+  DataError,
+  memoInReadOnlyScope
+} from '../shared'
+import { checkElementIds, isTeraElement } from '../gameData'
+import { isBookableSkill, validateEquippedItems } from '../inventory'
+import { canHaveGmaxFactor } from './forms'
+import { checkLifeFields } from './life'
+import { validateHistory } from './history'
+import { validateImprint } from './imprint'
+import { validateSkillMastery } from './mastery'
+import { validateTalentRanks } from './talents'
+import { validateSpiritVirus } from './spiritVirus'
+
+/** Object chỉ số → số nguyên ≥ 0 (cấp hồn tinh, điểm nỗ lực). */
+function checkCountStats(value: unknown, field: string): string[] {
+  const stats = asObject(value)
+  if (!stats) return [`${field} phải là object chỉ số → số nguyên`]
+  return STAT_NAMES.flatMap((stat) => checkInteger(stats[stat], `${field}.${stat}`, 0))
+}
+
+/** Trả về loài cung cấp chỉ số gốc của quái, hoặc undefined nếu không hợp lệ. */
+export function getBaseSpecies(data: GameData, monster: Monster): NormalSpecies | undefined {
+  const species = data.species[monster.baseSpeciesId]
+  return species?.kind === 'normal' ? species : undefined
+}
+
+/**
+ * Trường biến hình của quái (mục "Biến hình trong trận"): hệ Tera, Gmax Factor (chỉ loài mang được;
+ * quái fuse giữ cờ cũ), cấp Dynamax, biến hình đang có trong trận.
+ */
+function checkTransformFields(
+  data: GameData,
+  monster: Monster,
+  at: (field: string) => string
+): string[] {
+  const issues: string[] = []
+  if (!isTeraElement(data, monster.teraElementId)) {
+    issues.push(`${at('teraElementId')}: hệ Tera không hợp lệ "${String(monster.teraElementId)}"`)
+  }
+  const fixedTera = data.species[monster.speciesId]
+  if (
+    fixedTera?.kind === 'normal' &&
+    fixedTera.teraElementId !== undefined &&
+    monster.teraElementId !== fixedTera.teraElementId
+  ) {
+    issues.push(`${at('teraElementId')}: loài "${fixedTera.id}" có hệ Tera cố định`)
+  }
+  if (typeof monster.gmaxFactor !== 'boolean') {
+    issues.push(`${at('gmaxFactor')} phải là boolean`)
+  } else if (monster.gmaxFactor && !monster.fused && !canHaveGmaxFactor(data, monster.speciesId)) {
+    issues.push(`${at('gmaxFactor')}: loài "${monster.speciesId}" không mang được Gmax Factor`)
+  }
+  issues.push(...checkInteger(monster.dynamaxLevel, at('dynamaxLevel'), 0))
+  if (Number.isSafeInteger(monster.dynamaxLevel)) {
+    const { maxLevel } = data.config.transform.dynamax
+    if (monster.dynamaxLevel > maxLevel) {
+      issues.push(`${at('dynamaxLevel')} tối đa ${maxLevel}, nhận ${monster.dynamaxLevel}`)
+    }
+  }
+  if (monster.battleTransform !== undefined) {
+    issues.push(...checkBattleTransform(data, monster.battleTransform, at('battleTransform')))
+  }
+  if (monster.battleForm !== undefined) {
+    issues.push(...checkBattleForm(data, monster.battleForm, at('battleForm')))
+  }
+  return issues
+}
+
+/** Dạng trong trận (docs/rules/battle-forms.md): loài dạng battleOnly tồn tại, hệ gốc hợp lệ. */
+function checkBattleForm(data: GameData, value: unknown, path: string): string[] {
+  const form = asObject(value)
+  if (!form) return [`${path} không hợp lệ`]
+  const issues: string[] = []
+  const species = typeof form.speciesId === 'string' ? data.species[form.speciesId] : undefined
+  if (species?.kind !== 'normal' || species.formKind !== 'battleOnly') {
+    issues.push(`${path}.speciesId: không phải dạng trong trận "${String(form.speciesId)}"`)
+  }
+  checkElementIds(data, form.originalElementIds, `${path}.originalElementIds`, issues)
+  if (form.untilLeave !== undefined && form.untilLeave !== true) {
+    issues.push(`${path}.untilLeave chỉ được là true`)
+  }
+  return issues
+}
+
+/** Biến hình trong trận: loại hợp lệ, dạng / hệ Tera tồn tại, hệ gốc hợp lệ, số lượt nguyên ≥ 0. */
+function checkBattleTransform(data: GameData, value: unknown, path: string): string[] {
+  const transform = asObject(value)
+  if (!transform) return [`${path} không hợp lệ`]
+  const issues: string[] = []
+  if (!TRANSFORM_KINDS.some((kind) => kind === transform.kind)) {
+    issues.push(`${path}.kind phải là một trong ${TRANSFORM_KINDS.join(', ')}`)
+  }
+  const form = transform.formSpeciesId
+  if (form !== undefined && (typeof form !== 'string' || data.species[form]?.kind !== 'normal')) {
+    issues.push(`${path}.formSpeciesId: loài không tồn tại "${String(form)}"`)
+  }
+  if (transform.teraElementId !== undefined && !isTeraElement(data, transform.teraElementId)) {
+    issues.push(`${path}.teraElementId không hợp lệ "${String(transform.teraElementId)}"`)
+  }
+  checkElementIds(data, transform.originalElementIds, `${path}.originalElementIds`, issues)
+  if (transform.turnsLeft !== undefined) {
+    issues.push(...checkInteger(transform.turnsLeft, `${path}.turnsLeft`, 0))
+  }
+  if (transform.ended !== undefined && transform.ended !== true) {
+    issues.push(`${path}.ended chỉ được là true`)
+  }
+  const boosted = transform.stellarBoostedElementIds
+  if (boosted !== undefined) {
+    checkElementIds(data, boosted, `${path}.stellarBoostedElementIds`, issues)
+  }
+  issues.push(...checkMergeFields(data, transform, path))
+  return issues
+}
+
+/**
+ * Trường hợp thể (docs/rules/battle-merge.md): chỉ loại `merge`; quái chính mang bản chụp quái phụ
+ * hợp lệ (không biến hình) và ô của nó, quái phụ mang id quái chính; không có cả hai.
+ */
+function checkMergeFields(
+  data: GameData,
+  transform: Record<string, unknown>,
+  path: string
+): string[] {
+  const { mergePartner, mergedIntoId } = transform
+  if (mergePartner === undefined && mergedIntoId === undefined) return []
+  if (transform.kind !== 'merge') return [`${path}: trường hợp thể chỉ có ở biến hình "merge"`]
+  if (mergePartner !== undefined && mergedIntoId !== undefined) {
+    return [`${path}: không thể vừa là quái chính vừa là quái phụ hợp thể`]
+  }
+  if (mergedIntoId !== undefined) {
+    return typeof mergedIntoId === 'string' && mergedIntoId !== ''
+      ? []
+      : [`${path}.mergedIntoId phải là id quái`]
+  }
+  const partner = asObject(mergePartner)
+  if (!partner) return [`${path}.mergePartner không hợp lệ`]
+  const issues = checkInteger(partner.slot, `${path}.mergePartner.slot`, 0)
+  const monster = asObject(partner.monster)
+  if (!monster) return [...issues, `${path}.mergePartner.monster không hợp lệ`]
+  if (monster.battleTransform !== undefined) {
+    issues.push(`${path}.mergePartner.monster không được đang biến hình`)
+  }
+  // Đã kiểm tra là object; validateMonster tự kiểm tra từng trường.
+  issues.push(
+    ...validateMonster(data, monster as unknown as Monster, `${path}.mergePartner.monster`)
+  )
+  return issues
+}
+
+/** Bộ chỉ số Decimal (gen, fusingBonusStats): mọi chỉ số hữu hạn ≥ min. */
+export function checkBigStats(value: unknown, where: string, min: number): string[] {
+  const stats = asObject(value)
+  if (!stats) return [`${where}: thiếu bộ chỉ số`]
+  return STAT_NAMES.flatMap((stat) => checkBig(stats[stat], `${where}.${stat}`, min))
+}
+
+/**
+ * Kiểm tra một quái so với dữ liệu game. Trả về danh sách lỗi; rỗng nếu hợp lệ.
+ * `path` (ví dụ "party[0]") được ghép vào thông báo để chỉ rõ trường lỗi ("party[0].genes.attack").
+ */
+export function validateMonster(data: GameData, monster: Monster, path = ''): string[] {
+  const issues: string[] = []
+  const { config } = data
+  // Tên trường đầy đủ, ví dụ "party[0].genes". Lỗi của trường dùng tên này nên đã đủ đường dẫn.
+  const at = (field: string): string => (path ? `${path}.${field}` : field)
+  // Lỗi không gắn với một trường cụ thể: thêm tiền tố "party[0]: ".
+  const addIssue = (...messages: string[]): void => {
+    for (const message of messages) issues.push(path ? `${path}: ${message}` : message)
+  }
+
+  if (typeof monster.id !== 'string' || monster.id === '') addIssue('thiếu id')
+  if (monster.nickname !== null) {
+    if (
+      typeof monster.nickname !== 'string' ||
+      monster.nickname.trim() !== monster.nickname ||
+      monster.nickname === '' ||
+      [...monster.nickname].length > config.maxNicknameLength
+    ) {
+      addIssue(
+        `biệt danh phải là null hoặc chuỗi đã cắt khoảng trắng, 1–${config.maxNicknameLength} ký tự`
+      )
+    }
+  }
+
+  const species = data.species[monster.speciesId]
+  if (!species) {
+    addIssue(`loài không tồn tại "${monster.speciesId}"`)
+  } else if (monster.fused && monster.speciesId !== config.fusedSpeciesId) {
+    addIssue(`quái fuse phải có speciesId "${config.fusedSpeciesId}"`)
+  } else if (!monster.fused && species.kind !== 'normal') {
+    addIssue(`quái chưa fuse không được dùng loài "${monster.speciesId}"`)
+  }
+  if (!getBaseSpecies(data, monster)) {
+    addIssue(`baseSpeciesId "${monster.baseSpeciesId}" phải là loài thường tồn tại`)
+  }
+  if (!monster.fused && monster.baseSpeciesId !== monster.speciesId) {
+    addIssue('quái chưa fuse phải có baseSpeciesId bằng speciesId')
+  }
+  if (!monster.fused && monster.lineage.length > 0) {
+    addIssue('quái chưa fuse không được có lineage')
+  }
+  for (const speciesId of monster.lineage) {
+    if (data.species[speciesId]?.kind !== 'normal') {
+      addIssue(`lineage chứa loài không hợp lệ "${speciesId}"`)
+    }
+  }
+
+  if (!(monster.raceId in data.races)) addIssue(`race không tồn tại "${monster.raceId}"`)
+  checkElementIds(data, monster.elementIds, at('elementIds'), issues)
+
+  issues.push(...checkInteger(monster.level, at('level'), 1))
+  issues.push(...checkBig(monster.exp, at('exp'), 0))
+  if (!GENDERS.includes(monster.gender)) {
+    addIssue(`gender không hợp lệ "${monster.gender}"`)
+  } else if ((monster.gender === 'none') !== isGenderlessSpecies(data, monster.baseSpeciesId)) {
+    // Loài gốc (baseSpeciesId) quyết định: quái fuse lấy giới tính của quái gốc.
+    addIssue(
+      monster.gender === 'none'
+        ? `gender "none" chỉ dành cho loài không giới tính ("${monster.baseSpeciesId}")`
+        : `loài "${monster.baseSpeciesId}" không giới tính, gender phải là "none"`
+    )
+  }
+  issues.push(...checkBigStats(monster.genes, at('genes'), 1))
+  issues.push(...checkBigStats(monster.fusingBonusStats, at('fusingBonusStats'), 0))
+  issues.push(...checkInteger(monster.shinyStacks, at('shinyStacks'), 0))
+  issues.push(...checkNumber(monster.bossMultiplier, at('bossMultiplier'), 1))
+  issues.push(...checkBig(monster.damageTaken, at('damageTaken'), 0))
+  issues.push(...validateStatuses(data, monster.statuses, at('statuses')))
+  // Số ô cần tầng cao nhất của người chơi nên kiểm tra ở validateGameState.
+  issues.push(...validateEquippedItems(data, monster.equipment, at('equipment')))
+  // Max HP đổi trong trận (âm được): Decimal hữu hạn.
+  if (monster.battleMaxHpDelta !== undefined) {
+    issues.push(...checkBig(monster.battleMaxHpDelta, at('battleMaxHpDelta'), -Infinity))
+  }
+  issues.push(...checkTransformFields(data, monster, at))
+  issues.push(...checkLifeFields(data, monster, at))
+  issues.push(...validateHistory(data, monster.history, at('history')))
+  issues.push(...validateImprint(data, monster.imprint, at('imprint')))
+  issues.push(...checkInteger(monster.affinity, at('affinity'), 0))
+  if (Number.isSafeInteger(monster.affinity) && monster.affinity > data.config.affinity.max) {
+    issues.push(`${at('affinity')} tối đa ${data.config.affinity.max}, nhận ${monster.affinity}`)
+  }
+  issues.push(...checkInteger(monster.bossDefeats, at('bossDefeats'), 0))
+  // Thức tỉnh (docs/rules/awakening.md).
+  issues.push(...checkInteger(monster.awakening, at('awakening'), 0))
+  issues.push(...checkInteger(monster.injuryBattlesLeft, at('injuryBattlesLeft'), 0))
+  if (!(TACTICS as readonly unknown[]).includes(monster.tactic)) {
+    issues.push(`${at('tactic')} phải là ${TACTICS.join(' / ')}`)
+  }
+  // Việc của quái (docs/rules/expeditions.md): null hoặc thám hiểm (động phủ chưa làm).
+  if (monster.assignment !== null) {
+    const assignment = asObject(monster.assignment)
+    if (assignment?.kind === 'dwelling') {
+      issues.push(`${at('assignment')}: việc "dwelling" chưa hỗ trợ (chờ cave-dwelling.md)`)
+    } else if (assignment?.kind !== 'expedition' || typeof assignment.id !== 'string') {
+      issues.push(`${at('assignment')} phải là null hoặc { kind: "expedition", id }`)
+    }
+  }
+  // Hóa hình (docs/rules/human-form.md): nhân hình chỉ khi race cho hóa hình.
+  if (!(HUMAN_FORM_STATES as readonly unknown[]).includes(monster.humanForm)) {
+    issues.push(`${at('humanForm')} phải là ${HUMAN_FORM_STATES.join(' / ')}`)
+  } else if (monster.humanForm === 'human' && data.races[monster.raceId]?.humanForm === false) {
+    addIssue(`race "${monster.raceId}" không có nhân hình, humanForm không được là "human"`)
+  }
+  const { maxFailures } = config.awakening
+  if (
+    !Number.isSafeInteger(monster.tribulationFailures) ||
+    monster.tribulationFailures < 0 ||
+    monster.tribulationFailures > maxFailures
+  ) {
+    issues.push(`${at('tribulationFailures')} phải là số nguyên trong [0, ${maxFailures}]`)
+  }
+  if (typeof monster.natureId !== 'string' || !Object.hasOwn(data.natures, monster.natureId)) {
+    issues.push(`${at('natureId')}: tính cách không tồn tại "${String(monster.natureId)}"`)
+  }
+  issues.push(...validateSkillMastery(data, monster.skillMastery, at('skillMastery')))
+  // Hồn tinh (docs/rules/soul-levels.md): mỗi chỉ số một cấp nguyên ≥ 0.
+  issues.push(...checkCountStats(monster.soulLevels, at('soulLevels')))
+  // Điểm nỗ lực (docs/rules/effort-values.md): nguyên ≥ 0. Trần chỉ áp lúc nhận điểm, không kiểm ở
+  // đây để đổi trần trong config không làm hỏng save cũ.
+  issues.push(...checkCountStats(monster.effortValues, at('effortValues')))
+  issues.push(...validateSpiritVirus(monster.spiritVirus, at('spiritVirus')))
+  if (!(ABILITY_SLOTS as readonly unknown[]).includes(monster.abilitySlot)) {
+    issues.push(`${at('abilitySlot')} phải là ${ABILITY_SLOTS.join(' / ')}`)
+  }
+  issues.push(...validateTalentRanks(data, monster.talentRanks, at('talentRanks')))
+  if (monster.contractRealm !== null) {
+    issues.push(...checkInteger(monster.contractRealm, at('contractRealm'), 0))
+  }
+  issues.push(...checkInteger(monster.contractDays, at('contractDays'), 0))
+  if (monster.contractRealm === null && monster.contractDays !== 0) {
+    issues.push(`${at('contractDays')}: quái chưa khế ước phải là 0`)
+  }
+  // Bản mệnh thú (docs/rules/tamer.md): cờ boolean; số bản mệnh kiểm tra ở validateGameState.
+  if (typeof monster.bond !== 'boolean') issues.push(`${at('bond')} phải là boolean`)
+
+  if (!Array.isArray(monster.pendingSkillIds)) {
+    addIssue('pendingSkillIds phải là danh sách')
+  } else {
+    for (const skillId of monster.pendingSkillIds) {
+      if (!(skillId in data.skills)) addIssue(`skill chờ học không tồn tại "${skillId}"`)
+      if (monster.skillIds?.includes(skillId)) addIssue(`skill chờ học "${skillId}" đã biết`)
+    }
+    if (new Set(monster.pendingSkillIds).size !== monster.pendingSkillIds.length) {
+      addIssue('skill chờ học bị lặp')
+    }
+  }
+  if (!Array.isArray(monster.extraSkillIds)) {
+    addIssue('extraSkillIds phải là danh sách')
+  } else {
+    for (const skillId of monster.extraSkillIds) {
+      const skill = typeof skillId === 'string' ? data.skills[skillId] : undefined
+      if (!skill) addIssue(`skill ngoài learnset không tồn tại "${String(skillId)}"`)
+      else if (!isBookableSkill(data, skill)) {
+        addIssue(`skill ngoài learnset "${skillId}" không dạy được (chiêu Max / hợp kích)`)
+      }
+    }
+    if (new Set(monster.extraSkillIds).size !== monster.extraSkillIds.length) {
+      addIssue('skill ngoài learnset bị lặp')
+    }
+  }
+  if (!Array.isArray(monster.pendingEvolutionIds)) {
+    addIssue('pendingEvolutionIds phải là danh sách')
+  } else if (monster.pendingEvolutionIds.length > 0) {
+    const current = data.species[monster.speciesId]
+    const targets = current?.kind === 'normal' ? current.evolutions.map((e) => e.speciesId) : []
+    for (const speciesId of monster.pendingEvolutionIds) {
+      if (monster.fused || !targets.includes(speciesId)) {
+        addIssue(`hướng tiến hóa chờ chọn không hợp lệ "${speciesId}"`)
+      }
+    }
+  }
+
+  if (
+    !Array.isArray(monster.skillIds) ||
+    monster.skillIds.length === 0 ||
+    monster.skillIds.length > skillCapacity(data, monster)
+  ) {
+    addIssue(`cần từ 1 đến ${skillCapacity(data, monster)} skill`)
+  } else {
+    if (new Set(monster.skillIds).size !== monster.skillIds.length) addIssue('skill bị lặp')
+    for (const skillId of monster.skillIds) {
+      if (!(skillId in data.skills)) addIssue(`skill không tồn tại "${skillId}"`)
+      // Hợp kích kỹ chỉ dùng qua lệnh hợp kích của hai quái (docs/rules/team.md).
+      if (skillId in data.comboSkills) addIssue(`skill "${skillId}" là hợp kích kỹ`)
+    }
+  }
+
+  const seenTraits = new Set<string>()
+  const seenGroups = new Map<string, string>()
+  let usedSlots = 0
+  for (const { id, level } of monster.traits) {
+    const trait = data.traits[id]
+    if (!trait) {
+      addIssue(`trait không tồn tại "${id}"`)
+      continue
+    }
+    if (TRAIT_KIND_RULES[trait.kind].derived) {
+      addIssue(`trait "${id}" loại "${trait.kind}" suy ra từ dữ liệu, không được lưu trên quái`)
+      continue
+    }
+    if (seenTraits.has(id)) addIssue(`trait "${id}" bị lặp, phải gộp thành cấp cao hơn`)
+    seenTraits.add(id)
+    issues.push(...checkInteger(level, at(`traits.${id}.level`), 1))
+    if (usesTraitSlot(trait.kind)) usedSlots++
+    if (trait.exclusiveGroup !== undefined) {
+      const other = seenGroups.get(trait.exclusiveGroup)
+      if (other !== undefined && other !== id) {
+        addIssue(`trait "${other}" và "${id}" loại trừ nhau (nhóm ${trait.exclusiveGroup})`)
+      }
+      seenGroups.set(trait.exclusiveGroup, id)
+    }
+  }
+  if (Number.isSafeInteger(monster.shinyStacks)) {
+    addIssue(...checkShinyConsistency(data, monster))
+  }
+  for (const { id } of monster.traits) {
+    if (data.traits[id]?.kind === 'boss' && id !== config.boss.traitId) {
+      addIssue(`trait boss phải là "${config.boss.traitId}", không phải "${id}"`)
+    }
+  }
+  const { initial } = config.traitSlots
+  // Trần ô trait riêng của quái: tăng theo mốc ô trait thức tỉnh (docs/rules/awakening.md).
+  const max = Number.isSafeInteger(monster.awakening)
+    ? traitSlotCap(data, monster)
+    : config.traitSlots.max
+  if (
+    !Number.isSafeInteger(monster.traitSlots) ||
+    monster.traitSlots < initial ||
+    monster.traitSlots > max
+  ) {
+    issues.push(`${at('traitSlots')} phải là số nguyên trong [${initial}, ${max}]`)
+  }
+  const maxSlots = monster.traitSlots
+  if (usedSlots > maxSlots) addIssue(`dùng ${usedSlots} ô trait, tối đa ${maxSlots}`)
+
+  return issues
+}
+
+/** Như validateMonster nhưng ném DataError khi có lỗi. */
+export function assertValidMonster(data: GameData, monster: Monster): void {
+  // Trong phạm vi chỉ đọc quái không đổi: đã hợp lệ thì khỏi kiểm tra lại (mỗi lần tính chỉ số).
+  memoInReadOnlyScope(VALID_MONSTER_TABLE, [data, monster], () => {
+    const issues = validateMonster(data, monster)
+    if (issues.length > 0) throw new DataError(issues)
+    return true
+  })
+}
+
+const VALID_MONSTER_TABLE = {}

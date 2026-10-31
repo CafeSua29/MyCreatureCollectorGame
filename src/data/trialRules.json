@@ -1,0 +1,118 @@
+[
+  {
+    "id": "noItems",
+    "type": "noItems",
+    "params": {},
+    "weight": 10
+  },
+  {
+    "id": "monoElement",
+    "type": "monoElement",
+    "params": {},
+    "weight": 6
+  },
+  {
+    "id": "eternalRain",
+    "type": "fixedField",
+    "params": {
+      "weather": "rain"
+    },
+    "weight": 3
+  },
+  {
+    "id": "scorchingSun",
+    "type": "fixedField",
+    "params": {
+      "weather": "sun"
+    },
+    "weight": 3
+  },
+  {
+    "id": "endlessSandstorm",
+    "type": "fixedField",
+    "params": {
+      "weather": "sandstorm"
+    },
+    "weight": 3
+  },
+  {
+    "id": "endlessBlizzard",
+    "type": "fixedField",
+    "params": {
+      "weather": "snow"
+    },
+    "weight": 3
+  },
+  {
+    "id": "eternalDarkness",
+    "type": "fixedField",
+    "params": {
+      "weather": "darkness"
+    },
+    "weight": 2
+  },
+  {
+    "id": "psychicDomain",
+    "type": "fixedField",
+    "params": {
+      "terrain": "psychicTerrain"
+    },
+    "weight": 2
+  },
+  {
+    "id": "cursedLand",
+    "type": "fixedField",
+    "params": {
+      "terrain": "cursedGround"
+    },
+    "weight": 2
+  },
+  {
+    "id": "holyLand",
+    "type": "fixedField",
+    "params": {
+      "terrain": "holyGround"
+    },
+    "weight": 2
+  },
+  {
+    "id": "bossOnly",
+    "type": "bossOnly",
+    "params": {},
+    "weight": 5
+  },
+  {
+    "id": "noTransforms",
+    "type": "noTransforms",
+    "params": {},
+    "weight": 8
+  },
+  {
+    "id": "noTamerSkills",
+    "type": "noTamerSkills",
+    "params": {},
+    "weight": 8
+  },
+  {
+    "id": "fierceFoes",
+    "type": "enemyMultiplier",
+    "params": {
+      "value": 1.5
+    },
+    "weight": 8
+  },
+  {
+    "id": "tyrantFoes",
+    "type": "enemyMultiplier",
+    "params": {
+      "value": 2
+    },
+    "weight": 3
+  },
+  {
+    "id": "noHealing",
+    "type": "noHealing",
+    "params": {},
+    "weight": 8
+  }
+]

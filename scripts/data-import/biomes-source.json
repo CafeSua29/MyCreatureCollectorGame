@@ -1,0 +1,5227 @@
+{
+  "meta": {
+    "purpose": "Danh sách map (chủ project duyệt, bước 5d). Không nạp vào game; scripts/data-import/biomes-import.mjs sinh biomes.json từ file này (luật ở docs/rules/content-data.md).",
+    "counts": {
+      "total": 190,
+      "tww3": 62,
+      "pokemon": 71,
+      "realWorld": 55,
+      "existing": 2,
+      "themes": 43
+    },
+    "fields": {
+      "theme": "kiểu khí hậu (themes), quyết định weather / terrain / hệ chủ đạo mặc định",
+      "elements": "hệ chủ đạo để gán loài",
+      "speciesHints": "gợi ý thêm loài: 'warhammer:<phe>' = loài trong speciesFactions của tww3-source.json thuộc phe đó; '<race>' = race; 'pokemon' = ưu tiên loài Pokémon / Pal; 'origin:<origin>' = loài có trường origin đó (living, extinct, cryptid...)",
+      "region": "vùng lớn; với map realWorld là 'climate' (kiểu khí hậu Köppen) hoặc 'landform' (dạng địa hình)",
+      "nameVi": "tên tiếng Việt (map thực tế: tên chung đã dịch; TWW3 / Pokémon: giữ tên riêng, dịch phần mô tả chung)",
+      "bossField": "môi trường cố định cho trận boss",
+      "excludeElements": "của themes: hệ không sống được trong kiểu môi trường đó (loài mang hệ này không được gán vào map)",
+      "base": "chỉ map existing: biome gốc làm tay (giữ loài, boss tầng, đồ rơi, môi trường); script thêm loài và boss ngẫu nhiên theo luật chung"
+    },
+    "note": "Mỗi tầng tung ngẫu nhiên một map trên MỌI map (không có minFloor, chủ project chốt 2026-10-22)."
+  },
+  "themes": {
+    "grassland": {
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "elements": ["normal", "grass", "flying", "bug"],
+      "bossField": {},
+      "excludeElements": []
+    },
+    "temperateForest": {
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "excludeElements": []
+    },
+    "magicForest": {
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "elements": ["grass", "fairy", "psychic"],
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "excludeElements": []
+    },
+    "jungle": {
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "excludeElements": ["ice"]
+    },
+    "swamp": {
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "elements": ["poison", "water", "ground"],
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "excludeElements": []
+    },
+    "desert": {
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["ground", "rock", "fire"],
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "excludeElements": ["ice"]
+    },
+    "savannah": {
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "sandstorm": 10
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "elements": ["normal", "ground", "fire", "fighting"],
+      "bossField": {
+        "weather": "sun"
+      },
+      "excludeElements": ["ice"]
+    },
+    "volcanic": {
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "elements": ["fire", "rock", "ground"],
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "excludeElements": ["ice"]
+    },
+    "mountain": {
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "excludeElements": []
+    },
+    "snowMountain": {
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "elements": ["ice", "rock", "flying"],
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "excludeElements": ["fire"]
+    },
+    "frozen": {
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "elements": ["ice", "water", "ghost"],
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "excludeElements": ["fire"]
+    },
+    "coast": {
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "elements": ["water", "flying", "normal"],
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "excludeElements": []
+    },
+    "ocean": {
+      "weather": {
+        "rain": 40,
+        "thunderstorm": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "elements": ["water", "flying", "electric"],
+      "bossField": {
+        "weather": "thunderstorm",
+        "terrain": "deepWater"
+      },
+      "excludeElements": ["fire"]
+    },
+    "abyss": {
+      "weather": {
+        "darkness": 50,
+        "clear": 50
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "elements": ["water", "dark", "dragon"],
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "excludeElements": ["fire"]
+    },
+    "cave": {
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["rock", "ground", "dark", "steel"],
+      "bossField": {
+        "weather": "darkness"
+      },
+      "excludeElements": []
+    },
+    "crystalCave": {
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "crystalTerrain": 60,
+        "none": 40
+      },
+      "elements": ["rock", "psychic", "steel", "fairy"],
+      "bossField": {
+        "terrain": "crystalTerrain"
+      },
+      "excludeElements": []
+    },
+    "storm": {
+      "weather": {
+        "thunderstorm": 50,
+        "rain": 30,
+        "strongWinds": 20
+      },
+      "terrain": {
+        "electricTerrain": 40,
+        "none": 60
+      },
+      "elements": ["electric", "flying", "dragon"],
+      "bossField": {
+        "weather": "thunderstorm"
+      },
+      "excludeElements": []
+    },
+    "haunted": {
+      "weather": {
+        "darkness": 50,
+        "fog": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "cursedGround": 50,
+        "none": 50
+      },
+      "elements": ["ghost", "dark", "poison"],
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "excludeElements": []
+    },
+    "ruins": {
+      "weather": {
+        "sandstorm": 40,
+        "clear": 40,
+        "darkness": 20
+      },
+      "terrain": {
+        "cursedGround": 40,
+        "none": 60
+      },
+      "elements": ["ground", "ghost", "steel", "rock"],
+      "bossField": {
+        "terrain": "cursedGround"
+      },
+      "excludeElements": []
+    },
+    "holy": {
+      "weather": {
+        "clear": 50,
+        "sun": 30,
+        "strongWinds": 20
+      },
+      "terrain": {
+        "holyGround": 60,
+        "mistyTerrain": 20,
+        "none": 20
+      },
+      "elements": ["light", "fairy", "psychic", "flying"],
+      "bossField": {
+        "terrain": "holyGround"
+      },
+      "excludeElements": []
+    },
+    "sky": {
+      "weather": {
+        "strongWinds": 50,
+        "clear": 30,
+        "thunderstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["flying", "dragon", "electric"],
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "excludeElements": []
+    },
+    "wasteland": {
+      "weather": {
+        "ashfall": 35,
+        "sandstorm": 30,
+        "toxicMiasma": 20,
+        "clear": 15
+      },
+      "terrain": {
+        "none": 60,
+        "cursedGround": 40
+      },
+      "elements": ["dark", "poison", "rock", "fire"],
+      "bossField": {
+        "weather": "ashfall"
+      },
+      "excludeElements": ["ice"]
+    },
+    "chaos": {
+      "weather": {
+        "ashfall": 25,
+        "toxicMiasma": 25,
+        "darkness": 25,
+        "thunderstorm": 25
+      },
+      "terrain": {
+        "volcanicTerrain": 30,
+        "cursedGround": 30,
+        "none": 40
+      },
+      "elements": ["dark", "psychic", "fire", "poison"],
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "excludeElements": []
+    },
+    "industrial": {
+      "weather": {
+        "clear": 50,
+        "toxicMiasma": 30,
+        "ashfall": 20
+      },
+      "terrain": {
+        "electricTerrain": 40,
+        "none": 60
+      },
+      "elements": ["steel", "electric", "poison", "fire"],
+      "bossField": {
+        "terrain": "electricTerrain"
+      },
+      "excludeElements": []
+    },
+    "psychicRealm": {
+      "weather": {
+        "darkness": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "psychicTerrain": 70,
+        "none": 30
+      },
+      "elements": ["psychic", "ghost", "dragon", "dark"],
+      "bossField": {
+        "terrain": "psychicTerrain"
+      },
+      "excludeElements": []
+    },
+    "taiga": {
+      "weather": {
+        "snow": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 30,
+        "grassyTerrain": 20
+      },
+      "elements": ["ice", "grass", "normal", "dark"],
+      "bossField": {
+        "weather": "snow"
+      },
+      "excludeElements": ["fire"]
+    },
+    "tundra": {
+      "weather": {
+        "snow": 40,
+        "clear": 30,
+        "blizzard": 20,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "frozenGround": 60,
+        "none": 40
+      },
+      "elements": ["ice", "normal", "ground"],
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "excludeElements": ["fire"]
+    },
+    "steppe": {
+      "weather": {
+        "clear": 50,
+        "strongWinds": 30,
+        "sandstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["normal", "ground", "flying", "fighting"],
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "excludeElements": []
+    },
+    "coldDesert": {
+      "weather": {
+        "clear": 50,
+        "sandstorm": 30,
+        "snow": 20
+      },
+      "terrain": {
+        "none": 80,
+        "frozenGround": 20
+      },
+      "elements": ["ground", "ice", "rock"],
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "excludeElements": ["fire"]
+    },
+    "mediterranean": {
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "none": 70,
+        "grassyTerrain": 30
+      },
+      "elements": ["grass", "rock", "normal", "bug"],
+      "bossField": {
+        "weather": "sun"
+      },
+      "excludeElements": []
+    },
+    "monsoon": {
+      "weather": {
+        "rain": 60,
+        "thunderstorm": 25,
+        "clear": 15
+      },
+      "terrain": {
+        "grassyTerrain": 40,
+        "swampTerrain": 20,
+        "none": 40
+      },
+      "elements": ["water", "grass", "electric", "bug"],
+      "bossField": {
+        "weather": "thunderstorm"
+      },
+      "excludeElements": ["ice"]
+    },
+    "cloudForest": {
+      "weather": {
+        "fog": 60,
+        "rain": 30,
+        "clear": 10
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "mistyTerrain": 20,
+        "none": 20
+      },
+      "elements": ["grass", "fairy", "bug", "flying"],
+      "bossField": {
+        "weather": "fog",
+        "terrain": "mistyTerrain"
+      },
+      "excludeElements": []
+    },
+    "mangrove": {
+      "weather": {
+        "rain": 40,
+        "clear": 30,
+        "fog": 30
+      },
+      "terrain": {
+        "swampTerrain": 60,
+        "deepWater": 20,
+        "none": 20
+      },
+      "elements": ["water", "grass", "bug", "poison"],
+      "bossField": {
+        "terrain": "swampTerrain"
+      },
+      "excludeElements": ["ice"]
+    },
+    "lake": {
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "elements": ["water", "grass", "bug", "flying"],
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "excludeElements": []
+    },
+    "karst": {
+      "weather": {
+        "rain": 40,
+        "fog": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["rock", "water", "grass"],
+      "bossField": {
+        "weather": "fog"
+      },
+      "excludeElements": []
+    },
+    "canyon": {
+      "weather": {
+        "sun": 40,
+        "strongWinds": 40,
+        "sandstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["rock", "ground", "flying"],
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "excludeElements": []
+    },
+    "saltFlat": {
+      "weather": {
+        "sun": 60,
+        "clear": 30,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "elements": ["ground", "rock", "steel"],
+      "bossField": {
+        "weather": "sun"
+      },
+      "excludeElements": []
+    },
+    "geothermal": {
+      "weather": {
+        "fog": 40,
+        "clear": 40,
+        "sun": 20
+      },
+      "terrain": {
+        "volcanicTerrain": 40,
+        "none": 60
+      },
+      "elements": ["fire", "water", "ground"],
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "excludeElements": ["ice"]
+    },
+    "glacier": {
+      "weather": {
+        "blizzard": 40,
+        "snow": 40,
+        "clear": 20
+      },
+      "terrain": {
+        "frozenGround": 100
+      },
+      "elements": ["ice", "water", "rock"],
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "excludeElements": ["fire"]
+    },
+    "coralReef": {
+      "weather": {
+        "clear": 70,
+        "rain": 20,
+        "sun": 10
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "elements": ["water", "fairy", "poison", "rock"],
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "excludeElements": ["ice"]
+    },
+    "kelpForest": {
+      "weather": {
+        "clear": 60,
+        "rain": 40
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "elements": ["water", "grass", "poison"],
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "excludeElements": ["fire"]
+    },
+    "polarSea": {
+      "weather": {
+        "snow": 40,
+        "clear": 40,
+        "blizzard": 20
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "elements": ["water", "ice"],
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "deepWater"
+      },
+      "excludeElements": ["fire"]
+    },
+    "hydrothermal": {
+      "weather": {
+        "darkness": 70,
+        "clear": 30
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "elements": ["water", "fire", "steel", "poison"],
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "excludeElements": ["ice"]
+    }
+  },
+  "maps": [
+    {
+      "id": "meadow",
+      "name": "Meadow",
+      "nameVi": "Đồng cỏ",
+      "source": "existing",
+      "region": "",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": [],
+      "note": "biome hiện có, giữ nguyên loài / boss",
+      "base": {
+        "id": "meadow",
+        "doubleChance": 40,
+        "encounters": [
+          {
+            "speciesId": "sproutling",
+            "weight": 40
+          },
+          {
+            "speciesId": "tidehorn",
+            "weight": 30
+          },
+          {
+            "speciesId": "emberling",
+            "weight": 20
+          },
+          {
+            "speciesId": "ashgrunt",
+            "weight": 10
+          }
+        ],
+        "drops": [
+          {
+            "itemId": "basicBall",
+            "chance": 15
+          },
+          {
+            "itemId": "potion",
+            "chance": 10
+          },
+          {
+            "itemId": "genderPotion",
+            "chance": 2
+          }
+        ],
+        "bossDrops": [
+          {
+            "itemId": "greatBall",
+            "chance": 50
+          },
+          {
+            "itemId": "revive",
+            "chance": 20
+          }
+        ],
+        "floorBossSpeciesId": "tidehorn",
+        "bosses": [
+          {
+            "speciesId": "tidehorn",
+            "weight": 1,
+            "drops": []
+          },
+          {
+            "speciesId": "emberling",
+            "weight": 1,
+            "drops": []
+          }
+        ],
+        "weather": [
+          {
+            "fieldId": "clear",
+            "weight": 60
+          },
+          {
+            "fieldId": "rain",
+            "weight": 25
+          },
+          {
+            "fieldId": "fog",
+            "weight": 15
+          }
+        ],
+        "terrain": [
+          {
+            "fieldId": "none",
+            "weight": 80
+          },
+          {
+            "fieldId": "grassyTerrain",
+            "weight": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "volcano",
+      "name": "Volcano",
+      "nameVi": "Núi lửa",
+      "source": "existing",
+      "region": "",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": [],
+      "note": "biome hiện có, giữ nguyên loài / boss",
+      "base": {
+        "id": "volcano",
+        "doubleChance": 60,
+        "encounters": [
+          {
+            "speciesId": "emberling",
+            "weight": 30
+          },
+          {
+            "speciesId": "ashgrunt",
+            "weight": 40
+          },
+          {
+            "speciesId": "pyrodrake",
+            "weight": 10
+          },
+          {
+            "speciesId": "tidehorn",
+            "weight": 20
+          }
+        ],
+        "drops": [
+          {
+            "itemId": "basicBall",
+            "chance": 10
+          },
+          {
+            "itemId": "greatBall",
+            "chance": 5
+          },
+          {
+            "itemId": "ultraBall",
+            "chance": 1
+          },
+          {
+            "itemId": "potion",
+            "chance": 15
+          },
+          {
+            "itemId": "superPotion",
+            "chance": 5
+          },
+          {
+            "itemId": "revive",
+            "chance": 2
+          },
+          {
+            "itemId": "genderPotion",
+            "chance": 3
+          },
+          {
+            "itemId": "fireStone",
+            "chance": 1
+          }
+        ],
+        "bossDrops": [
+          {
+            "itemId": "ultraBall",
+            "chance": 50
+          },
+          {
+            "itemId": "fireStone",
+            "chance": 25
+          }
+        ],
+        "floorBossSpeciesId": "pyrodrake",
+        "bosses": [
+          {
+            "speciesId": "pyrodrake",
+            "weight": 1,
+            "drops": []
+          },
+          {
+            "speciesId": "ashgrunt",
+            "weight": 2,
+            "drops": []
+          }
+        ],
+        "weather": [
+          {
+            "fieldId": "clear",
+            "weight": 50
+          },
+          {
+            "fieldId": "sun",
+            "weight": 40
+          },
+          {
+            "fieldId": "sandstorm",
+            "weight": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "reikland",
+      "name": "Reikland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["warhammer:empire"],
+      "note": "Altdorf, sông Reik",
+      "nameVi": "Reikland"
+    },
+    {
+      "id": "drakwaldForest",
+      "name": "Drakwald Forest",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy", "dark"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:beastmen"],
+      "note": "rừng của Beastmen",
+      "nameVi": "Rừng Drakwald"
+    },
+    {
+      "id": "middenland",
+      "name": "Middenland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:empire"],
+      "note": "Middenheim, rừng sói",
+      "nameVi": "Middenland"
+    },
+    {
+      "id": "ostland",
+      "name": "Ostland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy", "ice"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:empire"],
+      "note": "phía bắc lạnh",
+      "nameVi": "Ostland"
+    },
+    {
+      "id": "stirland",
+      "name": "Stirland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug", "ghost"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["warhammer:empire"],
+      "note": "giáp Sylvania",
+      "nameVi": "Stirland"
+    },
+    {
+      "id": "averland",
+      "name": "Averland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["warhammer:empire"],
+      "note": "đồng cỏ",
+      "nameVi": "Averland"
+    },
+    {
+      "id": "wissenland",
+      "name": "Wissenland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:empire"],
+      "note": "đồi núi nam Đế chế",
+      "nameVi": "Wissenland"
+    },
+    {
+      "id": "hochland",
+      "name": "Hochland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:empire"],
+      "note": "rừng đồi",
+      "nameVi": "Hochland"
+    },
+    {
+      "id": "talabecland",
+      "name": "Talabecland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:empire"],
+      "note": "Great Forest",
+      "nameVi": "Talabecland"
+    },
+    {
+      "id": "nordland",
+      "name": "Nordland",
+      "source": "tww3",
+      "region": "The Empire",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:empire"],
+      "note": "bờ biển Sea of Claws",
+      "nameVi": "Nordland"
+    },
+    {
+      "id": "sylvania",
+      "name": "Sylvania",
+      "source": "tww3",
+      "region": "Sylvania",
+      "theme": "haunted",
+      "elements": ["ghost", "dark", "poison"],
+      "weather": {
+        "darkness": 50,
+        "fog": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "cursedGround": 50,
+        "none": 50
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["warhammer:vampireCounts", "undead"],
+      "note": "lâu đài Drakenhof",
+      "nameVi": "Sylvania"
+    },
+    {
+      "id": "bretonnia",
+      "name": "Bretonnia",
+      "source": "tww3",
+      "region": "Bretonnia",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug", "fairy"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["warhammer:bretonnia"],
+      "note": "Couronne, Quenelles",
+      "nameVi": "Bretonnia"
+    },
+    {
+      "id": "grailChapelsOfBretonnia",
+      "name": "Grail Chapels of Bretonnia",
+      "source": "tww3",
+      "region": "Bretonnia",
+      "theme": "holy",
+      "elements": ["light", "fairy", "psychic", "flying"],
+      "weather": {
+        "clear": 50,
+        "sun": 30,
+        "strongWinds": 20
+      },
+      "terrain": {
+        "holyGround": 60,
+        "mistyTerrain": 20,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "holyGround"
+      },
+      "speciesHints": ["warhammer:bretonnia"],
+      "note": "đền Lady of the Lake",
+      "nameVi": "Nhà nguyện Chén Thánh Bretonnia"
+    },
+    {
+      "id": "athelLoren",
+      "name": "Athel Loren",
+      "source": "tww3",
+      "region": "Athel Loren",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["warhammer:woodElves", "plant"],
+      "note": "rừng phép của Wood Elves",
+      "nameVi": "Athel Loren"
+    },
+    {
+      "id": "laurelornForest",
+      "name": "Laurelorn Forest",
+      "source": "tww3",
+      "region": "Laurelorn",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["warhammer:woodElves"],
+      "note": "",
+      "nameVi": "Rừng Laurelorn"
+    },
+    {
+      "id": "kislev",
+      "name": "Kislev",
+      "source": "tww3",
+      "region": "Kislev",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["warhammer:kislev"],
+      "note": "Praag, Erengrad",
+      "nameVi": "Kislev"
+    },
+    {
+      "id": "iceCourt",
+      "name": "Ice Court",
+      "source": "tww3",
+      "region": "Kislev",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["warhammer:kislev"],
+      "note": "Kislev thành, băng",
+      "nameVi": "Cung điện Băng"
+    },
+    {
+      "id": "trollCountry",
+      "name": "Troll Country",
+      "source": "tww3",
+      "region": "Kislev",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost", "poison"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["warhammer:kislev", "giant"],
+      "note": "vùng troll",
+      "nameVi": "Xứ Troll"
+    },
+    {
+      "id": "norsca",
+      "name": "Norsca",
+      "source": "tww3",
+      "region": "Norsca",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying", "dark"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["warhammer:norsca"],
+      "note": "Vanaheim, Trollheim",
+      "nameVi": "Norsca"
+    },
+    {
+      "id": "gianthomeMountains",
+      "name": "Gianthome Mountains",
+      "source": "tww3",
+      "region": "Norsca",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying", "fighting"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["warhammer:norsca", "giant"],
+      "note": "",
+      "nameVi": "Dãy núi Gianthome"
+    },
+    {
+      "id": "seaOfClaws",
+      "name": "Sea of Claws",
+      "source": "tww3",
+      "region": "Sea",
+      "theme": "ocean",
+      "elements": ["water", "flying", "electric"],
+      "weather": {
+        "rain": 40,
+        "thunderstorm": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "thunderstorm",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["aquatic"],
+      "note": "",
+      "nameVi": "Biển Claws"
+    },
+    {
+      "id": "marienburg",
+      "name": "Marienburg",
+      "source": "tww3",
+      "region": "The Wasteland",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "steel"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": [],
+      "note": "cảng lớn",
+      "nameVi": "Marienburg"
+    },
+    {
+      "id": "skavenblight",
+      "name": "Skavenblight",
+      "source": "tww3",
+      "region": "Blighted Marsh",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground", "dark"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["warhammer:skaven"],
+      "note": "thủ đô Skaven",
+      "nameVi": "Skavenblight"
+    },
+    {
+      "id": "greyMountains",
+      "name": "Grey Mountains",
+      "source": "tww3",
+      "region": "Grey Mountains",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["dwarf"],
+      "note": "",
+      "nameVi": "Dãy núi Grey"
+    },
+    {
+      "id": "worldsEdgeMountains",
+      "name": "World's Edge Mountains",
+      "source": "tww3",
+      "region": "World's Edge",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting", "steel"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:dwarfs", "warhammer:greenskins"],
+      "note": "Karaz-a-Karak, Karak Eight Peaks",
+      "nameVi": "Dãy núi World's Edge"
+    },
+    {
+      "id": "karakEightPeaks",
+      "name": "Karak Eight Peaks",
+      "source": "tww3",
+      "region": "World's Edge",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["warhammer:skaven", "warhammer:greenskins"],
+      "note": "pháo đài Dwarf đổ nát",
+      "nameVi": "Karak Eight Peaks"
+    },
+    {
+      "id": "silverRoad",
+      "name": "Silver Road",
+      "source": "tww3",
+      "region": "World's Edge",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:dwarfs"],
+      "note": "đèo",
+      "nameVi": "Đường Silver"
+    },
+    {
+      "id": "blackFirePass",
+      "name": "Black Fire Pass",
+      "source": "tww3",
+      "region": "World's Edge",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting", "fire"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:dwarfs"],
+      "note": "",
+      "nameVi": "Đèo Black Fire"
+    },
+    {
+      "id": "badlands",
+      "name": "Badlands",
+      "source": "tww3",
+      "region": "Badlands",
+      "theme": "savannah",
+      "elements": ["normal", "ground", "fire", "fighting", "dark"],
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "sandstorm": 10
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {
+        "weather": "sun"
+      },
+      "speciesHints": ["warhammer:greenskins"],
+      "note": "lãnh thổ Greenskin",
+      "nameVi": "Badlands"
+    },
+    {
+      "id": "mountainsOfMourn",
+      "name": "Mountains of Mourn",
+      "source": "tww3",
+      "region": "Mountains of Mourn",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying", "fighting"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["warhammer:ogreKingdoms"],
+      "note": "Ogre Kingdoms",
+      "nameVi": "Dãy núi Mourn"
+    },
+    {
+      "id": "darkLands",
+      "name": "Dark Lands",
+      "source": "tww3",
+      "region": "Dark Lands",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground", "dark"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["warhammer:chaosDwarfs"],
+      "note": "Zharr-Naggrund",
+      "nameVi": "Dark Lands"
+    },
+    {
+      "id": "plainOfZharr",
+      "name": "Plain of Zharr",
+      "source": "tww3",
+      "region": "Dark Lands",
+      "theme": "industrial",
+      "elements": ["steel", "electric", "poison", "fire"],
+      "weather": {
+        "clear": 50,
+        "toxicMiasma": 30,
+        "ashfall": 20
+      },
+      "terrain": {
+        "electricTerrain": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "electricTerrain"
+      },
+      "speciesHints": ["warhammer:chaosDwarfs"],
+      "note": "lò rèn Chaos Dwarf",
+      "nameVi": "Đồng bằng Zharr"
+    },
+    {
+      "id": "borderPrinces",
+      "name": "Border Princes",
+      "source": "tww3",
+      "region": "Border Princes",
+      "theme": "savannah",
+      "elements": ["normal", "ground", "fire", "fighting"],
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "sandstorm": 10
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {
+        "weather": "sun"
+      },
+      "speciesHints": [],
+      "note": "vùng biên",
+      "nameVi": "Border Princes"
+    },
+    {
+      "id": "tilea",
+      "name": "Tilea",
+      "source": "tww3",
+      "region": "Tilea",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": [],
+      "note": "",
+      "nameVi": "Tilea"
+    },
+    {
+      "id": "estalia",
+      "name": "Estalia",
+      "source": "tww3",
+      "region": "Estalia",
+      "theme": "savannah",
+      "elements": ["normal", "ground", "fire", "fighting"],
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "sandstorm": 10
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {
+        "weather": "sun"
+      },
+      "speciesHints": [],
+      "note": "",
+      "nameVi": "Estalia"
+    },
+    {
+      "id": "araby",
+      "name": "Araby",
+      "source": "tww3",
+      "region": "Araby",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": [],
+      "note": "",
+      "nameVi": "Araby"
+    },
+    {
+      "id": "landOfTheDead",
+      "name": "Land of the Dead",
+      "source": "tww3",
+      "region": "Nehekhara",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire", "ghost"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["warhammer:tombKings", "undead"],
+      "note": "Khemri",
+      "nameVi": "Vùng đất Người chết"
+    },
+    {
+      "id": "greatDesert",
+      "name": "Great Desert",
+      "source": "tww3",
+      "region": "Nehekhara",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["warhammer:tombKings"],
+      "note": "",
+      "nameVi": "Đại sa mạc"
+    },
+    {
+      "id": "blackPyramidOfNagash",
+      "name": "Black Pyramid of Nagash",
+      "source": "tww3",
+      "region": "Nehekhara",
+      "theme": "ruins",
+      "elements": ["ground", "ghost", "steel", "rock", "dark"],
+      "weather": {
+        "sandstorm": 40,
+        "clear": 40,
+        "darkness": 20
+      },
+      "terrain": {
+        "cursedGround": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["warhammer:tombKings", "undead"],
+      "note": "Lords of the End Times",
+      "nameVi": "Kim tự tháp Đen của Nagash"
+    },
+    {
+      "id": "lustria",
+      "name": "Lustria",
+      "source": "tww3",
+      "region": "Lustria",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:lizardmen", "dinosaur", "reptile"],
+      "note": "Itza, Hexoatl",
+      "nameVi": "Lustria"
+    },
+    {
+      "id": "vampireCoast",
+      "name": "Vampire Coast",
+      "source": "tww3",
+      "region": "Lustria",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "ghost"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:vampireCoast"],
+      "note": "Sartosa, Galleon's Graveyard",
+      "nameVi": "Bờ biển Ma cà rồng"
+    },
+    {
+      "id": "galleonsGraveyard",
+      "name": "Galleon's Graveyard",
+      "source": "tww3",
+      "region": "Great Ocean",
+      "theme": "abyss",
+      "elements": ["water", "dark", "dragon", "ghost"],
+      "weather": {
+        "darkness": 50,
+        "clear": 50
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["warhammer:vampireCoast"],
+      "note": "",
+      "nameVi": "Nghĩa địa Thuyền buồm"
+    },
+    {
+      "id": "southlands",
+      "name": "Southlands",
+      "source": "tww3",
+      "region": "Southlands",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["warhammer:lizardmen"],
+      "note": "",
+      "nameVi": "Southlands"
+    },
+    {
+      "id": "naggaroth",
+      "name": "Naggaroth",
+      "source": "tww3",
+      "region": "Naggaroth",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost", "dark"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["warhammer:darkElves"],
+      "note": "Naggarond",
+      "nameVi": "Naggaroth"
+    },
+    {
+      "id": "blackspineMountains",
+      "name": "Blackspine Mountains",
+      "source": "tww3",
+      "region": "Naggaroth",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting", "dark"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:darkElves"],
+      "note": "",
+      "nameVi": "Dãy núi Blackspine"
+    },
+    {
+      "id": "ulthuan",
+      "name": "Ulthuan",
+      "source": "tww3",
+      "region": "Ulthuan",
+      "theme": "holy",
+      "elements": ["light", "fairy", "psychic", "flying"],
+      "weather": {
+        "clear": 50,
+        "sun": 30,
+        "strongWinds": 20
+      },
+      "terrain": {
+        "holyGround": 60,
+        "mistyTerrain": 20,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "holyGround"
+      },
+      "speciesHints": ["warhammer:highElves"],
+      "note": "Lothern",
+      "nameVi": "Ulthuan"
+    },
+    {
+      "id": "caledor",
+      "name": "Caledor",
+      "source": "tww3",
+      "region": "Ulthuan",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground", "dragon"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["warhammer:highElves", "dragon"],
+      "note": "núi rồng",
+      "nameVi": "Caledor"
+    },
+    {
+      "id": "avelorn",
+      "name": "Avelorn",
+      "source": "tww3",
+      "region": "Ulthuan",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic", "light"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["warhammer:highElves"],
+      "note": "",
+      "nameVi": "Avelorn"
+    },
+    {
+      "id": "saphery",
+      "name": "Saphery",
+      "source": "tww3",
+      "region": "Ulthuan",
+      "theme": "crystalCave",
+      "elements": ["rock", "psychic", "steel", "fairy"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "crystalTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "terrain": "crystalTerrain"
+      },
+      "speciesHints": ["warhammer:highElves"],
+      "note": "tháp phép",
+      "nameVi": "Saphery"
+    },
+    {
+      "id": "chrace",
+      "name": "Chrace",
+      "source": "tww3",
+      "region": "Ulthuan",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:highElves"],
+      "note": "sư tử trắng",
+      "nameVi": "Chrace"
+    },
+    {
+      "id": "eyeOfTheVortex",
+      "name": "Eye of the Vortex",
+      "source": "tww3",
+      "region": "Ulthuan",
+      "theme": "psychicRealm",
+      "elements": ["psychic", "ghost", "dragon", "dark"],
+      "weather": {
+        "darkness": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "psychicTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "terrain": "psychicTerrain"
+      },
+      "speciesHints": ["warhammer:highElves"],
+      "note": "Great Vortex",
+      "nameVi": "Mắt Xoáy"
+    },
+    {
+      "id": "grandCathay",
+      "name": "Grand Cathay",
+      "source": "tww3",
+      "region": "Grand Cathay",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug", "dragon"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["warhammer:cathay"],
+      "note": "Wei-Jin, Nan-Gau",
+      "nameVi": "Đại Cathay"
+    },
+    {
+      "id": "theGreatBastion",
+      "name": "The Great Bastion",
+      "source": "tww3",
+      "region": "Grand Cathay",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting", "steel"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:cathay"],
+      "note": "",
+      "nameVi": "Đại Thành lũy"
+    },
+    {
+      "id": "jadeSea",
+      "name": "Jade Sea",
+      "source": "tww3",
+      "region": "Grand Cathay",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "dragon"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["warhammer:cathay"],
+      "note": "",
+      "nameVi": "Biển Ngọc"
+    },
+    {
+      "id": "ind",
+      "name": "Ind",
+      "source": "tww3",
+      "region": "Ind",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": [],
+      "note": "",
+      "nameVi": "Ind"
+    },
+    {
+      "id": "chaosWastes",
+      "name": "Chaos Wastes",
+      "source": "tww3",
+      "region": "Chaos Wastes",
+      "theme": "chaos",
+      "elements": ["dark", "psychic", "fire", "poison"],
+      "weather": {
+        "ashfall": 25,
+        "toxicMiasma": 25,
+        "darkness": 25,
+        "thunderstorm": 25
+      },
+      "terrain": {
+        "volcanicTerrain": 30,
+        "cursedGround": 30,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["warhammer:warriorsOfChaos", "demon"],
+      "note": "",
+      "nameVi": "Hoang mạc Hỗn mang"
+    },
+    {
+      "id": "southernChaosWastes",
+      "name": "Southern Chaos Wastes",
+      "source": "tww3",
+      "region": "Chaos Wastes",
+      "theme": "wasteland",
+      "elements": ["dark", "poison", "rock", "fire"],
+      "weather": {
+        "ashfall": 35,
+        "sandstorm": 30,
+        "toxicMiasma": 20,
+        "clear": 15
+      },
+      "terrain": {
+        "none": 60,
+        "cursedGround": 40
+      },
+      "bossField": {
+        "weather": "ashfall"
+      },
+      "speciesHints": ["warhammer:beastmen"],
+      "note": "",
+      "nameVi": "Hoang mạc Hỗn mang phương Nam"
+    },
+    {
+      "id": "realmOfKhorne",
+      "name": "Realm of Khorne",
+      "source": "tww3",
+      "region": "Realm of Chaos",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground", "fighting"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["warhammer:khorne"],
+      "note": "Brass Citadel",
+      "nameVi": "Cõi Khorne"
+    },
+    {
+      "id": "realmOfNurgle",
+      "name": "Realm of Nurgle",
+      "source": "tww3",
+      "region": "Realm of Chaos",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["warhammer:nurgle"],
+      "note": "Garden of Nurgle",
+      "nameVi": "Cõi Nurgle"
+    },
+    {
+      "id": "realmOfTzeentch",
+      "name": "Realm of Tzeentch",
+      "source": "tww3",
+      "region": "Realm of Chaos",
+      "theme": "psychicRealm",
+      "elements": ["psychic", "ghost", "dragon", "dark"],
+      "weather": {
+        "darkness": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "psychicTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "terrain": "psychicTerrain"
+      },
+      "speciesHints": ["warhammer:tzeentch"],
+      "note": "Crystal Labyrinth",
+      "nameVi": "Cõi Tzeentch"
+    },
+    {
+      "id": "realmOfSlaanesh",
+      "name": "Realm of Slaanesh",
+      "source": "tww3",
+      "region": "Realm of Chaos",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic", "dark"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["warhammer:slaanesh"],
+      "note": "Palace of Pleasure",
+      "nameVi": "Cõi Slaanesh"
+    },
+    {
+      "id": "forbiddenFortress",
+      "name": "Forbidden Fortress",
+      "source": "tww3",
+      "region": "Realm of Chaos",
+      "theme": "chaos",
+      "elements": ["dark", "psychic", "fire", "poison"],
+      "weather": {
+        "ashfall": 25,
+        "toxicMiasma": 25,
+        "darkness": 25,
+        "thunderstorm": 25
+      },
+      "terrain": {
+        "volcanicTerrain": 30,
+        "cursedGround": 30,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["warhammer:warriorsOfChaos", "demon"],
+      "note": "",
+      "nameVi": "Pháo đài Cấm"
+    },
+    {
+      "id": "viridianForest",
+      "name": "Viridian Forest",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Viridian"
+    },
+    {
+      "id": "mtMoon",
+      "name": "Mt. Moon",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel", "fairy"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Moon"
+    },
+    {
+      "id": "rockTunnel",
+      "name": "Rock Tunnel",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đường hầm Đá"
+    },
+    {
+      "id": "pokemonTower",
+      "name": "Pokémon Tower",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "haunted",
+      "elements": ["ghost", "dark", "poison"],
+      "weather": {
+        "darkness": 50,
+        "fog": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "cursedGround": 50,
+        "none": 50
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "Lavender Town",
+      "nameVi": "Tháp Pokémon"
+    },
+    {
+      "id": "powerPlant",
+      "name": "Power Plant",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "industrial",
+      "elements": ["steel", "electric", "poison", "fire"],
+      "weather": {
+        "clear": 50,
+        "toxicMiasma": 30,
+        "ashfall": 20
+      },
+      "terrain": {
+        "electricTerrain": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "electricTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Nhà máy điện"
+    },
+    {
+      "id": "seafoamIslands",
+      "name": "Seafoam Islands",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Quần đảo Seafoam"
+    },
+    {
+      "id": "cinnabarVolcano",
+      "name": "Cinnabar Volcano",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi lửa Cinnabar"
+    },
+    {
+      "id": "victoryRoadKanto",
+      "name": "Victory Road (Kanto)",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel", "fighting"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đường Victory (Kanto)"
+    },
+    {
+      "id": "ceruleanCave",
+      "name": "Cerulean Cave",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "crystalCave",
+      "elements": ["rock", "psychic", "steel", "fairy"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "crystalTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "terrain": "crystalTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Cerulean"
+    },
+    {
+      "id": "safariZone",
+      "name": "Safari Zone",
+      "source": "pokemon",
+      "region": "Kanto",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Khu Safari"
+    },
+    {
+      "id": "ilexForest",
+      "name": "Ilex Forest",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Ilex"
+    },
+    {
+      "id": "whirlIslands",
+      "name": "Whirl Islands",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "ocean",
+      "elements": ["water", "flying", "electric"],
+      "weather": {
+        "rain": 40,
+        "thunderstorm": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "thunderstorm",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Quần đảo Whirl"
+    },
+    {
+      "id": "icePath",
+      "name": "Ice Path",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Lối Băng"
+    },
+    {
+      "id": "dragonsDen",
+      "name": "Dragon's Den",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "abyss",
+      "elements": ["water", "dark", "dragon"],
+      "weather": {
+        "darkness": 50,
+        "clear": 50
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Rồng"
+    },
+    {
+      "id": "mtSilver",
+      "name": "Mt. Silver",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying", "fighting"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Silver"
+    },
+    {
+      "id": "burnedTower",
+      "name": "Burned Tower",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "ruins",
+      "elements": ["ground", "ghost", "steel", "rock", "fire"],
+      "weather": {
+        "sandstorm": 40,
+        "clear": 40,
+        "darkness": 20
+      },
+      "terrain": {
+        "cursedGround": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Tháp Cháy"
+    },
+    {
+      "id": "lakeOfRage",
+      "name": "Lake of Rage",
+      "source": "pokemon",
+      "region": "Johto",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hồ Phẫn nộ"
+    },
+    {
+      "id": "petalburgWoods",
+      "name": "Petalburg Woods",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Petalburg"
+    },
+    {
+      "id": "mtChimney",
+      "name": "Mt. Chimney",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Chimney"
+    },
+    {
+      "id": "route111Desert",
+      "name": "Route 111 Desert",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Sa mạc Route 111"
+    },
+    {
+      "id": "meteorFalls",
+      "name": "Meteor Falls",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel", "dragon"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Thác Meteor"
+    },
+    {
+      "id": "mtPyre",
+      "name": "Mt. Pyre",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "haunted",
+      "elements": ["ghost", "dark", "poison"],
+      "weather": {
+        "darkness": 50,
+        "fog": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "cursedGround": 50,
+        "none": 50
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Pyre"
+    },
+    {
+      "id": "shoalCave",
+      "name": "Shoal Cave",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Shoal"
+    },
+    {
+      "id": "seafloorCavern",
+      "name": "Seafloor Cavern",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "abyss",
+      "elements": ["water", "dark", "dragon"],
+      "weather": {
+        "darkness": 50,
+        "clear": 50
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Đáy biển"
+    },
+    {
+      "id": "skyPillar",
+      "name": "Sky Pillar",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "sky",
+      "elements": ["flying", "dragon", "electric"],
+      "weather": {
+        "strongWinds": 50,
+        "clear": 30,
+        "thunderstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Tháp Trời"
+    },
+    {
+      "id": "fortreeRainforest",
+      "name": "Fortree Rainforest",
+      "source": "pokemon",
+      "region": "Hoenn",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "Route 119",
+      "nameVi": "Rừng mưa Fortree"
+    },
+    {
+      "id": "eternaForest",
+      "name": "Eterna Forest",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy", "ghost"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Eterna"
+    },
+    {
+      "id": "greatMarsh",
+      "name": "Great Marsh",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đại Đầm lầy"
+    },
+    {
+      "id": "mtCoronet",
+      "name": "Mt. Coronet",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Coronet"
+    },
+    {
+      "id": "snowpointRoutes",
+      "name": "Snowpoint Routes",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "Route 216–217",
+      "nameVi": "Các tuyến đường Snowpoint"
+    },
+    {
+      "id": "oldChateau",
+      "name": "Old Chateau",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "haunted",
+      "elements": ["ghost", "dark", "poison"],
+      "weather": {
+        "darkness": 50,
+        "fog": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "cursedGround": 50,
+        "none": 50
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Lâu đài Cổ"
+    },
+    {
+      "id": "ironIsland",
+      "name": "Iron Island",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đảo Sắt"
+    },
+    {
+      "id": "starkMountain",
+      "name": "Stark Mountain",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Stark"
+    },
+    {
+      "id": "spearPillar",
+      "name": "Spear Pillar",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "psychicRealm",
+      "elements": ["psychic", "ghost", "dragon", "dark"],
+      "weather": {
+        "darkness": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "psychicTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "terrain": "psychicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Tháp Spear"
+    },
+    {
+      "id": "distortionWorld",
+      "name": "Distortion World",
+      "source": "pokemon",
+      "region": "Sinnoh",
+      "theme": "psychicRealm",
+      "elements": ["psychic", "ghost", "dragon", "dark"],
+      "weather": {
+        "darkness": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "psychicTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "terrain": "psychicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Thế giới Méo mó"
+    },
+    {
+      "id": "pinwheelForest",
+      "name": "Pinwheel Forest",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Pinwheel"
+    },
+    {
+      "id": "desertResort",
+      "name": "Desert Resort",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Khu nghỉ Sa mạc"
+    },
+    {
+      "id": "relicCastle",
+      "name": "Relic Castle",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "ruins",
+      "elements": ["ground", "ghost", "steel", "rock"],
+      "weather": {
+        "sandstorm": 40,
+        "clear": 40,
+        "darkness": 20
+      },
+      "terrain": {
+        "cursedGround": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Lâu đài Di tích"
+    },
+    {
+      "id": "chargestoneCave",
+      "name": "Chargestone Cave",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "crystalCave",
+      "elements": ["rock", "psychic", "steel", "fairy", "electric"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "crystalTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "terrain": "crystalTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Đá Tích điện"
+    },
+    {
+      "id": "twistMountain",
+      "name": "Twist Mountain",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Twist"
+    },
+    {
+      "id": "dragonspiralTower",
+      "name": "Dragonspiral Tower",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "ruins",
+      "elements": ["ground", "ghost", "steel", "rock", "dragon"],
+      "weather": {
+        "sandstorm": 40,
+        "clear": 40,
+        "darkness": 20
+      },
+      "terrain": {
+        "cursedGround": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "cursedGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Tháp Dragonspiral"
+    },
+    {
+      "id": "giantChasm",
+      "name": "Giant Chasm",
+      "source": "pokemon",
+      "region": "Unova",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost", "dragon"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Vực Khổng lồ"
+    },
+    {
+      "id": "santaluneForest",
+      "name": "Santalune Forest",
+      "source": "pokemon",
+      "region": "Kalos",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Santalune"
+    },
+    {
+      "id": "glitteringCave",
+      "name": "Glittering Cave",
+      "source": "pokemon",
+      "region": "Kalos",
+      "theme": "crystalCave",
+      "elements": ["rock", "psychic", "steel", "fairy"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "crystalTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "terrain": "crystalTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Lấp lánh"
+    },
+    {
+      "id": "frostCavern",
+      "name": "Frost Cavern",
+      "source": "pokemon",
+      "region": "Kalos",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Băng giá"
+    },
+    {
+      "id": "lostHotel",
+      "name": "Lost Hotel",
+      "source": "pokemon",
+      "region": "Kalos",
+      "theme": "industrial",
+      "elements": ["steel", "electric", "poison", "fire", "ghost"],
+      "weather": {
+        "clear": 50,
+        "toxicMiasma": 30,
+        "ashfall": 20
+      },
+      "terrain": {
+        "electricTerrain": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "electricTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Khách sạn Bỏ hoang"
+    },
+    {
+      "id": "terminusCave",
+      "name": "Terminus Cave",
+      "source": "pokemon",
+      "region": "Kalos",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel", "dragon"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Terminus"
+    },
+    {
+      "id": "lushJungle",
+      "name": "Lush Jungle",
+      "source": "pokemon",
+      "region": "Alola",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng rậm Tươi tốt"
+    },
+    {
+      "id": "welaVolcanoPark",
+      "name": "Wela Volcano Park",
+      "source": "pokemon",
+      "region": "Alola",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Công viên Núi lửa Wela"
+    },
+    {
+      "id": "hainaDesert",
+      "name": "Haina Desert",
+      "source": "pokemon",
+      "region": "Alola",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Sa mạc Haina"
+    },
+    {
+      "id": "mountLanakila",
+      "name": "Mount Lanakila",
+      "source": "pokemon",
+      "region": "Alola",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Lanakila"
+    },
+    {
+      "id": "vastPoniCanyon",
+      "name": "Vast Poni Canyon",
+      "source": "pokemon",
+      "region": "Alola",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting", "dragon"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hẻm núi Vast Poni"
+    },
+    {
+      "id": "ultraSpace",
+      "name": "Ultra Space",
+      "source": "pokemon",
+      "region": "Alola",
+      "theme": "psychicRealm",
+      "elements": ["psychic", "ghost", "dragon", "dark"],
+      "weather": {
+        "darkness": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "psychicTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "terrain": "psychicTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Không gian Ultra"
+    },
+    {
+      "id": "wildArea",
+      "name": "Wild Area",
+      "source": "pokemon",
+      "region": "Galar",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["pokemon"],
+      "note": "đổi thời tiết liên tục",
+      "nameVi": "Vùng Hoang dã"
+    },
+    {
+      "id": "glimwoodTangle",
+      "name": "Glimwood Tangle",
+      "source": "pokemon",
+      "region": "Galar",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng rối Glimwood"
+    },
+    {
+      "id": "slumberingWeald",
+      "name": "Slumbering Weald",
+      "source": "pokemon",
+      "region": "Galar",
+      "theme": "magicForest",
+      "elements": ["grass", "fairy", "psychic"],
+      "weather": {
+        "clear": 40,
+        "fog": 40,
+        "rain": 20
+      },
+      "terrain": {
+        "mistyTerrain": 40,
+        "grassyTerrain": 40,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Rừng Ngủ say"
+    },
+    {
+      "id": "isleOfArmor",
+      "name": "Isle of Armor",
+      "source": "pokemon",
+      "region": "Galar",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "fighting"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đảo Giáp"
+    },
+    {
+      "id": "crownTundra",
+      "name": "Crown Tundra",
+      "source": "pokemon",
+      "region": "Galar",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Lãnh nguyên Vương miện"
+    },
+    {
+      "id": "dynamaxAdventureDen",
+      "name": "Dynamax Adventure Den",
+      "source": "pokemon",
+      "region": "Galar",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hang Phiêu lưu Dynamax"
+    },
+    {
+      "id": "asadoDesert",
+      "name": "Asado Desert",
+      "source": "pokemon",
+      "region": "Paldea",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Sa mạc Asado"
+    },
+    {
+      "id": "glaseadoMountain",
+      "name": "Glaseado Mountain",
+      "source": "pokemon",
+      "region": "Paldea",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Núi Glaseado"
+    },
+    {
+      "id": "casseroyaLake",
+      "name": "Casseroya Lake",
+      "source": "pokemon",
+      "region": "Paldea",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "dragon"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Hồ Casseroya"
+    },
+    {
+      "id": "tagtreeThicket",
+      "name": "Tagtree Thicket",
+      "source": "pokemon",
+      "region": "Paldea",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Bụi rậm Tagtree"
+    },
+    {
+      "id": "areaZero",
+      "name": "Area Zero",
+      "source": "pokemon",
+      "region": "Paldea",
+      "theme": "crystalCave",
+      "elements": ["rock", "psychic", "steel", "fairy", "dragon"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "crystalTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "terrain": "crystalTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "Great Crater",
+      "nameVi": "Vùng Zero"
+    },
+    {
+      "id": "kitakami",
+      "name": "Kitakami",
+      "source": "pokemon",
+      "region": "Paldea",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy", "ghost"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Kitakami"
+    },
+    {
+      "id": "obsidianFieldlands",
+      "name": "Obsidian Fieldlands",
+      "source": "pokemon",
+      "region": "Hisui",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đồng cỏ Obsidian"
+    },
+    {
+      "id": "crimsonMirelands",
+      "name": "Crimson Mirelands",
+      "source": "pokemon",
+      "region": "Hisui",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Đầm lầy Đỏ thẫm"
+    },
+    {
+      "id": "cobaltCoastlands",
+      "name": "Cobalt Coastlands",
+      "source": "pokemon",
+      "region": "Hisui",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Bờ biển Cobalt"
+    },
+    {
+      "id": "coronetHighlands",
+      "name": "Coronet Highlands",
+      "source": "pokemon",
+      "region": "Hisui",
+      "theme": "mountain",
+      "elements": ["rock", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 45,
+        "strongWinds": 30,
+        "fog": 25
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Cao nguyên Coronet"
+    },
+    {
+      "id": "alabasterIcelands",
+      "name": "Alabaster Icelands",
+      "source": "pokemon",
+      "region": "Hisui",
+      "theme": "frozen",
+      "elements": ["ice", "water", "ghost"],
+      "weather": {
+        "blizzard": 50,
+        "snow": 40,
+        "darkness": 10
+      },
+      "terrain": {
+        "frozenGround": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "",
+      "nameVi": "Vùng băng Alabaster"
+    },
+    {
+      "id": "orreDesert",
+      "name": "Orre Desert",
+      "source": "pokemon",
+      "region": "Orre",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire", "dark"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["pokemon"],
+      "note": "Pokémon Colosseum",
+      "nameVi": "Sa mạc Orre"
+    },
+    {
+      "id": "tropicalRainforest",
+      "name": "Tropical Rainforest",
+      "nameVi": "Rừng mưa nhiệt đới",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Af"
+    },
+    {
+      "id": "tropicalMonsoonForest",
+      "name": "Tropical Monsoon Forest",
+      "nameVi": "Rừng gió mùa nhiệt đới",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "monsoon",
+      "elements": ["water", "grass", "electric", "bug"],
+      "weather": {
+        "rain": 60,
+        "thunderstorm": 25,
+        "clear": 15
+      },
+      "terrain": {
+        "grassyTerrain": 40,
+        "swampTerrain": 20,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "thunderstorm"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Am"
+    },
+    {
+      "id": "tropicalSavanna",
+      "name": "Tropical Savanna",
+      "nameVi": "Xavan nhiệt đới",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "savannah",
+      "elements": ["normal", "ground", "fire", "fighting"],
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "sandstorm": 10
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {
+        "weather": "sun"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Aw"
+    },
+    {
+      "id": "hotDesert",
+      "name": "Hot Desert",
+      "nameVi": "Sa mạc nóng",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen BWh"
+    },
+    {
+      "id": "coldDesert",
+      "name": "Cold Desert",
+      "nameVi": "Sa mạc lạnh",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "coldDesert",
+      "elements": ["ground", "ice", "rock"],
+      "weather": {
+        "clear": 50,
+        "sandstorm": 30,
+        "snow": 20
+      },
+      "terrain": {
+        "none": 80,
+        "frozenGround": 20
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen BWk"
+    },
+    {
+      "id": "semiAridSteppe",
+      "name": "Semi-arid Steppe",
+      "nameVi": "Thảo nguyên bán khô hạn",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "steppe",
+      "elements": ["normal", "ground", "flying", "fighting"],
+      "weather": {
+        "clear": 50,
+        "strongWinds": 30,
+        "sandstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen BS"
+    },
+    {
+      "id": "mediterraneanScrubland",
+      "name": "Mediterranean Scrubland",
+      "nameVi": "Cây bụi Địa Trung Hải",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "mediterranean",
+      "elements": ["grass", "rock", "normal", "bug"],
+      "weather": {
+        "sun": 50,
+        "clear": 40,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "none": 70,
+        "grassyTerrain": 30
+      },
+      "bossField": {
+        "weather": "sun"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Cs"
+    },
+    {
+      "id": "humidSubtropicalForest",
+      "name": "Humid Subtropical Forest",
+      "nameVi": "Rừng cận nhiệt ẩm",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy", "water"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Cfa"
+    },
+    {
+      "id": "oceanicMoorland",
+      "name": "Oceanic Moorland",
+      "nameVi": "Đồng hoang ôn đới hải dương",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug", "water"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Cfb"
+    },
+    {
+      "id": "subtropicalHighland",
+      "name": "Subtropical Highland",
+      "nameVi": "Cao nguyên cận nhiệt",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "cloudForest",
+      "elements": ["grass", "fairy", "bug", "flying"],
+      "weather": {
+        "fog": 60,
+        "rain": 30,
+        "clear": 10
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "mistyTerrain": 20,
+        "none": 20
+      },
+      "bossField": {
+        "weather": "fog",
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Cwb"
+    },
+    {
+      "id": "humidContinentalWoodland",
+      "name": "Humid Continental Woodland",
+      "nameVi": "Rừng ôn đới lục địa",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Dfa / Dfb"
+    },
+    {
+      "id": "subarcticTaiga",
+      "name": "Subarctic Taiga",
+      "nameVi": "Rừng taiga cận cực",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "taiga",
+      "elements": ["ice", "grass", "normal", "dark"],
+      "weather": {
+        "snow": 40,
+        "clear": 40,
+        "fog": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 30,
+        "grassyTerrain": 20
+      },
+      "bossField": {
+        "weather": "snow"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen Dfc"
+    },
+    {
+      "id": "arcticTundra",
+      "name": "Arctic Tundra",
+      "nameVi": "Lãnh nguyên Bắc Cực",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "tundra",
+      "elements": ["ice", "normal", "ground"],
+      "weather": {
+        "snow": 40,
+        "clear": 30,
+        "blizzard": 20,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "frozenGround": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen ET"
+    },
+    {
+      "id": "polarIceCap",
+      "name": "Polar Ice Cap",
+      "nameVi": "Chỏm băng địa cực",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "glacier",
+      "elements": ["ice", "water", "rock"],
+      "weather": {
+        "blizzard": 40,
+        "snow": 40,
+        "clear": 20
+      },
+      "terrain": {
+        "frozenGround": 100
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid"],
+      "note": "Köppen EF"
+    },
+    {
+      "id": "alpineHighland",
+      "name": "Alpine Highland",
+      "nameVi": "Vùng núi cao",
+      "source": "realWorld",
+      "region": "climate",
+      "theme": "snowMountain",
+      "elements": ["ice", "rock", "flying"],
+      "weather": {
+        "snow": 55,
+        "blizzard": 25,
+        "clear": 20
+      },
+      "terrain": {
+        "none": 50,
+        "frozenGround": 50
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "Köppen H"
+    },
+    {
+      "id": "alpineMeadow",
+      "name": "Alpine Meadow",
+      "nameVi": "Đồng cỏ núi cao",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug", "rock"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "highPlateau",
+      "name": "High Plateau",
+      "nameVi": "Cao nguyên",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "steppe",
+      "elements": ["normal", "ground", "flying", "fighting", "rock"],
+      "weather": {
+        "clear": 50,
+        "strongWinds": 30,
+        "sandstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "canyon",
+      "name": "Canyon",
+      "nameVi": "Hẻm núi",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "canyon",
+      "elements": ["rock", "ground", "flying"],
+      "weather": {
+        "sun": 40,
+        "strongWinds": 40,
+        "sandstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "riverValley",
+      "name": "River Valley",
+      "nameVi": "Thung lũng sông",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "lake",
+      "elements": ["water", "grass", "bug", "flying"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "rollingHills",
+      "name": "Rolling Hills",
+      "nameVi": "Đồi thoải",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "prairie",
+      "name": "Prairie",
+      "nameVi": "Đồng cỏ prairie",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "grassland",
+      "elements": ["normal", "grass", "flying", "bug", "ground"],
+      "weather": {
+        "clear": 60,
+        "rain": 25,
+        "fog": 15
+      },
+      "terrain": {
+        "none": 80,
+        "grassyTerrain": 20
+      },
+      "bossField": {},
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "sandDunes",
+      "name": "Sand Dunes",
+      "nameVi": "Cồn cát",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "saltFlat",
+      "name": "Salt Flat",
+      "nameVi": "Cánh đồng muối",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "saltFlat",
+      "elements": ["ground", "rock", "steel"],
+      "weather": {
+        "sun": 60,
+        "clear": 30,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sun"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "desertOasis",
+      "name": "Desert Oasis",
+      "nameVi": "Ốc đảo",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "desert",
+      "elements": ["ground", "rock", "fire", "water", "grass"],
+      "weather": {
+        "sun": 50,
+        "sandstorm": 40,
+        "clear": 10
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "sandstorm"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "erodedBadlands",
+      "name": "Eroded Badlands",
+      "nameVi": "Vùng đất xấu xói mòn",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "canyon",
+      "elements": ["rock", "ground", "flying", "dark"],
+      "weather": {
+        "sun": 40,
+        "strongWinds": 40,
+        "sandstorm": 20
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living", "origin:extinct"],
+      "note": "hóa thạch"
+    },
+    {
+      "id": "karstTowers",
+      "name": "Karst Towers",
+      "nameVi": "Núi đá vôi karst",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "karst",
+      "elements": ["rock", "water", "grass"],
+      "weather": {
+        "rain": 40,
+        "fog": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "fog"
+      },
+      "speciesHints": ["origin:living"],
+      "note": "kiểu Hạ Long, Quế Lâm"
+    },
+    {
+      "id": "limestoneCavern",
+      "name": "Limestone Cavern",
+      "nameVi": "Hang động đá vôi",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "cave",
+      "elements": ["rock", "ground", "dark", "steel", "water"],
+      "weather": {
+        "clear": 70,
+        "darkness": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "darkness"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid"],
+      "note": ""
+    },
+    {
+      "id": "sinkhole",
+      "name": "Sinkhole",
+      "nameVi": "Hố sụt",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "karst",
+      "elements": ["rock", "water", "grass", "dark"],
+      "weather": {
+        "rain": 40,
+        "fog": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "none": 100
+      },
+      "bossField": {
+        "weather": "fog"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid"],
+      "note": ""
+    },
+    {
+      "id": "stratovolcano",
+      "name": "Stratovolcano",
+      "nameVi": "Núi lửa tầng",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "lavaField",
+      "name": "Lava Field",
+      "nameVi": "Cánh đồng dung nham",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "volcanic",
+      "elements": ["fire", "rock", "ground"],
+      "weather": {
+        "clear": 40,
+        "sun": 40,
+        "ashfall": 20
+      },
+      "terrain": {
+        "none": 50,
+        "volcanicTerrain": 50
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": [],
+      "note": ""
+    },
+    {
+      "id": "geyserBasin",
+      "name": "Geyser Basin",
+      "nameVi": "Bồn địa mạch nước phun",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "geothermal",
+      "elements": ["fire", "water", "ground"],
+      "weather": {
+        "fog": 40,
+        "clear": 40,
+        "sun": 20
+      },
+      "terrain": {
+        "volcanicTerrain": 40,
+        "none": 60
+      },
+      "bossField": {
+        "terrain": "volcanicTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "glacier",
+      "name": "Glacier",
+      "nameVi": "Sông băng",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "glacier",
+      "elements": ["ice", "water", "rock"],
+      "weather": {
+        "blizzard": 40,
+        "snow": 40,
+        "clear": 20
+      },
+      "terrain": {
+        "frozenGround": 100
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "frozenGround"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "fjord",
+      "name": "Fjord",
+      "nameVi": "Vịnh hẹp fjord",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "ice", "rock"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "sandyBeach",
+      "name": "Sandy Beach",
+      "nameVi": "Bãi biển cát",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "ground"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "seaCliffs",
+      "name": "Sea Cliffs",
+      "nameVi": "Vách đá ven biển",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "rock"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "riverDelta",
+      "name": "River Delta",
+      "nameVi": "Đồng bằng châu thổ",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "mangrove",
+      "elements": ["water", "grass", "bug", "poison"],
+      "weather": {
+        "rain": 40,
+        "clear": 30,
+        "fog": 30
+      },
+      "terrain": {
+        "swampTerrain": 60,
+        "deepWater": 20,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "estuary",
+      "name": "Estuary",
+      "nameVi": "Cửa sông",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "mangrove",
+      "elements": ["water", "grass", "bug", "poison"],
+      "weather": {
+        "rain": 40,
+        "clear": 30,
+        "fog": 30
+      },
+      "terrain": {
+        "swampTerrain": 60,
+        "deepWater": 20,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "mangroveForest",
+      "name": "Mangrove Forest",
+      "nameVi": "Rừng ngập mặn",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "mangrove",
+      "elements": ["water", "grass", "bug", "poison"],
+      "weather": {
+        "rain": 40,
+        "clear": 30,
+        "fog": 30
+      },
+      "terrain": {
+        "swampTerrain": 60,
+        "deepWater": 20,
+        "none": 20
+      },
+      "bossField": {
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "saltMarsh",
+      "name": "Salt Marsh",
+      "nameVi": "Đầm lầy nước mặn",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "peatBog",
+      "name": "Peat Bog",
+      "nameVi": "Đầm lầy than bùn",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground", "ghost"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid"],
+      "note": ""
+    },
+    {
+      "id": "freshwaterLake",
+      "name": "Freshwater Lake",
+      "nameVi": "Hồ nước ngọt",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "lake",
+      "elements": ["water", "grass", "bug", "flying"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid"],
+      "note": ""
+    },
+    {
+      "id": "waterfallGorge",
+      "name": "Waterfall Gorge",
+      "nameVi": "Thác nước và ghềnh",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "lake",
+      "elements": ["water", "grass", "bug", "flying", "rock"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "tropicalArchipelago",
+      "name": "Tropical Archipelago",
+      "nameVi": "Quần đảo nhiệt đới",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "coast",
+      "elements": ["water", "flying", "normal", "grass"],
+      "weather": {
+        "clear": 40,
+        "rain": 30,
+        "strongWinds": 30
+      },
+      "terrain": {
+        "none": 60,
+        "deepWater": 40
+      },
+      "bossField": {
+        "weather": "strongWinds"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "coralAtoll",
+      "name": "Coral Atoll",
+      "nameVi": "Đảo san hô vòng",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "coralReef",
+      "elements": ["water", "fairy", "poison", "rock"],
+      "weather": {
+        "clear": 70,
+        "rain": 20,
+        "sun": 10
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "kelpForest",
+      "name": "Kelp Forest",
+      "nameVi": "Rừng tảo bẹ",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "kelpForest",
+      "elements": ["water", "grass", "poison"],
+      "weather": {
+        "clear": 60,
+        "rain": 40
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "openOcean",
+      "name": "Open Ocean",
+      "nameVi": "Đại dương",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "ocean",
+      "elements": ["water", "flying", "electric"],
+      "weather": {
+        "rain": 40,
+        "thunderstorm": 30,
+        "clear": 30
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "thunderstorm",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid"],
+      "note": ""
+    },
+    {
+      "id": "deepSeaTrench",
+      "name": "Deep Sea Trench",
+      "nameVi": "Rãnh đại dương",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "abyss",
+      "elements": ["water", "dark", "dragon"],
+      "weather": {
+        "darkness": 50,
+        "clear": 50
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living", "origin:cryptid", "origin:extinct"],
+      "note": ""
+    },
+    {
+      "id": "hydrothermalVents",
+      "name": "Hydrothermal Vents",
+      "nameVi": "Miệng phun thủy nhiệt",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "hydrothermal",
+      "elements": ["water", "fire", "steel", "poison"],
+      "weather": {
+        "darkness": 70,
+        "clear": 30
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "darkness",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "polarSea",
+      "name": "Polar Sea",
+      "nameVi": "Biển địa cực",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "polarSea",
+      "elements": ["water", "ice"],
+      "weather": {
+        "snow": 40,
+        "clear": 40,
+        "blizzard": 20
+      },
+      "terrain": {
+        "deepWater": 100
+      },
+      "bossField": {
+        "weather": "blizzard",
+        "terrain": "deepWater"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "temperateDeciduousForest",
+      "name": "Temperate Deciduous Forest",
+      "nameVi": "Rừng lá rụng ôn đới",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "bambooForest",
+      "name": "Bamboo Forest",
+      "nameVi": "Rừng tre",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "temperateForest",
+      "elements": ["grass", "bug", "normal", "fairy", "fighting"],
+      "weather": {
+        "clear": 50,
+        "rain": 30,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 50,
+        "none": 50
+      },
+      "bossField": {
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "cloudForest",
+      "name": "Cloud Forest",
+      "nameVi": "Rừng mây",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "cloudForest",
+      "elements": ["grass", "fairy", "bug", "flying"],
+      "weather": {
+        "fog": 60,
+        "rain": 30,
+        "clear": 10
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "mistyTerrain": 20,
+        "none": 20
+      },
+      "bossField": {
+        "weather": "fog",
+        "terrain": "mistyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "rainforestCanopy",
+      "name": "Rainforest Canopy",
+      "nameVi": "Tán rừng mưa",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "jungle",
+      "elements": ["grass", "bug", "poison", "dragon", "flying"],
+      "weather": {
+        "rain": 45,
+        "clear": 35,
+        "fog": 20
+      },
+      "terrain": {
+        "grassyTerrain": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "rain",
+        "terrain": "grassyTerrain"
+      },
+      "speciesHints": ["origin:living"],
+      "note": ""
+    },
+    {
+      "id": "prehistoricSwamp",
+      "name": "Prehistoric Swamp",
+      "nameVi": "Đầm lầy tiền sử",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "swamp",
+      "elements": ["poison", "water", "ground", "dragon"],
+      "weather": {
+        "rain": 40,
+        "fog": 40,
+        "toxicMiasma": 20
+      },
+      "terrain": {
+        "swampTerrain": 70,
+        "none": 30
+      },
+      "bossField": {
+        "weather": "toxicMiasma",
+        "terrain": "swampTerrain"
+      },
+      "speciesHints": ["origin:extinct"],
+      "note": "thời khủng long"
+    },
+    {
+      "id": "iceAgeSteppe",
+      "name": "Ice Age Steppe",
+      "nameVi": "Thảo nguyên kỷ băng hà",
+      "source": "realWorld",
+      "region": "landform",
+      "theme": "tundra",
+      "elements": ["ice", "normal", "ground"],
+      "weather": {
+        "snow": 40,
+        "clear": 30,
+        "blizzard": 20,
+        "strongWinds": 10
+      },
+      "terrain": {
+        "frozenGround": 60,
+        "none": 40
+      },
+      "bossField": {
+        "weather": "blizzard"
+      },
+      "speciesHints": ["origin:extinct"],
+      "note": "voi ma mút, hổ răng kiếm"
+    }
+  ]
+}

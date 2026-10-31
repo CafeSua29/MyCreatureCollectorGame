@@ -1,0 +1,22 @@
+{
+  "dragon": "Dragonkin",
+  "dinosaur": "Prehistoric",
+  "beast": "Beasts",
+  "humanoid": "Humanoids",
+  "aquatic": "Aquatic",
+  "avian": "Avians",
+  "insect": "Insects",
+  "plant": "Plants",
+  "mineral": "Minerals & Constructs",
+  "amorphous": "Amorphous",
+  "shapeshifter": "Shapeshifters",
+  "reptile": "Reptiles & Amphibians",
+  "undead": "Undead",
+  "demon": "Demons",
+  "elemental": "Elementals",
+  "aberration": "Aberrations",
+  "spirit": "Spirits",
+  "celestial": "Celestials",
+  "deity": "Deities",
+  "alien": "Aliens"
+}

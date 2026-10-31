@@ -1,0 +1,27 @@
+{
+  "source": "warcraft",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Felbat",
+      "elements": ["dark", "flying"],
+      "raceId": "fiend",
+      "tier": "medium",
+      "flavor": "Felbats or fel bats are a race of winged, gargoyle-like demons. The Burning Legion breeds them as flying mounts for their soldiers, but many felbats have also been enslaved by the Illidari as mounts."
+    },
+    {
+      "name": "Corruptor",
+      "elements": ["poison", "dark"],
+      "raceId": "imp",
+      "tier": "small",
+      "flavor": "Corruptors are grells found in the Wicked Grotto wing of Maraudon."
+    },
+    {
+      "name": "Granite Golem",
+      "elements": ["rock"],
+      "raceId": "golem",
+      "tier": "peak",
+      "flavor": "Granite Golems are golem creeps that can be encountered in many tilesets. They are one of the most powerful golem creeps."
+    }
+  ]
+}

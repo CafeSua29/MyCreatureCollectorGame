@@ -1,0 +1,15 @@
+// Phát triển quái: tiến hóa, breeding, fusing, trứng.
+
+export * from './alchemy'
+export * from './beastTide'
+export * from './breeding'
+export * from './eggs'
+export * from './expeditions'
+export * from './evolution'
+export * from './fusion'
+export * from './fusionChance'
+export * from './fusionSkills'
+export * from './imprint'
+export * from './oldAge'
+export * from './soulRelics'
+export * from './time'

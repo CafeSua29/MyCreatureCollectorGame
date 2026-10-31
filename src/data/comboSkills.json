@@ -1,0 +1,163 @@
+[
+  {
+    "id": "comboWildfire",
+    "pair": [
+      {
+        "type": "element",
+        "elementId": "fire"
+      },
+      {
+        "type": "element",
+        "elementId": "grass"
+      }
+    ],
+    "elementId": "fire",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "foe",
+          "fieldId": "seaOfFire"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboSteamCloud",
+    "pair": [
+      {
+        "type": "element",
+        "elementId": "water"
+      },
+      {
+        "type": "element",
+        "elementId": "fire"
+      }
+    ],
+    "elementId": "water",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "setField",
+        "params": {
+          "layer": "weather",
+          "fieldId": "fog"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboSpringRain",
+    "pair": [
+      {
+        "type": "element",
+        "elementId": "grass"
+      },
+      {
+        "type": "element",
+        "elementId": "water"
+      }
+    ],
+    "elementId": "grass",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": [
+      {
+        "type": "setField",
+        "params": {
+          "layer": "weather",
+          "fieldId": "rain"
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboThunderGale",
+    "pair": [
+      {
+        "type": "element",
+        "elementId": "electric"
+      },
+      {
+        "type": "element",
+        "elementId": "flying"
+      }
+    ],
+    "elementId": "electric",
+    "category": "special",
+    "power": 140,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": [
+      {
+        "type": "statStage",
+        "params": {
+          "who": "target",
+          "stat": "speed",
+          "delta": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "comboTwinDragons",
+    "pair": [
+      {
+        "type": "element",
+        "elementId": "dragon"
+      },
+      {
+        "type": "element",
+        "elementId": "dragon"
+      }
+    ],
+    "elementId": "dragon",
+    "category": "physical",
+    "power": 160,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "enemy",
+    "effects": []
+  },
+  {
+    "id": "comboHolyRadiance",
+    "pair": [
+      {
+        "type": "element",
+        "elementId": "light"
+      },
+      {
+        "type": "element",
+        "elementId": "fairy"
+      }
+    ],
+    "elementId": "light",
+    "category": "special",
+    "power": 130,
+    "accuracy": 100,
+    "priority": 0,
+    "target": "allEnemies",
+    "effects": [
+      {
+        "type": "setSideField",
+        "params": {
+          "side": "own",
+          "fieldId": "safeguard"
+        }
+      }
+    ]
+  }
+]

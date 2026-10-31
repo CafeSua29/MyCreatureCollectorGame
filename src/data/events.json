@@ -1,0 +1,678 @@
+[
+  {
+    "id": "mysteryChest",
+    "group": "explore",
+    "weight": 20,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "open",
+        "outcomes": [
+          {
+            "weight": 55,
+            "results": [
+              {
+                "type": "giveItems",
+                "params": {
+                  "items": [
+                    {
+                      "itemId": "potion",
+                      "weight": 20,
+                      "min": 2,
+                      "max": 4
+                    },
+                    {
+                      "itemId": "superPotion",
+                      "weight": 12,
+                      "min": 1,
+                      "max": 3
+                    },
+                    {
+                      "itemId": "revive",
+                      "weight": 6,
+                      "min": 1,
+                      "max": 2
+                    },
+                    {
+                      "itemId": "fullHeal",
+                      "weight": 5,
+                      "min": 1,
+                      "max": 2
+                    },
+                    {
+                      "itemId": "greatBall",
+                      "weight": 12,
+                      "min": 2,
+                      "max": 4
+                    },
+                    {
+                      "itemId": "ultraBall",
+                      "weight": 6,
+                      "min": 1,
+                      "max": 3
+                    },
+                    {
+                      "itemId": "expCandyS",
+                      "weight": 8,
+                      "min": 1,
+                      "max": 3
+                    },
+                    {
+                      "itemId": "expCandyM",
+                      "weight": 3,
+                      "min": 1,
+                      "max": 2
+                    },
+                    {
+                      "itemId": "soulCrystalSmall",
+                      "weight": 6,
+                      "min": 1,
+                      "max": 2
+                    },
+                    {
+                      "itemId": "spiritHoney",
+                      "weight": 6,
+                      "min": 1,
+                      "max": 3
+                    },
+                    {
+                      "itemId": "bondFruit",
+                      "weight": 2,
+                      "min": 1,
+                      "max": 1
+                    }
+                  ],
+                  "rolls": 2
+                }
+              }
+            ]
+          },
+          {
+            "weight": 25,
+            "results": [
+              {
+                "type": "giveMoney",
+                "params": {
+                  "battles": 3
+                }
+              }
+            ]
+          },
+          {
+            "weight": 15,
+            "results": [
+              {
+                "type": "applyStatus",
+                "params": {
+                  "statusId": "poison",
+                  "count": 2
+                }
+              }
+            ]
+          },
+          {
+            "weight": 5,
+            "results": [
+              {
+                "type": "startChain",
+                "params": {
+                  "chainId": "treasureMap",
+                  "eventId": "guardedCave",
+                  "battles": 5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sacredSpring",
+    "group": "explore",
+    "weight": 3,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "drink",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "healParty",
+                "params": {}
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wanderingMerchant",
+    "group": "explore",
+    "weight": 10,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "browse",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "openTempShop",
+                "params": {
+                  "pool": "regular",
+                  "priceMultiplier": 0.7,
+                  "count": {
+                    "min": 3,
+                    "max": 5
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blackMarket",
+    "group": "explore",
+    "weight": 4,
+    "minFloor": 3,
+    "options": [
+      {
+        "id": "browse",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "openTempShop",
+                "params": {
+                  "pool": "blackMarket",
+                  "priceMultiplier": 2.5
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "injuredMonster",
+    "group": "explore",
+    "weight": 10,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "heal",
+        "costItems": [
+          {
+            "itemId": "potion",
+            "count": 1
+          }
+        ],
+        "outcomes": [
+          {
+            "weight": 50,
+            "results": [
+              {
+                "type": "giveMonster",
+                "params": {}
+              }
+            ]
+          },
+          {
+            "weight": 50,
+            "results": []
+          }
+        ]
+      },
+      {
+        "id": "attack",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "startBattle",
+                "params": {
+                  "kind": "wild",
+                  "count": 1,
+                  "enemyHpPercent": 30,
+                  "noFlee": false
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eggNest",
+    "group": "explore",
+    "weight": 8,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "steal",
+        "outcomes": [
+          {
+            "weight": 50,
+            "results": [
+              {
+                "type": "giveEgg",
+                "params": {
+                  "source": "wild"
+                }
+              }
+            ]
+          },
+          {
+            "weight": 50,
+            "results": [
+              {
+                "type": "startBattle",
+                "params": {
+                  "kind": "boss",
+                  "noFlee": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bandits",
+    "group": "explore",
+    "weight": 8,
+    "minFloor": 2,
+    "options": [
+      {
+        "id": "pay",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "loseMoneyPercent",
+                "params": {
+                  "percent": 10
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fight",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "startBattle",
+                "params": {
+                  "kind": "wild",
+                  "count": 2,
+                  "strength": 1.5,
+                  "noFlee": true,
+                  "moneyMultiplier": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "strangerChallenge",
+    "group": "explore",
+    "weight": 6,
+    "minFloor": 3,
+    "options": [
+      {
+        "id": "accept",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "startBattle",
+                "params": {
+                  "kind": "trainer",
+                  "levelOffset": 5,
+                  "noFlee": true,
+                  "moneyMultiplier": 3,
+                  "onWin": [
+                    {
+                      "type": "giveEquipment",
+                      "params": {
+                        "count": 1,
+                        "rarityWeights": {
+                          "uncommon": 5,
+                          "rare": 4,
+                          "epic": 1
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "decline",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "poisonSwamp",
+    "group": "explore",
+    "weight": 6,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "continue",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "applyStatus",
+                "params": {
+                  "statusId": "poison",
+                  "count": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meteorShower",
+    "group": "explore",
+    "weight": 3,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "watch",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "addModifier",
+                "params": {
+                  "modifierId": "meteorShower"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stormClouds",
+    "group": "explore",
+    "weight": 5,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "continue",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "addModifier",
+                "params": {
+                  "modifierId": "stormClouds"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fair",
+    "group": "town",
+    "weight": 10,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "visit",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "addModifier",
+                "params": {
+                  "modifierId": "fair"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mysteriousStranger",
+    "group": "town",
+    "weight": 6,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "browse",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "openTempShop",
+                "params": {
+                  "pool": "crystal",
+                  "priceMultiplier": 2,
+                  "traitKind": "rare",
+                  "level": 1,
+                  "count": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "decline",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodMoon",
+    "group": "town",
+    "weight": 4,
+    "minFloor": 2,
+    "dayPhases": ["night"],
+    "options": [
+      {
+        "id": "continue",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "addModifier",
+                "params": {
+                  "modifierId": "bloodMoon"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "guardedCave",
+    "group": "chain",
+    "weight": 0,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "enter",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "startBattle",
+                "params": {
+                  "kind": "boss",
+                  "strength": 1.3,
+                  "noFlee": true,
+                  "onWin": [
+                    {
+                      "type": "advanceChain",
+                      "params": {
+                        "eventId": "treasureHoard",
+                        "battles": 0
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "treasureHoard",
+    "group": "chain",
+    "weight": 0,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "open",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": [
+              {
+                "type": "giveMoney",
+                "params": {
+                  "battles": 20
+                }
+              },
+              {
+                "type": "giveEquipment",
+                "params": {
+                  "count": 1,
+                  "rarityWeights": {
+                    "rare": 7,
+                    "epic": 2.5,
+                    "legendary": 0.5
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

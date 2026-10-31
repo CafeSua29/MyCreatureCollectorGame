@@ -1,0 +1,330 @@
+{
+  "seed": 20261020,
+  "floors": {
+    "from": 1,
+    "to": 10
+  },
+  "wildBattlesPerFloor": 200,
+  "bossBattlesPerFloor": 50,
+  "maxTurns": 200,
+  "maxTurnsBoss": 100,
+  "earlyStop": {
+    "minBattles": 20,
+    "ciWidth": 0.1
+  },
+  "teams": [
+    {
+      "id": "solo",
+      "skipBoss": true,
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 60
+    },
+    {
+      "id": "duo",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "sproutling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 60
+    },
+    {
+      "id": "full6",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "sproutling",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "tidehorn",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "ashgrunt",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "pyrodrake",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "tidehorn",
+          "levelOffset": -1,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 20
+    },
+    {
+      "id": "fireDuo",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        },
+        {
+          "speciesId": "ashgrunt",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": []
+        }
+      ],
+      "masteryExpPerFloor": 60
+    },
+    {
+      "id": "duoRare",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": [
+            {
+              "id": "lifeLeeching",
+              "level": 1
+            },
+            {
+              "id": "executioner",
+              "level": 1
+            },
+            {
+              "id": "lastStand",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "speciesId": "sproutling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": [
+            {
+              "id": "searingBileBlood",
+              "level": 1
+            },
+            {
+              "id": "rebirth",
+              "level": 1
+            },
+            {
+              "id": "sereneGrace",
+              "level": 1
+            }
+          ]
+        }
+      ],
+      "masteryExpPerFloor": 25
+    }
+  ],
+  "variants": [
+    {
+      "id": "current"
+    },
+    {
+      "id": "noHitLocations",
+      "withoutSkillFields": ["reach"],
+      "config": {
+        "hitLocations": {
+          "weakPointDamagePercent": 0,
+          "offBalanceCritStage": 0
+        }
+      }
+    },
+    {
+      "id": "unbound",
+      "uncontracted": true
+    },
+    {
+      "id": "noLarge",
+      "config": {
+        "size": {
+          "largeWeightKg": 1e300
+        }
+      }
+    },
+    {
+      "id": "realm3",
+      "tamerRealm": 3
+    },
+    {
+      "id": "realm3NoMerge",
+      "tamerRealm": 3,
+      "config": {
+        "transform": {
+          "merge": {
+            "turns": 3,
+            "lowerSharePercent": 25,
+            "minAffinity": 1e300
+          }
+        }
+      }
+    },
+    {
+      "id": "zRing10",
+      "config": {
+        "trainers": {
+          "gym": {
+            "every": 10,
+            "trainerCount": {
+              "min": 2,
+              "max": 3
+            },
+            "leaderClassId": "gymLeader",
+            "repeatRewardPercent": 25,
+            "firstClearItemIds": [
+              "fourSymbolsScroll",
+              "dragonGateScroll",
+              "sixHarmoniesScroll",
+              "fiveElementsScroll",
+              "recipeScrollMyriadLongevityPill",
+              "recipeScrollHumanFormPill"
+            ],
+            "keyItemFloors": {
+              "teraOrb": 10,
+              "megaRing": 20,
+              "dynamaxBand": 30,
+              "zRing": 10
+            }
+          }
+        }
+      }
+    }
+  ],
+  "assumedMastery": {
+    "expPerFloor": 30
+  },
+  "progression": {
+    "teamIds": ["duo", "full6", "duoRare"],
+    "bossPolicy": {
+      "type": "levelTarget",
+      "marginStart": 0,
+      "marginStepOnLoss": 2,
+      "minWinsBetween": 3,
+      "maxMargin": 60,
+      "maxMarginPercent": 75
+    },
+    "farm": {
+      "window": 20,
+      "dropBelow": 50,
+      "returnAt": 80
+    },
+    "maxBattles": 5000,
+    "genesFollowFloor": true,
+    "pillModes": [true, false],
+    "growthModes": [true, false],
+    "sweep": {
+      "wildBattles": 200,
+      "bossBattles": 50
+    }
+  },
+  "bossLevelSearch": {
+    "targets": [50, 80],
+    "maxOffset": 60,
+    "battles": 40
+  },
+  "biomeSweep": {
+    "teamIds": ["duo"],
+    "floors": [1, 5],
+    "wildBattles": 40,
+    "bossBattles": 15
+  },
+  "tribulation": {
+    "teamId": "solo",
+    "tiers": [1, 2, 3, 5, 10],
+    "levelOffsets": [0, 25, 50],
+    "battles": 20
+  },
+  "safari": {
+    "floors": [1, 5, 10],
+    "visits": 200,
+    "policies": ["balls", "rock", "bait", "rareOnly"]
+  },
+  "zones": {
+    "teamId": "full6",
+    "runs": [
+      {
+        "zoneId": "zoneFire",
+        "floors": [3, 5, 10]
+      },
+      {
+        "zoneId": "zoneWater",
+        "floors": [3, 5, 10]
+      },
+      {
+        "zoneId": "zoneGrass",
+        "floors": [3, 5, 10]
+      },
+      {
+        "zoneId": "zoneRaceBeast",
+        "floors": [5, 10]
+      },
+      {
+        "zoneId": "zoneAncient",
+        "floors": [10]
+      },
+      {
+        "zoneId": "zoneLineEevee",
+        "floors": [5, 10],
+        "leadSpeciesId": "eevee"
+      }
+    ],
+    "visits": 20,
+    "supplies": {
+      "reviveItemId": "revive",
+      "revives": 3,
+      "healItemId": "superPotion",
+      "heals": 6,
+      "healBelowPercent": 50,
+      "cureItemId": "fullHeal",
+      "cures": 2
+    }
+  },
+  "breeding": {
+    "speciesId": "emberling",
+    "floor": 1,
+    "measureLevel": 50,
+    "genes": "wild",
+    "generations": 20,
+    "offspringPerGeneration": 5
+  },
+  "fusion": {
+    "speciesId": "emberling",
+    "floor": 1,
+    "level": 50,
+    "genes": "wild",
+    "fusions": 20
+  }
+}

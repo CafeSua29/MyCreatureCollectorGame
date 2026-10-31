@@ -1,0 +1,6798 @@
+[
+  {
+    "id": "offenseMight",
+    "branchId": "offense",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "spAttack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "offenseSwiftness",
+    "branchId": "offense",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "offenseFury",
+    "branchId": "offense",
+    "requires": {
+      "offenseMight": 3
+    },
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "offenseKeenEye",
+    "branchId": "offense",
+    "requires": {
+      "offenseMight": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "defenseGuard",
+    "branchId": "defense",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "defenseVitality",
+    "branchId": "defense",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "defenseBulwark",
+    "branchId": "defense",
+    "requires": {
+      "defenseGuard": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "defenseEvasion",
+    "branchId": "defense",
+    "requires": {
+      "defenseGuard": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "supportMending",
+    "branchId": "support",
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "supportResolve",
+    "branchId": "support",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "supportRegeneration",
+    "branchId": "support",
+    "requires": {
+      "supportMending": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "supportInsight",
+    "branchId": "support",
+    "maxRank": 25,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "felidFerocity",
+    "branchId": "felidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "felidKeenEye",
+    "branchId": "felidArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "felidElusive",
+    "branchId": "felidArts",
+    "requires": {
+      "felidFerocity": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "canidFerocity",
+    "branchId": "canidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "canidPack",
+    "branchId": "canidArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "canidHunt",
+    "branchId": "canidArts",
+    "requires": {
+      "canidFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "ursidBrawn",
+    "branchId": "ursidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ursidRage",
+    "branchId": "ursidArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ursidHardened",
+    "branchId": "ursidArts",
+    "requires": {
+      "ursidBrawn": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "mustelidSwiftShadow",
+    "branchId": "mustelidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mustelidRend",
+    "branchId": "mustelidArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mustelidElusive",
+    "branchId": "mustelidArts",
+    "requires": {
+      "mustelidSwiftShadow": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "rodentSwiftShadow",
+    "branchId": "rodentArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "rodentGroundElectricMastery",
+    "branchId": "rodentArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["ground", "electric"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "rodentElusive",
+    "branchId": "rodentArts",
+    "requires": {
+      "rodentSwiftShadow": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "lagomorphSwiftShadow",
+    "branchId": "lagomorphArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lagomorphPurify",
+    "branchId": "lagomorphArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "lagomorphElusive",
+    "branchId": "lagomorphArts",
+    "requires": {
+      "lagomorphSwiftShadow": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "primateVersatile",
+    "branchId": "primateArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "primatePrecision",
+    "branchId": "primateArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "primatePack",
+    "branchId": "primateArts",
+    "requires": {
+      "primateVersatile": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "equidSwiftShadow",
+    "branchId": "equidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "equidOpeningGambit",
+    "branchId": "equidArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "equidVigor",
+    "branchId": "equidArts",
+    "requires": {
+      "equidSwiftShadow": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileHighHp",
+        "params": {
+          "hpAbovePercent": 50,
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "buffaloBrawn",
+    "branchId": "buffaloArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "buffaloOpeningGambit",
+    "branchId": "buffaloArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "buffaloHardened",
+    "branchId": "buffaloArts",
+    "requires": {
+      "buffaloBrawn": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "cervidFerocity",
+    "branchId": "cervidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cervidPurify",
+    "branchId": "cervidArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "cervidVigor",
+    "branchId": "cervidArts",
+    "requires": {
+      "cervidFerocity": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileHighHp",
+        "params": {
+          "hpAbovePercent": 50,
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "suidThickHide",
+    "branchId": "suidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "suidGuts",
+    "branchId": "suidArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileStatused",
+        "params": {
+          "percent": {
+            "attack": 4,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "suidRage",
+    "branchId": "suidArts",
+    "requires": {
+      "suidThickHide": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "proboscidThickHide",
+    "branchId": "proboscidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "proboscidHardened",
+    "branchId": "proboscidArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "proboscidPack",
+    "branchId": "proboscidArts",
+    "requires": {
+      "proboscidThickHide": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pachydermIronShell",
+    "branchId": "pachydermArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pachydermPierce",
+    "branchId": "pachydermArts",
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "ignoreDefensePercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "pachydermHardened",
+    "branchId": "pachydermArts",
+    "requires": {
+      "pachydermIronShell": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "chiropteranSwiftShadow",
+    "branchId": "chiropteranArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "chiropteranDrain",
+    "branchId": "chiropteranArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "chiropteranBewilder",
+    "branchId": "chiropteranArts",
+    "requires": {
+      "chiropteranSwiftShadow": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "marsupialLifeForce",
+    "branchId": "marsupialArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "marsupialNurture",
+    "branchId": "marsupialArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "marsupialPack",
+    "branchId": "marsupialArts",
+    "requires": {
+      "marsupialLifeForce": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "xenarthranThickHide",
+    "branchId": "xenarthranArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "xenarthranHardened",
+    "branchId": "xenarthranArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "xenarthranRegrowth",
+    "branchId": "xenarthranArts",
+    "requires": {
+      "xenarthranThickHide": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectivoreIronShell",
+    "branchId": "insectivoreArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectivoreSpines",
+    "branchId": "insectivoreArts",
+    "maxRank": 8,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 1.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectivoreGuts",
+    "branchId": "insectivoreArts",
+    "requires": {
+      "insectivoreIronShell": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileStatused",
+        "params": {
+          "percent": {
+            "attack": 4,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "megafaunaBrawn",
+    "branchId": "megafaunaArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "megafaunaHunt",
+    "branchId": "megafaunaArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "megafaunaHardened",
+    "branchId": "megafaunaArts",
+    "requires": {
+      "megafaunaBrawn": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "fangedBeastBruteForce",
+    "branchId": "fangedBeastArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fangedBeastRend",
+    "branchId": "fangedBeastArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fangedBeastHunt",
+    "branchId": "fangedBeastArts",
+    "requires": {
+      "fangedBeastBruteForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "mythicBeastVersatile",
+    "branchId": "mythicBeastArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mythicBeastDarkPsychicMastery",
+    "branchId": "mythicBeastArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["dark", "psychic"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "mythicBeastResonance",
+    "branchId": "mythicBeastArts",
+    "requires": {
+      "mythicBeastVersatile": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "wildBeastFerocity",
+    "branchId": "wildBeastArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wildBeastRage",
+    "branchId": "wildBeastArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wildBeastHunt",
+    "branchId": "wildBeastArts",
+    "requires": {
+      "wildBeastFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "raptorFerocity",
+    "branchId": "raptorArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "raptorKeenEye",
+    "branchId": "raptorArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "raptorHunt",
+    "branchId": "raptorArts",
+    "requires": {
+      "raptorFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "owlQuickenedMind",
+    "branchId": "owlArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "owlPrecision",
+    "branchId": "owlArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "owlLull",
+    "branchId": "owlArts",
+    "requires": {
+      "owlQuickenedMind": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "sleep",
+              "chance": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdSwiftShadow",
+    "branchId": "birdArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdFlyingDarkMastery",
+    "branchId": "birdArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["flying", "dark"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdElusive",
+    "branchId": "birdArts",
+    "requires": {
+      "birdSwiftShadow": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterfowlLifeForce",
+    "branchId": "waterfowlArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterfowlWaterFlyingMastery",
+    "branchId": "waterfowlArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "flying"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterfowlNurture",
+    "branchId": "waterfowlArts",
+    "requires": {
+      "waterfowlLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "galliformStalwartMight",
+    "branchId": "galliformArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "galliformOpeningGambit",
+    "branchId": "galliformArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "galliformGuts",
+    "branchId": "galliformArts",
+    "requires": {
+      "galliformStalwartMight": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileStatused",
+        "params": {
+          "percent": {
+            "attack": 4,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "penguinWardingBody",
+    "branchId": "penguinArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "penguinWaterIceMastery",
+    "branchId": "penguinArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "ice"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "penguinPack",
+    "branchId": "penguinArts",
+    "requires": {
+      "penguinWardingBody": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "seabirdSwiftShadow",
+    "branchId": "seabirdArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "seabirdWaterFlyingMastery",
+    "branchId": "seabirdArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "flying"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "seabirdKeenEye",
+    "branchId": "seabirdArts",
+    "requires": {
+      "seabirdSwiftShadow": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "ratiteSwiftShadow",
+    "branchId": "ratiteArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ratiteOpeningGambit",
+    "branchId": "ratiteArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ratiteLethalStrike",
+    "branchId": "ratiteArts",
+    "requires": {
+      "ratiteSwiftShadow": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "parrotQuickenedMind",
+    "branchId": "parrotArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "parrotBewilder",
+    "branchId": "parrotArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "parrotStudious",
+    "branchId": "parrotArts",
+    "requires": {
+      "parrotQuickenedMind": 3
+    },
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "mythicBirdBloodline",
+    "branchId": "mythicBirdArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spAttack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mythicBirdFlyingFireMastery",
+    "branchId": "mythicBirdArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["flying", "fire"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "mythicBirdRegrowth",
+    "branchId": "mythicBirdArts",
+    "requires": {
+      "mythicBirdBloodline": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentFerocity",
+    "branchId": "serpentArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentToxin",
+    "branchId": "serpentArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "serpentKeenEye",
+    "branchId": "serpentArts",
+    "requires": {
+      "serpentFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "lizardSwiftShadow",
+    "branchId": "lizardArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lizardToxin",
+    "branchId": "lizardArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lizardRegrowth",
+    "branchId": "lizardArts",
+    "requires": {
+      "lizardSwiftShadow": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "turtleIronShell",
+    "branchId": "turtleArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "turtleAdaptation",
+    "branchId": "turtleArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "turtleHardened",
+    "branchId": "turtleArts",
+    "requires": {
+      "turtleIronShell": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "crocodilianBrawn",
+    "branchId": "crocodilianArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "crocodilianRend",
+    "branchId": "crocodilianArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "crocodilianHunt",
+    "branchId": "crocodilianArts",
+    "requires": {
+      "crocodilianBrawn": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "anuranLifeForce",
+    "branchId": "anuranArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "anuranToxin",
+    "branchId": "anuranArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "anuranNurture",
+    "branchId": "anuranArts",
+    "requires": {
+      "anuranLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "caudateAbundantVitality",
+    "branchId": "caudateArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "caudateWaterGroundMastery",
+    "branchId": "caudateArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "ground"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "caudateRegrowth",
+    "branchId": "caudateArts",
+    "requires": {
+      "caudateAbundantVitality": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "fishSwiftShadow",
+    "branchId": "fishArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fishWaterDarkMastery",
+    "branchId": "fishArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "dark"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "fishElusive",
+    "branchId": "fishArts",
+    "requires": {
+      "fishSwiftShadow": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "sharkBruteForce",
+    "branchId": "sharkArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sharkRend",
+    "branchId": "sharkArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "sharkBloodlust",
+    "branchId": "sharkArts",
+    "requires": {
+      "sharkBruteForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "healOnKnockout",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "cetaceanAbundantVitality",
+    "branchId": "cetaceanArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cetaceanKindredMinds",
+    "branchId": "cetaceanArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "spAttack": 3,
+            "spDefense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cetaceanNurture",
+    "branchId": "cetaceanArts",
+    "requires": {
+      "cetaceanAbundantVitality": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "pinnipedLifeForce",
+    "branchId": "pinnipedArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pinnipedWaterIceMastery",
+    "branchId": "pinnipedArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "ice"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "pinnipedPack",
+    "branchId": "pinnipedArts",
+    "requires": {
+      "pinnipedLifeForce": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sirenianAbundantVitality",
+    "branchId": "sirenianArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sirenianNurture",
+    "branchId": "sirenianArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sirenianPurify",
+    "branchId": "sirenianArts",
+    "requires": {
+      "sirenianAbundantVitality": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "cephalopodMindArt",
+    "branchId": "cephalopodArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cephalopodBewilder",
+    "branchId": "cephalopodArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cephalopodElusive",
+    "branchId": "cephalopodArts",
+    "requires": {
+      "cephalopodMindArt": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "crustaceanIronShell",
+    "branchId": "crustaceanArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "crustaceanSpines",
+    "branchId": "crustaceanArts",
+    "maxRank": 8,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 1.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "crustaceanLethalStrike",
+    "branchId": "crustaceanArts",
+    "requires": {
+      "crustaceanIronShell": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "cnidarianLifeForce",
+    "branchId": "cnidarianArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cnidarianNumbing",
+    "branchId": "cnidarianArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "paralysis",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cnidarianToxin",
+    "branchId": "cnidarianArts",
+    "requires": {
+      "cnidarianLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "molluskIronShell",
+    "branchId": "molluskArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "molluskHardened",
+    "branchId": "molluskArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "molluskRegrowth",
+    "branchId": "molluskArts",
+    "requires": {
+      "molluskIronShell": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "leviathanBloodline",
+    "branchId": "leviathanArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spAttack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "leviathanWaterDarkMastery",
+    "branchId": "leviathanArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "dark"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "leviathanPierce",
+    "branchId": "leviathanArts",
+    "requires": {
+      "leviathanBloodline": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "ignoreDefensePercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "carapaceonThickHide",
+    "branchId": "carapaceonArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "carapaceonSpines",
+    "branchId": "carapaceonArts",
+    "maxRank": 8,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 1.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "carapaceonHardened",
+    "branchId": "carapaceonArts",
+    "requires": {
+      "carapaceonThickHide": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "beetleStalwartMight",
+    "branchId": "beetleArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "beetleHardened",
+    "branchId": "beetleArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "beetlePierce",
+    "branchId": "beetleArts",
+    "requires": {
+      "beetleStalwartMight": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "ignoreDefensePercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "lepidopteranQuickenedMind",
+    "branchId": "lepidopteranArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lepidopteranLull",
+    "branchId": "lepidopteranArts",
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "sleep",
+              "chance": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lepidopteranToxin",
+    "branchId": "lepidopteranArts",
+    "requires": {
+      "lepidopteranQuickenedMind": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hymenopteranFerocity",
+    "branchId": "hymenopteranArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "hymenopteranToxin",
+    "branchId": "hymenopteranArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hymenopteranPack",
+    "branchId": "hymenopteranArts",
+    "requires": {
+      "hymenopteranFerocity": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "arachnidFerocity",
+    "branchId": "arachnidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "arachnidToxin",
+    "branchId": "arachnidArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "arachnidNumbing",
+    "branchId": "arachnidArts",
+    "requires": {
+      "arachnidFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "paralysis",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "orthopteranFerocity",
+    "branchId": "orthopteranArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "orthopteranKeenEye",
+    "branchId": "orthopteranArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "orthopteranOpeningGambit",
+    "branchId": "orthopteranArts",
+    "requires": {
+      "orthopteranFerocity": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "odonateSwiftShadow",
+    "branchId": "odonateArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "odonatePrecision",
+    "branchId": "odonateArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "odonateKeenEye",
+    "branchId": "odonateArts",
+    "requires": {
+      "odonateSwiftShadow": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "myriapodStalwartMight",
+    "branchId": "myriapodArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "myriapodToxin",
+    "branchId": "myriapodArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "myriapodSpines",
+    "branchId": "myriapodArts",
+    "requires": {
+      "myriapodStalwartMight": 3
+    },
+    "maxRank": 8,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 1.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "larvaLifeForce",
+    "branchId": "larvaArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "larvaRegrowth",
+    "branchId": "larvaArts",
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "larvaStudious",
+    "branchId": "larvaArts",
+    "requires": {
+      "larvaLifeForce": 3
+    },
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "neopteronBrawn",
+    "branchId": "neopteronArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "neopteronHardened",
+    "branchId": "neopteronArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "neopteronRage",
+    "branchId": "neopteronArts",
+    "requires": {
+      "neopteronBrawn": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectoidVersatile",
+    "branchId": "insectoidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectoidPack",
+    "branchId": "insectoidArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectoidToxin",
+    "branchId": "insectoidArts",
+    "requires": {
+      "insectoidVersatile": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "theropodBruteForce",
+    "branchId": "theropodArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "theropodHunt",
+    "branchId": "theropodArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "theropodBloodlust",
+    "branchId": "theropodArts",
+    "requires": {
+      "theropodBruteForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "healOnKnockout",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sauropodAbundantVitality",
+    "branchId": "sauropodArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "sauropodHardened",
+    "branchId": "sauropodArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sauropodPack",
+    "branchId": "sauropodArts",
+    "requires": {
+      "sauropodAbundantVitality": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ornithischianIronShell",
+    "branchId": "ornithischianArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ornithischianSpines",
+    "branchId": "ornithischianArts",
+    "maxRank": 8,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 1.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ornithischianHardened",
+    "branchId": "ornithischianArts",
+    "requires": {
+      "ornithischianIronShell": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "pterosaurSwiftShadow",
+    "branchId": "pterosaurArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pterosaurKeenEye",
+    "branchId": "pterosaurArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "pterosaurFlyingRockMastery",
+    "branchId": "pterosaurArts",
+    "requires": {
+      "pterosaurSwiftShadow": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["flying", "rock"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "marineReptileBloodline",
+    "branchId": "marineReptileArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spAttack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "marineReptileWaterDarkMastery",
+    "branchId": "marineReptileArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "dark"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "marineReptileHunt",
+    "branchId": "marineReptileArts",
+    "requires": {
+      "marineReptileBloodline": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancientCreatureThickHide",
+    "branchId": "ancientCreatureArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancientCreatureHardened",
+    "branchId": "ancientCreatureArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancientCreatureUndying",
+    "branchId": "ancientCreatureArts",
+    "requires": {
+      "ancientCreatureThickHide": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "kaijuBrawn",
+    "branchId": "kaijuArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "kaijuResonance",
+    "branchId": "kaijuArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "kaijuPierce",
+    "branchId": "kaijuArts",
+    "requires": {
+      "kaijuBrawn": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "ignoreDefensePercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "westernDragonBloodline",
+    "branchId": "westernDragonArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spAttack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "westernDragonDragonFireMastery",
+    "branchId": "westernDragonArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["dragon", "fire"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "westernDragonAdaptation",
+    "branchId": "westernDragonArts",
+    "requires": {
+      "westernDragonBloodline": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "easternDragonMindArt",
+    "branchId": "easternDragonArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "easternDragonDragonWaterMastery",
+    "branchId": "easternDragonArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["dragon", "water"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "easternDragonPurify",
+    "branchId": "easternDragonArts",
+    "requires": {
+      "easternDragonMindArt": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "wyvernFerocity",
+    "branchId": "wyvernArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wyvernFireFlyingMastery",
+    "branchId": "wyvernArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["fire", "flying"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "wyvernKeenEye",
+    "branchId": "wyvernArts",
+    "requires": {
+      "wyvernFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "fangedWyvernFerocity",
+    "branchId": "fangedWyvernArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fangedWyvernNumbing",
+    "branchId": "fangedWyvernArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "paralysis",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fangedWyvernHunt",
+    "branchId": "fangedWyvernArts",
+    "requires": {
+      "fangedWyvernFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "bruteWyvernBrawn",
+    "branchId": "bruteWyvernArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "bruteWyvernRage",
+    "branchId": "bruteWyvernArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "bruteWyvernHardened",
+    "branchId": "bruteWyvernArts",
+    "requires": {
+      "bruteWyvernBrawn": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "piscineWyvernLifeForce",
+    "branchId": "piscineWyvernArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "piscineWyvernWaterGroundMastery",
+    "branchId": "piscineWyvernArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "ground"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "piscineWyvernElusive",
+    "branchId": "piscineWyvernArts",
+    "requires": {
+      "piscineWyvernLifeForce": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdWyvernSwiftShadow",
+    "branchId": "birdWyvernArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdWyvernToxin",
+    "branchId": "birdWyvernArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdWyvernOpeningGambit",
+    "branchId": "birdWyvernArts",
+    "requires": {
+      "birdWyvernSwiftShadow": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "snakeWyvernFerocity",
+    "branchId": "snakeWyvernArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "snakeWyvernToxin",
+    "branchId": "snakeWyvernArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "snakeWyvernRend",
+    "branchId": "snakeWyvernArts",
+    "requires": {
+      "snakeWyvernFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "elderDragonVersatile",
+    "branchId": "elderDragonArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "elderDragonAdaptation",
+    "branchId": "elderDragonArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "elderDragonResonance",
+    "branchId": "elderDragonArts",
+    "requires": {
+      "elderDragonVersatile": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "drakeBrawn",
+    "branchId": "drakeArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "drakeDragonFireMastery",
+    "branchId": "drakeArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["dragon", "fire"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "drakeGuts",
+    "branchId": "drakeArts",
+    "requires": {
+      "drakeBrawn": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileStatused",
+        "params": {
+          "percent": {
+            "attack": 4,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "treeThickHide",
+    "branchId": "treeArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "treeRegrowth",
+    "branchId": "treeArts",
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "treeNurture",
+    "branchId": "treeArts",
+    "requires": {
+      "treeThickHide": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "flowerMindArt",
+    "branchId": "flowerArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "flowerNurture",
+    "branchId": "flowerArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "flowerLull",
+    "branchId": "flowerArts",
+    "requires": {
+      "flowerMindArt": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "sleep",
+              "chance": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fungusLifeForce",
+    "branchId": "fungusArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fungusLull",
+    "branchId": "fungusArts",
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "sleep",
+              "chance": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fungusToxin",
+    "branchId": "fungusArts",
+    "requires": {
+      "fungusLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "algaeAbundantVitality",
+    "branchId": "algaeArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "algaeRegrowth",
+    "branchId": "algaeArts",
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "algaeWaterGrassMastery",
+    "branchId": "algaeArts",
+    "requires": {
+      "algaeAbundantVitality": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "grass"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "golemIronShell",
+    "branchId": "golemArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "golemHardened",
+    "branchId": "golemArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "golemRage",
+    "branchId": "golemArts",
+    "requires": {
+      "golemIronShell": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "crystalMindArt",
+    "branchId": "crystalArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "crystalAdaptation",
+    "branchId": "crystalArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "crystalResonance",
+    "branchId": "crystalArts",
+    "requires": {
+      "crystalMindArt": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "metalWardingBody",
+    "branchId": "metalArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "metalAdaptation",
+    "branchId": "metalArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "metalSteadfast",
+    "branchId": "metalArts",
+    "requires": {
+      "metalWardingBody": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "livingObjectWardingBody",
+    "branchId": "livingObjectArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "livingObjectBewilder",
+    "branchId": "livingObjectArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "livingObjectUndying",
+    "branchId": "livingObjectArts",
+    "requires": {
+      "livingObjectWardingBody": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "machineStalwartMight",
+    "branchId": "machineArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "machinePrecision",
+    "branchId": "machineArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "machineOpeningGambit",
+    "branchId": "machineArts",
+    "requires": {
+      "machineStalwartMight": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "slimeAbundantVitality",
+    "branchId": "slimeArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "slimeSteadfast",
+    "branchId": "slimeArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "slimeRegrowth",
+    "branchId": "slimeArts",
+    "requires": {
+      "slimeAbundantVitality": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "annelidAbundantVitality",
+    "branchId": "annelidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "annelidDrain",
+    "branchId": "annelidArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "annelidRegrowth",
+    "branchId": "annelidArts",
+    "requires": {
+      "annelidAbundantVitality": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "changelingVersatile",
+    "branchId": "changelingArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "changelingAdaptation",
+    "branchId": "changelingArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "changelingElusive",
+    "branchId": "changelingArts",
+    "requires": {
+      "changelingVersatile": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "lycanthropeFerocity",
+    "branchId": "lycanthropeArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lycanthropeRage",
+    "branchId": "lycanthropeArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lycanthropeRend",
+    "branchId": "lycanthropeArts",
+    "requires": {
+      "lycanthropeFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mimicStalwartMight",
+    "branchId": "mimicArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mimicOpeningGambit",
+    "branchId": "mimicArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mimicLethalStrike",
+    "branchId": "mimicArts",
+    "requires": {
+      "mimicStalwartMight": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "zombieThickHide",
+    "branchId": "zombieArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "zombieToxin",
+    "branchId": "zombieArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "zombieUndying",
+    "branchId": "zombieArts",
+    "requires": {
+      "zombieThickHide": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "skeletonStalwartMight",
+    "branchId": "skeletonArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "skeletonKeenEye",
+    "branchId": "skeletonArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "skeletonUndying",
+    "branchId": "skeletonArts",
+    "requires": {
+      "skeletonStalwartMight": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "vampireQuickenedMind",
+    "branchId": "vampireArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "vampireDrain",
+    "branchId": "vampireArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "vampireBloodlust",
+    "branchId": "vampireArts",
+    "requires": {
+      "vampireQuickenedMind": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "healOnKnockout",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "wraithQuickenedMind",
+    "branchId": "wraithArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wraithBewilder",
+    "branchId": "wraithArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "wraithElusive",
+    "branchId": "wraithArts",
+    "requires": {
+      "wraithQuickenedMind": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "lichSpiritPower",
+    "branchId": "lichArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lichResonance",
+    "branchId": "lichArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "lichUndying",
+    "branchId": "lichArts",
+    "requires": {
+      "lichSpiritPower": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "mummyThickHide",
+    "branchId": "mummyArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mummySteadfast",
+    "branchId": "mummyArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "mummyHardened",
+    "branchId": "mummyArts",
+    "requires": {
+      "mummyThickHide": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghoulBruteForce",
+    "branchId": "ghoulArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghoulDrain",
+    "branchId": "ghoulArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghoulBloodlust",
+    "branchId": "ghoulArts",
+    "requires": {
+      "ghoulBruteForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "healOnKnockout",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghostQuickenedMind",
+    "branchId": "ghostArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghostGhostDarkMastery",
+    "branchId": "ghostArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["ghost", "dark"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghostElusive",
+    "branchId": "ghostArts",
+    "requires": {
+      "ghostQuickenedMind": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "yokaiQuickenedMind",
+    "branchId": "yokaiArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "yokaiBewilder",
+    "branchId": "yokaiArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "yokaiSearing",
+    "branchId": "yokaiArts",
+    "requires": {
+      "yokaiQuickenedMind": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "burn",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "feyMindArt",
+    "branchId": "feyArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "feyFairyGrassMastery",
+    "branchId": "feyArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["fairy", "grass"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "feyNurture",
+    "branchId": "feyArts",
+    "requires": {
+      "feyMindArt": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "wispQuickenedMind",
+    "branchId": "wispArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "wispSearing",
+    "branchId": "wispArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "burn",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "wispElusive",
+    "branchId": "wispArts",
+    "requires": {
+      "wispQuickenedMind": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "natureSpiritLifeForce",
+    "branchId": "natureSpiritArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "natureSpiritRegrowth",
+    "branchId": "natureSpiritArts",
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "natureSpiritPurify",
+    "branchId": "natureSpiritArts",
+    "requires": {
+      "natureSpiritLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "fiendFerocity",
+    "branchId": "fiendArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fiendSearing",
+    "branchId": "fiendArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "burn",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fiendBloodlust",
+    "branchId": "fiendArts",
+    "requires": {
+      "fiendFerocity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "healOnKnockout",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "impSwiftShadow",
+    "branchId": "impArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "impBewilder",
+    "branchId": "impArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "impSearing",
+    "branchId": "impArts",
+    "requires": {
+      "impSwiftShadow": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "burn",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "oniBrawn",
+    "branchId": "oniArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "oniRage",
+    "branchId": "oniArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "oniLethalStrike",
+    "branchId": "oniArts",
+    "requires": {
+      "oniBrawn": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "elementalSpiritSpiritPower",
+    "branchId": "elementalSpiritArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "elementalSpiritResonance",
+    "branchId": "elementalSpiritArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "elementalSpiritAdaptation",
+    "branchId": "elementalSpiritArts",
+    "requires": {
+      "elementalSpiritSpiritPower": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "djinnMindArt",
+    "branchId": "djinnArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "djinnPsychicFireMastery",
+    "branchId": "djinnArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["psychic", "fire"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "djinnCommerce",
+    "branchId": "djinnArts",
+    "requires": {
+      "djinnMindArt": 3
+    },
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "moneyRewardModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "eldritchMindArt",
+    "branchId": "eldritchArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "eldritchBewilder",
+    "branchId": "eldritchArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "eldritchPierce",
+    "branchId": "eldritchArts",
+    "requires": {
+      "eldritchMindArt": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "ignoreDefensePercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "chimeraBrawn",
+    "branchId": "chimeraArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "chimeraToxin",
+    "branchId": "chimeraArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "chimeraSearing",
+    "branchId": "chimeraArts",
+    "requires": {
+      "chimeraBrawn": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "burn",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "angelLifeForce",
+    "branchId": "angelArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "angelLightFairyMastery",
+    "branchId": "angelArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["light", "fairy"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "angelPurify",
+    "branchId": "angelArts",
+    "requires": {
+      "angelLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "turnEndCureStatus",
+        "params": {
+          "chance": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "godDivinity",
+    "branchId": "godArts",
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 1,
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "godResonance",
+    "branchId": "godArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "stabMultiplier",
+        "params": {
+          "multiplier": 1.03
+        }
+      }
+    ]
+  },
+  {
+    "id": "godSteadfast",
+    "branchId": "godArts",
+    "requires": {
+      "godDivinity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "divineBeastDivinity",
+    "branchId": "divineBeastArts",
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 1,
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "divineBeastAdaptation",
+    "branchId": "divineBeastArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "effectivenessModifier",
+        "params": {
+          "side": "taken",
+          "when": "superEffective",
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "divineBeastDragonLightMastery",
+    "branchId": "divineBeastArts",
+    "requires": {
+      "divineBeastDivinity": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["dragon", "light"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "demigodDivinity",
+    "branchId": "demigodArts",
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 1,
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "demigodLethalStrike",
+    "branchId": "demigodArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "demigodOpeningGambit",
+    "branchId": "demigodArts",
+    "requires": {
+      "demigodDivinity": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "humanVersatile",
+    "branchId": "humanArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "humanStudious",
+    "branchId": "humanArts",
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "humanCommerce",
+    "branchId": "humanArts",
+    "requires": {
+      "humanVersatile": 3
+    },
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "moneyRewardModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "elfQuickenedMind",
+    "branchId": "elfArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "elfPrecision",
+    "branchId": "elfArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "elfKeenEye",
+    "branchId": "elfArts",
+    "requires": {
+      "elfQuickenedMind": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "dwarfThickHide",
+    "branchId": "dwarfArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "dwarfLethalStrike",
+    "branchId": "dwarfArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "dwarfHardened",
+    "branchId": "dwarfArts",
+    "requires": {
+      "dwarfThickHide": 3
+    },
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "orcBrawn",
+    "branchId": "orcArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "orcRage",
+    "branchId": "orcArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "orcGuts",
+    "branchId": "orcArts",
+    "requires": {
+      "orcBrawn": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileStatused",
+        "params": {
+          "percent": {
+            "attack": 4,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "halflingSwiftShadow",
+    "branchId": "halflingArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "halflingElusive",
+    "branchId": "halflingArts",
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "halflingCommerce",
+    "branchId": "halflingArts",
+    "requires": {
+      "halflingSwiftShadow": 3
+    },
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "moneyRewardModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "giantBrawn",
+    "branchId": "giantArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "attack": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "giantHardened",
+    "branchId": "giantArts",
+    "maxRank": 6,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageTakenAtFullHp",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "giantPierce",
+    "branchId": "giantArts",
+    "requires": {
+      "giantBrawn": 5
+    },
+    "maxRank": 10,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "ignoreDefensePercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "goblinSwiftShadow",
+    "branchId": "goblinArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "goblinCommerce",
+    "branchId": "goblinArts",
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "moneyRewardModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "goblinPack",
+    "branchId": "goblinArts",
+    "requires": {
+      "goblinSwiftShadow": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "trollAbundantVitality",
+    "branchId": "trollArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "trollRegrowth",
+    "branchId": "trollArts",
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "trollRage",
+    "branchId": "trollArts",
+    "requires": {
+      "trollAbundantVitality": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": {
+            "attack": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastfolkFerocity",
+    "branchId": "beastfolkArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "speed": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastfolkHunt",
+    "branchId": "beastfolkArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "damageVsLowHp",
+        "params": {
+          "hpBelowPercent": 50,
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastfolkPack",
+    "branchId": "beastfolkArts",
+    "requires": {
+      "beastfolkFerocity": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "centaurSwiftShadow",
+    "branchId": "centaurArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "centaurPrecision",
+    "branchId": "centaurArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "centaurOpeningGambit",
+    "branchId": "centaurArts",
+    "requires": {
+      "centaurSwiftShadow": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierFirstTurns",
+        "params": {
+          "turns": 3,
+          "percent": {
+            "attack": 4,
+            "defense": 4,
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectfolkStalwartMight",
+    "branchId": "insectfolkArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectfolkToxin",
+    "branchId": "insectfolkArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "insectfolkPack",
+    "branchId": "insectfolkArts",
+    "requires": {
+      "insectfolkStalwartMight": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "attack": 3,
+            "defense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "merfolkLifeForce",
+    "branchId": "merfolkArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "merfolkWaterDarkMastery",
+    "branchId": "merfolkArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["water", "dark"],
+          "percent": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "merfolkNurture",
+    "branchId": "merfolkArts",
+    "requires": {
+      "merfolkLifeForce": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 5,
+          "dealt": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "lizardfolkThickHide",
+    "branchId": "lizardfolkArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lizardfolkToxin",
+    "branchId": "lizardfolkArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lizardfolkRegrowth",
+    "branchId": "lizardfolkArts",
+    "requires": {
+      "lizardfolkThickHide": 5
+    },
+    "maxRank": 3,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "harpyfolkSwiftShadow",
+    "branchId": "harpyfolkArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "harpyfolkRend",
+    "branchId": "harpyfolkArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "bleeding",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "harpyfolkElusive",
+    "branchId": "harpyfolkArts",
+    "requires": {
+      "harpyfolkSwiftShadow": 5
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "alienRaceMindArt",
+    "branchId": "alienRaceArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 2,
+            "spDefense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "alienRaceStudious",
+    "branchId": "alienRaceArts",
+    "maxRank": 20,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "alienRaceBewilder",
+    "branchId": "alienRaceArts",
+    "requires": {
+      "alienRaceMindArt": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "confused",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hiveVersatile",
+    "branchId": "hiveArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1,
+            "defense": 1,
+            "spAttack": 1,
+            "spDefense": 1,
+            "speed": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "hiveKindredMinds",
+    "branchId": "hiveArts",
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWithAlly",
+        "params": {
+          "percent": {
+            "spAttack": 3,
+            "spDefense": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "hiveToxin",
+    "branchId": "hiveArts",
+    "requires": {
+      "hiveVersatile": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "androidStalwartMight",
+    "branchId": "androidArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 2,
+            "defense": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "androidPrecision",
+    "branchId": "androidArts",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "androidSteadfast",
+    "branchId": "androidArts",
+    "requires": {
+      "androidStalwartMight": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "mutantAbundantVitality",
+    "branchId": "mutantArts",
+    "costPerRank": 1,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mutantToxin",
+    "branchId": "mutantArts",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "poison",
+              "chance": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mutantGuts",
+    "branchId": "mutantArts",
+    "requires": {
+      "mutantAbundantVitality": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 2,
+    "hooks": [
+      {
+        "type": "statModifierWhileStatused",
+        "params": {
+          "percent": {
+            "attack": 4,
+            "defense": 4
+          }
+        }
+      }
+    ]
+  }
+]

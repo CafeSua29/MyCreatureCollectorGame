@@ -1,0 +1,3347 @@
+{
+  "direct": {
+    "caterpie": {
+      "activeTime": "diurnal",
+      "morning": 973,
+      "day": 913,
+      "night": 216
+    },
+    "metapod": {
+      "activeTime": "diurnal",
+      "morning": 370,
+      "day": 340,
+      "night": 60
+    },
+    "butterfree": {
+      "activeTime": "diurnal",
+      "morning": 80,
+      "day": 50,
+      "night": 20
+    },
+    "weedle": {
+      "activeTime": "diurnal",
+      "morning": 713,
+      "day": 713,
+      "night": 238
+    },
+    "kakuna": {
+      "activeTime": "diurnal",
+      "morning": 320,
+      "day": 340,
+      "night": 82
+    },
+    "beedrill": {
+      "activeTime": "diurnal",
+      "morning": 60,
+      "day": 20,
+      "night": 28
+    },
+    "pidgey": {
+      "activeTime": "diurnal",
+      "morning": 2055,
+      "day": 2580,
+      "night": 95
+    },
+    "pidgeotto": {
+      "activeTime": "diurnal",
+      "morning": 888,
+      "day": 926,
+      "night": 80
+    },
+    "rattata": {
+      "activeTime": "cathemeral",
+      "morning": 8201,
+      "day": 8196,
+      "night": 5231
+    },
+    "raticate": {
+      "activeTime": "cathemeral",
+      "morning": 1518,
+      "day": 1530,
+      "night": 1790
+    },
+    "spearow": {
+      "activeTime": "diurnal",
+      "morning": 1655,
+      "day": 1655,
+      "night": 65
+    },
+    "fearow": {
+      "activeTime": "diurnal",
+      "morning": 1123,
+      "day": 1113,
+      "night": 358
+    },
+    "ekans": {
+      "activeTime": "cathemeral",
+      "morning": 369,
+      "day": 369,
+      "night": 224
+    },
+    "arbok": {
+      "activeTime": "cathemeral",
+      "morning": 334,
+      "day": 334,
+      "night": 234
+    },
+    "pikachu": {
+      "activeTime": "cathemeral",
+      "morning": 57,
+      "day": 57,
+      "night": 50
+    },
+    "sandshrew": {
+      "activeTime": "cathemeral",
+      "morning": 358,
+      "day": 358,
+      "night": 308
+    },
+    "sandslash": {
+      "activeTime": "cathemeral",
+      "morning": 214,
+      "day": 214,
+      "night": 169
+    },
+    "nidoranF": {
+      "activeTime": "cathemeral",
+      "morning": 513,
+      "day": 513,
+      "night": 363
+    },
+    "nidorina": {
+      "activeTime": "cathemeral",
+      "morning": 546,
+      "day": 546,
+      "night": 546
+    },
+    "nidoranM": {
+      "activeTime": "cathemeral",
+      "morning": 393,
+      "day": 393,
+      "night": 363
+    },
+    "nidorino": {
+      "activeTime": "cathemeral",
+      "morning": 546,
+      "day": 546,
+      "night": 546
+    },
+    "clefairy": {
+      "activeTime": "cathemeral",
+      "morning": 671,
+      "day": 571,
+      "night": 741
+    },
+    "vulpix": {
+      "activeTime": "cathemeral",
+      "morning": 157,
+      "day": 187,
+      "night": 167
+    },
+    "jigglypuff": {
+      "activeTime": "cathemeral",
+      "morning": 310,
+      "day": 270,
+      "night": 210
+    },
+    "zubat": {
+      "activeTime": "cathemeral",
+      "morning": 5515,
+      "day": 5448,
+      "night": 6773
+    },
+    "golbat": {
+      "activeTime": "cathemeral",
+      "morning": 4806,
+      "day": 4806,
+      "night": 5448
+    },
+    "oddish": {
+      "activeTime": "nocturnal",
+      "morning": 48,
+      "day": 48,
+      "night": 1098
+    },
+    "gloom": {
+      "activeTime": "cathemeral",
+      "morning": 170,
+      "day": 190,
+      "night": 255
+    },
+    "paras": {
+      "activeTime": "cathemeral",
+      "morning": 435,
+      "day": 395,
+      "night": 375
+    },
+    "parasect": {
+      "activeTime": "cathemeral",
+      "morning": 165,
+      "day": 165,
+      "night": 145
+    },
+    "venonat": {
+      "activeTime": "nocturnal",
+      "morning": 196,
+      "day": 76,
+      "night": 626
+    },
+    "venomoth": {
+      "activeTime": "nocturnal",
+      "morning": 70,
+      "day": 70,
+      "night": 215
+    },
+    "diglett": {
+      "activeTime": "cathemeral",
+      "morning": 541,
+      "day": 541,
+      "night": 541
+    },
+    "dugtrio": {
+      "activeTime": "cathemeral",
+      "morning": 140,
+      "day": 140,
+      "night": 140
+    },
+    "meowth": {
+      "activeTime": "cathemeral",
+      "morning": 350,
+      "day": 350,
+      "night": 620
+    },
+    "persian": {
+      "activeTime": "cathemeral",
+      "morning": 24,
+      "day": 24,
+      "night": 24
+    },
+    "psyduck": {
+      "activeTime": "cathemeral",
+      "morning": 2161,
+      "day": 2161,
+      "night": 2231
+    },
+    "golduck": {
+      "activeTime": "cathemeral",
+      "morning": 842,
+      "day": 842,
+      "night": 897
+    },
+    "mankey": {
+      "activeTime": "cathemeral",
+      "morning": 132,
+      "day": 132,
+      "night": 132
+    },
+    "primeape": {
+      "activeTime": "cathemeral",
+      "morning": 144,
+      "day": 144,
+      "night": 134
+    },
+    "growlithe": {
+      "activeTime": "cathemeral",
+      "morning": 237,
+      "day": 267,
+      "night": 167
+    },
+    "poliwag": {
+      "activeTime": "cathemeral",
+      "morning": 13008,
+      "day": 13008,
+      "night": 13288
+    },
+    "poliwhirl": {
+      "activeTime": "cathemeral",
+      "morning": 1182,
+      "day": 1182,
+      "night": 1092
+    },
+    "abra": {
+      "activeTime": "cathemeral",
+      "morning": 565,
+      "day": 565,
+      "night": 565
+    },
+    "kadabra": {
+      "activeTime": "cathemeral",
+      "morning": 227,
+      "day": 227,
+      "night": 227
+    },
+    "machop": {
+      "activeTime": "cathemeral",
+      "morning": 940,
+      "day": 970,
+      "night": 765
+    },
+    "machoke": {
+      "activeTime": "cathemeral",
+      "morning": 1342,
+      "day": 1342,
+      "night": 1101
+    },
+    "bellsprout": {
+      "activeTime": "cathemeral",
+      "morning": 1138,
+      "day": 1038,
+      "night": 658
+    },
+    "weepinbell": {
+      "activeTime": "cathemeral",
+      "morning": 350,
+      "day": 370,
+      "night": 330
+    },
+    "tentacool": {
+      "activeTime": "cathemeral",
+      "morning": 7055,
+      "day": 7055,
+      "night": 7055
+    },
+    "tentacruel": {
+      "activeTime": "cathemeral",
+      "morning": 1340,
+      "day": 1340,
+      "night": 1340
+    },
+    "geodude": {
+      "activeTime": "cathemeral",
+      "morning": 4900,
+      "day": 4940,
+      "night": 4950
+    },
+    "graveler": {
+      "activeTime": "cathemeral",
+      "morning": 3937,
+      "day": 4027,
+      "night": 3849
+    },
+    "golem": {
+      "activeTime": "diurnal",
+      "morning": 40,
+      "day": 40,
+      "night": 0
+    },
+    "ponyta": {
+      "activeTime": "cathemeral",
+      "morning": 926,
+      "day": 1026,
+      "night": 736
+    },
+    "rapidash": {
+      "activeTime": "cathemeral",
+      "morning": 110,
+      "day": 110,
+      "night": 80
+    },
+    "slowpoke": {
+      "activeTime": "cathemeral",
+      "morning": 769,
+      "day": 769,
+      "night": 769
+    },
+    "slowbro": {
+      "activeTime": "cathemeral",
+      "morning": 120,
+      "day": 120,
+      "night": 120
+    },
+    "magnemite": {
+      "activeTime": "cathemeral",
+      "morning": 620,
+      "day": 620,
+      "night": 620
+    },
+    "magneton": {
+      "activeTime": "cathemeral",
+      "morning": 167,
+      "day": 167,
+      "night": 165
+    },
+    "farfetchd": {
+      "activeTime": "diurnal",
+      "morning": 400,
+      "day": 400,
+      "night": 160
+    },
+    "doduo": {
+      "activeTime": "diurnal",
+      "morning": 725,
+      "day": 725,
+      "night": 150
+    },
+    "dodrio": {
+      "activeTime": "diurnal",
+      "morning": 95,
+      "day": 95,
+      "night": 20
+    },
+    "seel": {
+      "activeTime": "cathemeral",
+      "morning": 680,
+      "day": 680,
+      "night": 595
+    },
+    "dewgong": {
+      "activeTime": "cathemeral",
+      "morning": 111,
+      "day": 111,
+      "night": 111
+    },
+    "grimer": {
+      "activeTime": "cathemeral",
+      "morning": 1081,
+      "day": 926,
+      "night": 1536
+    },
+    "muk": {
+      "activeTime": "cathemeral",
+      "morning": 135,
+      "day": 135,
+      "night": 195
+    },
+    "shellder": {
+      "activeTime": "cathemeral",
+      "morning": 1780,
+      "day": 1780,
+      "night": 1780
+    },
+    "gastly": {
+      "activeTime": "nocturnal",
+      "morning": 3640,
+      "day": 3640,
+      "night": 7705
+    },
+    "haunter": {
+      "activeTime": "cathemeral",
+      "morning": 1300,
+      "day": 1300,
+      "night": 1435
+    },
+    "gengar": {
+      "activeTime": "cathemeral",
+      "morning": 60,
+      "day": 60,
+      "night": 60
+    },
+    "onix": {
+      "activeTime": "cathemeral",
+      "morning": 1477,
+      "day": 1477,
+      "night": 1497
+    },
+    "drowzee": {
+      "activeTime": "cathemeral",
+      "morning": 560,
+      "day": 560,
+      "night": 720
+    },
+    "hypno": {
+      "activeTime": "nocturnal",
+      "morning": 40,
+      "day": 40,
+      "night": 105
+    },
+    "krabby": {
+      "activeTime": "cathemeral",
+      "morning": 5930,
+      "day": 5930,
+      "night": 6020
+    },
+    "kingler": {
+      "activeTime": "cathemeral",
+      "morning": 650,
+      "day": 650,
+      "night": 650
+    },
+    "voltorb": {
+      "activeTime": "cathemeral",
+      "morning": 290,
+      "day": 290,
+      "night": 290
+    },
+    "electrode": {
+      "activeTime": "cathemeral",
+      "morning": 30,
+      "day": 30,
+      "night": 30
+    },
+    "exeggcute": {
+      "activeTime": "cathemeral",
+      "morning": 180,
+      "day": 180,
+      "night": 180
+    },
+    "cubone": {
+      "activeTime": "cathemeral",
+      "morning": 480,
+      "day": 480,
+      "night": 380
+    },
+    "marowak": {
+      "activeTime": "diurnal",
+      "morning": 80,
+      "day": 80,
+      "night": 20
+    },
+    "lickitung": {
+      "activeTime": "cathemeral",
+      "morning": 270,
+      "day": 270,
+      "night": 170
+    },
+    "koffing": {
+      "activeTime": "cathemeral",
+      "morning": 494,
+      "day": 494,
+      "night": 494
+    },
+    "weezing": {
+      "activeTime": "cathemeral",
+      "morning": 191,
+      "day": 191,
+      "night": 131
+    },
+    "rhyhorn": {
+      "activeTime": "cathemeral",
+      "morning": 339,
+      "day": 339,
+      "night": 219
+    },
+    "rhydon": {
+      "activeTime": "cathemeral",
+      "morning": 260,
+      "day": 260,
+      "night": 215
+    },
+    "chansey": {
+      "activeTime": "cathemeral",
+      "morning": 261,
+      "day": 261,
+      "night": 261
+    },
+    "tangela": {
+      "activeTime": "cathemeral",
+      "morning": 1106,
+      "day": 1086,
+      "night": 1096
+    },
+    "kangaskhan": {
+      "activeTime": "cathemeral",
+      "morning": 245,
+      "day": 245,
+      "night": 200
+    },
+    "horsea": {
+      "activeTime": "cathemeral",
+      "morning": 750,
+      "day": 750,
+      "night": 750
+    },
+    "seadra": {
+      "activeTime": "cathemeral",
+      "morning": 150,
+      "day": 150,
+      "night": 150
+    },
+    "goldeen": {
+      "activeTime": "cathemeral",
+      "morning": 14253,
+      "day": 14253,
+      "night": 14193
+    },
+    "seaking": {
+      "activeTime": "cathemeral",
+      "morning": 2262,
+      "day": 2262,
+      "night": 2202
+    },
+    "staryu": {
+      "activeTime": "nocturnal",
+      "morning": 20,
+      "day": 20,
+      "night": 1210
+    },
+    "mrMime": {
+      "activeTime": "cathemeral",
+      "morning": 145,
+      "day": 165,
+      "night": 95
+    },
+    "scyther": {
+      "activeTime": "cathemeral",
+      "morning": 90,
+      "day": 60,
+      "night": 60
+    },
+    "jynx": {
+      "activeTime": "cathemeral",
+      "morning": 170,
+      "day": 250,
+      "night": 154
+    },
+    "electabuzz": {
+      "activeTime": "cathemeral",
+      "morning": 75,
+      "day": 95,
+      "night": 65
+    },
+    "magmar": {
+      "activeTime": "diurnal",
+      "morning": 100,
+      "day": 130,
+      "night": 50
+    },
+    "pinsir": {
+      "activeTime": "cathemeral",
+      "morning": 85,
+      "day": 85,
+      "night": 85
+    },
+    "tauros": {
+      "activeTime": "cathemeral",
+      "morning": 233,
+      "day": 233,
+      "night": 163
+    },
+    "magikarp": {
+      "activeTime": "cathemeral",
+      "morning": 19400,
+      "day": 19400,
+      "night": 19460
+    },
+    "gyarados": {
+      "activeTime": "cathemeral",
+      "morning": 900,
+      "day": 900,
+      "night": 980
+    },
+    "lapras": {
+      "activeTime": "cathemeral",
+      "morning": 100,
+      "day": 100,
+      "night": 100
+    },
+    "ditto": {
+      "activeTime": "cathemeral",
+      "morning": 378,
+      "day": 378,
+      "night": 356
+    },
+    "eevee": {
+      "activeTime": "cathemeral",
+      "morning": 30,
+      "day": 30,
+      "night": 30
+    },
+    "porygon": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "dratini": {
+      "activeTime": "cathemeral",
+      "morning": 340,
+      "day": 340,
+      "night": 340
+    },
+    "dragonair": {
+      "activeTime": "cathemeral",
+      "morning": 100,
+      "day": 100,
+      "night": 100
+    },
+    "sentret": {
+      "activeTime": "diurnal",
+      "morning": 516,
+      "day": 516,
+      "night": 126
+    },
+    "furret": {
+      "activeTime": "diurnal",
+      "morning": 80,
+      "day": 80,
+      "night": 40
+    },
+    "hoothoot": {
+      "activeTime": "nocturnal",
+      "morning": 30,
+      "day": 0,
+      "night": 2805
+    },
+    "noctowl": {
+      "activeTime": "nocturnal",
+      "morning": 25,
+      "day": 20,
+      "night": 1246
+    },
+    "ledyba": {
+      "activeTime": "diurnal",
+      "morning": 430,
+      "day": 8,
+      "night": 0
+    },
+    "ledian": {
+      "activeTime": "diurnal",
+      "morning": 88,
+      "day": 0,
+      "night": 0
+    },
+    "spinarak": {
+      "activeTime": "nocturnal",
+      "morning": 8,
+      "day": 0,
+      "night": 462
+    },
+    "ariados": {
+      "activeTime": "nocturnal",
+      "morning": 0,
+      "day": 0,
+      "night": 85
+    },
+    "chinchou": {
+      "activeTime": "cathemeral",
+      "morning": 2720,
+      "day": 2720,
+      "night": 2720
+    },
+    "lanturn": {
+      "activeTime": "cathemeral",
+      "morning": 420,
+      "day": 420,
+      "night": 420
+    },
+    "pichu": {
+      "activeTime": "cathemeral",
+      "morning": 90,
+      "day": 50,
+      "night": 50
+    },
+    "cleffa": {
+      "activeTime": "diurnal",
+      "morning": 148,
+      "day": 58,
+      "night": 68
+    },
+    "igglybuff": {
+      "activeTime": "cathemeral",
+      "morning": 30,
+      "day": 30,
+      "night": 30
+    },
+    "togepi": {
+      "activeTime": "cathemeral",
+      "morning": 66,
+      "day": 66,
+      "night": 66
+    },
+    "natu": {
+      "activeTime": "cathemeral",
+      "morning": 570,
+      "day": 570,
+      "night": 570
+    },
+    "mareep": {
+      "activeTime": "cathemeral",
+      "morning": 366,
+      "day": 366,
+      "night": 306
+    },
+    "flaaffy": {
+      "activeTime": "cathemeral",
+      "morning": 226,
+      "day": 266,
+      "night": 226
+    },
+    "marill": {
+      "activeTime": "cathemeral",
+      "morning": 584,
+      "day": 584,
+      "night": 729
+    },
+    "azumarill": {
+      "activeTime": "cathemeral",
+      "morning": 60,
+      "day": 60,
+      "night": 60
+    },
+    "sudowoodo": {
+      "activeTime": "cathemeral",
+      "morning": 67,
+      "day": 67,
+      "night": 67
+    },
+    "hoppip": {
+      "activeTime": "diurnal",
+      "morning": 711,
+      "day": 707,
+      "night": 166
+    },
+    "skiploom": {
+      "activeTime": "diurnal",
+      "morning": 101,
+      "day": 109,
+      "night": 44
+    },
+    "jumpluff": {
+      "activeTime": "cathemeral",
+      "morning": 40,
+      "day": 40,
+      "night": 40
+    },
+    "sunkern": {
+      "activeTime": "diurnal",
+      "morning": 66,
+      "day": 396,
+      "night": 66
+    },
+    "yanma": {
+      "activeTime": "cathemeral",
+      "morning": 521,
+      "day": 521,
+      "night": 501
+    },
+    "wooper": {
+      "activeTime": "cathemeral",
+      "morning": 1467,
+      "day": 1454,
+      "night": 1859
+    },
+    "quagsire": {
+      "activeTime": "cathemeral",
+      "morning": 1500,
+      "day": 1439,
+      "night": 2130
+    },
+    "murkrow": {
+      "activeTime": "nocturnal",
+      "morning": 60,
+      "day": 60,
+      "night": 435
+    },
+    "misdreavus": {
+      "activeTime": "nocturnal",
+      "morning": 40,
+      "day": 40,
+      "night": 385
+    },
+    "unown": {
+      "activeTime": "cathemeral",
+      "morning": 7400,
+      "day": 7400,
+      "night": 7400
+    },
+    "wobbuffet": {
+      "activeTime": "cathemeral",
+      "morning": 332,
+      "day": 332,
+      "night": 407
+    },
+    "girafarig": {
+      "activeTime": "cathemeral",
+      "morning": 340,
+      "day": 340,
+      "night": 300
+    },
+    "pineco": {
+      "activeTime": "cathemeral",
+      "morning": 144,
+      "day": 144,
+      "night": 144
+    },
+    "dunsparce": {
+      "activeTime": "cathemeral",
+      "morning": 325,
+      "day": 325,
+      "night": 325
+    },
+    "gligar": {
+      "activeTime": "cathemeral",
+      "morning": 176,
+      "day": 176,
+      "night": 166
+    },
+    "steelix": {
+      "activeTime": "cathemeral",
+      "morning": 494,
+      "day": 494,
+      "night": 494
+    },
+    "snubbull": {
+      "activeTime": "cathemeral",
+      "morning": 434,
+      "day": 434,
+      "night": 264
+    },
+    "granbull": {
+      "activeTime": "diurnal",
+      "morning": 5,
+      "day": 5,
+      "night": 0
+    },
+    "qwilfish": {
+      "activeTime": "cathemeral",
+      "morning": 835,
+      "day": 835,
+      "night": 835
+    },
+    "shuckle": {
+      "activeTime": "cathemeral",
+      "morning": 44,
+      "day": 44,
+      "night": 44
+    },
+    "sneasel": {
+      "activeTime": "cathemeral",
+      "morning": 943,
+      "day": 943,
+      "night": 1019
+    },
+    "teddiursa": {
+      "activeTime": "cathemeral",
+      "morning": 134,
+      "day": 124,
+      "night": 124
+    },
+    "ursaring": {
+      "activeTime": "cathemeral",
+      "morning": 542,
+      "day": 547,
+      "night": 502
+    },
+    "slugma": {
+      "activeTime": "diurnal",
+      "morning": 154,
+      "day": 319,
+      "night": 154
+    },
+    "magcargo": {
+      "activeTime": "cathemeral",
+      "morning": 180,
+      "day": 180,
+      "night": 180
+    },
+    "swinub": {
+      "activeTime": "cathemeral",
+      "morning": 950,
+      "day": 950,
+      "night": 790
+    },
+    "piloswine": {
+      "activeTime": "cathemeral",
+      "morning": 22,
+      "day": 22,
+      "night": 22
+    },
+    "corsola": {
+      "activeTime": "diurnal",
+      "morning": 1310,
+      "day": 1310,
+      "night": 120
+    },
+    "remoraid": {
+      "activeTime": "cathemeral",
+      "morning": 580,
+      "day": 580,
+      "night": 580
+    },
+    "delibird": {
+      "activeTime": "cathemeral",
+      "morning": 280,
+      "day": 280,
+      "night": 440
+    },
+    "mantine": {
+      "activeTime": "cathemeral",
+      "morning": 10,
+      "day": 10,
+      "night": 10
+    },
+    "skarmory": {
+      "activeTime": "cathemeral",
+      "morning": 45,
+      "day": 45,
+      "night": 40
+    },
+    "houndour": {
+      "activeTime": "cathemeral",
+      "morning": 61,
+      "day": 61,
+      "night": 121
+    },
+    "houndoom": {
+      "activeTime": "cathemeral",
+      "morning": 64,
+      "day": 64,
+      "night": 64
+    },
+    "phanpy": {
+      "activeTime": "cathemeral",
+      "morning": 190,
+      "day": 180,
+      "night": 180
+    },
+    "donphan": {
+      "activeTime": "cathemeral",
+      "morning": 410,
+      "day": 415,
+      "night": 400
+    },
+    "stantler": {
+      "activeTime": "cathemeral",
+      "morning": 184,
+      "day": 184,
+      "night": 304
+    },
+    "smeargle": {
+      "activeTime": "cathemeral",
+      "morning": 168,
+      "day": 178,
+      "night": 128
+    },
+    "tyrogue": {
+      "activeTime": "cathemeral",
+      "morning": 110,
+      "day": 110,
+      "night": 110
+    },
+    "smoochum": {
+      "activeTime": "cathemeral",
+      "morning": 90,
+      "day": 90,
+      "night": 90
+    },
+    "elekid": {
+      "activeTime": "cathemeral",
+      "morning": 32,
+      "day": 32,
+      "night": 32
+    },
+    "magby": {
+      "activeTime": "cathemeral",
+      "morning": 64,
+      "day": 64,
+      "night": 64
+    },
+    "miltank": {
+      "activeTime": "cathemeral",
+      "morning": 155,
+      "day": 155,
+      "night": 145
+    },
+    "larvitar": {
+      "activeTime": "cathemeral",
+      "morning": 231,
+      "day": 231,
+      "night": 192
+    },
+    "pupitar": {
+      "activeTime": "cathemeral",
+      "morning": 11,
+      "day": 11,
+      "night": 10
+    },
+    "poochyena": {
+      "activeTime": "cathemeral",
+      "morning": 102,
+      "day": 102,
+      "night": 102
+    },
+    "mightyena": {
+      "activeTime": "cathemeral",
+      "morning": 44,
+      "day": 44,
+      "night": 44
+    },
+    "zigzagoon": {
+      "activeTime": "cathemeral",
+      "morning": 760,
+      "day": 760,
+      "night": 760
+    },
+    "linoone": {
+      "activeTime": "cathemeral",
+      "morning": 980,
+      "day": 980,
+      "night": 980
+    },
+    "wurmple": {
+      "activeTime": "cathemeral",
+      "morning": 180,
+      "day": 180,
+      "night": 120
+    },
+    "silcoon": {
+      "activeTime": "cathemeral",
+      "morning": 55,
+      "day": 55,
+      "night": 55
+    },
+    "beautifly": {
+      "activeTime": "cathemeral",
+      "morning": 100,
+      "day": 100,
+      "night": 100
+    },
+    "cascoon": {
+      "activeTime": "cathemeral",
+      "morning": 55,
+      "day": 55,
+      "night": 55
+    },
+    "dustox": {
+      "activeTime": "cathemeral",
+      "morning": 58,
+      "day": 58,
+      "night": 58
+    },
+    "lotad": {
+      "activeTime": "cathemeral",
+      "morning": 148,
+      "day": 148,
+      "night": 148
+    },
+    "lombre": {
+      "activeTime": "cathemeral",
+      "morning": 56,
+      "day": 56,
+      "night": 56
+    },
+    "seedot": {
+      "activeTime": "cathemeral",
+      "morning": 128,
+      "day": 128,
+      "night": 128
+    },
+    "nuzleaf": {
+      "activeTime": "cathemeral",
+      "morning": 76,
+      "day": 76,
+      "night": 76
+    },
+    "swellow": {
+      "activeTime": "cathemeral",
+      "morning": 66,
+      "day": 66,
+      "night": 66
+    },
+    "wingull": {
+      "activeTime": "cathemeral",
+      "morning": 410,
+      "day": 410,
+      "night": 390
+    },
+    "pelipper": {
+      "activeTime": "cathemeral",
+      "morning": 65,
+      "day": 65,
+      "night": 65
+    },
+    "ralts": {
+      "activeTime": "cathemeral",
+      "morning": 215,
+      "day": 225,
+      "night": 205
+    },
+    "kirlia": {
+      "activeTime": "cathemeral",
+      "morning": 46,
+      "day": 36,
+      "night": 36
+    },
+    "surskit": {
+      "activeTime": "cathemeral",
+      "morning": 220,
+      "day": 220,
+      "night": 220
+    },
+    "masquerain": {
+      "activeTime": "cathemeral",
+      "morning": 40,
+      "day": 40,
+      "night": 40
+    },
+    "shroomish": {
+      "activeTime": "cathemeral",
+      "morning": 200,
+      "day": 200,
+      "night": 200
+    },
+    "breloom": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "slakoth": {
+      "activeTime": "cathemeral",
+      "morning": 120,
+      "day": 120,
+      "night": 120
+    },
+    "vigoroth": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "nincada": {
+      "activeTime": "cathemeral",
+      "morning": 146,
+      "day": 146,
+      "night": 146
+    },
+    "whismur": {
+      "activeTime": "cathemeral",
+      "morning": 960,
+      "day": 960,
+      "night": 960
+    },
+    "loudred": {
+      "activeTime": "cathemeral",
+      "morning": 132,
+      "day": 132,
+      "night": 132
+    },
+    "makuhita": {
+      "activeTime": "cathemeral",
+      "morning": 1880,
+      "day": 1880,
+      "night": 1880
+    },
+    "azurill": {
+      "activeTime": "cathemeral",
+      "morning": 222,
+      "day": 222,
+      "night": 222
+    },
+    "nosepass": {
+      "activeTime": "cathemeral",
+      "morning": 165,
+      "day": 165,
+      "night": 165
+    },
+    "skitty": {
+      "activeTime": "cathemeral",
+      "morning": 120,
+      "day": 120,
+      "night": 120
+    },
+    "sableye": {
+      "activeTime": "cathemeral",
+      "morning": 160,
+      "day": 160,
+      "night": 160
+    },
+    "mawile": {
+      "activeTime": "cathemeral",
+      "morning": 160,
+      "day": 160,
+      "night": 160
+    },
+    "aron": {
+      "activeTime": "cathemeral",
+      "morning": 64,
+      "day": 64,
+      "night": 64
+    },
+    "lairon": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "meditite": {
+      "activeTime": "cathemeral",
+      "morning": 1350,
+      "day": 1350,
+      "night": 1130
+    },
+    "medicham": {
+      "activeTime": "cathemeral",
+      "morning": 809,
+      "day": 809,
+      "night": 679
+    },
+    "electrike": {
+      "activeTime": "cathemeral",
+      "morning": 140,
+      "day": 140,
+      "night": 140
+    },
+    "manectric": {
+      "activeTime": "cathemeral",
+      "morning": 60,
+      "day": 60,
+      "night": 60
+    },
+    "plusle": {
+      "activeTime": "cathemeral",
+      "morning": 910,
+      "day": 910,
+      "night": 910
+    },
+    "minun": {
+      "activeTime": "cathemeral",
+      "morning": 910,
+      "day": 910,
+      "night": 910
+    },
+    "volbeat": {
+      "activeTime": "cathemeral",
+      "morning": 65,
+      "day": 65,
+      "night": 65
+    },
+    "illumise": {
+      "activeTime": "cathemeral",
+      "morning": 65,
+      "day": 65,
+      "night": 65
+    },
+    "roselia": {
+      "activeTime": "cathemeral",
+      "morning": 602,
+      "day": 602,
+      "night": 572
+    },
+    "gulpin": {
+      "activeTime": "cathemeral",
+      "morning": 220,
+      "day": 220,
+      "night": 220
+    },
+    "numel": {
+      "activeTime": "cathemeral",
+      "morning": 158,
+      "day": 158,
+      "night": 158
+    },
+    "camerupt": {
+      "activeTime": "cathemeral",
+      "morning": 140,
+      "day": 140,
+      "night": 140
+    },
+    "torkoal": {
+      "activeTime": "cathemeral",
+      "morning": 152,
+      "day": 152,
+      "night": 152
+    },
+    "spoink": {
+      "activeTime": "cathemeral",
+      "morning": 200,
+      "day": 200,
+      "night": 200
+    },
+    "spinda": {
+      "activeTime": "cathemeral",
+      "morning": 660,
+      "day": 660,
+      "night": 660
+    },
+    "trapinch": {
+      "activeTime": "cathemeral",
+      "morning": 24,
+      "day": 24,
+      "night": 24
+    },
+    "vibrava": {
+      "activeTime": "cathemeral",
+      "morning": 60,
+      "day": 60,
+      "night": 60
+    },
+    "cacnea": {
+      "activeTime": "cathemeral",
+      "morning": 83,
+      "day": 83,
+      "night": 83
+    },
+    "cacturne": {
+      "activeTime": "cathemeral",
+      "morning": 100,
+      "day": 100,
+      "night": 160
+    },
+    "swablu": {
+      "activeTime": "cathemeral",
+      "morning": 144,
+      "day": 154,
+      "night": 144
+    },
+    "zangoose": {
+      "activeTime": "cathemeral",
+      "morning": 88,
+      "day": 88,
+      "night": 88
+    },
+    "seviper": {
+      "activeTime": "cathemeral",
+      "morning": 68,
+      "day": 68,
+      "night": 68
+    },
+    "lunatone": {
+      "activeTime": "cathemeral",
+      "morning": 524,
+      "day": 524,
+      "night": 524
+    },
+    "solrock": {
+      "activeTime": "cathemeral",
+      "morning": 524,
+      "day": 524,
+      "night": 524
+    },
+    "barboach": {
+      "activeTime": "cathemeral",
+      "morning": 40,
+      "day": 40,
+      "night": 40
+    },
+    "whiscash": {
+      "activeTime": "cathemeral",
+      "morning": 330,
+      "day": 330,
+      "night": 330
+    },
+    "corphish": {
+      "activeTime": "cathemeral",
+      "morning": 80,
+      "day": 80,
+      "night": 80
+    },
+    "baltoy": {
+      "activeTime": "cathemeral",
+      "morning": 106,
+      "day": 106,
+      "night": 106
+    },
+    "castform": {
+      "activeTime": "cathemeral",
+      "morning": 30,
+      "day": 30,
+      "night": 30
+    },
+    "kecleon": {
+      "activeTime": "cathemeral",
+      "morning": 82,
+      "day": 82,
+      "night": 82
+    },
+    "shuppet": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "banette": {
+      "activeTime": "nocturnal",
+      "morning": 20,
+      "day": 20,
+      "night": 180
+    },
+    "duskull": {
+      "activeTime": "nocturnal",
+      "morning": 58,
+      "day": 58,
+      "night": 168
+    },
+    "dusclops": {
+      "activeTime": "cathemeral",
+      "morning": 184,
+      "day": 184,
+      "night": 264
+    },
+    "tropius": {
+      "activeTime": "cathemeral",
+      "morning": 100,
+      "day": 100,
+      "night": 60
+    },
+    "chimecho": {
+      "activeTime": "cathemeral",
+      "morning": 219,
+      "day": 219,
+      "night": 219
+    },
+    "absol": {
+      "activeTime": "cathemeral",
+      "morning": 1874,
+      "day": 1874,
+      "night": 1874
+    },
+    "snorunt": {
+      "activeTime": "cathemeral",
+      "morning": 132,
+      "day": 132,
+      "night": 202
+    },
+    "spheal": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "sealeo": {
+      "activeTime": "nocturnal",
+      "morning": 20,
+      "day": 20,
+      "night": 40
+    },
+    "clamperl": {
+      "activeTime": "cathemeral",
+      "morning": 120,
+      "day": 120,
+      "night": 120
+    },
+    "relicanth": {
+      "activeTime": "cathemeral",
+      "morning": 330,
+      "day": 330,
+      "night": 330
+    },
+    "luvdisc": {
+      "activeTime": "cathemeral",
+      "morning": 120,
+      "day": 120,
+      "night": 120
+    },
+    "bagon": {
+      "activeTime": "cathemeral",
+      "morning": 64,
+      "day": 64,
+      "night": 64
+    },
+    "shelgon": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "beldum": {
+      "activeTime": "cathemeral",
+      "morning": 140,
+      "day": 140,
+      "night": 140
+    },
+    "metang": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "starly": {
+      "activeTime": "cathemeral",
+      "morning": 1177,
+      "day": 1257,
+      "night": 917
+    },
+    "staravia": {
+      "activeTime": "cathemeral",
+      "morning": 648,
+      "day": 758,
+      "night": 468
+    },
+    "bidoof": {
+      "activeTime": "cathemeral",
+      "morning": 2489,
+      "day": 2519,
+      "night": 2559
+    },
+    "bibarel": {
+      "activeTime": "cathemeral",
+      "morning": 1382,
+      "day": 1402,
+      "night": 1302
+    },
+    "kricketot": {
+      "activeTime": "cathemeral",
+      "morning": 320,
+      "day": 120,
+      "night": 320
+    },
+    "kricketune": {
+      "activeTime": "nocturnal",
+      "morning": 230,
+      "day": 180,
+      "night": 520
+    },
+    "shinx": {
+      "activeTime": "cathemeral",
+      "morning": 2075,
+      "day": 2075,
+      "night": 2075
+    },
+    "luxio": {
+      "activeTime": "cathemeral",
+      "morning": 50,
+      "day": 50,
+      "night": 50
+    },
+    "budew": {
+      "activeTime": "cathemeral",
+      "morning": 616,
+      "day": 656,
+      "night": 426
+    },
+    "combee": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "pachirisu": {
+      "activeTime": "cathemeral",
+      "morning": 170,
+      "day": 170,
+      "night": 170
+    },
+    "buizel": {
+      "activeTime": "cathemeral",
+      "morning": 1478,
+      "day": 1478,
+      "night": 1488
+    },
+    "floatzel": {
+      "activeTime": "cathemeral",
+      "morning": 721,
+      "day": 721,
+      "night": 801
+    },
+    "shellos": {
+      "activeTime": "cathemeral",
+      "morning": 618,
+      "day": 618,
+      "night": 648
+    },
+    "gastrodon": {
+      "activeTime": "cathemeral",
+      "morning": 250,
+      "day": 250,
+      "night": 310
+    },
+    "drifloon": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "buneary": {
+      "activeTime": "cathemeral",
+      "morning": 154,
+      "day": 154,
+      "night": 154
+    },
+    "glameow": {
+      "activeTime": "cathemeral",
+      "morning": 35,
+      "day": 35,
+      "night": 35
+    },
+    "purugly": {
+      "activeTime": "cathemeral",
+      "morning": 25,
+      "day": 25,
+      "night": 25
+    },
+    "chingling": {
+      "activeTime": "cathemeral",
+      "morning": 2386,
+      "day": 2386,
+      "night": 2386
+    },
+    "stunky": {
+      "activeTime": "cathemeral",
+      "morning": 88,
+      "day": 88,
+      "night": 88
+    },
+    "skuntank": {
+      "activeTime": "cathemeral",
+      "morning": 25,
+      "day": 25,
+      "night": 25
+    },
+    "bronzor": {
+      "activeTime": "cathemeral",
+      "morning": 2502,
+      "day": 2502,
+      "night": 2502
+    },
+    "bronzong": {
+      "activeTime": "cathemeral",
+      "morning": 1356,
+      "day": 1356,
+      "night": 1356
+    },
+    "bonsly": {
+      "activeTime": "cathemeral",
+      "morning": 108,
+      "day": 68,
+      "night": 68
+    },
+    "mimeJr": {
+      "activeTime": "cathemeral",
+      "morning": 108,
+      "day": 68,
+      "night": 68
+    },
+    "happiny": {
+      "activeTime": "cathemeral",
+      "morning": 30,
+      "day": 30,
+      "night": 30
+    },
+    "chatot": {
+      "activeTime": "cathemeral",
+      "morning": 650,
+      "day": 650,
+      "night": 520
+    },
+    "spiritomb": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "gible": {
+      "activeTime": "cathemeral",
+      "morning": 118,
+      "day": 118,
+      "night": 118
+    },
+    "gabite": {
+      "activeTime": "cathemeral",
+      "morning": 30,
+      "day": 30,
+      "night": 30
+    },
+    "riolu": {
+      "activeTime": "cathemeral",
+      "morning": 20,
+      "day": 20,
+      "night": 20
+    },
+    "hippopotas": {
+      "activeTime": "cathemeral",
+      "morning": 125,
+      "day": 125,
+      "night": 125
+    },
+    "hippowdon": {
+      "activeTime": "diurnal",
+      "morning": 60,
+      "day": 60,
+      "night": 30
+    },
+    "skorupi": {
+      "activeTime": "cathemeral",
+      "morning": 200,
+      "day": 200,
+      "night": 200
+    },
+    "drapion": {
+      "activeTime": "cathemeral",
+      "morning": 180,
+      "day": 180,
+      "night": 180
+    },
+    "croagunk": {
+      "activeTime": "cathemeral",
+      "morning": 210,
+      "day": 210,
+      "night": 210
+    },
+    "toxicroak": {
+      "activeTime": "cathemeral",
+      "morning": 180,
+      "day": 180,
+      "night": 180
+    },
+    "carnivine": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "snover": {
+      "activeTime": "cathemeral",
+      "morning": 491,
+      "day": 491,
+      "night": 441
+    },
+    "abomasnow": {
+      "activeTime": "cathemeral",
+      "morning": 140,
+      "day": 140,
+      "night": 120
+    },
+    "rotom": {
+      "activeTime": "nocturnal",
+      "morning": 0,
+      "day": 0,
+      "night": 300
+    },
+    "uxie": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "azelf": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "dialga": {
+      "activeTime": "cathemeral",
+      "morning": 200,
+      "day": 200,
+      "night": 200
+    },
+    "palkia": {
+      "activeTime": "cathemeral",
+      "morning": 200,
+      "day": 200,
+      "night": 200
+    },
+    "heatran": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "regigigas": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "giratina": {
+      "activeTime": "cathemeral",
+      "morning": 200,
+      "day": 200,
+      "night": 200
+    },
+    "darkrai": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "shaymin": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    },
+    "arceus": {
+      "activeTime": "cathemeral",
+      "morning": 300,
+      "day": 300,
+      "night": 300
+    }
+  },
+  "inherited": {
+    "butterfreeGmax": {
+      "activeTime": "diurnal",
+      "from": "butterfree"
+    },
+    "beedrillMega": {
+      "activeTime": "diurnal",
+      "from": "beedrill"
+    },
+    "pidgeot": {
+      "activeTime": "diurnal",
+      "from": "pidgeotto"
+    },
+    "pikachuGmax": {
+      "activeTime": "cathemeral",
+      "from": "pikachu"
+    },
+    "raichu": {
+      "activeTime": "cathemeral",
+      "from": "pikachu"
+    },
+    "nidoqueen": {
+      "activeTime": "cathemeral",
+      "from": "nidorina"
+    },
+    "nidoking": {
+      "activeTime": "cathemeral",
+      "from": "nidorino"
+    },
+    "clefable": {
+      "activeTime": "cathemeral",
+      "from": "clefairy"
+    },
+    "ninetales": {
+      "activeTime": "cathemeral",
+      "from": "vulpix"
+    },
+    "wigglytuff": {
+      "activeTime": "cathemeral",
+      "from": "jigglypuff"
+    },
+    "vileplume": {
+      "activeTime": "cathemeral",
+      "from": "gloom"
+    },
+    "meowthGmax": {
+      "activeTime": "cathemeral",
+      "from": "meowth"
+    },
+    "arcanine": {
+      "activeTime": "cathemeral",
+      "from": "growlithe"
+    },
+    "poliwrath": {
+      "activeTime": "cathemeral",
+      "from": "poliwhirl"
+    },
+    "alakazam": {
+      "activeTime": "cathemeral",
+      "from": "kadabra"
+    },
+    "machamp": {
+      "activeTime": "cathemeral",
+      "from": "machoke"
+    },
+    "victreebel": {
+      "activeTime": "cathemeral",
+      "from": "weepinbell"
+    },
+    "slowbroMega": {
+      "activeTime": "cathemeral",
+      "from": "slowbro"
+    },
+    "cloyster": {
+      "activeTime": "cathemeral",
+      "from": "shellder"
+    },
+    "gengarMega": {
+      "activeTime": "cathemeral",
+      "from": "gengar"
+    },
+    "gengarGmax": {
+      "activeTime": "cathemeral",
+      "from": "gengar"
+    },
+    "kinglerGmax": {
+      "activeTime": "cathemeral",
+      "from": "kingler"
+    },
+    "exeggutor": {
+      "activeTime": "cathemeral",
+      "from": "exeggcute"
+    },
+    "hitmonlee": {
+      "activeTime": "cathemeral",
+      "from": "tyrogue"
+    },
+    "hitmonchan": {
+      "activeTime": "cathemeral",
+      "from": "tyrogue"
+    },
+    "kangaskhanMega": {
+      "activeTime": "cathemeral",
+      "from": "kangaskhan"
+    },
+    "starmie": {
+      "activeTime": "nocturnal",
+      "from": "staryu"
+    },
+    "pinsirMega": {
+      "activeTime": "cathemeral",
+      "from": "pinsir"
+    },
+    "gyaradosMega": {
+      "activeTime": "cathemeral",
+      "from": "gyarados"
+    },
+    "laprasGmax": {
+      "activeTime": "cathemeral",
+      "from": "lapras"
+    },
+    "eeveeGmax": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "vaporeon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "jolteon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "flareon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "dragonite": {
+      "activeTime": "cathemeral",
+      "from": "dragonair"
+    },
+    "crobat": {
+      "activeTime": "cathemeral",
+      "from": "golbat"
+    },
+    "togetic": {
+      "activeTime": "cathemeral",
+      "from": "togepi"
+    },
+    "xatu": {
+      "activeTime": "cathemeral",
+      "from": "natu"
+    },
+    "ampharos": {
+      "activeTime": "cathemeral",
+      "from": "flaaffy"
+    },
+    "bellossom": {
+      "activeTime": "cathemeral",
+      "from": "gloom"
+    },
+    "politoed": {
+      "activeTime": "cathemeral",
+      "from": "poliwhirl"
+    },
+    "sunflora": {
+      "activeTime": "diurnal",
+      "from": "sunkern"
+    },
+    "espeon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "umbreon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "slowking": {
+      "activeTime": "cathemeral",
+      "from": "slowpoke"
+    },
+    "forretress": {
+      "activeTime": "cathemeral",
+      "from": "pineco"
+    },
+    "steelixMega": {
+      "activeTime": "cathemeral",
+      "from": "steelix"
+    },
+    "scizor": {
+      "activeTime": "cathemeral",
+      "from": "scyther"
+    },
+    "octillery": {
+      "activeTime": "cathemeral",
+      "from": "remoraid"
+    },
+    "skarmoryMega": {
+      "activeTime": "cathemeral",
+      "from": "skarmory"
+    },
+    "houndoomMega": {
+      "activeTime": "cathemeral",
+      "from": "houndoom"
+    },
+    "kingdra": {
+      "activeTime": "cathemeral",
+      "from": "seadra"
+    },
+    "porygon2": {
+      "activeTime": "cathemeral",
+      "from": "porygon"
+    },
+    "hitmontop": {
+      "activeTime": "cathemeral",
+      "from": "tyrogue"
+    },
+    "blissey": {
+      "activeTime": "cathemeral",
+      "from": "chansey"
+    },
+    "tyranitar": {
+      "activeTime": "cathemeral",
+      "from": "pupitar"
+    },
+    "ludicolo": {
+      "activeTime": "cathemeral",
+      "from": "lombre"
+    },
+    "shiftry": {
+      "activeTime": "cathemeral",
+      "from": "nuzleaf"
+    },
+    "taillow": {
+      "activeTime": "cathemeral",
+      "from": "swellow"
+    },
+    "gardevoir": {
+      "activeTime": "cathemeral",
+      "from": "kirlia"
+    },
+    "slaking": {
+      "activeTime": "cathemeral",
+      "from": "vigoroth"
+    },
+    "ninjask": {
+      "activeTime": "cathemeral",
+      "from": "nincada"
+    },
+    "shedinja": {
+      "activeTime": "cathemeral",
+      "from": "nincada"
+    },
+    "exploud": {
+      "activeTime": "cathemeral",
+      "from": "loudred"
+    },
+    "hariyama": {
+      "activeTime": "cathemeral",
+      "from": "makuhita"
+    },
+    "delcatty": {
+      "activeTime": "cathemeral",
+      "from": "skitty"
+    },
+    "sableyeMega": {
+      "activeTime": "cathemeral",
+      "from": "sableye"
+    },
+    "mawileMega": {
+      "activeTime": "cathemeral",
+      "from": "mawile"
+    },
+    "aggron": {
+      "activeTime": "cathemeral",
+      "from": "lairon"
+    },
+    "medichamMega": {
+      "activeTime": "cathemeral",
+      "from": "medicham"
+    },
+    "manectricMega": {
+      "activeTime": "cathemeral",
+      "from": "manectric"
+    },
+    "swalot": {
+      "activeTime": "cathemeral",
+      "from": "gulpin"
+    },
+    "cameruptMega": {
+      "activeTime": "cathemeral",
+      "from": "camerupt"
+    },
+    "grumpig": {
+      "activeTime": "cathemeral",
+      "from": "spoink"
+    },
+    "flygon": {
+      "activeTime": "cathemeral",
+      "from": "vibrava"
+    },
+    "altaria": {
+      "activeTime": "cathemeral",
+      "from": "swablu"
+    },
+    "crawdaunt": {
+      "activeTime": "cathemeral",
+      "from": "corphish"
+    },
+    "claydol": {
+      "activeTime": "cathemeral",
+      "from": "baltoy"
+    },
+    "castformSunny": {
+      "activeTime": "cathemeral",
+      "from": "castform"
+    },
+    "castformRainy": {
+      "activeTime": "cathemeral",
+      "from": "castform"
+    },
+    "castformSnowy": {
+      "activeTime": "cathemeral",
+      "from": "castform"
+    },
+    "banetteMega": {
+      "activeTime": "nocturnal",
+      "from": "banette"
+    },
+    "chimechoMega": {
+      "activeTime": "cathemeral",
+      "from": "chimecho"
+    },
+    "absolMega": {
+      "activeTime": "cathemeral",
+      "from": "absol"
+    },
+    "absolMegaZ": {
+      "activeTime": "cathemeral",
+      "from": "absol"
+    },
+    "wynaut": {
+      "activeTime": "cathemeral",
+      "from": "wobbuffet"
+    },
+    "glalie": {
+      "activeTime": "cathemeral",
+      "from": "snorunt"
+    },
+    "walrein": {
+      "activeTime": "nocturnal",
+      "from": "sealeo"
+    },
+    "huntail": {
+      "activeTime": "cathemeral",
+      "from": "clamperl"
+    },
+    "gorebyss": {
+      "activeTime": "cathemeral",
+      "from": "clamperl"
+    },
+    "salamence": {
+      "activeTime": "cathemeral",
+      "from": "shelgon"
+    },
+    "metagross": {
+      "activeTime": "cathemeral",
+      "from": "metang"
+    },
+    "staraptor": {
+      "activeTime": "cathemeral",
+      "from": "staravia"
+    },
+    "luxray": {
+      "activeTime": "cathemeral",
+      "from": "luxio"
+    },
+    "roserade": {
+      "activeTime": "cathemeral",
+      "from": "roselia"
+    },
+    "vespiquen": {
+      "activeTime": "cathemeral",
+      "from": "combee"
+    },
+    "drifblim": {
+      "activeTime": "cathemeral",
+      "from": "drifloon"
+    },
+    "lopunny": {
+      "activeTime": "cathemeral",
+      "from": "buneary"
+    },
+    "mismagius": {
+      "activeTime": "nocturnal",
+      "from": "misdreavus"
+    },
+    "honchkrow": {
+      "activeTime": "nocturnal",
+      "from": "murkrow"
+    },
+    "garchomp": {
+      "activeTime": "cathemeral",
+      "from": "gabite"
+    },
+    "lucario": {
+      "activeTime": "cathemeral",
+      "from": "riolu"
+    },
+    "mantyke": {
+      "activeTime": "cathemeral",
+      "from": "mantine"
+    },
+    "abomasnowMega": {
+      "activeTime": "cathemeral",
+      "from": "abomasnow"
+    },
+    "weavile": {
+      "activeTime": "cathemeral",
+      "from": "sneasel"
+    },
+    "magnezone": {
+      "activeTime": "cathemeral",
+      "from": "magneton"
+    },
+    "lickilicky": {
+      "activeTime": "cathemeral",
+      "from": "lickitung"
+    },
+    "rhyperior": {
+      "activeTime": "cathemeral",
+      "from": "rhydon"
+    },
+    "tangrowth": {
+      "activeTime": "cathemeral",
+      "from": "tangela"
+    },
+    "electivire": {
+      "activeTime": "cathemeral",
+      "from": "electabuzz"
+    },
+    "magmortar": {
+      "activeTime": "diurnal",
+      "from": "magmar"
+    },
+    "togekiss": {
+      "activeTime": "cathemeral",
+      "from": "togepi"
+    },
+    "yanmega": {
+      "activeTime": "cathemeral",
+      "from": "yanma"
+    },
+    "leafeon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "glaceon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "gliscor": {
+      "activeTime": "cathemeral",
+      "from": "gligar"
+    },
+    "mamoswine": {
+      "activeTime": "cathemeral",
+      "from": "piloswine"
+    },
+    "porygonZ": {
+      "activeTime": "cathemeral",
+      "from": "porygon"
+    },
+    "gallade": {
+      "activeTime": "cathemeral",
+      "from": "kirlia"
+    },
+    "probopass": {
+      "activeTime": "cathemeral",
+      "from": "nosepass"
+    },
+    "dusknoir": {
+      "activeTime": "cathemeral",
+      "from": "dusclops"
+    },
+    "froslass": {
+      "activeTime": "cathemeral",
+      "from": "snorunt"
+    },
+    "rotomHeat": {
+      "activeTime": "nocturnal",
+      "from": "rotom"
+    },
+    "rotomWash": {
+      "activeTime": "nocturnal",
+      "from": "rotom"
+    },
+    "rotomFrost": {
+      "activeTime": "nocturnal",
+      "from": "rotom"
+    },
+    "rotomFan": {
+      "activeTime": "nocturnal",
+      "from": "rotom"
+    },
+    "rotomMow": {
+      "activeTime": "nocturnal",
+      "from": "rotom"
+    },
+    "dialgaOrigin": {
+      "activeTime": "cathemeral",
+      "from": "dialga"
+    },
+    "palkiaOrigin": {
+      "activeTime": "cathemeral",
+      "from": "palkia"
+    },
+    "heatranMega": {
+      "activeTime": "cathemeral",
+      "from": "heatran"
+    },
+    "giratinaOrigin": {
+      "activeTime": "cathemeral",
+      "from": "giratina"
+    },
+    "darkraiMega": {
+      "activeTime": "cathemeral",
+      "from": "darkrai"
+    },
+    "shayminSky": {
+      "activeTime": "cathemeral",
+      "from": "shaymin"
+    },
+    "arceusBug": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusDark": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusDragon": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusElectric": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusFairy": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusFighting": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusFire": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusFlying": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusGhost": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusGrass": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusGround": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusIce": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusPoison": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusPsychic": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusRock": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusSteel": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "arceusWater": {
+      "activeTime": "cathemeral",
+      "from": "arceus"
+    },
+    "sylveon": {
+      "activeTime": "cathemeral",
+      "from": "eevee"
+    },
+    "mrRime": {
+      "activeTime": "cathemeral",
+      "from": "mimeJr"
+    },
+    "wyrdeer": {
+      "activeTime": "cathemeral",
+      "from": "stantler"
+    },
+    "kleavor": {
+      "activeTime": "cathemeral",
+      "from": "scyther"
+    },
+    "ursaluna": {
+      "activeTime": "cathemeral",
+      "from": "ursaring"
+    },
+    "annihilape": {
+      "activeTime": "cathemeral",
+      "from": "primeape"
+    },
+    "farigiraf": {
+      "activeTime": "cathemeral",
+      "from": "girafarig"
+    },
+    "dudunsparce": {
+      "activeTime": "cathemeral",
+      "from": "dunsparce"
+    }
+  },
+  "missing": [
+    "emberling",
+    "pyrodrake",
+    "sproutling",
+    "tidehorn",
+    "ashgrunt",
+    "bloomelf",
+    "thornelf",
+    "tidebull",
+    "steamhorn",
+    "bulbasaur",
+    "ivysaur",
+    "venusaur",
+    "venusaurMega",
+    "venusaurGmax",
+    "charmander",
+    "charmeleon",
+    "charizard",
+    "charizardMegaX",
+    "charizardMegaY",
+    "charizardGmax",
+    "squirtle",
+    "wartortle",
+    "blastoise",
+    "blastoiseMega",
+    "blastoiseGmax",
+    "pidgeotMega",
+    "raichuMegaX",
+    "raichuMegaY",
+    "clefableMega",
+    "alakazamMega",
+    "machampGmax",
+    "victreebelMega",
+    "starmieMega",
+    "omanyte",
+    "omastar",
+    "kabuto",
+    "kabutops",
+    "aerodactyl",
+    "aerodactylMega",
+    "snorlax",
+    "snorlaxGmax",
+    "articuno",
+    "zapdos",
+    "moltres",
+    "dragoniteMega",
+    "mewtwo",
+    "mewtwoMegaX",
+    "mewtwoMegaY",
+    "mew",
+    "chikorita",
+    "bayleef",
+    "meganium",
+    "meganiumMega",
+    "cyndaquil",
+    "quilava",
+    "typhlosion",
+    "totodile",
+    "croconaw",
+    "feraligatr",
+    "feraligatrMega",
+    "ampharosMega",
+    "aipom",
+    "scizorMega",
+    "heracross",
+    "heracrossMega",
+    "raikou",
+    "entei",
+    "suicune",
+    "tyranitarMega",
+    "lugia",
+    "hoOh",
+    "celebi",
+    "treecko",
+    "grovyle",
+    "sceptile",
+    "sceptileMega",
+    "torchic",
+    "combusken",
+    "blaziken",
+    "blazikenMega",
+    "mudkip",
+    "marshtomp",
+    "swampert",
+    "swampertMega",
+    "gardevoirMega",
+    "aggronMega",
+    "carvanha",
+    "sharpedo",
+    "sharpedoMega",
+    "wailmer",
+    "wailord",
+    "altariaMega",
+    "lileep",
+    "cradily",
+    "anorith",
+    "armaldo",
+    "feebas",
+    "milotic",
+    "glalieMega",
+    "salamenceMega",
+    "metagrossMega",
+    "regirock",
+    "regice",
+    "registeel",
+    "latias",
+    "latiasMega",
+    "latios",
+    "latiosMega",
+    "kyogre",
+    "kyogrePrimal",
+    "groudon",
+    "groudonPrimal",
+    "rayquaza",
+    "rayquazaMega",
+    "jirachi",
+    "deoxys",
+    "deoxysAttack",
+    "deoxysDefense",
+    "deoxysSpeed",
+    "turtwig",
+    "grotle",
+    "torterra",
+    "chimchar",
+    "monferno",
+    "infernape",
+    "piplup",
+    "prinplup",
+    "empoleon",
+    "staraptorMega",
+    "cranidos",
+    "rampardos",
+    "shieldon",
+    "bastiodon",
+    "burmy",
+    "wormadam",
+    "wormadamSandy",
+    "wormadamTrash",
+    "mothim",
+    "cherubi",
+    "cherrim",
+    "ambipom",
+    "lopunnyMega",
+    "garchompMega",
+    "garchompMegaZ",
+    "munchlax",
+    "lucarioMega",
+    "lucarioMegaZ",
+    "finneon",
+    "lumineon",
+    "galladeMega",
+    "froslassMega",
+    "mesprit",
+    "cresselia",
+    "phione",
+    "manaphy",
+    "victini",
+    "snivy",
+    "servine",
+    "serperior",
+    "tepig",
+    "pignite",
+    "emboar",
+    "emboarMega",
+    "oshawott",
+    "dewott",
+    "samurott",
+    "patrat",
+    "watchog",
+    "lillipup",
+    "herdier",
+    "stoutland",
+    "purrloin",
+    "liepard",
+    "pansage",
+    "simisage",
+    "pansear",
+    "simisear",
+    "panpour",
+    "simipour",
+    "munna",
+    "musharna",
+    "pidove",
+    "tranquill",
+    "unfezant",
+    "blitzle",
+    "zebstrika",
+    "roggenrola",
+    "boldore",
+    "gigalith",
+    "woobat",
+    "swoobat",
+    "drilbur",
+    "excadrill",
+    "excadrillMega",
+    "audino",
+    "audinoMega",
+    "timburr",
+    "gurdurr",
+    "conkeldurr",
+    "tympole",
+    "palpitoad",
+    "seismitoad",
+    "throh",
+    "sawk",
+    "sewaddle",
+    "swadloon",
+    "leavanny",
+    "venipede",
+    "whirlipede",
+    "scolipede",
+    "scolipedeMega",
+    "cottonee",
+    "whimsicott",
+    "petilil",
+    "lilligant",
+    "basculin",
+    "sandile",
+    "krokorok",
+    "krookodile",
+    "darumaka",
+    "darmanitan",
+    "darmanitanZen",
+    "darmanitanGalarZen",
+    "maractus",
+    "dwebble",
+    "crustle",
+    "scraggy",
+    "scrafty",
+    "scraftyMega",
+    "sigilyph",
+    "yamask",
+    "cofagrigus",
+    "tirtouga",
+    "carracosta",
+    "archen",
+    "archeops",
+    "trubbish",
+    "garbodor",
+    "garbodorGmax",
+    "zorua",
+    "zoroark",
+    "minccino",
+    "cinccino",
+    "gothita",
+    "gothorita",
+    "gothitelle",
+    "solosis",
+    "duosion",
+    "reuniclus",
+    "ducklett",
+    "swanna",
+    "vanillite",
+    "vanillish",
+    "vanilluxe",
+    "deerling",
+    "sawsbuck",
+    "emolga",
+    "karrablast",
+    "escavalier",
+    "foongus",
+    "amoonguss",
+    "frillish",
+    "jellicent",
+    "alomomola",
+    "joltik",
+    "galvantula",
+    "ferroseed",
+    "ferrothorn",
+    "klink",
+    "klang",
+    "klinklang",
+    "tynamo",
+    "eelektrik",
+    "eelektross",
+    "eelektrossMega",
+    "elgyem",
+    "beheeyem",
+    "litwick",
+    "lampent",
+    "chandelure",
+    "chandelureMega",
+    "axew",
+    "fraxure",
+    "haxorus",
+    "cubchoo",
+    "beartic",
+    "cryogonal",
+    "shelmet",
+    "accelgor",
+    "stunfisk",
+    "mienfoo",
+    "mienshao",
+    "druddigon",
+    "golett",
+    "golurk",
+    "golurkMega",
+    "pawniard",
+    "bisharp",
+    "bouffalant",
+    "rufflet",
+    "braviary",
+    "vullaby",
+    "mandibuzz",
+    "heatmor",
+    "durant",
+    "deino",
+    "zweilous",
+    "hydreigon",
+    "larvesta",
+    "volcarona",
+    "cobalion",
+    "terrakion",
+    "virizion",
+    "tornadus",
+    "tornadusTherian",
+    "thundurus",
+    "thundurusTherian",
+    "reshiram",
+    "zekrom",
+    "landorus",
+    "landorusTherian",
+    "kyurem",
+    "kyuremBlack",
+    "kyuremWhite",
+    "keldeo",
+    "meloetta",
+    "meloettaPirouette",
+    "genesect",
+    "chespin",
+    "quilladin",
+    "chesnaught",
+    "chesnaughtMega",
+    "fennekin",
+    "braixen",
+    "delphox",
+    "delphoxMega",
+    "froakie",
+    "frogadier",
+    "greninja",
+    "greninjaAsh",
+    "greninjaMega",
+    "bunnelby",
+    "diggersby",
+    "fletchling",
+    "fletchinder",
+    "talonflame",
+    "scatterbug",
+    "spewpa",
+    "vivillon",
+    "litleo",
+    "pyroar",
+    "pyroarMega",
+    "flabebe",
+    "floette",
+    "floetteEternal",
+    "floetteMega",
+    "florges",
+    "skiddo",
+    "gogoat",
+    "pancham",
+    "pangoro",
+    "furfrou",
+    "espurr",
+    "meowstic",
+    "meowsticMMega",
+    "meowsticFMega",
+    "honedge",
+    "doublade",
+    "aegislash",
+    "aegislashBlade",
+    "spritzee",
+    "aromatisse",
+    "swirlix",
+    "slurpuff",
+    "inkay",
+    "malamar",
+    "malamarMega",
+    "binacle",
+    "barbaracle",
+    "barbaracleMega",
+    "skrelp",
+    "dragalge",
+    "dragalgeMega",
+    "clauncher",
+    "clawitzer",
+    "helioptile",
+    "heliolisk",
+    "tyrunt",
+    "tyrantrum",
+    "amaura",
+    "aurorus",
+    "hawlucha",
+    "hawluchaMega",
+    "dedenne",
+    "carbink",
+    "goomy",
+    "sliggoo",
+    "goodra",
+    "klefki",
+    "phantump",
+    "trevenant",
+    "pumpkaboo",
+    "pumpkabooSmall",
+    "pumpkabooLarge",
+    "pumpkabooSuper",
+    "gourgeist",
+    "gourgeistSmall",
+    "gourgeistLarge",
+    "gourgeistSuper",
+    "bergmite",
+    "avalugg",
+    "noibat",
+    "noivern",
+    "xerneas",
+    "yveltal",
+    "zygarde",
+    "zygarde10Percent",
+    "zygardeComplete",
+    "zygardeMega",
+    "diancie",
+    "diancieMega",
+    "hoopa",
+    "hoopaUnbound",
+    "volcanion",
+    "rowlet",
+    "dartrix",
+    "decidueye",
+    "litten",
+    "torracat",
+    "incineroar",
+    "popplio",
+    "brionne",
+    "primarina",
+    "pikipek",
+    "trumbeak",
+    "toucannon",
+    "yungoos",
+    "gumshoos",
+    "grubbin",
+    "charjabug",
+    "vikavolt",
+    "crabrawler",
+    "crabominable",
+    "crabominableMega",
+    "oricorio",
+    "oricorioPomPom",
+    "oricorioPau",
+    "oricorioSensu",
+    "cutiefly",
+    "ribombee",
+    "rockruff",
+    "lycanroc",
+    "lycanrocMidnight",
+    "lycanrocDusk",
+    "wishiwashi",
+    "wishiwashiSchool",
+    "mareanie",
+    "toxapex",
+    "mudbray",
+    "mudsdale",
+    "dewpider",
+    "araquanid",
+    "fomantis",
+    "lurantis",
+    "morelull",
+    "shiinotic",
+    "salandit",
+    "salazzle",
+    "stufful",
+    "bewear",
+    "bounsweet",
+    "steenee",
+    "tsareena",
+    "comfey",
+    "oranguru",
+    "passimian",
+    "wimpod",
+    "golisopod",
+    "golisopodMega",
+    "sandygast",
+    "palossand",
+    "pyukumuku",
+    "typeNull",
+    "silvally",
+    "silvallyBug",
+    "silvallyDark",
+    "silvallyDragon",
+    "silvallyElectric",
+    "silvallyFairy",
+    "silvallyFighting",
+    "silvallyFire",
+    "silvallyFlying",
+    "silvallyGhost",
+    "silvallyGrass",
+    "silvallyGround",
+    "silvallyIce",
+    "silvallyPoison",
+    "silvallyPsychic",
+    "silvallyRock",
+    "silvallySteel",
+    "silvallyWater",
+    "minior",
+    "miniorMeteor",
+    "komala",
+    "turtonator",
+    "togedemaru",
+    "mimikyu",
+    "bruxish",
+    "drampa",
+    "drampaMega",
+    "dhelmise",
+    "jangmoO",
+    "hakamoO",
+    "kommoO",
+    "tapuKoko",
+    "tapuLele",
+    "tapuBulu",
+    "tapuFini",
+    "cosmog",
+    "cosmoem",
+    "solgaleo",
+    "lunala",
+    "nihilego",
+    "buzzwole",
+    "pheromosa",
+    "xurkitree",
+    "celesteela",
+    "kartana",
+    "guzzlord",
+    "necrozma",
+    "necrozmaDuskMane",
+    "necrozmaDawnWings",
+    "necrozmaUltra",
+    "magearna",
+    "magearnaMega",
+    "magearnaOriginalMega",
+    "marshadow",
+    "poipole",
+    "naganadel",
+    "stakataka",
+    "blacephalon",
+    "zeraora",
+    "zeraoraMega",
+    "meltan",
+    "melmetal",
+    "melmetalGmax",
+    "grookey",
+    "thwackey",
+    "rillaboom",
+    "rillaboomGmax",
+    "scorbunny",
+    "raboot",
+    "cinderace",
+    "cinderaceGmax",
+    "sobble",
+    "drizzile",
+    "inteleon",
+    "inteleonGmax",
+    "skwovet",
+    "greedent",
+    "rookidee",
+    "corvisquire",
+    "corviknight",
+    "corviknightGmax",
+    "blipbug",
+    "dottler",
+    "orbeetle",
+    "orbeetleGmax",
+    "nickit",
+    "thievul",
+    "gossifleur",
+    "eldegoss",
+    "wooloo",
+    "dubwool",
+    "chewtle",
+    "drednaw",
+    "drednawGmax",
+    "yamper",
+    "boltund",
+    "rolycoly",
+    "carkol",
+    "coalossal",
+    "coalossalGmax",
+    "applin",
+    "flapple",
+    "flappleGmax",
+    "appletun",
+    "appletunGmax",
+    "silicobra",
+    "sandaconda",
+    "sandacondaGmax",
+    "cramorant",
+    "arrokuda",
+    "barraskewda",
+    "toxel",
+    "toxtricity",
+    "toxtricityGmax",
+    "toxtricityLowKeyGmax",
+    "sizzlipede",
+    "centiskorch",
+    "centiskorchGmax",
+    "clobbopus",
+    "grapploct",
+    "sinistea",
+    "polteageist",
+    "hatenna",
+    "hattrem",
+    "hatterene",
+    "hattereneGmax",
+    "impidimp",
+    "morgrem",
+    "grimmsnarl",
+    "grimmsnarlGmax",
+    "obstagoon",
+    "perrserker",
+    "cursola",
+    "sirfetchd",
+    "runerigus",
+    "milcery",
+    "alcremie",
+    "alcremieGmax",
+    "falinks",
+    "falinksMega",
+    "pincurchin",
+    "snom",
+    "frosmoth",
+    "stonjourner",
+    "eiscue",
+    "eiscueNoice",
+    "indeedee",
+    "indeedeeF",
+    "morpeko",
+    "cufant",
+    "copperajah",
+    "copperajahGmax",
+    "dracozolt",
+    "arctozolt",
+    "dracovish",
+    "arctovish",
+    "duraludon",
+    "duraludonGmax",
+    "dreepy",
+    "drakloak",
+    "dragapult",
+    "zacian",
+    "zacianCrowned",
+    "zamazenta",
+    "zamazentaCrowned",
+    "eternatus",
+    "eternatusEternamax",
+    "kubfu",
+    "urshifu",
+    "urshifuRapidStrike",
+    "urshifuGmax",
+    "urshifuRapidStrikeGmax",
+    "zarude",
+    "regieleki",
+    "regidrago",
+    "glastrier",
+    "spectrier",
+    "calyrex",
+    "calyrexIce",
+    "calyrexShadow",
+    "ursalunaBloodmoon",
+    "basculegion",
+    "basculegionF",
+    "sneasler",
+    "overqwil",
+    "enamorus",
+    "enamorusTherian",
+    "sprigatito",
+    "floragato",
+    "meowscarada",
+    "fuecoco",
+    "crocalor",
+    "skeledirge",
+    "quaxly",
+    "quaxwell",
+    "quaquaval",
+    "lechonk",
+    "oinkologne",
+    "oinkologneF",
+    "tarountula",
+    "spidops",
+    "nymble",
+    "lokix",
+    "pawmi",
+    "pawmo",
+    "pawmot",
+    "tandemaus",
+    "maushold",
+    "fidough",
+    "dachsbun",
+    "smoliv",
+    "dolliv",
+    "arboliva",
+    "squawkabilly",
+    "nacli",
+    "naclstack",
+    "garganacl",
+    "charcadet",
+    "armarouge",
+    "ceruledge",
+    "tadbulb",
+    "bellibolt",
+    "wattrel",
+    "kilowattrel",
+    "maschiff",
+    "mabosstiff",
+    "shroodle",
+    "grafaiai",
+    "bramblin",
+    "brambleghast",
+    "toedscool",
+    "toedscruel",
+    "klawf",
+    "capsakid",
+    "scovillain",
+    "scovillainMega",
+    "rellor",
+    "rabsca",
+    "flittle",
+    "espathra",
+    "tinkatink",
+    "tinkatuff",
+    "tinkaton",
+    "wiglett",
+    "wugtrio",
+    "bombirdier",
+    "finizen",
+    "palafin",
+    "palafinHero",
+    "varoom",
+    "revavroom",
+    "cyclizar",
+    "orthworm",
+    "glimmet",
+    "glimmora",
+    "glimmoraMega",
+    "greavard",
+    "houndstone",
+    "flamigo",
+    "cetoddle",
+    "cetitan",
+    "veluza",
+    "dondozo",
+    "tatsugiri",
+    "tatsugiriCurlyMega",
+    "tatsugiriDroopyMega",
+    "tatsugiriStretchyMega",
+    "clodsire",
+    "kingambit",
+    "greatTusk",
+    "screamTail",
+    "bruteBonnet",
+    "flutterMane",
+    "slitherWing",
+    "sandyShocks",
+    "ironTreads",
+    "ironBundle",
+    "ironHands",
+    "ironJugulis",
+    "ironMoth",
+    "ironThorns",
+    "frigibax",
+    "arctibax",
+    "baxcalibur",
+    "baxcaliburMega",
+    "gimmighoul",
+    "gimmighoulRoaming",
+    "gholdengo",
+    "woChien",
+    "chienPao",
+    "tingLu",
+    "chiYu",
+    "roaringMoon",
+    "ironValiant",
+    "koraidon",
+    "miraidon",
+    "walkingWake",
+    "ironLeaves",
+    "dipplin",
+    "poltchageist",
+    "sinistcha",
+    "okidogi",
+    "munkidori",
+    "fezandipiti",
+    "ogerpon",
+    "ogerponWellspring",
+    "ogerponHearthflame",
+    "ogerponCornerstone",
+    "archaludon",
+    "hydrapple",
+    "gougingFire",
+    "ragingBolt",
+    "ironBoulder",
+    "ironCrown",
+    "terapagos",
+    "terapagosTerastal",
+    "terapagosStellar",
+    "pecharunt",
+    "rattataAlola",
+    "raticateAlola",
+    "pikachuAlola",
+    "raichuAlola",
+    "sandshrewAlola",
+    "sandslashAlola",
+    "vulpixAlola",
+    "ninetalesAlola",
+    "diglettAlola",
+    "dugtrioAlola",
+    "meowthAlola",
+    "meowthGalar",
+    "persianAlola",
+    "growlitheHisui",
+    "arcanineHisui",
+    "geodudeAlola",
+    "gravelerAlola",
+    "golemAlola",
+    "ponytaGalar",
+    "rapidashGalar",
+    "slowpokeGalar",
+    "slowbroGalar",
+    "farfetchdGalar",
+    "grimerAlola",
+    "mukAlola",
+    "voltorbHisui",
+    "electrodeHisui",
+    "exeggutorAlola",
+    "marowakAlola",
+    "weezingGalar",
+    "mrMimeGalar",
+    "taurosPaldeaCombat",
+    "taurosPaldeaBlaze",
+    "taurosPaldeaAqua",
+    "articunoGalar",
+    "zapdosGalar",
+    "moltresGalar",
+    "typhlosionHisui",
+    "wooperPaldea",
+    "slowkingGalar",
+    "qwilfishHisui",
+    "sneaselHisui",
+    "corsolaGalar",
+    "zigzagoonGalar",
+    "linooneGalar",
+    "samurottHisui",
+    "lilligantHisui",
+    "darumakaGalar",
+    "darmanitanGalar",
+    "yamaskGalar",
+    "zoruaHisui",
+    "zoroarkHisui",
+    "stunfiskGalar",
+    "braviaryHisui",
+    "sliggooHisui",
+    "goodraHisui",
+    "avaluggHisui",
+    "decidueyeHisui"
+  ]
+}

@@ -1,0 +1,251 @@
+[
+  {
+    "id": "rookieTamer",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -3,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": -1,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "dragonKnight",
+    "kind": "regular",
+    "elementIds": ["dragon"],
+    "teamSize": {
+      "min": 1,
+      "max": 2
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 3,
+    "tamerRealmOffset": 1,
+    "tamerSkillIds": ["encourage", "guardArt", "diamondShield"],
+    "aiProfile": "switcher",
+    "equipmentSlots": 1,
+    "transforms": false,
+    "formationIds": ["dragonGate"]
+  },
+  {
+    "id": "taoist",
+    "kind": "regular",
+    "elementIds": ["psychic", "ghost"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["clarityChant", "calmMind", "bindingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "demonHunter",
+    "kind": "regular",
+    "elementIds": ["normal", "bug"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt", "bindingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "sailor",
+    "kind": "regular",
+    "elementIds": ["water", "ice"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt", "guardArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "herbalist",
+    "kind": "regular",
+    "elementIds": ["grass", "poison"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt", "clarityChant", "soulRecall"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "miner",
+    "kind": "regular",
+    "elementIds": ["rock", "ground", "steel"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["guardArt", "diamondShield"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "witch",
+    "kind": "regular",
+    "elementIds": ["dark", "ghost"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["bindingArt", "calmMind"],
+    "aiProfile": "switcher",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "martialArtist",
+    "kind": "regular",
+    "elementIds": ["fighting"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["encourage", "guardArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "windRider",
+    "kind": "regular",
+    "elementIds": ["flying"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["encourage", "healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "scientist",
+    "kind": "regular",
+    "elementIds": ["electric", "steel"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["clarityChant", "diamondShield"],
+    "aiProfile": "switcher",
+    "equipmentSlots": 1,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "fireMage",
+    "kind": "regular",
+    "elementIds": ["fire"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["encourage", "calmMind"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "saintess",
+    "kind": "regular",
+    "elementIds": ["light", "fairy"],
+    "teamSize": {
+      "min": 1,
+      "max": 3
+    },
+    "levelOffset": -1,
+    "rewardMultiplier": 2,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt", "clarityChant", "soulRecall"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": []
+  },
+  {
+    "id": "gymLeader",
+    "kind": "gymLeader",
+    "elementIds": [],
+    "teamSize": {
+      "min": 6,
+      "max": 6
+    },
+    "levelOffset": 5,
+    "rewardMultiplier": 5,
+    "tamerRealmOffset": 1,
+    "tamerSkillIds": [
+      "healingArt",
+      "clarityChant",
+      "encourage",
+      "guardArt",
+      "bindingArt",
+      "diamondShield",
+      "soulRecall",
+      "pactResonance",
+      "calmMind",
+      "twinBeastMerge"
+    ],
+    "aiProfile": "switcher",
+    "equipmentSlots": 2,
+    "transforms": true,
+    "formationIds": ["sixHarmonies", "fourSymbols", "dragonGate", "fiveElements"]
+  }
+]

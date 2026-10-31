@@ -1,0 +1,29 @@
+{
+  "byOrigin": {
+    "myth": 39,
+    "fantasy": 450
+  },
+  "bySource": {
+    "shanHaiJing": 39,
+    "monsterHunter": 161,
+    "temtem": 131,
+    "cassetteBeasts": 11,
+    "coromon": 9,
+    "monsterSanctuary": 13,
+    "yokaiWatch": 48,
+    "dragonQuest": 22,
+    "digimon": 40,
+    "monsterRancher": 15
+  },
+  "newSpecies": 489,
+  "newSkills": 19,
+  "plannedEffects": [
+    {
+      "skillId": "nineHeadedVenomFlood",
+      "effect": "poison 20%"
+    }
+  ],
+  "skippedExisting": [],
+  "sourceTagged": [],
+  "evolutionLinks": ["greymon → skullgreymon @30"]
+}

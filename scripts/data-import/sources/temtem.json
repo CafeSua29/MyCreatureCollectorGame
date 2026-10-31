@@ -1,0 +1,3323 @@
+{
+  "source": "temtem",
+  "origin": "fantasy",
+  "update": {
+    "race": true,
+    "stats": true,
+    "elements": true,
+    "evolutions": true,
+    "catchRate": true
+  },
+  "species": [
+    {
+      "name": "Mimit",
+      "elements": ["steel"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 55,
+        "attack": 55,
+        "defense": 65,
+        "spAttack": 55,
+        "spDefense": 65,
+        "speed": 55
+      },
+      "catchRate255": 30,
+      "evolutions": [],
+      "heightM": 0.42,
+      "weightKg": 42,
+      "flavor": "Mimit has the honor of being the very first Digital ever created. The genomic reservoir contained in its tail allows it an unequalled ability to replicate any other Temtem species, making it the ultimate breeder."
+    },
+    {
+      "name": "Oree",
+      "elements": ["steel"],
+      "raceId": "marsupial",
+      "stats": {
+        "hp": 61,
+        "attack": 65,
+        "defense": 44,
+        "spAttack": 32,
+        "spDefense": 31,
+        "speed": 35
+      },
+      "catchRate255": 145,
+      "evolutions": [
+        {
+          "name": "Zaobian",
+          "level": 35
+        }
+      ],
+      "heightM": 1.28,
+      "weightKg": 43,
+      "flavor": "One of the first prototypes created in Nanto Labs, Oree's early versions were the forerunners of Digital Temtem. Inquisitive creatures by design, they show great curiosity and a boundless appetite for information."
+    },
+    {
+      "name": "Zaobian",
+      "elements": ["steel"],
+      "raceId": "marsupial",
+      "stats": {
+        "hp": 72,
+        "attack": 84,
+        "defense": 50,
+        "spAttack": 42,
+        "spDefense": 44,
+        "speed": 63
+      },
+      "catchRate255": 105,
+      "evolutions": [],
+      "heightM": 2.13,
+      "weightKg": 93,
+      "flavor": "Zaobian are part of the second generation of Digital Temtem. Created with much more refined technology, they are more intelligent friends and companions, as well as sturdier in battle."
+    },
+    {
+      "name": "Chromeon (Digital)",
+      "elements": ["steel"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 61,
+        "attack": 65,
+        "defense": 49,
+        "spAttack": 85,
+        "spDefense": 63,
+        "speed": 66
+      },
+      "catchRate255": 80,
+      "evolutions": [],
+      "heightM": 0.77,
+      "weightKg": 36,
+      "flavor": "Chrome-chrome-Chromeoooon, you come and gooo...' This recent breakthrough of Nanto Labs uses modified Koish DNA to create a Digital Temtem with a variable second-typing for maximum versatility."
+    },
+    {
+      "name": "Halzhi",
+      "elements": ["steel"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 52,
+        "attack": 56,
+        "defense": 48,
+        "spAttack": 39,
+        "spDefense": 44,
+        "speed": 38
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Molgu",
+          "level": 16
+        }
+      ],
+      "heightM": 0.9,
+      "weightKg": 95,
+      "flavor": "This is a newer model from Nanto Labs, specifically designed for Dojo tamers. More intelligent and empathic than older Digitals, it is much more responsive to human commands, and those fortunate enough to have one as a friend wouldn't change it for any other."
+    },
+    {
+      "name": "Molgu",
+      "elements": ["steel"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 82,
+        "attack": 84,
+        "defense": 64,
+        "spAttack": 52,
+        "spDefense": 66,
+        "speed": 51
+      },
+      "catchRate255": 105,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 150,
+      "flavor": "This model represents a significant upgrade from Halzhi. Surprisingly, Nanto Labs found examples of escaped Molgu evolving on their own, further proving the point thatDigital Temtem are every bit as \"alive\" and \"natural\" as other varieties."
+    },
+    {
+      "name": "Platypet",
+      "elements": ["water", "poison"],
+      "raceId": "marsupial",
+      "stats": {
+        "hp": 55,
+        "attack": 45,
+        "defense": 31,
+        "spAttack": 67,
+        "spDefense": 56,
+        "speed": 65
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Platox",
+          "level": 20
+        }
+      ],
+      "heightM": 0.85,
+      "weightKg": 48,
+      "flavor": "Platypet was popularized by a cartoon series, and ever since then it has been one of the most popular Temtem with kids. The series had an educative purpose: to teach children that Toxic Temtem are also valid and can be good friends."
+    },
+    {
+      "name": "Platox",
+      "elements": ["water", "poison"],
+      "raceId": "marsupial",
+      "stats": {
+        "hp": 62,
+        "attack": 50,
+        "defense": 35,
+        "spAttack": 76,
+        "spDefense": 63,
+        "speed": 81
+      },
+      "catchRate255": 105,
+      "evolutions": [
+        {
+          "name": "Platimous",
+          "level": 20
+        }
+      ],
+      "heightM": 1.4,
+      "weightKg": 70,
+      "flavor": "Platox share common ancestors with Saipat, but the species diverged centuries ago. While Saipat developed opposable thumbs, Platox specialized in surviving polluted environments. Today they are the most successful feathered Temtem of Tucma."
+    },
+    {
+      "name": "Platimous",
+      "elements": ["water", "poison"],
+      "raceId": "marsupial",
+      "stats": {
+        "hp": 73,
+        "attack": 56,
+        "defense": 39,
+        "spAttack": 93,
+        "spDefense": 70,
+        "speed": 82
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.9,
+      "weightKg": 107,
+      "flavor": "Charles Temwin described them as \"Platox, but more so\". This is usually taken as classic Arburian understatement: Platimous were amongst the most successful apex predators before large-scale taming, and remain very effective fighters."
+    },
+    {
+      "name": "Swali",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 44,
+        "attack": 50,
+        "defense": 40,
+        "spAttack": 55,
+        "spDefense": 60,
+        "speed": 35
+      },
+      "catchRate255": 200,
+      "evolutions": [
+        {
+          "name": "Loali",
+          "level": 8
+        }
+      ],
+      "heightM": 0.82,
+      "weightKg": 18,
+      "flavor": "When the harvest season is on, Omninesian fruit-pickers are always careful not to accidentally damage the delicate, chrysalis-like Swali. They grow on certain vines of the rainforest canopy, dropping to the jungle floor once mature and mobile."
+    },
+    {
+      "name": "Loali",
+      "elements": ["grass", "flying"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 61,
+        "attack": 60,
+        "defense": 54,
+        "spAttack": 70,
+        "spDefense": 81,
+        "speed": 77
+      },
+      "catchRate255": 140,
+      "evolutions": [],
+      "heightM": 0.6,
+      "weightKg": 14,
+      "flavor": "Delicate and graceful creatures, Loali are all wings and eyes - and natural charmers. Their hypnotic eyes can completely dazzle their enemies and their constantly fluttering wings allow them to change course in an instant."
+    },
+    {
+      "name": "Tateru",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 79,
+        "attack": 75,
+        "defense": 66,
+        "spAttack": 54,
+        "spDefense": 66,
+        "speed": 60
+      },
+      "catchRate255": 165,
+      "evolutions": [],
+      "heightM": 1.45,
+      "weightKg": 61,
+      "flavor": "Despite their impressive height, Tateru are quite shy and not naturally aggressive. That's why they need proper training before battle. Wild Tateru are recognized for their upright position and sensitive antennae, always alert."
+    },
+    {
+      "name": "Gharunder",
+      "elements": ["poison", "electric"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 71,
+        "attack": 84,
+        "defense": 47,
+        "spAttack": 47,
+        "spDefense": 85,
+        "speed": 49
+      },
+      "catchRate255": 45,
+      "evolutions": [],
+      "heightM": 1.76,
+      "weightKg": 240,
+      "flavor": "Popularly known as \"the monster of the sewers\", this species descends from proto-Temtemic lifeforms of the Xolot Reservoir. It is no surprise it has adapted to an extremely toxic ecosystem."
+    },
+    {
+      "name": "Mosu",
+      "elements": ["fighting"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 60,
+        "attack": 65,
+        "defense": 54,
+        "spAttack": 65,
+        "spDefense": 54,
+        "speed": 35
+      },
+      "catchRate255": 110,
+      "evolutions": [
+        {
+          "name": "Magmut",
+          "level": 15
+        }
+      ],
+      "heightM": 1.45,
+      "weightKg": 170,
+      "flavor": "The adorable Mosu descends from the primeval pachyderms that roamed the Greenglen Forest back when it was part of a great boreal forest spanning almost half of Paninsula."
+    },
+    {
+      "name": "Magmut",
+      "elements": ["fighting", "fire"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 90,
+        "attack": 75,
+        "defense": 64,
+        "spAttack": 75,
+        "spDefense": 64,
+        "speed": 40
+      },
+      "catchRate255": 66,
+      "evolutions": [],
+      "heightM": 2.15,
+      "weightKg": 1150,
+      "flavor": "Temtemologists believe Magmut developed their characteristic flaming mane as an adaptation to the colder and wetter climate of the Lochburg moors."
+    },
+    {
+      "name": "Paharo",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 48,
+        "attack": 40,
+        "defense": 40,
+        "spAttack": 50,
+        "spDefense": 50,
+        "speed": 60
+      },
+      "catchRate255": 190,
+      "evolutions": [
+        {
+          "name": "Paharac",
+          "level": 7
+        }
+      ],
+      "heightM": 0.75,
+      "weightKg": 8,
+      "flavor": "Paharo tend to hide in treetops and lurk, their green \"mask\" allowing them to blend in with the foliage. Often the only way to locate them is to look for the telltale gleam of their eyes."
+    },
+    {
+      "name": "Paharac",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 60,
+        "attack": 54,
+        "defense": 55,
+        "spAttack": 60,
+        "spDefense": 60,
+        "speed": 70
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Granpah",
+          "level": 16
+        }
+      ],
+      "heightM": 1.25,
+      "weightKg": 24,
+      "flavor": "Due to their bigger size and stronger physique, Paharac doesn’t actually need camouflage, but they still love to flaunt their turquoise facial feathers with great pride."
+    },
+    {
+      "name": "Granpah",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 70,
+        "attack": 55,
+        "defense": 63,
+        "spAttack": 76,
+        "spDefense": 68,
+        "speed": 78
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.86,
+      "weightKg": 45,
+      "flavor": "The authoritative stare of a Granpah portrays the long time and many battles that it takes to achieve this evolutionary stage. They have earned their respect among younger Wind Temtem."
+    },
+    {
+      "name": "Ampling",
+      "elements": ["electric"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 51,
+        "attack": 35,
+        "defense": 36,
+        "spAttack": 41,
+        "spDefense": 42,
+        "speed": 70
+      },
+      "catchRate255": 95,
+      "evolutions": [
+        {
+          "name": "Amphatyr",
+          "level": 14
+        }
+      ],
+      "heightM": 1.3,
+      "weightKg": 45,
+      "flavor": "Native to the steep slopes of the Iwaba highlands, Ampling are as adorable as electrifying. Neoedo children are familiar with them, thanks to regular school trips to observe these charming creatures in their natural habitat."
+    },
+    {
+      "name": "Amphatyr",
+      "elements": ["electric", "grass"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 65,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 66,
+        "spDefense": 64,
+        "speed": 110
+      },
+      "catchRate255": 40,
+      "evolutions": [],
+      "heightM": 2.02,
+      "weightKg": 65,
+      "flavor": "Amphatyr are a prime example of 'cervus electricus', agile and majestic. Their mating habit of locking horns causes beautiful displays of electric sparks and discharge arcs that have been compared to tiny aurorae."
+    },
+    {
+      "name": "Bunbun",
+      "elements": ["ground", "rock"],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 72,
+        "attack": 50,
+        "defense": 36,
+        "spAttack": 64,
+        "spDefense": 43,
+        "speed": 69
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Mudrid",
+          "level": 20
+        }
+      ],
+      "heightM": 0.55,
+      "weightKg": 18,
+      "flavor": "These adorable creatures are probably a remnant from the times Tucma and Kisiwa were a single island. While their strong Earth DNA is clearly of Kisiwan origin, the crystalline contents in their paws betray a definite Tucmani influence. They are social and easy to tame."
+    },
+    {
+      "name": "Mudrid",
+      "elements": ["ground", "rock"],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 85,
+        "attack": 60,
+        "defense": 44,
+        "spAttack": 84,
+        "spDefense": 52,
+        "speed": 95
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 75,
+      "flavor": "Bigger and more resilient than Bunbun, Mudrid are hardy Temtem, used to extreme weather conditions. Their extremely fine sense of hearing makes them very valuable scouting Temtem once tamed... but also harder to catch in the wild."
+    },
+    {
+      "name": "Hidody",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 49,
+        "attack": 42,
+        "defense": 39,
+        "spAttack": 62,
+        "spDefense": 55,
+        "speed": 39
+      },
+      "catchRate255": 180,
+      "evolutions": [
+        {
+          "name": "Taifu",
+          "level": 15
+        }
+      ],
+      "heightM": 1,
+      "weightKg": 12,
+      "flavor": "This cutie is an adept climber, thanks to the little suckers located in each of its eight stubby legs. For the same reason, Omninesian children quickly learn to hide their cookies instead of putting them on the higher shelf..."
+    },
+    {
+      "name": "Taifu",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 60,
+        "attack": 50,
+        "defense": 45,
+        "spAttack": 91,
+        "spDefense": 89,
+        "speed": 45
+      },
+      "catchRate255": 125,
+      "evolutions": [],
+      "heightM": 1.8,
+      "weightKg": 72,
+      "flavor": "Brought up on a steady diet of stolen cookies, Hidody evolves into the more agile Taifu. They are naughty but cute creatures, naturally given to light-hearted mischief... but very serious opponents in battle."
+    },
+    {
+      "name": "Fomu",
+      "elements": ["water"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 40,
+        "attack": 30,
+        "defense": 35,
+        "spAttack": 65,
+        "spDefense": 70,
+        "speed": 40
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Wiplump",
+          "level": 20
+        }
+      ],
+      "heightM": 0.58,
+      "weightKg": 12,
+      "flavor": "These Temtem are known for their capacity to generate vapor, like charming little steam engines. Since that means losing a lot of moisture, this species prefers to remain in the water and use steam jets for propulsion rather than its short legs."
+    },
+    {
+      "name": "Wiplump",
+      "elements": ["water", "flying"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 66,
+        "attack": 40,
+        "defense": 50,
+        "spAttack": 88,
+        "spDefense": 80,
+        "speed": 70
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.25,
+      "weightKg": 28,
+      "flavor": "Wiplump takes Fomu's clever use of water vapor one step further - flying on steam wings, this species boasts increased range and speed, paired with a stronger attack thanks to its sturdier horn."
+    },
+    {
+      "name": "Skail",
+      "elements": ["normal"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 57,
+        "attack": 45,
+        "defense": 50,
+        "spAttack": 32,
+        "spDefense": 41,
+        "speed": 60
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Skunch",
+          "level": 17
+        }
+      ],
+      "heightM": 0.8,
+      "weightKg": 26,
+      "flavor": "This species of Temtem is notoriously bad-tempered, and tamers need all their skills to handle them. Once tamed, these muscular creatures can deliver powerful tail blows in battle."
+    },
+    {
+      "name": "Skunch",
+      "elements": ["normal", "fighting"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 72,
+        "attack": 68,
+        "defense": 70,
+        "spAttack": 45,
+        "spDefense": 60,
+        "speed": 75
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 36,
+      "flavor": "Unlike their lesser brethren, Skunch are capable of bipedalism and can even stand on their muscular tails. This evolution allows them to pummel enemies with their massive fists... but it's done nothing to ameliorate their aggressive mood."
+    },
+    {
+      "name": "Goty",
+      "elements": ["normal"],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 51,
+        "attack": 55,
+        "defense": 48,
+        "spAttack": 58,
+        "spDefense": 37,
+        "speed": 31
+      },
+      "catchRate255": 140,
+      "evolutions": [
+        {
+          "name": "Mouflank",
+          "level": 13
+        }
+      ],
+      "heightM": 0.8,
+      "weightKg": 35,
+      "flavor": "Voted Best Temtem every year by Neutral enthusiasts, Goty is as effective as it is cute. This little crowd-pleaser is particularly popular among casual Kisiwan tamers."
+    },
+    {
+      "name": "Mouflank",
+      "elements": ["normal"],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 79,
+        "attack": 73,
+        "defense": 74,
+        "spAttack": 72,
+        "spDefense": 41,
+        "speed": 72
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 115,
+      "flavor": "With their imposing horns, grazing Mouflank herds used to be serious natural hazards of the Kisiwan plains. The tribes soon learned how to tame them to avoid dangerous stampedes."
+    },
+    {
+      "name": "Rhoulder",
+      "elements": ["normal", "ground"],
+      "raceId": "human",
+      "stats": {
+        "hp": 83,
+        "attack": 79,
+        "defense": 86,
+        "spAttack": 22,
+        "spDefense": 65,
+        "speed": 42
+      },
+      "catchRate255": 80,
+      "evolutions": [],
+      "heightM": 1.8,
+      "weightKg": 380,
+      "flavor": "Once king of the Kisiwan savannah, this species boasts incredibly hard lamellar plates. Before the time of Chacha Turay, they were used in tribal warfare as armored cavalry."
+    },
+    {
+      "name": "Houchic",
+      "elements": ["psychic"],
+      "raceId": "cephalopod",
+      "stats": {
+        "hp": 38,
+        "attack": 40,
+        "defense": 41,
+        "spAttack": 72,
+        "spDefense": 52,
+        "speed": 66
+      },
+      "catchRate255": 80,
+      "evolutions": [
+        {
+          "name": "Tental",
+          "level": 29
+        }
+      ],
+      "heightM": 1.1,
+      "weightKg": 24,
+      "flavor": "Clever but somehow naive, the gentle Houchic are ideal as the first Mental Temtem for novice trainers. They are emphatic and intuitive, capable of understanding the subtleties of mentalism."
+    },
+    {
+      "name": "Tental",
+      "elements": ["psychic"],
+      "raceId": "cephalopod",
+      "stats": {
+        "hp": 41,
+        "attack": 42,
+        "defense": 52,
+        "spAttack": 83,
+        "spDefense": 66,
+        "speed": 76
+      },
+      "catchRate255": 70,
+      "evolutions": [
+        {
+          "name": "Nagaise",
+          "level": 24
+        }
+      ],
+      "heightM": 1.6,
+      "weightKg": 58,
+      "flavor": "Houchic eventually evolves into the more mature Tental - shrewder creatures, whose writhing tentacles serve as apt metaphors for their ever-twisting, sibylline minds."
+    },
+    {
+      "name": "Nagaise",
+      "elements": ["psychic", "water"],
+      "raceId": "cephalopod",
+      "stats": {
+        "hp": 53,
+        "attack": 49,
+        "defense": 62,
+        "spAttack": 92,
+        "spDefense": 78,
+        "speed": 81
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2,
+      "weightKg": 98,
+      "flavor": "Cipanki legends are full of sage Nagaise giving cryptic advice to folk heroes - an early example of the traditional association of this species with wisdom, insight, and spirituality."
+    },
+    {
+      "name": "Orphyll",
+      "elements": ["grass", "poison"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 42,
+        "attack": 68,
+        "defense": 64,
+        "spAttack": 27,
+        "spDefense": 40,
+        "speed": 75
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Nidrasil",
+          "level": 22
+        }
+      ],
+      "heightM": 1.17,
+      "weightKg": 110,
+      "flavor": "Probably a mutation from an ancient serpentine strand of Nature Temtem, Orphyll show remarkable adaptation to noxious conditions. They feature prominently in the art of ancient proto-Arburian cultures, who feared and revered them."
+    },
+    {
+      "name": "Nidrasil",
+      "elements": ["grass", "poison"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 77,
+        "attack": 84,
+        "defense": 77,
+        "spAttack": 36,
+        "spDefense": 51,
+        "speed": 66
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.78,
+      "weightKg": 330,
+      "flavor": "Long considered to be a legend, this species was scientifically verified just decades ago. Temtemologists are still debating how the nervous system of Nidrasil copes with three separate encephalic centers."
+    },
+    {
+      "name": "Banapi",
+      "elements": ["fire"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 42,
+        "attack": 50,
+        "defense": 50,
+        "spAttack": 40,
+        "spDefense": 41,
+        "speed": 70
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Capyre",
+          "level": 17
+        }
+      ],
+      "heightM": 0.9,
+      "weightKg": 45,
+      "flavor": "Capricious and stubborn, these Temtem roam the side of the Anak volcano, grazing on burning coals instead of grass. Notably difficult to tame, they set the right expectations for prospective Fire Temtem tamers..."
+    },
+    {
+      "name": "Capyre",
+      "elements": ["fire"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 67,
+        "attack": 81,
+        "defense": 68,
+        "spAttack": 45,
+        "spDefense": 49,
+        "speed": 91
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 67,
+      "flavor": "These temperamental creatures often appear in Myrislan folklore as tricksters, their unreliable nature embedded deeply in the culture. Highly territorial, they breed in Anak and make sure any visitors know just how unwelcome they are."
+    },
+    {
+      "name": "Lapinite",
+      "elements": ["rock"],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 58,
+        "attack": 44,
+        "defense": 63,
+        "spAttack": 55,
+        "spDefense": 56,
+        "speed": 46
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Azuroc",
+          "level": 25
+        }
+      ],
+      "heightM": 0.9,
+      "weightKg": 47,
+      "flavor": "Extremely common in Tucma, these little creatures are often the first Temtem of every young Quetzaleño. They are cheerful and resistant playmates for toddlers, and it is common practise to lightly file off the edges of their crystals to ensure safety."
+    },
+    {
+      "name": "Azuroc",
+      "elements": ["rock"],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 64,
+        "attack": 68,
+        "defense": 75,
+        "spAttack": 60,
+        "spDefense": 67,
+        "speed": 50
+      },
+      "catchRate255": 110,
+      "evolutions": [],
+      "heightM": 2.03,
+      "weightKg": 95,
+      "flavor": "This Temtem is a common sight in the Mines of Quetzal, where miners appreciate their skill when dislodging big chunks of ore and gemstones. Its correct and expert handling is a professional requisite for most of them."
+    },
+    {
+      "name": "Zenoreth",
+      "elements": ["rock"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 73,
+        "attack": 83,
+        "defense": 91,
+        "spAttack": 70,
+        "spDefense": 73,
+        "speed": 60
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 3.1,
+      "weightKg": 220,
+      "flavor": "Any given night at the Jaguar Lounge, drunken miners whisper tall tales about great crystalline behemoths lurking in the darkest abyss under the city. This Temtem is probably the base of all those urban legends... probably."
+    },
+    {
+      "name": "Reval",
+      "elements": ["psychic"],
+      "raceId": "cervid",
+      "stats": {
+        "hp": 50,
+        "attack": 61,
+        "defense": 42,
+        "spAttack": 80,
+        "spDefense": 75,
+        "speed": 40
+      },
+      "catchRate255": 129,
+      "evolutions": [
+        {
+          "name": "Aohi",
+          "level": 15
+        }
+      ],
+      "heightM": 0.56,
+      "weightKg": 12,
+      "flavor": "Related to diverse (now extinct) subspecies of Cipanki 'vulpes mentalis', Reval used to be hunted by the Counts of House Braeside. Nowadays, they are protected and thrive in the forests of eastern Arbury."
+    },
+    {
+      "name": "Aohi",
+      "elements": ["psychic", "fire"],
+      "raceId": "cervid",
+      "stats": {
+        "hp": 64,
+        "attack": 61,
+        "defense": 46,
+        "spAttack": 89,
+        "spDefense": 79,
+        "speed": 71
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.36,
+      "weightKg": 26,
+      "flavor": "Fast and sinuous like wildfire, Aohi are cunning and sly creatures who routinely outsmart all but the most seasoned of tamers. Even in the wild, they delight in tricking the more gullible Reval."
+    },
+    {
+      "name": "Bigu",
+      "elements": ["grass"],
+      "raceId": "insectivore",
+      "stats": {
+        "hp": 55,
+        "attack": 65,
+        "defense": 38,
+        "spAttack": 41,
+        "spDefense": 42,
+        "speed": 20
+      },
+      "catchRate255": 180,
+      "evolutions": [
+        {
+          "name": "Babawa",
+          "level": 18
+        }
+      ],
+      "heightM": 1.13,
+      "weightKg": 113,
+      "flavor": "If there's an easily underestimated Temtem, that's Bigu. Comically ill-tempered, many tamers have found to their cost that these gastropods compensate their slow pace with outstanding tenacity in battle."
+    },
+    {
+      "name": "Babawa",
+      "elements": ["grass", "water"],
+      "raceId": "insectivore",
+      "stats": {
+        "hp": 85,
+        "attack": 79,
+        "defense": 60,
+        "spAttack": 51,
+        "spDefense": 52,
+        "speed": 40
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 2.26,
+      "weightKg": 340,
+      "flavor": "These Temtem are flamboyant creatures with a funky sense of humor and boundless love for pranks and practical jokes. Many a naughty kid has donned a Babawa costume to cause havoc in the Quetzal Carnival."
+    },
+    {
+      "name": "0b1",
+      "elements": ["steel", "electric"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 22,
+        "attack": 24,
+        "defense": 32,
+        "spAttack": 29,
+        "spDefense": 34,
+        "speed": 74
+      },
+      "catchRate255": 90,
+      "evolutions": [
+        {
+          "name": "0b10",
+          "level": 15
+        }
+      ],
+      "heightM": 0.12,
+      "weightKg": 1,
+      "flavor": "0b1's simple and friendly appearance belies their boldness as a creation - they are the Digital embodiment of a subatomic particle, whose very existence raises almost as many questions as it answers for physics modeling."
+    },
+    {
+      "name": "0b10",
+      "elements": ["steel", "electric"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 67,
+        "attack": 52,
+        "defense": 68,
+        "spAttack": 62,
+        "spDefense": 71,
+        "speed": 78
+      },
+      "catchRate255": 45,
+      "evolutions": [],
+      "heightM": 0.12,
+      "weightKg": 2,
+      "flavor": "Conventional physics can't explain why 0b10 is a two-in-one Temtem, or how their attraction/repulsion dynamics actually work. Tamers don't really care, since this 'Tem is empathetic enough to be tameable... not to mention off-the-charts cute!"
+    },
+    {
+      "name": "Kaku",
+      "elements": ["grass"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 69,
+        "attack": 60,
+        "defense": 60,
+        "spAttack": 35,
+        "spDefense": 50,
+        "speed": 35
+      },
+      "catchRate255": 190,
+      "evolutions": [
+        {
+          "name": "Saku",
+          "level": 11
+        }
+      ],
+      "heightM": 0.54,
+      "weightKg": 29,
+      "flavor": "Less known than its evolution, Kaku are delightful creatures, cute beyond description. They tend to keep their petals wrapped around the body for protection, although no sane person would ever want to hurt a Kaku."
+    },
+    {
+      "name": "Saku",
+      "elements": ["grass", "flying"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 82,
+        "attack": 74,
+        "defense": 72,
+        "spAttack": 40,
+        "spDefense": 74,
+        "speed": 40
+      },
+      "catchRate255": 140,
+      "evolutions": [],
+      "heightM": 0.92,
+      "weightKg": 44,
+      "flavor": "Some say the first airship designs were inspired by this Temtem's ability to inflate air pockets within its body, allowing it to float and drift with the prevailing winds."
+    },
+    {
+      "name": "Valash",
+      "elements": ["normal", "rock"],
+      "raceId": "insectivore",
+      "stats": {
+        "hp": 58,
+        "attack": 74,
+        "defense": 62,
+        "spAttack": 74,
+        "spDefense": 62,
+        "speed": 90
+      },
+      "catchRate255": 95,
+      "evolutions": [],
+      "heightM": 1.85,
+      "weightKg": 84,
+      "flavor": "A fascinating offshoot, Valash is a rare case of bipedal hybrid, documented only recently. The care with which it keeps its forearm crystals sharpened betrays some sort of primitive sentience."
+    },
+    {
+      "name": "Towly",
+      "elements": ["fighting", "psychic"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 45,
+        "attack": 54,
+        "defense": 36,
+        "spAttack": 54,
+        "spDefense": 36,
+        "speed": 70
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Owlhe",
+          "level": 10
+        }
+      ],
+      "heightM": 0.8,
+      "weightKg": 18,
+      "flavor": "Propertonian toddlers are taught not to be afraid of this gentle species, in spite of the unnerving appearance of their large, shiny eyes when encountered in the forest at night."
+    },
+    {
+      "name": "Owlhe",
+      "elements": ["flying", "fighting"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 62,
+        "attack": 75,
+        "defense": 79,
+        "spAttack": 60,
+        "spDefense": 49,
+        "speed": 80
+      },
+      "catchRate255": 80,
+      "evolutions": [],
+      "heightM": 1.77,
+      "weightKg": 68,
+      "flavor": "This lordly Temtem reigns supreme over the Arburian skies and is said to possess almost-human intelligence. Some tamers are known to have even invited Owlhe over for afternoon tea..."
+    },
+    {
+      "name": "Barnshe",
+      "elements": ["flying", "psychic"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 63,
+        "attack": 60,
+        "defense": 47,
+        "spAttack": 75,
+        "spDefense": 79,
+        "speed": 80
+      },
+      "catchRate255": 95,
+      "evolutions": [],
+      "heightM": 1.71,
+      "weightKg": 59,
+      "flavor": "Traditionally associated with the University of Arbury as its heraldic Temtem, this species has a deep, piercing stare. Although winged, it prefers to keep to the ground and use its mind as a weapon - a symbolism the academics are very fond of."
+    },
+    {
+      "name": "Gyalis",
+      "elements": ["rock", "fighting"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 74,
+        "attack": 81,
+        "defense": 61,
+        "spAttack": 23,
+        "spDefense": 61,
+        "speed": 100
+      },
+      "catchRate255": 80,
+      "evolutions": [],
+      "heightM": 2.04,
+      "weightKg": 53,
+      "flavor": "Gyalis have appeared in many horror movies. Sadly, this has resulted in a bad reputation as a \"scary evil monster\", not helped by its menacing appearance - but in the hands of a kind tamer, Gyalis can be every bit as tender and loving as the plushest of Pigepics."
+    },
+    {
+      "name": "Occlura",
+      "elements": ["rock"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 50,
+        "attack": 45,
+        "defense": 43,
+        "spAttack": 38,
+        "spDefense": 65,
+        "speed": 50
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Myx",
+          "level": 18
+        }
+      ],
+      "heightM": 1.37,
+      "weightKg": 79,
+      "flavor": "Despite its creepy appearance, Occlura are mineral-eaters that never pose any danger to humans. Their tame nature and their appetite for raw rock make them valuable assets for mining purposes, as the Tucmani know very well."
+    },
+    {
+      "name": "Myx",
+      "elements": ["rock", "psychic"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 58,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 82,
+        "spDefense": 80,
+        "speed": 68
+      },
+      "catchRate255": 81,
+      "evolutions": [],
+      "heightM": 2.43,
+      "weightKg": 145,
+      "flavor": "The oldest written records in Tucma indicate religious awe of Myx, considered to be embodiments of the \"dark spirits\". Some were considered to be celestial emissaries of Highabove, some evil messengers of Downbelow... but all were feared. With good reason."
+    },
+    {
+      "name": "Raiber",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 57,
+        "attack": 40,
+        "defense": 61,
+        "spAttack": 59,
+        "spDefense": 38,
+        "speed": 42
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Raize",
+          "level": 15
+        }
+      ],
+      "heightM": 0.95,
+      "weightKg": 28,
+      "flavor": "Raiber is often given to novice tamers in Omninesian Dojos because it is relatively mild-mannered for a Fire Temtem. Easier to handle than the mightier varieties, it is nevertheless a loyal companion and decent fighter."
+    },
+    {
+      "name": "Raize",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 66,
+        "attack": 46,
+        "defense": 74,
+        "spAttack": 69,
+        "spDefense": 43,
+        "speed": 40
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Raican",
+          "level": 25
+        }
+      ],
+      "heightM": 1.6,
+      "weightKg": 70,
+      "flavor": "Fierce and indomitable as the fire, Raize are difficult to tame but extremely valuable as fighting Temtem. Each has a characteristic birthmark on the snout, as unique as the movements of a single flame."
+    },
+    {
+      "name": "Raican",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 79,
+        "attack": 77,
+        "defense": 77,
+        "spAttack": 51,
+        "spDefense": 57,
+        "speed": 67
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.95,
+      "weightKg": 125,
+      "flavor": "As the Tucmani legend goes, at the beginning of time, Tucma and Kisiwa were one single fire plain where huge herds of Raican ran wild and free, flame and Temtem being one until the Archipelago cooled and these noble creatures emigrated underground."
+    },
+    {
+      "name": "Pewki",
+      "elements": ["water"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 70,
+        "attack": 42,
+        "defense": 45,
+        "spAttack": 31,
+        "spDefense": 10,
+        "speed": 33
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Piraniant",
+          "level": 13
+        }
+      ],
+      "heightM": 0.6,
+      "weightKg": 15,
+      "flavor": "Their flat shape allows Pewki to float right under the water surface, while they scout around using their huge, widely spaced eyes. Their iconic tall fins are often the only way to tell them apart from driftwood."
+    },
+    {
+      "name": "Piraniant",
+      "elements": ["water"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 90,
+        "attack": 79,
+        "defense": 85,
+        "spAttack": 65,
+        "spDefense": 50,
+        "speed": 55
+      },
+      "catchRate255": 130,
+      "evolutions": [],
+      "heightM": 2,
+      "weightKg": 230,
+      "flavor": "A native species of Deniz, this Temtem tends to drift with the Sillaro current, to conserve energy... but once brought into battle, its size makes it a powerful fighter."
+    },
+    {
+      "name": "Scarawatt",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 51,
+        "attack": 24,
+        "defense": 50,
+        "spAttack": 35,
+        "spDefense": 61,
+        "speed": 40
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Scaravolt",
+          "level": 12
+        }
+      ],
+      "heightM": 0.4,
+      "weightKg": 98,
+      "flavor": "As the old joke goes, \"when you're a tamer in Cipanku, it's not so much a matter of Scarawatt but of Scarawhen\". This variety is an old staple of the Neoedo Dojo, where every generation rediscovers this industrious and friendly 'Tem."
+    },
+    {
+      "name": "Scaravolt",
+      "elements": ["electric", "fire"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 89,
+        "attack": 60,
+        "defense": 65,
+        "spAttack": 62,
+        "spDefense": 77,
+        "speed": 44
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 390,
+      "flavor": "Initially mistaken as a minor mutation of Scarawatt, Scaravolt is strongly associated with Miyako and the bonfires the yamabushi would light on the mountaintops on cold nights. On such an occasion, a sighting of this Temtem was considered a good omen."
+    },
+    {
+      "name": "Hoglip",
+      "elements": ["steel", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 46,
+        "attack": 44,
+        "defense": 53,
+        "spAttack": 72,
+        "spDefense": 55,
+        "speed": 70
+      },
+      "catchRate255": 80,
+      "evolutions": [
+        {
+          "name": "Hedgine",
+          "level": 13
+        }
+      ],
+      "heightM": 0.85,
+      "weightKg": 50,
+      "flavor": "Some of the first Digital Temtem were prone to accidentally catching fire. Hoglip is the answer to this problem, a little friend who is totally at home in a blaze. Given that feature, it's often used for rescue by fire crews."
+    },
+    {
+      "name": "Hedgine",
+      "elements": ["steel", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 54,
+        "attack": 51,
+        "defense": 61,
+        "spAttack": 80,
+        "spDefense": 64,
+        "speed": 84
+      },
+      "catchRate255": 70,
+      "evolutions": [],
+      "heightM": 1.45,
+      "weightKg": 90,
+      "flavor": "Mischievous but sweet, Hedgine are so kawaii tamers are regularly reminded to don fireproof gloves before petting them, to avoid getting first-degree burns. They are also instructed to keep them supervised in wooden areas."
+    },
+    {
+      "name": "Osuchi",
+      "elements": ["ground"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 52,
+        "attack": 65,
+        "defense": 51,
+        "spAttack": 24,
+        "spDefense": 25,
+        "speed": 38
+      },
+      "catchRate255": 140,
+      "evolutions": [
+        {
+          "name": "Osukan",
+          "level": 12
+        }
+      ],
+      "heightM": 1.25,
+      "weightKg": 45,
+      "flavor": "Shy and unassuming, Osuchi are generally considered benevolent, steadfast friends. Often confused with rock outcroppings by the untrained eye, they are at home in the Jino Gap."
+    },
+    {
+      "name": "Osukan",
+      "elements": ["ground", "fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 60,
+        "attack": 82,
+        "defense": 73,
+        "spAttack": 26,
+        "spDefense": 35,
+        "speed": 41
+      },
+      "catchRate255": 110,
+      "evolutions": [
+        {
+          "name": "Osukai",
+          "level": 14
+        }
+      ],
+      "heightM": 1.71,
+      "weightKg": 90,
+      "flavor": "Osukan are the perfect embodiment of the endurance and grit of the best Temtem fighters. They are sturdy, obstinate creatures that love nothing better than to show their prowess in a hard, honest battle against a worthy rival."
+    },
+    {
+      "name": "Osukai",
+      "elements": ["ground", "fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 71,
+        "attack": 92,
+        "defense": 85,
+        "spAttack": 31,
+        "spDefense": 53,
+        "speed": 68
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.35,
+      "weightKg": 195,
+      "flavor": "Massive, four-armed Osukai are as hard as granite. They are credited with much of the boring heavy-lifting during the construction of the tunnels under the Kilima Range."
+    },
+    {
+      "name": "Saipat",
+      "elements": ["water", "fighting"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 75,
+        "attack": 85,
+        "defense": 60,
+        "spAttack": 55,
+        "spDefense": 61,
+        "speed": 85
+      },
+      "catchRate255": 140,
+      "evolutions": [],
+      "heightM": 1,
+      "weightKg": 50,
+      "flavor": "Nothing says 'amateur' like making fun of Saipat. Sure, they might look comical at first sight, but nobody who has faced a totally focused Saipat, sturdy coral sai in hand, takes them anything but seriously."
+    },
+    {
+      "name": "Pycko",
+      "elements": ["ground", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 49,
+        "attack": 55,
+        "defense": 40,
+        "spAttack": 44,
+        "spDefense": 41,
+        "speed": 39
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Drakash",
+          "level": 14
+        }
+      ],
+      "heightM": 0.42,
+      "weightKg": 14,
+      "flavor": "Bubbly and cheerful, this Temtem is the protagonist of an animation series aimed at warning children of the dangers of fire. It has been a lifelong friend to many first-time tamers."
+    },
+    {
+      "name": "Drakash",
+      "elements": ["ground", "fire"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 66,
+        "attack": 57,
+        "defense": 49,
+        "spAttack": 86,
+        "spDefense": 72,
+        "speed": 79
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.65,
+      "weightKg": 70,
+      "flavor": "Selective breeding for bipedalism meant this variety of Temtem is faster and more suited for human tasks than its predecessors. Often given as a New Year's gift between Kisiwans and Tucmani."
+    },
+    {
+      "name": "Crystle",
+      "elements": ["rock"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 60,
+        "attack": 61,
+        "defense": 69,
+        "spAttack": 46,
+        "spDefense": 42,
+        "speed": 33
+      },
+      "catchRate255": 160,
+      "evolutions": [
+        {
+          "name": "Sherald",
+          "level": 30
+        }
+      ],
+      "heightM": 0.6,
+      "weightKg": 48,
+      "flavor": "Native to Tucma, Crystle are akin to smaragdine turtles, but they are actually closer to minerals than to fauna. Cute but tough, they are an excellent introductory Crystal Temtem for rookie tamers."
+    },
+    {
+      "name": "Sherald",
+      "elements": ["rock"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 70,
+        "attack": 62,
+        "defense": 78,
+        "spAttack": 71,
+        "spDefense": 52,
+        "speed": 43
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Tortenite",
+          "level": 21
+        }
+      ],
+      "heightM": 1.2,
+      "weightKg": 150,
+      "flavor": "Sherald are known to evolve from Crystle- in the wild, as a result of exposure to the harsh environmental conditions of Tucma. They extract nutrients from the chemical interactions of metamorphic rocks and volcanic ashes."
+    },
+    {
+      "name": "Tortenite",
+      "elements": ["rock", "poison"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 85,
+        "attack": 45,
+        "defense": 82,
+        "spAttack": 89,
+        "spDefense": 69,
+        "speed": 52
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.9,
+      "weightKg": 500,
+      "flavor": "Tortenite are lumbering creatures, often employed by Tucmani miners as work companions. In the wild, they are often spotted herding Sherald as pack leaders."
+    },
+    {
+      "name": "Innki",
+      "elements": ["electric", "rock"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 59,
+        "attack": 65,
+        "defense": 61,
+        "spAttack": 65,
+        "spDefense": 61,
+        "speed": 80
+      },
+      "catchRate255": 40,
+      "evolutions": [],
+      "heightM": 1.38,
+      "weightKg": 46,
+      "flavor": "Known as the most elusive Temtem in Cipanku, possession of an Innki is the ultimate marker of mastery amongst Neoedo tamers."
+    },
+    {
+      "name": "Shaolite",
+      "elements": ["fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 40,
+        "attack": 43,
+        "defense": 58,
+        "spAttack": 54,
+        "spDefense": 61,
+        "speed": 68
+      },
+      "catchRate255": 100,
+      "evolutions": [
+        {
+          "name": "Shaolant",
+          "level": 12
+        }
+      ],
+      "heightM": 1,
+      "weightKg": 27,
+      "flavor": "If there is a Temtem whose reputation as \"a cutie\" overshadows its proficiency, it's Shaolite. \"Oooh, look, smol karateka! <3\" is often heard right before a crushing defeat."
+    },
+    {
+      "name": "Shaolant",
+      "elements": ["fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 51,
+        "attack": 51,
+        "defense": 68,
+        "spAttack": 70,
+        "spDefense": 72,
+        "speed": 80
+      },
+      "catchRate255": 80,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 50,
+      "flavor": "Bigger and meaner than Shaolite, Shaolant have become the darlings of the tamers of Lochburg Dojo who want to command respect for their choice of squad."
+    },
+    {
+      "name": "Cycrox",
+      "elements": ["steel", "poison"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 73,
+        "attack": 54,
+        "defense": 64,
+        "spAttack": 75,
+        "spDefense": 71,
+        "speed": 48
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.32,
+      "weightKg": 41,
+      "flavor": "One rumor tells of a Mimit that fell into a Xolot. Another one, of a Nanto boffin accidentally spilling coffee on some circuitry. Be as it may, Cycrox is as close as it gets to a computer virus, but in the flesh... and in the silicon."
+    },
+    {
+      "name": "Hocus",
+      "elements": ["psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 49,
+        "attack": 55,
+        "defense": 34,
+        "spAttack": 55,
+        "spDefense": 34,
+        "speed": 65
+      },
+      "catchRate255": 90,
+      "evolutions": [
+        {
+          "name": "Pocus",
+          "level": 21
+        }
+      ],
+      "heightM": 1.15,
+      "weightKg": 31,
+      "flavor": "Arcane and blue-blooded, Hocus have been selectively bred for generations and kept as dynastic heirlooms of the House of Braeside. They are fine weapons, trained to be battle Temtem for the ancient aristocracy, a rare sight nowadays."
+    },
+    {
+      "name": "Pocus",
+      "elements": ["psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 70,
+        "attack": 61,
+        "defense": 45,
+        "spAttack": 87,
+        "spDefense": 55,
+        "speed": 85
+      },
+      "catchRate255": 40,
+      "evolutions": [],
+      "heightM": 1.9,
+      "weightKg": 82,
+      "flavor": "Pocus was considered blue-blooded among the blue bloods, and was traditionally given only to the male heirs of the House of Braeside. When the lineage fell, they mostly went extinct... until recently."
+    },
+    {
+      "name": "Smolzy",
+      "elements": ["electric"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 40,
+        "attack": 65,
+        "defense": 26,
+        "spAttack": 22,
+        "spDefense": 26,
+        "speed": 65
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Sparzy",
+          "level": 30
+        }
+      ],
+      "heightM": 0.99,
+      "weightKg": 64,
+      "flavor": "Few Temtem look so deceptively comical as Smolzy - underestimating it in battle is the mark of the rookie tamer. Beyond their adorably helpless appearance, they are appreciated as some of the most reliable Electrical Temtem for daily use."
+    },
+    {
+      "name": "Sparzy",
+      "elements": ["electric"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 62,
+        "attack": 81,
+        "defense": 45,
+        "spAttack": 40,
+        "spDefense": 45,
+        "speed": 78
+      },
+      "catchRate255": 100,
+      "evolutions": [
+        {
+          "name": "Golzy",
+          "level": 14
+        }
+      ],
+      "heightM": 1.6,
+      "weightKg": 73,
+      "flavor": "Also known familiarly as \"Sparky\", this Temtem is a common sight in Cipanku. Children are warned to keep away from them. Although normally good-natured and cheerful, they can involuntarily discharge considerable electric shocks."
+    },
+    {
+      "name": "Golzy",
+      "elements": ["electric", "fighting"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 71,
+        "attack": 80,
+        "defense": 49,
+        "spAttack": 40,
+        "spDefense": 48,
+        "speed": 82
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.06,
+      "weightKg": 186,
+      "flavor": "Bred by the patient priests of Miyaka from local varieties of Electric Temtem, Golzy is a gentle giant that helps the villagers carry heavy loads through the difficult mountain passes. Their consistant presence has become a symbol of the Monastery."
+    },
+    {
+      "name": "Mushi",
+      "elements": ["poison"],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 36,
+        "spAttack": 48,
+        "spDefense": 29,
+        "speed": 68
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Mushook",
+          "level": 20
+        }
+      ],
+      "heightM": 1,
+      "weightKg": 45,
+      "flavor": "Closely related to the non-sentient fungi of the Corrupted Badlands, Mushi are shy but territorial. Always mineral-hungry, wise tamers keep them well away from Crystal Temtem."
+    },
+    {
+      "name": "Mushook",
+      "elements": ["poison", "fighting"],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 71,
+        "attack": 84,
+        "defense": 75,
+        "spAttack": 49,
+        "spDefense": 48,
+        "speed": 81
+      },
+      "catchRate255": 78,
+      "evolutions": [],
+      "heightM": 2.1,
+      "weightKg": 95,
+      "flavor": "Mushook are a hybrid variety, developed at the Quetzal Dojo by expert breeders. Strong and single-minded, some of the bigger specimens are occasionally employed by the Guards as static sentries at strategic points."
+    },
+    {
+      "name": "Magmis",
+      "elements": ["fire"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 52,
+        "attack": 55,
+        "defense": 42,
+        "spAttack": 45,
+        "spDefense": 35,
+        "speed": 37
+      },
+      "catchRate255": 200,
+      "evolutions": [
+        {
+          "name": "Mastione",
+          "level": 16
+        }
+      ],
+      "heightM": 1.15,
+      "weightKg": 26,
+      "flavor": "Magmis' original habitat was in the lava rivers under the Anak caldera, but now they can be found all around the Archipelago, as foundry operators in Quetzal, heating systems in Arbury... And, of course, in Temtem battles."
+    },
+    {
+      "name": "Mastione",
+      "elements": ["fire", "water"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 80,
+        "attack": 91,
+        "defense": 65,
+        "spAttack": 62,
+        "spDefense": 52,
+        "speed": 50
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 2.4,
+      "weightKg": 180,
+      "flavor": "Mastione are fire-loving Temtem, at home in the fiercest of blazes. They can be found grazing in woods devoured by wildfire. The tamed varieties learn to rein in their destructive tendencies - but even then, trainers should exercise care."
+    },
+    {
+      "name": "Umishi",
+      "elements": ["water"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 51,
+        "attack": 21,
+        "defense": 34,
+        "spAttack": 63,
+        "spDefense": 45,
+        "speed": 80
+      },
+      "catchRate255": 90,
+      "evolutions": [
+        {
+          "name": "Ukama",
+          "level": 14
+        }
+      ],
+      "heightM": 0.95,
+      "weightKg": 21,
+      "flavor": "The Umishi feature in many Denizan tales, usually saving drowning sailors and helping them get to shore. These so-called \"sea-angels\" are dependable friends, and the Riverine Fellowship recommends every member keep at least one in their squad."
+    },
+    {
+      "name": "Ukama",
+      "elements": ["water"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 68,
+        "attack": 34,
+        "defense": 51,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 100
+      },
+      "catchRate255": 70,
+      "evolutions": [],
+      "heightM": 1.4,
+      "weightKg": 27,
+      "flavor": "Ukama, also known in Turquesa as \"sea-sickles\", are one of the fastest waterborne Temtem. They can easily outrun the sleekest sailboat, even swimming against the Sillaro current, so tamers have to use charm and guile to approach them."
+    },
+    {
+      "name": "Galvanid",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 59,
+        "attack": 70,
+        "defense": 60,
+        "spAttack": 50,
+        "spDefense": 43,
+        "speed": 46
+      },
+      "catchRate255": 150,
+      "evolutions": [
+        {
+          "name": "Raignet",
+          "level": 16
+        }
+      ],
+      "heightM": 1.03,
+      "weightKg": 55,
+      "flavor": "Often paired for comedic effect, Galvanid is the downer counterpart to Sparzy's manic persona. Given its usually serious expression, this 'Tem is the perfect butt of all jokes... which conceals a very effective range of attacks."
+    },
+    {
+      "name": "Raignet",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 75,
+        "attack": 81,
+        "defense": 74,
+        "spAttack": 58,
+        "spDefense": 57,
+        "speed": 54
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 110,
+      "flavor": "When suddenly all the cutlery in your kitchen flies out of the window, you know this Temtem is nearby. In fact, it uses its magnetic power to move its own heavy, metallic body. The Cipanki always keep them away from their fridges."
+    },
+    {
+      "name": "Smazee",
+      "elements": ["fighting"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 49,
+        "attack": 69,
+        "defense": 44,
+        "spAttack": 37,
+        "spDefense": 37,
+        "speed": 66
+      },
+      "catchRate255": 60,
+      "evolutions": [
+        {
+          "name": "Baboong",
+          "level": 29
+        }
+      ],
+      "heightM": 0.96,
+      "weightKg": 24,
+      "flavor": "These little darlings have been bred for generations as playmates and babysitters for children - although capable fighters, Smazee are naturally cheerful and love playing and monkeying around."
+    },
+    {
+      "name": "Baboong",
+      "elements": ["fighting"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 62,
+        "attack": 79,
+        "defense": 51,
+        "spAttack": 41,
+        "spDefense": 41,
+        "speed": 75
+      },
+      "catchRate255": 50,
+      "evolutions": [
+        {
+          "name": "Seismunch",
+          "level": 23
+        }
+      ],
+      "heightM": 1.6,
+      "weightKg": 53,
+      "flavor": "Baboong are evolved, street-fighting Temtem, very popular in Lochburg, where they are often employed by pub bouncers. Although naturally good-tempered, they are as fierce as their hot-headed tamers."
+    },
+    {
+      "name": "Seismunch",
+      "elements": ["fighting", "ground"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 70,
+        "attack": 83,
+        "defense": 54,
+        "spAttack": 43,
+        "spDefense": 43,
+        "speed": 85
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.95,
+      "weightKg": 90,
+      "flavor": "Seismunch are great apes, genetically close to humans and much more sophisticated than their lesser brethren. Highly imitative of human behavior, some are said to be nearing proto-human cognition."
+    },
+    {
+      "name": "Zizare",
+      "elements": ["ground"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 60,
+        "attack": 90,
+        "defense": 95,
+        "spAttack": 40,
+        "spDefense": 62,
+        "speed": 30
+      },
+      "catchRate255": 75,
+      "evolutions": [],
+      "heightM": 1.8,
+      "weightKg": 205,
+      "flavor": "One of the most remarkable inhabitants of the Kisiwan savanna, the powerful Zizare are the biggest creeping Temtem. Proud and territorial, they make for staunch friends."
+    },
+    {
+      "name": "Gorong",
+      "elements": ["fighting"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 81,
+        "attack": 75,
+        "defense": 96,
+        "spAttack": 12,
+        "spDefense": 64,
+        "speed": 63
+      },
+      "catchRate255": 59,
+      "evolutions": [],
+      "heightM": 1.8,
+      "weightKg": 232,
+      "flavor": "Angry and with a red nose, Gorong attracts many jokes about how much it looks like a Lochburg pub patron. Usually a couple of assaults are enough to put an end to such taunts for good."
+    },
+    {
+      "name": "Mitty",
+      "elements": ["psychic"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 40,
+        "attack": 80,
+        "defense": 75,
+        "spAttack": 42,
+        "spDefense": 61,
+        "speed": 50
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Sanbi",
+          "level": 15
+        }
+      ],
+      "heightM": 0.4,
+      "weightKg": 8,
+      "flavor": "Often derided by Lochburgian tamers as a \"typically Propertonian cuteboi that packs no punch!\", Mitty are gentle and curious Temtem, but also fast learners and extremely effective in the hands of an experienced tamer."
+    },
+    {
+      "name": "Sanbi",
+      "elements": ["psychic"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 75,
+        "attack": 89,
+        "defense": 79,
+        "spAttack": 42,
+        "spDefense": 64,
+        "speed": 64
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 1.6,
+      "weightKg": 30,
+      "flavor": "Capable of communicating moods and intentions via complex patterns of its triple tail, these Temtem are aloof creatures who prefer the solitudes of the Arbury highlands. Although they mostly keep to themselves, their mindpower is formidable."
+    },
+    {
+      "name": "Momo",
+      "elements": ["normal"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 75,
+        "attack": 46,
+        "defense": 49,
+        "spAttack": 79,
+        "spDefense": 75,
+        "speed": 89
+      },
+      "catchRate255": 98,
+      "evolutions": [],
+      "heightM": 1.6,
+      "weightKg": 74,
+      "flavor": "While some Temtemologists point to the primeval forests of Arbury and Cipanku as possible origin of this species, there is plenty of archaeological proof of their early domestication around Lake Moyo."
+    },
+    {
+      "name": "Kuri",
+      "elements": ["ground"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 52,
+        "attack": 35,
+        "defense": 58,
+        "spAttack": 60,
+        "spDefense": 31,
+        "speed": 52
+      },
+      "catchRate255": 130,
+      "evolutions": [
+        {
+          "name": "Kauren",
+          "level": 16
+        }
+      ],
+      "heightM": 1,
+      "weightKg": 65,
+      "flavor": "Another great example of adaptation to the environment, these little Temtem select and carve rocks to use as protection for their heads and snouts."
+    },
+    {
+      "name": "Kauren",
+      "elements": ["ground"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 81,
+        "attack": 52,
+        "defense": 74,
+        "spAttack": 81,
+        "spDefense": 57,
+        "speed": 65
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 105,
+      "flavor": "Not to be confused with their previous evolution stage, Kauren develops stone-hard horns and skull extensions - used for digging out roots, defense and status-signalling within the herd."
+    },
+    {
+      "name": "Spriole",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 72,
+        "attack": 42,
+        "defense": 70,
+        "spAttack": 37,
+        "spDefense": 31,
+        "speed": 65
+      },
+      "catchRate255": 180,
+      "evolutions": [
+        {
+          "name": "Deendre",
+          "level": 12
+        }
+      ],
+      "heightM": 0.74,
+      "weightKg": 20,
+      "flavor": "These little sprouts are a common sight along the Omninesian canopy, and the locals are always gentle with them. These little pups are playful and juvenile."
+    },
+    {
+      "name": "Deendre",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 80,
+        "attack": 48,
+        "defense": 74,
+        "spAttack": 42,
+        "spDefense": 35,
+        "speed": 70
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Cerneaf",
+          "level": 25
+        }
+      ],
+      "heightM": 1.2,
+      "weightKg": 42,
+      "flavor": "The young adult version of Spriole, Deendre are fascinating plant-animal hybrids that use their encephalic leaves to produce healing and nourishing components via photosynthesis."
+    },
+    {
+      "name": "Cerneaf",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 91,
+        "attack": 60,
+        "defense": 88,
+        "spAttack": 43,
+        "spDefense": 50,
+        "speed": 79
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.1,
+      "weightKg": 94,
+      "flavor": "Cerneaf are the fully evolved species of an iconic Omninesian branch. Halfway between flora and fauna, they are mighty yet graceful creatures, their power concealed under their elegant movements."
+    },
+    {
+      "name": "Toxolotl",
+      "elements": ["poison"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 59,
+        "attack": 50,
+        "defense": 64,
+        "spAttack": 65,
+        "spDefense": 37,
+        "speed": 47
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Noxolotl",
+          "level": 30
+        }
+      ],
+      "heightM": 1.06,
+      "weightKg": 55,
+      "flavor": "Perhaps no other Temtem is as representative of Tucma as the colorful Toxolotl. Each strand in its mane is supposed to signify one of the original Tucmani tribes that first excavated and settled Quetzal after the Anak cataclysm."
+    },
+    {
+      "name": "Noxolotl",
+      "elements": ["poison"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 72,
+        "attack": 61,
+        "defense": 78,
+        "spAttack": 85,
+        "spDefense": 45,
+        "speed": 61
+      },
+      "catchRate255": 75,
+      "evolutions": [],
+      "heightM": 1.77,
+      "weightKg": 122,
+      "flavor": "Noxolotl are noble, dignified creatures. They are taken to exemplify the resilience and spirit of the Tucmani people, as \"a beauty born of the foulest depths of Xolot, a light in the abyss\", in the words of the poetess Itzia."
+    },
+    {
+      "name": "Blooze",
+      "elements": ["poison"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 68,
+        "attack": 43,
+        "defense": 52,
+        "spAttack": 46,
+        "spDefense": 54,
+        "speed": 33
+      },
+      "catchRate255": 100,
+      "evolutions": [
+        {
+          "name": "Goolder",
+          "level": 25
+        }
+      ],
+      "heightM": 1.78,
+      "weightKg": 180,
+      "flavor": "Blooze represent the opposite evolutionary path as compared to Toxolotl - blobby and bipedal, they are probably the oldest lifeform of Xolot, an atavic variety still largely unexplained by science."
+    },
+    {
+      "name": "Goolder",
+      "elements": ["poison"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 125,
+        "attack": 64,
+        "defense": 62,
+        "spAttack": 68,
+        "spDefense": 62,
+        "speed": 10
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 2.22,
+      "weightKg": 1700,
+      "flavor": "Not many agree to classify Goolder as an \"evolution\", for many of its traits seem to be vestigial features of a more complex organism, devolved to a more primitive or atrophied state. Its lack of legs is usually cited as an example... but its haphazard appearance conceals great strength."
+    },
+    {
+      "name": "Zephyruff",
+      "elements": ["poison", "flying"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 55,
+        "attack": 43,
+        "defense": 47,
+        "spAttack": 50,
+        "spDefense": 51,
+        "speed": 68
+      },
+      "catchRate255": 165,
+      "evolutions": [
+        {
+          "name": "Volarend",
+          "level": 22
+        }
+      ],
+      "heightM": 0.92,
+      "weightKg": 37,
+      "flavor": "Awkward fliers at best, Zephyruff rely on their speed and sharp claws to defend themselves. The sturdy, cloud-like tissue around the neck serves a double purpose, offering protection for the mother Temtem as well as a roosting point for Zephyruff chicks."
+    },
+    {
+      "name": "Volarend",
+      "elements": ["poison", "flying"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 60,
+        "attack": 66,
+        "defense": 55,
+        "spAttack": 68,
+        "spDefense": 92,
+        "speed": 74
+      },
+      "catchRate255": 98,
+      "evolutions": [],
+      "heightM": 2.05,
+      "weightKg": 92,
+      "flavor": "Volarend are impressive avians of great wingspan, strong enough to carry humans in flight. However, they are temperamental and picky mounts, and tamers are well-advised to treat them kindly, lest they are given a one-way ticket to the Downbelow..."
+    },
+    {
+      "name": "Grumvel",
+      "elements": ["ground"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 70,
+        "attack": 50,
+        "defense": 65,
+        "spAttack": 48,
+        "spDefense": 60,
+        "speed": 55
+      },
+      "catchRate255": 115,
+      "evolutions": [
+        {
+          "name": "Grumper",
+          "level": 16
+        }
+      ],
+      "heightM": 1.2,
+      "weightKg": 90,
+      "flavor": "\"Sulky as a Grumvel\" is a common Uhurian idiom, usually addressed at comically malcontent little kids."
+    },
+    {
+      "name": "Grumper",
+      "elements": ["ground", "electric"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 75,
+        "attack": 56,
+        "defense": 75,
+        "spAttack": 81,
+        "spDefense": 69,
+        "speed": 50
+      },
+      "catchRate255": 95,
+      "evolutions": [],
+      "heightM": 2,
+      "weightKg": 170,
+      "flavor": "Often the butt of Dojo jokes, Grumper are an evolutive mystery. While some Temtemologists claim they are just Grumvel with overdeveloped horns, some others claim it's a completely different genus."
+    },
+    {
+      "name": "Ganki",
+      "elements": ["electric", "flying"],
+      "raceId": "insectivore",
+      "stats": {
+        "hp": 38,
+        "attack": 57,
+        "defense": 38,
+        "spAttack": 62,
+        "spDefense": 73,
+        "speed": 61
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Gazuma",
+          "level": 27
+        }
+      ],
+      "heightM": 1.05,
+      "weightKg": 14,
+      "flavor": "Many Cipanki legends mention the kind but powerful Ganki as mountain spirits, mythologically related to lightning and whirlwinds. Although they are no longer revered as kami, the Cipanki still appreciate and breed them."
+    },
+    {
+      "name": "Gazuma",
+      "elements": ["electric", "flying"],
+      "raceId": "insectivore",
+      "stats": {
+        "hp": 54,
+        "attack": 68,
+        "defense": 52,
+        "spAttack": 81,
+        "spDefense": 91,
+        "speed": 75
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.45,
+      "weightKg": 28,
+      "flavor": "Even in the wild, younger Ganki seem to instinctively respect them as their elders. In the hills of Iwaba, one can often spot Gazuma leading small flocks of Ganki, a clear indication of their status among Electric Temtem."
+    },
+    {
+      "name": "Oceara",
+      "elements": ["water"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 64,
+        "attack": 54,
+        "defense": 51,
+        "spAttack": 105,
+        "spDefense": 65,
+        "speed": 100
+      },
+      "catchRate255": 35,
+      "evolutions": [],
+      "heightM": 2.22,
+      "weightKg": 52,
+      "flavor": "Very rarely seen in Deniz, Oceara are believed to be the basis for the legendary \"serbatiyo\" of the Sea-Queen legend. Their possession is a mark of distinction and prestige among Water Temtem experts."
+    },
+    {
+      "name": "Yowlar",
+      "elements": ["normal"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 81,
+        "attack": 74,
+        "defense": 77,
+        "spAttack": 50,
+        "spDefense": 70,
+        "speed": 40
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 2.3,
+      "weightKg": 400,
+      "flavor": "Considered vanishingly rare until Linnaea's work, this lonesome Temtem inhabits the most inaccessible Kilima peaks, where they keep large, fiercely defended hunting ranges."
+    },
+    {
+      "name": "Droply",
+      "elements": ["water", "ground"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 60,
+        "attack": 65,
+        "defense": 60,
+        "spAttack": 39,
+        "spDefense": 54,
+        "speed": 25
+      },
+      "catchRate255": 140,
+      "evolutions": [
+        {
+          "name": "Garyo",
+          "level": 20
+        }
+      ],
+      "heightM": 0.4,
+      "weightKg": 43,
+      "flavor": "Although not particularly popular among tamers, Droply is used by many scholars as a prime example of an early Archipelagian amphibian, a crucial link in the evolution of earthborne Temtem."
+    },
+    {
+      "name": "Garyo",
+      "elements": ["water", "ground"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 74,
+        "attack": 82,
+        "defense": 72,
+        "spAttack": 56,
+        "spDefense": 66,
+        "speed": 38
+      },
+      "catchRate255": 70,
+      "evolutions": [],
+      "heightM": 0.8,
+      "weightKg": 110,
+      "flavor": "Semiaquatic and very gregarious, they are often found along the shores of Lake Moyo, where local farmers train them to harvest seaweed and warn away any boats with their sonorous hisses."
+    },
+    {
+      "name": "Broccoblin",
+      "elements": ["grass"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 59,
+        "attack": 35,
+        "defense": 32,
+        "spAttack": 61,
+        "spDefense": 59,
+        "speed": 38
+      },
+      "catchRate255": 175,
+      "evolutions": [
+        {
+          "name": "Broccorc",
+          "level": 10
+        }
+      ],
+      "heightM": 0.75,
+      "weightKg": 7,
+      "flavor": "At home in the denser part of the forests, this species is very adept at camouflage and, once they overcome their natural shyness, they make great friends for tamers of all ages."
+    },
+    {
+      "name": "Broccorc",
+      "elements": ["grass", "fighting"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 69,
+        "attack": 70,
+        "defense": 50,
+        "spAttack": 54,
+        "spDefense": 68,
+        "speed": 42
+      },
+      "catchRate255": 140,
+      "evolutions": [
+        {
+          "name": "Broccolem",
+          "level": 10
+        }
+      ],
+      "heightM": 1.55,
+      "weightKg": 45,
+      "flavor": "Bigger and more agile, this variety still lives in symbiosis with its surrounding flora, but it is generally more sociable and easier to train. A favorite of Properton grannies who love gardening!"
+    },
+    {
+      "name": "Broccolem",
+      "elements": ["grass", "fighting"],
+      "raceId": "goblin",
+      "stats": {
+        "hp": 81,
+        "attack": 63,
+        "defense": 60,
+        "spAttack": 76,
+        "spDefense": 77,
+        "speed": 47
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.95,
+      "weightKg": 140,
+      "flavor": "Probably the origin of old legends about dryads and forest trolls, this Temtem is a hulking quasi-arboreal of impressive strength and resilience. Like an oak, if oaks could punch."
+    },
+    {
+      "name": "Shuine",
+      "elements": ["rock", "water"],
+      "raceId": "suid",
+      "stats": {
+        "hp": 51,
+        "attack": 67,
+        "defense": 55,
+        "spAttack": 72,
+        "spDefense": 60,
+        "speed": 81
+      },
+      "catchRate255": 40,
+      "evolutions": [],
+      "heightM": 2.5,
+      "weightKg": 68,
+      "flavor": "Colorful Shuine are a sight to behold, their bright scales reflecting Pansunlight as they frolic in the Kakama Cenote. They feed off the acidic components of Xolotic water, acting as natural filters and keeping cenote waters clean and fit for human consumption almost as effectively as the layers of volcanic rock."
+    },
+    {
+      "name": "Nessla",
+      "elements": ["water", "electric"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 60,
+        "attack": 76,
+        "defense": 56,
+        "spAttack": 76,
+        "spDefense": 72,
+        "speed": 66
+      },
+      "catchRate255": 65,
+      "evolutions": [],
+      "heightM": 1.9,
+      "weightKg": 65,
+      "flavor": "Water and electricity are always a dangerous mix - and it's never as true as in the case of Nessla. These undulating, majestic creatures are at home in open waters, where their powerful electric discharges are most effective."
+    },
+    {
+      "name": "Valiar",
+      "elements": ["psychic"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 60,
+        "attack": 75,
+        "defense": 71,
+        "spAttack": 54,
+        "spDefense": 65,
+        "speed": 72
+      },
+      "catchRate255": 85,
+      "evolutions": [],
+      "heightM": 2.05,
+      "weightKg": 148,
+      "flavor": "Although nobody has managed to decipher their language, the Valiar are assumed to be extremely intelligent. The Arburian dons are still trying to come up with a scientific explanation for the way Valiar use their expanding ears to boost their minds."
+    },
+    {
+      "name": "Pupoise",
+      "elements": ["steel", "grass"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 51,
+        "attack": 66,
+        "defense": 54,
+        "spAttack": 40,
+        "spDefense": 42,
+        "speed": 49
+      },
+      "catchRate255": 123,
+      "evolutions": [
+        {
+          "name": "Loatle",
+          "level": 18
+        }
+      ],
+      "heightM": 0.87,
+      "weightKg": 37,
+      "flavor": "Nature finds a way... particularly when Nature meets some of the most advanced circuitry. Pupoise are adaptive and are known to use simple tools and other innovations in the wild."
+    },
+    {
+      "name": "Loatle",
+      "elements": ["steel", "psychic"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 86,
+        "attack": 75,
+        "defense": 67,
+        "spAttack": 51,
+        "spDefense": 62,
+        "speed": 65
+      },
+      "catchRate255": 90,
+      "evolutions": [],
+      "heightM": 2,
+      "weightKg": 127,
+      "flavor": "This Temtem straddles the twilight zone between natural and artificial intelligence, life and death... and the fact it resembles a dark creature from ancient lore doesn't help its reputation one bit..."
+    },
+    {
+      "name": "Kalazu",
+      "elements": ["water"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 63,
+        "attack": 54,
+        "defense": 70,
+        "spAttack": 38,
+        "spDefense": 44,
+        "speed": 28
+      },
+      "catchRate255": 140,
+      "evolutions": [
+        {
+          "name": "Kalabyss",
+          "level": 18
+        }
+      ],
+      "heightM": 1.14,
+      "weightKg": 52,
+      "flavor": "Kalazu show remarkable fine motor skills with each of their tentacles. \"Send Kalazu!\" is a common expression of woe in Deniz. When you face a hard task, you might need a hand - when you need eight hands... well, you're in trouble."
+    },
+    {
+      "name": "Kalabyss",
+      "elements": ["water", "poison"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 82,
+        "attack": 75,
+        "defense": 100,
+        "spAttack": 65,
+        "spDefense": 55,
+        "speed": 37
+      },
+      "catchRate255": 125,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 163,
+      "flavor": "How did Sillarian octopoda come in contact with mutagenic material is a matter of debate, but Kalabyss stand as an example of extreme adaption to the harshest environments - they have been known to survive a swim in Xolot Reservoir."
+    },
+    {
+      "name": "Adoroboros",
+      "elements": ["poison", "psychic"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 67,
+        "attack": 29,
+        "defense": 50,
+        "spAttack": 70,
+        "spDefense": 105,
+        "speed": 60
+      },
+      "catchRate255": 130,
+      "evolutions": [],
+      "heightM": 0.88,
+      "weightKg": 14,
+      "flavor": "Few Temtem are as deceptive as Adoroboros - an unusual mix of cute and deadly, combining the most sophisticated Mental tricks with the basest Toxic traits. They are a fine example of the incredible natural diversity of the Archipelago."
+    },
+    {
+      "name": "Tuwai",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 54,
+        "attack": 62,
+        "defense": 45,
+        "spAttack": 60,
+        "spDefense": 47,
+        "speed": 58
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.06,
+      "weightKg": 23,
+      "flavor": "Professor Konstantinos described Tuwai as “taxonomically Wind, but also the only Denizan Temtem with meta-mimetic properties.” He theorized about the possibility of Tuwai changing dramatically “if the relevant Place of Power” could be found."
+    },
+    {
+      "name": "Tukai",
+      "elements": ["flying", "water"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 75,
+        "attack": 53,
+        "defense": 52,
+        "spAttack": 74,
+        "spDefense": 75,
+        "speed": 70
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 79,
+      "flavor": "It is unclear whether Professor Konstantinos ever discovered this evolution, with its flaming aquamarine wings - a true feat of meta-mimetic evolution, unseen elsewhere in the whole Archipelago."
+    },
+    {
+      "name": "Tulcan",
+      "elements": ["flying", "fire"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 59,
+        "attack": 62,
+        "defense": 69,
+        "spAttack": 75,
+        "spDefense": 49,
+        "speed": 65
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.8,
+      "weightKg": 88,
+      "flavor": "Some Temtemologists argue that Tulcan are the remains of an extinct species endemic to the upper slopes of Anak before the breakup of the island, alluded to Myrislan myth as 'firebreezers' and Cipanki folklore as 'flame kami'."
+    },
+    {
+      "name": "Tuvine",
+      "elements": ["flying", "rock"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 58,
+        "attack": 78,
+        "defense": 111,
+        "spAttack": 60,
+        "spDefense": 50,
+        "speed": 70
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.72,
+      "weightKg": 87,
+      "flavor": "Just how a Crystal Temtem manages to fly effectively is still a mystery to most Temtemologists. Some theorize its flight is aided by magnetic repulsion generated by mineral organs... but most tamers just enjoy their emerald majesty without asking too many questions."
+    },
+    {
+      "name": "Turoc",
+      "elements": ["flying", "ground"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 101,
+        "attack": 75,
+        "defense": 68,
+        "spAttack": 47,
+        "spDefense": 45,
+        "speed": 60
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.75,
+      "weightKg": 96,
+      "flavor": "Turoc is, in the words of Linnaea, \"a meeting of opposites - a flying rock, stone on wings - an impossibility, and yet, a reality (...) further proof of the marvelous diversity of Temtem lifeforms.\""
+    },
+    {
+      "name": "Tuwire",
+      "elements": ["flying", "steel"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 62,
+        "attack": 79,
+        "defense": 60,
+        "spAttack": 60,
+        "spDefense": 61,
+        "speed": 66
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.6,
+      "weightKg": 120,
+      "flavor": "One of the strangest evolutionary paths, Tuwire descends from escaped Digital Temtem crossing with wild Wind varieties. Aerodynamically speaking, they shouldn't be able to fly... but they do."
+    },
+    {
+      "name": "Tutsu",
+      "elements": ["flying", "fighting"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 68,
+        "attack": 69,
+        "defense": 63,
+        "spAttack": 55,
+        "spDefense": 61,
+        "speed": 84
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 1.78,
+      "weightKg": 127,
+      "flavor": "First described by reputed breeder Nalla of Vumbi, Tutsu is \"like a sudden storm, a nimble yet mighty bird of prey, fiery even when facing much bigger opponents\". It is said that all Tutsu are descended from Nalla's..."
+    },
+    {
+      "name": "Kinu",
+      "elements": ["grass", "psychic"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 50,
+        "attack": 53,
+        "defense": 41,
+        "spAttack": 69,
+        "spDefense": 96,
+        "speed": 74
+      },
+      "catchRate255": 40,
+      "evolutions": [],
+      "heightM": 0.93,
+      "weightKg": 16,
+      "flavor": "The elusive Kinu are some of the rarest Nature Temtem in the Myrisles - to the point that some tamers think they're a mere legend. When they do show up, Omninesians treat them with the respect reserved for the guardian spirits of the Banyan."
+    },
+    {
+      "name": "Vulvir",
+      "elements": ["fire", "ground"],
+      "raceId": "easternDragon",
+      "stats": {
+        "hp": 59,
+        "attack": 47,
+        "defense": 64,
+        "spAttack": 47,
+        "spDefense": 31,
+        "speed": 57
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Vulor",
+          "level": 14
+        }
+      ],
+      "heightM": 0.76,
+      "weightKg": 45,
+      "flavor": "Some academics speculate that this is the last remnant of a long-lost \"Draconic\" variety of Temtem. In practice terms, most tamers classify them as Fire-Earth, which is an accurate designation for these mighty but shy creatures."
+    },
+    {
+      "name": "Vulor",
+      "elements": ["fire", "ground"],
+      "raceId": "easternDragon",
+      "stats": {
+        "hp": 65,
+        "attack": 49,
+        "defense": 71,
+        "spAttack": 49,
+        "spDefense": 32,
+        "speed": 63
+      },
+      "catchRate255": 100,
+      "evolutions": [
+        {
+          "name": "Vulcrane",
+          "level": 28
+        }
+      ],
+      "heightM": 1.63,
+      "weightKg": 94,
+      "flavor": "Although they hide their faces in hollow rocks like their lesser brethren, these Temtem have very little to fear from their environment. Tough as stone and destructive as fire, they are a force to be reckoned with."
+    },
+    {
+      "name": "Vulcrane",
+      "elements": ["fire", "ground"],
+      "raceId": "easternDragon",
+      "stats": {
+        "hp": 76,
+        "attack": 74,
+        "defense": 86,
+        "spAttack": 64,
+        "spDefense": 43,
+        "speed": 73
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.33,
+      "weightKg": 142,
+      "flavor": "Vulcrane are sometimes described as \"Anak on two legs\". If a variety of draconic-looking Temtem ever existed, they couldn't have been much fiercer than this advanced, flaming beast."
+    },
+    {
+      "name": "Pigepic",
+      "elements": ["flying"],
+      "raceId": "suid",
+      "stats": {
+        "hp": 54,
+        "attack": 65,
+        "defense": 69,
+        "spAttack": 45,
+        "spDefense": 69,
+        "speed": 58
+      },
+      "catchRate255": 135,
+      "evolutions": [],
+      "heightM": 0.69,
+      "weightKg": 64,
+      "flavor": "The absolute favourites of toddlers all around the Archipelago, Pigepic are fluffy, soft and absolutely adorable. Voluminous and cumbersome, they normally float low over the ground, making them ideal playmates for small children."
+    },
+    {
+      "name": "Akranox",
+      "elements": ["ground", "poison"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 71,
+        "attack": 71,
+        "defense": 68,
+        "spAttack": 71,
+        "spDefense": 68,
+        "speed": 71
+      },
+      "catchRate255": 120,
+      "evolutions": [],
+      "heightM": 1.6,
+      "weightKg": 128,
+      "flavor": "Well-armed with a mighty stinger and protected by rugged rock-like armor, Akranox can afford to have flash colored pincers and a cocky attitude, making them a favorite of Archipelagian teens."
+    },
+    {
+      "name": "Koish (Water)",
+      "elements": ["water"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 57,
+        "attack": 76,
+        "defense": 68,
+        "spAttack": 70,
+        "spDefense": 58,
+        "speed": 66
+      },
+      "catchRate255": 100,
+      "evolutions": [],
+      "heightM": 1.1,
+      "weightKg": 63,
+      "flavor": "Unique amongst all Temtem, Koish sub-species are known to span all Temtem types. This extreme range of diversity is attributed to early mutations in the Xolotic-Moyoan-Sillarin ocean of prehistoric Paninsula."
+    },
+    {
+      "name": "Vulffy",
+      "elements": ["ground", "grass"],
+      "raceId": "human",
+      "stats": {
+        "hp": 56,
+        "attack": 39,
+        "defense": 58,
+        "spAttack": 76,
+        "spDefense": 85,
+        "speed": 60
+      },
+      "catchRate255": 110,
+      "evolutions": [],
+      "heightM": 0.84,
+      "weightKg": 73,
+      "flavor": "Extremely perceptive and aware, this species flourishes (in all senses of the word) in the great expanses of wild land - although they are inquisitive by nature, and never shy away from human contact."
+    },
+    {
+      "name": "Chubee",
+      "elements": ["steel", "flying"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 64,
+        "attack": 30,
+        "defense": 65,
+        "spAttack": 28,
+        "spDefense": 65,
+        "speed": 36
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Waspeen",
+          "level": 15
+        }
+      ],
+      "heightM": 0.4,
+      "weightKg": 22,
+      "flavor": "What started as an experiment in artificial pollination has resulted in the birth of this endearingly round fluffyboi. Although not great flyers, Chubee compensate their cumbersomeness with Digital reliability."
+    },
+    {
+      "name": "Waspeen",
+      "elements": ["steel", "rock"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 92,
+        "attack": 58,
+        "defense": 80,
+        "spAttack": 50,
+        "spDefense": 70,
+        "speed": 36
+      },
+      "catchRate255": 84,
+      "evolutions": [],
+      "heightM": 1.2,
+      "weightKg": 76,
+      "flavor": "Not even Professor Konstantinos could guess this evolutionary stage - while Waspeen loses its predecessors' flight, it develops powerful crystal spikes."
+    },
+    {
+      "name": "Mawtle",
+      "elements": ["steel", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 62,
+        "attack": 32,
+        "defense": 50,
+        "spAttack": 42,
+        "spDefense": 60,
+        "speed": 55
+      },
+      "catchRate255": 125,
+      "evolutions": [
+        {
+          "name": "Mawmense",
+          "level": 16
+        }
+      ],
+      "heightM": 1.51,
+      "weightKg": 58,
+      "flavor": "Mawtle's smiley face has become a meme amongst the youngest generation of every Dojo, making this species feel hackneyed to some. Regardless of any fads, it remains a solid choice for any tamer, as well as a tech wonder."
+    },
+    {
+      "name": "Mawmense",
+      "elements": ["steel", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 100,
+        "attack": 42,
+        "defense": 52,
+        "spAttack": 56,
+        "spDefense": 88,
+        "speed": 41
+      },
+      "catchRate255": 68,
+      "evolutions": [],
+      "heightM": 1.89,
+      "weightKg": 208,
+      "flavor": "Visesia herself rides a Mawmense into battle in \"Endaira II\", making it extremely cool and sought-after. Temtemologists argue it's an anachronism, since this is a very recent variety... but who listens to Temtemologists anyway?"
+    },
+    {
+      "name": "Hazrat",
+      "elements": ["poison", "fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 54,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 57,
+        "spDefense": 51,
+        "speed": 78
+      },
+      "catchRate255": 39,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 33,
+      "flavor": "If Temtem can develop in the Xolot Reservoir, why wouldn't they thrive in the sewers of Properton? WARNING: all specimens of this species are required to undergo a Dojo-approved detox process to make them safe to handle."
+    },
+    {
+      "name": "Minttle",
+      "elements": ["psychic"],
+      "raceId": "turtle",
+      "stats": {
+        "hp": 39,
+        "attack": 50,
+        "defense": 25,
+        "spAttack": 25,
+        "spDefense": 25,
+        "speed": 20
+      },
+      "catchRate255": 170,
+      "evolutions": [
+        {
+          "name": "Minox",
+          "level": 12
+        }
+      ],
+      "heightM": 0.8,
+      "weightKg": 16,
+      "flavor": "A sweet, innocent appearance that conceals a great brainpower, this species has roamed the Greenglen Forest for centuries in small herds, grazing peacefully in the undergrowth and following the bigger Minox."
+    },
+    {
+      "name": "Minox",
+      "elements": ["psychic", "electric"],
+      "raceId": "turtle",
+      "stats": {
+        "hp": 69,
+        "attack": 74,
+        "defense": 61,
+        "spAttack": 35,
+        "spDefense": 35,
+        "speed": 60
+      },
+      "catchRate255": 100,
+      "evolutions": [
+        {
+          "name": "Minothor",
+          "level": 13
+        }
+      ],
+      "heightM": 1.5,
+      "weightKg": 103,
+      "flavor": "Charles Temwin developed his theory of Temtem evolution by establishing a genetic link between the little, gentle Minttle and this mighty, bullish evolutionary stage."
+    },
+    {
+      "name": "Minothor",
+      "elements": ["psychic", "electric"],
+      "raceId": "turtle",
+      "stats": {
+        "hp": 80,
+        "attack": 86,
+        "defense": 70,
+        "spAttack": 44,
+        "spDefense": 44,
+        "speed": 61
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.2,
+      "weightKg": 300,
+      "flavor": "Some of the oldest cave paintings in the Chini Grotto are said to represent prehistorical Minothor. Its ability to transform Mental power into electricity and vice versa must have looked like magic to early humans..."
+    },
+    {
+      "name": "Maoala",
+      "elements": ["fighting", "psychic"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 71,
+        "attack": 80,
+        "defense": 61,
+        "spAttack": 57,
+        "spDefense": 61,
+        "speed": 60
+      },
+      "catchRate255": 115,
+      "evolutions": [],
+      "heightM": 1.6,
+      "weightKg": 73,
+      "flavor": "Most tamers wouldn't think of cute little Maoala when asked about fighting prowess or mental capabilities. Most tamers would be wrong, as everyone who faces this wunderkind of a Temtem knows well..."
+    },
+    {
+      "name": "Venx",
+      "elements": ["normal"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 55,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 54
+      },
+      "catchRate255": 100,
+      "evolutions": [
+        {
+          "name": "Venmet",
+          "level": 17
+        }
+      ],
+      "heightM": 1.6,
+      "weightKg": 80,
+      "flavor": "This cute little warrior is popular among young tamers, who love to customize their own with bandages of different colors and patterns. Some Dojos are enforcing a more formal white-bandage code for serious competition."
+    },
+    {
+      "name": "Venmet",
+      "elements": ["normal", "fighting"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 72,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 48,
+        "spDefense": 52,
+        "speed": 60
+      },
+      "catchRate255": 80,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 84,
+      "flavor": "Sometimes more is more – and this evolution makes for a winning combination of resilience and sheer power. Some historians suggest this species was widely used by reivers on both sides during the turbulent era of Chieftain Mac Aed."
+    },
+    {
+      "name": "Vental",
+      "elements": ["normal", "psychic"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 64,
+        "attack": 48,
+        "defense": 55,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 74
+      },
+      "catchRate255": 50,
+      "evolutions": [],
+      "heightM": 1.5,
+      "weightKg": 21,
+      "flavor": "Lady Cathrine of Properton herself popularized this species among the fashionable tamers of her age. Nowadays, it is considered one of the timeless classics of Arburian Temtem breeds."
+    },
+    {
+      "name": "Chimurian",
+      "elements": ["grass", "rock"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 49,
+        "attack": 65,
+        "defense": 78,
+        "spAttack": 37,
+        "spDefense": 84,
+        "speed": 84
+      },
+      "catchRate255": 39,
+      "evolutions": [],
+      "heightM": 2.15,
+      "weightKg": 71,
+      "flavor": "Some urban legends claim this variety wasn't tamed or bred as much as extracted from mineral ores in the deepest pits of Quetzal. Just how its roots interface with the crystals of its body is still a subject of scientific study."
+    },
+    {
+      "name": "Arachnyte",
+      "elements": ["normal", "steel"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 75,
+        "attack": 64,
+        "defense": 60,
+        "spAttack": 79,
+        "spDefense": 76,
+        "speed": 42
+      },
+      "catchRate255": 89,
+      "evolutions": [],
+      "heightM": 1.7,
+      "weightKg": 100,
+      "flavor": "With way too many legs for anyone's liking, Arachnyte includes multi-core processing to coordinate movement, visual input, and combat subroutines - all in one efficient package of Arburian design."
+    },
+    {
+      "name": "Thaiko",
+      "elements": ["steel", "fighting"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 50,
+        "attack": 36,
+        "defense": 49,
+        "spAttack": 68,
+        "spDefense": 41,
+        "speed": 60
+      },
+      "catchRate255": 120,
+      "evolutions": [
+        {
+          "name": "Monkko",
+          "level": 20
+        }
+      ],
+      "heightM": 0.68,
+      "weightKg": 20,
+      "flavor": "Developed as a joint project between Lochburg and Neoedo, this little furry bruiser combines feline breeding savoir-faire with cutting edge technology. A hotfix to prevent hairballs is expected any time now."
+    },
+    {
+      "name": "Monkko",
+      "elements": ["steel", "fighting"],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 84,
+        "attack": 43,
+        "defense": 71,
+        "spAttack": 84,
+        "spDefense": 48,
+        "speed": 59
+      },
+      "catchRate255": 70,
+      "evolutions": [],
+      "heightM": 1.58,
+      "weightKg": 66,
+      "flavor": "Advanced martial arts training after breeding ensures that this Temtem is a cut above its less educated predecessors. Although the priests of Miyako frown at new Temtem species, Monkko's kung-fu is based on their techniques."
+    },
+    {
+      "name": "Anahir",
+      "elements": ["rock", "fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 54,
+        "attack": 50,
+        "defense": 101,
+        "spAttack": 50,
+        "spDefense": 101,
+        "speed": 31
+      },
+      "catchRate255": 0,
+      "evolutions": [
+        {
+          "name": "Anatan",
+          "level": 1000
+        }
+      ],
+      "heightM": 1.52,
+      "weightKg": 172,
+      "flavor": "This tortured creature is the result of Dr. Hamijo's attempts at creating a new \"Diamond\" variety. By picking the sturdiest variety of Crystal Temtem and submitting it to the harshest Fire environment of Anak, he has achieved something unique... and uniquely cruel."
+    },
+    {
+      "name": "Anatan",
+      "elements": ["rock", "fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 62,
+        "attack": 50,
+        "defense": 103,
+        "spAttack": 50,
+        "spDefense": 103,
+        "speed": 32
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.2,
+      "weightKg": 279,
+      "flavor": "Through the care and kindness of its tamer, Anahir overcame its traumatic origins. This happy Anatan stands as living proof of the healing power of love."
+    },
+    {
+      "name": "Tyranak",
+      "elements": ["fire", "grass"],
+      "raceId": "kaiju",
+      "stats": {
+        "hp": 76,
+        "attack": 81,
+        "defense": 71,
+        "spAttack": 57,
+        "spDefense": 72,
+        "speed": 34
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 4.2,
+      "weightKg": 4600,
+      "flavor": "Probably the last living relic from a distant pre-human past, when MegaTem roamed the unbroken Paninsula. Most Temtemologists considered it to be cryptofauna until... well, until now."
+    },
+    {
+      "name": "Volgon",
+      "elements": ["electric"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 63,
+        "attack": 58,
+        "defense": 65,
+        "spAttack": 90,
+        "spDefense": 69,
+        "speed": 60
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 12,
+      "weightKg": 6200,
+      "flavor": "In Cipanki lore, dragons are born of lightning to roam the vast reaches of heaven. Sometimes, a curious member of their race will visit the Archipelago and befriend a human. They are never considered \"tamed\" - they merely consent to accompanying a tamer for a few years or even decades."
+    },
+    {
+      "name": "Galios",
+      "elements": ["psychic", "ground"],
+      "raceId": "wildBeast",
+      "stats": {
+        "hp": 69,
+        "attack": 57,
+        "defense": 65,
+        "spAttack": 72,
+        "spDefense": 70,
+        "speed": 51
+      },
+      "catchRate255": 0,
+      "evolutions": [],
+      "heightM": 2.9,
+      "weightKg": 10800,
+      "flavor": "By far the most enigmatic Temtem, an extremophile that thrives where life should be impossible: the inner core of the Pansun. Its origins and its link with the enigmatic Umbra remain a complete mystery."
+    }
+  ]
+}

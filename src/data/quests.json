@@ -1,0 +1,123 @@
+[
+  {
+    "id": "catchElement",
+    "type": "catchElement",
+    "params": {},
+    "countMin": 1,
+    "countMax": 3,
+    "weight": 3,
+    "reward": {
+      "moneyPerFloor": 300,
+      "items": [
+        {
+          "itemId": "basicBall",
+          "count": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "catchRace",
+    "type": "catchRace",
+    "params": {},
+    "countMin": 1,
+    "countMax": 2,
+    "weight": 2,
+    "reward": {
+      "moneyPerFloor": 400,
+      "items": [
+        {
+          "itemId": "greatBall",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "hunt",
+    "type": "defeat",
+    "params": {
+      "floorOffset": 2
+    },
+    "countMin": 10,
+    "countMax": 20,
+    "weight": 4,
+    "reward": {
+      "moneyPerFloor": 200,
+      "items": [
+        {
+          "itemId": "potion",
+          "count": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "floorBoss",
+    "type": "defeatFloorBoss",
+    "params": {},
+    "countMin": 1,
+    "countMax": 1,
+    "weight": 1,
+    "reward": {
+      "moneyPerFloor": 2000,
+      "items": [
+        {
+          "itemId": "expCandyS",
+          "count": 1
+        }
+      ]
+    }
+  },
+  {
+    "id": "hatchEggs",
+    "type": "hatch",
+    "params": {},
+    "countMin": 1,
+    "countMax": 2,
+    "weight": 1,
+    "reward": {
+      "moneyPerFloor": 800,
+      "items": [
+        {
+          "itemId": "spiritFruit",
+          "count": 3
+        }
+      ]
+    }
+  },
+  {
+    "id": "fuseOnce",
+    "type": "fuse",
+    "params": {},
+    "countMin": 1,
+    "countMax": 1,
+    "weight": 1,
+    "reward": {
+      "moneyPerFloor": 1500,
+      "items": [
+        {
+          "itemId": "expCandyS",
+          "count": 2
+        }
+      ]
+    }
+  },
+  {
+    "id": "breedOnce",
+    "type": "breed",
+    "params": {},
+    "countMin": 1,
+    "countMax": 1,
+    "weight": 1,
+    "reward": {
+      "moneyPerFloor": 1000,
+      "items": [
+        {
+          "itemId": "bondFruit",
+          "count": 1
+        }
+      ]
+    }
+  }
+]

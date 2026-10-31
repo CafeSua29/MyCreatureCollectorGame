@@ -1,0 +1,99 @@
+// Luyện đan, luyện khí và linh điền (docs/rules/alchemy.md): công thức (src/data/recipes.json) theo
+// nơi luyện, cấp luyện đan / luyện khí và công thức đã biết, linh điền trong state, config.
+
+import type { Decimal } from '../shared'
+import type { DropEntry } from './content'
+
+/** Một món (vật phẩm gộp chồng) kèm số lượng. */
+export interface ItemAmount {
+  itemId: string
+  count: number
+}
+
+/**
+ * Món trong nhóm vật phẩm `config.itemGroups[groupId]`: bất kỳ (ví dụ yêu đan bất kỳ hệ), hoặc
+ * `sameItem` = mọi món cùng một loại (yêu đan cùng hệ; luyện nhiều lần cũng lấy từ một loại).
+ */
+export interface GroupAmount {
+  groupId: string
+  count: number
+  sameItem?: true
+}
+
+/** Nguyên liệu của công thức: đúng một món, hoặc món bất kỳ trong nhóm. */
+export type RecipeInput = ItemAmount | GroupAmount
+
+/** Nơi luyện: luyện đan (lò đan) hoặc luyện khí (Thợ rèn); mỗi nơi một cấp riêng. */
+export const CRAFT_STATIONS = ['alchemy', 'smithing'] as const
+export type CraftStation = (typeof CRAFT_STATIONS)[number]
+
+/**
+ * Công thức (recipes.json; tên theo tên vật phẩm ra). `station` không ghi = luyện đan. `scroll`: phải
+ * học từ đan phương (`recipeScroll`) mới dùng được; không thì biết sẵn khi đủ cấp.
+ */
+export interface RecipeDef {
+  id: string
+  station?: CraftStation
+  output: ItemAmount
+  inputs: RecipeInput[]
+  money: number
+  minLevel: number
+  /** % thành công gốc ở đúng cấp yêu cầu. */
+  successChance: number
+  /** Exp của nơi luyện mỗi lần luyện (thành hay bại). */
+  exp: number
+  scroll?: true
+}
+
+/** Kết quả lần luyện gần nhất (UI hiện số thành / bại). */
+export interface CraftResult {
+  recipeId: string
+  successes: number
+  failures: number
+}
+
+/** Cấp của một nơi luyện (nguyên ≥ 1, không trần, suy từ tổng exp) và lần luyện gần nhất. */
+export interface CraftSkillState {
+  level: number
+  exp: Decimal
+  lastCraft: CraftResult | null
+}
+
+export interface AlchemyState extends CraftSkillState {
+  /** Công thức cần đan phương đã học. */
+  knownRecipes: string[]
+}
+
+/** Luyện khí (Thợ rèn): cấp riêng, tăng khi luyện công thức luyện khí, cường hóa, đúc trang bị. */
+export type SmithingState = CraftSkillState
+
+/** Một ô linh điền đang trồng. */
+export interface GardenPlot {
+  seedItemId: string
+  plantedDay: number
+}
+
+export interface GardenState {
+  /** Mỗi ô: đang trồng hoặc trống (null). */
+  plots: (GardenPlot | null)[]
+}
+
+export interface AlchemyConfig {
+  /** Tổng exp đạt cấp L = ⌈expBase × (L − 1) ^ expPower⌉. */
+  expBase: number
+  expPower: number
+  /** + điểm % tỉ lệ thành công mỗi cấp trên cấp yêu cầu (kẹp 100). */
+  levelBonusPercent: number
+  /** Linh điền: số ô lúc đầu, giá ô thứ n mua thêm = plotBasePrice × plotPriceGrowth ^ (n − 1). */
+  initialPlots: number
+  plotBasePrice: number
+  plotPriceGrowth: number
+  /** Nguyên liệu rơi: tinh phách theo race / linh thạch theo hệ đầu của quái bị hạ (%), dược liệu. */
+  raceEssenceItemIds: Record<string, string>
+  elementStoneItemIds: Record<string, string>
+  essenceChance: number
+  stoneChance: number
+  wildDrops: DropEntry[]
+  /** Đan phương rơi từ boss. */
+  bossDrops: DropEntry[]
+}

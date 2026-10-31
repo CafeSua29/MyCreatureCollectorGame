@@ -1,0 +1,1216 @@
+{
+  "source": "coromon",
+  "origin": "fantasy",
+  "update": {
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Eclyptor",
+      "elements": ["ghost"],
+      "raceId": "canid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Eclyptor is a much larger wolf Coromon than its previous evolutions. The massive crescent moonstone it carries is now slung across its shoulder and back, and is dented with craters. It also has two smaller moonstones which hovers by each of its hind legs. All of the moonstones are suspended with visible ghostly power, and it has a large furry chest and mane."
+    },
+    {
+      "name": "Arcturos",
+      "elements": ["ice"],
+      "raceId": "ursid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Arcturos is a floating ice crystal. The center of its body is spherical, and is the head as it has eyes and a mouth. A large ice crystal and two smaller crystals protrudes from the bottom of its head, and another crystal protrudes from the top. It also has two crystal clusters that float to its left and right."
+    },
+    {
+      "name": "Beezel",
+      "elements": ["normal"],
+      "raceId": "insectoid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Humbee",
+          "level": 28
+        }
+      ],
+      "flavor": "Beezel is a Coromon that closely resembles a wasp or hornet. It is constantly flying with two rapidly flapping hindwings and no visible elytra. It has a large head with two bright, blinking eyes, and two large antennae on top. It has a black thorax that connects to its set of thin arms, pair of wings, and long abdomen. Both of its wiry arms are tipped with a large, curled, sickle-shaped claw."
+    },
+    {
+      "name": "Armado",
+      "elements": ["normal"],
+      "raceId": "xenarthran",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Armadil",
+          "level": 18
+        }
+      ],
+      "flavor": "Armado closely resembles an armadillo, with pig-like features. It has pointed ears and tufts of fur on its cheeks. A small piece of plate armor covers the top of its head. It also has two small fangs that stick out downwards out of its mouth. Its back and rear are completely covered by a spherical armored shell. Its four legs each have three claws."
+    },
+    {
+      "name": "Dunpod",
+      "elements": ["ground"],
+      "raceId": "insectoid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Sandril",
+          "level": 32
+        }
+      ],
+      "flavor": "Dunpod is a crustacean creature resembling a hermit crab. It has four legs and two front arms, its front arms have pincers and are completely covered by shells. It has a jagged mouth and two eye-stalks protrude from the top of its head. On its back, it carries an urn shaped shell which has a small opening in the front and is filled with sand."
+    },
+    {
+      "name": "Armadon",
+      "elements": ["normal"],
+      "raceId": "xenarthran",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Armadon, like its previous evolution, is a bipedal armadillo that stands on two digitigrade legs. Its back is covered by a rounded rocky armor shell, with tall hexagonal protrusions jutting out of it. The entirety of its ears and top of its head are covered by a smooth plating of armor. Like its prior forms, it has tufts of cheek fur, and it stands with hunched-over posture. Each of its hands have three fingers and an opposable thumb, with each digit bearing a sharp claw. It appears that its feet do not have claws."
+    },
+    {
+      "name": "Fibio",
+      "elements": ["water"],
+      "raceId": "anuran",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Chonktoad",
+          "level": 38
+        }
+      ],
+      "flavor": "Fibio is a bipedal frog Coromon. It has three toes on its feet and three fingers from its hands. It's feet have a toxic color and it has small poison blades extending from the back of its elbows. There also appears to be acid bubbling up from its back."
+    },
+    {
+      "name": "Blizzburd",
+      "elements": ["ice"],
+      "raceId": "bird",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Blizzian",
+          "level": 40
+        }
+      ],
+      "flavor": "Blizzburd is a small avian with a proportionally large head. It has big eyes and a crystal Mohawk on its head. It has a really long tail feather that has the same shiny color as its beak and crystal."
+    },
+    {
+      "name": "Bazzer",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Rhynobuz",
+          "level": 36
+        }
+      ],
+      "flavor": "Bazzer resembles a rhinoceros beetle. It has a metallic shell that covers its abdomen and two plates make up its elytra. It has four muscular legs; with the forelegs having three claws, while the hind legs only have two. It occasionally discharges electricity, which seems to be conducted through to the tip of its large frontal horn. Its horns jut out from its snout and the back of its head, forming a crescent moon-shape on its head."
+    },
+    {
+      "name": "Caradune",
+      "elements": ["ground"],
+      "raceId": "lizard",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Like its previous evolution, Caradune is a quadrupedal Coromon with reptile features. It has large, rocky armor plating covering its limbs, shoulders, and back. Its forelimbs have four massive claws while its back limbs have only three, and its tail ends in three rocky spikes."
+    },
+    {
+      "name": "Acie",
+      "elements": ["electric"],
+      "raceId": "elementalSpirit",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Deecie",
+          "level": 35
+        }
+      ],
+      "flavor": "Acie is a small, spherical Coromon made of electricity. Its main body is an orb with a face consisting of two eyes and a mouth. It also has two tiny leg-like appendages below its main body. The ending of its outer form tapers off into an ever-moving lightning bolt. Lightning and sparks come out of the top and sides of its body, as it zips around."
+    },
+    {
+      "name": "Aroara",
+      "elements": ["ice"],
+      "raceId": "ursid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Bearealis",
+          "level": 34
+        }
+      ],
+      "flavor": "Aroara is a Coromon that resembles a young, anthropomorphic polar bear. Like its previous evolution, it covers itself in snow. The shape of the clumps of snow makes it look like a typical snowman. It also has more defined arms and the fur on the tops of its head curls up."
+    },
+    {
+      "name": "Flowish",
+      "elements": ["water"],
+      "raceId": "cnidarian",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Daricara",
+          "level": 39
+        }
+      ],
+      "flavor": "Flowish resembles a small fish. It has two fins, beady eyes, and a protrusible mouth. It also has two vibrant, flowing fins on its tail and underside."
+    },
+    {
+      "name": "Dugterra",
+      "elements": ["ground"],
+      "raceId": "rodent",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Dugterra is a serpentine, mole-like Coromon. It has an elongated snout with a large spherical nose on the end. Its eyes are long and thin, and it has two fangs protruding downwards from its upper jaw. It has two arms, with thickened forearms with three claws on its hands similar to Digmow. Its body curls in a spiral as it weaves in and out of the ground, and its fur is spiky."
+    },
+    {
+      "name": "Blazitaur",
+      "elements": ["fire"],
+      "raceId": "buffalo",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Blazitaur is a bull Coromon with flaming hot horns, and a mane of fire along its back and shoulder blades as well as the tip of its tail. The lower halves of its legs are wrapped in flames."
+    },
+    {
+      "name": "Cubzero",
+      "elements": ["ice"],
+      "raceId": "ursid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Aroara",
+          "level": 16
+        }
+      ],
+      "flavor": "Cubzero is a small Coromon that resembles a polar bear cub. It has white fur and stands up on two legs. It has the appearance of a large snowball, as most of its body is covered in a spherical layer of snow. Only its paws and head stick out of the snow."
+    },
+    {
+      "name": "Fiddly",
+      "elements": ["water"],
+      "raceId": "crustacean",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ucaclaw",
+          "level": 34
+        }
+      ],
+      "flavor": "Fiddly is a small, crab-like Coromon. Its six legs constantly skitter around, and its body is covered by a shell that resembles a mossy rock. Its face and eyes poke out from underneath the rock, and it has two long rock-covered arms that end in large pincers."
+    },
+    {
+      "name": "Digmow",
+      "elements": ["ground"],
+      "raceId": "rodent",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Dugterra",
+          "level": 31
+        }
+      ],
+      "flavor": "Digmow is a mustelid Coromon with an extremely long tail. It has a large nose and its fur forms into spiky turfs on the back of its head. It has large eyes, two pointed fangs that protrude from its upper jaw, and forearms are wide with three sharp claws on each paw. The rest of its body tunnels underground, with its tail weaving in and out of the earth through three holes."
+    },
+    {
+      "name": "Buzzlet",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "Buzzlet is a small Coromon that resembles a beetle larva. It has a ridged metallic silver body; and its face, two pairs of legs, and spots across its body are a light shade of orange [Standard Form]. Its eyes periodically glow as it discharges electricity backwards down its body."
+    },
+    {
+      "name": "Chonktoad",
+      "elements": ["water"],
+      "raceId": "anuran",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Chonktoad is a large, plump toad Coromon. Like its previous evolution, it stands on two feet and has blades on its elbows. It also has three spikes on its back. It can be seen catching and swallowing a fly in its battle animation."
+    },
+    {
+      "name": "Bearealis",
+      "elements": ["ice"],
+      "raceId": "ursid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Bearealis is a large Coromon that resembles an anthropomorphic polar bear. Its fur is white and it has little buttons on its stomach, like a snowman. It has spiky ice armor covering its neck and shoulders."
+    },
+    {
+      "name": "Embaval",
+      "elements": ["fire"],
+      "raceId": "turtle",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Volcadon",
+          "level": 36
+        }
+      ],
+      "flavor": "Embaval is a tortoise-like Coromon with a tall, rocky shell. Its scales are a fiery red color, and are yellow along its mouth and underbelly [Standard Form]. Each of its four legs have two front-facing claws."
+    },
+    {
+      "name": "Crimsonite Lumon",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Lumon is partly covered in a dark material where two glowing spikes protude from. The bulb on its tail is now shaped like a spade instead of a heart, which now emanates an eerie glow."
+    },
+    {
+      "name": "Deecie",
+      "elements": ["electric"],
+      "raceId": "elementalSpirit",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Deecie is a large Coromon that resembles a thunderstorm. Its main body is made up of a metallic substance surrounded in clouds. Its face, cable connector arms, and two antennas on the top of it can be observed protruding through its cloud form."
+    },
+    {
+      "name": "Armadil",
+      "elements": ["normal"],
+      "raceId": "xenarthran",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Armadon",
+          "level": 33
+        }
+      ],
+      "flavor": "Armadill is a Coromon that resembles an armadillo. It is bipedal, standing on digitigrade legs which have three claws. Its body is bulky with a soft underbelly, while its back, rear, and shoulders are covered by a large spherical shell with bumpy hexagonal protrusions on it. Each of its hands do not have claws but rather have three pointy fingers. The top of its head is covered by a piece of plate armor, and it also has long, pointy ears and tufts of fur splaying backwards on its cheeks. Tufts of tail fur can be seen poking out from underneath its shell."
+    },
+    {
+      "name": "Blizzian",
+      "elements": ["ice"],
+      "raceId": "bird",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Blizzian is an avian Coromon with icy features. It has sharp icy feathers protruding from the top of its head and on the tips of its wings. It has a proportionally huge beak that is covered in ice and has formed icicles. It stands perched on its 3-clawed talons."
+    },
+    {
+      "name": "Bloby",
+      "elements": ["fire"],
+      "raceId": "slime",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Molteye",
+          "level": 23
+        }
+      ],
+      "flavor": "Bloby is a small cycloptic Coromon, which appears to be a bipedal blob of magma partially encased in a suit of volcanic rock. It stands on two legs made of pebbles, and has two short arms made of magma. Its large singular eye blinks at the center of its body."
+    },
+    {
+      "name": "Ashclops",
+      "elements": ["fire"],
+      "raceId": "slime",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Ashclops is a large cycloptic Coromon, whose main body is made up of a floating ball of magma. It has two small arms at its sides, and lava constantly drips from its singular eye like tears. Two larger magma arms covered by large, rocky shoulder pads float in close proximity to its main body. Its left shoulder pad features a spike protuding upwards, and the one on its right has a spike going downards. The shoulder pads appear hollow, as if the main body can hide inside a sealed, rocky sphere, with its large external arms to defend itself."
+    },
+    {
+      "name": "Decibite",
+      "elements": ["ground"],
+      "raceId": "insectoid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Centilla",
+          "level": 24
+        }
+      ],
+      "flavor": "Decibite resembles a worm. Its body is segmented and it sticks out of borrows that it made underground. It has two eyes and a small mouth."
+    },
+    {
+      "name": "Centilla",
+      "elements": ["ground"],
+      "raceId": "insectoid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Millidont",
+          "level": 39
+        }
+      ],
+      "flavor": "Centilla resembles a cross of a worm and centipede. Like its previous evoluition, its body is segmented into parts and sticks out of the ground. It has two large eyes that it keeps closed a majority of the time. The top and back of its head as well as the back of each of its body segments are covered in a large plating. It has no legs but each body segment has a stump protuding out in the middle of its left and right sides."
+    },
+    {
+      "name": "Arcta",
+      "elements": ["ice"],
+      "raceId": "ursid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Arcturos",
+          "level": 24
+        }
+      ],
+      "flavor": "Arcta has a small spherical body, with large eyes and tiny mouth. Short ice crystals grow from the top, bottom, and side of its body."
+    },
+    {
+      "name": "Droople",
+      "elements": ["ghost"],
+      "raceId": "slime",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Mudma",
+          "level": 28
+        }
+      ],
+      "flavor": "Droople is a spherical, slimy Coromon, with a mischievous fanged face and two long antennae. It seems to infinitely replenish the slime that drips away off the base of its form."
+    },
+    {
+      "name": "Cyberite",
+      "elements": ["normal"],
+      "raceId": "machine",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Cyberite is a large Coromon that resembles a bipedal insect with mechanical features and a helmet styled after a gas mask. It has a more upright form due to being supported by two additional jet pack thrusters."
+    },
+    {
+      "name": "Daricara",
+      "elements": ["water"],
+      "raceId": "cnidarian",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Daricara is a large, bipedal Coromon, with a Koi fish head and long whiskers. The skin from the top of its body extends outwards into a flowing cape behind Daricara. Below this is the main body, with two arms and strong legs."
+    },
+    {
+      "name": "Atlantern",
+      "elements": ["water"],
+      "raceId": "crustacean",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Altantern is a large sea turtle Coromon. It has ten glowing gems of various sizes across its broad shell. It also has a gem on the top of its head, a long neck, and four powerful flippers."
+    },
+    {
+      "name": "Crimsonite Lampyre",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Lampyre is partly covered in a dark material armour, most notably a jagged helmet and plating on its elytra. Glowing spikes also protrude from the plating, and it has an additional pair of hind wings in comparison to regular Lampyre."
+    },
+    {
+      "name": "Dark Magic Ucaclaw",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Ucaclaw is covered in a dark material, changing the colour of most of its rocky shell body. Glowing spikes protrude from the space around the lip of the shell opening, and its eyes have been stained with a dark power."
+    },
+    {
+      "name": "Crimsonite Lumasect",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Lumasect is partly covered in a dark material armour. It has a jagged circlet of the material atop its head with a glowing spike in the centre, and spiked plating on the rotating tails that make up its abdomen. It also has an additional pair of hind wings in comparison to regular Lumasect."
+    },
+    {
+      "name": "Crimsonite Centilla",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Centilla is partly covered in a dark material, mostly on the outer shell of the Coromon. It is adorned with several glowing spikes along its body and across its face, and notably on its formerly rounded, harmless arms. The dark material and glowing spikes extend into the earth surrounding where Crimsonite Centilla surfaces from, and its eyes have been stained with a dark power."
+    },
+    {
+      "name": "Crimsonite Millidont",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Millidont is partly covered in a dark material, mostly on the outer shell of the Coromon. Its formerly rock-like spines have been transformed into ominous glowing spikes. The dark material and glowing spikes extend into the earth surrounding where Crimsonite Millidont surfaces from, and its eyes have been stained with a dark power."
+    },
+    {
+      "name": "Crimsonite Arcta",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Arcta is partly covered in a dark material on the ice that extends from the top and bottom of its spherical body. Doubled amounts of glowing spikes replace the tiny ice crystals that grow from the sides of regular Arcta, and its eyes have been stained with a dark power."
+    },
+    {
+      "name": "Crimsonite Arcturos",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "This corrupted version of Arcturos is partly covered in a dark material on the ice that extends from the top and bottom of its white spherical face. Glowing spikes protrude from the side of its head and its eyes have been stained with a dark power. The levitating ice ‘arms’ around regular Arcturos have been replaced with glowing spikes, and it no longer periodically encircles itself with them."
+    },
+    {
+      "name": "Crimsonite Ucaclaw",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "The Ucaclaw is a large Coromon with features of a bivalve and a crab. It has a rocky shell with reddish spines covering the upper and lower halves of its body. Its face is visible under its head shell, and it has large eyes. It also has six legs connected to the lower half of its body, and two arms connected to the upper half. It has large, serrated pincers, and its hands are covered in a rocky covering."
+    },
+    {
+      "name": "Arctiram",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Arctiram live in large herds together with their young Glacikid. They can headbutt so hard that they sometimes knock themselves out."
+    },
+    {
+      "name": "Crimsonite Fiddly",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "A corrupted version of what was once a Fiddly."
+    },
+    {
+      "name": "Crimsonite Decibite",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "A corrupted version of what was once a Decibite."
+    },
+    {
+      "name": "Crimsonite Otogy",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "A corrupted version of what was once Otogy"
+    },
+    {
+      "name": "Crimsonite Orotchy",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "A corrupted version of what was once a Orotchy"
+    },
+    {
+      "name": "Crimsonite Squidma",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Crimsonite Magmilus",
+          "level": 30
+        }
+      ],
+      "flavor": "A corrupted version of what was once a Squidma"
+    },
+    {
+      "name": "Crimsonite Magmilus",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "A corrupted version of what was once a Magmilus"
+    },
+    {
+      "name": "Grimmask",
+      "elements": ["normal"],
+      "raceId": "ghost",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Like its previous evolution, Grimmask is a spirit. It has two long arms each ending in three claws, and four scarf-like appendages with colorful tips that extend outwards from its chest, surrounding the amulet it wears. It also wears a mask that features wide, bright, pupil-less eyes, tear markings, and gnashing teeth."
+    },
+    {
+      "name": "Hountrion",
+      "elements": ["electric"],
+      "raceId": "canid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Hountrion resembles a Cerberus from Greek Mythology, as it is a three-headed canine. Each of its heads display different emotions and personalities. The right head is always panting, the middle head has no pupils and has a smirk, and the left head has a serious, determined expression. Static electricity surges through its body periodically, making it instinctively bark and growl with each head. Hountrion has spots on its fur; two on each head's eyebrows, and one on each of its shoulders. There are also rings attached to backside of its hind legs, and its tail is made of flowing lightning."
+    },
+    {
+      "name": "Glamoth",
+      "elements": ["ice"],
+      "raceId": "lepidopteran",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Glamoth is an arctic moth-like Coromon. It's entire body is covered with fur except for its head, and parts of its four legs, each leg having a tuft of fur in the middle of the limb. It also has two feathery antenna and a set of wings, each wing having a singular circle pattern near the tips."
+    },
+    {
+      "name": "Lumon",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lampyre",
+          "level": 16
+        }
+      ],
+      "flavor": "Lumon is a small Coromon that resembles a firefly. It has four legs that end in spikes, two large eyes, and a heart-shaped tail that emits light."
+    },
+    {
+      "name": "Purrgy",
+      "elements": ["ghost"],
+      "raceId": "felid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ghinx",
+          "level": 38
+        }
+      ],
+      "flavor": "Purrgy resembles a cat. It has two pointed ears, whiskers, and glowing eyes. Its arms look like empty sleeves, and it has a cat-like tail waving around as it floats in the air."
+    },
+    {
+      "name": "Magmilus",
+      "elements": ["fire"],
+      "raceId": "cephalopod",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Magmilus is a large Coromon inspired by The Kraken, albeit with only six tentacles. The tentacles all have fiery suction cups. It has one large eye, and possesses three pairs of holes on each side of its head. It also has a large hole in the center of its head, that is surrounded by two semicircle patterns. There is an opening on the backside of its head revealing a fiery orb, possibly its brain, inside. The orb briefly expands and spews out flames through the holes on its head."
+    },
+    {
+      "name": "Gildwing",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Golbeak",
+          "level": 41
+        }
+      ],
+      "flavor": "Like its previous evolution, Gildwing resembles a crow. Its feathers are black with golden wing tips, head feathers, eyes, and talons; and its beak is silver [Standard Form]. It flicks its wing out periodically, demonstrating its impressive speed. Overall it has a larger and sharper appearance than Silquill."
+    },
+    {
+      "name": "Lunarwulf",
+      "elements": ["ghost"],
+      "raceId": "canid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Eclyptor",
+          "level": 39
+        }
+      ],
+      "flavor": "Lunarwulf is a wolf-like Coromon. Like its previous evolution, it bears a skull-shaped helmet and a moonstone, which is now much larger and levitates horizontally above itself. It has a large, furry mane and a much fuzzier tail than Lunarpup."
+    },
+    {
+      "name": "Frova",
+      "elements": ["ice"],
+      "raceId": "lepidopteran",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Froshell",
+          "level": 20
+        }
+      ],
+      "flavor": "Frova is a bug-like Coromon resembling a Jewel Caterpillar. Most of its body is covered in ice except for its head and two front legs. Its eyes are big compared to the rest of its face and small pincers."
+    },
+    {
+      "name": "Purrghast",
+      "elements": ["ghost"],
+      "raceId": "felid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Purrghast is resembles a large cat. It has a cat-like tail. It also has tufts of fur above its eyes and around its snout forming eyebrows, whiskers, and a fluffy beard. Ghostly gases are expelled from its loose, large, robe-like sleeves that it sometimes extends its paws from, both paws having three long claws. Its eyes have an eerie glow, however it has them closed most of the time."
+    },
+    {
+      "name": "Lumasect",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Lumasect is a large insectoid Coromon. It has two bright hindwings, each with a metallic-looking striped elytra. It has two antennae attached to its head; it has two eyes and small pincers. It has two arms which cling on to its abdomen which continuously rotates. Its tail is comprised of two long prongs and an orb between them."
+    },
+    {
+      "name": "Golbeak",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Golbeak is a crow-like Coromon, like its previous evolutions. Its feathers on the crest of its head, the underside of its wings and four tail feathers are completely gold. Its beak and large, three-clawed talons are also gold [Standard Form]. The tuft of feathers on its head are pointed backwards. Unlike its other evolutions, instead of being perched on the ground, it is constantly airborne from the flapping of its strong wings."
+    },
+    {
+      "name": "Patterbit",
+      "elements": ["normal"],
+      "raceId": "machine",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pitterbyte",
+          "level": 30
+        }
+      ],
+      "flavor": "Patterbit is a cyborg insectoid Coromon. Its insectoid head and abdomen appear covered in metallic armor. Its rubberhose-inspired arms dangle down due to its suspended flight. It also has a retrofuturistic visor covering its eyes; and a helicopter rotor protrudes from the back of its thorax, and is attached to spinning blades that allow it to hover."
+    },
+    {
+      "name": "Humbee",
+      "elements": ["normal"],
+      "raceId": "insectoid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Humbee resembles a Bumble Bee. It has 4 constantly-flapping wings that keep it afloat at all times. It has a large, armored head with two big, unblinking eyes. Humbee's body is covered mostly in a soft fur, notably around its collar and on its large abdomen. It also has four short legs attached to its thorax, and sports a large stinger on the tip of its suspended abdomen."
+    },
+    {
+      "name": "Molteye",
+      "elements": ["fire"],
+      "raceId": "slime",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Ashclops",
+          "level": 44
+        }
+      ],
+      "flavor": "Molteye is a cycloptic Coromon that resembles a pool of magma partially covered by rocks. It has two lava hands reaching upwards out of its main body, with fingers made out of volcanic rock. Its head also stretches up out of the pool, and is surrounded in rock except for its singular eye."
+    },
+    {
+      "name": "Houndos",
+      "elements": ["electric"],
+      "raceId": "canid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Hountrion",
+          "level": 34
+        }
+      ],
+      "flavor": "Houndos is a two-headed, dog-like Coromon similar to the dog Orthros from Greek mythology. It has blue fur with yellow stripes around both of its necks, and one yellow stripe on their back [Standard Form]. Its tail appears to be a small nub, where free-flowing lightning extends upwards from."
+    },
+    {
+      "name": "Molbash",
+      "elements": ["ground"],
+      "raceId": "machine",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Malavite",
+          "level": 45
+        }
+      ],
+      "flavor": "Molbash is a golem comprised of flowing sand. It has an imprint of a face on its head. The sand branches out into two arms which are covered in rocky armor plates which form its shoulders and gloves for its 4-fingered hands."
+    },
+    {
+      "name": "Pyrochick",
+      "elements": ["fire"],
+      "raceId": "bird",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Infinix",
+          "level": 34
+        }
+      ],
+      "flavor": "Pyrochick is an avian Coromon with fiery plumage. It has a tuft of large feathers on the top of its head, a large beak, and it has talons with three sharp claws."
+    },
+    {
+      "name": "Froshell",
+      "elements": ["ice"],
+      "raceId": "lepidopteran",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Glamoth",
+          "level": 38
+        }
+      ],
+      "flavor": "Froshell is a bug-like Coromon in a pupa state. Its wrapped in a spiked cocoon made of ice which covers its body except for its head. It keeps its big eyes closed most of the time."
+    },
+    {
+      "name": "Mooby",
+      "elements": ["ground"],
+      "raceId": "machine",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Molbash",
+          "level": 23
+        }
+      ],
+      "flavor": "Mooby is a living, squiggly blob of sand with the identations of a small face."
+    },
+    {
+      "name": "Malavite",
+      "elements": ["ground"],
+      "raceId": "machine",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Malavite is a golem comprised of sand. The sand on its head has imprints forming a face. It has two legs completely made out of rocky armor plates. The sand branches out and forms 2 arms with rocky armor plates covering its shoulders, and it hands completely made of rock."
+    },
+    {
+      "name": "Pitterbyte",
+      "elements": ["normal"],
+      "raceId": "machine",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Cyberite",
+          "level": 50
+        }
+      ],
+      "flavor": "Pitterbyte is a cyborg insectoid Coromon. Its insectoid head and abdomen appear covered in metallic armor. Its rubberhose-inspired arms dangle down due to its suspended flight. It also has a retrofuturistic visor covering its eyes, and it hovers using 4 jet boosters that are attached to its back."
+    },
+    {
+      "name": "Otogy",
+      "elements": ["ghost"],
+      "raceId": "ghost",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Orotchy",
+          "level": 40
+        }
+      ],
+      "flavor": "Otogy is based off of Orochi and Yōkai from Japanese Mythology. Its ghostly body stands on two legs which have claws for feet, and it has stubby little arms. It also has a short tail and a large eye in the center of its chest. What appears to be its two necks are actually arms with 4-fingered hands holding two masks that resemble Oni. The mask on its left has one horn and closed eyes while the mask on its right has two horns and open eyes, and both of them feature two large fangs from their mouths."
+    },
+    {
+      "name": "Ghinx",
+      "elements": ["ghost"],
+      "raceId": "felid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Purrghast",
+          "level": 50
+        }
+      ],
+      "flavor": "Ghinx resembles a cat. It has bright glowing eyes, large ears, and two pointy, triangular tufts of fur point out from each sides of its face. Its squiggly tail points upwards. Its arms seem to be empty sleeves and the rest of its body spans out skirt-like and spins."
+    },
+    {
+      "name": "Magnamire",
+      "elements": ["electric"],
+      "raceId": "slime",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Magnamire, like its previous evolution, is a living pile of magnetic slime surging with electricity. It has four arms, two eyes, and large gaping mouth."
+    },
+    {
+      "name": "Nibblegar",
+      "elements": ["water"],
+      "raceId": "crocodilian",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Sheartooth",
+          "level": 17
+        }
+      ],
+      "flavor": "Nibblegar is a small shark. It has large eyes, stands on two legs, and carries around a golden ring in its short arms. Its scales are a metallic blue color, and light gray along its belly and nose [Standard Form]. It has a fin on the back of its head, and its tail, which has two fins on its sides, curves upwards and the tip of it dips back down."
+    },
+    {
+      "name": "Megalobite",
+      "elements": ["water"],
+      "raceId": "crocodilian",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Megalobite resembles a bipedal Megalodon. Its scales are a metallic blue color, and light gray along its belly and nose [Standard Form]. The ring that it has carried throughout its evolutions is now attached to its top fin behind the head, like a piercing. Cross-shaped scar patterns can be observed on the outsides of both of its anchor-shaped arms. Each of Megalobite's hands have three claws, with the central one being slightly larger and longer than the side ones. It has small legs to support its large imposing body and thick tail."
+    },
+    {
+      "name": "Lunarpup",
+      "elements": ["ghost"],
+      "raceId": "canid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lunarwulf",
+          "level": 21
+        }
+      ],
+      "flavor": "Lunarpup is a small Coromon that resembles a wolf pup. It carries a stone that is shaped like a crescent moon, which it levitates above itself with ghostly powers. Its fur is a light gray shade of cyan and it wears a skull-shaped helmet that covers its head and ears. The skull and moon are a tan color and have a white glow around them."
+    },
+    {
+      "name": "Lampyre",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Lumasect",
+          "level": 30
+        }
+      ],
+      "flavor": "Lampyre is a Coromon that resembles a firefly. It has a large rounded body, with four dangling legs and a firefly tail. It also has two ever-flapping hindwings and two armor plated elytra hovering in place over them."
+    },
+    {
+      "name": "Rhynobuz",
+      "elements": ["electric"],
+      "raceId": "insectoid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Rhynobuz resembles a rhinoceros beetle. It has a very bulky body. It has three claws on each of its legs; and a large, splayed-tipped, rhino-like horn on its snout. Its body is encapsulated by a metallic plate shell, on its back, stomach and rear. The shell has small spikes protruding along the spine, which light up with electricity. The metal plate shell also has two Tesla Coil-looking structures mounted on top of the shell, which periodically conduct electricity between themselves."
+    },
+    {
+      "name": "Gauslime",
+      "elements": ["electric"],
+      "raceId": "slime",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Magnamire",
+          "level": 38
+        }
+      ],
+      "flavor": "Gauslime is a living pile of ooze. It has one large eye, two arms, and a gaping mouth. It drips goop and can be seen discharging electricity through itself."
+    },
+    {
+      "name": "Mino",
+      "elements": ["fire"],
+      "raceId": "buffalo",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "Mino is a bull calf with fire on its back and on the tip of its tail."
+    },
+    {
+      "name": "Moffel",
+      "elements": ["ground"],
+      "raceId": "rodent",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Digmow",
+          "level": 17
+        }
+      ],
+      "flavor": "Moffel is a small Coromon with similarities to a mole and a weasel. Half of its body is hidden underground, leaving only its head, arms, and twisting tail visible. It has a long snout with a big nose, and two brightly-colored claws on both of its paws."
+    },
+    {
+      "name": "Gella",
+      "elements": ["water"],
+      "raceId": "slime",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gellish",
+          "level": 21
+        }
+      ],
+      "flavor": "Gella is a small Coromon made of made of water. It resembles a featureless jellyfish. It has two long, wing-like tentacles at its side, and an unconnected tail-like appendage that undulates beneath itself."
+    },
+    {
+      "name": "Gellish",
+      "elements": ["water"],
+      "raceId": "slime",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Gelaquad",
+          "level": 34
+        }
+      ],
+      "flavor": "Gellish is a floating jellyfish made of water. It has two eyes and one fin pointed upwards on the back of its head. It has four tentacle-like arms attached to the back of its body, that each have one large suction cup at the end. It has a fifth undulating tentacle facing downwards from its main body, that acts like its torso and tail."
+    },
+    {
+      "name": "Millidont",
+      "elements": ["ground"],
+      "raceId": "insectoid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Millidont resembles a large milipede. Despite this, however, only two legs can be seen from whats visible of its body. The brim along the top of its head and its jaw is plated in armor. It has four large mandibles on its mouth and six fangs are visible from the inside. The back of its body segements are covered in smoother plating than Centilla and each plate features two large spikes protuding out on both sides. The plate covering the head segment features the largest spikes and also sports two smaller spikes in front them, while the plate below that sports the smallest spikes on its body."
+    },
+    {
+      "name": "Kryo",
+      "elements": ["ice"],
+      "raceId": "elementalSpirit",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Krypeek",
+          "level": 18
+        }
+      ],
+      "flavor": "Kryo is a small ghost Coromon, that is trapped in a fragment of ice. It has short arms, a small tail, and a glimmering eye peeking out of the ice which acts as a hood for its unseeable face."
+    },
+    {
+      "name": "Krypeek",
+      "elements": ["ice"],
+      "raceId": "elementalSpirit",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Krybeest",
+          "level": 39
+        }
+      ],
+      "flavor": "Krypeek is a medium-sized, cycloptic ghost Coromon, with its entire head, clawed hands and long tail more exposed outside the ice chunk it is bound to. Krypeek has two fangs on its upper jaw and a long tongue."
+    },
+    {
+      "name": "Krybeest",
+      "elements": ["ice"],
+      "raceId": "elementalSpirit",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Krybeest is a large, cycloptic ghost Coromon, with fangs on its upper and lower jaws. The ice that encapsulates its main body has grown to encase its shoulders, and its large, clawed hands hang forward. Its tail is long, with a peculiar bulb at the end of it."
+    },
+    {
+      "name": "Kyreptil",
+      "elements": ["ground"],
+      "raceId": "theropod",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Kyraptor",
+          "level": 37
+        }
+      ],
+      "flavor": "Kyreptil is a Coromon that resembles a small bipedal dinosaur. The top of its body is lined with thick scales, running from the tip of its snout, all the way to the end of its tail. It has two insectoid pincers for hands, and two sharp claws on the end of each foot."
+    },
+    {
+      "name": "Kyraptor",
+      "elements": ["ground"],
+      "raceId": "theropod",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Kyraptor is a large Coromon that resembles a therapoda dinosaur, with scorpion features. The top of its body is covered in scales, similar to Kyreptil. However, it's tail has evolved into a scorpion tail, with a barbed stinger at the end, and its claws are much longer and more jagged. It also has ridged plated scales on its forearms, and three claws on each foot."
+    },
+    {
+      "name": "Mudma",
+      "elements": ["ghost"],
+      "raceId": "slime",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Mudma is an imposing, bipedal slimy Coromon. It has the same small spherical face and antennae as its previous evolution, only with a large bipedal form that it constantly maintains with its slime generation."
+    },
+    {
+      "name": "Quagoo",
+      "elements": ["water"],
+      "raceId": "slime",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Swampa",
+          "level": 32
+        }
+      ],
+      "flavor": "Quagoo is a small Coromon that resembles a puddle of water. It has two watery tendrils at each side, and two eyes that peak out from beneath its grassy hood."
+    },
+    {
+      "name": "Orotchy",
+      "elements": ["ghost"],
+      "raceId": "ghost",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Orotchy is based off of Orochi and Yōkai from Japanese Mythology. Its ghostly body is in a crouched position, with its large hind legs curled behind it, and short forelegs to balance the front. It has a short tail, and in the centre of its chest it bears a large primary eye surrounded by four smaller eyes. It has three large neck-like arms extending above the main body, each with a 4-fingered hand holding a different mask that resemble an Oni. The mask on its left has squared jaw, has one horn, and large fangs. The mask in the middle has a rounded face, no horns, and a pronounced chin spike. The mask on its right has a defined face, has two curved horns, and no fangs."
+    },
+    {
+      "name": "Glacikid",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Arctiram",
+          "level": 38
+        }
+      ],
+      "flavor": "Headstrong and rebellious, Glacikid are trying hard to find their place in the world outside of their herd. The older they get however, the more they learn about strength in numbers."
+    },
+    {
+      "name": "Lemobi",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": ""
+    },
+    {
+      "name": "Makinja",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Much larger than Lemobi, Makinja has two grey and white striped tails. It now has a thick layer of fur around its neck. The red hair at the top of its head leans back a little and now two red stripes are at the end of its legs. Magic particles float around its legs. Makinja also now controls a magic purple ball with its hands."
+    },
+    {
+      "name": "Shimshell",
+      "elements": ["normal"],
+      "raceId": "crustacean",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Atlantern",
+          "level": 38
+        }
+      ],
+      "flavor": "Shimshell is a sea turtle-like Coromon. It has a shiny crystaline shell that has a metallic brim and three crystals protuding along the spine of it. Its front limbs are large fins and its back are smaller fins. It has a crystal on the top of its head and two small bumps on the back of its neck."
+    },
+    {
+      "name": "Skuldra",
+      "elements": ["ground"],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Skelatops",
+          "level": 37
+        }
+      ],
+      "flavor": "Skuldra is a large, lizard-like Coromon resembling a dinosaur. It has 3 claws on each paw and wears bone plates on its back legs. It also wears a skull covering its head and eyes, similar to Skarbone, and it has rib bones along the top of its back."
+    },
+    {
+      "name": "Taddle",
+      "elements": ["water"],
+      "raceId": "anuran",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Fibio",
+          "level": 18
+        }
+      ],
+      "flavor": "Taddle resembles a tadpole. It has a big head, small body, two webbed feet, and a long swishing tail."
+    },
+    {
+      "name": "Swurmy",
+      "elements": ["normal"],
+      "raceId": "insectoid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Beezel",
+          "level": 14
+        }
+      ],
+      "flavor": "Swurmy is a bug-like Coromon, which appears to be part-larva and part-pupa. It has two large eyes with horizontal pupils, and a cute, smiling expression with its lips curling upwards at the corners. Its head hangs out of a pentagonal armored cocoon that it wiggles around in."
+    },
+    {
+      "name": "Volcadon",
+      "elements": ["fire"],
+      "raceId": "turtle",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Volcadon is a large turtle-like Coromon. Like its pre-evolutions, it's mostly red and yellow [Standard Form], but now its shell has become a mountainous rocky structure and more jagged. It now has a scaly, spiky mane, small rocks on the top of its head and the back of its legs' joints, a tooth-like ridged lower jaw, and three claws on each foot. Its shoulders now have openings where fire periodically blasts out of."
+    },
+    {
+      "name": "Silquill",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gildwing",
+          "level": 15
+        }
+      ],
+      "flavor": "Silquill is a small Coromon that resembles a crow or a raven. It has black feathers with golden edges at the tips of its wings, golden eyes and legs, and a silver beak [Standard Form]."
+    },
+    {
+      "name": "Squidma",
+      "elements": ["fire"],
+      "raceId": "cephalopod",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Magmilus",
+          "level": 30
+        }
+      ],
+      "flavor": "Squidma is a cephalopod Coromon. Its body is thin and diamond shaped, and it has a squid beak and two tentacles. It has one massive eye in the centre of its body, and the edges of its head are lined with fiery scales which periodically emit embers."
+    },
+    {
+      "name": "Sheartooth",
+      "elements": ["water"],
+      "raceId": "crocodilian",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Megalobite",
+          "level": 35
+        }
+      ],
+      "flavor": "Like its previous evolution, Sheartooth resembles a bipedal shark. Its scales are a metallic blue color, and light gray along its belly and nose [Standard Form]. It has a rather rotund form, and two fangs are always sticking down, out of its large mouth. It also has two ear-like fins on the top of its head. The ring it carried as a Nibblegar is now worn on the tip of its longer tail."
+    },
+    {
+      "name": "Sanscale",
+      "elements": ["ground"],
+      "raceId": "lizard",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Caradune",
+          "level": 30
+        }
+      ],
+      "flavor": "Sanscale is a quadrupedal Coromon bearing similarities to a crocodile or an alligator. Large, plate-like rocky scales run down the top of its body, ending before its tail. On its forelegs Sanscale has two scales over the upper halves of its limbs; and on its hind legs the two scales cover the lower halves. Each leg has three pointy claws."
+    },
+    {
+      "name": "Skarbone",
+      "elements": ["ground"],
+      "raceId": "skeleton",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Skuldra",
+          "level": 18
+        }
+      ],
+      "flavor": "Skarbone is a small lizard-like Coromon. It has two claws on each of its feet. It wears the top half of a skull on its head like a helmet, which covers its eyes. It also wears plate-like pieces of bone on its back, tail, and on the knees of its hind legs."
+    },
+    {
+      "name": "Sandril",
+      "elements": ["ground"],
+      "raceId": "insectoid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Sandril is a crustacean creature resembling a crab. It's Cepalothorax and abdomen are covered by a semi-spherical shell and each of its limbs are covered in plating, leaving only its head and part of its body visible. Its four hind legs each have one claw and are segmented into three by its plating. Each of its two forelegs have two claws and consist of one large protruding plate that it uses to shield itself. From its head, two eye stalks protrude from the top. It has a large jaw with two teeth pointing up and two teeth point down from its upper jaw."
+    },
+    {
+      "name": "Skelatops",
+      "elements": ["ground"],
+      "raceId": "skeleton",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Skelatops is a large, dinosaur-like Coromon. It has adorned most of its body in bones. Its head is covered by a long skull. It's back with covered with a spinal column and rib cages. It's arms, legs, and stomach are also decorated with various bones as well."
+    },
+    {
+      "name": "Serpike",
+      "elements": ["normal"],
+      "raceId": "lizard",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Serpike resembles a large snake or serpent. Its scales are brown and are tan along its underside, and clusters of magenta crystals jut out from the back of its head [Standard Form]. A large crystal comes out of its forehead like a horn, and another sticks out from the bottom of its jaw. It also has little bumps running along the length of its lengthy body."
+    },
+    {
+      "name": "Toruga",
+      "elements": ["fire"],
+      "raceId": "turtle",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Embaval",
+          "level": 18
+        }
+      ],
+      "flavor": "Toruga is a small turtle Coromon with a spiky, rock shell. Its scales are red and are yellow at its jaw [Standard Form]. Its shell has a volcanic grey color to it, and its head is relatively large compared to the rest of its body."
+    },
+    {
+      "name": "Slitherpin",
+      "elements": ["normal"],
+      "raceId": "lizard",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Serpike",
+          "level": 25
+        }
+      ],
+      "flavor": "Slitherpin is a small, snake-like Coromon. Its scales are tan and are white along its underbelly, and it has magenta crystals growing out of the top of its head and on its back [Standard Form]. It has two small fangs protruding from its upper jar, and a forked tongue that periodically flicks from its mouth."
+    },
+    {
+      "name": "Ucaclaw",
+      "elements": ["water"],
+      "raceId": "crustacean",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Ucaclaw is a large Coromon with the features of a bivalve and a crab. It has a rocky shell covering the upper and lower halves of its body. Its face is visible underneath its head shell, and it has large eyes. It also has six legs connected to the lower half of its body, and two arms connected to the top half. It has a large, jagged pincers, and its arms are covered in a rocky plating."
+    },
+    {
+      "name": "Tinshel",
+      "elements": ["ground"],
+      "raceId": "insectoid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Dunpod",
+          "level": 18
+        }
+      ],
+      "flavor": "Tinshel resembles a hermit crab, with eye stalks and a small shell on its back. It only has two pairs of exposed legs, with its front legs bearing a pair of short claws."
+    }
+  ]
+}

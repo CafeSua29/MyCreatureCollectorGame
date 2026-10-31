@@ -1,0 +1,117 @@
+[
+  {
+    "id": "hardy"
+  },
+  {
+    "id": "lonely",
+    "up": "attack",
+    "down": "defense"
+  },
+  {
+    "id": "brave",
+    "up": "attack",
+    "down": "speed"
+  },
+  {
+    "id": "adamant",
+    "up": "attack",
+    "down": "spAttack"
+  },
+  {
+    "id": "naughty",
+    "up": "attack",
+    "down": "spDefense"
+  },
+  {
+    "id": "bold",
+    "up": "defense",
+    "down": "attack"
+  },
+  {
+    "id": "docile"
+  },
+  {
+    "id": "relaxed",
+    "up": "defense",
+    "down": "speed"
+  },
+  {
+    "id": "impish",
+    "up": "defense",
+    "down": "spAttack"
+  },
+  {
+    "id": "lax",
+    "up": "defense",
+    "down": "spDefense"
+  },
+  {
+    "id": "timid",
+    "up": "speed",
+    "down": "attack"
+  },
+  {
+    "id": "hasty",
+    "up": "speed",
+    "down": "defense"
+  },
+  {
+    "id": "serious"
+  },
+  {
+    "id": "jolly",
+    "up": "speed",
+    "down": "spAttack"
+  },
+  {
+    "id": "naive",
+    "up": "speed",
+    "down": "spDefense"
+  },
+  {
+    "id": "modest",
+    "up": "spAttack",
+    "down": "attack"
+  },
+  {
+    "id": "mild",
+    "up": "spAttack",
+    "down": "defense"
+  },
+  {
+    "id": "quiet",
+    "up": "spAttack",
+    "down": "speed"
+  },
+  {
+    "id": "bashful"
+  },
+  {
+    "id": "rash",
+    "up": "spAttack",
+    "down": "spDefense"
+  },
+  {
+    "id": "calm",
+    "up": "spDefense",
+    "down": "attack"
+  },
+  {
+    "id": "gentle",
+    "up": "spDefense",
+    "down": "defense"
+  },
+  {
+    "id": "sassy",
+    "up": "spDefense",
+    "down": "speed"
+  },
+  {
+    "id": "careful",
+    "up": "spDefense",
+    "down": "spAttack"
+  },
+  {
+    "id": "quirky"
+  }
+]

@@ -1,0 +1,163 @@
+# Script mô phỏng: theo tính năng
+
+> Một phần tài liệu project. Mục lục và quy tắc chung: `CLAUDE.md` ở thư mục gốc. Các tham chiếu "mục X" / "xem X" tra tên mục trong `docs/index.md` (mục lục chi tiết).
+
+Tách từ `simulation.md` (cách chạy, luật dùng kết quả, kịch bản, chơi liên tục ở đó). Mỗi mục: "người chơi" của mô phỏng dùng tính năng thế nào và cột đo.
+
+## Cuồng bạo (`battleRunner.ts`)
+
+- Không cần giả định: cuồng bạo chạy trong trận như game (quái hoang / boss luôn; đội mẫu có Rồng `emberling` / `pyrodrake` nên phe người chơi cũng cuồng bạo, lệnh của ô đó do AI chọn như mọi lệnh của mô phỏng). `collectStats` đếm log `frenzy` theo phe; `floors.csv` cột `frenzyPlayer` / `frenzyEnemy` = số quái cuồng bạo trung bình mỗi trận. Biến thể A/B `noFrenzy` (mọi ngưỡng / số về 0). Luật ở `frenzy.md`.
+
+## Kích cỡ quái (`battleRunner.ts`)
+
+- Không cần giả định: quái hoang / boss / NPC lớn sinh như game (cân nặng thật của dữ liệu), quái lớn HP / sát thương ×2. `floors.csv` cột `largeEnemy` = % trận có quái địch lớn. Biến thể A/B `noLarge` (`size.largeWeightKg` 1e300: không quái nào lớn) trong kịch bản mặc định. Đội mẫu chưa có quái lớn (đội mẫu chọn loài tay trong `scenarios.json`). Luật ở `monster-size.md`.
+
+## Tầm chiêu và vị trí ra đòn (`battleRunner.ts`, `floorSweep.ts`, `report.ts`)
+
+- AI chung chọn bộ phận (`chooseAim`) và tránh đòn cận chiến không với tới, cho cả hai phe; phe người chơi chỉ biết điểm yếu đã khám phá (`dex.hitParts`). **Giả định quét tầng:** bộ phận đã khám phá mang qua các trận của cùng một lượt quét (đội × tầng × loại trận; `floorSweep.ts`), như người chơi đánh liên tục ở tầng đó; trận hết lượt vẫn giữ phần đã khám phá (`runBattle`). Chơi liên tục dùng state thật nên tự tích lũy. Kết quả 2026-10-31 (`--parts sweep`, A/B `current` / `noHitLocations`, sau khi thêm khám phá điểm yếu và mất thế): bản đầu (quái hoang biết hết điểm yếu) quái hoang 66,9% / 70,1%; chẩn đoán: AI không thử bộ phận chưa biết 67,2%, tắt chí mạng mất thế 67,0%, nên nguyên nhân là quái hoang nhắm điểm yếu quái người chơi; đổi thành quái hoang không nhắm: quái hoang **69,7% / 70,1%**, boss **12,8% / 12,0%**; mỗi trận quái hoang người chơi nhắm 0,62 lần, khám phá 0,55 bộ phận, quái người chơi mất thế 0,34 lần, quái địch 0,12 lần. Quét tầng (`--parts sweep`, 2 biến thể) 241 giây với 11 worker. Sau phá bộ phận chặn skill (`bodyPart`, 2026-10-31, cùng cách chạy; luật thử "phá đầu / thân là gục" đã bỏ theo chủ project): quái hoang **69,7% / 70,1%**, boss **12,7% / 12,0%** (trong mục tiêu), bộ phận địch bị phá 0,24 mỗi trận quái hoang. `collectStats` đếm log trận (`HitLocationCounts`): `floors.csv` cột `aimed` / `weakHits` (đòn nhắm / trúng điểm yếu của phe người chơi), `outOfReachPlayer` / `outOfReachEnemy` (skill không với tới theo phe), `partsBroken` (bộ phận quái địch bị phá), `offBalancePlayer` / `offBalanceEnemy` (số lần quái mỗi phe mất thế), `partsRevealed` (bộ phận khám phá lần đầu), trung bình mỗi trận; dùng lại trận đã có, không thêm trận. Biến thể A/B `noHitLocations` (mọi skill tầm xa, điểm yếu không cộng sát thương nên AI hai phe không nhắm, mất thế không cộng chí mạng). Luật ở `hit-locations.md`.
+
+## Song thú hợp thể (`battleRunner.ts`, `floorSweep.ts`)
+
+- Không cần giả định thêm: phe người chơi dùng `suggestTamerCommand` (AI `mergeGain`), thân mật giả định tối đa từ tầng 2 (mục "Thân mật"). Cảnh giới giả định theo tầng (`assumedTamerRealm`) chưa tới 3 ở tầng 1–10 nên kịch bản mặc định có biến thể `realm3` (cảnh giới 3) và `realm3NoMerge` (cảnh giới 3, `merge.minAffinity` 1e300: không hợp thể được) để so A/B. `floors.csv` cột `merged` = % trận người chơi hợp thể. Đội mẫu `fireDuo` (Emberling + Ashgrunt, chung hệ lửa) để có cặp hợp nhau (`duo` / `full6` hai quái đầu khác race và hệ). Luật ở `battle-merge.md`.
+
+## Z-Move (`floorSweep.ts`, `economy.ts`, `battleRunner.ts`)
+
+- Quét tầng: như người chơi đã thắng các đạo quán đã qua (có Vòng Z từ tầng 40), quái đầu đội cầm Z-Crystal hợp skill của nó (`withLeadZCrystal`: `pickZCrystalFor`, hết ô thì thay trang bị kém nhất); AI chọn Z-Move như mọi ứng viên. Tầng quét mặc định 1–10 chưa có Vòng Z nên kịch bản mặc định có biến thể `zRing10` (Vòng Z ở đạo quán tầng 10) để so A/B với `current` ở tầng 10. `floors.csv` cột `zMove` = % trận người chơi dùng Z-Move. Chơi liên tục: có Vòng Z thì quái đội mẫu cầm crystal hợp skill có trong túi (`holdZCrystals`, cột `economy` mục `zCrystal`); quán chủ (lớp `transforms`) có crystal và dùng Z-Move. Luật ở `z-moves.md`.
+- Kết quả 2026-10-27 (kịch bản mặc định, `zRing10` so với `current`, tầng 10): dùng Z-Move ở 33–56% trận quái hoang, 20–46% trận boss (trận boss là power spot, AI hay Dynamax quái đầu đội nên không Z-Move được); tỉ lệ thắng quái hoang +0–4 điểm (solo 47,0 → 49,0%, duo 74,5 → 75,5%, fireDuo 71,0 → 75,0%, full6 96,8 → 95,9%), boss ±4 điểm (n = 50): đều trong ngưỡng nhiễu (≈ ±3,2 điểm với 200 trận, ±6 điểm với 50 trận). Z-Move là đòn mạnh một lần mỗi trận nên tác dụng nhỏ, như Pokémon; không chỉnh số. Chơi liên tục (tới tầng 10, quán chủ tầng 10 đã có Z-Move): huy hiệu và tỉ lệ thắng NPC như trước (100% các đội đã thách đạo quán; `duoRare (no growth)` lần này dừng ở tầng 10 trước khi thách đạo quán nên 0 huy hiệu, không phải thua quán chủ); chưa có Vòng Z (tầng 40) nên cột `zCrystal` trống.
+- Kết quả 2026-10-27 sau bậc chí mạng / chính xác / né (kịch bản mặc định, so với lần chạy trước cùng ngày): tỉ lệ thắng quét tầng biến thể `current` lệch trung bình +0,01 điểm, lớn nhất ±0,5 điểm (90 dòng, ngưỡng nhiễu ≈ ±3,2 điểm với 200 trận): đội mẫu và quái hoang tầng 1–10 ít dùng các chiêu mới, Super Luck đổi sang +1 bậc vẫn 12,5% khi không có nguồn bậc khác. Chơi liên tục: mọi đội có 1 huy hiệu ở tầng 10. Không chỉnh số.
+- Kết quả 2026-10-28 sau nguồn học skill (TM / tutor / chiêu trứng, 67 chiêu nhập bù, chùn bước / lú lẫn cho chiêu Pokémon, đồ cầm chí mạng; so với lần chạy 2026-10-27): tỉ lệ thắng quét tầng lệch trung bình −0,2 điểm (quái hoang 350 ô, boss 280 ô; lệch lớn nhất ±8 điểm ở ô 50 trận boss, trong ngưỡng nhiễu ±14 của cỡ mẫu đó). Chơi liên tục: sách rơi / mua / dùng 28 / 296 / 312 (trước 34 / 304 / 314), trận quái hoang 1.132 (trước 1.206), thua 208 (214), mọi đội vẫn 1 huy hiệu ở tầng 10 (trừ `duoRare` có growth, như trước); đồ cầm chí mạng được mua và cầm 24 lần (`critItem`). Không chỉnh số. Thời gian (quick, `--workers 1`): 84,4 giây có `holdCritItems` / 84,0 giây không có (progression 21,7 / 21,4 giây): chỉ chạy ở thị trấn, duyệt hàng cửa hàng, không thêm trận.
+
+## Ngày đêm và mùa (`floorSweep.ts`)
+
+- Quét tầng trải trận theo giờ (`sweepTime`: `startHour + 13 × i`), `floor-fields.csv` thêm lớp `dayPhase` / `season` (`calendar.md`). Chơi liên tục đã có giờ trôi thật, không cần sửa.
+- Kết quả 2026-10-28 (kịch bản mặc định, so với lần chạy 19:39 cùng ngày, 1.086 giây với 11 worker): tỉ lệ thắng quét tầng lệch trung bình −0,14 điểm, 15 / 630 ô lệch quá 2 sai số chuẩn (kỳ vọng nhiễu ≈ 5%), lớn nhất `duoRare` tầng 10 quái hoang −12 điểm (z −4,8, ô có loài ban đêm mạnh hơn được nhân ×2). Theo thời khắc (biến thể `current`, quái hoang): bình minh 69,0%, ngày 70,9%, hoàng hôn 68,2%, đêm 68,1% (đêm khó hơn ngày ~3 điểm vì loài ma / bóng tối / undead / demon gặp nhiều hơn); theo mùa 68,9–69,7%. Mục tiêu: chênh lệch giữa thời khắc / mùa ≤ 5 điểm (đủ để thấy khác nhau, không bắt người chơi né giờ); đạt nên không chỉnh số. Chơi liên tục: thắng quái hoang 86,2 → 87,3%, boss như cũ ±2 điểm.
+- Kết quả 2026-10-28 sau giờ hoạt động theo nguồn gốc (Pokémon PokeAPI, động vật EltonTraits / Wikidata, thêm `cathemeral`; so với lần chạy trước, 868 giây): quét tầng lệch trung bình +0,04 điểm, 3 / 630 ô lệch quá 2 sai số chuẩn (dưới mức nhiễu). Quái hoang theo thời khắc (`current`): bình minh 67,6%, ngày 70,9%, hoàng hôn 67,2%, đêm 68,8% (chênh ngày / đêm 2,1 điểm, đạt mục tiêu ≤ 5). Chơi liên tục: thắng quái hoang 88,6%, boss 37,6%. Không chỉnh số.
+
+## Ngự thú sư (`tamer.ts`)
+
+- Mọi trận: phe người chơi dùng lệnh ngự thú sư của `suggestTamerCommand` mỗi lượt (null = không dùng; luật ở `tamer.md`). Số lần dùng đếm vào bảng nhóm skill (`ai.csv`) với nhóm `tamer:<id>` của phe dùng.
+- Quét tầng / quét map / tìm level (`sweepFloor`): ngự thú sư ở **cảnh giới giả định** `assumedTamerRealm(tầng)` = ⌊(tầng − 1) / 10⌋ (như luật migrate save cũ), nên cộng hưởng, linh lực, kỹ năng đã mở theo tầng.
+- Chơi liên tục: cảnh giới thật. Sau mỗi trận, EXP ngự thú sư đủ đột phá thì "người chơi" về thị trấn (kể cả khi không mất máu) và đột phá liên tục tới khi không còn đủ điều kiện (`breakthroughWhilePossible`): thiếu Phá Cảnh Đan mà cửa hàng có bán và đủ tiền (sau khi chừa tiền đột phá) thì mua cho đủ. `progression.csv` thêm cột `realm` (cảnh giới lúc mở tầng) và `breakthroughFails` (số lần đột phá thất bại trong lúc ở tầng đó).
+
+## Tính cách (`team.ts`)
+
+- Đội mẫu (`buildMonster`) dùng Bạc Hà như người chơi thật: tính cách tăng chỉ số tấn công cao hơn (công / đặc công ở bước level) và giảm chỉ số tấn công còn lại (`bestNatureId`; không có tính cách khớp thì giữ tính cách đã tung). Quái hoang / boss tung đều như game (`natures.md`). Đo tác động bằng biến thể `noNature` (đã thay bằng `noPartner` ở bước 5l; thêm lại khi chỉnh tính cách).
+
+## Thuần thục skill (`mastery.ts`)
+
+- Mỗi trận quét tầng dùng quái mới nên thuần thục không tự tích được (cấp 2 cần 4 lần dùng): quét tầng / quét map / tìm level đặt **thuần thục giả định** cho mọi skill đang biết của đội mẫu, exp = `expPerFloor × (tầng − 1)` (`withAssumedMastery`; `teamMastery`: `masteryExpPerFloor` của đội đè số chung), cấp tính ngược từ exp.
+- Chơi liên tục: thuần thục tích thật theo luật game (`skill-mastery.md`). `progression.csv` thêm cột `masteryLevel` / `masteryExp`: cấp / exp trung bình trên mọi skill đang biết của đội mẫu lúc mở tầng (`averageMastery`), dùng để **chỉnh lại số giả định**: exp trung bình lúc mở tầng N ≈ `expPerFloor × N`.
+- Đo 2026-10-24 (kịch bản mặc định, chơi liên tục): exp trung bình mỗi skill tăng khoảng `duo` 60, `full6` 20, `duoRare` 25 mỗi tầng (đội ít quái thì mỗi quái đánh nhiều hơn); `solo` chưa đo (không chơi liên tục), dùng như `duo`.
+- Biến thể `noMastery` (đã thay bằng `noSynergyHold`, thêm lại khi cần) tắt hiệu lực (giữ exp / cấp) để so tác động của thuần thục trên cùng đội; `noSynergyHold` bỏ synergy / hold để so tác động của hai trường này.
+
+## Độ kiếp (`tribulation.ts`, `awakening.ts`)
+
+- Phần `tribulation` (kịch bản `tribulation { teamId, tiers, levelOffsets, battles }`, độ lệch ≥ 0 vì thấp hơn level cần thì không độ kiếp được): mỗi tầng sẽ lên một việc; quái đầu của đội dựng ở level `levelPerTier × tầng + độ lệch` (gen, thân mật, thuần thục giả định theo tầng ứng với level), đã thức tỉnh tới tầng trước, ở thị trấn đủ tiền / đan, đánh `battles` lần bằng action thật `startTribulation` (AI chung, biến thể đầu tiên). Bảng `tribulation.csv`: tầng, độ lệch, level, số trận, tỉ lệ thắng, số lượt trung bình.
+- Chơi liên tục: khi có quái đội mẫu đủ level, không trọng thương và còn đường lui (`tribulationFailures < maxFailures`), "người chơi" về thị trấn, sau đột phá thì độ kiếp từng quái tới khi hết điều kiện / tiền / đan hoặc thua (mua Thức tỉnh đan cùng hệ với quái nếu cửa hàng bán, hệ đầu trước), NPC hồi máu sau mỗi lần. Sau độ kiếp, quái đủ điều kiện hóa hình thì hóa hình (mua Hóa Hình Đan nếu cửa hàng bán; `human-form.md`). Phần `tribulation`: quái đã thức tỉnh (tầng ≥ 2) mà race cho thì ở nhân hình (Hiện nguyên hình được). Cột `awakening` (tầng trung bình lúc mở tầng), `awakenings`, `tribulationFails`, `humanForms` ở `progression.csv`.
+
+## Thám hiểm (`expeditions.ts`)
+
+- Chơi liên tục: mỗi lần ở thị trấn "người chơi" phái quái rảnh trong kho (trứng nở vào kho) đi các thám hiểm trên bảng khi còn ô (đội gồm quái level cao nhất, đủ số tối đa của `teamSize`, không có thì 4; đội không đủ yêu cầu thì bỏ qua mẫu đó). Cột `expeditions` ở `progression.csv` (`expeditions.md`).
+
+## Nhiệm vụ (`quests.ts`)
+
+- Chơi liên tục: mỗi lần ở thị trấn "người chơi" nhận thưởng nhiệm vụ đã xong, hủy loại mô phỏng không làm được (bắt, fuse, breed), nhận nhiệm vụ làm được (hạ quái, boss tầng, trứng nở) trên bảng cho đủ số tối đa; bảng không có loại làm được thì nhận rồi hủy nhiệm vụ đầu bảng để đổi (tối đa 10 lần mỗi lần ở thị trấn). Cột `quests` ở `progression.csv` (`quests.md`).
+
+## Ngự thú sư NPC (`trainers.ts`)
+
+- Quét tầng: trận quái hoang có `trainers.encounterChance` % là trận NPC (như game thật); `BattleStats.trainerClassId`, `FloorResult.byTrainer` theo lớp NPC → `trainers.csv` (số trận, tỉ lệ thắng mỗi tầng / đội). Quét tầng coi như người chơi đã thắng mọi đạo quán đã qua (có vật phẩm chìa khóa của các tầng đạo quán ≤ tầng đang quét).
+- Chơi liên tục: mỗi ngày game tối đa một lần khi ở thị trấn (sau hồi máu, đột phá, độ kiếp): dự giải đấu nếu kỳ này chưa dự (đánh tới vô địch / bị loại; dừng giữa chừng thì bỏ giải), đánh đấu trường một trận, rồi thách đạo quán chưa có huy hiệu thấp nhất (đi tới tầng đó, đánh tới khi có huy hiệu hoặc thua), về thị trấn hồi máu. Cột `trainerBattles` (cả NPC gặp trên tầng), `trainerWinRate`, `badges`, `tournaments`, `arenaRank` ở `progression.csv` (`trainers.md`).
+
+## Bí cảnh và tháp thí luyện (`trials.ts`)
+
+- Chơi liên tục: cùng nhịp với ngự thú sư NPC (mỗi ngày game tối đa một lần khi ở thị trấn, sau việc NPC): có Bí Cảnh Lệnh thì vào bí cảnh và đánh lần lượt (trận cuối dùng trần lượt boss) tới khi xong hoặc không thắng (hết lượt thì bỏ cuộc); rồi leo tháp tối đa `TOWER_ATTEMPTS_PER_DAY` (3) tầng, dừng khi không thắng (tầng boss dùng trần lượt boss); hồi máu sau mỗi lần. Không dùng vật phẩm trong bí cảnh. Cột `trials` (hoàn thành / đã vào), `trialBattles`, `towerWins`, `towerFloor` (tầng tháp cao nhất lúc mở tầng) ở `progression.csv` (`trials.md`).
+
+## Event (`events.ts`)
+
+- Mọi action của mô phỏng đi qua `simAct`: trước action, "người chơi" giải quyết event đang chờ (lựa chọn đầu tiên trả được vật phẩm; dữ liệu xếp lựa chọn chủ động trước) và thủ thành khi thú triều đang diễn ra (đánh đợt thường; trước mỗi đợt hồi máu bằng vật phẩm (`healWithItems`, mục dưới); đã mở thú vương mà máu cả đội còn ≥ `KING_HP_FRACTION` (60%) thì thách thú vương, không thì đánh tiếp đợt thường; không còn quái đánh được thì rút lui; thú triều kết thúc thì hồi máu ở NPC); event mới sau action (event thị trấn, thú triều bắt đầu) giải quyết ngay. Trận event / đợt thú triều đánh tới hết; chạm trần `EVENT_BATTLE_TURNS` (400) thì trận event bỏ như chưa đánh (giữ RNG) và thử lựa chọn kế tiếp, đợt thú triều thì rút lui; đếm ở cột `timeouts` của `events.csv`. Không mua ở cửa hàng tạm. Cửa hàng thị trấn đóng thì các phần mua đồ thấy hàng rỗng (`shopStock`).
+- `runBattle`: `startWildBattle` ra event thì giải quyết rồi gặp lại (tối đa `MAX_EVENT_RETRIES` 50 lần); trận event thua đưa về thị trấn thì hồi máu và quay lại tầng cũ.
+- Cột `events` (số event), `eventBattles` (thắng / trận event), `tides` (thắng hết / bắt đầu), `tideWaves` ở `progression.csv`; bảng `events.csv` mỗi lần chơi: số event theo id, tỉ lệ thắng trận event, tiền nhận / mất từ kết quả event, thú triều (thắng hết / bắt đầu, thất bại, thua thú vương `kingLosses`, đợt thắng, trung bình đợt thắng trước khi hạ thú vương `wavesBeforeKing`), số trận chạm trần (`events.md`). Đo thú triều / trận event cần nhiều mẫu: tạm tăng tần suất trong `balance.json` (ví dụ `beastTide.intervalDays` 6–10, `wildBattleChance` 40), chạy `--parts progression` rồi khôi phục (`balance-systems.md`).
+
+## Luyện đan (`alchemy.ts`)
+
+- Chơi liên tục: mỗi lần ở thị trấn (trước đột phá / độ kiếp) "người chơi" thu hoạch ô chín, trồng hạt giống trong túi vào ô trống, luyện hết mọi công thức luyện đan dùng được (thứ tự trong `recipes.json`), học đan phương trong túi. Giả định (`ALCHEMY_POLICY`): bỏ qua công thức luyện khí (yêu đan để đúc, `forge.ts`); công thức dùng nguyên liệu nhóm (yêu đan bất kỳ) mỗi lần về thị trấn luyện tối đa `groupRecipeTimes` (1) lần để giữ yêu đan cho Thợ rèn. Cột `crafts`, `harvests`, `alchemyLevel` ở `progression.csv` (`alchemy.md`).
+
+## Hồn tinh (`soulLevels.ts`)
+
+- Chơi liên tục: mỗi lần về thị trấn (sau đột phá / độ kiếp, hai việc đó ưu tiên tiền) "người chơi" dùng hết điểm hồn tinh lên đội mẫu, mỗi lần nâng (quái, chỉ số) có cấp thấp nhất trong các chỉ số hữu ích (bỏ chỉ số công yếu hơn), hết điểm hoặc tiền thì dừng. Cột `soulUpgrades` (số lần nâng) và `soulPercent` (% chỉ số trung bình từ hồn tinh lúc mở tầng, như `gearPercent`) ở `progression.csv` (`soul-levels.md`).
+
+## Điểm nỗ lực (`effort.ts`)
+
+- Chơi liên tục / quét bằng đội thật: điểm tăng thật sau mỗi trận thắng theo luật game (`effort-values.md`); "người chơi" không mua vitamin / đồ cầm Power (giả định: tiền dành cho hồn tinh, đột phá). Cột `effortPercent` ở `progression.csv` (% chỉ số trung bình từ điểm nỗ lực lúc mở tầng, như `gearPercent`).
+- Quét tầng / quét map / tìm level: đội mẫu có **điểm giả định** `assumedEffortValues(tầng)` = tầng × `EFFORT_PER_FLOOR` (35) điểm, tới trần tổng, chia đều 6 chỉ số. Số đo bằng chơi liên tục kịch bản mặc định (2026-10-28): tầng 1 khoảng 40–110 điểm, tầng 10 khoảng 190 (đội 6 con: ít trận mỗi con) tới 500 (đội 2 con), trung bình 350.
+- Biến thể A/B `noEffort` (`effort.percentPerPoint` 0) đo tác động.
+
+## Linh dịch (`progression.ts`)
+
+- Chơi liên tục: nhiễm / lây thật theo luật game (`spirit-virus.md`), không thêm trận. Cột `spiritVirus` ở `progression.csv`: số quái đội mẫu đã từng nhiễm (đang nhiễm hoặc miễn dịch) lúc mở tầng.
+- Kết quả 2026-10-31 (`--parts progression`, kịch bản mặc định, 42 giây): 2.068 trận, kỳ vọng 2.068 × 3/65536 ≈ 0,09 lần nhiễm, đo được 0: khớp tỉ lệ gốc. Linh dịch hiếm như Pokérus nên không đổi cân bằng tới tầng 10; không thêm biến thể A/B (quét tầng không có đội lâu dài để nhiễm, tác động mỗi lần nhiễm tính được trực tiếp: EXP ×2 trong 1–4 ngày).
+
+## Nhóm tăng trưởng EXP và ability theo loài (`progression.ts`, quét tầng)
+
+- Đội mẫu đều là loài Medium Fast nên chơi liên tục ghi thêm cột **`growthLevels`** ở `progression.csv`: level trung bình của đội nếu cùng lượng EXP thuộc từng nhóm (`levelFromExp`, không chạy thêm trận; `growth-rates.md`).
+- Kết quả 2026-10-28 (kịch bản mặc định, `--parts progression`, tầng 10): duo Medium Fast 163 → Erratic 193,5 (+19%), Fast 175,5 (+8%), Medium Slow 159,5 (−2%), Slow 151,5 (−7%), Fluctuating 138 (−15%); full6 tương tự. Đúng tỉ lệ của gốc ở level 100 (căn bậc ba tỉ lệ EXP), nhóm là đặc tính loài như Pokémon nên **không bù cân bằng**.
+- Ability theo loài (`abilities.md`, 730 loài Pokémon có ability lúc nhập): `--parts sweep` so với lần chạy trước cùng ngày, biến thể `current` (90 ô): tỉ lệ thắng trung bình quái hoang −0,09 điểm %, boss +0,1 điểm %, ô lệch nhiều nhất ±4 điểm % (50 trận boss, sai số chuẩn ~6 điểm %): trong nhiễu, không sửa số.
+
+## Thiên phú quái (`talents.ts`)
+
+- Chơi liên tục: mỗi lần về thị trấn (sau hồn tinh; thiên phú không tốn tiền nên không tranh việc khác) "người chơi" dùng hết điểm thiên phú của từng quái đội mẫu, mỗi lần nâng nút nâng được có giá cấp tiếp theo rẻ nhất (rải đều theo giá tăng dần), hòa theo thứ tự trong `talents.json`. Cột `talentUpgrades` (số lần nâng) và `talentPercent` (% chỉ số trung bình từ thiên phú lúc mở tầng, như `gearPercent`) ở `progression.csv` (`monster-talents.md`).
+
+## Thợ rèn (`forge.ts`)
+
+- Chơi liên tục, ở thị trấn: trước khi bán đồ dư, phân giải mọi trang bị trong túi bậc từ `FORGE_POLICY.salvageMinRarity` (rare; bậc thấp hơn vẫn bán lấy tiền); sau hồn tinh, cường hóa đồ đang lắp của đội mẫu, mỗi lần món cấp thấp nhất, tới khi hết Đá cường hóa, yêu đan (cấp ≥ 10) hoặc tiền; rồi phụ linh mọi món đang lắp chưa có dòng linh hệ bằng yêu đan hệ đầu của quái mang nó (thiếu thì bỏ qua món đó), rồi đúc trang bị theo lô `FORGE_POLICY.castCores` (3) yêu đan cùng hệ (hệ đầu của quái đội mẫu theo thứ tự đội trước, rồi hệ bất kỳ đủ yêu đan), món gốc: quái đội mẫu còn ô trống thì món thường giá gốc cao nhất, không thì món thường kém nhất đang lắp (tự lắp đổi sang món đúc nếu tốt hơn). Không tẩy luyện (giả định: khó chấm điểm dòng phụ). Đá của Thợ rèn không bị bán (`sellSurplus`). Yêu đan chỉ cho quái đúng khẩu vị ăn (`treasures.ts`), còn lại giữ để luyện. Cột `enhances`, `salvaged`, `casts` (số lần đúc), `imbues` (số lần phụ linh), `smithingLevel`, `demonCores` (số yêu đan trong túi lúc mở tầng) ở `progression.csv`; tác dụng đo bằng `gearPercent` (`equipment-forge.md`).
+
+## Thiên tài địa bảo (`treasures.ts`)
+
+- Chơi liên tục: sau mỗi trận "người chơi" dùng hết thiên tài địa bảo trong túi lên đội mẫu (đúng khẩu vị trước, rồi quái ăn ít món đó nhất; Ngộ Đạo Trà cho skill power cao nhất; món không có tác dụng thì giữ lại). Cột `treasures` ở `progression.csv` (`treasures.md`).
+
+## Thân mật (`affinity.ts`)
+
+- Quét tầng / quét map / tìm level: đội mẫu có **thân mật giả định** `assumedAffinity(tầng)` = thân mật quái khởi đầu ở tầng 1, tối đa (`affinity.max`) từ tầng 2, vì chơi liên tục cần khoảng 200 trận mỗi tầng nên qua tầng 1 là đầy. Chơi liên tục: thân mật tăng / giảm thật theo luật game (`affinity.md`).
+
+## Fuse, breeding và mạnh lên trong chơi liên tục (`growth.ts`)
+
+- Mỗi đội chạy một lần cho mỗi chế độ trong `progression.growthModes` (mặc định và quick: `[true, false]`; thiếu = `[true]`), nhân với `pillModes`. Lần chơi `false` ghi tên đội kèm `(no growth)` để so A/B mức mạnh lên nhờ fuse / breeding.
+- Bật (`growth: true`), "người chơi" (giả định ở `GROWTH_POLICY`, không phải luật game):
+  - **Bắt quái** (`captureCommand`, qua `runBattle { capture }`): trận quái hoang / boss thường (không NPC, bí cảnh, độ kiếp, trận đặc biệt), ô đầu tiên ném bóng thay lệnh AI vào quái làm được nguyên liệu fuse cho quái đội mẫu (có loài mới, tỉ lệ fuse không bùa ≥ `minFuseChance` 50%: cùng race hoặc race hợp, lineage còn ngắn), khi bóng tốt nhất trong túi có tỉ lệ ≥ `minCatchChance` (10%), kho chưa đủ `maxFodder` (4) nguyên liệu; lượt có hợp kích kỹ thì không ném. Ở thị trấn mua bóng loại tốt nhất cửa hàng đang bán cho đủ `ballsWanted` (10); quái bắt về không còn làm nguyên liệu cho ai thì thả (`releaseStaleFodder`).
+  - **Fuse** (`fuseWhenPossible`, ở thị trấn, sau việc NPC): mỗi quái đội mẫu fuse với nguyên liệu rảnh trong kho có tổng chỉ số cao nhất, nếu giá ≤ `spendFraction` (50%) tiền và tỉ lệ (đã cộng bùa tăng tỉ lệ mạnh nhất trong túi; thiếu thì mua bùa tăng tỉ lệ rẻ nhất đủ đạt `safeFuseChance`) ≥ `minFuseChance` (50%: cùng race hoặc race hợp), fuse không Bùa Hộ Mệnh khi tỉ lệ ≥ `safeFuseChance` (75%), thấp hơn thì phải có Bùa Hộ Mệnh (mua khi giá ≤ 50% tiền); kế thừa skill như `lineage.ts` (`chooseInheritance`). Đội chỉ còn quái gốc mà không hộ mệnh thì không fuse (luật `partyWouldBeEmpty`). Thất bại mất quái gốc: quái mạnh nhất trong kho vào đội mẫu (`teamLost`).
+  - **Breeding** (`breedWhenPossible`): mỗi `breedEveryDays` (30) ngày breed cặp đực / cái rảnh (đội và kho) có tổng gen cao nhất breed được, giá ≤ `breedSpendFraction` (20%) tiền (50% thì đội thiếu tiền đột phá, `balance-systems.md`). Con nở vào kho, lên level nhờ thám hiểm (`expeditions.ts`); con mạnh hơn quái yếu nhất của đội mẫu ≥ `promoteRatio` (×1,05 tổng chỉ số) thì đổi vào đội mẫu (`promoteChildren`).
+  - **Trận pháp** (`applyFormations`): học mọi trận đồ trong túi, chọn trận pháp đã học đầu tiên đội đủ yêu cầu. **Dưỡng dục** (`petRequests`): vuốt ve quái đang đòi sau mỗi trận.
+- Hồi máu bằng vật phẩm (`healWithItems`, mọi chế độ): giữa các đợt thú triều (không hồi ở NPC được) quái gục dùng vật phẩm hồi sinh, quái dưới `itemHealBelowPercent` (60%) máu dùng thuốc; thiếu thì mua ở cửa hàng (giá ≤ 50% tiền).
+- Cột `captures` (bắt được / lần ném), `fuses` (thành công / lần fuse), `teamLost`, `breeds`, `promotions`, `fuseSkips` (lần bỏ qua fuse theo lý do: `money` giá fuse > 50% tiền, `charmNotSold` cửa hàng không bán bùa đủ dùng, `charmTooExpensive` có bán nhưng không đủ / quá đắt, `lastMember`) ở `progression.csv`.
+
+## Thu phục (`growth.ts`, `battleRunner.ts`)
+
+- Chơi liên tục, chế độ có growth: "người chơi" Thị Uy ở lượt đầu (`intimidateCommand`, thay gợi ý AI của lượt đó) vào quái hoang làm nguyên liệu fuse được khi tỉ lệ ≥ `GROWTH_POLICY.minIntimidateChance` (0,5) và kho chưa đủ nguyên liệu; trận thắng có quái xin theo thì nhận nếu làm nguyên liệu được, không thì từ chối (`recruitDecision`, tùy chọn `recruit` của `runBattle`); ở thị trấn chưa có mồi mà còn thiếu nguyên liệu thì dùng / mua mồi rẻ nhất (`applyBaitWhenNeeded`). Quái thu phục tính là nguyên liệu như quái bắt (`isCaughtSpare`).
+- Cột `recruits` của `progression.csv`: `quái thu phục / lần xin theo  Thị Uy thành công / lần  b<số mồi đã dùng>` (quái thu phục gồm cả Thị Uy). Cột `captures` chỉ đếm quái bắt bằng bóng (sự kiện `caught`).
+
+## Khu bảo tồn (`safari.ts`)
+
+- Phần `safari` (bước 5q2; luật ở `safari-zone.md`): mỗi (tầng trong `safari.floors` × cách chơi) vào khu `visits` lần liên tiếp bằng action thật (`enterSafari` → action của khu tới khi ra khu; danh sách loài đổi theo ngày như thật). Map của tầng như quét tầng (`floorMapsFor`), cảnh giới giả định theo tầng (`assumedTamerRealm`), đội một quái loài đầu của map (để có kỹ năng đồng hành); mỗi lượt vào khu đủ tiền, bỏ quái đã bắt và event / thú triều (không đo ở phần này).
+- Cách chơi mỗi lần gặp: `balls` chỉ ném bóng; `rock` ném đá một lần rồi ném bóng; `bait` ném mồi thường một lần rồi ném bóng; `rareOnly` chỉ bắt loài catchRate < 30, loài khác bỏ đi.
+- Bảng `safari.csv`: tầng, cách chơi, số lượt vào khu, trung bình mỗi lượt (quái bắt được, bóng đã ném, quái chạy mất, lần gặp), tỉ lệ bắt mỗi bóng, catchRate / thứ hạng phẩm cấp trung bình của quái bắt được, % quái thuộc loài không có trong map đã mở, phí một lần vào khu, phí trên mỗi quái.
+- Phần `zones` (hiểm địa; luật ở `zones.md`, mục tiêu ở `balance-systems.md`): mỗi (hiểm địa × tầng trong `zones.runs`; `leadSpeciesId` đổi loài quái đầu đội cho hiểm địa cần loài / dòng tiến hóa) vào `visits` lần liên tiếp bằng action thật với đội `zones.teamId` dựng ở tầng đó (`buildTeam`, cảnh giới giả định theo tầng): hồi máu ở thị trấn trước mỗi lượt vào, mang đúng đồ tiếp tế `zones.supplies` (hồi sinh / hồi máu / chữa trạng thái) và vật phẩm điều kiện của hiểm địa (túi chỉ còn các món đó), tua giờ tới ngày mở lại (bỏ qua thời gian khóa); trước mỗi bước dùng đồ tiếp tế (quái gục: hồi sinh; máu dưới `healBelowPercent` %: hồi máu; có trạng thái: chữa), `exploreZone` tới khi hết lượt vào; bước mở trận đánh bằng `runBattle` (chạy lại đúng bước đó, tất định), hết lượt trận thì rời hiểm địa. Không dùng vật phẩm trong trận, không ném bóng. Bảng `zones.csv`: tỉ lệ xong / thua / bỏ, trận mỗi lượt vào, tỉ lệ thắng trận / boss canh giữ, giờ, giá trị đồ (chênh lệch túi theo giá gốc ở tầng đó) và tiền mỗi lượt vào, số món / giá đồ tiếp tế đã dùng (kể cả vật phẩm điều kiện), giá trị ròng mỗi giờ (trừ đồ đã dùng).
+- Bắt trượt (bước 5q3) đo qua chơi liên tục (`captureCommand` chọn bóng theo `battleCatchChance`, đã cộng bắt trượt) và trong `safari.csv`.
+
+## Kinh tế và việc nhỏ (`economy.ts`, mọi chế độ)
+
+- Giả định ở `ECONOMY_POLICY`. Ở thị trấn, trước mọi việc tốn tiền: bán mọi trang bị còn trong túi (tự lắp đã lấy món tốt nhất; món bậc từ rare đã phân giải trước, `forge.ts`) và nguyên liệu dư quá `materialKeep` (20) mỗi loại (trừ đá của Thợ rèn), giá theo thị trường động (`sellSurplus`). Sau luyện đan: mua ô linh điền khi giá ≤ `plotSpendFraction` (20%) tiền (`buyPlotWhenCheap`).
+- Sau mỗi trận: quái đội mẫu chưa đầy thân mật ăn vật phẩm thân mật trong túi, quái thấp nhất trước (`feedAffinityItems`); có vật phẩm chìa khóa (Vòng Mega) thì quái đội mẫu cầm đá Mega của loài nó có trong túi, hết ô thì thay trang bị bậc thấp nhất (`holdMegaStones`), để AI Mega trong trận; có Vòng Z thì cầm Z-Crystal hợp skill có trong túi (`holdZCrystals`, mục "Z-Move").
+- Ngay sau khi giải quyết event mở cửa hàng tạm (thương nhân, chợ đen): mua món dùng được (bóng, bùa fuse, kẹo / thuốc / vật phẩm thân mật, Bí Cảnh Lệnh, trận đồ, đan phương; tối đa `tempShopMaxCount` 3 mỗi món) và trang bị từ bậc `tempShopMinRarity` (epic), giá ≤ `tempShopSpendFraction` (30%) tiền (`buyFromTempShop`; cột `tempShopBought` ở `events.csv`). Không mua tinh thể trait (game chưa có extract / inject).
+- Cứ `EXPLORE_EVERY` (5) trận quái hoang thì một trận dùng `explore` (chủ động tìm event, `progression.ts`).
+- Ở thị trấn, sau mua sách: quái đội mẫu chưa cầm đồ cầm tăng bậc chí mạng (đồ `persistent` có hook `critStage`, hợp loài theo `speciesIds`) mua món nhiều bậc nhất cửa hàng đang bán cho nó nếu đủ tiền và cầm vào ô trống, không thay trang bị (`holdCritItems`).
+- Ở thị trấn: chưa có bản mệnh thú (hoặc đã chết, hết thời gian chờ) thì kết với quái đội mẫu mạnh nhất (tổng chỉ số) đủ thân mật (`bindBondWhenPossible`); không đổi bản mệnh khi đã có.
+- Cột `economy` ở `progression.csv`: `sold` (món đã bán), `affinity` (vật phẩm thân mật đã dùng), `mega` (lần cầm đá Mega), `zCrystal` (lần cầm Z-Crystal), `critItem` (đồ cầm chí mạng đã mua và cầm), `plots` (ô linh điền mua), `bond` (lần kết bản mệnh), `dex` (mốc Bộ sưu tập đã nhận, `claimDexRewardsWhenPossible`), `contract` / `contractFail` / `escape` (khế ước thành công / thất bại / quái bỏ trốn: "người chơi" khế ước quái đội mẫu chưa khế ước khi tỉ lệ ≥ `minContractChance` 60%, `contractTeamWhenPossible`; `tamer.md` mục "Khế ước").
+- Không mô phỏng (ảnh hưởng nhỏ tới cân bằng hoặc đã đo riêng): Bạc Hà Tính Cách (±10% một chỉ số), học lại skill ở NPC, đổi hệ Tera, chiến thuật tự đánh (đã có biến thể A/B ở quét tầng), đổi nhân hình / bản thể, chọn quái đầu đội theo kỹ năng đồng hành.
+
+## Breed / fuse nhiều đời (`lineage.ts`)
+
+Chỉ đo gen, chỉ số và giá; gọi thẳng hàm thuần (`makeOffspring`, `fuseMonsters`), không qua NPC thị trấn (không đo kinh tế, thời gian ấp trứng). Chưa đánh trận với quái sau breed / fuse.
+
+- **Breed:** mẹ đời 0 là quái mẫu (cái). Mỗi đời bố là quái hoang cùng loài của tầng `floor` (đực, level `measureLevel`); sinh `offspringPerGeneration` con, lấy con **cái** có tổng gen cao nhất làm mẹ đời sau (lớn tới `measureLevel`). Không có con cái thì giữ mẹ cũ (ghi chú). Loài không breed được (`breedBlocker`, ví dụ loài không giới tính) báo `DataError`.
+- **Fuse:** quái gốc là quái mẫu; mỗi lần fuse với quái hoang cùng level, loài **ngẫu nhiên trong mọi loài thường của dữ liệu** chưa có trong lineage. Hết loài mới thì ghi "hết loài mới" và dừng.
+- Bảng `lineage.csv` mỗi đời: tổng gen, tổng chỉ số (`computeStats`, ở `measureLevel` / `level`), tỉ lệ so với đời 0, tư chất (`aptitude` id bậc, `aptitudeRatio`; tầng mốc = `floor` của kịch bản; `aptitude.md`), giá (`breedCost` / `fuseCost`). Fuse luôn coi là thành công để đo chỉ số; thêm cột `successChance` (tỉ lệ thành công của lần fuse ra đời đó, không bùa, `fuseSuccessChance`) và `reachChance` (tỉ lệ đi tới đời đó mà không thất bại lần nào = tích các `successChance`). Mỗi lần fuse "người chơi" kế thừa skill power cao nhất của quái phụ (`chooseInheritance`: còn ô thì học, hết ô thì quên skill yếu hơn, không vào chờ học); cột `skillPower` (tổng power skill đang biết) và `inheritedSkills` (số skill kế thừa lần đó).

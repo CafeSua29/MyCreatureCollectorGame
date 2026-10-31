@@ -1,0 +1,18 @@
+{
+  "source": "elderScrolls",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Mud Crab",
+      "elements": ["water", "rock"],
+      "raceId": "crustacean",
+      "tier": "small"
+    },
+    {
+      "name": "Sabrecat",
+      "elements": ["normal"],
+      "raceId": "felid",
+      "tier": "peak"
+    }
+  ]
+}

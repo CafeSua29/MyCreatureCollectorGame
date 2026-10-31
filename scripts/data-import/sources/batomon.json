@@ -1,0 +1,1245 @@
+{
+  "source": "batomon",
+  "origin": "fantasy",
+  "update": {
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Beetbud",
+      "elements": ["fighting", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Beetdown",
+          "level": 20
+        }
+      ],
+      "category": "Common Batomon"
+    },
+    {
+      "name": "Beetdown",
+      "elements": ["fighting", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Bumblebolt",
+      "elements": ["bug", "electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Bunchop",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Dribblet",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Emperooze",
+          "level": 20
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Emperooze",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Frillet",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Dewlotl",
+          "level": 20
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Dewlotl",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Furnadon",
+      "elements": ["fire", "steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Guardiant",
+      "elements": ["bug"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Joltail",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Kindlepot",
+      "elements": ["fire", "steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Furnadon",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Lamplet",
+      "elements": ["bug", "fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Leafleap",
+      "elements": ["bug", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Magmite",
+      "elements": ["fire", "rock"],
+      "raceId": "elementalSpirit",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Mosslug",
+      "elements": ["water", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Panbud",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Bambudo",
+          "level": 20
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Bambudo",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pebbler",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pipskull",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ratacomb",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Ratacomb",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Rattleghast",
+      "elements": ["ghost", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Rubbin",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Scorchimp",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Sunsage",
+          "level": 20
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Sunsage",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Scorubble",
+      "elements": ["rock", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Shellter",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Spinarai",
+      "elements": ["bug", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Stingarde",
+      "elements": ["bug"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Swoonet",
+      "elements": ["water", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Toximoth",
+      "elements": ["bug", "poison"],
+      "raceId": "lepidopteran",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Velocect",
+      "elements": ["bug", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Venopuff",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Berroon",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Uncommon Batomon"
+    },
+    {
+      "name": "Blessom",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Bonshell",
+      "elements": ["rock", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Boomagon",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Brawlmantis",
+      "elements": ["bug", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Brimtoad",
+      "elements": ["fire", "poison"],
+      "raceId": "anuran",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cinderfly",
+      "elements": ["bug", "fire"],
+      "raceId": "insectoid",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cinnabark",
+      "elements": ["rock", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Craghorn",
+      "elements": ["grass", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Electranade",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Emburn",
+      "elements": ["fire", "ghost"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Frizzly",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Gildshell",
+      "elements": ["bug"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Kappow",
+      "elements": ["water", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Nekoffin",
+      "elements": ["steel", "ghost"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Noxnimbus",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pawsperity",
+      "elements": ["fighting", "steel"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Plunderbird",
+      "elements": ["water", "flying"],
+      "raceId": "bird",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Puffloon",
+      "elements": ["poison", "water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pyronade",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Runerock",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Sarudo",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Shogapede",
+      "elements": ["bug", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Sukoi",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Aristobat",
+      "elements": ["poison", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Rare Batomon"
+    },
+    {
+      "name": "Aster",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Aviarab",
+      "elements": ["bug", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cherubble",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cicadence",
+      "elements": ["bug"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cordycant",
+      "elements": ["poison", "bug"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Dirgefin",
+      "elements": ["ghost", "water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Dollhime",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Dracana",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Formiqueen",
+      "elements": ["bug"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Humbolt",
+      "elements": ["electric", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Ignit",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Flarilisk",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Flarilisk",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Ironcore",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Kickrane",
+      "elements": ["fighting", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Lignite",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Lumijel",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Magmalith",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Noxalith",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Petrirex",
+      "elements": ["rock", "ghost"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pyrokami",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Rhizuka",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Shikitsune",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Sproach",
+      "elements": ["bug", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Stalagrove",
+      "elements": ["grass", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Steamscuttle",
+      "elements": ["fire", "water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Talonite",
+      "elements": ["flying", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Thorntail",
+      "elements": ["grass", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Vipair",
+      "elements": ["poison", "steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Voltalith",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Aegistruct",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Blazewing",
+      "elements": ["fire", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cawnushi",
+      "elements": ["flying", "ghost"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Celestia",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Clawnetic",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Coalem",
+      "elements": ["fire", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Danuki",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Drumire",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Dryadell",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Emberpaw",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Oniclaw",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Oniclaw",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Basilord",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Fumungus",
+      "elements": ["grass", "poison"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Gemwing",
+      "elements": ["bug"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Ginsage",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Mallogre",
+      "elements": ["steel", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Ninflora",
+      "elements": ["grass", "fighting"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Opalion",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Orcana",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Prismagon",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pylong",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Reapra",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Shelldra",
+      "elements": ["water", "dragon"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Shrinell",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Sirenade",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Snapscald",
+      "elements": ["fire", "water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Tengusto",
+      "elements": ["fighting", "flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Wishwash",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Zephyrex",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Blixie",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cairnage",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Cobrex",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Draconarch",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Fernfowl",
+      "elements": ["flying", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [
+        {
+          "name": "Quillustrous",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Quillustrous",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Gachapod",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Gaiadrasil",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Galvanine",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Geminiss",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Miasmaw",
+      "elements": ["poison"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Onsetra",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Ouroblaze",
+      "elements": ["dragon", "fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Pompummel",
+      "elements": ["fighting"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Saberhorn",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Sproutquill",
+      "elements": ["flying", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Fernfowl",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    },
+    {
+      "name": "Stellagon",
+      "elements": ["dragon"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Torrantler",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Tsunamere",
+      "elements": ["dragon", "water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Vengrieve",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Aerophim",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Mythical Batomon"
+    },
+    {
+      "name": "Cosmivore",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Faebloom",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Goldora",
+      "elements": ["steel"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "MissingN.",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "NULL-00",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "NULL-7F",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "NULL-FF",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Omnichrome",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Rigalord",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Batomon"
+    },
+    {
+      "name": "Riglet",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "evolutions": [
+        {
+          "name": "Rigalord",
+          "level": 30
+        }
+      ],
+      "category": "Batomon"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "purpose": "Đề xuất số tạm và nội dung cho tính năng Thức tỉnh (docs/roadmap/awakening.md). Không nạp vào game; khi làm thì chuyển vào balance.json / species.json / awakening.json theo roadmap."
+  },
+  "proposedConfig": {
+    "awakening": {
+      "statStepPercent": 10,
+      "levelPerTier": 50,
+      "costBase": 1000,
+      "pillItemId": "awakeningPill",
+      "pillsPerTier": 1,
+      "milestones": [
+        {
+          "tier": 1,
+          "reward": "skill"
+        },
+        {
+          "tier": 3,
+          "reward": "traitSlot"
+        },
+        {
+          "tier": 5,
+          "reward": "skill"
+        },
+        {
+          "tier": 10,
+          "reward": "traitSlot"
+        }
+      ],
+      "repeatEvery": 5,
+      "maxFailures": 5,
+      "injuryStatPercent": -20,
+      "injuryBattles": 5,
+      "tribulation": {
+        "speciesId": "heavenlyTribulation",
+        "levelOffset": 0,
+        "multiplierBase": 2,
+        "multiplierPerTier": 0.25,
+        "weather": "rain",
+        "terrain": "electricTerrain",
+        "maxTurns": 50
+      }
+    }
+  },
+  "proposedItems": [
+    {
+      "id": "awakeningPill",
+      "category": "consumable (material, chưa có category phù hợp: xem roadmap)",
+      "price": 2000,
+      "name": "Thức tỉnh đan",
+      "nameEn": "Awakening Pill",
+      "drop": "boss tầng 30%, boss ngẫu nhiên 10%, cửa hàng trọng số 5"
+    }
+  ],
+  "proposedSpecies": [
+    {
+      "id": "heavenlyTribulation",
+      "name": "Thiên Kiếp",
+      "nameEn": "Heavenly Tribulation",
+      "raceId": "elemental",
+      "elementIds": ["electric", "light"],
+      "genderless": true,
+      "baseStats": {
+        "hp": 110,
+        "attack": 100,
+        "defense": 90,
+        "spAttack": 130,
+        "spDefense": 90,
+        "speed": 110
+      },
+      "catchRate": 0,
+      "learnset": ["thunderShock@1", "thunderbolt@1", "thunder@1", "zapCannon@1"],
+      "note": "Không xuất hiện ở biome, không bắt được; chỉ dùng cho trận độ kiếp. catchRate 0 hợp lệ (0–100). Skill học ở level 1 cho đủ 4 ô; kiểm tra id skill khi làm."
+    }
+  ],
+  "divineSkillsByElement": {
+    "bug": {
+      "skillId": "bugBuzz",
+      "name": "Tiếng vo ve",
+      "power": 90
+    },
+    "dark": {
+      "skillId": "darkLaser",
+      "name": "Laser hắc ám",
+      "power": 150
+    },
+    "dragon": {
+      "skillId": "dragonEnergy",
+      "name": "Năng lượng rồng",
+      "power": 150
+    },
+    "electric": {
+      "skillId": "lightningBolt",
+      "name": "Tia sét",
+      "power": 150
+    },
+    "fairy": {
+      "skillId": "lightOfRuin",
+      "name": "Ánh sáng hủy diệt",
+      "power": 140
+    },
+    "fighting": {
+      "skillId": "highJumpKick",
+      "name": "Cước nhảy cao",
+      "power": 130
+    },
+    "fire": {
+      "skillId": "orbitalStrike",
+      "name": "Đòn quỹ đạo",
+      "power": 150
+    },
+    "flying": {
+      "skillId": "dragonAscent",
+      "name": "Rồng thăng thiên",
+      "power": 120
+    },
+    "ghost": {
+      "skillId": "livingMace",
+      "name": "Chùy sống",
+      "power": 150
+    },
+    "grass": {
+      "skillId": "chloroblast",
+      "name": "Nổ diệp lục",
+      "power": 150
+    },
+    "ground": {
+      "skillId": "rockLance",
+      "name": "Thương đá",
+      "power": 150
+    },
+    "ice": {
+      "skillId": "blizzardSpike",
+      "name": "Gai bão tuyết",
+      "power": 130
+    },
+    "light": {
+      "skillId": "fistOfHeavens",
+      "name": "Nắm đấm thiên đàng",
+      "power": 120
+    },
+    "normal": {
+      "skillId": "palBlast",
+      "name": "Nổ Pal",
+      "power": 150
+    },
+    "poison": {
+      "skillId": "belch",
+      "name": "Ợ",
+      "power": 120
+    },
+    "psychic": {
+      "skillId": "psychoBoost",
+      "name": "Tâm lực bùng nổ",
+      "power": 140
+    },
+    "rock": {
+      "skillId": "boulder",
+      "name": "Tảng đá",
+      "power": 120
+    },
+    "steel": {
+      "skillId": "doomDesire",
+      "name": "Khát vọng diệt vong",
+      "power": 140
+    },
+    "water": {
+      "skillId": "waterSpout",
+      "name": "Vòi phun nước",
+      "power": 150
+    }
+  },
+  "divineSkillNote": "Thần thông tạm: skill gây sát thương mạnh nhất có sẵn của hệ đầu của quái (mốc 1) và hệ thứ hai (mốc 5; quái một hệ thì skill mạnh nhì của hệ đó). Sau này thay bằng skill thần thông riêng (nội dung mới, hỏi chủ project)."
+}
