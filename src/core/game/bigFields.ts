@@ -5,9 +5,9 @@
 import { STAT_NAMES, type BattleEvent, type DayEvent, type EventLogEntry } from '../model'
 import { asObject, type Decimal } from '../shared'
 
-/** Trường Decimal trên mỗi quái (genes / fusingBonusStats: từng chỉ số). */
+/** Trường Decimal trên mỗi quái (genes / fusingBonusStats / implantBonusStats: từng chỉ số). */
 const MONSTER_BIG_FIELDS = ['exp', 'damageTaken', 'battleMaxHpDelta', 'lifespanBonusYears'] as const
-const MONSTER_BIG_STATS = ['genes', 'fusingBonusStats'] as const
+const MONSTER_BIG_STATS = ['genes', 'fusingBonusStats', 'implantBonusStats'] as const
 
 /** Tên trường kiểu Decimal của một loại sự kiện (never nếu không có). */
 type DecimalKeys<E> = { [K in keyof E]-?: E[K] extends Decimal ? K : never }[keyof E]
@@ -138,6 +138,7 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
   mapField(asObject(state.tamer), 'exp', convert)
   mapField(asObject(state.alchemy), 'exp', convert)
   mapField(asObject(state.smithing), 'exp', convert)
+  mapField(asObject(state.cooking), 'exp', convert)
   // Tiền thưởng nhiệm vụ trên bảng và đang nhận (docs/rules/quests.md).
   const quests = asObject(state.quests)
   for (const list of [quests?.board, quests?.active]) {
@@ -153,6 +154,13 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
   }
   if (Array.isArray(state.eggs))
     for (const egg of state.eggs) mapMonster(asObject(egg)?.monster, convert)
+  // Lượng cộng của hiệu ứng flatStat trong huyết thanh đang bán (docs/rules/implant.md).
+  for (const serum of listOrEmpty(asObject(state.lab)?.stock)) {
+    for (const effect of listOrEmpty(asObject(serum)?.effects)) {
+      const entry = asObject(effect)
+      if (entry?.kind === 'flatStat') mapField(entry, 'amount', convert)
+    }
+  }
   mapBattle(state.battle, convert)
   mapEvents(state.dayEvents, DAY_EVENT_BIG_FIELDS, convert)
   mapEvents(asObject(state.events)?.log, EVENT_LOG_BIG_FIELDS, convert)

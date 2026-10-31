@@ -1488,6 +1488,7 @@
   "spiritIncense": "Dẫn Hồn Hương",
   "shinyCharm": "Bùa Lấp Lánh",
   "ovalCharm": "Bùa Trứng",
+  "incubationFurnace": "Ôn Dưỡng Lò",
   "dexDiploma": "Bằng Khen Bộ Sưu Tập",
   "forgetWater": "Vong Ưu Thủy",
   "gatherSpiritPill": "Tụ Linh Đan",
@@ -1636,5 +1637,15 @@
   "yinStone": "Âm Thạch",
   "yangStone": "Dương Thạch",
   "poleSwapStone": "Hoán Cực Thạch",
-  "poleResetStone": "Quy Nguyên Thạch"
+  "poleResetStone": "Quy Nguyên Thạch",
+  "spiritRiceCongee": "Linh Mễ Chúc",
+  "heartBondCake": "Đồng Tâm Bánh",
+  "fireDragonSoup": "Hỏa Long Thang",
+  "mysticTortoiseBroth": "Huyền Quy Canh",
+  "galeChaserCake": "Truy Phong Bánh",
+  "beastLureCake": "Dụ Thú Cao",
+  "hundredFlowerCake": "Bách Hoa Cao",
+  "goldenFishFeast": "Kim Ngư Yến",
+  "treasureSeekerSoup": "Tầm Bảo Thang",
+  "eightTreasureFeast": "Bát Trân Yến"
 }

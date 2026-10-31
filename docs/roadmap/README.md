@@ -10,14 +10,8 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 
 - [build-release.md](docs/roadmap/build-release.md): Build & phát hành đa nền tảng
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
-- [trait-crystals.md](docs/roadmap/trait-crystals.md): Extract / inject trait
-- [sacrifice.md](docs/roadmap/sacrifice.md): Hiến tế
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [implant.md](docs/roadmap/implant.md): Phòng Thí Nghiệm: cấy ghép
-- [egg-incubation.md](docs/roadmap/egg-incubation.md): Ấp trứng có hoàn cảnh (linh thạch, linh địa, Ôn Dưỡng Lò)
-- [cooking.md](docs/roadmap/cooking.md): Linh thực: nấu ăn, buff cả đội N trận
-- [breeding-cakes.md](docs/roadmap/breeding-cakes.md): Bánh breed (2 trứng, gen, đột biến, 3 trait, shiny)
 - [rebirth.md](docs/roadmap/rebirth.md): Luân hồi quái (về level 1, +% vĩnh viễn, trẻ lại)
 - [fishing-mining.md](docs/roadmap/fishing-mining.md): Câu cá và khai thác trên tầng
 - [instability.md](docs/roadmap/instability.md): Độ bất ổn tầng (thuộc tính bất lợi tự chọn, thưởng thêm)
@@ -32,7 +26,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [sects.md](docs/roadmap/sects.md): Tông môn (cống hiến, chức vị, Tàng Bảo Các, tông chiến)
 - [npc-trades.md](docs/roadmap/npc-trades.md): Trao đổi với NPC
 - [gacha.md](docs/roadmap/gacha.md): Cây thần: gacha trứng
-- [capacity.md](docs/roadmap/capacity.md): Sức chứa kho quái / túi trang bị
 - [roster-tools.md](docs/roadmap/roster-tools.md): Khóa quái, yêu thích, đội hình mẫu
 - [bulk-actions.md](docs/roadmap/bulk-actions.md): Thao tác hàng loạt
 - [auction.md](docs/roadmap/auction.md): Đấu giá hành (đặt giá kín với NPC, ký gửi)
@@ -80,7 +73,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       5h. Độ thuần thục skill. **Đã xong** (luật ở `docs/rules/skill-mastery.md`).
       5h2. Cộng hưởng skill và thời gian chờ. **Đã xong** (luật ở `docs/rules/skill-synergy-hold.md`; thần thông hold 2 làm cùng `awakening.md`).
       5h3. Thế mạnh / thế nhanh. **Đã xong** (luật ở `docs/rules/move-styles.md`; 5 chiêu Legends: Arceus chờ hiệu ứng mới ở `move-styles.md`; 3 chiêu tutor đã nhập ở bước 5k).
-      5i. Tính cách. **Đã xong** (luật ở `docs/rules/natures.md`; Bạc Hà ở chợ đen đã có ở bước 5l+.11, nấu chờ `cooking.md`).
+      5i. Tính cách. **Đã xong** (luật ở `docs/rules/natures.md`; Bạc Hà ở chợ đen đã có ở bước 5l+.11, nấu ở Đầu bếp đã có ở 6k, `cooking.md`).
       5j. Phẩm cấp tư chất. **Đã xong** (luật ở `docs/rules/aptitude.md`; dùng cho thành tựu chờ `titles.md`, đối thủ NPC chờ UI, `docs/rules/trainers.md`).
       5j2. Phẩm cấp loài. **Đã xong** (luật ở `docs/rules/species-rank.md`; chỗ dùng ở Dex / gacha / khu bảo tồn / thu phục / thành tựu / trao đổi NPC / mở khóa quái khởi đầu ghi ở roadmap của từng mục).
       5k. Sách kỹ năng. **Đã xong** (luật ở `docs/rules/skill-books.md`; chợ đen đã có ở bước 5l+.11, bí cảnh đã làm ở `docs/rules/trials.md`, đấu giá chờ `auction.md`, thần thông không có sách chờ `awakening.md`).
@@ -99,11 +92,11 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       10. Hồn tinh. **Đã xong** (luật ở `docs/rules/soul-levels.md`; hồn tinh trong thưởng thú triều đã có ở bước 11).
       11. Hệ thống event + hiệu ứng đồng hành `eventChancePercent` (race spirit đổi sang tỉ lệ event). **Đã xong** (luật ở `docs/rules/events.md`; chữ mô tả / màn hình event chờ UI, event theo ngày đêm đã có ở bước 5t, `calendar.md`).
           5m. Bản mệnh thú. **Đã xong** (luật ở mục "Bản mệnh thú" của `docs/rules/tamer.md`; chặn hiến tế / cấy ghép / trao đổi NPC do mục đó tự gọi `assertNotBond`).
-          5n. Hồn phách và hồn khí. **Đã xong** (luật ở `docs/rules/soul-relics.md`; cấy ghép thất bại lần 3 gọi `dieForever` chờ `implant.md`, sức chứa túi chờ `capacity.md`, phân giải hồn khí xong ở 5o).
+          5n. Hồn phách và hồn khí. **Đã xong** (luật ở `docs/rules/soul-relics.md`; cấy ghép thất bại lần 3 gọi `dieForever` đã làm ở 6c, sức chứa túi đã làm (`capacity.md`), phân giải hồn khí xong ở 5o).
           5o. Cường hóa, tẩy luyện, phân giải trang bị. **Đã xong** (luật ở `docs/rules/equipment-forge.md`; tẩy luyện đổi thành tung lại mọi dòng phụ không khóa; khí linh / Khí giới bí cảnh chờ `artifact-spirits.md`).
           5p. Cuồng bạo. **Đã xong** (luật ở `docs/rules/frenzy.md`; chủ project chốt 2026-10-25: quái có chủ chỉ race khó kiểm soát mới cuồng bạo và mất điều khiển; boss thế giới chờ `world-boss.md`).
           5q. Thu phục. **Đã xong** (luật ở `docs/rules/recruit.md`).
-          5q2. Khu bảo tồn. **Đã xong** (luật ở `docs/rules/safari-zone.md`; sức chứa kho chờ `capacity.md`).
+          5q2. Khu bảo tồn. **Đã xong** (luật ở `docs/rules/safari-zone.md`; sức chứa kho đã làm, `capacity.md`).
           5q3. Bắt trượt tăng tỉ lệ lần sau. **Đã xong** (luật ở mục "Bắt quái" của `docs/rules/battle.md`).
           5r. Thiên phú quái. **Đã xong** (luật ở `docs/rules/monster-talents.md`).
           5s. Kích cỡ quái. **Đã xong** (luật ở `docs/rules/monster-size.md`; quái lớn suy ra từ cân nặng ≥ 1000 kg thay cho danh sách duyệt tay).
@@ -111,18 +104,18 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
           5t. Ngày đêm và mùa. **Đã xong** (luật ở `docs/rules/calendar.md`; thêm tuần trăng cho Ursaluna, điều kiện `hourRange` cho mogwai, tháp thí luyện ngoài lịch).
           5u. Linh dịch. **Đã xong** (luật ở `docs/rules/spirit-virus.md`; tỉ lệ nhiễm / lây theo Pokérus gốc thay cho số tạm của roadmap).
           5v. Âm / Dương hóa. **Đã xong** (luật ở `docs/rules/polarity.md`; quái hoang / boss có cực theo tầng đang đánh thay cho `highestFloor`).
-   6. Extract / inject trait.
-      6b. Hiến tế (`sacrifice`).
-      6c. Phòng Thí Nghiệm: cấy ghép (`implant`).
-      6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần chuyển sang `sacrifice.md`).
+   6. Extract / inject trait. **Đã xong** (2026-10-31; luật ở `docs/rules/trait-crystals.md`; tinh thể rơi đồ để sau).
+      6b. Hiến tế. **Đã xong** (2026-10-31; luật ở `docs/rules/sacrifice.md`; độ thuần không vượt độ thuần cao hơn của hai quái thay cho cộng thẳng; chặn quái khóa chờ `roster-tools.md`, bộ lọc hàng loạt chờ `bulk-actions.md`).
+      6c. Phòng Thí Nghiệm: cấy ghép (`implant`). **Đã xong** (2026-10-31; luật ở `docs/rules/implant.md`; bậc huyết thanh ở `balance.json` thay `serums.json`, bản mệnh cấy được (chết thì đạo thương), kết quả qua mốc lý lịch thay log riêng; huyết thanh hiệu ứng + registry `SERUM_EFFECTS` làm ngay sau (5 hiệu ứng theo hook có sẵn, cấp có dấu); hỏi khi túi đầy đã làm cùng sức chứa (`docs/rules/capacity.md`, 2026-10-31, save v77)).
+      6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần đã làm ở 6b, `sacrifice.md`).
       6e. Thức tỉnh và độ kiếp. **Đã xong** ở bước 5l+.1 (luật ở `docs/rules/awakening.md`).
       6f. Hóa hình. **Đã xong** ở bước 5l+.2 (luật ở `docs/rules/human-form.md`).
       6g. Thiên tài địa bảo. **Đã xong** ở bước 5l+.3 (luật ở `docs/rules/treasures.md`).
       6h. Luyện đan và linh điền. **Đã xong** ở bước 5l+.4 (luật ở `docs/rules/alchemy.md`).
-      6i. Ấp trứng có hoàn cảnh (`egg-incubation.md`; cần linh thạch của luyện đan).
+      6i. Ấp trứng có hoàn cảnh. **Đã xong** (2026-10-31; luật ở mục "Ấp trứng có hoàn cảnh" của `docs/rules/breeding-eggs.md`; Ôn Dưỡng Lò là bùa mua ở cửa hàng thay `keyItem`, linh địa theo hệ chủ đạo của map, gen +2% mỗi viên thay 10% theo mô phỏng).
       6j. Hồn tinh. **Đã xong** ở bước 5l+.10 (luật ở `docs/rules/soul-levels.md`).
-      6k. Linh thực (`cooking.md`; dùng chung hệ thống công thức của luyện đan).
-      6l. Bánh breed (`breeding-cakes.md`; nấu ở Đầu bếp).
+      6k. Linh thực. **Đã xong** (2026-10-31; luật ở `docs/rules/cooking.md`; nguồn % `meal` chỉ trong trận như thưởng sưu tập; % thân mật chỉ khi thắng trận; thêm công thức nấu mồi dụ; kỹ năng đồng hành nấu ăn chưa có).
+      6l. ~~Bánh breed~~: **bỏ khỏi kế hoạch** (chủ project chốt 2026-10-31; xóa `breeding-cakes.md`).
       6m. Luân hồi quái (`rebirth.md`; sau Thức tỉnh).
       6n. Câu cá và khai thác (`fishing-mining.md`; cần nguyên liệu của luyện đan).
    7. Tự động đánh. **Đã xong** phần core ở bước 5l+.7 (luật ở `docs/rules/auto-battle.md`).
@@ -143,7 +136,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       9e. Tông môn (`sects.md`; cần nhiệm vụ và đội NPC).
       9f. Trao đổi với NPC (`npc-trades.md`).
    10. Cây thần (gacha trứng).
-   11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt.
+   11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt. Sức chứa **đã xong** (2026-10-31, làm sớm cùng cấy ghép; luật ở `docs/rules/capacity.md`); thao tác hàng loạt còn ở `bulk-actions.md`.
        11b. Khóa quái, yêu thích, đội hình mẫu (`roster-tools.md`).
    12. Hệ thống event. **Đã xong** ở bước 5l+.11 (luật ở `docs/rules/events.md`).
        12b. Đấu giá hành (`auction.md`; sau event để tách rõ với chợ đen).

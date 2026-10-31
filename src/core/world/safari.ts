@@ -5,7 +5,16 @@
 import { recordQuestEvent } from '../quests'
 import { getBaseSpecies, startHistory } from '../monster'
 import { getItemCount, removeItems } from '../inventory'
-import { charmEffect, criticalCaptureMultiplier, isFavoriteItem, hasPartyRoom } from '../registries'
+import {
+  charmEffect,
+  criticalCaptureMultiplier,
+  isFavoriteItem,
+  hasPartyRoom,
+  canReceiveMonster,
+  capacityOf,
+  hasRosterRoom,
+  mealMultiplier
+} from '../registries'
 import { ActionError, rollPercent, toBig, type Decimal, type RngState } from '../shared'
 import { partnerMultiplier } from '../tamer'
 import {
@@ -59,11 +68,11 @@ function lureMultipliers(
 
 /**
  * Tỉ lệ bắt (%) khi ném Bóng Bảo Tồn vào quái đang gặp: công thức bắt chung (HP đầy), hệ số Bóng
- * Bảo Tồn × mồi / đá, kỹ năng đồng hành, rồi bắt trượt theo số lần đã thoát.
+ * Bảo Tồn × mồi / đá, kỹ năng đồng hành, món ăn linh thực, rồi bắt trượt theo số lần đã thoát.
  */
 export function safariCatchChance(
   data: GameData,
-  state: Pick<GameState, 'party'>,
+  state: Pick<GameState, 'party' | 'cooking'>,
   encounter: SafariEncounter
 ): number {
   const ball = {
@@ -71,7 +80,9 @@ export function safariCatchChance(
       data.config.safari.ballCatchMultiplier * lureMultipliers(data, encounter.lure).catchMultiplier
   }
   const chance = catchChance(data, encounter.monster, ball, {
-    playerMultiplier: partnerMultiplier(data, state.party, 'catchRatePercent')
+    playerMultiplier:
+      partnerMultiplier(data, state.party, 'catchRatePercent') *
+      mealMultiplier(data, state.cooking.meal, 'catchRatePercent')
   })
   return withCatchPity(data, chance, encounter.misses)
 }
@@ -155,6 +166,10 @@ export function enterSafari(data: GameData, state: GameState): GameState {
   if (state.battle) throw new ActionError('inBattle')
   if (state.location.type !== 'town') throw new ActionError('notInTown')
   assertNoInstance(state)
+  // Đội đủ và kho đầy: không vào khu, không mất phí (docs/rules/capacity.md).
+  if (!canReceiveMonster(data, state)) {
+    throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
+  }
   const fee = safariEntryFee(data, state)
   if (state.money.lt(fee)) throw new ActionError('notEnoughMoney', { need: fee, have: state.money })
   const refreshed = refreshSafariRoster(data, state, dayOf(state.time))
@@ -215,6 +230,10 @@ export function throwSafariBall(data: GameData, state: GameState): GameState {
   const visit = requireVisit(state)
   const { encounter } = visit
   const monsterId = encounter.monster.id
+  // Hết chỗ giữa chừng: không ném bóng (vẫn ném mồi / đá, bỏ đi, rời khu được; capacity.md).
+  if (!hasRosterRoom(data, state, { newcomer: encounter.monster })) {
+    throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
+  }
   const chance = safariCatchChance(data, state, encounter)
   const { caught, critical, shakes, rng } = rollCapture(data, state.rng, {
     chance,

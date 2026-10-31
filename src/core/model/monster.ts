@@ -76,6 +76,25 @@ export interface Monster {
   traits: TraitInstance[]
   /** 0 = thường, 1 = shiny, 2 = shiny ×2... */
   shinyStacks: number
+  /**
+   * Số stack hiến tế (docs/rules/sacrifice.md), nguyên ≥ 0, không trần: mỗi stack + % mọi chỉ số.
+   * Fuse cộng stack của quái phụ; breeding không truyền.
+   */
+  sacrificeStacks: number
+  /**
+   * Tổng cấy ghép của từng chỉ số (docs/rules/implant.md): cộng cùng chỗ với gen (không nhân
+   * geneWeight), được phép âm (cấy thất bại trừ). Breeding không truyền.
+   */
+  implantBonusStats: BigStats
+  /**
+   * Cấp hiệu ứng cấy theo id hiệu ứng (serumEffects.json): nguyên khác 0; dương = hiệu ứng (hooks ×
+   * cấp), âm = hiệu ứng ngược (failHooks × |cấp|). Breeding không truyền.
+   */
+  implantEffects: Record<string, number>
+  /** Số lần đã cấy (gộp mọi chỉ số, cả thành công lẫn thất bại), nguyên ≥ 0. */
+  implantAttempts: number
+  /** Số lần cấy thất bại, nguyên ≥ 0, không bao giờ reset; tới implant.maxFails thì mất quái. */
+  implantFails: number
   /** 1 với quái thường, 2–5 với boss bắt được. */
   bossMultiplier: number
   fused: boolean

@@ -33,7 +33,8 @@ export const CONTENT_KINDS = [
   'trialRules',
   'events',
   'eventModifiers',
-  'zones'
+  'zones',
+  'serumEffects'
 ] as const
 
 export type ContentKind = (typeof CONTENT_KINDS)[number]

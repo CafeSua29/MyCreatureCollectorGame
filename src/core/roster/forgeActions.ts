@@ -2,6 +2,7 @@
 // bị, phụ linh. Cường hóa / tẩy luyện / phụ linh được cả món trong túi lẫn món đang lắp trên quái (đội
 // hoặc kho); phân giải chỉ món trong túi. Cường hóa, đúc, phụ linh cộng exp luyện khí (alchemy.md).
 
+import { assertBagRoom } from '../registries'
 import { ActionError, malformedAction, rollPercent, spendMoney, toBig } from '../shared'
 import {
   addEquipment,
@@ -156,6 +157,7 @@ export function castEquipment(
   if (!item || !isRandomEquipment(item)) throw new ActionError('notCastable', { itemId })
   requireCraftLevel(state, 'smithing', cast.minLevel)
   const inventory = removeItems(state.inventory, core.coreId, cores)
+  assertBagRoom(data, state)
   const paid = spendMoney({ ...state, inventory }, castMoney(data, state.highestFloor))
   const weights = castRarityWeights(data, { cores, level: craftLevel(state, 'smithing') })
   const [rarity, afterRarity] = rollRarity(data, paid.rng, weights, state.highestFloor)

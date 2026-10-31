@@ -13,6 +13,7 @@ import {
   bindBondWhenPossible,
   buyFromTempShop,
   buyPlotWhenCheap,
+  expandCapacityWhenFull,
   holdCritItems,
   holdMegaStones,
   holdZCrystals,
@@ -149,5 +150,23 @@ describe('economy: bản mệnh thú', () => {
     expect(bound.party.find((m) => m.bond)?.id).toBe('s')
     expect(count.bondsBound).toBe(1)
     expect(bindBondWhenPossible(data, bound, new Set(['w', 's', 'x']), count)).toBe(bound)
+  })
+})
+
+describe('economy: sức chứa', () => {
+  it('còn ≤ capacityMargin chỗ thì mở rộng khi đủ tiền; ghi chỗ dùng cao nhất', () => {
+    const data = makeEquipmentData((raw) => {
+      raw.config.capacity.bag = { ...raw.config.capacity.bag, base: 6, realmBonus: 0 }
+    })
+    const bag = ['e1', 'e2'].reduce(
+      (inventory, id) => addEquipment(inventory, makeEquipment({ id })),
+      town().inventory
+    )
+    const count = newEconomyCount()
+    const next = expandCapacityWhenFull(data, town({ inventory: bag }), count)
+    expect(next.capacity).toEqual({ storage: 0, bag: 1 })
+    expect(count).toMatchObject({ capacityExpansions: 1, bagPeak: 2, storagePeak: 0 })
+    const poor = town({ inventory: bag, money: toBig(100) })
+    expect(expandCapacityWhenFull(data, poor, newEconomyCount()).capacity.bag).toBe(0)
   })
 })

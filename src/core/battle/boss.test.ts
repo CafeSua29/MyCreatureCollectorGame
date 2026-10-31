@@ -3,7 +3,7 @@ import type { MonsterOverrides } from '../testing'
 import { rawGameData } from '@data'
 import { createGameData } from '../gameData'
 import { validateMonster } from '../monster'
-import { createBossEgg, tickEggs } from '../progression'
+import { createBossEgg } from '../progression'
 import { generateBoss, generateEncounter, generateFloorBoss } from '../world'
 import { expReward, moneyReward } from '../monster'
 import { getMaxHp } from '../monster'
@@ -220,13 +220,8 @@ describe('trứng nở', () => {
   const eggOf = (id: string, battlesLeft: number): Egg => ({
     id,
     battlesLeft,
+    infusions: [],
     monster: makeMonster({ id, traits: [{ id: 'bossBlood', level: 1 }] })
-  })
-
-  it('tickEggs: giảm bộ đếm, tách trứng đến lúc nở', () => {
-    const { eggs, hatched } = tickEggs([eggOf('x', 1), eggOf('y', 3)], 1)
-    expect(hatched.map((m) => m.id)).toEqual(['x'])
-    expect(eggs).toEqual([{ ...eggOf('y', 3), battlesLeft: 2 }])
   })
 
   it('mỗi trận thắng quái hoang: trứng đếm ngược, nở vào đội (log eggHatched)', () => {

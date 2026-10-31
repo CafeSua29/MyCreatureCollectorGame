@@ -10,6 +10,7 @@ import {
   breedBlocker,
   breedCost,
   battleCatchChance,
+  canSacrificeTo,
   computeStats,
   dayOf,
   fuseSuccessChance,
@@ -132,6 +133,15 @@ function fuseTargetFor(
   )
 }
 
+/**
+ * Quái hoang đáng lấy về: làm nguyên liệu fuse, hoặc hiến tế được cho một quái đội mẫu (cùng race,
+ * cùng lineage; sacrifice.ts hiến tế ở lần về thị trấn sau).
+ */
+function isWantedFodder(data: GameData, team: readonly Monster[], candidate: Monster): boolean {
+  if (fuseTargetFor(data, team, candidate)) return true
+  return team.some((member) => member.id !== candidate.id && canSacrificeTo(member, candidate))
+}
+
 /** Lý lịch của quái hoang về tay người chơi (bắt bóng, thu phục). */
 const WILD_ORIGINS: ReadonlySet<string> = new Set(['wild', 'boss', 'recruit'])
 
@@ -142,17 +152,29 @@ const isCaughtSpare = (monster: Monster, teamIds: ReadonlySet<string>): boolean 
   WILD_ORIGINS.has(monster.history?.origin.kind ?? '')
 
 /**
- * Thả quái bắt về không còn làm nguyên liệu được cho quái đội mẫu nào (tỉ lệ tụt vì lineage dài,
- * quái đội mẫu đổi), để kho có chỗ cho nguyên liệu mới.
+ * Quái bắt về trong kho (rảnh): còn làm nguyên liệu fuse (`fuse`, tổng chỉ số cao trước) hoặc
+ * không còn cho quái đội mẫu nào (`stale`: tỉ lệ tụt vì lineage dài, quái đội mẫu đổi).
  */
+export function spareFodder(
+  data: GameData,
+  state: GameState,
+  teamIds: ReadonlySet<string>
+): { fuse: Monster[]; stale: Monster[] } {
+  const team = teamOf(state, teamIds)
+  const spares = state.storage.filter((m) => isCaughtSpare(m, teamIds))
+  const fuse = spares
+    .filter((m) => fuseTargetFor(data, team, m))
+    .sort((a, b) => statTotal(data, b).cmp(statTotal(data, a)))
+  return { fuse, stale: spares.filter((m) => !fuse.includes(m)) }
+}
+
+/** Thả nguyên liệu hết dùng (spareFodder), để kho có chỗ cho nguyên liệu mới. */
 export function releaseStaleFodder(
   data: GameData,
   state: GameState,
   teamIds: ReadonlySet<string>
 ): GameState {
-  const team = teamOf(state, teamIds)
-  for (const monster of state.storage) {
-    if (!isCaughtSpare(monster, teamIds) || fuseTargetFor(data, team, monster)) continue
+  for (const monster of spareFodder(data, state, teamIds).stale) {
     state = simAct(data, state, { type: 'releaseMonster', monsterId: monster.id })
   }
   return state
@@ -201,7 +223,7 @@ export function captureCommand(
   const team = teamOf(state, teamIds)
   for (const id of battle.enemySlots) {
     const target = battle.enemies.find((m) => m.id === id)
-    if (!target || !fuseTargetFor(data, team, target)) continue
+    if (!target || !isWantedFodder(data, team, target)) continue
     const user = state.party.find((m) => m.id === battle.playerSlots[slot])
     if (!user) return null
     const best = bestBall(data, state, { target, user })
@@ -228,14 +250,14 @@ export function intimidateCommand(
   const team = teamOf(state, teamIds)
   for (const id of battle.enemySlots) {
     const target = battle.enemies.find((m) => m.id === id)
-    if (!target || !fuseTargetFor(data, team, target)) continue
+    if (!target || !isWantedFodder(data, team, target)) continue
     if (intimidateChance(data, state, target.id) < GROWTH_POLICY.minIntimidateChance) continue
     return { skillId: skill.id, targetId: target.id }
   }
   return null
 }
 
-/** Trận thắng có quái xin theo: nhận nếu làm nguyên liệu fuse được và kho chưa đủ, không thì từ chối. */
+/** Trận thắng có quái xin theo: nhận nếu làm nguyên liệu (fuse / hiến tế) và kho chưa đủ, không thì từ chối. */
 export function recruitDecision(
   data: GameData,
   state: GameState,
@@ -246,7 +268,7 @@ export function recruitDecision(
   if (!offer) return null
   const wanted =
     fodderCount(data, state, teamIds) < GROWTH_POLICY.maxFodder &&
-    fuseTargetFor(data, teamOf(state, teamIds), offer) !== undefined
+    isWantedFodder(data, teamOf(state, teamIds), offer)
   return { type: wanted ? 'acceptRecruit' : 'declineRecruit' }
 }
 

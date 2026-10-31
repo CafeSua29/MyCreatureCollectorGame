@@ -1,5 +1,5 @@
-// Kiểm tra dữ liệu luyện đan / luyện khí (docs/rules/alchemy.md): recipes.json, config.alchemy, mỗi
-// công thức cần đan phương có đúng một đan phương.
+// Kiểm tra dữ liệu luyện đan / luyện khí / nấu ăn (docs/rules/alchemy.md, cooking.md): recipes.json,
+// config.alchemy, config.cooking, mỗi công thức cần đan phương có đúng một đan phương.
 
 import { raceRefIds } from '../registries'
 import { itemStorage } from '../inventory'
@@ -69,8 +69,8 @@ function checkRecipes(data: GameData, issues: string[]): void {
       issues.push(`${where}: station lạ "${String(recipe.station)}"`)
     }
     // Đan phương / công thức đã học hiện chỉ lưu cho luyện đan (alchemy.knownRecipes).
-    if (recipe.scroll && recipe.station === 'smithing') {
-      issues.push(`${where}: công thức luyện khí chưa hỗ trợ scroll`)
+    if (recipe.scroll && recipe.station !== undefined && recipe.station !== 'alchemy') {
+      issues.push(`${where}: công thức ${recipe.station} chưa hỗ trợ scroll`)
     }
     checkAmount(data, recipe.output, `${where}: output`, issues)
     if (!Array.isArray(recipe.inputs) || recipe.inputs.length === 0) {
@@ -128,8 +128,29 @@ function checkConfig(data: GameData, issues: string[]): void {
   }
 }
 
-/** Kiểm tra mọi dữ liệu luyện đan. */
+/** config.cooking: đường cong cấp nấu ăn (docs/rules/cooking.md). */
+function checkCookingConfig(data: GameData, issues: string[]): void {
+  const config = asObject(data.config.cooking)
+  if (!config) {
+    issues.push('config.cooking phải là object')
+    return
+  }
+  const at = (field: string): string => `config.cooking.${field}`
+  checkKnownFields(
+    config,
+    ['expBase', 'expPower', 'levelBonusPercent'],
+    'config.cooking',
+    'config',
+    issues
+  )
+  issues.push(...checkNumber(config.expBase, at('expBase'), Number.MIN_VALUE))
+  issues.push(...checkNumber(config.expPower, at('expPower'), Number.MIN_VALUE))
+  issues.push(...checkNumber(config.levelBonusPercent, at('levelBonusPercent'), 0))
+}
+
+/** Kiểm tra mọi dữ liệu luyện đan / nấu ăn. */
 export function checkAlchemyData(data: GameData, issues: string[]): void {
   checkRecipes(data, issues)
   checkConfig(data, issues)
+  checkCookingConfig(data, issues)
 }

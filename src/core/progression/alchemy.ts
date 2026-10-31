@@ -1,4 +1,4 @@
-// Luyện đan, luyện khí và linh điền (docs/rules/alchemy.md): cấp của mỗi nơi luyện theo tổng exp, tỉ lệ
+// Luyện đan, luyện khí, nấu ăn và linh điền (docs/rules/alchemy.md, cooking.md): cấp của mỗi nơi luyện theo tổng exp, tỉ lệ
 // thành công, luyện nhiều lần (mỗi lần tung RNG riêng, thất bại mất nguyên liệu và tiền), học đan
 // phương, trồng / thu hoạch linh điền theo ngày, mua thêm ô. Việc theo ngày: báo ô vừa chín
 // (cropRipeTask).
@@ -34,7 +34,7 @@ interface CraftStationRule {
   levelBonusPercent: (data: GameData) => number
   skill: (state: GameState) => CraftSkillState
   withSkill: (state: GameState, skill: CraftSkillState) => GameState
-  levelError: 'alchemyLevelTooLow' | 'smithingLevelTooLow'
+  levelError: 'alchemyLevelTooLow' | 'smithingLevelTooLow' | 'cookingLevelTooLow'
   /** Tên dùng trong lỗi dữ liệu của đường cong cấp. */
   label: string
   /** % thành công cộng thêm ngoài cấp (kỹ năng đồng hành...). */
@@ -58,6 +58,16 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     withSkill: (state, skill) => ({ ...state, smithing: skill }),
     levelError: 'smithingLevelTooLow',
     label: 'luyện khí',
+    bonusPercent: () => 0
+  },
+  // Linh thực ở Đầu bếp (docs/rules/cooking.md); giữ món ăn đang có tác dụng khi cộng exp.
+  cooking: {
+    curve: (data) => ({ base: data.config.cooking.expBase, power: data.config.cooking.expPower }),
+    levelBonusPercent: (data) => data.config.cooking.levelBonusPercent,
+    skill: (state) => state.cooking,
+    withSkill: (state, skill) => ({ ...state, cooking: { ...state.cooking, ...skill } }),
+    levelError: 'cookingLevelTooLow',
+    label: 'nấu ăn',
     bonusPercent: () => 0
   }
 }
@@ -138,7 +148,7 @@ export function requireUsableRecipe(data: GameData, state: GameState, recipeId: 
   return recipe
 }
 
-/** Việc ở NPC luyện đan / Thợ rèn (luyện đan, luyện khí, hồn phách): ở thị trấn, ngoài trận. */
+/** Việc ở NPC luyện đan / Thợ rèn / Đầu bếp (luyện, nấu, hồn phách): ở thị trấn, ngoài trận. */
 export const requireTown = (state: GameState): void => {
   if (state.battle) throw new ActionError('inBattle')
   if (state.location.type !== 'town') throw new ActionError('notInTown')

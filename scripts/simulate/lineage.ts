@@ -3,11 +3,14 @@
 // qua NPC thị trấn, vì ở đây không đo kinh tế hay thời gian ấp trứng. Fuse luôn coi là thành công
 // để đo chỉ số; tỉ lệ thành công (không bùa) ghi riêng từng đời và tỉ lệ đi tới đời đó. Mỗi lần
 // fuse "người chơi" kế thừa skill mạnh nhất của quái phụ (chooseInheritance), đo tổng power bộ
-// skill.
+// skill. Mỗi đời breed "người chơi" hiến tế các con không chọn vào con được chọn (absorbSacrifice,
+// docs/rules/sacrifice.md), đo stack và giá hiến tế. Biến thể breedInfused đặt đủ maxInfusions linh
+// thạch cùng hệ vào mỗi trứng (infuseMonster, docs/rules/breeding-eggs.md mục "Ấp trứng có hoàn cảnh").
 
 import {
   BIG_ZERO,
   DataError,
+  absorbSacrifice,
   STAT_NAMES,
   aptitudeOf,
   breedBlocker,
@@ -19,12 +22,14 @@ import {
   fuseCost,
   fuseMonsters,
   fuseSuccessChance,
+  infuseMonster,
   inheritableSkillIds,
   mainBloodline,
   makeOffspring,
   newFusionSpecies,
   pick,
   rollMonster,
+  sacrificeCost,
   type BigStats,
   type Decimal,
   type GameData,
@@ -35,7 +40,8 @@ import {
 import type { BreedingSpec, FusionSpec } from './scenarios'
 import { buildMonster, deriveSeed, geneValue } from './team'
 
-export type LineageKind = 'breed' | 'fuse'
+/** breedInfused: breed như breed nhưng mỗi trứng đặt đủ linh thạch cùng hệ (ấp trứng có hoàn cảnh). */
+export type LineageKind = 'breed' | 'breedInfused' | 'fuse'
 
 export interface LineageRow {
   kind: LineageKind
@@ -48,8 +54,12 @@ export interface LineageRow {
   /** Tư chất so với tầng của kịch bản (docs/rules/aptitude.md): id bậc và tỉ lệ gen. */
   aptitudeTierId: string
   aptitudeRatio: Decimal
-  /** Giá để ra đời này (đời 0: 0). */
+  /** Giá để ra đời này (đời 0: 0), chưa gồm giá hiến tế. */
   cost: Decimal
+  /** Stack hiến tế của quái đời này; breed: các con không chọn hiến tế vào con được chọn. */
+  sacrificeStacks: number
+  /** Giá hiến tế ở đời này (fuse / đời 0: 0). */
+  sacrificeCost: Decimal
   /** Fuse: tỉ lệ % lần fuse ra đời này thành công (không bùa); breed / đời 0: null. */
   successChance: number | null
   /** Fuse: tỉ lệ % đi được tới đời này mà không lần nào thất bại (tích các successChance). */
@@ -117,6 +127,7 @@ function makeRow(
     /** Tầng của kịch bản: tầng mốc chấm tư chất. */
     floor: number
     cost: Decimal
+    sacrificeCost?: Decimal
     note?: string
     successChance?: number
     reachChance?: number
@@ -136,6 +147,8 @@ function makeRow(
     aptitudeTierId: aptitude.tier.id,
     aptitudeRatio: aptitude.ratio,
     cost: base.cost,
+    sacrificeStacks: base.monster.sacrificeStacks,
+    sacrificeCost: base.sacrificeCost ?? BIG_ZERO,
     successChance: base.successChance ?? null,
     reachChance: base.reachChance ?? null,
     skillPower: sumSkillPower(data, base.monster),
@@ -170,9 +183,17 @@ function rollWild(
 
 /**
  * Breed nhiều đời: mỗi đời bố là quái hoang cùng loài của tầng, lấy con cái có tổng gen cao nhất
- * trong offspringPerGeneration con làm mẹ đời sau (lớn tới measureLevel).
+ * trong offspringPerGeneration con làm mẹ đời sau (lớn tới measureLevel); các con còn lại (cùng loài,
+ * level 1) hiến tế vào mẹ mới.
  */
-export function runBreeding(data: GameData, spec: BreedingSpec, seed: number): LineageRow[] {
+export function runBreeding(
+  data: GameData,
+  spec: BreedingSpec,
+  seed: number,
+  { infused = false }: { infused?: boolean } = {}
+): LineageRow[] {
+  const kind: LineageKind = infused ? 'breedInfused' : 'breed'
+  const infusions = infused ? data.config.egg.incubation.maxInfusions : 0
   let rng = createRng(deriveSeed(seed, 'breeding', spec.speciesId))
   const level = spec.measureLevel
   let mother: Monster
@@ -186,11 +207,7 @@ export function runBreeding(data: GameData, spec: BreedingSpec, seed: number): L
   // Không tính tuổi khi đo chỉ số theo đời (như rollWild); con nhận cờ aging của mẹ.
   mother = { ...mother, gender: 'female', aging: false }
   const rows = [
-    makeRow(
-      data,
-      { kind: 'breed', generation: 0, monster: mother, floor: spec.floor, cost: BIG_ZERO },
-      null
-    )
+    makeRow(data, { kind, generation: 0, monster: mother, floor: spec.floor, cost: BIG_ZERO }, null)
   ]
   const first = rows[0].statTotal
 
@@ -202,19 +219,38 @@ export function runBreeding(data: GameData, spec: BreedingSpec, seed: number): L
     if (blocker)
       throw new DataError([`breeding: loài "${spec.speciesId}" không breed được (${blocker})`])
     const cost = breedCost(data, father, mother)
+    const children: Monster[] = []
     let best: Monster | null = null
     for (let i = 0; i < spec.offspringPerGeneration; i++) {
       let child: Monster
       ;[child, rng] = makeOffspring(data, rng, father, mother, `child${generation}-${i}`)
+      for (let stone = 0; stone < infusions; stone++) {
+        ;[child, rng] = infuseMonster(data, rng, child, child.elementIds[0])
+      }
+      children.push(child)
       if (child.gender !== 'female') continue
       if (!best || sumStats(child.genes).gt(sumStats(best.genes))) best = child
     }
-    if (best) mother = atLevel(data, best, level)
+    let offered = BIG_ZERO
+    if (best) {
+      mother = atLevel(data, best, level)
+      const siblings = children.filter((child) => child !== best)
+      offered = sacrificeCost(data, mother, siblings)
+      mother = siblings.reduce((receiver, sub) => absorbSacrifice(data, receiver, sub), mother)
+    }
     const note = best ? '' : 'không có con cái, giữ mẹ cũ'
     rows.push(
       makeRow(
         data,
-        { kind: 'breed', generation, monster: mother, floor: spec.floor, cost, note },
+        {
+          kind,
+          generation,
+          monster: mother,
+          floor: spec.floor,
+          cost,
+          sacrificeCost: offered,
+          note
+        },
         first
       )
     )

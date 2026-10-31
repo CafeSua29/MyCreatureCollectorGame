@@ -1,7 +1,7 @@
 // NPC cửa hàng ở thị trấn (mục "Cửa hàng và vứt vật phẩm"): mua món trong danh sách hàng, bán
 // mọi item có giá (kể cả trang bị).
 
-import { ActionError, malformedAction, spendMoney, type Decimal } from '../shared'
+import { ActionError, malformedAction, spendMoney, toBig, type Decimal } from '../shared'
 import {
   addByRef,
   addEquipment,
@@ -16,7 +16,7 @@ import {
   shopEntryRef,
   takeEquipment
 } from '../inventory'
-import { eventModifierMultiplier } from '../registries'
+import { assertBagRoom, eventModifierMultiplier } from '../registries'
 import { dayOf, type GameData, type GameState, type ShopEntry } from '../model'
 import { addMarketSale, marketSellTotal } from './market'
 
@@ -62,6 +62,7 @@ export function buyItem(
   if (!entry) throw new ActionError('notInShop')
   if (entry.storage === 'instance') {
     if (count !== 1) throw malformedAction('món trang bị chỉ mua được 1')
+    assertBagRoom(data, state)
     const paid = spendMoney(state, shopBuyPrice(data, state, entry))
     return {
       ...paid,
@@ -74,6 +75,23 @@ export function buyItem(
   }
   const paid = spendMoney(state, shopBuyPrice(data, state, entry).times(count))
   return { ...paid, inventory: addByRef(state.inventory, entry, count) }
+}
+
+/**
+ * Mua bùa bán ở cửa hàng thị trấn (bùa có townPrice, kiểu Ôn Dưỡng Lò): luôn có hàng, giá cố định,
+ * mỗi loại một lần (bùa có trong túi là có tác dụng, cái thứ hai vô dụng).
+ */
+export function buyCharm(data: GameData, state: GameState, itemId: string): GameState {
+  requireShop(state)
+  const item = data.items[itemId]
+  if (item?.category !== 'charm' || item.townPrice === undefined) {
+    throw new ActionError('charmNotForSale', { itemId, reason: 'notSold' })
+  }
+  if (getRefCount(state.inventory, { storage: 'stack', itemId }) > 0) {
+    throw new ActionError('charmNotForSale', { itemId, reason: 'owned' })
+  }
+  const paid = spendMoney(state, toBig(item.townPrice))
+  return { ...paid, inventory: addByRef(state.inventory, { storage: 'stack', itemId }, 1) }
 }
 
 /**

@@ -3,7 +3,7 @@
 
 import { newEventState } from '../events'
 import { newTamerState } from '../tamer'
-import { defaultGameOptions, rollExpeditionBoard } from '../progression'
+import { defaultGameOptions, newLabState, restockLab, rollExpeditionBoard } from '../progression'
 import { refillQuestBoard } from '../quests'
 import { newSafariState, newZoneState, rollFloorBiome, rollMonster } from '../world'
 import { canHaveGmaxFactor, createInventory } from '../inventory'
@@ -17,11 +17,17 @@ import {
   toBig,
   type RngState
 } from '../shared'
-import { newDexState, normalizeNickname, syncDex } from '../roster'
+import { newCapacityState, newDexState, normalizeNickname, syncDex } from '../roster'
 import { startHistory } from '../monster'
 import { bindContract } from '../tamer'
 import { ageDaysAtPercent, starterSlotPool } from '../registries'
-import { SAVE_VERSION, newAlchemyState, newSmithingState, newTrainerState } from './reducer'
+import {
+  SAVE_VERSION,
+  newAlchemyState,
+  newCookingState,
+  newSmithingState,
+  newTrainerState
+} from './reducer'
 import {
   dayOf,
   SEXED_GENDERS,
@@ -154,12 +160,15 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     formations: { known: [], active: null },
     alchemy: newAlchemyState(),
     smithing: newSmithingState(),
+    cooking: newCookingState(),
     trainers: newTrainerState(),
     trial: null,
     tower: { highest: 0 },
     events: newEventState(),
     recruit: { bait: null },
     safari: newSafariState(),
+    lab: newLabState(),
+    capacity: newCapacityState(),
     zones: newZoneState(),
     dex: newDexState(),
     garden: { plots: Array.from({ length: data.config.alchemy.initialPlots }, () => null) },
@@ -172,5 +181,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     },
     battle: null
   })
-  return syncDex(data, state)
+  // Phòng Thí Nghiệm có hàng ngay từ đầu (docs/rules/implant.md); tung sau cùng để không đổi quái
+  // khởi đầu, hàng cửa hàng, bảng thám hiểm / nhiệm vụ.
+  return syncDex(data, restockLab(data, state, dayOf(state.time)))
 }

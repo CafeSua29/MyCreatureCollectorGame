@@ -10,7 +10,10 @@ import {
   ballCatchRateBonus,
   criticalCaptureMultiplier,
   hasTrialRule,
+  capacityOf,
   hasPartyRoom,
+  hasRosterRoom,
+  mealMultiplier,
   partyAfterJoining
 } from '../registries'
 import { assertUsableIn, itemTarget, removeItems } from '../inventory'
@@ -72,7 +75,9 @@ function ownedSpeciesIds(
  */
 export function battleCatchChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'storage' | 'eggs' | 'time'> & { battle: BattleState },
+  state: Pick<GameState, 'party' | 'storage' | 'eggs' | 'time' | 'cooking'> & {
+    battle: BattleState
+  },
   { ball, target, user }: { ball: BallItem; target: Monster; user: Monster }
 ): number {
   const ctx = {
@@ -84,7 +89,9 @@ export function battleCatchChance(
     userLevel: user.level
   }
   const chance = catchChance(data, target, ball, {
-    playerMultiplier: partnerMultiplier(data, state.party, 'catchRatePercent'),
+    playerMultiplier:
+      partnerMultiplier(data, state.party, 'catchRatePercent') *
+      mealMultiplier(data, state.cooking.meal, 'catchRatePercent'),
     bonusMultiplier: ballBonusMultiplier(ball, ctx),
     catchRateBonus: ballCatchRateBonus(ball, ctx)
   })
@@ -107,6 +114,11 @@ export function throwBall(
     return
   }
   const { target } = found
+  // Hai bóng cùng lượt mà bóng trước đã lấp chỗ cuối: không ném, không mất bóng (capacity.md).
+  if (!hasRosterRoom(data, d, { pending: d.battle.captured, newcomer: target })) {
+    log(d, { type: 'rosterFull', monsterId: user.id })
+    return
+  }
   consumeItem(d, ball.id)
   const chance = battleCatchChance(data, d, { ball, target, user })
   const roll = rollCapture(data, d.rng, {
@@ -270,6 +282,13 @@ export function validateItemCommand(
     // Không ném bóng được vào quái đang Dynamax (như Pokémon).
     if (item.category === 'ball' && isDynamaxed(found.target)) {
       throw new ActionError('cannotCatchDynamaxed', { monsterId: targetId })
+    }
+    // Đội đủ và kho đầy (kể cả quái đã bắt trong trận): báo lỗi ngay, không mất bóng (capacity.md).
+    if (
+      item.category === 'ball' &&
+      !hasRosterRoom(data, state, { pending: battle.captured, newcomer: found.target })
+    ) {
+      throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
     }
     return
   }

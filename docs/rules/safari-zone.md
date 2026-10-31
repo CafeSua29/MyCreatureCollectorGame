@@ -40,5 +40,5 @@ Không có trận. Mỗi action là một lượt:
 
 ## Chưa có
 
-- Sức chứa kho (chờ `capacity.md`): kho đầy thì không vào khu / không ném bóng (ghi ở roadmap đó).
+- Sức chứa kho (`capacity.md`): không còn chỗ cho quái nào thì không vào khu (`rosterFull`, không mất phí); hết chỗ giữa chừng thì không ném bóng (`rosterFull`), vẫn ném mồi / đá, bỏ đi, rời khu được.
 - Màn hình khu bảo tồn (chờ UI, bước 7).

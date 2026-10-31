@@ -1,11 +1,16 @@
 // Action quản lý quái: chuyển giữa đội và kho, sắp xếp đội, thả, đặt biệt danh.
 // Chỉ dùng ngoài trận. Đội luôn giữ ít nhất 1 con (sống hay gục đều được).
 
-import { hasPartyRoom } from '../registries'
+import {
+  assertOverflowConfirmed,
+  capacityOf,
+  hasPartyRoom,
+  hasStorageRoom,
+  returnEquipmentWithinCapacity
+} from '../registries'
 import { assertNotBond } from '../tamer'
 import { assertNotBusy } from '../monster'
 import { ActionError, malformedAction } from '../shared'
-import { returnEquipment } from '../inventory'
 import { TACTICS, type GameData, type GameState, type Monster, type Tactic } from '../model'
 import { locateOwned } from './owned'
 
@@ -29,10 +34,14 @@ function requirePartyCanShrink(state: GameState): void {
   if (state.party.length <= 1) throw new ActionError('partyWouldBeEmpty')
 }
 
-export function moveToStorage(state: GameState, monsterId: string): GameState {
+export function moveToStorage(data: GameData, state: GameState, monsterId: string): GameState {
   requireNoBattle(state)
   const index = partyIndexOf(state, monsterId)
   requirePartyCanShrink(state)
+  // Kho đầy thì không cất thêm (docs/rules/capacity.md); đổi chỗ với quái trong kho vẫn được.
+  if (!hasStorageRoom(data, state)) {
+    throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
+  }
   return {
     ...state,
     party: state.party.filter((_, i) => i !== index),
@@ -94,27 +103,29 @@ export function reorderParty(state: GameState, monsterIds: string[]): GameState 
   return { ...state, party: monsterIds.map((id) => byId.get(id) as Monster) }
 }
 
-/** Thả quái: xóa vĩnh viễn khỏi đội hoặc kho, không nhận gì; món đang lắp tự về túi. */
-export function releaseMonster(state: GameState, monsterId: string): GameState {
+/**
+ * Thả quái: xóa vĩnh viễn khỏi đội hoặc kho, không nhận gì; món đang lắp tự về túi. Túi không đủ chỗ
+ * thì cần `discardOverflow` (bỏ các món thừa; docs/rules/capacity.md).
+ */
+export function releaseMonster(
+  data: GameData,
+  state: GameState,
+  { monsterId, discardOverflow }: { monsterId: string; discardOverflow?: boolean }
+): GameState {
   requireNoBattle(state)
   const inParty = state.party.find((m) => m.id === monsterId)
   // Bản mệnh thú không thả được (đổi bản mệnh trước; docs/rules/tamer.md).
   const target = inParty ?? state.storage.find((m) => m.id === monsterId)
   if (target) assertNotBond(target)
-  if (inParty) {
-    requirePartyCanShrink(state)
-    return {
-      ...state,
-      party: state.party.filter((m) => m.id !== monsterId),
-      inventory: returnEquipment(state.inventory, inParty)
-    }
-  }
-  const monster = state.storage[storageIndexOf(state, monsterId)]
-  assertNotBusy(monster)
+  if (inParty) requirePartyCanShrink(state)
+  const monster = inParty ?? state.storage[storageIndexOf(state, monsterId)]
+  if (!inParty) assertNotBusy(monster)
+  assertOverflowConfirmed(data, state, { monsters: [monster], discardOverflow })
   return {
     ...state,
+    party: state.party.filter((m) => m.id !== monsterId),
     storage: state.storage.filter((m) => m.id !== monsterId),
-    inventory: returnEquipment(state.inventory, monster)
+    inventory: returnEquipmentWithinCapacity(data, state, state.inventory, monster)
   }
 }
 

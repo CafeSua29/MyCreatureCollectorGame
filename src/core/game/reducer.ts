@@ -44,6 +44,7 @@ import {
   startExpedition,
   buyPlot,
   craft,
+  eatDish,
   forgeSoulRelic,
   harvest,
   incubateSoul,
@@ -71,9 +72,9 @@ import {
   throwSafariRock
 } from '../world'
 import { createInventory, discardItem } from '../inventory'
-import { buyItem, sellItem } from '../shop'
+import { buyCharm, buyItem, sellItem } from '../shop'
 import { bindContract, newTamerState, tamerBreakthrough } from '../tamer'
-import { fuse } from '../progression'
+import { fuse, implant, infuseEgg, newLabState, sacrifice, warmEggsAtRest } from '../progression'
 import { applySkillBook, learnPendingSkill, relearnSkill, skipPendingSkill } from '../monster'
 import {
   equipItem,
@@ -89,6 +90,10 @@ import {
   setFormation,
   setHumanForm,
   atavize,
+  extractTrait,
+  expandCapacity,
+  injectTrait,
+  newCapacityState,
   setTactic,
   takeHumanForm,
   upgradeSoulLevel,
@@ -109,7 +114,7 @@ import {
 import type { GameAction, GameData, GameState, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 74
+export const SAVE_VERSION = 79
 
 export function createGameState(options: {
   seed: number
@@ -163,6 +168,7 @@ export function createGameState(options: {
     formations: { known: [], active: null },
     alchemy: newAlchemyState(),
     smithing: newSmithingState(),
+    cooking: newCookingState(),
     quests: { board: [], active: [], nextQuestId: 1 },
     expeditions: { board: [], refreshDay: 0, active: [], nextId: 1 },
     trainers: newTrainerState(),
@@ -171,6 +177,8 @@ export function createGameState(options: {
     events: newEventState(),
     recruit: { bait: null },
     safari: newSafariState(),
+    lab: newLabState(),
+    capacity: newCapacityState(),
     zones: newZoneState(),
     dex: newDexState(),
     garden: {
@@ -203,6 +211,14 @@ export const newSmithingState = (): GameState['smithing'] => ({
   level: 1,
   exp: toBig(0),
   lastCraft: null
+})
+
+/** Nấu ăn lúc bắt đầu: cấp 1, chưa ăn món nào (docs/rules/cooking.md). */
+export const newCookingState = (): GameState['cooking'] => ({
+  level: 1,
+  exp: toBig(0),
+  lastCraft: null,
+  meal: null
 })
 
 /** Việc tốn giờ chỉ làm thời gian trôi khi nó thật sự đổi state (không lỗi, không "đứng yên"). */
@@ -342,6 +358,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return declineRecruit(state)
     case 'useBait':
       return applyBait(data, state, action.itemId)
+    case 'eatDish':
+      return eatDish(data, state, action.itemId)
     case 'claimDexReward':
       return claimDexReward(data, state, action.milestoneId)
     case 'claimRegionalDexReward':
@@ -359,8 +377,12 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
     case 'leaveSafari':
       return withSafariTime(data, state, leaveSafari(state))
     case 'rest':
-      // Nghỉ là ngủ tới sáng hôm sau.
-      return advanceTime(data, rest(data, state), hoursUntilWake(data, state.time))
+      // Nghỉ là ngủ tới sáng hôm sau; bùa kiểu Ôn Dưỡng Lò ấp trứng trong lúc nghỉ.
+      return advanceTime(
+        data,
+        warmEggsAtRest(data, rest(data, state)),
+        hoursUntilWake(data, state.time)
+      )
     case 'travel':
       return withTime(
         data,
@@ -382,6 +404,16 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return breed(data, state, action.fatherId, action.motherId)
     case 'fuse':
       return fuse(data, state, action)
+    case 'sacrifice':
+      return sacrifice(data, state, action)
+    case 'implant':
+      return implant(data, state, action)
+    case 'expandCapacity':
+      return expandCapacity(data, state, action.kind)
+    case 'infuseEgg':
+      return infuseEgg(data, state, action)
+    case 'buyCharm':
+      return buyCharm(data, state, action.itemId)
     case 'relearnSkill':
       return relearnSkill(data, state, action.monsterId, action.skillId, action.forgetSkillId)
     case 'useSkillBook':
@@ -395,7 +427,7 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
     case 'buyItem':
       return buyItem(data, state, action.item, action.count)
     case 'moveToStorage':
-      return moveToStorage(state, action.monsterId)
+      return moveToStorage(data, state, action.monsterId)
     case 'moveToParty':
       return moveToParty(data, state, action.monsterId)
     case 'swapWithStorage':
@@ -403,11 +435,11 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
     case 'reorderParty':
       return reorderParty(state, action.monsterIds)
     case 'releaseMonster':
-      return releaseMonster(state, action.monsterId)
+      return releaseMonster(data, state, action)
     case 'equipItem':
       return equipItem(data, state, action.monsterId, action.item)
     case 'unequipItem':
-      return unequipItem(state, action.monsterId, action.slotIndex)
+      return unequipItem(data, state, action.monsterId, action.slotIndex)
     case 'enhanceEquipment':
       return enhanceEquipment(data, state, action.instanceId)
     case 'rerollEquipmentAffixes':
@@ -418,6 +450,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return castEquipment(data, state, action)
     case 'imbueEquipment':
       return imbueEquipment(data, state, action)
+    case 'extractTrait':
+      return extractTrait(data, state, action)
+    case 'injectTrait':
+      return injectTrait(data, state, action)
     case 'changeTeraElement':
       return changeTeraElement(data, state, action.monsterId, action.elementId)
     case 'upgradeSoulLevel':

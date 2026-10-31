@@ -3,7 +3,10 @@
 import { IMPRINT_REQUEST_KINDS, type GameData } from '../model'
 import { asObject, checkInteger, checkNumber } from '../shared'
 
-/** Món ăn: consumable dùng được ngoài trận, nhắm quái ta (cho ăn qua useItem). */
+/**
+ * Món ăn: consumable dùng được ngoài trận, nhắm quái ta (cho ăn qua useItem), hoặc món ăn linh thực
+ * `dish` (cả đội ăn qua eatDish, docs/rules/cooking.md).
+ */
 function checkFoods(data: GameData, foods: unknown, issues: string[]): void {
   if (!Array.isArray(foods) || foods.length === 0) {
     issues.push('config.imprint.foods phải là danh sách có ít nhất một món')
@@ -12,10 +15,11 @@ function checkFoods(data: GameData, foods: unknown, issues: string[]): void {
   for (const itemId of foods) {
     const item = data.items[String(itemId)]
     const usable =
-      item?.category === 'consumable' && item.use !== 'battle' && item.target === 'ally'
+      (item?.category === 'consumable' && item.use !== 'battle' && item.target === 'ally') ||
+      item?.category === 'dish'
     if (!usable) {
       issues.push(
-        `config.imprint.foods: "${String(itemId)}" phải là consumable dùng ngoài trận lên quái ta`
+        `config.imprint.foods: "${String(itemId)}" phải là consumable dùng ngoài trận lên quái ta hoặc món ăn`
       )
     }
   }

@@ -306,7 +306,7 @@ describe('migrate v36 → v37', () => {
     )
     const raw = serializeState({
       ...state,
-      eggs: [{ id: 'g', monster: makeMonster({ id: 'g' }), battlesLeft: 3 }]
+      eggs: [{ id: 'g', monster: makeMonster({ id: 'g' }), battlesLeft: 3, infusions: [] }]
     }) as Record<string, unknown>
     const { books: _books, ...inventory } = raw.inventory as Record<string, unknown>
     const battle = raw.battle as Record<string, unknown>

@@ -10,6 +10,7 @@ import {
   rollEquipment
 } from '../inventory'
 import { getMaxHp, percentOfMaxHp } from '../monster'
+import { hasBagRoom } from '../registries'
 import { BIG_ZERO, maxBig, minBig, pickWeighted, rollPercent, type Decimal } from '../shared'
 import type {
   Biome,
@@ -27,8 +28,12 @@ export function gainDrop(d: Draft, itemId: string, count: number): void {
   log(d, { type: 'drop', itemId })
 }
 
-/** Thêm món vào túi và ghi log rơi. */
-export function gainEquipment(d: Draft, instance: EquipmentInstance): void {
+/** Thêm món vào túi và ghi log rơi; túi trang bị đầy thì món mất (docs/rules/capacity.md). */
+export function gainEquipment(data: GameData, d: Draft, instance: EquipmentInstance): void {
+  if (!hasBagRoom(data, d)) {
+    log(d, { type: 'equipmentLost', itemId: instance.baseItemId, rarity: instance.rarity })
+    return
+  }
   d.inventory = addEquipment(d.inventory, instance)
   log(d, {
     type: 'equipmentDropped',
@@ -48,7 +53,7 @@ export function gainNewEquipment(
   const id = equipmentInstanceId(d.nextItemId)
   ;[instance, d.rng] = rollEquipment(data, d.rng, { itemId, rarity, id })
   d.nextItemId++
-  gainEquipment(d, instance)
+  gainEquipment(data, d, instance)
 }
 
 /** Nhận các món thưởng cố định (số lượng), ghi log. */

@@ -1,4 +1,4 @@
-// Mốc tăng dần rồi gấp đôi mãi (ô đồ cầm theo tầng, theo cảnh giới ngự thú sư; sau này sức chứa kho).
+// Mốc tăng dần rồi gấp đôi mãi (ô đồ cầm theo tầng, theo cảnh giới ngự thú sư; sức chứa kho / túi).
 
 /**
  * Số mốc đã đạt với giá trị `value`: danh sách mốc tăng dần, sau mốc cuối các mốc tiếp theo gấp đôi

@@ -92,13 +92,39 @@ export function rollChildBloodlines(
  */
 export function fuseBloodlines(data: GameData, base: Monster, sub: Monster): BloodlinePurity[] {
   const share = data.config.bloodline.fusePurityPercent / 100
+  return combineBloodlines(data, base, sub, (own, other) => own + other * share)
+}
+
+/**
+ * Huyết mạch sau hiến tế (docs/rules/sacrifice.md): như fuse nhưng cộng sacrificePurityPercent %
+ * độ thuần của quái phụ, và không vượt độ thuần cao hơn của hai quái (hiến tế không tạo máu thuần
+ * hơn quái phụ có; không thì hiến tế anh chị em cùng lứa breed đẩy độ thuần lên 100 rất nhanh).
+ */
+export function sacrificeBloodlines(
+  data: GameData,
+  base: Monster,
+  sub: Monster
+): BloodlinePurity[] {
+  const share = data.config.bloodline.sacrificePurityPercent / 100
+  return combineBloodlines(data, base, sub, (own, other) =>
+    Math.max(own, Math.min(other, own + other * share))
+  )
+}
+
+/** Quái chính giữ độ thuần của mình; mỗi nhóm loài gốc quái chính thuộc lấy `combine(của mình, của quái phụ)`. */
+function combineBloodlines(
+  data: GameData,
+  base: Monster,
+  sub: Monster,
+  combine: (own: number, other: number) => number
+): BloodlinePurity[] {
   return bloodlineGroupsOf(data, base.baseSpeciesId).reduce<BloodlinePurity[]>(
     (bloodlines, groupId) =>
       withPurity(
         data,
         bloodlines,
         groupId,
-        purityOf(base, groupId) + purityOf(sub, groupId) * share
+        combine(purityOf(base, groupId), purityOf(sub, groupId))
       ),
     [...base.bloodlines]
   )

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { affinityMask, sharedThreadCount } from './cpuLimit.mjs'
+import { affinityMask, sharedThreadCount, windowsBoost } from './cpuLimit.mjs'
 
 describe('sharedThreadCount', () => {
   it('không turbo: 60% số luồng (làm tròn xuống)', () => {
@@ -26,5 +26,15 @@ describe('affinityMask', () => {
     expect(affinityMask(1)).toBe(1n)
     expect(affinityMask(5)).toBe(0b11111n)
     expect(affinityMask(64)).toBe((1n << 64n) - 1n)
+  })
+})
+
+describe('windowsBoost', () => {
+  it('turbo đọc lúc rảnh thấp hơn lúc tải: không dưới 1,7; cao hơn thì giữ số đọc được', () => {
+    expect(windowsBoost(1.4)).toBe(1.7)
+    expect(windowsBoost(1)).toBe(1.7)
+    expect(windowsBoost(2.1)).toBe(2.1)
+    // Máy 12 luồng: 12 × 0,6 / 1,7 = 4,2 → 4 luồng; turbo tối đa 169% vẫn chỉ 56% trên Task Manager.
+    expect(sharedThreadCount(12, windowsBoost(1.42))).toBe(4)
   })
 })

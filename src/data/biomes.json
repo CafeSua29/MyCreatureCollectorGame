@@ -1099,7 +1099,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "volcano",
@@ -2179,7 +2180,8 @@
         "fieldId": "sandstorm",
         "weight": 10
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "reikland",
@@ -3289,7 +3291,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "drakwaldForest",
@@ -4410,7 +4413,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy", "dark"]
   },
   {
     "id": "middenland",
@@ -5527,7 +5531,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "ostland",
@@ -6644,7 +6649,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy", "ice"]
   },
   {
     "id": "stirland",
@@ -7762,7 +7768,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug", "ghost"]
   },
   {
     "id": "averland",
@@ -8876,7 +8883,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "wissenland",
@@ -9977,7 +9985,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting"]
   },
   {
     "id": "hochland",
@@ -11094,7 +11103,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "talabecland",
@@ -12207,7 +12217,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "nordland",
@@ -13320,7 +13331,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal"]
   },
   {
     "id": "sylvania",
@@ -14434,7 +14446,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ghost", "dark", "poison"]
   },
   {
     "id": "bretonnia",
@@ -15552,7 +15565,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug", "fairy"]
   },
   {
     "id": "grailChapelsOfBretonnia",
@@ -17901,7 +17915,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["light", "fairy", "psychic", "flying"]
   },
   {
     "id": "athelLoren",
@@ -19018,7 +19033,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic"]
   },
   {
     "id": "laurelornForest",
@@ -20135,7 +20151,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic"]
   },
   {
     "id": "kislev",
@@ -21240,7 +21257,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying"]
   },
   {
     "id": "iceCourt",
@@ -22354,7 +22372,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "trollCountry",
@@ -23468,7 +23487,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost", "poison"]
   },
   {
     "id": "norsca",
@@ -24589,7 +24609,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying", "dark"]
   },
   {
     "id": "gianthomeMountains",
@@ -25694,7 +25715,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying", "fighting"]
   },
   {
     "id": "seaOfClaws",
@@ -26808,7 +26830,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "electric"]
   },
   {
     "id": "marienburg",
@@ -27921,7 +27944,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "steel"]
   },
   {
     "id": "skavenblight",
@@ -29043,7 +29067,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground", "dark"]
   },
   {
     "id": "greyMountains",
@@ -30144,7 +30169,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting"]
   },
   {
     "id": "worldsEdgeMountains",
@@ -31257,7 +31283,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting", "steel"]
   },
   {
     "id": "karakEightPeaks",
@@ -32362,7 +32389,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel"]
   },
   {
     "id": "silverRoad",
@@ -33467,7 +33495,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting"]
   },
   {
     "id": "blackFirePass",
@@ -34572,7 +34601,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting", "fire"]
   },
   {
     "id": "badlands",
@@ -35725,7 +35755,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "ground", "fire", "fighting", "dark"]
   },
   {
     "id": "mountainsOfMourn",
@@ -36830,7 +36861,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying", "fighting"]
   },
   {
     "id": "darkLands",
@@ -37947,7 +37979,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground", "dark"]
   },
   {
     "id": "plainOfZharr",
@@ -39076,7 +39109,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["steel", "electric", "poison", "fire"]
   },
   {
     "id": "borderPrinces",
@@ -40193,7 +40227,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "ground", "fire", "fighting"]
   },
   {
     "id": "tilea",
@@ -41303,7 +41338,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "estalia",
@@ -42416,7 +42452,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "ground", "fire", "fighting"]
   },
   {
     "id": "araby",
@@ -43493,7 +43530,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "landOfTheDead",
@@ -44602,7 +44640,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire", "ghost"]
   },
   {
     "id": "greatDesert",
@@ -45683,7 +45722,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "blackPyramidOfNagash",
@@ -46800,7 +46840,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["ground", "ghost", "steel", "rock", "dark"]
   },
   {
     "id": "lustria",
@@ -47906,7 +47947,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon"]
   },
   {
     "id": "vampireCoast",
@@ -49023,7 +49065,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "ghost"]
   },
   {
     "id": "galleonsGraveyard",
@@ -50129,7 +50172,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "dark", "dragon", "ghost"]
   },
   {
     "id": "southlands",
@@ -51235,7 +51279,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon"]
   },
   {
     "id": "naggaroth",
@@ -52353,7 +52398,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost", "dark"]
   },
   {
     "id": "blackspineMountains",
@@ -53502,7 +53548,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting", "dark"]
   },
   {
     "id": "ulthuan",
@@ -55855,7 +55902,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["light", "fairy", "psychic", "flying"]
   },
   {
     "id": "caledor",
@@ -56964,7 +57012,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground", "dragon"]
   },
   {
     "id": "avelorn",
@@ -59261,7 +59310,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic", "light"]
   },
   {
     "id": "saphery",
@@ -60374,7 +60424,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["rock", "psychic", "steel", "fairy"]
   },
   {
     "id": "chrace",
@@ -61475,7 +61526,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting"]
   },
   {
     "id": "eyeOfTheVortex",
@@ -62592,7 +62644,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["psychic", "ghost", "dragon", "dark"]
   },
   {
     "id": "grandCathay",
@@ -63702,7 +63755,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug", "dragon"]
   },
   {
     "id": "theGreatBastion",
@@ -64815,7 +64869,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting", "steel"]
   },
   {
     "id": "jadeSea",
@@ -65928,7 +65983,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "dragon"]
   },
   {
     "id": "ind",
@@ -67034,7 +67090,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon"]
   },
   {
     "id": "chaosWastes",
@@ -68180,7 +68237,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["dark", "psychic", "fire", "poison"]
   },
   {
     "id": "southernChaosWastes",
@@ -69309,7 +69367,8 @@
         "fieldId": "cursedGround",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["dark", "poison", "rock", "fire"]
   },
   {
     "id": "realmOfKhorne",
@@ -70418,7 +70477,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground", "fighting"]
   },
   {
     "id": "realmOfNurgle",
@@ -71532,7 +71592,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground"]
   },
   {
     "id": "realmOfTzeentch",
@@ -72649,7 +72710,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["psychic", "ghost", "dragon", "dark"]
   },
   {
     "id": "realmOfSlaanesh",
@@ -73774,7 +73836,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic", "dark"]
   },
   {
     "id": "forbiddenFortress",
@@ -74920,7 +74983,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["dark", "psychic", "fire", "poison"]
   },
   {
     "id": "viridianForest",
@@ -76033,7 +76097,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "mtMoon",
@@ -77146,7 +77211,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel", "fairy"]
   },
   {
     "id": "rockTunnel",
@@ -78251,7 +78317,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel"]
   },
   {
     "id": "pokemonTower",
@@ -79365,7 +79432,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ghost", "dark", "poison"]
   },
   {
     "id": "powerPlant",
@@ -80498,7 +80566,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["steel", "electric", "poison", "fire"]
   },
   {
     "id": "seafoamIslands",
@@ -81612,7 +81681,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "cinnabarVolcano",
@@ -82693,7 +82763,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "victoryRoadKanto",
@@ -83802,7 +83873,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel", "fighting"]
   },
   {
     "id": "ceruleanCave",
@@ -84915,7 +84987,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["rock", "psychic", "steel", "fairy"]
   },
   {
     "id": "safariZone",
@@ -86029,7 +86102,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "ilexForest",
@@ -87150,7 +87224,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic"]
   },
   {
     "id": "whirlIslands",
@@ -88264,7 +88339,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "electric"]
   },
   {
     "id": "icePath",
@@ -89378,7 +89454,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "dragonsDen",
@@ -90484,7 +90561,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "dark", "dragon"]
   },
   {
     "id": "mtSilver",
@@ -91593,7 +91671,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying", "fighting"]
   },
   {
     "id": "burnedTower",
@@ -92718,7 +92797,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["ground", "ghost", "steel", "rock", "fire"]
   },
   {
     "id": "lakeOfRage",
@@ -93827,7 +93907,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal"]
   },
   {
     "id": "petalburgWoods",
@@ -94944,7 +95025,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "mtChimney",
@@ -96025,7 +96107,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "route111Desert",
@@ -97102,7 +97185,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "meteorFalls",
@@ -98207,7 +98291,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel", "dragon"]
   },
   {
     "id": "mtPyre",
@@ -99321,7 +99406,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ghost", "dark", "poison"]
   },
   {
     "id": "shoalCave",
@@ -100439,7 +100525,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "seafloorCavern",
@@ -101545,7 +101632,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "dark", "dragon"]
   },
   {
     "id": "skyPillar",
@@ -102650,7 +102738,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["flying", "dragon", "electric"]
   },
   {
     "id": "fortreeRainforest",
@@ -103760,7 +103849,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon"]
   },
   {
     "id": "eternaForest",
@@ -104881,7 +104971,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy", "ghost"]
   },
   {
     "id": "greatMarsh",
@@ -106003,7 +106094,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground"]
   },
   {
     "id": "mtCoronet",
@@ -107112,7 +107204,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting"]
   },
   {
     "id": "snowpointRoutes",
@@ -108217,7 +108310,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying"]
   },
   {
     "id": "oldChateau",
@@ -109335,7 +109429,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ghost", "dark", "poison"]
   },
   {
     "id": "ironIsland",
@@ -110440,7 +110535,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel"]
   },
   {
     "id": "starkMountain",
@@ -111521,7 +111617,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "spearPillar",
@@ -112638,7 +112735,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["psychic", "ghost", "dragon", "dark"]
   },
   {
     "id": "distortionWorld",
@@ -113755,7 +113853,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["psychic", "ghost", "dragon", "dark"]
   },
   {
     "id": "pinwheelForest",
@@ -114872,7 +114971,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "desertResort",
@@ -115949,7 +116049,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "relicCastle",
@@ -117066,7 +117167,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["ground", "ghost", "steel", "rock"]
   },
   {
     "id": "chargestoneCave",
@@ -118183,7 +118285,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["rock", "psychic", "steel", "fairy", "electric"]
   },
   {
     "id": "twistMountain",
@@ -119292,7 +119395,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying"]
   },
   {
     "id": "dragonspiralTower",
@@ -120409,7 +120513,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["ground", "ghost", "steel", "rock", "dragon"]
   },
   {
     "id": "giantChasm",
@@ -121523,7 +121628,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost", "dragon"]
   },
   {
     "id": "santaluneForest",
@@ -122640,7 +122746,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "glitteringCave",
@@ -123753,7 +123860,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["rock", "psychic", "steel", "fairy"]
   },
   {
     "id": "frostCavern",
@@ -124867,7 +124975,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "lostHotel",
@@ -126000,7 +126109,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["steel", "electric", "poison", "fire", "ghost"]
   },
   {
     "id": "terminusCave",
@@ -127109,7 +127219,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel", "dragon"]
   },
   {
     "id": "lushJungle",
@@ -128223,7 +128334,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon"]
   },
   {
     "id": "welaVolcanoPark",
@@ -129312,7 +129424,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "hainaDesert",
@@ -130397,7 +130510,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "mountLanakila",
@@ -131506,7 +131620,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying"]
   },
   {
     "id": "vastPoniCanyon",
@@ -132623,7 +132738,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting", "dragon"]
   },
   {
     "id": "ultraSpace",
@@ -133744,7 +133860,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["psychic", "ghost", "dragon", "dark"]
   },
   {
     "id": "wildArea",
@@ -134862,7 +134979,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "glimwoodTangle",
@@ -135983,7 +136101,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic"]
   },
   {
     "id": "slumberingWeald",
@@ -137108,7 +137227,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "psychic"]
   },
   {
     "id": "isleOfArmor",
@@ -138225,7 +138345,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "fighting"]
   },
   {
     "id": "crownTundra",
@@ -139347,7 +139468,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "dynamaxAdventureDen",
@@ -140460,7 +140582,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel"]
   },
   {
     "id": "asadoDesert",
@@ -141541,7 +141664,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "glaseadoMountain",
@@ -142654,7 +142778,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying"]
   },
   {
     "id": "casseroyaLake",
@@ -143771,7 +143896,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "dragon"]
   },
   {
     "id": "tagtreeThicket",
@@ -144892,7 +145018,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "areaZero",
@@ -146009,7 +146136,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["rock", "psychic", "steel", "fairy", "dragon"]
   },
   {
     "id": "kitakami",
@@ -147134,7 +147262,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy", "ghost"]
   },
   {
     "id": "obsidianFieldlands",
@@ -148248,7 +148377,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "crimsonMirelands",
@@ -149374,7 +149504,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground"]
   },
   {
     "id": "cobaltCoastlands",
@@ -150491,7 +150622,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal"]
   },
   {
     "id": "coronetHighlands",
@@ -151600,7 +151732,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "fighting"]
   },
   {
     "id": "alabasterIcelands",
@@ -152718,7 +152851,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "ghost"]
   },
   {
     "id": "orreDesert",
@@ -153835,7 +153969,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire", "dark"]
   },
   {
     "id": "tropicalRainforest",
@@ -154941,7 +155076,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon"]
   },
   {
     "id": "tropicalMonsoonForest",
@@ -156062,7 +156198,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "electric", "bug"]
   },
   {
     "id": "tropicalSavanna",
@@ -157175,7 +157312,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "ground", "fire", "fighting"]
   },
   {
     "id": "hotDesert",
@@ -158256,7 +158394,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "coldDesert",
@@ -159353,7 +159492,8 @@
         "fieldId": "frozenGround",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["ground", "ice", "rock"]
   },
   {
     "id": "semiAridSteppe",
@@ -160458,7 +160598,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["normal", "ground", "flying", "fighting"]
   },
   {
     "id": "mediterraneanScrubland",
@@ -161571,7 +161712,8 @@
         "fieldId": "grassyTerrain",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["grass", "rock", "normal", "bug"]
   },
   {
     "id": "humidSubtropicalForest",
@@ -162692,7 +162834,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy", "water"]
   },
   {
     "id": "oceanicMoorland",
@@ -163806,7 +163949,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug", "water"]
   },
   {
     "id": "subtropicalHighland",
@@ -164924,7 +165068,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "bug", "flying"]
   },
   {
     "id": "humidContinentalWoodland",
@@ -166041,7 +166186,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "subarcticTaiga",
@@ -167182,7 +167328,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["ice", "grass", "normal", "dark"]
   },
   {
     "id": "arcticTundra",
@@ -168295,7 +168442,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["ice", "normal", "ground"]
   },
   {
     "id": "polarIceCap",
@@ -169401,7 +169549,8 @@
         "fieldId": "frozenGround",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "rock"]
   },
   {
     "id": "alpineHighland",
@@ -170506,7 +170655,8 @@
         "fieldId": "frozenGround",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["ice", "rock", "flying"]
   },
   {
     "id": "alpineMeadow",
@@ -171624,7 +171774,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug", "rock"]
   },
   {
     "id": "highPlateau",
@@ -172729,7 +172880,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["normal", "ground", "flying", "fighting", "rock"]
   },
   {
     "id": "canyon",
@@ -173830,7 +173982,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying"]
   },
   {
     "id": "riverValley",
@@ -174943,7 +175096,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "bug", "flying"]
   },
   {
     "id": "rollingHills",
@@ -176057,7 +176211,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug"]
   },
   {
     "id": "prairie",
@@ -177175,7 +177330,8 @@
         "fieldId": "grassyTerrain",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["normal", "grass", "flying", "bug", "ground"]
   },
   {
     "id": "sandDunes",
@@ -178256,7 +178412,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire"]
   },
   {
     "id": "saltFlat",
@@ -179361,7 +179518,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "steel"]
   },
   {
     "id": "desertOasis",
@@ -180474,7 +180632,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ground", "rock", "fire", "water", "grass"]
   },
   {
     "id": "erodedBadlands",
@@ -181591,7 +181750,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "flying", "dark"]
   },
   {
     "id": "karstTowers",
@@ -182700,7 +182860,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "water", "grass"]
   },
   {
     "id": "limestoneCavern",
@@ -183809,7 +183970,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "ground", "dark", "steel", "water"]
   },
   {
     "id": "sinkhole",
@@ -184926,7 +185088,8 @@
         "fieldId": "none",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["rock", "water", "grass", "dark"]
   },
   {
     "id": "stratovolcano",
@@ -186011,7 +186174,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "lavaField",
@@ -187092,7 +187256,8 @@
         "fieldId": "volcanicTerrain",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["fire", "rock", "ground"]
   },
   {
     "id": "geyserBasin",
@@ -188213,7 +188378,8 @@
         "fieldId": "none",
         "weight": 60
       }
-    ]
+    ],
+    "elementIds": ["fire", "water", "ground"]
   },
   {
     "id": "glacier",
@@ -189319,7 +189485,8 @@
         "fieldId": "frozenGround",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["ice", "water", "rock"]
   },
   {
     "id": "fjord",
@@ -190440,7 +190607,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "ice", "rock"]
   },
   {
     "id": "sandyBeach",
@@ -191553,7 +191721,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "ground"]
   },
   {
     "id": "seaCliffs",
@@ -192670,7 +192839,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "rock"]
   },
   {
     "id": "riverDelta",
@@ -193787,7 +193957,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "bug", "poison"]
   },
   {
     "id": "estuary",
@@ -194904,7 +195075,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "bug", "poison"]
   },
   {
     "id": "mangroveForest",
@@ -196021,7 +196193,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "bug", "poison"]
   },
   {
     "id": "saltMarsh",
@@ -197135,7 +197308,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground"]
   },
   {
     "id": "peatBog",
@@ -198253,7 +198427,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground", "ghost"]
   },
   {
     "id": "freshwaterLake",
@@ -199366,7 +199541,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "bug", "flying"]
   },
   {
     "id": "waterfallGorge",
@@ -200483,7 +200659,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "bug", "flying", "rock"]
   },
   {
     "id": "tropicalArchipelago",
@@ -201600,7 +201777,8 @@
         "fieldId": "deepWater",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "normal", "grass"]
   },
   {
     "id": "coralAtoll",
@@ -202709,7 +202887,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "fairy", "poison", "rock"]
   },
   {
     "id": "kelpForest",
@@ -203806,7 +203985,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "grass", "poison"]
   },
   {
     "id": "openOcean",
@@ -204920,7 +205100,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "flying", "electric"]
   },
   {
     "id": "deepSeaTrench",
@@ -206026,7 +206207,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "dark", "dragon"]
   },
   {
     "id": "hydrothermalVents",
@@ -207144,7 +207326,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "fire", "steel", "poison"]
   },
   {
     "id": "polarSea",
@@ -208246,7 +208429,8 @@
         "fieldId": "deepWater",
         "weight": 100
       }
-    ]
+    ],
+    "elementIds": ["water", "ice"]
   },
   {
     "id": "temperateDeciduousForest",
@@ -209363,7 +209547,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy"]
   },
   {
     "id": "bambooForest",
@@ -210480,7 +210665,8 @@
         "fieldId": "none",
         "weight": 50
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "normal", "fairy", "fighting"]
   },
   {
     "id": "cloudForest",
@@ -211598,7 +211784,8 @@
         "fieldId": "none",
         "weight": 20
       }
-    ]
+    ],
+    "elementIds": ["grass", "fairy", "bug", "flying"]
   },
   {
     "id": "rainforestCanopy",
@@ -212708,7 +212895,8 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["grass", "bug", "poison", "dragon", "flying"]
   },
   {
     "id": "prehistoricSwamp",
@@ -213830,7 +214018,8 @@
         "fieldId": "none",
         "weight": 30
       }
-    ]
+    ],
+    "elementIds": ["poison", "water", "ground", "dragon"]
   },
   {
     "id": "iceAgeSteppe",
@@ -214947,6 +215136,7 @@
         "fieldId": "none",
         "weight": 40
       }
-    ]
+    ],
+    "elementIds": ["ice", "normal", "ground"]
   }
 ]

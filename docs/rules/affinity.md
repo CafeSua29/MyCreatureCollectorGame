@@ -15,7 +15,7 @@ Code: `registries/affinity.ts` (điểm duy nhất đổi thân mật `changeAff
 
 ## Tăng / giảm
 
-- Mọi thay đổi đi qua `changeAffinity(data, monster, amount)`: kẹp [0, max]; lượng **tăng** nhân (1 + tổng hook `affinityGainPercent` / 100) rồi làm tròn (Chuông An Thần); lượng **giảm** không nhân. Không đổi gì thì trả lại chính quái.
+- Mọi thay đổi đi qua `changeAffinity(data, monster, amount, extraGainPercent?)`: kẹp [0, max]; lượng **tăng** nhân (1 + (tổng hook `affinityGainPercent` + `extraGainPercent`) / 100) rồi làm tròn (Chuông An Thần; `extraGainPercent` = món ăn linh thực khi thắng trận, `cooking.md`); lượng **giảm** không nhân. Không đổi gì thì trả lại chính quái.
 - Tăng (`affinity.gain`): thắng trận, mọi quái trong đội +1, quái đã ra sân +2 (thay cho +1); nghỉ (`rest`) / NPC hồi máu (`healParty`): mọi quái trong đội +1; dùng vật phẩm có hồi máu thật (kể cả hồi sinh, trong và ngoài trận) +2; **kẹo EXP / Kẹo Hiếm +1 mỗi viên** (chủ project chốt 2026-10-24: như Pokémon tăng thân mật mỗi lần lên level; `useItem` với `count` = n thì +n).
 - Hết dưỡng dục: + ⌊% dưỡng dục / 2⌋ (`imprinting.md`).
 - Giảm (`affinity.loss`): quái ta gục trong trận −1 (`faint` ở `battle/hpChanges.ts`).

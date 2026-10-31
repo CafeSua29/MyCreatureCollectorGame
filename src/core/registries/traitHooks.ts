@@ -657,8 +657,10 @@ export const HOOK_SOURCE_KINDS = [
   'partner',
   'frenzy',
   'collection',
+  'meal',
   'bloodline',
-  'polarity'
+  'polarity',
+  'implant'
 ] as const
 
 export type HookSourceKind = (typeof HOOK_SOURCE_KINDS)[number]
@@ -675,6 +677,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'synergy':
     case 'formation':
     case 'partner':
+    case 'implant':
       return kind
     case 'trait':
     case 'race':
@@ -685,7 +688,8 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'aura':
     case 'frenzy':
     case 'collection':
-      // Cuồng bạo có log riêng (`frenzy`) lúc kích hoạt; thưởng sưu tập không kích hoạt.
+    case 'meal':
+      // Cuồng bạo có log riêng (`frenzy`) lúc kích hoạt; thưởng sưu tập / món ăn không kích hoạt.
       return undefined
     default:
       return assertNever(kind, 'nguồn hook')
@@ -954,6 +958,14 @@ function ownHooks(
   // Mức thân mật cao nhất đã đạt (docs/rules/affinity.md); sourceId = id mức.
   const tier = affinityTierOf(data, monster.affinity)
   if (tier) push(tier.hooks, 1, tier.id, { kind: 'affinity', ownerId })
+  // Hiệu ứng cấy ghép (docs/rules/implant.md): cấp dương hooks, cấp âm failHooks; hệ số = |cấp|.
+  for (const [effectId, level] of Object.entries(monster.implantEffects)) {
+    const effect = data.serumEffects[effectId]
+    push(level > 0 ? effect.hooks : effect.failHooks, Math.abs(level), effectId, {
+      kind: 'implant',
+      ownerId
+    })
+  }
   // Thiên phú đã nâng ở nhánh đang mở (docs/rules/monster-talents.md): hệ số = cấp; sourceId = id nút.
   for (const { node, rank } of activeTalents(data, monster)) {
     push(node.hooks, rank, node.id, { kind: 'talent', ownerId })
@@ -1148,6 +1160,17 @@ function resolveTraitHooks(
       scale: 1,
       sourceId: 'collection',
       source: { kind: 'collection', ownerId: monster.id }
+    })
+  }
+  // Linh thực (docs/rules/cooking.md): % chỉ số của món ăn đang có tác dụng, phe người chơi.
+  const mealPercent = ctx?.mealStatPercent ?? {}
+  if (Object.keys(mealPercent).length > 0) {
+    entries.push({
+      handler: statModifier,
+      params: { percent: mealPercent },
+      scale: 1,
+      sourceId: 'meal',
+      source: { kind: 'meal', ownerId: monster.id }
     })
   }
   const auras: AuraEntry[] = []

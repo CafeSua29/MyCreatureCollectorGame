@@ -288,7 +288,14 @@
   },
   "egg": {
     "hatchBattlesMin": 5,
-    "hatchBattlesMax": 10
+    "hatchBattlesMax": 10,
+    "incubation": {
+      "maxInfusions": 3,
+      "genePercentPerInfusion": 2,
+      "infusionShinyChance": 0.1,
+      "spiritLandExtraSteps": 1,
+      "spiritLandMutationChance": 1
+    }
   },
   "breeding": {
     "costPerLevel": 20,
@@ -304,6 +311,84 @@
     "inheritHiddenChance": 60
   },
   "fuseCostPerLevel": 50,
+  "sacrifice": {
+    "costPerLevel": 20,
+    "statPercentPerStack": 1
+  },
+  "capacity": {
+    "storage": {
+      "base": 200,
+      "perExpansion": 50,
+      "costBase": 1000,
+      "realmBonus": 50
+    },
+    "bag": {
+      "base": 100,
+      "perExpansion": 50,
+      "costBase": 1500,
+      "realmBonus": 25
+    }
+  },
+  "implant": {
+    "tiers": [
+      {
+        "id": "common",
+        "kind": "flatStat",
+        "statCount": 1,
+        "min": 5,
+        "max": 10,
+        "weight": 60,
+        "price": 300
+      },
+      {
+        "id": "uncommon",
+        "kind": "flatStat",
+        "statCount": 1,
+        "min": 10,
+        "max": 20,
+        "weight": 25,
+        "price": 800
+      },
+      {
+        "id": "rare",
+        "kind": "flatStat",
+        "statCount": 2,
+        "min": 20,
+        "max": 30,
+        "weight": 12,
+        "price": 2000
+      },
+      {
+        "id": "epic",
+        "kind": "flatStat",
+        "statCount": 3,
+        "min": 30,
+        "max": 45,
+        "weight": 3,
+        "price": 6000
+      },
+      {
+        "id": "mutagen",
+        "kind": "hookEffect",
+        "levels": 1,
+        "weight": 8,
+        "price": 1000
+      },
+      {
+        "id": "greaterMutagen",
+        "kind": "hookEffect",
+        "levels": 2,
+        "weight": 2,
+        "price": 3000
+      }
+    ],
+    "stockMin": 5,
+    "stockMax": 10,
+    "restockDays": 10,
+    "baseChance": 90,
+    "chanceFalloff": 0.9,
+    "maxFails": 3
+  },
   "fuseChance": {
     "raceChances": {
       "same": 90,
@@ -317,6 +402,7 @@
   },
   "crystal": {
     "extractCostBase": 100,
+    "injectCostBase": 100,
     "kindCostMultipliers": {
       "positive": 1,
       "negative": 1,
@@ -950,7 +1036,7 @@
     "requestEveryDays": 2,
     "fallbackDays": 30,
     "maxStatPercent": 15,
-    "foods": ["spiritHoney", "spiritFruit"],
+    "foods": ["spiritHoney", "spiritFruit", "spiritRiceCongee", "heartBondCake"],
     "favoriteFoodWeight": 3,
     "requestWeights": {
       "feed": 1,
@@ -2728,9 +2814,15 @@
     "bossKillPurity": 1,
     "ancestorKillPurity": 3,
     "fusePurityPercent": 50,
+    "sacrificePurityPercent": 25,
     "mixAtFullPurity": 1,
     "milestones": [25, 50, 75, 100],
     "atavismCostPerLevel": 100,
     "scrollDropChance": 3
+  },
+  "cooking": {
+    "expBase": 3,
+    "expPower": 2,
+    "levelBonusPercent": 1
   }
 }

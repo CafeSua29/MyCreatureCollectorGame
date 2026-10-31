@@ -1,6 +1,8 @@
 // Hàm DUY NHẤT tính chỉ số quái. Thứ tự (xem CLAUDE.md):
-//   (gốc loài pha huyết mạch + gen × geneWeight) × độ lệch race × bossMultiplier × hệ số thức tỉnh
-//     (gốc pha huyết mạch: max(gốc, (1 − p) × gốc + p × gốc tổ), docs/rules/bloodline.md)
+//   max(1, gốc loài pha huyết mạch + gen × geneWeight + cấy ghép) × độ lệch race × bossMultiplier
+//     × hệ số thức tỉnh (gốc pha huyết mạch: max(gốc, (1 − p) × gốc + p × gốc tổ),
+//     docs/rules/bloodline.md; cấy ghép implantBonusStats không nhân geneWeight, có thể âm nên sàn
+//     1, docs/rules/implant.md)
 //   → × (1 + (level − 1) × growth[race][stat])
 //   → + fusingBonusStats
 //   → áp trait: cộng tổng flat, rồi nhân (1 + tổng percent / 100; percent cộng mọi nguồn của
@@ -326,6 +328,7 @@ interface CoreStepsEntry {
   level: number
   genes: BigStats
   fusingBonusStats: BigStats
+  implantBonusStats: BigStats
   steps: CoreSteps
 }
 
@@ -357,7 +360,8 @@ function coreSteps(data: GameData, monster: Monster, species: NormalSpecies): Co
     cached.bloodlines === monster.bloodlines &&
     cached.level === monster.level &&
     sameBigStats(cached.genes, monster.genes) &&
-    sameBigStats(cached.fusingBonusStats, monster.fusingBonusStats)
+    sameBigStats(cached.fusingBonusStats, monster.fusingBonusStats) &&
+    sameBigStats(cached.implantBonusStats, monster.implantBonusStats)
   ) {
     // Bản sao nông: nơi gọi nhận object riêng như khi tính mới.
     const { base, leveled, withFusingBonus } = cached.steps
@@ -374,6 +378,7 @@ function coreSteps(data: GameData, monster: Monster, species: NormalSpecies): Co
     level: monster.level,
     genes: { ...monster.genes },
     fusingBonusStats: { ...monster.fusingBonusStats },
+    implantBonusStats: { ...monster.implantBonusStats },
     steps: {
       base: { ...steps.base },
       leveled: { ...steps.leveled },
@@ -383,7 +388,10 @@ function coreSteps(data: GameData, monster: Monster, species: NormalSpecies): Co
   return steps
 }
 
-/** Gốc loài + gen × geneWeight, nhân race / boss / thức tỉnh → nhân level → cộng fuse. */
+/**
+ * Gốc loài + gen × geneWeight + cấy ghép (sàn 1), nhân race / boss / thức tỉnh → nhân level →
+ * cộng fuse.
+ */
 function computeCoreSteps(data: GameData, monster: Monster, species: NormalSpecies): CoreSteps {
   const { config } = data
   const race = data.races[monster.raceId]
@@ -392,9 +400,13 @@ function computeCoreSteps(data: GameData, monster: Monster, species: NormalSpeci
   const speciesBase = bloodlineBaseStats(data, monster, species.baseStats)
 
   const base = mapBigStats((stat) =>
-    monster.genes[stat]
-      .times(config.geneWeight)
-      .plus(speciesBase[stat])
+    maxBig(
+      1,
+      monster.genes[stat]
+        .times(config.geneWeight)
+        .plus(speciesBase[stat])
+        .plus(monster.implantBonusStats[stat])
+    )
       .times(race.statBias[stat])
       .times(monster.bossMultiplier)
       .times(awakeningMultiplier)

@@ -97,7 +97,43 @@ export function makeRawData(): RawGameData {
       // Fuse luôn thành công (100%, không tốn RNG) để test khác tất định; test tỉ lệ tự đổi.
       fuseChance: { raceChances: { same: 100, breedable: 100, other: 100 }, lineageFactor: 1 },
       fusion: { inheritSkills: 2 },
-      crystal: { extractCostBase: 100, kindCostMultipliers: { positive: 1, negative: 1, rare: 3 } },
+      // Hiến tế (docs/rules/sacrifice.md): số như dữ liệu thật.
+      sacrifice: { costPerLevel: 20, statPercentPerStack: 1 },
+      // Sức chứa (docs/rules/capacity.md): số như dữ liệu thật.
+      capacity: {
+        storage: { base: 200, perExpansion: 50, costBase: 1000, realmBonus: 50 },
+        bag: { base: 100, perExpansion: 50, costBase: 1500, realmBonus: 25 }
+      },
+      // Cấy ghép (docs/rules/implant.md): số như dữ liệu thật.
+      implant: {
+        tiers: [
+          { id: 'common', kind: 'flatStat', statCount: 1, min: 5, max: 10, weight: 60, price: 300 },
+          {
+            id: 'uncommon',
+            kind: 'flatStat',
+            statCount: 1,
+            min: 10,
+            max: 20,
+            weight: 25,
+            price: 800
+          },
+          { id: 'rare', kind: 'flatStat', statCount: 2, min: 20, max: 30, weight: 12, price: 2000 },
+          { id: 'epic', kind: 'flatStat', statCount: 3, min: 30, max: 45, weight: 3, price: 6000 },
+          { id: 'mutagen', kind: 'hookEffect', levels: 1, weight: 8, price: 1000 },
+          { id: 'greaterMutagen', kind: 'hookEffect', levels: 2, weight: 2, price: 3000 }
+        ],
+        stockMin: 5,
+        stockMax: 10,
+        restockDays: 10,
+        baseChance: 90,
+        chanceFalloff: 0.9,
+        maxFails: 3
+      },
+      crystal: {
+        extractCostBase: 100,
+        injectCostBase: 100,
+        kindCostMultipliers: { positive: 1, negative: 1, rare: 3 }
+      },
       // Không kệ sách, boss không rơi sách để test cũ không đổi RNG; test sách tự đổi.
       skillBook: {
         priceBase: 200,
@@ -257,7 +293,18 @@ export function makeRawData(): RawGameData {
       shiny: { traitId: 'shiny', wildChance: 0 },
       // Không biome nào có boss ngẫu nhiên trừ "lair" (tầng 2) luôn ra boss; boss ở "lair" ×3.
       boss: { traitId: 'bossBlood', chance: 0, multiplierMin: 2, multiplierMax: 5, eggChance: 100 },
-      egg: { hatchBattlesMin: 5, hatchBattlesMax: 10 },
+      // Ấp trứng có hoàn cảnh: đột biến / shiny mặc định 0 để test tất định; test tự bật khi cần.
+      egg: {
+        hatchBattlesMin: 5,
+        hatchBattlesMax: 10,
+        incubation: {
+          maxInfusions: 3,
+          genePercentPerInfusion: 10,
+          infusionShinyChance: 0,
+          spiritLandExtraSteps: 1,
+          spiritLandMutationChance: 0
+        }
+      },
       // Tỉ lệ shiny / đột biến mặc định 0 để test tất định; test tự bật khi cần.
       breeding: {
         costPerLevel: 20,
@@ -517,6 +564,7 @@ export function makeRawData(): RawGameData {
         wildDrops: [],
         bossDrops: []
       },
+      cooking: { expBase: 10, expPower: 2, levelBonusPercent: 1 },
       // Điểm nỗ lực (docs/rules/effort-values.md): số như dữ liệu thật.
       effort: {
         maxPerStat: 252,
@@ -574,6 +622,7 @@ export function makeRawData(): RawGameData {
         bossKillPurity: 1,
         ancestorKillPurity: 3,
         fusePurityPercent: 50,
+        sacrificePurityPercent: 25,
         mixAtFullPurity: 1,
         milestones: [25, 50, 75, 100],
         atavismCostPerLevel: 100
@@ -1054,6 +1103,22 @@ export function makeRawData(): RawGameData {
         requirements: [{ type: 'minFloor', floor: 1 }],
         treasure: { rolls: 1, items: [{ itemId: 'potion', weight: 1, min: 1, max: 1 }] },
         rareTreasure: { rolls: 1, items: [{ itemId: 'masterBall', weight: 1, min: 1, max: 1 }] }
+      }
+    ],
+    // Hiệu ứng cấy ghép (docs/rules/implant.md): hồi / mất 1% max HP mỗi lượt, giảm / tăng sát thương
+    // nhận 10%.
+    serumEffects: [
+      {
+        id: 'regeneration',
+        weight: 1,
+        hooks: [{ type: 'regen', params: { percent: 1 } }],
+        failHooks: [{ type: 'regen', params: { percent: -1 } }]
+      },
+      {
+        id: 'hardening',
+        weight: 1,
+        hooks: [{ type: 'damageTakenModifier', params: { percent: -10 } }],
+        failHooks: [{ type: 'damageTakenModifier', params: { percent: 10 } }]
       }
     ],
     trialRules: [
@@ -1917,13 +1982,22 @@ export function toBigStats(stats: Readonly<Record<StatName, BigValue>>): BigStat
 
 /** Ghi đè cho makeMonster: trường Decimal nhận cả number cho tiện viết test. */
 export type MonsterOverrides = Partial<
-  Omit<Monster, 'exp' | 'damageTaken' | 'genes' | 'fusingBonusStats' | 'lifespanBonusYears'>
+  Omit<
+    Monster,
+    | 'exp'
+    | 'damageTaken'
+    | 'genes'
+    | 'fusingBonusStats'
+    | 'lifespanBonusYears'
+    | 'implantBonusStats'
+  >
 > & {
   exp?: BigValue
   damageTaken?: BigValue
   lifespanBonusYears?: BigValue
   genes?: Readonly<Record<StatName, BigValue>>
   fusingBonusStats?: Readonly<Record<StatName, BigValue>>
+  implantBonusStats?: Readonly<Record<StatName, BigValue>>
 }
 
 /**
@@ -1940,7 +2014,15 @@ export function makeMonster(overrides: MonsterOverrides = {}): Monster {
 }
 
 function baseMonster(overrides: MonsterOverrides): Monster {
-  const { exp, damageTaken, genes, fusingBonusStats, lifespanBonusYears, ...rest } = overrides
+  const {
+    exp,
+    damageTaken,
+    genes,
+    fusingBonusStats,
+    lifespanBonusYears,
+    implantBonusStats,
+    ...rest
+  } = overrides
   return {
     ...baseFields(),
     // Level cao nhất từng đạt mặc định bằng level (quái hợp lệ).
@@ -1950,13 +2032,14 @@ function baseMonster(overrides: MonsterOverrides): Monster {
     damageTaken: toBig(damageTaken ?? 0),
     lifespanBonusYears: toBig(lifespanBonusYears ?? 0),
     genes: toBigStats(genes ?? uniformStats(10)),
-    fusingBonusStats: toBigStats(fusingBonusStats ?? uniformStats(0))
+    fusingBonusStats: toBigStats(fusingBonusStats ?? uniformStats(0)),
+    implantBonusStats: toBigStats(implantBonusStats ?? uniformStats(0))
   }
 }
 
 function baseFields(): Omit<
   Monster,
-  'exp' | 'damageTaken' | 'genes' | 'fusingBonusStats' | 'lifespanBonusYears'
+  'exp' | 'damageTaken' | 'genes' | 'fusingBonusStats' | 'lifespanBonusYears' | 'implantBonusStats'
 > {
   return {
     id: 'm1',
@@ -2016,7 +2099,11 @@ function baseFields(): Omit<
     talentRanks: {},
     spiritVirus: null,
     bloodlines: [],
-    polarity: null
+    polarity: null,
+    sacrificeStacks: 0,
+    implantEffects: {},
+    implantAttempts: 0,
+    implantFails: 0
   }
 }
 
@@ -2252,6 +2339,7 @@ export function makeBattleContext(
     berriesBlocked: false,
     teamBonuses: [],
     frenzyStatPercent: 0,
+    mealStatPercent: {},
     collectionStatPercent: 0,
     ...overrides
   }

@@ -1,11 +1,14 @@
 // Kinh tế và việc nhỏ của "người chơi" trong chơi liên tục (mục "Kinh tế" ở simulation-features.md):
 // bán đồ dư ở cửa hàng (giá thị trường động), mua món dùng được ở cửa hàng tạm của event (thương
 // nhân, chợ đen), cho ăn vật phẩm thân mật, cầm đá Mega khi có Vòng Mega, cầm Z-Crystal khi có
-// Vòng Z, mua ô linh điền khi rẻ.
+// Vòng Z, mua ô linh điền khi rẻ, mở rộng kho quái / túi trang bị khi gần đầy.
 // Mọi việc đi qua action thật.
 
 import {
+  CAPACITY_KINDS,
   EQUIPMENT_RARITIES,
+  capacityExpandCost,
+  capacityView,
   STAT_NAMES,
   ActionError,
   assertCanContract,
@@ -44,6 +47,9 @@ export const ECONOMY_POLICY = {
   tempShopMinRarity: 'epic',
   /** Mua ô linh điền khi giá ≤ phần này của tiền. */
   plotSpendFraction: 0.2,
+  /** Mở rộng kho quái / túi trang bị khi còn ≤ số chỗ này và giá ≤ capacitySpendFraction tiền. */
+  capacityMargin: 5,
+  capacitySpendFraction: 0.2,
   /** Khế ước quái đội mẫu chưa khế ước khi tỉ lệ thành công ≥ số này (%), tránh phản phệ / bỏ trốn. */
   minContractChance: 60
 } as const
@@ -67,6 +73,22 @@ export interface EconomyCount {
   contractEscapes: number
   /** Mốc Bộ sưu tập đã nhận (claimDexRewardsWhenPossible). */
   dexRewards: number
+  /** NPC tinh thể trait (traitCrystals.ts): trait xấu đã gỡ, lần inject, tinh thể mua để inject. */
+  traitsExtracted: number
+  traitsInjected: number
+  crystalsBought: number
+  /** Quái phụ đã hiến tế (sacrifice.ts). */
+  sacrifices: number
+  /** Cấy ghép (implant.ts): lần thành công, thất bại; tỉ trọng cấy ghép trong bước gốc (%, lần đo cuối). */
+  implants: number
+  implantFails: number
+  /** Lần cấy là huyết thanh hiệu ứng (gồm cả thất bại). */
+  implantEffects: number
+  implantSharePercent: number
+  /** Sức chứa (expandCapacityWhenFull): lần mở rộng; chỗ dùng cao nhất thấy ở thị trấn. */
+  capacityExpansions: number
+  storagePeak: number
+  bagPeak: number
 }
 
 export const newEconomyCount = (): EconomyCount => ({
@@ -81,7 +103,18 @@ export const newEconomyCount = (): EconomyCount => ({
   contracts: 0,
   contractFails: 0,
   contractEscapes: 0,
-  dexRewards: 0
+  dexRewards: 0,
+  traitsExtracted: 0,
+  traitsInjected: 0,
+  crystalsBought: 0,
+  sacrifices: 0,
+  implants: 0,
+  implantFails: 0,
+  implantEffects: 0,
+  implantSharePercent: 0,
+  capacityExpansions: 0,
+  storagePeak: 0,
+  bagPeak: 0
 })
 
 type Act = (data: GameData, state: GameState, action: GameAction) => GameState
@@ -423,4 +456,28 @@ export function buyPlotWhenCheap(data: GameData, state: GameState, count: Econom
   if (price.gt(state.money.times(ECONOMY_POLICY.plotSpendFraction))) return state
   count.plotsBought++
   return simAct(data, state, { type: 'buyPlot' })
+}
+
+/**
+ * Ở thị trấn: ghi chỗ dùng cao nhất của kho / túi; loại nào còn ≤ capacityMargin chỗ thì mở rộng khi
+ * giá ≤ capacitySpendFraction tiền (docs/rules/capacity.md).
+ */
+export function expandCapacityWhenFull(
+  data: GameData,
+  state: GameState,
+  count: EconomyCount
+): GameState {
+  if (state.location.type !== 'town' || state.battle) return state
+  const view = capacityView(data, state)
+  count.storagePeak = Math.max(count.storagePeak, view.storage.used)
+  count.bagPeak = Math.max(count.bagPeak, view.bag.used)
+  for (const kind of CAPACITY_KINDS) {
+    const { used, capacity } = view[kind]
+    if (capacity - used > ECONOMY_POLICY.capacityMargin) continue
+    const cost = capacityExpandCost(data, state, kind)
+    if (cost.gt(state.money.times(ECONOMY_POLICY.capacitySpendFraction))) continue
+    state = simAct(data, state, { type: 'expandCapacity', kind })
+    count.capacityExpansions++
+  }
+  return state
 }

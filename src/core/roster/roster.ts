@@ -12,6 +12,7 @@ import {
   megaFormsByStone,
   humanFormBlocker,
   humanFormCost,
+  implantChance,
   lockedSkillIds,
   nextAwakeningMilestone,
   nextMasteryMilestone,
@@ -50,7 +51,8 @@ import {
   MAX_PURITY,
   yearsLeft,
   type EvolutionScene,
-  polarityStatPercent
+  polarityStatPercent,
+  sacrificeStatPercent
 } from '../registries'
 import { BIG_ZERO, cloneData, maxBig, type Decimal } from '../shared'
 import { equipmentSlotCount } from '../inventory'
@@ -232,6 +234,23 @@ export interface MonsterView {
   bloodline: BloodlineView
   /** Âm / Dương: cực, trait cực tính, % chỉ số đang cộng; null = không cực (docs/rules/polarity.md). */
   polarity: PolarityView | null
+  /** Hiến tế: số stack và % mọi chỉ số đang được cộng (docs/rules/sacrifice.md). */
+  sacrifice: { stacks: number; statPercent: number }
+  /** Cấy ghép: tổng đã cấy, tỉ lệ lần tới, số lần thất bại / tối đa (docs/rules/implant.md). */
+  implant: ImplantView
+}
+
+/** Cấy ghép cho MonsterView. */
+export interface ImplantView {
+  bonusStats: BigStats
+  /** Cấp hiệu ứng cấy theo id (âm = hiệu ứng ngược). */
+  effects: Record<string, number>
+  attempts: number
+  /** Tỉ lệ (%) lần cấy tiếp theo thành công. */
+  nextChance: number
+  fails: number
+  /** Thất bại lần thứ maxFails thì mất quái. */
+  maxFails: number
 }
 
 /** Âm / Dương cho MonsterView. */
@@ -539,7 +558,19 @@ export function buildMonsterView(
     bloodline: bloodlineView(data, monster),
     polarity: monster.polarity
       ? { ...monster.polarity, statPercents: polarityStatPercent(data, monster) }
-      : null
+      : null,
+    sacrifice: {
+      stacks: monster.sacrificeStacks,
+      statPercent: sacrificeStatPercent(data, monster)
+    },
+    implant: {
+      bonusStats: { ...monster.implantBonusStats },
+      effects: { ...monster.implantEffects },
+      attempts: monster.implantAttempts,
+      nextChance: implantChance(data, monster),
+      fails: monster.implantFails,
+      maxFails: data.config.implant.maxFails
+    }
   }
 }
 

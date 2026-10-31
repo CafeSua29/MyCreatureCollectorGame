@@ -24,6 +24,7 @@ import { imprintOneDay } from './imprint'
 import { cropRipeTask } from './alchemy'
 import { expeditionDailyTask } from './expeditions'
 import { beastTideDailyTask } from './beastTide'
+import { labDailyTask } from './implant'
 
 /** Lịch của một mốc giờ cho UI / mô phỏng (docs/rules/calendar.md). */
 export interface CalendarView {
@@ -70,6 +71,8 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   beastTide: beastTideDailyTask,
   // Khu bảo tồn: làm mới danh sách loài khi tới ngày (docs/rules/safari-zone.md).
   safari: safariDailyTask,
+  // Phòng Thí Nghiệm: đổi hàng huyết thanh khi tới ngày (docs/rules/implant.md).
+  lab: labDailyTask,
   // Tâm linh tương thông: quái đã khế ước thêm một ngày khế ước (docs/rules/tamer.md mục "Khế ước").
   soulLink: soulLinkDailyTask,
   // Linh dịch: quái đang nhiễm ở đội bớt một ngày; kho đứng yên (docs/rules/spirit-virus.md).

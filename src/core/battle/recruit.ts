@@ -8,7 +8,9 @@ import {
   monsterSpeciesRankOf,
   speciesRankIndex,
   hasPartyRoom,
-  partyAfterJoining
+  partyAfterJoining,
+  capacityOf,
+  hasRosterRoom
 } from '../registries'
 import {
   ActionError,
@@ -71,11 +73,13 @@ const bonusMultiplier = (percent: number): number => Math.max(0, 1 + percent / 1
  */
 export function recruitChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'recruit'>,
+  state: Pick<GameState, 'party' | 'storage' | 'recruit' | 'capacity' | 'tamer'>,
   { enemy, isBoss }: { enemy: Monster; isBoss: boolean }
 ): number {
   const species = getBaseSpecies(data, enemy)
   if (!species) return 0
+  // Đội đủ và kho đầy: không xin theo / quy phục (docs/rules/capacity.md).
+  if (!hasRosterRoom(data, state, { newcomer: enemy })) return 0
   const config = data.config.recruit
   const bonus = bonusMultiplier(recruitBonusPercent(data, state, enemy))
   const rank = Math.max(0, speciesRankIndex(data, monsterSpeciesRankOf(data, enemy).id))
@@ -159,6 +163,9 @@ export function acceptRecruit(data: GameData, state: GameState): GameState {
   if (!enemy) throw new Error(`Quái xin theo "${offerId}" không có trong trận`)
   const method: RecruitMethod = battle.isBoss ? 'bossSubmit' : 'afterBattle'
   const monster = recruitedMonster(data, d, { enemy, method })
+  if (!hasRosterRoom(data, state, { newcomer: monster })) {
+    throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
+  }
   const destination = hasPartyRoom(data, state.party, monster) ? 'party' : 'storage'
   d.party = destination === 'party' ? [...state.party, monster] : state.party
   d.storage = destination === 'storage' ? [...state.storage, monster] : state.storage
@@ -218,6 +225,10 @@ export function validateIntimidateTarget(
   if (!found || isDynamaxed(found.target)) {
     throw malformedAction('mục tiêu Thị Uy phải là quái hoang còn sống trên sân, không Dynamax')
   }
+  // Như ném bóng: đội đủ và kho đầy thì báo lỗi ngay (docs/rules/capacity.md).
+  if (!hasRosterRoom(data, d, { pending: d.battle.captured, newcomer: found.target })) {
+    throw new ActionError('rosterFull', { capacity: capacityOf(data, d, 'storage') })
+  }
 }
 
 /**
@@ -240,6 +251,10 @@ export function runIntimidate(data: GameData, d: Draft, targetId: string | undef
   const found = typeof targetId === 'string' ? enemyTarget(data, d.battle, targetId) : null
   if (!found || isDynamaxed(found.target)) return false
   const { target } = found
+  if (!hasRosterRoom(data, d, { pending: d.battle.captured, newcomer: target })) {
+    log(d, { type: 'rosterFull', monsterId: target.id })
+    return false
+  }
   const chance = intimidateChanceAgainst(data, d, target)
   let success: boolean
   ;[success, d.rng] = rollPercent(d.rng, chance * 100)

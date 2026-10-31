@@ -27,6 +27,8 @@
   - **Trait thường:** pool = trait chiếm ô của cả hai, trait trùng gộp cấp (cộng); xáo trộn rồi lấy dần cho đủ số ô; bốc phải trait loại trừ với trait đã chọn thì **bỏ cả hai** và bốc bù tiếp; hết pool thì chấp nhận thiếu ô. Pool ít hơn số ô thì giữ hết (trừ cặp loại trừ).
   - **Trait boss** gộp cấp (cộng cấp của cả hai). **`bossMultiplier` = cao nhất** của hai quái.
   - **`shinyStacks` cộng dồn**, trait shiny cấp = tổng (qua `addShinyStacks`).
+  - **`sacrificeStacks` cộng dồn** (stack hiến tế của quái phụ, không +1; `sacrifice.md`).
+  - **Cấy ghép giữ của quái gốc** (`implantBonusStats`, `implantEffects`, `implantAttempts`, `implantFails`; hiệu ứng của quái phụ mất); phần cấy của quái phụ đã nằm trong chỉ số `withFusingBonus` của nó nên ½ tự truyền qua `fusingBonusStats` (`implant.md`).
   - `lineage` thêm `baseSpeciesId` và lineage của quái phụ, **không lặp loài**.
   - Giữ: hệ Tera, Gmax Factor, cấp Dynamax (quái fuse không Mega / Gigantamax được, Dynamax / Tera thì được; `transformation.md`); level, EXP, gen, gender (kể cả `none`: quái gốc không giới tính thì quái fuse cũng vậy), biệt danh, máu đã mất (max HP tăng nên HP hiện tại tăng theo), skill chờ học. Xóa `pendingEvolutionIds` (quái fuse không tiến hóa).
   - `previewFusion(data, base, sub, boostItemId?)` cho UI xem trước phần chắc chắn (kể cả `canFuse`, `newSpeciesIds`, tỉ lệ thành công `successChance` đã cộng bùa, mức hợp race `raceMatch`, skill kế thừa được `inheritableSkillIds`); trait random lúc fuse nên không xem trước được. UI hỏi xác nhận, ghi rõ "thất bại sẽ mất cả hai quái" (hoặc "mất quái phụ" khi có Bùa Hộ Mệnh).

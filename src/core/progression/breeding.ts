@@ -20,6 +20,7 @@
 
 import { recordQuestEvent } from '../quests'
 import { wrapEgg } from './eggs'
+import { rollGene } from './genes'
 import {
   addShinyStacks,
   assertNotBusy,
@@ -50,7 +51,6 @@ import {
   Decimal,
   levelCost,
   maxBig,
-  nextFloat,
   pick,
   rollPercent,
   spendMoney,
@@ -107,26 +107,6 @@ export function canBreed(data: GameData, a: Monster, b: Monster): boolean {
 
 export function breedCost(data: GameData, father: Monster, mother: Monster): Decimal {
   return levelCost(data.config.breeding.costPerLevel, father.level + mother.level)
-}
-
-/** Gen con cho một chỉ số. */
-function rollGene(
-  data: GameData,
-  rng: RngState,
-  best: Decimal,
-  mutation: boolean
-): [Decimal, RngState] {
-  const { geneDownPercent, geneUpPercent } = data.config.breeding
-  const low = mutation ? 0 : -geneDownPercent / 100
-  const high = geneUpPercent / 100
-  let roll: number
-  ;[roll, rng] = nextFloat(rng)
-  const r = low + roll * (high - low)
-  // Làm tròn nửa lên phía dương (như Math.round cũ), không phải xa số 0.
-  let delta = best.times(r).toDecimalPlaces(0, Decimal.ROUND_HALF_CEIL)
-  if (delta.isZero()) delta = new Decimal(r < 0 ? -1 : 1)
-  if (mutation && delta.lt(1)) delta = new Decimal(1)
-  return [maxBig(1, best.plus(delta)), rng]
 }
 
 // Chỉ trait thường (chiếm ô) mới truyền; trait race không lưu trên quái nên con tự có theo race.
@@ -301,7 +281,14 @@ export function makeOffspring(
     // Tung sau cùng (rollChildBloodlines) theo độ thuần của bố mẹ.
     bloodlines: [],
     // Tung sau cùng (childPolarity) theo cực của bố mẹ.
-    polarity: null
+    polarity: null,
+    // Breeding không truyền stack hiến tế (bố mẹ không mất, truyền thì nhân bản; sacrifice.md).
+    sacrificeStacks: 0,
+    // Không truyền cấy ghép, cùng lý do như hiến tế (docs/rules/implant.md).
+    implantBonusStats: uniformBigStats(0),
+    implantEffects: {},
+    implantAttempts: 0,
+    implantFails: 0
   }
 
   child = withEggSkills(data, child, inheritedEggSkills(species, father, mother))

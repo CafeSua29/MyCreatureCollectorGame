@@ -239,7 +239,14 @@ export function rollMonster(
     // Tung sau cùng (rollWildBloodlines).
     bloodlines: [],
     // Quái hoang / boss tung cực sau tuổi (rollSpawnPolarity); trứng không cực.
-    polarity: null
+    polarity: null,
+    // Chưa từng được hiến tế (docs/rules/sacrifice.md).
+    sacrificeStacks: 0,
+    // Chưa từng được cấy ghép (docs/rules/implant.md).
+    implantBonusStats: uniformBigStats(0),
+    implantEffects: {},
+    implantAttempts: 0,
+    implantFails: 0
   }
   let shiny: boolean
   ;[shiny, rng] = rollPercent(rng, spec.shinyChance)

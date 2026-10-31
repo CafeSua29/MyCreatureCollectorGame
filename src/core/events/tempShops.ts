@@ -2,6 +2,7 @@
 // với TEMP_SHOP_POOL_CHECKS ở gameData/validateEvents.ts), mua bằng buyEventItem. Cửa hàng mất khi
 // rời chỗ gặp hoặc đi tiếp (khám phá, đánh quái hoang).
 
+import { assertBagRoom } from '../registries'
 import {
   ActionError,
   malformedAction,
@@ -238,6 +239,7 @@ export function buyEventItem(
   ) {
     throw new ActionError('stackLimitReached', { max: Number.MAX_SAFE_INTEGER })
   }
+  if (entry.storage === 'instance') assertBagRoom(data, state)
   const price = tempShopPrice(data, state, { entry, priceMultiplier: shop.priceMultiplier })
   const paid = spendMoney(state, price.times(count))
   const inventory =

@@ -7,6 +7,7 @@ import { isLargeMonster, partySlotsUsed } from '../registries'
 import {
   validateAlchemyState,
   validateGardenState,
+  validateCookingState,
   validateSmithingState
 } from './validateAlchemyState'
 import { validateQuestState } from './validateQuestState'
@@ -40,6 +41,8 @@ import { validateTimeState } from './validateTimeState'
 import { checkBattleTamers, validateBondState, validateTamer } from './validateTamerState'
 import { validateRecruitState } from './validateRecruitState'
 import { validateSafariState } from './validateSafariState'
+import { validateLabState } from './validateLabState'
+import { validateCapacityState } from './validateCapacityState'
 import { validateZoneState } from './validateZoneState'
 import { validateDexState } from './validateDexState'
 import { validateEquipmentState } from './validateEquipmentState'
@@ -171,6 +174,21 @@ function checkTopLevel(state: Record<string, unknown>, issues: string[]): void {
 }
 
 /** Trả về id các quái trong trứng. */
+/** Linh thạch đã đặt vào trứng: hệ có linh thạch, không quá maxInfusions. */
+function checkInfusions(data: GameData, value: unknown, path: string, issues: string[]): void {
+  if (!Array.isArray(value)) {
+    issues.push(`${path} phải là danh sách`)
+    return
+  }
+  const max = data.config.egg.incubation.maxInfusions
+  if (value.length > max) issues.push(`${path}: tối đa ${max} linh thạch`)
+  value.forEach((elementId: unknown, i) => {
+    if (typeof elementId !== 'string' || !(elementId in data.config.alchemy.elementStoneItemIds)) {
+      issues.push(`${path}[${i}]: hệ không có linh thạch "${String(elementId)}"`)
+    }
+  })
+}
+
 function checkEggs(data: GameData, eggs: unknown, issues: string[]): string[] {
   if (!Array.isArray(eggs)) {
     issues.push('eggs phải là danh sách')
@@ -189,7 +207,9 @@ function checkEggs(data: GameData, eggs: unknown, issues: string[]): string[] {
     if (egg.id !== asObject(egg.monster)?.id) {
       issues.push(`eggs[${i}].id phải bằng id quái bên trong`)
     }
-    issues.push(...checkInteger(egg.battlesLeft, `eggs[${i}].battlesLeft`, 1))
+    // 0 = đã tới lúc nở nhưng đội / kho hết chỗ (docs/rules/capacity.md).
+    issues.push(...checkInteger(egg.battlesLeft, `eggs[${i}].battlesLeft`, 0))
+    checkInfusions(data, egg.infusions, `eggs[${i}].infusions`, issues)
     return String(egg.id)
   })
 }
@@ -663,6 +683,7 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateFormationState(data, state.formations))
   issues.push(...validateAlchemyState(data, state.alchemy))
   issues.push(...validateSmithingState(data, state.smithing))
+  issues.push(...validateCookingState(data, state.cooking))
   issues.push(...validateGardenState(data, state.garden, state.time))
   issues.push(...validateQuestState(data, state.quests))
   issues.push(
@@ -676,6 +697,8 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   )
   issues.push(...validateEventState(data, state))
   issues.push(...validateZoneState(data, state))
+  issues.push(...validateLabState(data, state.lab))
+  issues.push(...validateCapacityState(data, state))
   issues.push(...validateRecruitState(data, state))
   issues.push(...validateDexState(data, state.dex))
   issues.push(

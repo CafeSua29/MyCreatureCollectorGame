@@ -12,7 +12,7 @@ import type {
 import type { HistoryConfig } from './history'
 import type { PartialStats } from './stats'
 import type { Pole } from './monster'
-import type { AlchemyConfig } from './alchemy'
+import type { AlchemyConfig, CraftCurveConfig } from './alchemy'
 import type { QuestConfig } from './quests'
 import type { ExpeditionConfig } from './expeditions'
 import type { TrainerConfig } from './trainers'
@@ -28,6 +28,8 @@ import type { MoveStylesConfig } from './moveStyles'
 import type { FrenzyConfig } from './frenzy'
 import type { RecruitConfig } from './recruit'
 import type { SafariConfig } from './safari'
+import type { ImplantConfig } from './implant'
+import type { CapacityConfig } from './capacity'
 import type { ZoneConfig } from './zones'
 import type { CriticalTier, DexConfig } from './dex'
 import type { StatName } from './stats'
@@ -91,6 +93,7 @@ export interface BalanceConfig {
   fuseCostPerLevel: number
   fuseChance: FuseChanceConfig
   fusion: FusionConfig
+  sacrifice: SacrificeConfig
   crystal: CrystalConfig
   skillBook: SkillBookConfig
   shop: ShopConfig
@@ -132,6 +135,8 @@ export interface BalanceConfig {
   treasures: TreasureConfig
   /** Luyện đan và linh điền (docs/rules/alchemy.md). */
   alchemy: AlchemyConfig
+  /** Linh thực: cấp nấu ăn (docs/rules/cooking.md). */
+  cooking: CraftCurveConfig
   /** Nhóm vật phẩm dùng làm nguyên liệu "món bất kỳ trong nhóm" (docs/rules/alchemy.md). */
   itemGroups: Record<string, string[]>
   /** Bảng nhiệm vụ (docs/rules/quests.md). */
@@ -170,12 +175,19 @@ export interface BalanceConfig {
   recruit: RecruitConfig
   /** Khu bảo tồn (docs/rules/safari-zone.md). */
   safari: SafariConfig
+  /** Phòng Thí Nghiệm: cấy ghép (docs/rules/implant.md). */
+  implant: ImplantConfig
+  /** Sức chứa kho quái / túi trang bị (docs/rules/capacity.md). */
+  capacity: CapacityConfig
   /** Hiểm địa (docs/rules/zones.md). */
   zones: ZoneConfig
 }
 
-/** Thợ rèn (docs/rules/equipment-forge.md). Bảng theo bậc gồm cả bậc unique. */
-export interface ForgeConfig {
+/**
+ * Thợ rèn (docs/rules/equipment-forge.md). Bảng theo bậc gồm cả bậc unique; cấp luyện khí theo đường
+ * cong `CraftCurveConfig`.
+ */
+export interface ForgeConfig extends CraftCurveConfig {
   /** Đá cường hóa / Tẩy luyện thạch (material). */
   enhanceStoneItemId: string
   refiningStoneItemId: string
@@ -192,10 +204,6 @@ export interface ForgeConfig {
   salvageSoulPoints: Record<EquipmentRarity, number>
   /** Đồ rơi thêm khi hạ boss. */
   bossDrops: DropEntry[]
-  /** Cấp luyện khí: tổng exp đạt cấp L = ⌈expBase × (L − 1) ^ expPower⌉; + điểm % mỗi cấp trên mức. */
-  expBase: number
-  expPower: number
-  levelBonusPercent: number
   /** Exp luyện khí mỗi lần cường hóa. */
   enhanceExp: number
   /** Cường hóa cấp cao: từ cấp fromLevel cần thêm ⌊(cấp − fromLevel) / step⌋ + 1 món của nhóm. */
@@ -297,6 +305,8 @@ export interface BloodlineConfig {
   ancestorKillPurity: number
   /** Fuse: quái gốc nhận % độ thuần của quái phụ ở nhóm mà quái gốc cũng thuộc. */
   fusePurityPercent: number
+  /** Hiến tế: quái chính nhận % độ thuần của quái phụ ở nhóm mà quái chính cũng thuộc. */
+  sacrificePurityPercent: number
   /** Hệ số pha trộn chỉ số gốc ở độ thuần 100%. */
   mixAtFullPurity: number
   /** Mốc độ thuần (tăng dần): số mốc đã đạt = cấp trait huyết mạch. */
@@ -657,6 +667,14 @@ export interface FusionConfig {
   inheritSkills: number
 }
 
+/** Hiến tế (docs/rules/sacrifice.md). */
+export interface SacrificeConfig {
+  /** Giá mỗi quái phụ = costPerLevel × (level quái chính + level quái phụ). */
+  costPerLevel: number
+  /** % mọi chỉ số mỗi stack hiến tế (tuyến tính). */
+  statPercentPerStack: number
+}
+
 /**
  * Tỉ lệ fuse thành công (mục Fusing): raceChances[mức hợp race] × lineageFactor^(số loài trong
  * lineage của quái gốc) + điểm cộng (trait, bùa), kẹp [0, 100].
@@ -672,6 +690,8 @@ export interface FuseChanceConfig {
 export interface CrystalConfig {
   /** Giá extract = extractCostBase × cấp² × hệ số theo loại trait. */
   extractCostBase: number
+  /** Giá inject = injectCostBase × (cấp sau khi gộp)² × hệ số theo loại trait. */
+  injectCostBase: number
   kindCostMultipliers: Record<CrystalTraitKind, number>
 }
 
@@ -840,6 +860,21 @@ export interface EggConfig {
   /** Số trận thắng quái hoang để trứng nở, random trong [min, max] khi tạo trứng. */
   hatchBattlesMin: number
   hatchBattlesMax: number
+  incubation: IncubationConfig
+}
+
+/** Ấp trứng có hoàn cảnh (docs/rules/breeding-eggs.md mục "Ấp trứng có hoàn cảnh"). */
+export interface IncubationConfig {
+  /** Số linh thạch tối đa đặt vào một trứng. */
+  maxInfusions: number
+  /** Linh thạch cùng hệ với quái trong trứng: mọi gen × (1 + % này), ít nhất +1. */
+  genePercentPerInfusion: number
+  /** % thêm cho quái trong trứng ra shiny mỗi lần đặt linh thạch (mọi hệ). */
+  infusionShinyChance: number
+  /** Trận thắng ở linh địa (map có hệ của quái trong trứng): trứng tiến thêm số bước này. */
+  spiritLandExtraSteps: number
+  /** % đột biến mỗi trận thắng ở linh địa (mọi gen tăng như đột biến breeding). */
+  spiritLandMutationChance: number
 }
 
 export interface ShinyConfig {

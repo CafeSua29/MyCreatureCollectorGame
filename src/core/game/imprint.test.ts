@@ -56,7 +56,10 @@ describe('chỉ quái nở từ trứng', () => {
       [makeMonster({ id: 'e', damageTaken: 49 })]
     )
     const egg = makeMonster({ id: 'egg1', imprint: null })
-    const won = winBattle({ ...base, eggs: [{ id: 'egg1', monster: egg, battlesLeft: 1 }] })
+    const won = winBattle({
+      ...base,
+      eggs: [{ id: 'egg1', monster: egg, battlesLeft: 1, infusions: [] }]
+    })
     expect(defined(won.battle).outcome).toBe('won')
     const hatched = defined(won.party.find((m) => m.id === 'egg1'))
     expect(hatched.imprint).toMatchObject({ phase: 'active', completed: 0, total: 15 })
@@ -272,7 +275,7 @@ describe('MonsterView, save, migrate', () => {
     const egg = makeMonster({ id: 'egg1', imprint: activeImprint({ kind: 'pet' }) })
     const withEgg = {
       ...makeGameState({ seed: 1, party: [makeMonster()] }),
-      eggs: [{ id: 'egg1', monster: egg, battlesLeft: 1 }]
+      eggs: [{ id: 'egg1', monster: egg, battlesLeft: 1, infusions: [] }]
     }
     expect(validateGameState(data, withEgg)).toContain(
       'eggs[0].monster.imprint: quái chưa nở phải là null'
@@ -283,7 +286,7 @@ describe('MonsterView, save, migrate', () => {
     const battle = makeBattleState([makeMonster({ id: 'a' })], [makeMonster({ id: 'e' })])
     const raw = serializeState({
       ...battle,
-      eggs: [{ id: 'egg1', monster: makeMonster({ id: 'egg1' }), battlesLeft: 2 }]
+      eggs: [{ id: 'egg1', monster: makeMonster({ id: 'egg1' }), battlesLeft: 2, infusions: [] }]
     }) as Record<string, unknown>
     const strip = (m: Record<string, unknown>): Record<string, unknown> => {
       const { imprint: _imprint, ...rest } = m

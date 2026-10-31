@@ -98,10 +98,20 @@ describe('growth: bắt quái làm nguyên liệu fuse', () => {
     expect(captureCommand(data, weakChance, new Set(['h']))).toBeNull()
     const full = { ...withBall, storage: [1, 2, 3, 4].map((i) => caught(fodder(`s${i}`))) }
     expect(captureCommand(data, full, new Set(['h']))).toBeNull()
-    // Cùng loài với quái đội mẫu: không có loài mới để fuse.
+    // Cùng loài với quái đội mẫu: không fuse được nhưng hiến tế được (cùng race, lineage rỗng).
     const same = makeBattleState([member()], [makeMonster({ id: 'e2' })])
     const sameWithBall = { ...same, inventory: addItems(same.inventory, 'masterBall', 3) }
-    expect(captureCommand(data, sameWithBall, new Set(['h']))).toBeNull()
+    expect(captureCommand(data, sameWithBall, new Set(['h']))).toMatchObject({ targetId: 'e2' })
+    // Quái đội mẫu đã fuse (lineage khác) thì cùng loài không còn dùng được.
+    const fusedTeam = makeBattleState(
+      [member({ fused: true, lineage: ['strongling'] })],
+      [makeMonster({ id: 'e2' })]
+    )
+    const fusedWithBall = {
+      ...fusedTeam,
+      inventory: addItems(fusedTeam.inventory, 'masterBall', 3)
+    }
+    expect(captureCommand(data, fusedWithBall, new Set(['h']))).toBeNull()
   })
 })
 
@@ -245,7 +255,11 @@ describe('growth: thu phục (Thị Uy, xin theo, mồi dụ)', () => {
   })
 
   it('xin theo: nhận quái làm nguyên liệu được, từ chối quái không dùng được', () => {
-    const base = makeBattleState([member()], [fodder('e1'), member({ id: 'e2' })])
+    // e2 cùng loài nhưng quái đội mẫu đã fuse: không fuse / hiến tế được.
+    const base = makeBattleState(
+      [member({ fused: true, lineage: ['other'] })],
+      [fodder('e1'), member({ id: 'e2' })]
+    )
     const ended = (offerId: string): GameState => ({
       ...base,
       battle: { ...defined(base.battle), phase: 'ended', outcome: 'won', recruitOfferId: offerId }

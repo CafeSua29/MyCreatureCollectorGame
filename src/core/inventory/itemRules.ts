@@ -31,6 +31,7 @@ export function itemStorage(category: ItemCategory): ItemStorage {
     case 'seed':
     case 'soulCrystal':
     case 'bait':
+    case 'dish':
     case 'charm':
       return 'stack'
     case 'traitCrystal':
@@ -46,7 +47,7 @@ export function itemStorage(category: ItemCategory): ItemStorage {
 
 /**
  * Những nơi dùng trực tiếp được item; rỗng = không dùng trực tiếp (lắp, inject, dùng khi fuse, sách
- * dùng qua action riêng useSkillBook, mồi dụ qua useBait...).
+ * dùng qua action riêng useSkillBook, mồi dụ qua useBait, món ăn qua eatDish...).
  */
 export function itemUseContexts(item: Item): readonly ItemUseContext[] {
   switch (item.category) {
@@ -71,6 +72,7 @@ export function itemUseContexts(item: Item): readonly ItemUseContext[] {
     case 'soulCrystal':
     case 'skillBook':
     case 'bait':
+    case 'dish':
     case 'charm':
       return []
     default:
@@ -105,6 +107,7 @@ export function itemTarget(item: Item): ItemTarget | null {
     case 'soulCrystal':
     case 'skillBook':
     case 'bait':
+    case 'dish':
     case 'charm':
       return null
     default:
@@ -140,6 +143,7 @@ export function itemDropsFromMonsters(category: ItemCategory): boolean {
     case 'soulCrystal':
     case 'skillBook':
     case 'bait':
+    case 'dish':
       return true
     // Bùa fuse chỉ ở cửa hàng; vật phẩm chìa khóa chỉ nhận ở tầng mốc; bùa chỉ nhận từ thưởng Dex.
     case 'fusionAid':
@@ -173,6 +177,7 @@ export function isEquippable(category: ItemCategory): boolean {
     case 'soulCrystal':
     case 'skillBook':
     case 'bait':
+    case 'dish':
     case 'charm':
       return false
     default:

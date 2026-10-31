@@ -57,7 +57,7 @@ describe('đồng hồ', () => {
   })
 
   it('qua nhiều ngày: già thêm đúng số ngày; quái không già đi và trứng giữ tuổi', () => {
-    const egg = { id: 'm5', monster: aged(0, { id: 'm5' }), battlesLeft: 3 }
+    const egg = { id: 'm5', monster: aged(0, { id: 'm5' }), battlesLeft: 3, infusions: [] }
     const state = {
       ...lifespanState({ seed: 1, party: [aged(100)], nextMonsterId: 6 }),
       eggs: [egg]
@@ -174,7 +174,7 @@ describe('keepAlive: max HP tụt không làm quái đang sống gục', () => {
 
 describe('setGameOption: thọ nguyên', () => {
   it('tắt: mọi quái (cả trứng) ngừng già, tuổi giữ nguyên; bật lại tuổi chạy tiếp', () => {
-    const egg = { id: 'm5', monster: aged(0, { id: 'm5' }), battlesLeft: 3 }
+    const egg = { id: 'm5', monster: aged(0, { id: 'm5' }), battlesLeft: 3, infusions: [] }
     const state = {
       ...lifespanState({ seed: 1, party: [aged(300)], nextMonsterId: 7 }),
       storage: [aged(400, { id: 'm6' })],

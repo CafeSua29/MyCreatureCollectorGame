@@ -63,7 +63,7 @@ describe('bindContract / raiseOwnedContracts', () => {
   })
 
   it('nâng đội, kho và quái trong trứng đã khế ước; quái chưa khế ước giữ nguyên', () => {
-    const egg = { id: 'm9', monster: makeMonster({ id: 'm9' }), battlesLeft: 3 }
+    const egg = { id: 'm9', monster: makeMonster({ id: 'm9' }), battlesLeft: 3, infusions: [] }
     const state = {
       ...makeGameState({ seed: 1, party: [makeMonster({ id: 'a' })] }),
       storage: [makeMonster({ id: 'b' }), makeMonster({ id: 'c', contractRealm: null })],

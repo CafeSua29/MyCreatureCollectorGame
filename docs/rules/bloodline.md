@@ -28,7 +28,8 @@ Như truyện tu tiên / huyền huyễn: quái mang huyết mạch của một 
 3. **Tinh huyết** (và trận đồ nhóm, mục "Phối hợp đội" bên dưới) (`<nhóm>Essence`, tiêu hao, dùng ngoài trận lên quái ta): hiệu ứng `addPurity { groupId, amount }` (+5), chỉ quái thuộc nhóm, đã 100% thì không có tác dụng (`itemNoEffect`, không mất vật phẩm). Giá 2.000, bán ở cửa hàng trọng số 1. Rơi từ boss: mỗi nhóm của loài boss một bảng rơi `essenceDropChance` (25%, nhân hệ số rơi như đồ khác); boss là **loài tổ** (bị hạ hoặc bị bắt) thì chắc chắn rơi một Tinh huyết mỗi nhóm nó là tổ, không tốn RNG.
 4. **Đánh boss cùng nhóm:** thắng trận boss thì mỗi quái đã ra sân (kể cả đã gục) nhận ở mỗi nhóm của mình: `ancestorKillPurity` (3) nếu một địch bị hạ / bị bắt là loài tổ của nhóm, không thì `bossKillPurity` (1) nếu một địch thuộc nhóm (`bossKillPurityGains`, lấy mức cao hơn, không cộng dồn theo số địch).
 5. **Fuse** (`fuseBloodlines`): quái gốc giữ huyết mạch của mình, cộng `fusePurityPercent` (50%) độ thuần của quái phụ ở các nhóm loài gốc của quái gốc cũng thuộc; nhóm khác của quái phụ mất.
-6. Chưa có: **hiến tế** cộng 25% độ thuần quái phụ cùng nhóm (chờ `docs/roadmap/sacrifice.md`, ghi ở đó); Bánh Biến Dị ×2 tỉ lệ đột biến phản tổ (chờ `breeding-cakes.md`).
+6. **Hiến tế** (`sacrificeBloodlines`, `sacrifice.md`): quái chính nhận `sacrificePurityPercent` (25%) độ thuần của quái phụ ở các nhóm loài gốc của quái chính thuộc, **không vượt độ thuần cao hơn của hai quái** (quái phụ thuần kém hơn thì không cộng gì).
+7. Không có vật phẩm tăng tỉ lệ đột biến phản tổ (Bánh Biến Dị đã bỏ cùng Bánh breed, chủ project chốt 2026-10-31).
 
 ## Hiệu lực
 

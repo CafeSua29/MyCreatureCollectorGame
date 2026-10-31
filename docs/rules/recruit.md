@@ -9,7 +9,7 @@ Cách có quái **ngoài bóng**, như Dragon Quest Monsters (quái bị hạ xi
 - `isRecruitBattle`: trận quái hoang / boss trên tầng. **Không** thu phục ở trận ngự thú sư NPC, bí cảnh / tháp, trận event / thú triều (`special`), độ kiếp.
 - Quái thu phục (mọi cách): **HP đầy**, hết trạng thái, bỏ max HP đổi trong trận, thân mật khởi đầu `affinity.start.recruit` (70), lý lịch nguồn gốc `{ kind: 'recruit', method }` (`method`: `afterBattle` / `intimidate` / `bossSubmit`; `monster-history.md`), **chưa khế ước** (khế ước là bước riêng, mục "Khế ước" ở `tamer.md`). Boss thu phục giữ `bossMultiplier` và nhận trait "Huyết thống boss" như bắt boss. Tính một lần "bắt quái" cho nhiệm vụ (`quests.md`, event `caught`).
 - **Không có giới hạn level** (chủ project chốt 2026-10-25): quái level nào cũng xin theo / quy phục / Thị Uy được; giới hạn level chỉ áp lúc khế ước (`tamer.md`).
-- Chưa có: giới hạn **sức chứa** kho quái (chờ `capacity.md`; khi có thì kho đầy không xin theo, Thị Uy báo lỗi).
+- **Sức chứa** (`capacity.md`): đội đủ và kho đầy thì không xin theo / quy phục (`recruitChance` = 0), `acceptRecruit` / Thị Uy báo `rosterFull`.
 
 ## Xin theo sau trận thắng, boss quy phục
 
@@ -36,7 +36,7 @@ Cách có quái **ngoài bóng**, như Dragon Quest Monsters (quái bị hạ xi
 - Đang có mồi còn tác dụng thì không dùng mồi khác (`baitActive`); lỗi khác: `inBattle`, `unknownItem`, `notBait`, `notEnoughItem`.
 - Mồi cộng `recruitPercent` vào % thu phục của xin theo, quy phục và Thị Uy; quái đúng khẩu vị nhận % × `baitFavoriteMultiplier` (2).
 - **Đếm theo trận:** mỗi trận có thể thu phục kết thúc (thắng, thua, chạy; `finish`) bớt 1 trận, hết thì mất (`tickBait`). Trận cuối của mồi vẫn có tác dụng cho lời xin theo của chính trận đó.
-- Dữ liệu: Mồi Dụ Thú (+50%, 5 trận), Linh Mồi (+100%, 10 trận), bốn mồi khẩu vị +60% / 8 trận (thịt: thú / trâu / khủng long; mật hoa: côn trùng / thực vật / chim; cá: thủy sinh / bò sát; Dẫn Hồn Hương: linh hồn / bất tử / nguyên tố / thiên thần); bán ở cửa hàng. Khu bảo tồn ném mồi trong túi (`throwSafariBait { itemId }`, mất một; đúng khẩu vị thì không giảm tỉ lệ bắt; `safari-zone.md`). Chưa có: mồi từ nấu ăn (chờ `cooking.md`).
+- Dữ liệu: Mồi Dụ Thú (+50%, 5 trận), Linh Mồi (+100%, 10 trận), bốn mồi khẩu vị +60% / 8 trận (thịt: thú / trâu / khủng long; mật hoa: côn trùng / thực vật / chim; cá: thủy sinh / bò sát; Dẫn Hồn Hương: linh hồn / bất tử / nguyên tố / thiên thần); bán ở cửa hàng, nấu ở Đầu bếp (`cooking.md`). Khu bảo tồn ném mồi trong túi (`throwSafariBait { itemId }`, mất một; đúng khẩu vị thì không giảm tỉ lệ bắt; `safari-zone.md`).
 - Dưỡng dục dùng lại trường khẩu vị: món đúng khẩu vị được đòi với trọng số `imprint.favoriteFoodWeight` (`imprinting.md`).
 
 ## State, save

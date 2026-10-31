@@ -43,7 +43,7 @@ function asV26(state: GameState): Record<string, unknown> {
 describe('migrate v26 → v27', () => {
   it('cảnh giới = ⌊(highestFloor − 1) / 10⌋, EXP 0, quái người chơi khế ước theo cảnh giới', () => {
     const base = makeGameState({ seed: 1, party: [makeMonster({ id: 'a' })], highestFloor: 25 })
-    const egg = { id: 'm9', monster: makeMonster({ id: 'm9' }), battlesLeft: 2 }
+    const egg = { id: 'm9', monster: makeMonster({ id: 'm9' }), battlesLeft: 2, infusions: [] }
     const state = { ...base, storage: [makeMonster({ id: 'b' })], eggs: [egg], nextMonsterId: 10 }
     const migrated = migrateState(asV26(state), data) as GameState
     expect(migrated.version).toBe(SAVE_VERSION)

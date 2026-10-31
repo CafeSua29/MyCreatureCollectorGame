@@ -39,7 +39,7 @@ Code: `registries/dex.ts` (loài nào tính, %, hệ số chí mạng, thưởng
 
 ## Bùa
 
-- Category item `charm` (`effects: { type, value }[]`, `world-items.md`): có trong túi là có tác dụng (mỗi loại bùa tính một lần dù có nhiều cái), không dùng / bán / vứt, không rơi, không giá. Luật gộp theo loại ở `CHARM_EFFECT_RULES` (`registries/charms.ts`, điểm duy nhất `charmEffect`): `shinyChanceMultiplier` nhân nhau (> 0), `eggStepBonus` cộng dồn (nguyên ≥ 0).
+- Category item `charm` (`effects: { type, value }[]`, `world-items.md`): có trong túi là có tác dụng (mỗi loại bùa tính một lần dù có nhiều cái), không dùng / bán / vứt, không rơi, không giá. Luật gộp theo loại ở `CHARM_EFFECT_RULES` (`registries/charms.ts`, điểm duy nhất `charmEffect`): `shinyChanceMultiplier` nhân nhau (> 0), `eggStepBonus` cộng dồn (nguyên ≥ 0), `restEggSteps` cộng dồn (nguyên ≥ 0; số bước trứng tiến mỗi lần nghỉ, dừng ở 1). Bùa có `townPrice` (nguyên ≥ 1) mua được một lần ở cửa hàng thị trấn với giá cố định đó (`buyCharm`; **Ôn Dưỡng Lò** `incubationFurnace` 30.000, `breeding-eggs.md` mục "Ấp trứng có hoàn cảnh").
 - **Bùa Lấp Lánh** (`shinyCharm`, shiny × 3): nhân tỉ lệ shiny của quái hoang (cùng hệ số kỹ năng đồng hành / event), khu bảo tồn và con breeding (trừ khi bố mẹ đều shiny; tối đa 100%). Trứng boss chưa áp (tỉ lệ shiny cố định của trứng boss, xem lại khi cần).
 - **Bùa Trứng** (`ovalCharm`, +1 lượt ấp mỗi trận thắng): cộng cùng trait kiểu Flame Body và kỹ năng đồng hành. Pokémon dùng Oval Charm để có trứng nhanh hơn; game breed ngay ở NPC nên đổi thành ấp nhanh hơn.
 

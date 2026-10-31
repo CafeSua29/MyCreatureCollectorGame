@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { makeData } from '../testing'
 import { toBig } from '../shared'
-import { crystalExtractCost, itemBasePrice, itemBuyPrice, itemSellPrice } from './itemPrices'
+import {
+  crystalExtractCost,
+  crystalInjectCost,
+  itemBasePrice,
+  itemBuyPrice,
+  itemSellPrice
+} from './itemPrices'
 import type { StackableItemRef } from '../model'
 
 const data = makeData()
@@ -28,6 +34,25 @@ describe('crystalExtractCost', () => {
 
   it('trait không có tinh thể: lỗi lập trình', () => {
     expect(() => crystalExtractCost(data, 'shiny', 1)).toThrow(/không có tinh thể/)
+  })
+})
+
+describe('crystalInjectCost', () => {
+  it('injectCostBase × (cấp sau khi gộp)² × hệ số loại', () => {
+    expect(crystalInjectCost(data, 'fast', 1).toNumber()).toBe(100)
+    expect(crystalInjectCost(data, 'fast', 4).toNumber()).toBe(1600)
+    expect(crystalInjectCost(data, 'regen', 2).toNumber()).toBe(1200)
+  })
+
+  it('injectCostBase 0: miễn phí', () => {
+    const free = makeData()
+    free.config.crystal.injectCostBase = 0
+    expect(crystalInjectCost(free, 'regen', 5).isZero()).toBe(true)
+  })
+
+  it('cấp cực lớn không tràn số, trait không có tinh thể là lỗi lập trình', () => {
+    expect(crystalInjectCost(data, 'regen', Number.MAX_SAFE_INTEGER).isFinite()).toBe(true)
+    expect(() => crystalInjectCost(data, 'shiny', 1)).toThrow(/không có tinh thể/)
   })
 })
 

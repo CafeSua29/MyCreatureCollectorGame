@@ -63,11 +63,26 @@ export interface ActionErrorParams {
   /** Dùng nhiều cái một lần với vật phẩm không cho phép (chỉ kẹo EXP). */
   itemCountNotAllowed: { itemId: string }
   unknownTrait: { traitId: string }
+  // ---------- Extract / inject trait (docs/rules/trait-crystals.md) ----------
+  traitNotOnMonster: { monsterId: string; traitId: string }
+  /** Loại trait không có tinh thể (shiny, boss...): không extract được. */
+  traitNotExtractable: { traitId: string; kind: string }
+  traitSlotsFull: { monsterId: string; slots: number }
+  /** Gộp cấp thì cấp trait vượt giới hạn số nguyên an toàn. */
+  traitLevelLimit: { traitId: string; max: number }
   /** Cộng thêm thì số lượng trong túi vượt giới hạn (Number.MAX_SAFE_INTEGER). */
   stackLimitReached: { max: number }
   // ---------- Cửa hàng ----------
   /** Món không có trong danh sách hàng hiện tại của cửa hàng. */
   notInShop: NoParams
+  /** Bùa không bán ở cửa hàng (không có townPrice) hoặc đã có trong túi. */
+  charmNotForSale: { itemId: string; reason: 'notSold' | 'owned' }
+  // ---------- Ấp trứng (docs/rules/breeding-eggs.md) ----------
+  eggNotFound: { eggId: string }
+  /** Vật phẩm không phải linh thạch theo hệ (config.alchemy.elementStoneItemIds). */
+  notSpiritStone: { itemId: string }
+  /** Trứng đã đặt đủ số linh thạch tối đa. */
+  eggInfusionsFull: { eggId: string; max: number }
   // ---------- Trang bị ----------
   /** Không có món trang bị id này (trong túi, hoặc trong danh sách hàng khi mua). */
   equipmentNotFound: { instanceId: string }
@@ -119,6 +134,22 @@ export interface ActionErrorParams {
   imprintNotRequested: { monsterId: string; kind: string }
   fuseSameMonster: NoParams
   fuseNoNewSpecies: { speciesIds: string[] }
+  // ---------- Hiến tế (docs/rules/sacrifice.md) ----------
+  sacrificeSameMonster: NoParams
+  /** Quái phụ khác race hoặc khác lineage với quái chính. */
+  sacrificeMismatch: { baseId: string; subId: string }
+  /** Stack hiến tế sau khi cộng vượt giới hạn số nguyên an toàn. */
+  sacrificeStackLimit: { max: number }
+  // ---------- Cấy ghép (docs/rules/implant.md) ----------
+  /** Không có huyết thanh ở vị trí này trong danh sách hàng của Phòng Thí Nghiệm. */
+  serumNotFound: { serumIndex: number }
+  // ---------- Sức chứa (docs/rules/capacity.md) ----------
+  /** Đội đủ ô và kho quái đầy: không nhận thêm quái. */
+  rosterFull: { capacity: number }
+  /** Túi trang bị đầy: không thêm món trang bị (mua, tháo, đúc). */
+  bagFull: { capacity: number }
+  /** Món đang lắp trên quái sắp mất không đủ chỗ về túi: phải xác nhận (discardOverflow) để bỏ `lost` món. */
+  bagOverflow: { lost: number }
   /** Item không phải bùa fuse dùng được ở ô này (tăng tỉ lệ / hộ mệnh). */
   wrongFusionAid: { itemId: string; slot: 'boost' | 'protect' }
   /** Chọn kế thừa quá số skill cho phép (config.fusion.inheritSkills). */
@@ -215,6 +246,8 @@ export interface ActionErrorParams {
   notEnoughAwakeningPills: { monsterId: string; have: number; need: number }
   /** Luyện khí (Thợ rèn): công thức luyện khí / đúc trang bị cần cấp luyện khí. */
   smithingLevelTooLow: { need: number; have: number }
+  cookingLevelTooLow: { need: number; have: number }
+  notDish: { itemId: string }
   /** Thiếu nguyên liệu "món bất kỳ trong nhóm" (config.itemGroups). */
   notEnoughGroupItem: { groupId: string; have: number; need: number }
   /** Đúc trang bị: món gốc không đúc được (không phải trang bị thường). */
@@ -371,6 +404,11 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
     `Vật phẩm "${itemId}" không có tác dụng với quái "${monsterId}"`,
   itemCountNotAllowed: ({ itemId }) => `Vật phẩm "${itemId}" chỉ dùng được từng cái một`,
   unknownTrait: ({ traitId }) => `Trait không tồn tại "${traitId}"`,
+  traitNotOnMonster: ({ monsterId, traitId }) => `Quái "${monsterId}" không có trait "${traitId}"`,
+  traitNotExtractable: ({ traitId, kind }) =>
+    `Trait "${traitId}" loại "${kind}" không extract / inject được`,
+  traitSlotsFull: ({ monsterId, slots }) => `Quái "${monsterId}" đã dùng hết ${slots} ô trait`,
+  traitLevelLimit: ({ traitId, max }) => `Cấp trait "${traitId}" không được vượt ${max}`,
   stackLimitReached: ({ max }) => `Số lượng trong túi không được vượt ${max}`,
   notInShop: () => 'Cửa hàng không bán món này',
   equipmentNotFound: ({ instanceId }) => `Không có món trang bị "${instanceId}"`,
@@ -417,6 +455,15 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   fuseSameMonster: () => 'Quái gốc và quái phụ phải là hai con khác nhau',
   fuseNoNewSpecies: ({ speciesIds }) =>
     `Quái phụ không đóng góp loài mới: quái gốc đã có ${speciesIds.join(', ')}`,
+  sacrificeSameMonster: () => 'Quái chính không được nằm trong danh sách quái phụ',
+  sacrificeMismatch: ({ baseId, subId }) =>
+    `Quái "${subId}" không cùng race và cùng lineage với quái chính "${baseId}"`,
+  sacrificeStackLimit: ({ max }) => `Số stack hiến tế không được vượt ${max}`,
+  serumNotFound: ({ serumIndex }) => `Phòng Thí Nghiệm không có huyết thanh thứ ${serumIndex}`,
+  rosterFull: ({ capacity }) => `Đội đã đủ và kho quái đã đầy (${capacity} con)`,
+  bagFull: ({ capacity }) => `Túi trang bị đã đầy (${capacity} chỗ)`,
+  bagOverflow: ({ lost }) =>
+    `Túi trang bị không đủ chỗ: ${lost} món đang lắp sẽ mất, cần xác nhận (discardOverflow)`,
   wrongFusionAid: ({ itemId, slot }) =>
     `Vật phẩm "${itemId}" không phải bùa fuse ô ${slot === 'boost' ? 'tăng tỉ lệ' : 'hộ mệnh'}`,
   tooManyInheritedSkills: ({ max }) => `Chỉ được kế thừa tối đa ${max} skill của quái phụ`,
@@ -426,6 +473,13 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
     `Quái "${monsterId}" không dùng Z-Move từ skill "${skillId}" được (${reason})`,
   cannotCatchDynamaxed: ({ monsterId }) => `Không thể bắt quái "${monsterId}" khi đang Dynamax`,
   keyItemLocked: ({ itemId }) => `Vật phẩm chìa khóa "${itemId}" không bán / vứt được`,
+  charmNotForSale: ({ itemId, reason }) =>
+    reason === 'owned'
+      ? `Đã có bùa "${itemId}", mỗi loại chỉ mua một lần`
+      : `Cửa hàng không bán bùa "${itemId}"`,
+  eggNotFound: ({ eggId }) => `Không có trứng "${eggId}"`,
+  notSpiritStone: ({ itemId }) => `Vật phẩm "${itemId}" không phải linh thạch`,
+  eggInfusionsFull: ({ eggId, max }) => `Trứng "${eggId}" đã đặt đủ ${max} linh thạch`,
   teraElementUnchanged: ({ elementId }) => `Hệ Tera đã là "${elementId}"`,
   teraElementFixed: ({ speciesId }) => `Loài "${speciesId}" có hệ Tera cố định`,
   optionUnchanged: ({ option, enabled }) =>
@@ -481,6 +535,8 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   notRecipeScroll: ({ itemId }) => `"${itemId}" không phải đan phương`,
   alchemyLevelTooLow: ({ need, have }) => `Cần cấp luyện đan ${need}, đang ${have}`,
   smithingLevelTooLow: ({ need, have }) => `Cần cấp luyện khí ${need}, đang ${have}`,
+  cookingLevelTooLow: ({ need, have }) => `Cần cấp nấu ăn ${need}, đang ${have}`,
+  notDish: ({ itemId }) => `Vật phẩm "${itemId}" không phải món ăn`,
   notEnoughAwakeningPills: ({ monsterId, have, need }) =>
     `Không đủ Thức tỉnh đan cùng hệ với "${monsterId}": có ${have}, cần ${need}`,
   notEnoughGroupItem: ({ groupId, have, need }) =>

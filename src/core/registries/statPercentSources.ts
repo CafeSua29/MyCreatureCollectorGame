@@ -93,8 +93,19 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   frenzy: {},
   // Thưởng sưu tập (chỉ trong trận, phe người chơi, docs/rules/dex.md): mọi chỉ số qua bối cảnh trận.
   collection: {},
+  // Linh thực (chỉ trong trận, phe người chơi, docs/rules/cooking.md): % của món ăn qua bối cảnh trận.
+  meal: {},
   // Âm / Dương (docs/rules/polarity.md): % theo cực (trait cực tính đi qua hook, nhóm `traits`).
-  polarity: { percent: polarityStatPercent }
+  polarity: { percent: polarityStatPercent },
+  // Hiến tế (docs/rules/sacrifice.md): mọi chỉ số kể cả max HP, stack × statPercentPerStack.
+  sacrifice: { percent: (data, monster) => uniformPercent(sacrificeStatPercent(data, monster)) },
+  // Hiệu ứng cấy ghép có hook % chỉ số (docs/rules/implant.md; đi qua hook, nguồn hook `implant`).
+  implant: {}
+}
+
+/** % mọi chỉ số quái đang được cộng từ hiến tế (tuyến tính theo stack). */
+export function sacrificeStatPercent(data: GameData, monster: Monster): number {
+  return monster.sacrificeStacks * data.config.sacrifice.statPercentPerStack
 }
 
 /** % chỉ số của hồn tinh: bỏ chỉ số cấp 0. */
@@ -161,5 +172,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   formation: 'formation',
   partner: 'partner',
   frenzy: 'frenzy',
-  collection: 'collection'
+  collection: 'collection',
+  meal: 'meal',
+  implant: 'implant'
 }

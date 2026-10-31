@@ -201,7 +201,7 @@ describe('phần thưởng khi thắng', () => {
   })
 
   it('trứng giảm thêm số trận', () => {
-    const egg = { id: 'x', battlesLeft: 5, monster: makeMonster({ id: 'x' }) }
+    const egg = { id: 'x', battlesLeft: 5, monster: makeMonster({ id: 'x' }), infusions: [] }
     const left = (party: Monster[]): number[] => {
       const state = { ...makeBattleState(party, [prey('e1')]), eggs: [egg] }
       return run(state, strikeTurn(state)).eggs.map((e) => e.battlesLeft)

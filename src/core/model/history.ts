@@ -58,6 +58,11 @@ type MilestoneEvent =
   /** Fuse thành công / thất bại có Bùa Hộ Mệnh, ghi trên quái gốc: loài gốc của quái phụ. */
   | { kind: 'fused'; subSpeciesId: string }
   | { kind: 'fuseFailed'; subSpeciesId: string }
+  /** Hiến tế `count` quái phụ trong một lần (sacrifice.md), ghi trên quái chính. */
+  | { kind: 'sacrificed'; count: number }
+  /** Cấy huyết thanh bậc `tierId` thành công / thất bại lần thứ `fails` (implant.md). */
+  | { kind: 'implanted'; tierId: string }
+  | { kind: 'implantFailed'; tierId: string; fails: number }
   /** Có mặt trong trận mở tầng (hạ hoặc bắt boss tầng `floor`), mỗi tầng một lần. */
   | { kind: 'floorBossDefeated'; floor: number }
   /** Độ kiếp thành công lên tầng thức tỉnh `tier` (awakening.md). */

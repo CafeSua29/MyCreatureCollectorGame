@@ -5,7 +5,7 @@ import type { ExpeditionState } from './expeditions'
 import type { BattleTrainer, TrainerMode, TrainerState } from './trainers'
 import type { BattleTrial, SecretRealm, TowerState } from './trials'
 import type { QuestState } from './quests'
-import type { AlchemyState, GardenState, SmithingState } from './alchemy'
+import type { AlchemyState, CookingState, GardenState, SmithingState } from './alchemy'
 import type { Decimal } from '../shared'
 import type {
   EquipmentRarity,
@@ -17,13 +17,15 @@ import type {
 } from './content'
 import type { Monster } from './monster'
 import type { MoveStyle } from './moveStyles'
-import type { BattleStages, StageStat, StatName } from './stats'
+import type { BattleStages, PartialStats, StageStat, StatName } from './stats'
 import type { PlannedTransform, TransformKind } from './transform'
 import type { BattleTamer, TamerState } from './tamer'
 import type { DayEvent, GameOptions, PartyRefillEvent } from './time'
 import type { SoulImprint, SoulRemnant } from './soul'
 import type { RecruitMethod, RecruitState } from './recruit'
 import type { SafariState } from './safari'
+import type { LabState } from './implant'
+import type { CapacityState } from './capacity'
 import type { ZoneState } from './zones'
 import type { DexState } from './dex'
 
@@ -82,6 +84,8 @@ export interface GameState {
   alchemy: AlchemyState
   /** Cấp luyện khí ở Thợ rèn (docs/rules/alchemy.md, equipment-forge.md). */
   smithing: SmithingState
+  /** Cấp nấu ăn ở Đầu bếp, món ăn đang có tác dụng cho cả đội (docs/rules/cooking.md). */
+  cooking: CookingState
   garden: GardenState
   /** Bảng nhiệm vụ và nhiệm vụ đang nhận (docs/rules/quests.md). */
   quests: QuestState
@@ -101,6 +105,10 @@ export interface GameState {
   recruit: RecruitState
   /** Khu bảo tồn: danh sách loài theo đợt, lượt vào khu đang diễn ra (docs/rules/safari-zone.md). */
   safari: SafariState
+  /** Phòng Thí Nghiệm: huyết thanh đang bán, ngày đổi hàng (docs/rules/implant.md). */
+  lab: LabState
+  /** Số lần đã mở rộng kho quái / túi trang bị (docs/rules/capacity.md). */
+  capacity: CapacityState
   /** Hiểm địa: lượt vào đang diễn ra, ngày mở lại của từng hiểm địa (docs/rules/zones.md). */
   zones: ZoneState
   /** Bộ sưu tập: loài đã gặp / đã sở hữu, mốc thưởng đã nhận (docs/rules/dex.md). */
@@ -224,6 +232,11 @@ export interface Egg {
   monster: Monster
   /** Số trận thắng quái hoang còn lại trước khi nở. */
   battlesLeft: number
+  /**
+   * Hệ của các linh thạch đã đặt vào trứng, theo thứ tự đặt (docs/rules/breeding-eggs.md mục "Ấp
+   * trứng có hoàn cảnh"); hiệu ứng đã áp thẳng vào quái bên trong, mảng này để đếm và cho UI.
+   */
+  infusions: string[]
 }
 
 export type BattleSide = 'player' | 'enemy'
@@ -239,6 +252,7 @@ export type TriggerLogSource =
   | 'synergy'
   | 'formation'
   | 'partner'
+  | 'implant'
 
 /**
  * Cộng hưởng / trận pháp đang có tác dụng với một phe trong trận (docs/rules/team.md), tính lúc vào
@@ -336,6 +350,8 @@ export interface MonsterBattleContext {
   frenzyStatPercent: number
   /** % mọi chỉ số của thưởng sưu tập (phe người chơi; docs/rules/dex.md); 0 = không có. */
   collectionStatPercent: number
+  /** % chỉ số của món ăn linh thực đang có tác dụng (phe người chơi; docs/rules/cooking.md). */
+  mealStatPercent: PartialStats
   /** Môi trường hiện tại của trận (điều kiện theo thời tiết / địa hình). */
   field: BattleField
   /**
@@ -767,6 +783,12 @@ export type BattleEvent =
   | { type: 'stagesRestored'; monsterId: string; stats: StageStat[] }
   /** Rơi một món trang bị (kể cả món unique boss đang mang), đã vào túi. */
   | { type: 'equipmentDropped'; instanceId: string; itemId: string; rarity: EquipmentRarity }
+  /** Túi trang bị đầy: món rơi ra bị mất (docs/rules/capacity.md). */
+  | { type: 'equipmentLost'; itemId: string; rarity: EquipmentRarity }
+  /** Đội đủ và kho quái đầy: bóng / Thị Uy không có tác dụng, không mất bóng (capacity.md). */
+  | { type: 'rosterFull'; monsterId: string }
+  /** Trứng đã tới lúc nở nhưng không còn chỗ: vẫn là trứng, chờ có chỗ (capacity.md). */
+  | { type: 'eggWaiting'; eggId: string }
   /** Quái tự dùng spell trong ô spell của Artifact (Siralim). */
   | { type: 'spellSlotCast'; monsterId: string; skillId: string }
   /** Đồ cầm tiêu hao đã tác dụng, mất khỏi ô của quái (log traitTriggered của nó ở ngay trước / sau). */

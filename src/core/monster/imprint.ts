@@ -157,7 +157,8 @@ function checkRequest(data: GameData, value: unknown, where: string, endDay: num
   }
   if (typeof request.done !== 'boolean') issues.push(`${where}.done phải là boolean`)
   const allowed = kind === 'feed' ? [...REQUEST_FIELDS, 'itemId'] : REQUEST_FIELDS
-  if (kind === 'feed' && data.items[String(request.itemId)]?.category !== 'consumable') {
+  const food = data.items[String(request.itemId)]
+  if (kind === 'feed' && food?.category !== 'consumable' && food?.category !== 'dish') {
     issues.push(`${where}.itemId: món ăn không hợp lệ "${String(request.itemId)}"`)
   }
   for (const key of Object.keys(request)) {

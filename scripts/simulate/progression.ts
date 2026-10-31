@@ -47,8 +47,12 @@ import { feedCandies } from './candy'
 import { feedTreasures } from './treasures'
 import { upgradeSoulLevels } from './soulLevels'
 import { allocateTalents } from './talents'
+import { tuneTeamTraits } from './traitCrystals'
+import { implantSharePercent, implantTeam } from './implant'
+import { sacrificeSpareFodder } from './sacrifice'
 import { castWithCores, enhanceTeamGear, imbueTeamGear, salvageSurplus } from './forge'
 import { runAlchemy } from './alchemy'
+import { runCooking } from './cooking'
 import { runQuests } from './quests'
 import { runTrainerChallenges } from './trainers'
 import { runTrials } from './trials'
@@ -73,6 +77,7 @@ import {
   contractTeamWhenPossible,
   claimDexRewardsWhenPossible,
   buyPlotWhenCheap,
+  expandCapacityWhenFull,
   feedAffinityItems,
   holdMegaStones,
   holdCritItems,
@@ -154,6 +159,9 @@ export interface FloorUnlock {
   /** Số lần luyện đan / thu hoạch linh điền trong lúc ở tầng này (alchemy.ts). */
   crafts: number
   harvests: number
+  /** Số món ăn linh thực đã ăn / số lần nấu trong lúc ở tầng này (cooking.ts). */
+  meals: number
+  cooks: number
   /** Số nhiệm vụ đã nhận thưởng trong lúc ở tầng này (quests.ts). */
   questsClaimed: number
   /** Số đội thám hiểm đã phái trong lúc ở tầng này (expeditions.ts). */
@@ -182,6 +190,8 @@ export interface FloorUnlock {
   /** Cấp luyện đan / luyện khí và số yêu đan (nhóm nguyên liệu đúc) trong túi lúc mở tầng. */
   alchemyLevel: number
   smithingLevel: number
+  /** Cấp nấu ăn lúc mở tầng (cooking.ts). */
+  cookingLevel: number
   demonCores: number
   /** Tầng thức tỉnh trung bình của đội mẫu lúc mở tầng. */
   averageAwakening: number
@@ -281,6 +291,7 @@ type FloorCounter = Omit<
   | 'averageAwakening'
   | 'alchemyLevel'
   | 'smithingLevel'
+  | 'cookingLevel'
   | 'demonCores'
   | 'arenaRank'
   | 'towerFloor'
@@ -319,6 +330,8 @@ const newCounter = (): FloorCounter => ({
   imbues: 0,
   crafts: 0,
   harvests: 0,
+  meals: 0,
+  cooks: 0,
   questsClaimed: 0,
   expeditionsSent: 0,
   trainerBattles: 0,
@@ -531,6 +544,7 @@ function playBattle(
       averageAwakening: averageAwakening(state.party, teamIds),
       alchemyLevel: state.alchemy.level,
       smithingLevel: state.smithing.level,
+      cookingLevel: state.cooking.level,
       demonCores: groupItemCount(data, state.inventory, data.config.forge.coreEnhance.groupId),
       arenaRank: state.trainers.arenaRank,
       towerFloor: state.tower.highest,
@@ -689,6 +703,11 @@ function afterBattle(
     const quested = runQuests(data, run.state)
     run.state = quested.state
     run.counter.questsClaimed += quested.claimed
+    // Nấu ăn trước luyện đan (luyện đan dùng hết dược liệu).
+    const cooked = runCooking(data, run.state)
+    run.state = cooked.state
+    run.counter.meals += cooked.meals
+    run.counter.cooks += cooked.cooks
     const crafted = runAlchemy(data, run.state)
     run.state = crafted.state
     run.counter.crafts += crafted.crafts
@@ -696,6 +715,7 @@ function afterBattle(
     // Hồn phách của quái chết hẳn (tọa hóa, độ kiếp): luyện hồn khí / ấp trứng (lifespan.ts).
     run.state = handleSouls(data, run.state, run.lifespan)
     run.state = buyPlotWhenCheap(data, run.state, run.economy)
+    run.state = expandCapacityWhenFull(data, run.state, run.economy)
     // Khế ước trước bản mệnh (bản mệnh phải đã khế ước).
     run.state = contractTeamWhenPossible(data, run.state, teamIds, run.economy)
     run.state = claimDexRewardsWhenPossible(data, run.state, run.economy)
@@ -757,6 +777,19 @@ function afterBattle(
     run.state = shopped.state
     run.counter.booksBought += shopped.bought
     run.state = holdCritItems(data, run.state, teamIds, run.economy)
+    // NPC tinh thể trait sau mọi việc khác (traitCrystals.ts): giá nhỏ so với fuse / đột phá.
+    const tuned = tuneTeamTraits(data, run.state, teamIds)
+    run.state = tuned.state
+    run.economy.traitsExtracted += tuned.count.extracted
+    run.economy.traitsInjected += tuned.count.injected
+    run.economy.crystalsBought += tuned.count.bought
+    // Phòng Thí Nghiệm sau tinh thể trait (implant.ts): không liều mạng, giá theo tầng.
+    const implanted = implantTeam(data, run.state, teamIds)
+    run.state = implanted.state
+    run.economy.implants += implanted.count.succeeded
+    run.economy.implantFails += implanted.count.failed
+    run.economy.implantEffects += implanted.count.effectSerums
+    run.economy.implantSharePercent = implantSharePercent(data, run.state, teamIds)
   }
   return rng
 }
@@ -797,8 +830,8 @@ function keepSampleTeam(data: GameData, state: GameState, teamIds: ReadonlySet<s
 }
 
 /**
- * Ở thị trấn (growth.ts): mua bóng, dùng mồi dụ, fuse quái đội mẫu với nguyên liệu trong kho, breeding, đưa con
- * mạnh hơn vào đội mẫu, học / chọn trận pháp.
+ * Ở thị trấn (growth.ts): mua bóng, dùng mồi dụ, fuse quái đội mẫu với nguyên liệu trong kho, hiến tế
+ * nguyên liệu hết dùng (sacrifice.ts), breeding, đưa con mạnh hơn vào đội mẫu, học / chọn trận pháp.
  */
 function runGrowth(data: GameData, run: Run, teamIds: Set<string>): void {
   let state = buyBalls(data, run.state)
@@ -806,6 +839,10 @@ function runGrowth(data: GameData, run: Run, teamIds: Set<string>): void {
   state = baited.state
   run.growth.baitsUsed += baited.used
   state = fuseWhenPossible(data, state, teamIds, run.growth)
+  // Quái bắt về dư: hiến tế vào quái đội mẫu nhận được, hết dùng còn lại thả (sacrifice.ts).
+  const offered = sacrificeSpareFodder(data, state, teamIds)
+  state = offered.state
+  run.economy.sacrifices += offered.sacrificed
   state = releaseStaleFodder(data, state, teamIds)
   const bred = breedWhenPossible(data, state, { lastBreedDay: run.lastBreedDay, count: run.growth })
   state = bred.state

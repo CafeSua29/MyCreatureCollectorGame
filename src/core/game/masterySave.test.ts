@@ -40,7 +40,7 @@ describe('save', () => {
     const state = {
       ...battle,
       storage: [makeMonster({ id: 's' })],
-      eggs: [{ id: 'g', monster: makeMonster({ id: 'g' }), battlesLeft: 3 }]
+      eggs: [{ id: 'g', monster: makeMonster({ id: 'g' }), battlesLeft: 3, infusions: [] }]
     }
     const raw = serializeState(state) as Record<string, unknown>
     const strip = (m: Record<string, unknown>): Record<string, unknown> => {

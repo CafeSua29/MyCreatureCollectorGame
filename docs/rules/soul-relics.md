@@ -8,12 +8,12 @@ Code: `model/soul.ts` (`SoulRemnant`, `SoulImprint`, `DEATH_CAUSES`, `SoulRelicC
 
 ## Hồn phách
 
-- **Mọi cái chết vĩnh viễn** gọi `dieForever(data, inventory, monster, { aptitudeFloor, day, cause })`: đồ đang lắp về túi (`returnEquipment`), hồn phách vào **cuối** `inventory.souls` (cũ trước mới). Nơi gọi tự bỏ quái khỏi đội / kho và xử lý bản mệnh. Hiện có: tọa hóa (`cause: 'oldAge'`, `lifespan.md`), độ kiếp thất bại lần cuối (`'tribulation'`, `awakening.md`), gục trong trận khi bật chết thật (`'battle'`, `options.md`; Nuzlocke sau này dùng lại). Chưa có: cấy ghép thất bại lần 3 (chờ `implant.md`: thêm `'implant'` vào `DEATH_CAUSES` rồi gọi `dieForever`).
+- **Mọi cái chết vĩnh viễn** gọi `dieForever(data, inventory, monster, { aptitudeFloor, day, cause })`: đồ đang lắp về túi (`returnEquipment`), hồn phách vào **cuối** `inventory.souls` (cũ trước mới). Nơi gọi tự bỏ quái khỏi đội / kho và xử lý bản mệnh. Hiện có: tọa hóa (`cause: 'oldAge'`, `lifespan.md`), độ kiếp thất bại lần cuối (`'tribulation'`, `awakening.md`), gục trong trận khi bật chết thật (`'battle'`, `options.md`; Nuzlocke sau này dùng lại), cấy ghép thất bại lần cuối (`'implant'`, `implant.md`).
 - **Hồn phách** (`SoulRemnant`, không gộp chồng): ảnh chụp lúc chết `{ id (= id quái, id quái không bao giờ dùng lại), speciesId, baseSpeciesId, raceId, nickname, level, genes, traits, shinyStacks, contractRealm, aptitudeTierId, history }`.
   - `traits`: chỉ trait **chiếm ô** (giữ cấp; trait shiny / boss / race không giữ).
   - `aptitudeTierId`: bậc tư chất lúc chết, so với tầng mốc lúc đó (`aptitudeOf` + `aptitudeFloor`, `aptitude.md`); chụp lại vì tầng mốc tăng làm bậc tụt.
   - `history`: bản sao lý lịch kèm mốc **`died { cause }`** (`monster-history.md`); quái không có lý lịch thì null.
-- Chưa có: hồn phách tính vào sức chứa túi trang bị (chờ `capacity.md`), bán / vứt / hiến tế hồn phách (chưa cần; khí linh ăn hồn phách chờ `artifact-spirits.md`).
+- Chưa có: bán / vứt / hiến tế hồn phách (chưa cần; khí linh ăn hồn phách chờ `artifact-spirits.md`). Hồn phách tính vào sức chứa túi trang bị và luôn vào túi kể cả khi đầy (`capacity.md`).
 
 ## Action ở NPC luyện đan
 

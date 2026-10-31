@@ -79,6 +79,11 @@ const recruitMethodField: FieldCheck = (_data, value, where) =>
     ? []
     : [`${where}: cách thu phục không hợp lệ "${String(value)}"`]
 
+const serumTierField: FieldCheck = (data, value, where) =>
+  data.config.implant.tiers.some((tier) => tier.id === value)
+    ? []
+    : [`${where}: bậc huyết thanh không tồn tại "${String(value)}"`]
+
 const positiveInteger: FieldCheck = (_data, value, where) => checkInteger(value, where, 1)
 const nonNegativeInteger: FieldCheck = (_data, value, where) => checkInteger(value, where, 0)
 
@@ -116,6 +121,9 @@ const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
   evolved: { fields: SPECIES_CHANGE },
   fused: { fields: { subSpeciesId: speciesField } },
   fuseFailed: { fields: { subSpeciesId: speciesField } },
+  sacrificed: { fields: { count: positiveInteger } },
+  implanted: { fields: { tierId: serumTierField } },
+  implantFailed: { fields: { tierId: serumTierField, fails: positiveInteger } },
   floorBossDefeated: { fields: { floor: positiveInteger } },
   awakened: { fields: { tier: positiveInteger } },
   tribulationFailed: { fields: { tier: positiveInteger, failures: positiveInteger } },

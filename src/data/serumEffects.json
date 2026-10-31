@@ -1,0 +1,102 @@
+[
+  {
+    "id": "regeneration",
+    "weight": 3,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "failHooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": -1
+        }
+      }
+    ]
+  },
+  {
+    "id": "hardening",
+    "weight": 3,
+    "hooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -5
+        }
+      }
+    ],
+    "failHooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "ferocity",
+    "weight": 3,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 5
+        }
+      }
+    ],
+    "failHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "precision",
+    "weight": 2,
+    "hooks": [
+      {
+        "type": "critChanceModifier",
+        "params": {
+          "percent": 3
+        }
+      }
+    ],
+    "failHooks": [
+      {
+        "type": "critChanceModifier",
+        "params": {
+          "percent": -3
+        }
+      }
+    ]
+  },
+  {
+    "id": "recovery",
+    "weight": 2,
+    "hooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 15
+        }
+      }
+    ],
+    "failHooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": -15
+        }
+      }
+    ]
+  }
+]

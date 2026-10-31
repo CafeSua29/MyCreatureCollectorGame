@@ -36,6 +36,28 @@ describe('runBreeding', () => {
     expect(runBreeding(data, breeding(), 1)).toEqual(rows)
   })
 
+  it('breedInfused: mỗi trứng đặt đủ linh thạch cùng hệ, gen cao hơn breed thường', () => {
+    const plain = runBreeding(data, breeding(), 1)
+    const infused = runBreeding(data, breeding(), 1, { infused: true })
+    expect(infused.every((row) => row.kind === 'breedInfused')).toBe(true)
+    expect(infused[0].geneTotal).toEqual(plain[0].geneTotal)
+    const last = defined(infused.at(-1), 'đời cuối')
+    expect(last.geneTotal.gt(defined(plain.at(-1), 'đời cuối').geneTotal)).toBe(true)
+  })
+
+  it('mỗi đời hiến tế các con không chọn vào mẹ mới; stack không truyền qua breeding', () => {
+    const rows = runBreeding(data, breeding(), 1)
+    expect(rows[0].sacrificeStacks).toBe(0)
+    expect(rows.slice(1).some((row) => row.note === '')).toBe(true)
+    for (const row of rows.slice(1)) {
+      if (row.note !== '') continue
+      // 4 con, 1 con cái được chọn: 3 con còn lại hiến tế (stack của đời trước không còn).
+      expect(row.sacrificeStacks).toBe(3)
+      // 20 × 3 × (10 + 1): mẹ mới ở measureLevel, con level 1.
+      expect(row.sacrificeCost).toEqual(660)
+    }
+  })
+
   it('gen tăng qua các đời khi breed lấy gen cao nhất của bố mẹ và biên độ chỉ tăng', () => {
     const raw = makeRawData()
     raw.config.breeding = { ...raw.config.breeding, geneDownPercent: 0, geneUpPercent: 50 }

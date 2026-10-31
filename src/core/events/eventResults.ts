@@ -2,7 +2,7 @@
 // khóa với EVENT_RESULT_CHECKS ở gameData/validateEvents.ts). Thêm loại kết quả = thêm id vào
 // EVENT_RESULT_TYPES + một hàm kiểm tra + một hàm áp. Phần thưởng scale theo tầng của bối cảnh.
 
-import { hasPartyRoom } from '../registries'
+import { hasBagRoom, hasPartyRoom, hasRosterRoom } from '../registries'
 import {
   addEquipment,
   addItems,
@@ -112,6 +112,11 @@ const giveEquipment: Applier = (ctx, params) => {
     const id = equipmentInstanceId(nextItemId++)
     const [instance, next] = rollEquipment(ctx.data, rng, { itemId: entry.itemId, rarity, id })
     rng = next
+    // Túi trang bị đầy: món mất, ghi log (docs/rules/capacity.md).
+    if (!hasBagRoom(ctx.data, { ...ctx.state, inventory })) {
+      logResult(ctx, { type: 'equipmentLost', itemId: entry.itemId, rarity })
+      continue
+    }
     inventory = addEquipment(inventory, instance)
     logResult(ctx, { type: 'equipmentGained', instanceId: id, itemId: entry.itemId, rarity })
   }
@@ -161,6 +166,11 @@ const giveMonster: Applier = (ctx) => {
     }
   )
   ctx.state = { ...state, rng, nextMonsterId: state.nextMonsterId + 1 }
+  // Đội đủ và kho đầy: không nhận được, ghi log (docs/rules/capacity.md).
+  if (!hasRosterRoom(data, ctx.state, { newcomer: monster })) {
+    logResult(ctx, { type: 'monsterRefused', speciesId: monster.speciesId })
+    return
+  }
   const destination = addOwnedMonster(ctx, monster)
   logResult(ctx, { type: 'monsterJoined', monsterId: monster.id, destination })
 }

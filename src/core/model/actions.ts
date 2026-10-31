@@ -7,6 +7,7 @@ import type { TamerCommand } from './tamer'
 import type { TransformKind } from './transform'
 import type { StatName } from './stats'
 import type { GameOptionFlag } from './time'
+import type { CapacityKind } from './capacity'
 
 // ---------- Action ----------
 
@@ -138,6 +139,8 @@ export type GameAction =
   | { type: 'declineRecruit' }
   /** Dùng mồi dụ (vật phẩm category `bait`) ngoài trận. */
   | { type: 'useBait'; itemId: string }
+  /** Ăn món ăn linh thực (category `dish`) ngoài trận cho cả đội (docs/rules/cooking.md). */
+  | { type: 'eatDish'; itemId: string }
   /** Nhận thưởng mốc Bộ sưu tập (docs/rules/dex.md). */
   | { type: 'claimDexReward'; milestoneId: string }
   | { type: 'claimRegionalDexReward'; biomeId: string }
@@ -175,7 +178,31 @@ export type GameAction =
       protectItemId?: string
       inheritSkillIds?: readonly string[]
       forgetSkillIds?: readonly string[]
+      /** Xác nhận bỏ món đang lắp không đủ chỗ về túi (docs/rules/capacity.md). */
+      discardOverflow?: boolean
     }
+  /**
+   * NPC fusing ở thị trấn, hiến tế (docs/rules/sacrifice.md): các quái phụ `subIds` (cùng race, cùng
+   * lineage với quái chính) mất đi, quái chính nhận stack hiến tế; nhiều quái phụ = hàng loạt.
+   */
+  | { type: 'sacrifice'; baseId: string; subIds: readonly string[]; discardOverflow?: boolean }
+  /**
+   * Phòng Thí Nghiệm ở thị trấn (docs/rules/implant.md): cấy huyết thanh thứ `serumIndex` của danh
+   * sách hàng vào quái; thất bại trừ chỉ số, thất bại lần cuối mất quái.
+   */
+  | { type: 'implant'; monsterId: string; serumIndex: number; discardOverflow?: boolean }
+  /**
+   * NPC kho đồ ở thị trấn (docs/rules/capacity.md): mở rộng kho quái / túi trang bị thêm
+   * perExpansion chỗ, giá costBase × k².
+   */
+  | { type: 'expandCapacity'; kind: CapacityKind }
+  /**
+   * Đặt một linh thạch vào trứng (ngoài trận, ở đâu cũng được; docs/rules/breeding-eggs.md mục "Ấp
+   * trứng có hoàn cảnh").
+   */
+  | { type: 'infuseEgg'; eggId: string; itemId: string }
+  /** Mua bùa bán ở cửa hàng thị trấn (bùa có townPrice, mỗi loại một lần; kiểu Ôn Dưỡng Lò). */
+  | { type: 'buyCharm'; itemId: string }
   /** NPC học lại skill ở thị trấn: tốn tiền. */
   | { type: 'relearnSkill'; monsterId: string; skillId: string; forgetSkillId?: string }
   /**
@@ -200,7 +227,7 @@ export type GameAction =
   | { type: 'swapWithStorage'; partyMonsterId: string; storageMonsterId: string }
   /** Danh sách id mới của đội, phải là hoán vị của đội hiện tại. */
   | { type: 'reorderParty'; monsterIds: string[] }
-  | { type: 'releaseMonster'; monsterId: string }
+  | { type: 'releaseMonster'; monsterId: string; discardOverflow?: boolean }
   /** Lắp món trong túi (trang bị, đồ cầm) lên quái vào ô trống tiếp theo (ngoài trận). */
   | { type: 'equipItem'; monsterId: string; item: ItemRef }
   /** Tháo món ở ô `slotIndex` (0 = ô đầu) của quái về túi (ngoài trận). */
@@ -215,6 +242,12 @@ export type GameAction =
   | { type: 'castEquipment'; itemId: string; elementId: string; cores: number }
   /** Phụ linh: gắn / thay dòng linh hệ `elementId` (tốn yêu đan cùng hệ). */
   | { type: 'imbueEquipment'; instanceId: string; elementId: string }
+  /**
+   * NPC tinh thể trait ở thị trấn (docs/rules/trait-crystals.md): extract lấy nguyên trait thành
+   * tinh thể; inject dùng tinh thể (định danh `{ storage: 'crystal', traitId, level }`) lên quái.
+   */
+  | { type: 'extractTrait'; monsterId: string; traitId: string }
+  | { type: 'injectTrait'; monsterId: string; item: ItemRef }
   /** NPC ở thị trấn: đổi hệ Tera của quái, tốn Mảnh Tera của hệ đích. */
   | { type: 'changeTeraElement'; monsterId: string; elementId: string }
   /** NPC Tượng Lực ở thị trấn (docs/rules/soul-levels.md): +1 cấp hồn tinh một chỉ số. */

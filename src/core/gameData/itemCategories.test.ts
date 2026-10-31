@@ -137,7 +137,7 @@ describe('checkItems: cửa hàng (shop / shopWeight)', () => {
 describe('checkConfig: tinh thể và cửa hàng', () => {
   it('số âm, stockMin > stockMax, sellPercent > 100', () => {
     const text = issuesAfter((raw) => {
-      raw.config.crystal = { ...raw.config.crystal, extractCostBase: -1 }
+      raw.config.crystal = { ...raw.config.crystal, extractCostBase: -1, injectCostBase: Infinity }
       raw.config.shop = {
         ...raw.config.shop,
         stockMin: 0,
@@ -147,6 +147,7 @@ describe('checkConfig: tinh thể và cửa hàng', () => {
       }
     })
     expect(text).toMatch(/config\.crystal\.extractCostBase phải là số hữu hạn ≥ 0/)
+    expect(text).toMatch(/config\.crystal\.injectCostBase phải là số hữu hạn ≥ 0/)
     expect(text).toMatch(/config\.shop\.stockMin phải là số nguyên ≥ 1/)
     expect(text).toMatch(/config\.shop\.stockMax phải là số nguyên ≥ 0/)
     expect(text).toMatch(/config\.shop\.sellPercent phải là số hữu hạn trong \[0, 100\]/)

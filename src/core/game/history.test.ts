@@ -125,7 +125,7 @@ describe('cột mốc', () => {
     const egg = makeMonster({ id: 'x' })
     const state = withTime({
       ...makeBattleState([makeMonster({ id: 'a' })], [enemy('e', 1)]),
-      eggs: [{ id: 'x', battlesLeft: 1, monster: egg }]
+      eggs: [{ id: 'x', battlesLeft: 1, monster: egg, infusions: [] }]
     })
     const next = run(state, { type: 'submitTurn', commands: [strike] })
     expect(milestonesOf(next.party.find((m) => m.id === 'x'))).toEqual([

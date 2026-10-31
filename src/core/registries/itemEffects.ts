@@ -616,6 +616,7 @@ export function applyItemToMonster(
     case 'skillBook':
     case 'soulCrystal':
     case 'bait':
+    case 'dish':
     case 'charm':
       return null
     default:

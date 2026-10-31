@@ -180,6 +180,20 @@ export function checkBigStats(value: unknown, where: string, min: number): strin
   return STAT_NAMES.flatMap((stat) => checkBig(stats[stat], `${where}.${stat}`, min))
 }
 
+/** Hiệu ứng cấy: id trong serumEffects.json → cấp nguyên khác 0 (docs/rules/implant.md). */
+function checkImplantEffects(data: GameData, value: unknown, where: string): string[] {
+  const effects = asObject(value)
+  if (!effects) return [`${where} phải là object`]
+  return Object.entries(effects).flatMap(([effectId, level]) => {
+    if (!Object.hasOwn(data.serumEffects, effectId)) {
+      return [`${where}: hiệu ứng không tồn tại "${effectId}"`]
+    }
+    return Number.isSafeInteger(level) && level !== 0
+      ? []
+      : [`${where}.${effectId} phải là số nguyên khác 0, nhận ${String(level)}`]
+  })
+}
+
 /**
  * Kiểm tra một quái so với dữ liệu game. Trả về danh sách lỗi; rỗng nếu hợp lệ.
  * `path` (ví dụ "party[0]") được ghép vào thông báo để chỉ rõ trường lỗi ("party[0].genes.attack").
@@ -249,6 +263,19 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   issues.push(...checkBigStats(monster.genes, at('genes'), 1))
   issues.push(...checkBigStats(monster.fusingBonusStats, at('fusingBonusStats'), 0))
   issues.push(...checkInteger(monster.shinyStacks, at('shinyStacks'), 0))
+  issues.push(...checkInteger(monster.sacrificeStacks, at('sacrificeStacks'), 0))
+  // Cấy ghép thất bại trừ chỉ số nên được phép âm (docs/rules/implant.md).
+  issues.push(...checkBigStats(monster.implantBonusStats, at('implantBonusStats'), -Infinity))
+  issues.push(...checkImplantEffects(data, monster.implantEffects, at('implantEffects')))
+  issues.push(...checkInteger(monster.implantAttempts, at('implantAttempts'), 0))
+  issues.push(...checkInteger(monster.implantFails, at('implantFails'), 0))
+  if (monster.implantFails > monster.implantAttempts) {
+    addIssue('implantFails không được vượt implantAttempts')
+  }
+  // Thất bại lần thứ maxFails thì quái đã mất, quái còn sống luôn ít hơn.
+  if (monster.implantFails >= data.config.implant.maxFails) {
+    addIssue(`implantFails phải nhỏ hơn ${data.config.implant.maxFails}`)
+  }
   issues.push(...checkNumber(monster.bossMultiplier, at('bossMultiplier'), 1))
   issues.push(...checkBig(monster.damageTaken, at('damageTaken'), 0))
   issues.push(...validateStatuses(data, monster.statuses, at('statuses')))

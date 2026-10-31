@@ -331,6 +331,7 @@ describe('eggHatchBoost (Ấp ủ)', () => {
   const eggOf = (id: string, battlesLeft: number): Egg => ({
     id,
     battlesLeft,
+    infusions: [],
     monster: makeMonster({ id })
   })
   const battlesLeftAfterWin = (party: Monster[]): number[] => {

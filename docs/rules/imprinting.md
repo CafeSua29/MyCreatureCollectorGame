@@ -37,7 +37,7 @@ Code: `model/imprint.ts` (type, `IMPRINT_REQUEST_KINDS`, `imprintPercent`), `mon
 
 - **Linh Quả** `spiritFruit`: `consumable` dùng ngoài trận lên quái ta, **không có hiệu ứng** (chỉ để cho ăn dưỡng dục), giá 50, cửa hàng trọng số 30. Từ bước này `consumable` được có danh sách hiệu ứng rỗng (chủ project chốt: không bắt buộc có hiệu ứng); dùng món không hiệu ứng ngoài yêu cầu dưỡng dục thì `itemNoEffect` như mọi món không có tác dụng.
 - **Món đúng khẩu vị** (`favoriteRaceIds` / `favoriteElementIds` của món, `isFavoriteItem`; bước 5q): yêu cầu cho ăn chọn món theo trọng số, món đúng khẩu vị của quái × `imprint.favoriteFoodWeight` (3), món khác 1. Món hiện có (Linh Quả, Linh Mật) chưa có khẩu vị nên vẫn chọn đều.
-- Chưa có: món nấu ăn trong `imprint.foods` (chờ "Linh thực", `cooking.md`).
+- **Món ăn linh thực** (`dish`, `cooking.md`): `imprint.foods` nhận cả món `dish` (Linh Mễ Chúc, Đồng Tâm Bánh); ăn món bằng `eatDish` (cả đội) thì mọi quái trong đội (không đi thám hiểm) đang đòi đúng món đó xong yêu cầu cho ăn.
 
 ## Kiểm tra
 

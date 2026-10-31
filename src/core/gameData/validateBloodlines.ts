@@ -163,7 +163,8 @@ const PERCENT_FIELDS = [
   'ancestorBirthMinPurity',
   'essenceDropChance',
   'scrollDropChance',
-  'fusePurityPercent'
+  'fusePurityPercent',
+  'sacrificePurityPercent'
 ]
 const POINT_FIELDS = [
   'bossPurityBonus',

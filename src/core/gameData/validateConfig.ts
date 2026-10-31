@@ -105,6 +105,7 @@ function checkShopConfig(data: GameData, issues: string[]): void {
   }
   const crystal = data.config.crystal ?? ({} as GameData['config']['crystal'])
   push(checkNumber(crystal.extractCostBase, 'crystal.extractCostBase', 0))
+  push(checkNumber(crystal.injectCostBase, 'crystal.injectCostBase', 0))
   checkCrystalKindTable(crystal.kindCostMultipliers, 'config.crystal.kindCostMultipliers', issues)
   const shop = data.config.shop ?? ({} as GameData['config']['shop'])
   push(checkInteger(shop.stockMin, 'shop.stockMin', 1))
@@ -230,6 +231,8 @@ export function checkConfig(data: GameData, issues: string[]): void {
   push(checkNumber(config.fuseCostPerLevel, 'fuseCostPerLevel', 0))
   checkFuseChanceConfig(data, issues)
   push(checkInteger(config.fusion?.inheritSkills, 'fusion.inheritSkills', 0))
+  push(checkNumber(config.sacrifice?.costPerLevel, 'sacrifice.costPerLevel', 0))
+  push(checkNumber(config.sacrifice?.statPercentPerStack, 'sacrifice.statPercentPerStack', 0))
   checkShopConfig(data, issues)
   checkMarketConfig(data, issues)
   // config.starter kiểm tra ở validateStarters.ts.
@@ -279,6 +282,19 @@ export function checkConfig(data: GameData, issues: string[]): void {
   const egg = config.egg ?? ({} as GameData['config']['egg'])
   push(checkInteger(egg.hatchBattlesMin, 'egg.hatchBattlesMin', 1))
   push(checkInteger(egg.hatchBattlesMax, 'egg.hatchBattlesMax', egg.hatchBattlesMin ?? 1))
+  const incubation = egg.incubation ?? ({} as GameData['config']['egg']['incubation'])
+  push(checkInteger(incubation.maxInfusions, 'egg.incubation.maxInfusions', 0))
+  push(checkNumber(incubation.genePercentPerInfusion, 'egg.incubation.genePercentPerInfusion', 0))
+  push(checkNumber(incubation.infusionShinyChance, 'egg.incubation.infusionShinyChance', 0, 100))
+  push(checkInteger(incubation.spiritLandExtraSteps, 'egg.incubation.spiritLandExtraSteps', 0))
+  push(
+    checkNumber(
+      incubation.spiritLandMutationChance,
+      'egg.incubation.spiritLandMutationChance',
+      0,
+      100
+    )
+  )
   if (data.traits[config.shiny?.traitId]?.kind !== 'shiny') {
     issues.push(`config.shiny.traitId "${config.shiny?.traitId}" phải trỏ tới trait loại "shiny"`)
   }

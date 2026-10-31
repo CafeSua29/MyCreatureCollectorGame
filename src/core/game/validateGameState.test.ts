@@ -90,7 +90,12 @@ describe('validateGameState: số không hợp lệ, báo đúng đường dẫn
 
     const egg = issuesAfter((s) => {
       s.eggs = [
-        { id: 'm5', monster: makeMonster({ id: 'm5', exp: Infinity }), battlesLeft: bad(null) }
+        {
+          id: 'm5',
+          monster: makeMonster({ id: 'm5', exp: Infinity }),
+          battlesLeft: bad(null),
+          infusions: []
+        }
       ]
       s.nextMonsterId = 6
     })

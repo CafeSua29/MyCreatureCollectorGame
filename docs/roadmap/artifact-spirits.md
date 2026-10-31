@@ -14,7 +14,7 @@ Gộp hai nguồn (chủ project yêu cầu): **Innocent + Item World của Disg
   - Trang bị rơi / mua có tỉ lệ sẵn 0–2 **dã linh** (cửa hàng thì không có, như Disgaea).
   - **Dẫn Hồn Châu** (vật phẩm, boss rơi, chợ đen): dùng ở NPC **Khí Linh Các** để triệu một khí linh ngẫu nhiên (đã thu phục, `value` theo tầng) vào kho khí linh.
   - Khí giới bí cảnh (dưới).
-- **Kho khí linh** `GameState.spiritStorage` (khí linh đã thu phục chưa gắn vào món nào), **tính chung sức chứa túi trang bị** (`capacity.md`: mỗi khí linh trong kho chiếm 1 chỗ; đầy thì khí linh mới từ Dẫn Hồn Châu / phân giải bị chặn hoặc mất như luật túi đầy). **Tăng version save**.
+- **Kho khí linh** `GameState.spiritStorage` (khí linh đã thu phục chưa gắn vào món nào), **tính chung sức chứa túi trang bị** (`docs/rules/capacity.md`, đã làm: mỗi khí linh trong kho chiếm 1 chỗ; đầy thì khí linh mới từ Dẫn Hồn Châu / phân giải bị chặn hoặc mất như luật túi đầy). **Tăng version save**. Khi làm: cộng số khí linh trong kho vào `bagUsed` (`registries/capacity.ts`).
 
 ## Thao tác ở Khí Linh Các (thị trấn)
 

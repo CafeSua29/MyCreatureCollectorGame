@@ -8,6 +8,7 @@ import {
   abilityHasFlag,
   areItemsDisabled,
   collectionStatPercent,
+  mealStatPercent,
   fieldIdMatches,
   forEachTraitHook,
   frenzyNumbers,
@@ -445,6 +446,7 @@ function buildBattleContext(
     teamBonuses: d.battle.teamBonuses[side],
     frenzyStatPercent: frenzyStatPercent(data, d, { side, monster }),
     collectionStatPercent: side === 'player' ? collectionStatPercent(data, d.dex) : 0,
+    mealStatPercent: side === 'player' ? mealStatPercent(data, d.cooking.meal) : {},
     field: monsterField(data, d, monster),
     // Gastro Acid... hoặc quái khác trên sân có Neutralizing Gas.
     abilitySuppressed:

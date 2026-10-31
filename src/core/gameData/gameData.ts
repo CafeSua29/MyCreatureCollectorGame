@@ -40,6 +40,8 @@ import { checkMoveStylesConfig, checkSkillStyles } from './validateMoveStyles'
 import { checkFrenzyData } from './validateFrenzy'
 import { checkRecruitData } from './validateRecruit'
 import { checkSafariData } from './validateSafari'
+import { checkImplantData } from './validateImplant'
+import { checkCapacityData } from './validateCapacity'
 import { checkWeights } from './validateWeight'
 import { checkDexData } from './validateDex'
 import { resolveRaces } from './races'
@@ -198,6 +200,7 @@ export function createGameData(raw: RawGameData): GameData {
     events: indexById(raw.events, 'events', issues),
     eventModifiers: indexById(raw.eventModifiers, 'eventModifiers', issues),
     zones: indexZones(raw, issues),
+    serumEffects: indexById(raw.serumEffects, 'serumEffects', issues),
     text: raw.text
   }
   checkConfig(data, issues)
@@ -259,6 +262,8 @@ export function createGameData(raw: RawGameData): GameData {
   checkFrenzyData(data, issues)
   checkRecruitData(data, issues)
   checkSafariData(data, issues)
+  checkImplantData(data, issues)
+  checkCapacityData(data, issues)
   checkWeights(data, issues)
   checkDexData(data, issues)
   checkAlchemyData(data, issues)

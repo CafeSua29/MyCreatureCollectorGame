@@ -2,7 +2,7 @@
 
 > Một phần tài liệu project. Mục lục và quy tắc chung: `CLAUDE.md` ở thư mục gốc. Các tham chiếu "mục X" / "xem X" tra tên mục trong `docs/index.md` (mục lục chi tiết).
 
-Linh quả, linh thảo, yêu đan **cho quái ăn** để tăng vĩnh viễn: **gen** (tiềm năng, di truyền khi breed như gen thường), thuần thục skill, cấp trait. Khác cấy ghép (`implant.md`, chưa làm: chỉ số phẳng có rủi ro). Ăn nhiều thì **kháng**. Số ở `balance.json` khóa `treasures` và `items.json`; số hiện tại ở `balance-systems.md`.
+Linh quả, linh thảo, yêu đan **cho quái ăn** để tăng vĩnh viễn: **gen** (tiềm năng, di truyền khi breed như gen thường), thuần thục skill, cấp trait. Khác cấy ghép (`implant.md`: chỉ số phẳng có rủi ro, không di truyền). Ăn nhiều thì **kháng**. Số ở `balance.json` khóa `treasures` và `items.json`; số hiện tại ở `balance-systems.md`.
 
 Code: handler `registries/treasureEffects.ts` (`TREASURE_EFFECTS` gộp vào `ITEM_EFFECTS`, `treasurePotency`), khẩu vị `isFavoriteItem` và áp vật phẩm `applyConsumable` (`registries/itemEffects.ts`), dùng vật phẩm `applyItem` (`world/field.ts`), đồ rơi `treasureDrops` (`battle/outcome.ts`), kiểm tra `gameData/validateTreasures.ts`. Nhập dữ liệu: `scripts/data-import/treasures-import.mjs` (chạy lại được).
 

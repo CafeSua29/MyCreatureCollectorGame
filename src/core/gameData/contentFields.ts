@@ -270,7 +270,8 @@ const BIOME_FIELDS = fieldList<Biome>({
   weather: true,
   terrain: true,
   powerSpot: true,
-  trainerClassIds: true
+  trainerClassIds: true,
+  elementIds: true
 })
 
 const BIOME_BOSS_FIELDS = fieldList<BiomeBoss>({

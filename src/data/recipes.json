@@ -1018,5 +1018,967 @@
     "minLevel": 10,
     "successChance": 50,
     "exp": 30
+  },
+  {
+    "id": "spiritRiceCongee",
+    "station": "cooking",
+    "output": {
+      "itemId": "spiritRiceCongee",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 95,
+    "exp": 3
+  },
+  {
+    "id": "heartBondCake",
+    "station": "cooking",
+    "output": {
+      "itemId": "heartBondCake",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritHoney",
+        "count": 2
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 90,
+    "exp": 4
+  },
+  {
+    "id": "fireDragonSoup",
+    "station": "cooking",
+    "output": {
+      "itemId": "fireDragonSoup",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceDragon",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneFire",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 6
+  },
+  {
+    "id": "mysticTortoiseBroth",
+    "station": "cooking",
+    "output": {
+      "itemId": "mysticTortoiseBroth",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceReptile",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneWater",
+        "count": 1
+      },
+      {
+        "itemId": "fleeceflower",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 6
+  },
+  {
+    "id": "galeChaserCake",
+    "station": "cooking",
+    "output": {
+      "itemId": "galeChaserCake",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceAvian",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneFlying",
+        "count": 1
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 6
+  },
+  {
+    "id": "beastLureCake",
+    "station": "cooking",
+    "output": {
+      "itemId": "beastLureCake",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 4,
+    "successChance": 85,
+    "exp": 6
+  },
+  {
+    "id": "hundredFlowerCake",
+    "station": "cooking",
+    "output": {
+      "itemId": "hundredFlowerCake",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "snowLotus",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      },
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      }
+    ],
+    "money": 0,
+    "minLevel": 5,
+    "successChance": 80,
+    "exp": 8
+  },
+  {
+    "id": "goldenFishFeast",
+    "station": "cooking",
+    "output": {
+      "itemId": "goldenFishFeast",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceAquatic",
+        "count": 2
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      }
+    ],
+    "money": 200,
+    "minLevel": 5,
+    "successChance": 80,
+    "exp": 8
+  },
+  {
+    "id": "treasureSeekerSoup",
+    "station": "cooking",
+    "output": {
+      "itemId": "treasureSeekerSoup",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceBeast",
+        "count": 1
+      },
+      {
+        "itemId": "fleeceflower",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 5,
+    "successChance": 80,
+    "exp": 8
+  },
+  {
+    "id": "eightTreasureFeast",
+    "station": "cooking",
+    "output": {
+      "itemId": "eightTreasureFeast",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "groupId": "demonCore",
+        "count": 1
+      }
+    ],
+    "money": 500,
+    "minLevel": 10,
+    "successChance": 70,
+    "exp": 20
+  },
+  {
+    "id": "mintHardy",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintHardy",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintLonely",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintLonely",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintBrave",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintBrave",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintAdamant",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintAdamant",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintNaughty",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintNaughty",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintBold",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintBold",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintDocile",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintDocile",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintRelaxed",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintRelaxed",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintImpish",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintImpish",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintLax",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintLax",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "fleeceflower",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintTimid",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintTimid",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintHasty",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintHasty",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintSerious",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintSerious",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintJolly",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintJolly",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintNaive",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintNaive",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintModest",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintModest",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintMild",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintMild",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintQuiet",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintQuiet",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintBashful",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintBashful",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintRash",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintRash",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintCalm",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintCalm",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintGentle",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintGentle",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintSassy",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintSassy",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintCareful",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintCareful",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "snowLotus",
+        "count": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "mintQuirky",
+    "station": "cooking",
+    "output": {
+      "itemId": "mintQuirky",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 5
+  },
+  {
+    "id": "lureMeat",
+    "station": "cooking",
+    "output": {
+      "itemId": "lureMeat",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "essenceBeast",
+        "count": 1
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 90,
+    "exp": 3
+  },
+  {
+    "id": "spiritLure",
+    "station": "cooking",
+    "output": {
+      "itemId": "spiritLure",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "essenceBeast",
+        "count": 1
+      },
+      {
+        "itemId": "spiritHoney",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 4,
+    "successChance": 90,
+    "exp": 3
+  },
+  {
+    "id": "rawMeatBait",
+    "station": "cooking",
+    "output": {
+      "itemId": "rawMeatBait",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "essenceBeast",
+        "count": 1
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 90,
+    "exp": 3
+  },
+  {
+    "id": "nectarBait",
+    "station": "cooking",
+    "output": {
+      "itemId": "nectarBait",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "essenceInsect",
+        "count": 1
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 90,
+    "exp": 3
+  },
+  {
+    "id": "fishBait",
+    "station": "cooking",
+    "output": {
+      "itemId": "fishBait",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "essenceAquatic",
+        "count": 1
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 90,
+    "exp": 3
+  },
+  {
+    "id": "spiritIncense",
+    "station": "cooking",
+    "output": {
+      "itemId": "spiritIncense",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "essenceSpirit",
+        "count": 1
+      },
+      {
+        "itemId": "spiritFruit",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 90,
+    "exp": 3
   }
 ]

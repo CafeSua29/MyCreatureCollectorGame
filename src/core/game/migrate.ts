@@ -3,14 +3,22 @@
 // theo loài), trả về state ở version n + 1.
 // Từ v7, trường Decimal lưu bằng chuỗi; bước cuối deserializeState đổi chuỗi thành Decimal.
 
-import { asObject, BIG_ZERO, cloneData, DataError, hashToUnit, parseBig } from '../shared'
+import {
+  asObject,
+  BIG_ZERO,
+  cloneData,
+  countMilestonesReached,
+  DataError,
+  hashToUnit,
+  parseBig
+} from '../shared'
 import { ageDaysAtPercent, isDexSpecies } from '../registries'
 import { newBattleTamer } from '../tamer'
 import { masteryExpForLevel } from '../monster'
 import { gymElementIds } from '../world'
 import { mapBigFieldsInPlace } from './bigFields'
 import { SAVE_VERSION } from './reducer'
-import type { GameData, GameState, Monster } from '../model'
+import type { CapacityKind, GameData, GameState, Monster } from '../model'
 
 type SaveObject = Record<string, unknown> & { version: number }
 type RawMonster = Record<string, unknown>
@@ -493,6 +501,54 @@ function addPolarity(save: SaveObject): SaveObject {
   return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 74 }
 }
 
+/** v74 → v75 (hiến tế, docs/rules/sacrifice.md): mọi quái (kể cả trứng) 0 stack hiến tế. */
+function addSacrificeStacks(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, sacrificeStacks: 0 })
+  return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 75 }
+}
+
+/**
+ * v75 → v76 (cấy ghép, docs/rules/implant.md): mọi quái (kể cả trứng) chưa cấy; Phòng Thí Nghiệm
+ * chưa có hàng, đổi hàng ngay lần qua ngày đầu tiên (restockDay 0).
+ */
+function addImplants(save: SaveObject): SaveObject {
+  const zero = { hp: '0', attack: '0', defense: '0', spAttack: '0', spDefense: '0', speed: '0' }
+  const none = (m: RawMonster): RawMonster => ({
+    ...m,
+    implantBonusStats: { ...zero },
+    implantEffects: {},
+    implantAttempts: 0,
+    implantFails: 0
+  })
+  const migrated = mapEggMonsters(mapAllMonsters(save, none), none)
+  return { ...migrated, lab: { stock: [], restockDay: 0 }, version: 76 }
+}
+
+/**
+ * v76 → v77 (sức chứa, docs/rules/capacity.md): save cũ không mất gì: số lần mở rộng sẵn đủ để kho
+ * / túi chứa hết những gì đang có (sức chứa làm tròn lên bội số perExpansion).
+ */
+function addCapacity(save: SaveObject, data: GameData): SaveObject {
+  const realm = Number(asObject(save.tamer)?.realm ?? 0)
+  const milestones = countMilestonesReached(data.config.tamer.realmMilestones, realm)
+  const lengthOf = (value: unknown): number => (Array.isArray(value) ? value.length : 0)
+  const inventory = asObject(save.inventory)
+  const used: Record<CapacityKind, number> = {
+    storage: lengthOf(save.storage),
+    bag: lengthOf(inventory?.equipment) + lengthOf(inventory?.souls)
+  }
+  const expansionsFor = (kind: CapacityKind): number => {
+    const rule = data.config.capacity[kind]
+    const free = rule.base + rule.realmBonus * milestones
+    return Math.max(0, Math.ceil((used[kind] - free) / rule.perExpansion))
+  }
+  return {
+    ...save,
+    capacity: { storage: expansionsFor('storage'), bag: expansionsFor('bag') },
+    version: 77
+  }
+}
+
 /** v64 → v65 (ability theo loài, docs/rules/abilities.md): mọi quái (kể cả trứng) ô ability thứ nhất. */
 function addAbilitySlot(save: SaveObject): SaveObject {
   const first = (m: RawMonster): RawMonster => ({ ...m, abilitySlot: 'first' })
@@ -933,7 +989,27 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
     options: { ...asObject(save.options), permadeathEnabled: false }
   }),
   72: addBloodlines,
-  73: addPolarity
+  73: addPolarity,
+  74: addSacrificeStacks,
+  75: addImplants,
+  76: addCapacity,
+  // v77 → v78: ấp trứng có hoàn cảnh (docs/rules/breeding-eggs.md): trứng cũ chưa đặt linh thạch nào.
+  77: (save) => ({
+    ...save,
+    version: 78,
+    eggs: Array.isArray(save.eggs)
+      ? save.eggs.map((value: unknown) => {
+          const egg = asObject(value)
+          return egg ? { ...egg, infusions: [] } : value
+        })
+      : save.eggs
+  }),
+  // v78 → v79: linh thực (docs/rules/cooking.md): cấp nấu ăn 1, chưa ăn món nào.
+  78: (save) => ({
+    ...save,
+    version: 79,
+    cooking: { level: 1, exp: '0', lastCraft: null, meal: null }
+  })
 }
 
 /**

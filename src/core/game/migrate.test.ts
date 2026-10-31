@@ -300,7 +300,9 @@ describe('migrate v6 → v7: trường Decimal lưu bằng chuỗi', () => {
     return {
       ...afterTurn,
       storage: [makeMonster({ id: 'm5', fusingBonusStats: { ...uniformStats(0), hp: 12.5 } })],
-      eggs: [{ id: 'm6', monster: makeMonster({ id: 'm6', exp: 1 }), battlesLeft: 3 }],
+      eggs: [
+        { id: 'm6', monster: makeMonster({ id: 'm6', exp: 1 }), battlesLeft: 3, infusions: [] }
+      ],
       nextMonsterId: 200
     }
   }
@@ -478,7 +480,7 @@ describe('migrate v10 → v11: trạng thái bất thường', () => {
     return {
       ...battle,
       storage: [makeMonster({ id: 's' })],
-      eggs: [{ id: 'm7', monster: makeMonster({ id: 'm7' }), battlesLeft: 2 }],
+      eggs: [{ id: 'm7', monster: makeMonster({ id: 'm7' }), battlesLeft: 2, infusions: [] }],
       battle: { ...defined(battle.battle), captured: [makeMonster({ id: 'c' })] }
     }
   }

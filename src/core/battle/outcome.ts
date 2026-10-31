@@ -1,7 +1,7 @@
 // Kết thúc trận: thắng (thưởng, rơi đồ, trứng, mở tầng, tiến hóa, trứng nở), thua, đưa quái đã bắt vào đội / kho.
 
 import { recordQuestEvent, refillQuestBoard } from '../quests'
-import { autoEvolve, createBossEgg, hatchMonster, tickEggs } from '../progression'
+import { autoEvolve, createBossEgg, hatchMonster, incubateEggs } from '../progression'
 import {
   addEffortValues,
   applyPurityGains,
@@ -25,13 +25,17 @@ import {
   bloodlineGroupsOf,
   charmEffect,
   changeAffinity,
+  mealMultiplier,
+  mealPercent,
   sideMoneyMultiplier,
+  tickMeal,
   traitDropMultiplier,
   traitEggHatchExtra,
   traitExpMultiplier,
   traitMoneyMultiplier,
   hasPartyRoom,
-  partyAfterJoining
+  partyAfterJoining,
+  hasRosterRoom
 } from '../registries'
 import {
   addBooks,
@@ -101,9 +105,11 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   d.battle.phase = 'ended'
   d.battle.outcome = outcome
   // Trận trên tầng (thắng, thua, chạy) đếm một trận cho thời hạn modifier (docs/rules/events.md)
-  // và cho mồi dụ (docs/rules/recruit.md).
+  // và cho mồi dụ (docs/rules/recruit.md); mọi loại trận đếm một trận cho món ăn linh thực
+  // (docs/rules/cooking.md).
   tickModifiers(d)
   tickRecruitBait(d)
+  d.cooking = { ...d.cooking, meal: tickMeal(d.cooking.meal) }
   for (const monsterId of Object.keys(d.battle.volatiles)) restoreIdentity(d, monsterId)
   d.battle.stages = {}
   d.battle.volatiles = {}
@@ -149,6 +155,7 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(sideMoneyMultiplier(data, d.battle.field, 'player'))
     .times(traitMoneyMultiplier(data, fought))
     .times(partnerMultiplier(data, d.party, 'moneyPercent'))
+    .times(mealMultiplier(data, d.cooking.meal, 'moneyPercent'))
     .times(trainerMoneyMultiplier(data, d.battle))
     .times(floorModifierMultiplier(data, d, 'moneyPercent'))
     .times(d.battle.special ? specialRule(d.battle.special).moneyMultiplier(d.battle.special) : 1)
@@ -158,10 +165,17 @@ export function applyWin(data: GameData, d: Draft): void {
   log(d, { type: 'won', money })
   gainTamerExp(d, tamerExpShare(exp, data.config.tamer.expShare))
 
-  // Thân mật: mọi quái trong đội tăng, quái đã ra sân tăng nhiều hơn (docs/rules/affinity.md).
+  // Thân mật: mọi quái trong đội tăng, quái đã ra sân tăng nhiều hơn (docs/rules/affinity.md); món
+  // ăn linh thực cộng % thân mật nhận (docs/rules/cooking.md).
   const { win, participated } = data.config.affinity.gain
+  const mealAffinity = mealPercent(data, d.cooking.meal, 'affinityGainPercent')
   d.party = d.party.map((monster) =>
-    changeAffinity(data, monster, participants.includes(monster.id) ? participated : win)
+    changeAffinity(
+      data,
+      monster,
+      participants.includes(monster.id) ? participated : win,
+      mealAffinity
+    )
   )
 
   // Dưỡng dục: thắng trận khi ở trong đội là xong yêu cầu "cùng chiến đấu" (imprinting.md).
@@ -175,10 +189,13 @@ export function applyWin(data: GameData, d: Draft): void {
   })
 
   // Chỉ quái đã tham chiến và còn sống mới nhận EXP và điểm nỗ lực; mỗi con nhận đủ. Kỹ năng đồng
-  // hành nhân EXP của cả trận (trước trait / tuổi của từng con). Điểm nỗ lực theo loài của quái bị
+  // hành và món ăn linh thực nhân EXP của cả trận (trước trait / tuổi của từng con). Điểm nỗ lực theo loài của quái bị
   // hạ và bị bắt (docs/rules/effort-values.md); quái đang nhiễm linh dịch thêm gen
   // (docs/rules/spirit-virus.md).
-  const partnerExp = exp.times(partnerMultiplier(data, d.party, 'expPercent')).floor()
+  const partnerExp = exp
+    .times(partnerMultiplier(data, d.party, 'expPercent'))
+    .times(mealMultiplier(data, d.cooking.meal, 'expPercent'))
+    .floor()
   const defeated = [...enemies, ...d.battle.captured]
   d.party = d.party.map((monster) => {
     if (!participants.includes(monster.id) || isFainted(data, monster)) return monster
@@ -228,22 +245,25 @@ export function applyWin(data: GameData, d: Draft): void {
 
   // Trứng đang ấp: trận thắng này trôi qua (trứng rơi trong chính trận này chưa tính); trait của
   // bất kỳ quái nào trong đội (kiểu Flame Body) cho trứng giảm thêm, không cộng dồn; kỹ năng đồng
-  // hành và bùa trứng (docs/rules/dex.md) cộng thêm.
+  // hành và bùa trứng (docs/rules/dex.md) cộng thêm; map là linh địa của trứng thì trứng đó tiến
+  // thêm và có thể đột biến (docs/rules/breeding-eggs.md mục "Ấp trứng có hoàn cảnh").
   const eggSteps =
     1 +
     traitEggHatchExtra(data, d.party) +
     partnerAmount(data, d.party, 'eggStepBonus') +
     charmEffect(data, d.inventory, 'eggStepBonus')
-  const ticked = tickEggs(d.eggs, eggSteps)
+  const biome = battleBiome(data, d, d.battle)
+  const ticked = incubateEggs(data, d.rng, { eggs: d.eggs, steps: eggSteps, biome })
   d.eggs = ticked.eggs
+  d.rng = ticked.rng
 
   // Mỗi quái bị hạ tung bảng rơi của biome; trận boss tung thêm bảng đồ rơi chung cho boss của
   // biome, bảng đồ rơi riêng của boss đó và tỉ lệ rơi trứng. Trait của cả đội (kiểu Pickup, cả
   // quái chưa ra sân) và kỹ năng đồng hành nhân tỉ lệ mọi món, không nhân tỉ lệ rơi trứng.
-  const biome = battleBiome(data, d, d.battle)
   const dropMultiplier =
     traitDropMultiplier(data, d.party) *
     partnerMultiplier(data, d.party, 'dropRatePercent') *
+    mealMultiplier(data, d.cooking.meal, 'dropRatePercent') *
     floorModifierMultiplier(data, d, 'dropRatePercent')
   // Trận NPC: đồ thưởng chung của trận thay cho đồ rơi của từng quái (docs/rules/trainers.md).
   if (d.battle.trainer) dropTrainerRewards(data, d, dropMultiplier)
@@ -298,10 +318,16 @@ export function applyWin(data: GameData, d: Draft): void {
   // ngoài trận.
   if (d.battle.trial) TRIAL_KIND_RULES[d.battle.trial.kind].onWin(data, d)
 
-  // Trứng nở sau khi quái vừa bắt đã vào đội / kho.
+  // Trứng nở sau khi quái vừa bắt đã vào đội / kho. Không còn chỗ thì vẫn là trứng (bộ đếm dừng ở
+  // 0), nở ở trận thắng sau khi có chỗ (docs/rules/capacity.md).
   for (const egg of ticked.hatched) {
+    if (!hasRosterRoom(data, d, { newcomer: egg.monster })) {
+      d.eggs.push(egg)
+      log(d, { type: 'eggWaiting', eggId: egg.id })
+      continue
+    }
     let monster: Monster
-    ;[monster, d.rng] = hatchMonster(data, d.rng, { monster: egg, day: dayOf(d.time) })
+    ;[monster, d.rng] = hatchMonster(data, d.rng, { monster: egg.monster, day: dayOf(d.time) })
     const destination = hasPartyRoom(data, d.party, monster) ? 'party' : 'storage'
     if (destination === 'party') d.party.push(monster)
     else d.storage.push(monster)
@@ -554,7 +580,7 @@ function dropEquipment(
     enemy.equipment = enemy.equipment.filter(
       (entry) => entry.storage !== 'instance' || entry.instance !== instance
     )
-    gainEquipment(d, instance)
+    gainEquipment(data, d, instance)
   }
   const pool = uniquePoolOf(data, enemy.speciesId)
   if (pool.length === 0) return

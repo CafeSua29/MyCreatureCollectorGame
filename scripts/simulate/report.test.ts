@@ -169,6 +169,9 @@ describe('các bảng kết quả', () => {
       harvests: 2,
       alchemyLevel: 3,
       smithingLevel: 2,
+      meals: 1,
+      cooks: 2,
+      cookingLevel: 2,
       demonCores: 4,
       questsClaimed: 2,
       expeditionsSent: 1,
@@ -225,7 +228,18 @@ describe('các bảng kết quả', () => {
         contracts: 0,
         contractFails: 0,
         contractEscapes: 0,
-        dexRewards: 0
+        dexRewards: 0,
+        traitsExtracted: 0,
+        traitsInjected: 0,
+        crystalsBought: 0,
+        sacrifices: 2,
+        implants: 3,
+        implantFails: 1,
+        implantEffects: 2,
+        implantSharePercent: 4.6,
+        capacityExpansions: 0,
+        storagePeak: 3,
+        bagPeak: 0
       },
       bossWin: null
     }
@@ -267,7 +281,7 @@ describe('các bảng kết quả', () => {
         unlocks: []
       }
     ])
-    const blanks = new Array<string>(65).fill('')
+    const blanks = new Array<string>(68).fill('')
     expect(table.rows).toEqual([
       [
         't',
@@ -313,6 +327,9 @@ describe('các bảng kết quả', () => {
         '2',
         '3',
         '2',
+        '1',
+        '2',
+        '2',
         '4',
         '2',
         '1',
@@ -336,7 +353,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 plots:1',
+        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3',
         ''
       ],
       [
@@ -383,6 +400,9 @@ describe('các bảng kết quả', () => {
         '2',
         '3',
         '2',
+        '1',
+        '2',
+        '2',
         '4',
         '2',
         '1',
@@ -406,7 +426,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 plots:1',
+        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3',
         'mở nhờ boss ngẫu nhiên'
       ],
       ['t', '3', ...blanks, 'kẹt sau 9 trận'],

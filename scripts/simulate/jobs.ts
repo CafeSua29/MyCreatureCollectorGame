@@ -207,7 +207,14 @@ export function runJob(context: JobContext, job: SimJob): SimJobResult {
         })
       }
     case 'breeding':
-      return { type: 'lineage', rows: runBreeding(data, scenarios.breeding, scenarios.seed) }
+      // A/B: breed thường và breed có đặt đủ linh thạch cùng hệ mỗi trứng (cùng seed).
+      return {
+        type: 'lineage',
+        rows: [
+          ...runBreeding(data, scenarios.breeding, scenarios.seed),
+          ...runBreeding(data, scenarios.breeding, scenarios.seed, { infused: true })
+        ]
+      }
     case 'fusion':
       return { type: 'lineage', rows: runFusion(data, scenarios.fusion, scenarios.seed) }
     case 'progressionSweep':

@@ -1488,6 +1488,7 @@
   "spiritIncense": "Soul-Guiding Incense",
   "shinyCharm": "Shiny Charm",
   "ovalCharm": "Oval Charm",
+  "incubationFurnace": "Incubation Furnace",
   "dexDiploma": "Dex Diploma",
   "forgetWater": "Water of Oblivion",
   "gatherSpiritPill": "Spirit Gathering Pill",
@@ -1636,5 +1637,15 @@
   "yinStone": "Yin Stone",
   "yangStone": "Yang Stone",
   "poleSwapStone": "Pole Shift Stone",
-  "poleResetStone": "Origin Stone"
+  "poleResetStone": "Origin Stone",
+  "spiritRiceCongee": "Spirit Rice Congee",
+  "heartBondCake": "Heart Bond Cake",
+  "fireDragonSoup": "Fire Dragon Soup",
+  "mysticTortoiseBroth": "Mystic Tortoise Broth",
+  "galeChaserCake": "Gale Chaser Cake",
+  "beastLureCake": "Beast Lure Cake",
+  "hundredFlowerCake": "Hundred Flower Cake",
+  "goldenFishFeast": "Golden Fish Feast",
+  "treasureSeekerSoup": "Treasure Seeker Soup",
+  "eightTreasureFeast": "Eight Treasure Feast"
 }

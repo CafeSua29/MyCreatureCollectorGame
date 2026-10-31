@@ -49201,6 +49201,17 @@
     ]
   },
   {
+    "id": "incubationFurnace",
+    "category": "charm",
+    "effects": [
+      {
+        "type": "restEggSteps",
+        "value": 1
+      }
+    ],
+    "townPrice": 30000
+  },
+  {
     "id": "dexDiploma",
     "category": "keyItem"
   },
@@ -52042,5 +52053,167 @@
         }
       }
     ]
+  },
+  {
+    "id": "spiritRiceCongee",
+    "category": "dish",
+    "price": 60,
+    "effects": [
+      {
+        "type": "statPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ],
+    "battles": 10
+  },
+  {
+    "id": "heartBondCake",
+    "category": "dish",
+    "price": 120,
+    "effects": [
+      {
+        "type": "affinityGainPercent",
+        "params": {
+          "percent": 50
+        }
+      }
+    ],
+    "battles": 20
+  },
+  {
+    "id": "fireDragonSoup",
+    "category": "dish",
+    "price": 150,
+    "effects": [
+      {
+        "type": "statPercent",
+        "params": {
+          "percent": 10,
+          "stat": "attack"
+        }
+      }
+    ],
+    "battles": 10
+  },
+  {
+    "id": "mysticTortoiseBroth",
+    "category": "dish",
+    "price": 150,
+    "effects": [
+      {
+        "type": "statPercent",
+        "params": {
+          "percent": 10,
+          "stat": "defense"
+        }
+      },
+      {
+        "type": "statPercent",
+        "params": {
+          "percent": 10,
+          "stat": "spDefense"
+        }
+      }
+    ],
+    "battles": 10
+  },
+  {
+    "id": "galeChaserCake",
+    "category": "dish",
+    "price": 150,
+    "effects": [
+      {
+        "type": "statPercent",
+        "params": {
+          "percent": 10,
+          "stat": "speed"
+        }
+      }
+    ],
+    "battles": 10
+  },
+  {
+    "id": "beastLureCake",
+    "category": "dish",
+    "price": 150,
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 20
+        }
+      }
+    ],
+    "battles": 15
+  },
+  {
+    "id": "hundredFlowerCake",
+    "category": "dish",
+    "price": 200,
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 20
+        }
+      }
+    ],
+    "battles": 15
+  },
+  {
+    "id": "goldenFishFeast",
+    "category": "dish",
+    "price": 200,
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 25
+        }
+      }
+    ],
+    "battles": 15
+  },
+  {
+    "id": "treasureSeekerSoup",
+    "category": "dish",
+    "price": 200,
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 25
+        }
+      }
+    ],
+    "battles": 15
+  },
+  {
+    "id": "eightTreasureFeast",
+    "category": "dish",
+    "price": 800,
+    "effects": [
+      {
+        "type": "statPercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ],
+    "battles": 20
   }
 ]

@@ -1,7 +1,9 @@
-// Kiểm tra phần luyện đan, luyện khí và linh điền trong save (docs/rules/alchemy.md).
+// Kiểm tra phần luyện đan, luyện khí, nấu ăn và linh điền trong save (docs/rules/alchemy.md,
+// cooking.md).
 
 import { craftLevelFromExp, recipeStation } from '../progression'
 import { asObject, checkBig, checkInteger, type Decimal } from '../shared'
+import { checkKnownFields } from '../gameData'
 import { dayOf, type CraftStation, type GameData } from '../model'
 
 /** lastCraft: null hoặc { recipeId là công thức của đúng nơi luyện, successes, failures }. */
@@ -53,6 +55,30 @@ export function validateSmithingState(data: GameData, value: unknown): string[] 
   const smithing = asObject(value)
   if (!smithing) return ['smithing phải là object']
   return checkCraftSkill(data, { skill: smithing, station: 'smithing', field: 'smithing' })
+}
+
+/** cooking.meal: null hoặc { itemId là món ăn, battlesLeft nguyên ≥ 1 }. */
+function checkMeal(data: GameData, value: unknown, issues: string[]): void {
+  if (value === null) return
+  const meal = asObject(value)
+  if (!meal) {
+    issues.push('cooking.meal phải là object hoặc null')
+    return
+  }
+  checkKnownFields(meal, ['itemId', 'battlesLeft'], 'cooking.meal', 'món ăn', issues)
+  if (typeof meal.itemId !== 'string' || data.items[meal.itemId]?.category !== 'dish') {
+    issues.push(`cooking.meal.itemId: không phải món ăn "${String(meal.itemId)}"`)
+  }
+  issues.push(...checkInteger(meal.battlesLeft, 'cooking.meal.battlesLeft', 1))
+}
+
+/** cooking: cấp nấu ăn khớp tổng exp, lần nấu gần nhất là công thức nấu ăn, món ăn đang có. */
+export function validateCookingState(data: GameData, value: unknown): string[] {
+  const cooking = asObject(value)
+  if (!cooking) return ['cooking phải là object']
+  const issues = checkCraftSkill(data, { skill: cooking, station: 'cooking', field: 'cooking' })
+  checkMeal(data, cooking.meal, issues)
+  return issues
 }
 
 /** alchemy: cấp khớp tổng exp, công thức đã học là công thức cần đan phương, không lặp. */

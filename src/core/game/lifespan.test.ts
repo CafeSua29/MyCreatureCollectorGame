@@ -318,7 +318,12 @@ function structuredCloneState(state: GameState): Record<string, unknown> & GameS
 
 describe('migrate v23 → v24', () => {
   it('quái thành niên (20% thọ nguyên), trứng tuổi 0, giờ bắt đầu, bật thọ nguyên; hợp lệ', () => {
-    const egg = { id: 'm5', monster: agingMonster(data, 0, { id: 'm5' }), battlesLeft: 2 }
+    const egg = {
+      id: 'm5',
+      monster: agingMonster(data, 0, { id: 'm5' }),
+      battlesLeft: 2,
+      infusions: []
+    }
     const current = {
       ...lifespanState({
         seed: 1,

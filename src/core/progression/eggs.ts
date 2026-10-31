@@ -35,7 +35,7 @@ export function wrapEgg(data: GameData, rng: RngState, monster: Monster): [Egg, 
   const { hatchBattlesMin, hatchBattlesMax } = data.config.egg
   let battlesLeft: number
   ;[battlesLeft, rng] = nextInt(rng, hatchBattlesMin, hatchBattlesMax)
-  return [{ id: monster.id, monster, battlesLeft }, rng]
+  return [{ id: monster.id, monster, battlesLeft, infusions: [] }, rng]
 }
 
 /**
@@ -208,19 +208,4 @@ export function hatchMonster(
   { monster, day }: { monster: Monster; day: number }
 ): [Monster, RngState] {
   return startImprint(data, rng, addMilestone(data, monster, { day, kind: 'hatched' }), day)
-}
-
-/**
- * Một trận thắng trôi qua: giảm bộ đếm mọi trứng `amount` (1 + trait kiểu Flame Body), tách các
- * trứng đã đến lúc nở.
- */
-export function tickEggs(eggs: Egg[], amount: number): { eggs: Egg[]; hatched: Monster[] } {
-  const remaining: Egg[] = []
-  const hatched: Monster[] = []
-  for (const egg of eggs) {
-    const battlesLeft = egg.battlesLeft - amount
-    if (battlesLeft <= 0) hatched.push(egg.monster)
-    else remaining.push({ ...egg, battlesLeft })
-  }
-  return { eggs: remaining, hatched }
 }

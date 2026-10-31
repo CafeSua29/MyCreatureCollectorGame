@@ -5,6 +5,7 @@ import type { ExpeditionDef } from './expeditions'
 import type { TrainerClass } from './trainers'
 import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
+import type { SerumEffectDef } from './implant'
 import type { EventDef, EventModifierDef } from './events'
 import type { QuestTemplate } from './quests'
 import type { RecipeDef } from './alchemy'
@@ -1029,7 +1030,8 @@ export const ITEM_CATEGORIES = [
   'skillBook',
   'soulCrystal',
   'bait',
-  'charm'
+  'charm',
+  'dish'
 ] as const
 
 export type ItemCategory = (typeof ITEM_CATEGORIES)[number]
@@ -1244,11 +1246,14 @@ export interface KeyItem extends ItemBase {
 }
 
 /** Loại hiệu ứng của bùa (docs/rules/dex.md mục "Bùa"); luật gộp ở registries/charms.ts. */
-export const CHARM_EFFECT_TYPES = ['shinyChanceMultiplier', 'eggStepBonus'] as const
+export const CHARM_EFFECT_TYPES = ['shinyChanceMultiplier', 'eggStepBonus', 'restEggSteps'] as const
 
 export type CharmEffectType = (typeof CHARM_EFFECT_TYPES)[number]
 
-/** Một hiệu ứng của bùa: hệ số nhân (shinyChanceMultiplier) hoặc lượng cộng (eggStepBonus). */
+/**
+ * Một hiệu ứng của bùa: hệ số nhân (shinyChanceMultiplier) hoặc lượng cộng (eggStepBonus, số bước
+ * trứng tiến mỗi lần nghỉ restEggSteps).
+ */
 export interface CharmEffect {
   type: CharmEffectType
   value: number
@@ -1256,11 +1261,13 @@ export interface CharmEffect {
 
 /**
  * Bùa (như Shiny Charm / Oval Charm của Pokémon): có trong túi là có tác dụng, không dùng / bán /
- * vứt, không rơi, không có giá; nhận từ thưởng Dex.
+ * vứt, không rơi; nhận từ thưởng Dex. Có `townPrice` thì mua được một lần ở cửa hàng thị trấn với
+ * giá cố định đó (action buyCharm, kiểu Ôn Dưỡng Lò).
  */
 export interface CharmItem extends ItemBase {
   category: 'charm'
   effects: CharmEffect[]
+  townPrice?: number
 }
 
 /**
@@ -1376,6 +1383,16 @@ export interface BaitItem extends PricedItemBase {
   favoriteElementIds?: string[]
 }
 
+/**
+ * Món ăn linh thực (docs/rules/cooking.md): nấu ở Đầu bếp, ăn ngoài trận bằng action `eatDish` cho
+ * cả đội trong `battles` trận kế; `effects` theo registry MEAL_EFFECTS.
+ */
+export interface DishItem extends PricedItemBase {
+  category: 'dish'
+  effects: EffectDef[]
+  battles: number
+}
+
 /** Trường khẩu vị (thiên tài địa bảo, mồi dụ); isFavoriteItem đọc chung. */
 export type FavoriteFields = Pick<ConsumableItem, 'favoriteRaceIds' | 'favoriteElementIds'>
 
@@ -1399,6 +1416,7 @@ export type Item =
   | SoulCrystalItem
   | BaitItem
   | CharmItem
+  | DishItem
 
 /** Item thuộc một category cụ thể. */
 export type ItemOfCategory<C extends ItemCategory> = Extract<Item, { category: C }>
@@ -1476,6 +1494,11 @@ export interface Biome {
   powerSpot?: true
   /** Lớp ngự thú sư NPC gặp ở map (docs/rules/trainers.md); bỏ trống = theo hệ của loài trong map. */
   trainerClassIds?: string[]
+  /**
+   * Hệ chủ đạo của map: map là linh địa cho trứng có quái cùng hệ (docs/rules/breeding-eggs.md mục
+   * "Ấp trứng có hoàn cảnh"); bỏ trống = không là linh địa của hệ nào.
+   */
+  elementIds?: string[]
 }
 
 /** Món gốc kèm trọng số (danh sách trang bị rơi của map). */
@@ -1670,6 +1693,7 @@ export interface RawGameData {
   events: EventDef[]
   eventModifiers: EventModifierDef[]
   zones: RawZoneDef[]
+  serumEffects: SerumEffectDef[]
   text: TextData
 }
 
@@ -1730,6 +1754,8 @@ export interface GameData {
   eventModifiers: Record<string, EventModifierDef>
   /** Hiểm địa (docs/rules/zones.md): map riêng, không tung làm map của tầng. */
   zones: Record<string, ZoneDef>
+  /** Hiệu ứng cấy ghép của huyết thanh (docs/rules/implant.md). */
+  serumEffects: Record<string, SerumEffectDef>
   /** Chữ nội dung theo ngôn ngữ; logic core không dùng, chỉ tra qua contentName. */
   text: TextData
 }

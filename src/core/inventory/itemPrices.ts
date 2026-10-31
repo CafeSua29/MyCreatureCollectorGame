@@ -7,12 +7,23 @@ import { hasCrystal, type GameData, type ItemEntry } from '../model'
 import { equipmentBasePrice } from './equipment'
 import { skillBookPrice } from './skillBooks'
 
-/** Giá extract tinh thể = extractCostBase × cấp² × hệ số theo loại trait (mục "Extract / inject trait"). */
-export function crystalExtractCost(data: GameData, traitId: string, level: number): Decimal {
+/** Hệ số giá theo loại trait có tinh thể; trait không có tinh thể là lỗi lập trình (đã kiểm tra trước). */
+function crystalKindMultiplier(data: GameData, traitId: string): number {
   const { kind } = data.traits[traitId]
   if (!hasCrystal(kind)) throw new Error(`Trait "${traitId}" loại "${kind}" không có tinh thể`)
-  const { extractCostBase, kindCostMultipliers } = data.config.crystal
-  return toBig(extractCostBase).times(toBig(level).pow(2)).times(kindCostMultipliers[kind])
+  return data.config.crystal.kindCostMultipliers[kind]
+}
+
+/** Giá extract tinh thể = extractCostBase × cấp² × hệ số theo loại trait (mục "Extract / inject trait"). */
+export function crystalExtractCost(data: GameData, traitId: string, level: number): Decimal {
+  const multiplier = crystalKindMultiplier(data, traitId)
+  return toBig(data.config.crystal.extractCostBase).times(toBig(level).pow(2)).times(multiplier)
+}
+
+/** Giá inject = injectCostBase × (cấp trait sau khi gộp)² × hệ số theo loại trait. */
+export function crystalInjectCost(data: GameData, traitId: string, levelAfter: number): Decimal {
+  const multiplier = crystalKindMultiplier(data, traitId)
+  return toBig(data.config.crystal.injectCostBase).times(toBig(levelAfter).pow(2)).times(multiplier)
 }
 
 /** Giá item gộp chồng = price × highestFloor (fixedPrice: chỉ price); tinh thể không có `price`. */
@@ -33,6 +44,7 @@ function stackItemPrice(data: GameData, itemId: string, highestFloor: number): D
     case 'seed':
     case 'soulCrystal':
     case 'bait':
+    case 'dish':
       return item.fixedPrice ? toBig(item.price) : toBig(item.price).times(highestFloor)
     case 'equipment':
       throw new Error(`Trang bị "${itemId}" tính giá theo từng món (equipmentBasePrice)`)

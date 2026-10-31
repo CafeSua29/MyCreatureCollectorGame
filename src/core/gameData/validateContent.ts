@@ -273,6 +273,9 @@ export function checkBiomes(data: GameData, issues: string[]): void {
     if (!Array.isArray(biome.bossDrops)) issues.push(`${where}: bossDrops phải là danh sách`)
     else checkDrops(data, biome.bossDrops, `${where}: bossDrops`, issues)
     checkBiomeBosses(data, biome, where, issues)
+    if (biome.elementIds !== undefined) {
+      checkElementIds(data, biome.elementIds, `${where}: elementIds`, issues)
+    }
   }
 }
 

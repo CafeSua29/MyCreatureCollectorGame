@@ -2,6 +2,7 @@
 // cũng được, miễn phí. Ô tự do, trùng món được; số ô chung cho mọi quái của người chơi
 // (equipmentSlotCount).
 
+import { assertBagRoom } from '../registries'
 import { ActionError, malformedAction } from '../shared'
 import {
   assertCanWear,
@@ -65,7 +66,12 @@ export function equipItem(
 }
 
 /** Tháo món ở ô `slotIndex` (0 = ô đầu) của quái về túi. */
-export function unequipItem(state: GameState, monsterId: string, slotIndex: unknown): GameState {
+export function unequipItem(
+  data: GameData,
+  state: GameState,
+  monsterId: string,
+  slotIndex: unknown
+): GameState {
   if (state.battle) throw new ActionError('inBattle')
   const { monster, replace } = locateOwned(state, monsterId)
   if (
@@ -77,6 +83,8 @@ export function unequipItem(state: GameState, monsterId: string, slotIndex: unkn
     throw malformedAction(`ô ${String(slotIndex)} không có món đang lắp`)
   }
   const entry = monster.equipment[slotIndex]
+  // Món trang bị cần chỗ trong túi; đồ gộp chồng thì không (docs/rules/capacity.md).
+  if (entry.storage === 'instance') assertBagRoom(data, state)
   const equipment = monster.equipment.filter((_, i) => i !== slotIndex)
   return {
     ...replace({ ...monster, equipment }),

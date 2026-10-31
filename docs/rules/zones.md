@@ -89,4 +89,4 @@ Bốn kiểu hiểm địa (49 cái; tên do Claude đặt, chủ project duyệ
 ## Chưa có
 
 - Màn hình hiểm địa (chờ UI, `ui-overhaul.md`).
-- Sức chứa kho khi bắt quái trong hiểm địa: như trận thường (chờ `capacity.md`).
+- Sức chứa kho khi bắt quái trong hiểm địa: như trận thường (`capacity.md`).

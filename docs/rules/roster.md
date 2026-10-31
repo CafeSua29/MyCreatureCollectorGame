@@ -23,8 +23,8 @@
 - **Quản lý quái:** chỉ dùng **ngoài trận**.
   - Đội luôn giữ **ít nhất 1 con, sống hay gục đều được**. Nếu cả đội đã gục thì phải nghỉ hoặc dùng thuốc hồi sinh trước khi đánh.
   - Đội có `partySize` (6) **ô**: quái lớn chiếm 2 ô (`monster-size.md`). `moveToParty` / `swapWithStorage` không đủ ô thì `partyFull`; mọi chỗ quái mới vào đội (bắt, thu phục, nở trứng, event, khu bảo tồn) hỏi `hasPartyRoom`, không đủ ô thì về kho.
-  - Chuyển vào kho / vào đội: quái được đặt ở **cuối** danh sách đích. Vào đội báo lỗi khi đội đã đủ 6.
+  - Chuyển vào kho / vào đội: quái được đặt ở **cuối** danh sách đích. Vào đội báo lỗi khi đội đã đủ 6. Kho đầy (`capacity.md`) thì `moveToStorage` báo `rosterFull`.
   - Đổi chỗ đội ↔ kho: mỗi con nhận vị trí của con kia (dùng được khi đội đầy).
   - Sắp xếp đội: phải là hoán vị đúng của đội hiện tại. Thứ tự đội quyết định 2 con còn sống đầu tiên ra sân.
-  - **Thả quái:** xóa vĩnh viễn khỏi đội hoặc kho, **không nhận gì**. UI phải hỏi xác nhận.
+  - **Thả quái:** xóa vĩnh viễn khỏi đội hoặc kho, **không nhận gì**. UI phải hỏi xác nhận. Món đang lắp về túi; túi trang bị không đủ chỗ thì `bagOverflow`, gửi lại với `discardOverflow: true` để bỏ món thừa (`capacity.md`).
   - **Biệt danh:** cắt khoảng trắng hai đầu; `null` hoặc chuỗi rỗng thì xóa biệt danh; độ dài đếm theo ký tự Unicode (chữ có dấu tính 1 ký tự), tối đa `maxNicknameLength`.

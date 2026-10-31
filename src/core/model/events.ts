@@ -181,6 +181,10 @@ export type EventLogEntry =
   | { type: 'equipmentGained'; instanceId: string; itemId: string; rarity: EquipmentRarity }
   | { type: 'eggGained'; eggId: string }
   | { type: 'monsterJoined'; monsterId: string; destination: 'party' | 'storage' }
+  /** Đội đủ và kho quái đầy: quái muốn đi theo không nhận được (docs/rules/capacity.md). */
+  | { type: 'monsterRefused'; speciesId: string }
+  /** Túi trang bị đầy: món được tặng bị mất (docs/rules/capacity.md). */
+  | { type: 'equipmentLost'; itemId: string; rarity: EquipmentRarity }
   | { type: 'partyHealed' }
   | { type: 'statusApplied'; monsterId: string; statusId: string }
   | { type: 'statusImmune'; monsterId: string; statusId: string }

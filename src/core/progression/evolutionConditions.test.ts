@@ -779,7 +779,7 @@ describe('migrate v29 → v30', () => {
     const battle = makeBattleState([makeMonster({ id: 'a' })], [makeMonster({ id: 'e' })])
     const raw = serializeState({
       ...battle,
-      eggs: [{ id: 'egg1', monster: makeMonster({ id: 'egg1' }), battlesLeft: 2 }]
+      eggs: [{ id: 'egg1', monster: makeMonster({ id: 'egg1' }), battlesLeft: 2, infusions: [] }]
     }) as Record<string, unknown>
     const strip = (m: Record<string, unknown>): Record<string, unknown> => {
       const { bossDefeats: _bossDefeats, ...rest } = m

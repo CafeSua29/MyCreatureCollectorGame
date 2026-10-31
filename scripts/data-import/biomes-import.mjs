@@ -74,7 +74,8 @@ function buildBiome(map, ids) {
     floorBossSpeciesId: picked.floorBossSpeciesId,
     bosses,
     weather: fieldEntries(map.weather),
-    terrain: fieldEntries(map.terrain)
+    terrain: fieldEntries(map.terrain),
+    elementIds: [...mapElements(map, source.themes)]
   }
   addReport(map, biome)
   return biome
@@ -93,7 +94,12 @@ function extendExisting(map, existing, ids) {
     .filter((candidate) => !bossIds.has(candidate.id))
     .slice(0, RANDOM_BOSSES_PER_MAP)
     .map((candidate) => ({ speciesId: candidate.id, weight: 1, drops: [] }))
-  const biome = { ...existing, encounters, bosses: [...existing.bosses, ...extraBosses] }
+  const biome = {
+    ...existing,
+    encounters,
+    bosses: [...existing.bosses, ...extraBosses],
+    elementIds: [...mapElements(map, source.themes)]
+  }
   addReport(map, biome)
   return biome
 }

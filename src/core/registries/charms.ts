@@ -26,6 +26,13 @@ export const CHARM_EFFECT_RULES: Readonly<Record<CharmEffectType, CharmEffectRul
     combine: (total, value) => total + value,
     isValid: (value) => Number.isInteger(value) && value >= 0,
     describe: 'số nguyên ≥ 0'
+  },
+  // Trứng tiến thêm số bước này mỗi lần nghỉ (Ôn Dưỡng Lò, docs/rules/breeding-eggs.md): cộng dồn.
+  restEggSteps: {
+    identity: 0,
+    combine: (total, value) => total + value,
+    isValid: (value) => Number.isInteger(value) && value >= 0,
+    describe: 'số nguyên ≥ 0'
   }
 }
 

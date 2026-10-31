@@ -14,6 +14,13 @@ import { cpus } from 'node:os'
 /** Phần CPU / RAM của máy mô phỏng được dùng tối đa. */
 export const MACHINE_SHARE = 0.6
 
+/**
+ * Hệ số turbo tối thiểu được giả định trên Windows: turbo đọc lúc khởi động thấp hơn lúc chạy tải
+ * (đo 2026-10-31 trên i5-11400F: 139–142% lúc rảnh, 161% lúc tải; tối đa 4,4 / 2,6 GHz = 169%), mà
+ * Windows không cho đọc mức turbo tối đa, nên lấy mức an toàn của CPU phổ thông.
+ */
+const MIN_ASSUMED_BOOST = 1.7
+
 /** Mask affinity chỉ dùng được tới 64 luồng (một nhóm processor của Windows). */
 const MAX_MASK_THREADS = 64
 
@@ -24,6 +31,11 @@ const MAX_MASK_THREADS = 64
 export function sharedThreadCount(threadCount, boost = 1) {
   const share = Math.floor((threadCount * MACHINE_SHARE) / Math.max(1, boost))
   return Math.min(MAX_MASK_THREADS, Math.max(1, share))
+}
+
+/** Hệ số turbo dùng để tính (Windows): số đọc được nhưng không dưới MIN_ASSUMED_BOOST. */
+export function windowsBoost(measured) {
+  return Math.max(MIN_ASSUMED_BOOST, measured)
 }
 
 export function affinityMask(count) {
@@ -47,14 +59,30 @@ function readWindowsBoost() {
 }
 
 /**
- * Ghim tiến trình này vào phần CPU được dùng. Trả số luồng được dùng (để chọn số worker) và câu
- * mô tả để in ra console.
+ * Biến môi trường ghi số luồng đã ghim: tiến trình con kế thừa cả affinity lẫn biến này, nên gọi lại
+ * (vitest.config.mts nạp lại khi mô phỏng đóng gói, tiến trình con của vitest) không ghim lại.
+ */
+const LIMITED_ENV = 'CPU_LIMIT_THREADS'
+
+/**
+ * Ghim tiến trình này (và tiến trình con tạo sau) vào phần CPU được dùng, một lần. Trả số luồng
+ * được dùng (để chọn số worker) và câu mô tả để in ra console.
  */
 export function limitCpu() {
+  const limited = Number(process.env[LIMITED_ENV])
+  if (Number.isSafeInteger(limited) && limited >= 1) {
+    return { threads: limited, message: `Giới hạn CPU: ${limited} luồng (đã ghim từ trước).` }
+  }
+  const result = pinCpu()
+  process.env[LIMITED_ENV] = String(result.threads)
+  return result
+}
+
+function pinCpu() {
   const threadCount = cpus().length
   try {
     if (process.platform === 'win32') {
-      const boost = readWindowsBoost()
+      const boost = windowsBoost(readWindowsBoost())
       const threads = sharedThreadCount(threadCount, boost)
       runPowerShell(`(Get-Process -Id ${process.pid}).ProcessorAffinity = ${affinityMask(threads)}`)
       const boostNote = `turbo ${Math.round(boost * 100)}%`

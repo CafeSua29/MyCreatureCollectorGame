@@ -40,8 +40,15 @@ import {
   soulFuseRefund,
   traitSlotCap
 } from '../monster'
-import { addSoulCrystalPoints, removeItems, returnEquipment } from '../inventory'
-import { fusionAidProtectsBase, fusionAidSlot, yearsLeft, type FusionAidSlot } from '../registries'
+import { addSoulCrystalPoints, removeItems } from '../inventory'
+import {
+  assertOverflowConfirmed,
+  fusionAidProtectsBase,
+  fusionAidSlot,
+  returnEquipmentWithinCapacity,
+  yearsLeft,
+  type FusionAidSlot
+} from '../registries'
 import {
   dayOf,
   usesTraitSlot,
@@ -212,6 +219,10 @@ export function fuseMonsters(
     traitSlots,
     traits: slotTraits,
     shinyStacks: 0,
+    // Hiến tế: giữ stack của mình + stack của quái phụ, không +1 (docs/rules/sacrifice.md).
+    sacrificeStacks: base.sacrificeStacks + sub.sacrificeStacks,
+    // Cấy ghép: quái gốc giữ của mình (giữ qua ...base); phần cấy của quái phụ đã nằm trong chỉ số
+    // withFusingBonus của nó nên tự truyền ½ qua fusingBonusStats (docs/rules/implant.md).
     bossMultiplier: Math.max(base.bossMultiplier, sub.bossMultiplier),
     // Thân mật lấy cao hơn của hai quái (docs/rules/affinity.md).
     affinity: Math.max(base.affinity, sub.affinity),
@@ -248,6 +259,8 @@ export interface FuseOrder {
   protectItemId?: string
   inheritSkillIds?: readonly string[]
   forgetSkillIds?: readonly string[]
+  /** Xác nhận bỏ món đang lắp không đủ chỗ về túi (docs/rules/capacity.md). */
+  discardOverflow?: boolean
 }
 
 /** Đội trong trường hợp xấu nhất: mất quái phụ, và cả quái gốc nếu không được hộ mệnh. */
@@ -283,6 +296,11 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   if (worstCaseParty(state, order, isProtected).length === 0) {
     throw new ActionError('partyWouldBeEmpty')
   }
+  // Túi không đủ chỗ cho món của các quái có thể mất (trường hợp xấu nhất) thì phải xác nhận.
+  assertOverflowConfirmed(data, state, {
+    monsters: isProtected ? [sub] : [sub, base],
+    discardOverflow: order.discardOverflow
+  })
   const paid = spendMoney(state, fuseCost(data, base, sub))
   // Bùa tiêu hao dù thành công hay thất bại.
   let inventory = paid.inventory
@@ -304,7 +322,7 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   // Món trên quái phụ (và quái gốc nếu mất) tự về túi, kèm một phần hồn tinh đã dùng
   // (docs/rules/soul-levels.md).
   for (const lost of result ? [sub] : [sub, base]) {
-    inventory = returnEquipment(inventory, lost)
+    inventory = returnEquipmentWithinCapacity(data, state, inventory, lost)
     inventory = addSoulCrystalPoints(data, inventory, soulFuseRefund(data, lost))
   }
   const update = (monsters: Monster[]): Monster[] =>

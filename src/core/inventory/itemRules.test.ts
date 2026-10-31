@@ -49,7 +49,8 @@ describe('itemStorage', () => {
       soulCrystal: 'stack',
       skillBook: 'book',
       bait: 'stack',
-      charm: 'stack'
+      charm: 'stack',
+      dish: 'stack'
     })
   })
 
@@ -113,7 +114,8 @@ describe('itemDropsFromMonsters', () => {
       soulCrystal: true,
       skillBook: true,
       bait: true,
-      charm: false
+      charm: false,
+      dish: true
     })
   })
 })

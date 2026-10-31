@@ -208,6 +208,9 @@ const PROGRESSION_HEADERS = [
   'harvests',
   'alchemyLevel',
   'smithingLevel',
+  'meals',
+  'cooks',
+  'cookingLevel',
   'demonCores',
   'quests',
   'expeditions',
@@ -296,6 +299,9 @@ function unlockRow(teamId: string, unlock: FloorUnlock): string[] {
     String(unlock.harvests),
     String(unlock.alchemyLevel),
     String(unlock.smithingLevel),
+    String(unlock.meals),
+    String(unlock.cooks),
+    String(unlock.cookingLevel),
     String(unlock.demonCores),
     String(unlock.questsClaimed),
     String(unlock.expeditionsSent),
@@ -342,8 +348,8 @@ function stuckNote(result: ProgressionResult): string {
 }
 
 /**
- * Ô kinh tế: món đã bán, vật phẩm thân mật, đá Mega / Z-Crystal / đồ chí mạng cầm, ô linh điền mua
- * (bỏ mục 0).
+ * Ô kinh tế: món đã bán, vật phẩm thân mật, đá Mega / Z-Crystal / đồ chí mạng cầm, ô linh điền mua,
+ * extract / inject / mua tinh thể trait, quái phụ hiến tế, cấy ghép, sức chứa (bỏ mục 0).
  */
 function economyCell(count: FloorUnlock['economy']): string {
   const parts: [string, number][] = [
@@ -357,7 +363,18 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['contract', count.contracts],
     ['contractFail', count.contractFails],
     ['escape', count.contractEscapes],
-    ['dex', count.dexRewards]
+    ['dex', count.dexRewards],
+    ['extract', count.traitsExtracted],
+    ['inject', count.traitsInjected],
+    ['crystalBuy', count.crystalsBought],
+    ['sacrifice', count.sacrifices],
+    ['implant', count.implants],
+    ['implantFail', count.implantFails],
+    ['implantEffect', count.implantEffects],
+    ['implantShare%', Math.round(count.implantSharePercent)],
+    ['expand', count.capacityExpansions],
+    ['storagePeak', count.storagePeak],
+    ['bagPeak', count.bagPeak]
   ]
   return parts
     .filter(([, n]) => n > 0)
@@ -489,6 +506,8 @@ export function lineageTable(rows: readonly LineageRow[]): Table {
       'aptitude',
       'aptitudeRatio',
       'cost',
+      'sacrificeStacks',
+      'sacrificeCost',
       'successChance',
       'reachChance',
       'skillPower',
@@ -506,6 +525,8 @@ export function lineageTable(rows: readonly LineageRow[]): Table {
       row.aptitudeTierId,
       formatDecimal(row.aptitudeRatio),
       formatDecimal(row.cost),
+      String(row.sacrificeStacks),
+      formatDecimal(row.sacrificeCost),
       row.successChance === null ? '' : `${row.successChance.toFixed(2)}%`,
       row.reachChance === null ? '' : `${row.reachChance.toPrecision(3)}%`,
       String(row.skillPower),

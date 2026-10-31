@@ -8,6 +8,7 @@ import {
   CHARM_EFFECT_RULES,
   FUSION_AID_EFFECTS,
   ITEM_EFFECTS,
+  MEAL_EFFECTS,
   SKILL_EFFECTS,
   TRAIT_HOOKS,
   checkIdList,
@@ -107,6 +108,18 @@ function checkBait(item: RawItem, where: string, data: GameData, issues: string[
   checkFavorites(item, where, data, issues)
 }
 
+/** Món ăn: giá, hiệu ứng không rỗng theo MEAL_EFFECTS, thời hạn nguyên ≥ 1 trận. */
+function checkDish(item: RawItem, where: string, data: GameData, issues: string[]): void {
+  checkPrice(item, where, issues)
+  // Ép kiểu vì checkEffects tự kiểm tra là danh sách và từng hook.
+  const effects = item.effects as EffectDef[] | undefined
+  if (Array.isArray(effects) && effects.length === 0) {
+    issues.push(`${where}: effects phải có ít nhất một hiệu ứng`)
+  }
+  checkEffects(MEAL_EFFECTS, effects, where, data, issues)
+  issues.push(...checkInteger(item.battles, `${where}: battles`, 1))
+}
+
 function checkConsumable(item: RawItem, where: string, data: GameData, issues: string[]): void {
   checkPrice(item, where, issues)
   if (!ITEM_USES.some((use) => use === item.use)) {
@@ -181,8 +194,14 @@ function checkFusionAid(item: RawItem, where: string, data: GameData, issues: st
   }
 }
 
-/** Bùa: ≥ 1 hiệu ứng, loại thuộc CHARM_EFFECT_TYPES, không trùng loại, giá trị theo luật của loại. */
+/**
+ * Bùa: ≥ 1 hiệu ứng, loại thuộc CHARM_EFFECT_TYPES, không trùng loại, giá trị theo luật của loại;
+ * townPrice (nếu có) là số nguyên > 0.
+ */
 function checkCharm(item: RawItem, where: string, _data: GameData, issues: string[]): void {
+  if (item.townPrice !== undefined) {
+    issues.push(...checkInteger(item.townPrice, `${where}: townPrice`, 1))
+  }
   if (!Array.isArray(item.effects) || item.effects.length === 0) {
     issues.push(`${where}: effects phải là danh sách không rỗng`)
     return
@@ -474,8 +493,9 @@ const ITEM_CATEGORY_RULES: Readonly<Record<ItemCategory, ItemCategoryRule>> = {
   fusionAid: { fields: [...PRICED_FIELDS, 'effects'], check: checkFusionAid },
   // Vật phẩm chìa khóa không có giá (không bán / mua / vứt), không có trường riêng.
   keyItem: { fields: [] },
-  // Bùa (docs/rules/dex.md): không có giá, hiệu ứng theo CHARM_EFFECT_RULES.
-  charm: { fields: ['effects'], check: checkCharm },
+  // Bùa (docs/rules/dex.md): không có giá bán, hiệu ứng theo CHARM_EFFECT_RULES; townPrice = giá mua
+  // một lần ở cửa hàng thị trấn.
+  charm: { fields: ['effects', 'townPrice'], check: checkCharm },
   megaStone: { fields: [...PRICED_FIELDS, 'formId', 'auto'], check: checkMegaStone },
   teraShard: { fields: [...PRICED_FIELDS, 'elementId'], check: checkTeraShard },
   zCrystal: {
@@ -502,7 +522,9 @@ const ITEM_CATEGORY_RULES: Readonly<Record<ItemCategory, ItemCategoryRule>> = {
       'favoriteElementIds'
     ],
     check: checkBait
-  }
+  },
+  // Món ăn linh thực (docs/rules/cooking.md): ăn qua action eatDish.
+  dish: { fields: [...PRICED_FIELDS, 'effects', 'battles'], check: checkDish }
 }
 
 /** Kiểm tra một item theo luật category của nó. */
