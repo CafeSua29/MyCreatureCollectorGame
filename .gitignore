@@ -1,8 +1,70 @@
-node_modules
-dist
-out
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output (electron-vite / electron-builder)
+# Lưu ý: KHÔNG ignore build/ — đó là buildResources (icon, entitlements) của electron-builder
+out/
+dist/
+dist-electron/
+release/
+*.tsbuildinfo
+
+# Packaged apps (electron-builder)
+*.dmg
+*.exe
+*.AppImage
+*.deb
+*.rpm
+*.snap
+*.blockmap
+
+# Vite cache
+.vite/
+
+# Test & coverage (Vitest)
+coverage/
+.vitest/
+*.lcov
+test-results/
+
+# Game: save thật khi chạy dev (chỉ thư mục ở gốc, không đụng src/**/saves/)
+/saves/
+
+# Mô phỏng, profile
+scripts/simulate/out/
+prof/
+*.cpuprofile
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors / IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+
+# OS files
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Misc
+*.local
 .eslintcache
-*.log*
-saves
-scripts/simulate/out
+.cache/
+tmp/
