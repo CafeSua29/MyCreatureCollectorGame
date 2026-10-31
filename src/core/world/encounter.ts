@@ -8,6 +8,7 @@ import {
   rollAbilitySlot,
   rollNature,
   rollWildBloodlines,
+  rollSpawnPolarity,
   uniformBigStats,
   emptySoulLevels,
   emptyEffortValues
@@ -236,7 +237,9 @@ export function rollMonster(
     // Quái hoang chưa từng nhiễm linh dịch (docs/rules/spirit-virus.md).
     spiritVirus: null,
     // Tung sau cùng (rollWildBloodlines).
-    bloodlines: []
+    bloodlines: [],
+    // Quái hoang / boss tung cực sau tuổi (rollSpawnPolarity); trứng không cực.
+    polarity: null
   }
   let shiny: boolean
   ;[shiny, rng] = rollPercent(rng, spec.shinyChance)
@@ -323,7 +326,24 @@ export function generateWildMonster(
 ): [Monster, RngState] {
   let monster: Monster
   ;[monster, rng] = rollMonster(data, rng, floorRollSpec(data, site, site.biome.encounters), id)
-  return rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)
+  ;[monster, rng] = rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)
+  return rollSpawnPolarity(data, rng, monster, {
+    floor: site.floor,
+    chance: data.config.polarity.wildChance
+  })
+}
+
+/** Tuổi rồi cực của boss (tung sau cùng, sau mọi luật boss khác). */
+function rollBossAgeAndPolarity(
+  data: GameData,
+  rng: RngState,
+  { site, boss }: { site: FloorSite; boss: Monster }
+): [Monster, RngState] {
+  ;[boss, rng] = rollSpawnAge(data, rng, boss, data.config.lifespan.spawnAgePercent.boss)
+  return rollSpawnPolarity(data, rng, boss, {
+    floor: site.floor,
+    chance: data.config.polarity.bossChance
+  })
 }
 
 /** Gắn bossMultiplier: số nguyên random trong khoảng của biome, hoặc của config nếu không ghi đè. */
@@ -402,7 +422,7 @@ export function generateBoss(
   ;[monster, rng] = rollMonster(data, rng, floorRollSpec(data, site, encounters), id)
   ;[monster, rng] = rollBossMultiplier(data, rng, biome, monster)
   ;[monster, rng] = rollBossTransformTraits(data, rng, { floor: site.floor, boss: monster })
-  return rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.boss)
+  return rollBossAgeAndPolarity(data, rng, { site, boss: monster })
 }
 
 /** Sinh boss tầng: loài floorBossSpeciesId của biome, level cố định floorBossLevel. */
@@ -423,7 +443,7 @@ export function generateFloorBoss(
   ;[monster, rng] = rollMonster(data, rng, spec, id)
   ;[monster, rng] = rollBossMultiplier(data, rng, biome, monster)
   ;[monster, rng] = rollBossTransformTraits(data, rng, { floor: site.floor, boss: monster })
-  return rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.boss)
+  return rollBossAgeAndPolarity(data, rng, { site, boss: monster })
 }
 
 /** Kết quả sinh trận: quái địch, trận boss hay không, RNG và bộ đếm id mới. */

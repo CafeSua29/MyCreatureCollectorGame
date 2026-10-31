@@ -31,6 +31,7 @@ import {
   rollChildAbilitySlot,
   rollAncestorBirth,
   rollChildBloodlines,
+  childPolarity,
   rollChildNature,
   rollGender,
   skillCapacity,
@@ -298,7 +299,9 @@ export function makeOffspring(
     // Con không nhiễm linh dịch (docs/rules/spirit-virus.md).
     spiritVirus: null,
     // Tung sau cùng (rollChildBloodlines) theo độ thuần của bố mẹ.
-    bloodlines: []
+    bloodlines: [],
+    // Tung sau cùng (childPolarity) theo cực của bố mẹ.
+    polarity: null
   }
 
   child = withEggSkills(data, child, inheritedEggSkills(species, father, mother))
@@ -334,7 +337,9 @@ export function makeOffspring(
   if (species.abilities) [abilitySlot, rng] = rollChildAbilitySlot(data, rng, mother)
   let bloodlines: Monster['bloodlines']
   ;[bloodlines, rng] = rollChildBloodlines(data, rng, { speciesId: species.id, father, mother })
-  return [{ ...child, teraElementId, natureId, abilitySlot, bloodlines }, rng]
+  let polarity: Monster['polarity']
+  ;[polarity, rng] = childPolarity(data, rng, [father, mother])
+  return [{ ...child, teraElementId, natureId, abilitySlot, bloodlines, polarity }, rng]
 }
 
 /** NPC breeding ở thị trấn: trả tiền, nhận một trứng. */

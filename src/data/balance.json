@@ -1896,6 +1896,46 @@
     "effortMultiplier": 2,
     "genesPerWin": 1
   },
+  "polarity": {
+    "statPercents": {
+      "yin": {
+        "hp": 5,
+        "defense": 10,
+        "spDefense": 10
+      },
+      "yang": {
+        "attack": 10,
+        "spAttack": 10,
+        "speed": 5
+      }
+    },
+    "opposeBonus": 10,
+    "unlockFloor": 30,
+    "wildChance": 10,
+    "bossChance": 25,
+    "traitIds": {
+      "yin": ["netherYin", "frigidYin", "greatYin"],
+      "yang": ["blazingYang", "pureYang", "utmostYang"]
+    },
+    "bossDrops": [
+      {
+        "itemId": "yinStone",
+        "chance": 3
+      },
+      {
+        "itemId": "yangStone",
+        "chance": 3
+      },
+      {
+        "itemId": "poleSwapStone",
+        "chance": 2
+      },
+      {
+        "itemId": "poleResetStone",
+        "chance": 2
+      }
+    ]
+  },
   "talents": {
     "levelsPerPoint": 5,
     "pointsPerAwakening": 1,
@@ -2333,6 +2373,30 @@
         {
           "itemId": "masterBall",
           "weight": 0.3,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "yinStone",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "yangStone",
+          "weight": 1,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "poleSwapStone",
+          "weight": 0.5,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "poleResetStone",
+          "weight": 0.5,
           "min": 1,
           "max": 1
         }

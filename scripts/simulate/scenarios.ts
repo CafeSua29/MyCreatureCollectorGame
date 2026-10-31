@@ -9,8 +9,10 @@ import {
   checkKnownFields,
   checkNumber,
   fieldList,
+  POLES,
   TACTICS,
   type AiConfig,
+  type Pole,
   type Tactic,
   type GameData,
   type RawGameData,
@@ -93,6 +95,11 @@ export interface Variant {
    * tung lúc dựng đội.
    */
   assumedPurity: number | null
+  /**
+   * Cực giả định của đội mẫu khi quét tầng (docs/rules/polarity.md): mọi quái mang cực này với trait
+   * cực tính đầu pool; null = như tung lúc dựng đội (không cực).
+   */
+  assumedPolarity: Pole | null
 }
 
 /** Trường skill biến thể được bỏ (skill-synergy-hold.md, move-styles.md, hit-locations.md). */
@@ -465,7 +472,8 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     'tactic',
     'uncontracted',
     'tamerRealm',
-    'assumedPurity'
+    'assumedPurity',
+    'assumedPolarity'
   ])
   return {
     id: r.string(obj.id, `${path}.id`),
@@ -488,8 +496,21 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     assumedPurity:
       obj.assumedPurity === undefined
         ? null
-        : r.number(obj.assumedPurity, `${path}.assumedPurity`, 1, 100)
+        : r.number(obj.assumedPurity, `${path}.assumedPurity`, 1, 100),
+    assumedPolarity:
+      obj.assumedPolarity === undefined
+        ? null
+        : readPole(r, obj.assumedPolarity, `${path}.assumedPolarity`)
   }
+}
+
+function readPole(r: Reader, value: unknown, path: string): Pole | null {
+  if ((POLES as readonly unknown[]).includes(value)) {
+    // Ép kiểu: vừa kiểm tra thuộc POLES.
+    return value as Pole
+  }
+  r.issues.push(`${path} phải là ${POLES.join(' / ')}`)
+  return null
 }
 
 function readTactic(r: Reader, value: unknown, path: string): Tactic {

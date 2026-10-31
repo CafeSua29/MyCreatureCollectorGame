@@ -5,6 +5,7 @@
 import { createGameData } from '../gameData'
 import { createGameState } from '../game'
 import type { FloorSite } from '../world'
+import { POLARITY_CHANGES, type PolarityChange } from '../monster'
 import { defined } from './assertions'
 import { soulRelicTestConfig, soulRelicTestItems } from './soulFixtures'
 import { toBig, type BigValue } from '../shared'
@@ -61,6 +62,16 @@ export const FIXTURE_PARTNER_SKILL_ID = 'noPartner'
 export const FIXTURE_ZONE_ID = 'den'
 /** Ngự thú sư NPC fixture (docs/rules/trainers.md): lớp mọi hệ và quán chủ. */
 export const FIXTURE_TRAINER_ID = 'rookie'
+/** Trait cực tính fixture (docs/rules/polarity.md). */
+export const FIXTURE_YIN_TRAIT_IDS = ['yinCalm', 'yinShell']
+export const FIXTURE_YANG_TRAIT_IDS = ['yangFlame']
+/** Đá chuyển cực fixture theo cách đổi. */
+export const FIXTURE_POLARITY_STONE_IDS: Readonly<Record<PolarityChange, string>> = {
+  yin: 'yinStone',
+  yang: 'yangStone',
+  swap: 'poleSwapStone',
+  clear: 'poleResetStone'
+}
 export const FIXTURE_GYM_LEADER_ID = 'leader'
 /** Bí Cảnh Lệnh fixture (docs/rules/trials.md). */
 export const FIXTURE_TRIAL_TOKEN_ID = 'realmToken'
@@ -528,6 +539,20 @@ export function makeRawData(): RawGameData {
         immuneExpPercent: 25,
         effortMultiplier: 2,
         genesPerWin: 1
+      },
+      // Âm / Dương (docs/rules/polarity.md): số như dữ liệu thật trừ tỉ lệ quái hoang / boss có cực
+      // và đồ rơi (0 / rỗng để RNG của test cũ không đổi; test Âm / Dương tự bật).
+      polarity: {
+        statPercents: {
+          yin: { hp: 5, defense: 10, spDefense: 10 },
+          yang: { attack: 10, spAttack: 10, speed: 5 }
+        },
+        opposeBonus: 10,
+        unlockFloor: 30,
+        wildChance: 0,
+        bossChance: 0,
+        traitIds: { yin: FIXTURE_YIN_TRAIT_IDS, yang: FIXTURE_YANG_TRAIT_IDS },
+        bossDrops: []
       },
       // Huyết mạch (docs/rules/bloodline.md): số như dữ liệu thật; fixture mặc định không có nhóm nào
       // (withBloodlines thêm nhóm mẫu) nên RNG của test cũ không đổi.
@@ -1408,6 +1433,22 @@ export function makeRawData(): RawGameData {
         kind: 'rare',
         hooks: [{ type: 'statusImmunity', params: { statusIds: ['poison', 'sleep'] } }]
       },
+      // Trait cực tính (docs/rules/polarity.md): Âm hai trait, Dương một trait.
+      {
+        id: FIXTURE_YIN_TRAIT_IDS[0],
+        kind: 'polarity',
+        hooks: [{ type: 'statusImmunity', params: { statusIds: ['sleep'] } }]
+      },
+      {
+        id: FIXTURE_YIN_TRAIT_IDS[1],
+        kind: 'polarity',
+        hooks: [{ type: 'statModifier', params: { percent: { hp: 20 } } }]
+      },
+      {
+        id: FIXTURE_YANG_TRAIT_IDS[0],
+        kind: 'polarity',
+        hooks: [{ type: 'elementDamageDealt', params: { elementIds: ['fire'], percent: 15 } }]
+      },
       // Trait race dùng chung cho mọi race fixture, cố ý không có tác dụng để test khác không
       // phải tính tới trait race; test trait race tự thêm trait có tác dụng.
       {
@@ -1570,6 +1611,15 @@ export function makeRawData(): RawGameData {
         target: 'ally',
         effects: [{ type: 'setNature', params: { natureId: 'brave' } }]
       },
+      // Đá chuyển cực (docs/rules/polarity.md).
+      ...POLARITY_CHANGES.map((change) => ({
+        id: FIXTURE_POLARITY_STONE_IDS[change],
+        category: 'consumable' as const,
+        price: 3000,
+        use: 'field' as const,
+        target: 'ally' as const,
+        effects: [{ type: 'setPolarity', params: { change } }]
+      })),
       // Vong Ưu Thủy (docs/rules/monster-talents.md): tẩy thiên phú.
       {
         id: 'forgetWater',
@@ -1965,7 +2015,8 @@ function baseFields(): Omit<
     contractDays: 0,
     talentRanks: {},
     spiritVirus: null,
-    bloodlines: []
+    bloodlines: [],
+    polarity: null
   }
 }
 

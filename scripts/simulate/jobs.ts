@@ -367,6 +367,7 @@ function runSweepJob(context: JobContext, job: Extract<SimJob, { type: 'sweep' }
     uncontracted: variant?.uncontracted ?? false,
     tamerRealm: variant?.tamerRealm ?? null,
     assumedPurity: variant?.assumedPurity ?? null,
+    assumedPolarity: variant?.assumedPolarity ?? null,
     floor: job.floor,
     biomeId: null,
     seed: scenarios.seed,

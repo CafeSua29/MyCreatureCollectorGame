@@ -466,7 +466,8 @@ export const TRAIT_KINDS = [
   'shiny',
   'boss',
   'race',
-  'bloodline'
+  'bloodline',
+  'polarity'
 ] as const
 
 export type TraitKind = (typeof TRAIT_KINDS)[number]
@@ -479,20 +480,25 @@ export interface TraitKindRule {
   hasCrystal: boolean
   /** Được phép có trong `config.wild.traitKindWeights` (tung cho quái hoang). */
   wildRollable: boolean
-  /** Suy ra từ dữ liệu (trait race theo `raceId`, trait huyết mạch), không bao giờ lưu trong `monster.traits`. */
-  derived: boolean
+  /**
+   * Lưu trong `monster.traits`. Không lưu: trait race (suy từ `raceId`), trait huyết mạch (suy từ
+   * huyết mạch chính), trait cực tính (lưu ở `monster.polarity`).
+   */
+  inTraitList: boolean
 }
 
 /** Bảng luật theo loại trait: thêm loại mới mà thiếu mục thì TypeScript báo lỗi. */
 export const TRAIT_KIND_RULES = {
-  positive: { usesSlot: true, hasCrystal: true, wildRollable: true, derived: false },
-  negative: { usesSlot: true, hasCrystal: true, wildRollable: true, derived: false },
-  rare: { usesSlot: true, hasCrystal: true, wildRollable: true, derived: false },
-  shiny: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: false },
-  boss: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: false },
-  race: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: true },
+  positive: { usesSlot: true, hasCrystal: true, wildRollable: true, inTraitList: true },
+  negative: { usesSlot: true, hasCrystal: true, wildRollable: true, inTraitList: true },
+  rare: { usesSlot: true, hasCrystal: true, wildRollable: true, inTraitList: true },
+  shiny: { usesSlot: false, hasCrystal: false, wildRollable: false, inTraitList: true },
+  boss: { usesSlot: false, hasCrystal: false, wildRollable: false, inTraitList: true },
+  race: { usesSlot: false, hasCrystal: false, wildRollable: false, inTraitList: false },
   // Trait huyết mạch suy từ huyết mạch chính (docs/rules/bloodline.md).
-  bloodline: { usesSlot: false, hasCrystal: false, wildRollable: false, derived: true }
+  bloodline: { usesSlot: false, hasCrystal: false, wildRollable: false, inTraitList: false },
+  // Trait cực tính lưu cùng cực của quái (docs/rules/polarity.md).
+  polarity: { usesSlot: false, hasCrystal: false, wildRollable: false, inTraitList: false }
 } as const satisfies Readonly<Record<TraitKind, TraitKindRule>>
 
 /** Loại trait có tinh thể (bảng giá / trọng số tinh thể theo loại phải đủ các loại này). */

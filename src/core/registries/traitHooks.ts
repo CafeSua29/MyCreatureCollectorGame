@@ -57,6 +57,7 @@ import { SURVIVAL_TRAIT_HOOKS, type LethalSurvival } from './survivalTraitHooks'
 import { STAGE_TRAIT_HOOKS, type StageTraitEffect, type StageTraitEvent } from './stageTraitHooks'
 import { percentToMultiplier, scaleStats, validatePartialStats } from './traitHookUtils'
 import { bloodlineTraitOf } from './bloodlines'
+import { polarityTraitOf } from './polarity'
 import { affinityTierOf } from './affinityTiers'
 import { activeTalents } from './talents'
 import { teamBonusHooks } from './teamBonuses'
@@ -656,7 +657,8 @@ export const HOOK_SOURCE_KINDS = [
   'partner',
   'frenzy',
   'collection',
-  'bloodline'
+  'bloodline',
+  'polarity'
 ] as const
 
 export type HookSourceKind = (typeof HOOK_SOURCE_KINDS)[number]
@@ -677,6 +679,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'trait':
     case 'race':
     case 'bloodline':
+    case 'polarity':
     case 'ability':
     case 'gained':
     case 'aura':
@@ -919,6 +922,10 @@ function ownHooks(
     const { id, level } = bloodlineTrait
     push(data.traits[id].hooks, levelEffectScale(step, level), id, { kind: 'bloodline', ownerId })
   }
+  // Trait cực tính (docs/rules/polarity.md): luôn cấp 1, không chiếm ô.
+  const polarityTrait = polarityTraitOf(monster)
+  if (polarityTrait)
+    push(data.traits[polarityTrait.id].hooks, 1, polarityTrait.id, { kind: 'polarity', ownerId })
   // Ability theo loài (docs/rules/abilities.md): như trait cấp 1, không đổi theo cấp.
   const abilityId = abilitySuppressed
     ? null

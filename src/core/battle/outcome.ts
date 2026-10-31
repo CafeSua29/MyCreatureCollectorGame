@@ -469,6 +469,10 @@ function grantAncestorEssences(data: GameData, d: Draft, defeated: readonly Mons
   }
 }
 
+/** Đá chuyển cực rơi từ boss từ tầng mở khóa Âm / Dương (docs/rules/polarity.md). */
+const polarityBossDrops = (data: GameData, d: Draft): DropEntry[] =>
+  d.battle.floor >= data.config.polarity.unlockFloor ? data.config.polarity.bossDrops : []
+
 const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(lifespanBossDrops),
   onlyInBossBattle(expCandyBossDrops),
@@ -485,7 +489,8 @@ const EXTRA_DROP_TABLES: readonly DropTable[] = [
   soulCrystalDrops,
   onlyInBossBattle(forgeBossDrops),
   onlyInBossBattle(talentBossDrops),
-  onlyInBossBattle(bloodlineBossDrops)
+  onlyInBossBattle(bloodlineBossDrops),
+  onlyInBossBattle(polarityBossDrops)
 ]
 
 /** EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ). */

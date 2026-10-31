@@ -11,6 +11,7 @@ import type {
 } from './content'
 import type { HistoryConfig } from './history'
 import type { PartialStats } from './stats'
+import type { Pole } from './monster'
 import type { AlchemyConfig } from './alchemy'
 import type { QuestConfig } from './quests'
 import type { ExpeditionConfig } from './expeditions'
@@ -149,6 +150,8 @@ export interface BalanceConfig {
   effort: EffortConfig
   /** Linh dịch, như Pokérus (docs/rules/spirit-virus.md). */
   spiritVirus: SpiritVirusConfig
+  /** Âm / Dương hóa (docs/rules/polarity.md). */
+  polarity: PolarityConfig
   /** Huyết mạch và phản tổ (docs/rules/bloodline.md). */
   bloodline: BloodlineConfig
   /** Thiên phú quái (docs/rules/monster-talents.md). */
@@ -437,6 +440,24 @@ export interface SpeciesRankConfig {
   legendaryCatchRate: number
   /** Số bậc cộng cho loài huyền thoại (không vượt bậc cao nhất). */
   legendaryBonus: number
+}
+
+/** Âm / Dương hóa (docs/rules/polarity.md). */
+export interface PolarityConfig {
+  /** % chỉ số theo cực, cộng vào tổng % ở bước áp trait (nguồn `polarity`). */
+  statPercents: Record<Pole, PartialStats>
+  /** % sát thương thêm khi quái Âm đánh quái Dương hoặc ngược lại. */
+  opposeBonus: number
+  /** Từ tầng này quái hoang / boss có thể có sẵn cực (theo tầng đang đánh). */
+  unlockFloor: number
+  /** % quái hoang có cực (từ unlockFloor; Âm / Dương đều nhau). */
+  wildChance: number
+  /** % boss có cực (từ unlockFloor). */
+  bossChance: number
+  /** Pool trait cực tính theo cực (trait loại `polarity`), random đều khi nhận cực. */
+  traitIds: Record<Pole, string[]>
+  /** Đá chuyển cực rơi thêm khi hạ boss từ unlockFloor. */
+  bossDrops: DropEntry[]
 }
 
 export interface NatureConfig {

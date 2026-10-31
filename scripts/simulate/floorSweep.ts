@@ -19,6 +19,7 @@ import {
   type Decimal,
   type GameData,
   type Monster,
+  type Pole,
   type Tactic
 } from '@core'
 import {
@@ -125,6 +126,8 @@ export interface FloorSweepOptions {
   tamerRealm?: number | null
   /** Độ thuần giả định của đội mẫu (biến thể `assumedPurity`); null / không ghi = như tung. */
   assumedPurity?: number | null
+  /** Cực giả định của đội mẫu (biến thể `assumedPolarity`); null / không ghi = như tung. */
+  assumedPolarity?: Pole | null
 }
 
 /** Mỗi quái mang huyết mạch chính là nhóm đầu của loài với độ thuần `purity` (bloodline.md). */
@@ -135,6 +138,12 @@ export function withAssumedPurity(data: GameData, party: Monster[], purity: numb
   })
 }
 
+/** Mỗi quái mang cực `pole` với trait cực tính đầu pool của cực (polarity.md). */
+export function withAssumedPolarity(data: GameData, party: Monster[], pole: Pole): Monster[] {
+  const polarity = { pole, traitId: data.config.polarity.traitIds[pole][0] }
+  return party.map((monster) => ({ ...monster, polarity }))
+}
+
 /** Đội của lần quét: snapshot của chơi liên tục, hoặc đội mẫu dựng theo tầng kèm các giả định. */
 function sweepParty(data: GameData, options: FloorSweepOptions): Monster[] {
   const { team, floor, seed, snapshot } = options
@@ -142,8 +151,12 @@ function sweepParty(data: GameData, options: FloorSweepOptions): Monster[] {
   // Thân mật, điểm nỗ lực và thuần thục giả định theo tầng (mục "Thân mật", "Điểm nỗ lực",
   // "Thuần thục skill" ở simulation-features.md).
   const rolled = buildTeam(data, team, floor, deriveSeed(seed, 'team', team.id, floor))
-  const built =
+  const blooded =
     options.assumedPurity == null ? rolled : withAssumedPurity(data, rolled, options.assumedPurity)
+  const built =
+    options.assumedPolarity == null
+      ? blooded
+      : withAssumedPolarity(data, blooded, options.assumedPolarity)
   return withAssumedMastery(
     data,
     withAssumedEffort(data, withAssumedAffinity(data, built, floor), floor),

@@ -8,11 +8,11 @@
   - Quái đích đã có trait cùng id: **gộp cấp** (cộng), không cần ô trống.
   - Chưa có: quái đích phải **còn ô trống**, không thì báo lỗi.
   - Trait inject **loại trừ** với một trait đang có: **bỏ cả hai** (như luật fuse), tinh thể vẫn bị tiêu hao. Đây cũng là một cách xóa trait xấu.
-- **Không extract / inject được:** trait loại `shiny`, `boss`, `race`. Loại `rare` được phép nhưng giá cao hơn.
+- **Không extract / inject được:** trait loại `shiny`, `boss`, `race`, `bloodline`, `polarity` (mọi loại `hasCrystal` false trong `TRAIT_KIND_RULES`). Loại `rare` được phép nhưng giá cao hơn.
 - **Giá** (thu ở cả hai bước, không phụ thuộc level quái; mọi trait cùng loại và cùng cấp có cùng giá):
   - Extract: `extractCostBase × cấp² × hệ số loại`, với cấp của trait bị lấy.
   - Inject: `injectCostBase × (cấp sau khi gộp)² × hệ số loại`, nên dồn cấp càng cao càng đắt.
   - Hệ số loại: positive ×1, negative ×1, rare ×3. `extractCostBase` = `injectCostBase` = 100. Số tạm, đặt trong `balance.json`. **Đã có** (làm cùng cửa hàng): `config.crystal.extractCostBase`, `config.crystal.kindCostMultipliers` và hàm `crystalExtractCost` (`inventory/itemPrices.ts`); khi làm bước này chỉ thêm `injectCostBase`.
-- **Lưu tinh thể** (**đã làm** ở bước 3.1, xem "Item: mô hình chung" trong `docs/rules/world-items.md`): định nghĩa chung `traitCrystal` trong `items.json`, chồng trong `inventory.crystals` gộp theo `traitId` + `level`; dùng `addCrystals` / `removeCrystals` / `getCrystalCount` (`src/core/inventory/`). Khi làm bước này: thêm loại `race` vào `CRYSTAL_EXCLUDED_TRAIT_KINDS` nếu "Trait theo race" đã làm.
+- **Lưu tinh thể** (**đã làm** ở bước 3.1, xem "Item: mô hình chung" trong `docs/rules/world-items.md`): định nghĩa chung `traitCrystal` trong `items.json`, chồng trong `inventory.crystals` gộp theo `traitId` + `level`; dùng `addCrystals` / `removeCrystals` / `getCrystalCount` (`src/core/inventory/`).
 - **Nguồn tinh thể:** extract và **mua ở cửa hàng** (đã làm, mục "Cửa hàng và vứt vật phẩm" ở `docs/rules/world-items.md`). Rơi đồ: để sau.
 - Tinh thể **vứt được** và **bán được** như vật phẩm (đã làm, `discardItem` / `sellItem`); giá bán tinh thể = **50% giá extract** tương ứng (theo cấp và loại).

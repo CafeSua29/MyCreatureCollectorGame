@@ -487,6 +487,12 @@ function addBloodlines(save: SaveObject): SaveObject {
   return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 73 }
 }
 
+/** v73 → v74 (Âm / Dương hóa, docs/rules/polarity.md): mọi quái (kể cả trứng) không cực. */
+function addPolarity(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, polarity: null })
+  return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 74 }
+}
+
 /** v64 → v65 (ability theo loài, docs/rules/abilities.md): mọi quái (kể cả trứng) ô ability thứ nhất. */
 function addAbilitySlot(save: SaveObject): SaveObject {
   const first = (m: RawMonster): RawMonster => ({ ...m, abilitySlot: 'first' })
@@ -926,7 +932,8 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
     version: 72,
     options: { ...asObject(save.options), permadeathEnabled: false }
   }),
-  72: addBloodlines
+  72: addBloodlines,
+  73: addPolarity
 }
 
 /**

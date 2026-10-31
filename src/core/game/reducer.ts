@@ -109,7 +109,7 @@ import {
 import type { GameAction, GameData, GameState, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 73
+export const SAVE_VERSION = 74
 
 export function createGameState(options: {
   seed: number

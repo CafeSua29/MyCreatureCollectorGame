@@ -12,6 +12,7 @@ import { shouldStopEarly } from './earlyStop'
 import {
   floorMapsFor,
   sweepFloor,
+  withAssumedPolarity,
   withAssumedPurity,
   withLeadZCrystal,
   type FloorSweepOptions
@@ -177,6 +178,18 @@ describe('withLeadZCrystal', () => {
     expect(
       equipment.some((entry) => entry.storage === 'instance' && entry.instance.id === 'e0')
     ).toBe(false)
+  })
+})
+
+describe('withAssumedPolarity (biến thể assumedPolarity)', () => {
+  it('mọi quái mang cực với trait cực tính đầu pool', () => {
+    const party = withAssumedPolarity(
+      data,
+      [makeMonster({ id: 'a' }), makeMonster({ id: 'b' })],
+      'yang'
+    )
+    const polarity = { pole: 'yang', traitId: data.config.polarity.traitIds.yang[0] }
+    expect(party.map((monster) => monster.polarity)).toEqual([polarity, polarity])
   })
 })
 

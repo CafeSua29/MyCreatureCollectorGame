@@ -54506,5 +54506,79 @@
         }
       }
     ]
+  },
+  {
+    "id": "netherYin",
+    "kind": "polarity",
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["ghost", "dark"],
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "frigidYin",
+    "kind": "polarity",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["freeze", "frozen", "sleep"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "greatYin",
+    "kind": "polarity",
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "blazingYang",
+    "kind": "polarity",
+    "hooks": [
+      {
+        "type": "elementDamageDealt",
+        "params": {
+          "elementIds": ["fire", "light"],
+          "percent": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "pureYang",
+    "kind": "polarity",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["burn"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "utmostYang",
+    "kind": "polarity",
+    "hooks": [
+      {
+        "type": "critChanceModifier",
+        "params": {
+          "percent": 30
+        }
+      }
+    ]
   }
 ]

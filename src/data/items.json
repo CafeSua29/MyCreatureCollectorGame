@@ -51974,5 +51974,73 @@
     "price": 3000,
     "fixedPrice": true,
     "formationId": "pureBloodArray"
+  },
+  {
+    "id": "yinStone",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 0.3,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "setPolarity",
+        "params": {
+          "change": "yin"
+        }
+      }
+    ]
+  },
+  {
+    "id": "yangStone",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 0.3,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "setPolarity",
+        "params": {
+          "change": "yang"
+        }
+      }
+    ]
+  },
+  {
+    "id": "poleSwapStone",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 0.2,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "setPolarity",
+        "params": {
+          "change": "swap"
+        }
+      }
+    ]
+  },
+  {
+    "id": "poleResetStone",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 0.2,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "setPolarity",
+        "params": {
+          "change": "clear"
+        }
+      }
+    ]
   }
 ]

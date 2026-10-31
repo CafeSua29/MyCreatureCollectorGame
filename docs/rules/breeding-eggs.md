@@ -33,6 +33,7 @@
   - **Boss đi theo bossMultiplier:** con nhận `bossMultiplier` cao nhất của bố mẹ; nếu bố hoặc mẹ có trait Huyết thống boss thì con nhận trait đó ở **cấp cao nhất** của bố mẹ (quái nở từ trứng boss có trait nhưng `bossMultiplier = 1` vẫn truyền được trait).
   - **Shiny:** cả bố và mẹ shiny → con **chắc chắn** shiny; đúng một bên shiny → tỉ lệ `shinyChanceOneParent`; không ai shiny → `shinyChance`. Con shiny thì `shinyStacks` = **cao nhất của bố mẹ** (tối thiểu 1), trait shiny cấp tương ứng (qua `addShinyStacks`).
   - **Huyết mạch** (`bloodline.md`): mẹ (không fuse) có huyết mạch chính ≥ 50% thì 0,1% con là một loài tổ của nhóm đó (tung ngay sau khi chọn loài con, chỉ tốn RNG khi đủ điều kiện); độ thuần con = trung bình bố mẹ −5..+8 (nhóm cả hai 0 thì không có), 1% đột biến phản tổ +30 huyết mạch chính (tung sau cùng).
+  - **Âm / Dương** (`polarity.md`, tung sau cùng): bố mẹ cùng cực thì con cùng cực (trait cực tính random lại); khác cực / một bên không cực thì con không cực.
   - Quái con random sẵn khi tạo trứng, bọc bằng `wrapEgg` (nở sau 5–10 trận thắng như trứng boss). Id trứng / quái lấy từ `nextMonsterId`.
 
 ## Trứng

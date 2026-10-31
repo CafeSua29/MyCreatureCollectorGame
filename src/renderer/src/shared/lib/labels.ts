@@ -27,7 +27,8 @@ export const TRAIT_KIND_LABELS: Record<TraitKind, string> = {
   shiny: 'Shiny',
   boss: 'Boss',
   race: 'Chủng tộc',
-  bloodline: 'Huyết mạch'
+  bloodline: 'Huyết mạch',
+  polarity: 'Cực tính'
 }
 
 /** Vị trí trong tóm tắt save (màn Tải game). */

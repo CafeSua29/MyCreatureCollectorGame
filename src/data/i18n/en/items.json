@@ -1632,5 +1632,9 @@
   "saurianClanScroll": "Formation Scroll: Primeval Clan Formation",
   "fourSpiritsScroll": "Formation Scroll: Four Benevolent Spirits Formation",
   "myriadBloodlinesScroll": "Formation Scroll: Myriad Bloodlines Formation",
-  "pureBloodArrayScroll": "Formation Scroll: Pure Blood Formation"
+  "pureBloodArrayScroll": "Formation Scroll: Pure Blood Formation",
+  "yinStone": "Yin Stone",
+  "yangStone": "Yang Stone",
+  "poleSwapStone": "Pole Shift Stone",
+  "poleResetStone": "Origin Stone"
 }

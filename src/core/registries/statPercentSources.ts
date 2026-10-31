@@ -16,6 +16,7 @@ import {
   type StatPercentSourceId
 } from '../model'
 import { ageStatPercent } from './lifespan'
+import { polarityStatPercent } from './polarity'
 import { soulLinkTier } from './soulLink'
 import type { HookSourceKind } from './traitHooks'
 
@@ -91,7 +92,9 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   // Cuồng bạo (chỉ trong trận, docs/rules/frenzy.md): công / đặc công qua bối cảnh trận.
   frenzy: {},
   // Thưởng sưu tập (chỉ trong trận, phe người chơi, docs/rules/dex.md): mọi chỉ số qua bối cảnh trận.
-  collection: {}
+  collection: {},
+  // Âm / Dương (docs/rules/polarity.md): % theo cực (trait cực tính đi qua hook, nhóm `traits`).
+  polarity: { percent: polarityStatPercent }
 }
 
 /** % chỉ số của hồn tinh: bỏ chỉ số cấp 0. */
@@ -144,6 +147,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   trait: 'traits',
   race: 'traits',
   bloodline: 'traits',
+  polarity: 'traits',
   ability: 'traits',
   gained: 'traits',
   status: 'statuses',

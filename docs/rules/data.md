@@ -18,6 +18,7 @@
   - Tên tiếng Anh (`en`): tên gốc của nội dung; nội dung tự tạo vốn chỉ có tên tiếng Việt thì đặt tên tiếng Anh theo id (Emberling, Swift, Thick Skin, Potion, Meadow...).
 - `src/data/index.ts` gom thành `rawGameData`; phải qua `createGameData` / `tryCreateGameData` trước khi dùng. Renderer khi làm UI cũng nạp dữ liệu bằng `tryCreateGameData`.
 - `config.starter` hợp lệ: ô và điều kiện theo `starters.md` (`gameData/validateStarters.ts`); level ≥ 1; vật phẩm tồn tại, số lượng nguyên ≥ 1.
+- `config.polarity` và trait loại `polarity`: luật kiểm tra ở `polarity.md` (`gameData/validatePolarity.ts`).
 - `bloodlines.json` (nhóm huyết mạch) và `config.bloodline`: luật kiểm tra ở `bloodline.md` (`gameData/validateBloodlines.ts`); tên nhóm ở i18n `bloodlines`.
 - `src/main/startup/dataCheck.ts` (không import Electron, có test): `formatDataIssues` (nội dung hộp thoại lỗi), `summarizeGameData`.
 - Hệ hiện có (19): Thường, Lửa, Nước, Điện, Cỏ, Băng, Võ, Độc, Đất, Bay, Tâm linh, Bọ, Đá, Ma, Rồng, Bóng tối, Thép, Tiên (bảng khắc chế Pokémon thế hệ 6+) và **Ánh sáng** (`light`: ×2 lên Bóng tối, Ma; ×0,5 lên Lửa, Thép, Ánh sáng; nhận ×2 từ Bóng tối; nhận ×0,5 từ Ma, Tâm linh, Tiên). Hệ số **0 = miễn nhiễm** (Thường / Võ → Ma, Tâm linh → Bóng tối, Đất → Bay, Điện → Đất, Độc → Thép, Rồng → Tiên, Ma → Thường). Quái hai hệ nhân dồn (có thể ×4 hoặc ×0,25). AI trận đấu chấm 0 điểm sát thương cho skill bị miễn nhiễm.

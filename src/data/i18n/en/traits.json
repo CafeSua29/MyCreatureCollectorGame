@@ -2424,5 +2424,11 @@
   "demonBloodline": "Demon Blaze",
   "giantBloodline": "Giant Strength",
   "plantBloodline": "Sylvan Spirit",
-  "saurianBloodline": "Primeval Power"
+  "saurianBloodline": "Primeval Power",
+  "netherYin": "Nether Yin",
+  "frigidYin": "Frigid Yin",
+  "greatYin": "Great Yin",
+  "blazingYang": "Blazing Yang",
+  "pureYang": "Pure Yang",
+  "utmostYang": "Utmost Yang"
 }

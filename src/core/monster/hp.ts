@@ -38,6 +38,8 @@ function maxHpSignature(monster: Monster): string {
     monster.imprint?.phase === 'done'
       ? `${monster.imprint.completed}/${monster.imprint.total}`
       : '',
+    // Cực và trait cực tính có thể đổi max HP (docs/rules/polarity.md).
+    monster.polarity ? `${monster.polarity.pole}:${monster.polarity.traitId}` : '',
     // Biến hình đổi max HP (Dynamax) hoặc chỉ số gốc (Mega).
     monster.battleTransform
       ? `${monster.battleTransform.kind}:${monster.battleTransform.formSpeciesId ?? ''}:${monster.battleTransform.ended ?? ''}:${monster.dynamaxLevel}`

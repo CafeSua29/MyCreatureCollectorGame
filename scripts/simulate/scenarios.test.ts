@@ -242,7 +242,8 @@ describe('rawWithVariant', () => {
         tactic: 'balanced' as const,
         uncontracted: false,
         tamerRealm: null,
-        assumedPurity: null
+        assumedPurity: null,
+        assumedPolarity: null
       })
     )
     expect(varied.config.ai).toEqual({ ...raw.config.ai, koBonus: 3 })
@@ -262,7 +263,8 @@ describe('rawWithVariant', () => {
         tactic: 'balanced' as const,
         uncontracted: false,
         tamerRealm: null,
-        assumedPurity: null
+        assumedPurity: null,
+        assumedPolarity: null
       })
     )
     expect(varied.config.mastery).toEqual({ ...raw.config.mastery, ...off })
@@ -281,7 +283,8 @@ describe('rawWithVariant', () => {
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
-      assumedPurity: null
+      assumedPurity: null,
+      assumedPolarity: null
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(varied.skills[raw.skills[0].id].hold).toBeUndefined()
@@ -301,7 +304,8 @@ describe('rawWithVariant', () => {
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
-      assumedPurity: null
+      assumedPurity: null,
+      assumedPolarity: null
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(varied.skills[raw.skills[0].id].reach).toBe('ranged')
@@ -321,7 +325,8 @@ describe('rawWithVariant', () => {
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
-      assumedPurity: null
+      assumedPurity: null,
+      assumedPolarity: null
     }
     expect(createGameData(rawWithVariant(raw, variant)).skills[raw.skills[0].id].styles).toBe(
       undefined
@@ -344,7 +349,8 @@ describe('rawWithVariant', () => {
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
-      assumedPurity: null
+      assumedPurity: null,
+      assumedPolarity: null
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(Object.values(varied.partnerSkills).map((skill) => skill.effects)).toEqual([[]])
@@ -362,7 +368,8 @@ describe('rawWithVariant', () => {
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
-      assumedPurity: null
+      assumedPurity: null,
+      assumedPolarity: null
     })
     expect(() => createGameData(bad)).toThrow()
   })

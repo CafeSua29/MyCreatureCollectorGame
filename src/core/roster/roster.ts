@@ -49,7 +49,8 @@ import {
   mainBloodline,
   MAX_PURITY,
   yearsLeft,
-  type EvolutionScene
+  type EvolutionScene,
+  polarityStatPercent
 } from '../registries'
 import { BIG_ZERO, cloneData, maxBig, type Decimal } from '../shared'
 import { equipmentSlotCount } from '../inventory'
@@ -71,6 +72,7 @@ import {
   type LanguageCode,
   type MasteryMilestone,
   type Monster,
+  type Pole,
   type MonsterHistory,
   type SkillCategory,
   type SpiritVirus,
@@ -228,6 +230,15 @@ export interface MonsterView {
   spiritVirus: SpiritVirus | null
   /** Huyết mạch: chính (có hiệu lực) và các nhóm khác chỉ tích lũy (docs/rules/bloodline.md). */
   bloodline: BloodlineView
+  /** Âm / Dương: cực, trait cực tính, % chỉ số đang cộng; null = không cực (docs/rules/polarity.md). */
+  polarity: PolarityView | null
+}
+
+/** Âm / Dương cho MonsterView. */
+export interface PolarityView {
+  pole: Pole
+  traitId: string
+  statPercents: PartialStats
 }
 
 /** Huyết mạch cho MonsterView. */
@@ -525,7 +536,10 @@ export function buildMonsterView(
     ability: { slot: monster.abilitySlot, traitId: abilityTraitId(data, monster) },
     talents: talentView(data, monster),
     spiritVirus: monster.spiritVirus,
-    bloodline: bloodlineView(data, monster)
+    bloodline: bloodlineView(data, monster),
+    polarity: monster.polarity
+      ? { ...monster.polarity, statPercents: polarityStatPercent(data, monster) }
+      : null
   }
 }
 

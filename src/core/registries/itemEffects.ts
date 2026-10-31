@@ -19,6 +19,9 @@ import { canHaveGmaxFactor } from '../inventory'
 import { autoEvolve, evolveVia, stoneEvolution } from '../progression'
 import {
   ABILITY_SLOT_CHANGES,
+  POLARITY_CHANGES,
+  type PolarityChange,
+  changePolarity,
   addEffortValues,
   changedAbilitySlot,
   type AbilitySlotChange,
@@ -355,6 +358,23 @@ const addPurityEffect: ItemEffectHandler = {
   }
 }
 
+// ---------- setPolarity: đá chuyển cực Âm / Dương (docs/rules/polarity.md) ----------
+
+const setPolarity: ItemEffectHandler = {
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return (POLARITY_CHANGES as readonly unknown[]).includes(obj.change)
+      ? []
+      : [`change phải là ${POLARITY_CHANGES.join(' / ')}, nhận "${String(obj.change)}"`]
+  },
+  // Không đổi được (đã có cực / chưa có cực): không có tác dụng, không mất đá.
+  apply: () => null,
+  applyRandom(params, { data, monster, rng }) {
+    return changePolarity(data, rng, monster, (params as { change: PolarityChange }).change)
+  }
+}
+
 // ---------- addExp: + EXP theo tầng cao nhất (Kẹo EXP) ----------
 
 const addExp: ItemEffectHandler = {
@@ -410,6 +430,7 @@ export const ITEM_EFFECTS: Readonly<Record<string, ItemEffectHandler>> = {
   levelUp,
   addAffinity,
   addPurity: addPurityEffect,
+  setPolarity,
   ...TREASURE_EFFECTS
 }
 

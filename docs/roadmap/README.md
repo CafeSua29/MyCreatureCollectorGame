@@ -14,7 +14,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [sacrifice.md](docs/roadmap/sacrifice.md): Hiến tế
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [polarity.md](docs/roadmap/polarity.md): Âm / Dương hóa (chỉ số theo cực, trait cực tính, tương khắc)
 - [implant.md](docs/roadmap/implant.md): Phòng Thí Nghiệm: cấy ghép
 - [egg-incubation.md](docs/roadmap/egg-incubation.md): Ấp trứng có hoàn cảnh (linh thạch, linh địa, Ôn Dưỡng Lò)
 - [cooking.md](docs/roadmap/cooking.md): Linh thực: nấu ăn, buff cả đội N trận
@@ -111,7 +110,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
           5s2. Song thú hợp thể. **Đã xong** (luật ở `docs/rules/battle-merge.md`; hành động 2 lần mỗi lượt khác quái lớn vì thực thể là hai quái thật).
           5t. Ngày đêm và mùa. **Đã xong** (luật ở `docs/rules/calendar.md`; thêm tuần trăng cho Ursaluna, điều kiện `hourRange` cho mogwai, tháp thí luyện ngoài lịch).
           5u. Linh dịch. **Đã xong** (luật ở `docs/rules/spirit-virus.md`; tỉ lệ nhiễm / lây theo Pokérus gốc thay cho số tạm của roadmap).
-          5v. Âm / Dương hóa (`polarity.md`).
+          5v. Âm / Dương hóa. **Đã xong** (luật ở `docs/rules/polarity.md`; quái hoang / boss có cực theo tầng đang đánh thay cho `highestFloor`).
    6. Extract / inject trait.
       6b. Hiến tế (`sacrifice`).
       6c. Phòng Thí Nghiệm: cấy ghép (`implant`).

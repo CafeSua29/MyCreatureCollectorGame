@@ -71,6 +71,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [growth-rates.md](docs/rules/growth-rates.md): nhóm tăng trưởng EXP theo loài (6 nhóm của Pokémon)
 - [effort-values.md](docs/rules/effort-values.md): điểm nỗ lực (như EV của Pokémon)
 - [spirit-virus.md](docs/rules/spirit-virus.md): linh dịch (như Pokérus: nhiễm / lây trong đội, EXP / gen / điểm nỗ lực)
+- [polarity.md](docs/rules/polarity.md): Âm / Dương hóa (chỉ số theo cực, trait cực tính, tương khắc, đá chuyển cực)
 - [aptitude.md](docs/rules/aptitude.md): phẩm cấp tư chất
 - [species-rank.md](docs/rules/species-rank.md): phẩm cấp loài
 - [skill-books.md](docs/rules/skill-books.md): sách kỹ năng

@@ -251,6 +251,24 @@ export interface Monster {
    * nhóm loài mới không thuộc).
    */
   bloodlines: BloodlinePurity[]
+  /**
+   * Âm / Dương (docs/rules/polarity.md): null = không cực. Có cực thì kèm trait cực tính (loại
+   * `polarity`, trong pool của cực ở config.polarity.traitIds). Đổi bằng đá chuyển cực; quái hoang /
+   * boss từ tầng mở khóa có tỉ lệ có sẵn; con breeding theo bố mẹ cùng cực; fuse (quái gốc), tiến
+   * hóa giữ.
+   */
+  polarity: MonsterPolarity | null
+}
+
+/** Hai cực Âm / Dương (docs/rules/polarity.md). */
+export const POLES = ['yin', 'yang'] as const
+
+export type Pole = (typeof POLES)[number]
+
+/** Cực của quái kèm trait cực tính (luôn cấp 1, không chiếm ô). */
+export interface MonsterPolarity {
+  pole: Pole
+  traitId: string
 }
 
 /** Độ thuần của một nhóm huyết mạch trên quái. */

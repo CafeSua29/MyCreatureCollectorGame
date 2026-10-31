@@ -72,7 +72,8 @@ import {
   type TraitHookHandler,
   type StatBlend,
   type StrikeView,
-  sizeDamageMultiplier
+  sizeDamageMultiplier,
+  polarityDamageMultiplier
 } from '../registries'
 import {
   NON_HP_STATS,
@@ -752,6 +753,8 @@ function rawDamage(
     .times(stylePowerMultiplier(data, skill, input.style))
     // Quái lớn chỉ hành động 1 lần mỗi lượt (docs/rules/monster-size.md).
     .times(sizeDamageMultiplier(data, attacker))
+    // Âm dương tương khắc (docs/rules/polarity.md).
+    .times(polarityDamageMultiplier(data, attacker, defender))
     .div(defense.times(100))
   const extra = bonusDamage(
     input,

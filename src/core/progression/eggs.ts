@@ -9,6 +9,7 @@ import {
   addShinyStacks,
   mapBigStats,
   mergeTraitLevel,
+  rollPolarity,
   startHistory,
   startImprint
 } from '../monster'
@@ -68,9 +69,13 @@ export function createBossEgg(
     },
     id
   )
+  // Trứng boss theo cực của boss, trait cực tính random lại (docs/rules/polarity.md).
+  let polarity: Monster['polarity'] = null
+  if (boss.polarity) [polarity, rng] = rollPolarity(data, rng, boss.polarity.pole)
   monster = startHistory(
     {
       ...mergeTraitLevel(monster, data.config.boss.traitId, 1),
+      polarity,
       affinity: data.config.affinity.start.egg
     },
     { kind: 'bossEgg', bossSpeciesId: boss.baseSpeciesId },

@@ -57,6 +57,7 @@ import { checkTreasureData } from './validateTreasures'
 import { checkSoulLevelData } from './validateSoulLevels'
 import { checkEffortData } from './validateEffort'
 import { checkSpiritVirusConfig } from './validateSpiritVirus'
+import { checkPolarityData } from './validatePolarity'
 import { checkGrowthRates } from './validateGrowthRate'
 import { checkAbilityData } from './validateAbilities'
 import { checkTalentData } from './validateTalents'
@@ -248,6 +249,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkSoulLevelData(data, issues)
   checkEffortData(data, issues)
   checkSpiritVirusConfig(data, issues)
+  checkPolarityData(data, issues)
   checkGrowthRates(data, issues)
   checkAbilityData(data, issues)
   checkTalentData(data, issues)

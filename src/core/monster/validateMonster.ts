@@ -34,6 +34,7 @@ import { validateImprint } from './imprint'
 import { validateSkillMastery } from './mastery'
 import { validateTalentRanks } from './talents'
 import { validateSpiritVirus } from './spiritVirus'
+import { validatePolarity } from './polarity'
 import { validateBloodlines } from './bloodline'
 
 /** Object chỉ số → số nguyên ≥ 0 (cấp hồn tinh, điểm nỗ lực). */
@@ -306,6 +307,7 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   issues.push(...checkCountStats(monster.effortValues, at('effortValues')))
   issues.push(...validateSpiritVirus(monster.spiritVirus, at('spiritVirus')))
   issues.push(...validateBloodlines(data, monster, at('bloodlines')))
+  issues.push(...validatePolarity(data, monster.polarity, at('polarity')))
   if (!(ABILITY_SLOTS as readonly unknown[]).includes(monster.abilitySlot)) {
     issues.push(`${at('abilitySlot')} phải là ${ABILITY_SLOTS.join(' / ')}`)
   }
@@ -381,8 +383,8 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
       addIssue(`trait không tồn tại "${id}"`)
       continue
     }
-    if (TRAIT_KIND_RULES[trait.kind].derived) {
-      addIssue(`trait "${id}" loại "${trait.kind}" suy ra từ dữ liệu, không được lưu trên quái`)
+    if (!TRAIT_KIND_RULES[trait.kind].inTraitList) {
+      addIssue(`trait "${id}" loại "${trait.kind}" không được lưu trong traits`)
       continue
     }
     if (seenTraits.has(id)) addIssue(`trait "${id}" bị lặp, phải gộp thành cấp cao hơn`)

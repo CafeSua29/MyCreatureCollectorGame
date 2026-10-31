@@ -926,5 +926,97 @@
     "minLevel": 4,
     "successChance": 65,
     "exp": 20
+  },
+  {
+    "id": "yinStone",
+    "output": {
+      "itemId": "yinStone",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritStoneDark",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneGhost",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneIce",
+        "count": 1
+      }
+    ],
+    "money": 3000,
+    "minLevel": 10,
+    "successChance": 50,
+    "exp": 30
+  },
+  {
+    "id": "yangStone",
+    "output": {
+      "itemId": "yangStone",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritStoneFire",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneLight",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneElectric",
+        "count": 1
+      }
+    ],
+    "money": 3000,
+    "minLevel": 10,
+    "successChance": 50,
+    "exp": 30
+  },
+  {
+    "id": "poleSwapStone",
+    "output": {
+      "itemId": "poleSwapStone",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritStoneDark",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStoneLight",
+        "count": 1
+      },
+      {
+        "itemId": "spiritStonePsychic",
+        "count": 2
+      }
+    ],
+    "money": 3000,
+    "minLevel": 10,
+    "successChance": 50,
+    "exp": 30
+  },
+  {
+    "id": "poleResetStone",
+    "output": {
+      "itemId": "poleResetStone",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "spiritStoneNormal",
+        "count": 4
+      }
+    ],
+    "money": 3000,
+    "minLevel": 10,
+    "successChance": 50,
+    "exp": 30
   }
 ]
