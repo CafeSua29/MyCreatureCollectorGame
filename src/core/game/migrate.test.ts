@@ -143,7 +143,8 @@ describe('migrateState', () => {
       crystals: [],
       books: [],
       equipment: [],
-      souls: []
+      souls: [],
+      spirits: []
     })
   })
 
@@ -384,14 +385,15 @@ describe('migrate v7 → v8: túi đồ chia phần', () => {
       crystals: [],
       books: [],
       equipment: [],
-      souls: []
+      souls: [],
+      spirits: []
     })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 
   it('túi rỗng hoặc thiếu hẳn túi: thành túi rỗng', () => {
     const state = legacyGameState({ seed: 3, party: [makeMonster()] })
-    const empty = { stacks: {}, crystals: [], books: [], equipment: [], souls: [] }
+    const empty = { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
     expect(migrateState(asV7(state, {}), migrateData).inventory).toEqual(empty)
     expect(migrateState(asV7(state, undefined), migrateData).inventory).toEqual(empty)
   })

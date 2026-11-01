@@ -144,7 +144,7 @@ export function applyItem(
   if (!item) throw new ActionError('unknownItem', { itemId })
   assertUsableIn(item, 'field')
   // Bí cảnh có luật noItems / noHealing: không dùng vật phẩm ngoài trận (docs/rules/trials.md).
-  const rules = state.trial?.rules
+  const rules = state.trial?.kind === 'realm' ? state.trial.rules : undefined
   if (hasTrialRule(data, rules, 'noItems') || hasTrialRule(data, rules, 'noHealing')) {
     throw new ActionError('trialRestricted', { command: 'item' })
   }

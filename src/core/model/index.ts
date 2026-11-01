@@ -2,6 +2,7 @@
 
 export * from './actions'
 export * from './alchemy'
+export * from './artifactSpirits'
 export * from './config'
 export * from './content'
 export * from './deities'

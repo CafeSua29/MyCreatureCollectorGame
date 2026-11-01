@@ -34,6 +34,7 @@ import type { CapacityConfig } from './capacity'
 import type { ZoneConfig } from './zones'
 import type { GatheringConfig } from './gathering'
 import type { WorldBossConfig } from './worldBoss'
+import type { ArtifactSpiritConfig } from './artifactSpirits'
 import type { CriticalTier, DexConfig } from './dex'
 import type { StatName } from './stats'
 import type { TransformKind } from './transform'
@@ -193,6 +194,8 @@ export interface BalanceConfig {
   gathering: GatheringConfig
   /** Boss thế giới (docs/rules/world-boss.md). */
   worldBoss: WorldBossConfig
+  /** Khí linh và Khí giới bí cảnh (docs/rules/artifact-spirits.md). */
+  artifactSpirits: ArtifactSpiritConfig
 }
 
 /**

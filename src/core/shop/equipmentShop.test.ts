@@ -117,7 +117,7 @@ describe('danh sách hàng có trang bị', () => {
         highestFloor: 1,
         options: { lifespanEnabled: false, permadeathEnabled: false },
         nextItemId: 7,
-        inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [] }
+        inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
       })
       expect(roll.stock).toHaveLength(1)
       const [entry] = roll.stock

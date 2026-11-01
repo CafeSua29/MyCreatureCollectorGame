@@ -170,6 +170,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     cooking: newCookingState(),
     trainers: newTrainerState(),
     trial: null,
+    spiritPools: [],
     tower: { highest: 0 },
     instability: newInstabilityState(),
     favor: {},

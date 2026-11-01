@@ -17,6 +17,7 @@ import type { SafariRow } from './safari'
 import type { ZoneRow } from './zones'
 import type { GatheringRow } from './gathering'
 import { NO_TIER, type WorldBossRow } from './worldBoss'
+import type { ItemWorldRow } from './itemWorld'
 
 export interface Table {
   headers: string[]
@@ -650,6 +651,7 @@ function addJobTotals(totals: BattleTotalsByKind, result: TimedJobResult['result
     case 'zones':
     case 'gathering':
     case 'worldBoss':
+    case 'itemWorld':
     case 'lineage':
       break
   }
@@ -834,6 +836,53 @@ export function worldBossTable(rows: readonly WorldBossRow[], tierIds: readonly 
         mean.toFixed(2),
         ...[0.25, 0.5, 0.75].map((p) => quantile(sorted, p).toFixed(2)),
         ...columns.map((id) => formatPercent(row.tiers[id] ?? 0, row.challenges))
+      ]
+    })
+  }
+}
+
+/**
+ * Khí giới bí cảnh theo đội × tầng × bậc món (itemWorld.ts): số tầng qua (= cấp lên), % dừng sớm,
+ * giờ mỗi cấp, tiền nhận mỗi giờ trong lượt đi, giá cường hóa cùng số cấp (tiền, đá, yêu đan) và số
+ * giờ đi Khí giới bí cảnh để kiếm đủ tiền cường hóa đó (enhanceHours = enhanceMoney ÷ tiền mỗi giờ).
+ * itemWorldVsEnhance = giờ Khí giới bí cảnh ÷ enhanceHours (< 1: Khí giới bí cảnh nhanh hơn).
+ */
+export function itemWorldTable(rows: readonly ItemWorldRow[]): Table {
+  return {
+    headers: [
+      'team',
+      'floor',
+      'rarity',
+      'levels',
+      'battles',
+      'stopped',
+      'hoursPerLevel',
+      'moneyPerHour',
+      'enhanceMoney',
+      'enhanceStones',
+      'enhanceCores',
+      'enhanceHours',
+      'itemWorldVsEnhance',
+      'spiritsSubdued'
+    ],
+    rows: rows.map((row) => {
+      const moneyPerHour = row.hours > 0 ? row.moneyEarned.div(row.hours) : row.moneyEarned
+      const enhanceHours = moneyPerHour.gt(0) ? row.enhanceMoney.div(moneyPerHour).toNumber() : 0
+      return [
+        row.teamId,
+        String(row.floor),
+        row.rarity,
+        String(row.cleared),
+        String(row.battles),
+        row.stopped ? 'yes' : 'no',
+        row.cleared > 0 ? (row.hours / row.cleared).toFixed(2) : '-',
+        moneyPerHour.toFixed(0),
+        row.enhanceMoney.toFixed(0),
+        String(row.enhanceStones),
+        String(row.enhanceCores),
+        enhanceHours.toFixed(1),
+        enhanceHours > 0 ? (row.hours / enhanceHours).toFixed(2) : '-',
+        String(row.spiritsSubdued)
       ]
     })
   }

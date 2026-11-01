@@ -31,7 +31,7 @@ function rollStock(gameData: GameData, rng: RngState): [ShopEntry[], RngState] {
     highestFloor: 1,
     options: { lifespanEnabled: false, permadeathEnabled: false },
     nextItemId: 1,
-    inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [] }
+    inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
   })
   return [stock, next]
 }

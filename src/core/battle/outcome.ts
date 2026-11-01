@@ -518,6 +518,9 @@ const polarityBossDrops = (data: GameData, d: Draft): DropEntry[] =>
 const rebirthBossDrops = (data: GameData, d: Draft, boss: Monster): DropEntry[] =>
   isFloorBossOfMap(data, d, boss) ? data.config.rebirth.floorBossDrops : []
 
+/** Dẫn Hồn Châu rơi từ mọi boss (docs/rules/artifact-spirits.md). */
+const spiritOrbBossDrops = (data: GameData): DropEntry[] => data.config.artifactSpirits.orbBossDrops
+
 const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(lifespanBossDrops),
   onlyInBossBattle(expCandyBossDrops),
@@ -537,7 +540,8 @@ const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(bloodlineBossDrops),
   onlyInBossBattle(polarityBossDrops),
   onlyInBossBattle(rebirthBossDrops),
-  deityTokenDrops
+  deityTokenDrops,
+  onlyInBossBattle(spiritOrbBossDrops)
 ]
 
 /** EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ). */

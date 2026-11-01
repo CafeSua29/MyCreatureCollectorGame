@@ -86,6 +86,10 @@ export const FIXTURE_TRIAL_TOKEN_ID = 'realmToken'
 export const FIXTURE_DEITY_ID = 'fireGod'
 export const FIXTURE_DEITY_TOKEN_ID = 'fireToken'
 export const FIXTURE_INCENSE_ID = 'incense'
+/** Khí linh của fixture (docs/rules/artifact-spirits.md): hai loại, Dẫn Hồn Châu, Phá Giới Phù. */
+export const FIXTURE_SPIRIT_IDS = ['swordSpirit', 'guardSpirit'] as const
+export const FIXTURE_SPIRIT_ORB_ID = 'spiritOrb'
+export const FIXTURE_BREAK_TALISMAN_ID = 'breakTalisman'
 
 /** Hồn tinh của fixture (docs/rules/soul-levels.md): 1 điểm và 5 điểm. */
 export const FIXTURE_SOUL_SMALL_ID = 'soulSmall'
@@ -793,6 +797,58 @@ export function makeRawData(): RawGameData {
           }
         ]
       },
+      // Khí linh (docs/rules/artifact-spirits.md): số như dữ liệu thật; đồ rơi không có dã linh,
+      // boss không rơi Dẫn Hồn Châu, Khí giới bí cảnh không gặp dã linh (không tốn RNG) để RNG của test
+      // cũ không đổi; test khí linh tự bật.
+      artifactSpirits: {
+        slots: { common: 1, uncommon: 2, rare: 3, epic: 4, legendary: 5, unique: 6 },
+        soulRelicSlots: 6,
+        levelsPerSlot: 100,
+        wildPotencyPercent: 50,
+        valueRanges: {
+          common: { min: 1, max: 3 },
+          uncommon: { min: 2, max: 5 },
+          rare: { min: 3, max: 8 },
+          epic: { min: 5, max: 12 },
+          legendary: { min: 8, max: 18 },
+          unique: { min: 10, max: 25 }
+        },
+        dropSpiritWeights: [1],
+        gradeThresholds: [10, 25, 60, 150],
+        gradeStep: 150,
+        awakenGrade: 2,
+        moveMoneyPerValue: 20,
+        feed: {
+          groupId: FIXTURE_CORE_GROUP_ID,
+          coreValue: 2,
+          soulValue: { common: 2, uncommon: 4, rare: 8, epic: 15, legendary: 25, unique: 40 }
+        },
+        breed: { days: 7 },
+        summon: { orbItemId: FIXTURE_SPIRIT_ORB_ID, rarityWeights: { common: 1 } },
+        orbBossDrops: [],
+        itemWorld: {
+          rarityFloors: { common: 1, uncommon: 3, rare: 6, epic: 10, legendary: 15, unique: 20 },
+          floorsPerDepth: 0.5,
+          floorsPerLevel: 0.25,
+          spiritChance: 0,
+          newSpiritDepthPercent: 1,
+          healPercent: 50,
+          leaveEvery: 10,
+          breakItemId: FIXTURE_BREAK_TALISMAN_ID,
+          floorRewards: [{ itemId: 'potion', count: 1 }],
+          bosses: [
+            { id: 'general', every: 10, multiplier: 1, bonusRolls: 1, rewards: [] },
+            {
+              id: 'king',
+              every: 30,
+              multiplier: 1.5,
+              bonusRolls: 2,
+              rewards: [{ itemId: 'rareCandy', count: 1 }]
+            }
+          ],
+          bonus: { affixChance: 50, spiritValue: 5 }
+        }
+      },
       // Hệ thống event (docs/rules/events.md): fixture không có event nào (không tốn RNG) và thú
       // triều tỉ lệ 0 để RNG của test cũ không đổi; test event tự thêm event / bật tỉ lệ.
       events: {
@@ -1206,6 +1262,23 @@ export function makeRawData(): RawGameData {
           { itemId: 'potion', price: 2, minRank: 0 },
           { itemId: 'masterBall', price: 5, minRank: 2 }
         ]
+      }
+    ],
+    // Khí linh (docs/rules/artifact-spirits.md): Kiếm Linh +1% công mỗi value (thức tỉnh: +0,2%
+    // chí mạng), Hộ Linh giảm 0,3% sát thương nhận mỗi value có softCap 200.
+    artifactSpirits: [
+      {
+        id: FIXTURE_SPIRIT_IDS[0],
+        weight: 1,
+        hooks: [{ type: 'statModifier', params: { percent: { attack: 1 } } }],
+        awakenedHooks: [{ type: 'critChance', params: { percent: 0.2 } }]
+      },
+      {
+        id: FIXTURE_SPIRIT_IDS[1],
+        weight: 1,
+        softCap: 200,
+        hooks: [{ type: 'damageTakenModifier', params: { percent: -0.3 } }],
+        awakenedHooks: []
       }
     ],
     serumEffects: [
@@ -1932,6 +2005,9 @@ export function makeRawData(): RawGameData {
       // Hương nến và tín vật (docs/rules/deities.md): không bán để hàng của test cũ không đổi.
       { id: FIXTURE_INCENSE_ID, category: 'material', price: 100 },
       { id: FIXTURE_DEITY_TOKEN_ID, category: 'material', price: 10 },
+      // Dẫn Hồn Châu, Phá Giới Phù (docs/rules/artifact-spirits.md): không bán.
+      { id: FIXTURE_SPIRIT_ORB_ID, category: 'material', price: 100 },
+      { id: FIXTURE_BREAK_TALISMAN_ID, category: 'material', price: 100 },
       // Đá của Thợ rèn: không bán để hàng của test cũ không đổi.
       { id: FIXTURE_ENHANCE_STONE_ID, category: 'material', price: 100 },
       { id: FIXTURE_REFINING_STONE_ID, category: 'material', price: 1500 },
@@ -2281,7 +2357,7 @@ export function makeInventory(
   equipment: EquipmentInstance[] = [],
   books: BookStack[] = []
 ): Inventory {
-  return { stacks, crystals, books, equipment, souls: [] }
+  return { stacks, crystals, books, equipment, souls: [], spirits: [] }
 }
 
 /**

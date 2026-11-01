@@ -1,0 +1,215 @@
+[
+  {
+    "id": "swordSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 1
+          }
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 0.2
+        }
+      }
+    ]
+  },
+  {
+    "id": "shieldSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 1
+          }
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "critImmunity",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "windSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 1
+          }
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "actFirstChance",
+        "params": {
+          "chance": 0.3
+        }
+      }
+    ]
+  },
+  {
+    "id": "mysticSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 1
+          }
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "mindSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spDefense": 1
+          }
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["confusion"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "bloodSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 1
+          }
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "medicineSpirit",
+    "weight": 10,
+    "softCap": 200,
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 0.05
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "healingModifier",
+        "params": {
+          "received": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "goldSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "moneyRewardModifier",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "extraDropChance",
+        "params": {
+          "percent": 0.5
+        }
+      }
+    ]
+  },
+  {
+    "id": "insightSpirit",
+    "weight": 10,
+    "hooks": [
+      {
+        "type": "expRewardModifier",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "affinityGainPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "guardSpirit",
+    "weight": 10,
+    "softCap": 250,
+    "hooks": [
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": -0.32
+        }
+      }
+    ],
+    "awakenedHooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 0.05
+        }
+      }
+    ]
+  }
+]

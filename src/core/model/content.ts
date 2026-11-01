@@ -7,6 +7,7 @@ import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
 import type { SerumEffectDef } from './implant'
 import type { DeityDef } from './deities'
+import type { ArtifactSpiritDef } from './artifactSpirits'
 import type { EventDef, EventModifierDef } from './events'
 import type { QuestTemplate } from './quests'
 import type { RecipeDef } from './alchemy'
@@ -1727,6 +1728,7 @@ export interface RawGameData {
   zones: RawZoneDef[]
   serumEffects: SerumEffectDef[]
   deities: DeityDef[]
+  artifactSpirits: ArtifactSpiritDef[]
   text: TextData
 }
 
@@ -1791,6 +1793,8 @@ export interface GameData {
   serumEffects: Record<string, SerumEffectDef>
   /** Thần linh (docs/rules/deities.md). */
   deities: Record<string, DeityDef>
+  /** Loại khí linh (docs/rules/artifact-spirits.md). */
+  artifactSpirits: Record<string, ArtifactSpiritDef>
   /** Chữ nội dung theo ngôn ngữ; logic core không dùng, chỉ tra qua contentName. */
   text: TextData
 }

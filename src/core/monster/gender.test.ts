@@ -210,7 +210,14 @@ describe('đá tiến hóa ngoài trận', () => {
     })
     const state = {
       ...makeGameState({ seed: 11, party: [pebble()] }),
-      inventory: { stacks: { fireStone: 1 }, crystals: [], books: [], equipment: [], souls: [] }
+      inventory: {
+        stacks: { fireStone: 1 },
+        crystals: [],
+        books: [],
+        equipment: [],
+        souls: [],
+        spirits: []
+      }
     }
     const next = gameReducer(stoneData, state, {
       type: 'useItem',
@@ -246,7 +253,14 @@ describe('thuốc đổi giới tính', () => {
   it('dùng lên quái không giới tính: không có tác dụng, không mất thuốc', () => {
     const state = {
       ...makeGameState({ seed: 1, party: [pebble()] }),
-      inventory: { stacks: { genderPotion: 1 }, crystals: [], books: [], equipment: [], souls: [] }
+      inventory: {
+        stacks: { genderPotion: 1 },
+        crystals: [],
+        books: [],
+        equipment: [],
+        souls: [],
+        spirits: []
+      }
     }
     expectActionError(
       () => gameReducer(data, state, { type: 'useItem', itemId: 'genderPotion', monsterId: 'm1' }),

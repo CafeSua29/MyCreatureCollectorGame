@@ -46,7 +46,8 @@ function fight(
  * hết lượt thì state về trước trận nên bỏ cuộc). Trả true nếu hoàn thành.
  */
 function clearRealm(data: GameData, result: TrialRunResult, limits: TurnLimits): boolean {
-  const total = result.state.trial?.battleCount ?? 0
+  const realm = result.state.trial
+  const total = realm?.kind === 'realm' ? realm.battleCount : 0
   let wins = 0
   while (result.state.trial !== null) {
     // Trận cuối là boss (luật bossOnly cũng vậy nhưng mô phỏng chỉ xét trận cuối).

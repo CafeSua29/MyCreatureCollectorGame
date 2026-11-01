@@ -39,6 +39,7 @@ import eventModifiers from './eventModifiers.json'
 import zones from './zones.json'
 import serumEffects from './serumEffects.json'
 import deities from './deities.json'
+import artifactSpirits from './artifactSpirits.json'
 import textConfig from './i18n/config.json'
 
 // Mỗi ngôn ngữ là một folder i18n/<mã>/ (language.json + một file cho mỗi loại nội dung). Tự tìm
@@ -111,5 +112,6 @@ export const rawGameData = {
   zones,
   serumEffects,
   deities,
+  artifactSpirits,
   text: { ...textConfig, languages: collectLanguages() }
 } as unknown as RawGameData

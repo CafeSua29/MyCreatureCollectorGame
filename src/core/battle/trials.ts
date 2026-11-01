@@ -55,7 +55,7 @@ export function enterTrial(data: GameData, state: GameState): GameState {
 
 /** Bí cảnh đang đi; không có thì noTrial. */
 function requireRealm(state: GameState): SecretRealm {
-  if (!state.trial) throw new ActionError('noTrial')
+  if (state.trial?.kind !== 'realm') throw new ActionError('noTrial')
   return state.trial
 }
 

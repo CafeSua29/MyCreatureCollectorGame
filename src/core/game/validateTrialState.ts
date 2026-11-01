@@ -4,6 +4,7 @@
 import { hasTrialRule, TRIAL_RULES } from '../registries'
 import type { GameData, TrialRule } from '../model'
 import { asObject, checkInteger } from '../shared'
+import { validateEquipmentInstance } from '../inventory'
 
 /** Danh sách luật: luật tồn tại, luật một hệ có hệ tồn tại, luật khác elementId null. */
 function checkRules(data: GameData, value: unknown, path: string, issues: string[]): void {
@@ -37,9 +38,19 @@ function checkBiomeId(data: GameData, value: unknown, path: string, issues: stri
   }
 }
 
+/** Lượt Khí giới bí cảnh { kind, instance, cleared } (docs/rules/artifact-spirits.md). */
+function checkItemWorldRun(data: GameData, run: Record<string, unknown>, issues: string[]): void {
+  issues.push(...validateEquipmentInstance(data, run.instance, 'trial.instance'))
+  issues.push(...checkInteger(run.cleared, 'trial.cleared', 0))
+  for (const key of Object.keys(run)) {
+    if (!['kind', 'instance', 'cleared'].includes(key)) issues.push(`trial: trường lạ "${key}"`)
+  }
+}
+
 /**
- * trial: null hoặc bí cảnh { floor, biomeId, rules, battleCount, cleared } (cleared < battleCount;
- * đang đi bí cảnh thì ở thị trấn); tower: { highest } nguyên ≥ 0.
+ * trial: null, bí cảnh { kind: realm, floor, biomeId, rules, battleCount, cleared } (cleared <
+ * battleCount) hoặc Khí giới bí cảnh { kind: itemWorld, instance, cleared }; đang đi phó bản thì ở
+ * thị trấn. tower: { highest } nguyên ≥ 0.
  */
 export function validateTrialState(
   data: GameData,
@@ -52,7 +63,13 @@ export function validateTrialState(
   else issues.push(...checkInteger(tower.highest, 'tower.highest', 0))
   if (state.trial === null) return issues
   const trial = asObject(state.trial)
-  if (!trial) return [...issues, 'trial phải là null hoặc bí cảnh']
+  if (!trial) return [...issues, 'trial phải là null hoặc phó bản']
+  if (!inTown) issues.push('trial: đang đi phó bản thì phải ở thị trấn')
+  if (trial.kind === 'itemWorld') {
+    checkItemWorldRun(data, trial, issues)
+    return issues
+  }
+  if (trial.kind !== 'realm') return [...issues, 'trial.kind phải là realm / itemWorld']
   issues.push(...checkInteger(trial.floor, 'trial.floor', 1))
   checkBiomeId(data, trial.biomeId, 'trial.biomeId', issues)
   checkRules(data, trial.rules, 'trial.rules', issues)
@@ -65,7 +82,6 @@ export function validateTrialState(
   ) {
     issues.push('trial.cleared phải < battleCount')
   }
-  if (!inTown) issues.push('trial: đang đi bí cảnh thì phải ở thị trấn')
   return issues
 }
 
@@ -102,13 +118,18 @@ export function checkBattleTrial(
   checkRules(data, trial.rules, 'battle.trial.rules', issues)
   if (battle.tribulation !== null) issues.push('battle.trial: không đồng thời là trận độ kiếp')
   const ended = battle.phase === 'ended'
+  const run = asObject(state.trial)
   if (trial.kind === 'realm') {
-    if (!ended && state.trial === null)
+    if (!ended && run?.kind !== 'realm')
       issues.push('battle.trial: trận bí cảnh nhưng không có bí cảnh')
     return
   }
+  if (trial.kind === 'itemWorld') {
+    checkBattleItemWorld(trial, { run, ended }, issues)
+    return
+  }
   if (trial.kind !== 'tower') {
-    issues.push('battle.trial.kind phải là realm / tower')
+    issues.push('battle.trial.kind phải là realm / tower / itemWorld')
     return
   }
   issues.push(...checkInteger(trial.towerFloor, 'battle.trial.towerFloor', 1))
@@ -116,4 +137,38 @@ export function checkBattleTrial(
   if (typeof highest !== 'number' || typeof trial.towerFloor !== 'number') return
   const expected = trial.towerFloor === highest + 1 || (ended && trial.towerFloor === highest)
   if (!expected) issues.push(`battle.trial.towerFloor phải là tầng tháp kế tiếp (${highest + 1})`)
+}
+
+/**
+ * Trận Khí giới bí cảnh: không có luật, tầng nguyên ≥ 1, bậc boss là id trong config (hoặc null), dã
+ * linh { carrierId, index } hoặc null; trận chưa kết thúc thì đang đi Khí giới bí cảnh và tầng là
+ * tầng kế tiếp của món.
+ */
+function checkBattleItemWorld(
+  trial: Record<string, unknown>,
+  { run, ended }: { run: Record<string, unknown> | null; ended: boolean },
+  issues: string[]
+): void {
+  if (Array.isArray(trial.rules) && trial.rules.length > 0) {
+    issues.push('battle.trial.rules: trận Khí giới bí cảnh không có luật')
+  }
+  issues.push(...checkInteger(trial.depth, 'battle.trial.depth', 1))
+  if (trial.bossTierId !== null && typeof trial.bossTierId !== 'string') {
+    issues.push('battle.trial.bossTierId phải là chuỗi hoặc null')
+  }
+  if (trial.spirit !== null) {
+    const spirit = asObject(trial.spirit)
+    if (!spirit || typeof spirit.carrierId !== 'string') {
+      issues.push('battle.trial.spirit phải là null hoặc { carrierId, index }')
+    } else issues.push(...checkInteger(spirit.index, 'battle.trial.spirit.index', 0))
+  }
+  if (ended) return
+  if (run?.kind !== 'itemWorld') {
+    issues.push('battle.trial: trận Khí giới bí cảnh nhưng không có lượt đi')
+    return
+  }
+  const depth = asObject(run.instance)?.depth ?? 0
+  if (typeof depth === 'number' && trial.depth !== depth + 1) {
+    issues.push(`battle.trial.depth phải là tầng kế tiếp của món (${depth + 1})`)
+  }
 }

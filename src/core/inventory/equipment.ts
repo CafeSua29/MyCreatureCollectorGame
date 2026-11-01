@@ -20,6 +20,7 @@ import {
   type EquipmentRarity,
   type EquipmentRoll,
   type GameData,
+  type GameState,
   type Inventory,
   type Monster,
   type NormalRarity,
@@ -245,6 +246,26 @@ export function rerollAffixes(
 }
 
 /**
+ * Thêm một dòng phụ mới (theo trọng số trong khoảng của bậc, không trùng dòng đã có) vào cuối món
+ * (thưởng boss Khí giới bí cảnh, docs/rules/artifact-spirits.md); không còn dòng hợp lệ thì null
+ * (không tốn RNG).
+ */
+export function addRandomAffix(
+  data: GameData,
+  rng: RngState,
+  instance: EquipmentInstance
+): [EquipmentInstance | null, RngState] {
+  const existing = new Set(instance.rolls.map((roll) => roll.lineId))
+  const [line, next] = rollAffix(
+    data,
+    rng,
+    { rarity: instance.rarity, minRollPercent: 0 },
+    existing
+  )
+  return line ? [{ ...instance, rolls: [...instance.rolls, line] }, next] : [null, next]
+}
+
+/**
  * Tạo một món trang bị mới cấp 1: dòng chính → dòng unique (món unique) → dòng phụ, mỗi dòng tung
  * giá trị trong khoảng của bậc (minRollPercent: chỉ phần trên của khoảng, mặc định 0). Món unique
  * luôn bậc `unique`.
@@ -409,4 +430,19 @@ function withValueAt(container: unknown, keys: readonly string[], value: number)
   const copy: Record<string, unknown> = { ...(asObject(container) ?? {}) }
   copy[key] = withValueAt(copy[key], rest, value)
   return copy
+}
+
+/** Quái (đội, kho) đang lắp món `instanceId`. */
+export function findWearer(
+  state: Pick<GameState, 'party' | 'storage'>,
+  instanceId: string
+): { monster: Monster; instance: EquipmentInstance } | null {
+  for (const monster of [...state.party, ...state.storage]) {
+    for (const entry of monster.equipment) {
+      if (entry.storage === 'instance' && entry.instance.id === instanceId) {
+        return { monster, instance: entry.instance }
+      }
+    }
+  }
+  return null
 }

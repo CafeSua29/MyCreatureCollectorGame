@@ -13,7 +13,7 @@ Code: `model/soul.ts` (`SoulRemnant`, `SoulImprint`, `DEATH_CAUSES`, `SoulRelicC
   - `traits`: chỉ trait **chiếm ô** (giữ cấp; trait shiny / boss / race không giữ).
   - `aptitudeTierId`: bậc tư chất lúc chết, so với tầng mốc lúc đó (`aptitudeOf` + `aptitudeFloor`, `aptitude.md`); chụp lại vì tầng mốc tăng làm bậc tụt.
   - `history`: bản sao lý lịch kèm mốc **`died { cause }`** (`monster-history.md`); quái không có lý lịch thì null.
-- Chưa có: bán / vứt / hiến tế hồn phách (chưa cần; khí linh ăn hồn phách chờ `artifact-spirits.md`). Hồn phách tính vào sức chứa túi trang bị và luôn vào túi kể cả khi đầy (`capacity.md`).
+- Chưa có: bán / vứt / hiến tế hồn phách (chưa cần). Khí linh ăn hồn phách ở Khí Linh Các (`artifact-spirits.md`). Hồn phách tính vào sức chứa túi trang bị và luôn vào túi kể cả khi đầy (`capacity.md`).
 
 ## Action ở NPC luyện đan
 
@@ -29,7 +29,7 @@ Code: `model/soul.ts` (`SoulRemnant`, `SoulImprint`, `DEATH_CAUSES`, `SoulRelicC
 - **Bậc theo tư chất lúc chết:** `soulRelic.rarityByAptitude` (Phàm → common, Lương → uncommon, Ưu → rare, Tinh → epic, Thiên → legendary, Thần → unique).
 - **Dòng:** tung như trang bị thường cùng bậc (`rollEquipment`: dòng chính +% chỉ số đã tung theo khoảng của bậc, dòng phụ theo `affixCounts`), rồi thêm **dòng hồn** `{ lineId: 'soul', value: cấp trait }` với **một trait random** trong `traits` của hồn phách (`SoulImprint.traitId`). Dòng hồn = hook `equipmentTrait { traitId, level }` (tag `trait`): trait chạy như trait của món (nguồn `equipment`, hệ số theo cấp trait), tính trong `equipmentTraitInstances` như dòng "trait của Artifact" (`trait-dsl.md`). Hồn phách không có trait chiếm ô thì `traitId` null, không có dòng hồn.
 - **Giới hạn lắp** (`requiredRaceId` / `canWearEquipment`, dùng chung với món unique của boss): quái **cùng race** với quái đã chết, hoặc có race đó trong `lineage` hoặc chuỗi tiến hóa của loài; sai thì `equipmentRaceLocked { itemId, raceId }`. Khi load save, hồn khí không còn đủ điều kiện tự về túi (`unequipIneligible`).
-- **Giá:** như trang bị cùng bậc (`price` món gốc 250, giống trang bị thường; bậc unique × `rarityPriceMultipliers.unique`). Cường hóa / phân giải như trang bị (phân giải thêm hồn tinh, `equipment-forge.md`); dòng hồn không tẩy luyện được. Chưa có: khí linh (chờ `artifact-spirits.md`).
+- **Giá:** như trang bị cùng bậc (`price` món gốc 250, giống trang bị thường; bậc unique × `rarityPriceMultipliers.unique`). Cường hóa / phân giải như trang bị (phân giải thêm hồn tinh, `equipment-forge.md`); dòng hồn không tẩy luyện được. Hồn khí có 6 ô khí linh (`artifact-spirits.md`).
 
 ## Đội trống
 

@@ -16,6 +16,7 @@ export {
   forfeitTournament
 } from './trainerBattles'
 export { abandonTrial, challengeTower, challengeTrial, enterTrial } from './trials'
+export { challengeItemWorld, enterItemWorld, leaveItemWorld } from './itemWorld'
 export { enterZone, exploreZone, leaveZone } from './zones'
 export { gather } from './gathering'
 export { challengeWorldBoss } from './worldBoss'

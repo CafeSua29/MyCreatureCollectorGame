@@ -4,6 +4,7 @@
 import type { DropEntry } from './content'
 import type { ItemReward } from './trainers'
 import type { NormalRarity } from './content'
+import type { BattleSpirit, ItemWorldRun } from './artifactSpirits'
 
 /**
  * Loại luật (registry TRIAL_RULES ở registries/trialRules.ts): cấm vật phẩm, chỉ quái một hệ, môi
@@ -53,6 +54,7 @@ export interface TrialRule {
 
 /** Bí cảnh đang đi (GameState.trial): mỗi trận sinh lúc bắt đầu trận, tất định theo RNG của save. */
 export interface SecretRealm {
+  kind: 'realm'
   /** Tầng sức mạnh của quái (level, gen, bậc trang bị): tầng cao nhất lúc vào + floorOffset (≥ 1). */
   floor: number
   /** Map chủ đề: bảng gặp, NPC, boss cuối, đồ rơi, môi trường tự nhiên. */
@@ -68,10 +70,27 @@ export interface TowerState {
   highest: number
 }
 
-/** Trận trong bí cảnh / tháp (BattleState.trial): map và luật của trận. */
+/**
+ * Phó bản chuỗi trận đang đi (GameState.trial): bí cảnh hoặc Khí giới bí cảnh
+ * (docs/rules/artifact-spirits.md). Chỉ đi một phó bản một lúc.
+ */
+export type TrialRun = SecretRealm | ItemWorldRun
+
+/**
+ * Trận trong bí cảnh / tháp / Khí giới bí cảnh (BattleState.trial): map và luật của trận. Khí giới bí
+ * cảnh không có luật (`rules` rỗng): tầng đang đánh, bậc boss (null = trận thường), dã linh trong trận.
+ */
 export type BattleTrial =
   | { kind: 'realm'; biomeId: string; rules: TrialRule[] }
   | { kind: 'tower'; biomeId: string; rules: TrialRule[]; towerFloor: number }
+  | {
+      kind: 'itemWorld'
+      biomeId: string
+      rules: TrialRule[]
+      depth: number
+      bossTierId: string | null
+      spirit: BattleSpirit | null
+    }
 
 export type TrialKind = BattleTrial['kind']
 

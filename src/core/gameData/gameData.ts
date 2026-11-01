@@ -76,6 +76,7 @@ import { checkZoneData } from './validateZones'
 import { checkGatheringData } from './validateGathering'
 import { checkWorldBossData } from './validateWorldBoss'
 import { checkDeityData } from './validateDeities'
+import { checkArtifactSpiritData } from './validateArtifactSpirits'
 import { checkEventData } from './validateEvents'
 import { checkAutoBattleData } from './validateAutoBattle'
 import { checkTransformData } from './validateTransform'
@@ -206,6 +207,7 @@ export function createGameData(raw: RawGameData): GameData {
     zones: indexZones(raw, issues),
     serumEffects: indexById(raw.serumEffects, 'serumEffects', issues),
     deities: indexById(raw.deities, 'deities', issues),
+    artifactSpirits: indexById(raw.artifactSpirits, 'artifactSpirits', issues),
     text: raw.text
   }
   checkConfig(data, issues)
@@ -282,6 +284,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkGatheringData(data, issues)
   checkWorldBossData(data, issues)
   checkDeityData(data, issues)
+  checkArtifactSpiritData(data, issues)
   checkEventData(data, issues)
   // Sau cùng: danh sách loài của ô khởi đầu chỉ dựng khi phần dữ liệu khác hợp lệ.
   checkStarterData(data, issues)

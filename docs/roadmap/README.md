@@ -12,7 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [artifact-spirits.md](docs/roadmap/artifact-spirits.md): Khí linh trong trang bị (Innocent của Disgaea + khí linh tu tiên) và Khí giới bí cảnh (Item World)
 - [titles.md](docs/roadmap/titles.md): Thành tựu và danh hiệu
 - [starter-unlocks.md](docs/roadmap/starter-unlocks.md): Mở khóa quái khởi đầu (xuyên save, `saves/profile.json`)
 - [species-research.md](docs/roadmap/species-research.md): Nghiên cứu loài (nhiệm vụ mẫu, cấp 1–10, Bùa Lấp Lánh)
@@ -88,7 +87,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       11. Hệ thống event + hiệu ứng đồng hành `eventChancePercent` (race spirit đổi sang tỉ lệ event). **Đã xong** (luật ở `docs/rules/events.md`; chữ mô tả / màn hình event chờ UI, event theo ngày đêm đã có ở bước 5t, `calendar.md`).
           5m. Bản mệnh thú. **Đã xong** (luật ở mục "Bản mệnh thú" của `docs/rules/tamer.md`; chặn hiến tế / cấy ghép / trao đổi NPC do mục đó tự gọi `assertNotBond`).
           5n. Hồn phách và hồn khí. **Đã xong** (luật ở `docs/rules/soul-relics.md`; cấy ghép thất bại lần 3 gọi `dieForever` đã làm ở 6c, sức chứa túi đã làm (`capacity.md`), phân giải hồn khí xong ở 5o).
-          5o. Cường hóa, tẩy luyện, phân giải trang bị. **Đã xong** (luật ở `docs/rules/equipment-forge.md`; tẩy luyện đổi thành tung lại mọi dòng phụ không khóa; khí linh / Khí giới bí cảnh chờ `artifact-spirits.md`).
+          5o. Cường hóa, tẩy luyện, phân giải trang bị. **Đã xong** (luật ở `docs/rules/equipment-forge.md`; tẩy luyện đổi thành tung lại mọi dòng phụ không khóa; khí linh / Khí giới bí cảnh làm ở 7g, `docs/rules/artifact-spirits.md`).
           5p. Cuồng bạo. **Đã xong** (luật ở `docs/rules/frenzy.md`; chủ project chốt 2026-10-25: quái có chủ chỉ race khó kiểm soát mới cuồng bạo và mất điều khiển; boss thế giới đã làm ở 7f, `world-boss.md`).
           5q. Thu phục. **Đã xong** (luật ở `docs/rules/recruit.md`).
           5q2. Khu bảo tồn. **Đã xong** (luật ở `docs/rules/safari-zone.md`; sức chứa kho đã làm, `capacity.md`).
@@ -119,7 +118,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       7d. Độ bất ổn tầng. **Đã xong** (2026-11-01; luật ở `docs/rules/instability.md`; thuộc tính là luật `trialRules.json` có khối `instability` thay file `instabilityProperties` riêng, luật mới dùng được cả ở bí cảnh; tăng mức giữ thuộc tính cũ; giá đổi tuyến tính theo mức).
       7e. Thần linh và ân sủng. **Đã xong** (2026-11-01; luật ở `docs/rules/deities.md`; chúc phúc lặp lại theo vòng thay `{ rank, effects }`, thần gán theo kiểu môi trường của map, một thần mỗi hệ; danh sách 19 thần và thần của map hiểm địa theo hệ chủ đạo chủ project duyệt 2026-11-01).
       7f. Boss thế giới. **Đã xong** (2026-11-01; luật ở `docs/rules/world-boss.md`; ngưỡng bậc theo bội số máu thường của boss thay cho ngưỡng theo tầng, boss tất định theo seed của lần xuất hiện, `bossMultiplier` 1,5 theo mô phỏng).
-      7g. Khí linh và Khí giới bí cảnh (`artifact-spirits.md`; cần cường hóa / phân giải và khung chuỗi trận của bí cảnh, `docs/rules/trials.md`).
+      7g. Khí linh và Khí giới bí cảnh. **Đã xong** (2026-11-01; luật ở `docs/rules/artifact-spirits.md`; kho khí linh là `inventory.spirits` thay `GameState.spiritStorage`, khí linh / tầng đã qua là trường tùy chọn của món, thêm `softCap` cho hiệu ứng có trần tự nhiên, nuôi bằng yêu đan / hồn phách, Khí giới bí cảnh dùng `GameState.trial` union `TrialRun`, độ dốc tầng 1 / tầng + 0,5 / cấp theo mô phỏng).
    8. Bộ sưu tập (Dex). **Đã xong** (luật ở `docs/rules/dex.md`; màn hình Dex chờ UI).
       8b. Thành tựu và danh hiệu (`titles.md`; dùng số liệu Dex).
       8c. Mở khóa quái khởi đầu (`starter-unlocks.md`; điều kiện từ Dex / thành tựu, lưu xuyên save).

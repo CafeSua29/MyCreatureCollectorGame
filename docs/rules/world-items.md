@@ -9,6 +9,7 @@
 - Ở thị trấn: NPC hồi máu miễn phí (chữa cả trạng thái bất thường, sạc lại Tera Orb), NPC đổi hệ Tera (`changeTeraElement`, `transformation.md`), NPC học lại skill, NPC breeding, NPC fusing, cửa hàng (mục "Cửa hàng và vứt vật phẩm"). Ở tầng: đánh quái hoang (`startWildBattle`), gọi boss tầng (`challengeBoss`).
 - Quản lý quái, dùng vật phẩm, nghỉ ngơi, chọn tiến hóa, học skill chờ: dùng ở đâu cũng được.
 - **Đền dịch chuyển** (thị trấn): đặt / đổi **độ bất ổn tầng** (thuộc tính bất lợi cho trận quái hoang / boss trên tầng, thưởng thêm; thuộc tính ẩn lộ khi ra tầng): `instability.md`.
+- **Khí Linh Các** (thị trấn): triệu khí linh bằng Dẫn Hồn Châu, di dời / gộp / nuôi khí linh, phối linh ở Linh trì, vào Khí giới bí cảnh của một món (Phá Giới Phù bán ở cửa hàng để rời giữa chừng): `artifact-spirits.md`.
 - **Miếu** (thị trấn): mua (luôn có hàng) và dâng **Hương Nến** tăng ân sủng với một thần, đổi **tín vật** của thần lấy món ở cửa hàng thần (mở theo bậc ân sủng): `deities.md`. Mỗi map có thể có thần cai quản (`Biome.deityId`).
 - **Thời gian:** đánh trận (tính khi `leaveBattle`), đi lại, NPC hồi máu tốn giờ của đồng hồ game; nghỉ (`rest`) là ngủ tới sáng hôm sau. Số giờ và việc theo ngày ở mục "Đồng hồ game" của `lifespan.md`.
 

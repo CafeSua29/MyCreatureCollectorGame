@@ -1,5 +1,6 @@
 // Túi đồ và luật chung theo category của item.
 
+export * from './artifactSpirits'
 export * from './equipment'
 export * from './evolutionLine'
 export * from './forge'

@@ -343,6 +343,21 @@ export interface ActionErrorParams {
   /** Đã khiêu chiến boss thế giới trong ngày `day`. */
   worldBossChallengedToday: { day: number }
   noWorldBossRewards: NoParams
+  // ---------- Khí linh và Khí giới bí cảnh (docs/rules/artifact-spirits.md) ----------
+  /** Không có khí linh ở vị trí `index` (instanceId null = kho khí linh). */
+  spiritNotFound: { instanceId: string | null; index: number }
+  /** Dã linh chưa thu phục: không di dời / gộp / nuôi được. */
+  spiritNotSubdued: { instanceId: string | null; index: number }
+  spiritSlotsFull: { instanceId: string; slots: number }
+  /** Gộp hai khí linh khác loại. */
+  spiritTypesDiffer: NoParams
+  /** Phối linh cần hai khí linh một loại, khác loại nhau. */
+  spiritNotBreedable: NoParams
+  spiritPoolNotFound: { index: number }
+  spiritPoolNotReady: { index: number; readyDay: number }
+  noItemWorld: NoParams
+  /** Chưa tới mốc rời Khí giới bí cảnh (không dùng Phá Giới Phù). */
+  itemWorldLeaveLocked: { depth: number; leaveEvery: number }
 }
 
 /**
@@ -635,7 +650,20 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   shopClosed: ({ untilDay }) => `Cửa hàng đóng tới hết ngày ${untilDay}`,
   noWorldBoss: () => 'Không có boss thế giới nào đang xuất hiện',
   worldBossChallengedToday: ({ day }) => `Đã khiêu chiến boss thế giới hôm nay (ngày ${day})`,
-  noWorldBossRewards: () => 'Không có thưởng boss thế giới nào đang chờ nhận'
+  noWorldBossRewards: () => 'Không có thưởng boss thế giới nào đang chờ nhận',
+  spiritNotFound: ({ instanceId, index }) =>
+    `Không có khí linh ở vị trí ${index} của ${instanceId === null ? 'kho khí linh' : `món "${instanceId}"`}`,
+  spiritNotSubdued: ({ instanceId, index }) =>
+    `Khí linh ở vị trí ${index} của ${instanceId === null ? 'kho khí linh' : `món "${instanceId}"`} chưa thu phục`,
+  spiritSlotsFull: ({ instanceId, slots }) => `Món "${instanceId}" đã đủ ${slots} khí linh`,
+  spiritTypesDiffer: () => 'Chỉ gộp được hai khí linh cùng loại',
+  spiritNotBreedable: () => 'Phối linh cần hai khí linh một loại, khác loại nhau',
+  spiritPoolNotFound: ({ index }) => `Linh trì không có cặp khí linh ở vị trí ${index}`,
+  spiritPoolNotReady: ({ index, readyDay }) =>
+    `Cặp khí linh ở vị trí ${index} xong vào ngày ${readyDay}`,
+  noItemWorld: () => 'Không trong Khí giới bí cảnh nào',
+  itemWorldLeaveLocked: ({ depth, leaveEvery }) =>
+    `Đang ở tầng ${depth}: chỉ rời được sau mỗi ${leaveEvery} tầng (hoặc dùng Phá Giới Phù)`
 }
 
 /** Tham số của mã: mã không có tham số thì được bỏ trống. */

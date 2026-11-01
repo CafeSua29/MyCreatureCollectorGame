@@ -11,7 +11,13 @@ import {
   levelEffectScale,
   memoInReadOnlyScope
 } from '../shared'
-import { findEquipmentItem, findEquipmentLine, lineParams } from '../inventory'
+import {
+  findEquipmentItem,
+  findEquipmentLine,
+  lineParams,
+  spiritHooks,
+  spiritsOf
+} from '../inventory'
 import { abilityTraitId } from '../monster'
 import { NON_HP_STATS, mergePartnerOf, type MoveFlag, type StageStat } from '../model'
 import type {
@@ -837,6 +843,17 @@ function equipmentHooks(
         continue
       }
       result.push({ hook, scale, sourceId: item.id, source, line: meta })
+    }
+    // Khí linh trên món (docs/rules/artifact-spirits.md): hệ số = value hiệu lực, không theo cấp món.
+    for (const spirit of spiritsOf(instance)) {
+      for (const { hook, scale: spiritScale } of spiritHooks(data, spirit)) {
+        result.push({
+          hook,
+          scale: spiritScale,
+          sourceId: item.id,
+          source: { kind: 'equipment', ownerId: monster.id }
+        })
+      }
     }
   }
   return result

@@ -8,7 +8,7 @@ Code: `registries/capacity.ts` (điểm duy nhất: `capacityOf`, `bagUsed`, `ba
 
 ## Sức chứa
 
-- Hai loại (`CAPACITY_KINDS`): **kho quái** (`storage`, không tính đội) và **túi trang bị** (`bag`: món trang bị trong túi + hồn phách `inventory.souls`; không tính món đang lắp). Khí linh trong kho sau này tính chung túi (`artifact-spirits.md`). **Item gộp chồng** (thuốc, bóng, đá, đồ cầm tiêu hao, tinh thể...) **không giới hạn**.
+- Hai loại (`CAPACITY_KINDS`): **kho quái** (`storage`, không tính đội) và **túi trang bị** (`bag`: món trang bị trong túi + hồn phách `inventory.souls` + khí linh trong kho khí linh `inventory.spirits` (`artifact-spirits.md`); không tính món đang lắp, khí linh ở Linh trì, món đang đi Khí giới bí cảnh). **Item gộp chồng** (thuốc, bóng, đá, đồ cầm tiêu hao, tinh thể...) **không giới hạn**.
 - `capacityOf` = `base` + `perExpansion` × số lần đã mở rộng + `realmBonus` × số mốc cảnh giới đã đạt (`countMilestonesReached` với `tamer.realmMilestones` 2, 5, 10 rồi gấp đôi mãi, như ô đồ cầm). Cảnh giới không bao giờ giảm nên sức chứa không giảm. Số ở `balance.json` khóa `capacity` (số tạm của roadmap):
 
   | Loại    | Ban đầu | Mỗi lần mở rộng | Giá lần thứ k | Mỗi mốc cảnh giới (không gian ngự thú) |

@@ -8,6 +8,7 @@ import type { TransformKind } from './transform'
 import type { StatName } from './stats'
 import type { GameOptionFlag } from './time'
 import type { CapacityKind } from './capacity'
+import type { SpiritDestination, SpiritFood, SpiritLocation } from './artifactSpirits'
 
 // ---------- Action ----------
 
@@ -120,6 +121,20 @@ export type GameAction =
   | { type: 'challengeTrial' }
   | { type: 'abandonTrial' }
   | { type: 'challengeTower' }
+  /**
+   * Khí Linh Các (thị trấn; docs/rules/artifact-spirits.md): triệu khí linh bằng Dẫn Hồn Châu, di
+   * dời / gộp / nuôi khí linh, phối linh ở Linh trì, nhận khí linh kép; Khí giới bí cảnh (vào bằng
+   * một món trong túi, đánh tầng kế tiếp, rời).
+   */
+  | { type: 'summonSpirit' }
+  | { type: 'moveSpirit'; from: SpiritLocation; to: SpiritDestination }
+  | { type: 'mergeSpirits'; first: SpiritLocation; second: SpiritLocation }
+  | { type: 'feedSpirit'; target: SpiritLocation; food: SpiritFood }
+  | { type: 'breedSpirits'; first: number; second: number }
+  | { type: 'collectSpiritPool'; index: number }
+  | { type: 'enterItemWorld'; instanceId: string }
+  | { type: 'challengeItemWorld' }
+  | { type: 'leaveItemWorld'; useTalisman?: boolean }
   /**
    * Độ bất ổn tầng ở Đền dịch chuyển (thị trấn; docs/rules/instability.md): đặt mức (0 = tắt), đổi
    * thuộc tính (tốn tiền).

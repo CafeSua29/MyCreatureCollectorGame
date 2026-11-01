@@ -14,7 +14,7 @@
 
 ### Chỉ chạy phần liên quan (`--parts`, `--teams`)
 
-- `--parts`: chỉ chạy các phần đã chọn (`sweep`, `biomeSweep`, `bossLevel`, `progression`, `progressionSweep`, `tribulation`, `safari`, `zones`, `gathering`, `worldBoss`, `lineage`; chọn `progressionSweep` thì tự chạy thêm `progression`). `--teams`: chỉ chạy việc của các đội đã chọn (quét theo map, breed / fuse không theo đội nên vẫn chạy nếu phần của nó được chọn). Phần không chạy **giữ nguyên CSV** của lần chạy trước.
+- `--parts`: chỉ chạy các phần đã chọn (`sweep`, `biomeSweep`, `bossLevel`, `progression`, `progressionSweep`, `tribulation`, `safari`, `zones`, `gathering`, `worldBoss`, `itemWorld`, `lineage`; chọn `progressionSweep` thì tự chạy thêm `progression`). `--teams`: chỉ chạy việc của các đội đã chọn (quét theo map, breed / fuse không theo đội nên vẫn chạy nếu phần của nó được chọn). Phần không chạy **giữ nguyên CSV** của lần chạy trước.
 - Sửa / thêm tính năng (khi cần chạy, mục "Khi nào chạy mô phỏng") thì chỉ chạy phần đo được nó (bảng dưới) để đỡ thời gian. Kịch bản mặc định đầy đủ **chỉ** chạy khi đổi số cân bằng dùng chung (chỉ số, sát thương, EXP, boss) hoặc khi chủ project yêu cầu, không bắt buộc trước khi báo xong một bước (chủ project chốt 2026-11-01).
 
 | Thay đổi                                                                                                              | Phần cần chạy                                                                       |

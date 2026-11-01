@@ -22,7 +22,8 @@ describe('createInventory', () => {
       crystals: [],
       books: [],
       equipment: [],
-      souls: []
+      souls: [],
+      spirits: []
     })
     expect(inventory.stacks).not.toBe(starter)
     expect(createInventory()).toEqual({
@@ -30,7 +31,8 @@ describe('createInventory', () => {
       crystals: [],
       books: [],
       equipment: [],
-      souls: []
+      souls: [],
+      spirits: []
     })
   })
 })

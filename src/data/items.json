@@ -48327,6 +48327,18 @@
     "price": 3000
   },
   {
+    "id": "soulGuidingOrb",
+    "category": "material",
+    "price": 4000
+  },
+  {
+    "id": "realmBreakTalisman",
+    "category": "material",
+    "price": 2500,
+    "shop": true,
+    "shopWeight": 1
+  },
+  {
     "id": "heavenSpiritFruit",
     "category": "consumable",
     "price": 600,

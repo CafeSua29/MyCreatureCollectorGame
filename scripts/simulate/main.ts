@@ -45,6 +45,7 @@ import {
   zonesTable,
   gatheringTable,
   worldBossTable,
+  itemWorldTable,
   type Table
 } from './report'
 import { lifespanTable } from './lifespan'
@@ -116,7 +117,8 @@ function outputTables(
     safari,
     zones,
     gathering,
-    worldBoss
+    worldBoss,
+    itemWorld
   } = results
   const lifespan = progression.map((result) => ({
     teamId: runLabel(result),
@@ -173,6 +175,7 @@ function outputTables(
         data.config.worldBoss.tiers.map((tier) => tier.id)
       )
     ],
+    ['Khí giới bí cảnh', 'item-world.csv', 'itemWorld', itemWorldTable(itemWorld)],
     ['Breed / fuse nhiều đời', 'lineage.csv', 'lineage', lineageTable(lineage)]
   ]
 }

@@ -14,6 +14,9 @@ import {
   gather,
   leaveZone,
   challengeTower,
+  challengeItemWorld,
+  enterItemWorld,
+  leaveItemWorld,
   challengeTrial,
   enterTrial,
   flee,
@@ -126,12 +129,18 @@ import {
   rerollEquipmentAffixes,
   salvageEquipment,
   castEquipment,
-  imbueEquipment
+  imbueEquipment,
+  summonSpirit,
+  moveSpirit,
+  mergeSpirits,
+  feedSpirit,
+  breedSpirits,
+  collectSpiritPool
 } from '../roster'
 import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 84
+export const SAVE_VERSION = 85
 
 export function createGameState(options: {
   seed: number
@@ -190,6 +199,7 @@ export function createGameState(options: {
     expeditions: { board: [], refreshDay: 0, active: [], nextId: 1 },
     trainers: newTrainerState(),
     trial: null,
+    spiritPools: [],
     tower: { highest: 0 },
     instability: newInstabilityState(),
     favor: {},
@@ -385,6 +395,24 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return abandonTrial(state)
     case 'challengeTower':
       return challengeTower(data, state)
+    case 'summonSpirit':
+      return summonSpirit(data, state)
+    case 'moveSpirit':
+      return moveSpirit(data, state, action)
+    case 'mergeSpirits':
+      return mergeSpirits(data, state, action)
+    case 'feedSpirit':
+      return feedSpirit(data, state, action)
+    case 'breedSpirits':
+      return breedSpirits(data, state, action)
+    case 'collectSpiritPool':
+      return collectSpiritPool(data, state, action.index)
+    case 'enterItemWorld':
+      return enterItemWorld(data, state, action.instanceId)
+    case 'challengeItemWorld':
+      return challengeItemWorld(data, state)
+    case 'leaveItemWorld':
+      return leaveItemWorld(data, state, action.useTalisman)
     case 'setInstability':
       return setInstability(data, state, action.level)
     case 'rerollInstability':

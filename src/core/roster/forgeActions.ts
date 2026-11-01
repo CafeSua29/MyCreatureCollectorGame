@@ -1,8 +1,9 @@
 // NPC Thợ rèn ở thị trấn (docs/rules/equipment-forge.md): cường hóa, tẩy luyện, phân giải, đúc trang
 // bị, phụ linh. Cường hóa / tẩy luyện / phụ linh được cả món trong túi lẫn món đang lắp trên quái (đội
-// hoặc kho); phân giải chỉ món trong túi. Cường hóa, đúc, phụ linh cộng exp luyện khí (alchemy.md).
+// hoặc kho); phân giải chỉ món trong túi (khí linh đã thu phục về kho khí linh). Cường hóa, đúc, phụ
+// linh cộng exp luyện khí (alchemy.md).
 
-import { assertBagRoom } from '../registries'
+import { assertBagRoom, bagUsed, capacityOf } from '../registries'
 import { ActionError, malformedAction, rollPercent, spendMoney, toBig } from '../shared'
 import {
   addEquipment,
@@ -14,6 +15,7 @@ import {
   enhanceCost,
   equipmentInstanceId,
   findEquipmentItem,
+  findWearer,
   imbueCoreItemId,
   imbueCost,
   isAffixRoll,
@@ -25,70 +27,12 @@ import {
   rollEquipment,
   rollRarity,
   salvageYield,
+  spiritsOf,
   takeEquipment
 } from '../inventory'
 import { craftLevel, gainCraftExp, requireCraftLevel } from '../progression'
-import type { EquipmentInstance, GameData, GameState, Monster } from '../model'
-
-/** Món trang bị tìm theo id và hàm thay nó bằng bản mới trong state. */
-interface LocatedEquipment {
-  instance: EquipmentInstance
-  replace: (state: GameState, updated: EquipmentInstance) => GameState
-}
-
-/** Tìm món trong túi hoặc trên quái của người chơi (đội, kho); không có thì equipmentNotFound. */
-function locateEquipment(state: GameState, instanceId: string): LocatedEquipment {
-  const inBag = state.inventory.equipment.find((entry) => entry.id === instanceId)
-  if (inBag) {
-    return {
-      instance: inBag,
-      replace: (s, updated) => ({
-        ...s,
-        inventory: {
-          ...s.inventory,
-          equipment: s.inventory.equipment.map((entry) =>
-            entry.id === instanceId ? updated : entry
-          )
-        }
-      })
-    }
-  }
-  const worn = findWearer(state, instanceId)
-  if (!worn) throw new ActionError('equipmentNotFound', { instanceId })
-  const swap = (monster: Monster, updated: EquipmentInstance): Monster => ({
-    ...monster,
-    equipment: monster.equipment.map((entry) =>
-      entry.storage === 'instance' && entry.instance.id === instanceId
-        ? { storage: 'instance', instance: updated }
-        : entry
-    )
-  })
-  const swapIn = (list: Monster[], updated: EquipmentInstance): Monster[] =>
-    list.map((monster) => (monster.id === worn.monster.id ? swap(monster, updated) : monster))
-  return {
-    instance: worn.instance,
-    replace: (s, updated) => ({
-      ...s,
-      party: swapIn(s.party, updated),
-      storage: swapIn(s.storage, updated)
-    })
-  }
-}
-
-/** Quái (đội, kho) đang lắp món `instanceId`. */
-function findWearer(
-  state: GameState,
-  instanceId: string
-): { monster: Monster; instance: EquipmentInstance } | null {
-  for (const monster of [...state.party, ...state.storage]) {
-    for (const entry of monster.equipment) {
-      if (entry.storage === 'instance' && entry.instance.id === instanceId) {
-        return { monster, instance: entry.instance }
-      }
-    }
-  }
-  return null
-}
+import type { EquipmentInstance, GameData, GameState } from '../model'
+import { locateEquipment } from './locateEquipment'
 
 /** Thợ rèn ở thị trấn, ngoài trận. */
 function assertAtForge(state: GameState): void {
@@ -277,8 +221,24 @@ export function salvageEquipment(
     ;[refined, rng] = rollPercent(rng, gained.refiningChance)
     if (refined) inventory = addItems(inventory, refiningStoneItemId, 1)
     inventory = addSoulCrystalPoints(data, inventory, gained.soulPoints)
+    // Khí linh đã thu phục về kho khí linh, dã linh mất (docs/rules/artifact-spirits.md).
+    const subdued = spiritsOf(instance).filter((spirit) => spirit.subdued)
+    inventory = { ...inventory, spirits: [...inventory.spirits, ...subdued] }
   }
+  assertSalvageFits(data, state, inventory)
   return { ...state, inventory, rng }
+}
+
+/**
+ * Khí linh về kho làm túi tăng chỗ dùng quá sức chứa (phân giải món nhiều khí linh) thì chặn bằng
+ * bagFull (state giữ nguyên), như mọi cách nhận đồ theo ý người chơi.
+ */
+function assertSalvageFits(data: GameData, state: GameState, after: GameState['inventory']): void {
+  const used = bagUsed(after)
+  const capacity = capacityOf(data, state, 'bag')
+  if (used > capacity && used > bagUsed(state.inventory)) {
+    throw new ActionError('bagFull', { capacity })
+  }
 }
 
 /** Danh sách id món: ít nhất một, mỗi id là chuỗi, không trùng. */

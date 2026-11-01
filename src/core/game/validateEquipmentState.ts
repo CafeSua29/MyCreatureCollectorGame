@@ -40,17 +40,24 @@ function allEquipmentInstances(state: Raw): Raw[] {
     ...listOf(battle?.captured)
   ]
   const bag = listOf(asObject(state.inventory)?.equipment)
+  // Món đang đi Khí giới bí cảnh (docs/rules/artifact-spirits.md) tạm rời túi.
+  const trial = asObject(state.trial)
+  const inItemWorld = trial?.kind === 'itemWorld' ? [trial.instance] : []
   const shop = listOf(asObject(state.shop)?.stock).map((entry) => asObject(entry)?.instance)
   // Cửa hàng tạm của event (docs/rules/events.md).
   const tempShop = listOf(asObject(asObject(state.events)?.tempShop)?.stock).map(
     (entry) => asObject(asObject(entry)?.entry)?.instance
   )
-  return [...monsters.flatMap(equippedInstances), ...bag, ...shop, ...tempShop].flatMap(
-    (instance) => {
-      const object = asObject(instance)
-      return object ? [object] : []
-    }
-  )
+  return [
+    ...monsters.flatMap(equippedInstances),
+    ...bag,
+    ...inItemWorld,
+    ...shop,
+    ...tempShop
+  ].flatMap((instance) => {
+    const object = asObject(instance)
+    return object ? [object] : []
+  })
 }
 
 /** Lý lịch trong phần hồn của hồn khí (phần còn lại kiểm tra ở validateEquipmentInstance). */

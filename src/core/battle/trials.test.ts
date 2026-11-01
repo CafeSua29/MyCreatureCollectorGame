@@ -76,6 +76,7 @@ function townState(party: Monster[] = [hero()], tokens = 1): GameState {
 /** State đang đi bí cảnh với luật cho trước (bỏ qua bước tung). */
 function inRealm(rules: TrialRule[] = [], overrides: Partial<SecretRealm> = {}): GameState {
   const trial: SecretRealm = {
+    kind: 'realm',
     floor: 3,
     biomeId: 'field',
     rules,
@@ -166,6 +167,7 @@ describe('vào bí cảnh', () => {
     const state = townState(undefined, 2)
     const next = gameReducer(data, state, { type: 'enterTrial' })
     const trial = defined(next.trial, 'bí cảnh')
+    if (trial.kind !== 'realm') throw new Error('phải là bí cảnh')
     expect(trial.floor).toBe(3)
     expect(trial.battleCount).toBe(3)
     expect(trial.cleared).toBe(0)
@@ -510,7 +512,7 @@ describe('save', () => {
     expect(issues).toContain('trial.biomeId: map không tồn tại "nowhere"')
     expect(issues).toContain('trial.rules[0].elementId: hệ không tồn tại')
     expect(issues).toContain('luật bí cảnh không tồn tại "ghost"')
-    expect(issues).toContain('đang đi bí cảnh thì phải ở thị trấn')
+    expect(issues).toContain('trial: đang đi phó bản thì phải ở thị trấn')
     expect(issues).toContain('tower.highest')
   })
 

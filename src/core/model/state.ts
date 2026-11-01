@@ -7,9 +7,10 @@ import type {
   BattleInstability,
   BattleTrial,
   InstabilityState,
-  SecretRealm,
-  TowerState
+  TowerState,
+  TrialRun
 } from './trials'
+import type { ArtifactSpirit, SpiritPool } from './artifactSpirits'
 import type { QuestState } from './quests'
 import type { AlchemyState, CookingState, GardenState, SmithingState } from './alchemy'
 import type { Decimal } from '../shared'
@@ -101,8 +102,13 @@ export interface GameState {
   expeditions: ExpeditionState
   /** Đạo quán, đấu trường xếp hạng, giải đấu (docs/rules/trainers.md). */
   trainers: TrainerState
-  /** Bí cảnh đang đi (docs/rules/trials.md); null = không trong bí cảnh. */
-  trial: SecretRealm | null
+  /**
+   * Phó bản chuỗi trận đang đi: bí cảnh (docs/rules/trials.md) hoặc Khí giới bí cảnh
+   * (docs/rules/artifact-spirits.md); null = không đi phó bản nào.
+   */
+  trial: TrialRun | null
+  /** Cặp khí linh đang phối ở Linh trì (docs/rules/artifact-spirits.md). */
+  spiritPools: SpiritPool[]
   /** Tháp thí luyện (docs/rules/trials.md). */
   tower: TowerState
   /** Độ bất ổn tầng (docs/rules/instability.md). */
@@ -173,6 +179,10 @@ export interface EquipmentInstance {
    * Món gốc là món gốc hồn khí (`soulRelicStat`) khi và chỉ khi có trường này.
    */
   soul?: SoulImprint
+  /** Khí linh trên món (docs/rules/artifact-spirits.md); bỏ trống = không có. */
+  spirits?: ArtifactSpirit[]
+  /** Số tầng Khí giới bí cảnh đã qua; bỏ trống = 0. */
+  depth?: number
 }
 
 export interface EquipmentRoll {
@@ -201,6 +211,8 @@ export interface Inventory {
   equipment: EquipmentInstance[]
   /** Hồn phách của quái đã chết hẳn (docs/rules/soul-relics.md), cũ trước mới. */
   souls: SoulRemnant[]
+  /** Kho khí linh: khí linh đã thu phục chưa gắn vào món (docs/rules/artifact-spirits.md). */
+  spirits: ArtifactSpirit[]
 }
 
 /** Định danh item gộp được (số lượng): theo id, tinh thể theo trait + cấp, sách theo skill + loại. */
@@ -1169,4 +1181,12 @@ export type BattleEvent =
   | { type: 'trialCompleted' }
   | { type: 'trialFailed' }
   | { type: 'towerFloorCleared'; floor: number }
+  /**
+   * Khí giới bí cảnh (docs/rules/artifact-spirits.md): qua một tầng (tầng đã qua, cấp mới của món),
+   * thu phục dã linh (vị trí trên món), thưởng boss (thêm dòng phụ / + value mọi khí linh), thua.
+   */
+  | { type: 'itemWorldFloorCleared'; depth: number; level: number }
+  | { type: 'spiritSubdued'; index: number; typeIds: string[]; value: number }
+  | { type: 'itemWorldBonus'; bonus: 'affix' | 'spiritValue' }
+  | { type: 'itemWorldFailed' }
   | { type: 'lost'; moneyLost: Decimal }

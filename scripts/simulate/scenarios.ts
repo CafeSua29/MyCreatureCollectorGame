@@ -9,12 +9,14 @@ import {
   checkKnownFields,
   checkNumber,
   fieldList,
+  NORMAL_RARITIES,
   POLES,
   TACTICS,
   type AiConfig,
   type Pole,
   type Tactic,
   type GameData,
+  type NormalRarity,
   type RawGameData,
   type TraitInstance
 } from '@core'
@@ -260,6 +262,14 @@ export interface WorldBossSpec {
   challenges: number
 }
 
+/** Khí giới bí cảnh (itemWorld.ts): mỗi đội × tầng × bậc món đi tối đa maxDepth tầng. */
+export interface ItemWorldSpec {
+  teamIds: string[]
+  floors: number[]
+  rarities: NormalRarity[]
+  maxDepth: number
+}
+
 export interface Scenarios {
   seed: number
   floors: { from: number; to: number }
@@ -290,6 +300,8 @@ export interface Scenarios {
   gathering: GatheringSpec | null
   /** null = không đo boss thế giới. */
   worldBoss: WorldBossSpec | null
+  /** null = không đo Khí giới bí cảnh. */
+  itemWorld: ItemWorldSpec | null
   breeding: BreedingSpec
   fusion: FusionSpec
 }
@@ -313,6 +325,7 @@ const SCENARIO_FIELDS = fieldList<Scenarios>({
   zones: true,
   gathering: true,
   worldBoss: true,
+  itemWorld: true,
   breeding: true,
   fusion: true
 })
@@ -453,6 +466,7 @@ export function parseScenarios(data: GameData, value: unknown): Scenarios {
     zones: root.zones === undefined ? null : readZones(r, data, root.zones, teams),
     gathering: root.gathering === undefined ? null : readGathering(r, data, root.gathering, teams),
     worldBoss: root.worldBoss === undefined ? null : readWorldBoss(r, root.worldBoss, teams),
+    itemWorld: root.itemWorld === undefined ? null : readItemWorld(r, root.itemWorld, teams),
     breeding: readBreeding(r, root.breeding),
     fusion: readFusion(r, root.fusion)
   }
@@ -858,6 +872,30 @@ function readWorldBoss(r: Reader, value: unknown, teams: readonly TeamSpec[]): W
     .map((floor, i) => r.integer(floor, `${path}.floors[${i}]`, 1))
   if (floors.length === 0) r.issues.push(`${path}.floors phải có ít nhất một tầng`)
   return { teamIds, floors, challenges: r.integer(obj.challenges, `${path}.challenges`, 1) }
+}
+
+function readItemWorld(r: Reader, value: unknown, teams: readonly TeamSpec[]): ItemWorldSpec {
+  const path = 'itemWorld'
+  const obj = r.object(value, path, ['teamIds', 'floors', 'rarities', 'maxDepth'])
+  const teamIds = r.array(obj.teamIds, `${path}.teamIds`).map((id, i) => {
+    const teamId = r.string(id, `${path}.teamIds[${i}]`)
+    if (teamId && !teams.some((team) => team.id === teamId)) {
+      r.issues.push(`${path}.teamIds[${i}]: không có đội "${teamId}"`)
+    }
+    return teamId
+  })
+  if (teamIds.length === 0) r.issues.push(`${path}.teamIds phải có ít nhất một đội`)
+  const floors = r
+    .array(obj.floors, `${path}.floors`)
+    .map((floor, i) => r.integer(floor, `${path}.floors[${i}]`, 1))
+  if (floors.length === 0) r.issues.push(`${path}.floors phải có ít nhất một tầng`)
+  const rarities = r.array(obj.rarities, `${path}.rarities`).flatMap((entry, i) => {
+    const rarity = NORMAL_RARITIES.find((normal) => normal === entry)
+    if (!rarity) r.issues.push(`${path}.rarities[${i}]: không phải bậc thường "${String(entry)}"`)
+    return rarity ? [rarity] : []
+  })
+  if (rarities.length === 0) r.issues.push(`${path}.rarities phải có ít nhất một bậc`)
+  return { teamIds, floors, rarities, maxDepth: r.integer(obj.maxDepth, `${path}.maxDepth`, 1) }
 }
 
 function readZoneSupplies(r: Reader, data: GameData, value: unknown): ZoneSupplies {

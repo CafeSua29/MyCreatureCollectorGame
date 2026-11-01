@@ -3,7 +3,7 @@
 // chơi liên tục mỗi đội, breed, fuse. Seed mỗi việc đã tất định
 // (deriveSeed) nên kết quả không phụ thuộc thứ tự chạy; nơi gọi gom kết quả theo thứ tự listJobs.
 
-import { createGameData, type GameData, type RawGameData } from '@core'
+import { createGameData, type GameData, type NormalRarity, type RawGameData } from '@core'
 import type { BattleKind, BattleTotals } from './battleRunner'
 import { searchBossLevel, type BossLevelRow } from './bossLevel'
 import { sweepFloor, type FloorResult } from './floorSweep'
@@ -22,6 +22,7 @@ import { runSafari, type SafariRow } from './safari'
 import { runZone, type ZoneRow } from './zones'
 import { runGathering, type GatheringRow } from './gathering'
 import { runWorldBoss, type WorldBossRow } from './worldBoss'
+import { runItemWorld, type ItemWorldRow } from './itemWorld'
 
 export type SimJob =
   | { type: 'sweep'; variantId: string; teamId: string; floor: number }
@@ -42,6 +43,8 @@ export type SimJob =
   | { type: 'gathering'; floor: number; runId: string }
   /** Boss thế giới của một đội ở một tầng (worldBoss.ts). */
   | { type: 'worldBoss'; teamId: string; floor: number }
+  /** Khí giới bí cảnh của một đội ở một tầng với một bậc món (itemWorld.ts). */
+  | { type: 'itemWorld'; teamId: string; floor: number; rarity: NormalRarity }
 
 /** Các phần của lần chạy (in thời gian từng phần, chọn phần chạy bằng --parts). */
 export const SIM_PARTS = [
@@ -55,6 +58,7 @@ export const SIM_PARTS = [
   'zones',
   'gathering',
   'worldBoss',
+  'itemWorld',
   'lineage'
 ] as const
 
@@ -72,6 +76,7 @@ export type SimJobResult =
   | { type: 'zones'; row: ZoneRow }
   | { type: 'gathering'; row: GatheringRow }
   | { type: 'worldBoss'; row: WorldBossRow }
+  | { type: 'itemWorld'; row: ItemWorldRow }
 
 export interface TimedJobResult {
   part: SimPart
@@ -173,6 +178,14 @@ export function listJobs(scenarios: Scenarios, data?: GameData): SimJob[] {
         jobs.push({ type: 'worldBoss', teamId, floor })
     }
   }
+  if (scenarios.itemWorld) {
+    const { teamIds, floors, rarities } = scenarios.itemWorld
+    for (const teamId of teamIds) {
+      for (const floor of floors) {
+        for (const rarity of rarities) jobs.push({ type: 'itemWorld', teamId, floor, rarity })
+      }
+    }
+  }
   jobs.push({ type: 'breeding' }, { type: 'fusion' })
   return jobs
 }
@@ -193,6 +206,7 @@ const PART_PRIORITY: Record<SimPart, number> = {
   zones: 2,
   gathering: 1,
   worldBoss: 1,
+  itemWorld: 1,
   sweep: 1,
   lineage: 0
 }
@@ -292,6 +306,20 @@ export function runJob(context: JobContext, job: SimJob): SimJobResult {
         mastery: scenarios.assumedMastery
       })
       return { type: 'worldBoss', row }
+    }
+    case 'itemWorld': {
+      const spec = scenarios.itemWorld
+      if (!spec) throw new Error('Mô phỏng: kịch bản không có itemWorld')
+      const row = runItemWorld(context.dataForVariant(scenarios.variants[0].id), {
+        team: findTeam(scenarios, job.teamId),
+        floor: job.floor,
+        rarity: job.rarity,
+        maxDepth: spec.maxDepth,
+        maxTurns: scenarios.maxTurns,
+        seed: scenarios.seed,
+        mastery: scenarios.assumedMastery
+      })
+      return { type: 'itemWorld', row }
     }
   }
 }
@@ -402,6 +430,7 @@ function jobTeamId(job: SimJob): string | null {
     case 'progression':
     case 'tribulation':
     case 'worldBoss':
+    case 'itemWorld':
       return job.teamId
     case 'progressionSweep':
       return job.snapshot.teamId
@@ -538,6 +567,7 @@ export interface CollectedResults {
   zones: ZoneRow[]
   gathering: GatheringRow[]
   worldBoss: WorldBossRow[]
+  itemWorld: ItemWorldRow[]
 }
 
 /** Gom kết quả các việc (đã theo thứ tự listJobs) thành từng phần. */
@@ -553,7 +583,8 @@ export function collectResults(results: readonly SimJobResult[]): CollectedResul
     safari: [],
     zones: [],
     gathering: [],
-    worldBoss: []
+    worldBoss: [],
+    itemWorld: []
   }
   for (const result of results) {
     switch (result.type) {
@@ -589,6 +620,9 @@ export function collectResults(results: readonly SimJobResult[]): CollectedResul
         break
       case 'worldBoss':
         collected.worldBoss.push(result.row)
+        break
+      case 'itemWorld':
+        collected.itemWorld.push(result.row)
         break
     }
   }

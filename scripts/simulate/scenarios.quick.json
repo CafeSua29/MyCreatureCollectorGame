@@ -180,6 +180,12 @@
     "floors": [5],
     "challenges": 5
   },
+  "itemWorld": {
+    "teamIds": ["solo"],
+    "floors": [10],
+    "rarities": ["rare"],
+    "maxDepth": 10
+  },
   "breeding": {
     "speciesId": "emberling",
     "floor": 1,

@@ -1032,7 +1032,25 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   // v82 → v83: thần linh và ân sủng (docs/rules/deities.md): chưa có ân sủng với thần nào.
   82: (save) => ({ ...save, version: 83, favor: {} }),
   // v83 → v84: boss thế giới (docs/rules/world-boss.md): chưa xuất hiện, không có thưởng chờ.
-  83: (save) => ({ ...save, version: 84, worldBoss: { current: null, rewards: [] } })
+  83: (save) => ({ ...save, version: 84, worldBoss: { current: null, rewards: [] } }),
+  84: addArtifactSpirits
+}
+
+/**
+ * v84 → v85 (khí linh và Khí giới bí cảnh, docs/rules/artifact-spirits.md): kho khí linh rỗng, Linh
+ * trì trống; bí cảnh đang đi mang loại `realm` (GameState.trial thành union phó bản). Món trang bị
+ * không đổi (khí linh, tầng đã qua là trường tùy chọn).
+ */
+function addArtifactSpirits(save: SaveObject): SaveObject {
+  const inventory = asObject(save.inventory)
+  const trial = asObject(save.trial)
+  return {
+    ...save,
+    version: 85,
+    inventory: inventory ? { ...inventory, spirits: [] } : save.inventory,
+    trial: trial ? { kind: 'realm', ...trial } : save.trial,
+    spiritPools: []
+  }
 }
 
 /**

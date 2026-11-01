@@ -1,13 +1,23 @@
 // Việc sau trận bí cảnh / tháp thí luyện (docs/rules/trials.md): tiến độ bí cảnh, hồi máu giữa các
-// trận, rương bí cảnh, thất bại; tầng tháp đã thắng và thưởng. Thêm loại phó bản = thêm một mục vào
-// TRIAL_KIND_RULES.
+// trận, rương bí cảnh, thất bại; tầng tháp đã thắng và thưởng; tầng Khí giới bí cảnh
+// (docs/rules/artifact-spirits.md). Thêm loại phó bản = thêm một mục vào TRIAL_KIND_RULES.
 
-import { rollChestItems, rollRarity } from '../inventory'
+import {
+  addEquipment,
+  addRandomAffix,
+  rollChestItems,
+  rollRarity,
+  spiritsOf,
+  withSpirits
+} from '../inventory'
+import { isFainted } from '../monster'
 import { hasTrialRule } from '../registries'
-import { pickWeighted } from '../shared'
+import { pickWeighted, rollPercent } from '../shared'
 import type {
   Biome,
+  EquipmentInstance,
   GameData,
+  ItemWorldRun,
   ItemReward,
   NormalRarity,
   SecretRealm,
@@ -32,8 +42,85 @@ interface TrialKindRule {
 
 /** Bí cảnh đang đi của trận bí cảnh (trận bí cảnh luôn có). */
 function realmOf(d: Draft): SecretRealm {
-  if (!d.trial) throw new Error('Trận bí cảnh nhưng không có bí cảnh đang đi')
+  if (d.trial?.kind !== 'realm') throw new Error('Trận bí cảnh nhưng không có bí cảnh đang đi')
   return d.trial
+}
+
+/** Lượt Khí giới bí cảnh của trận Khí giới bí cảnh (luôn có). */
+function itemWorldOf(d: Draft): ItemWorldRun {
+  if (d.trial?.kind !== 'itemWorld') throw new Error('Trận Khí giới bí cảnh nhưng không có lượt đi')
+  return d.trial
+}
+
+/** Thu phục dã linh của trận nếu quái mang nó đã bị hạ (thắng trận). */
+function subdueSpirit(data: GameData, d: Draft, instance: EquipmentInstance): EquipmentInstance {
+  const trial = d.battle.trial
+  const spirit = trial?.kind === 'itemWorld' ? trial.spirit : null
+  if (!spirit) return instance
+  const carrier = d.battle.enemies.find((enemy) => enemy.id === spirit.carrierId)
+  const target = spiritsOf(instance)[spirit.index]
+  if (!carrier || !isFainted(data, carrier) || !target || target.subdued) return instance
+  log(d, {
+    type: 'spiritSubdued',
+    index: spirit.index,
+    typeIds: target.typeIds,
+    value: target.value
+  })
+  const spirits = spiritsOf(instance).map((entry, i) =>
+    i === spirit.index ? { ...entry, subdued: true } : entry
+  )
+  return withSpirits(instance, spirits)
+}
+
+/**
+ * Một lần thưởng Khí Tướng: bonus.affixChance % thêm một dòng phụ (không còn dòng phụ để thêm thì +
+ * value), còn lại + bonus.spiritValue value cho mọi khí linh trên món (món chưa có khí linh thì thử
+ * thêm dòng phụ).
+ */
+function grantBossBonus(data: GameData, d: Draft, instance: EquipmentInstance): EquipmentInstance {
+  const { bonus } = data.config.artifactSpirits.itemWorld
+  let wantsAffix: boolean
+  ;[wantsAffix, d.rng] = rollPercent(d.rng, bonus.affixChance)
+  const spirits = spiritsOf(instance)
+  if (wantsAffix || spirits.length === 0) {
+    let added: EquipmentInstance | null
+    ;[added, d.rng] = addRandomAffix(data, d.rng, instance)
+    if (added) {
+      log(d, { type: 'itemWorldBonus', bonus: 'affix' })
+      return added
+    }
+  }
+  if (spirits.length === 0) return instance
+  log(d, { type: 'itemWorldBonus', bonus: 'spiritValue' })
+  return withSpirits(
+    instance,
+    spirits.map((spirit) => ({ ...spirit, value: spirit.value + bonus.spiritValue }))
+  )
+}
+
+/**
+ * Qua một tầng Khí giới bí cảnh: món + 1 cấp và + 1 tầng đã qua, thu phục dã linh đã hạ, thưởng boss
+ * (bonusRolls lần + vật phẩm), thưởng tầng (Kẹo EXP), hồi máu cả đội như bí cảnh.
+ */
+function clearItemWorldFloor(data: GameData, d: Draft): void {
+  const run = itemWorldOf(d)
+  const trial = d.battle.trial
+  if (trial?.kind !== 'itemWorld') return
+  const config = data.config.artifactSpirits.itemWorld
+  let instance: EquipmentInstance = {
+    ...subdueSpirit(data, d, run.instance),
+    level: run.instance.level + 1,
+    depth: trial.depth
+  }
+  log(d, { type: 'itemWorldFloorCleared', depth: trial.depth, level: instance.level })
+  const tier = config.bosses.find((entry) => entry.id === trial.bossTierId)
+  if (tier) {
+    for (let i = 0; i < tier.bonusRolls; i++) instance = grantBossBonus(data, d, instance)
+    grantItemRewards(d, tier.rewards)
+  }
+  grantItemRewards(d, config.floorRewards)
+  d.trial = { ...run, instance, cleared: run.cleared + 1 }
+  healPartyPercent(data, d, config.healPercent)
 }
 
 /**
@@ -121,5 +208,15 @@ export const TRIAL_KIND_RULES: Record<TrialKind, TrialKindRule> = {
     },
     // Thua không mất gì (không mất tiền, giữ tầng).
     onLoss: () => {}
+  },
+  itemWorld: {
+    onWin: clearItemWorldFloor,
+    // Thua: ra ngoài, món về túi (được vượt sức chứa), không mất cấp / tầng đã qua / khí linh.
+    onLoss(_data, d) {
+      const run = itemWorldOf(d)
+      log(d, { type: 'itemWorldFailed' })
+      d.inventory = addEquipment(d.inventory, run.instance)
+      d.trial = null
+    }
   }
 }

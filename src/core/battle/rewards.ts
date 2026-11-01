@@ -8,6 +8,7 @@ import {
   learnsetSkillIds,
   rollEquipment,
   rollSkillBooks,
+  rollWildSpirits,
   type BookKey
 } from '../inventory'
 import { getMaxHp, percentOfMaxHp } from '../monster'
@@ -44,7 +45,10 @@ export function gainEquipment(data: GameData, d: Draft, instance: EquipmentInsta
   })
 }
 
-/** Tạo món mới (id từ nextItemId) rồi cho vào túi. */
+/**
+ * Tạo món rơi mới (id từ nextItemId; có thể mang sẵn dã linh, docs/rules/artifact-spirits.md) rồi
+ * cho vào túi.
+ */
 export function gainNewEquipment(
   data: GameData,
   d: Draft,
@@ -53,6 +57,7 @@ export function gainNewEquipment(
   let instance: EquipmentInstance
   const id = equipmentInstanceId(d.nextItemId)
   ;[instance, d.rng] = rollEquipment(data, d.rng, { itemId, rarity, id })
+  ;[instance, d.rng] = rollWildSpirits(data, d.rng, instance)
   d.nextItemId++
   gainEquipment(data, d, instance)
 }

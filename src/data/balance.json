@@ -2527,6 +2527,18 @@
           "weight": 0.5,
           "min": 1,
           "max": 1
+        },
+        {
+          "itemId": "soulGuidingOrb",
+          "weight": 3,
+          "min": 1,
+          "max": 2
+        },
+        {
+          "itemId": "realmBreakTalisman",
+          "weight": 2,
+          "min": 1,
+          "max": 2
         }
       ],
       "equipment": {
@@ -3448,5 +3460,153 @@
         "eggChance": 10
       }
     ]
+  },
+  "artifactSpirits": {
+    "slots": {
+      "common": 1,
+      "uncommon": 2,
+      "rare": 3,
+      "epic": 4,
+      "legendary": 5,
+      "unique": 6
+    },
+    "soulRelicSlots": 6,
+    "levelsPerSlot": 100,
+    "wildPotencyPercent": 50,
+    "valueRanges": {
+      "common": {
+        "min": 1,
+        "max": 3
+      },
+      "uncommon": {
+        "min": 2,
+        "max": 5
+      },
+      "rare": {
+        "min": 3,
+        "max": 8
+      },
+      "epic": {
+        "min": 5,
+        "max": 12
+      },
+      "legendary": {
+        "min": 8,
+        "max": 18
+      },
+      "unique": {
+        "min": 10,
+        "max": 25
+      }
+    },
+    "dropSpiritWeights": [60, 30, 10],
+    "gradeThresholds": [10, 25, 60, 150],
+    "gradeStep": 150,
+    "awakenGrade": 2,
+    "moveMoneyPerValue": 20,
+    "feed": {
+      "groupId": "demonCore",
+      "coreValue": 2,
+      "soulValue": {
+        "common": 2,
+        "uncommon": 4,
+        "rare": 8,
+        "epic": 15,
+        "legendary": 25,
+        "unique": 40
+      }
+    },
+    "breed": {
+      "days": 7
+    },
+    "summon": {
+      "orbItemId": "soulGuidingOrb",
+      "rarityWeights": {
+        "common": 30,
+        "uncommon": 35,
+        "rare": 25,
+        "epic": 8,
+        "legendary": 2
+      }
+    },
+    "orbBossDrops": [
+      {
+        "itemId": "soulGuidingOrb",
+        "chance": 10
+      }
+    ],
+    "itemWorld": {
+      "rarityFloors": {
+        "common": 1,
+        "uncommon": 3,
+        "rare": 6,
+        "epic": 10,
+        "legendary": 15,
+        "unique": 20
+      },
+      "floorsPerDepth": 1,
+      "floorsPerLevel": 0.5,
+      "spiritChance": 30,
+      "newSpiritDepthPercent": 1,
+      "healPercent": 50,
+      "leaveEvery": 10,
+      "breakItemId": "realmBreakTalisman",
+      "floorRewards": [
+        {
+          "itemId": "expCandyS",
+          "count": 1
+        }
+      ],
+      "bosses": [
+        {
+          "id": "general",
+          "every": 10,
+          "multiplier": 1,
+          "bonusRolls": 1,
+          "rewards": [
+            {
+              "itemId": "expCandyM",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "id": "king",
+          "every": 30,
+          "multiplier": 1.5,
+          "bonusRolls": 2,
+          "rewards": [
+            {
+              "itemId": "expCandyL",
+              "count": 1
+            },
+            {
+              "itemId": "realmBreakTalisman",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "id": "god",
+          "every": 100,
+          "multiplier": 2,
+          "bonusRolls": 3,
+          "rewards": [
+            {
+              "itemId": "rareCandy",
+              "count": 2
+            },
+            {
+              "itemId": "soulGuidingOrb",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "bonus": {
+        "affixChance": 50,
+        "spiritValue": 5
+      }
+    }
   }
 }

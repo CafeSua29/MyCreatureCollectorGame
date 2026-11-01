@@ -41,6 +41,53 @@ function checkSoulImprint(data: GameData, soul: Record<string, unknown>, path: s
   return issues
 }
 
+/** Số loại tối đa của một khí linh (khí linh kép từ phối linh). */
+const MAX_SPIRIT_TYPES = 2
+
+/**
+ * Một khí linh (docs/rules/artifact-spirits.md): { typeIds (1–2 loại tồn tại, không trùng), value
+ * nguyên ≥ 1, subdued }; `subduedOnly`: chỉ chứa khí linh đã thu phục (kho, Linh trì).
+ */
+export function validateArtifactSpirit(
+  data: GameData,
+  value: unknown,
+  { path, subduedOnly }: { path: string; subduedOnly: boolean }
+): string[] {
+  const spirit = asObject(value)
+  if (!spirit) return [`${path}: không phải khí linh hợp lệ`]
+  const issues: string[] = []
+  const typeIds = spirit.typeIds
+  if (!Array.isArray(typeIds) || typeIds.length === 0 || typeIds.length > MAX_SPIRIT_TYPES) {
+    issues.push(`${path}.typeIds phải có 1–${MAX_SPIRIT_TYPES} loại khí linh`)
+  } else {
+    for (const typeId of typeIds) {
+      if (typeof typeId !== 'string' || !Object.hasOwn(data.artifactSpirits, typeId)) {
+        issues.push(`${path}.typeIds: loại khí linh không tồn tại "${String(typeId)}"`)
+      }
+    }
+    if (new Set(typeIds).size !== typeIds.length) issues.push(`${path}.typeIds bị trùng loại`)
+  }
+  issues.push(...checkInteger(spirit.value, `${path}.value`, 1))
+  if (typeof spirit.subdued !== 'boolean') issues.push(`${path}.subdued phải là boolean`)
+  else if (subduedOnly && !spirit.subdued) issues.push(`${path}: chỉ chứa khí linh đã thu phục`)
+  for (const key of Object.keys(spirit)) {
+    if (!['typeIds', 'value', 'subdued'].includes(key)) issues.push(`${path}: trường lạ "${key}"`)
+  }
+  return issues
+}
+
+/** Danh sách khí linh ở `path` (kho khí linh, trên món). */
+export function validateArtifactSpirits(
+  data: GameData,
+  value: unknown,
+  { path, subduedOnly }: { path: string; subduedOnly: boolean }
+): string[] {
+  if (!Array.isArray(value)) return [`${path} phải là danh sách khí linh`]
+  return value.flatMap((spirit: unknown, i) =>
+    validateArtifactSpirit(data, spirit, { path: `${path}[${i}]`, subduedOnly })
+  )
+}
+
 /** Kiểm tra một món trang bị ở vị trí `path`. Trả về danh sách lỗi. */
 export function validateEquipmentInstance(data: GameData, value: unknown, path: string): string[] {
   const instance = asObject(value)
@@ -72,6 +119,16 @@ export function validateEquipmentInstance(data: GameData, value: unknown, path: 
   // Ép kiểu chỉ để tra dòng hồn theo traitId (các trường đã kiểm tra ở checkSoulImprint).
   const imprint = soul ? (soul as unknown as SoulImprint) : undefined
   issues.push(...checkInteger(instance.level, `${path}.level`, 1))
+  // Khí linh và tầng Khí giới bí cảnh đã qua (trường tùy chọn, docs/rules/artifact-spirits.md).
+  if (instance.spirits !== undefined) {
+    issues.push(
+      ...validateArtifactSpirits(data, instance.spirits, {
+        path: `${path}.spirits`,
+        subduedOnly: false
+      })
+    )
+  }
+  if (instance.depth !== undefined) issues.push(...checkInteger(instance.depth, `${path}.depth`, 0))
   if (!Array.isArray(instance.rolls)) {
     issues.push(`${path}.rolls phải là danh sách`)
     return issues

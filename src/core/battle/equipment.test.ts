@@ -187,7 +187,14 @@ describe('rơi trang bị khi thắng', () => {
     })
     const state = {
       ...makeBattleState([fighter('a')], [boss], { isBoss: true }),
-      inventory: { stacks: { masterBall: 1 }, crystals: [], books: [], equipment: [], souls: [] },
+      inventory: {
+        stacks: { masterBall: 1 },
+        crystals: [],
+        books: [],
+        equipment: [],
+        souls: [],
+        spirits: []
+      },
       nextItemId: 4
     }
     const caught = run(rich, state, [

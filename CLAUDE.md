@@ -88,6 +88,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [evolution-skills.md](docs/rules/evolution-skills.md): tiến hóa (kể cả có điều kiện), skill chờ học, học lại skill
 - [world-items.md](docs/rules/world-items.md): thị trấn, tầng và biome, giới tính, item và category, cửa hàng, giá thị trường
 - [equipment.md](docs/rules/equipment.md): trang bị và đồ cầm
+- [artifact-spirits.md](docs/rules/artifact-spirits.md): khí linh trong trang bị (ô theo bậc, dã linh / thu phục, phẩm cấp, Khí Linh Các) và Khí giới bí cảnh (lên cấp món từng tầng, như Item World)
 - [equipment-forge.md](docs/rules/equipment-forge.md): Thợ rèn: cường hóa, tẩy luyện, phân giải, đúc trang bị, phụ linh theo hệ
 - [frenzy.md](docs/rules/frenzy.md): cuồng bạo (quái hoang, quái có chủ race khó kiểm soát; mất điều khiển)
 - [recruit.md](docs/rules/recruit.md): thu phục (xin theo sau trận, boss quy phục, Thị Uy, mồi dụ)

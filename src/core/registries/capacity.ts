@@ -18,9 +18,12 @@ export function capacityOf(data: GameData, state: CapacityHolder, kind: Capacity
   return rule.base + rule.perExpansion * state.capacity[kind] + rule.realmBonus * milestones
 }
 
-/** Số chỗ túi trang bị đang dùng: món trong túi + hồn phách (món đang lắp không tính). */
-export const bagUsed = (inventory: Pick<Inventory, 'equipment' | 'souls'>): number =>
-  inventory.equipment.length + inventory.souls.length
+/**
+ * Số chỗ túi trang bị đang dùng: món trong túi + hồn phách + khí linh trong kho khí linh
+ * (docs/rules/artifact-spirits.md; món đang lắp không tính).
+ */
+export const bagUsed = (inventory: Pick<Inventory, 'equipment' | 'souls' | 'spirits'>): number =>
+  inventory.equipment.length + inventory.souls.length + inventory.spirits.length
 
 /** Số chỗ túi còn trống (âm = đang vượt sức chứa, chỉ xảy ra khi đồ tự về túi lúc quái chết hẳn). */
 export const bagFreeSlots = (
@@ -143,7 +146,7 @@ export type CapacityView = Record<
   { used: number; capacity: number; nextCost: Decimal }
 >
 
-/** Sức chứa hiện tại của kho quái (không tính đội) và túi trang bị (món + hồn phách). */
+/** Sức chứa hiện tại của kho quái (không tính đội) và túi trang bị (món + hồn phách + khí linh). */
 export function capacityView(
   data: GameData,
   state: CapacityHolder & Pick<GameState, 'storage' | 'inventory'>
