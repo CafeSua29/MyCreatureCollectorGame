@@ -5,7 +5,13 @@ import { newEventState } from '../events'
 import { newTamerState } from '../tamer'
 import { defaultGameOptions, newLabState, restockLab, rollExpeditionBoard } from '../progression'
 import { refillQuestBoard } from '../quests'
-import { newSafariState, newZoneState, rollFloorBiome, rollMonster } from '../world'
+import {
+  newInstabilityState,
+  newSafariState,
+  newZoneState,
+  rollFloorBiome,
+  rollMonster
+} from '../world'
 import { canHaveGmaxFactor, createInventory } from '../inventory'
 import { rollShopStock } from '../shop'
 import {
@@ -165,6 +171,8 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     trainers: newTrainerState(),
     trial: null,
     tower: { highest: 0 },
+    instability: newInstabilityState(),
+    favor: {},
     events: newEventState(),
     recruit: { bait: null },
     safari: newSafariState(),
@@ -172,6 +180,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     capacity: newCapacityState(),
     zones: newZoneState(),
     gathering: newGatheringState(),
+    worldBoss: { current: null, rewards: [] },
     dex: newDexState(),
     garden: { plots: Array.from({ length: data.config.alchemy.initialPlots }, () => null) },
     quests: { board: [], active: [], nextQuestId: 1 },

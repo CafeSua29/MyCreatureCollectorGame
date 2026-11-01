@@ -6,6 +6,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { totalmem } from 'node:os'
 import { resolve } from 'node:path'
 import { getHeapStatistics } from 'node:v8'
+import type { GameData } from '@core'
 import { parseCliArgs, planWorkers, type MachineResources } from './cli'
 import {
   collectResults,
@@ -43,6 +44,7 @@ import {
   safariTable,
   zonesTable,
   gatheringTable,
+  worldBossTable,
   type Table
 } from './report'
 import { lifespanTable } from './lifespan'
@@ -84,6 +86,7 @@ export async function main(args: readonly string[], cpuThreads: number): Promise
 
   mkdirSync(OUTPUT_DIR, { recursive: true })
   for (const [title, file, part, table] of outputTables(
+    data,
     collectResults(timed.map((t) => t.result))
   )) {
     // Phần không chạy (--parts, --teams) giữ nguyên file CSV của lần chạy trước.
@@ -98,7 +101,10 @@ export async function main(args: readonly string[], cpuThreads: number): Promise
 }
 
 /** Mọi bảng kết quả: tiêu đề, file CSV, phần tạo ra nó. */
-function outputTables(results: CollectedResults): [string, string, SimPart, Table][] {
+function outputTables(
+  data: GameData,
+  results: CollectedResults
+): [string, string, SimPart, Table][] {
   const {
     floors,
     biomes,
@@ -109,7 +115,8 @@ function outputTables(results: CollectedResults): [string, string, SimPart, Tabl
     tribulation,
     safari,
     zones,
-    gathering
+    gathering,
+    worldBoss
   } = results
   const lifespan = progression.map((result) => ({
     teamId: runLabel(result),
@@ -157,6 +164,15 @@ function outputTables(results: CollectedResults): [string, string, SimPart, Tabl
     ['Khu bảo tồn', 'safari.csv', 'safari', safariTable(safari)],
     ['Hiểm địa', 'zones.csv', 'zones', zonesTable(zones)],
     ['Câu cá và khai thác', 'gathering.csv', 'gathering', gatheringTable(gathering)],
+    [
+      'Boss thế giới',
+      'world-boss.csv',
+      'worldBoss',
+      worldBossTable(
+        worldBoss,
+        data.config.worldBoss.tiers.map((tier) => tier.id)
+      )
+    ],
     ['Breed / fuse nhiều đời', 'lineage.csv', 'lineage', lineageTable(lineage)]
   ]
 }

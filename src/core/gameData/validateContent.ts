@@ -276,6 +276,9 @@ export function checkBiomes(data: GameData, issues: string[]): void {
     if (biome.elementIds !== undefined) {
       checkElementIds(data, biome.elementIds, `${where}: elementIds`, issues)
     }
+    if (biome.deityId !== undefined && !Object.hasOwn(data.deities, biome.deityId)) {
+      issues.push(`${where}: thần không tồn tại "${String(biome.deityId)}"`)
+    }
   }
 }
 

@@ -272,6 +272,7 @@ const BIOME_FIELDS = fieldList<Biome>({
   powerSpot: true,
   trainerClassIds: true,
   elementIds: true,
+  deityId: true,
   gathering: true
 })
 

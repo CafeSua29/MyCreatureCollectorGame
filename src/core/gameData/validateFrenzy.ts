@@ -1,7 +1,7 @@
 // Kiểm tra dữ liệu cuồng bạo (docs/rules/frenzy.md): config.frenzy, trường `frenzyProne` của race.
 
 import { FRENZY_ROLES, type GameData, type FrenzyRoleNumbers } from '../model'
-import { asObject, checkNumber } from '../shared'
+import { asObject, checkInteger, checkNumber } from '../shared'
 import { checkKnownFields, fieldList } from './checks'
 
 const WHERE = 'config.frenzy'
@@ -9,10 +9,14 @@ const WHERE = 'config.frenzy'
 const ROLE_FIELDS = fieldList<FrenzyRoleNumbers>({
   hpThresholdPercent: true,
   statPercent: true,
-  extraActionChance: true
+  extraActionChance: true,
+  fromTurn: true
 })
 
-/** Số của một vai trò: ngưỡng và tỉ lệ trong 0–100, % chỉ số là số bất kỳ. */
+/**
+ * Số của một vai trò: ngưỡng và tỉ lệ trong 0–100, % chỉ số là số bất kỳ, lượt kích hoạt (nếu có) nguyên
+ * ≥ 2 (kích hoạt cuối lượt trước đó).
+ */
 function checkRole(value: unknown, where: string, issues: string[]): void {
   const role = asObject(value)
   if (!role) {
@@ -23,6 +27,9 @@ function checkRole(value: unknown, where: string, issues: string[]): void {
   issues.push(...checkNumber(role.hpThresholdPercent, `${where}.hpThresholdPercent`, 0, 100))
   issues.push(...checkNumber(role.statPercent, `${where}.statPercent`))
   issues.push(...checkNumber(role.extraActionChance, `${where}.extraActionChance`, 0, 100))
+  if (role.fromTurn !== undefined) {
+    issues.push(...checkInteger(role.fromTurn, `${where}.fromTurn`, 2))
+  }
 }
 
 /** Kiểm tra mọi dữ liệu cuồng bạo. */

@@ -29,6 +29,7 @@ export function frenzyRole(
     return monster.contractRealm === null ? 'unbound' : null
   }
   if (battle.tribulation) return null
+  if (battle.special?.kind === 'worldBoss') return 'worldBoss'
   return battle.isBoss ? 'boss' : 'wild'
 }
 

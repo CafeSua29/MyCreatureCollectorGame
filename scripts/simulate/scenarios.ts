@@ -100,6 +100,11 @@ export interface Variant {
    * cực tính đầu pool; null = như tung lúc dựng đội (không cực).
    */
   assumedPolarity: Pole | null
+  /**
+   * Mức độ bất ổn tầng khi quét tầng (A/B độ khó / thưởng, docs/rules/instability.md): mọi tầng
+   * dùng mức này với thuộc tính tung theo seed của trận, bỏ qua mức tối đa theo tầng; 0 = tắt.
+   */
+  instabilityLevel: number
 }
 
 /** Trường skill biến thể được bỏ (skill-synergy-hold.md, move-styles.md, hit-locations.md). */
@@ -248,6 +253,13 @@ export interface GatheringSpec {
   runs: GatheringRun[]
 }
 
+/** Boss thế giới (worldBoss.ts): mỗi đội × tầng khiêu chiến `challenges` lần. */
+export interface WorldBossSpec {
+  teamIds: string[]
+  floors: number[]
+  challenges: number
+}
+
 export interface Scenarios {
   seed: number
   floors: { from: number; to: number }
@@ -276,6 +288,8 @@ export interface Scenarios {
   zones: ZoneSpec | null
   /** null = không đo câu cá / khai thác. */
   gathering: GatheringSpec | null
+  /** null = không đo boss thế giới. */
+  worldBoss: WorldBossSpec | null
   breeding: BreedingSpec
   fusion: FusionSpec
 }
@@ -298,6 +312,7 @@ const SCENARIO_FIELDS = fieldList<Scenarios>({
   safari: true,
   zones: true,
   gathering: true,
+  worldBoss: true,
   breeding: true,
   fusion: true
 })
@@ -437,6 +452,7 @@ export function parseScenarios(data: GameData, value: unknown): Scenarios {
     safari: root.safari === undefined ? null : readSafari(r, root.safari),
     zones: root.zones === undefined ? null : readZones(r, data, root.zones, teams),
     gathering: root.gathering === undefined ? null : readGathering(r, data, root.gathering, teams),
+    worldBoss: root.worldBoss === undefined ? null : readWorldBoss(r, root.worldBoss, teams),
     breeding: readBreeding(r, root.breeding),
     fusion: readFusion(r, root.fusion)
   }
@@ -496,7 +512,8 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     'uncontracted',
     'tamerRealm',
     'assumedPurity',
-    'assumedPolarity'
+    'assumedPolarity',
+    'instabilityLevel'
   ])
   return {
     id: r.string(obj.id, `${path}.id`),
@@ -523,7 +540,11 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     assumedPolarity:
       obj.assumedPolarity === undefined
         ? null
-        : readPole(r, obj.assumedPolarity, `${path}.assumedPolarity`)
+        : readPole(r, obj.assumedPolarity, `${path}.assumedPolarity`),
+    instabilityLevel:
+      obj.instabilityLevel === undefined
+        ? 0
+        : r.integer(obj.instabilityLevel, `${path}.instabilityLevel`, 0)
   }
 }
 
@@ -819,6 +840,24 @@ function readGathering(
     r.issues.push(`${path}.runs: id cách chơi bị trùng`)
   }
   return { teamId, floors, casts: r.integer(obj.casts, `${path}.casts`, 1), runs }
+}
+
+function readWorldBoss(r: Reader, value: unknown, teams: readonly TeamSpec[]): WorldBossSpec {
+  const path = 'worldBoss'
+  const obj = r.object(value, path, ['teamIds', 'floors', 'challenges'])
+  const teamIds = r.array(obj.teamIds, `${path}.teamIds`).map((id, i) => {
+    const teamId = r.string(id, `${path}.teamIds[${i}]`)
+    if (teamId && !teams.some((team) => team.id === teamId)) {
+      r.issues.push(`${path}.teamIds[${i}]: không có đội "${teamId}"`)
+    }
+    return teamId
+  })
+  if (teamIds.length === 0) r.issues.push(`${path}.teamIds phải có ít nhất một đội`)
+  const floors = r
+    .array(obj.floors, `${path}.floors`)
+    .map((floor, i) => r.integer(floor, `${path}.floors[${i}]`, 1))
+  if (floors.length === 0) r.issues.push(`${path}.floors phải có ít nhất một tầng`)
+  return { teamIds, floors, challenges: r.integer(obj.challenges, `${path}.challenges`, 1) }
 }
 
 function readZoneSupplies(r: Reader, data: GameData, value: unknown): ZoneSupplies {

@@ -4,11 +4,11 @@
 
 Phó bản có **luật riêng** để thử đội theo cách khác các tầng thường. Số là số tạm ở `balance.json` khóa `trials` (bảng số ở `balance-systems.md`).
 
-Code: model `model/trials.ts`; registry luật `registries/trialRules.ts` (`TRIAL_RULES`, tra cứu `hasTrialRule` / `trialFixedField` / `trialEnemyMultiplier` / `trialFighters`, tung luật `rollTrialRules`); sinh bí cảnh / tầng tháp `world/trials.ts` (`rollSecretRealm`, `realmSite`, `towerFloorPlan`, `towerPowerFloor`); action `battle/trials.ts`; việc sau trận `battle/trialOutcome.ts` (`TRIAL_KIND_RULES`); kiểm tra `gameData/validateTrials.ts`, `game/validateTrialState.ts`; dữ liệu `src/data/trialRules.json` (tên luật ở i18n `trialRules`).
+Code: model `model/trials.ts`; registry luật `registries/trialRules.ts` (`TRIAL_RULES`, dùng chung với độ bất ổn tầng `instability.md`; tra cứu `hasTrialRule` / `trialFixedField` / `trialEnemyMultiplier` / `trialFighters`, mọi luật của trận `battleRules`, tung luật `rollTrialRules`); sinh bí cảnh / tầng tháp `world/trials.ts` (`rollSecretRealm`, `realmSite`, `towerFloorPlan`, `towerPowerFloor`); action `battle/trials.ts`; việc sau trận `battle/trialOutcome.ts` (`TRIAL_KIND_RULES`); kiểm tra `gameData/validateTrials.ts`, `game/validateTrialState.ts`; dữ liệu `src/data/trialRules.json` (tên luật ở i18n `trialRules`).
 
 ## Luật bí cảnh (`trialRules.json`)
 
-- `{ id, type, params, weight }`, `type` theo registry `TRIAL_RULES` (thêm loại = thêm một handler; params lạ báo lỗi):
+- `{ id, type, params, weight, instability? }`, `type` theo registry `TRIAL_RULES` (thêm loại = thêm một handler; params lạ báo lỗi). `instability` = khối thuộc tính bất ổn tầng (`instability.md`); cờ phạm vi của handler (`inRealm`, `inTower`, `inInstability`, `stackable`) ở cùng file đó:
 
 | Loại              | Params                               | Tác dụng                                                                                                                                                                                                                                                   |
 | ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20,8 +20,12 @@ Code: model `model/trials.ts`; registry luật `registries/trialRules.ts` (`TRIA
 | `noTamerSkills`   |                                      | Không phe nào có ngự thú sư trong trận (`battle.tamers` cả hai null; không EXP ngự thú sư)                                                                                                                                                                 |
 | `enemyMultiplier` | `value` ≥ 1                          | Chỉ số quái địch × value (nhân vào `bossMultiplier` lúc mở trận; nhiều luật thì nhân dồn)                                                                                                                                                                  |
 | `noHealing`       |                                      | Không hồi máu sau mỗi trận thắng, không dùng vật phẩm ngoài trận giữa các trận                                                                                                                                                                             |
+| `sideHooks`       | `side`, `hooks`                      | Hook trait chỉ trong trận cho mọi quái của một phe (như cộng hưởng đội; `instability.md`)                                                                                                                                                                  |
+| `extraEnemyTraits` | `count` ≥ 1                         | Quái hoang / boss thêm trait random (không có ở tháp; `instability.md`)                                                                                                                                                                                    |
+| `fusedEnemies`    | `percent`                            | Quái hoang thường có thể là quái fuse (không có ở tháp; `instability.md`)                                                                                                                                                                                  |
+| `foreignSpecies`  | `percent`                            | Chỉ độ bất ổn (`weight` phải 0): bảng gặp của map khác (`instability.md`)                                                                                                                                                                                  |
 
-- Tung luật (`rollTrialRules`): số luật đều trong khoảng, mỗi luật theo `weight` (0 = không tung), **không trùng loại**; luật cần hệ mà không có hệ thì bỏ. Luật đã tung lưu `{ ruleId, elementId }` (`elementId` chỉ luật một hệ). Log `trialRules { ruleIds }` đầu mỗi trận.
+- Tung luật (`rollTrialRules`): số luật đều trong khoảng, mỗi luật theo `weight` (0 = không tung; loại `inRealm` false không tung), **không trùng loại**; luật cần hệ mà không có hệ thì bỏ. Luật đã tung lưu `{ ruleId, elementId }` (`elementId` chỉ luật một hệ). Log `trialRules { ruleIds }` đầu mỗi trận.
 - Chưa có: `levelCap` của roadmap cũ (quái vượt level bị tính như level giới hạn): `computeStats` / `getMaxHp` chưa nhận level ghi đè theo trận, max HP sẽ lệch với `damageTaken`; làm khi cần thì thêm level theo bối cảnh trận cho mọi chỗ tính chỉ số trong trận.
 
 ## Bí cảnh

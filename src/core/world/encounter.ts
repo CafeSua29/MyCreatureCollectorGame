@@ -126,16 +126,43 @@ function rollTraits(data: GameData, rng: RngState): [TraitInstance[], RngState] 
 
   const chosen: TraitDef[] = []
   for (let i = 0; i < count; i++) {
-    const isAllowed = (trait: TraitDef): boolean =>
-      !chosen.includes(trait) &&
-      (trait.exclusiveGroup === undefined ||
-        !chosen.some((other) => other.exclusiveGroup === trait.exclusiveGroup))
     let trait: TraitDef | null
-    ;[trait, rng] = rollTraitForSlot(data, rng, isAllowed)
+    ;[trait, rng] = rollTraitForSlot(data, rng, allowedBeside(chosen))
     if (trait === null) break
     chosen.push(trait)
   }
   return [chosen.map((trait) => ({ id: trait.id, level: 1 })), rng]
+}
+
+/** Trait chưa có và không cùng nhóm loại trừ với trait nào đã có. */
+const allowedBeside =
+  (owned: readonly TraitDef[]) =>
+  (trait: TraitDef): boolean =>
+    !owned.includes(trait) &&
+    (trait.exclusiveGroup === undefined ||
+      !owned.some((other) => other.exclusiveGroup === trait.exclusiveGroup))
+
+/**
+ * Thêm `count` trait random kiểu quái hoang (luật extraEnemyTraits, docs/rules/instability.md): mỗi
+ * trait thêm một ô trait (không vượt trần ô; tới trần hoặc hết trait hợp lệ thì dừng).
+ */
+export function addRandomTraits(
+  data: GameData,
+  rng: RngState,
+  { monster, count, slotCap }: { monster: Monster; count: number; slotCap: number }
+): [Monster, RngState] {
+  const owned = monster.traits.flatMap((trait) => data.traits[trait.id] ?? [])
+  const added: TraitInstance[] = []
+  let traitSlots = monster.traitSlots
+  for (let i = 0; i < count && monster.traits.length + added.length < slotCap; i++) {
+    let trait: TraitDef | null
+    ;[trait, rng] = rollTraitForSlot(data, rng, allowedBeside(owned))
+    if (trait === null) break
+    owned.push(trait)
+    added.push({ id: trait.id, level: 1 })
+    traitSlots = Math.max(traitSlots, monster.traits.length + added.length)
+  }
+  return [{ ...monster, traits: [...monster.traits, ...added], traitSlots }, rng]
 }
 
 /** Cách random một quái: loài theo trọng số, level trong khoảng, hệ số gen, tỉ lệ shiny. */

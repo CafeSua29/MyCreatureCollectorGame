@@ -25,6 +25,7 @@ import {
   bloodlineGroupsOf,
   charmEffect,
   changeAffinity,
+  instabilityRewardPercent,
   mealMultiplier,
   mealPercent,
   sideMoneyMultiplier,
@@ -93,6 +94,7 @@ import {
 import { restoreItemLedger } from './itemLedger'
 import { brokenPartDropMultiplier, knockoutCoreMultiplier } from './hitLocations'
 import { buryFallen, refillAfterBattleDeaths } from './permadeath'
+import { battleBlessingMultiplier, deityTokenDrops, grantBattleFavor } from './deities'
 
 /** Kết thúc trận; quái đã bắt vào đội (còn chỗ) hoặc vào kho. */
 export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
@@ -104,11 +106,15 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   cureOnBattleEnd(data, d)
   d.battle.phase = 'ended'
   d.battle.outcome = outcome
+  // Việc hết trận theo loại trận đặc biệt (boss thế giới ghi kỷ lục, docs/rules/world-boss.md).
+  if (d.battle.special) specialRule(d.battle.special).onFinish(data, d)
   // Trận trên tầng (thắng, thua, chạy) đếm một trận cho thời hạn modifier (docs/rules/events.md)
   // và cho mồi dụ (docs/rules/recruit.md); mọi loại trận đếm một trận cho món ăn linh thực
   // (docs/rules/cooking.md).
   tickModifiers(d)
   tickRecruitBait(d)
+  // Ân sủng với thần cai quản map của trận (docs/rules/deities.md): thắng, hạ boss, bắt quái.
+  grantBattleFavor(data, d, outcome)
   d.cooking = { ...d.cooking, meal: tickMeal(d.cooking.meal) }
   for (const monsterId of Object.keys(d.battle.volatiles)) restoreIdentity(d, monsterId)
   d.battle.stages = {}
@@ -150,6 +156,9 @@ export function applyWin(data: GameData, d: Draft): void {
   // Hiệu ứng theo phe người chơi (kiểu Happy Hour), trait của quái đã tham chiến (kể cả đã gục,
   // như Amulet Coin) rồi kỹ năng đồng hành (quái đầu đội còn sống lúc thắng) nhân tiền thưởng.
   const fought = d.party.filter((monster) => participants.includes(monster.id))
+  // Độ bất ổn tầng (docs/rules/instability.md): cùng một % cộng cho tiền, EXP, tỉ lệ đồ rơi.
+  // Chúc phúc của thần cai quản map (docs/rules/deities.md) nhân tiền, EXP, tỉ lệ đồ rơi theo kênh.
+  const instabilityMultiplier = 1 + instabilityRewardPercent(data, d.battle.instability) / 100
   const money = enemies
     .reduce((sum, enemy) => sum.plus(moneyReward(data, enemy)), BIG_ZERO)
     .times(sideMoneyMultiplier(data, d.battle.field, 'player'))
@@ -159,6 +168,8 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(trainerMoneyMultiplier(data, d.battle))
     .times(floorModifierMultiplier(data, d, 'moneyPercent'))
     .times(d.battle.special ? specialRule(d.battle.special).moneyMultiplier(d.battle.special) : 1)
+    .times(instabilityMultiplier)
+    .times(battleBlessingMultiplier(data, d, 'moneyPercent'))
     .floor()
   const exp = battleExp(data, d)
   d.money = d.money.plus(money)
@@ -195,6 +206,8 @@ export function applyWin(data: GameData, d: Draft): void {
   const partnerExp = exp
     .times(partnerMultiplier(data, d.party, 'expPercent'))
     .times(mealMultiplier(data, d.cooking.meal, 'expPercent'))
+    .times(instabilityMultiplier)
+    .times(battleBlessingMultiplier(data, d, 'expPercent'))
     .floor()
   const defeated = [...enemies, ...d.battle.captured]
   d.party = d.party.map((monster) => {
@@ -264,7 +277,9 @@ export function applyWin(data: GameData, d: Draft): void {
     traitDropMultiplier(data, d.party) *
     partnerMultiplier(data, d.party, 'dropRatePercent') *
     mealMultiplier(data, d.cooking.meal, 'dropRatePercent') *
-    floorModifierMultiplier(data, d, 'dropRatePercent')
+    floorModifierMultiplier(data, d, 'dropRatePercent') *
+    instabilityMultiplier *
+    battleBlessingMultiplier(data, d, 'dropRatePercent')
   // Trận NPC: đồ thưởng chung của trận thay cho đồ rơi của từng quái (docs/rules/trainers.md).
   if (d.battle.trainer) dropTrainerRewards(data, d, dropMultiplier)
   for (const enemy of d.battle.trainer ? [] : enemies) {
@@ -521,7 +536,8 @@ const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(talentBossDrops),
   onlyInBossBattle(bloodlineBossDrops),
   onlyInBossBattle(polarityBossDrops),
-  onlyInBossBattle(rebirthBossDrops)
+  onlyInBossBattle(rebirthBossDrops),
+  deityTokenDrops
 ]
 
 /** EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ). */

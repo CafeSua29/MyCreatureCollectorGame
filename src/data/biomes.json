@@ -1100,7 +1100,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "volcano",
@@ -2184,7 +2185,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "reikland",
@@ -3295,7 +3297,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "drakwaldForest",
@@ -4417,7 +4420,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy", "dark"]
+    "elementIds": ["grass", "bug", "normal", "fairy", "dark"],
+    "deityId": "mocDuc"
   },
   {
     "id": "middenland",
@@ -5535,7 +5539,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "ostland",
@@ -6653,7 +6658,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy", "ice"]
+    "elementIds": ["grass", "bug", "normal", "fairy", "ice"],
+    "deityId": "mocDuc"
   },
   {
     "id": "stirland",
@@ -7772,7 +7778,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug", "ghost"]
+    "elementIds": ["normal", "grass", "flying", "bug", "ghost"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "averland",
@@ -8887,7 +8894,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "wissenland",
@@ -9992,7 +10000,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "hochland",
@@ -11110,7 +11119,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "talabecland",
@@ -12224,7 +12234,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "nordland",
@@ -13341,7 +13352,8 @@
     "elementIds": ["water", "flying", "normal"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "sylvania",
@@ -14456,7 +14468,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ghost", "dark", "poison"]
+    "elementIds": ["ghost", "dark", "poison"],
+    "deityId": "diemVuong"
   },
   {
     "id": "bretonnia",
@@ -15575,7 +15588,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug", "fairy"]
+    "elementIds": ["normal", "grass", "flying", "bug", "fairy"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "grailChapelsOfBretonnia",
@@ -17925,7 +17939,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["light", "fairy", "psychic", "flying"]
+    "elementIds": ["light", "fairy", "psychic", "flying"],
+    "deityId": "thaiDuong"
   },
   {
     "id": "athelLoren",
@@ -19043,7 +19058,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic"]
+    "elementIds": ["grass", "fairy", "psychic"],
+    "deityId": "hoaThan"
   },
   {
     "id": "laurelornForest",
@@ -20161,7 +20177,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic"]
+    "elementIds": ["grass", "fairy", "psychic"],
+    "deityId": "hoaThan"
   },
   {
     "id": "kislev",
@@ -21271,7 +21288,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "iceCourt",
@@ -22389,7 +22407,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "trollCountry",
@@ -23507,7 +23526,8 @@
     "elementIds": ["ice", "water", "ghost", "poison"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "norsca",
@@ -24633,7 +24653,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "gianthomeMountains",
@@ -25743,7 +25764,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "seaOfClaws",
@@ -26861,7 +26883,8 @@
     "elementIds": ["water", "flying", "electric"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "loiCong"
   },
   {
     "id": "marienburg",
@@ -27979,7 +28002,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "skavenblight",
@@ -29106,7 +29130,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "greyMountains",
@@ -30211,7 +30236,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "worldsEdgeMountains",
@@ -31328,7 +31354,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "karakEightPeaks",
@@ -32437,7 +32464,8 @@
     "elementIds": ["rock", "ground", "dark", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "silverRoad",
@@ -33546,7 +33574,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "blackFirePass",
@@ -34655,7 +34684,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "badlands",
@@ -35812,7 +35842,8 @@
     "elementIds": ["normal", "ground", "fire", "fighting", "dark"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "chienThan"
   },
   {
     "id": "mountainsOfMourn",
@@ -36922,7 +36953,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "darkLands",
@@ -38043,7 +38075,8 @@
     "elementIds": ["fire", "rock", "ground", "dark"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "plainOfZharr",
@@ -39176,7 +39209,8 @@
     "elementIds": ["steel", "electric", "poison", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "kimDuc"
   },
   {
     "id": "borderPrinces",
@@ -40297,7 +40331,8 @@
     "elementIds": ["normal", "ground", "fire", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "chienThan"
   },
   {
     "id": "tilea",
@@ -41408,7 +41443,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "estalia",
@@ -42525,7 +42561,8 @@
     "elementIds": ["normal", "ground", "fire", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "chienThan"
   },
   {
     "id": "araby",
@@ -43606,7 +43643,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "landOfTheDead",
@@ -44719,7 +44757,8 @@
     "elementIds": ["ground", "rock", "fire", "ghost"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "greatDesert",
@@ -45804,7 +45843,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "blackPyramidOfNagash",
@@ -46925,7 +46965,8 @@
     "elementIds": ["ground", "ghost", "steel", "rock", "dark"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "diemVuong"
   },
   {
     "id": "lustria",
@@ -48032,7 +48073,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon"]
+    "elementIds": ["grass", "bug", "poison", "dragon"],
+    "deityId": "tamThan"
   },
   {
     "id": "vampireCoast",
@@ -49153,7 +49195,8 @@
     "elementIds": ["water", "flying", "normal", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "galleonsGraveyard",
@@ -50263,7 +50306,8 @@
     "elementIds": ["water", "dark", "dragon", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "longVuong"
   },
   {
     "id": "southlands",
@@ -51370,7 +51414,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon"]
+    "elementIds": ["grass", "bug", "poison", "dragon"],
+    "deityId": "tamThan"
   },
   {
     "id": "naggaroth",
@@ -52492,7 +52537,8 @@
     "elementIds": ["ice", "water", "ghost", "dark"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "blackspineMountains",
@@ -53645,7 +53691,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting", "dark"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "ulthuan",
@@ -55999,7 +56046,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["light", "fairy", "psychic", "flying"]
+    "elementIds": ["light", "fairy", "psychic", "flying"],
+    "deityId": "thaiDuong"
   },
   {
     "id": "caledor",
@@ -57112,7 +57160,8 @@
     "elementIds": ["fire", "rock", "ground", "dragon"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "avelorn",
@@ -59410,7 +59459,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic", "light"]
+    "elementIds": ["grass", "fairy", "psychic", "light"],
+    "deityId": "hoaThan"
   },
   {
     "id": "saphery",
@@ -60527,7 +60577,8 @@
     "elementIds": ["rock", "psychic", "steel", "fairy"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "mongThan"
   },
   {
     "id": "chrace",
@@ -61632,7 +61683,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "eyeOfTheVortex",
@@ -62750,7 +62802,8 @@
         "weight": 30
       }
     ],
-    "elementIds": ["psychic", "ghost", "dragon", "dark"]
+    "elementIds": ["psychic", "ghost", "dragon", "dark"],
+    "deityId": "mongThan"
   },
   {
     "id": "grandCathay",
@@ -63861,7 +63914,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug", "dragon"]
+    "elementIds": ["normal", "grass", "flying", "bug", "dragon"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "theGreatBastion",
@@ -64978,7 +65032,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "jadeSea",
@@ -66095,7 +66150,8 @@
     "elementIds": ["water", "flying", "normal", "dragon"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "ind",
@@ -67202,7 +67258,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon"]
+    "elementIds": ["grass", "bug", "poison", "dragon"],
+    "deityId": "tamThan"
   },
   {
     "id": "chaosWastes",
@@ -68349,7 +68406,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["dark", "psychic", "fire", "poison"]
+    "elementIds": ["dark", "psychic", "fire", "poison"],
+    "deityId": "daDuThan"
   },
   {
     "id": "southernChaosWastes",
@@ -69482,7 +69540,8 @@
     "elementIds": ["dark", "poison", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "realmOfKhorne",
@@ -70595,7 +70654,8 @@
     "elementIds": ["fire", "rock", "ground", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "realmOfNurgle",
@@ -71714,7 +71774,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "realmOfTzeentch",
@@ -72832,7 +72893,8 @@
         "weight": 30
       }
     ],
-    "elementIds": ["psychic", "ghost", "dragon", "dark"]
+    "elementIds": ["psychic", "ghost", "dragon", "dark"],
+    "deityId": "mongThan"
   },
   {
     "id": "realmOfSlaanesh",
@@ -73958,7 +74020,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic", "dark"]
+    "elementIds": ["grass", "fairy", "psychic", "dark"],
+    "deityId": "hoaThan"
   },
   {
     "id": "forbiddenFortress",
@@ -75105,7 +75168,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["dark", "psychic", "fire", "poison"]
+    "elementIds": ["dark", "psychic", "fire", "poison"],
+    "deityId": "daDuThan"
   },
   {
     "id": "viridianForest",
@@ -76219,7 +76283,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "mtMoon",
@@ -77336,7 +77401,8 @@
     "elementIds": ["rock", "ground", "dark", "steel", "fairy"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "rockTunnel",
@@ -78445,7 +78511,8 @@
     "elementIds": ["rock", "ground", "dark", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "pokemonTower",
@@ -79560,7 +79627,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ghost", "dark", "poison"]
+    "elementIds": ["ghost", "dark", "poison"],
+    "deityId": "diemVuong"
   },
   {
     "id": "powerPlant",
@@ -80697,7 +80765,8 @@
     "elementIds": ["steel", "electric", "poison", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "kimDuc"
   },
   {
     "id": "seafoamIslands",
@@ -81815,7 +81884,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "cinnabarVolcano",
@@ -82900,7 +82970,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "victoryRoadKanto",
@@ -84013,7 +84084,8 @@
     "elementIds": ["rock", "ground", "dark", "steel", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "ceruleanCave",
@@ -85130,7 +85202,8 @@
     "elementIds": ["rock", "psychic", "steel", "fairy"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "mongThan"
   },
   {
     "id": "safariZone",
@@ -86245,7 +86318,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "ilexForest",
@@ -87367,7 +87441,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic"]
+    "elementIds": ["grass", "fairy", "psychic"],
+    "deityId": "hoaThan"
   },
   {
     "id": "whirlIslands",
@@ -88485,7 +88560,8 @@
     "elementIds": ["water", "flying", "electric"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "loiCong"
   },
   {
     "id": "icePath",
@@ -89603,7 +89679,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "dragonsDen",
@@ -90713,7 +90790,8 @@
     "elementIds": ["water", "dark", "dragon"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "longVuong"
   },
   {
     "id": "mtSilver",
@@ -91827,7 +91905,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "burnedTower",
@@ -92956,7 +93035,8 @@
     "elementIds": ["ground", "ghost", "steel", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "diemVuong"
   },
   {
     "id": "lakeOfRage",
@@ -94069,7 +94149,8 @@
     "elementIds": ["water", "flying", "normal"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "petalburgWoods",
@@ -95187,7 +95268,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "mtChimney",
@@ -96272,7 +96354,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "route111Desert",
@@ -97353,7 +97436,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "meteorFalls",
@@ -98462,7 +98546,8 @@
     "elementIds": ["rock", "ground", "dark", "steel", "dragon"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "mtPyre",
@@ -99577,7 +99662,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ghost", "dark", "poison"]
+    "elementIds": ["ghost", "dark", "poison"],
+    "deityId": "diemVuong"
   },
   {
     "id": "shoalCave",
@@ -100699,7 +100785,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "seafloorCavern",
@@ -101809,7 +101896,8 @@
     "elementIds": ["water", "dark", "dragon"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "longVuong"
   },
   {
     "id": "skyPillar",
@@ -102915,7 +103003,8 @@
         "weight": 100
       }
     ],
-    "elementIds": ["flying", "dragon", "electric"]
+    "elementIds": ["flying", "dragon", "electric"],
+    "deityId": "phongBa"
   },
   {
     "id": "fortreeRainforest",
@@ -104026,7 +104115,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon"]
+    "elementIds": ["grass", "bug", "poison", "dragon"],
+    "deityId": "tamThan"
   },
   {
     "id": "eternaForest",
@@ -105148,7 +105238,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy", "ghost"]
+    "elementIds": ["grass", "bug", "normal", "fairy", "ghost"],
+    "deityId": "mocDuc"
   },
   {
     "id": "greatMarsh",
@@ -106275,7 +106366,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "mtCoronet",
@@ -107388,7 +107480,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "snowpointRoutes",
@@ -108498,7 +108591,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "oldChateau",
@@ -109617,7 +109711,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["ghost", "dark", "poison"]
+    "elementIds": ["ghost", "dark", "poison"],
+    "deityId": "diemVuong"
   },
   {
     "id": "ironIsland",
@@ -110726,7 +110821,8 @@
     "elementIds": ["rock", "ground", "dark", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "starkMountain",
@@ -111811,7 +111907,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "spearPillar",
@@ -112929,7 +113026,8 @@
         "weight": 30
       }
     ],
-    "elementIds": ["psychic", "ghost", "dragon", "dark"]
+    "elementIds": ["psychic", "ghost", "dragon", "dark"],
+    "deityId": "mongThan"
   },
   {
     "id": "distortionWorld",
@@ -114047,7 +114145,8 @@
         "weight": 30
       }
     ],
-    "elementIds": ["psychic", "ghost", "dragon", "dark"]
+    "elementIds": ["psychic", "ghost", "dragon", "dark"],
+    "deityId": "mongThan"
   },
   {
     "id": "pinwheelForest",
@@ -115165,7 +115264,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "desertResort",
@@ -116246,7 +116346,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "relicCastle",
@@ -117367,7 +117468,8 @@
     "elementIds": ["ground", "ghost", "steel", "rock"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "diemVuong"
   },
   {
     "id": "chargestoneCave",
@@ -118488,7 +118590,8 @@
     "elementIds": ["rock", "psychic", "steel", "fairy", "electric"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "mongThan"
   },
   {
     "id": "twistMountain",
@@ -119602,7 +119705,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "dragonspiralTower",
@@ -120723,7 +120827,8 @@
     "elementIds": ["ground", "ghost", "steel", "rock", "dragon"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "diemVuong"
   },
   {
     "id": "giantChasm",
@@ -121841,7 +121946,8 @@
     "elementIds": ["ice", "water", "ghost", "dragon"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "santaluneForest",
@@ -122959,7 +123065,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "glitteringCave",
@@ -124076,7 +124183,8 @@
     "elementIds": ["rock", "psychic", "steel", "fairy"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "mongThan"
   },
   {
     "id": "frostCavern",
@@ -125194,7 +125302,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "lostHotel",
@@ -126331,7 +126440,8 @@
     "elementIds": ["steel", "electric", "poison", "fire", "ghost"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "kimDuc"
   },
   {
     "id": "terminusCave",
@@ -127444,7 +127554,8 @@
     "elementIds": ["rock", "ground", "dark", "steel", "dragon"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "lushJungle",
@@ -128559,7 +128670,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon"]
+    "elementIds": ["grass", "bug", "poison", "dragon"],
+    "deityId": "tamThan"
   },
   {
     "id": "welaVolcanoPark",
@@ -129652,7 +129764,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "hainaDesert",
@@ -130741,7 +130854,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "mountLanakila",
@@ -131855,7 +131969,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "vastPoniCanyon",
@@ -132976,7 +133091,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting", "dragon"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "ultraSpace",
@@ -134098,7 +134214,8 @@
         "weight": 30
       }
     ],
-    "elementIds": ["psychic", "ghost", "dragon", "dark"]
+    "elementIds": ["psychic", "ghost", "dragon", "dark"],
+    "deityId": "mongThan"
   },
   {
     "id": "wildArea",
@@ -135217,7 +135334,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "glimwoodTangle",
@@ -136339,7 +136457,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic"]
+    "elementIds": ["grass", "fairy", "psychic"],
+    "deityId": "hoaThan"
   },
   {
     "id": "slumberingWeald",
@@ -137465,7 +137584,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "psychic"]
+    "elementIds": ["grass", "fairy", "psychic"],
+    "deityId": "hoaThan"
   },
   {
     "id": "isleOfArmor",
@@ -138586,7 +138706,8 @@
     "elementIds": ["water", "flying", "normal", "fighting"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "crownTundra",
@@ -139712,7 +139833,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "dynamaxAdventureDen",
@@ -140829,7 +140951,8 @@
     "elementIds": ["rock", "ground", "dark", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "asadoDesert",
@@ -141914,7 +142037,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "glaseadoMountain",
@@ -143032,7 +143156,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "casseroyaLake",
@@ -144153,7 +144278,8 @@
     "elementIds": ["water", "flying", "normal", "dragon"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "tagtreeThicket",
@@ -145275,7 +145401,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "areaZero",
@@ -146396,7 +146523,8 @@
     "elementIds": ["rock", "psychic", "steel", "fairy", "dragon"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "mongThan"
   },
   {
     "id": "kitakami",
@@ -147522,7 +147650,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy", "ghost"]
+    "elementIds": ["grass", "bug", "normal", "fairy", "ghost"],
+    "deityId": "mocDuc"
   },
   {
     "id": "obsidianFieldlands",
@@ -148637,7 +148766,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "crimsonMirelands",
@@ -149768,7 +149898,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "cobaltCoastlands",
@@ -150889,7 +151020,8 @@
     "elementIds": ["water", "flying", "normal"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "coronetHighlands",
@@ -152002,7 +152134,8 @@
     "elementIds": ["rock", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "alabasterIcelands",
@@ -153124,7 +153257,8 @@
     "elementIds": ["ice", "water", "ghost"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "orreDesert",
@@ -154245,7 +154379,8 @@
     "elementIds": ["ground", "rock", "fire", "dark"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "tropicalRainforest",
@@ -155352,7 +155487,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon"]
+    "elementIds": ["grass", "bug", "poison", "dragon"],
+    "deityId": "tamThan"
   },
   {
     "id": "tropicalMonsoonForest",
@@ -156477,7 +156613,8 @@
     "elementIds": ["water", "grass", "electric", "bug"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "loiCong"
   },
   {
     "id": "tropicalSavanna",
@@ -157594,7 +157731,8 @@
     "elementIds": ["normal", "ground", "fire", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "chienThan"
   },
   {
     "id": "hotDesert",
@@ -158679,7 +158817,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "coldDesert",
@@ -159781,7 +159920,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "semiAridSteppe",
@@ -160890,7 +161030,8 @@
     "elementIds": ["normal", "ground", "flying", "fighting"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "chienThan"
   },
   {
     "id": "mediterraneanScrubland",
@@ -162007,7 +162148,8 @@
     "elementIds": ["grass", "rock", "normal", "bug"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "mocDuc"
   },
   {
     "id": "humidSubtropicalForest",
@@ -163132,7 +163274,8 @@
     "elementIds": ["grass", "bug", "normal", "fairy", "water"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "mocDuc"
   },
   {
     "id": "oceanicMoorland",
@@ -164250,7 +164393,8 @@
     "elementIds": ["normal", "grass", "flying", "bug", "water"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thanhHoang"
   },
   {
     "id": "subtropicalHighland",
@@ -165369,7 +165513,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "bug", "flying"]
+    "elementIds": ["grass", "fairy", "bug", "flying"],
+    "deityId": "hoaThan"
   },
   {
     "id": "humidContinentalWoodland",
@@ -166487,7 +166632,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "subarcticTaiga",
@@ -167632,7 +167778,8 @@
     "elementIds": ["ice", "grass", "normal", "dark"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "arcticTundra",
@@ -168749,7 +168896,8 @@
     "elementIds": ["ice", "normal", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "polarIceCap",
@@ -169860,7 +170008,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "alpineHighland",
@@ -170970,7 +171119,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "alpineMeadow",
@@ -172092,7 +172242,8 @@
     "elementIds": ["normal", "grass", "flying", "bug", "rock"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thanhHoang"
   },
   {
     "id": "highPlateau",
@@ -173201,7 +173352,8 @@
     "elementIds": ["normal", "ground", "flying", "fighting", "rock"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "chienThan"
   },
   {
     "id": "canyon",
@@ -174306,7 +174458,8 @@
     "elementIds": ["rock", "ground", "flying"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "riverValley",
@@ -175423,7 +175576,8 @@
     "elementIds": ["water", "grass", "bug", "flying"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "rollingHills",
@@ -176538,7 +176692,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["normal", "grass", "flying", "bug"]
+    "elementIds": ["normal", "grass", "flying", "bug"],
+    "deityId": "thanhHoang"
   },
   {
     "id": "prairie",
@@ -177660,7 +177815,8 @@
     "elementIds": ["normal", "grass", "flying", "bug", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thanhHoang"
   },
   {
     "id": "sandDunes",
@@ -178745,7 +178901,8 @@
     "elementIds": ["ground", "rock", "fire"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "saltFlat",
@@ -179854,7 +180011,8 @@
     "elementIds": ["ground", "rock", "steel"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "kimDuc"
   },
   {
     "id": "desertOasis",
@@ -180972,7 +181130,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thoDuc"
   },
   {
     "id": "erodedBadlands",
@@ -182093,7 +182252,8 @@
     "elementIds": ["rock", "ground", "flying", "dark"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "phongBa"
   },
   {
     "id": "karstTowers",
@@ -183207,7 +183367,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "limestoneCavern",
@@ -184321,7 +184482,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "daDuThan"
   },
   {
     "id": "sinkhole",
@@ -185443,7 +185605,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "sonThan"
   },
   {
     "id": "stratovolcano",
@@ -186532,7 +186695,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "lavaField",
@@ -187617,7 +187781,8 @@
     "elementIds": ["fire", "rock", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "geyserBasin",
@@ -188743,7 +188908,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "hoaDuc"
   },
   {
     "id": "glacier",
@@ -189854,7 +190020,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "fjord",
@@ -190980,7 +191147,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "sandyBeach",
@@ -192098,7 +192266,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "seaCliffs",
@@ -193220,7 +193389,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "riverDelta",
@@ -194341,7 +194511,8 @@
     "elementIds": ["water", "grass", "bug", "poison"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "tamThan"
   },
   {
     "id": "estuary",
@@ -195462,7 +195633,8 @@
     "elementIds": ["water", "grass", "bug", "poison"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "tamThan"
   },
   {
     "id": "mangroveForest",
@@ -196583,7 +196755,8 @@
     "elementIds": ["water", "grass", "bug", "poison"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "tamThan"
   },
   {
     "id": "saltMarsh",
@@ -197702,7 +197875,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "peatBog",
@@ -198825,7 +198999,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "freshwaterLake",
@@ -199942,7 +200117,8 @@
     "elementIds": ["water", "grass", "bug", "flying"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "waterfallGorge",
@@ -201064,7 +201240,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "tropicalArchipelago",
@@ -202185,7 +202362,8 @@
     "elementIds": ["water", "flying", "normal", "grass"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "thuyDuc"
   },
   {
     "id": "coralAtoll",
@@ -203299,7 +203477,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "longVuong"
   },
   {
     "id": "kelpForest",
@@ -204400,7 +204579,8 @@
     "elementIds": ["water", "grass", "poison"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "longVuong"
   },
   {
     "id": "openOcean",
@@ -205518,7 +205698,8 @@
     "elementIds": ["water", "flying", "electric"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "loiCong"
   },
   {
     "id": "deepSeaTrench",
@@ -206628,7 +206809,8 @@
     "elementIds": ["water", "dark", "dragon"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "longVuong"
   },
   {
     "id": "hydrothermalVents",
@@ -207751,7 +207933,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "kimDuc"
   },
   {
     "id": "polarSea",
@@ -208857,7 +209040,8 @@
     "elementIds": ["water", "ice"],
     "gathering": {
       "fishing": true
-    }
+    },
+    "deityId": "suongThan"
   },
   {
     "id": "temperateDeciduousForest",
@@ -209975,7 +210159,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy"]
+    "elementIds": ["grass", "bug", "normal", "fairy"],
+    "deityId": "mocDuc"
   },
   {
     "id": "bambooForest",
@@ -211093,7 +211278,8 @@
         "weight": 50
       }
     ],
-    "elementIds": ["grass", "bug", "normal", "fairy", "fighting"]
+    "elementIds": ["grass", "bug", "normal", "fairy", "fighting"],
+    "deityId": "mocDuc"
   },
   {
     "id": "cloudForest",
@@ -212212,7 +212398,8 @@
         "weight": 20
       }
     ],
-    "elementIds": ["grass", "fairy", "bug", "flying"]
+    "elementIds": ["grass", "fairy", "bug", "flying"],
+    "deityId": "hoaThan"
   },
   {
     "id": "rainforestCanopy",
@@ -213323,7 +213510,8 @@
         "weight": 40
       }
     ],
-    "elementIds": ["grass", "bug", "poison", "dragon", "flying"]
+    "elementIds": ["grass", "bug", "poison", "dragon", "flying"],
+    "deityId": "tamThan"
   },
   {
     "id": "prehistoricSwamp",
@@ -214450,7 +214638,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "deityId": "onThan"
   },
   {
     "id": "iceAgeSteppe",
@@ -215571,6 +215760,7 @@
     "elementIds": ["ice", "normal", "ground"],
     "gathering": {
       "mining": true
-    }
+    },
+    "deityId": "suongThan"
   }
 ]

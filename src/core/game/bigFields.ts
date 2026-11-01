@@ -38,7 +38,8 @@ const EVENT_BIG_FIELDS: EventBigFields = {
   revived: 'amount',
   barrierAbsorbed: 'amount',
   maxHpChanged: 'amount',
-  flatStat: 'amount'
+  flatStat: 'amount',
+  worldBossDamage: 'total'
 }
 
 /** Trường Decimal trong sự kiện khi thời gian trôi (GameState.dayEvents), như EVENT_BIG_FIELDS. */
@@ -139,6 +140,9 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
   mapField(asObject(state.alchemy), 'exp', convert)
   mapField(asObject(state.smithing), 'exp', convert)
   mapField(asObject(state.cooking), 'exp', convert)
+  // Ân sủng theo thần (docs/rules/deities.md).
+  const favor = asObject(state.favor)
+  for (const deityId of Object.keys(favor ?? {})) mapField(favor, deityId, convert)
   // Tiền thưởng nhiệm vụ trên bảng và đang nhận (docs/rules/quests.md).
   const quests = asObject(state.quests)
   for (const list of [quests?.board, quests?.active]) {
@@ -160,6 +164,13 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
       const entry = asObject(effect)
       if (entry?.kind === 'flatStat') mapField(entry, 'amount', convert)
     }
+  }
+  // Boss thế giới (docs/rules/world-boss.md): máu đơn vị, kỷ lục, kỷ lục của thưởng chờ nhận.
+  const worldBoss = asObject(state.worldBoss)
+  const current = asObject(worldBoss?.current)
+  for (const field of ['hpUnit', 'bestDamage']) mapField(current, field, convert)
+  for (const reward of listOrEmpty(worldBoss?.rewards)) {
+    mapField(asObject(reward), 'bestDamage', convert)
   }
   mapBattle(state.battle, convert)
   mapEvents(state.dayEvents, DAY_EVENT_BIG_FIELDS, convert)

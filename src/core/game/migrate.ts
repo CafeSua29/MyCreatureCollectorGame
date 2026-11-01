@@ -1018,7 +1018,21 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   }),
   79: addRebirths,
   // v80 → v81: câu cá và khai thác (docs/rules/gathering.md): chưa có kết quả thu thập nào.
-  80: (save) => ({ ...save, version: 81, gathering: { lastResult: null } })
+  80: (save) => ({ ...save, version: 81, gathering: { lastResult: null } }),
+  // v81 → v82: độ bất ổn tầng (docs/rules/instability.md): tắt; trận dở không có độ bất ổn.
+  81: (save) => {
+    const battle = asObject(save.battle)
+    return {
+      ...save,
+      version: 82,
+      instability: { level: 0, properties: [] },
+      battle: battle ? { ...battle, instability: null } : save.battle
+    }
+  },
+  // v82 → v83: thần linh và ân sủng (docs/rules/deities.md): chưa có ân sủng với thần nào.
+  82: (save) => ({ ...save, version: 83, favor: {} }),
+  // v83 → v84: boss thế giới (docs/rules/world-boss.md): chưa xuất hiện, không có thưởng chờ.
+  83: (save) => ({ ...save, version: 84, worldBoss: { current: null, rewards: [] } })
 }
 
 /**

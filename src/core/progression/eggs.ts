@@ -100,7 +100,7 @@ export interface EggSite {
 export function createSpeciesEgg(
   data: GameData,
   rng: RngState,
-  options: EggSite & { speciesId: string; id: string; origin: HistoryOrigin }
+  options: Omit<EggSite, 'biome'> & { speciesId: string; id: string; origin: HistoryOrigin }
 ): [Egg, RngState] {
   const { floor, aging, day } = options
   let monster: Monster

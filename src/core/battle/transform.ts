@@ -5,7 +5,7 @@
 // của Tera) và STAB theo Tera. Phần riêng từng loại ở transformHandlers.ts.
 
 import { activeTransform, autoMegaForm, getMaxHp, isFainted } from '../monster'
-import { hasTrialRule, traitStabMultiplier } from '../registries'
+import { battleRules, hasTrialRule, traitStabMultiplier } from '../registries'
 import { hasKeyItemFor } from '../inventory'
 import { battleBiome } from '../world'
 import {
@@ -80,7 +80,7 @@ export function transformBlocker(
 ): TransformFailReason | null {
   // Độ kiếp chỉ cho Hiện nguyên hình (docs/rules/awakening.md).
   if (d.battle.tribulation && !TRANSFORMS[kind].allowedInTribulation) return 'tribulation'
-  if (hasTrialRule(data, d.battle.trial?.rules, 'noTransforms')) return 'trialRule'
+  if (hasTrialRule(data, battleRules(d.battle), 'noTransforms')) return 'trialRule'
   const needsKeyItem = data.config.transform.keyItems[kind] !== undefined
   const hasKeyItem =
     side === 'enemy' ? trainerCanTransform(data, d) : hasKeyItemFor(data, d.inventory, kind)
@@ -288,8 +288,8 @@ export function revertTransforms(data: GameData, d: Draft): void {
  * không cần Vòng Mega, không tính lượt Mega của phe, vẫn là biến hình của quái đó.
  */
 export function autoTransformOnEntry(data: GameData, d: Draft, monsters: readonly Monster[]): void {
-  // Luật noTransforms của bí cảnh / tháp chặn cả Primal (docs/rules/trials.md).
-  if (hasTrialRule(data, d.battle.trial?.rules, 'noTransforms')) return
+  // Luật noTransforms của bí cảnh / tháp / độ bất ổn chặn cả Primal (docs/rules/trials.md).
+  if (hasTrialRule(data, battleRules(d.battle), 'noTransforms')) return
   for (const monster of monsters) {
     if (monster.battleTransform || isFainted(data, monster)) continue
     const formSpeciesId = autoMegaForm(data, monster)

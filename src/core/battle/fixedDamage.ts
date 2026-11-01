@@ -15,6 +15,13 @@ import {
 } from '../shared'
 import type { FixedDamage, GameData, Monster, MonsterBattleContext, Skill } from '../model'
 
+/** Loại sát thương cố định tính theo máu của mục tiêu. */
+const HP_BASED_FIXED_DAMAGE: readonly FixedDamage['kind'][] = [
+  'targetHpPercent',
+  'hpDifference',
+  'ohko'
+]
+
 /** Đầu vào: hai quái của đòn. */
 export interface FixedDamageInput {
   data: GameData
@@ -44,6 +51,10 @@ function computeFixed(
   rng: RngState | undefined
 ): { amount: Decimal; rng?: RngState } {
   const targetHp = getCurrentHp(data, defender)
+  // HP vô hạn (boss thế giới, docs/rules/world-boss.md): đòn theo máu mục tiêu không có tác dụng (như
+  // Max Raid của Pokémon: hạ gục một đòn thất bại).
+  if (defender.endlessHp && HP_BASED_FIXED_DAMAGE.includes(spec.kind))
+    return { amount: BIG_ZERO, rng }
   switch (spec.kind) {
     case 'flat':
       return { amount: toBig(spec.amount), rng }
@@ -105,12 +116,12 @@ function computeFixed(
 /**
  * Accuracy của đòn hạ gục một đòn (như Pokémon): accuracy gốc (hoặc `accuracyIfNotElement` khi quái
  * dùng không mang hệ đó, Sheer Cold) + (level quái dùng − level mục tiêu); mục tiêu level cao hơn
- * hoặc mang hệ miễn (`immuneElementIds`) thì 0. Không phải hạ gục một đòn: undefined.
+ * hoặc mang hệ miễn (`immuneElementIds`) hoặc HP vô hạn thì 0. Không phải hạ gục một đòn: undefined.
  */
 export function ohkoAccuracy(skill: Skill, user: Monster, target: Monster): number | undefined {
   const spec = skill.fixedDamage
   if (spec?.kind !== 'ohko') return undefined
-  if (target.level > user.level) return 0
+  if (target.level > user.level || target.endlessHp) return 0
   if (target.elementIds.some((id) => spec.immuneElementIds?.includes(id))) return 0
   const notElement = spec.accuracyIfNotElement
   const base =

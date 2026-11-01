@@ -16,6 +16,7 @@ import type { TribulationRow } from './tribulation'
 import type { SafariRow } from './safari'
 import type { ZoneRow } from './zones'
 import type { GatheringRow } from './gathering'
+import { NO_TIER, type WorldBossRow } from './worldBoss'
 
 export interface Table {
   headers: string[]
@@ -377,7 +378,10 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['implantShare%', Math.round(count.implantSharePercent)],
     ['expand', count.capacityExpansions],
     ['storagePeak', count.storagePeak],
-    ['bagPeak', count.bagPeak]
+    ['bagPeak', count.bagPeak],
+    ['incense', count.incense],
+    ['deityBuy', count.deityBuys],
+    ['favorRank', count.favorRank]
   ]
   return parts
     .filter(([, n]) => n > 0)
@@ -645,6 +649,7 @@ function addJobTotals(totals: BattleTotalsByKind, result: TimedJobResult['result
     case 'safari':
     case 'zones':
     case 'gathering':
+    case 'worldBoss':
     case 'lineage':
       break
   }
@@ -790,6 +795,47 @@ export function gatheringTable(rows: readonly GatheringRow[]): Table {
       perCast(row.lureCost, row),
       ((row.itemValue + row.money - row.lureCost) / Math.max(1, row.hours)).toFixed(1)
     ])
+  }
+}
+
+/** Phân vị `p` (0–1) của danh sách đã sắp xếp tăng dần (rỗng = 0). */
+function quantile(sorted: readonly number[], p: number): number {
+  if (sorted.length === 0) return 0
+  return sorted[Math.min(sorted.length - 1, Math.floor(p * sorted.length))]
+}
+
+/**
+ * Boss thế giới theo đội × tầng (worldBoss.ts): % lần cả đội gục, tổng sát thương theo bội số máu
+ * đơn vị (trung bình, phân vị 25 / 50 / 75), % lần đạt từng bậc (bậc cao nhất đạt được, theo thứ tự
+ * config.worldBoss.tiers; "-" = chưa đạt bậc nào).
+ */
+export function worldBossTable(rows: readonly WorldBossRow[], tierIds: readonly string[]): Table {
+  const columns = [NO_TIER, ...tierIds]
+  return {
+    headers: [
+      'team',
+      'floor',
+      'challenges',
+      'wipeRate',
+      'avgMultiple',
+      'p25',
+      'p50',
+      'p75',
+      ...columns
+    ],
+    rows: rows.map((row) => {
+      const sorted = [...row.multiples].sort((a, b) => a - b)
+      const mean = sorted.reduce((sum, value) => sum + value, 0) / Math.max(1, sorted.length)
+      return [
+        row.teamId,
+        String(row.floor),
+        String(row.challenges),
+        formatPercent(row.lost, row.challenges),
+        mean.toFixed(2),
+        ...[0.25, 0.5, 0.75].map((p) => quantile(sorted, p).toFixed(2)),
+        ...columns.map((id) => formatPercent(row.tiers[id] ?? 0, row.challenges))
+      ]
+    })
   }
 }
 

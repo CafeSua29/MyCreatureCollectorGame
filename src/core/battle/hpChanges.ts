@@ -331,9 +331,14 @@ export function loseHp(
   info: DamageInfo = COST
 ): Decimal {
   if (isFainted(data, target)) return BIG_ZERO
+  // HP vô hạn (boss thế giới, docs/rules/world-boss.md): tự mất máu (cost) không có tác dụng; sát
+  // thương không bị giới hạn bởi HP còn lại, không trừ HP, không gục, vẫn ghi bản ghi trận.
+  if (target.endlessHp && info.kind === 'cost') return BIG_ZERO
   const incoming = info.kind === 'cost' ? amount : mitigate(data, d, target, amount, info)
-  const dealt = maxBig(0, minBig(incoming, getCurrentHp(data, target)))
-  target.damageTaken = target.damageTaken.plus(dealt)
+  const dealt = target.endlessHp
+    ? maxBig(0, incoming)
+    : maxBig(0, minBig(incoming, getCurrentHp(data, target)))
+  if (!target.endlessHp) target.damageTaken = target.damageTaken.plus(dealt)
   log(d, event(dealt))
   if (dealt.gt(0) && info.kind !== 'cost') {
     recordDamage(data, d, target, dealt, info)

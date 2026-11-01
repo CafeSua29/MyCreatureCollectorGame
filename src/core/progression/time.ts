@@ -25,6 +25,7 @@ import { cropRipeTask } from './alchemy'
 import { expeditionDailyTask } from './expeditions'
 import { beastTideDailyTask } from './beastTide'
 import { labDailyTask } from './implant'
+import { worldBossDailyTask } from './worldBoss'
 
 /** Lịch của một mốc giờ cho UI / mô phỏng (docs/rules/calendar.md). */
 export interface CalendarView {
@@ -69,6 +70,9 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   expeditions: expeditionDailyTask,
   // Thú triều: báo trước, bắt đầu khi tới ngày (docs/rules/events.md).
   beastTide: beastTideDailyTask,
+  // Boss thế giới: rời đi khi hết thời gian (thưởng chờ nhận), xuất hiện khi tới chu kỳ
+  // (docs/rules/world-boss.md).
+  worldBoss: worldBossDailyTask,
   // Khu bảo tồn: làm mới danh sách loài khi tới ngày (docs/rules/safari-zone.md).
   safari: safariDailyTask,
   // Phòng Thí Nghiệm: đổi hàng huyết thanh khi tới ngày (docs/rules/implant.md).

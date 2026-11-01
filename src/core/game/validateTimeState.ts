@@ -17,7 +17,9 @@ const DAY_EVENT_FIELDS: { readonly [T in DayEvent['type']]: readonly string[] } 
   expeditionReturned: ['activeId', 'expeditionId', 'successPercent', 'injuredIds', 'eggId'],
   bondBroken: ['monsterId', 'woundUntilDay'],
   beastTideWarning: ['day'],
-  beastTideArrived: ['waves']
+  beastTideArrived: ['waves'],
+  worldBossAppeared: ['speciesId', 'endDay'],
+  worldBossLeft: ['speciesId', 'tierId']
 }
 
 function checkOptions(value: unknown, issues: string[]): boolean | undefined {

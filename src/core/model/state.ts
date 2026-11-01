@@ -3,7 +3,13 @@
 import type { EventState, SpecialBattle } from './events'
 import type { ExpeditionState } from './expeditions'
 import type { BattleTrainer, TrainerMode, TrainerState } from './trainers'
-import type { BattleTrial, SecretRealm, TowerState } from './trials'
+import type {
+  BattleInstability,
+  BattleTrial,
+  InstabilityState,
+  SecretRealm,
+  TowerState
+} from './trials'
 import type { QuestState } from './quests'
 import type { AlchemyState, CookingState, GardenState, SmithingState } from './alchemy'
 import type { Decimal } from '../shared'
@@ -28,6 +34,7 @@ import type { LabState } from './implant'
 import type { CapacityState } from './capacity'
 import type { ZoneState } from './zones'
 import type { GatheringState } from './gathering'
+import type { WorldBossState } from './worldBoss'
 import type { DexState } from './dex'
 
 // ---------- State game (được lưu vào save) ----------
@@ -98,6 +105,10 @@ export interface GameState {
   trial: SecretRealm | null
   /** Tháp thí luyện (docs/rules/trials.md). */
   tower: TowerState
+  /** Độ bất ổn tầng (docs/rules/instability.md). */
+  instability: InstabilityState
+  /** Ân sủng theo id thần (docs/rules/deities.md); thần chưa có ân sủng thì không có mục. */
+  favor: Record<string, Decimal>
   /**
    * Event đang chờ, hiệu ứng toàn cục, chuỗi event, cửa hàng tạm, thú triều (docs/rules/events.md).
    */
@@ -114,6 +125,8 @@ export interface GameState {
   zones: ZoneState
   /** Kết quả câu cá / khai thác gần nhất (docs/rules/gathering.md). */
   gathering: GatheringState
+  /** Boss thế giới: lần xuất hiện đang diễn ra, thưởng chờ nhận (docs/rules/world-boss.md). */
+  worldBoss: WorldBossState
   /** Bộ sưu tập: loài đã gặp / đã sở hữu, mốc thưởng đã nhận (docs/rules/dex.md). */
   dex: DexState
   battle: BattleState | null
@@ -242,7 +255,10 @@ export interface Egg {
   infusions: string[]
 }
 
-export type BattleSide = 'player' | 'enemy'
+/** Hai phe của trận. */
+export const BATTLE_SIDES = ['player', 'enemy'] as const
+
+export type BattleSide = (typeof BATTLE_SIDES)[number]
 
 /** Nguồn hiệu ứng ghi trong log traitTriggered khi không phải trait của quái. */
 export type TriggerLogSource =
@@ -270,6 +286,11 @@ export type TeamBonus =
    * mạnh theo thân mật lúc bật. Quái gục thì gỡ, hồi sinh thì bật lại.
    */
   | { kind: 'partner'; id: string; monsterId: string; strength: number }
+  /**
+   * Luật sideHooks của bí cảnh / tháp / độ bất ổn (docs/rules/instability.md): hook của luật `id`,
+   * `count` = số lần luật có trong trận (hệ số hook).
+   */
+  | { kind: 'rule'; id: string; count: number }
 
 export type BattlePhase = 'chooseActions' | 'chooseReplacement' | 'ended'
 
@@ -355,6 +376,11 @@ export interface MonsterBattleContext {
   collectionStatPercent: number
   /** % chỉ số của món ăn linh thực đang có tác dụng (phe người chơi; docs/rules/cooking.md). */
   mealStatPercent: PartialStats
+  /**
+   * % chỉ số của chúc phúc thần cai quản map của trận (phe người chơi, quái có hệ của thần;
+   * docs/rules/deities.md); bỏ trống = không có.
+   */
+  blessingStatPercent?: PartialStats
   /** Môi trường hiện tại của trận (điều kiện theo thời tiết / địa hình). */
   field: BattleField
   /**
@@ -656,6 +682,10 @@ export interface BattleState {
   trainer: BattleTrainer | null
   /** Trận trong bí cảnh / tháp thí luyện (docs/rules/trials.md): map, luật; null = trận thường. */
   trial: BattleTrial | null
+  /**
+   * Độ bất ổn của trận quái hoang / boss trên tầng (docs/rules/instability.md); null = không áp.
+   */
+  instability: BattleInstability | null
   /** Trận do event mở / một đợt thú triều (docs/rules/events.md); null = trận thường. */
   special: SpecialBattle | null
   phase: BattlePhase
@@ -770,6 +800,13 @@ export type BattleEvent =
   | { type: 'faint'; monsterId: string }
   | { type: 'fleeFailed' }
   | { type: 'fled' }
+  /** Hết số lượt tối đa của trận (boss thế giới, docs/rules/world-boss.md). */
+  | { type: 'battleTimeUp' }
+  /**
+   * Hết trận boss thế giới: tổng sát thương lần này; `record` = lập kỷ lục mới của lần xuất hiện
+   * (kỷ lục ở GameState.worldBoss).
+   */
+  | { type: 'worldBossDamage'; total: Decimal; record: boolean }
   /** Quái hoang tự bỏ chạy khỏi trận vì trait (không cho EXP, tiền, đồ rơi). */
   | { type: 'wildFled'; monsterId: string }
   | { type: 'expGain'; monsterId: string; amount: Decimal }
@@ -1123,6 +1160,11 @@ export type BattleEvent =
    * máu), hoàn thành (rương), thất bại, thắng tầng tháp.
    */
   | { type: 'trialRules'; ruleIds: string[] }
+  /** Đầu trận có độ bất ổn tầng (docs/rules/instability.md): mức và mọi thuộc tính (kể cả ẩn). */
+  | { type: 'instability'; level: number; ruleIds: string[] }
+  /** Hết trận trong map có thần (docs/rules/deities.md): ân sủng nhận và bậc sau khi nhận. */
+  | { type: 'favorGained'; deityId: string; amount: number; rank: number }
+  | { type: 'blessingRankUp'; deityId: string; rank: number }
   | { type: 'trialProgress'; cleared: number; total: number }
   | { type: 'trialCompleted' }
   | { type: 'trialFailed' }

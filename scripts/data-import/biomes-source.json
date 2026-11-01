@@ -34,7 +34,8 @@
       },
       "elements": ["normal", "grass", "flying", "bug"],
       "bossField": {},
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "thanhHoang"
     },
     "temperateForest": {
       "weather": {
@@ -50,7 +51,8 @@
       "bossField": {
         "terrain": "grassyTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "mocDuc"
     },
     "magicForest": {
       "weather": {
@@ -67,7 +69,8 @@
       "bossField": {
         "terrain": "mistyTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "hoaThan"
     },
     "jungle": {
       "weather": {
@@ -84,7 +87,8 @@
         "weather": "rain",
         "terrain": "grassyTerrain"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "tamThan"
     },
     "swamp": {
       "weather": {
@@ -101,7 +105,8 @@
         "weather": "toxicMiasma",
         "terrain": "swampTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "onThan"
     },
     "desert": {
       "weather": {
@@ -116,7 +121,8 @@
       "bossField": {
         "weather": "sandstorm"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "thoDuc"
     },
     "savannah": {
       "weather": {
@@ -132,7 +138,8 @@
       "bossField": {
         "weather": "sun"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "chienThan"
     },
     "volcanic": {
       "weather": {
@@ -148,7 +155,8 @@
       "bossField": {
         "terrain": "volcanicTerrain"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "hoaDuc"
     },
     "mountain": {
       "weather": {
@@ -163,7 +171,8 @@
       "bossField": {
         "weather": "strongWinds"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "sonThan"
     },
     "snowMountain": {
       "weather": {
@@ -179,7 +188,8 @@
       "bossField": {
         "weather": "blizzard"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "phongBa"
     },
     "frozen": {
       "weather": {
@@ -196,7 +206,8 @@
         "weather": "blizzard",
         "terrain": "frozenGround"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "suongThan"
     },
     "coast": {
       "weather": {
@@ -212,7 +223,8 @@
       "bossField": {
         "weather": "strongWinds"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "thuyDuc"
     },
     "ocean": {
       "weather": {
@@ -228,7 +240,8 @@
         "weather": "thunderstorm",
         "terrain": "deepWater"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "loiCong"
     },
     "abyss": {
       "weather": {
@@ -243,7 +256,8 @@
         "weather": "darkness",
         "terrain": "deepWater"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "longVuong"
     },
     "cave": {
       "weather": {
@@ -257,7 +271,8 @@
       "bossField": {
         "weather": "darkness"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "daDuThan"
     },
     "crystalCave": {
       "weather": {
@@ -272,7 +287,8 @@
       "bossField": {
         "terrain": "crystalTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "mongThan"
     },
     "storm": {
       "weather": {
@@ -288,7 +304,8 @@
       "bossField": {
         "weather": "thunderstorm"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "loiCong"
     },
     "haunted": {
       "weather": {
@@ -305,7 +322,8 @@
         "weather": "darkness",
         "terrain": "cursedGround"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "diemVuong"
     },
     "ruins": {
       "weather": {
@@ -321,7 +339,8 @@
       "bossField": {
         "terrain": "cursedGround"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "diemVuong"
     },
     "holy": {
       "weather": {
@@ -338,7 +357,8 @@
       "bossField": {
         "terrain": "holyGround"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "thaiDuong"
     },
     "sky": {
       "weather": {
@@ -353,7 +373,8 @@
       "bossField": {
         "weather": "strongWinds"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "phongBa"
     },
     "wasteland": {
       "weather": {
@@ -370,7 +391,8 @@
       "bossField": {
         "weather": "ashfall"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "onThan"
     },
     "chaos": {
       "weather": {
@@ -389,7 +411,8 @@
         "weather": "darkness",
         "terrain": "cursedGround"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "daDuThan"
     },
     "industrial": {
       "weather": {
@@ -405,7 +428,8 @@
       "bossField": {
         "terrain": "electricTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "kimDuc"
     },
     "psychicRealm": {
       "weather": {
@@ -421,7 +445,8 @@
       "bossField": {
         "terrain": "psychicTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "mongThan"
     },
     "taiga": {
       "weather": {
@@ -438,7 +463,8 @@
       "bossField": {
         "weather": "snow"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "suongThan"
     },
     "tundra": {
       "weather": {
@@ -455,7 +481,8 @@
       "bossField": {
         "weather": "blizzard"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "suongThan"
     },
     "steppe": {
       "weather": {
@@ -470,7 +497,8 @@
       "bossField": {
         "weather": "strongWinds"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "chienThan"
     },
     "coldDesert": {
       "weather": {
@@ -486,7 +514,8 @@
       "bossField": {
         "weather": "sandstorm"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "thoDuc"
     },
     "mediterranean": {
       "weather": {
@@ -502,7 +531,8 @@
       "bossField": {
         "weather": "sun"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "mocDuc"
     },
     "monsoon": {
       "weather": {
@@ -519,7 +549,8 @@
       "bossField": {
         "weather": "thunderstorm"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "loiCong"
     },
     "cloudForest": {
       "weather": {
@@ -537,7 +568,8 @@
         "weather": "fog",
         "terrain": "mistyTerrain"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "hoaThan"
     },
     "mangrove": {
       "weather": {
@@ -554,7 +586,8 @@
       "bossField": {
         "terrain": "swampTerrain"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "tamThan"
     },
     "lake": {
       "weather": {
@@ -570,7 +603,8 @@
       "bossField": {
         "terrain": "deepWater"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "thuyDuc"
     },
     "karst": {
       "weather": {
@@ -585,7 +619,8 @@
       "bossField": {
         "weather": "fog"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "sonThan"
     },
     "canyon": {
       "weather": {
@@ -600,7 +635,8 @@
       "bossField": {
         "weather": "strongWinds"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "phongBa"
     },
     "saltFlat": {
       "weather": {
@@ -615,7 +651,8 @@
       "bossField": {
         "weather": "sun"
       },
-      "excludeElements": []
+      "excludeElements": [],
+      "deityId": "kimDuc"
     },
     "geothermal": {
       "weather": {
@@ -631,7 +668,8 @@
       "bossField": {
         "terrain": "volcanicTerrain"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "hoaDuc"
     },
     "glacier": {
       "weather": {
@@ -647,7 +685,8 @@
         "weather": "blizzard",
         "terrain": "frozenGround"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "suongThan"
     },
     "coralReef": {
       "weather": {
@@ -662,7 +701,8 @@
       "bossField": {
         "terrain": "deepWater"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "longVuong"
     },
     "kelpForest": {
       "weather": {
@@ -676,7 +716,8 @@
       "bossField": {
         "terrain": "deepWater"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "longVuong"
     },
     "polarSea": {
       "weather": {
@@ -692,7 +733,8 @@
         "weather": "blizzard",
         "terrain": "deepWater"
       },
-      "excludeElements": ["fire"]
+      "excludeElements": ["fire"],
+      "deityId": "suongThan"
     },
     "hydrothermal": {
       "weather": {
@@ -707,7 +749,8 @@
         "weather": "darkness",
         "terrain": "deepWater"
       },
-      "excludeElements": ["ice"]
+      "excludeElements": ["ice"],
+      "deityId": "kimDuc"
     }
   },
   "maps": [

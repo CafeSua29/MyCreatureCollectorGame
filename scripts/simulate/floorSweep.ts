@@ -14,6 +14,7 @@ import {
   grantKeyItems,
   pickZCrystalFor,
   rollFloorBiome,
+  rollInstabilityLevels,
   type GameState,
   type BattleSide,
   type Decimal,
@@ -128,6 +129,25 @@ export interface FloorSweepOptions {
   assumedPurity?: number | null
   /** Cực giả định của đội mẫu (biến thể `assumedPolarity`); null / không ghi = như tung. */
   assumedPolarity?: Pole | null
+  /** Mức độ bất ổn của biến thể (`instabilityLevel`); 0 / không ghi = tắt. */
+  instabilityLevel?: number
+}
+
+/**
+ * Độ bất ổn mức `level` cho một trận quét tầng (docs/rules/instability.md): thuộc tính tung bằng
+ * RNG riêng theo seed của trận (không đổi RNG của trận), đều đã lộ; bỏ qua mức tối đa theo tầng.
+ */
+export function sweepInstability(
+  data: GameData,
+  { level, seed }: { level: number; seed: number }
+): GameState['instability'] {
+  const [instability] = rollInstabilityLevels(data, createRng(seed), {
+    kept: [],
+    fromLevel: 0,
+    toLevel: level
+  })
+  const properties = instability.properties.map((property) => ({ ...property, hidden: false }))
+  return { level, properties }
 }
 
 /** Mỗi quái mang huyết mạch chính là nhóm đầu của loài với độ thuần `purity` (bloodline.md). */
@@ -136,6 +156,22 @@ export function withAssumedPurity(data: GameData, party: Monster[], purity: numb
     const [groupId] = bloodlineGroupsOf(data, monster.baseSpeciesId)
     return groupId === undefined ? monster : { ...monster, bloodlines: [{ groupId, purity }] }
   })
+}
+
+/**
+ * Túi như người chơi đã mở tới tầng cao nhất và thắng mọi đạo quán đã qua: có vật phẩm chìa khóa
+ * (biến hình, docs/rules/trainers.md).
+ */
+export function inventoryWithKeyItems(
+  data: GameData,
+  state: Pick<GameState, 'highestFloor' | 'inventory'>
+): GameState['inventory'] {
+  const { every } = data.config.trainers.gym
+  const gymFloors = Array.from(
+    { length: Math.floor(state.highestFloor / every) },
+    (_, i) => (i + 1) * every
+  )
+  return grantKeyItems(data, state.inventory, gymFloors).inventory
 }
 
 /** Mỗi quái mang cực `pole` với trait cực tính đầu pool của cực (polarity.md). */
@@ -148,8 +184,6 @@ export function withAssumedPolarity(data: GameData, party: Monster[], pole: Pole
 function sweepParty(data: GameData, options: FloorSweepOptions): Monster[] {
   const { team, floor, seed, snapshot } = options
   if (snapshot) return [...snapshot.party]
-  // Thân mật, điểm nỗ lực và thuần thục giả định theo tầng (mục "Thân mật", "Điểm nỗ lực",
-  // "Thuần thục skill" ở simulation-features.md).
   const rolled = buildTeam(data, team, floor, deriveSeed(seed, 'team', team.id, floor))
   const blooded =
     options.assumedPurity == null ? rolled : withAssumedPurity(data, rolled, options.assumedPurity)
@@ -157,11 +191,23 @@ function sweepParty(data: GameData, options: FloorSweepOptions): Monster[] {
     options.assumedPolarity == null
       ? blooded
       : withAssumedPolarity(data, blooded, options.assumedPolarity)
+  return withAssumedGrowth(data, built, { team, floor, mastery: options.assumedMastery })
+}
+
+/**
+ * Thân mật, điểm nỗ lực và thuần thục giả định theo tầng (mục "Thân mật", "Điểm nỗ lực", "Thuần thục
+ * skill" ở simulation-features.md) cho đội mẫu vừa dựng.
+ */
+export function withAssumedGrowth(
+  data: GameData,
+  party: Monster[],
+  { team, floor, mastery }: { team: TeamSpec; floor: number; mastery: AssumedMasterySpec | null }
+): Monster[] {
   return withAssumedMastery(
     data,
-    withAssumedEffort(data, withAssumedAffinity(data, built, floor), floor),
+    withAssumedEffort(data, withAssumedAffinity(data, party, floor), floor),
     floor,
-    teamMastery(team, options.assumedMastery)
+    teamMastery(team, mastery)
   )
 }
 
@@ -239,20 +285,18 @@ export function sweepFloor(data: GameData, options: FloorSweepOptions): FloorRes
       // Ngự thú sư ở cảnh giới thật (snapshot) hoặc giả định của tầng (cộng hưởng, linh lực, kỹ năng).
       tamerRealm: options.snapshot?.tamerRealm ?? options.tamerRealm ?? assumedTamerRealm(floor)
     })
-    // Như người chơi đã mở tới tầng này và thắng mọi đạo quán đã qua: có vật phẩm chìa khóa
-    // (biến hình, docs/rules/trainers.md).
-    const gymFloors = Array.from(
-      { length: Math.floor(fresh.highestFloor / data.config.trainers.gym.every) },
-      (_, i) => (i + 1) * data.config.trainers.gym.every
-    )
     const keyed = {
       ...fresh,
       dex: { ...fresh.dex, hitParts },
+      instability: sweepInstability(data, {
+        level: options.instabilityLevel ?? 0,
+        seed: deriveSeed(seed, 'instability', team.id, floor, kind, i)
+      }),
       time: sweepTime(data, i),
       party: options.uncontracted
         ? fresh.party.map((m) => ({ ...m, contractRealm: null }))
         : fresh.party,
-      inventory: grantKeyItems(data, fresh.inventory, gymFloors).inventory
+      inventory: inventoryWithKeyItems(data, fresh)
     }
     // Có Vòng Z thì quái đầu đội cầm Z-Crystal hợp skill của nó (như người chơi; z-moves.md).
     const state = withLeadZCrystal(data, keyed)

@@ -14,5 +14,15 @@
   "noTamerSkills": "Phong Ấn Ngự Thú Sư",
   "fierceFoes": "Quái Hung Tợn",
   "tyrantFoes": "Quái Bạo Chúa",
-  "noHealing": "Không Hồi Phục"
+  "noHealing": "Không Hồi Phục",
+  "enemyRegen": "Quái Tái Sinh",
+  "enemyHardened": "Quái Giáp Cứng",
+  "enemySwift": "Quái Thần Tốc",
+  "enemyRage": "Quái Dễ Cuồng",
+  "playerSlowed": "Trì Trệ",
+  "playerWeakened": "Suy Nhược",
+  "playerNoCrit": "Mất Chí Mạng",
+  "extraTraits": "Quái Dị Biến",
+  "fusedWilds": "Quái Dung Hợp",
+  "foreignWilds": "Quái Lạc Giới"
 }

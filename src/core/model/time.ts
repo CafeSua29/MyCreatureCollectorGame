@@ -72,7 +72,9 @@ export const TIMED_ACTIVITIES = [
   'zoneStep',
   // Một lần câu cá / khai thác không mở trận (docs/rules/gathering.md); trận tính như trận thường.
   'fishing',
-  'mining'
+  'mining',
+  // Một lần khiêu chiến boss thế giới (docs/rules/world-boss.md), tính lúc rời trận.
+  'worldBoss'
 ] as const
 
 export type TimedActivity = (typeof TIMED_ACTIVITIES)[number]
@@ -125,3 +127,7 @@ export type DayEvent =
   | { type: 'beastTideWarning'; day: number }
   /** Thú triều bắt đầu (đang ở thị trấn đúng ngày đó). */
   | { type: 'beastTideArrived'; waves: number }
+  /** Boss thế giới xuất hiện (docs/rules/world-boss.md), khiêu chiến được tới hết ngày `endDay`. */
+  | { type: 'worldBossAppeared'; speciesId: string; endDay: number }
+  /** Boss thế giới rời đi: bậc thưởng theo kỷ lục (nhận ở thị trấn); null = chưa đạt bậc nào. */
+  | { type: 'worldBossLeft'; speciesId: string; tierId: string | null }

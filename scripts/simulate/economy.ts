@@ -34,6 +34,7 @@ import {
   type Monster
 } from '@core'
 import { shopStock, simAct } from './events'
+import { isDeityCurrency } from './deities'
 
 /** Giả định của "người chơi" (không phải luật game). */
 export const ECONOMY_POLICY = {
@@ -89,6 +90,10 @@ export interface EconomyCount {
   capacityExpansions: number
   storagePeak: number
   bagPeak: number
+  /** Thần linh (deities.ts): nén hương đã dâng, món đổi bằng tín vật, bậc ân sủng cao nhất lúc mở tầng. */
+  incense: number
+  deityBuys: number
+  favorRank: number
 }
 
 export const newEconomyCount = (): EconomyCount => ({
@@ -114,7 +119,10 @@ export const newEconomyCount = (): EconomyCount => ({
   implantSharePercent: 0,
   capacityExpansions: 0,
   storagePeak: 0,
-  bagPeak: 0
+  bagPeak: 0,
+  incense: 0,
+  deityBuys: 0,
+  favorRank: 0
 })
 
 type Act = (data: GameData, state: GameState, action: GameAction) => GameState
@@ -140,7 +148,8 @@ export function sellSurplus(data: GameData, state: GameState, count: EconomyCoun
   for (const [itemId, have] of Object.entries(state.inventory.stacks)) {
     const item = data.items[itemId]
     const extra = have - ECONOMY_POLICY.materialKeep
-    if (item?.category !== 'material' || extra <= 0 || isForgeStone(data, itemId)) continue
+    if (item?.category !== 'material' || extra <= 0) continue
+    if (isForgeStone(data, itemId) || isDeityCurrency(data, itemId)) continue
     state = simAct(data, state, {
       type: 'sellItem',
       item: { storage: 'stack', itemId },
@@ -166,7 +175,9 @@ function isUsefulStack(data: GameData, item: Item): boolean {
       return true
     case 'material':
       return (
-        item.id === data.config.trials.tokenItemId || item.id === data.config.rebirth.pillItemId
+        item.id === data.config.trials.tokenItemId ||
+        item.id === data.config.rebirth.pillItemId ||
+        isDeityCurrency(data, item.id)
       )
     case 'consumable':
       return effectTypes(item).some((type) =>

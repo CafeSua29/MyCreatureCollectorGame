@@ -36,6 +36,12 @@ import {
   type TextData
 } from '../model'
 
+/** Khối thuộc tính bất ổn của luật fixture: trọng số 1, % thưởng cộng thêm. */
+const unstable = (rewardPercent: number): { weight: number; rewardPercent: number } => ({
+  weight: 1,
+  rewardPercent
+})
+
 export function uniformStats(value: number): Stats {
   const result = {} as Stats
   for (const stat of STAT_NAMES) result[stat] = value
@@ -76,6 +82,10 @@ export const FIXTURE_POLARITY_STONE_IDS: Readonly<Record<PolarityChange, string>
 export const FIXTURE_GYM_LEADER_ID = 'leader'
 /** Bí Cảnh Lệnh fixture (docs/rules/trials.md). */
 export const FIXTURE_TRIAL_TOKEN_ID = 'realmToken'
+/** Thần linh của fixture (docs/rules/deities.md): thần hệ lửa, tín vật và Hương nến. */
+export const FIXTURE_DEITY_ID = 'fireGod'
+export const FIXTURE_DEITY_TOKEN_ID = 'fireToken'
+export const FIXTURE_INCENSE_ID = 'incense'
 
 /** Hồn tinh của fixture (docs/rules/soul-levels.md): 1 điểm và 5 điểm. */
 export const FIXTURE_SOUL_SMALL_ID = 'soulSmall'
@@ -342,7 +352,8 @@ export function makeRawData(): RawGameData {
           safari: 24,
           zoneStep: 1,
           fishing: 1,
-          mining: 2
+          mining: 2,
+          worldBoss: 24
         }
       },
       // Ngày đêm và mùa: giờ thời khắc và hệ số giống balance thật, nhưng không suy giờ hoạt động
@@ -749,8 +760,38 @@ export function makeRawData(): RawGameData {
           tamed: { hpThresholdPercent: 0, statPercent: 30, extraActionChance: 25 },
           unbound: { hpThresholdPercent: 0, statPercent: 15, extraActionChance: 10 },
           wild: { hpThresholdPercent: 0, statPercent: 15, extraActionChance: 10 },
-          boss: { hpThresholdPercent: 0, statPercent: 20, extraActionChance: 15 }
+          boss: { hpThresholdPercent: 0, statPercent: 20, extraActionChance: 15 },
+          worldBoss: { hpThresholdPercent: 0, statPercent: 30, extraActionChance: 0, fromTurn: 5 }
         }
+      },
+      // Boss thế giới (docs/rules/world-boss.md): chu kỳ rất dài (xuất hiện ở ngày 99 999) để test cũ
+      // không gặp boss (việc theo ngày không tốn RNG); test boss thế giới tự đặt chu kỳ ngắn.
+      worldBoss: {
+        everyDays: 100_000,
+        activeDays: 1,
+        turns: 10,
+        levelOffset: 0,
+        bossMultiplier: 3,
+        minSpeciesRankId: 'G',
+        largeWeight: 3,
+        tiers: [
+          {
+            id: 'C',
+            minHpMultiple: 0.5,
+            moneyMultiple: 5,
+            items: [{ itemId: 'potion', count: 1 }],
+            skillBooks: 0,
+            eggChance: 0
+          },
+          {
+            id: 'S',
+            minHpMultiple: 2,
+            moneyMultiple: 20,
+            items: [{ itemId: 'rareCandy', count: 2 }],
+            skillBooks: 1,
+            eggChance: 100
+          }
+        ]
       },
       // Hệ thống event (docs/rules/events.md): fixture không có event nào (không tốn RNG) và thú
       // triều tỉ lệ 0 để RNG của test cũ không đổi; test event tự thêm event / bật tỉ lệ.
@@ -813,6 +854,26 @@ export function makeRawData(): RawGameData {
           milestoneEvery: 10,
           milestoneRewards: [{ itemId: 'potion', count: 5 }]
         }
+      },
+      // Độ bất ổn tầng (docs/rules/instability.md): số như dữ liệu thật, giá đổi nhỏ cho test.
+      instability: {
+        floorsPerLevel: 10,
+        visiblePerLevel: 1,
+        hiddenPerLevel: 1,
+        rewardPercentPerLevel: 25,
+        rerollCostPerLevel: 100
+      },
+      // Thần linh (docs/rules/deities.md): ân sủng như dữ liệu thật, bậc r cần 10 × r² ân sủng.
+      deities: {
+        favorPerWin: 1,
+        favorPerBossWin: 10,
+        favorPerCapture: 3,
+        incenseItemId: FIXTURE_INCENSE_ID,
+        favorPerIncense: 200,
+        rankBase: 10,
+        rankPower: 2,
+        tokenWildChance: 50,
+        tokenBossChance: 100
       },
       expeditions: {
         boardMin: 3,
@@ -1121,6 +1182,32 @@ export function makeRawData(): RawGameData {
     ],
     // Hiệu ứng cấy ghép (docs/rules/implant.md): hồi / mất 1% max HP mỗi lượt, giảm / tăng sát thương
     // nhận 10%.
+    // Thần linh (docs/rules/deities.md): không map nào của fixture có thần (đồ rơi / RNG của test cũ
+    // không đổi); test tự gán deityId cho map. Ba chúc phúc lặp lại theo bậc.
+    deities: [
+      {
+        id: FIXTURE_DEITY_ID,
+        elementId: 'fire',
+        tokenItemId: FIXTURE_DEITY_TOKEN_ID,
+        blessings: [
+          { effects: [{ type: 'expPercent', params: { percent: 10 } }] },
+          { effects: [{ type: 'elementStatPercent', params: { percent: 10 } }] },
+          {
+            effects: [
+              { type: 'moneyPercent', params: { percent: 100 } },
+              { type: 'dropRatePercent', params: { percent: 50 } },
+              { type: 'catchRatePercent', params: { percent: 50 } },
+              { type: 'recruitPercent', params: { percent: 100 } },
+              { type: 'shinyChancePercent', params: { percent: 100 } }
+            ]
+          }
+        ],
+        shop: [
+          { itemId: 'potion', price: 2, minRank: 0 },
+          { itemId: 'masterBall', price: 5, minRank: 2 }
+        ]
+      }
+    ],
     serumEffects: [
       {
         id: 'regeneration',
@@ -1136,14 +1223,72 @@ export function makeRawData(): RawGameData {
       }
     ],
     trialRules: [
-      { id: 'noItems', type: 'noItems', params: {}, weight: 1 },
+      { id: 'noItems', type: 'noItems', params: {}, weight: 1, instability: unstable(5) },
       { id: 'monoElement', type: 'monoElement', params: {}, weight: 1 },
-      { id: 'rainField', type: 'fixedField', params: { weather: 'rain' }, weight: 1 },
+      {
+        id: 'rainField',
+        type: 'fixedField',
+        params: { weather: 'rain' },
+        weight: 1,
+        instability: unstable(0)
+      },
       { id: 'bossOnly', type: 'bossOnly', params: {}, weight: 1 },
       { id: 'noTransforms', type: 'noTransforms', params: {}, weight: 1 },
       { id: 'noTamerSkills', type: 'noTamerSkills', params: {}, weight: 1 },
-      { id: 'enemyDouble', type: 'enemyMultiplier', params: { value: 2 }, weight: 1 },
-      { id: 'noHealing', type: 'noHealing', params: {}, weight: 1 }
+      {
+        id: 'enemyDouble',
+        type: 'enemyMultiplier',
+        params: { value: 2 },
+        weight: 1,
+        instability: unstable(20)
+      },
+      { id: 'noHealing', type: 'noHealing', params: {}, weight: 1 },
+      // Thuộc tính chỉ dành cho độ bất ổn (weight 0: không đổi RNG tung luật bí cảnh của test cũ).
+      {
+        id: 'enemyRegen',
+        type: 'sideHooks',
+        params: { side: 'enemy', hooks: [{ type: 'regen', params: { percent: 10 } }] },
+        weight: 0,
+        instability: unstable(10)
+      },
+      {
+        id: 'playerSlow',
+        type: 'sideHooks',
+        params: {
+          side: 'player',
+          hooks: [{ type: 'statModifier', params: { percent: { speed: -10 } } }]
+        },
+        weight: 0,
+        instability: unstable(10)
+      },
+      {
+        id: 'playerNoCrit',
+        type: 'sideHooks',
+        params: { side: 'player', hooks: [{ type: 'cannotCrit', params: {} }] },
+        weight: 0,
+        instability: unstable(10)
+      },
+      {
+        id: 'extraTrait',
+        type: 'extraEnemyTraits',
+        params: { count: 1 },
+        weight: 0,
+        instability: unstable(10)
+      },
+      {
+        id: 'fusedWild',
+        type: 'fusedEnemies',
+        params: { percent: 100 },
+        weight: 0,
+        instability: unstable(10)
+      },
+      {
+        id: 'foreignWild',
+        type: 'foreignSpecies',
+        params: { percent: 100 },
+        weight: 0,
+        instability: unstable(10)
+      }
     ],
     trainers: [
       {
@@ -1784,6 +1929,9 @@ export function makeRawData(): RawGameData {
       { id: FIXTURE_TRIAL_TOKEN_ID, category: 'material', price: 100 },
       // Hồn tinh: không bán, không rơi (bảng rơi rỗng) để RNG / hàng của test cũ không đổi.
       { id: FIXTURE_SOUL_SMALL_ID, category: 'soulCrystal', price: 10, points: 1 },
+      // Hương nến và tín vật (docs/rules/deities.md): không bán để hàng của test cũ không đổi.
+      { id: FIXTURE_INCENSE_ID, category: 'material', price: 100 },
+      { id: FIXTURE_DEITY_TOKEN_ID, category: 'material', price: 10 },
       // Đá của Thợ rèn: không bán để hàng của test cũ không đổi.
       { id: FIXTURE_ENHANCE_STONE_ID, category: 'material', price: 100 },
       { id: FIXTURE_REFINING_STONE_ID, category: 'material', price: 1500 },
@@ -2307,6 +2455,7 @@ export function makeBattleState(
       teamBonuses: { player: [], enemy: [] },
       trainer: null,
       trial: null,
+      instability: null,
       special: null,
       log: [],
       ...overrides

@@ -243,7 +243,8 @@ describe('rawWithVariant', () => {
         uncontracted: false,
         tamerRealm: null,
         assumedPurity: null,
-        assumedPolarity: null
+        assumedPolarity: null,
+        instabilityLevel: 0
       })
     )
     expect(varied.config.ai).toEqual({ ...raw.config.ai, koBonus: 3 })
@@ -264,7 +265,8 @@ describe('rawWithVariant', () => {
         uncontracted: false,
         tamerRealm: null,
         assumedPurity: null,
-        assumedPolarity: null
+        assumedPolarity: null,
+        instabilityLevel: 0
       })
     )
     expect(varied.config.mastery).toEqual({ ...raw.config.mastery, ...off })
@@ -284,7 +286,8 @@ describe('rawWithVariant', () => {
       uncontracted: false,
       tamerRealm: null,
       assumedPurity: null,
-      assumedPolarity: null
+      assumedPolarity: null,
+      instabilityLevel: 0
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(varied.skills[raw.skills[0].id].hold).toBeUndefined()
@@ -305,7 +308,8 @@ describe('rawWithVariant', () => {
       uncontracted: false,
       tamerRealm: null,
       assumedPurity: null,
-      assumedPolarity: null
+      assumedPolarity: null,
+      instabilityLevel: 0
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(varied.skills[raw.skills[0].id].reach).toBe('ranged')
@@ -326,7 +330,8 @@ describe('rawWithVariant', () => {
       uncontracted: false,
       tamerRealm: null,
       assumedPurity: null,
-      assumedPolarity: null
+      assumedPolarity: null,
+      instabilityLevel: 0
     }
     expect(createGameData(rawWithVariant(raw, variant)).skills[raw.skills[0].id].styles).toBe(
       undefined
@@ -350,7 +355,8 @@ describe('rawWithVariant', () => {
       uncontracted: false,
       tamerRealm: null,
       assumedPurity: null,
-      assumedPolarity: null
+      assumedPolarity: null,
+      instabilityLevel: 0
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(Object.values(varied.partnerSkills).map((skill) => skill.effects)).toEqual([[]])
@@ -369,7 +375,8 @@ describe('rawWithVariant', () => {
       uncontracted: false,
       tamerRealm: null,
       assumedPurity: null,
-      assumedPolarity: null
+      assumedPolarity: null,
+      instabilityLevel: 0
     })
     expect(() => createGameData(bad)).toThrow()
   })

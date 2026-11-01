@@ -18,7 +18,8 @@ const BLOCKED_DURING_TIDE: ReadonlySet<GameAction['type']> = new Set<GameAction[
   'challengeTrial',
   'challengeTower',
   'startTribulation',
-  'enterSafari'
+  'enterSafari',
+  'challengeWorldBoss'
 ])
 
 /** Ném ActionError nếu state event không cho làm action này. */

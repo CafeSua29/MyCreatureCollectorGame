@@ -12,7 +12,9 @@
 
 import { ActionError, malformedAction, rollPercent } from '../shared'
 import {
+  blessingMultiplier,
   charmEffect,
+  battleRules,
   escapeBlockingRoom,
   eventModifierMultiplier,
   isLargeMonster,
@@ -72,6 +74,10 @@ import { assertReadyForBattle, openTrainerBattle, rollFloorTrainer } from './tra
 import { chooseReplacements } from './trainerAi'
 import { specialRule } from './specialBattles'
 import { frenziedPlayerSlots } from './frenzy'
+import { battleInstabilityFor, foreignEncounterSite } from './instability'
+
+/** Trận quái hoang thường trên tầng: không bí cảnh, độ kiếp, trận đặc biệt, NPC. */
+const NO_SPECIAL_BATTLE = { trial: null, tribulation: null, special: null, trainer: null }
 
 // ---------- Action public ----------
 
@@ -81,11 +87,21 @@ import { frenziedPlayerSlots } from './frenzy'
  */
 export function startWildBattle(data: GameData, state: GameState): GameState {
   const site = requireBattleStart(data, state)
-  const [trainerClass, rng] = rollFloorTrainer(data, state.rng, site)
+  const [trainerClass, afterTrainer] = rollFloorTrainer(data, state.rng, site)
   if (trainerClass) {
-    return openTrainerBattle(data, { ...state, rng }, { site, trainerClass, mode: 'floor' })
+    return openTrainerBattle(
+      data,
+      { ...state, rng: afterTrainer },
+      { site, trainerClass, mode: 'floor' }
+    )
   }
-  const encounter = generateEncounter(data, rng, site, state.nextMonsterId)
+  // Thuộc tính bất ổn foreignSpecies (docs/rules/instability.md): bảng gặp của map khác.
+  const instability = battleInstabilityFor(state, NO_SPECIAL_BATTLE)
+  const [encounterSite, rng] = foreignEncounterSite(data, afterTrainer, {
+    site,
+    rules: battleRules({ trial: null, instability })
+  })
+  const encounter = generateEncounter(data, rng, encounterSite, state.nextMonsterId)
   return openBattle(data, state, { site, encounter })
 }
 
@@ -123,19 +139,25 @@ export function requireBattleStart(data: GameData, state: GameState): FloorSite 
   if (state.battle) throw new ActionError('inBattle')
   if (state.location.type !== 'floor') throw new ActionError('notOnFloor')
   assertReadyForBattle(data, state)
-  // Kỹ năng đồng hành (docs/rules/partner-skills.md), modifier của event (docs/rules/events.md) và
-  // bùa (docs/rules/dex.md) nhân tỉ lệ shiny / gặp boss.
+  // Kỹ năng đồng hành (docs/rules/partner-skills.md), modifier của event (docs/rules/events.md),
+  // bùa (docs/rules/dex.md) và chúc phúc của thần cai quản map (docs/rules/deities.md) nhân tỉ lệ
+  // shiny / gặp boss.
   const { modifiers } = state.events
+  const site = floorSite(data, state, state.location.floor)
   const odds = {
     shinyMultiplier:
       partnerMultiplier(data, state.party, 'shinyChancePercent') *
       eventModifierMultiplier(data, modifiers, 'shinyChancePercent') *
-      charmEffect(data, state.inventory, 'shinyChanceMultiplier'),
+      charmEffect(data, state.inventory, 'shinyChanceMultiplier') *
+      blessingMultiplier(data, state.favor, {
+        deityId: site.biome.deityId ?? null,
+        channel: 'shinyChancePercent'
+      }),
     bossChanceMultiplier:
       partnerMultiplier(data, state.party, 'bossChancePercent') *
       eventModifierMultiplier(data, modifiers, 'bossChancePercent')
   }
-  return { ...floorSite(data, state, state.location.floor), odds }
+  return { ...site, odds }
 }
 
 export function submitTurn(
@@ -405,6 +427,12 @@ export function flee(data: GameData, state: GameState): GameState {
     throw new ActionError('specialBattleRestricted', { command: 'flee' })
   }
   const d = cloneDraft(state)
+  // Rút lui (boss thế giới, docs/rules/world-boss.md): luôn được, kết thúc trận sớm.
+  if (battle.special && specialRule(battle.special).fleeIsRetreat) {
+    log(d, { type: 'fled' })
+    finish(data, d, 'fled')
+    return d
+  }
   const trait = playerFleeTrait(data, d)
   if (trait === null) assertCanEscape(data, battle)
   // Quái bị giữ chân (Bind, Mean Look) không chạy được; trait kiểu Run Away thì vượt được như Pokémon.

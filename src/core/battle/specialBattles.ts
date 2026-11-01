@@ -1,5 +1,5 @@
 // Trận đặc biệt (docs/rules/events.md): trận do event mở, đợt thú triều, trận hiểm địa (zones.md),
-// trận câu cá / khai thác (gathering.md). Luật theo loại (chạy, bắt,
+// trận câu cá / khai thác (gathering.md), boss thế giới (world-boss.md). Luật theo loại (chạy, bắt,
 // tiền thưởng, phạt thua, việc sau trận) ở SPECIAL_BATTLE_RULES; thêm loại = thêm một mục. Kèm sổ
 // sách của trận trên tầng: thời hạn modifier, trận thắng của chuỗi event, hệ số của modifier.
 
@@ -21,6 +21,7 @@ import { battleBiome, closeZoneVisit } from '../world'
 import { Draft, log } from './draft'
 import { gainBiomeSkillBooks, gainDrop, grantItemRewards } from './rewards'
 import { rollGuardianRewards } from './zones'
+import { recordWorldBossDamage } from './worldBoss'
 
 interface SpecialBattleRule<K extends SpecialBattleKind> {
   /**
@@ -28,8 +29,23 @@ interface SpecialBattleRule<K extends SpecialBattleKind> {
    * trận event có; thú triều (ở thị trấn) và hiểm địa (map riêng) không.
    */
   isFloorBattle: boolean
+  /**
+   * Trận diễn ra trong một map (ân sủng, chúc phúc của thần cai quản map; docs/rules/deities.md):
+   * thú triều ở thị trấn thì không.
+   */
+  inMap: boolean
   /** Chạy được ở lượt hiện tại của trận không. */
   canFlee(special: Extract<SpecialBattle, { kind: K }>, battle: BattleState): boolean
+  /**
+   * Chạy là rút lui: luôn thành công (không tung tỉ lệ, không bị giữ chân), kết thúc trận sớm (boss
+   * thế giới).
+   */
+  fleeIsRetreat: boolean
+  /**
+   * Số lượt tối đa: hết lượt này mà chưa phân thắng thua thì trận kết thúc (`won`); null = không giới
+   * hạn.
+   */
+  maxTurns(data: GameData): number | null
   /** Có quái xin theo / boss quy phục / Thị Uy (docs/rules/recruit.md) như trận quái hoang. */
   canRecruit: boolean
   canCapture(special: Extract<SpecialBattle, { kind: K }>): boolean
@@ -41,9 +57,12 @@ interface SpecialBattleRule<K extends SpecialBattleKind> {
   onWin(data: GameData, d: Draft, dropMultiplier: number): void
   /** Thua (sau phần thua chung, trước finish). */
   onLoss(data: GameData, d: Draft): void
+  /** Mọi cách hết trận (thắng, thua, chạy, hết lượt), trong finish trước khi dọn trạng thái trận. */
+  onFinish(data: GameData, d: Draft): void
 }
 
 const noop = (): void => {}
+const noLimit = (): null => null
 
 /** Thú triều của save (trận thú triều luôn có thú triều đang diễn ra). */
 function activeTide(d: Draft): Extract<BeastTideState, { phase: 'active' }> {
@@ -94,18 +113,25 @@ export function failBeastTide(data: GameData, d: Pick<Draft, 'time' | 'events'>)
 export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule<K> } = {
   // Kết quả sau trận (onWin / onLoss của kết quả startBattle) áp khi rời trận (events/).
   event: {
+    inMap: true,
     isFloorBattle: true,
     canFlee: (special) => !special.noFlee,
+    fleeIsRetreat: false,
+    maxTurns: noLimit,
     canRecruit: false,
     canCapture: () => true,
     moneyMultiplier: (special) => special.moneyMultiplier,
     lossPenaltyPercent: () => null,
     onWin: noop,
-    onLoss: noop
+    onLoss: noop,
+    onFinish: noop
   },
   beastTide: {
+    inMap: false,
     isFloorBattle: false,
     canFlee: () => false,
+    fleeIsRetreat: false,
+    maxTurns: noLimit,
     canRecruit: false,
     // Chỉ bắt được thú vương; bắt được cũng là hạ thú vương (hết thú triều).
     canCapture: (special) => special.king,
@@ -131,12 +157,16 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
     },
     onLoss(data, d) {
       log(d, { type: 'beastTideFailed', shopClosedUntilDay: failBeastTide(data, d) })
-    }
+    },
+    onFinish: noop
   },
   // Hiểm địa (docs/rules/zones.md): chạy / bắt như trận thường, thua mất tiền như thường.
   zone: {
+    inMap: true,
     isFloorBattle: false,
     canFlee: () => true,
+    fleeIsRetreat: false,
+    maxTurns: noLimit,
     canRecruit: false,
     canCapture: () => true,
     moneyMultiplier: () => 1,
@@ -155,19 +185,40 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
       if (d.battle.special?.kind !== 'zone') return
       log(d, { type: 'zoneFailed', zoneId: d.battle.special.zoneId })
       d.zones = closeZoneVisit(data, d)
-    }
+    },
+    onFinish: noop
   },
   // Câu cá / khai thác (docs/rules/gathering.md): trận quái hoang trên tầng; phục kích thì không
   // chạy được ở lượt đầu.
   gathering: {
+    inMap: true,
     isFloorBattle: true,
     canFlee: (special, battle) => !special.ambush || battle.turn > 1,
+    fleeIsRetreat: false,
+    maxTurns: noLimit,
     canRecruit: true,
     canCapture: () => true,
     moneyMultiplier: () => 1,
     lossPenaltyPercent: () => null,
     onWin: noop,
-    onLoss: noop
+    onLoss: noop,
+    onFinish: noop
+  },
+  // Boss thế giới (docs/rules/world-boss.md): ở thị trấn, không bắt / thu phục, chạy là rút lui, thua
+  // không mất tiền; mọi cách hết trận đều ghi tổng sát thương vào kỷ lục (thưởng nhận sau).
+  worldBoss: {
+    inMap: false,
+    isFloorBattle: false,
+    canFlee: () => true,
+    fleeIsRetreat: true,
+    maxTurns: (data) => data.config.worldBoss.turns,
+    canRecruit: false,
+    canCapture: () => false,
+    moneyMultiplier: () => 1,
+    lossPenaltyPercent: () => 0,
+    onWin: noop,
+    onLoss: noop,
+    onFinish: (_data, d) => recordWorldBossDamage(d)
   }
 }
 
@@ -177,12 +228,21 @@ export function specialRule(special: SpecialBattle): SpecialBattleRule<SpecialBa
   return SPECIAL_BATTLE_RULES[special.kind] as SpecialBattleRule<SpecialBattleKind>
 }
 
+/** Loại trận đặc biệt là trận trên tầng (kiểm tra save: kind lạ thì false). */
+export const isFloorSpecialKind = (kind: unknown): boolean =>
+  typeof kind === 'string' &&
+  Object.hasOwn(SPECIAL_BATTLE_RULES, kind) &&
+  // Ép kiểu: vừa kiểm tra kind là khóa của bảng.
+  SPECIAL_BATTLE_RULES[kind as SpecialBattleKind].isFloorBattle
+
 /**
  * Trận trên tầng (docs/rules/events.md): trận quái hoang / boss / ngự thú sư gặp trên tầng / trận do
  * event mở; không tính bí cảnh, tháp, độ kiếp, đạo quán, giải đấu, đấu trường, thú triều, hiểm địa. Chỉ trận
  * này mới đếm thời hạn modifier, trận thắng của chuỗi event và nhận hệ số của modifier.
  */
-export function countsAsFloorBattle(battle: BattleState): boolean {
+export function countsAsFloorBattle(
+  battle: Pick<BattleState, 'trial' | 'tribulation' | 'special' | 'trainer'>
+): boolean {
   if (battle.trial || battle.tribulation) return false
   if (battle.special && !specialRule(battle.special).isFloorBattle) return false
   return !battle.trainer || battle.trainer.mode === 'floor' || battle.trainer.mode === 'event'
@@ -211,4 +271,11 @@ export function countChainWin(d: Draft): void {
       : chain
   )
   d.events = { ...d.events, chains }
+}
+
+/** Trận đặc biệt đã hết số lượt tối đa (xét cuối lượt, sau khi tăng lượt). */
+export function isSpecialTimeUp(data: GameData, battle: BattleState): boolean {
+  if (!battle.special) return false
+  const maxTurns = specialRule(battle.special).maxTurns(data)
+  return maxTurns !== null && battle.turn > maxTurns
 }

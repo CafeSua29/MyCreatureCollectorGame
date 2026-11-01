@@ -658,9 +658,11 @@ export const HOOK_SOURCE_KINDS = [
   'frenzy',
   'collection',
   'meal',
+  'blessing',
   'bloodline',
   'polarity',
-  'implant'
+  'implant',
+  'rule'
 ] as const
 
 export type HookSourceKind = (typeof HOOK_SOURCE_KINDS)[number]
@@ -689,6 +691,8 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'frenzy':
     case 'collection':
     case 'meal':
+    case 'blessing':
+    case 'rule':
       // Cuồng bạo có log riêng (`frenzy`) lúc kích hoạt; thưởng sưu tập / món ăn không kích hoạt.
       return undefined
     default:
@@ -1171,6 +1175,17 @@ function resolveTraitHooks(
       scale: 1,
       sourceId: 'meal',
       source: { kind: 'meal', ownerId: monster.id }
+    })
+  }
+  // Chúc phúc của thần (docs/rules/deities.md): % chỉ số trong trận ở map của thần.
+  const blessingPercent = ctx?.blessingStatPercent ?? {}
+  if (Object.keys(blessingPercent).length > 0) {
+    entries.push({
+      handler: statModifier,
+      params: { percent: blessingPercent },
+      scale: 1,
+      sourceId: 'blessing',
+      source: { kind: 'blessing', ownerId: monster.id }
     })
   }
   const auras: AuraEntry[] = []

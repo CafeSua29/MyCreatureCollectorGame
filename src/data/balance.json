@@ -776,7 +776,8 @@
       "safari": 24,
       "zoneStep": 1,
       "fishing": 1,
-      "mining": 2
+      "mining": 2,
+      "worldBoss": 24
     }
   },
   "calendar": {
@@ -1948,6 +1949,24 @@
       ]
     }
   },
+  "instability": {
+    "floorsPerLevel": 10,
+    "visiblePerLevel": 1,
+    "hiddenPerLevel": 1,
+    "rewardPercentPerLevel": 25,
+    "rerollCostPerLevel": 2500
+  },
+  "deities": {
+    "favorPerWin": 1,
+    "favorPerBossWin": 10,
+    "favorPerCapture": 3,
+    "incenseItemId": "incense",
+    "favorPerIncense": 200,
+    "rankBase": 25,
+    "rankPower": 2,
+    "tokenWildChance": 5,
+    "tokenBossChance": 100
+  },
   "soulLevels": {
     "percentPerLevel": 3,
     "costBase": 100,
@@ -2724,6 +2743,12 @@
         "hpThresholdPercent": 50,
         "statPercent": 20,
         "extraActionChance": 15
+      },
+      "worldBoss": {
+        "hpThresholdPercent": 0,
+        "statPercent": 30,
+        "extraActionChance": 25,
+        "fromTurn": 5
       }
     }
   },
@@ -3291,5 +3316,137 @@
     "expBase": 3,
     "expPower": 2,
     "levelBonusPercent": 1
+  },
+  "worldBoss": {
+    "everyDays": 14,
+    "activeDays": 3,
+    "turns": 10,
+    "levelOffset": 0,
+    "bossMultiplier": 1.5,
+    "minSpeciesRankId": "S",
+    "largeWeight": 3,
+    "tiers": [
+      {
+        "id": "C",
+        "minHpMultiple": 0.5,
+        "moneyMultiple": 5,
+        "items": [
+          {
+            "itemId": "soulCrystalSmall",
+            "count": 2
+          },
+          {
+            "itemId": "expCandyM",
+            "count": 1
+          }
+        ],
+        "skillBooks": 1,
+        "eggChance": 0
+      },
+      {
+        "id": "B",
+        "minHpMultiple": 1.5,
+        "moneyMultiple": 10,
+        "items": [
+          {
+            "itemId": "soulCrystalSmall",
+            "count": 3
+          },
+          {
+            "itemId": "expCandyM",
+            "count": 2
+          },
+          {
+            "itemId": "expCandyL",
+            "count": 1
+          }
+        ],
+        "skillBooks": 1,
+        "eggChance": 0
+      },
+      {
+        "id": "A",
+        "minHpMultiple": 3,
+        "moneyMultiple": 20,
+        "items": [
+          {
+            "itemId": "soulCrystalLarge",
+            "count": 1
+          },
+          {
+            "itemId": "expCandyL",
+            "count": 2
+          },
+          {
+            "itemId": "rareCandy",
+            "count": 1
+          },
+          {
+            "itemId": "refiningStone",
+            "count": 1
+          }
+        ],
+        "skillBooks": 2,
+        "eggChance": 0
+      },
+      {
+        "id": "S",
+        "minHpMultiple": 6,
+        "moneyMultiple": 40,
+        "items": [
+          {
+            "itemId": "soulCrystalLarge",
+            "count": 2
+          },
+          {
+            "itemId": "expCandyL",
+            "count": 2
+          },
+          {
+            "itemId": "expCandyXL",
+            "count": 1
+          },
+          {
+            "itemId": "rareCandy",
+            "count": 2
+          },
+          {
+            "itemId": "breakthroughPill",
+            "count": 1
+          }
+        ],
+        "skillBooks": 2,
+        "eggChance": 5
+      },
+      {
+        "id": "SS",
+        "minHpMultiple": 12,
+        "moneyMultiple": 80,
+        "items": [
+          {
+            "itemId": "soulCrystalLarge",
+            "count": 3
+          },
+          {
+            "itemId": "expCandyXL",
+            "count": 2
+          },
+          {
+            "itemId": "rareCandy",
+            "count": 3
+          },
+          {
+            "itemId": "breakthroughPill",
+            "count": 1
+          },
+          {
+            "itemId": "rebirthPill",
+            "count": 1
+          }
+        ],
+        "skillBooks": 3,
+        "eggChance": 10
+      }
+    ]
   }
 }

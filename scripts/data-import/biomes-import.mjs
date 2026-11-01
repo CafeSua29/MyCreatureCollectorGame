@@ -83,10 +83,17 @@ function buildBiome(map, ids) {
     bosses,
     weather: fieldEntries(map.weather),
     terrain: fieldEntries(map.terrain),
-    elementIds: [...mapElements(map, source.themes)]
+    elementIds: [...mapElements(map, source.themes)],
+    ...deityOf(map)
   }
   addReport(map, biome)
   return biome
+}
+
+/** Thần cai quản map theo theme (docs/rules/deities.md; deities-import.mjs ghi vào themes). */
+function deityOf(map) {
+  const deityId = source.themes[map.theme]?.deityId
+  return deityId ? { deityId } : {}
 }
 
 /** Biome đã có: giữ nguyên phần cũ, thêm loài mới và boss ngẫu nhiên mới. */
@@ -106,7 +113,8 @@ function extendExisting(map, existing, ids) {
     ...existing,
     encounters,
     bosses: [...existing.bosses, ...extraBosses],
-    elementIds: [...mapElements(map, source.themes)]
+    elementIds: [...mapElements(map, source.themes)],
+    ...deityOf(map)
   }
   addReport(map, biome)
   return biome

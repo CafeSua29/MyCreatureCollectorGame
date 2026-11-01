@@ -64,18 +64,23 @@ function cureByChance(data: GameData, d: Draft, monster: Monster): void {
   }
 }
 
-/** Hồi / mất máu theo % max HP (regen, regenInWeather; âm = mất máu do trait). */
+/**
+ * Hồi / mất máu theo % max HP (regen, regenInWeather; âm = mất máu do trait). Gom hook kèm bối cảnh
+ * trận để hook của phe (cộng hưởng, trận pháp, luật sideHooks của độ bất ổn) cũng tác dụng.
+ */
 function regenerate(data: GameData, d: Draft, monster: Monster): void {
   let healPercent = 0
-  forEachTraitHook(data, monster, (handler, params, scale) => {
-    if (handler.onTurnEnd) {
-      healPercent += handler.onTurnEnd(params, scale, {
-        data,
-        monster,
-        field: monsterField(data, d, monster)
-      }).healPercent
-    }
-  })
+  const field = monsterField(data, d, monster)
+  forEachTraitHook(
+    data,
+    monster,
+    (handler, params, scale) => {
+      if (handler.onTurnEnd) {
+        healPercent += handler.onTurnEnd(params, scale, { data, monster, field }).healPercent
+      }
+    },
+    monsterBattleContext(data, d, monster)
+  )
   if (healPercent > 0) heal(data, d, monster, percentOfMaxHp(getMaxHp(data, monster), healPercent))
   if (healPercent < 0) loseTurnEndHp(data, d, { monster, percent: -healPercent, factor: 1 })
 }

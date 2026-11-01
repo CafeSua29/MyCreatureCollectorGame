@@ -33,6 +33,7 @@ import {
   mapDrops,
   wildCandidates
 } from './biomeAssign.mjs'
+import { withZoneDeity } from './deityAssign.mjs'
 
 const root = path.resolve(import.meta.dirname, '../..')
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'))
@@ -552,7 +553,15 @@ const zones = [
   ancientZone(),
   ...lineRoots.map(lineZone)
 ]
-writeJson('src/data/zones.json', zones)
+// Thần cai quản map hiểm địa theo hệ chủ đạo (deityAssign.mjs, docs/rules/deities.md).
+const deityOfElement = new Map(
+  readJson('src/data/deities.json').map((deity) => [deity.elementId, deity.id])
+)
+const speciesById = new Map(readJson('src/data/species.json').map((s) => [s.id, s]))
+writeJson(
+  'src/data/zones.json',
+  zones.map((zone) => withZoneDeity(zone, { speciesById, deityOfElement }))
+)
 for (const [language, index] of [
   ['vi', 0],
   ['en', 1]

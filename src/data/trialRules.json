@@ -3,7 +3,11 @@
     "id": "noItems",
     "type": "noItems",
     "params": {},
-    "weight": 10
+    "weight": 10,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 8
+    }
   },
   {
     "id": "monoElement",
@@ -17,7 +21,11 @@
     "params": {
       "weather": "rain"
     },
-    "weight": 3
+    "weight": 3,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "scorchingSun",
@@ -25,7 +33,11 @@
     "params": {
       "weather": "sun"
     },
-    "weight": 3
+    "weight": 3,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "endlessSandstorm",
@@ -33,7 +45,11 @@
     "params": {
       "weather": "sandstorm"
     },
-    "weight": 3
+    "weight": 3,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "endlessBlizzard",
@@ -41,7 +57,11 @@
     "params": {
       "weather": "snow"
     },
-    "weight": 3
+    "weight": 3,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "eternalDarkness",
@@ -49,7 +69,11 @@
     "params": {
       "weather": "darkness"
     },
-    "weight": 2
+    "weight": 2,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "psychicDomain",
@@ -57,7 +81,11 @@
     "params": {
       "terrain": "psychicTerrain"
     },
-    "weight": 2
+    "weight": 2,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "cursedLand",
@@ -65,7 +93,11 @@
     "params": {
       "terrain": "cursedGround"
     },
-    "weight": 2
+    "weight": 2,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "holyLand",
@@ -73,7 +105,11 @@
     "params": {
       "terrain": "holyGround"
     },
-    "weight": 2
+    "weight": 2,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 3
+    }
   },
   {
     "id": "bossOnly",
@@ -85,13 +121,21 @@
     "id": "noTransforms",
     "type": "noTransforms",
     "params": {},
-    "weight": 8
+    "weight": 8,
+    "instability": {
+      "weight": 5,
+      "rewardPercent": 5
+    }
   },
   {
     "id": "noTamerSkills",
     "type": "noTamerSkills",
     "params": {},
-    "weight": 8
+    "weight": 8,
+    "instability": {
+      "weight": 4,
+      "rewardPercent": 10
+    }
   },
   {
     "id": "fierceFoes",
@@ -99,7 +143,11 @@
     "params": {
       "value": 1.5
     },
-    "weight": 8
+    "weight": 8,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 10
+    }
   },
   {
     "id": "tyrantFoes",
@@ -107,12 +155,200 @@
     "params": {
       "value": 2
     },
-    "weight": 3
+    "weight": 3,
+    "instability": {
+      "weight": 2,
+      "rewardPercent": 20
+    }
   },
   {
     "id": "noHealing",
     "type": "noHealing",
     "params": {},
     "weight": 8
+  },
+  {
+    "id": "enemyRegen",
+    "type": "sideHooks",
+    "params": {
+      "side": "enemy",
+      "hooks": [
+        {
+          "type": "regen",
+          "params": {
+            "percent": 5
+          }
+        }
+      ]
+    },
+    "weight": 4,
+    "instability": {
+      "weight": 8,
+      "rewardPercent": 5
+    }
+  },
+  {
+    "id": "enemyHardened",
+    "type": "sideHooks",
+    "params": {
+      "side": "enemy",
+      "hooks": [
+        {
+          "type": "statModifier",
+          "params": {
+            "percent": {
+              "defense": 15,
+              "spDefense": 15
+            }
+          }
+        }
+      ]
+    },
+    "weight": 3,
+    "instability": {
+      "weight": 8,
+      "rewardPercent": 5
+    }
+  },
+  {
+    "id": "enemySwift",
+    "type": "sideHooks",
+    "params": {
+      "side": "enemy",
+      "hooks": [
+        {
+          "type": "statModifier",
+          "params": {
+            "percent": {
+              "speed": 15
+            }
+          }
+        }
+      ]
+    },
+    "weight": 3,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 3
+    }
+  },
+  {
+    "id": "enemyRage",
+    "type": "sideHooks",
+    "params": {
+      "side": "enemy",
+      "hooks": [
+        {
+          "type": "frenzyThresholdBonus",
+          "params": {
+            "percent": 10
+          }
+        }
+      ]
+    },
+    "weight": 2,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 3
+    }
+  },
+  {
+    "id": "playerSlowed",
+    "type": "sideHooks",
+    "params": {
+      "side": "player",
+      "hooks": [
+        {
+          "type": "statModifier",
+          "params": {
+            "percent": {
+              "speed": -10
+            }
+          }
+        }
+      ]
+    },
+    "weight": 3,
+    "instability": {
+      "weight": 8,
+      "rewardPercent": 3
+    }
+  },
+  {
+    "id": "playerWeakened",
+    "type": "sideHooks",
+    "params": {
+      "side": "player",
+      "hooks": [
+        {
+          "type": "statModifier",
+          "params": {
+            "percent": {
+              "attack": -10,
+              "spAttack": -10
+            }
+          }
+        }
+      ]
+    },
+    "weight": 3,
+    "instability": {
+      "weight": 8,
+      "rewardPercent": 5
+    }
+  },
+  {
+    "id": "playerNoCrit",
+    "type": "sideHooks",
+    "params": {
+      "side": "player",
+      "hooks": [
+        {
+          "type": "cannotCrit",
+          "params": {}
+        }
+      ]
+    },
+    "weight": 3,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 5
+    }
+  },
+  {
+    "id": "extraTraits",
+    "type": "extraEnemyTraits",
+    "params": {
+      "count": 1
+    },
+    "weight": 3,
+    "instability": {
+      "weight": 8,
+      "rewardPercent": 5
+    }
+  },
+  {
+    "id": "fusedWilds",
+    "type": "fusedEnemies",
+    "params": {
+      "percent": 20
+    },
+    "weight": 2,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 5
+    }
+  },
+  {
+    "id": "foreignWilds",
+    "type": "foreignSpecies",
+    "params": {
+      "percent": 25
+    },
+    "weight": 0,
+    "instability": {
+      "weight": 6,
+      "rewardPercent": 3
+    }
   }
 ]

@@ -8,6 +8,11 @@ import { Draft, log } from './draft'
 import { grantItemRewards } from './rewards'
 
 interface TrainerModeRule {
+  /**
+   * Trận diễn ra trong map của tầng / bí cảnh (ân sủng, chúc phúc của thần cai quản map;
+   * docs/rules/deities.md): giải đấu, đấu trường ở thị trấn thì không.
+   */
+  inMap: boolean
   /** Thắng trận (sau phần thưởng chung, trước khi kết thúc trận). */
   onWin(data: GameData, d: Draft): void
   /** Thua trận. */
@@ -50,12 +55,13 @@ const resetGymProgress = (_data: GameData, d: Draft): void => {
 const noop = (): void => {}
 
 export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
-  floor: { onWin: noop, onLoss: noop },
+  floor: { inMap: true, onWin: noop, onLoss: noop },
   // Trận NPC trong bí cảnh / tháp: việc sau trận theo bí cảnh / tháp (trialOutcome.ts).
-  trial: { onWin: noop, onLoss: noop },
+  trial: { inMap: true, onWin: noop, onLoss: noop },
   // Trận NPC do event mở (Kẻ lạ thách đấu): việc sau trận theo kết quả event (docs/rules/events.md).
-  event: { onWin: noop, onLoss: noop },
+  event: { inMap: true, onWin: noop, onLoss: noop },
   gym: {
+    inMap: true,
     onWin(_data, d) {
       const gym = gymOf(d)
       const progress = gym.progress + 1
@@ -65,6 +71,7 @@ export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
     onLoss: resetGymProgress
   },
   gymLeader: {
+    inMap: true,
     onWin(data, d) {
       const gym = gymOf(d)
       updateGym(d, { ...gym, progress: 0, wins: gym.wins + 1 })
@@ -74,6 +81,7 @@ export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
     onLoss: resetGymProgress
   },
   tournament: {
+    inMap: false,
     onWin(data, d) {
       const round = d.trainers.tournament.round ?? 0
       log(d, { type: 'tournamentRoundWon', round })
@@ -93,6 +101,7 @@ export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
     }
   },
   arena: {
+    inMap: false,
     onWin(data, d) {
       const rank = d.trainers.arenaRank + 1
       d.trainers = { ...d.trainers, arenaRank: rank }

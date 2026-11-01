@@ -158,14 +158,8 @@
       "assumedPurity": 50
     },
     {
-      "id": "noHitLocations",
-      "withoutSkillFields": ["reach"],
-      "config": {
-        "hitLocations": {
-          "weakPointDamagePercent": 0,
-          "offBalanceCritStage": 0
-        }
-      }
+      "id": "instability3",
+      "instabilityLevel": 3
     },
     {
       "id": "unbound",
@@ -362,6 +356,11 @@
         "toolItemId": "spiritPickaxe"
       }
     ]
+  },
+  "worldBoss": {
+    "teamIds": ["duo", "full6"],
+    "floors": [5, 10, 30],
+    "challenges": 40
   },
   "breeding": {
     "speciesId": "emberling",

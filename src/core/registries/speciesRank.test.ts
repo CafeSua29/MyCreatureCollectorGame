@@ -99,6 +99,8 @@ describe('speciesRanks.json, config.speciesRank, rank của loài', () => {
           { id: 'c', from: 'x' as unknown as number },
           { id: 'd', from: 100, extra: 1 } as unknown as SpeciesRankDef
         ]
+        // Boss thế giới tham chiếu phẩm cấp theo id (docs/rules/world-boss.md).
+        raw.config.worldBoss.minSpeciesRankId = 'a'
       },
       { regenerateText: true }
     )
@@ -112,15 +114,19 @@ describe('speciesRanks.json, config.speciesRank, rank của loài', () => {
 
   it('không có bậc nào / id trùng', () => {
     expect(dataIssuesAfter((raw) => (raw.speciesRanks = []), { regenerateText: true })).toEqual([
-      'speciesRanks: cần ít nhất một bậc'
+      'speciesRanks: cần ít nhất một bậc',
+      // Boss thế giới tham chiếu phẩm cấp theo id (docs/rules/world-boss.md).
+      'config.worldBoss.minSpeciesRankId: phẩm cấp loài không tồn tại "G"'
     ])
     expect(
       dataIssuesAfter(
-        (raw) =>
-          (raw.speciesRanks = [
+        (raw) => {
+          raw.speciesRanks = [
             { id: 'a', from: 0 },
             { id: 'a', from: 1 }
-          ]),
+          ]
+          raw.config.worldBoss.minSpeciesRankId = 'a'
+        },
         { regenerateText: true }
       )
     ).toEqual(['speciesRanks: id "a" bị trùng'])

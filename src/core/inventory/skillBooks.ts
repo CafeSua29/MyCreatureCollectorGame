@@ -2,7 +2,7 @@
 // (learnset lấy từ game gốc: chiêu phổ biến ở game gốc có nhiều loài học) cộng bậc theo power, giá
 // theo power + độ hiếm, quái nào học được sách (tương thích). Action học sách ở monster/skillBooks.ts.
 
-import { toBig, type Decimal } from '../shared'
+import { pickWeighted, rollPercent, toBig, type Decimal, type RngState } from '../shared'
 import {
   isBattleOnlyMove,
   type GameData,
@@ -127,3 +127,46 @@ export function skillBookPrice(data: GameData, book: BookKey, highestFloor: numb
   // Làm tròn xuống: hệ số bậc có thể lẻ (×1,5) mà giá luôn là số nguyên.
   return (book.reusable ? price.times(reusablePriceMultiplier) : price).floor()
 }
+
+/**
+ * Tung `count` sách từ danh sách skill (rương bí cảnh, thưởng thú triều, boss thế giới): bỏ skill không
+ * có sách, skill đội học được mà chưa biết × partyMultiplier như sách boss rơi, reusableChance % là
+ * Chân kinh. Không còn skill nào có sách thì rỗng, không tốn RNG.
+ */
+export function rollSkillBooks(
+  data: GameData,
+  rng: RngState,
+  {
+    skillIds,
+    party,
+    count,
+    reusableChance
+  }: {
+    skillIds: readonly string[]
+    party: Parameters<typeof isSkillBookUsefulForParty>[1]
+    count: number
+    reusableChance: number
+  }
+): [BookKey[], RngState] {
+  const bookable = [...new Set(skillIds)].filter((id) => isBookableSkill(data, data.skills[id]))
+  if (bookable.length === 0) return [[], rng]
+  const { partyMultiplier } = data.config.skillBook
+  const weightOf = (id: string): number =>
+    isSkillBookUsefulForParty(data, party, id) ? partyMultiplier : 1
+  const books: BookKey[] = []
+  for (let i = 0; i < count; i++) {
+    let skillId: string
+    ;[skillId, rng] = pickWeighted(rng, bookable, weightOf)
+    let reusable: boolean
+    ;[reusable, rng] = rollPercent(rng, reusableChance)
+    books.push({ skillId, reusable })
+  }
+  return [books, rng]
+}
+
+/** Skill trong learnset của các loài (bỏ loài không phải loài thường). */
+export const learnsetSkillIds = (data: GameData, speciesIds: readonly string[]): string[] =>
+  speciesIds.flatMap((speciesId) => {
+    const species = data.species[speciesId]
+    return species?.kind === 'normal' ? species.learnset.map((learn) => learn.skillId) : []
+  })

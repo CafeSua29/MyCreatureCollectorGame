@@ -6,6 +6,8 @@
 
 - Đánh theo lượt, dùng skill. Sát thương theo tỉ lệ công/thủ, có khắc chế hệ, trait và bậc tăng/giảm chỉ số trong trận.
 - Đánh quái hoang nhận EXP và tiền. Có tỉ lệ rơi vật phẩm theo bảng `drops` của biome.
+- **Boss thế giới** (khiêu chiến ở thị trấn 1 lần mỗi ngày khi đang xuất hiện): trận `special.kind 'worldBoss'`, boss **HP vô hạn** (`Monster.endlessHp`: không mất HP, không gục, sát thương vẫn ghi bản ghi trận), tối đa `worldBoss.turns` lượt (hết lượt = kết thúc, log `battleTimeUp`), rút lui luôn được, thua không mất tiền, thưởng theo kỷ lục tổng sát thương nhận sau: `world-boss.md`. Luật theo loại trận đặc biệt (chạy / rút lui, bắt, số lượt tối đa, việc hết trận) ở `SPECIAL_BATTLE_RULES` (`battle/specialBattles.ts`).
+- **Độ bất ổn tầng** (người chơi tự bật ở thị trấn): trận quái hoang / boss trên tầng mang thêm thuộc tính bất lợi (luật cùng registry với bí cảnh), tiền / EXP / tỉ lệ rơi cộng %: `instability.md`.
 
 **Thể thức**
 

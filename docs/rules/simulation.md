@@ -14,8 +14,8 @@
 
 ### Chỉ chạy phần liên quan (`--parts`, `--teams`)
 
-- `--parts`: chỉ chạy các phần đã chọn (`sweep`, `biomeSweep`, `bossLevel`, `progression`, `progressionSweep`, `tribulation`, `safari`, `lineage`; chọn `progressionSweep` thì tự chạy thêm `progression`). `--teams`: chỉ chạy việc của các đội đã chọn (quét theo map, breed / fuse không theo đội nên vẫn chạy nếu phần của nó được chọn). Phần không chạy **giữ nguyên CSV** của lần chạy trước.
-- Sửa / thêm tính năng thì chạy phần đo được nó (bảng dưới) để đỡ thời gian; **trước khi báo xong một bước** (hoặc khi đổi số cân bằng dùng chung: chỉ số, sát thương, EXP, boss) vẫn chạy kịch bản mặc định đầy đủ.
+- `--parts`: chỉ chạy các phần đã chọn (`sweep`, `biomeSweep`, `bossLevel`, `progression`, `progressionSweep`, `tribulation`, `safari`, `zones`, `gathering`, `worldBoss`, `lineage`; chọn `progressionSweep` thì tự chạy thêm `progression`). `--teams`: chỉ chạy việc của các đội đã chọn (quét theo map, breed / fuse không theo đội nên vẫn chạy nếu phần của nó được chọn). Phần không chạy **giữ nguyên CSV** của lần chạy trước.
+- Sửa / thêm tính năng (khi cần chạy, mục "Khi nào chạy mô phỏng") thì chỉ chạy phần đo được nó (bảng dưới) để đỡ thời gian. Kịch bản mặc định đầy đủ **chỉ** chạy khi đổi số cân bằng dùng chung (chỉ số, sát thương, EXP, boss) hoặc khi chủ project yêu cầu, không bắt buộc trước khi báo xong một bước (chủ project chốt 2026-11-01).
 
 | Thay đổi                                                                                                              | Phần cần chạy                                                                       |
 | --------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -56,16 +56,24 @@ Chủ project chốt 2026-10-28: thêm hoặc sửa mô phỏng (phần đo mớ
 - **Tối ưu không được đổi kết quả:** lưu CSV trước, chạy lại, so `cmp` từng file (kịch bản quick, và bản rút gọn của kịch bản mặc định khi đụng biến thể); khác một byte là lỗi.
 - Hàm core chậm tìm bằng profile (`node --cpu-prof scripts/simulate/run.mjs <kịch bản> --workers 1 --parts ...`), không đoán.
 
-## Mô phỏng phải tái hiện được thay đổi vừa code (bắt buộc)
+## Khi nào chạy mô phỏng
 
-Chủ project chốt 2026-10-24: sau khi code xong một tính năng / thay đổi, chạy mô phỏng để cân bằng. **Nếu mô phỏng không tái hiện được tính năng / thay đổi đó** (chạy vô ích: ví dụ quét tầng dùng quái mới nên tính năng tích lũy qua nhiều trận không bao giờ có tác dụng, đội mẫu không có vật phẩm / trait / điều kiện để kích hoạt, "người chơi" của chơi liên tục không bao giờ dùng action mới) thì **phải sửa mô phỏng** trong cùng lượt trước khi đánh giá cân bằng:
+Chủ project chốt 2026-11-01 (thay luật cũ "mọi tính năng phải chạy mô phỏng, chạy kịch bản mặc định trước khi báo xong"): **chỉ chạy khi cần**.
+
+- **Cần chạy**: thay đổi có thể đổi cân bằng: luật / số trong trận (sát thương, skill, trait, trạng thái, AI...), phần thưởng (tiền, EXP, đồ rơi), tiến trình (level, mở tầng, tích lũy qua nhiều trận), kinh tế (giá, nguồn / chỗ tiêu tiền), độ khó, số cân bằng trong `src/data/*.json`. Chỉ chạy phần đo được nó (`--parts`, bảng ở mục "Chỉ chạy phần liên quan").
+- **Không cần chạy**: UI, chữ / i18n, tài liệu, tái cấu trúc không đổi hành vi, kiểm tra dữ liệu / save / migrate, dữ liệu nội dung không đổi số cân bằng, sửa lỗi không ảnh hưởng kết quả trận / tiến trình. Ghi một dòng lý do không chạy trong tin nhắn báo xong.
+- **Kịch bản mặc định đầy đủ**: chỉ khi đổi số cân bằng dùng chung (chỉ số, sát thương, EXP, boss) hoặc chủ project yêu cầu.
+
+## Mô phỏng phải tái hiện được thay đổi vừa code (bắt buộc khi chạy)
+
+Chủ project chốt 2026-10-24: khi một tính năng / thay đổi cần chạy mô phỏng (mục trên) thì chạy để cân bằng. **Nếu mô phỏng không tái hiện được tính năng / thay đổi đó** (chạy vô ích: ví dụ quét tầng dùng quái mới nên tính năng tích lũy qua nhiều trận không bao giờ có tác dụng, đội mẫu không có vật phẩm / trait / điều kiện để kích hoạt, "người chơi" của chơi liên tục không bao giờ dùng action mới) thì **phải sửa mô phỏng** trong cùng lượt trước khi đánh giá cân bằng:
 
 - tính năng tích lũy qua nhiều trận: đo bằng đội thật (chơi liên tục + `progressionSweep`, chấp nhận chạy lâu); quét tầng dựng đội theo tầng thì thêm giả định hợp lý (như thân mật / ngự thú sư / thuần thục giả định theo tầng) có số đo thật để kiểm lại;
 - "người chơi" của chơi liên tục dùng tính năng như người chơi thật (action mới, vật phẩm mới);
 - cột / bảng đo đúng chỉ số của tính năng, và biến thể A/B (`variants`) tắt / đổi tính năng để so tác động trên cùng seed;
 - test cho phần mô phỏng mới, ghi luật vào file này.
 
-Trước khi báo kết quả cân bằng: nói rõ mô phỏng đã đo được tính năng ở đâu (cột, biến thể, số trước / sau). Chỉ được bỏ qua khi tính năng không đổi trận đấu / tiến trình (ví dụ chỉ thêm UI hay dữ liệu chữ), và ghi rõ lý do.
+Trước khi báo kết quả cân bằng: nói rõ mô phỏng đã đo được tính năng ở đâu (cột, biến thể, số trước / sau). Thay đổi không cần chạy mô phỏng (mục "Khi nào chạy mô phỏng") thì bỏ qua, ghi rõ lý do.
 
 ## Dùng kết quả mô phỏng (bắt buộc)
 
@@ -86,7 +94,7 @@ Chủ project chốt: script mô phỏng **không chỉ để báo số cho ch�
    - số cân bằng trong `src/data/*.json`, **kể cả số đã ghi "chủ project chốt"** (độ khó boss tầng, `config.ai`, giá fuse...);
    - code cũ chưa hợp lý, luật chơi / thiết kế gây mất cân bằng: được sửa (như mọi code cũ, "Khi sửa code" ở `CLAUDE.md`), nhưng vẫn theo mọi quy tắc khác: test cùng lượt, đổi cấu trúc state thì tăng version + migrate, cập nhật đúng file docs (luật mới thay luật cũ, không để docs lệch code).
    - **Giới hạn cứng (chủ project chốt):** hệ số boss (`bossMultiplier`) luôn **ít nhất từ 2 đến 5**: `bossMultiplierMin` ≥ 2 và `bossMultiplierMax` ≥ 5, áp cho cả `config.boss` lẫn giá trị ghi đè của biome. Được tăng, không được hạ dưới mức này; muốn boss dễ hơn thì chỉnh chỗ khác (level boss, chỉ số, AI...).
-4. **Kiểm chứng và ghi lại:** sau mỗi thay đổi chạy lại mô phỏng (kịch bản quick để thử nhanh, kịch bản mặc định trước khi báo xong). Ghi vào dòng của số đó (`balance-numbers.md` cho số cơ bản, `balance-content.md` cho số của tính năng; điều tra riêng không gắn tính năng thì `balance-history.md`): ngày, kịch bản, số chính trước / sau, đã đổi gì và vì sao. Thay đổi làm số liệu xấu đi thì hoàn lại.
+4. **Kiểm chứng và ghi lại:** sau mỗi thay đổi chạy lại mô phỏng (kịch bản quick hoặc `--parts` để thử nhanh; kịch bản mặc định chỉ theo mục "Khi nào chạy mô phỏng"). Ghi vào dòng của số đó (`balance-numbers.md` cho số cơ bản, `balance-content.md` cho số của tính năng; điều tra riêng không gắn tính năng thì `balance-history.md`): ngày, kịch bản, số chính trước / sau, đã đổi gì và vì sao. Thay đổi làm số liệu xấu đi thì hoàn lại.
 5. **Báo cáo:** đầu tin nhắn tóm tắt chỗ bất thường đã tìm, đã sửa gì (kèm số trước / sau, file đã đổi, luật nào trong docs đã đổi), để chủ project rà lại sau. Chỉ hỏi khi số liệu không đủ để chọn giữa các phương án. Không có chỗ bất thường thì ghi rõ "đã rà, không thấy chỗ cần sửa".
 
 - Chưa có mục tiêu cân bằng cho một chỉ tiêu (ví dụ tỉ lệ thắng quái hoang cùng tầng nên bao nhiêu) thì tự đặt mục tiêu hợp lý kèm lý do, ghi vào `balance-numbers.md` để các lần sau tự so, báo ở cuối tin nhắn.
@@ -176,12 +184,12 @@ Là tham số của script, **không phải số cân bằng của game** (khôn
 
 ## Theo tính năng
 
-"Người chơi" dùng từng tính năng (cuồng bạo, ngự thú sư, tính cách, thuần thục, độ kiếp, thám hiểm, nhiệm vụ, ngự thú sư NPC, bí cảnh, luyện đan, hồn tinh, điểm nỗ lực, địa bảo, thân mật) và breed / fuse nhiều đời: `simulation-features.md`. Thêm tính năng mới vào mô phỏng thì ghi mục ở file đó.
+"Người chơi" dùng từng tính năng (cuồng bạo, ngự thú sư, tính cách, thuần thục, độ kiếp, thám hiểm, nhiệm vụ, ngự thú sư NPC, bí cảnh, thần linh, luyện đan, hồn tinh, điểm nỗ lực, địa bảo, thân mật) và breed / fuse nhiều đời: `simulation-features.md`. Thêm tính năng mới vào mô phỏng thì ghi mục ở file đó.
 
 ## Biến thể
 
 - Quét tầng chạy lại cho mỗi biến thể trong `variants` (biến thể đầu tiên là bản chuẩn, dùng cho quét theo map, tìm level, chơi liên tục). Biến thể dùng để **so A/B một số cân bằng hoặc tắt một tính năng** trên cùng đội, cùng seed (`ai-summary.csv`, `floors.csv` cột `variant`).
-- Mỗi biến thể thêm một lượt quét tầng (phần nặng nhất), nên kịch bản mặc định chỉ giữ biến thể đang cần: `current` và biến thể A/B của tính năng vừa làm (hiện `noHitLocations`: `withoutSkillFields: ["reach"]` + `hitLocations.weakPointDamagePercent` 0, tắt tầm chiêu và việc AI nhắm điểm yếu, `hit-locations.md`; trước đó `noEffort`: `effort.percentPerPoint` 0, tắt % chỉ số của điểm nỗ lực, `effort-values.md`; trước đó `noFrenzy`: mọi số cuồng bạo về 0, tắt cuồng bạo, `frenzy.md`; trước đó `allOut` / `cautious`: đội mẫu dùng chiến thuật toàn lực / thận trọng; trước đó `noPartner`: `withoutPartnerSkills`, bỏ hiệu ứng mọi kỹ năng đồng hành; trước nữa `noNature`: `nature.percent` 0, tắt hệ số tính cách; trước nữa `noStyles`: bỏ `styles` khỏi mọi skill, và `earlyStyles`: `moveStyles.unlockMastery` 1 để đo cơ chế thế ngay ở tầng thấp, vì kịch bản mặc định chỉ tới tầng 10 nên thuần thục chưa tới cấp mở thế 10; trước đó `noSynergyHold`: bỏ `hold` và `synergy`; trước nữa `noMastery`: tắt hiệu lực thuần thục `powerStep` 0, `accuracyPerLevel` 0, không mốc). Làm tính năng sau thì thay biến thể A/B cũ bằng biến thể của tính năng mới. Biến thể AI cũ (`stage0.05`: `stageValuePerStep` 0,05; `koBonus1`: `koBonus` 1) bỏ khỏi kịch bản mặc định 2026-10-24 (giữ `config.ai` đã chốt); chỉnh `config.ai` thì thêm lại.
+- Mỗi biến thể thêm một lượt quét tầng (phần nặng nhất), nên kịch bản mặc định chỉ giữ biến thể đang cần: `current` và biến thể A/B của tính năng vừa làm (hiện `instability3`: `instabilityLevel` 3, mọi tầng có độ bất ổn mức 3 (6 thuộc tính), `instability.md`; trước đó `noHitLocations`: `withoutSkillFields: ["reach"]` + `hitLocations.weakPointDamagePercent` 0, tắt tầm chiêu và việc AI nhắm điểm yếu, `hit-locations.md`; trước đó `noEffort`: `effort.percentPerPoint` 0, tắt % chỉ số của điểm nỗ lực, `effort-values.md`; trước đó `noFrenzy`: mọi số cuồng bạo về 0, tắt cuồng bạo, `frenzy.md`; trước đó `allOut` / `cautious`: đội mẫu dùng chiến thuật toàn lực / thận trọng; trước đó `noPartner`: `withoutPartnerSkills`, bỏ hiệu ứng mọi kỹ năng đồng hành; trước nữa `noNature`: `nature.percent` 0, tắt hệ số tính cách; trước nữa `noStyles`: bỏ `styles` khỏi mọi skill, và `earlyStyles`: `moveStyles.unlockMastery` 1 để đo cơ chế thế ngay ở tầng thấp, vì kịch bản mặc định chỉ tới tầng 10 nên thuần thục chưa tới cấp mở thế 10; trước đó `noSynergyHold`: bỏ `hold` và `synergy`; trước nữa `noMastery`: tắt hiệu lực thuần thục `powerStep` 0, `accuracyPerLevel` 0, không mốc). Làm tính năng sau thì thay biến thể A/B cũ bằng biến thể của tính năng mới. Biến thể AI cũ (`stage0.05`: `stageValuePerStep` 0,05; `koBonus1`: `koBonus` 1) bỏ khỏi kịch bản mặc định 2026-10-24 (giữ `config.ai` đã chốt); chỉnh `config.ai` thì thêm lại.
 
 ## Quét tầng bằng đội thật (`progressionSweep`)
 

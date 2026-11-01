@@ -13,7 +13,30 @@ import {
   fieldList
 } from './checks'
 
-const RULE_FIELDS = fieldList<TrialRuleDef>({ id: true, type: true, params: true, weight: true })
+const RULE_FIELDS = fieldList<TrialRuleDef>({
+  id: true,
+  type: true,
+  params: true,
+  weight: true,
+  instability: true
+})
+
+/** Khối thuộc tính bất ổn của luật (docs/rules/instability.md): loại dùng được, trọng số, % thưởng. */
+function checkInstabilityBlock(rule: TrialRuleDef, where: string, issues: string[]): void {
+  if (rule.instability === undefined) return
+  if (!TRIAL_RULES[rule.type].inInstability) {
+    issues.push(`${where}: loại ${rule.type} không dùng được làm thuộc tính bất ổn`)
+    return
+  }
+  const block = asObject(rule.instability)
+  if (!block) {
+    issues.push(`${where}: instability phải là object`)
+    return
+  }
+  checkKnownFields(block, ['weight', 'rewardPercent'], `${where}: instability`, 'khối', issues)
+  issues.push(...checkNumber(block.weight, `${where}: instability.weight`, 0))
+  issues.push(...checkNumber(block.rewardPercent, `${where}: instability.rewardPercent`, 0))
+}
 
 function checkTrialRule(data: GameData, rule: TrialRuleDef, issues: string[]): void {
   const where = `Luật bí cảnh "${rule.id}"`
@@ -31,6 +54,41 @@ function checkTrialRule(data: GameData, rule: TrialRuleDef, issues: string[]): v
   const handler = TRIAL_RULES[rule.type]
   checkKnownFields(params, handler.fields, `${where}: params`, `luật ${rule.type}`, issues)
   for (const issue of handler.validateParams(params, data)) issues.push(`${where}: ${issue}`)
+  if (!handler.inRealm && rule.weight !== 0) {
+    issues.push(`${where}: loại ${rule.type} chỉ dành cho độ bất ổn, weight phải là 0`)
+  }
+  checkInstabilityBlock(rule, where, issues)
+}
+
+/** config.instability (docs/rules/instability.md). */
+function checkInstabilityConfig(value: unknown, issues: string[]): void {
+  const at = 'config.instability'
+  const config = asObject(value)
+  if (!config) {
+    issues.push(`${at} phải là object`)
+    return
+  }
+  checkKnownFields(
+    config,
+    [
+      'floorsPerLevel',
+      'visiblePerLevel',
+      'hiddenPerLevel',
+      'rewardPercentPerLevel',
+      'rerollCostPerLevel'
+    ],
+    at,
+    'config',
+    issues
+  )
+  issues.push(...checkInteger(config.floorsPerLevel, `${at}.floorsPerLevel`, 1))
+  issues.push(...checkInteger(config.visiblePerLevel, `${at}.visiblePerLevel`, 0))
+  issues.push(...checkInteger(config.hiddenPerLevel, `${at}.hiddenPerLevel`, 0))
+  if (config.visiblePerLevel === 0 && config.hiddenPerLevel === 0) {
+    issues.push(`${at}: mỗi mức phải có ít nhất một thuộc tính`)
+  }
+  issues.push(...checkNumber(config.rewardPercentPerLevel, `${at}.rewardPercentPerLevel`, 0))
+  issues.push(...checkNumber(config.rerollCostPerLevel, `${at}.rerollCostPerLevel`, 0))
 }
 
 /** config.trials.realm.chest: món theo trọng số, trang bị (bậc thường), sách. */
@@ -94,9 +152,10 @@ function checkTowerConfig(data: GameData, value: unknown, issues: string[]): voi
   checkItemRewards(data, tower.milestoneRewards, `${at}.milestoneRewards`, issues)
 }
 
-/** Kiểm tra luật bí cảnh và config.trials. */
+/** Kiểm tra luật bí cảnh (kể cả thuộc tính bất ổn), config.trials và config.instability. */
 export function checkTrialData(data: GameData, issues: string[]): void {
   for (const rule of Object.values(data.trialRules)) checkTrialRule(data, rule, issues)
+  checkInstabilityConfig(data.config.instability, issues)
   const config = asObject(data.config.trials)
   if (!config) {
     issues.push('config.trials phải là object')

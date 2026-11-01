@@ -16,7 +16,8 @@ import type { AlchemyConfig, CraftCurveConfig } from './alchemy'
 import type { QuestConfig } from './quests'
 import type { ExpeditionConfig } from './expeditions'
 import type { TrainerConfig } from './trainers'
-import type { TrialConfig } from './trials'
+import type { InstabilityConfig, TrialConfig } from './trials'
+import type { DeityConfig } from './deities'
 import type { EventConfig } from './events'
 import type { BondConfig, ContractConfig } from './tamer'
 import type { SoulRelicConfig } from './soul'
@@ -32,6 +33,7 @@ import type { ImplantConfig } from './implant'
 import type { CapacityConfig } from './capacity'
 import type { ZoneConfig } from './zones'
 import type { GatheringConfig } from './gathering'
+import type { WorldBossConfig } from './worldBoss'
 import type { CriticalTier, DexConfig } from './dex'
 import type { StatName } from './stats'
 import type { TransformKind } from './transform'
@@ -151,6 +153,10 @@ export interface BalanceConfig {
   trainers: TrainerConfig
   /** Bí cảnh và tháp thí luyện (docs/rules/trials.md). */
   trials: TrialConfig
+  /** Độ bất ổn tầng (docs/rules/instability.md). */
+  instability: InstabilityConfig
+  /** Thần linh và ân sủng (docs/rules/deities.md). */
+  deities: DeityConfig
   /** Hồn tinh (docs/rules/soul-levels.md). */
   soulLevels: SoulLevelConfig
   /** Điểm nỗ lực, như EV của Pokémon (docs/rules/effort-values.md). */
@@ -185,6 +191,8 @@ export interface BalanceConfig {
   zones: ZoneConfig
   /** Câu cá và khai thác (docs/rules/gathering.md). */
   gathering: GatheringConfig
+  /** Boss thế giới (docs/rules/world-boss.md). */
+  worldBoss: WorldBossConfig
 }
 
 /**

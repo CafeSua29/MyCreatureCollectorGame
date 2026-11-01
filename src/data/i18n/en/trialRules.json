@@ -14,5 +14,15 @@
   "noTamerSkills": "Sealed Tamer",
   "fierceFoes": "Fierce Foes",
   "tyrantFoes": "Tyrant Foes",
-  "noHealing": "No Recovery"
+  "noHealing": "No Recovery",
+  "enemyRegen": "Regenerating Foes",
+  "enemyHardened": "Armored Foes",
+  "enemySwift": "Swift Foes",
+  "enemyRage": "Easily Enraged",
+  "playerSlowed": "Sluggish",
+  "playerWeakened": "Weakened",
+  "playerNoCrit": "No Criticals",
+  "extraTraits": "Mutated Foes",
+  "fusedWilds": "Fused Foes",
+  "foreignWilds": "Lost Wanderers"
 }

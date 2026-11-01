@@ -19,12 +19,15 @@ export function floorGeneMultiplier(data: GameData, floor: number): Decimal {
 }
 
 /**
- * Tầng mốc để chấm tư chất: tầng cao nhất từng đạt. Khi có phi thăng (ascension.md) đổi thành
- * `bestFloor` ở đây, nơi khác không phải sửa.
+ * Tầng cao nhất từng đạt (mở khóa vĩnh viễn: tư chất, mức bất ổn tối đa). Khi có phi thăng
+ * (ascension.md) đổi thành `bestFloor` ở đây, nơi khác không phải sửa.
  */
-export function aptitudeFloor(state: Pick<GameState, 'highestFloor'>): number {
+export function bestFloorReached(state: Pick<GameState, 'highestFloor'>): number {
   return state.highestFloor
 }
+
+/** Tầng mốc để chấm tư chất: tầng cao nhất từng đạt. */
+export const aptitudeFloor = bestFloorReached
 
 /** Tổng gen tối đa của quái hoang ở tầng (mỗi chỉ số floor(geneMax × hệ số gen của tầng)). */
 export function wildGeneMaxTotal(data: GameData, floor: number): Decimal {

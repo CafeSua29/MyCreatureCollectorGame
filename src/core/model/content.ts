@@ -6,6 +6,7 @@ import type { TrainerClass } from './trainers'
 import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
 import type { SerumEffectDef } from './implant'
+import type { DeityDef } from './deities'
 import type { EventDef, EventModifierDef } from './events'
 import type { QuestTemplate } from './quests'
 import type { RecipeDef } from './alchemy'
@@ -1521,6 +1522,11 @@ export interface Biome {
    */
   elementIds?: string[]
   /**
+   * Thần cai quản map (docs/rules/deities.md): trận trong map tăng ân sủng với thần này, chúc phúc
+   * của thần chỉ tác dụng ở đây; bỏ trống = map không có thần.
+   */
+  deityId?: string
+  /**
    * Câu cá / khai thác ở map này (docs/rules/gathering.md): mỗi cách có danh sách quái gặp được và
    * bảng vật phẩm; bỏ trống cách nào thì map không làm được cách đó.
    */
@@ -1720,6 +1726,7 @@ export interface RawGameData {
   eventModifiers: EventModifierDef[]
   zones: RawZoneDef[]
   serumEffects: SerumEffectDef[]
+  deities: DeityDef[]
   text: TextData
 }
 
@@ -1782,6 +1789,8 @@ export interface GameData {
   zones: Record<string, ZoneDef>
   /** Hiệu ứng cấy ghép của huyết thanh (docs/rules/implant.md). */
   serumEffects: Record<string, SerumEffectDef>
+  /** Thần linh (docs/rules/deities.md). */
+  deities: Record<string, DeityDef>
   /** Chữ nội dung theo ngôn ngữ; logic core không dùng, chỉ tra qua contentName. */
   text: TextData
 }

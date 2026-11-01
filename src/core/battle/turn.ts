@@ -51,6 +51,7 @@ import { throwBall, throwItem, applyItemToAlly } from './battleItems'
 import { cureUserBeforeSkill, rollSelfHit, rollSkipTurn, statusesAtTurnEnd } from './statuses'
 import { applyWin, applyLoss, finish } from './outcome'
 import { isTribulationTimeUp, settleTribulation } from './tribulation'
+import { isSpecialTimeUp } from './specialBattles'
 import { perishAtTurnEnd } from './volatiles'
 import { traitsAtTurnEnd } from './turnEndTraits'
 import { cudChewAtTurnEnd } from './heldItems'
@@ -271,6 +272,11 @@ export function settleAfterTurn(data: GameData, d: Draft, start?: SideSlots): vo
   }
   if (partyWiped(data, d)) return applyLoss(data, d)
   if (enemiesWiped(data, d)) return applyWin(data, d)
+  // Hết số lượt tối đa của trận đặc biệt (boss thế giới): trận kết thúc, không phần thưởng chung.
+  if (isSpecialTimeUp(data, d.battle)) {
+    log(d, { type: 'battleTimeUp' })
+    return finish(data, d, 'won')
+  }
 
   const enemyFainted = faintedOnField(data, d, 'enemy')
   for (const id of enemyFainted) {

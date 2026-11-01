@@ -1,0 +1,176 @@
+{
+  "note": "Thần linh (docs/rules/deities.md): một thần mỗi hệ, chỉ dùng chức danh (không nhân vật độc nhất có tên riêng, content-data.md). themes = kiểu môi trường của map (biomes-source.json) do thần cai quản; signatureStat / signatureChannel = chúc phúc riêng của thần. Danh sách chờ chủ project duyệt.",
+  "deities": [
+    {
+      "id": "thanhHoang",
+      "vi": "Thành Hoàng",
+      "en": "Tutelary God",
+      "elementId": "normal",
+      "signatureStat": "hp",
+      "signatureChannel": "moneyPercent",
+      "themes": ["grassland"]
+    },
+    {
+      "id": "hoaDuc",
+      "vi": "Hỏa Đức Tinh Quân",
+      "en": "Fire Virtue Star Lord",
+      "elementId": "fire",
+      "signatureStat": "attack",
+      "signatureChannel": "expPercent",
+      "themes": ["volcanic", "geothermal"]
+    },
+    {
+      "id": "thuyDuc",
+      "vi": "Thủy Đức Tinh Quân",
+      "en": "Water Virtue Star Lord",
+      "elementId": "water",
+      "signatureStat": "spDefense",
+      "signatureChannel": "catchRatePercent",
+      "themes": ["coast", "lake"]
+    },
+    {
+      "id": "loiCong",
+      "vi": "Lôi Công",
+      "en": "Thunder Duke",
+      "elementId": "electric",
+      "signatureStat": "speed",
+      "signatureChannel": "expPercent",
+      "themes": ["storm", "ocean", "monsoon"]
+    },
+    {
+      "id": "mocDuc",
+      "vi": "Mộc Đức Tinh Quân",
+      "en": "Wood Virtue Star Lord",
+      "elementId": "grass",
+      "signatureStat": "hp",
+      "signatureChannel": "recruitPercent",
+      "themes": ["temperateForest", "mediterranean"]
+    },
+    {
+      "id": "suongThan",
+      "vi": "Sương Thần",
+      "en": "Frost Goddess",
+      "elementId": "ice",
+      "signatureStat": "spAttack",
+      "signatureChannel": "catchRatePercent",
+      "themes": ["frozen", "taiga", "tundra", "glacier", "polarSea"]
+    },
+    {
+      "id": "chienThan",
+      "vi": "Chiến Thần",
+      "en": "War God",
+      "elementId": "fighting",
+      "signatureStat": "attack",
+      "signatureChannel": "expPercent",
+      "themes": ["savannah", "steppe"]
+    },
+    {
+      "id": "onThan",
+      "vi": "Ôn Thần",
+      "en": "Plague God",
+      "elementId": "poison",
+      "signatureStat": "spDefense",
+      "signatureChannel": "dropRatePercent",
+      "themes": ["swamp", "wasteland"]
+    },
+    {
+      "id": "thoDuc",
+      "vi": "Thổ Đức Tinh Quân",
+      "en": "Earth Virtue Star Lord",
+      "elementId": "ground",
+      "signatureStat": "defense",
+      "signatureChannel": "moneyPercent",
+      "themes": ["desert", "coldDesert"]
+    },
+    {
+      "id": "phongBa",
+      "vi": "Phong Bá",
+      "en": "Wind Earl",
+      "elementId": "flying",
+      "signatureStat": "speed",
+      "signatureChannel": "shinyChancePercent",
+      "themes": ["sky", "canyon", "snowMountain"]
+    },
+    {
+      "id": "mongThan",
+      "vi": "Mộng Thần",
+      "en": "Dream God",
+      "elementId": "psychic",
+      "signatureStat": "spAttack",
+      "signatureChannel": "shinyChancePercent",
+      "themes": ["crystalCave", "psychicRealm"]
+    },
+    {
+      "id": "tamThan",
+      "vi": "Tàm Thần",
+      "en": "Silkworm God",
+      "elementId": "bug",
+      "signatureStat": "speed",
+      "signatureChannel": "recruitPercent",
+      "themes": ["jungle", "mangrove"]
+    },
+    {
+      "id": "sonThan",
+      "vi": "Sơn Thần",
+      "en": "Mountain God",
+      "elementId": "rock",
+      "signatureStat": "defense",
+      "signatureChannel": "dropRatePercent",
+      "themes": ["mountain", "karst"]
+    },
+    {
+      "id": "diemVuong",
+      "vi": "Diêm Vương",
+      "en": "Yama King",
+      "elementId": "ghost",
+      "signatureStat": "spAttack",
+      "signatureChannel": "recruitPercent",
+      "themes": ["haunted", "ruins"]
+    },
+    {
+      "id": "longVuong",
+      "vi": "Long Vương",
+      "en": "Dragon King",
+      "elementId": "dragon",
+      "signatureStat": "attack",
+      "signatureChannel": "moneyPercent",
+      "themes": ["abyss", "coralReef", "kelpForest"]
+    },
+    {
+      "id": "daDuThan",
+      "vi": "Dạ Du Thần",
+      "en": "Night Patrol God",
+      "elementId": "dark",
+      "signatureStat": "attack",
+      "signatureChannel": "dropRatePercent",
+      "themes": ["cave", "chaos"]
+    },
+    {
+      "id": "kimDuc",
+      "vi": "Kim Đức Tinh Quân",
+      "en": "Metal Virtue Star Lord",
+      "elementId": "steel",
+      "signatureStat": "defense",
+      "signatureChannel": "moneyPercent",
+      "themes": ["industrial", "saltFlat", "hydrothermal"]
+    },
+    {
+      "id": "hoaThan",
+      "vi": "Hoa Thần",
+      "en": "Flower Goddess",
+      "elementId": "fairy",
+      "signatureStat": "spDefense",
+      "signatureChannel": "shinyChancePercent",
+      "themes": ["magicForest", "cloudForest"]
+    },
+    {
+      "id": "thaiDuong",
+      "vi": "Thái Dương Tinh Quân",
+      "en": "Sun Star Lord",
+      "elementId": "light",
+      "signatureStat": "spAttack",
+      "signatureChannel": "expPercent",
+      "themes": ["holy"]
+    }
+  ]
+}

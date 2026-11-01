@@ -175,6 +175,11 @@
       }
     ]
   },
+  "worldBoss": {
+    "teamIds": ["solo"],
+    "floors": [5],
+    "challenges": 5
+  },
   "breeding": {
     "speciesId": "emberling",
     "floor": 1,

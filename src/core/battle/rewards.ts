@@ -5,13 +5,14 @@ import {
   addEquipment,
   addItems,
   equipmentInstanceId,
-  isBookableSkill,
-  isSkillBookUsefulForParty,
-  rollEquipment
+  learnsetSkillIds,
+  rollEquipment,
+  rollSkillBooks,
+  type BookKey
 } from '../inventory'
 import { getMaxHp, percentOfMaxHp } from '../monster'
 import { hasBagRoom } from '../registries'
-import { BIG_ZERO, maxBig, minBig, pickWeighted, rollPercent, type Decimal } from '../shared'
+import { BIG_ZERO, maxBig, minBig, type Decimal } from '../shared'
 import type {
   Biome,
   EquipmentInstance,
@@ -66,33 +67,24 @@ export function grantItemRewards(d: Draft, rewards: readonly ItemReward[]): void
 
 /**
  * Sách kỹ năng theo map (rương bí cảnh, thưởng thú triều): skill trong learnset các loài của map
- * (trừ skill không có sách), skill đội học được mà chưa biết × partyMultiplier như sách boss rơi;
- * reusableChance % là Chân kinh. Map không có skill nào có sách thì không tốn RNG.
+ * (rollSkillBooks). Map không có skill nào có sách thì không tốn RNG.
  */
 export function gainBiomeSkillBooks(
   data: GameData,
   d: Draft,
   { biome, count, reusableChance }: { biome: Biome; count: number; reusableChance: number }
 ): void {
-  const skillIds = [
-    ...new Set(
-      biome.encounters.flatMap((entry) => {
-        const species = data.species[entry.speciesId]
-        return species?.kind === 'normal' ? species.learnset.map((learn) => learn.skillId) : []
-      })
-    )
-  ].filter((id) => isBookableSkill(data, data.skills[id]))
-  if (skillIds.length === 0) return
-  const { partyMultiplier } = data.config.skillBook
-  const weightOf = (id: string): number =>
-    isSkillBookUsefulForParty(data, d.party, id) ? partyMultiplier : 1
-  for (let i = 0; i < count; i++) {
-    let skillId: string
-    ;[skillId, d.rng] = pickWeighted(d.rng, skillIds, weightOf)
-    let reusable: boolean
-    ;[reusable, d.rng] = rollPercent(d.rng, reusableChance)
-    d.inventory = addBooks(d.inventory, { skillId, reusable }, 1)
-    log(d, { type: 'skillBookDropped', skillId, reusable })
+  const speciesIds = biome.encounters.map((entry) => entry.speciesId)
+  let books: BookKey[]
+  ;[books, d.rng] = rollSkillBooks(data, d.rng, {
+    skillIds: learnsetSkillIds(data, speciesIds),
+    party: d.party,
+    count,
+    reusableChance
+  })
+  for (const book of books) {
+    d.inventory = addBooks(d.inventory, book, 1)
+    log(d, { type: 'skillBookDropped', skillId: book.skillId, reusable: book.reusable })
   }
 }
 

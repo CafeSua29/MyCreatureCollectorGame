@@ -2,6 +2,7 @@
 
 export * from './alchemy'
 export * from './beastTide'
+export * from './worldBoss'
 export * from './cooking'
 export * from './breeding'
 export * from './eggs'

@@ -22,6 +22,7 @@ import { assertNotBusy, fulfillImprint, isImprintRequested } from '../monster'
 import { enterTown } from '../shop'
 import { isValidFloor } from './floors'
 import { evolutionScene } from './evolutionPlace'
+import { revealInstability } from './instability'
 import { dayOf, type GameData, type GameState, type Location, type Monster } from '../model'
 
 function requireNoBattle(state: GameState): void {
@@ -60,7 +61,8 @@ export function travel(data: GameData, state: GameState, to: Location): GameStat
     if (to.floor > state.highestFloor) {
       throw new ActionError('floorLocked', { floor: to.floor, highestFloor: state.highestFloor })
     }
-    return { ...state, location: { type: 'floor', floor: to.floor } }
+    // Ra tầng: thuộc tính bất ổn ẩn lộ ra (docs/rules/instability.md).
+    return revealInstability({ ...state, location: { type: 'floor', floor: to.floor } })
   }
   throw malformedAction('điểm đến không hợp lệ')
 }

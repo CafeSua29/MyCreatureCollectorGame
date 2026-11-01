@@ -138,6 +138,11 @@ export interface Monster {
    */
   battleMaxHpDelta?: Decimal
   /**
+   * HP vô hạn (boss thế giới, docs/rules/world-boss.md): mất máu không trừ HP, không gục; sát thương
+   * vẫn ghi vào bản ghi trận. Chỉ có trên quái địch trong trận.
+   */
+  endlessHp?: true
+  /**
    * Hệ Tera (id hệ hoặc STELLAR; mục "Tera" ở transformation.md): random theo hệ của quái khi sinh,
    * giữ khi tiến hóa / fuse, đổi bằng Mảnh Tera ở thị trấn.
    */

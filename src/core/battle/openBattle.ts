@@ -3,6 +3,7 @@
 import { cloneData, type RngState } from '../shared'
 import {
   activeTeamBonuses,
+  battleRules,
   eventModifierFields,
   hasTrialRule,
   trialEnemyMultiplier,
@@ -15,6 +16,7 @@ import {
   type BattleState,
   type BattleTrainer,
   type BattleTrial,
+  type TrialRule,
   type GameData,
   type GameState,
   type Monster,
@@ -40,6 +42,7 @@ import { settleAfterTurn } from './turn'
 import { rollBossTransformPlan } from './transform'
 import { isTamerWounded, newBattleTamer, partnerTeamBonus } from '../tamer'
 import { countsAsFloorBattle } from './specialBattles'
+import { applyEnemyRules, battleInstabilityFor, ruleTeamBonuses } from './instability'
 
 /** Boss trong trận mang món unique của loài (sinh sau cả trận để không đổi quái đã sinh). */
 function equipBosses(
@@ -79,20 +82,25 @@ export interface TrainerSetup {
 }
 
 /**
- * Luật của trận bí cảnh / tháp lúc mở trận (docs/rules/trials.md): chỉ số quái địch × hệ số của
- * luật enemyMultiplier (nhân vào bossMultiplier).
+ * Luật của trận bí cảnh / tháp / độ bất ổn lúc mở trận (docs/rules/trials.md): chỉ số quái địch ×
+ * hệ số của luật enemyMultiplier (nhân vào bossMultiplier).
  */
-function strengthenEnemies(data: GameData, enemies: Monster[], trial?: BattleTrial): Monster[] {
-  const multiplier = trial ? trialEnemyMultiplier(data, trial.rules) : 1
+function strengthenEnemies(
+  data: GameData,
+  enemies: Monster[],
+  rules: readonly TrialRule[]
+): Monster[] {
+  const multiplier = trialEnemyMultiplier(data, rules)
   if (multiplier === 1) return enemies
   return enemies.map((enemy) => ({ ...enemy, bossMultiplier: enemy.bossMultiplier * multiplier }))
 }
 
-/** Luật fixedField của bí cảnh / tháp: lớp có ghi lấy cố định cả trận (sau môi trường của map). */
+/**
+ * Luật fixedField của bí cảnh / tháp / độ bất ổn: lớp có ghi lấy cố định cả trận (sau môi trường
+ * của map).
+ */
 function placeTrialField(data: GameData, d: Draft): void {
-  const trial = d.battle.trial
-  if (!trial) return
-  const fixed = trialFixedField(data, trial.rules)
+  const fixed = trialFixedField(data, battleRules(d.battle))
   for (const layer of GLOBAL_FIELD_LAYERS) {
     const fieldId = fixed[layer]
     if (fieldId === undefined) continue
@@ -142,19 +150,33 @@ export function openBattle(
     special?: SpecialBattle
   }
 ): GameState {
-  const equipped = equipBosses(data, state, encounter)
+  const tribulationRef = tribulation
+    ? { monsterId: tribulation.monster.id, tier: tribulation.tier }
+    : null
+  const instability = battleInstabilityFor(state, {
+    trial: trial ?? null,
+    tribulation: tribulationRef,
+    special: special ?? null,
+    trainer: trainer?.trainer ?? null
+  })
+  const rules = battleRules({ trial: trial ?? null, instability })
+  // Luật đổi quái địch (quái fuse, thêm trait) chỉ với quái hoang / boss.
+  const ruled =
+    trainer || tribulation ? encounter : applyEnemyRules(data, encounter, { site, rules })
+  const equipped = equipBosses(data, state, ruled)
   const { rng, nextItemId } = equipped
-  const enemies = strengthenEnemies(data, equipped.enemies, trial)
+  const enemies = strengthenEnemies(data, equipped.enemies, rules)
   // Luật noTamerSkills: không phe nào có ngự thú sư trong trận.
-  const noTamers = hasTrialRule(data, trial?.rules, 'noTamerSkills')
+  const noTamers = hasTrialRule(data, rules, 'noTamerSkills')
   // Quái lớn (docs/rules/monster-size.md) chỉ ra sân khi mọi ô còn trống, lấy hết ô.
   const enemySlots = initialSlots(data, enemies)
   const battle: BattleState = {
     floor: site.floor,
     isBoss: encounter.isBoss,
-    tribulation: tribulation ? { monsterId: tribulation.monster.id, tier: tribulation.tier } : null,
+    tribulation: tribulationRef,
     trainer: trainer?.trainer ?? null,
     trial: trial ?? null,
+    instability,
     special: special ?? null,
     phase: 'chooseActions',
     outcome: null,
@@ -201,16 +223,20 @@ export function openBattle(
         ? []
         : [
             ...activeTeamBonuses(data, state.party, state.formations.active),
-            ...[partnerTeamBonus(data, state.party)].flatMap((bonus) => (bonus ? [bonus] : []))
+            ...[partnerTeamBonus(data, state.party)].flatMap((bonus) => (bonus ? [bonus] : [])),
+            ...ruleTeamBonuses(data, rules, 'player')
           ],
-      enemy: trainer ? activeTeamBonuses(data, enemies, trainer.formationId) : []
+      enemy: [
+        ...(trainer ? activeTeamBonuses(data, enemies, trainer.formationId) : []),
+        ...ruleTeamBonuses(data, rules, 'enemy')
+      ]
     },
     log: []
   }
   const d: Draft = {
     ...cloneData(state),
     rng,
-    nextMonsterId: encounter.nextMonsterId,
+    nextMonsterId: ruled.nextMonsterId,
     nextItemId,
     battle
   }
@@ -221,6 +247,8 @@ export function openBattle(
       mode: trainer.trainer.mode
     })
   if (trial) log(d, { type: 'trialRules', ruleIds: trial.rules.map((rule) => rule.ruleId) })
+  if (instability)
+    log(d, { type: 'instability', ...instability, ruleIds: [...instability.ruleIds] })
   if (tribulation) placeTribulationField(data, d)
   else if (!trainer || trainer.naturalField) rollNaturalField(data, d, site.biome)
   placeModifierField(data, d)

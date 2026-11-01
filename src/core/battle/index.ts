@@ -18,8 +18,9 @@ export {
 export { abandonTrial, challengeTower, challengeTrial, enterTrial } from './trials'
 export { enterZone, exploreZone, leaveZone } from './zones'
 export { gather } from './gathering'
+export { challengeWorldBoss } from './worldBoss'
 export { assertReadyForBattle } from './trainerBattles'
-export { failBeastTide } from './specialBattles'
+export { failBeastTide, isFloorSpecialKind } from './specialBattles'
 export {
   acceptRecruit,
   declineRecruit,
@@ -28,3 +29,4 @@ export {
   recruitChance
 } from './recruit'
 export * from './eventBattles'
+export { battleDeityId } from './deities'

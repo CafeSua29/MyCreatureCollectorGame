@@ -51,6 +51,8 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   formation: {},
   // Kỹ năng đồng hành của quái đầu đội (chỉ trong trận, docs/rules/partner-skills.md).
   partner: {},
+  // Luật sideHooks của bí cảnh / tháp / độ bất ổn (chỉ trong trận, docs/rules/instability.md).
+  rules: {},
   // Cộng hưởng khế ước (docs/rules/tamer.md): quái đã khế ước được phần gốc + phần theo cảnh giới
   // khế ước; bản mệnh thú × resonanceMultiplier (mục "Bản mệnh thú"); cộng mức tâm linh tương thông
   // (không nhân bản mệnh). Chưa khế ước: 0.
@@ -95,6 +97,8 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   collection: {},
   // Linh thực (chỉ trong trận, phe người chơi, docs/rules/cooking.md): % của món ăn qua bối cảnh trận.
   meal: {},
+  // Chúc phúc của thần (chỉ trong trận ở map của thần, quái ta có hệ của thần, docs/rules/deities.md).
+  blessing: {},
   // Âm / Dương (docs/rules/polarity.md): % theo cực (trait cực tính đi qua hook, nhóm `traits`).
   polarity: { percent: polarityStatPercent },
   // Hiến tế (docs/rules/sacrifice.md): mọi chỉ số kể cả max HP, stack × statPercentPerStack.
@@ -181,5 +185,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   frenzy: 'frenzy',
   collection: 'collection',
   meal: 'meal',
-  implant: 'implant'
+  blessing: 'blessing',
+  implant: 'implant',
+  rule: 'rules'
 }

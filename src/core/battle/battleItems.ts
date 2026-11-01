@@ -9,6 +9,7 @@ import {
   ballBonusMultiplier,
   ballCatchRateBonus,
   criticalCaptureMultiplier,
+  battleRules,
   hasTrialRule,
   capacityOf,
   hasPartyRoom,
@@ -29,6 +30,7 @@ import {
   type Monster
 } from '../model'
 import { specialRule } from './specialBattles'
+import { battleBlessingMultiplier } from './deities'
 import { Draft, clearOnFieldState, log, recordOf, removeFromField } from './draft'
 import { refreshPartnerBonus } from './hpChanges'
 import { runSkillEffects } from './skillResults'
@@ -70,12 +72,16 @@ function ownedSpeciesIds(
 
 /**
  * Tỉ lệ bắt (%) khi quái `user` ném bóng `ball` vào quái hoang `target` của trận đang diễn ra:
- * điều kiện của bóng (lượt, giờ, loài đã có, level quái ném), kỹ năng đồng hành của đội và bắt trượt
+ * điều kiện của bóng (lượt, giờ, loài đã có, level quái ném), kỹ năng đồng hành của đội, chúc phúc của thần
+ * cai quản map và bắt trượt
  * (số lần nó đã thoát khỏi bóng trong trận). Dùng cho lệnh, UI, mô phỏng.
  */
 export function battleCatchChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'storage' | 'eggs' | 'time' | 'cooking'> & {
+  state: Pick<
+    GameState,
+    'party' | 'storage' | 'eggs' | 'time' | 'cooking' | 'floorBiomeIds' | 'favor'
+  > & {
     battle: BattleState
   },
   { ball, target, user }: { ball: BallItem; target: Monster; user: Monster }
@@ -91,7 +97,8 @@ export function battleCatchChance(
   const chance = catchChance(data, target, ball, {
     playerMultiplier:
       partnerMultiplier(data, state.party, 'catchRatePercent') *
-      mealMultiplier(data, state.cooking.meal, 'catchRatePercent'),
+      mealMultiplier(data, state.cooking.meal, 'catchRatePercent') *
+      battleBlessingMultiplier(data, state, 'catchRatePercent'),
     bonusMultiplier: ballBonusMultiplier(ball, ctx),
     catchRateBonus: ballCatchRateBonus(ball, ctx)
   })
@@ -261,8 +268,9 @@ export function validateItemCommand(
   if (item.category === 'ball' && battle.trainer) {
     throw new ActionError('trainerBattleRestricted', { command: 'ball' })
   }
-  // Bí cảnh / tháp (docs/rules/trials.md): không bắt quái; luật noItems cấm mọi vật phẩm.
-  if (battle.trial && hasTrialRule(data, battle.trial.rules, 'noItems')) {
+  // Bí cảnh / tháp (docs/rules/trials.md): không bắt quái; luật noItems (cả thuộc tính bất ổn,
+  // docs/rules/instability.md) cấm mọi vật phẩm.
+  if (hasTrialRule(data, battleRules(battle), 'noItems')) {
     throw new ActionError('trialRestricted', { command: 'item' })
   }
   if (item.category === 'ball' && battle.trial) {

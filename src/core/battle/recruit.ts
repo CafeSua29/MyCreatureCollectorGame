@@ -5,6 +5,7 @@
 import { recordQuestEvent } from '../quests'
 import { getBaseSpecies, mergeTraitLevel, startHistory } from '../monster'
 import {
+  blessingPercent,
   monsterSpeciesRankOf,
   speciesRankIndex,
   hasPartyRoom,
@@ -24,6 +25,7 @@ import {
 } from '../shared'
 import { partnerAmount } from '../tamer'
 import { baitRecruitPercent, tickBait } from '../world'
+import { battleDeityId, gainFavor } from './deities'
 import {
   STAT_NAMES,
   dayOf,
@@ -63,13 +65,21 @@ export const isRecruitBattle = (battle: BattleState): boolean =>
 function recruitBonusPercent(
   data: GameData,
   state: Pick<GameState, 'party' | 'recruit'>,
-  monster: Monster
+  { monster, blessingBonus }: { monster: Monster; blessingBonus: number }
 ): number {
   return (
     partnerAmount(data, state.party, 'recruitPercent') +
-    baitRecruitPercent(data, state.recruit.bait, monster)
+    baitRecruitPercent(data, state.recruit.bait, monster) +
+    blessingBonus
   )
 }
+
+/** % thu phục của chúc phúc thần cai quản map của trận (docs/rules/deities.md). */
+const battleRecruitBlessing = (data: GameData, d: Draft): number =>
+  blessingPercent(data, d.favor, {
+    deityId: battleDeityId(data, d, d.battle),
+    channel: 'recruitPercent'
+  })
 
 const bonusMultiplier = (percent: number): number => Math.max(0, 1 + percent / 100)
 
@@ -81,14 +91,23 @@ const bonusMultiplier = (percent: number): number => Math.max(0, 1 + percent / 1
 export function recruitChance(
   data: GameData,
   state: Pick<GameState, 'party' | 'storage' | 'recruit' | 'capacity' | 'tamer'>,
-  { enemy, isBoss }: { enemy: Monster; isBoss: boolean }
+  {
+    enemy,
+    isBoss,
+    blessingBonus = 0
+  }: {
+    enemy: Monster
+    isBoss: boolean
+    /** % thu phục của chúc phúc thần cai quản map của trận (docs/rules/deities.md). */
+    blessingBonus?: number
+  }
 ): number {
   const species = getBaseSpecies(data, enemy)
   if (!species) return 0
   // Đội đủ và kho đầy: không xin theo / quy phục (docs/rules/capacity.md).
   if (!hasRosterRoom(data, state, { newcomer: enemy })) return 0
   const config = data.config.recruit
-  const bonus = bonusMultiplier(recruitBonusPercent(data, state, enemy))
+  const bonus = bonusMultiplier(recruitBonusPercent(data, state, { monster: enemy, blessingBonus }))
   const rank = Math.max(0, speciesRankIndex(data, monsterSpeciesRankOf(data, enemy).id))
   const chance = isBoss
     ? config.bossChance * bonus
@@ -135,8 +154,12 @@ export function rollRecruitOffer(data: GameData, d: Draft, bait: ActiveBait | nu
   if (!isRecruitBattle(d.battle)) return
   const isBoss = d.battle.isBoss
   const state = { ...d, recruit: { ...d.recruit, bait } }
+  const blessingBonus = battleRecruitBlessing(data, d)
   const candidates = d.battle.enemies
-    .map((enemy) => ({ enemy, chance: recruitChance(data, state, { enemy, isBoss }) }))
+    .map((enemy) => ({
+      enemy,
+      chance: recruitChance(data, state, { enemy, isBoss, blessingBonus })
+    }))
     .filter((candidate) => candidate.chance > 0)
   if (candidates.length === 0) return
   const missAll = candidates.reduce((product, { chance }) => product * (1 - chance / 100), 1)
@@ -180,6 +203,9 @@ export function acceptRecruit(data: GameData, state: GameState): GameState {
   d.battle.recruitOfferId = null
   log(d, { type: 'recruited', monsterId: monster.id, method, destination })
   recordRecruitQuest(data, d, monster)
+  // Thu phục trong map có thần: ân sủng như bắt quái (docs/rules/deities.md).
+  const deityId = battleDeityId(data, d, d.battle)
+  if (deityId !== null) gainFavor(data, d, { deityId, amount: data.config.deities.favorPerCapture })
   return d
 }
 
@@ -218,7 +244,11 @@ function intimidateChanceAgainst(data: GameData, d: Draft, target: Monster): num
   const theirs = sideStatTotal(data, d, 'enemy')
   // Tỉ lệ kẹp trong [0, maxChance] ngay sau đó nên đổi sang number an toàn dù chỉ số lớn vô hạn.
   const ratio = theirs.lte(0) ? Number.MAX_SAFE_INTEGER : bigToNumber(ours.div(theirs))
-  const raw = (slope * ratio + offset) * bonusMultiplier(recruitBonusPercent(data, d, target))
+  const bonus = recruitBonusPercent(data, d, {
+    monster: target,
+    blessingBonus: battleRecruitBlessing(data, d)
+  })
+  const raw = (slope * ratio + offset) * bonusMultiplier(bonus)
   return Math.min(maxChance, Math.max(0, raw))
 }
 

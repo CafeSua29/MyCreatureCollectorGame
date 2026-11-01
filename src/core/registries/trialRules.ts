@@ -1,16 +1,21 @@
-// Luật bí cảnh / tháp thí luyện (docs/rules/trials.md): mỗi loại một handler (trường, kiểm tra
-// params, có ở tháp không). Nơi áp luật hỏi qua các hàm tra cứu dưới đây, không tự rẽ nhánh theo id.
+// Luật bí cảnh / tháp thí luyện (docs/rules/trials.md) và thuộc tính độ bất ổn tầng
+// (docs/rules/instability.md, cùng registry): mỗi loại một handler (trường, kiểm tra params, dùng ở
+// đâu). Nơi áp luật hỏi qua các hàm tra cứu dưới đây, không tự rẽ nhánh theo id.
 
-import { checkNumber, nextInt, pick, pickWeighted, type RngState } from '../shared'
+import { checkInteger, checkNumber, nextInt, pick, pickWeighted, type RngState } from '../shared'
 import {
+  BATTLE_SIDES,
   GLOBAL_FIELD_LAYERS,
+  type BattleState,
   type GameData,
   type GlobalFieldLayer,
   type Monster,
   type TrialRule,
+  type TrialRuleDef,
   type TrialRuleType
 } from '../model'
 import { checkFieldIdList } from './paramChecks'
+import { checkBattleOnlyHooks } from './traitHooks'
 
 export interface TrialRuleHandler {
   /** Trường của params. */
@@ -21,52 +26,138 @@ export interface TrialRuleHandler {
    * thì có thể chặn mãi một tầng nên không dùng ở tháp.
    */
   inTower: boolean
+  /** Có ở bí cảnh không (false: luật chỉ dành cho độ bất ổn, weight phải là 0). */
+  inRealm: boolean
+  /**
+   * Dùng được làm thuộc tính bất ổn không (trận quái hoang / boss trên tầng; luật cần đội lúc vào
+   * bí cảnh hay chuỗi trận thì không).
+   */
+  inInstability: boolean
+  /** Thuộc tính bất ổn tung trùng được (tác dụng cộng dồn); không thì mỗi loại tối đa một lần. */
+  stackable: boolean
   /** Luật tung kèm một hệ (trong các hệ của đội lúc vào bí cảnh). */
   needsElement: boolean
 }
 
-const flag = (inTower = true): TrialRuleHandler => ({
+const flag = (scopes: Partial<TrialRuleHandler> = {}): TrialRuleHandler => ({
   fields: [],
   validateParams: () => [],
-  inTower,
-  needsElement: false
+  inTower: true,
+  inRealm: true,
+  inInstability: true,
+  stackable: false,
+  needsElement: false,
+  ...scopes
 })
+
+/** Luật có một số % trong (0, 100]. */
+const percentRule = (scopes: Partial<TrialRuleHandler>): TrialRuleHandler =>
+  flag({
+    fields: ['percent'],
+    validateParams: (params) => checkNumber(params.percent, 'percent', 0, 100),
+    ...scopes
+  })
 
 /** Luật bí cảnh theo loại; thêm loại = thêm một handler (TypeScript báo khi thiếu). */
 export const TRIAL_RULES: Readonly<Record<TrialRuleType, TrialRuleHandler>> = {
-  // Không dùng vật phẩm trong trận, không dùng vật phẩm ngoài trận giữa các trận.
+  // Không dùng vật phẩm trong trận, không dùng vật phẩm ngoài trận giữa các trận (độ bất ổn: chỉ
+  // trong trận).
   noItems: flag(),
   // Chỉ quái mang hệ của luật vào trận (hệ tung lúc vào bí cảnh).
-  monoElement: { ...flag(false), needsElement: true },
+  monoElement: flag({ inTower: false, inInstability: false, needsElement: true }),
   // Thời tiết / địa hình cố định cả trận (lớp không ghi thì theo map).
-  fixedField: {
+  fixedField: flag({
     fields: GLOBAL_FIELD_LAYERS,
-    inTower: true,
-    needsElement: false,
     validateParams(params, data) {
       const layers = GLOBAL_FIELD_LAYERS.filter((layer) => params[layer] !== undefined)
       if (layers.length === 0) return ['cần ít nhất một lớp weather / terrain']
       return layers.flatMap((layer) => checkFieldIdList(data, [params[layer]], layer, layer))
     }
-  },
+  }),
   // Mọi trận là trận boss.
-  bossOnly: flag(),
+  bossOnly: flag({ inInstability: false }),
   // Không phe nào biến hình (kể cả Primal).
   noTransforms: flag(),
   // Không phe nào có ngự thú sư trong trận.
   noTamerSkills: flag(),
-  // Chỉ số quái địch × value (nhân vào bossMultiplier).
-  enemyMultiplier: {
+  // Chỉ số quái địch × value (nhân vào bossMultiplier; nhiều lần thì nhân dồn).
+  enemyMultiplier: flag({
     fields: ['value'],
-    inTower: true,
-    needsElement: false,
+    stackable: true,
     validateParams: (params) => checkNumber(params.value, 'value', 1)
-  },
+  }),
   // Không hồi máu sau mỗi trận, không dùng vật phẩm ngoài trận giữa các trận.
-  noHealing: flag()
+  noHealing: flag({ inInstability: false }),
+  // Hook trait chỉ trong trận cho mọi quái của một phe (như cộng hưởng đội); nhiều lần thì hệ số
+  // hook cộng dồn.
+  sideHooks: flag({
+    fields: ['side', 'hooks'],
+    stackable: true,
+    validateParams(params, data) {
+      const issues = (BATTLE_SIDES as readonly unknown[]).includes(params.side)
+        ? []
+        : [`side phải là một trong ${BATTLE_SIDES.join(', ')}`]
+      return [...issues, ...checkBattleOnlyHooks(params.hooks, 'luật bí cảnh', data)]
+    }
+  }),
+  // Quái hoang / boss địch thêm `count` trait random (thêm ô trait; giữ khi bắt). Tháp tất định
+  // theo tầng nên không có.
+  extraEnemyTraits: flag({
+    fields: ['count'],
+    inTower: false,
+    stackable: true,
+    validateParams: (params) => checkInteger(params.count, 'count', 1)
+  }),
+  // Mỗi quái hoang thường `percent` % là quái fuse (fuse với một quái hoang khác của map).
+  fusedEnemies: percentRule({ inTower: false, stackable: true }),
+  // `percent` % trận quái hoang lấy bảng gặp của một map khác (đồ rơi, môi trường vẫn của map).
+  foreignSpecies: percentRule({ inTower: false, inRealm: false, stackable: true })
 }
 
 const typeOf = (data: GameData, rule: TrialRule): TrialRuleType => data.trialRules[rule.ruleId].type
+
+/**
+ * Mọi luật có tác dụng trong trận: luật bí cảnh / tháp và thuộc tính bất ổn (điểm duy nhất cho nơi
+ * áp luật trong trận).
+ */
+export function battleRules(battle: Pick<BattleState, 'trial' | 'instability'>): TrialRule[] {
+  return [
+    ...(battle.trial?.rules ?? []),
+    ...(battle.instability?.ruleIds ?? []).map((ruleId) => ({ ruleId, elementId: null }))
+  ]
+}
+
+/** Định nghĩa của các luật loại `type` trong danh sách (mỗi lần xuất hiện một mục). */
+export function trialRuleDefsOf(
+  data: GameData,
+  rules: readonly TrialRule[],
+  type: TrialRuleType
+): TrialRuleDef[] {
+  return rules.flatMap((rule) => {
+    const def = data.trialRules[rule.ruleId]
+    return def.type === type ? [def] : []
+  })
+}
+
+/** Tổng `percent` của các luật loại `type` (kẹp 100). */
+export function trialRulePercent(
+  data: GameData,
+  rules: readonly TrialRule[],
+  type: 'fusedEnemies' | 'foreignSpecies'
+): number {
+  const total = trialRuleDefsOf(data, rules, type).reduce(
+    (sum, def) => sum + (def.params.percent as number),
+    0
+  )
+  return Math.min(100, total)
+}
+
+/** Tổng số trait thêm cho quái địch của các luật extraEnemyTraits. */
+export const extraEnemyTraitCount = (data: GameData, rules: readonly TrialRule[]): number =>
+  trialRuleDefsOf(data, rules, 'extraEnemyTraits').reduce(
+    (sum, def) => sum + (def.params.count as number),
+    0
+  )
 
 /** Danh sách luật có luật loại `type` không. */
 export const hasTrialRule = (
@@ -131,6 +222,7 @@ export function rollTrialRules(
     const handler = TRIAL_RULES[def.type]
     return (
       def.weight > 0 &&
+      handler.inRealm &&
       (!inTower || handler.inTower) &&
       (!handler.needsElement || elementIds.length > 0)
     )
@@ -145,4 +237,54 @@ export function rollTrialRules(
     candidates = candidates.filter((candidate) => candidate.type !== def.type)
   }
   return [rules, rng]
+}
+
+/** Luật dùng được làm thuộc tính bất ổn (có khối instability, trọng số > 0, loại cho phép). */
+const instabilityCandidates = (data: GameData): TrialRuleDef[] =>
+  Object.values(data.trialRules).filter(
+    (def) =>
+      def.instability !== undefined &&
+      def.instability.weight > 0 &&
+      TRIAL_RULES[def.type].inInstability
+  )
+
+/**
+ * Tung `count` thuộc tính bất ổn thêm vào `existing` (docs/rules/instability.md): theo trọng số
+ * instability.weight; loại không stackable mỗi loại tối đa một lần (tính cả thuộc tính đã có).
+ * Hết thuộc tính hợp lệ thì trả ít hơn.
+ */
+export function rollInstabilityRules(
+  data: GameData,
+  rng: RngState,
+  { count, existing }: { count: number; existing: readonly string[] }
+): [string[], RngState] {
+  const usedTypes = new Set(existing.map((id) => data.trialRules[id].type))
+  const rolled: string[] = []
+  for (let i = 0; i < count; i++) {
+    const candidates = instabilityCandidates(data).filter(
+      (def) => TRIAL_RULES[def.type].stackable || !usedTypes.has(def.type)
+    )
+    if (candidates.length === 0) break
+    let def: TrialRuleDef
+    ;[def, rng] = pickWeighted(rng, candidates, (candidate) => candidate.instability?.weight ?? 0)
+    usedTypes.add(def.type)
+    rolled.push(def.id)
+  }
+  return [rolled, rng]
+}
+
+/**
+ * % thưởng thêm (tiền, EXP, tỉ lệ đồ rơi) của độ bất ổn: mức × rewardPercentPerLevel + rewardPercent
+ * của từng thuộc tính (cộng, không nhân). Không có độ bất ổn: 0.
+ */
+export function instabilityRewardPercent(
+  data: GameData,
+  instability: { level: number; ruleIds: readonly string[] } | null
+): number {
+  if (!instability) return 0
+  const perLevel = instability.level * data.config.instability.rewardPercentPerLevel
+  return instability.ruleIds.reduce(
+    (sum, id) => sum + (data.trialRules[id].instability?.rewardPercent ?? 0),
+    perLevel
+  )
 }

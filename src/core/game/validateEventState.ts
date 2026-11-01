@@ -7,6 +7,7 @@ import { validateShop } from '../shop'
 import { asObject, checkInteger, checkNumber } from '../shared'
 import { checkZoneBattle } from './validateZoneState'
 import { checkGatheringBattle } from './validateGatheringState'
+import { checkWorldBossBattle } from './validateWorldBossState'
 
 type Raw = Record<string, unknown>
 
@@ -200,7 +201,8 @@ export function validateEventState(data: GameData, state: Raw): string[] {
 /**
  * battle.special: null, trận event (event tồn tại, noFlee, hệ số tiền ≥ 0), đợt thú triều / thú
  * vương (trận chưa kết thúc thì là đợt kế tiếp của thú triều đang diễn ra, khớp tiến độ) hoặc trận
- * hiểm địa (validateZoneState.ts), trận câu cá / khai thác (validateGatheringState.ts).
+ * hiểm địa (validateZoneState.ts), trận câu cá / khai thác (validateGatheringState.ts), boss thế giới
+ * (validateWorldBossState.ts).
  */
 export function checkBattleSpecial(
   data: GameData,
@@ -224,9 +226,14 @@ export function checkBattleSpecial(
     checkGatheringBattle(battle, issues)
     return
   }
+  if (special?.kind === 'worldBoss') {
+    checkWorldBossBattle(battle, state, issues)
+    return
+  }
   if (special?.kind !== 'beastTide') {
     issues.push(
-      'battle.special phải là null hoặc { kind: "event" | "beastTide" | "zone" | "gathering" }'
+      'battle.special phải là null hoặc { kind: "event" | "beastTide" | "zone" | "gathering" | ' +
+        '"worldBoss" }'
     )
     return
   }

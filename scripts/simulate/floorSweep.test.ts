@@ -12,6 +12,7 @@ import { shouldStopEarly } from './earlyStop'
 import {
   floorMapsFor,
   sweepFloor,
+  sweepInstability,
   withAssumedPolarity,
   withAssumedPurity,
   withLeadZCrystal,
@@ -201,5 +202,18 @@ describe('withAssumedPurity (biến thể assumedPurity)', () => {
     const [withBlood, unchanged] = withAssumedPurity(blood, [nymph, plain], 50)
     expect(withBlood.bloodlines).toEqual([{ groupId: 'wyrm', purity: 50 }])
     expect(unchanged).toBe(plain)
+  })
+})
+
+describe('sweepInstability (biến thể instabilityLevel, docs/rules/instability.md)', () => {
+  const data = makeData()
+
+  it('mức 0: tắt; mức N: 2N thuộc tính đã lộ, tất định theo seed', () => {
+    expect(sweepInstability(data, { level: 0, seed: 1 })).toEqual({ level: 0, properties: [] })
+    const unstable = sweepInstability(data, { level: 3, seed: 1 })
+    expect(unstable.level).toBe(3)
+    expect(unstable.properties).toHaveLength(6)
+    expect(unstable.properties.every((property) => !property.hidden)).toBe(true)
+    expect(sweepInstability(data, { level: 3, seed: 1 })).toEqual(unstable)
   })
 })

@@ -21,6 +21,7 @@ import { runTribulationSweep, type TribulationRow } from './tribulation'
 import { runSafari, type SafariRow } from './safari'
 import { runZone, type ZoneRow } from './zones'
 import { runGathering, type GatheringRow } from './gathering'
+import { runWorldBoss, type WorldBossRow } from './worldBoss'
 
 export type SimJob =
   | { type: 'sweep'; variantId: string; teamId: string; floor: number }
@@ -39,6 +40,8 @@ export type SimJob =
   | { type: 'zones'; zoneId: string; floor: number }
   /** Câu cá / khai thác / quái hoang so sánh ở một tầng với một cách chơi (gathering.ts). */
   | { type: 'gathering'; floor: number; runId: string }
+  /** Boss thế giới của một đội ở một tầng (worldBoss.ts). */
+  | { type: 'worldBoss'; teamId: string; floor: number }
 
 /** Các phần của lần chạy (in thời gian từng phần, chọn phần chạy bằng --parts). */
 export const SIM_PARTS = [
@@ -51,6 +54,7 @@ export const SIM_PARTS = [
   'safari',
   'zones',
   'gathering',
+  'worldBoss',
   'lineage'
 ] as const
 
@@ -67,6 +71,7 @@ export type SimJobResult =
   | { type: 'safari'; row: SafariRow }
   | { type: 'zones'; row: ZoneRow }
   | { type: 'gathering'; row: GatheringRow }
+  | { type: 'worldBoss'; row: WorldBossRow }
 
 export interface TimedJobResult {
   part: SimPart
@@ -162,6 +167,12 @@ export function listJobs(scenarios: Scenarios, data?: GameData): SimJob[] {
       }
     }
   }
+  if (scenarios.worldBoss) {
+    for (const teamId of scenarios.worldBoss.teamIds) {
+      for (const floor of scenarios.worldBoss.floors)
+        jobs.push({ type: 'worldBoss', teamId, floor })
+    }
+  }
   jobs.push({ type: 'breeding' }, { type: 'fusion' })
   return jobs
 }
@@ -181,6 +192,7 @@ const PART_PRIORITY: Record<SimPart, number> = {
   safari: 1,
   zones: 2,
   gathering: 1,
+  worldBoss: 1,
   sweep: 1,
   lineage: 0
 }
@@ -268,6 +280,18 @@ export function runJob(context: JobContext, job: SimJob): SimJobResult {
         limits: { maxTurns: scenarios.maxTurns }
       })
       return { type: 'gathering', row }
+    }
+    case 'worldBoss': {
+      const spec = scenarios.worldBoss
+      if (!spec) throw new Error('Mô phỏng: kịch bản không có worldBoss')
+      const row = runWorldBoss(context.dataForVariant(scenarios.variants[0].id), {
+        team: findTeam(scenarios, job.teamId),
+        floor: job.floor,
+        challenges: spec.challenges,
+        seed: scenarios.seed,
+        mastery: scenarios.assumedMastery
+      })
+      return { type: 'worldBoss', row }
     }
   }
 }
@@ -377,6 +401,7 @@ function jobTeamId(job: SimJob): string | null {
     case 'bossLevel':
     case 'progression':
     case 'tribulation':
+    case 'worldBoss':
       return job.teamId
     case 'progressionSweep':
       return job.snapshot.teamId
@@ -404,6 +429,7 @@ function runSweepJob(context: JobContext, job: Extract<SimJob, { type: 'sweep' }
     tamerRealm: variant?.tamerRealm ?? null,
     assumedPurity: variant?.assumedPurity ?? null,
     assumedPolarity: variant?.assumedPolarity ?? null,
+    instabilityLevel: variant?.instabilityLevel ?? 0,
     floor: job.floor,
     biomeId: null,
     seed: scenarios.seed,
@@ -511,6 +537,7 @@ export interface CollectedResults {
   safari: SafariRow[]
   zones: ZoneRow[]
   gathering: GatheringRow[]
+  worldBoss: WorldBossRow[]
 }
 
 /** Gom kết quả các việc (đã theo thứ tự listJobs) thành từng phần. */
@@ -525,7 +552,8 @@ export function collectResults(results: readonly SimJobResult[]): CollectedResul
     tribulation: [],
     safari: [],
     zones: [],
-    gathering: []
+    gathering: [],
+    worldBoss: []
   }
   for (const result of results) {
     switch (result.type) {
@@ -558,6 +586,9 @@ export function collectResults(results: readonly SimJobResult[]): CollectedResul
         break
       case 'gathering':
         collected.gathering.push(result.row)
+        break
+      case 'worldBoss':
+        collected.worldBoss.push(result.row)
         break
     }
   }

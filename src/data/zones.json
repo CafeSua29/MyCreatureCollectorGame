@@ -722,7 +722,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "thanhHoang"
     },
     "requirements": [
       {
@@ -1556,7 +1557,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "hoaDuc"
     },
     "requirements": [
       {
@@ -2386,7 +2388,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "thuyDuc"
     },
     "requirements": [
       {
@@ -3160,7 +3163,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "loiCong"
     },
     "requirements": [
       {
@@ -3786,7 +3790,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "mocDuc"
     },
     "requirements": [
       {
@@ -4522,7 +4527,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "suongThan"
     },
     "requirements": [
       {
@@ -5165,7 +5171,8 @@
           "weight": 100
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "chienThan"
     },
     "requirements": [
       {
@@ -5753,7 +5760,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "onThan"
     },
     "requirements": [
       {
@@ -6578,7 +6586,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "thoDuc"
     },
     "requirements": [
       {
@@ -7401,7 +7410,8 @@
           "weight": 40
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "phongBa"
     },
     "requirements": [
       {
@@ -8139,7 +8149,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "mongThan"
     },
     "requirements": [
       {
@@ -8733,7 +8744,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "tamThan"
     },
     "requirements": [
       {
@@ -9421,7 +9433,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "sonThan"
     },
     "requirements": [
       {
@@ -10219,7 +10232,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "diemVuong"
     },
     "requirements": [
       {
@@ -11040,7 +11054,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "longVuong"
     },
     "requirements": [
       {
@@ -11872,7 +11887,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "daDuThan"
     },
     "requirements": [
       {
@@ -12698,7 +12714,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "kimDuc"
     },
     "requirements": [
       {
@@ -13086,7 +13103,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "hoaThan"
     },
     "requirements": [
       {
@@ -13776,7 +13794,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "thaiDuong"
     },
     "requirements": [
       {
@@ -14573,7 +14592,8 @@
           "weight": 50
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "longVuong"
     },
     "requirements": [
       {
@@ -15353,7 +15373,8 @@
           "fieldId": "none",
           "weight": 70
         }
-      ]
+      ],
+      "deityId": "thuyDuc"
     },
     "requirements": [
       {
@@ -16149,7 +16170,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "thanhHoang"
     },
     "requirements": [
       {
@@ -16932,7 +16954,8 @@
           "weight": 40
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "chienThan"
     },
     "requirements": [
       {
@@ -17728,7 +17751,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "thuyDuc"
     },
     "requirements": [
       {
@@ -18383,7 +18407,8 @@
           "weight": 50
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "phongBa"
     },
     "requirements": [
       {
@@ -18959,7 +18984,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "tamThan"
     },
     "requirements": [
       {
@@ -19315,7 +19341,8 @@
           "fieldId": "none",
           "weight": 20
         }
-      ]
+      ],
+      "deityId": "mocDuc"
     },
     "requirements": [
       {
@@ -20103,7 +20130,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "kimDuc"
     },
     "requirements": [
       {
@@ -20467,7 +20495,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "onThan"
     },
     "requirements": [
       {
@@ -20794,7 +20823,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "thanhHoang"
     },
     "requirements": [
       {
@@ -21514,7 +21544,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "thuyDuc"
     },
     "requirements": [
       {
@@ -22106,7 +22137,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "diemVuong"
     },
     "requirements": [
       {
@@ -22918,7 +22950,8 @@
           "fieldId": "none",
           "weight": 20
         }
-      ]
+      ],
+      "deityId": "daDuThan"
     },
     "requirements": [
       {
@@ -23317,7 +23350,8 @@
           "weight": 20
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "mongThan"
     },
     "requirements": [
       {
@@ -23873,7 +23907,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "daDuThan"
     },
     "requirements": [
       {
@@ -24673,7 +24708,8 @@
           "fieldId": "none",
           "weight": 50
         }
-      ]
+      ],
+      "deityId": "loiCong"
     },
     "requirements": [
       {
@@ -25033,7 +25069,8 @@
           "fieldId": "none",
           "weight": 20
         }
-      ]
+      ],
+      "deityId": "thaiDuong"
     },
     "requirements": [
       {
@@ -25677,7 +25714,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "thaiDuong"
     },
     "requirements": [
       {
@@ -26125,7 +26163,8 @@
           "fieldId": "none",
           "weight": 50
         }
-      ]
+      ],
+      "deityId": "mongThan"
     },
     "requirements": [
       {
@@ -26917,7 +26956,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "daDuThan"
     },
     "requirements": [
       {
@@ -27143,7 +27183,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "thanhHoang"
     },
     "requirements": [
       {
@@ -27369,7 +27410,8 @@
           "weight": 100
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "chienThan"
     },
     "requirements": [
       {
@@ -27561,7 +27603,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "tamThan"
     },
     "requirements": [
       {
@@ -27760,7 +27803,8 @@
           "fieldId": "none",
           "weight": 30
         }
-      ]
+      ],
+      "deityId": "mocDuc"
     },
     "requirements": [
       {
@@ -28004,7 +28048,8 @@
           "fieldId": "none",
           "weight": 60
         }
-      ]
+      ],
+      "deityId": "tamThan"
     },
     "requirements": [
       {
@@ -28195,7 +28240,8 @@
           "weight": 40
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "phongBa"
     },
     "requirements": [
       {
@@ -28377,7 +28423,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "thanhHoang"
     },
     "requirements": [
       {
@@ -28572,7 +28619,8 @@
           "fieldId": "none",
           "weight": 40
         }
-      ]
+      ],
+      "deityId": "diemVuong"
     },
     "requirements": [
       {
@@ -28783,7 +28831,8 @@
           "weight": 30
         }
       ],
-      "terrain": []
+      "terrain": [],
+      "deityId": "thanhHoang"
     },
     "requirements": [
       {

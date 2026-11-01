@@ -198,7 +198,10 @@ export type EventLogEntry =
   | { type: 'beastTideArrived'; waves: number }
   | { type: 'beastTideRetreated'; moneyLost: Decimal; shopClosedUntilDay: number }
 
-/** Trận đặc biệt (BattleState.special): trận do event mở, một đợt thú triều, hiểm địa, câu cá / khai thác. */
+/**
+ * Trận đặc biệt (BattleState.special): trận do event mở, một đợt thú triều, hiểm địa, câu cá / khai
+ * thác, boss thế giới.
+ */
 export type SpecialBattle =
   | { kind: 'event'; eventId: string; noFlee: boolean; moneyMultiplier: number }
   /** Đợt thú triều thứ `wave`; `king` = trận thú vương (bắt được, hạ / bắt là hết thú triều). */
@@ -210,6 +213,8 @@ export type SpecialBattle =
    * được ở lượt đầu).
    */
   | { kind: 'gathering'; method: GatheringMethod; ambush: boolean }
+  /** Khiêu chiến boss thế giới ở thị trấn (docs/rules/world-boss.md). */
+  | { kind: 'worldBoss' }
 
 export type SpecialBattleKind = SpecialBattle['kind']
 

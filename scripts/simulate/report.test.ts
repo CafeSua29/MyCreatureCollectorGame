@@ -240,7 +240,10 @@ describe('các bảng kết quả', () => {
         implantSharePercent: 4.6,
         capacityExpansions: 0,
         storagePeak: 3,
-        bagPeak: 0
+        bagPeak: 0,
+        incense: 4,
+        deityBuys: 0,
+        favorRank: 2
       },
       bossWin: null
     }
@@ -355,7 +358,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3',
+        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
         ''
       ],
       [
@@ -429,7 +432,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3',
+        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
         'mở nhờ boss ngẫu nhiên'
       ],
       ['t', '3', ...blanks, 'kẹt sau 9 trận'],
@@ -500,6 +503,7 @@ describe('tóm tắt lần chạy', () => {
       ['safari', '0', '0.0', '0', '0', '0', '0', '0', '0'],
       ['zones', '0', '0.0', '0', '0', '0', '0', '0', '0'],
       ['gathering', '0', '0.0', '0', '0', '0', '0', '0', '0'],
+      ['worldBoss', '0', '0.0', '0', '0', '0', '0', '0', '0'],
       ['lineage', '0', '0.0', '0', '0', '0', '0', '0', '0']
     ])
   })

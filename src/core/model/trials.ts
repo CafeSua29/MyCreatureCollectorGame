@@ -8,7 +8,8 @@ import type { NormalRarity } from './content'
 /**
  * Loại luật (registry TRIAL_RULES ở registries/trialRules.ts): cấm vật phẩm, chỉ quái một hệ, môi
  * trường cố định, mọi trận là boss, cấm biến hình, cấm kỹ năng ngự thú sư, địch mạnh hơn, không hồi
- * máu giữa các trận.
+ * máu giữa các trận, hook trait cho một phe, quái địch thêm trait, quái hoang là quái fuse, quái từ
+ * map khác (độ bất ổn tầng, docs/rules/instability.md, dùng chung registry).
  */
 export const TRIAL_RULE_TYPES = [
   'noItems',
@@ -18,7 +19,11 @@ export const TRIAL_RULE_TYPES = [
   'noTransforms',
   'noTamerSkills',
   'enemyMultiplier',
-  'noHealing'
+  'noHealing',
+  'sideHooks',
+  'extraEnemyTraits',
+  'fusedEnemies',
+  'foreignSpecies'
 ] as const
 
 export type TrialRuleType = (typeof TRIAL_RULE_TYPES)[number]
@@ -28,7 +33,16 @@ export interface TrialRuleDef {
   id: string
   type: TrialRuleType
   params: Record<string, unknown>
+  /** Trọng số ở bí cảnh / tháp (0 = không tung). */
   weight: number
+  /** Là thuộc tính bất ổn tầng (docs/rules/instability.md); bỏ trống = không. */
+  instability?: InstabilityRuleDef
+}
+
+/** Phần thuộc tính bất ổn của một luật: trọng số khi tung, % thưởng cộng thêm (luật khó hơn). */
+export interface InstabilityRuleDef {
+  weight: number
+  rewardPercent: number
 }
 
 /** Luật đã tung cho một bí cảnh / tầng tháp; `elementId` chỉ có ở luật monoElement. */
@@ -60,6 +74,36 @@ export type BattleTrial =
   | { kind: 'tower'; biomeId: string; rules: TrialRule[]; towerFloor: number }
 
 export type TrialKind = BattleTrial['kind']
+
+/** Một thuộc tính bất ổn đã tung (GameState.instability); ẩn thì lộ khi rời thị trấn ra tầng. */
+export interface InstabilityProperty {
+  ruleId: string
+  hidden: boolean
+}
+
+/** Độ bất ổn tầng người chơi đặt ở Đền dịch chuyển (0 = tắt; mỗi mức 2 thuộc tính). */
+export interface InstabilityState {
+  level: number
+  properties: InstabilityProperty[]
+}
+
+/** Độ bất ổn áp cho một trận quái hoang / boss trên tầng (BattleState.instability), chụp lúc mở. */
+export interface BattleInstability {
+  level: number
+  ruleIds: string[]
+}
+
+export interface InstabilityConfig {
+  /** Mức tối đa = ⌊tầng cao nhất từng đạt / floorsPerLevel⌋. */
+  floorsPerLevel: number
+  /** Số thuộc tính hiện / ẩn thêm mỗi mức. */
+  visiblePerLevel: number
+  hiddenPerLevel: number
+  /** % tiền, EXP, tỉ lệ đồ rơi cộng mỗi mức (cộng với rewardPercent của thuộc tính). */
+  rewardPercentPerLevel: number
+  /** Giá đổi thuộc tính = rerollCostPerLevel × mức. */
+  rerollCostPerLevel: number
+}
 
 /** Một món trong rương bí cảnh: trọng số khi tung, số lượng đều trong [min, max]. */
 export interface ChestItemEntry {

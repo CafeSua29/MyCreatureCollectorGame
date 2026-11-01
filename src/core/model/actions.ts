@@ -76,6 +76,9 @@ export type GameAction =
   | { type: 'defendTown' }
   | { type: 'challengeBeastKing' }
   | { type: 'retreatBeastTide' }
+  /** Boss thế giới (docs/rules/world-boss.md): khiêu chiến ở thị trấn, nhận thưởng chờ. */
+  | { type: 'challengeWorldBoss' }
+  | { type: 'claimWorldBossRewards' }
   /** Chiến thuật tự đánh của quái (ngoài trận, ở đâu cũng được; docs/rules/auto-battle.md). */
   | { type: 'setTactic'; monsterId: string; tactic: Tactic }
   /** Thám hiểm (docs/rules/expeditions.md): phái đi ở thị trấn, gọi về ở đâu cũng được. */
@@ -117,6 +120,19 @@ export type GameAction =
   | { type: 'challengeTrial' }
   | { type: 'abandonTrial' }
   | { type: 'challengeTower' }
+  /**
+   * Độ bất ổn tầng ở Đền dịch chuyển (thị trấn; docs/rules/instability.md): đặt mức (0 = tắt), đổi
+   * thuộc tính (tốn tiền).
+   */
+  | { type: 'setInstability'; level: number }
+  | { type: 'rerollInstability' }
+  /**
+   * Miếu thần linh (thị trấn; docs/rules/deities.md): mua Hương nến, dâng hương tăng ân sủng, đổi
+   * tín vật lấy món ở cửa hàng thần.
+   */
+  | { type: 'buyIncense'; count: number }
+  | { type: 'offerIncense'; deityId: string; count: number }
+  | { type: 'buyDeityItem'; deityId: string; itemId: string; count: number }
   /** Hiểm địa (ở thị trấn; docs/rules/zones.md): vào khi đạt điều kiện, khám phá bước kế, rời. */
   | { type: 'enterZone'; zoneId: string }
   | { type: 'exploreZone' }

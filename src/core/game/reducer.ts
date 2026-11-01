@@ -22,6 +22,7 @@ import {
   startTribulation,
   submitTurn,
   challengeBeastKing,
+  challengeWorldBoss,
   defendTown,
   acceptRecruit,
   declineRecruit
@@ -52,6 +53,7 @@ import {
   learnRecipe,
   plantSeed,
   chooseEvolution,
+  claimWorldBossRewards,
   hoursUntilWake,
   petMonster,
   setGameOption,
@@ -64,9 +66,15 @@ import {
   enterSafari,
   healParty,
   leaveSafari,
+  newInstabilityState,
+  offerIncense,
+  buyDeityItem,
+  buyIncense,
   newSafariState,
   newZoneState,
+  rerollInstability,
   rest,
+  setInstability,
   skipSafariEncounter,
   throwSafariBait,
   throwSafariBall,
@@ -123,7 +131,7 @@ import {
 import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 81
+export const SAVE_VERSION = 84
 
 export function createGameState(options: {
   seed: number
@@ -183,6 +191,8 @@ export function createGameState(options: {
     trainers: newTrainerState(),
     trial: null,
     tower: { highest: 0 },
+    instability: newInstabilityState(),
+    favor: {},
     events: newEventState(),
     recruit: { bait: null },
     safari: newSafariState(),
@@ -190,6 +200,7 @@ export function createGameState(options: {
     capacity: newCapacityState(),
     zones: newZoneState(),
     gathering: newGatheringState(),
+    worldBoss: { current: null, rewards: [] },
     dex: newDexState(),
     garden: {
       plots: Array.from({ length: options.gardenPlots ?? DEFAULT_GARDEN_PLOTS }, () => null)
@@ -242,8 +253,14 @@ function withTime(data: GameData, before: GameState, after: GameState, hours: nu
  */
 function leaveBattleWithTime(data: GameData, state: GameState): GameState {
   const left = settleEventBattle(data, state, leaveBattle(state))
+  return advanceTime(data, left, battleHours(data, state.battle))
+}
+
+/** Giờ một trận tốn: boss thế giới (docs/rules/world-boss.md), boss, còn lại như trận quái hoang. */
+function battleHours(data: GameData, battle: GameState['battle']): number {
   const { hours } = data.config.clock
-  return advanceTime(data, left, state.battle?.isBoss ? hours.bossBattle : hours.wildBattle)
+  if (battle?.special?.kind === 'worldBoss') return hours.worldBoss
+  return battle?.isBoss ? hours.bossBattle : hours.wildBattle
 }
 
 /** Chọn lựa chọn event: tốn giờ nếu không mở trận (trận tính giờ lúc rời trận). */
@@ -310,6 +327,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return challengeBeastKing(data, state)
     case 'retreatBeastTide':
       return retreatBeastTide(data, state)
+    case 'challengeWorldBoss':
+      return challengeWorldBoss(data, state)
+    case 'claimWorldBossRewards':
+      return claimWorldBossRewards(data, state)
     case 'startTribulation':
       return startTribulation(data, state, action.monsterId)
     case 'setTactic':
@@ -364,6 +385,16 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return abandonTrial(state)
     case 'challengeTower':
       return challengeTower(data, state)
+    case 'setInstability':
+      return setInstability(data, state, action.level)
+    case 'rerollInstability':
+      return rerollInstability(data, state)
+    case 'buyIncense':
+      return buyIncense(data, state, action.count)
+    case 'offerIncense':
+      return offerIncense(data, state, action)
+    case 'buyDeityItem':
+      return buyDeityItem(data, state, action)
     case 'enterZone':
       return enterZone(data, state, action.zoneId)
     case 'exploreZone':

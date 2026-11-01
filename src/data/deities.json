@@ -1,0 +1,3270 @@
+[
+  {
+    "id": "thanhHoang",
+    "elementId": "normal",
+    "tokenItemId": "thanhHoangToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "hp"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreNormal",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "normalTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "normalZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "hoaDuc",
+    "elementId": "fire",
+    "tokenItemId": "hoaDucToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "attack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreFire",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "fireTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "fireZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "thuyDuc",
+    "elementId": "water",
+    "tokenItemId": "thuyDucToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spDefense"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreWater",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "waterTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "waterZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "loiCong",
+    "elementId": "electric",
+    "tokenItemId": "loiCongToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "speed"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreElectric",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "electricTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "electricZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "mocDuc",
+    "elementId": "grass",
+    "tokenItemId": "mocDucToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "hp"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreGrass",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "grassTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "grassZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "suongThan",
+    "elementId": "ice",
+    "tokenItemId": "suongThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spAttack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreIce",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "iceTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "iceZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "chienThan",
+    "elementId": "fighting",
+    "tokenItemId": "chienThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "attack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreFighting",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "fightingTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "fightingZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "onThan",
+    "elementId": "poison",
+    "tokenItemId": "onThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spDefense"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCorePoison",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "poisonTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "poisonZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "thoDuc",
+    "elementId": "ground",
+    "tokenItemId": "thoDucToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "defense"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreGround",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "groundTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "groundZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "phongBa",
+    "elementId": "flying",
+    "tokenItemId": "phongBaToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "speed"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreFlying",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "flyingTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "flyingZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "mongThan",
+    "elementId": "psychic",
+    "tokenItemId": "mongThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spAttack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCorePsychic",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "psychicTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "psychicZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "tamThan",
+    "elementId": "bug",
+    "tokenItemId": "tamThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "speed"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreBug",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "bugTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "bugZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "sonThan",
+    "elementId": "rock",
+    "tokenItemId": "sonThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "defense"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreRock",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "rockTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "rockZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "diemVuong",
+    "elementId": "ghost",
+    "tokenItemId": "diemVuongToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spAttack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreGhost",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "ghostTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "ghostZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "longVuong",
+    "elementId": "dragon",
+    "tokenItemId": "longVuongToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "attack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreDragon",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "dragonTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "dragonZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "daDuThan",
+    "elementId": "dark",
+    "tokenItemId": "daDuThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "attack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreDark",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "darkTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "darkZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "kimDuc",
+    "elementId": "steel",
+    "tokenItemId": "kimDucToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "defense"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreSteel",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "steelTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "steelZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "hoaThan",
+    "elementId": "fairy",
+    "tokenItemId": "hoaThanToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spDefense"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreFairy",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "fairyTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "fairyZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  },
+  {
+    "id": "thaiDuong",
+    "elementId": "light",
+    "tokenItemId": "thaiDuongToken",
+    "blessings": [
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 5,
+              "stat": "spAttack"
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "dropRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "catchRatePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "moneyPercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "recruitPercent",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "shinyChancePercent",
+            "params": {
+              "percent": 5
+            }
+          }
+        ]
+      },
+      {
+        "effects": [
+          {
+            "type": "expPercent",
+            "params": {
+              "percent": 15
+            }
+          },
+          {
+            "type": "elementStatPercent",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ],
+    "shop": [
+      {
+        "itemId": "demonCoreLight",
+        "price": 8,
+        "minRank": 1
+      },
+      {
+        "itemId": "lightTeraShard",
+        "price": 12,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "price": 10,
+        "minRank": 2
+      },
+      {
+        "itemId": "heavenSpiritFruit",
+        "price": 15,
+        "minRank": 3
+      },
+      {
+        "itemId": "lightZCrystal",
+        "price": 25,
+        "minRank": 4
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "price": 40,
+        "minRank": 5
+      },
+      {
+        "itemId": "rareCandy",
+        "price": 30,
+        "minRank": 6
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "price": 40,
+        "minRank": 6
+      },
+      {
+        "itemId": "rebirthPill",
+        "price": 60,
+        "minRank": 8
+      },
+      {
+        "itemId": "marrowCleansingPill",
+        "price": 100,
+        "minRank": 10
+      }
+    ]
+  }
+]

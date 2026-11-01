@@ -61,6 +61,9 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [expeditions.md](docs/rules/expeditions.md): phái quái đi thám hiểm
 - [trainers.md](docs/rules/trainers.md): ngự thú sư NPC, đạo quán, giải đấu, đấu trường
 - [trials.md](docs/rules/trials.md): bí cảnh và tháp thí luyện
+- [instability.md](docs/rules/instability.md): độ bất ổn tầng (thuộc tính bất lợi tự chọn ở Đền dịch chuyển, thưởng thêm)
+- [deities.md](docs/rules/deities.md): thần linh và ân sủng (thần cai quản map, chúc phúc trong map của thần, Miếu: Hương nến, tín vật, cửa hàng thần)
+- [world-boss.md](docs/rules/world-boss.md): boss thế giới (xuất hiện theo lịch, HP vô hạn, thưởng theo kỷ lục tổng sát thương)
 - [events.md](docs/rules/events.md): hệ thống event, modifier, cửa hàng tạm / chợ đen, chuỗi event, thú triều (`events/`)
 - [auto-battle.md](docs/rules/auto-battle.md): tự động đánh, chiến thuật
 - [partner-skills.md](docs/rules/partner-skills.md): kỹ năng đồng hành
@@ -124,7 +127,7 @@ Thế giới chia thành các tầng không có trần, tầng sau mạnh hơn t
 - **Sản phẩm build (exe, deb...) phải cài và chạy được hoàn toàn offline** (chủ project chốt 2026-10-31): mọi thứ game cần lúc chạy (font, ảnh, dữ liệu, thư viện) đóng gói sẵn vào bản build, game không gọi mạng lúc chạy. Lúc phát triển / build thì gọi mạng, tải tài nguyên thoải mái (tải về rồi đóng gói vào, không để game tải lúc chạy).
 - Số lớn: thư viện **`decimal.js`** (kiểu `Decimal`), xem mục "Số lớn" (`docs/rules/big-numbers.md`; đổi từ `break_infinity.js` vì thư viện đó lệch ±1 với số nguyên nhỏ). Thư viện chỉ cần cài ở máy build; bản exe đã chứa sẵn, người chơi không phải tải gì.
 - **Dependency dùng lúc chạy** (như `decimal.js`) phải nằm trong `dependencies` của `package.json`, **không** để trong `devDependencies`. Main / preload không bundle dependency (`externalizeDepsPlugin`), electron-builder chỉ đóng gói `dependencies` vào `app.asar`; để sai chỗ thì `npm run dev` vẫn chạy nhưng bản exe báo `Cannot find module`. Máy dev là máy bình thường **có mạng** (chủ project chốt 2026-10-25): cài package thẳng từ npm, commit `package-lock.json`; được tải dữ liệu thật (PokeAPI, wiki...) khi nhập nội dung, kèm script nhập lại được trong `scripts/data-import/`.
-Cấu trúc thư mục: **chia theo tính năng (feature folders)**, mỗi folder chứa file code và file test cạnh nhau (`x.ts` + `x.test.ts`).
+  Cấu trúc thư mục: **chia theo tính năng (feature folders)**, mỗi folder chứa file code và file test cạnh nhau (`x.ts` + `x.test.ts`).
 
 ```
 docs/
@@ -291,7 +294,8 @@ Game sẽ có rất nhiều loại nội dung mới (category item, trạng thá
 - **Gặp điểm chưa chốt (luật chơi, con số, cấu trúc) khi đang làm dở:** tự chọn phương án hợp lý nhất (con số: số tạm rồi chỉnh theo mô phỏng), ghi vào md, báo ở cuối tin nhắn; không dừng lại chờ (trừ trường hợp "chỉ hỏi khi" ở quy tắc trên).
 - Con số cân bằng luôn đặt trong `src/data/*.json` (không viết cứng trong code) để dễ chỉnh cân bằng.
 - Xong việc: chạy `npm test`, `npm run typecheck`, eslint, prettier; rồi cập nhật tài liệu đúng file (quy tắc 11).
-- **Mô phỏng phải tái hiện được thay đổi vừa code** (chủ project chốt 2026-10-24): chạy mô phỏng mà không đo được tính năng / thay đổi vừa code (chạy vô ích) thì phải sửa mô phỏng trước (giả định cho quét tầng, "người chơi" dùng tính năng, cột đo, biến thể A/B), theo mục "Mô phỏng phải tái hiện được thay đổi vừa code" ở `simulation.md`.
+- **Chỉ chạy mô phỏng khi cần** (chủ project chốt 2026-11-01, thay luật "bắt buộc chạy trước khi báo xong"): chỉ chạy khi thay đổi có thể đổi cân bằng (luật / số trong trận, phần thưởng, tiến trình, kinh tế, độ khó, số cân bằng dùng chung) và chỉ chạy phần đo được nó (`--parts`); thay đổi không đổi cân bằng (UI, chữ, tài liệu, tái cấu trúc thuần, kiểm tra dữ liệu / save, dữ liệu không đổi số) thì không chạy. Kịch bản mặc định đầy đủ chỉ chạy khi đổi số cân bằng dùng chung (chỉ số, sát thương, EXP, boss) hoặc khi chủ project yêu cầu. Chi tiết ở mục "Khi nào chạy mô phỏng" (`simulation.md`).
+- **Mô phỏng phải tái hiện được thay đổi vừa code** (chủ project chốt 2026-10-24): khi đã chạy mô phỏng cho một thay đổi (theo luật trên) mà không đo được tính năng / thay đổi vừa code (chạy vô ích) thì phải sửa mô phỏng trước (giả định cho quét tầng, "người chơi" dùng tính năng, cột đo, biến thể A/B), theo mục "Mô phỏng phải tái hiện được thay đổi vừa code" ở `simulation.md`.
 - **Thêm / sửa mô phỏng phải tối ưu** (chủ project chốt 2026-10-28): làm sao tốn ít thời gian / tài nguyên nhất (đo trước / sau, dùng lại trận đã có, không tính lặp, tối ưu không đổi kết quả), không chỉ viết thêm vào; chi tiết ở mục "Thêm / sửa mô phỏng phải tối ưu" (`simulation.md`).
 - **Chạy script mô phỏng là để sửa, không chỉ để xem:** mỗi lần chạy (`npm run simulate`) phải rà số liệu, **tự sửa** chỗ chưa hợp lý / chưa cân bằng (lỗi code, dữ liệu, số cân bằng kể cả số đã chốt, code cũ, luật chơi; không cần hỏi trước) rồi chạy lại để kiểm chứng và báo lại đã đổi gì, theo mục "Dùng kết quả mô phỏng" (`simulation.md`). Giới hạn cứng: `bossMultiplier` luôn ít nhất 2–5.
 

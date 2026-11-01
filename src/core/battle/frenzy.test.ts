@@ -39,7 +39,8 @@ const ROLES = {
   tamed: { hpThresholdPercent: 25, statPercent: 30, extraActionChance: 0 },
   unbound: { hpThresholdPercent: 0, statPercent: 15, extraActionChance: 0 },
   wild: { hpThresholdPercent: 25, statPercent: 15, extraActionChance: 0 },
-  boss: { hpThresholdPercent: 30, statPercent: 20, extraActionChance: 0 }
+  boss: { hpThresholdPercent: 30, statPercent: 20, extraActionChance: 0 },
+  worldBoss: { hpThresholdPercent: 0, statPercent: 30, extraActionChance: 0, fromTurn: 5 }
 }
 
 /** Dữ liệu fixture có số cuồng bạo, race khó kiểm soát `wyrm` và hai trait cuồng bạo. */

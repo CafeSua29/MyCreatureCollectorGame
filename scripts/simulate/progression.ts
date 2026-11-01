@@ -51,6 +51,7 @@ import { tuneTeamTraits } from './traitCrystals'
 import { implantSharePercent, implantTeam } from './implant'
 import { sacrificeSpareFodder } from './sacrifice'
 import { rebirthWhenPossible } from './rebirth'
+import { highestFavorRank, runDeities } from './deities'
 import { castWithCores, enhanceTeamGear, imbueTeamGear, salvageSurplus } from './forge'
 import { runAlchemy } from './alchemy'
 import { runCooking } from './cooking'
@@ -554,7 +555,7 @@ function playBattle(
       towerFloor: state.tower.highest,
       events: takeEventTally(),
       growth: run.growth,
-      economy: run.economy
+      economy: { ...run.economy, favorRank: highestFavorRank(data, state) }
     })
     run.counter = newCounter()
     run.growth = newGrowthCount()
@@ -797,6 +798,8 @@ function afterBattle(
     run.economy.implantFails += implanted.count.failed
     run.economy.implantEffects += implanted.count.effectSerums
     run.economy.implantSharePercent = implantSharePercent(data, run.state, teamIds)
+    // Miếu thần linh sau cùng (deities.ts): dâng hương cho thần của tầng cao nhất, đổi tín vật.
+    run.state = runDeities(data, run.state, run.economy)
   }
   return rng
 }

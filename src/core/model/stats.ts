@@ -60,10 +60,12 @@ export const STAT_PERCENT_SOURCE_IDS = [
   'frenzy',
   'collection',
   'meal',
+  'blessing',
   'polarity',
   'sacrifice',
   'rebirth',
-  'implant'
+  'implant',
+  'rules'
 ] as const
 
 export type StatPercentSourceId = (typeof STAT_PERCENT_SOURCE_IDS)[number]

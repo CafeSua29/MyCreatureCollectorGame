@@ -286,6 +286,14 @@ export interface ActionErrorParams {
   /** Đang đi bí cảnh: không hồi máu ở thị trấn, không rời thị trấn, không vào trận khác. */
   trialInProgress: NoParams
   noTrial: NoParams
+  /** Độ bất ổn tầng (docs/rules/instability.md). */
+  instabilityLevelTooHigh: { level: number; max: number }
+  instabilityUnchanged: { level: number }
+  instabilityOff: NoParams
+  /** Thần linh và ân sủng (docs/rules/deities.md). */
+  unknownDeity: { deityId: string }
+  deityItemNotSold: { deityId: string; itemId: string }
+  blessingRankTooLow: { deityId: string; rank: number; need: number }
   /** Không còn quái được vào trận theo luật (luật một hệ: hệ `elementId`). */
   noEligibleFighter: { elementIds: string[] }
   // ---------- Hiểm địa (docs/rules/zones.md) ----------
@@ -330,6 +338,11 @@ export interface ActionErrorParams {
   beastKingLocked: { cleared: number; need: number }
   /** Cửa hàng thị trấn đóng tới hết ngày `untilDay` (sau thú triều thất bại). */
   shopClosed: { untilDay: number }
+  /** Boss thế giới (docs/rules/world-boss.md): không có boss đang xuất hiện. */
+  noWorldBoss: NoParams
+  /** Đã khiêu chiến boss thế giới trong ngày `day`. */
+  worldBossChallengedToday: { day: number }
+  noWorldBossRewards: NoParams
 }
 
 /**
@@ -580,6 +593,13 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   trialRestricted: ({ command }) => `Không được dùng lệnh "${command}" trong bí cảnh / tháp`,
   trialInProgress: () => 'Đang đi bí cảnh (không hồi máu, không rời thị trấn, không vào trận khác)',
   noTrial: () => 'Không trong bí cảnh nào',
+  instabilityLevelTooHigh: ({ level, max }) => `Mức bất ổn ${level} vượt mức tối đa ${max}`,
+  instabilityUnchanged: ({ level }) => `Độ bất ổn đang ở mức ${level}`,
+  instabilityOff: () => 'Chưa bật độ bất ổn tầng',
+  unknownDeity: ({ deityId }) => `Không có thần "${deityId}"`,
+  deityItemNotSold: ({ deityId, itemId }) => `Cửa hàng của thần "${deityId}" không bán "${itemId}"`,
+  blessingRankTooLow: ({ deityId, rank, need }) =>
+    `Bậc ân sủng với thần "${deityId}" là ${rank}, cần ${need}`,
   noEligibleFighter: ({ elementIds }) =>
     `Không còn quái nào được vào trận (hệ ${String(elementIds)})`,
   zoneNotFound: ({ zoneId }) => `Không có hiểm địa "${zoneId}"`,
@@ -612,7 +632,10 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   noBeastTide: () => 'Không có thú triều nào đang diễn ra',
   beastKingLocked: ({ cleared, need }) =>
     `Mới thắng ${cleared} đợt, cần ${need} đợt mới thách đấu thú vương`,
-  shopClosed: ({ untilDay }) => `Cửa hàng đóng tới hết ngày ${untilDay}`
+  shopClosed: ({ untilDay }) => `Cửa hàng đóng tới hết ngày ${untilDay}`,
+  noWorldBoss: () => 'Không có boss thế giới nào đang xuất hiện',
+  worldBossChallengedToday: ({ day }) => `Đã khiêu chiến boss thế giới hôm nay (ngày ${day})`,
+  noWorldBossRewards: () => 'Không có thưởng boss thế giới nào đang chờ nhận'
 }
 
 /** Tham số của mã: mã không có tham số thì được bỏ trống. */

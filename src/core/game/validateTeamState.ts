@@ -2,7 +2,7 @@
 // hưởng / trận pháp / kỹ năng đồng hành (docs/rules/partner-skills.md) của từng phe trong trận.
 
 import { synergyTierOf } from '../registries'
-import type { GameData } from '../model'
+import { BATTLE_SIDES, type BattleSide, type GameData } from '../model'
 import { asObject, checkInteger, checkNumber } from '../shared'
 
 /** formations: known là danh sách không lặp id trận pháp; active null hoặc nằm trong known. */
@@ -28,9 +28,34 @@ export function validateFormationState(data: GameData, value: unknown): string[]
   return issues
 }
 
-/** Một mục cộng hưởng / trận pháp của phe trong trận. */
-function checkTeamBonus(data: GameData, value: unknown, where: string, issues: string[]): void {
+/** Luật sideHooks của phe (docs/rules/instability.md): luật tồn tại, đúng loại, đúng phe. */
+function checkRuleBonus(
+  data: GameData,
+  bonus: Record<string, unknown>,
+  { where, side }: { where: string; side: BattleSide },
+  issues: string[]
+): void {
+  const def = typeof bonus.id === 'string' ? data.trialRules[bonus.id] : undefined
+  if (def?.type !== 'sideHooks') {
+    issues.push(`${where}: luật sideHooks không tồn tại "${String(bonus.id)}"`)
+    return
+  }
+  if (def.params.side !== side) issues.push(`${where}: luật "${def.id}" không dành cho phe ${side}`)
+  issues.push(...checkInteger(bonus.count, `${where}.count`, 1))
+}
+
+/** Một mục cộng hưởng / trận pháp / luật của phe trong trận. */
+function checkTeamBonus(
+  data: GameData,
+  value: unknown,
+  { where, side }: { where: string; side: BattleSide },
+  issues: string[]
+): void {
   const bonus = asObject(value)
+  if (bonus?.kind === 'rule') {
+    checkRuleBonus(data, bonus, { where, side }, issues)
+    return
+  }
   if (bonus?.kind === 'synergy') {
     const synergy = typeof bonus.id === 'string' ? data.synergies[bonus.id] : undefined
     if (!synergy) {
@@ -58,10 +83,13 @@ function checkTeamBonus(data: GameData, value: unknown, where: string, issues: s
     issues.push(...checkNumber(bonus.strength, `${where}.strength`, 0))
     return
   }
-  issues.push(`${where}: kind phải là "synergy", "formation" hoặc "partner"`)
+  issues.push(`${where}: kind phải là "synergy", "formation", "partner" hoặc "rule"`)
 }
 
-/** battle.teamBonuses: mỗi phe một danh sách hợp lệ, không trùng (kind, id); phe địch luôn rỗng. */
+/**
+ * battle.teamBonuses: mỗi phe một danh sách hợp lệ, không trùng (kind, id); quái hoang chỉ có luật
+ * sideHooks.
+ */
 export function checkTeamBonuses(
   data: GameData,
   value: unknown,
@@ -73,7 +101,7 @@ export function checkTeamBonuses(
     issues.push('battle.teamBonuses phải là object')
     return
   }
-  for (const side of ['player', 'enemy'] as const) {
+  for (const side of BATTLE_SIDES) {
     const where = `battle.teamBonuses.${side}`
     const list = sides[side]
     if (!Array.isArray(list)) {
@@ -82,13 +110,15 @@ export function checkTeamBonuses(
     }
     // Quái hoang không có cộng hưởng / trận pháp; đội NPC có, không có kỹ năng đồng hành
     // (docs/rules/trainers.md).
-    if (side === 'enemy' && !hasTrainer && list.length > 0) {
+    if (side === 'enemy' && !hasTrainer && list.some((entry) => asObject(entry)?.kind !== 'rule')) {
       issues.push(`${where}: quái hoang không có cộng hưởng`)
     }
     if (side === 'enemy' && list.some((entry) => asObject(entry)?.kind === 'partner')) {
       issues.push(`${where}: phe địch không có kỹ năng đồng hành`)
     }
-    list.forEach((entry, i) => checkTeamBonus(data, entry, `${where}[${i}]`, issues))
+    list.forEach((entry, i) =>
+      checkTeamBonus(data, entry, { where: `${where}[${i}]`, side }, issues)
+    )
     const keys = list.map(
       (entry) => `${String(asObject(entry)?.kind)}:${String(asObject(entry)?.id)}`
     )

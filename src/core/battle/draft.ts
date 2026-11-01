@@ -9,6 +9,7 @@ import {
   areItemsDisabled,
   collectionStatPercent,
   mealStatPercent,
+  blessingStatPercent,
   fieldIdMatches,
   forEachTraitHook,
   frenzyNumbers,
@@ -21,6 +22,7 @@ import {
 import { transformOnLeave } from './transform'
 import { battleFormOnLeave } from './battleForms'
 import { pendingSkillOf, previousSkillThisTurn } from './actionQueue'
+import { battleDeityId } from './deities'
 import {
   isMergedAway,
   mergePartnerOf,
@@ -447,6 +449,13 @@ function buildBattleContext(
     frenzyStatPercent: frenzyStatPercent(data, d, { side, monster }),
     collectionStatPercent: side === 'player' ? collectionStatPercent(data, d.dex) : 0,
     mealStatPercent: side === 'player' ? mealStatPercent(data, d.cooking.meal) : {},
+    blessingStatPercent:
+      side === 'player'
+        ? blessingStatPercent(data, d.favor, {
+            deityId: battleDeityId(data, d, d.battle),
+            monster
+          })
+        : {},
     field: monsterField(data, d, monster),
     // Gastro Acid... hoặc quái khác trên sân có Neutralizing Gas.
     abilitySuppressed:

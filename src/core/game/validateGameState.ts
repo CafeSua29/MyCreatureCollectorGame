@@ -14,6 +14,8 @@ import { validateQuestState } from './validateQuestState'
 import { validateExpeditionState } from './validateExpeditionState'
 import { checkBattleTrainer, validateTrainerState } from './validateTrainerState'
 import { checkBattleTrial, validateTrialState } from './validateTrialState'
+import { checkBattleInstability, validateInstabilityState } from './validateInstabilityState'
+import { validateDeityState } from './validateDeityState'
 import { checkBattleSpecial, validateEventState } from './validateEventState'
 import { isFainted, validateMonster, validateSouls } from '../monster'
 import { validateInventory } from '../inventory'
@@ -45,6 +47,7 @@ import { validateLabState } from './validateLabState'
 import { validateCapacityState } from './validateCapacityState'
 import { validateZoneState } from './validateZoneState'
 import { validateGatheringState } from './validateGatheringState'
+import { validateWorldBossState } from './validateWorldBossState'
 import { validateDexState } from './validateDexState'
 import { validateEquipmentState } from './validateEquipmentState'
 import { checkTeamBonuses, validateFormationState } from './validateTeamState'
@@ -89,6 +92,10 @@ function checkMonster(
   }
   if (ownership === 'wild' && object.contractRealm !== null) {
     issues.push(`${path}.contractRealm: quái hoang chưa bắt phải là null`)
+  }
+  // HP vô hạn chỉ có trên boss thế giới đang trong trận (docs/rules/world-boss.md).
+  if (object.endlessHp !== undefined && (ownership !== 'wild' || object.endlessHp !== true)) {
+    issues.push(`${path}.endlessHp: chỉ quái hoang trong trận mới có, và phải là true`)
   }
   // Dưỡng dục chỉ bắt đầu khi quái nở (docs/rules/imprinting.md).
   if (ownership !== 'owned' && object.imprint !== null) {
@@ -468,6 +475,7 @@ function checkBattle(
   checkTribulation(state, battle, issues)
   checkBattleTrainer(data, battle, state, issues)
   checkBattleTrial(data, battle, state, issues)
+  checkBattleInstability(data, battle, issues)
   checkBattleSpecial(data, battle, state, issues)
   const slots = [battle.playerSlots, battle.enemySlots].flatMap((s) => (Array.isArray(s) ? s : []))
   for (const id of slots) {
@@ -696,9 +704,12 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(
     ...validateTrialState(data, state, { inTown: asObject(state.location)?.type === 'town' })
   )
+  issues.push(...validateInstabilityState(data, state))
+  issues.push(...validateDeityState(state))
   issues.push(...validateEventState(data, state))
   issues.push(...validateZoneState(data, state))
   issues.push(...validateGatheringState(data, state))
+  issues.push(...validateWorldBossState(data, state))
   issues.push(...validateLabState(data, state.lab))
   issues.push(...validateCapacityState(data, state))
   issues.push(...validateRecruitState(data, state))

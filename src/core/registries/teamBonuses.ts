@@ -344,6 +344,11 @@ function teamBonusHooksOf(
       const hooks = partnerBattleHooks(data.partnerSkills[bonus.id].effects)
       return hooks.length > 0 ? { hooks, scale: bonus.strength } : null
     }
+    case 'rule': {
+      // Luật sideHooks (docs/rules/instability.md): params đã qua kiểm tra dữ liệu.
+      const hooks = data.trialRules[bonus.id].params.hooks as readonly TraitHookDef[]
+      return { hooks, scale: bonus.count }
+    }
     default:
       return assertNever(bonus, 'loại phối hợp đội')
   }

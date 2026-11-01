@@ -52306,5 +52306,105 @@
       }
     ],
     "battles": 20
+  },
+  {
+    "id": "incense",
+    "category": "material",
+    "price": 1000
+  },
+  {
+    "id": "thanhHoangToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "hoaDucToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "thuyDucToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "loiCongToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "mocDucToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "suongThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "chienThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "onThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "thoDucToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "phongBaToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "mongThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "tamThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "sonThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "diemVuongToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "longVuongToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "daDuThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "kimDucToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "hoaThanToken",
+    "category": "material",
+    "price": 20
+  },
+  {
+    "id": "thaiDuongToken",
+    "category": "material",
+    "price": 20
   }
 ]

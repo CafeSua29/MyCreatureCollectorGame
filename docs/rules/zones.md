@@ -81,6 +81,8 @@ Bốn kiểu hiểm địa (49 cái; tên do Claude đặt, chủ project duyệ
 
 - Đồ đặc biệt (đồ riêng của từng hiểm địa, nguyên liệu mới...) chỉ cần thêm item rồi thêm vào bảng của hiểm địa trong `zones-import.mjs` (dữ liệu, không sửa code). Điều kiện loài cụ thể (`partySpecies`) đã có, chưa có hiểm địa dùng (cố hương dùng dòng tiến hóa).
 
+- **Thần cai quản**: mỗi map hiểm địa có `deityId` = thần của hệ chủ đạo của hiểm địa (`deityAssign.mjs`); trận hiểm địa tăng ân sủng / nhận chúc phúc của thần đó (`deities.md`).
+
 ## Save
 
 - `GameState.zones = { visit, reopenDay }` (game mới: `{ visit: null, reopenDay: {} }`). Kiểm tra (`validateZoneState`): hiểm địa tồn tại, ngày nguyên ≥ 0; lượt vào: tầng ≥ 1, `0 ≤ stepsTaken < steps`, `lastStep` đúng loại, đang ở thị trấn, không đồng thời bí cảnh / khu bảo tồn. Trận hiểm địa chưa kết thúc phải có lượt vào đúng hiểm địa đó; boss canh giữ chỉ ở bước cuối.
