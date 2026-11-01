@@ -53,3 +53,44 @@ describe('config.starter', () => {
     expect(issuesWithStarter({ level: 1, money: 0 })).toEqual([])
   })
 })
+
+describe('config.starter.unlocks, unlockOwnedLines', () => {
+  const at = 'config.starter.unlocks[0]'
+  const unlock = { speciesIds: ['pebble'], condition: { type: 'highestFloor' }, value: 10 }
+
+  it('mục hợp lệ; danh sách rỗng hợp lệ', () => {
+    expect(issuesWithStarter({ unlocks: [unlock] })).toEqual([])
+    expect(issuesWithStarter({ unlocks: [] })).toEqual([])
+  })
+
+  it('unlocks phải là danh sách, unlockOwnedLines phải là boolean', () => {
+    expect(issuesWithStarter({ unlocks: {} })).toEqual(['config.starter.unlocks phải là danh sách'])
+    expect(issuesWithStarter({ unlockOwnedLines: 1 })).toEqual([
+      'config.starter.unlockOwnedLines phải là true / false'
+    ])
+  })
+
+  it('loài không tồn tại / không làm khởi đầu được, trường lạ', () => {
+    expect(issuesWithStarter({ unlocks: [{ ...unlock, speciesIds: ['ghost'] }] })).toEqual([
+      `${at}: speciesIds: loài không tồn tại "ghost"`
+    ])
+    expect(issuesWithStarter({ unlocks: [{ ...unlock, speciesIds: ['strongling'] }] })).toEqual([
+      `${at}: "strongling" không phải loài dạng đầu có tiến hóa`
+    ])
+    expect(issuesWithStarter({ unlocks: [{ ...unlock, tier: 1 }] })).toEqual([
+      `${at}: trường "tier" không thuộc mục mở khóa`
+    ])
+  })
+
+  it('điều kiện lạ, value không dương, value vượt trần của điều kiện', () => {
+    expect(issuesWithStarter({ unlocks: [{ ...unlock, condition: { type: 'luck' } }] })).toEqual([
+      `${at}.condition: loại "luck" chưa có trong registry`
+    ])
+    expect(issuesWithStarter({ unlocks: [{ ...unlock, value: 0 }] })).toEqual([
+      `${at}.value phải là số > 0, nhận 0`
+    ])
+    expect(
+      issuesWithStarter({ unlocks: [{ ...unlock, condition: { type: 'dexPercent' }, value: 101 }] })
+    ).toEqual([`${at}.value 101 vượt tiến độ tối đa 100`])
+  })
+})

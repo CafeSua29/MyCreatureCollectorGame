@@ -12,9 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [titles.md](docs/roadmap/titles.md): Thành tựu và danh hiệu
-- [starter-unlocks.md](docs/roadmap/starter-unlocks.md): Mở khóa quái khởi đầu (xuyên save, `saves/profile.json`)
-- [species-research.md](docs/roadmap/species-research.md): Nghiên cứu loài (nhiệm vụ mẫu, cấp 1–10, Bùa Lấp Lánh)
 - [cave-dwelling.md](docs/roadmap/cave-dwelling.md): Động phủ: công trình sản xuất (trồng trọt, khai khoáng...) kiểu Palworld, quái trong kho làm việc theo thiên phú (gộp linh điền)
 - [tamer-talents.md](docs/roadmap/tamer-talents.md): Cây thiên phú ngự thú sư
 - [sects.md](docs/roadmap/sects.md): Tông môn (cống hiến, chức vị, Tàng Bảo Các, tông chiến)
@@ -68,7 +65,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       5h2. Cộng hưởng skill và thời gian chờ. **Đã xong** (luật ở `docs/rules/skill-synergy-hold.md`; thần thông hold 2 làm cùng `awakening.md`).
       5h3. Thế mạnh / thế nhanh. **Đã xong** (luật ở `docs/rules/move-styles.md`; 5 chiêu Legends: Arceus chờ hiệu ứng mới ở `move-styles.md`; 3 chiêu tutor đã nhập ở bước 5k).
       5i. Tính cách. **Đã xong** (luật ở `docs/rules/natures.md`; Bạc Hà ở chợ đen đã có ở bước 5l+.11, nấu ở Đầu bếp đã có ở 6k, `cooking.md`).
-      5j. Phẩm cấp tư chất. **Đã xong** (luật ở `docs/rules/aptitude.md`; dùng cho thành tựu chờ `titles.md`, đối thủ NPC chờ UI, `docs/rules/trainers.md`).
+      5j. Phẩm cấp tư chất. **Đã xong** (luật ở `docs/rules/aptitude.md`; dùng cho thành tựu đã làm ở 8b, `docs/rules/achievements.md`, đối thủ NPC chờ UI, `docs/rules/trainers.md`).
       5j2. Phẩm cấp loài. **Đã xong** (luật ở `docs/rules/species-rank.md`; chỗ dùng ở Dex / gacha / khu bảo tồn / thu phục / thành tựu / trao đổi NPC / mở khóa quái khởi đầu ghi ở roadmap của từng mục).
       5k. Sách kỹ năng. **Đã xong** (luật ở `docs/rules/skill-books.md`; chợ đen đã có ở bước 5l+.11, bí cảnh đã làm ở `docs/rules/trials.md`, đấu giá chờ `auction.md`, thần thông không có sách chờ `awakening.md`).
       5k2. Kế thừa skill khi fuse. **Đã xong** (luật ở mục "Kế thừa skill" của `docs/rules/fusing.md`; thần thông chờ `awakening.md`, ô nhân hình đã làm ở `docs/rules/human-form.md`).
@@ -120,9 +117,9 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       7f. Boss thế giới. **Đã xong** (2026-11-01; luật ở `docs/rules/world-boss.md`; ngưỡng bậc theo bội số máu thường của boss thay cho ngưỡng theo tầng, boss tất định theo seed của lần xuất hiện, `bossMultiplier` 1,5 theo mô phỏng).
       7g. Khí linh và Khí giới bí cảnh. **Đã xong** (2026-11-01; luật ở `docs/rules/artifact-spirits.md`; kho khí linh là `inventory.spirits` thay `GameState.spiritStorage`, khí linh / tầng đã qua là trường tùy chọn của món, thêm `softCap` cho hiệu ứng có trần tự nhiên, nuôi bằng yêu đan / hồn phách, Khí giới bí cảnh dùng `GameState.trial` union `TrialRun`, độ dốc tầng 1 / tầng + 0,5 / cấp theo mô phỏng).
    8. Bộ sưu tập (Dex). **Đã xong** (luật ở `docs/rules/dex.md`; màn hình Dex chờ UI).
-      8b. Thành tựu và danh hiệu (`titles.md`; dùng số liệu Dex).
-      8c. Mở khóa quái khởi đầu (`starter-unlocks.md`; điều kiện từ Dex / thành tựu, lưu xuyên save).
-      8d. Nghiên cứu loài (`species-research.md`; mở rộng Dex).
+      8b. Thành tựu và danh hiệu. **Đã xong** (2026-11-01; luật ở `docs/rules/achievements.md`; thưởng nhận bằng action `claimAchievement` thay cho tự cộng kèm log, bộ đếm chỉ cho việc không suy ra được từ state, danh hiệu đạo quán / giải đấu / tháp qua thành tựu, danh hiệu chỉ có kênh %, không % chỉ số).
+      8c. Mở khóa quái khởi đầu. **Đã xong** (2026-11-01; luật ở mục "Mở khóa xuyên save" của `docs/rules/starters.md`; điều kiện dùng chung registry điều kiện thành tựu thay bộ điều kiện riêng, mở theo chuỗi đã sở hữu là cờ `unlockOwnedLines`, `ascensions` chờ phi thăng).
+      8d. Nghiên cứu loài. **Đã xong** (2026-11-01; luật ở `docs/rules/species-research.md`; mẫu nhiệm vụ trong `balance.json` thay file riêng, cấp suy ra từ bộ đếm không lưu, không log lên cấp, Bùa Lấp Lánh / danh hiệu qua thành tựu `researchCompleted`, thưởng cấp (Kẹo Hiếm) nhận bằng action, thêm lợi ích mở điểm yếu ở cấp 6).
    9. Bảng nhiệm vụ. **Đã xong** ở bước 5l+.5 (luật ở `docs/rules/quests.md`).
       9b. Phái quái đi thám hiểm. **Đã xong** ở bước 5l+.6 (luật ở `docs/rules/expeditions.md`).
       9c. Động phủ (`cave-dwelling.md`; gộp linh điền thành công trình; chủ project bỏ bế quan).

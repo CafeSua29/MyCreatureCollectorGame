@@ -50,6 +50,8 @@ import { validateGatheringState } from './validateGatheringState'
 import { validateWorldBossState } from './validateWorldBossState'
 import { validateSpiritState } from './validateSpiritState'
 import { validateDexState } from './validateDexState'
+import { validateResearchState } from './validateResearchState'
+import { validateAchievementState } from './validateAchievementState'
 import { validateEquipmentState } from './validateEquipmentState'
 import { checkTeamBonuses, validateFormationState } from './validateTeamState'
 
@@ -716,6 +718,8 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateCapacityState(data, state))
   issues.push(...validateRecruitState(data, state))
   issues.push(...validateDexState(data, state.dex))
+  issues.push(...validateResearchState(data, state.research))
+  issues.push(...validateAchievementState(data, state))
   issues.push(
     ...validateExpeditionState(data, state.expeditions, {
       storage: state.storage,

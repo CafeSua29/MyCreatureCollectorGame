@@ -2,6 +2,7 @@
 
 export * from './migrate'
 export * from './newGame'
+export * from './profile'
 export * from './reducer'
 export * from './save'
 export * from './validateGameState'

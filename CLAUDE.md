@@ -96,6 +96,8 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [zones.md](docs/rules/zones.md): hiểm địa (khu có điều kiện vào, quái hiếm, khám phá từng bước, boss canh giữ, đồ theo chủ đề)
 - [gathering.md](docs/rules/gathering.md): câu cá và khai thác trên tầng (dụng cụ theo cấp, mồi câu, phục kích)
 - [dex.md](docs/rules/dex.md): bộ sưu tập (đã gặp / sở hữu, mốc thưởng, thưởng sưu tập, chí mạng theo Dex)
+- [species-research.md](docs/rules/species-research.md): nghiên cứu loài (nhiệm vụ mẫu theo loài, cấp 1–10, lợi ích riêng loài, thưởng cấp, Bùa Lấp Lánh qua thành tựu)
+- [achievements.md](docs/rules/achievements.md): thành tựu (bộ đếm chung, điều kiện theo registry, bậc không trần) và danh hiệu (đeo một cái, buff kênh %)
 - [exp-candy.md](docs/rules/exp-candy.md): Kẹo EXP và Kẹo Hiếm
 - [fusing.md](docs/rules/fusing.md): fusing, kế thừa skill, fuse thất bại và bùa fuse
 - [breeding-eggs.md](docs/rules/breeding-eggs.md): breeding, trứng

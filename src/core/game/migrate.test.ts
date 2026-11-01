@@ -64,6 +64,7 @@ function lifeMigrated(state: GameState): GameState {
     })),
     captured: state.battle.captured.map(lifeMigratedMonster)
   }
+  const dex = dexFromOwned([...state.party, ...state.storage])
   return {
     ...state,
     time: migrateData.config.clock.startHour,
@@ -84,7 +85,11 @@ function lifeMigrated(state: GameState): GameState {
     })),
     battle,
     // v55 → v56: Dex điền từ loài hiện tại / loài gốc của đội và kho (docs/rules/dex.md).
-    dex: dexFromOwned([...state.party, ...state.storage])
+    dex,
+    // v86 → v87: loài đã sở hữu tính như đã bắt 1 lần (docs/rules/species-research.md).
+    research: Object.fromEntries(
+      dex.owned.map((id) => [id, { counters: { caught: 1 }, claimedLevel: 0 }])
+    )
   }
 }
 

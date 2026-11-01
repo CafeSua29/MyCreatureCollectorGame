@@ -23,7 +23,16 @@ import {
   ageExpMultiplier,
   ancestorGroupsOf,
   bloodlineGroupsOf,
+  bumpStat,
   charmEffect,
+  countCaught,
+  dexSpeciesOf,
+  mainElementOf,
+  recordCaughtResearch,
+  recordEvolutionResearch,
+  recordMonsterResearch,
+  recordResearch,
+  researchMultiplier,
   changeAffinity,
   instabilityRewardPercent,
   mealMultiplier,
@@ -34,6 +43,7 @@ import {
   traitEggHatchExtra,
   traitExpMultiplier,
   traitMoneyMultiplier,
+  titleMultiplier,
   hasPartyRoom,
   partyAfterJoining,
   hasRosterRoom
@@ -106,6 +116,8 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   cureOnBattleEnd(data, d)
   d.battle.phase = 'ended'
   d.battle.outcome = outcome
+  recordBattleStats(d, outcome)
+  recordBattleResearch(data, d)
   // Việc hết trận theo loại trận đặc biệt (boss thế giới ghi kỷ lục, docs/rules/world-boss.md).
   if (d.battle.special) specialRule(d.battle.special).onFinish(data, d)
   // Trận trên tầng (thắng, thua, chạy) đếm một trận cho thời hạn modifier (docs/rules/events.md)
@@ -133,6 +145,49 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
 }
 
 /**
+ * Bộ đếm thành tựu khi trận kết thúc (docs/rules/achievements.md): quái bắt bằng bóng / Thị Uy (mọi
+ * kết quả); thắng thì + trận thắng, + boss (không tính Thiên Kiếp: độ kiếp đếm riêng), + NPC.
+ */
+function recordBattleStats(d: Draft, outcome: BattleOutcome): void {
+  const { captured, isBoss, tribulation, trainer } = d.battle
+  let stats = countCaught(d.stats, captured)
+  if (outcome === 'won') {
+    stats = bumpStat(stats, 'battlesWon')
+    if (isBoss && !tribulation) stats = bumpStat(stats, 'bossesDefeated')
+    if (trainer) stats = bumpStat(stats, 'trainersDefeated')
+  }
+  d.stats = stats
+}
+
+/**
+ * Nghiên cứu loài khi trận kết thúc (docs/rules/species-research.md), mọi kết quả trận: quái bắt
+ * bằng bóng / Thị Uy (+ bắt, + bắt shiny), quái địch đã gục (+ hạ), số lần mỗi quái trong trận (cả
+ * hai phe) dùng skill hệ chính của loài nó (+ thấy dùng skill hệ chính). Bắt khi đang có trạng thái
+ * đếm lúc bắt (battleItems).
+ */
+function recordBattleResearch(data: GameData, d: Draft): void {
+  const { captured, enemies, records } = d.battle
+  let research = recordCaughtResearch(data, d.research, captured)
+  const fainted = enemies.filter((enemy) => isFainted(data, enemy))
+  research = recordMonsterResearch(data, research, fainted, 'defeated')
+  for (const monster of [...d.party, ...enemies, ...captured]) {
+    const uses = records[monster.id]?.skillUses ?? {}
+    for (const speciesId of dexSpeciesOf(data, monster)) {
+      const elementId = mainElementOf(data.species[speciesId])
+      const amount = Object.entries(uses)
+        .filter(([skillId]) => data.skills[skillId]?.elementId === elementId)
+        .reduce((sum, [, count]) => sum + count, 0)
+      research = recordResearch(data, research, {
+        speciesIds: [speciesId],
+        kind: 'mainElementSkillSeen',
+        amount
+      })
+    }
+  }
+  d.research = research
+}
+
+/**
  * Hết trận: quái ta mất trạng thái chỉ có trong trận (buff / debuff Siralim) và max HP đổi trong
  * trận (máu đã mất kẹp để quái còn sống vẫn còn ít nhất 1 máu).
  */
@@ -157,7 +212,8 @@ export function applyWin(data: GameData, d: Draft): void {
   // như Amulet Coin) rồi kỹ năng đồng hành (quái đầu đội còn sống lúc thắng) nhân tiền thưởng.
   const fought = d.party.filter((monster) => participants.includes(monster.id))
   // Độ bất ổn tầng (docs/rules/instability.md): cùng một % cộng cho tiền, EXP, tỉ lệ đồ rơi.
-  // Chúc phúc của thần cai quản map (docs/rules/deities.md) nhân tiền, EXP, tỉ lệ đồ rơi theo kênh.
+  // Chúc phúc của thần cai quản map (docs/rules/deities.md) và danh hiệu đang đeo
+  // (docs/rules/achievements.md) nhân tiền, EXP, tỉ lệ đồ rơi theo kênh.
   const instabilityMultiplier = 1 + instabilityRewardPercent(data, d.battle.instability) / 100
   const money = enemies
     .reduce((sum, enemy) => sum.plus(moneyReward(data, enemy)), BIG_ZERO)
@@ -170,6 +226,7 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(d.battle.special ? specialRule(d.battle.special).moneyMultiplier(d.battle.special) : 1)
     .times(instabilityMultiplier)
     .times(battleBlessingMultiplier(data, d, 'moneyPercent'))
+    .times(titleMultiplier(data, d.titles, 'moneyPercent'))
     .floor()
   const exp = battleExp(data, d)
   d.money = d.money.plus(money)
@@ -208,6 +265,7 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(mealMultiplier(data, d.cooking.meal, 'expPercent'))
     .times(instabilityMultiplier)
     .times(battleBlessingMultiplier(data, d, 'expPercent'))
+    .times(titleMultiplier(data, d.titles, 'expPercent'))
     .floor()
   const defeated = [...enemies, ...d.battle.captured]
   d.party = d.party.map((monster) => {
@@ -246,6 +304,7 @@ export function applyWin(data: GameData, d: Draft): void {
     const result = autoEvolve(data, monster, { rng: d.rng, day: dayOf(d.time), scene })
     d.rng = result.rng
     for (const event of result.events) log(d, event)
+    d.research = recordEvolutionResearch(data, d.research, result.events)
     return party.map((m, i) => (i === index ? result.monster : m))
   }, d.party)
 
@@ -279,7 +338,8 @@ export function applyWin(data: GameData, d: Draft): void {
     mealMultiplier(data, d.cooking.meal, 'dropRatePercent') *
     floorModifierMultiplier(data, d, 'dropRatePercent') *
     instabilityMultiplier *
-    battleBlessingMultiplier(data, d, 'dropRatePercent')
+    battleBlessingMultiplier(data, d, 'dropRatePercent') *
+    titleMultiplier(data, d.titles, 'dropRatePercent')
   // Trận NPC: đồ thưởng chung của trận thay cho đồ rơi của từng quái (docs/rules/trainers.md).
   if (d.battle.trainer) dropTrainerRewards(data, d, dropMultiplier)
   for (const enemy of d.battle.trainer ? [] : enemies) {
@@ -348,6 +408,8 @@ export function applyWin(data: GameData, d: Draft): void {
     else d.storage.push(monster)
     log(d, { type: 'eggHatched', monsterId: monster.id, destination })
     d.quests = recordQuestEvent(data, d.quests, { type: 'hatched' })
+    d.stats = bumpStat(d.stats, 'eggsHatched')
+    d.research = recordMonsterResearch(data, d.research, [monster], 'hatched')
   }
   // Thu phục (docs/rules/recruit.md): sau cùng (quái bị hạ đã trả hệ / race gốc ở finish); mồi dụ
   // tính theo lúc trận diễn ra (finish đã bớt trận này, trận cuối của mồi vẫn có tác dụng).
@@ -544,10 +606,18 @@ const EXTRA_DROP_TABLES: readonly DropTable[] = [
   onlyInBossBattle(spiritOrbBossDrops)
 ]
 
-/** EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ). */
+/**
+ * EXP gốc của trận: tổng EXP của quái bị hạ và quái bắt được (mỗi quái tham chiến nhận đủ); cấp
+ * nghiên cứu của loài đó nhân EXP của riêng quái đó (docs/rules/species-research.md).
+ */
 const battleExp = (data: GameData, d: Draft): Decimal =>
   [...d.battle.enemies, ...d.battle.captured].reduce(
-    (sum, enemy) => sum.plus(expReward(data, enemy)),
+    (sum, enemy) =>
+      sum.plus(
+        expReward(data, enemy).times(
+          researchMultiplier(data, d.research, enemy.speciesId, 'expPercent')
+        )
+      ),
     BIG_ZERO
   )
 

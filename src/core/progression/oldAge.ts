@@ -4,7 +4,14 @@
 
 import { woundIfBondDied } from '../tamer'
 import { dieForever, isFainted, keepAlive } from '../monster'
-import { aptitudeFloor, hasReachedLifespanEnd, lifePercent, yearsLeft } from '../registries'
+import {
+  aptitudeFloor,
+  bumpStat,
+  hasReachedLifespanEnd,
+  lifePercent,
+  yearsLeft,
+  recordMonsterResearch
+} from '../registries'
 import {
   dayOf,
   type DayEvent,
@@ -68,7 +75,8 @@ export function ageOneDay(data: GameData, state: GameState, events: DayEvent[]):
     inventory,
     party,
     storage,
-    tamer: wound.tamer
+    tamer: wound.tamer,
+    stats: bumpStat(state.stats, 'oldAgeDeaths', died.length)
   })
   if (refilled.event) events.push(refilled.event)
   return refilled.state
@@ -106,7 +114,13 @@ export function refillEmptyParty(
     day: dayOf(state.time)
   })
   return {
-    state: { ...incubated, rng, party: [hatched] },
+    state: {
+      ...incubated,
+      rng,
+      party: [hatched],
+      stats: bumpStat(incubated.stats, 'eggsHatched'),
+      research: recordMonsterResearch(data, incubated.research, [hatched], 'hatched')
+    },
     event: { type: 'legacyEggHatched', monsterId: egg.monster.id }
   }
 }

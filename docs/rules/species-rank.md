@@ -15,7 +15,8 @@ Nhãn **phẩm cấp cho loài** (như rank G → X của Dragon Quest Monsters,
 - Dạng loài (Mega, G-Max, vùng miền...) là loài riêng nên có bậc theo chỉ số của chính dạng đó.
 - **Dùng ở:** hệ số thu phục `rankFalloff` ^ thứ hạng (`recruit.md`), `MonsterView.speciesRankId`, lọc `minSpeciesRankId` (từ bậc đó trở lên), sắp xếp `speciesRank` (`roster.md`). Bên ngoài core: `speciesRankOf`, `monsterSpeciesRankOf`, `baseStatTotal` xuất lại qua `roster/`.
 - **Không có** điều kiện tiến hóa theo phẩm cấp loài (chủ project chốt 2026-10-24): bậc của loài cố định, nên điều kiện như vậy luôn đủ hoặc luôn thiếu.
-- Chưa có (ghi ở roadmap của từng mục): hiển thị / lọc / sắp xếp ở màn hình Dex (chờ UI; Dex đã làm ở `dex.md`), trọng số gacha (chờ `gacha.md`), điều kiện thành tựu (chờ `titles.md`), yêu cầu trao đổi NPC (chờ `npc-trades.md`), điều kiện mở khóa quái khởi đầu (chờ `starter-unlocks.md`).
+- Điều kiện thành tựu `speciesRank { rankId }` (số loài đã sở hữu từ bậc) ở `achievements.md`.
+- Chưa có (ghi ở roadmap của từng mục): hiển thị / lọc / sắp xếp ở màn hình Dex (chờ UI; Dex đã làm ở `dex.md`), trọng số gacha (chờ `gacha.md`), yêu cầu trao đổi NPC (chờ `npc-trades.md`). Mở khóa quái khởi đầu theo phẩm cấp dùng điều kiện thành tựu `speciesRank` (`starters.md`).
 
 ## Dữ liệu
 

@@ -15,7 +15,11 @@ import {
   hasPartyRoom,
   hasRosterRoom,
   mealMultiplier,
-  partyAfterJoining
+  partyAfterJoining,
+  titleMultiplier,
+  recordEvolutionResearch,
+  recordMonsterResearch,
+  researchMultiplier
 } from '../registries'
 import { assertUsableIn, itemTarget, removeItems } from '../inventory'
 import {
@@ -80,7 +84,15 @@ export function battleCatchChance(
   data: GameData,
   state: Pick<
     GameState,
-    'party' | 'storage' | 'eggs' | 'time' | 'cooking' | 'floorBiomeIds' | 'favor'
+    | 'party'
+    | 'storage'
+    | 'eggs'
+    | 'time'
+    | 'cooking'
+    | 'floorBiomeIds'
+    | 'favor'
+    | 'titles'
+    | 'research'
   > & {
     battle: BattleState
   },
@@ -98,7 +110,9 @@ export function battleCatchChance(
     playerMultiplier:
       partnerMultiplier(data, state.party, 'catchRatePercent') *
       mealMultiplier(data, state.cooking.meal, 'catchRatePercent') *
-      battleBlessingMultiplier(data, state, 'catchRatePercent'),
+      battleBlessingMultiplier(data, state, 'catchRatePercent') *
+      titleMultiplier(data, state.titles, 'catchRatePercent') *
+      researchMultiplier(data, state.research, target.speciesId, 'catchRatePercent'),
     bonusMultiplier: ballBonusMultiplier(ball, ctx),
     catchRateBonus: ballCatchRateBonus(ball, ctx)
   })
@@ -162,6 +176,11 @@ export function throwBall(
   // Bắt được boss: giữ bossMultiplier và nhận trait "Huyết thống boss". Thân mật khởi đầu theo
   // bóng (docs/rules/affinity.md).
   const affinity = ball.startAffinity ?? data.config.affinity.start.caught
+  // Nghiên cứu loài (docs/rules/species-research.md): bắt khi đang có trạng thái bất thường (debuff),
+  // xét trước khi Heal Ball chữa.
+  if (target.statuses.some((status) => data.statuses[status.statusId]?.kind === 'debuff')) {
+    d.research = recordMonsterResearch(data, d.research, [target], 'caughtWithStatus')
+  }
   // Heal Ball: hồi đầy máu, hết trạng thái bất thường.
   const healed = ball.healOnCatch ? { ...target, damageTaken: BIG_ZERO, statuses: [] } : target
   const caughtMonster = {
@@ -236,6 +255,7 @@ export function applyItemToAlly(
   }
   const after = applied.monster
   d.rng = applied.rng
+  d.research = recordEvolutionResearch(data, d.research, applied.events)
   consumeItem(d, item.id)
   d.party[index] = after
   log(d, { type: 'useItem', monsterId: user.id, itemId: item.id, targetId })

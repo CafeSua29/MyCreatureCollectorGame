@@ -116,6 +116,22 @@ describe('cấp luyện đan', () => {
     expect(craftChance(partnerData, townState(), partnerData.recipes.risky)).toBe(65)
     expect(craftChance(data, withLevel(townState(), 200), data.recipes.risky)).toBe(100)
   })
+
+  it('danh hiệu đang đeo cộng % luyện đan (docs/rules/achievements.md)', () => {
+    const titled = { ...townState(), titles: { owned: ['lucky'], active: 'lucky' } }
+    expect(craftChance(data, titled, data.recipes.risky)).toBe(70)
+  })
+})
+
+describe('bộ đếm thành tựu', () => {
+  it('luyện thành công cộng pillsCrafted theo số lần thành công; thất bại không tính', () => {
+    const next = craft(townState({ herb: 20 }), 'risky', 10)
+    const { successes } = defined(next.alchemy.lastCraft)
+    expect(successes).toBeGreaterThan(0)
+    expect(successes).toBeLessThan(10)
+    expect(next.stats.pillsCrafted).toBe(successes)
+    expect(next.stats.itemsForged).toBe(0)
+  })
 })
 
 describe('luyện đan', () => {

@@ -18,6 +18,7 @@ import type { ExpeditionConfig } from './expeditions'
 import type { TrainerConfig } from './trainers'
 import type { InstabilityConfig, TrialConfig } from './trials'
 import type { DeityConfig } from './deities'
+import type { AchievementCondition } from './achievements'
 import type { EventConfig } from './events'
 import type { BondConfig, ContractConfig } from './tamer'
 import type { SoulRelicConfig } from './soul'
@@ -36,6 +37,7 @@ import type { GatheringConfig } from './gathering'
 import type { WorldBossConfig } from './worldBoss'
 import type { ArtifactSpiritConfig } from './artifactSpirits'
 import type { CriticalTier, DexConfig } from './dex'
+import type { ResearchConfig } from './research'
 import type { StatName } from './stats'
 import type { TransformKind } from './transform'
 import type { ActiveTime, DayPhase, Season, TimedActivity } from './time'
@@ -80,6 +82,8 @@ export interface BalanceConfig {
   capture: CaptureConfig
   /** Bộ sưu tập (docs/rules/dex.md). */
   dex: DexConfig
+  /** Nghiên cứu loài (docs/rules/species-research.md). */
+  research: ResearchConfig
   weight: WeightConfig
   size: SizeConfig
   /** Tầm chiêu và vị trí ra đòn (docs/rules/hit-locations.md). */
@@ -832,9 +836,22 @@ export interface StarterSlot {
   conditions: StarterCondition[]
 }
 
+/**
+ * Mở khóa loài khởi đầu xuyên save (docs/rules/starters.md): đạt `value` tiến độ của `condition`
+ * (cùng loại điều kiện với thành tựu, ACHIEVEMENT_CONDITIONS) thì mở mọi loài trong `speciesIds`.
+ */
+export interface StarterUnlock {
+  speciesIds: string[]
+  condition: AchievementCondition
+  value: number
+}
+
 export interface StarterConfig {
   /** Mỗi ô ra một ứng viên (theo thứ tự hiển thị), không trùng loài với ô trước. */
   slots: StarterSlot[]
+  unlocks: StarterUnlock[]
+  /** Từng sở hữu (Dex) một loài thì mở dạng đầu của chuỗi tiến hóa đó làm khởi đầu. */
+  unlockOwnedLines: boolean
   level: number
   money: number
   /** Vật phẩm ban đầu: id → số lượng. */

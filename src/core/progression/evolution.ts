@@ -21,7 +21,8 @@ import {
   partySlotsOf,
   partySlotsUsed,
   type EvolutionScene,
-  keepValidBloodlines
+  keepValidBloodlines,
+  recordEvolutionResearch
 } from '../registries'
 import {
   dayOf,
@@ -325,5 +326,9 @@ export function chooseEvolution(
     throw new ActionError('evolutionConditionsUnmet', { speciesId })
   }
   const result = evolveVia(data, monster, { evolution, rng: state.rng, day: dayOf(state.time) })
-  return { ...replace(result.monster), rng: result.rng }
+  return {
+    ...replace(result.monster),
+    rng: result.rng,
+    research: recordEvolutionResearch(data, state.research, result.events)
+  }
 }

@@ -36,7 +36,9 @@ export const CONTENT_KINDS = [
   'zones',
   'serumEffects',
   'deities',
-  'artifactSpirits'
+  'artifactSpirits',
+  'achievements',
+  'titles'
 ] as const
 
 export type ContentKind = (typeof CONTENT_KINDS)[number]

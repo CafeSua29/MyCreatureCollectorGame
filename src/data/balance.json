@@ -225,6 +225,97 @@
     ],
     "criticalDivisor": 6
   },
+  "research": {
+    "levelPoints": [10, 20, 30, 45, 60, 75, 90, 105, 120, 130],
+    "tasks": [
+      {
+        "kind": "caught",
+        "thresholds": [1, 3, 5, 10, 25],
+        "points": 10
+      },
+      {
+        "kind": "defeated",
+        "thresholds": [5, 20, 50, 100],
+        "points": 10
+      },
+      {
+        "kind": "mainElementSkillSeen",
+        "thresholds": [5, 20],
+        "points": 10
+      },
+      {
+        "kind": "evolvedInto",
+        "thresholds": [1, 3],
+        "points": 20,
+        "scope": "evolvedForm"
+      },
+      {
+        "kind": "hatched",
+        "thresholds": [1, 5],
+        "points": 20
+      },
+      {
+        "kind": "caughtWithStatus",
+        "thresholds": [1, 5],
+        "points": 10
+      },
+      {
+        "kind": "caughtShiny",
+        "thresholds": [1],
+        "points": 50
+      }
+    ],
+    "speciesTasks": {},
+    "benefits": [
+      {
+        "level": 2,
+        "type": "revealProfile"
+      },
+      {
+        "level": 4,
+        "type": "revealLearnset"
+      },
+      {
+        "level": 5,
+        "type": "catchRatePercent",
+        "percent": 10
+      },
+      {
+        "level": 6,
+        "type": "revealWeakPoints"
+      },
+      {
+        "level": 7,
+        "type": "expPercent",
+        "percent": 20
+      },
+      {
+        "level": 10,
+        "type": "shinyChancePercent",
+        "percent": 100
+      }
+    ],
+    "levelRewards": [
+      {
+        "level": 5,
+        "items": [
+          {
+            "itemId": "ultraBall",
+            "count": 2
+          }
+        ]
+      },
+      {
+        "level": 10,
+        "items": [
+          {
+            "itemId": "rareCandy",
+            "count": 1
+          }
+        ]
+      }
+    ]
+  },
   "dex": {
     "milestones": [
       {
@@ -579,6 +670,104 @@
         "conditions": []
       }
     ],
+    "unlocks": [
+      {
+        "speciesIds": ["bulbasaur", "charmander", "squirtle"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 50
+      },
+      {
+        "speciesIds": ["chikorita", "cyndaquil", "totodile"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 100
+      },
+      {
+        "speciesIds": ["treecko", "torchic", "mudkip"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 150
+      },
+      {
+        "speciesIds": ["turtwig", "chimchar", "piplup"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 200
+      },
+      {
+        "speciesIds": ["snivy", "tepig", "oshawott"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 250
+      },
+      {
+        "speciesIds": ["chespin", "fennekin", "froakie"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 300
+      },
+      {
+        "speciesIds": ["rowlet", "litten", "popplio"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 350
+      },
+      {
+        "speciesIds": ["grookey", "scorbunny", "sobble"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 400
+      },
+      {
+        "speciesIds": ["sprigatito", "fuecoco", "quaxly"],
+        "condition": {
+          "type": "dexOwned"
+        },
+        "value": 450
+      },
+      {
+        "speciesIds": [
+          "redDragonWyrmling",
+          "blueDragonWyrmling",
+          "greenDragonWyrmling",
+          "blackDragonWyrmling",
+          "whiteDragonWyrmling",
+          "goldDragonWyrmling",
+          "silverDragonWyrmling",
+          "bronzeDragonWyrmling",
+          "copperDragonWyrmling",
+          "brassDragonWyrmling"
+        ],
+        "condition": {
+          "type": "highestFloor"
+        },
+        "value": 50
+      },
+      {
+        "speciesIds": ["goldenCarp"],
+        "condition": {
+          "type": "tamerRealm"
+        },
+        "value": 3
+      },
+      {
+        "speciesIds": ["imugi"],
+        "condition": {
+          "type": "towerFloor"
+        },
+        "value": 20
+      }
+    ],
+    "unlockOwnedLines": true,
     "level": 5,
     "money": 500,
     "items": {

@@ -638,7 +638,7 @@ function scoreSkill(
               damage,
               remaining,
               keepCore: isPlayer,
-              revealed: isPlayer ? revealedBodyParts(data, d.dex, target) : null
+              revealed: isPlayer ? revealedBodyParts(data, d, target) : null
             })
           : NO_AIM
         aim = aimChoice.aim

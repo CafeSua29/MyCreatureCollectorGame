@@ -1,0 +1,285 @@
+[
+  {
+    "id": "veteran",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "bossSlayer",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "duelist",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "catcher",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "shinyHunter",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "fusionMaster",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "breeder",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenDefier",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "champion",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "alchemist",
+    "effects": [
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "smith",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "chef",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "collector",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "dexMaster",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "pioneer",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "sage",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "towerConqueror",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "gymChampion",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "arenaLegend",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "talentScout",
+    "effects": [
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastKing",
+    "effects": [
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "researcher",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "professor",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  }
+]

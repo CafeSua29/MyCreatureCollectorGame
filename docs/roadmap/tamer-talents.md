@@ -7,7 +7,7 @@ Như Perk Points của Siralim: **điểm thiên phú của ngự thú sư** (kh
 ## Luật
 
 - `GameState.tamer.talents: { points, ranks }`. **Tăng version save**; migrate cấp điểm theo cảnh giới hiện có.
-- **Nguồn điểm:** +2 mỗi lần đột phá cảnh giới, +1 mỗi nhiệm vụ hoàn thành (`quests.md`), +1 mỗi bậc thành tựu (`titles.md`), thưởng tông môn (`sects.md`).
+- **Nguồn điểm:** +2 mỗi lần đột phá cảnh giới, +1 mỗi nhiệm vụ hoàn thành (`quests.md`), +1 mỗi bậc thành tựu đã nhận (tổng `achievements.claimedTiers`, `docs/rules/achievements.md`), thưởng tông môn (`sects.md`).
 - Dữ liệu `src/data/tamerTalents.json`: 3 nhánh: **Ngự thú** (+% chỉ số đội, +linh lực, giảm hồi chiêu kỹ năng), **Thu phục** (+tỉ lệ bắt / thu phục (thu phục cộng vào `recruitBonusPercent`, `docs/rules/recruit.md`), +giới hạn level khế ước, +shiny), **Kinh doanh** (+tiền, −giá cửa hàng, +thành công luyện đan / nấu ăn, +sản lượng động phủ). Nút `{ id, branch, requires?, maxRank?, costPerRank, effects }`, nhiều nút không trần.
 - Nâng / tẩy như thiên phú quái (tẩy bằng vật phẩm hiếm). % cộng như mọi nguồn.
 

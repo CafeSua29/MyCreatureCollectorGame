@@ -173,6 +173,10 @@ export interface MonsterRollSpec {
   /** Nhân khoảng gen quái hoang (floorGeneMultiplier của tầng; 1 = không đổi). */
   geneMultiplier: Decimal
   shinyChance: number
+  /**
+   * Hệ số shiny theo loài vừa tung (nghiên cứu loài, docs/rules/species-research.md); bỏ trống = 1.
+   */
+  speciesShinyMultiplier?: (speciesId: string) => number
   /** Quái có già đi không (= options.lifespanEnabled của game). */
   aging: boolean
 }
@@ -277,7 +281,10 @@ export function rollMonster(
     implantFails: 0
   }
   let shiny: boolean
-  ;[shiny, rng] = rollPercent(rng, spec.shinyChance)
+  ;[shiny, rng] = rollPercent(
+    rng,
+    spec.shinyChance * (spec.speciesShinyMultiplier?.(species.id) ?? 1)
+  )
   if (shiny) monster = addShinyStacks(data, monster, 1)
   let teraElementId = species.teraElementId
   if (teraElementId === undefined) [teraElementId, rng] = pick(rng, species.elementIds)
@@ -329,6 +336,9 @@ function floorRollSpec(
     levelMax: levels.max,
     geneMultiplier: floorGeneMultiplier(data, floor),
     shinyChance: biomeShinyChance(data, biome) * (odds?.shinyMultiplier ?? 1),
+    ...(odds?.speciesShinyMultiplier
+      ? { speciesShinyMultiplier: odds.speciesShinyMultiplier }
+      : {}),
     aging
   }
 }

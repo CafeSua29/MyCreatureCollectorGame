@@ -336,6 +336,8 @@ describe('giải đấu', () => {
     }
     expect(state.trainers.tournament.round).toBeNull()
     expect(getItemCount(state.inventory, 'potion')).toBe(3)
+    // Bộ đếm thành tựu (docs/rules/achievements.md): + vô địch, mỗi vòng + trận thắng / NPC.
+    expect(state.stats).toMatchObject({ tournamentsWon: 1, battlesWon: 3, trainersDefeated: 3 })
   })
 
   it('thua: bị loại', () => {

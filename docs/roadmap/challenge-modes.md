@@ -25,7 +25,7 @@ Tùy chọn luật chơi **theo từng game**, lưu trong `GameState.options` nh
 
 ## Chung
 
-- Màn Game mới chọn các tùy chọn; `MonsterView` / màn ngự thú sư hiện chế độ đang chơi. Thành tựu riêng cho từng chế độ (`titles.md`).
+- Màn Game mới chọn các tùy chọn; `MonsterView` / màn ngự thú sư hiện chế độ đang chơi. Thành tựu riêng cho từng chế độ (`docs/rules/achievements.md`).
 - **Tăng version save** (`options` thêm trường; save cũ: Thường, tắt các chế độ).
 
 ## Test

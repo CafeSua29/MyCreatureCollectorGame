@@ -180,7 +180,13 @@ export type GameAction =
   | { type: 'eatDish'; itemId: string }
   /** Nhận thưởng mốc Bộ sưu tập (docs/rules/dex.md). */
   | { type: 'claimDexReward'; milestoneId: string }
+  /** Nhận thưởng cấp nghiên cứu của loài (docs/rules/species-research.md). */
+  | { type: 'claimResearchReward'; speciesId: string }
   | { type: 'claimRegionalDexReward'; biomeId: string }
+  /** Nhận thưởng mọi bậc đã đạt mà chưa nhận của một thành tựu (docs/rules/achievements.md). */
+  | { type: 'claimAchievement'; achievementId: string }
+  /** Đeo danh hiệu đã có (null = tháo), ngoài trận, miễn phí. */
+  | { type: 'setTitle'; titleId: string | null }
   /** Khu bảo tồn (docs/rules/safari-zone.md): vào khu ở thị trấn, tốn phí. */
   | { type: 'enterSafari' }
   | { type: 'throwSafariBall' }

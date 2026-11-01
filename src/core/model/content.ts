@@ -7,6 +7,7 @@ import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
 import type { SerumEffectDef } from './implant'
 import type { DeityDef } from './deities'
+import type { AchievementDef, TitleDef } from './achievements'
 import type { ArtifactSpiritDef } from './artifactSpirits'
 import type { EventDef, EventModifierDef } from './events'
 import type { QuestTemplate } from './quests'
@@ -1729,6 +1730,8 @@ export interface RawGameData {
   serumEffects: SerumEffectDef[]
   deities: DeityDef[]
   artifactSpirits: ArtifactSpiritDef[]
+  achievements: AchievementDef[]
+  titles: TitleDef[]
   text: TextData
 }
 
@@ -1795,6 +1798,9 @@ export interface GameData {
   deities: Record<string, DeityDef>
   /** Loại khí linh (docs/rules/artifact-spirits.md). */
   artifactSpirits: Record<string, ArtifactSpiritDef>
+  /** Thành tựu, danh hiệu (docs/rules/achievements.md). */
+  achievements: Record<string, AchievementDef>
+  titles: Record<string, TitleDef>
   /** Chữ nội dung theo ngôn ngữ; logic core không dùng, chỉ tra qua contentName. */
   text: TextData
 }

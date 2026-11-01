@@ -84,6 +84,7 @@ import {
   throwSafariRock
 } from '../world'
 import { createInventory, discardItem } from '../inventory'
+import { newGameStats } from '../registries'
 import { buyCharm, buyItem, sellItem } from '../shop'
 import { bindContract, newTamerState, tamerBreakthrough } from '../tamer'
 import {
@@ -119,8 +120,13 @@ import {
   upgradeSoulLevel,
   allocateTalent,
   bindBond,
+  claimAchievement,
   claimDexReward,
+  claimResearchReward,
   claimRegionalDexReward,
+  newAchievementState,
+  newTitleState,
+  setTitle,
   dissolveContract,
   newDexState,
   syncDex,
@@ -140,7 +146,7 @@ import {
 import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 85
+export const SAVE_VERSION = 87
 
 export function createGameState(options: {
   seed: number
@@ -212,6 +218,10 @@ export function createGameState(options: {
     gathering: newGatheringState(),
     worldBoss: { current: null, rewards: [] },
     dex: newDexState(),
+    research: {},
+    stats: newGameStats(),
+    achievements: newAchievementState(),
+    titles: newTitleState(),
     garden: {
       plots: Array.from({ length: options.gardenPlots ?? DEFAULT_GARDEN_PLOTS }, () => null)
     },
@@ -451,8 +461,14 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return eatDish(data, state, action.itemId)
     case 'claimDexReward':
       return claimDexReward(data, state, action.milestoneId)
+    case 'claimResearchReward':
+      return claimResearchReward(data, state, action.speciesId)
     case 'claimRegionalDexReward':
       return claimRegionalDexReward(data, state, action.biomeId)
+    case 'claimAchievement':
+      return claimAchievement(data, state, action.achievementId)
+    case 'setTitle':
+      return setTitle(data, state, action.titleId)
     case 'enterSafari':
       return enterSafari(data, state)
     case 'throwSafariBall':

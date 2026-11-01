@@ -13,7 +13,11 @@ import {
   canReceiveMonster,
   capacityOf,
   hasRosterRoom,
-  mealMultiplier
+  countCaught,
+  mealMultiplier,
+  titleMultiplier,
+  recordCaughtResearch,
+  researchMultiplier
 } from '../registries'
 import { ActionError, rollPercent, toBig, type Decimal, type RngState } from '../shared'
 import { partnerMultiplier } from '../tamer'
@@ -72,7 +76,7 @@ function lureMultipliers(
  */
 export function safariCatchChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'cooking'>,
+  state: Pick<GameState, 'party' | 'cooking' | 'titles' | 'research'>,
   encounter: SafariEncounter
 ): number {
   const ball = {
@@ -82,7 +86,9 @@ export function safariCatchChance(
   const chance = catchChance(data, encounter.monster, ball, {
     playerMultiplier:
       partnerMultiplier(data, state.party, 'catchRatePercent') *
-      mealMultiplier(data, state.cooking.meal, 'catchRatePercent')
+      mealMultiplier(data, state.cooking.meal, 'catchRatePercent') *
+      titleMultiplier(data, state.titles, 'catchRatePercent') *
+      researchMultiplier(data, state.research, encounter.monster.speciesId, 'catchRatePercent')
   })
   return withCatchPity(data, chance, encounter.misses)
 }
@@ -121,9 +127,13 @@ function rollSafariMonster(data: GameData, state: GameState): [Monster, RngState
     levelMin: levels.min,
     levelMax: levels.max,
     geneMultiplier: floorGeneMultiplier(data, state.highestFloor),
-    // Bùa shiny (docs/rules/dex.md mục "Bùa") nhân tỉ lệ như quái hoang.
+    // Bùa shiny (docs/rules/dex.md mục "Bùa") và danh hiệu nhân tỉ lệ như quái hoang.
     shinyChance:
-      data.config.shiny.wildChance * charmEffect(data, state.inventory, 'shinyChanceMultiplier'),
+      data.config.shiny.wildChance *
+      charmEffect(data, state.inventory, 'shinyChanceMultiplier') *
+      titleMultiplier(data, state.titles, 'shinyChancePercent'),
+    speciesShinyMultiplier: (speciesId: string) =>
+      researchMultiplier(data, state.research, speciesId, 'shinyChancePercent'),
     aging: state.options.lifespanEnabled
   }
   const id = `m${state.nextMonsterId}`
@@ -200,6 +210,8 @@ function takeCaught(data: GameData, draft: SafariDraft, monster: Monster): Safar
     state: {
       ...state,
       quests,
+      stats: countCaught(state.stats, [caught]),
+      research: recordCaughtResearch(data, state.research, [caught]),
       party: destination === 'party' ? [...state.party, caught] : state.party,
       storage: destination === 'storage' ? [...state.storage, caught] : state.storage
     },

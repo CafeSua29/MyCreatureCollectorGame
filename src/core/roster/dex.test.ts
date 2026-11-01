@@ -286,7 +286,7 @@ describe('mục Dex', () => {
       owned: ['weakling'],
       shinyOwned: ['weakling']
     }
-    const entry = dexEntry(data, dex, 'weakling', 'vi')
+    const entry = dexEntry(data, { dex, research: {} }, 'weakling', 'vi')
     expect(entry).toMatchObject({
       speciesId: 'weakling',
       number: dexNumber(data, 'weakling'),
@@ -298,8 +298,11 @@ describe('mục Dex', () => {
       heightM: null
     })
     expect(entry?.weightKg).toBeGreaterThan(0)
-    expect(dexEntry(data, dex, 'strongling', 'vi')).toMatchObject({ seen: true, owned: false })
-    expect(dexEntry(data, dex, 'megaWeakling', 'vi')).toBeNull()
-    expect(dexEntry(data, dex, 'nope', 'vi')).toBeNull()
+    expect(dexEntry(data, { dex, research: {} }, 'strongling', 'vi')).toMatchObject({
+      seen: true,
+      owned: false
+    })
+    expect(dexEntry(data, { dex, research: {} }, 'megaWeakling', 'vi')).toBeNull()
+    expect(dexEntry(data, { dex, research: {} }, 'nope', 'vi')).toBeNull()
   })
 })

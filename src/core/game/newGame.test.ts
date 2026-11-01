@@ -8,7 +8,7 @@ import { ActionError, toBig } from '../shared'
 import { rollShopStock } from '../shop'
 import { rollFloorBiome } from '../world'
 import { migrateState } from './migrate'
-import { createNewGame, rollStarters } from './newGame'
+import { createNewGame, rollStarters, rollUnlockedStarter } from './newGame'
 import { SAVE_VERSION, gameReducer } from './reducer'
 import { validateGameState } from './validateGameState'
 import { defined, makeData, makeRawData, makeInventory, expectActionError } from '../testing'
@@ -213,5 +213,55 @@ describe('createNewGame', () => {
     expect(state.quests.board).toHaveLength(real.config.quests.boardSize)
     expect(state.garden.plots).toHaveLength(real.config.alchemy.initialPlots)
     expect(validateGameState(real, state)).toEqual([])
+  })
+})
+
+describe('quái khởi đầu đã mở khóa', () => {
+  const base = { seed: 9, gender: 'male' as const, nickname: null }
+
+  it('nhận loài đã mở (không thuộc ô): đúng con rollUnlockedStarter hiển thị, tất định theo seed', () => {
+    const { monster } = rollUnlockedStarter(data, 9, { speciesId: 'pebble' })
+    const state = createNewGame(data, {
+      ...base,
+      gender: monster.gender,
+      starterSpeciesId: 'pebble',
+      unlockedStarterIds: ['pebble']
+    })
+    const starter = state.party[0]
+    expect(starter.speciesId).toEqual('pebble')
+    expect(starter.genes).toEqual(monster.genes)
+    expect(starter.level).toEqual(5)
+    expect(rollUnlockedStarter(data, 9, { speciesId: 'pebble' })).toEqual(
+      rollUnlockedStarter(data, 9, { speciesId: 'pebble' })
+    )
+    expect(validateGameState(data, state)).toEqual([])
+  })
+
+  it('ứng viên của ô không đổi khi có loài đã mở', () => {
+    const plain = createNewGame(data, { ...base, starterSpeciesId: 'twig' })
+    const withUnlocks = createNewGame(data, {
+      ...base,
+      starterSpeciesId: 'twig',
+      unlockedStarterIds: ['pebble', 'twig']
+    })
+    expect(withUnlocks).toEqual(plain)
+  })
+
+  it('loài chưa mở, hoặc đã mở mà không làm khởi đầu được → notStarter', () => {
+    expectActionError(
+      () => createNewGame(data, { ...base, starterSpeciesId: 'pebble' }),
+      'notStarter',
+      { speciesId: 'pebble' }
+    )
+    expectActionError(
+      () =>
+        createNewGame(data, {
+          ...base,
+          starterSpeciesId: 'strongling',
+          unlockedStarterIds: ['strongling']
+        }),
+      'notStarter',
+      { speciesId: 'strongling' }
+    )
   })
 })

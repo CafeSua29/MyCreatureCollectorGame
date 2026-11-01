@@ -43,5 +43,5 @@ Code: `registries/itemEffects.ts` (hiệu ứng `addExp`, `levelUp`, `allowsCoun
 - Ngự thú sư NPC (`trainers.md`): mỗi trận thắng tung `trainers.rewardDrops` (Kẹo EXP S / M), vô địch giải đấu Kẹo EXP L ×3 + Kẹo Hiếm ×1, mốc đấu trường Kẹo EXP M ×3.
 - Boss thế giới: Kẹo M–XL theo bậc thưởng (`world-boss.md`; nguồn Kẹo XL ngoài chợ đen).
 - Khí giới bí cảnh thưởng Kẹo EXP S mỗi tầng, M / L ở Khí Tướng / Khí Vương (`artifact-spirits.md`).
-- Chưa có (mỗi file roadmap đã ghi): nghiên cứu loài (Kẹo Hiếm, `species-research.md`). Đã có: Kẹo Hiếm, Kẹo L / XL ở chợ đen, Kẹo Hiếm trong thưởng thú triều (`events.md`).
+- Đã có: Kẹo Hiếm ở thưởng cấp 10 nghiên cứu loài (`species-research.md`), Kẹo Hiếm, Kẹo L / XL ở chợ đen, Kẹo Hiếm trong thưởng thú triều (`events.md`).
 - Phi thăng: kẹo là item gộp chồng thường nên bị reset theo luật `ascension.md`.

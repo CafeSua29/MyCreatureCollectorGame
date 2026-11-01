@@ -76,6 +76,8 @@ import { checkZoneData } from './validateZones'
 import { checkGatheringData } from './validateGathering'
 import { checkWorldBossData } from './validateWorldBoss'
 import { checkDeityData } from './validateDeities'
+import { checkAchievementData } from './validateAchievements'
+import { checkResearchData } from './validateResearch'
 import { checkArtifactSpiritData } from './validateArtifactSpirits'
 import { checkEventData } from './validateEvents'
 import { checkAutoBattleData } from './validateAutoBattle'
@@ -207,6 +209,8 @@ export function createGameData(raw: RawGameData): GameData {
     zones: indexZones(raw, issues),
     serumEffects: indexById(raw.serumEffects, 'serumEffects', issues),
     deities: indexById(raw.deities, 'deities', issues),
+    achievements: indexById(raw.achievements, 'achievements', issues),
+    titles: indexById(raw.titles, 'titles', issues),
     artifactSpirits: indexById(raw.artifactSpirits, 'artifactSpirits', issues),
     text: raw.text
   }
@@ -274,6 +278,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkCapacityData(data, issues)
   checkWeights(data, issues)
   checkDexData(data, issues)
+  checkResearchData(data, issues)
   checkAlchemyData(data, issues)
   checkQuestData(data, issues)
   checkExpeditionData(data, issues)
@@ -284,6 +289,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkGatheringData(data, issues)
   checkWorldBossData(data, issues)
   checkDeityData(data, issues)
+  checkAchievementData(data, issues)
   checkArtifactSpiritData(data, issues)
   checkEventData(data, issues)
   // Sau cùng: danh sách loài của ô khởi đầu chỉ dựng khi phần dữ liệu khác hợp lệ.

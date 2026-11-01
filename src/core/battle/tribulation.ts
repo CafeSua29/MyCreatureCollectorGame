@@ -18,7 +18,7 @@ import {
   withExtraSkill
 } from '../monster'
 import { anyOfItemCount, removeAnyOf } from '../inventory'
-import { aptitudeFloor } from '../registries'
+import { aptitudeFloor, bumpStat } from '../registries'
 import { ActionError, BIG_ONE, spendMoney, type ActionErrorParams } from '../shared'
 import { assertNoInstance } from '../world'
 import { dayOf, type GameData, type GameState, type Monster } from '../model'
@@ -94,6 +94,7 @@ function grantMilestone(data: GameData, d: Draft, monster: Monster, tier: number
 
 function won(data: GameData, d: Draft, monster: Monster, tier: number): Monster {
   log(d, { type: 'awakened', monsterId: monster.id, tier })
+  d.stats = bumpStat(d.stats, 'tribulationsPassed')
   const awakened = { ...monster, awakening: tier, tribulationFailures: 0 }
   return addMilestone(data, grantMilestone(data, d, awakened, tier), {
     day: dayOf(d.time),

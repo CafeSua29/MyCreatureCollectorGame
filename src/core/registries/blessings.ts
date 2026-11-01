@@ -12,10 +12,10 @@ import {
   type PartialStats,
   type StatName
 } from '../model'
+import { checkPercentParams } from './paramChecks'
 import {
   BIG_ZERO,
   asObject,
-  checkNumber,
   curveExpForLevel,
   curveLevelFromExp,
   type Decimal,
@@ -32,18 +32,6 @@ export type BlessingChannel = Exclude<BlessingEffectType, 'elementStatPercent'>
 
 /** Ân sủng theo thần (GameState.favor); thần chưa có mục = 0. */
 export type FavorMap = Readonly<Record<string, Decimal>>
-
-/** % khác 0, không dưới −100 (hệ số không âm), không trường lạ ngoài `extra`. */
-function checkPercentParams(params: unknown, extra: readonly string[] = []): string[] {
-  const obj = asObject(params)
-  if (!obj) return ['params phải là object']
-  const issues = checkNumber(obj.percent, 'percent', -100)
-  if (obj.percent === 0) issues.push('percent phải khác 0')
-  for (const key of Object.keys(obj)) {
-    if (key !== 'percent' && !extra.includes(key)) issues.push(`trường lạ "${key}"`)
-  }
-  return issues
-}
 
 const percentEffect: BlessingEffectHandler = {
   kind: 'percent',

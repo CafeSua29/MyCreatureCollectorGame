@@ -5,6 +5,7 @@
 
 import { addItems, recipeInputCount, removeItems, removeRecipeInput } from '../inventory'
 import { partnerAmount } from '../tamer'
+import { bumpStat, titlePercent } from '../registries'
 import {
   ActionError,
   malformedAction,
@@ -25,7 +26,8 @@ import {
   type GameData,
   type GameState,
   type RecipeDef,
-  type SeedItem
+  type SeedItem,
+  type StatKey
 } from '../model'
 
 /** Luật theo nơi luyện: đường cong cấp, phần state, mã lỗi thiếu cấp, cộng thêm % thành công. */
@@ -37,8 +39,10 @@ interface CraftStationRule {
   levelError: 'alchemyLevelTooLow' | 'smithingLevelTooLow' | 'cookingLevelTooLow'
   /** Tên dùng trong lỗi dữ liệu của đường cong cấp. */
   label: string
-  /** % thành công cộng thêm ngoài cấp (kỹ năng đồng hành...). */
+  /** % thành công cộng thêm ngoài cấp (kỹ năng đồng hành, danh hiệu...). */
   bonusPercent: (data: GameData, state: GameState) => number
+  /** Khóa bộ đếm thành tựu cộng số lần luyện thành công (docs/rules/achievements.md). */
+  craftedStat: StatKey
 }
 
 const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
@@ -49,7 +53,10 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     withSkill: (state, skill) => ({ ...state, alchemy: { ...state.alchemy, ...skill } }),
     levelError: 'alchemyLevelTooLow',
     label: 'luyện đan',
-    bonusPercent: (data, state) => partnerAmount(data, state.party, 'alchemySuccessPercent')
+    bonusPercent: (data, state) =>
+      partnerAmount(data, state.party, 'alchemySuccessPercent') +
+      titlePercent(data, state.titles, 'alchemySuccessPercent'),
+    craftedStat: 'pillsCrafted'
   },
   smithing: {
     curve: (data) => ({ base: data.config.forge.expBase, power: data.config.forge.expPower }),
@@ -58,7 +65,8 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     withSkill: (state, skill) => ({ ...state, smithing: skill }),
     levelError: 'smithingLevelTooLow',
     label: 'luyện khí',
-    bonusPercent: () => 0
+    bonusPercent: () => 0,
+    craftedStat: 'itemsForged'
   },
   // Linh thực ở Đầu bếp (docs/rules/cooking.md); giữ món ăn đang có tác dụng khi cộng exp.
   cooking: {
@@ -68,7 +76,8 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     withSkill: (state, skill) => ({ ...state, cooking: { ...state.cooking, ...skill } }),
     levelError: 'cookingLevelTooLow',
     label: 'nấu ăn',
-    bonusPercent: () => 0
+    bonusPercent: () => 0,
+    craftedStat: 'dishesCooked'
   }
 }
 
@@ -183,11 +192,13 @@ export function craft(
   if (successes > 0) {
     inventory = addItems(inventory, recipe.output.itemId, recipe.output.count * successes)
   }
+  const station = recipeStation(recipe)
+  const stats = bumpStat(state.stats, CRAFT_STATION_RULES[station].craftedStat, successes)
   return gainCraftExp(
     data,
-    { ...paid, rng, inventory },
+    { ...paid, rng, inventory, stats },
     {
-      station: recipeStation(recipe),
+      station,
       exp: toBig(recipe.exp).times(times),
       lastCraft: { recipeId, successes, failures: times - successes }
     }

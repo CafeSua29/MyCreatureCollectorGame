@@ -77,6 +77,8 @@ import {
 import {
   bindBondWhenPossible,
   contractTeamWhenPossible,
+  claimAchievementsWhenPossible,
+  claimResearchRewardsWhenPossible,
   claimDexRewardsWhenPossible,
   buyPlotWhenCheap,
   expandCapacityWhenFull,
@@ -724,6 +726,8 @@ function afterBattle(
     // Khế ước trước bản mệnh (bản mệnh phải đã khế ước).
     run.state = contractTeamWhenPossible(data, run.state, teamIds, run.economy)
     run.state = claimDexRewardsWhenPossible(data, run.state, run.economy)
+    run.state = claimResearchRewardsWhenPossible(data, run.state, run.economy)
+    run.state = claimAchievementsWhenPossible(data, run.state, run.economy)
     run.state = bindBondWhenPossible(data, run.state, teamIds, run.economy)
     const tried = breakthroughWhilePossible(data, run.state)
     run.state = tried.state

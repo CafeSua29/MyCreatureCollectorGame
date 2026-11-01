@@ -12,6 +12,7 @@ import {
   writeAutosave,
   writeManualSave
 } from './saves'
+import { readProfile, writeProfile } from './profile'
 
 /** File save nhập vào lớn hơn mức này thì từ chối (save bình thường chỉ vài trăm KB). */
 const MAX_IMPORT_BYTES = 50 * 1024 * 1024
@@ -47,6 +48,8 @@ export function registerSaveIpc(): string {
   )
   ipcMain.handle('saves:delete', (_, id: string) => deleteSave(saveDir, id))
   ipcMain.handle('saves:deleteGame', (_, gameId: string) => deleteGame(saveDir, gameId))
+  ipcMain.handle('saves:readProfile', () => readProfile(saveDir))
+  ipcMain.handle('saves:writeProfile', (_, text: string) => writeProfile(saveDir, String(text)))
 
   ipcMain.handle('saves:exportFile', async (event, suggestedName: string, text: string) => {
     const window = BrowserWindow.fromWebContents(event.sender) ?? undefined

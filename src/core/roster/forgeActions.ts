@@ -3,7 +3,7 @@
 // hoặc kho); phân giải chỉ món trong túi (khí linh đã thu phục về kho khí linh). Cường hóa, đúc, phụ
 // linh cộng exp luyện khí (alchemy.md).
 
-import { assertBagRoom, bagUsed, capacityOf } from '../registries'
+import { assertBagRoom, bagUsed, bumpStat, capacityOf } from '../registries'
 import { ActionError, malformedAction, rollPercent, spendMoney, toBig } from '../shared'
 import {
   addEquipment,
@@ -115,7 +115,9 @@ export function castEquipment(
     ...paid,
     rng,
     nextItemId: paid.nextItemId + 1,
-    inventory: addEquipment(paid.inventory, instance)
+    inventory: addEquipment(paid.inventory, instance),
+    // Đúc trang bị tính một món luyện khí cho thành tựu (docs/rules/achievements.md).
+    stats: bumpStat(paid.stats, 'itemsForged')
   }
   return gainCraftExp(data, forged, { station: 'smithing', exp: toBig(cast.exp) })
 }

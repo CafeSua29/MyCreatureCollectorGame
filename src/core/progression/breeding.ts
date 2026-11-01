@@ -41,7 +41,13 @@ import {
   emptySoulLevels,
   emptyEffortValues
 } from '../monster'
-import { charmEffect, isTooYoungToBreed } from '../registries'
+import {
+  bumpStat,
+  charmEffect,
+  isTooYoungToBreed,
+  researchMultiplier,
+  titleMultiplier
+} from '../registries'
 import { baseFormsOf } from '../inventory'
 import { skillsAtLevel } from '../world'
 import { locateOwned } from '../roster'
@@ -181,7 +187,10 @@ export function makeOffspring(
   father: Monster,
   mother: Monster,
   id: string,
-  { shinyMultiplier = 1 }: { shinyMultiplier?: number } = {}
+  {
+    shinyMultiplier = 1,
+    speciesShinyMultiplier
+  }: { shinyMultiplier?: number; speciesShinyMultiplier?: (speciesId: string) => number } = {}
 ): [Monster, RngState] {
   const { config } = data
   const motherBase = getBaseSpecies(data, mother) as NormalSpecies
@@ -309,6 +318,7 @@ export function makeOffspring(
       : Math.min(
           100,
           shinyMultiplier *
+            (speciesShinyMultiplier?.(child.speciesId) ?? 1) *
             (shinyParents === 1
               ? config.breeding.shinyChanceOneParent
               : config.breeding.shinyChance)
@@ -357,7 +367,13 @@ export function breed(
     father,
     mother,
     `m${state.nextMonsterId}`,
-    { shinyMultiplier: charmEffect(data, state.inventory, 'shinyChanceMultiplier') }
+    {
+      shinyMultiplier:
+        charmEffect(data, state.inventory, 'shinyChanceMultiplier') *
+        titleMultiplier(data, state.titles, 'shinyChancePercent'),
+      speciesShinyMultiplier: (speciesId: string) =>
+        researchMultiplier(data, state.research, speciesId, 'shinyChancePercent')
+    }
   )
   // Lý lịch tính từ lúc nhận trứng ở thị trấn (mục "Lý lịch quái").
   const withHistory = startHistory(
@@ -371,6 +387,7 @@ export function breed(
     rng,
     nextMonsterId: state.nextMonsterId + 1,
     eggs: [...state.eggs, egg],
-    quests: recordQuestEvent(data, state.quests, { type: 'bred' })
+    quests: recordQuestEvent(data, state.quests, { type: 'bred' }),
+    stats: bumpStat(state.stats, 'breeds')
   }
 }

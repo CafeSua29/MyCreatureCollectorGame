@@ -12,7 +12,7 @@ import {
   hashToUnit,
   parseBig
 } from '../shared'
-import { ageDaysAtPercent, isDexSpecies } from '../registries'
+import { ageDaysAtPercent, isDexSpecies, newGameStats } from '../registries'
 import { newBattleTamer } from '../tamer'
 import { masteryExpForLevel } from '../monster'
 import { gymElementIds } from '../world'
@@ -1033,7 +1033,31 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   82: (save) => ({ ...save, version: 83, favor: {} }),
   // v83 → v84: boss thế giới (docs/rules/world-boss.md): chưa xuất hiện, không có thưởng chờ.
   83: (save) => ({ ...save, version: 84, worldBoss: { current: null, rewards: [] } }),
-  84: addArtifactSpirits
+  84: addArtifactSpirits,
+  // v85 → v86: thành tựu và danh hiệu (docs/rules/achievements.md): bộ đếm 0 (việc trước đây không
+  // được đếm), chưa nhận bậc nào, chưa có danh hiệu.
+  85: (save) => ({
+    ...save,
+    version: 86,
+    stats: newGameStats(),
+    achievements: { claimedTiers: {} },
+    titles: { owned: [], active: null }
+  }),
+  86: addResearch
+}
+
+/**
+ * v86 → v87 (nghiên cứu loài, docs/rules/species-research.md): loài đã sở hữu trong Dex tính như đã
+ * bắt 1 lần (như roadmap: cấp tạo theo Dex); chưa nhận thưởng cấp nào.
+ */
+function addResearch(save: SaveObject): SaveObject {
+  const owned = asObject(save.dex)?.owned
+  const research = Object.fromEntries(
+    (Array.isArray(owned) ? owned : [])
+      .filter((id): id is string => typeof id === 'string')
+      .map((id) => [id, { counters: { caught: 1 }, claimedLevel: 0 }])
+  )
+  return { ...save, version: 87, research }
 }
 
 /**

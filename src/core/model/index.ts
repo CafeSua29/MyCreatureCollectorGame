@@ -1,5 +1,6 @@
 // Mọi type dùng chung của core. Import từ '../model' thay vì từ từng file.
 
+export * from './achievements'
 export * from './actions'
 export * from './alchemy'
 export * from './artifactSpirits'
@@ -21,6 +22,7 @@ export * from './monster'
 export * from './moveStyles'
 export * from './quests'
 export * from './recruit'
+export * from './research'
 export * from './safari'
 export * from './soul'
 export * from './state'

@@ -89,6 +89,9 @@ export const FIXTURE_INCENSE_ID = 'incense'
 /** Khí linh của fixture (docs/rules/artifact-spirits.md): hai loại, Dẫn Hồn Châu, Phá Giới Phù. */
 export const FIXTURE_SPIRIT_IDS = ['swordSpirit', 'guardSpirit'] as const
 export const FIXTURE_SPIRIT_ORB_ID = 'spiritOrb'
+/** Thành tựu / danh hiệu của fixture (docs/rules/achievements.md). */
+export const FIXTURE_ACHIEVEMENT_IDS = { wins: 'winner', pair: 'pairOwner' } as const
+export const FIXTURE_TITLE_IDS = { veteran: 'veteran', lucky: 'lucky' } as const
 export const FIXTURE_BREAK_TALISMAN_ID = 'breakTalisman'
 
 /** Hồn tinh của fixture (docs/rules/soul-levels.md): 1 điểm và 5 điểm. */
@@ -227,6 +230,8 @@ export function makeRawData(): RawGameData {
           { conditions: [{ kind: 'species', speciesIds: ['weakling'] }] },
           { conditions: [{ kind: 'species', speciesIds: ['twig'] }] }
         ],
+        unlocks: [],
+        unlockOwnedLines: false,
         level: 5,
         money: 500,
         items: { ball: 5, potion: 3 }
@@ -305,6 +310,32 @@ export function makeRawData(): RawGameData {
       },
       // Bộ sưu tập (docs/rules/dex.md): không mốc thưởng; thưởng sưu tập như dữ liệu thật; thưởng
       // Dex map 100 × tầng, không vật phẩm.
+      // Nghiên cứu loài: số giống balance thật (docs/rules/species-research.md).
+      research: {
+        levelPoints: [10, 20, 30, 45, 60, 75, 90, 105, 120, 130],
+        tasks: [
+          { kind: 'caught', thresholds: [1, 3, 5, 10, 25], points: 10 },
+          { kind: 'defeated', thresholds: [5, 20, 50, 100], points: 10 },
+          { kind: 'mainElementSkillSeen', thresholds: [5, 20], points: 10 },
+          { kind: 'evolvedInto', thresholds: [1, 3], points: 20, scope: 'evolvedForm' },
+          { kind: 'hatched', thresholds: [1, 5], points: 20 },
+          { kind: 'caughtWithStatus', thresholds: [1, 5], points: 10 },
+          { kind: 'caughtShiny', thresholds: [1], points: 50 }
+        ],
+        speciesTasks: {},
+        benefits: [
+          { level: 2, type: 'revealProfile' },
+          { level: 4, type: 'revealLearnset' },
+          { level: 5, type: 'catchRatePercent', percent: 10 },
+          { level: 6, type: 'revealWeakPoints' },
+          { level: 7, type: 'expPercent', percent: 20 },
+          { level: 10, type: 'shinyChancePercent', percent: 100 }
+        ],
+        levelRewards: [
+          { level: 5, items: [{ itemId: 'potion', count: 2 }] },
+          { level: 10, items: [{ itemId: 'potion', count: 5 }] }
+        ]
+      },
       dex: {
         milestones: [],
         collectionStep: 100,
@@ -1279,6 +1310,41 @@ export function makeRawData(): RawGameData {
         softCap: 200,
         hooks: [{ type: 'damageTakenModifier', params: { percent: -0.3 } }],
         awakenedHooks: []
+      }
+    ],
+    // Thành tựu và danh hiệu (docs/rules/achievements.md): thắng trận (bậc 1 / 3, rồi lặp × 2, bậc 3
+    // thưởng danh hiệu), sở hữu đủ hai loài (có trần), danh hiệu đủ mọi kênh %.
+    achievements: [
+      {
+        id: FIXTURE_ACHIEVEMENT_IDS.wins,
+        condition: { type: 'stat', key: 'battlesWon' },
+        tiers: [
+          { value: 1, rewards: { moneyPerFloor: 100, items: [{ itemId: 'potion', count: 2 }] } },
+          { value: 3, rewards: { titleId: FIXTURE_TITLE_IDS.veteran } }
+        ],
+        repeat: { factor: 2, rewards: { moneyPerFloor: 1000 } }
+      },
+      {
+        id: FIXTURE_ACHIEVEMENT_IDS.pair,
+        condition: { type: 'ownSpecies', speciesIds: ['weakling', 'strongling'] },
+        tiers: [{ value: 2, rewards: { titleId: FIXTURE_TITLE_IDS.lucky } }]
+      }
+    ],
+    titles: [
+      {
+        id: FIXTURE_TITLE_IDS.veteran,
+        effects: [{ type: 'expPercent', params: { percent: 50 } }]
+      },
+      {
+        id: FIXTURE_TITLE_IDS.lucky,
+        effects: [
+          { type: 'moneyPercent', params: { percent: 100 } },
+          { type: 'dropRatePercent', params: { percent: 100 } },
+          { type: 'catchRatePercent', params: { percent: 100 } },
+          { type: 'recruitPercent', params: { percent: 100 } },
+          { type: 'shinyChancePercent', params: { percent: 100 } },
+          { type: 'alchemySuccessPercent', params: { percent: 20 } }
+        ]
       }
     ],
     serumEffects: [

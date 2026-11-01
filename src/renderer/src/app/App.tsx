@@ -1,5 +1,12 @@
-import { useCallback, useState } from 'react'
-import type { GameData, GameState } from '@core'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+  emptyProfile,
+  recordStarterUnlocks,
+  usableUnlockedStarters,
+  type GameData,
+  type GameState,
+  type PlayerProfile
+} from '@core'
 import type { SaveEntry } from '../../../preload/api'
 import { gameDataResult, newSeed } from '../shared/game/gameData'
 import {
@@ -13,6 +20,9 @@ import {
   type LoadResult,
   type Session
 } from '../features/saves/saveService'
+import { loadProfile, saveProfile } from '../features/saves/profileService'
+import { nameOf } from '../shared/lib/contentText'
+import { starterUnlockedMessage } from '../shared/lib/labels'
 import { LoadScreen } from '../features/saves/LoadScreen'
 import { PartyPreviewScreen, type SaveStatus } from '../features/party/PartyPreviewScreen'
 import { StarterScreen } from '../features/starter/StarterScreen'
@@ -47,6 +57,40 @@ function Game({ data }: { data: GameData }): React.JSX.Element {
   const [screen, setScreen] = useState<Screen>({ name: 'title', message: null })
   const [session, setSession] = useState<Session | null>(null)
   const [saveStatus, setSaveStatus] = useState<SaveStatus>(NO_STATUS)
+  // Hồ sơ xuyên save (loài khởi đầu đã mở). Ref để commit luôn đọc bản mới nhất.
+  const [profile, setProfile] = useState<PlayerProfile>(emptyProfile)
+  const profileRef = useRef(profile)
+
+  useEffect(() => {
+    loadProfile().then(
+      (loaded) => {
+        profileRef.current = loaded
+        setProfile(loaded)
+      },
+      // Không đọc được hồ sơ: chơi tiếp với hồ sơ rỗng (chỉ mất phần mở khóa meta).
+      () => undefined
+    )
+  }, [])
+
+  /** Ghi nhận loài khởi đầu mới mở từ state game, lưu profile.json và báo cho người chơi. */
+  const recordUnlocks = useCallback(
+    (state: GameState) => {
+      const result = recordStarterUnlocks(data, state, profileRef.current)
+      if (result.unlocked.length === 0) return
+      profileRef.current = result.profile
+      setProfile(result.profile)
+      const names = result.unlocked.map((id) => nameOf(data, 'species', id))
+      setSaveStatus((s) => ({ ...s, message: starterUnlockedMessage(names), isError: false }))
+      saveProfile(result.profile).catch((caught) =>
+        setSaveStatus((s) => ({
+          ...s,
+          message: `Lưu hồ sơ thất bại: ${errorMessage(caught)}`,
+          isError: true
+        }))
+      )
+    },
+    [data]
+  )
 
   /**
    * Đưa state mới vào phiên chơi và tự lưu (ngoài trận). Mọi thay đổi state của game sau này
@@ -55,6 +99,7 @@ function Game({ data }: { data: GameData }): React.JSX.Element {
   const commit = useCallback(
     (next: Session) => {
       setSession(next)
+      recordUnlocks(next.state)
       autosave(data, next).then(
         (saved) => {
           if (saved) setSaveStatus((s) => ({ ...s, lastSavedAt: new Date() }))
@@ -67,7 +112,7 @@ function Game({ data }: { data: GameData }): React.JSX.Element {
           }))
       )
     },
-    [data]
+    [data, recordUnlocks]
   )
 
   const openSession = (result: LoadResult): void => {
@@ -78,6 +123,8 @@ function Game({ data }: { data: GameData }): React.JSX.Element {
     setSaveStatus(NO_STATUS)
     // Không tự lưu ngay khi load (state chỉ khác ở seed); lần lưu kế tiếp sẽ ghi.
     setSession({ gameId: result.gameId, state: result.state })
+    // Save cũ / save chép từ máy khác cũng mở khóa theo tiến độ của nó.
+    recordUnlocks(result.state)
     setScreen({ name: 'game' })
   }
 
@@ -103,6 +150,7 @@ function Game({ data }: { data: GameData }): React.JSX.Element {
         <StarterScreen
           data={data}
           seed={screen.seed}
+          unlockedStarterIds={usableUnlockedStarters(data, profile)}
           onCreated={(state: GameState) => {
             setSaveStatus(NO_STATUS)
             commit({ gameId: newGameId(), state })

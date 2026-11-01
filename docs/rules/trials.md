@@ -50,6 +50,8 @@ Code: model `model/trials.ts`; registry luật `registries/trialRules.ts` (`TRIA
 - `GameState.trial: TrialRun | null` (bí cảnh `kind: 'realm'` hoặc Khí giới bí cảnh, `artifact-spirits.md`; v85 thêm `kind`), `GameState.tower: { highest }` (game mới: null, 0); `BattleState.trial`. Kiểm tra: luật tồn tại, luật một hệ có hệ tồn tại, luật khác `elementId` null; `cleared < battleCount`; đang đi bí cảnh thì ở thị trấn; `tower.highest` nguyên ≥ 0; trận bí cảnh chưa kết thúc thì đang có bí cảnh; trận tháp là tầng `highest + 1` (đã thắng: `highest`); trận bí cảnh / tháp không là trận độ kiếp; trận NPC có luật `noTamerSkills` được không có ngự thú sư phe NPC; `battle.floor` của trận bí cảnh / tháp không bị giới hạn bởi tầng đã mở.
 - v46 migrate: `trial: null`, `tower: { highest: 0 }`, trận dở `trial: null` (`state.md`).
 
+Danh hiệu theo tầng tháp: thưởng thành tựu `towerFloor` (`achievements.md`).
+
 ## Chưa có
 
-- `levelCap` (xem mục Luật bí cảnh), danh hiệu theo tầng tháp (chờ `titles.md`), hiển thị (chờ UI, `ui-overhaul.md`).
+- `levelCap` (xem mục Luật bí cảnh), hiển thị (chờ UI, `ui-overhaul.md`).

@@ -507,7 +507,7 @@ describe('phá bộ phận: chặn skill', () => {
 describe('khám phá điểm yếu (Dex)', () => {
   it('đòn nhắm trúng ghi bộ phận vào Dex một lần; mục Dex chỉ hiện điểm yếu đã biết', () => {
     const state = makeBattleState([hero()], [foe()])
-    expect(dexEntry(data, state.dex, 'weakling', 'vi')).toMatchObject({
+    expect(dexEntry(data, state, 'weakling', 'vi')).toMatchObject({
       bodyParts: ['head', 'torso', 'legs'],
       revealedParts: [],
       knownWeakPoints: []
@@ -522,11 +522,11 @@ describe('khám phá điểm yếu (Dex)', () => {
     expect(eventsOf(again, 'partRevealed')).toHaveLength(1)
     const head = run(again, [order('sureHit', { aim: 'head' })])
     expect(head.dex.hitParts).toEqual({ weakling: ['torso', 'head'] })
-    expect(dexEntry(data, head.dex, 'weakling', 'vi')).toMatchObject({
+    expect(dexEntry(data, head, 'weakling', 'vi')).toMatchObject({
       revealedParts: ['head', 'torso'],
       knownWeakPoints: ['torso']
     })
-    expect(revealedBodyParts(data, head.dex, foe())).toEqual(['head', 'torso'])
+    expect(revealedBodyParts(data, head, foe())).toEqual(['head', 'torso'])
   })
 
   it('trượt hoặc không nhắm thì không khám phá', () => {

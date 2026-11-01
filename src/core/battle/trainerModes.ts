@@ -3,6 +3,7 @@
 
 import { addItems, grantKeyItems } from '../inventory'
 import { pick, rollPercent } from '../shared'
+import { bumpStat } from '../registries'
 import type { BattleState, GameData, Gym, TrainerMode } from '../model'
 import { Draft, log } from './draft'
 import { grantItemRewards } from './rewards'
@@ -93,6 +94,7 @@ export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
       }
       if (!champion) return
       log(d, { type: 'tournamentWon' })
+      d.stats = bumpStat(d.stats, 'tournamentsWon')
       grantItemRewards(d, championRewards)
     },
     onLoss(_data, d) {

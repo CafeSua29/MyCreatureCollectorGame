@@ -97,6 +97,7 @@ describe('chết thật lúc kết thúc trận', () => {
     expect(d.party).toHaveLength(1)
     const hatched = d.party[0]
     expect(d.battle.log.at(-1)).toEqual({ type: 'legacyEggHatched', monsterId: hatched.id })
+    expect(d.stats.eggsHatched).toBe(1)
     // Hồn phách của b (mới nhất) đã ấp; còn hồn phách của a.
     expect(d.inventory.souls.map((soul) => soul.id)).toEqual(['a'])
     expect(hatched.damageTaken.eq(BIG_ZERO)).toBe(true)

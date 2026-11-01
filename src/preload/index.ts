@@ -12,6 +12,8 @@ const api: GameApi = {
     writeManual: (gameId, text) => ipcRenderer.invoke('saves:writeManual', gameId, text),
     delete: (id) => ipcRenderer.invoke('saves:delete', id),
     deleteGame: (gameId) => ipcRenderer.invoke('saves:deleteGame', gameId),
+    readProfile: () => ipcRenderer.invoke('saves:readProfile'),
+    writeProfile: (text) => ipcRenderer.invoke('saves:writeProfile', text),
     exportFile: (suggestedName, text) =>
       ipcRenderer.invoke('saves:exportFile', suggestedName, text),
     importFile: () => ipcRenderer.invoke('saves:importFile')

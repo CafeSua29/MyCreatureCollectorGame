@@ -10,7 +10,7 @@ import {
   type StageStat,
   type StatName
 } from '../model'
-import { checkInteger } from '../shared'
+import { asObject, checkInteger, checkNumber } from '../shared'
 
 /** Danh sách id không rỗng (trừ khi allowEmpty), mỗi id có trong `known`, không lặp. */
 export function checkIdList(
@@ -156,4 +156,19 @@ export function checkFormMap(data: GameData, value: unknown, field: string): str
       ? []
       : [`${field}.${speciesId}: "${form.id}" không phải dạng của nó`]
   })
+}
+
+/**
+ * Params `{ percent, ...extra }` của hiệu ứng kênh % (chúc phúc, món ăn, danh hiệu): % khác 0, không
+ * dưới −100 (hệ số không âm), không trường lạ ngoài `extra`.
+ */
+export function checkPercentParams(params: unknown, extra: readonly string[] = []): string[] {
+  const obj = asObject(params)
+  if (!obj) return ['params phải là object']
+  const issues = checkNumber(obj.percent, 'percent', -100)
+  if (obj.percent === 0) issues.push('percent phải khác 0')
+  for (const key of Object.keys(obj)) {
+    if (key !== 'percent' && !extra.includes(key)) issues.push(`trường lạ "${key}"`)
+  }
+  return issues
 }

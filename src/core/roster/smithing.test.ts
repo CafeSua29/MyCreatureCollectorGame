@@ -197,6 +197,8 @@ describe('đúc trang bị', () => {
     expect(imbuedElementId(data, made)).toBe('fire')
     expect(made.rolls.at(-1)?.lineId).toBe('imbueFire')
     expect(next.nextItemId).toBe(101)
+    // Bộ đếm thành tựu (docs/rules/achievements.md): đúc tính một món luyện khí.
+    expect(next.stats.itemsForged).toBe(1)
     expect(getItemCount(next.inventory, FIRE)).toBe(0)
     expect(getItemCount(next.inventory, WATER)).toBe(5)
     expect(next.money.eq(1000 - 200 * floors.length)).toBe(true)

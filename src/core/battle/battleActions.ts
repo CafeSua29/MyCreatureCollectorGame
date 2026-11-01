@@ -19,7 +19,9 @@ import {
   eventModifierMultiplier,
   isLargeMonster,
   monsterBodyPlan,
-  skillSwitchesUserOut
+  researchMultiplier,
+  skillSwitchesUserOut,
+  titleMultiplier
 } from '../registries'
 import {
   floorSite,
@@ -140,8 +142,8 @@ export function requireBattleStart(data: GameData, state: GameState): FloorSite 
   if (state.location.type !== 'floor') throw new ActionError('notOnFloor')
   assertReadyForBattle(data, state)
   // Kỹ năng đồng hành (docs/rules/partner-skills.md), modifier của event (docs/rules/events.md),
-  // bùa (docs/rules/dex.md) và chúc phúc của thần cai quản map (docs/rules/deities.md) nhân tỉ lệ
-  // shiny / gặp boss.
+  // bùa (docs/rules/dex.md), chúc phúc của thần cai quản map (docs/rules/deities.md) và danh hiệu
+  // (docs/rules/achievements.md) nhân tỉ lệ shiny / gặp boss.
   const { modifiers } = state.events
   const site = floorSite(data, state, state.location.floor)
   const odds = {
@@ -152,7 +154,11 @@ export function requireBattleStart(data: GameData, state: GameState): FloorSite 
       blessingMultiplier(data, state.favor, {
         deityId: site.biome.deityId ?? null,
         channel: 'shinyChancePercent'
-      }),
+      }) *
+      titleMultiplier(data, state.titles, 'shinyChancePercent'),
+    // Nghiên cứu loài (docs/rules/species-research.md): hệ số riêng của loài vừa tung.
+    speciesShinyMultiplier: (speciesId: string) =>
+      researchMultiplier(data, state.research, speciesId, 'shinyChancePercent'),
     bossChanceMultiplier:
       partnerMultiplier(data, state.party, 'bossChancePercent') *
       eventModifierMultiplier(data, modifiers, 'bossChancePercent')

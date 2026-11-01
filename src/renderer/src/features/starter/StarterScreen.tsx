@@ -5,33 +5,60 @@ import {
   createNewGame,
   equipmentSlotCount,
   rollStarters,
+  rollUnlockedStarter,
   type GameData,
   type GameState,
-  type Gender
+  type Gender,
+  type Monster
 } from '@core'
 import { MonsterCard } from '../../shared/components/MonsterCard'
 import { nameOf } from '../../shared/lib/contentText'
 import { GENDER_LABELS } from '../../shared/lib/labels'
 import { statBarScale } from '../../shared/lib/statBar'
+import { UnlockedStarterPicker } from './UnlockedStarterPicker'
 
 interface Props {
   data: GameData
   seed: number
+  /** Loài khởi đầu đã mở khóa xuyên save (profile.json), còn làm khởi đầu được. */
+  unlockedStarterIds: readonly string[]
   onCreated: (state: GameState) => void
   onBack: () => void
 }
 
 /**
  * Chọn quái khởi đầu. Các ứng viên được random sẵn từ seed (rollStarters), nên chỉ số trên
- * thẻ đúng là con sẽ nhận; createNewGame random lại từ cùng seed khi xác nhận.
+ * thẻ đúng là con sẽ nhận; createNewGame random lại từ cùng seed khi xác nhận. Loài đã mở khóa
+ * cũng random tất định từ seed (rollUnlockedStarter).
  */
-export function StarterScreen({ data, seed, onCreated, onBack }: Props): React.JSX.Element {
+export function StarterScreen({
+  data,
+  seed,
+  unlockedStarterIds,
+  onCreated,
+  onBack
+}: Props): React.JSX.Element {
   const candidates = useMemo(() => rollStarters(data, seed).candidates, [data, seed])
+  // Loài đã mở mà đã là ứng viên của ô thì không lặp lại (createNewGame ưu tiên con của ô).
+  const extraIds = useMemo(
+    () => unlockedStarterIds.filter((id) => !candidates.some((m) => m.speciesId === id)),
+    [unlockedStarterIds, candidates]
+  )
+  // Loài đã mở đang chọn (null = đang chọn một ứng viên của ô).
+  const [unlockedId, setUnlockedId] = useState<string | null>(null)
+  const unlockedMonster = useMemo(
+    () => (unlockedId ? rollUnlockedStarter(data, seed, { speciesId: unlockedId }).monster : null),
+    [data, seed, unlockedId]
+  )
+  const shown: Monster[] = useMemo(
+    () => (unlockedMonster ? [...candidates, unlockedMonster] : candidates),
+    [candidates, unlockedMonster]
+  )
   const views = useMemo(() => {
     // Game mới bắt đầu ở tầng 1, ngự thú sư cảnh giới 0: số ô trang bị lúc đó; chưa có đội, chưa ở đâu;
     // tư chất chấm theo tầng 1.
     const equipmentSlots = equipmentSlotCount(data, { highestFloor: 1, tamer: { realm: 0 } })
-    return candidates.map((monster, index) =>
+    return shown.map((monster, index) =>
       buildMonsterView(data, monster, {
         location: 'party',
         index,
@@ -39,19 +66,29 @@ export function StarterScreen({ data, seed, onCreated, onBack }: Props): React.J
         scene: { party: [], place: null, aptitudeFloor: 1, time: 0 }
       })
     )
-  }, [data, candidates])
+  }, [data, shown])
   // Thanh chỉ số dùng chung một thang để so sánh các ứng viên với nhau.
   const statScale = statBarScale(views)
 
   const [selected, setSelected] = useState(0)
-  const selectedSpeciesName = nameOf(data, 'species', candidates[selected].speciesId)
+  const chosen = shown[selected] ?? candidates[0]
+  const selectedSpeciesName = nameOf(data, 'species', chosen.speciesId)
   const [gender, setGender] = useState<Gender>(candidates[0].gender)
   const [nickname, setNickname] = useState('')
   const [error, setError] = useState<string | null>(null)
 
   const choose = (index: number): void => {
     setSelected(index)
-    setGender(candidates[index].gender)
+    setGender(shown[index].gender)
+    setError(null)
+  }
+
+  const chooseUnlocked = (speciesId: string): void => {
+    const monster = rollUnlockedStarter(data, seed, { speciesId }).monster
+    setUnlockedId(speciesId)
+    // Thẻ loài đã mở luôn đứng sau các ứng viên của ô.
+    setSelected(candidates.length)
+    setGender(monster.gender)
     setError(null)
   }
 
@@ -60,9 +97,10 @@ export function StarterScreen({ data, seed, onCreated, onBack }: Props): React.J
       onCreated(
         createNewGame(data, {
           seed,
-          starterSpeciesId: candidates[selected].speciesId,
+          starterSpeciesId: chosen.speciesId,
           gender,
-          nickname
+          nickname,
+          unlockedStarterIds
         })
       )
     } catch (caught) {
@@ -79,7 +117,7 @@ export function StarterScreen({ data, seed, onCreated, onBack }: Props): React.J
       <div className="card-grid" role="radiogroup" aria-label="Quái khởi đầu">
         {views.map((view, i) => (
           <MonsterCard
-            key={view.speciesId}
+            key={`${i}-${view.speciesId}`}
             data={data}
             view={view}
             statScale={statScale}
@@ -88,6 +126,15 @@ export function StarterScreen({ data, seed, onCreated, onBack }: Props): React.J
           />
         ))}
       </div>
+
+      {extraIds.length > 0 && (
+        <UnlockedStarterPicker
+          data={data}
+          speciesIds={extraIds}
+          selectedId={selected >= candidates.length ? unlockedId : null}
+          onSelect={chooseUnlocked}
+        />
+      )}
 
       <form
         className="panel starter-form"
@@ -102,7 +149,7 @@ export function StarterScreen({ data, seed, onCreated, onBack }: Props): React.J
         </div>
 
         {/* Loài không giới tính: ứng viên có gender 'none', không cho chọn (mục "Loài không giới tính"). */}
-        {candidates[selected].gender !== 'none' && (
+        {chosen.gender !== 'none' && (
           <fieldset className="form-row">
             <legend className="form-label">Giới tính</legend>
             {(['female', 'male'] as const).map((value) => (

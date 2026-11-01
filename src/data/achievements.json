@@ -1,0 +1,848 @@
+[
+  {
+    "id": "battleVeteran",
+    "condition": {
+      "type": "stat",
+      "key": "battlesWon"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 500
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 2000,
+          "items": [
+            {
+              "itemId": "ultraBall",
+              "count": 5
+            }
+          ]
+        }
+      },
+      {
+        "value": 1000,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "veteran"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 20000,
+        "items": [
+          {
+            "itemId": "rareCandy",
+            "count": 3
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "bossSlayer",
+    "condition": {
+      "type": "stat",
+      "key": "bossesDefeated"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "bossSlayer"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 50000,
+        "items": [
+          {
+            "itemId": "masterBall",
+            "count": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "trainerVictor",
+    "condition": {
+      "type": "stat",
+      "key": "trainersDefeated"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "duelist"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "monsterCatcher",
+    "condition": {
+      "type": "stat",
+      "key": "monstersCaught"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 500,
+          "items": [
+            {
+              "itemId": "greatBall",
+              "count": 10
+            }
+          ]
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 3000,
+          "items": [
+            {
+              "itemId": "ultraBall",
+              "count": 10
+            }
+          ],
+          "titleId": "catcher"
+        }
+      },
+      {
+        "value": 1000,
+        "rewards": {
+          "moneyPerFloor": 15000,
+          "items": [
+            {
+              "itemId": "masterBall",
+              "count": 1
+            }
+          ]
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 30000,
+        "items": [
+          {
+            "itemId": "masterBall",
+            "count": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "shinyHunter",
+    "condition": {
+      "type": "stat",
+      "key": "shinyCaught"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "shinyHunter"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 50000
+      }
+    }
+  },
+  {
+    "id": "eggHatcher",
+    "condition": {
+      "type": "stat",
+      "key": "eggsHatched"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "fusionist",
+    "condition": {
+      "type": "stat",
+      "key": "fusions"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "fusionMaster"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "breeder",
+    "condition": {
+      "type": "stat",
+      "key": "breeds"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "breeder"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "tribulation",
+    "condition": {
+      "type": "stat",
+      "key": "tribulationsPassed"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 50000,
+          "titleId": "heavenDefier"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 100000
+      }
+    }
+  },
+  {
+    "id": "tournamentChampion",
+    "condition": {
+      "type": "stat",
+      "key": "tournamentsWon"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "champion"
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 50000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 100000
+      }
+    }
+  },
+  {
+    "id": "alchemist",
+    "condition": {
+      "type": "stat",
+      "key": "pillsCrafted"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 5000,
+          "titleId": "alchemist"
+        }
+      },
+      {
+        "value": 1000,
+        "rewards": {
+          "moneyPerFloor": 20000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "smith",
+    "condition": {
+      "type": "stat",
+      "key": "itemsForged"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 5000,
+          "titleId": "smith"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "chef",
+    "condition": {
+      "type": "stat",
+      "key": "dishesCooked"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 5000,
+          "titleId": "chef"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "farewell",
+    "condition": {
+      "type": "stat",
+      "key": "oldAgeDeaths"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 10000
+      }
+    }
+  },
+  {
+    "id": "speciesCollector",
+    "condition": {
+      "type": "dexOwned"
+    },
+    "tiers": [
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 150,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 300,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 600,
+        "rewards": {
+          "moneyPerFloor": 20000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "dexCompletion",
+    "condition": {
+      "type": "dexPercent"
+    },
+    "tiers": [
+      {
+        "value": 50,
+        "rewards": {
+          "titleId": "collector"
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "titleId": "dexMaster"
+        }
+      }
+    ]
+  },
+  {
+    "id": "shinyCollection",
+    "condition": {
+      "type": "shinySpecies"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 50000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 100000
+      }
+    }
+  },
+  {
+    "id": "pioneer",
+    "condition": {
+      "type": "highestFloor"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 1000
+        }
+      },
+      {
+        "value": 25,
+        "rewards": {
+          "moneyPerFloor": 3000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "pioneer"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "cultivation",
+    "condition": {
+      "type": "tamerRealm"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 3,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 5,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "sage"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 1.5,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "towerClimber",
+    "condition": {
+      "type": "towerFloor"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "towerConqueror"
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "gymBadges",
+    "condition": {
+      "type": "gymBadges"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 4,
+        "rewards": {
+          "moneyPerFloor": 5000,
+          "titleId": "gymChampion"
+        }
+      },
+      {
+        "value": 8,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "arenaRank",
+    "condition": {
+      "type": "arenaRank"
+    },
+    "tiers": [
+      {
+        "value": 5,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 20,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "titleId": "arenaLegend"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 20000
+      }
+    }
+  },
+  {
+    "id": "talentScout",
+    "condition": {
+      "type": "aptitude",
+      "tierId": "heavenly"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "talentScout"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 10,
+      "rewards": {
+        "moneyPerFloor": 50000
+      }
+    }
+  },
+  {
+    "id": "rareSpecies",
+    "condition": {
+      "type": "speciesRank",
+      "rankId": "S"
+    },
+    "tiers": [
+      {
+        "value": 1,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "beastKing"
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 50000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 100000
+      }
+    }
+  },
+  {
+    "id": "legendaryBirds",
+    "condition": {
+      "type": "ownSpecies",
+      "speciesIds": ["articuno", "zapdos", "moltres"]
+    },
+    "tiers": [
+      {
+        "value": 3,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "items": [
+            {
+              "itemId": "masterBall",
+              "count": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "speciesResearch",
+    "condition": {
+      "type": "researchCompleted"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 10000,
+          "items": [
+            {
+              "itemId": "shinyCharm",
+              "count": 1
+            }
+          ]
+        }
+      },
+      {
+        "value": 500,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "researcher"
+        }
+      },
+      {
+        "value": 1000,
+        "rewards": {
+          "moneyPerFloor": 40000,
+          "titleId": "professor"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  }
+]

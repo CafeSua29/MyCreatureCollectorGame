@@ -6,12 +6,15 @@ import { recordQuestEvent } from '../quests'
 import { getBaseSpecies, mergeTraitLevel, startHistory } from '../monster'
 import {
   blessingPercent,
+  countCaught,
   monsterSpeciesRankOf,
   speciesRankIndex,
   hasPartyRoom,
   partyAfterJoining,
   capacityOf,
-  hasRosterRoom
+  hasRosterRoom,
+  titlePercent,
+  recordCaughtResearch
 } from '../registries'
 import {
   ActionError,
@@ -61,15 +64,19 @@ export const isRecruitBattle = (battle: BattleState): boolean =>
   (!battle.special || specialRule(battle.special).canRecruit) &&
   !battle.tribulation
 
-/** Tổng % thu phục cho quái này: kỹ năng đồng hành + mồi dụ (khẩu vị theo quái). */
+/**
+ * Tổng % thu phục cho quái này: kỹ năng đồng hành + mồi dụ (khẩu vị theo quái) + danh hiệu đang đeo
+ * (docs/rules/achievements.md) + chúc phúc (nơi gọi tính theo trận).
+ */
 function recruitBonusPercent(
   data: GameData,
-  state: Pick<GameState, 'party' | 'recruit'>,
+  state: Pick<GameState, 'party' | 'recruit' | 'titles'>,
   { monster, blessingBonus }: { monster: Monster; blessingBonus: number }
 ): number {
   return (
     partnerAmount(data, state.party, 'recruitPercent') +
     baitRecruitPercent(data, state.recruit.bait, monster) +
+    titlePercent(data, state.titles, 'recruitPercent') +
     blessingBonus
   )
 }
@@ -90,7 +97,7 @@ const bonusMultiplier = (percent: number): number => Math.max(0, 1 + percent / 1
  */
 export function recruitChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'storage' | 'recruit' | 'capacity' | 'tamer'>,
+  state: Pick<GameState, 'party' | 'storage' | 'recruit' | 'capacity' | 'tamer' | 'titles'>,
   {
     enemy,
     isBoss,
@@ -136,13 +143,18 @@ function recruitedMonster(
   return startHistory(withBoss, { kind: 'recruit', method }, met)
 }
 
-/** Nhiệm vụ bắt quái tính cả quái thu phục (docs/rules/quests.md). */
-function recordRecruitQuest(data: GameData, d: Draft, monster: Monster): void {
+/**
+ * Nhiệm vụ bắt quái (docs/rules/quests.md) và bộ đếm quái bắt của thành tựu
+ * (docs/rules/achievements.md) tính cả quái thu phục.
+ */
+function recordRecruit(data: GameData, d: Draft, monster: Monster): void {
   d.quests = recordQuestEvent(data, d.quests, {
     type: 'caught',
     raceId: monster.raceId,
     elementIds: monster.elementIds
   })
+  d.stats = countCaught(d.stats, [monster])
+  d.research = recordCaughtResearch(data, d.research, [monster])
 }
 
 /**
@@ -202,7 +214,7 @@ export function acceptRecruit(data: GameData, state: GameState): GameState {
   d.battle.enemies = battle.enemies.filter((m) => m.id !== offerId)
   d.battle.recruitOfferId = null
   log(d, { type: 'recruited', monsterId: monster.id, method, destination })
-  recordRecruitQuest(data, d, monster)
+  recordRecruit(data, d, monster)
   // Thu phục trong map có thần: ân sủng như bắt quái (docs/rules/deities.md).
   const deityId = battleDeityId(data, d, d.battle)
   if (deityId !== null) gainFavor(data, d, { deityId, amount: data.config.deities.favorPerCapture })
@@ -320,6 +332,6 @@ export function runIntimidate(data: GameData, d: Draft, targetId: string | undef
     : 'storage'
   d.battle.captured.push(monster)
   log(d, { type: 'recruited', monsterId: monster.id, method: 'intimidate', destination })
-  recordRecruitQuest(data, d, monster)
+  recordRecruit(data, d, monster)
   return true
 }

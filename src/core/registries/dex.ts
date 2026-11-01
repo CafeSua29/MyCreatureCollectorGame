@@ -1,13 +1,31 @@
 // Bộ sưu tập (docs/rules/dex.md): loài nào tính vào Dex, % đã sở hữu, hệ số bắt chí mạng, thưởng sưu
 // tập. Điểm duy nhất cho các câu hỏi này (ghi Dex ở roster/dex.ts).
 
-import { BATTLE_FORM_KINDS, type DexState, type GameData, type Species } from '../model'
+import {
+  BATTLE_FORM_KINDS,
+  type DexState,
+  type GameData,
+  type Monster,
+  type Species
+} from '../model'
 import { evolutionLineOf } from '../inventory'
 
 /** Loài tính vào Dex: loài thường, không phải dạng chỉ có trong trận (Mega, gmax, battleOnly). */
 export const isDexSpecies = (species: Species | undefined): boolean =>
   species?.kind === 'normal' &&
   (species.formKind === undefined || !BATTLE_FORM_KINDS.includes(species.formKind))
+
+/**
+ * Loài của quái tính vào Dex / nghiên cứu loài: loài hiện tại và loài gốc (quái fuse tính theo loài
+ * gốc vì loài hiện tại là loài fuse chung), chỉ loài thuộc Dex, không trùng.
+ */
+export function dexSpeciesOf(
+  data: GameData,
+  monster: Pick<Monster, 'speciesId' | 'baseSpeciesId'>
+): string[] {
+  const ids = [monster.speciesId, monster.baseSpeciesId]
+  return ids.filter((id, i) => ids.indexOf(id) === i && isDexSpecies(data.species[id]))
+}
 
 const totalCache = new WeakMap<GameData['species'], number>()
 

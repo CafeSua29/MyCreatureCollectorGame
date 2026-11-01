@@ -2,8 +2,9 @@
 // thì dùng, không thì theo race (đã trộn mặc định của nhóm race), không thì config. Điểm duy nhất
 // hỏi bộ phận / điểm yếu (trận, AI, UI). Không lưu trong save.
 
-import type { DexState, GameData, Monster, NormalSpecies } from '../model'
+import type { DexState, GameData, Monster, NormalSpecies, ResearchState } from '../model'
 import { isDexSpecies } from './dex'
+import { hasResearchReveal } from './research'
 
 /** Bộ phận và điểm yếu (điểm yếu luôn nằm trong bộ phận). */
 export interface BodyPlan {
@@ -57,16 +58,19 @@ export function dexBodySpeciesId(data: GameData, monster: BodyOwner): string | n
 }
 
 /**
- * Bộ phận của quái mà người chơi đã đánh trúng (biết có phải điểm yếu không), theo thứ tự bộ phận;
+ * Bộ phận của quái mà người chơi đã biết có phải điểm yếu không, theo thứ tự bộ phận: bộ phận đã
+ * đánh trúng, hoặc mọi bộ phận khi loài đạt cấp nghiên cứu mở điểm yếu (docs/rules/species-research.md);
  * bộ phận không còn trong dữ liệu loài thì bỏ qua (mục "Khám phá điểm yếu", hit-locations.md).
  */
 export function revealedBodyParts(
   data: GameData,
-  dex: Pick<DexState, 'hitParts'>,
+  known: { dex: Pick<DexState, 'hitParts'>; research: ResearchState },
   monster: BodyOwner
 ): readonly string[] {
   const speciesId = dexBodySpeciesId(data, monster)
-  const hit = speciesId === null ? undefined : dex.hitParts[speciesId]
-  if (!hit) return []
-  return monsterBodyPlan(data, monster).parts.filter((id) => hit.includes(id))
+  if (speciesId === null) return []
+  const { parts } = monsterBodyPlan(data, monster)
+  if (hasResearchReveal(data, known.research, speciesId, 'revealWeakPoints')) return parts
+  const hit = known.dex.hitParts[speciesId]
+  return hit ? parts.filter((id) => hit.includes(id)) : []
 }

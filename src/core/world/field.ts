@@ -15,7 +15,8 @@ import {
   changeAffinity,
   hasTrialRule,
   itemAllowsCount,
-  itemNeedsSkill
+  itemNeedsSkill,
+  recordEvolutionResearch
 } from '../registries'
 import { locateOwned } from '../roster'
 import { assertNotBusy, fulfillImprint, isImprintRequested } from '../monster'
@@ -180,6 +181,7 @@ export function applyItem(
   return {
     ...replace(after),
     rng: applied?.rng ?? state.rng,
+    research: recordEvolutionResearch(data, state.research, applied?.events ?? []),
     inventory: removeItems(state.inventory, itemId, count)
   }
 }

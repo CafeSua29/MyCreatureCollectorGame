@@ -24,6 +24,9 @@ export interface SavesApi {
   writeManual(gameId: string, text: string): Promise<string>
   delete(id: string): Promise<void>
   deleteGame(gameId: string): Promise<void>
+  /** Nội dung profile.json (hồ sơ xuyên save: loài khởi đầu đã mở); null nếu chưa có / không đọc được. */
+  readProfile(): Promise<string | null>
+  writeProfile(text: string): Promise<void>
   /** Mở hộp thoại chọn nơi lưu, ghi file. Trả về đường dẫn, hoặc null nếu người chơi hủy. */
   exportFile(suggestedName: string, text: string): Promise<string | null>
   /** Mở hộp thoại chọn file save, trả về nội dung, hoặc null nếu người chơi hủy. */

@@ -29,4 +29,24 @@ Thứ tự ô trong config chỉ quyết định ô nào được chọn loài t
 
 - Kiểm tra dữ liệu (`gameData/validateStarters.ts`): ít nhất một ô; `conditions` là danh sách; điều kiện có `kind` đã biết, không trường lạ, params đúng; **ô phải có ít nhất một loài** (chỉ dựng danh sách khi phần dữ liệu khác không lỗi); `level` nguyên ≥ 1, `money` ≥ 0, vật phẩm tồn tại và gộp chồng theo id, số lượng nguyên ≥ 1; trường lạ của `config.starter` báo lỗi.
 - **Không có nhãn ô** trên thẻ (chủ project chốt 2026-10-31: vị trí và loại ô đều random để người chơi tự khám phá).
-- Chưa có: mở khóa thêm loài qua các lần chơi (chờ `starter-unlocks.md`).
+
+## Mở khóa xuyên save
+
+Bước 8c (2026-11-01). Loài khởi đầu **mở khóa dần qua các lần chơi**, lưu ở hồ sơ xuyên save `saves/profile.json` (ngoài save game, `saves.md`), không đổi `GameState`.
+
+- **Dữ liệu** `config.starter.unlocks: [{ speciesIds, condition, value }]`: tiến độ của `condition` ≥ `value` thì mở mọi loài trong `speciesIds`. `condition` **dùng chung loại điều kiện với thành tựu** (`ACHIEVEMENT_CONDITIONS`, `achievements.md`: `dexOwned`, `highestFloor`, `tamerRealm`, `towerFloor`, `ownSpecies`, `stat`...), thay bộ điều kiện riêng của roadmap; mở theo bậc thành tựu = cùng điều kiện với giá trị bậc. Nhiều mục cùng mở một loài: đạt mục nào cũng được.
+- `config.starter.unlockOwnedLines` (true): **từng sở hữu** (Dex) một loài thì mở dạng đầu của chuỗi tiến hóa đó (mọi loài làm khởi đầu được trong `evolutionLineOf`). Loài mở theo cách này **không** mang gen của con cũ.
+- Điều kiện xét trên save đang chơi (Dex, tầng... của save đó); mở rồi thì giữ mãi trong hồ sơ, dùng ở mọi game mới sau.
+- Core (`registries/starterUnlocks.ts`): `reachedStarterUnlocks(data, state)` (loài đủ điều kiện, không trùng), `newStarterUnlocks(data, state, unlocked)`; hồ sơ ở `game/profile.ts`: `parseProfile` (không ném lỗi: thiếu / hỏng / sai cấu trúc = rỗng, bỏ id không phải chuỗi / trùng, giữ id loài không còn trong dữ liệu), `serializeProfile`, `recordStarterUnlocks` (không có loài mới thì trả nguyên object), `usableUnlockedStarters` (chỉ loài còn `isStarterEligible`).
+- **Ghi nhận:** renderer gọi `recordStarterUnlocks` sau mỗi `commit` và khi mở save (save chép từ máy khác cũng mở khóa theo tiến độ của nó), có loài mới thì ghi `profile.json` và báo tên loài.
+- **Game mới:** `createNewGame` nhận `unlockedStarterIds`; loài chọn là ứng viên của ô thì như cũ, không thì phải thuộc danh sách và vẫn `isStarterEligible`, sai → `notStarter`. Con của loài đã mở random bằng `rollUnlockedStarter(data, seed, { speciesId })` từ RNG **sau** các ô (luật như ô: level, gen / trait / shiny theo seed, tuổi, Gmax Factor), nên ứng viên của ô không đổi và màn chọn hiển thị đúng con sẽ nhận.
+- **Kiểm tra dữ liệu:** `unlocks` là danh sách; mục không trường lạ; `speciesIds` loài tồn tại, làm khởi đầu được; điều kiện qua `checkTypedParams` của thành tựu; `value` số > 0, không vượt trần tiến độ của điều kiện; `unlockOwnedLines` boolean.
+
+| Mở | Điều kiện (số tạm) |
+| --- | --- |
+| 3 loài khởi đầu Pokémon thế hệ 1 → 9 | `dexOwned` 50, 100, ..., 450 |
+| 10 rồng con D&D (sắc / kim loại) | `highestFloor` 50 |
+| Cá Chép Vàng (→ Rồng phương Đông) | `tamerRealm` 3 |
+| Imugi (→ Yong) | `towerFloor` 20 |
+
+- Lệch roadmap: không có loài Sơn Hải Kinh dạng đầu có tiến hóa nên thay bằng Cá Chép Vàng / Imugi; điều kiện `ascensions` chưa có (chờ phi thăng, `ascension.md`).

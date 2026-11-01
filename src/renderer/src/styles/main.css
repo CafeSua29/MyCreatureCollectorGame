@@ -244,6 +244,27 @@ h3 {
   font-weight: 600;
 }
 
+/* Nút dạng chip (danh sách loài khởi đầu đã mở khóa). */
+.chip-button {
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.chip-button:hover {
+  background: var(--bg-card-hover);
+}
+
+.chip-selected {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
+
+.unlocked-starters {
+  margin-top: 16px;
+}
+
 /* Màu theo hệ: viền và chữ. */
 .element-fire {
   border-color: var(--fire);

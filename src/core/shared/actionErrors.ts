@@ -207,6 +207,18 @@ export interface ActionErrorParams {
   dexRegionClaimed: { biomeId: string }
   /** Chưa sở hữu đủ mọi loài của Dex map. */
   dexRegionIncomplete: { biomeId: string; owned: number; total: number }
+  // ---------- Nghiên cứu loài (docs/rules/species-research.md) ----------
+  researchSpeciesNotFound: { speciesId: string }
+  /** Không có thưởng cấp nào đã đạt mà chưa nhận (level = cấp hiện tại). */
+  researchNoReward: { speciesId: string; level: number }
+  // ---------- Thành tựu và danh hiệu (docs/rules/achievements.md) ----------
+  achievementNotFound: { achievementId: string }
+  /** Chưa đạt bậc kế tiếp chưa nhận (need = giá trị bậc đó, have = tiến độ hiện tại). */
+  achievementNotReached: { achievementId: string; need: number; have: number }
+  /** Đã nhận mọi bậc (thành tựu có trần). */
+  achievementCompleted: { achievementId: string }
+  titleNotFound: { titleId: string }
+  titleNotOwned: { titleId: string }
   // ---------- Khu bảo tồn (docs/rules/safari-zone.md) ----------
   /** Đang trong khu bảo tồn: chỉ làm được action của khu. */
   inSafari: NoParams
@@ -543,6 +555,15 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   dexRegionClaimed: ({ biomeId }) => `Đã nhận thưởng Dex của map "${biomeId}"`,
   dexRegionIncomplete: ({ biomeId, owned, total }) =>
     `Dex của map "${biomeId}" mới sở hữu ${owned} / ${total} loài`,
+  researchSpeciesNotFound: ({ speciesId }) => `"${speciesId}" không phải loài thuộc Bộ sưu tập`,
+  researchNoReward: ({ speciesId, level }) =>
+    `Loài "${speciesId}" (cấp nghiên cứu ${level}) không có thưởng chờ nhận`,
+  achievementNotFound: ({ achievementId }) => `Không có thành tựu "${achievementId}"`,
+  achievementNotReached: ({ achievementId, need, have }) =>
+    `Thành tựu "${achievementId}" cần ${need}, mới có ${have}`,
+  achievementCompleted: ({ achievementId }) => `Đã nhận mọi bậc của thành tựu "${achievementId}"`,
+  titleNotFound: ({ titleId }) => `Không có danh hiệu "${titleId}"`,
+  titleNotOwned: ({ titleId }) => `Chưa có danh hiệu "${titleId}"`,
   inSafari: () => 'Đang trong khu bảo tồn: chỉ ném bóng / mồi / đá, bỏ đi hoặc rời khu',
   notInSafari: () => 'Không ở trong khu bảo tồn',
   safariUnavailable: () => 'Khu bảo tồn chưa có loài nào',

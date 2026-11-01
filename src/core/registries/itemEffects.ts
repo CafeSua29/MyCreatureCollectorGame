@@ -35,6 +35,7 @@ import {
 } from '../monster'
 import {
   STAT_NAMES,
+  type BattleEvent,
   type ConsumableItem,
   type EffectDef,
   type FavoriteFields,
@@ -563,6 +564,8 @@ function applyConsumable(
 export interface ItemApplyResult {
   monster: Monster
   rng: RngState
+  /** Log tiến hóa (nghiên cứu loài đếm "tiến hóa ra", docs/rules/species-research.md); không có = rỗng. */
+  events: readonly BattleEvent[]
 }
 
 /**
@@ -589,16 +592,16 @@ export function applyItemToMonster(
         ? changeAffinity(data, consumed, data.config.affinity.gain.potion)
         : consumed
       // Lên level bằng vật phẩm (kẹo) xét tiến hóa theo level ngay, như Kẹo Hiếm của Pokémon.
-      if (applied.level <= monster.level) return { monster: applied, rng }
+      if (applied.level <= monster.level) return { monster: applied, rng, events: [] }
       const evolved = autoEvolve(data, applied, { rng, day, scene })
-      return { monster: evolved.monster, rng: evolved.rng }
+      return { monster: evolved.monster, rng: evolved.rng, events: evolved.events }
     }
     case 'evolutionStone': {
       // Tiến hóa theo hướng cần chính đá này (mục Tiến hóa).
       const evolution = stoneEvolution(data, monster, { itemId: item.id, scene })
       if (!evolution) return null
       const result = evolveVia(data, monster, { evolution, rng, day })
-      return { monster: result.monster, rng: result.rng }
+      return { monster: result.monster, rng: result.rng, events: result.events }
     }
     case 'ball':
     case 'held':

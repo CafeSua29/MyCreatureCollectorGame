@@ -25,6 +25,8 @@ export interface FloorSite {
 export interface EncounterOdds {
   /** Nhân tỉ lệ shiny của quái sinh ra (quái thường, boss). */
   shinyMultiplier: number
+  /** Nhân thêm theo loài vừa tung (nghiên cứu loài); bỏ trống = 1. */
+  speciesShinyMultiplier?: (speciesId: string) => number
   /** Nhân tỉ lệ gặp boss ngẫu nhiên. */
   bossChanceMultiplier: number
 }

@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { addEquipment, addItems, getItemCount, toBig, type GameState, type Monster } from '@core'
 import {
+  FIXTURE_TITLE_IDS,
+  makeData,
   makeEquipment,
   makeEquipmentData,
   makeEventData,
@@ -13,6 +15,8 @@ import {
   bindBondWhenPossible,
   buyFromTempShop,
   buyPlotWhenCheap,
+  claimAchievementsWhenPossible,
+  claimResearchRewardsWhenPossible,
   expandCapacityWhenFull,
   holdCritItems,
   holdMegaStones,
@@ -24,6 +28,47 @@ import {
 const town = (overrides: Partial<GameState> = {}): GameState => ({
   ...makeGameState({ seed: 2, party: [makeMonster({ id: 'h' })], money: 1_000_000 }),
   ...overrides
+})
+
+describe('economy: thành tựu', () => {
+  it('nhận mọi bậc đã đạt, đeo danh hiệu EXP cao nhất; chưa đạt / đang trận thì không đổi', () => {
+    const data = makeData()
+    const base = town()
+    const state: GameState = {
+      ...base,
+      stats: { ...base.stats, battlesWon: 3 },
+      dex: { ...base.dex, owned: ['weakling', 'strongling'] }
+    }
+    const count = newEconomyCount()
+    const after = claimAchievementsWhenPossible(data, state, count)
+    expect(count.achievementTiers).toBe(3)
+    expect(after.titles.owned).toEqual(
+      expect.arrayContaining([FIXTURE_TITLE_IDS.veteran, FIXTURE_TITLE_IDS.lucky])
+    )
+    expect(after.titles.active).toBe(FIXTURE_TITLE_IDS.veteran)
+    expect(claimAchievementsWhenPossible(data, after, count)).toBe(after)
+    expect(count.achievementTiers).toBe(3)
+    expect(claimAchievementsWhenPossible(data, base, newEconomyCount())).toBe(base)
+  })
+})
+
+describe('economy: nghiên cứu loài', () => {
+  it('nhận thưởng cấp chờ nhận, ghi cấp cao nhất; không còn thưởng thì không đổi', () => {
+    const data = makeData()
+    const state: GameState = {
+      ...town(),
+      research: {
+        weakling: { counters: { caught: 25, defeated: 5 }, claimedLevel: 0 },
+        strongling: { counters: { caught: 1 }, claimedLevel: 0 }
+      }
+    }
+    const count = newEconomyCount()
+    const after = claimResearchRewardsWhenPossible(data, state, count)
+    expect(count).toMatchObject({ researchRewards: 1, researchLevelPeak: 5 })
+    expect(after.research.weakling.claimedLevel).toBe(5)
+    expect(claimResearchRewardsWhenPossible(data, after, count)).toBe(after)
+    expect(count.researchRewards).toBe(1)
+  })
 })
 
 describe('economy: bán đồ dư', () => {

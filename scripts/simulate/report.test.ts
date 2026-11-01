@@ -243,7 +243,10 @@ describe('các bảng kết quả', () => {
         bagPeak: 0,
         incense: 4,
         deityBuys: 0,
-        favorRank: 2
+        favorRank: 2,
+        achievementTiers: 0,
+        researchRewards: 0,
+        researchLevelPeak: 0
       },
       bossWin: null
     }

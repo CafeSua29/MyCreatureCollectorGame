@@ -267,6 +267,8 @@ describe('thắng', () => {
     expect(ended.money.toString()).toBe(state.money.toString())
     expect(ended.inventory).toEqual(state.inventory)
     expect(eventsOf(ended, 'awakened')).toEqual([{ type: 'awakened', monsterId: 'a', tier: 1 }])
+    // Bộ đếm thành tựu: + độ kiếp thành công, Thiên Kiếp không tính là boss (achievements.md).
+    expect(ended.stats).toMatchObject({ tribulationsPassed: 1, bossesDefeated: 0 })
     expect(defined(a.history).milestones.at(-1)).toEqual({ day: 0, kind: 'awakened', tier: 1 })
     expect(ended.party.map((m) => m.id)).toEqual(['a', 'b'])
     expect(validateGameState(data, ended)).toEqual([])

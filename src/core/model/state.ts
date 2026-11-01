@@ -37,6 +37,8 @@ import type { ZoneState } from './zones'
 import type { GatheringState } from './gathering'
 import type { WorldBossState } from './worldBoss'
 import type { DexState } from './dex'
+import type { ResearchState } from './research'
+import type { AchievementState, GameStats, TitleState } from './achievements'
 
 // ---------- State game (được lưu vào save) ----------
 
@@ -135,6 +137,14 @@ export interface GameState {
   worldBoss: WorldBossState
   /** Bộ sưu tập: loài đã gặp / đã sở hữu, mốc thưởng đã nhận (docs/rules/dex.md). */
   dex: DexState
+  /** Nghiên cứu loài: bộ đếm nhiệm vụ, cấp đã nhận thưởng (docs/rules/species-research.md). */
+  research: ResearchState
+  /** Bộ đếm chung cho thành tựu (docs/rules/achievements.md). */
+  stats: GameStats
+  /** Thành tựu: số bậc đã nhận thưởng. */
+  achievements: AchievementState
+  /** Danh hiệu đã có / đang đeo. */
+  titles: TitleState
   battle: BattleState | null
 }
 

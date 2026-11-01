@@ -11,7 +11,8 @@ import {
   type PartialStats,
   type StatName
 } from '../model'
-import { asObject, checkNumber } from '../shared'
+import { asObject } from '../shared'
+import { checkPercentParams } from './paramChecks'
 
 export type MealEffectHandler =
   | { kind: 'stat'; validateParams(params: unknown): string[] }
@@ -20,22 +21,9 @@ export type MealEffectHandler =
 /** Kênh % (mọi loại trừ statPercent). */
 export type MealChannel = Exclude<MealEffectType, 'statPercent'>
 
-/** % khác 0, không dưới −100 (hệ số không âm). */
-function checkPercent(obj: Record<string, unknown>): string[] {
-  const issues = checkNumber(obj.percent, 'percent', -100)
-  if (obj.percent === 0) issues.push('percent phải khác 0')
-  return issues
-}
-
 const percentEffect: MealEffectHandler = {
   kind: 'percent',
-  validateParams(params) {
-    const obj = asObject(params)
-    if (!obj) return ['params phải là object']
-    const issues = checkPercent(obj)
-    for (const key of Object.keys(obj)) if (key !== 'percent') issues.push(`trường lạ "${key}"`)
-    return issues
-  }
+  validateParams: (params) => checkPercentParams(params)
 }
 
 export const MEAL_EFFECTS: Readonly<Record<MealEffectType, MealEffectHandler>> = {
@@ -43,14 +31,10 @@ export const MEAL_EFFECTS: Readonly<Record<MealEffectType, MealEffectHandler>> =
   statPercent: {
     kind: 'stat',
     validateParams(params) {
-      const obj = asObject(params)
-      if (!obj) return ['params phải là object']
-      const issues = checkPercent(obj)
-      if (obj.stat !== undefined && !STAT_NAMES.some((stat) => stat === obj.stat)) {
-        issues.push(`stat lạ "${String(obj.stat)}"`)
-      }
-      for (const key of Object.keys(obj)) {
-        if (key !== 'percent' && key !== 'stat') issues.push(`trường lạ "${key}"`)
+      const issues = checkPercentParams(params, ['stat'])
+      const stat = asObject(params)?.stat
+      if (stat !== undefined && !STAT_NAMES.some((name) => name === stat)) {
+        issues.push(`stat lạ "${String(stat)}"`)
       }
       return issues
     }

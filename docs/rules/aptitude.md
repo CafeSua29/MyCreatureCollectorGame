@@ -16,7 +16,8 @@ Nhãn **tư chất** (资质) cho biết gen của quái tốt cỡ nào **so v�
   - Bậc hồn khí theo tư chất lúc chết (`soulRelic.rarityByAptitude`, `soul-relics.md`; đổi bộ bậc tư chất thì sửa bảng này theo).
   - Điều kiện tiến hóa `aptitude { min: <id bậc> }` (`evolution-skills.md`); hoàn cảnh xét tiến hóa `EvolutionScene` có `aptitudeFloor` (`evolutionScene` lấy từ state).
   - Bên ngoài core: `aptitudeOf` / `aptitudeFloor` xuất lại qua `roster/`, `floorGeneMultiplier` qua `world/floors.ts`.
-- Chưa có: điều kiện tư chất cho thành tựu (chờ `titles.md`), hiển thị tư chất đối thủ NPC (chờ UI; `trainers.md`).
+- Điều kiện thành tựu `aptitude { tierId }` (số quái có tư chất từ bậc) ở `achievements.md`.
+- Chưa có: hiển thị tư chất đối thủ NPC (chờ UI; `trainers.md`).
 
 ## Dữ liệu
 

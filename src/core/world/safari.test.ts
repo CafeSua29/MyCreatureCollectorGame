@@ -196,6 +196,8 @@ describe('ném bóng', () => {
     expect(caught.affinity).toBe(sure.config.affinity.start.caught)
     const visit = visitOf(after)
     expect(visit).toMatchObject({ balls: 29, caught: 1, encountersLeft: 18 })
+    // Bộ đếm thành tựu (docs/rules/achievements.md): tính một quái bắt.
+    expect(after.stats.monstersCaught).toBe(1)
     expect(visit.encounter.monster.id).toBe('m11')
     expect(after.safari.log.map((e) => e.type)).toEqual(['throwBall', 'caught', 'encounter'])
     expect(validateGameState(sure, after)).toEqual([])

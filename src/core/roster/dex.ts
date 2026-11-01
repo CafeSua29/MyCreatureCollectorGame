@@ -5,8 +5,9 @@ import { ActionError, toBig } from '../shared'
 import { addItems } from '../inventory'
 import {
   dexNumber,
+  dexSpeciesOf,
   dexOwnedPercent,
-  isDexSpecies,
+  hasResearchReveal,
   regionalDexProgress,
   speciesBodyPlan,
   speciesSize,
@@ -14,7 +15,8 @@ import {
   type MonsterSize
 } from '../registries'
 import { speciesInfoText } from '../gameData'
-import type { DexState, GameData, GameState, LanguageCode, Monster } from '../model'
+import { researchStatus, type ResearchStatus } from './research'
+import type { DexState, GameData, GameState, LanguageCode } from '../model'
 
 // Câu hỏi về Dex cho UI / mô phỏng (core dùng thẳng registries).
 export {
@@ -48,12 +50,6 @@ function setOf(list: readonly string[]): Set<string> {
     setCache.set(list, set)
   }
   return set
-}
-
-/** Loài của quái tính vào Dex: loài hiện tại và loài gốc (quái fuse tính theo loài gốc). */
-function dexSpeciesOf(data: GameData, monster: Monster): string[] {
-  const ids = [monster.speciesId, monster.baseSpeciesId]
-  return ids.filter((id, i) => ids.indexOf(id) === i && isDexSpecies(data.species[id]))
 }
 
 /** Thêm id chưa có vào danh sách; trả mảng cũ nếu không có gì mới (giữ cache). */
@@ -177,21 +173,33 @@ export interface DexEntry {
   revealedParts: readonly string[]
   /** Điểm yếu đã khám phá (⊆ revealedParts); điểm yếu chưa đánh trúng không hiện. */
   knownWeakPoints: readonly string[]
+  /** Nghiên cứu loài (docs/rules/species-research.md): cấp, nhiệm vụ, thưởng chờ nhận. */
+  research: ResearchStatus
+  /** Cấp nghiên cứu đã mở chỉ số gốc / race / hệ (UI ẩn khi chưa mở). */
+  profileRevealed: boolean
+  /** Cấp nghiên cứu đã mở learnset và tiến hóa. */
+  learnsetRevealed: boolean
 }
 
-/** Mục Dex của loài `speciesId` (loài thuộc Dex; không thì null). */
+/**
+ * Mục Dex của loài `speciesId` (loài thuộc Dex; không thì null). Điểm yếu đã biết: bộ phận đã đánh
+ * trúng, hoặc mọi bộ phận khi cấp nghiên cứu đã mở điểm yếu.
+ */
 export function dexEntry(
   data: GameData,
-  dex: DexState,
+  { dex, research }: Pick<GameState, 'dex' | 'research'>,
   speciesId: string,
   language: LanguageCode
 ): DexEntry | null {
   const species = data.species[speciesId]
   const number = dexNumber(data, speciesId)
-  if (species?.kind !== 'normal' || number === null) return null
+  const status = researchStatus(data, research, speciesId)
+  if (species?.kind !== 'normal' || number === null || !status) return null
   const plan = speciesBodyPlan(data, species)
   const hit = dex.hitParts[speciesId] ?? []
-  const revealedParts = plan.parts.filter((id) => hit.includes(id))
+  const revealedParts = hasResearchReveal(data, research, speciesId, 'revealWeakPoints')
+    ? plan.parts
+    : plan.parts.filter((id) => hit.includes(id))
   return {
     speciesId,
     number,
@@ -205,6 +213,9 @@ export function dexEntry(
     heightM: species.heightM ?? null,
     bodyParts: plan.parts,
     revealedParts,
-    knownWeakPoints: revealedParts.filter((id) => plan.weakPoints.includes(id))
+    knownWeakPoints: revealedParts.filter((id) => plan.weakPoints.includes(id)),
+    research: status,
+    profileRevealed: hasResearchReveal(data, research, speciesId, 'revealProfile'),
+    learnsetRevealed: hasResearchReveal(data, research, speciesId, 'revealLearnset')
   }
 }

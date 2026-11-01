@@ -382,7 +382,10 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['bagPeak', count.bagPeak],
     ['incense', count.incense],
     ['deityBuy', count.deityBuys],
-    ['favorRank', count.favorRank]
+    ['favorRank', count.favorRank],
+    ['achievement', count.achievementTiers],
+    ['research', count.researchRewards],
+    ['researchLv', count.researchLevelPeak]
   ]
   return parts
     .filter(([, n]) => n > 0)

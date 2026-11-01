@@ -11,6 +11,8 @@ import {
   capacityView,
   STAT_NAMES,
   ActionError,
+  achievementStatus,
+  researchStatus,
   assertCanContract,
   computeStats,
   contractChance,
@@ -25,6 +27,7 @@ import {
   megaStonesOf,
   nextPlotPrice,
   pickZCrystalFor,
+  titlePercent,
   tempShopPrice,
   type GameAction,
   type GameData,
@@ -94,6 +97,14 @@ export interface EconomyCount {
   incense: number
   deityBuys: number
   favorRank: number
+  /** Bậc thành tựu đã nhận (claimAchievementsWhenPossible, achievements.md). */
+  achievementTiers: number
+  /**
+   * Nghiên cứu loài (claimResearchRewardsWhenPossible, species-research.md): lần nhận thưởng cấp,
+   * cấp nghiên cứu cao nhất của một loài thấy ở thị trấn.
+   */
+  researchRewards: number
+  researchLevelPeak: number
 }
 
 export const newEconomyCount = (): EconomyCount => ({
@@ -122,7 +133,10 @@ export const newEconomyCount = (): EconomyCount => ({
   bagPeak: 0,
   incense: 0,
   deityBuys: 0,
-  favorRank: 0
+  favorRank: 0,
+  achievementTiers: 0,
+  researchRewards: 0,
+  researchLevelPeak: 0
 })
 
 type Act = (data: GameData, state: GameState, action: GameAction) => GameState
@@ -460,6 +474,56 @@ export function claimDexRewardsWhenPossible(
     count.dexRewards++
   }
   return state
+}
+
+/**
+ * Nhận thưởng cấp nghiên cứu của mọi loài còn thưởng chờ (docs/rules/species-research.md), ghi cấp
+ * nghiên cứu cao nhất (lợi ích tỉ lệ bắt / EXP / shiny tự áp qua reducer).
+ */
+export function claimResearchRewardsWhenPossible(
+  data: GameData,
+  state: GameState,
+  count: EconomyCount
+): GameState {
+  if (state.battle) return state
+  for (const speciesId of Object.keys(state.research)) {
+    const status = researchStatus(data, state.research, speciesId)
+    if (!status) continue
+    count.researchLevelPeak = Math.max(count.researchLevelPeak, status.level)
+    if (!status.hasUnclaimedReward) continue
+    state = simAct(data, state, { type: 'claimResearchReward', speciesId })
+    count.researchRewards++
+  }
+  return state
+}
+
+/**
+ * Nhận mọi bậc thành tựu đã đạt (docs/rules/achievements.md), rồi đeo danh hiệu đã có cho EXP cao
+ * nhất (bằng nhau thì tiền cao nhất): tiến trình của mô phỏng đo theo level / tầng.
+ */
+export function claimAchievementsWhenPossible(
+  data: GameData,
+  state: GameState,
+  count: EconomyCount
+): GameState {
+  if (state.battle) return state
+  for (const achievement of Object.values(data.achievements)) {
+    const { reached, claimed } = achievementStatus(data, state, achievement)
+    if (reached <= claimed) continue
+    state = simAct(data, state, { type: 'claimAchievement', achievementId: achievement.id })
+    count.achievementTiers += reached - claimed
+  }
+  const score = (titleId: string): [number, number] => {
+    const titles = { active: titleId }
+    return [titlePercent(data, titles, 'expPercent'), titlePercent(data, titles, 'moneyPercent')]
+  }
+  const best = [...state.titles.owned].sort((a, b) => {
+    const [expA, moneyA] = score(a)
+    const [expB, moneyB] = score(b)
+    return expB - expA || moneyB - moneyA
+  })[0]
+  if (best === undefined || best === state.titles.active) return state
+  return simAct(data, state, { type: 'setTitle', titleId: best })
 }
 
 /** Ở thị trấn: mua thêm ô linh điền khi giá ≤ plotSpendFraction tiền. */

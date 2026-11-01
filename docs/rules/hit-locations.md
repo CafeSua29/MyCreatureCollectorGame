@@ -43,7 +43,7 @@ Code: `battle/reach.ts` (tầm chiêu: `skillReach`, `canReach`, `markSwoop`), `
 
 Như Persona / Shin Megami Tensei (điểm yếu của địch chưa biết cho tới khi đánh trúng, rồi được ghi lại): **bộ phận** của quái luôn thấy (nhìn là biết có cánh, có đuôi), **điểm yếu thì không**.
 
-- Dex lưu `dex.hitParts` (id loài → id bộ phận đã đánh trúng bằng đòn nhắm). Bộ phận đã trúng thì người chơi biết nó **có phải điểm yếu không** (suy từ dữ liệu loài, nên save không thể lệch dữ liệu); chưa trúng thì chưa biết. Ghi theo loài quyết định bộ phận (`dexBodySpeciesId`: loài hiện tại, quái fuse là loài gốc; loài phải thuộc Dex).
+- Dex lưu `dex.hitParts` (id loài → id bộ phận đã đánh trúng bằng đòn nhắm). Bộ phận đã trúng thì người chơi biết nó **có phải điểm yếu không** (suy từ dữ liệu loài, nên save không thể lệch dữ liệu); chưa trúng thì chưa biết. Cách thứ hai: loài đạt cấp nghiên cứu mở điểm yếu (`revealWeakPoints`, cấp 6 tạm; `species-research.md`) thì biết mọi bộ phận (Dex và AI qua `revealedBodyParts`, không ghi thêm vào `hitParts`). Ghi theo loài quyết định bộ phận (`dexBodySpeciesId`: loài hiện tại, quái fuse là loài gốc; loài phải thuộc Dex).
 - Ghi khi đòn nhắm **trúng** (log `aimedHit`) lần đầu bộ phận đó của loài: log `partRevealed { speciesId, partId, weakPoint }` (`revealPart`). Mọi đòn trong trận đều tính, kể cả đòn địch nhắm vào quái của người chơi (người chơi chứng kiến). Trượt, không với tới, không nhắm thì không khám phá.
 - Mục Dex (`dexEntry`): `bodyParts` (mọi bộ phận), `revealedParts` (đã đánh trúng), `knownWeakPoints` (điểm yếu đã khám phá); điểm yếu chưa trúng không hiện.
 - Lệnh nhắm vẫn chọn được mọi bộ phận (người chơi tự thử); AI phe người chơi chỉ dùng điểm yếu đã biết (mục AI).

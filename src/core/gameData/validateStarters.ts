@@ -1,10 +1,24 @@
 // Kiểm tra config.starter (docs/rules/starters.md): ô ứng viên và điều kiện theo registry
-// STARTER_CONDITIONS, level, tiền, vật phẩm ban đầu.
+// STARTER_CONDITIONS, mở khóa xuyên save, level, tiền, vật phẩm ban đầu.
 
-import { STARTER_CONDITION_KINDS, type GameData, type StarterCondition } from '../model'
-import { STARTER_CONDITIONS, starterSlotPool } from '../registries'
-import { asObject, checkInteger, checkNumber } from '../shared'
-import { checkKnownFields, checkStackItemId } from './checks'
+import {
+  STARTER_CONDITION_KINDS,
+  type GameData,
+  type StarterCondition,
+  type StarterUnlock
+} from '../model'
+import {
+  ACHIEVEMENT_CONDITIONS,
+  STARTER_CONDITIONS,
+  checkIdList,
+  checkTypedParams,
+  isStarterEligible,
+  starterSlotPool
+} from '../registries'
+import { asObject, checkInteger, checkNumber, isFiniteNumber } from '../shared'
+import { checkKnownFields, checkStackItemId, fieldList } from './checks'
+
+const UNLOCK_FIELDS = fieldList<StarterUnlock>({ speciesIds: true, condition: true, value: true })
 
 /** Một điều kiện: object, `kind` thuộc STARTER_CONDITION_KINDS, không trường lạ, params đúng. */
 function checkCondition(data: GameData, value: unknown, where: string, issues: string[]): boolean {
@@ -52,6 +66,57 @@ function checkSlots(
   })
 }
 
+/**
+ * Một mục mở khóa: loài tồn tại và làm khởi đầu được, điều kiện như thành tựu, value số dương không
+ * vượt trần tiến độ của điều kiện.
+ */
+function checkUnlock(data: GameData, value: unknown, where: string, issues: string[]): void {
+  const unlock = asObject(value)
+  if (!unlock) {
+    issues.push(`${where} phải là object`)
+    return
+  }
+  checkKnownFields(unlock, UNLOCK_FIELDS, where, 'mục mở khóa', issues)
+  const idIssues = checkIdList(unlock.speciesIds, 'speciesIds', data.species, { label: 'loài' })
+  issues.push(...idIssues.map((issue) => `${where}: ${issue}`))
+  if (idIssues.length === 0) {
+    // Ép kiểu: checkIdList vừa đảm bảo danh sách id loài.
+    for (const id of unlock.speciesIds as string[]) {
+      if (!isStarterEligible(data, id)) {
+        issues.push(`${where}: "${id}" không phải loài dạng đầu có tiến hóa`)
+      }
+    }
+  }
+  const conditionIssues = checkTypedParams(
+    ACHIEVEMENT_CONDITIONS,
+    unlock.condition,
+    `${where}.condition`,
+    data
+  )
+  issues.push(...conditionIssues)
+  if (!isFiniteNumber(unlock.value) || unlock.value <= 0) {
+    issues.push(`${where}.value phải là số > 0, nhận ${String(unlock.value)}`)
+    return
+  }
+  if (conditionIssues.length > 0) return
+  // Ép kiểu: checkTypedParams vừa đảm bảo `type` có trong registry.
+  const { type, ...params } = unlock.condition as StarterUnlock['condition']
+  const maxProgress = ACHIEVEMENT_CONDITIONS[type].maxProgress(params, data)
+  if (maxProgress !== null && unlock.value > maxProgress) {
+    issues.push(`${where}.value ${unlock.value} vượt tiến độ tối đa ${maxProgress}`)
+  }
+}
+
+function checkUnlocks(data: GameData, unlocks: unknown, issues: string[]): void {
+  if (!Array.isArray(unlocks)) {
+    issues.push('config.starter.unlocks phải là danh sách')
+    return
+  }
+  unlocks.forEach((unlock: unknown, i) =>
+    checkUnlock(data, unlock, `config.starter.unlocks[${i}]`, issues)
+  )
+}
+
 /** Kiểm tra toàn bộ config.starter. */
 export function checkStarterData(data: GameData, issues: string[]): void {
   const starter = asObject(data.config.starter)
@@ -61,10 +126,16 @@ export function checkStarterData(data: GameData, issues: string[]): void {
   }
   // Danh sách loài của ô cần chuỗi tiến hóa, dạng loài, phẩm cấp loài hợp lệ: chỉ dựng khi các phần
   // kiểm tra trước chưa báo lỗi (dữ liệu hỏng có thể làm việc tra cứu ném lỗi).
-  checkSlots(data, starter.slots, issues.length === 0, issues)
+  // Mở khóa cũng cần chuỗi tiến hóa hợp lệ (loài làm khởi đầu được).
+  const isDataSound = issues.length === 0
+  checkSlots(data, starter.slots, isDataSound, issues)
+  if (isDataSound) checkUnlocks(data, starter.unlocks, issues)
+  if (typeof starter.unlockOwnedLines !== 'boolean') {
+    issues.push('config.starter.unlockOwnedLines phải là true / false')
+  }
   checkKnownFields(
     starter,
-    ['slots', 'level', 'money', 'items'],
+    ['slots', 'unlocks', 'unlockOwnedLines', 'level', 'money', 'items'],
     'config.starter',
     'config',
     issues

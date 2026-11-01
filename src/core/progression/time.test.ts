@@ -105,6 +105,7 @@ describe('tọa hóa: để lại hồn phách', () => {
     expect(next.dayEvents).toEqual([
       { type: 'diedOfOldAge', monsterId: 'm1', speciesId: 'weakling', nickname: null }
     ])
+    expect(next.stats.oldAgeDeaths).toBe(1)
     expect(validateGameState(data, next)).toEqual([])
   })
 

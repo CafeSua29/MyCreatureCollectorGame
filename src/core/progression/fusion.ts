@@ -45,6 +45,7 @@ import {
   assertOverflowConfirmed,
   fusionAidProtectsBase,
   fusionAidSlot,
+  bumpStat,
   returnEquipmentWithinCapacity,
   yearsLeft,
   type FusionAidSlot
@@ -341,7 +342,8 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
     inventory,
     party: update(state.party),
     storage: update(state.storage),
-    quests
+    quests,
+    stats: succeeded ? bumpStat(state.stats, 'fusions') : state.stats
   }
 }
 
