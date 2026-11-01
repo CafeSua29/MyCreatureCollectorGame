@@ -7,6 +7,7 @@
 import {
   crystalExtractCost,
   crystalInjectCost,
+  isShopOpen,
   itemBuyPrice,
   toBig,
   usedTraitSlots,
@@ -86,8 +87,9 @@ function removeNegativeTraits(
         monsterId: monster.id,
         traitId: trait.id
       })
+      // Cửa hàng đóng (thú triều, events.md) thì giữ tinh thể trong túi, bán lần sau.
       const item: CrystalRef = { storage: 'crystal', traitId: trait.id, level: trait.level }
-      state = simAct(data, state, { type: 'sellItem', item, count: 1 })
+      if (isShopOpen(state)) state = simAct(data, state, { type: 'sellItem', item, count: 1 })
       count.extracted++
     }
   }

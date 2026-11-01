@@ -59,6 +59,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [cooking.md](docs/rules/cooking.md): linh thực (nấu ăn ở Đầu bếp, món ăn buff cả đội N trận)
 - [quests.md](docs/rules/quests.md): bảng nhiệm vụ (`quests/`)
 - [expeditions.md](docs/rules/expeditions.md): phái quái đi thám hiểm
+- [dwelling.md](docs/rules/dwelling.md): động phủ (công trình sản xuất kiểu Palworld, quái trong kho làm việc theo chỉ số / tốc độ / trait làm việc, đói / tinh thần / bệnh, linh điền là công trình)
 - [trainers.md](docs/rules/trainers.md): ngự thú sư NPC, đạo quán, giải đấu, đấu trường
 - [trials.md](docs/rules/trials.md): bí cảnh và tháp thí luyện
 - [instability.md](docs/rules/instability.md): độ bất ổn tầng (thuộc tính bất lợi tự chọn ở Đền dịch chuyển, thưởng thêm)

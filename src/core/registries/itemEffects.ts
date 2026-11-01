@@ -3,6 +3,7 @@
 // applyItemToMonster chọn cách áp theo category của item.
 
 import { raceMatchesAny } from './races'
+import { withWorkTrait } from './work'
 import { addPurity, purityOf } from './bloodlines'
 import {
   asObject,
@@ -35,6 +36,7 @@ import {
 } from '../monster'
 import {
   STAT_NAMES,
+  WORK_TYPES,
   type BattleEvent,
   type ConsumableItem,
   type EffectDef,
@@ -42,7 +44,8 @@ import {
   type GameData,
   type Item,
   type Monster,
-  type StatName
+  type StatName,
+  type WorkType
 } from '../model'
 import { changeAffinity } from './affinity'
 import { TREASURE_EFFECTS } from './treasureEffects'
@@ -170,6 +173,71 @@ const setNature: ItemEffectHandler = {
     // Đã đúng tính cách: không có tác dụng, không mất bạc hà.
     return monster.natureId === natureId ? null : { ...monster, natureId }
   }
+}
+
+// ---------- addWorkTrait: cấy trait làm việc (Phù cấy, như Passive Skill Implant; dwelling.md) ----------
+
+const addWorkTrait: ItemEffectHandler = {
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return typeof obj.traitId === 'string' && Object.hasOwn(data.workTraits, obj.traitId)
+      ? []
+      : [`traitId: trait làm việc không tồn tại "${String(obj.traitId)}"`]
+  },
+  apply(params, { data, monster }) {
+    const { traitId } = params as { traitId: string }
+    // Đã có, hoặc đủ chỗ mà không có trait cùng nhóm để thay: không có tác dụng, không mất phù.
+    const workTraits = withWorkTrait(data, monster.workTraits, traitId)
+    return workTraits.includes(traitId) && !monster.workTraits.includes(traitId)
+      ? { ...monster, workTraits }
+      : null
+  }
+}
+
+// ---------- addWorkPoints: + % chỉ số làm việc (Sách làm việc, như Work Suitability Manual) ----------
+
+const addWorkPoints: ItemEffectHandler = {
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return [
+      ...((WORK_TYPES as readonly unknown[]).includes(obj.workType)
+        ? []
+        : [`workType phải là ${WORK_TYPES.join(' / ')}`]),
+      ...checkInteger(obj.percent, 'percent', 1)
+    ]
+  },
+  apply(params, { monster }) {
+    const { workType, percent } = params as { workType: WorkType; percent: number }
+    const current = monster.workPoints[workType] ?? 0
+    const next = Math.min(Number.MAX_SAFE_INTEGER, current + percent)
+    return { ...monster, workPoints: { ...monster.workPoints, [workType]: next } }
+  }
+}
+
+// ---------- cureAilment: chữa bệnh / chấn thương bậc ≤ tier (Thuốc trị thương, dwelling.md) ----------
+
+const cureAilment: ItemEffectHandler = {
+  validateParams: (params) => {
+    const obj = asObject(params)
+    return obj ? checkInteger(obj.tier, 'tier', 1) : ['params phải là object']
+  },
+  apply(params, { data, monster }) {
+    const { tier } = params as { tier: number }
+    const ailment = monster.ailment ? data.ailments[monster.ailment.id] : undefined
+    // Không bệnh hoặc thuốc yếu hơn bệnh: không có tác dụng, không mất thuốc.
+    return ailment && ailment.cureTier <= tier ? { ...monster, ailment: null } : null
+  }
+}
+
+// ---------- clearWorkTraits: xóa mọi trait làm việc (Phù tẩy tâm, dwelling.md) ----------
+
+const clearWorkTraits: ItemEffectHandler = {
+  validateParams: (params) => (asObject(params) ? [] : ['params phải là object']),
+  // Chưa có trait nào: không có tác dụng, không mất phù.
+  apply: (_params, { monster }) =>
+    monster.workTraits.length === 0 ? null : { ...monster, workTraits: [] }
 }
 
 // ---------- changeAbilitySlot: đổi ô ability (Ability Capsule / Patch, docs/rules/abilities.md) ----------
@@ -420,6 +488,10 @@ export const ITEM_EFFECTS: Readonly<Record<string, ItemEffectHandler>> = {
   revive,
   swapGender,
   setNature,
+  addWorkTrait,
+  addWorkPoints,
+  clearWorkTraits,
+  cureAilment,
   addEffort,
   resetEffort,
   resetTalents,

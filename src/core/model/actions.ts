@@ -89,12 +89,19 @@ export type GameAction =
   | { type: 'acceptQuest'; questId: string }
   | { type: 'abandonQuest'; questId: string }
   | { type: 'claimQuest'; questId: string }
-  /** Luyện đan và linh điền (ở thị trấn; docs/rules/alchemy.md). */
+  /** Luyện đan (ở thị trấn; docs/rules/alchemy.md). */
   | { type: 'craft'; recipeId: string; times: number }
   | { type: 'learnRecipe'; itemId: string }
+  /** Động phủ (ở thị trấn; docs/rules/dwelling.md), linh điền là công trình của động phủ. */
+  | { type: 'upgradeBuilding'; buildingId: string }
+  | { type: 'assignWorker'; buildingId: string; monsterId: string }
+  | { type: 'unassignWorker'; monsterId: string }
+  | { type: 'collectDwelling' }
+  /** Hộp thức ăn của động phủ (ở thị trấn; docs/rules/dwelling.md mục "Đói và tinh thần"). */
+  | { type: 'stockFeedBox'; itemId: string; count: number }
+  | { type: 'takeFeedBox'; itemId: string; count: number }
   | { type: 'plantSeed'; plotIndex: number; itemId: string }
   | { type: 'harvest'; plotIndex: number }
-  | { type: 'buyPlot' }
   /** Hồn phách ở NPC luyện đan (thị trấn; docs/rules/soul-relics.md). */
   | { type: 'incubateSoul'; soulId: string }
   | { type: 'forgeSoulRelic'; soulId: string }
@@ -299,7 +306,7 @@ export type GameAction =
   /** NPC ở thị trấn: đổi hệ Tera của quái, tốn Mảnh Tera của hệ đích. */
   | { type: 'changeTeraElement'; monsterId: string; elementId: string }
   /** NPC Tượng Lực ở thị trấn (docs/rules/soul-levels.md): +1 cấp hồn tinh một chỉ số. */
-  | { type: 'upgradeSoulLevel'; monsterId: string; stat: StatName }
+  | { type: 'upgradeSoulLevel'; monsterId: string; stat: StatName | 'workSpeed' }
   /** Nâng một nút thiên phú của quái thêm 1 cấp, ngoài trận (docs/rules/monster-talents.md). */
   | { type: 'allocateTalent'; monsterId: string; nodeId: string }
   /** Kết / đổi bản mệnh thú ở thị trấn (docs/rules/tamer.md mục "Bản mệnh thú"). */

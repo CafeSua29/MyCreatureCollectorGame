@@ -1,0 +1,109 @@
+[
+  {
+    "id": "sprain",
+    "weight": 5,
+    "causes": ["work", "battle"],
+    "workPercent": 70,
+    "statPercents": {
+      "speed": -20
+    },
+    "bodyParts": ["arms", "legs"],
+    "cureTier": 1
+  },
+  {
+    "id": "weakened",
+    "weight": 4,
+    "causes": ["work"],
+    "workPercent": 60,
+    "statPercents": {
+      "attack": -10,
+      "defense": -10,
+      "spAttack": -10,
+      "spDefense": -10,
+      "speed": -10
+    },
+    "cureTier": 1
+  },
+  {
+    "id": "fracture",
+    "weight": 2,
+    "causes": ["battle"],
+    "workPercent": 30,
+    "statPercents": {
+      "attack": -20,
+      "speed": -30
+    },
+    "bodyParts": ["arms", "legs", "tail"],
+    "cureTier": 2
+  },
+  {
+    "id": "ulcer",
+    "weight": 2,
+    "causes": ["work"],
+    "workPercent": 50,
+    "statPercents": {
+      "hp": -15
+    },
+    "cureTier": 2
+  },
+  {
+    "id": "depression",
+    "weight": 1,
+    "causes": ["work"],
+    "workPercent": 0,
+    "statPercents": {
+      "attack": -15,
+      "spAttack": -15
+    },
+    "cureTier": 3
+  },
+  {
+    "id": "concussion",
+    "weight": 2,
+    "causes": ["battle"],
+    "workPercent": 60,
+    "statPercents": {
+      "spAttack": -20,
+      "spDefense": -20
+    },
+    "bodyParts": ["head"],
+    "cureTier": 2
+  },
+  {
+    "id": "brokenWing",
+    "weight": 2,
+    "causes": ["battle"],
+    "workPercent": 60,
+    "statPercents": {
+      "speed": -40
+    },
+    "bodyParts": ["wings"],
+    "cureTier": 2
+  },
+  {
+    "id": "brokenRibs",
+    "weight": 2,
+    "causes": ["battle"],
+    "workPercent": 50,
+    "statPercents": {
+      "defense": -20,
+      "hp": -10
+    },
+    "bodyParts": ["torso"],
+    "cureTier": 2
+  },
+  {
+    "id": "bruise",
+    "weight": 5,
+    "causes": ["battle"],
+    "workPercent": 90,
+    "statPercents": {
+      "attack": -5,
+      "defense": -5,
+      "spAttack": -5,
+      "spDefense": -5,
+      "speed": -5
+    },
+    "cureTier": 1
+  }
+]

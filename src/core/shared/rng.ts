@@ -102,6 +102,20 @@ export function rollPercent(rng: RngState, chance: number): [boolean, RngState] 
   return [value * 100 < chance, next]
 }
 
+/**
+ * Số nguyên từ giá trị kỳ vọng: phần nguyên chắc chắn, phần lẻ tung RNG (kỳ vọng giữ nguyên). Kẹp
+ * trong [0, MAX_SAFE_INTEGER]; số nguyên (gồm 0) không tốn RNG.
+ */
+export function rollAmount(rng: RngState, expected: number): [number, RngState] {
+  if (!(expected > 0)) return [0, rng]
+  if (expected >= Number.MAX_SAFE_INTEGER) return [Number.MAX_SAFE_INTEGER, rng]
+  const whole = Math.floor(expected)
+  const fraction = expected - whole
+  if (fraction === 0) return [whole, rng]
+  const [value, next] = nextFloat(rng)
+  return [value < fraction ? whole + 1 : whole, next]
+}
+
 /** Xáo trộn (Fisher–Yates), trả về mảng mới. */
 export function shuffle<T>(state: RngState, items: readonly T[]): [T[], RngState] {
   const result = [...items]

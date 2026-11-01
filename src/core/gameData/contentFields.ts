@@ -137,6 +137,8 @@ const NORMAL_SPECIES_FIELDS = fieldList<NormalSpecies>({
   teraFormId: true,
   rank: true,
   partnerSkillId: true,
+  workStats: true,
+  workSpeed: true,
   weightKg: true,
   heightM: true,
   bodyParts: true,

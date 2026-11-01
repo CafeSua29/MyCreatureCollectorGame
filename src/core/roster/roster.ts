@@ -34,7 +34,11 @@ import {
   evolutionInfo,
   rebirthRequirements,
   type EvolutionInfo,
-  type RebirthRequirements
+  type RebirthRequirements,
+  workSpeedPercent,
+  workStats,
+  workConditionPercent,
+  workerPower
 } from '../progression'
 import {
   affinityTierOf,
@@ -91,6 +95,8 @@ import {
   type Stats,
   type StatusInstance,
   type TraitKind,
+  type WorkType,
+  WORK_TYPES,
   imprintPercent
 } from '../model'
 
@@ -222,6 +228,8 @@ export interface MonsterView {
   imprint: MonsterImprintView | null
   /** Tính cách và chỉ số tăng / giảm (null = trung tính; docs/rules/natures.md). */
   nature: NatureView
+  /** Khả năng làm việc ở động phủ: thiên phú, tốc độ, sức theo loại việc, trait (dwelling.md). */
+  work: WorkView
   /** Tư chất so với tầng mốc (docs/rules/aptitude.md); tên bậc tra contentName 'aptitudeTiers'. */
   aptitude: AptitudeView
   /** Phẩm cấp loài (docs/rules/species-rank.md); tên bậc tra contentName 'speciesRanks'. */
@@ -290,6 +298,27 @@ export interface BloodlineView {
 export interface AptitudeView {
   ratio: Decimal
   tierId: string
+}
+
+/** Một loại việc của MonsterView: chỉ số làm việc (0 = không có), tốc độ (%), sức làm việc. */
+export interface WorkTypeView {
+  stat: number
+  speedPercent: number
+  power: number
+}
+
+/**
+ * Khả năng làm việc: trait làm việc (tên tra contentName 'workTraits'), từng loại việc, no / tinh
+ * thần và % sức theo tình trạng (docs/rules/dwelling.md mục "Đói và tinh thần").
+ */
+export interface WorkView {
+  traitIds: string[]
+  types: Record<WorkType, WorkTypeView>
+  fullness: number
+  sanity: number
+  /** Bệnh đang mắc (tên tra contentName 'ailments'); null = khỏe. */
+  ailmentId: string | null
+  conditionPercent: number
 }
 
 /** Tính cách cho MonsterView: id (tên tra contentName 'natures'), chỉ số tăng / giảm và %. */
@@ -556,6 +585,7 @@ export function buildMonsterView(
     bossDefeats: monster.bossDefeats,
     imprint: imprintView(data, monster),
     nature: natureView(data, monster),
+    work: workView(data, monster),
     aptitude: aptitudeView(data, monster, scene.aptitudeFloor),
     speciesRankId: monsterSpeciesRankOf(data, monster).id,
     soulLevels: soulLevelView(data, monster),
@@ -607,6 +637,28 @@ function bloodlineView(data: GameData, monster: Monster): BloodlineView {
 function aptitudeView(data: GameData, monster: Monster, floor: number): AptitudeView {
   const { ratio, tier } = aptitudeOf(data, monster, floor)
   return { ratio, tierId: tier.id }
+}
+
+function workView(data: GameData, monster: Monster): WorkView {
+  const stats = workStats(data, monster)
+  const types = Object.fromEntries(
+    WORK_TYPES.map((type) => [
+      type,
+      {
+        stat: stats[type] ?? 0,
+        speedPercent: workSpeedPercent(data, monster, type),
+        power: workerPower(data, monster, type)
+      }
+    ])
+  ) as Record<WorkType, WorkTypeView>
+  return {
+    traitIds: [...monster.workTraits],
+    types,
+    fullness: monster.fullness,
+    sanity: monster.sanity,
+    ailmentId: monster.ailment?.id ?? null,
+    conditionPercent: workConditionPercent(data, monster)
+  }
 }
 
 function natureView(data: GameData, monster: Monster): NatureView {

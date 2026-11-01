@@ -47,7 +47,12 @@ import {
   breed,
   recallExpedition,
   startExpedition,
-  buyPlot,
+  assignWorker,
+  collectDwelling,
+  stockFeedBox,
+  takeFeedBox,
+  unassignWorker,
+  upgradeBuilding,
   craft,
   eatDish,
   forgeSoulRelic,
@@ -146,7 +151,7 @@ import {
 import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 87
+export const SAVE_VERSION = 92
 
 export function createGameState(options: {
   seed: number
@@ -169,8 +174,6 @@ export function createGameState(options: {
   permadeathEnabled?: boolean
   /** Cảnh giới ngự thú sư (mặc định 0); quái trong party được khế ước theo cảnh giới này. */
   tamerRealm?: number
-  /** Số ô linh điền (mặc định DEFAULT_GARDEN_PLOTS; game mới lấy config.alchemy.initialPlots). */
-  gardenPlots?: number
 }): GameState {
   const realm = options.tamerRealm ?? 0
   const party = (options.party ?? []).map((monster) => bindContract(monster, realm))
@@ -222,9 +225,8 @@ export function createGameState(options: {
     stats: newGameStats(),
     achievements: newAchievementState(),
     titles: newTitleState(),
-    garden: {
-      plots: Array.from({ length: options.gardenPlots ?? DEFAULT_GARDEN_PLOTS }, () => null)
-    },
+    // Chưa xây công trình nào (game mới dùng newDwellingState theo dữ liệu, docs/rules/dwelling.md).
+    dwelling: { buildings: {}, plots: [], storage: { stacks: {}, books: [] }, feedBox: {} },
     battle: null
   }
 }
@@ -235,9 +237,6 @@ export const newTrainerState = (): GameState['trainers'] => ({
   arenaRank: 0,
   tournament: { lastPeriod: -1, round: null }
 })
-
-/** Số ô linh điền của createGameState khi không ghi (bằng config.alchemy.initialPlots của dữ liệu thật). */
-export const DEFAULT_GARDEN_PLOTS = 2
 
 /** Luyện đan lúc bắt đầu: cấp 1, chưa học đan phương (docs/rules/alchemy.md). */
 export const newAlchemyState = (): GameState['alchemy'] => ({
@@ -369,12 +368,22 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return craft(data, state, action)
     case 'learnRecipe':
       return learnRecipe(data, state, action.itemId)
+    case 'upgradeBuilding':
+      return upgradeBuilding(data, state, action.buildingId)
+    case 'assignWorker':
+      return assignWorker(data, state, action)
+    case 'unassignWorker':
+      return unassignWorker(state, action.monsterId)
+    case 'collectDwelling':
+      return collectDwelling(state)
+    case 'stockFeedBox':
+      return stockFeedBox(data, state, action)
+    case 'takeFeedBox':
+      return takeFeedBox(state, action)
     case 'plantSeed':
       return plantSeed(data, state, action)
     case 'harvest':
       return harvest(data, state, action.plotIndex)
-    case 'buyPlot':
-      return buyPlot(data, state)
     case 'incubateSoul':
       return incubateSoul(data, state, action.soulId)
     case 'forgeSoulRelic':

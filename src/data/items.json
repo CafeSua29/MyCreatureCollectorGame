@@ -52418,5 +52418,427 @@
     "id": "thaiDuongToken",
     "category": "material",
     "price": 20
+  },
+  {
+    "id": "workImplantArtisan",
+    "category": "consumable",
+    "price": 8000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "artisan"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantSerious",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "serious"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantWorkSlave",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "workSlave"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantLucky",
+    "category": "consumable",
+    "price": 10000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "lucky"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantMineForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "mineForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantFarmForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "farmForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantWaterForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "waterForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantFireForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "fireForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantVeinForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "veinForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantHaulForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "haulForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantCareForeman",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "careForeman"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workImplantScholar",
+    "category": "consumable",
+    "price": 3000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkTrait",
+        "params": {
+          "traitId": "scholar"
+        }
+      }
+    ]
+  },
+  {
+    "id": "workTraitPurge",
+    "category": "consumable",
+    "price": 2000,
+    "shop": true,
+    "shopWeight": 2,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "clearWorkTraits",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "workManualMining",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "mining",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualFarming",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "farming",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualWatering",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "watering",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualKindling",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "kindling",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualGenerating",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "generating",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualTransporting",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "transporting",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualCaring",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "caring",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "workManualResearch",
+    "category": "consumable",
+    "price": 5000,
+    "shop": true,
+    "shopWeight": 1,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "addWorkPoints",
+        "params": {
+          "workType": "research",
+          "percent": 50
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastFeed",
+    "category": "material",
+    "price": 30
+  },
+  {
+    "id": "calmPill",
+    "category": "material",
+    "price": 200
+  },
+  {
+    "id": "medicineLow",
+    "category": "consumable",
+    "price": 300,
+    "shop": true,
+    "shopWeight": 10,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "cureAilment",
+        "params": {
+          "tier": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "medicine",
+    "category": "consumable",
+    "price": 1000,
+    "shop": true,
+    "shopWeight": 5,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "cureAilment",
+        "params": {
+          "tier": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "medicineHigh",
+    "category": "consumable",
+    "price": 3000,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "cureAilment",
+        "params": {
+          "tier": 3
+        }
+      }
+    ]
   }
 ]

@@ -1,0 +1,281 @@
+[
+  {
+    "id": "artisan",
+    "weight": 2,
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": 50
+      }
+    ]
+  },
+  {
+    "id": "serious",
+    "weight": 10,
+    "group": "diligence",
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": 20
+      }
+    ]
+  },
+  {
+    "id": "clumsy",
+    "weight": 10,
+    "group": "diligence",
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": -10
+      }
+    ]
+  },
+  {
+    "id": "slacker",
+    "weight": 4,
+    "group": "diligence",
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": -30
+      }
+    ]
+  },
+  {
+    "id": "workSlave",
+    "weight": 5,
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": 30
+      },
+      {
+        "type": "statPercent",
+        "stats": {
+          "attack": -30,
+          "spAttack": -30
+        }
+      }
+    ]
+  },
+  {
+    "id": "hooligan",
+    "weight": 8,
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": -10
+      },
+      {
+        "type": "statPercent",
+        "stats": {
+          "attack": 15,
+          "spAttack": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "lucky",
+    "weight": 1,
+    "effects": [
+      {
+        "type": "workSpeed",
+        "percent": 15
+      },
+      {
+        "type": "statPercent",
+        "stats": {
+          "attack": 15,
+          "spAttack": 15
+        }
+      }
+    ]
+  },
+  {
+    "id": "mineForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "mining",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "farmForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "farming",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "waterForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "watering",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "fireForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "kindling",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "veinForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "generating",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "haulForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "transporting",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "careForeman",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "caring",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "scholar",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "workTypeSpeed",
+        "workType": "research",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "workaholic",
+    "weight": 6,
+    "group": "mind",
+    "effects": [
+      {
+        "type": "sanityRate",
+        "percent": -15
+      }
+    ]
+  },
+  {
+    "id": "positiveThinker",
+    "weight": 6,
+    "group": "mind",
+    "effects": [
+      {
+        "type": "sanityRate",
+        "percent": -10
+      }
+    ]
+  },
+  {
+    "id": "unstable",
+    "weight": 6,
+    "group": "mind",
+    "effects": [
+      {
+        "type": "sanityRate",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "destructive",
+    "weight": 4,
+    "group": "mind",
+    "effects": [
+      {
+        "type": "sanityRate",
+        "percent": 15
+      }
+    ]
+  },
+  {
+    "id": "dietLover",
+    "weight": 6,
+    "group": "appetite",
+    "effects": [
+      {
+        "type": "hungerRate",
+        "percent": -15
+      }
+    ]
+  },
+  {
+    "id": "daintyEater",
+    "weight": 6,
+    "group": "appetite",
+    "effects": [
+      {
+        "type": "hungerRate",
+        "percent": -10
+      }
+    ]
+  },
+  {
+    "id": "glutton",
+    "weight": 6,
+    "group": "appetite",
+    "effects": [
+      {
+        "type": "hungerRate",
+        "percent": 10
+      }
+    ]
+  },
+  {
+    "id": "bottomlessStomach",
+    "weight": 4,
+    "group": "appetite",
+    "effects": [
+      {
+        "type": "hungerRate",
+        "percent": 15
+      }
+    ]
+  },
+  {
+    "id": "nocturnal",
+    "weight": 4,
+    "effects": [
+      {
+        "type": "nocturnal"
+      }
+    ]
+  }
+]

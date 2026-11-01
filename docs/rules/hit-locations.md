@@ -39,6 +39,8 @@ Code: `battle/reach.ts` (tầm chiêu: `skillReach`, `canReach`, `markSwoop`), `
 
 - Chưa có: bộ phận / điểm yếu riêng theo loài (mọi loài đang theo nhóm race; loài không có cánh trong nhóm có cánh như chim cánh cụt vẫn có cánh; chờ nguồn, xem `docs/roadmap/biome-content.md` mục "Bộ phận và điểm yếu theo loài"). Thêm bằng `bodyParts` / `weakPoints` của loài / race, không cần sửa code. Tay (2026-10-31) cho nhóm có tay rõ ràng (người, ác ma, thiên thần, thần, xác sống, ngoài hành tinh, dị thể, biến hình, khoáng vật kiểu golem); thú bốn chân tính chi trước là chân, khủng long / côn trùng / thực vật chưa có tay (chờ dữ liệu theo loài như trên).
 
+- **Chấn thương theo bộ phận** (`dwelling.md` mục "Bệnh và chấn thương"): khi trận kết thúc, quái của người chơi bị hạ gục bằng đòn nhắm (`knockoutPart`) hoặc bị phá bộ phận (`brokenParts`) mắc chấn thương gắn với bộ phận đó (đầu → chấn động, cánh → gãy cánh, thân → gãy xương sườn, tay / chân → bong gân / gãy xương...).
+
 ## Khám phá điểm yếu
 
 Như Persona / Shin Megami Tensei (điểm yếu của địch chưa biết cho tới khi đánh trúng, rồi được ghi lại): **bộ phận** của quái luôn thấy (nhìn là biết có cánh, có đuôi), **điểm yếu thì không**.

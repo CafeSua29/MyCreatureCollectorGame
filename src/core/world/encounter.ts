@@ -7,6 +7,7 @@ import {
   rollGender,
   rollAbilitySlot,
   rollNature,
+  rollWorkTraits,
   rollWildBloodlines,
   rollSpawnPolarity,
   uniformBigStats,
@@ -183,7 +184,7 @@ export interface MonsterRollSpec {
 
 /**
  * Random một quái theo spec. Thứ tự tung: loài → level → gender → gen → trait → shiny → hệ Tera →
- * tính cách → ô ability (chỉ loài có ability) → huyết mạch (chỉ loài thuộc nhóm) (luật mới thêm vào
+ * tính cách → ô ability (chỉ loài có ability) → huyết mạch (chỉ loài thuộc nhóm) → trait làm việc (luật mới thêm vào
  * cuối để không làm đổi các giá trị random phía trước). Hệ Tera random trong hệ
  * của chính nó (như Pokémon); boss tung lại theo luật boss (rollBossTransformTraits). Quái mới
  * ở tuổi 0; quái hoang / boss tung tuổi sau cùng bằng rollSpawnAge.
@@ -278,7 +279,16 @@ export function rollMonster(
     implantBonusStats: uniformBigStats(0),
     implantEffects: {},
     implantAttempts: 0,
-    implantFails: 0
+    implantFails: 0,
+    // Tung sau cùng (rollWorkTraits) để không đổi các giá trị random phía trước.
+    workTraits: [],
+    // Chưa dùng sách làm việc / hồn tinh tốc độ (docs/rules/dwelling.md).
+    workPoints: {},
+    workSoulLevel: 0,
+    // No và tinh thần đầy (docs/rules/dwelling.md mục "Đói và tinh thần").
+    fullness: data.config.dwelling.needs.max,
+    sanity: data.config.dwelling.needs.max,
+    ailment: null
   }
   let shiny: boolean
   ;[shiny, rng] = rollPercent(
@@ -296,7 +306,10 @@ export function rollMonster(
   // Huyết mạch (docs/rules/bloodline.md): loài không thuộc nhóm nào thì không tốn RNG.
   let bloodlines: Monster['bloodlines']
   ;[bloodlines, rng] = rollWildBloodlines(data, rng, species.id)
-  return [{ ...monster, teraElementId, natureId, abilitySlot, bloodlines }, rng]
+  // Trait làm việc (docs/rules/dwelling.md) tung cuối cùng, sau shiny (quái shiny có trait shiny).
+  let workTraits: string[]
+  ;[workTraits, rng] = rollWorkTraits(data, rng, monster)
+  return [{ ...monster, teraElementId, natureId, abilitySlot, bloodlines, workTraits }, rng]
 }
 
 const biomeShinyChance = (data: GameData, biome: Biome): number =>

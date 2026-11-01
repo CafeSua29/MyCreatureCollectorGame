@@ -6,11 +6,11 @@
 import { isLargeMonster, partySlotsUsed } from '../registries'
 import {
   validateAlchemyState,
-  validateGardenState,
   validateCookingState,
   validateSmithingState
 } from './validateAlchemyState'
 import { validateQuestState } from './validateQuestState'
+import { validateDwellingState } from './validateDwellingState'
 import { validateExpeditionState } from './validateExpeditionState'
 import { checkBattleTrainer, validateTrainerState } from './validateTrainerState'
 import { checkBattleTrial, validateTrialState } from './validateTrialState'
@@ -696,7 +696,7 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateAlchemyState(data, state.alchemy))
   issues.push(...validateSmithingState(data, state.smithing))
   issues.push(...validateCookingState(data, state.cooking))
-  issues.push(...validateGardenState(data, state.garden, state.time))
+  issues.push(...validateDwellingState(data, state))
   issues.push(...validateQuestState(data, state.quests))
   issues.push(
     ...validateTrainerState(data, state.trainers, {

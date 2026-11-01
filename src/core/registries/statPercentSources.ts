@@ -18,6 +18,7 @@ import {
 import { ageStatPercent } from './lifespan'
 import { polarityStatPercent } from './polarity'
 import { soulLinkTier } from './soulLink'
+import { workTraitStatPercent } from './work'
 import type { HookSourceKind } from './traitHooks'
 
 /** Mọi chỉ số (kể cả hp) cùng một %; 0 thì không có mục nào. */
@@ -106,7 +107,14 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   // Luân hồi (docs/rules/rebirth.md): mọi chỉ số kể cả max HP, số lần × statPercentPerRebirth.
   rebirth: { percent: (data, monster) => uniformPercent(rebirthStatPercent(data, monster)) },
   // Hiệu ứng cấy ghép có hook % chỉ số (docs/rules/implant.md; đi qua hook, nguồn hook `implant`).
-  implant: {}
+  implant: {},
+  // Trait làm việc có % chỉ số (Work Slave, Hooligan, Lucky; docs/rules/dwelling.md).
+  workTraits: { percent: workTraitStatPercent },
+  // Bệnh / chấn thương đang mắc (docs/rules/dwelling.md mục "Bệnh và chấn thương").
+  ailment: {
+    percent: (data, monster) =>
+      monster.ailment ? { ...(data.ailments[monster.ailment.id]?.statPercents ?? {}) } : {}
+  }
 }
 
 /** % mọi chỉ số quái đang được cộng từ hiến tế (tuyến tính theo stack). */

@@ -113,7 +113,7 @@ K × power/100 × công × (công / thủ) × hệ × STAB × (chí mạng hoặ
 **HP, hồi máu, thua trận**
 
 - **HP giữ giữa các trận**, lưu bằng `damageTaken`.
-- **NPC hồi máu** (`healParty`, chỉ ở **thị trấn**): hồi đầy cả đội kể cả quái đã gục và chữa mọi trạng thái bất thường, **miễn phí**. Đội đã đầy máu và không có trạng thái nào thì báo lỗi.
+- **NPC hồi máu** (`healParty`, chỉ ở **thị trấn**): hồi đầy cả đội kể cả quái đã gục và chữa mọi trạng thái bất thường lẫn bệnh / chấn thương (`dwelling.md`), **miễn phí**. Đội đã đầy máu và không có trạng thái nào thì báo lỗi.
 - **Nghỉ ngơi** (`rest`, ngoài trận, **dùng ở đâu cũng được**, kể cả tại vùng để farm liên tục không phải về thị trấn): hồi đầy cả đội **kể cả quái đã gục**, giá = `restCostPerLevel × tổng level đội` (làm tròn lên). **Không** chữa trạng thái bất thường. Đội đã đầy máu (trừ khi có quái trong đội đang đòi nghỉ ngơi, `imprinting.md`) hoặc không đủ tiền thì báo lỗi.
 - **Thua trận** (`applyLoss` trong `battle/outcome.ts`): đưa người chơi **về thị trấn** (`location` đổi ngay lúc thua, trước `leaveBattle`) để dùng NPC hồi máu; **không** tự hồi máu, không giải trạng thái.
 - **Thuốc hồi máu** (`healPercent`) chỉ dùng cho quái còn sống. Quái đã gục cần **thuốc hồi sinh** (`revive`, sống lại với % max HP).

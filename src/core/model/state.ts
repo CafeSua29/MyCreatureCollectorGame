@@ -12,7 +12,8 @@ import type {
 } from './trials'
 import type { ArtifactSpirit, SpiritPool } from './artifactSpirits'
 import type { QuestState } from './quests'
-import type { AlchemyState, CookingState, GardenState, SmithingState } from './alchemy'
+import type { AlchemyState, CookingState, SmithingState } from './alchemy'
+import type { DwellingState } from './dwelling'
 import type { Decimal } from '../shared'
 import type {
   EquipmentRarity,
@@ -91,13 +92,14 @@ export interface GameState {
   tamer: TamerState
   /** Trận pháp đã học và đang dùng (docs/rules/team.md). */
   formations: FormationState
-  /** Cấp luyện đan, công thức đã học; linh điền (docs/rules/alchemy.md). */
+  /** Cấp luyện đan, công thức đã học (docs/rules/alchemy.md). */
   alchemy: AlchemyState
   /** Cấp luyện khí ở Thợ rèn (docs/rules/alchemy.md, equipment-forge.md). */
   smithing: SmithingState
   /** Cấp nấu ăn ở Đầu bếp, món ăn đang có tác dụng cho cả đội (docs/rules/cooking.md). */
   cooking: CookingState
-  garden: GardenState
+  /** Động phủ: công trình, quái làm việc, linh điền, kho động phủ (docs/rules/dwelling.md). */
+  dwelling: DwellingState
   /** Bảng nhiệm vụ và nhiệm vụ đang nhận (docs/rules/quests.md). */
   quests: QuestState
   /** Bảng thám hiểm và đội đang đi (docs/rules/expeditions.md). */
@@ -1109,6 +1111,8 @@ export type BattleEvent =
   | { type: 'beastTideFailed'; shopClosedUntilDay: number }
   | { type: 'eggDropped'; eggId: string }
   | { type: 'eggHatched'; monsterId: string; destination: 'party' | 'storage' }
+  /** Quái ta bị hạ gục mắc chấn thương khi trận kết thúc (docs/rules/dwelling.md). */
+  | { type: 'ailmentGained'; monsterId: string; ailmentId: string }
   /** Thắng trận làm xong yêu cầu "cùng chiến đấu" của quái đang dưỡng dục (imprinting.md). */
   | { type: 'imprintProgress'; monsterId: string; completed: number; total: number }
   /** Nhiều hướng tiến hóa cùng đủ điều kiện; chờ người chơi chọn (chooseEvolution). */

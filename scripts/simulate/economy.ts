@@ -25,7 +25,6 @@ import {
   heldZCrystals,
   itemBuyPrice,
   megaStonesOf,
-  nextPlotPrice,
   pickZCrystalFor,
   titlePercent,
   tempShopPrice,
@@ -49,8 +48,8 @@ export const ECONOMY_POLICY = {
   tempShopMaxCount: 3,
   /** Trang bị ở cửa hàng tạm: mua từ bậc này trở lên. */
   tempShopMinRarity: 'epic',
-  /** Mua ô linh điền khi giá ≤ phần này của tiền. */
-  plotSpendFraction: 0.2,
+  /** Nâng công trình động phủ khi giá ≤ phần này của tiền (dwelling.ts). */
+  buildingSpendFraction: 0.2,
   /** Mở rộng kho quái / túi trang bị khi còn ≤ số chỗ này và giá ≤ capacitySpendFraction tiền. */
   capacityMargin: 5,
   capacitySpendFraction: 0.2,
@@ -68,7 +67,18 @@ export interface EconomyCount {
   zCrystalsHeld: number
   /** Số đồ cầm tăng bậc chí mạng đã mua và cầm (holdCritItems, equipment.md). */
   critItemsHeld: number
-  plotsBought: number
+  /** Động phủ (dwelling.ts): lần nâng công trình, quái giao việc, số đồ lấy từ kho động phủ. */
+  buildingUpgrades: number
+  workersAssigned: number
+  dwellingItems: number
+  /** Số món ăn đã bỏ vào hộp thức ăn của động phủ (dwelling.ts). */
+  feedStocked: number
+  /** Số lần chữa bệnh cho quái làm việc ở động phủ (dwelling.ts). */
+  ailmentsCured: number
+  /** Số lần thấy quái làm việc / trong đội đang bệnh khi về thị trấn (trước khi chữa; dwelling.ts). */
+  sickWorkers: number
+  /** Số lần cho quái bệnh nghỉ việc vì không có thuốc (dwelling.ts). */
+  sickRested: number
   /** Số lần kết bản mệnh thú (bindBondWhenPossible). */
   bondsBound: number
   /** Khế ước (contractTeamWhenPossible): thành công, thất bại, quái bỏ trốn. */
@@ -114,7 +124,13 @@ export const newEconomyCount = (): EconomyCount => ({
   megaStonesHeld: 0,
   zCrystalsHeld: 0,
   critItemsHeld: 0,
-  plotsBought: 0,
+  buildingUpgrades: 0,
+  workersAssigned: 0,
+  dwellingItems: 0,
+  feedStocked: 0,
+  ailmentsCured: 0,
+  sickWorkers: 0,
+  sickRested: 0,
   bondsBound: 0,
   contracts: 0,
   contractFails: 0,
@@ -415,7 +431,14 @@ export function bindBondWhenPossible(
     return STAT_NAMES.reduce((sum, stat) => sum + final[stat].toNumber(), 0)
   }
   const best = state.party
-    .filter((m) => teamIds.has(m.id) && m.affinity >= minAffinity && m.assignment === null)
+    // Bản mệnh phải đã khế ước (quái mới nở / bắt chưa khế ước; docs/rules/tamer.md).
+    .filter(
+      (m) =>
+        teamIds.has(m.id) &&
+        m.affinity >= minAffinity &&
+        m.assignment === null &&
+        m.contractRealm !== null
+    )
     .sort((a, b) => total(b) - total(a))[0]
   if (!best) return state
   count.bondsBound++
@@ -524,15 +547,6 @@ export function claimAchievementsWhenPossible(
   })[0]
   if (best === undefined || best === state.titles.active) return state
   return simAct(data, state, { type: 'setTitle', titleId: best })
-}
-
-/** Ở thị trấn: mua thêm ô linh điền khi giá ≤ plotSpendFraction tiền. */
-export function buyPlotWhenCheap(data: GameData, state: GameState, count: EconomyCount): GameState {
-  if (state.location.type !== 'town' || state.battle) return state
-  const price = nextPlotPrice(data, state)
-  if (price.gt(state.money.times(ECONOMY_POLICY.plotSpendFraction))) return state
-  count.plotsBought++
-  return simAct(data, state, { type: 'buyPlot' })
 }
 
 /**

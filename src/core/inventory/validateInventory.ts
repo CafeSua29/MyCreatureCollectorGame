@@ -79,6 +79,16 @@ function checkBooks(data: GameData, value: unknown, path: string, issues: string
   })
 }
 
+/** Kiểm tra kho chỉ có chồng vật phẩm và sách (kho động phủ, docs/rules/dwelling.md). */
+export function validateGoods(data: GameData, value: unknown, path: string): string[] {
+  const goods = asObject(value)
+  if (!goods) return [`${path} phải là object { stacks, books }`]
+  const issues: string[] = []
+  checkStacks(data, goods.stacks, `${path}.stacks`, issues)
+  checkBooks(data, goods.books, `${path}.books`, issues)
+  return issues
+}
+
 /** Kiểm tra túi đồ ở vị trí `path` của save. Trả về danh sách lỗi. */
 export function validateInventory(data: GameData, value: unknown, path = 'inventory'): string[] {
   const inventory = asObject(value)

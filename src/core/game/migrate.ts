@@ -16,9 +16,10 @@ import { ageDaysAtPercent, isDexSpecies, newGameStats } from '../registries'
 import { newBattleTamer } from '../tamer'
 import { masteryExpForLevel } from '../monster'
 import { gymElementIds } from '../world'
+import { dwellingPlotCount, newDwellingState } from '../progression'
 import { mapBigFieldsInPlace } from './bigFields'
 import { SAVE_VERSION } from './reducer'
-import type { CapacityKind, GameData, GameState, Monster } from '../model'
+import { dayOf, type CapacityKind, type GameData, type GameState, type Monster } from '../model'
 
 type SaveObject = Record<string, unknown> & { version: number }
 type RawMonster = Record<string, unknown>
@@ -1043,7 +1044,74 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
     achievements: { claimedTiers: {} },
     titles: { owned: [], active: null }
   }),
-  86: addResearch
+  86: addResearch,
+  87: addDwelling,
+  // v88 → v89: trait làm việc (docs/rules/dwelling.md): mọi quái (kể cả trứng) chưa có trait nào.
+  88: (save) => {
+    const none = (m: RawMonster): RawMonster => ({ ...m, workTraits: [] })
+    return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 89 }
+  },
+  // v89 → v90: chỉ số làm việc (docs/rules/dwelling.md): mọi quái (kể cả trứng) chưa dùng sách làm
+  // việc, hồn tinh tốc độ cấp 0.
+  89: (save) => {
+    const none = (m: RawMonster): RawMonster => ({ ...m, workPoints: {}, workSoulLevel: 0 })
+    return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 90 }
+  },
+  90: addNeeds,
+  // v91 → v92: bệnh / chấn thương (docs/rules/dwelling.md): mọi quái (kể cả trứng) khỏe.
+  91: (save) => {
+    const healthy = (m: RawMonster): RawMonster => ({ ...m, ailment: null })
+    return { ...mapEggMonsters(mapAllMonsters(save, healthy), healthy), version: 92 }
+  }
+}
+
+/**
+ * v90 → v91 (đói và tinh thần, docs/rules/dwelling.md): mọi quái (kể cả trứng) no / tinh thần đầy;
+ * hộp thức ăn trống.
+ */
+function addNeeds(save: SaveObject, data: GameData): SaveObject {
+  const { max } = data.config.dwelling.needs
+  const full = (m: RawMonster): RawMonster => ({ ...m, fullness: max, sanity: max })
+  const migrated = mapEggMonsters(mapAllMonsters(save, full), full)
+  const dwelling = asObject(migrated.dwelling)
+  return {
+    ...migrated,
+    version: 91,
+    dwelling: dwelling ? { ...dwelling, feedBox: {} } : migrated.dwelling
+  }
+}
+
+/**
+ * v87 → v88 (động phủ, docs/rules/dwelling.md): công trình như game mới; linh điền thành công trình
+ * `garden` đầu tiên, cấp đủ chứa mọi ô cũ (ô đang trồng giữ nguyên, số ngày đã lớn = hôm nay − ngày
+ * trồng); kho động phủ rỗng.
+ */
+function addDwelling(save: SaveObject, data: GameData): SaveObject {
+  const { garden, ...rest } = save
+  const oldPlots = asObject(garden)?.plots
+  const plots = (Array.isArray(oldPlots) ? oldPlots : []).map((value: unknown) => {
+    const plot = asObject(value)
+    if (!plot) return null
+    const today = typeof save.time === 'number' ? dayOf(save.time) : 0
+    const planted = typeof plot.plantedDay === 'number' ? plot.plantedDay : today
+    return { seedItemId: plot.seedItemId, growth: Math.max(0, today - planted) }
+  })
+  const { buildings, storage } = newDwellingState(data)
+  const gardenDef = Object.values(data.buildings).find((def) => def.effect.type === 'garden')
+  if (gardenDef?.effect.type === 'garden' && plots.length > dwellingPlotCount(data, buildings)) {
+    const level = Math.max(
+      buildings[gardenDef.id]?.level ?? 0,
+      Math.ceil(plots.length / gardenDef.effect.plotsPerLevel)
+    )
+    buildings[gardenDef.id] = { level, workers: [] }
+  }
+  const count = dwellingPlotCount(data, buildings)
+  const dwelling = {
+    buildings,
+    storage,
+    plots: Array.from({ length: count }, (_, i) => plots[i] ?? null)
+  }
+  return { ...rest, version: 88, dwelling }
 }
 
 /**

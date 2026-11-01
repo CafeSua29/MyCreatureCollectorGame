@@ -37,17 +37,25 @@ export function getItemCount(inventory: Inventory, itemId: string): number {
   return inventory.stacks[itemId] ?? 0
 }
 
-/** Thêm count item vào chồng theo id. */
-export function addItems(inventory: Inventory, itemId: string, count: number): Inventory {
+/** Thêm count item vào chồng theo id (túi hoặc kho có `stacks` như kho động phủ). */
+export function addItems<T extends Pick<Inventory, 'stacks'>>(
+  inventory: T,
+  itemId: string,
+  count: number
+): T {
   requireItemCount(count)
-  const total = addClamped(getItemCount(inventory, itemId), count)
+  const total = addClamped(inventory.stacks[itemId] ?? 0, count)
   return { ...inventory, stacks: { ...inventory.stacks, [itemId]: total } }
 }
 
 /** Bớt count item khỏi chồng theo id, xóa chồng khi về 0. Không đủ thì ném ActionError. */
-export function removeItems(inventory: Inventory, itemId: string, count: number): Inventory {
+export function removeItems<T extends Pick<Inventory, 'stacks'>>(
+  inventory: T,
+  itemId: string,
+  count: number
+): T {
   requireItemCount(count)
-  const current = getItemCount(inventory, itemId)
+  const current = inventory.stacks[itemId] ?? 0
   if (current < count) {
     throw new ActionError('notEnoughItem', { itemId, have: current, need: count })
   }
@@ -91,8 +99,12 @@ export function getBookCount(inventory: Inventory, key: BookKey): number {
   return inventory.books.find((stack) => isSameBook(stack, key))?.count ?? 0
 }
 
-/** Thêm count sách; gộp vào chồng cùng skill + loại nếu đã có. */
-export function addBooks(inventory: Inventory, key: BookKey, count: number): Inventory {
+/** Thêm count sách; gộp vào chồng cùng skill + loại nếu đã có (túi hoặc kho động phủ). */
+export function addBooks<T extends Pick<Inventory, 'books'>>(
+  inventory: T,
+  key: BookKey,
+  count: number
+): T {
   requireItemCount(count)
   const exists = inventory.books.some((stack) => isSameBook(stack, key))
   const books = exists

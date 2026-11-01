@@ -3,7 +3,13 @@
 
 import { newEventState } from '../events'
 import { newTamerState } from '../tamer'
-import { defaultGameOptions, newLabState, restockLab, rollExpeditionBoard } from '../progression'
+import {
+  defaultGameOptions,
+  newDwellingState,
+  newLabState,
+  restockLab,
+  rollExpeditionBoard
+} from '../progression'
 import { refillQuestBoard } from '../quests'
 import {
   newInstabilityState,
@@ -238,7 +244,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     stats: newGameStats(),
     achievements: newAchievementState(),
     titles: newTitleState(),
-    garden: { plots: Array.from({ length: data.config.alchemy.initialPlots }, () => null) },
+    dwelling: newDwellingState(data),
     quests: { board: [], active: [], nextQuestId: 1 },
     expeditions: {
       board: expeditionBoard,

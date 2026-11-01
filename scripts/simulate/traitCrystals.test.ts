@@ -24,6 +24,14 @@ describe('tuneTeamTraits', () => {
     expect(count.extracted).toBe(1)
   })
 
+  it('cửa hàng đóng (thú triều): vẫn gỡ trait xấu, giữ tinh thể trong túi thay vì bán', () => {
+    const base = town([makeMonster({ id: 'a', traits: [{ id: 'cursed', level: 1 }] })])
+    const state = { ...base, events: { ...base.events, shopClosedUntilDay: 99 } }
+    const { state: next } = tuneTeamTraits(data, state, team)
+    expect(next.party[0].traits).toEqual([])
+    expect(getCrystalCount(next.inventory, { traitId: 'cursed', level: 1 })).toBe(1)
+  })
+
   it('inject tinh thể tốt trong túi: gộp cấp hoặc ô trống, bỏ qua tinh thể loại trừ', () => {
     let inventory = addCrystals(town([]).inventory, { traitId: 'regen', level: 2 }, 1)
     inventory = addCrystals(inventory, { traitId: 'fast', level: 1 }, 1)

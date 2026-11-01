@@ -65,6 +65,8 @@ export const STAT_PERCENT_SOURCE_IDS = [
   'sacrifice',
   'rebirth',
   'implant',
+  'workTraits',
+  'ailment',
   'rules'
 ] as const
 

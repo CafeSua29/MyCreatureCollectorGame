@@ -1,0 +1,238 @@
+[
+  {
+    "id": "spiritField",
+    "workType": "farming",
+    "startLevel": 2,
+    "slotsPerLevel": 0,
+    "cost": {
+      "money": 5000,
+      "moneyGrowth": 2,
+      "items": []
+    },
+    "effect": {
+      "type": "garden",
+      "plotsPerLevel": 1
+    }
+  },
+  {
+    "id": "mineCave",
+    "workType": "mining",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 3000,
+      "moneyGrowth": 1.6,
+      "items": [
+        {
+          "itemId": "spiritStoneRock",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "produce",
+      "drops": [
+        {
+          "itemId": "spiritStoneRock",
+          "perDay": 0.08
+        },
+        {
+          "itemId": "spiritStoneGround",
+          "perDay": 0.08
+        },
+        {
+          "itemId": "spiritStoneSteel",
+          "perDay": 0.08
+        },
+        {
+          "itemId": "essenceMineral",
+          "perDay": 0.03
+        },
+        {
+          "itemId": "enhanceStone",
+          "perDay": 0.1
+        },
+        {
+          "itemId": "refiningStone",
+          "perDay": 0.01
+        }
+      ]
+    }
+  },
+  {
+    "id": "herbGarden",
+    "workType": "farming",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 3000,
+      "moneyGrowth": 1.6,
+      "items": [
+        {
+          "itemId": "seedLingzhi",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "produce",
+      "drops": [
+        {
+          "itemId": "lingzhi",
+          "perDay": 0.06
+        },
+        {
+          "itemId": "ginseng",
+          "perDay": 0.06
+        },
+        {
+          "itemId": "snowLotus",
+          "perDay": 0.04
+        },
+        {
+          "itemId": "fleeceflower",
+          "perDay": 0.04
+        },
+        {
+          "itemId": "seedLingzhi",
+          "perDay": 0.01
+        },
+        {
+          "itemId": "seedGinseng",
+          "perDay": 0.01
+        },
+        {
+          "itemId": "seedSnowLotus",
+          "perDay": 0.01
+        },
+        {
+          "itemId": "seedFleeceflower",
+          "perDay": 0.01
+        }
+      ]
+    }
+  },
+  {
+    "id": "spiritSpring",
+    "workType": "watering",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 4000,
+      "moneyGrowth": 1.8,
+      "items": [
+        {
+          "itemId": "spiritStoneWater",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "cropGrowth",
+      "percentPerPower": 5
+    }
+  },
+  {
+    "id": "kilnRoom",
+    "workType": "kindling",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 6000,
+      "moneyGrowth": 1.8,
+      "items": [
+        {
+          "itemId": "spiritStoneFire",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "craftBonus",
+      "percentPerPower": 0.5,
+      "stations": ["alchemy", "smithing", "cooking"]
+    }
+  },
+  {
+    "id": "beastPen",
+    "workType": "caring",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 5000,
+      "moneyGrowth": 1.8,
+      "items": [
+        {
+          "itemId": "essenceBeast",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "nurture",
+      "affinityPerPower": 0.1,
+      "eggStepsPerPower": 0.1
+    }
+  },
+  {
+    "id": "scriptorium",
+    "workType": "research",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 8000,
+      "moneyGrowth": 2,
+      "items": [
+        {
+          "itemId": "essenceHumanoid",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "research",
+      "booksPerPower": 0.005,
+      "reusableChance": 5
+    }
+  },
+  {
+    "id": "spiritVein",
+    "workType": "generating",
+    "startLevel": 0,
+    "slotsPerLevel": 1,
+    "cost": {
+      "money": 10000,
+      "moneyGrowth": 2,
+      "items": [
+        {
+          "itemId": "spiritStoneElectric",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "outputBoost",
+      "percentPerPower": 2
+    }
+  },
+  {
+    "id": "hotSpring",
+    "workType": "watering",
+    "startLevel": 0,
+    "slotsPerLevel": 0,
+    "cost": {
+      "money": 4000,
+      "moneyGrowth": 1.8,
+      "items": [
+        {
+          "itemId": "spiritStoneWater",
+          "count": 1
+        }
+      ]
+    },
+    "effect": {
+      "type": "rest",
+      "sanityPerLevel": 10
+    }
+  }
+]

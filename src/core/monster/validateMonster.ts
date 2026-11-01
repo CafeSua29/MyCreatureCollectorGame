@@ -6,6 +6,8 @@ import { checkShinyConsistency } from './shiny'
 import { isGenderlessSpecies } from './gender'
 import { validateStatuses } from './status'
 import {
+  ASSIGNMENT_KINDS,
+  WORK_TYPES,
   ABILITY_SLOTS,
   GENDERS,
   STAT_NAMES,
@@ -36,6 +38,56 @@ import { validateTalentRanks } from './talents'
 import { validateSpiritVirus } from './spiritVirus'
 import { validatePolarity } from './polarity'
 import { validateBloodlines } from './bloodline'
+import { maxWorkTraits } from '../registries'
+
+/** Bệnh (docs/rules/dwelling.md): null hoặc { id bệnh tồn tại, restDays nguyên ≥ 0, < idleCureDays }. */
+function checkAilment(data: GameData, value: unknown, at: string): string[] {
+  if (value === null) return []
+  const ailment = asObject(value)
+  if (!ailment) return [`${at} phải là null hoặc { id, restDays }`]
+  const issues: string[] = []
+  if (typeof ailment.id !== 'string' || !Object.hasOwn(data.ailments, ailment.id)) {
+    issues.push(`${at}.id: bệnh không tồn tại "${String(ailment.id)}"`)
+  }
+  issues.push(...checkInteger(ailment.restDays, `${at}.restDays`, 0))
+  const { idleCureDays } = data.config.dwelling.needs
+  if (typeof ailment.restDays === 'number' && ailment.restDays >= idleCureDays) {
+    issues.push(`${at}.restDays phải nhỏ hơn ${idleCureDays}`)
+  }
+  return issues
+}
+
+/** Điểm sách làm việc (docs/rules/dwelling.md): object loại việc → số nguyên ≥ 0. */
+function checkWorkPoints(value: unknown, at: string): string[] {
+  const points = asObject(value)
+  if (!points) return [`${at} phải là object { loại việc: điểm }`]
+  return Object.entries(points).flatMap(([type, count]) =>
+    (WORK_TYPES as readonly string[]).includes(type)
+      ? checkInteger(count, `${at}.${type}`, 0)
+      : [`${at}: loại việc lạ "${type}"`]
+  )
+}
+
+/** Trait làm việc (docs/rules/dwelling.md): id tồn tại, không lặp, không quá số tối đa, không trùng nhóm. */
+function checkWorkTraits(data: GameData, monster: Monster, at: string, issues: string[]): void {
+  const traits: unknown = monster.workTraits
+  if (!Array.isArray(traits)) {
+    issues.push(`${at} phải là danh sách id trait làm việc`)
+    return
+  }
+  for (const id of traits) {
+    if (typeof id !== 'string' || !Object.hasOwn(data.workTraits, id)) {
+      issues.push(`${at}: trait làm việc không tồn tại "${String(id)}"`)
+    }
+  }
+  if (new Set(traits).size !== traits.length) issues.push(`${at} bị lặp`)
+  if (traits.length > maxWorkTraits(data)) issues.push(`${at} tối đa ${maxWorkTraits(data)} trait`)
+  const groups = traits.flatMap((id: unknown) => {
+    const group = typeof id === 'string' ? data.workTraits[id]?.group : undefined
+    return group === undefined ? [] : [group]
+  })
+  if (new Set(groups).size !== groups.length) issues.push(`${at}: hai trait cùng nhóm`)
+}
 
 /** Object chỉ số → số nguyên ≥ 0 (cấp hồn tinh, điểm nỗ lực). */
 function checkCountStats(value: unknown, field: string): string[] {
@@ -301,15 +353,26 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   if (!(TACTICS as readonly unknown[]).includes(monster.tactic)) {
     issues.push(`${at('tactic')} phải là ${TACTICS.join(' / ')}`)
   }
-  // Việc của quái (docs/rules/expeditions.md): null hoặc thám hiểm (động phủ chưa làm).
+  // Việc của quái (docs/rules/expeditions.md, dwelling.md): null hoặc { kind, id }; khớp đội thám
+  // hiểm / công trình kiểm ở validateExpeditionState / validateDwellingState.
   if (monster.assignment !== null) {
     const assignment = asObject(monster.assignment)
-    if (assignment?.kind === 'dwelling') {
-      issues.push(`${at('assignment')}: việc "dwelling" chưa hỗ trợ (chờ cave-dwelling.md)`)
-    } else if (assignment?.kind !== 'expedition' || typeof assignment.id !== 'string') {
-      issues.push(`${at('assignment')} phải là null hoặc { kind: "expedition", id }`)
+    if (
+      !(ASSIGNMENT_KINDS as readonly unknown[]).includes(assignment?.kind) ||
+      typeof assignment?.id !== 'string'
+    ) {
+      issues.push(
+        `${at('assignment')} phải là null hoặc { kind: ${ASSIGNMENT_KINDS.join(' / ')}, id }`
+      )
     }
   }
+  checkWorkTraits(data, monster, at('workTraits'), issues)
+  issues.push(...checkWorkPoints(monster.workPoints, at('workPoints')))
+  issues.push(...checkInteger(monster.workSoulLevel, at('workSoulLevel'), 0))
+  const needMax = data.config.dwelling.needs.max
+  issues.push(...checkNumber(monster.fullness, at('fullness'), 0, needMax))
+  issues.push(...checkNumber(monster.sanity, at('sanity'), 0, needMax))
+  issues.push(...checkAilment(data, monster.ailment, at('ailment')))
   // Hóa hình (docs/rules/human-form.md): nhân hình chỉ khi race cho hóa hình.
   if (!(HUMAN_FORM_STATES as readonly unknown[]).includes(monster.humanForm)) {
     issues.push(`${at('humanForm')} phải là ${HUMAN_FORM_STATES.join(' / ')}`)

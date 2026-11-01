@@ -286,6 +286,13 @@ export interface ActionErrorParams {
   expeditionSlotsFull: { slots: number }
   expeditionRequirementUnmet: { expeditionId: string; requirement: string }
   expeditionNotFound: { expeditionActiveId: string }
+  /** Động phủ (docs/rules/dwelling.md). */
+  unknownBuilding: { buildingId: string }
+  buildingMaxLevel: { buildingId: string; maxLevel: number }
+  buildingNotBuilt: { buildingId: string }
+  buildingSlotsFull: { buildingId: string; slots: number }
+  monsterNotWorking: { monsterId: string }
+  notFood: { itemId: string }
   /** Ngự thú sư NPC (docs/rules/trainers.md): trận NPC không bắt / không chạy. */
   trainerBattleRestricted: { command: 'ball' | 'flee' }
   noGym: { floor: number }
@@ -615,12 +622,19 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   tooManyQuests: ({ maxActive }) => `Chỉ nhận tối đa ${maxActive} nhiệm vụ cùng lúc`,
   questNotComplete: ({ questId, progress, target }) =>
     `Nhiệm vụ "${questId}" chưa xong (${progress}/${target})`,
-  monsterBusy: ({ monsterId }) => `Quái "${monsterId}" đang làm việc (thám hiểm)`,
+  monsterBusy: ({ monsterId }) => `Quái "${monsterId}" đang làm việc (thám hiểm / động phủ)`,
   expeditionNotOffered: ({ expeditionId }) => `Bảng thám hiểm không có "${expeditionId}"`,
   expeditionSlotsFull: ({ slots }) => `Đã có đủ ${slots} đội thám hiểm`,
   expeditionRequirementUnmet: ({ expeditionId, requirement }) =>
     `Đội không đủ yêu cầu "${requirement}" của "${expeditionId}"`,
   expeditionNotFound: ({ expeditionActiveId }) => `Không có đội thám hiểm "${expeditionActiveId}"`,
+  unknownBuilding: ({ buildingId }) => `Không có công trình "${buildingId}"`,
+  buildingMaxLevel: ({ buildingId, maxLevel }) =>
+    `Công trình "${buildingId}" đã ở cấp tối đa ${maxLevel}`,
+  buildingNotBuilt: ({ buildingId }) => `Chưa xây công trình "${buildingId}"`,
+  buildingSlotsFull: ({ buildingId, slots }) => `Công trình "${buildingId}" đã đủ ${slots} quái`,
+  monsterNotWorking: ({ monsterId }) => `Quái "${monsterId}" không làm việc ở động phủ`,
+  notFood: ({ itemId }) => `"${itemId}" không phải món ăn của hộp thức ăn`,
   trainerBattleRestricted: ({ command }) => `Không được dùng lệnh "${command}" khi đấu ngự thú sư`,
   noGym: ({ floor }) => `Tầng ${floor} không có đạo quán`,
   tournamentNotOpen: ({ nextDay }) => `Giải đấu kế tiếp mở vào ngày ${nextDay}`,

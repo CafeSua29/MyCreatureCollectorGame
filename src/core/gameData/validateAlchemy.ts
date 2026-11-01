@@ -24,9 +24,6 @@ const CONFIG_FIELDS = [
   'expBase',
   'expPower',
   'levelBonusPercent',
-  'initialPlots',
-  'plotBasePrice',
-  'plotPriceGrowth',
   'raceEssenceItemIds',
   'elementStoneItemIds',
   'essenceChance',
@@ -105,9 +102,6 @@ function checkConfig(data: GameData, issues: string[]): void {
   issues.push(...checkNumber(config.expBase, at('expBase'), Number.MIN_VALUE))
   issues.push(...checkNumber(config.expPower, at('expPower'), Number.MIN_VALUE))
   issues.push(...checkNumber(config.levelBonusPercent, at('levelBonusPercent'), 0))
-  issues.push(...checkInteger(config.initialPlots, at('initialPlots'), 0))
-  issues.push(...checkNumber(config.plotBasePrice, at('plotBasePrice'), 0))
-  issues.push(...checkNumber(config.plotPriceGrowth, at('plotPriceGrowth'), 1))
   issues.push(...checkNumber(config.essenceChance, at('essenceChance'), 0, 100))
   issues.push(...checkNumber(config.stoneChance, at('stoneChance'), 0, 100))
   checkMaterialMap(

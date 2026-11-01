@@ -32,6 +32,9 @@ import partnerSkills from './partnerSkills.json'
 import recipes from './recipes.json'
 import quests from './quests.json'
 import expeditions from './expeditions.json'
+import buildings from './buildings.json'
+import workTraits from './workTraits.json'
+import ailments from './ailments.json'
 import trainers from './trainers.json'
 import trialRules from './trialRules.json'
 import events from './events.json'
@@ -107,6 +110,9 @@ export const rawGameData = {
   recipes,
   quests,
   expeditions,
+  buildings,
+  workTraits,
+  ailments,
   trainers,
   trialRules,
   events,

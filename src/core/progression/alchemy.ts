@@ -1,15 +1,15 @@
-// Luyện đan, luyện khí, nấu ăn và linh điền (docs/rules/alchemy.md, cooking.md): cấp của mỗi nơi luyện theo tổng exp, tỉ lệ
-// thành công, luyện nhiều lần (mỗi lần tung RNG riêng, thất bại mất nguyên liệu và tiền), học đan
-// phương, trồng / thu hoạch linh điền theo ngày, mua thêm ô. Việc theo ngày: báo ô vừa chín
-// (cropRipeTask).
+// Luyện đan, luyện khí, nấu ăn (docs/rules/alchemy.md, cooking.md): cấp của mỗi nơi luyện theo tổng
+// exp, tỉ lệ thành công, luyện nhiều lần (mỗi lần tung RNG riêng, thất bại mất nguyên liệu và tiền),
+// học đan phương. Linh điền ở garden.ts (công trình động phủ, docs/rules/dwelling.md).
 
 import { addItems, recipeInputCount, removeItems, removeRecipeInput } from '../inventory'
 import { partnerAmount } from '../tamer'
 import { bumpStat, titlePercent } from '../registries'
+import { dwellingCraftBonus } from './dwelling'
+import { requireTown } from './town'
 import {
   ActionError,
   malformedAction,
-  nextInt,
   rollPercent,
   spendMoney,
   toBig,
@@ -19,14 +19,11 @@ import {
   type LevelCurve
 } from '../shared'
 import {
-  dayOf,
   type CraftSkillState,
   type CraftStation,
-  type DayEvent,
   type GameData,
   type GameState,
   type RecipeDef,
-  type SeedItem,
   type StatKey
 } from '../model'
 
@@ -55,7 +52,8 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     label: 'luyện đan',
     bonusPercent: (data, state) =>
       partnerAmount(data, state.party, 'alchemySuccessPercent') +
-      titlePercent(data, state.titles, 'alchemySuccessPercent'),
+      titlePercent(data, state.titles, 'alchemySuccessPercent') +
+      dwellingCraftBonus(data, state, 'alchemy'),
     craftedStat: 'pillsCrafted'
   },
   smithing: {
@@ -65,7 +63,7 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     withSkill: (state, skill) => ({ ...state, smithing: skill }),
     levelError: 'smithingLevelTooLow',
     label: 'luyện khí',
-    bonusPercent: () => 0,
+    bonusPercent: (data, state) => dwellingCraftBonus(data, state, 'smithing'),
     craftedStat: 'itemsForged'
   },
   // Linh thực ở Đầu bếp (docs/rules/cooking.md); giữ món ăn đang có tác dụng khi cộng exp.
@@ -76,7 +74,7 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     withSkill: (state, skill) => ({ ...state, cooking: { ...state.cooking, ...skill } }),
     levelError: 'cookingLevelTooLow',
     label: 'nấu ăn',
-    bonusPercent: () => 0,
+    bonusPercent: (data, state) => dwellingCraftBonus(data, state, 'cooking'),
     craftedStat: 'dishesCooked'
   }
 }
@@ -135,8 +133,8 @@ export function requireCraftLevel(state: GameState, station: CraftStation, need:
 
 /**
  * % thành công của công thức: gốc + levelBonusPercent của nơi luyện mỗi cấp trên cấp yêu cầu + cộng
- * thêm của nơi luyện (luyện đan: kỹ năng đồng hành `alchemySuccessPercent`, partner-skills.md), kẹp
- * 0–100.
+ * thêm của nơi luyện (luyện đan: kỹ năng đồng hành `alchemySuccessPercent`, partner-skills.md; công
+ * trình `craftBonus` của động phủ, dwelling.md), kẹp 0–100.
  */
 export function craftChance(data: GameData, state: GameState, recipe: RecipeDef): number {
   const station = recipeStation(recipe)
@@ -155,12 +153,6 @@ export function requireUsableRecipe(data: GameData, state: GameState, recipeId: 
   }
   requireCraftLevel(state, recipeStation(recipe), recipe.minLevel)
   return recipe
-}
-
-/** Việc ở NPC luyện đan / Thợ rèn / Đầu bếp (luyện, nấu, hồn phách): ở thị trấn, ngoài trận. */
-export const requireTown = (state: GameState): void => {
-  if (state.battle) throw new ActionError('inBattle')
-  if (state.location.type !== 'town') throw new ActionError('notInTown')
 }
 
 /**
@@ -219,89 +211,6 @@ export function learnRecipe(data: GameData, state: GameState, itemId: string): G
     inventory: removeItems(state.inventory, itemId, 1),
     alchemy: { ...state.alchemy, knownRecipes: [...state.alchemy.knownRecipes, item.recipeId] }
   }
-}
-
-function requirePlot(state: GameState, plotIndex: number): void {
-  if (!Number.isSafeInteger(plotIndex) || plotIndex < 0 || plotIndex >= state.garden.plots.length) {
-    throw malformedAction(`ô linh điền không hợp lệ: ${String(plotIndex)}`)
-  }
-}
-
-/** Trồng hạt giống vào ô trống (ở thị trấn). */
-export function plantSeed(
-  data: GameData,
-  state: GameState,
-  { plotIndex, itemId }: { plotIndex: number; itemId: string }
-): GameState {
-  requireTown(state)
-  requirePlot(state, plotIndex)
-  const item = data.items[itemId]
-  if (!item) throw new ActionError('unknownItem', { itemId })
-  if (item.category !== 'seed') throw new ActionError('notSeed', { itemId })
-  if (state.garden.plots[plotIndex] !== null) throw new ActionError('plotOccupied', { plotIndex })
-  const plots = [...state.garden.plots]
-  plots[plotIndex] = { seedItemId: itemId, plantedDay: dayOf(state.time) }
-  return { ...state, inventory: removeItems(state.inventory, itemId, 1), garden: { plots } }
-}
-
-/** Số ngày còn lại tới khi ô chín (0 = chín). */
-export function cropDaysLeft(data: GameData, state: GameState, plotIndex: number): number {
-  const plot = state.garden.plots[plotIndex]
-  if (!plot) return 0
-  const seed = data.items[plot.seedItemId] as SeedItem
-  return Math.max(0, plot.plantedDay + seed.growDays - dayOf(state.time))
-}
-
-/** Thu hoạch ô đã chín (ở thị trấn): mỗi món số lượng random đều trong [min, max]. */
-export function harvest(data: GameData, state: GameState, plotIndex: number): GameState {
-  requireTown(state)
-  requirePlot(state, plotIndex)
-  const plot = state.garden.plots[plotIndex]
-  if (!plot) throw new ActionError('plotEmpty', { plotIndex })
-  const daysLeft = cropDaysLeft(data, state, plotIndex)
-  if (daysLeft > 0) throw new ActionError('cropNotReady', { plotIndex, daysLeft })
-  // Ép kiểu: kiểm tra save / plantSeed đảm bảo ô chỉ trồng hạt giống.
-  const seed = data.items[plot.seedItemId] as SeedItem
-  let { rng, inventory } = state
-  for (const entry of seed.harvest) {
-    let count: number
-    ;[count, rng] = nextInt(rng, entry.min, entry.max)
-    if (count > 0) inventory = addItems(inventory, entry.itemId, count)
-  }
-  const plots = [...state.garden.plots]
-  plots[plotIndex] = null
-  return { ...state, rng, inventory, garden: { plots } }
-}
-
-/** Giá mua ô linh điền kế tiếp: plotBasePrice × plotPriceGrowth ^ (số ô đã mua thêm). */
-export function nextPlotPrice(data: GameData, state: GameState): Decimal {
-  const { initialPlots, plotBasePrice, plotPriceGrowth } = data.config.alchemy
-  const bought = Math.max(0, state.garden.plots.length - initialPlots)
-  return toBig(plotPriceGrowth).pow(bought).times(plotBasePrice).floor()
-}
-
-/** Mua thêm một ô linh điền (ở thị trấn; không trần, giá tăng dần). */
-export function buyPlot(data: GameData, state: GameState): GameState {
-  requireTown(state)
-  const paid = spendMoney(state, nextPlotPrice(data, state))
-  return { ...paid, garden: { plots: [...state.garden.plots, null] } }
-}
-
-/** Việc theo ngày: báo ô chín đúng ngày `day` (DAILY_TASKS). */
-export function cropRipeTask(
-  data: GameData,
-  state: GameState,
-  events: DayEvent[],
-  day: number
-): GameState {
-  state.garden.plots.forEach((plot, plotIndex) => {
-    if (!plot) return
-    const seed = data.items[plot.seedItemId] as SeedItem
-    if (plot.plantedDay + seed.growDays === day) {
-      events.push({ type: 'cropRipe', plotIndex, seedItemId: plot.seedItemId })
-    }
-  })
-  return state
 }
 
 /** Số lần luyện tối đa với nguyên liệu và tiền đang có (UI). */

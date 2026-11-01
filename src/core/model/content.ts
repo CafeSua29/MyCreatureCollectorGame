@@ -2,6 +2,7 @@
 // Không có chữ hiển thị: tên tra theo id trong `text` (model/text.ts, mục "Đa ngôn ngữ").
 
 import type { ExpeditionDef } from './expeditions'
+import type { AilmentDef, BuildingDef, WorkStats, WorkTraitDef } from './dwelling'
 import type { TrainerClass } from './trainers'
 import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
@@ -442,6 +443,10 @@ export interface NormalSpecies {
   activeTime?: ActiveTime
   /** Ghi đè kỹ năng đồng hành của race (docs/rules/partner-skills.md). */
   partnerSkillId?: string
+  /** Ghi đè chỉ số làm việc suy từ hệ / race (docs/rules/dwelling.md). */
+  workStats?: WorkStats
+  /** Tốc độ làm việc gốc (%); không ghi = config.dwelling.baseWorkSpeed. */
+  workSpeed?: number
   /**
    * Skill học được qua sách kỹ năng ngoài learnset (TM / TR / Move Tutor của game gốc;
    * docs/rules/skill-books.md); cũng tính vào độ hiếm của sách.
@@ -1722,6 +1727,9 @@ export interface RawGameData {
   recipes: RecipeDef[]
   quests: QuestTemplate[]
   expeditions: ExpeditionDef[]
+  buildings: BuildingDef[]
+  workTraits: WorkTraitDef[]
+  ailments: AilmentDef[]
   trainers: TrainerClass[]
   trialRules: TrialRuleDef[]
   events: EventDef[]
@@ -1783,6 +1791,12 @@ export interface GameData {
   quests: Record<string, QuestTemplate>
   /** Mẫu thám hiểm (docs/rules/expeditions.md). */
   expeditions: Record<string, ExpeditionDef>
+  /** Công trình động phủ (docs/rules/dwelling.md). */
+  buildings: Record<string, BuildingDef>
+  /** Trait làm việc (docs/rules/dwelling.md). */
+  workTraits: Record<string, WorkTraitDef>
+  /** Bệnh / chấn thương của quái làm việc (docs/rules/dwelling.md). */
+  ailments: Record<string, AilmentDef>
   /** Lớp ngự thú sư NPC (docs/rules/trainers.md). */
   trainers: Record<string, TrainerClass>
   /** Luật bí cảnh / tháp thí luyện (docs/rules/trials.md). */

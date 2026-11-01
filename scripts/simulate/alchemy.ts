@@ -43,13 +43,13 @@ function buySeedIfNone(data: GameData, state: GameState): GameState {
 /** Ô trống / chín: thu hoạch rồi trồng lại bằng hạt giống có trong túi. */
 function tendGarden(data: GameData, state: GameState): { state: GameState; harvests: number } {
   let harvests = 0
-  state.garden.plots.forEach((plot, plotIndex) => {
+  state.dwelling.plots.forEach((plot, plotIndex) => {
     if (plot && cropDaysLeft(data, state, plotIndex) === 0) {
       state = simAct(data, state, { type: 'harvest', plotIndex })
       harvests++
     }
   })
-  state.garden.plots.forEach((plot, plotIndex) => {
+  state.dwelling.plots.forEach((plot, plotIndex) => {
     if (plot) return
     state = buySeedIfNone(data, state)
     const seedId = Object.keys(state.inventory.stacks).find(

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import {
+  rollAmount,
   createRng,
   nextBigInt,
   nextFloat,
@@ -155,5 +156,25 @@ describe('nextBigInt', () => {
     expect(() => nextBigInt(createRng(1), toBig(5), toBig(4))).toThrow(RangeError)
     expect(() => nextBigInt(createRng(1), toBig(1.5), toBig(4))).toThrow(RangeError)
     expect(() => nextBigInt(createRng(1), toBig('1e300'), toBig(Infinity))).toThrow(RangeError)
+  })
+})
+
+describe('rollAmount', () => {
+  it('số nguyên / 0 / âm không tốn RNG; phần lẻ tung RNG, kỳ vọng giữ nguyên; kẹp số an toàn', () => {
+    const rng = createRng(7)
+    expect(rollAmount(rng, 3)).toEqual([3, rng])
+    expect(rollAmount(rng, 0)).toEqual([0, rng])
+    expect(rollAmount(rng, -2)).toEqual([0, rng])
+    expect(rollAmount(rng, Number.NaN)).toEqual([0, rng])
+    expect(rollAmount(rng, 1e300)).toEqual([Number.MAX_SAFE_INTEGER, rng])
+    let state = rng
+    let total = 0
+    for (let i = 0; i < 2000; i++) {
+      let value: number
+      ;[value, state] = rollAmount(state, 2.25)
+      expect([2, 3]).toContain(value)
+      total += value
+    }
+    expect(total / 2000).toBeCloseTo(2.25, 1)
   })
 })

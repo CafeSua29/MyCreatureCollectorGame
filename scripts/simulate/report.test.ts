@@ -224,7 +224,13 @@ describe('các bảng kết quả', () => {
         megaStonesHeld: 0,
         zCrystalsHeld: 0,
         critItemsHeld: 0,
-        plotsBought: 1,
+        buildingUpgrades: 1,
+        workersAssigned: 0,
+        dwellingItems: 0,
+        feedStocked: 0,
+        ailmentsCured: 0,
+        sickWorkers: 0,
+        sickRested: 0,
         bondsBound: 0,
         contracts: 0,
         contractFails: 0,
@@ -361,7 +367,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
+        'sold:4 affinity:2 buildings:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
         ''
       ],
       [
@@ -435,7 +441,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 plots:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
+        'sold:4 affinity:2 buildings:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
         'mở nhờ boss ngẫu nhiên'
       ],
       ['t', '3', ...blanks, 'kẹt sau 9 trận'],

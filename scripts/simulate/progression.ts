@@ -7,6 +7,7 @@ import {
   BIG_ZERO,
   GROWTH_RATES,
   createGameState,
+  newDwellingState,
   createRng,
   dayOf,
   floorBossLevel,
@@ -59,6 +60,7 @@ import { runQuests } from './quests'
 import { runTrainerChallenges } from './trainers'
 import { runTrials } from './trials'
 import { sendExpeditions } from './expeditions'
+import { runDwelling } from './dwelling'
 import { buySkillBooks, teachSkillBooks } from './books'
 import { breakthroughWhilePossible, readyToBreakthrough } from './tamer'
 import { awakenWhilePossible, readyToAwaken, takeHumanFormWhenPossible } from './awakening'
@@ -80,7 +82,6 @@ import {
   claimAchievementsWhenPossible,
   claimResearchRewardsWhenPossible,
   claimDexRewardsWhenPossible,
-  buyPlotWhenCheap,
   expandCapacityWhenFull,
   feedAffinityItems,
   holdMegaStones,
@@ -381,25 +382,34 @@ function snapshotOf(
   return { teamId, floor, party, tamerRealm: state.tamer.realm }
 }
 
+const withNewDwelling = (data: GameData, state: GameState): GameState => ({
+  ...state,
+  dwelling: newDwellingState(data)
+})
+
 export function runProgression(data: GameData, options: ProgressionOptions): ProgressionResult {
   const { team, seed } = options
   const party = buildTeam(data, team, 1, deriveSeed(seed, 'team', team.id, 1))
   const teamIds = new Set(party.map((m) => m.id))
   beginEventTally()
   const run: Run = {
-    // Tầng 1 tung map như game mới; tầng sau do reducer tung khi mở tầng.
-    state: createGameState({
-      // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
-      lifespanEnabled: true,
-      seed: deriveSeed(seed, 'progression', team.id),
-      party,
-      location: { type: 'floor', floor: 1 },
-      floorBiomeIds: floorMapsFor(data, {
-        floor: 1,
-        biomeId: null,
-        seed: deriveSeed(seed, 'map', team.id)
+    // Tầng 1 tung map như game mới; tầng sau do reducer tung khi mở tầng. Động phủ như game mới
+    // (createGameState không biết công trình nào; dwelling.md).
+    state: withNewDwelling(
+      data,
+      createGameState({
+        // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
+        lifespanEnabled: true,
+        seed: deriveSeed(seed, 'progression', team.id),
+        party,
+        location: { type: 'floor', floor: 1 },
+        floorBiomeIds: floorMapsFor(data, {
+          floor: 1,
+          biomeId: null,
+          seed: deriveSeed(seed, 'map', team.id)
+        })
       })
-    }),
+    ),
     policy: initialPolicyState(options.bossPolicy),
     farm: farmAt(1),
     counter: newCounter(),
@@ -721,7 +731,8 @@ function afterBattle(
     run.counter.harvests += crafted.harvests
     // Hồn phách của quái chết hẳn (tọa hóa, độ kiếp): luyện hồn khí / ấp trứng (lifespan.ts).
     run.state = handleSouls(data, run.state, run.lifespan)
-    run.state = buyPlotWhenCheap(data, run.state, run.economy)
+    // Động phủ sau thám hiểm / luyện đan: thám hiểm chọn quái trước, tiền luyện đan đã trừ.
+    run.state = runDwelling(data, run.state, run.economy)
     run.state = expandCapacityWhenFull(data, run.state, run.economy)
     // Khế ước trước bản mệnh (bản mệnh phải đã khế ước).
     run.state = contractTeamWhenPossible(data, run.state, teamIds, run.economy)

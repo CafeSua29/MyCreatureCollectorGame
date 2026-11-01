@@ -12,7 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [cave-dwelling.md](docs/roadmap/cave-dwelling.md): Động phủ: công trình sản xuất (trồng trọt, khai khoáng...) kiểu Palworld, quái trong kho làm việc theo thiên phú (gộp linh điền)
 - [tamer-talents.md](docs/roadmap/tamer-talents.md): Cây thiên phú ngự thú sư
 - [sects.md](docs/roadmap/sects.md): Tông môn (cống hiến, chức vị, Tàng Bảo Các, tông chiến)
 - [npc-trades.md](docs/roadmap/npc-trades.md): Trao đổi với NPC
@@ -76,7 +75,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       3. Thiên tài địa bảo. **Đã xong** (luật ở `docs/rules/treasures.md`; nguồn luyện đan / linh điền chờ bước 4, chợ đen đã có ở bước 11).
       4. Luyện đan và linh điền. **Đã xong** (luật ở `docs/rules/alchemy.md`; chợ đen bán đan phương đã có ở bước 11; dược liệu theo biome dùng chung `wildDrops`).
       5. Bảng nhiệm vụ. **Đã xong** (luật ở `docs/rules/quests.md`; nhiệm vụ tông môn chờ `sects.md`).
-      6. Phái quái đi thám hiểm. **Đã xong** (luật ở `docs/rules/expeditions.md`; thưởng trứng hiếm đã thêm 2026-10-25, Bí Cảnh Lệnh đã thêm ở bước 9, động phủ dùng lại `assignment` ở `cave-dwelling.md`).
+      6. Phái quái đi thám hiểm. **Đã xong** (luật ở `docs/rules/expeditions.md`; thưởng trứng hiếm đã thêm 2026-10-25, Bí Cảnh Lệnh đã thêm ở bước 9, động phủ dùng lại `assignment` ở `dwelling.md`).
       7. Tự động đánh. **Đã xong** phần core (luật ở `docs/rules/auto-battle.md`; vòng lặp ở UI bước 7; AI chọn quái thay / đổi quái đã làm ở bước 8).
       8. Đấu với ngự thú sư NPC. **Đã xong** (luật ở `docs/rules/trainers.md`; Kẻ lạ thách đấu đã có ở bước 11, hiển thị tư chất NPC chờ UI).
       9. Bí cảnh và tháp thí luyện. **Đã xong** (luật ở `docs/rules/trials.md`; Bí Cảnh Lệnh ở chợ đen đã có ở bước 11, Hồn tinh trong rương chờ bước 10, luật `levelCap` hoãn).
@@ -122,7 +121,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       8d. Nghiên cứu loài. **Đã xong** (2026-11-01; luật ở `docs/rules/species-research.md`; mẫu nhiệm vụ trong `balance.json` thay file riêng, cấp suy ra từ bộ đếm không lưu, không log lên cấp, Bùa Lấp Lánh / danh hiệu qua thành tựu `researchCompleted`, thưởng cấp (Kẹo Hiếm) nhận bằng action, thêm lợi ích mở điểm yếu ở cấp 6).
    9. Bảng nhiệm vụ. **Đã xong** ở bước 5l+.5 (luật ở `docs/rules/quests.md`).
       9b. Phái quái đi thám hiểm. **Đã xong** ở bước 5l+.6 (luật ở `docs/rules/expeditions.md`).
-      9c. Động phủ (`cave-dwelling.md`; gộp linh điền thành công trình; chủ project bỏ bế quan).
+      9c. Động phủ. **Đã xong** (2026-11-01; luật ở `docs/rules/dwelling.md`; hiệu ứng công trình là union theo `type` thay `output` chung, Tàng thư các ra sách kỹ năng theo map thay Bí kíp, vận chuyển là hệ số dùng ở mọi công trình, bậc đầu chỉ tốn tiền, Linh trì đổi tên Linh tuyền vì trùng chỗ nuôi khí linh).
       9d. Cây thiên phú ngự thú sư (`tamer-talents.md`; điểm từ nhiệm vụ).
       9e. Tông môn (`sects.md`; cần nhiệm vụ và đội NPC).
       9f. Trao đổi với NPC (`npc-trades.md`).

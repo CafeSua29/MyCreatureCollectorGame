@@ -34,6 +34,7 @@ import {
   rollChildBloodlines,
   childPolarity,
   rollChildNature,
+  rollChildWorkTraits,
   rollGender,
   skillCapacity,
   startHistory,
@@ -299,7 +300,16 @@ export function makeOffspring(
     implantBonusStats: uniformBigStats(0),
     implantEffects: {},
     implantAttempts: 0,
-    implantFails: 0
+    implantFails: 0,
+    // Tung sau cùng (rollChildWorkTraits) theo trait của bố mẹ.
+    workTraits: [],
+    // Chưa dùng sách làm việc / hồn tinh tốc độ (docs/rules/dwelling.md).
+    workPoints: {},
+    workSoulLevel: 0,
+    // No và tinh thần đầy (docs/rules/dwelling.md mục "Đói và tinh thần").
+    fullness: data.config.dwelling.needs.max,
+    sanity: data.config.dwelling.needs.max,
+    ailment: null
   }
 
   child = withEggSkills(data, child, inheritedEggSkills(species, father, mother))
@@ -338,7 +348,12 @@ export function makeOffspring(
   ;[bloodlines, rng] = rollChildBloodlines(data, rng, { speciesId: species.id, father, mother })
   let polarity: Monster['polarity']
   ;[polarity, rng] = childPolarity(data, rng, [father, mother])
-  return [{ ...child, teraElementId, natureId, abilitySlot, bloodlines, polarity }, rng]
+  let workTraits: string[]
+  ;[workTraits, rng] = rollChildWorkTraits(data, rng, {
+    parents: [father, mother],
+    shinyStacks: child.shinyStacks
+  })
+  return [{ ...child, teraElementId, natureId, abilitySlot, bloodlines, polarity, workTraits }, rng]
 }
 
 /** NPC breeding ở thị trấn: trả tiền, nhận một trứng. */

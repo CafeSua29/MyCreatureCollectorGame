@@ -67,6 +67,8 @@ export const FIXTURE_RACE_TRAIT_ID = 'raceMark'
 export const FIXTURE_PARTNER_SKILL_ID = 'noPartner'
 /** Hiểm địa fixture (docs/rules/zones.md). */
 export const FIXTURE_ZONE_ID = 'den'
+/** Công trình Linh điền của fixture (docs/rules/dwelling.md). */
+export const FIXTURE_GARDEN_BUILDING_ID = 'field'
 /** Ngự thú sư NPC fixture (docs/rules/trainers.md): lớp mọi hệ và quán chủ. */
 export const FIXTURE_TRAINER_ID = 'rookie'
 /** Trait cực tính fixture (docs/rules/polarity.md). */
@@ -972,14 +974,64 @@ export function makeRawData(): RawGameData {
         injuryChance: 5,
         affinityPerDay: 1
       },
+      // Động phủ (docs/rules/dwelling.md): % chỉ số gốc TB (weakling: tổng 180 → TB 30): lửa luyện,
+      // nước tưới, bay vận chuyển 100% = 30; sai việc 12,5% = 3,75; chỉ số 15 = 1 đơn vị sức (lửa ở
+      // level 16: 30 / 15 × 4 = sức 8).
+      dwelling: {
+        workStatPercents: {
+          elements: {
+            fire: { kindling: 100 },
+            water: { watering: 100 },
+            flying: { transporting: 100 }
+          },
+          races: {}
+        },
+        wrongWorkPercent: 12.5,
+        powerStatUnit: 15,
+        transportRatio: 0.5,
+        levelExponent: 0.5,
+        baseWorkSpeed: 100,
+        minWorkSpeed: 10,
+        condenseStacks: 4,
+        condensePercent: 50,
+        soulWorkSpeedPercentPerLevel: 3,
+        // Đói / tinh thần như dữ liệu thật; món ăn: 'potion' (no 40) để test không cần thêm vật phẩm.
+        needs: {
+          max: 100,
+          hungerPerDay: 30,
+          sanityPerDay: 10,
+          eatBelow: 70,
+          starvingSanityPerDay: 20,
+          starvingWorkPercent: 50,
+          lowSanity: 30,
+          lowSanityWorkPercent: 70,
+          idleRecoveryPerDay: 50,
+          nocturnalWorkPercent: 50,
+          nocturnalDrainPercent: 50,
+          sickSanity: 50,
+          sickChanceMax: 20,
+          starvingSickChance: 10,
+          idleCureDays: 7,
+          faintAilmentChance: 20,
+          brokenPartAilmentChance: 30
+        },
+        foods: { potion: { fullness: 40, sanity: 0 } },
+        // Quái mới không có trait làm việc (một lựa chọn số trait: không tốn RNG, test cũ không đổi);
+        // tối đa 4 trait như dữ liệu thật.
+        workTraits: {
+          countWeights: [1, 0, 0, 0, 0],
+          inheritChance: 50,
+          mutationChance: 0,
+          shinyTraitId: null
+        },
+        workerAffinity: 1,
+        workerAffinityDays: 3
+      },
       // Luyện đan: số như dữ liệu thật; nguyên liệu không rơi để không đổi RNG của test khác.
       alchemy: {
         expBase: 10,
         expPower: 2,
         levelBonusPercent: 1,
-        initialPlots: 2,
-        plotBasePrice: 5000,
-        plotPriceGrowth: 2,
         raceEssenceItemIds: {},
         elementStoneItemIds: {},
         essenceChance: 0,
@@ -1243,6 +1295,22 @@ export function makeRawData(): RawGameData {
     quests: [],
     // Mẫu thám hiểm: fixture không có; test thám hiểm tự thêm.
     expeditions: [],
+    // Công trình động phủ: chỉ Linh điền (2 ô lúc đầu, mỗi ô thêm 5000 × 2^n như dữ liệu thật);
+    // test động phủ tự thêm công trình khác.
+    // Trait làm việc: fixture không có (test trait làm việc tự thêm).
+    workTraits: [],
+    // Bệnh: fixture không có (test bệnh tự thêm).
+    ailments: [],
+    buildings: [
+      {
+        id: FIXTURE_GARDEN_BUILDING_ID,
+        workType: 'farming',
+        startLevel: 2,
+        slotsPerLevel: 0,
+        cost: { money: 5000, moneyGrowth: 2, items: [] },
+        effect: { type: 'garden', plotsPerLevel: 1 }
+      }
+    ],
     // Ngự thú sư NPC: một lớp mọi hệ và quán chủ (docs/rules/trainers.md).
     // Luật bí cảnh: mỗi loại một luật (fixture tung 0 luật; test luật tự gán / bật ruleCount).
     // Event: fixture không có (test event tự thêm, docs/rules/events.md).
@@ -2412,7 +2480,14 @@ function baseFields(): Omit<
     rebirths: 0,
     implantEffects: {},
     implantAttempts: 0,
-    implantFails: 0
+    implantFails: 0,
+    workTraits: [],
+    workPoints: {},
+    workSoulLevel: 0,
+    // No / tinh thần đầy (needs.max của fixture = 100).
+    fullness: 100,
+    sanity: 100,
+    ailment: null
   }
 }
 
@@ -2517,11 +2592,20 @@ export function makeGameState(options: GameStateOptions): GameState {
     options.location?.type === 'floor' ? options.location.floor : 1
   )
   // Mặc định tắt thọ nguyên để khớp quái fixture (aging false); test thọ nguyên tự bật.
-  return createGameState({
+  const state = createGameState({
     lifespanEnabled: false,
     ...rest,
     floorBiomeIds: floorBiomeIds ?? fixtureFloorBiomeIds(opened)
   })
+  // Động phủ như game mới của fixture (Linh điền cấp 2, 2 ô trống; khớp migrate linh điền cũ).
+  return {
+    ...state,
+    dwelling: {
+      ...state.dwelling,
+      buildings: { [FIXTURE_GARDEN_BUILDING_ID]: { level: 2, workers: [] } },
+      plots: [null, null]
+    }
+  }
 }
 
 /**

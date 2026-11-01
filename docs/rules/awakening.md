@@ -8,7 +8,7 @@ Code: trên quái `monster/awakening.ts` (`awakeningStatMultiplier`, `awakeningR
 
 ## Trên quái
 
-- Trường `awakening` (tầng đã đạt, nguyên ≥ 0, không trần), `tribulationFailures` (số lần độ kiếp thua liên tiếp ở tầng đang thử, nguyên 0–`maxFailures`), `injuryBattlesLeft` (số trận thắng còn bị trọng thương, nguyên ≥ 0); `validateMonster` kiểm tra.
+- Trường `awakening` (tầng đã đạt, nguyên ≥ 0, không trần), `tribulationFailures` (số lần độ kiếp thua liên tiếp ở tầng đang thử, nguyên 0–`maxFailures`), `injuryBattlesLeft` (số trận thắng còn bị trọng thương, nguyên ≥ 0); `validateMonster` kiểm tra. (Khác bệnh / chấn thương khi bị hạ gục trong trận: khỏi theo ngày / thuốc, `dwelling.md` mục "Bệnh và chấn thương".)
 - Quái hoang, boss, trứng, quái mới: 0. **Breeding:** con 0. **Fuse:** quái gốc giữ cả ba trường, của quái phụ mất.
 
 ## Hiệu lực mỗi tầng

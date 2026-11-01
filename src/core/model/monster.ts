@@ -1,6 +1,7 @@
 // Quái: đúng những gì được lưu vào save (nguyên liệu, không có chỉ số đã tính).
 
 import type { MonsterAssignment } from './expeditions'
+import type { MonsterAilment, WorkStats } from './dwelling'
 import type { AbilitySlot, TraitInstance } from './content'
 import type { EquippedItem } from './state'
 import type { Decimal } from '../shared'
@@ -100,6 +101,20 @@ export interface Monster {
   implantAttempts: number
   /** Số lần cấy thất bại, nguyên ≥ 0, không bao giờ reset; tới implant.maxFails thì mất quái. */
   implantFails: number
+  /** Trait làm việc (id trong workTraits.json, không lặp; docs/rules/dwelling.md). */
+  workTraits: string[]
+  /**
+   * Điểm sách làm việc theo loại việc: % chỉ số gốc trung bình của loài cộng thêm vào chỉ số làm việc
+   * (nguyên ≥ 0, không trần).
+   */
+  workPoints: WorkStats
+  /** Cấp hồn tinh tốc độ làm việc (Tượng Lực, docs/rules/soul-levels.md), nguyên ≥ 0. */
+  workSoulLevel: number
+  /** No và tinh thần (như Hunger / SAN của Palworld), trong [0, config.dwelling.needs.max]. */
+  fullness: number
+  sanity: number
+  /** Bệnh / chấn thương đang mắc (docs/rules/dwelling.md mục "Bệnh và chấn thương"); null = khỏe. */
+  ailment: MonsterAilment | null
   /** 1 với quái thường, 2–5 với boss bắt được. */
   bossMultiplier: number
   fused: boolean

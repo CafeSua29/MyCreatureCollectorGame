@@ -102,27 +102,12 @@ export interface CraftCurveConfig {
   levelBonusPercent: number
 }
 
-/** Một ô linh điền đang trồng. */
-export interface GardenPlot {
-  seedItemId: string
-  plantedDay: number
-}
-
-export interface GardenState {
-  /** Mỗi ô: đang trồng hoặc trống (null). */
-  plots: (GardenPlot | null)[]
-}
-
 export interface AlchemyConfig {
   /** Tổng exp đạt cấp L = ⌈expBase × (L − 1) ^ expPower⌉. */
   expBase: number
   expPower: number
   /** + điểm % tỉ lệ thành công mỗi cấp trên cấp yêu cầu (kẹp 100). */
   levelBonusPercent: number
-  /** Linh điền: số ô lúc đầu, giá ô thứ n mua thêm = plotBasePrice × plotPriceGrowth ^ (n − 1). */
-  initialPlots: number
-  plotBasePrice: number
-  plotPriceGrowth: number
   /** Nguyên liệu rơi: tinh phách theo race / linh thạch theo hệ đầu của quái bị hạ (%), dược liệu. */
   raceEssenceItemIds: Record<string, string>
   elementStoneItemIds: Record<string, string>

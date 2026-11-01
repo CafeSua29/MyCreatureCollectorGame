@@ -13,7 +13,7 @@ Code: kiểu `model/expeditions.ts`, yêu cầu đội `EXPEDITION_REQUIREMENTS`
 
 ## Luật
 
-- **Việc của quái** `Monster.assignment`: `null` | `{ kind: 'expedition' | 'dwelling', id }` (một quái một việc; `dwelling` của động phủ đã có trong type, kiểm tra quái chặn "chưa hỗ trợ" tới khi làm `cave-dwelling.md`). Quái có việc **bị khóa** (`monsterBusy { monsterId }`): không vào đội (`moveToParty`, `swapWithStorage`), không thả, không fuse / breed (cả quái gốc lẫn quái phụ), không dùng Kẹo EXP / Kẹo Hiếm (vật phẩm dùng nhiều cái một lần). Quái trong đội không được có việc (kiểm tra save).
+- **Việc của quái** `Monster.assignment`: `null` | `{ kind: 'expedition' | 'dwelling', id }` (một quái một việc; `dwelling` = làm việc ở công trình động phủ, `dwelling.md`). Quái có việc **bị khóa** (`monsterBusy { monsterId }`): không vào đội (`moveToParty`, `swapWithStorage`), không thả, không fuse / breed (cả quái gốc lẫn quái phụ), không dùng Kẹo EXP / Kẹo Hiếm (vật phẩm dùng nhiều cái một lần). Quái trong đội không được có việc (kiểm tra save).
 - **Bảng thám hiểm** `GameState.expeditions.board`: [boardMin, boardMax] mẫu khác nhau chọn đều, làm mới vào ngày `refreshDay` rồi `refreshDays` ngày sau (game mới tung ngay).
 - **Phái đi** `startExpedition { expeditionId, monsterIds }` (thị trấn): mẫu trên bảng (`expeditionNotOffered`), còn ô (`expeditionSlotsFull { slots }`; ô = 1 + ⌊cảnh giới ngự thú sư / 2⌋, `tamer.md`), mọi quái trong kho (`monsterNotInStorage`), rảnh, không gục, không trọng thương (`injured`), đủ mọi yêu cầu (`expeditionRequirementUnmet { expeditionId, requirement }`); `monsterIds` rỗng / lặp là `malformedAction`. Đội `{ id: "x<số>", expeditionId, monsterIds, endDay = hôm nay + durationDays }`, quái nhận việc.
 - **Gọi về** `recallExpedition { expeditionActiveId }` (ngoài trận): gỡ việc, không thưởng; id lạ `expeditionNotFound`.
@@ -24,7 +24,7 @@ Code: kiểu `model/expeditions.ts`, yêu cầu đội `EXPEDITION_REQUIREMENTS`
   - **Trứng hiếm** (`createExpeditionEgg`, `progression/eggs.ts`): tung min(100, `eggChance` × độ thành công) % (0 không tốn RNG); trứng chứa loài đều trong mọi boss của map tầng cao nhất (dạng đầu tiên chưa tiến hóa), level 1, gen như quái hoang tầng đó, shiny theo tỉ lệ chung, **không** có trait "Huyết thống boss", thân mật trứng, chưa khế ước, lý lịch nguồn gốc `expeditionEgg { expeditionId }`; vào `eggs`, id từ `nextMonsterId`. Map không có boss thì không có trứng.
   - `dayEvents`: `expeditionReturned { activeId, expeditionId, successPercent, injuredIds, eggId }` (`eggId` null = không có trứng).
   - Quái tọa hóa khi đang đi rời kho như thường; đội về chỉ tính quái còn lại (không còn ai thì không thưởng).
-- **Kiểm tra save** (`validateExpeditionState`): bảng là mẫu tồn tại không lặp, `refreshDay` / `nextId` nguyên, đội có id `x<số>` không trùng và nhỏ hơn `nextId`, mẫu tồn tại, `monsterIds` không rỗng không lặp, quái của đội còn trong kho phải mang đúng việc; quái có việc phải thuộc một đội.
+- **Kiểm tra save** (`validateExpeditionState`): bảng là mẫu tồn tại không lặp, `refreshDay` / `nextId` nguyên, đội có id `x<số>` không trùng và nhỏ hơn `nextId`, mẫu tồn tại, `monsterIds` không rỗng không lặp, quái của đội còn trong kho phải mang đúng việc; quái có việc thám hiểm phải thuộc một đội (việc động phủ kiểm ở `validateDwellingState`).
 
 ## Mô phỏng
 

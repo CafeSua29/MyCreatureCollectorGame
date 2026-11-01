@@ -30,3 +30,7 @@ Code: nơi luyện `cooking` trong `CRAFT_STATION_RULES` (`progression/alchemy.t
 ## Mô phỏng
 
 - Chơi liên tục: mỗi lần ở thị trấn, chưa có món đang ăn thì "người chơi" ăn món trong túi, không có thì nấu món có cấp yêu cầu cao nhất đủ nguyên liệu (nguyên liệu thiếu mà cửa hàng đang bán thì mua; nấu tới khi thành công) rồi ăn; chạy **trước** luyện đan (luyện đan dùng hết dược liệu). Không nấu Bạc Hà / mồi dụ. Cột `meals`, `cooks`, `cookingLevel` ở `progression.csv` (`scripts/simulate/cooking.ts`, `simulation-features.md`).
+
+## Thức ăn linh thú
+
+- Công thức `beastFeed` (Đầu bếp, cấp 1, 100%): 2 Linh Quả → 5 Thức ăn linh thú (`material`, không phải món linh thực). Dùng cho hộp thức ăn của động phủ (no 40, `dwelling.md` mục "Đói và tinh thần"); mọi món linh thực cũng bỏ hộp được (no 80, tinh thần 20).

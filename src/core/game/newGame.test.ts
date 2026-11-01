@@ -3,6 +3,7 @@ import { rawGameData } from '@data'
 import { createGameData } from '../gameData'
 import { canHaveGmaxFactor } from '../inventory'
 import { validateMonster } from '../monster'
+import { newDwellingState } from '../progression'
 import { starterSlotPool } from '../registries'
 import { ActionError, toBig } from '../shared'
 import { rollShopStock } from '../shop'
@@ -203,7 +204,8 @@ describe('createNewGame', () => {
     }
     expect(hasGmax).toBe(true)
     const { candidates } = rollStarters(real, 1)
-    // Bảng nhiệm vụ đủ nhiệm vụ ngay từ đầu (docs/rules/quests.md); linh điền theo config.
+    // Bảng nhiệm vụ đủ nhiệm vụ ngay từ đầu (docs/rules/quests.md); động phủ theo startLevel của
+    // công trình (docs/rules/dwelling.md).
     const state = createNewGame(real, {
       seed: 1,
       starterSpeciesId: candidates[0].speciesId,
@@ -211,7 +213,7 @@ describe('createNewGame', () => {
       nickname: null
     })
     expect(state.quests.board).toHaveLength(real.config.quests.boardSize)
-    expect(state.garden.plots).toHaveLength(real.config.alchemy.initialPlots)
+    expect(state.dwelling).toEqual(newDwellingState(real))
     expect(validateGameState(real, state)).toEqual([])
   })
 })

@@ -69,16 +69,16 @@ export function travel(data: GameData, state: GameState, to: Location): GameStat
 }
 
 /**
- * NPC hồi máu ở thị trấn: hồi đầy cả đội kể cả quái đã gục, chữa mọi trạng thái và sạc lại Tera
- * Orb, miễn phí. Báo lỗi chỉ khi đội đã đầy máu, không có trạng thái nào, Tera Orb đang sạc và
- * không quái nào đang đòi nghỉ ngơi (dưỡng dục).
+ * NPC hồi máu ở thị trấn: hồi đầy cả đội kể cả quái đã gục, chữa mọi trạng thái và bệnh / chấn
+ * thương (docs/rules/dwelling.md), sạc lại Tera Orb, miễn phí. Báo lỗi chỉ khi đội đã đầy máu, không
+ * có trạng thái / bệnh nào, Tera Orb đang sạc và không quái nào đang đòi nghỉ ngơi (dưỡng dục).
  */
 export function healParty(data: GameData, state: GameState): GameState {
   requireNoBattle(state)
   assertNoTournament(state)
   assertNoInstance(state)
   if (state.location.type !== 'town') throw new ActionError('notInTown')
-  const hasStatuses = state.party.some((m) => m.statuses.length > 0)
+  const hasStatuses = state.party.some((m) => m.statuses.length > 0 || m.ailment !== null)
   // Tera Orb hết sạc cũng là việc cho NPC (sạc lại, mục "Tera" ở transformation.md).
   if (isPartyFullHp(state) && !hasStatuses && state.teraOrbCharged && !wantsRest(state)) {
     throw new ActionError('partyFullHp')
@@ -86,7 +86,7 @@ export function healParty(data: GameData, state: GameState): GameState {
   return {
     ...state,
     party: state.party.map((m) =>
-      restedMonster(data, { ...m, damageTaken: BIG_ZERO, statuses: [] })
+      restedMonster(data, { ...m, damageTaken: BIG_ZERO, statuses: [], ailment: null })
     ),
     teraOrbCharged: true
   }

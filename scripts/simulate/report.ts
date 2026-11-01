@@ -353,7 +353,8 @@ function stuckNote(result: ProgressionResult): string {
 }
 
 /**
- * Ô kinh tế: món đã bán, vật phẩm thân mật, đá Mega / Z-Crystal / đồ chí mạng cầm, ô linh điền mua,
+ * Ô kinh tế: món đã bán, vật phẩm thân mật, đá Mega / Z-Crystal / đồ chí mạng cầm, động phủ (nâng
+ * công trình, quái giao việc, đồ lấy về),
  * extract / inject / mua tinh thể trait, quái phụ hiến tế, cấy ghép, sức chứa (bỏ mục 0).
  */
 function economyCell(count: FloorUnlock['economy']): string {
@@ -363,7 +364,13 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['mega', count.megaStonesHeld],
     ['zCrystal', count.zCrystalsHeld],
     ['critItem', count.critItemsHeld],
-    ['plots', count.plotsBought],
+    ['buildings', count.buildingUpgrades],
+    ['workers', count.workersAssigned],
+    ['dwellingItems', count.dwellingItems],
+    ['feed', count.feedStocked],
+    ['sick', count.sickWorkers],
+    ['cured', count.ailmentsCured],
+    ['sickRest', count.sickRested],
     ['bond', count.bondsBound],
     ['contract', count.contracts],
     ['contractFail', count.contractFails],

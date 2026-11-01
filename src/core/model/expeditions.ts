@@ -1,7 +1,7 @@
 // Phái quái đi thám hiểm (docs/rules/expeditions.md): mẫu thám hiểm (src/data/expeditions.json), việc
 // của quái (`assignment`), bảng thám hiểm và đội đang đi trong state, config.
 
-/** Loại việc của quái: thám hiểm (đã làm), động phủ (chờ cave-dwelling.md, kiểm tra chặn). */
+/** Loại việc của quái: thám hiểm (expeditions.md), động phủ (dwelling.md). */
 export const ASSIGNMENT_KINDS = ['expedition', 'dwelling'] as const
 
 export type AssignmentKind = (typeof ASSIGNMENT_KINDS)[number]

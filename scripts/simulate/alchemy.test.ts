@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { createGameData, type GameState } from '@core'
+import { advanceTime, createGameData, newDwellingState, type GameState } from '@core'
 import {
   makeGameState,
   makeInventory,
@@ -35,13 +35,14 @@ describe('runAlchemy', () => {
   it('trồng hạt giống vào ô trống, luyện hết nguyên liệu; ô chín thì thu hoạch', () => {
     const state: GameState = {
       ...makeGameState({ seed: 1, party: [makeMonster({ id: 'a' })] }),
-      inventory: makeInventory({ herb: 3, seedHerb: 1 })
+      inventory: makeInventory({ herb: 3, seedHerb: 1 }),
+      dwelling: newDwellingState(data)
     }
     const first = runAlchemy(data, state)
     expect(first.crafts).toBe(3)
     expect(first.state.inventory.stacks.potion).toBe(3)
-    expect(first.state.garden.plots[0]?.seedItemId).toBe('seedHerb')
-    const later = { ...first.state, time: first.state.time + 48 }
+    expect(first.state.dwelling.plots[0]?.seedItemId).toBe('seedHerb')
+    const later = advanceTime(data, first.state, 48)
     const second = runAlchemy(data, later)
     expect(second.harvests).toBe(1)
     expect(second.crafts).toBe(2)

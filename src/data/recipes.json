@@ -2006,5 +2006,107 @@
     "minLevel": 2,
     "successChance": 90,
     "exp": 3
+  },
+  {
+    "id": "beastFeed",
+    "station": "cooking",
+    "output": {
+      "itemId": "beastFeed",
+      "count": 5
+    },
+    "inputs": [
+      {
+        "itemId": "spiritFruit",
+        "count": 2
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 100,
+    "exp": 1
+  },
+  {
+    "id": "calmPill",
+    "output": {
+      "itemId": "calmPill",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 2,
+    "successChance": 90,
+    "exp": 3
+  },
+  {
+    "id": "medicineLow",
+    "output": {
+      "itemId": "medicineLow",
+      "count": 3
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 1,
+    "successChance": 95,
+    "exp": 2
+  },
+  {
+    "id": "medicine",
+    "output": {
+      "itemId": "medicine",
+      "count": 2
+    },
+    "inputs": [
+      {
+        "itemId": "lingzhi",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 3,
+    "successChance": 85,
+    "exp": 4
+  },
+  {
+    "id": "medicineHigh",
+    "output": {
+      "itemId": "medicineHigh",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "ginseng",
+        "count": 1
+      },
+      {
+        "itemId": "snowLotus",
+        "count": 1
+      },
+      {
+        "itemId": "fleeceflower",
+        "count": 1
+      }
+    ],
+    "money": 0,
+    "minLevel": 6,
+    "successChance": 75,
+    "exp": 8
   }
 ]

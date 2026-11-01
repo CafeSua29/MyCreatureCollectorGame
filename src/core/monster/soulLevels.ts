@@ -3,7 +3,25 @@
 
 import { toBig, type Decimal } from '../shared'
 import { mapStats } from './stats'
-import { STAT_NAMES, type GameData, type Monster, type StatName, type Stats } from '../model'
+import { STAT_NAMES, type GameData, type Monster, type Stats } from '../model'
+
+/**
+ * Mục nâng được ở Tượng Lực: mọi chỉ số + tốc độ làm việc (như Statue of Power của Palworld có Work
+ * Speed; docs/rules/dwelling.md). Tốc độ làm việc lưu ở `Monster.workSoulLevel`.
+ */
+export const SOUL_LEVEL_KEYS = [...STAT_NAMES, 'workSpeed'] as const
+
+export type SoulLevelKey = (typeof SOUL_LEVEL_KEYS)[number]
+
+/** Cấp hiện tại của một mục hồn tinh. */
+export const soulLevelOf = (monster: Monster, key: SoulLevelKey): number =>
+  key === 'workSpeed' ? monster.workSoulLevel : monster.soulLevels[key]
+
+/** Quái với cấp mới của một mục hồn tinh. */
+export const withSoulLevel = (monster: Monster, key: SoulLevelKey, level: number): Monster =>
+  key === 'workSpeed'
+    ? { ...monster, workSoulLevel: level }
+    : { ...monster, soulLevels: { ...monster.soulLevels, [key]: level } }
 
 /** Mọi chỉ số cấp 0 (quái mới, con breeding, quái hoang). */
 export function emptySoulLevels(): Stats {
@@ -27,9 +45,12 @@ function pointsSpentForLevel(level: number): number {
   return (level * (level + 1)) / 2
 }
 
-/** Tổng điểm hồn tinh đã dùng trên quái (mọi chỉ số). */
+/** Tổng điểm hồn tinh đã dùng trên quái (mọi chỉ số và tốc độ làm việc). */
 export function soulPointsSpent(monster: Monster): number {
-  return STAT_NAMES.reduce((sum, stat) => sum + pointsSpentForLevel(monster.soulLevels[stat]), 0)
+  return SOUL_LEVEL_KEYS.reduce(
+    (sum, key) => sum + pointsSpentForLevel(soulLevelOf(monster, key)),
+    0
+  )
 }
 
 /** Điểm hồn tinh hoàn lại khi quái bị tiêu hao lúc fuse: fuseRefundPercent % đã dùng, làm tròn xuống. */
@@ -44,17 +65,20 @@ export interface SoulLevelStatView {
   next: SoulLevelCost
 }
 
-export type SoulLevelView = Record<StatName, SoulLevelStatView>
+/** Theo mục: chỉ số (% chỉ số đó) và `workSpeed` (% tốc độ làm việc). */
+export type SoulLevelView = Record<SoulLevelKey, SoulLevelStatView>
 
-/** Hồn tinh của quái theo từng chỉ số (MonsterView). */
+/** Hồn tinh của quái theo từng mục (MonsterView). */
 export function soulLevelView(data: GameData, monster: Monster): SoulLevelView {
   const { percentPerLevel } = data.config.soulLevels
-  const entry = (stat: StatName): SoulLevelStatView => {
-    const level = monster.soulLevels[stat]
-    return { level, percent: level * percentPerLevel, next: soulLevelCost(data, level) }
+  const { soulWorkSpeedPercentPerLevel } = data.config.dwelling
+  const entry = (key: SoulLevelKey): SoulLevelStatView => {
+    const level = soulLevelOf(monster, key)
+    const per = key === 'workSpeed' ? soulWorkSpeedPercentPerLevel : percentPerLevel
+    return { level, percent: level * per, next: soulLevelCost(data, level) }
   }
-  // Gán đủ mọi chỉ số ngay bên dưới (như mapStats).
+  // Gán đủ mọi mục ngay bên dưới (như mapStats).
   const view = {} as SoulLevelView
-  for (const stat of STAT_NAMES) view[stat] = entry(stat)
+  for (const key of SOUL_LEVEL_KEYS) view[key] = entry(key)
   return view
 }

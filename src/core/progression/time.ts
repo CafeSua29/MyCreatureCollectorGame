@@ -1,6 +1,6 @@
 // Đồng hồ game (mục "Đồng hồ game" ở lifespan.md): giờ thường, 24 giờ một ngày. Việc tốn giờ gọi
 // advanceTime (điểm DUY NHẤT cho thời gian trôi); mỗi lần qua nửa đêm chạy mọi việc theo ngày
-// (DAILY_TASKS). Mục sau có việc theo ngày (thị trường động, đấu giá, linh điền...) thêm một mục
+// (DAILY_TASKS). Mục sau có việc theo ngày (thị trường động, đấu giá, động phủ...) thêm một mục
 // vào DAILY_TASKS, không sửa advanceTime.
 
 import { tickSpiritVirusDay } from '../monster'
@@ -21,7 +21,7 @@ import { safariDailyTask } from '../world'
 import { soulLinkDailyTask } from '../tamer'
 import { ageOneDay } from './oldAge'
 import { imprintOneDay } from './imprint'
-import { cropRipeTask } from './alchemy'
+import { dwellingDailyTask } from './dwelling'
 import { expeditionDailyTask } from './expeditions'
 import { beastTideDailyTask } from './beastTide'
 import { labDailyTask } from './implant'
@@ -64,8 +64,9 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   market: recoverMarket,
   // Sau aging: quái vừa nở từ trứng truyền thừa trong ngày đã có yêu cầu đầu tiên.
   imprint: imprintOneDay,
-  // Linh điền: báo ô chín đúng ngày đó (docs/rules/alchemy.md).
-  garden: cropRipeTask,
+  // Động phủ: công trình sản xuất / chăm sóc, linh điền lớn và báo ô chín, thân mật quái làm việc
+  // (docs/rules/dwelling.md).
+  dwelling: dwellingDailyTask,
   // Thám hiểm: thân mật, đội về, làm mới bảng (docs/rules/expeditions.md).
   expeditions: expeditionDailyTask,
   // Thú triều: báo trước, bắt đầu khi tới ngày (docs/rules/events.md).

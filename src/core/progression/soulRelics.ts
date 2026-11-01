@@ -23,7 +23,7 @@ import {
   type StatName,
   type TraitInstance
 } from '../model'
-import { requireTown } from './alchemy'
+import { requireTown } from './town'
 import { createLegacyEgg } from './eggs'
 
 /**

@@ -70,6 +70,7 @@ import { checkItemGroups } from './validateItemGroups'
 import { checkAlchemyData } from './validateAlchemy'
 import { checkQuestData } from './validateQuests'
 import { checkExpeditionData } from './validateExpeditions'
+import { checkDwellingData } from './validateDwelling'
 import { checkTrainerData } from './validateTrainers'
 import { checkTrialData } from './validateTrials'
 import { checkZoneData } from './validateZones'
@@ -202,6 +203,9 @@ export function createGameData(raw: RawGameData): GameData {
     recipes: indexById(raw.recipes, 'recipes', issues),
     quests: indexById(raw.quests, 'quests', issues),
     expeditions: indexById(raw.expeditions, 'expeditions', issues),
+    buildings: indexById(raw.buildings, 'buildings', issues),
+    workTraits: indexById(raw.workTraits, 'workTraits', issues),
+    ailments: indexById(raw.ailments, 'ailments', issues),
     trainers: indexById(raw.trainers, 'trainers', issues),
     trialRules: indexById(raw.trialRules, 'trialRules', issues),
     events: indexById(raw.events, 'events', issues),
@@ -282,6 +286,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkAlchemyData(data, issues)
   checkQuestData(data, issues)
   checkExpeditionData(data, issues)
+  checkDwellingData(data, issues)
   checkAutoBattleData(data, issues)
   checkTrainerData(data, issues)
   checkTrialData(data, issues)

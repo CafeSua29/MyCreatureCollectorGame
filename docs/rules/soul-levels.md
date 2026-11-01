@@ -8,6 +8,7 @@ Code: `monster/soulLevels.ts` (giá, điểm đã dùng, hoàn lại, view), `in
 
 ## Luật
 
+- **Tốc độ làm việc** (như mục Work Speed của Statue of Power, `dwelling.md`): mục `workSpeed` nâng như một chỉ số (`SOUL_LEVEL_KEYS`, cùng giá; điểm đã dùng tính cả mục này khi hoàn lại lúc fuse), cấp lưu riêng ở `Monster.workSoulLevel` (save v90), mỗi cấp + `dwelling.soulWorkSpeedPercentPerLevel` % tốc độ làm việc.
 - **Trường trên quái** `soulLevels: { hp, attack, defense, spAttack, spDefense, speed }`: số nguyên ≥ 0, **không trần** (save v47, migrate 0 cho mọi quái kể cả trứng / quái hoang).
 - **Chỉ số:** mỗi cấp +`percentPerLevel` (3%) đúng chỉ số đó (kể cả max HP), nguồn % **`soulLevel`** cộng vào tổng % ở bước áp trait (mục "Nguồn % chỉ số" ở `stats-traits.md`).
 - **Hồn tinh** là category item **`soulCrystal`** (gộp chồng, không dùng trực tiếp, bán / vứt được, rơi được, giá thị trường động): trường `points` (nguyên ≥ 1). **Điểm dùng chung mọi chỉ số**; Hồn tinh nhỏ = 1 điểm, Hồn tinh lớn = 5 điểm. Kiểm tra dữ liệu: có hồn tinh thì phải có loại 1 điểm (để trả dư / hoàn lại chính xác).

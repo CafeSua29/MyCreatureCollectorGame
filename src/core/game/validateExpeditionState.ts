@@ -33,7 +33,8 @@ function checkActive(
   // Quái tọa hóa khi đang đi đã rời kho: chỉ quái còn trong kho phải mang đúng việc.
   for (const monsterId of ids) {
     const monster = storage.find((m) => m.id === monsterId)
-    if (monster && asObject(monster.assignment)?.id !== id) {
+    const assignment = asObject(monster?.assignment)
+    if (monster && (assignment?.kind !== 'expedition' || assignment.id !== id)) {
       issues.push(`${at}: quái "${String(monsterId)}" không mang việc của đội này`)
     }
   }
@@ -86,8 +87,10 @@ export function validateExpeditionState(
     issues.push('expeditions.nextId phải lớn hơn mọi id đội')
   }
   for (const monster of stored) {
-    const id = asObject(monster.assignment)?.id
-    if (id !== undefined && !activeIds.includes(String(id))) {
+    const assignment = asObject(monster.assignment)
+    if (assignment?.kind !== 'expedition') continue
+    const id = assignment.id
+    if (!activeIds.includes(String(id))) {
       issues.push(`quái "${String(monster.id)}" mang việc "${String(id)}" không có đội nào`)
     }
   }

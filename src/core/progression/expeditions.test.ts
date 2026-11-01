@@ -360,7 +360,9 @@ describe('dữ liệu và save', () => {
         m.id === 'b' ? { ...m, assignment: { kind: 'dwelling' as const, id: 'd1' } } : m
       )
     })
-    expect(dwelling.join('\n')).toContain('chưa hỗ trợ')
+    // Việc động phủ kiểm ở validateDwellingState (docs/rules/dwelling.md), không coi là thám hiểm.
+    expect(dwelling.join('\n')).toContain('quái "b" mang việc động phủ "d1"')
+    expect(dwelling.join('\n')).not.toContain('không có đội nào')
   })
 
   it('migrate v42 → v43: mọi quái rảnh, chưa có đội; state hợp lệ', () => {

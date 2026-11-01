@@ -15,6 +15,7 @@ import type { Pole } from './monster'
 import type { AlchemyConfig, CraftCurveConfig } from './alchemy'
 import type { QuestConfig } from './quests'
 import type { ExpeditionConfig } from './expeditions'
+import type { DwellingConfig } from './dwelling'
 import type { TrainerConfig } from './trainers'
 import type { InstabilityConfig, TrialConfig } from './trials'
 import type { DeityConfig } from './deities'
@@ -142,7 +143,7 @@ export interface BalanceConfig {
   humanForm: HumanFormConfig
   /** Thiên tài địa bảo (docs/rules/treasures.md). */
   treasures: TreasureConfig
-  /** Luyện đan và linh điền (docs/rules/alchemy.md). */
+  /** Luyện đan (docs/rules/alchemy.md). */
   alchemy: AlchemyConfig
   /** Linh thực: cấp nấu ăn (docs/rules/cooking.md). */
   cooking: CraftCurveConfig
@@ -152,6 +153,8 @@ export interface BalanceConfig {
   quests: QuestConfig
   /** Phái quái đi thám hiểm (docs/rules/expeditions.md). */
   expeditions: ExpeditionConfig
+  /** Động phủ: thiên phú làm việc, hệ số sức làm việc (docs/rules/dwelling.md). */
+  dwelling: DwellingConfig
   /** Tự động đánh: trọng số AI theo chiến thuật (docs/rules/auto-battle.md). */
   autoBattle: AutoBattleConfig
   /** Ngự thú sư NPC, đạo quán, giải đấu, đấu trường (docs/rules/trainers.md). */

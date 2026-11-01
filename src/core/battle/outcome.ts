@@ -1,7 +1,13 @@
 // Kết thúc trận: thắng (thưởng, rơi đồ, trứng, mở tầng, tiến hóa, trứng nở), thua, đưa quái đã bắt vào đội / kho.
 
 import { recordQuestEvent, refillQuestBoard } from '../quests'
-import { autoEvolve, createBossEgg, hatchMonster, incubateEggs } from '../progression'
+import {
+  autoEvolve,
+  createBossEgg,
+  hatchMonster,
+  incubateEggs,
+  rollAilmentOf
+} from '../progression'
 import {
   addEffortValues,
   applyPurityGains,
@@ -134,6 +140,8 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   clearBattleOnly(data, d)
   // Chết thật (docs/rules/options.md): quái gục rời đội trước để quái vừa bắt có chỗ trong đội.
   buryFallen(data, d)
+  // Chấn thương trận (docs/rules/dwelling.md mục "Bệnh và chấn thương"): quái ta bị hạ gục.
+  injureFallen(data, d)
   // Cùng thứ tự với lúc báo nơi về khi bắt (partyAfterJoining).
   const joined = partyAfterJoining(data, d.party, d.battle.captured)
   d.storage.push(...d.battle.captured.filter((monster) => !joined.includes(monster)))
@@ -142,6 +150,30 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   // Linh dịch (docs/rules/spirit-virus.md): như Pokérus, sau mọi trận (thắng, thua, chạy) có thể
   // nhiễm rồi lây trong đội (kể cả quái vừa bắt đã vào đội).
   ;[d.party, d.rng] = spreadSpiritVirusAfterBattle(data, d.rng, d.party)
+}
+
+/**
+ * Chấn thương trận (quái của người chơi chưa bệnh): còn gục faintAilmentChance %, + mỗi bộ phận bị
+ * phá brokenPartAilmentChance %; chọn chấn thương theo bộ phận trúng đòn hạ gục / bị phá
+ * (rollAilmentOf; không có chấn thương nào hợp thì không tốn RNG).
+ */
+function injureFallen(data: GameData, d: Draft): void {
+  const { faintAilmentChance, brokenPartAilmentChance } = data.config.dwelling.needs
+  d.party = d.party.map((monster) => {
+    if (monster.ailment !== null) return monster
+    const record = d.battle.records[monster.id]
+    const broken = record?.brokenParts ?? []
+    const fainted = isFainted(data, monster)
+    const chance = (fainted ? faintAilmentChance : 0) + broken.length * brokenPartAilmentChance
+    if (chance <= 0) return monster
+    const knockout = fainted && record?.knockoutPart ? [record.knockoutPart] : []
+    const parts = [...new Set([...knockout, ...broken])]
+    let ailment: Monster['ailment']
+    ;[ailment, d.rng] = rollAilmentOf(data, d.rng, { cause: 'battle', chance, parts })
+    if (!ailment) return monster
+    log(d, { type: 'ailmentGained', monsterId: monster.id, ailmentId: ailment.id })
+    return { ...monster, ailment }
+  })
 }
 
 /**

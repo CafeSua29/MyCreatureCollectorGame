@@ -7,7 +7,7 @@ import { createGameData } from '../gameData'
 import { gameReducer, migrateState, serializeState, validateGameState } from '../game'
 import { getItemCount } from '../inventory'
 import { getMaxHp } from '../monster'
-import { HOURS_PER_DAY, type GameData, type GameState, type RawGameData } from '../model'
+import type { GameData, GameState, RawGameData } from '../model'
 import { toBig } from '../shared'
 import {
   atFloor,
@@ -21,14 +21,7 @@ import {
   makeRawData,
   withFixtureText
 } from '../testing'
-import {
-  alchemyExpForLevel,
-  alchemyLevelFromExp,
-  craftChance,
-  craftableTimes,
-  nextPlotPrice
-} from './alchemy'
-import { advanceTime } from './time'
+import { alchemyExpForLevel, alchemyLevelFromExp, craftChance, craftableTimes } from './alchemy'
 
 function makeAlchemyData(edit: (raw: RawGameData) => void = () => {}): GameData {
   const raw = makeRawData()
@@ -191,56 +184,6 @@ describe('đan phương', () => {
   })
 })
 
-describe('linh điền', () => {
-  const plant = (state: GameState, plotIndex = 0): GameState =>
-    gameReducer(data, state, { type: 'plantSeed', plotIndex, itemId: 'seedHerb' })
-  const reap = (state: GameState, plotIndex = 0): GameState =>
-    gameReducer(data, state, { type: 'harvest', plotIndex })
-  const days = (state: GameState, count: number): GameState =>
-    advanceTime(data, state, count * HOURS_PER_DAY)
-
-  it('trồng → đủ ngày (báo chín đúng ngày) → thu hoạch số lượng trong khoảng; ô trống lại', () => {
-    const planted = plant(townState({ seedHerb: 1 }))
-    expect(planted.garden.plots[0]).toEqual({ seedItemId: 'seedHerb', plantedDay: 0 })
-    expectActionError(() => reap(planted), 'cropNotReady', { plotIndex: 0, daysLeft: 2 })
-    const ripe = days(planted, 3)
-    expect(ripe.dayEvents).toContainEqual({
-      type: 'cropRipe',
-      plotIndex: 0,
-      seedItemId: 'seedHerb'
-    })
-    expect(ripe.dayEvents.filter((e) => e.type === 'cropRipe')).toHaveLength(1)
-    const reaped = reap(ripe)
-    const herbs = getItemCount(reaped.inventory, 'herb')
-    expect(herbs).toBeGreaterThanOrEqual(1)
-    expect(herbs).toBeLessThanOrEqual(3)
-    expect(reaped.garden.plots[0]).toBeNull()
-    expect(validateGameState(data, reaped)).toEqual([])
-  })
-
-  it('lỗi: ô đang trồng / trống, không phải hạt giống, ô lạ, ngoài thị trấn', () => {
-    const planted = plant(townState({ seedHerb: 2 }))
-    expectActionError(() => plant(planted), 'plotOccupied', { plotIndex: 0 })
-    expectActionError(() => reap(planted, 1), 'plotEmpty', { plotIndex: 1 })
-    expectActionError(
-      () => gameReducer(data, townState(), { type: 'plantSeed', plotIndex: 0, itemId: 'herb' }),
-      'notSeed'
-    )
-    expectActionError(() => plant(townState({ seedHerb: 1 }), 9), 'malformedAction')
-    expectActionError(() => plant(atFloor(townState({ seedHerb: 1 }), 1)), 'notInTown')
-  })
-
-  it('mua thêm ô: giá 5000 × 2^(số ô đã mua thêm)', () => {
-    const state = townState({}, 20000)
-    expect(nextPlotPrice(data, state).toString()).toBe('5000')
-    const once = gameReducer(data, state, { type: 'buyPlot' })
-    expect(once.garden.plots).toHaveLength(3)
-    expect(nextPlotPrice(data, once).toString()).toBe('10000')
-    const twice = gameReducer(data, once, { type: 'buyPlot' })
-    expectActionError(() => gameReducer(data, twice, { type: 'buyPlot' }), 'notEnoughMoney')
-  })
-})
-
 describe('nguyên liệu rơi', () => {
   it('tinh phách theo race, linh thạch theo hệ đầu, dược liệu; boss thêm đan phương', () => {
     const drops = makeAlchemyData((raw) => {
@@ -292,7 +235,6 @@ describe('dữ liệu và save', () => {
           exp: 1,
           scroll: true
         })
-        raw.config.alchemy = { ...raw.config.alchemy, plotPriceGrowth: 0.5 }
       },
       { regenerateText: true }
     )
@@ -306,35 +248,32 @@ describe('dữ liệu và save', () => {
       'money',
       'minLevel',
       'successChance',
-      'cần đúng một đan phương',
-      'config.alchemy.plotPriceGrowth'
+      'cần đúng một đan phương'
     ]) {
       expect(text, fragment).toContain(fragment)
     }
   })
 
-  it('save: cấp lệch exp, công thức đã học không cần đan phương, ô trồng thứ không phải hạt', () => {
+  it('save: cấp lệch exp, công thức đã học không cần đan phương', () => {
     const state = townState()
     const issues = validateGameState(data, {
       ...state,
-      alchemy: { level: 5, exp: toBig(0), knownRecipes: ['potion'], lastCraft: null },
-      garden: { plots: [{ seedItemId: 'herb', plantedDay: 0 }, null] }
+      alchemy: { level: 5, exp: toBig(0), knownRecipes: ['potion'], lastCraft: null }
     })
     expect(issues).toEqual(
       expect.arrayContaining([
         expect.stringContaining('alchemy.level'),
-        expect.stringContaining('alchemy.knownRecipes'),
-        expect.stringContaining('garden.plots[0].seedItemId')
+        expect.stringContaining('alchemy.knownRecipes')
       ])
     )
   })
 
   it('migrate v40 → v41: luyện đan cấp 1, 2 ô trống; state hợp lệ', () => {
     const raw = serializeState(townState()) as Record<string, unknown>
-    const { alchemy: _alchemy, garden: _garden, ...old } = raw
+    const { alchemy: _alchemy, dwelling: _dwelling, ...old } = raw
     const migrated = migrateState({ ...old, version: 40 }, data)
     expect(migrated.alchemy.level).toBe(1)
-    expect(migrated.garden.plots).toEqual([null, null])
+    expect(migrated.dwelling.plots).toEqual([null, null])
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

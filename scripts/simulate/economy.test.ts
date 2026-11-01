@@ -14,7 +14,6 @@ import {
 import {
   bindBondWhenPossible,
   buyFromTempShop,
-  buyPlotWhenCheap,
   claimAchievementsWhenPossible,
   claimResearchRewardsWhenPossible,
   expandCapacityWhenFull,
@@ -171,27 +170,19 @@ describe('economy: đá Mega, Z-Crystal, ô linh điền', () => {
     const poor = town({ shop: { stock }, money: toBig(0) })
     expect(holdCritItems(data, poor, new Set(['h']), newEconomyCount())).toBe(poor)
   })
-
-  it('mua ô linh điền khi giá ≤ plotSpendFraction tiền', () => {
-    const data = makeEventData()
-    const count = newEconomyCount()
-    const rich = town()
-    const after = buyPlotWhenCheap(data, rich, count)
-    expect(after.garden.plots.length).toBe(rich.garden.plots.length + 1)
-    const poor = town({ money: toBig(0) })
-    expect(buyPlotWhenCheap(data, poor, newEconomyCount())).toBe(poor)
-  })
 })
 
 describe('economy: bản mệnh thú', () => {
-  it('chưa có bản mệnh: kết với quái đội mẫu đủ thân mật mạnh nhất; đã có thì thôi', () => {
+  it('chưa có bản mệnh: kết với quái đội mẫu đã khế ước đủ thân mật mạnh nhất; đã có thì thôi', () => {
     const data = makeEventData()
     const weak = makeMonster({ id: 'w', affinity: 250 })
     const strong = makeMonster({ id: 's', affinity: 250, level: 40 })
     const shy = makeMonster({ id: 'x', affinity: 10, level: 90 })
-    const state = town({ party: [weak, strong, shy] })
+    // Quái mới nở / bắt chưa khế ước: không kết được bản mệnh.
+    const wild = makeMonster({ id: 'u', affinity: 250, level: 99, contractRealm: null })
+    const state = town({ party: [weak, strong, shy, wild] })
     const count = newEconomyCount()
-    const bound = bindBondWhenPossible(data, state, new Set(['w', 's', 'x']), count)
+    const bound = bindBondWhenPossible(data, state, new Set(['w', 's', 'x', 'u']), count)
     expect(bound.party.find((m) => m.bond)?.id).toBe('s')
     expect(count.bondsBound).toBe(1)
     expect(bindBondWhenPossible(data, bound, new Set(['w', 's', 'x']), count)).toBe(bound)

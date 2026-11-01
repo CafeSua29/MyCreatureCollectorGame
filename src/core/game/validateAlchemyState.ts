@@ -1,10 +1,10 @@
-// Kiểm tra phần luyện đan, luyện khí, nấu ăn và linh điền trong save (docs/rules/alchemy.md,
-// cooking.md).
+// Kiểm tra phần luyện đan, luyện khí, nấu ăn trong save (docs/rules/alchemy.md, cooking.md); linh
+// điền ở validateDwellingState.ts.
 
 import { craftLevelFromExp, recipeStation } from '../progression'
 import { asObject, checkBig, checkInteger, type Decimal } from '../shared'
 import { checkKnownFields } from '../gameData'
-import { dayOf, type CraftStation, type GameData } from '../model'
+import type { CraftStation, GameData } from '../model'
 
 /** lastCraft: null hoặc { recipeId là công thức của đúng nơi luyện, successes, failures }. */
 function checkLastCraft(
@@ -97,27 +97,5 @@ export function validateAlchemyState(data: GameData, value: unknown): string[] {
     }
     if (new Set(known).size !== known.length) issues.push('alchemy.knownRecipes bị lặp')
   }
-  return issues
-}
-
-/** garden: mỗi ô null hoặc hạt giống đã trồng vào một ngày không sau hôm nay. */
-export function validateGardenState(data: GameData, value: unknown, time: unknown): string[] {
-  const garden = asObject(value)
-  if (!garden || !Array.isArray(garden.plots)) return ['garden phải là { plots: danh sách }']
-  const today = typeof time === 'number' ? dayOf(time) : Infinity
-  const issues: string[] = []
-  garden.plots.forEach((entry, i) => {
-    if (entry === null) return
-    const plot = asObject(entry)
-    const at = `garden.plots[${i}]`
-    const seedId = plot?.seedItemId
-    if (typeof seedId !== 'string' || data.items[seedId]?.category !== 'seed') {
-      issues.push(`${at}.seedItemId phải là hạt giống, nhận "${String(seedId)}"`)
-    }
-    issues.push(...checkInteger(plot?.plantedDay, `${at}.plantedDay`, 0))
-    if (typeof plot?.plantedDay === 'number' && plot.plantedDay > today) {
-      issues.push(`${at}.plantedDay không được sau hôm nay`)
-    }
-  })
   return issues
 }
