@@ -16,8 +16,9 @@ export {
   achievementProgress,
   achievementTierValue,
   achievementTiersReached,
-  titleMultiplier,
-  titlePercent
+  tamerBonusAmount,
+  tamerBonusMultiplier,
+  titleBonusAmount
 } from '../registries'
 
 /** Thành tựu lúc bắt đầu (game mới / test): chưa nhận bậc nào. */

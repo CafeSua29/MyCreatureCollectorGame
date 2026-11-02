@@ -135,6 +135,9 @@ describe('nhận / hủy / nhận thưởng', () => {
       expect(getItemCount(claimed.inventory, item.itemId)).toBe(item.count)
     }
     expect(claimed.quests.active).toEqual([])
+    // Bộ đếm nhiệm vụ hoàn thành (điểm thiên phú ngự thú sư, docs/rules/tamer-talents.md); lỗi thì
+    // không đếm.
+    expect(claimed.stats.questsCompleted).toBe(state.stats.questsCompleted + 1)
   })
 })
 
@@ -151,6 +154,7 @@ describe('tiến độ', () => {
         reward: { money: toBig(1), items: [] }
       }
     ],
+    sect: [],
     nextQuestId: 2
   })
   const after = (objective: ActiveQuest['objective'], events: QuestEvent[]): number =>
@@ -282,7 +286,7 @@ describe('dữ liệu và save', () => {
     const raw = serializeState(makeGameState({ seed: 1, party: [makeMonster({ id: 'a' })] }))
     const { quests: _quests, ...old } = raw as Record<string, unknown>
     const migrated = migrateState({ ...old, version: 41 }, data)
-    expect(migrated.quests).toEqual({ board: [], active: [], nextQuestId: 1 })
+    expect(migrated.quests).toEqual({ board: [], active: [], sect: [], nextQuestId: 1 })
     expect(validateGameState(data, migrated)).toEqual([])
     const withBoard = migrateState(serializeState(town(3)), data)
     expect(defined(withBoard.quests.board[0]).reward.money.toString()).toBe(

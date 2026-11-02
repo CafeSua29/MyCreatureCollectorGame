@@ -16,7 +16,7 @@ import { ageDaysAtPercent, isDexSpecies, newGameStats } from '../registries'
 import { newBattleTamer } from '../tamer'
 import { masteryExpForLevel } from '../monster'
 import { gymElementIds } from '../world'
-import { dwellingPlotCount, newDwellingState } from '../progression'
+import { dwellingPlotCount, newDwellingState, newSectState, newTradeState } from '../progression'
 import { mapBigFieldsInPlace } from './bigFields'
 import { SAVE_VERSION } from './reducer'
 import { dayOf, type CapacityKind, type GameData, type GameState, type Monster } from '../model'
@@ -63,8 +63,26 @@ function mapAllMonsters(save: SaveObject, fn: (m: RawMonster) => RawMonster): Sa
     battle: battle
       ? { ...battle, enemies: mapList(battle.enemies), captured: mapList(battle.captured) }
       : null,
-    ...mapSafariVisitMonster(save, fn)
+    ...mapSafariVisitMonster(save, fn),
+    ...mapTradeOfferMonsters(save, fn)
   }
+}
+
+/** Quái NPC đưa trên bảng trao đổi (docs/rules/trades.md; save từ v95 mới có). */
+function mapTradeOfferMonsters(
+  save: SaveObject,
+  fn: (m: RawMonster) => RawMonster
+): Partial<SaveObject> {
+  const trades = asObject(save.trades)
+  if (!trades || !Array.isArray(trades.offers)) return {}
+  const offers = trades.offers.map((entry: unknown) => {
+    const offer = asObject(entry)
+    const give = asObject(offer?.give)
+    if (give?.kind !== 'monster') return entry
+    // Ép kiểu: quái trong save cũ, cùng dạng RawMonster với mọi quái khác của migrate.
+    return { ...offer, give: { ...give, monster: fn(give.monster as RawMonster) } }
+  })
+  return { trades: { ...trades, offers } }
 }
 
 /** Quái đang gặp trong khu bảo tồn (docs/rules/safari-zone.md; save từ v54 mới có). */
@@ -1062,6 +1080,37 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   91: (save) => {
     const healthy = (m: RawMonster): RawMonster => ({ ...m, ailment: null })
     return { ...mapEggMonsters(mapAllMonsters(save, healthy), healthy), version: 92 }
+  },
+  // v92 → v93: thiên phú ngự thú sư (docs/rules/tamer-talents.md): chưa nâng nút nào (điểm tự có
+  // theo cảnh giới / bậc thành tựu đã nhận), bộ đếm nhiệm vụ hoàn thành 0 (trước đây không đếm).
+  92: (save) => ({
+    ...save,
+    version: 93,
+    tamer: { ...asObject(save.tamer), talentRanks: {} },
+    stats: { ...asObject(save.stats), questsCompleted: 0 }
+  }),
+  // v93 → v94: tông môn (docs/rules/sects.md): chưa gia nhập tông nào, chưa có nhiệm vụ tông, chưa
+  // có điểm thiên phú thưởng.
+  93: (save) => ({
+    ...save,
+    version: 94,
+    sect: newSectState(),
+    quests: { ...asObject(save.quests), sect: [] },
+    tamer: { ...asObject(save.tamer), bonusTalentPoints: 0 }
+  }),
+  // v94 → v95: trao đổi với NPC (docs/rules/trades.md): bảng trống, ra đề nghị ở lần qua ngày đầu.
+  94: (save) => ({ ...save, version: 95, trades: newTradeState() }),
+  // v95 → v96: Cây thần (docs/rules/gacha.md): bộ đếm số trứng đã quay, nguồn gốc lý lịch `gacha`.
+  95: (save) => ({ ...save, version: 96, stats: { ...asObject(save.stats), gachaPulls: 0 } }),
+  // v96 → v97: khóa, yêu thích, đội hình mẫu (docs/rules/roster.md): chưa có mẫu; mọi quái chưa khóa, chưa yêu thích, kể cả
+  // shiny / boss đã có (chỉ quái bắt từ giờ mới tự khóa).
+  96: (save) => {
+    const open = (m: RawMonster): RawMonster => ({ ...m, locked: false, favorite: false })
+    return {
+      ...mapEggMonsters(mapAllMonsters(save, open), open),
+      version: 97,
+      teamPresets: { presets: [], nextPresetId: 1, lastMissing: null }
+    }
   }
 }
 

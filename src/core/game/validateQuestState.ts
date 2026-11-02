@@ -40,7 +40,10 @@ function checkInstance(
   return typeof quest.id === 'string' ? quest.id : null
 }
 
-/** quests: bảng ≤ boardSize, đang nhận ≤ maxActive, id không trùng và nhỏ hơn nextQuestId. */
+/**
+ * quests: bảng ≤ boardSize, đang nhận ≤ maxActive, nhiệm vụ tông ≤ missions.count, id không trùng
+ * (cả ba danh sách) và nhỏ hơn nextQuestId.
+ */
 export function validateQuestState(data: GameData, value: unknown): string[] {
   const quests = asObject(value)
   if (!quests) return ['quests phải là object']
@@ -48,7 +51,9 @@ export function validateQuestState(data: GameData, value: unknown): string[] {
   const ids: string[] = []
   for (const [key, max, active] of [
     ['board', data.config.quests.boardSize, false],
-    ['active', data.config.quests.maxActive, true]
+    ['active', data.config.quests.maxActive, true],
+    // Nhiệm vụ tông môn (docs/rules/sects.md): tự nhận nên có tiến độ như nhiệm vụ đang nhận.
+    ['sect', data.config.sects.missions.count, true]
   ] as const) {
     const list = quests[key]
     if (!Array.isArray(list)) {

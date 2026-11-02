@@ -26,7 +26,8 @@ import {
   itemBuyPrice,
   megaStonesOf,
   pickZCrystalFor,
-  titlePercent,
+  playerContractLevelLimit,
+  titleBonusAmount,
   tempShopPrice,
   type GameAction,
   type GameData,
@@ -109,6 +110,19 @@ export interface EconomyCount {
   favorRank: number
   /** Bậc thành tựu đã nhận (claimAchievementsWhenPossible, achievements.md). */
   achievementTiers: number
+  /** Số lần nâng thiên phú ngự thú sư (allocateTamerTalents, tamer-talents.md). */
+  tamerTalentUpgrades: number
+  /** Tông môn (runSectActivities, sects.md): nhiệm vụ tông đã nộp, lần thăng chức, tông chiến vô địch, trận tông. */
+  sectMissions: number
+  sectPromotions: number
+  sectWarsWon: number
+  sectBattles: number
+  /** Số lần trao đổi với NPC (runTrades, trades.md). */
+  trades: number
+  /** Quái NPC đưa mạnh nhất, % tổng chỉ số so với trung bình đội lúc trao đổi. */
+  tradePowerPercent: number
+  /** Số trứng quay ở Cây thần (runGacha, gacha.md). */
+  gachaEggs: number
   /**
    * Nghiên cứu loài (claimResearchRewardsWhenPossible, species-research.md): lần nhận thưởng cấp,
    * cấp nghiên cứu cao nhất của một loài thấy ở thị trấn.
@@ -151,6 +165,14 @@ export const newEconomyCount = (): EconomyCount => ({
   deityBuys: 0,
   favorRank: 0,
   achievementTiers: 0,
+  tamerTalentUpgrades: 0,
+  sectMissions: 0,
+  sectPromotions: 0,
+  sectWarsWon: 0,
+  sectBattles: 0,
+  trades: 0,
+  tradePowerPercent: 0,
+  gachaEggs: 0,
   researchRewards: 0,
   researchLevelPeak: 0
 })
@@ -467,7 +489,10 @@ export function contractTeamWhenPossible(
       if (error instanceof ActionError) continue
       throw error
     }
-    if (contractChance(data, monster, state.tamer.realm) < ECONOMY_POLICY.minContractChance)
+    if (
+      contractChance(data, monster, playerContractLevelLimit(data, state)) <
+      ECONOMY_POLICY.minContractChance
+    )
       continue
     const before = state
     state = simAct(data, state, { type: 'formContract', monsterId: monster.id })
@@ -537,8 +562,10 @@ export function claimAchievementsWhenPossible(
     count.achievementTiers += reached - claimed
   }
   const score = (titleId: string): [number, number] => {
-    const titles = { active: titleId }
-    return [titlePercent(data, titles, 'expPercent'), titlePercent(data, titles, 'moneyPercent')]
+    return [
+      titleBonusAmount(data, titleId, 'expPercent'),
+      titleBonusAmount(data, titleId, 'moneyPercent')
+    ]
   }
   const best = [...state.titles.owned].sort((a, b) => {
     const [expA, moneyA] = score(a)

@@ -136,6 +136,7 @@ const NORMAL_SPECIES_FIELDS = fieldList<NormalSpecies>({
   teraElementId: true,
   teraFormId: true,
   rank: true,
+  gachaWeight: true,
   partnerSkillId: true,
   workStats: true,
   workSpeed: true,

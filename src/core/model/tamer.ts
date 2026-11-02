@@ -14,6 +14,16 @@ export interface TamerState {
   bondDay: number | null
   /** Đạo thương tới hết ngày này (bản mệnh chết hẳn); null = không. */
   woundUntilDay: number | null
+  /**
+   * Cấp các nút thiên phú ngự thú sư đã nâng (docs/rules/tamer-talents.md): id nút → cấp ≥ 1. Điểm
+   * không lưu: suy từ cảnh giới, bộ đếm nhiệm vụ, bậc thành tựu đã nhận.
+   */
+  talentRanks: Record<string, number>
+  /**
+   * Điểm thiên phú ngự thú sư thưởng không suy ra được từ state (tông môn: nộp nhiệm vụ, thăng chức,
+   * vô địch tông chiến); giữ cả khi rời tông.
+   */
+  bonusTalentPoints: number
 }
 
 /** Bản mệnh thú (balance.json khóa `bond`; docs/rules/tamer.md mục "Bản mệnh thú"). */

@@ -40,6 +40,9 @@ import type { WorldBossState } from './worldBoss'
 import type { DexState } from './dex'
 import type { ResearchState } from './research'
 import type { AchievementState, GameStats, TitleState } from './achievements'
+import type { SectState } from './sects'
+import type { TeamPresetState } from './teamPresets'
+import type { TradeState } from './trades'
 
 // ---------- State game (được lưu vào save) ----------
 
@@ -106,6 +109,12 @@ export interface GameState {
   expeditions: ExpeditionState
   /** Đạo quán, đấu trường xếp hạng, giải đấu (docs/rules/trainers.md). */
   trainers: TrainerState
+  /** Tông môn đã gia nhập, cống hiến, chức vị, đồng môn NPC, tông chiến (docs/rules/sects.md). */
+  sect: SectState
+  /** Bảng trao đổi với NPC ở thị trấn (docs/rules/trades.md). */
+  trades: TradeState
+  /** Đội hình mẫu (docs/rules/roster.md mục "Đội hình mẫu"). */
+  teamPresets: TeamPresetState
   /**
    * Phó bản chuỗi trận đang đi: bí cảnh (docs/rules/trials.md) hoặc Khí giới bí cảnh
    * (docs/rules/artifact-spirits.md); null = không đi phó bản nào.
@@ -398,6 +407,11 @@ export interface MonsterBattleContext {
   frenzyStatPercent: number
   /** % mọi chỉ số của thưởng sưu tập (phe người chơi; docs/rules/dex.md); 0 = không có. */
   collectionStatPercent: number
+  /**
+   * % mọi chỉ số của kênh thưởng ngự thú sư `teamStatPercent` (phe người chơi, thiên phú / danh hiệu;
+   * docs/rules/tamer-talents.md); 0 = không có.
+   */
+  tamerBonusStatPercent: number
   /** % chỉ số của món ăn linh thực đang có tác dụng (phe người chơi; docs/rules/cooking.md). */
   mealStatPercent: PartialStats
   /**
@@ -1179,6 +1193,14 @@ export type BattleEvent =
   | { type: 'tournamentWon' }
   | { type: 'tournamentEliminated'; round: number }
   | { type: 'arenaRankUp'; rank: number }
+  /** Tông môn (docs/rules/sects.md): cống hiến nhận trong trận, thăng chức, tông chiến. */
+  | { type: 'sectContributionGained'; amount: number }
+  | { type: 'sectPromoted'; rank: number }
+  | { type: 'sectWarRoundWon'; round: number }
+  | { type: 'sectWarWon' }
+  | { type: 'sectWarEliminated'; round: number }
+  /** Nhận điểm thiên phú ngự thú sư thưởng (docs/rules/tamer-talents.md). */
+  | { type: 'tamerTalentPointsGained'; amount: number }
   /** Nhận vật phẩm thưởng cố định (vô địch giải, mốc đấu trường, lần đầu thắng đạo quán). */
   | { type: 'itemRewarded'; itemId: string; count: number }
   /**

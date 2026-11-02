@@ -21,7 +21,7 @@ import {
   monsterBodyPlan,
   researchMultiplier,
   skillSwitchesUserOut,
-  titleMultiplier
+  tamerBonusMultiplier
 } from '../registries'
 import {
   floorSite,
@@ -155,7 +155,7 @@ export function requireBattleStart(data: GameData, state: GameState): FloorSite 
         deityId: site.biome.deityId ?? null,
         channel: 'shinyChancePercent'
       }) *
-      titleMultiplier(data, state.titles, 'shinyChancePercent'),
+      tamerBonusMultiplier(data, state, 'shinyChancePercent'),
     // Nghiên cứu loài (docs/rules/species-research.md): hệ số riêng của loài vừa tung.
     speciesShinyMultiplier: (speciesId: string) =>
       researchMultiplier(data, state.research, speciesId, 'shinyChancePercent'),

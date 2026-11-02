@@ -24,6 +24,11 @@ import type { EventConfig } from './events'
 import type { BondConfig, ContractConfig } from './tamer'
 import type { SoulRelicConfig } from './soul'
 import type { TalentConfig } from './talents'
+import type { TamerTalentConfig } from './tamerTalents'
+import type { SectConfig } from './sects'
+import type { TeamPresetConfig } from './teamPresets'
+import type { TradeConfig } from './trades'
+import type { GachaConfig } from './gacha'
 import type { Tactic } from './monster'
 import type { ImprintConfig } from './imprint'
 import type { MasteryConfig } from './mastery'
@@ -177,6 +182,16 @@ export interface BalanceConfig {
   bloodline: BloodlineConfig
   /** Thiên phú quái (docs/rules/monster-talents.md). */
   talents: TalentConfig
+  /** Thiên phú ngự thú sư (docs/rules/tamer-talents.md). */
+  tamerTalents: TamerTalentConfig
+  /** Tông môn (docs/rules/sects.md). */
+  sects: SectConfig
+  /** Trao đổi với NPC (docs/rules/trades.md). */
+  trades: TradeConfig
+  /** Đội hình mẫu (docs/rules/roster.md). */
+  teamPresets: TeamPresetConfig
+  /** Cây thần: gacha trứng quái (docs/rules/gacha.md). */
+  gacha: GachaConfig
   /** Hệ thống event, chợ đen, thú triều (docs/rules/events.md). */
   events: EventConfig
   /** Bản mệnh thú (docs/rules/tamer.md mục "Bản mệnh thú"). */
@@ -764,6 +779,8 @@ export interface SkillBookConfig {
   shopMin: number
   shopMax: number
   shopMaxPower: number
+  /** Hệ số trọng số trên kệ của chiêu mạnh hơn shopMaxPower / không loài nào học (vẫn có cơ hội). */
+  shopRareSkillFactor: number
   /** Sách mà quái trong đội học được (chưa biết) nhân trọng số này trên kệ và khi boss rơi (≥ 1). */
   partyMultiplier: number
   /** % mỗi boss bị hạ rơi một sách (× hệ số rơi), skill trong learnset loài gốc của boss. */

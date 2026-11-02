@@ -29,6 +29,8 @@ export interface ActionErrorParams {
   /** Chưa đủ cấp nút yêu cầu. */
   talentRequires: { nodeId: string; requiredId: string; rank: number }
   notEnoughTalentPoints: { need: number; have: number }
+  /** Tẩy cây thiên phú ngự thú sư khi chưa nâng nút nào (docs/rules/tamer-talents.md). */
+  tamerTalentsEmpty: NoParams
   // ---------- Quái ----------
   monsterNotOwned: { monsterId: string }
   monsterNotInParty: { monsterId: string }
@@ -282,6 +284,13 @@ export interface ActionErrorParams {
   questNotComplete: { questId: string; progress: number; target: number }
   /** Thám hiểm (docs/rules/expeditions.md). */
   monsterBusy: { monsterId: string }
+  /** Quái đang khóa không thể mất (thả, quái phụ, hiến tế, trao đổi; docs/rules/roster.md). */
+  monsterLocked: { monsterId: string }
+  // ---------- Đội hình mẫu (docs/rules/roster.md) ----------
+  presetNotFound: { presetId: string }
+  presetSlotsFull: { max: number }
+  /** Không còn quái nào của mẫu áp được (đội không được trống). */
+  presetEmpty: { presetId: string }
   expeditionNotOffered: { expeditionId: string }
   expeditionSlotsFull: { slots: number }
   expeditionRequirementUnmet: { expeditionId: string; requirement: string }
@@ -299,6 +308,31 @@ export interface ActionErrorParams {
   tournamentNotOpen: { nextDay: number }
   tournamentInProgress: NoParams
   noTournament: NoParams
+  // ---------- Tông môn (docs/rules/sects.md) ----------
+  sectNotFound: { sectId: string }
+  alreadyInSect: { sectId: string }
+  notInSect: NoParams
+  sectRealmTooLow: { sectId: string; minRealm: number }
+  /** Rời tông chưa đủ rejoinCooldownDays ngày. */
+  sectRejoinCooldown: { untilDay: number }
+  notEnoughContribution: { need: number; have: number }
+  notInSectShop: { itemId: string }
+  sectRankTooLow: { itemId: string; minRank: number }
+  sectMemberNotFound: { memberId: string }
+  sectDuelLimit: { perDay: number }
+  /** Chưa đủ cống hiến tổng để thi thăng chức. */
+  promotionNotReady: { need: number; have: number }
+  sectWarNotOpen: { nextDay: number }
+  /** Đang dự tông chiến: như giải đấu (không hồi máu, không rời thị trấn, không trận khác). */
+  sectWarInProgress: NoParams
+  noSectWar: NoParams
+  // ---------- Trao đổi với NPC (docs/rules/trades.md) ----------
+  tradeNotFound: { offerId: string }
+  /** Quái đưa không đúng yêu cầu của đề nghị (loài / race / hệ, level tối thiểu). */
+  tradeWantNotMet: { offerId: string; monsterId: string }
+  // ---------- Cây thần (docs/rules/gacha.md) ----------
+  gachaInvalidCount: { count: number }
+  gachaPoolEmpty: NoParams
   // ---------- Bí cảnh và tháp thí luyện (docs/rules/trials.md) ----------
   /** Lệnh bị cấm trong bí cảnh / tháp: bắt, chạy, vật phẩm (luật noItems / noHealing). */
   trialRestricted: { command: 'ball' | 'flee' | 'item' }
@@ -428,6 +462,7 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   talentBranchClosed: ({ nodeId, raceId }) =>
     `Race "${raceId}" không nâng được thiên phú "${nodeId}"`,
   talentMaxRank: ({ nodeId, maxRank }) => `Thiên phú "${nodeId}" đã đạt cấp tối đa ${maxRank}`,
+  tamerTalentsEmpty: () => 'Chưa nâng thiên phú ngự thú sư nào để tẩy',
   talentRequires: ({ nodeId, requiredId, rank }) =>
     `Thiên phú "${nodeId}" cần "${requiredId}" cấp ${rank} trước`,
   notEnoughTalentPoints: ({ need, have }) => `Cần ${need} điểm thiên phú, có ${have}`,
@@ -622,6 +657,10 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   tooManyQuests: ({ maxActive }) => `Chỉ nhận tối đa ${maxActive} nhiệm vụ cùng lúc`,
   questNotComplete: ({ questId, progress, target }) =>
     `Nhiệm vụ "${questId}" chưa xong (${progress}/${target})`,
+  monsterLocked: ({ monsterId }) => `Quái "${monsterId}" đang khóa`,
+  presetNotFound: ({ presetId }) => `Không có đội hình mẫu "${presetId}"`,
+  presetSlotsFull: ({ max }) => `Tối đa ${max} đội hình mẫu`,
+  presetEmpty: ({ presetId }) => `Đội hình mẫu "${presetId}" không còn quái nào áp được`,
   monsterBusy: ({ monsterId }) => `Quái "${monsterId}" đang làm việc (thám hiểm / động phủ)`,
   expeditionNotOffered: ({ expeditionId }) => `Bảng thám hiểm không có "${expeditionId}"`,
   expeditionSlotsFull: ({ slots }) => `Đã có đủ ${slots} đội thám hiểm`,
@@ -640,6 +679,26 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   tournamentNotOpen: ({ nextDay }) => `Giải đấu kế tiếp mở vào ngày ${nextDay}`,
   tournamentInProgress: () => 'Đang trong giải đấu (không hồi máu, không rời thị trấn)',
   noTournament: () => 'Không trong giải đấu nào',
+  sectNotFound: ({ sectId }) => `Không có tông môn "${sectId}"`,
+  alreadyInSect: ({ sectId }) => `Đang ở tông môn "${sectId}"`,
+  notInSect: () => 'Chưa gia nhập tông môn nào',
+  sectRealmTooLow: ({ sectId, minRealm }) => `Tông "${sectId}" cần cảnh giới ${minRealm}`,
+  sectRejoinCooldown: ({ untilDay }) => `Vừa rời tông, tới ngày ${untilDay} mới gia nhập được`,
+  notEnoughContribution: ({ need, have }) => `Cần ${need} cống hiến, đang có ${have}`,
+  notInSectShop: ({ itemId }) => `Tàng Bảo Các không bán "${itemId}"`,
+  sectRankTooLow: ({ itemId, minRank }) => `"${itemId}" cần chức vị ${minRank}`,
+  sectMemberNotFound: ({ memberId }) => `Không có đồng môn "${memberId}"`,
+  sectDuelLimit: ({ perDay }) => `Mỗi ngày chỉ luận võ ${perDay} trận`,
+  promotionNotReady: ({ need, have }) =>
+    `Cần ${need} cống hiến tổng để thi thăng chức, đang có ${have}`,
+  sectWarNotOpen: ({ nextDay }) => `Tông chiến kế tiếp mở vào ngày ${nextDay}`,
+  sectWarInProgress: () => 'Đang trong tông chiến (không hồi máu, không rời thị trấn)',
+  noSectWar: () => 'Không trong tông chiến nào',
+  tradeNotFound: ({ offerId }) => `Không có đề nghị trao đổi "${offerId}"`,
+  tradeWantNotMet: ({ offerId, monsterId }) =>
+    `Quái "${monsterId}" không đúng yêu cầu của đề nghị "${offerId}"`,
+  gachaInvalidCount: ({ count }) => `Cây thần không có cách quay ${count} trứng`,
+  gachaPoolEmpty: () => 'Cây thần không có loài nào để ra',
   trialRestricted: ({ command }) => `Không được dùng lệnh "${command}" trong bí cảnh / tháp`,
   trialInProgress: () => 'Đang đi bí cảnh (không hồi máu, không rời thị trấn, không vào trận khác)',
   noTrial: () => 'Không trong bí cảnh nào',

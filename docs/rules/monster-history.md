@@ -21,9 +21,11 @@ Ghi nguồn gốc và cột mốc của mỗi quái (như trainer memo của Pok
 | `legacy`        | `parentSpeciesId` (loài gốc của quái đã chết)                                                                         | `createLegacyEgg` (ấp hồn phách, `soul-relics.md`)                       |
 | `recruit`       | `method` (`afterBattle` / `intimidate` / `bossSubmit`)                                                                | quái thu phục (`recruit.md`)                                             |
 | `safari`        |                                                                                                                       | `throwSafariBall` bắt được (thị trấn: `metFloor` null; `safari-zone.md`) |
+| `trade`         | `npcNameId` (tên NPC, chủ cũ)                                                                                         | `acceptTrade` (thị trấn: `metFloor` null; `trades.md`)                    |
+| `gacha`         |                                                                                                                       | `pullGacha` (thị trấn: `metFloor` null; `gacha.md`)                      |
 | `unknown`       |                                                                                                                       | chỉ có ở save cũ (migrate v25)                                           |
 
-Chưa có: `trade` (`npc-trades.md`), `gacha`... Mục đó làm thì thêm nhánh vào `HistoryOrigin` và một dòng `ORIGIN_RULES`.
+Nguồn gốc `trade { npcNameId }`: quái nhận qua trao đổi với NPC (`trades.md`). Nguồn gốc mới thì thêm nhánh vào `HistoryOrigin` và một dòng `ORIGIN_RULES`.
 
 - **Cột mốc** (`milestones`, cũ trước mới): mỗi mốc `{ day, kind, ...trường riêng }` (union `Milestone`, bảng kiểm tra `MILESTONE_RULES`). Tối đa `config.history.maxMilestones` (50, `balance.json`), đầy thì bỏ mốc cũ nhất. Mỗi tính năng tự gọi `addMilestone(data, monster, milestone)` (quái chưa có lý lịch thì giữ nguyên).
 

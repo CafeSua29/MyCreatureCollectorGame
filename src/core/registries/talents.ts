@@ -2,6 +2,7 @@
 // tác dụng. Điểm không lưu trong save: suy từ maxLevelReached, tầng thức tỉnh và số lần luân hồi
 // (quy tắc 3), trừ phần đã dùng cho các nút. Tách khỏi roster/ để traitHooks.ts (nguồn hook "talent") import được.
 
+import { ActionError, assertNever } from '../shared'
 import { raceMatchesAny } from './races'
 import type { GameData, Monster, TalentNodeDef } from '../model'
 
@@ -33,22 +34,37 @@ export function talentPointsEarned(data: GameData, monster: TalentMonster): numb
   )
 }
 
+/** Nút nâng theo cấp (thiên phú quái, thiên phú ngự thú sư): giá, trần, nút yêu cầu. */
+export interface RankedNode {
+  costPerRank: number
+  maxRank?: number
+  requires?: Record<string, number>
+}
+
 /** Giá nâng nút từ cấp `rank` lên `rank + 1`: costPerRank × (rank + 1). */
-export function talentRankCost(node: TalentNodeDef, rank: number): number {
+export function talentRankCost(node: Pick<RankedNode, 'costPerRank'>, rank: number): number {
   return node.costPerRank * (rank + 1)
 }
 
 /** Tổng điểm đã dùng để nâng nút tới cấp `rank`: costPerRank × (1 + 2 + … + rank). */
-function talentPointsForRank(node: TalentNodeDef, rank: number): number {
+function talentPointsForRank(node: Pick<RankedNode, 'costPerRank'>, rank: number): number {
   return (node.costPerRank * rank * (rank + 1)) / 2
 }
 
-/** Tổng điểm đã dùng trên mọi nút. */
-export function talentPointsSpent(data: GameData, monster: TalentMonster): number {
-  return Object.entries(monster.talentRanks).reduce(
-    (sum, [nodeId, rank]) => sum + talentPointsForRank(data.talents[nodeId], rank),
+/** Tổng điểm đã dùng cho mọi nút trong `ranks` (id nút → cấp; nút phải có trong `nodes`). */
+export function rankedPointsSpent(
+  nodes: Readonly<Record<string, RankedNode>>,
+  ranks: Readonly<Record<string, number>>
+): number {
+  return Object.entries(ranks).reduce(
+    (sum, [nodeId, rank]) => sum + talentPointsForRank(nodes[nodeId], rank),
     0
   )
+}
+
+/** Tổng điểm thiên phú quái đã dùng trên mọi nút. */
+export function talentPointsSpent(data: GameData, monster: TalentMonster): number {
+  return rankedPointsSpent(data.talents, monster.talentRanks)
 }
 
 /**
@@ -59,14 +75,56 @@ export function talentPointsAvailable(data: GameData, monster: TalentMonster): n
   return talentPointsEarned(data, monster) - talentPointsSpent(data, monster)
 }
 
-/** Lý do không nâng được một nút (null = nâng được). */
-export type TalentBlocker =
-  | { kind: 'branchClosed' }
+/** Lý do chung không nâng được một nút của cây thiên phú bất kỳ (trần, nút yêu cầu, điểm). */
+export type RankedNodeBlocker =
   | { kind: 'maxRank'; maxRank: number }
   | { kind: 'requires'; nodeId: string; rank: number }
   | { kind: 'points'; need: number; have: number }
 
-/** Kiểm tra nâng nút `nodeId` thêm một cấp (nút phải tồn tại). */
+/** Lý do không nâng được một nút thiên phú quái (null = nâng được). */
+export type TalentBlocker = { kind: 'branchClosed' } | RankedNodeBlocker
+
+/** Lỗi action theo lý do chung không nâng được nút `nodeId`. */
+export function rankedNodeError(nodeId: string, blocker: RankedNodeBlocker): ActionError {
+  switch (blocker.kind) {
+    case 'maxRank':
+      return new ActionError('talentMaxRank', { nodeId, maxRank: blocker.maxRank })
+    case 'requires':
+      return new ActionError('talentRequires', {
+        nodeId,
+        requiredId: blocker.nodeId,
+        rank: blocker.rank
+      })
+    case 'points':
+      return new ActionError('notEnoughTalentPoints', { need: blocker.need, have: blocker.have })
+    default:
+      return assertNever(blocker, 'lý do không nâng được thiên phú')
+  }
+}
+
+/**
+ * Kiểm tra nâng nút thêm một cấp theo trần, nút yêu cầu và điểm còn `available` (chung cho mọi cây
+ * thiên phú; nhánh đóng / mở do nơi gọi xét trước).
+ */
+export function rankedNodeBlocker(
+  node: RankedNode,
+  ranks: Readonly<Record<string, number>>,
+  { nodeId, available }: { nodeId: string; available: number }
+): RankedNodeBlocker | null {
+  const rank = ranks[nodeId] ?? 0
+  if (node.maxRank !== undefined && rank >= node.maxRank) {
+    return { kind: 'maxRank', maxRank: node.maxRank }
+  }
+  for (const [requiredId, requiredRank] of Object.entries(node.requires ?? {})) {
+    if ((ranks[requiredId] ?? 0) < requiredRank) {
+      return { kind: 'requires', nodeId: requiredId, rank: requiredRank }
+    }
+  }
+  const need = talentRankCost(node, rank)
+  return available < need ? { kind: 'points', need, have: available } : null
+}
+
+/** Kiểm tra nâng nút thiên phú quái `nodeId` thêm một cấp (nút phải tồn tại). */
 export function talentBlocker(
   data: GameData,
   monster: TalentMonster,
@@ -74,18 +132,10 @@ export function talentBlocker(
 ): TalentBlocker | null {
   const node = data.talents[nodeId]
   if (!isTalentBranchOpen(data, monster, node.branchId)) return { kind: 'branchClosed' }
-  const rank = monster.talentRanks[nodeId] ?? 0
-  if (node.maxRank !== undefined && rank >= node.maxRank) {
-    return { kind: 'maxRank', maxRank: node.maxRank }
-  }
-  for (const [requiredId, requiredRank] of Object.entries(node.requires ?? {})) {
-    if ((monster.talentRanks[requiredId] ?? 0) < requiredRank) {
-      return { kind: 'requires', nodeId: requiredId, rank: requiredRank }
-    }
-  }
-  const need = talentRankCost(node, rank)
-  const have = talentPointsAvailable(data, monster)
-  return have < need ? { kind: 'points', need, have } : null
+  return rankedNodeBlocker(node, monster.talentRanks, {
+    nodeId,
+    available: talentPointsAvailable(data, monster)
+  })
 }
 
 /** Nút đã nâng ở nhánh đang mở, kèm cấp: hook của nút nhân hệ số = cấp. */

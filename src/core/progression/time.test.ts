@@ -134,7 +134,9 @@ describe('tọa hóa: để lại hồn phách', () => {
     expect(next.party.map((m) => m.id)).toEqual(['m9'])
     expect(next.party[0].history?.origin).toEqual({ kind: 'legacy', parentSpeciesId: 'weakling' })
     expect(next.eggs).toEqual([])
-    expect(next.nextMonsterId).toBe(10)
+    // + 1 trứng truyền thừa; bảng trao đổi ra lúc qua ngày giữ id cho quái NPC đưa (trades.md).
+    const traded = next.trades.offers.filter((offer) => offer.give.kind === 'monster').length
+    expect(next.nextMonsterId).toBe(10 + traded)
     // Hồn phách của m2 (mới nhất) đã ấp, hồn phách m1 còn trong túi.
     expect(next.inventory.souls.map((soul) => soul.id)).toEqual(['m1'])
     expect(next.dayEvents).toContainEqual({ type: 'legacyEggHatched', monsterId: 'm9' })

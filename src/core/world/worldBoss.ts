@@ -2,6 +2,7 @@
 // xuất hiện theo ngày, bậc thưởng theo kỷ lục. Trận ở battle/worldBoss.ts, việc theo ngày và nhận
 // thưởng ở progression/worldBoss.ts.
 
+import { BATTLE_FORM_KINDS } from '../model'
 import { getMaxHp } from '../monster'
 import { isLargeMonster, speciesRankIndex, speciesRankOf } from '../registries'
 import { createRng, type Decimal, type RngState } from '../shared'
@@ -18,24 +19,22 @@ export interface WorldBossCandidate {
 const candidateCache = new WeakMap<GameData, readonly WorldBossCandidate[]>()
 
 /**
- * Loài boss thế giới: loài thường dạng cuối (không tiến hóa tiếp), phẩm cấp loài từ minSpeciesRankId
- * trở lên; loài lớn trọng số largeWeight, còn lại 1 (mọi loài đủ điều kiện đều có cơ hội).
+ * Loài boss thế giới: mọi loài thường trừ dạng chỉ có trong trận, trọng số = rankWeights theo phẩm cấp
+ * loài (vượt danh sách lấy số cuối) × largeWeight nếu là loài lớn.
  */
 export function worldBossCandidates(data: GameData): readonly WorldBossCandidate[] {
   const cached = candidateCache.get(data)
   if (cached) return cached
-  const { minSpeciesRankId, largeWeight } = data.config.worldBoss
-  const minRank = speciesRankIndex(data, minSpeciesRankId)
+  const { rankWeights, largeWeight } = data.config.worldBoss
   const candidates = Object.values(data.species)
     .filter((species): species is NormalSpecies => species.kind === 'normal')
-    .filter((species) => species.evolutions.length === 0)
-    .filter((species) => speciesRankIndex(data, speciesRankOf(data, species).id) >= minRank)
-    .map((species) => ({
-      speciesId: species.id,
-      weight: isLargeMonster(data, { speciesId: species.id, baseSpeciesId: species.id })
-        ? largeWeight
-        : 1
-    }))
+    .filter((species) => !BATTLE_FORM_KINDS.includes(species.formKind ?? 'alternate'))
+    .map((species) => {
+      const rank = Math.max(0, speciesRankIndex(data, speciesRankOf(data, species).id))
+      const weight = rankWeights[Math.min(rank, rankWeights.length - 1)] ?? 0
+      const large = isLargeMonster(data, { speciesId: species.id, baseSpeciesId: species.id })
+      return { speciesId: species.id, weight: weight * (large ? largeWeight : 1) }
+    })
     .filter((candidate) => candidate.weight > 0)
   candidateCache.set(data, candidates)
   return candidates

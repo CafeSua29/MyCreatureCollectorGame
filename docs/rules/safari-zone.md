@@ -16,7 +16,7 @@ Code: `world/safari.ts` (action, tỉ lệ bắt / chạy, chặn action khác),
 ## Danh sách loài
 
 - Danh sách `rosterSize` (10) loài không trùng, đổi mỗi **`rotationDays` (7) ngày**: việc theo ngày `safari` (`DAILY_TASKS`) và lúc vào khu đều gọi `refreshSafariRoster` (tới `refreshDay` thì tung mới, `refreshDay` = ngày đó + 7). Game mới / save cũ có `refreshDay` 0 nên lần vào khu đầu tiên tung ngay.
-- Mỗi ô (`rollSafariRoster`): tung `unmappedChance` (5%) lấy từ **loài không gán vào map nào** (không là quái thường, boss hay boss tầng của biome nào), còn lại lấy từ **loài quái thường của các map đã mở** (`floorBiomeIds`; boss không vào khu). Một nhóm hết loài thì lấy nhóm kia. Không lấy dạng chỉ có trong trận (Mega, gmax, battleOnly).
+- Mỗi ô (`rollSafariRoster`): tung `unmappedChance` (5%) lấy từ **loài không là quái thường của map nào** (gồm loài chỉ làm boss), còn lại lấy từ **loài quái thường của mọi map, kể cả map chưa mở** (chủ project chốt 2026-11-02: mọi kết quả hợp lệ đều có cơ hội). Một nhóm hết loài thì lấy nhóm kia. Không lấy dạng chỉ có trong trận (Mega, gmax, battleOnly).
 - Trong nhóm chọn theo trọng số (`safariSpeciesWeight`), **mọi loài đều có cơ hội**: `(rarityWeightBase + 100 − catchRate) ^ rarityExponent × rankFalloff ^ thứ hạng phẩm cấp loài` (20, mũ 2, 0,7; `species-rank.md`): loài catchRate thấp (hiếm) nhiều hơn, phẩm cấp cao ít hơn.
 - Mỗi lần gặp: loài đều trong danh sách; level trong khoảng level quái thường của `highestFloor` (bắt không theo giới hạn khế ước), gen theo `floorGeneMultiplier(highestFloor)`, shiny theo `shiny.wildChance`, tuổi như quái hoang (`rollSpawnAge`). Không có boss. Id quái lấy từ `nextMonsterId`.
 

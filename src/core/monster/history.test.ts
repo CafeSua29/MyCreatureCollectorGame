@@ -115,7 +115,7 @@ describe('validateHistory', () => {
   it('báo lỗi nguồn gốc: kind lạ, bóng / loài sai, thiếu hoặc thừa trường', () => {
     const issuesOf = (origin: unknown): string[] =>
       check({ ...history(), origin } as unknown as MonsterHistory)
-    expect(issuesOf({ kind: 'gacha' })).toEqual(['h.origin.kind không hợp lệ "gacha"'])
+    expect(issuesOf({ kind: 'lostKind' })).toEqual(['h.origin.kind không hợp lệ "lostKind"'])
     expect(issuesOf({ kind: 'toString' })).toEqual(['h.origin.kind không hợp lệ "toString"'])
     expect(issuesOf({ kind: 'wild', ballItemId: 'potion' })).toEqual([
       'h.origin.ballItemId: bóng không hợp lệ "potion"'

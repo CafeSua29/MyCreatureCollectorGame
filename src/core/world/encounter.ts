@@ -81,6 +81,8 @@ function rollGenes(data: GameData, rng: RngState, multiplier: Decimal): [BigStat
   return [genes, rng]
 }
 
+type TraitKindWeights = Partial<Record<TraitDef['kind'], number>>
+
 /** Trait theo loại, giữ thứ tự của data.traits (tính một lần cho mỗi bộ dữ liệu). */
 const traitsByKindCache = new WeakMap<GameData['traits'], Map<TraitDef['kind'], TraitDef[]>>()
 
@@ -104,9 +106,8 @@ function traitsByKind(data: GameData): Map<TraitDef['kind'], TraitDef[]> {
 function rollTraitForSlot(
   data: GameData,
   rng: RngState,
-  isAllowed: (trait: TraitDef) => boolean
+  { isAllowed, weights }: { isAllowed: (trait: TraitDef) => boolean; weights: TraitKindWeights }
 ): [TraitDef | null, RngState] {
-  const weights = data.config.wild.traitKindWeights
   const groups = traitsByKind(data)
   const kinds = [...groups.keys()].filter(
     (kind) => (weights[kind] ?? 0) > 0 && (groups.get(kind) ?? []).some(isAllowed)
@@ -117,8 +118,12 @@ function rollTraitForSlot(
   return pick(rng, (groups.get(kind) ?? []).filter(isAllowed))
 }
 
-/** Random trait cho quái hoang, không lấy hai trait cùng nhóm loại trừ. */
-function rollTraits(data: GameData, rng: RngState): [TraitInstance[], RngState] {
+/** Random trait theo trọng số loại, không lấy hai trait cùng nhóm loại trừ. */
+function rollTraits(
+  data: GameData,
+  rng: RngState,
+  weights: TraitKindWeights
+): [TraitInstance[], RngState] {
   const { traitCountWeights } = data.config.wild
   const counts = traitCountWeights.map((weight, count) => ({ weight, count }))
   let target: { count: number }
@@ -128,7 +133,7 @@ function rollTraits(data: GameData, rng: RngState): [TraitInstance[], RngState] 
   const chosen: TraitDef[] = []
   for (let i = 0; i < count; i++) {
     let trait: TraitDef | null
-    ;[trait, rng] = rollTraitForSlot(data, rng, allowedBeside(chosen))
+    ;[trait, rng] = rollTraitForSlot(data, rng, { isAllowed: allowedBeside(chosen), weights })
     if (trait === null) break
     chosen.push(trait)
   }
@@ -157,7 +162,10 @@ export function addRandomTraits(
   let traitSlots = monster.traitSlots
   for (let i = 0; i < count && monster.traits.length + added.length < slotCap; i++) {
     let trait: TraitDef | null
-    ;[trait, rng] = rollTraitForSlot(data, rng, allowedBeside(owned))
+    ;[trait, rng] = rollTraitForSlot(data, rng, {
+      isAllowed: allowedBeside(owned),
+      weights: data.config.wild.traitKindWeights
+    })
     if (trait === null) break
     owned.push(trait)
     added.push({ id: trait.id, level: 1 })
@@ -178,6 +186,8 @@ export interface MonsterRollSpec {
    * Hệ số shiny theo loài vừa tung (nghiên cứu loài, docs/rules/species-research.md); bỏ trống = 1.
    */
   speciesShinyMultiplier?: (speciesId: string) => number
+  /** Trọng số loại trait riêng (Cây thần, docs/rules/gacha.md); bỏ trống = config.wild.traitKindWeights. */
+  traitKindWeights?: TraitKindWeights
   /** Quái có già đi không (= options.lifespanEnabled của game). */
   aging: boolean
 }
@@ -206,7 +216,7 @@ export function rollMonster(
   let genes: BigStats
   ;[genes, rng] = rollGenes(data, rng, spec.geneMultiplier)
   let traits: TraitInstance[]
-  ;[traits, rng] = rollTraits(data, rng)
+  ;[traits, rng] = rollTraits(data, rng, spec.traitKindWeights ?? data.config.wild.traitKindWeights)
 
   let monster: Monster = {
     id,
@@ -288,7 +298,9 @@ export function rollMonster(
     // No và tinh thần đầy (docs/rules/dwelling.md mục "Đói và tinh thần").
     fullness: data.config.dwelling.needs.max,
     sanity: data.config.dwelling.needs.max,
-    ailment: null
+    ailment: null,
+    locked: false,
+    favorite: false
   }
   let shiny: boolean
   ;[shiny, rng] = rollPercent(
@@ -398,6 +410,43 @@ export function generateWildMonster(
   id: string
 ): [Monster, RngState] {
   const spec = floorRollSpec(data, site, site.biome.encounters)
+  return rollWildFromSpec(data, rng, { site, spec, id })
+}
+
+/**
+ * Quái NPC đưa khi trao đổi (docs/rules/trades.md): loài trong `encounters` (trọng số), level như quái
+ * hoang của tầng + levelOffset (tối thiểu 1), gen × geneMultiplier, tỉ lệ shiny × shinyMultiplier;
+ * tuổi / Âm Dương như quái hoang.
+ */
+export function generateTradeMonster(
+  data: GameData,
+  rng: RngState,
+  {
+    site,
+    encounters,
+    id,
+    levelOffset,
+    geneMultiplier,
+    shinyMultiplier
+  }: {
+    site: FloorSite
+    encounters: readonly EncounterEntry[]
+    id: string
+    levelOffset: number
+    geneMultiplier: number
+    shinyMultiplier: number
+  }
+): [Monster, RngState] {
+  const base = floorRollSpec(data, site, encounters)
+  const spec: MonsterRollSpec = {
+    ...base,
+    // Loài trao đổi không theo giờ gặp của map (encountersAt): giữ nguyên danh sách.
+    encounters,
+    levelMin: Math.max(1, base.levelMin + levelOffset),
+    levelMax: Math.max(1, base.levelMax + levelOffset),
+    geneMultiplier: base.geneMultiplier.times(geneMultiplier),
+    shinyChance: base.shinyChance * shinyMultiplier
+  }
   return rollWildFromSpec(data, rng, { site, spec, id })
 }
 

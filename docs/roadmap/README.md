@@ -12,11 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [tamer-talents.md](docs/roadmap/tamer-talents.md): Cây thiên phú ngự thú sư
-- [sects.md](docs/roadmap/sects.md): Tông môn (cống hiến, chức vị, Tàng Bảo Các, tông chiến)
-- [npc-trades.md](docs/roadmap/npc-trades.md): Trao đổi với NPC
-- [gacha.md](docs/roadmap/gacha.md): Cây thần: gacha trứng
-- [roster-tools.md](docs/roadmap/roster-tools.md): Khóa quái, yêu thích, đội hình mẫu
 - [bulk-actions.md](docs/roadmap/bulk-actions.md): Thao tác hàng loạt
 - [auction.md](docs/roadmap/auction.md): Đấu giá hành (đặt giá kín với NPC, ký gửi)
 - [challenge-modes.md](docs/roadmap/challenge-modes.md): Độ khó, Nuzlocke, Hardcore, Randomizer (tùy chọn theo từng game)
@@ -74,7 +69,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       2. Hóa hình. **Đã xong** (luật ở `docs/rules/human-form.md`; Hóa Hình Đan qua luyện đan chờ bước 4, phản tổ đã làm ở `docs/rules/bloodline.md`).
       3. Thiên tài địa bảo. **Đã xong** (luật ở `docs/rules/treasures.md`; nguồn luyện đan / linh điền chờ bước 4, chợ đen đã có ở bước 11).
       4. Luyện đan và linh điền. **Đã xong** (luật ở `docs/rules/alchemy.md`; chợ đen bán đan phương đã có ở bước 11; dược liệu theo biome dùng chung `wildDrops`).
-      5. Bảng nhiệm vụ. **Đã xong** (luật ở `docs/rules/quests.md`; nhiệm vụ tông môn chờ `sects.md`).
+      5. Bảng nhiệm vụ. **Đã xong** (luật ở `docs/rules/quests.md`; nhiệm vụ tông môn ở `docs/rules/sects.md`).
       6. Phái quái đi thám hiểm. **Đã xong** (luật ở `docs/rules/expeditions.md`; thưởng trứng hiếm đã thêm 2026-10-25, Bí Cảnh Lệnh đã thêm ở bước 9, động phủ dùng lại `assignment` ở `dwelling.md`).
       7. Tự động đánh. **Đã xong** phần core (luật ở `docs/rules/auto-battle.md`; vòng lặp ở UI bước 7; AI chọn quái thay / đổi quái đã làm ở bước 8).
       8. Đấu với ngự thú sư NPC. **Đã xong** (luật ở `docs/rules/trainers.md`; Kẻ lạ thách đấu đã có ở bước 11, hiển thị tư chất NPC chờ UI).
@@ -95,7 +90,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
           5u. Linh dịch. **Đã xong** (luật ở `docs/rules/spirit-virus.md`; tỉ lệ nhiễm / lây theo Pokérus gốc thay cho số tạm của roadmap).
           5v. Âm / Dương hóa. **Đã xong** (luật ở `docs/rules/polarity.md`; quái hoang / boss có cực theo tầng đang đánh thay cho `highestFloor`).
    6. Extract / inject trait. **Đã xong** (2026-10-31; luật ở `docs/rules/trait-crystals.md`; tinh thể rơi đồ để sau).
-      6b. Hiến tế. **Đã xong** (2026-10-31; luật ở `docs/rules/sacrifice.md`; độ thuần không vượt độ thuần cao hơn của hai quái thay cho cộng thẳng; chặn quái khóa chờ `roster-tools.md`, bộ lọc hàng loạt chờ `bulk-actions.md`).
+      6b. Hiến tế. **Đã xong** (2026-10-31; luật ở `docs/rules/sacrifice.md`; độ thuần không vượt độ thuần cao hơn của hai quái thay cho cộng thẳng; chặn quái khóa đã làm ở bước 11b, `roster.md`.md`, bộ lọc hàng loạt chờ `bulk-actions.md`).
       6c. Phòng Thí Nghiệm: cấy ghép (`implant`). **Đã xong** (2026-10-31; luật ở `docs/rules/implant.md`; bậc huyết thanh ở `balance.json` thay `serums.json`, bản mệnh cấy được (chết thì đạo thương), kết quả qua mốc lý lịch thay log riêng; huyết thanh hiệu ứng + registry `SERUM_EFFECTS` làm ngay sau (5 hiệu ứng theo hook có sẵn, cấp có dấu); hỏi khi túi đầy đã làm cùng sức chứa (`docs/rules/capacity.md`, 2026-10-31, save v77)).
       6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần đã làm ở 6b, `sacrifice.md`).
       6e. Thức tỉnh và độ kiếp. **Đã xong** ở bước 5l+.1 (luật ở `docs/rules/awakening.md`).
@@ -122,12 +117,12 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
    9. Bảng nhiệm vụ. **Đã xong** ở bước 5l+.5 (luật ở `docs/rules/quests.md`).
       9b. Phái quái đi thám hiểm. **Đã xong** ở bước 5l+.6 (luật ở `docs/rules/expeditions.md`).
       9c. Động phủ. **Đã xong** (2026-11-01; luật ở `docs/rules/dwelling.md`; hiệu ứng công trình là union theo `type` thay `output` chung, Tàng thư các ra sách kỹ năng theo map thay Bí kíp, vận chuyển là hệ số dùng ở mọi công trình, bậc đầu chỉ tốn tiền, Linh trì đổi tên Linh tuyền vì trùng chỗ nuôi khí linh).
-      9d. Cây thiên phú ngự thú sư (`tamer-talents.md`; điểm từ nhiệm vụ).
-      9e. Tông môn (`sects.md`; cần nhiệm vụ và đội NPC).
-      9f. Trao đổi với NPC (`npc-trades.md`).
-   10. Cây thần (gacha trứng).
+      9d. Cây thiên phú ngự thú sư. **Đã xong** (2026-11-02; luật ở `docs/rules/tamer-talents.md`; điểm không lưu mà suy từ nguồn, hiệu ứng là kênh thưởng chung với danh hiệu, tẩy bằng action riêng tiêu Hoàn Nguyên Đan).
+      9e. Tông môn. **Đã xong** (2026-11-02; luật ở `docs/rules/sects.md`; 15 tông, đồng môn NPC có tên / chức vị / tích cống hiến theo ngày, luận võ, thi thăng chức đấu giám khảo, tông chiến, điểm thiên phú ngự thú sư thưởng lưu ở `tamer.bonusTalentPoints`).
+      9f. Trao đổi với NPC. **Đã xong** (2026-11-02; luật ở `docs/rules/trades.md`; quái nhận thế chỗ quái đưa nên không cần chỗ trống, + 50% EXP như Pokémon, NPC dùng chung tên với tông môn).
+   10. Cây thần (gacha trứng). **Đã xong** (2026-11-02; luật ở `docs/rules/gacha.md`; trọng số loài mặc định theo phẩm cấp với `gachaWeight` là ghi đè thay vì khai từng loài, loài không giới tính ra được, điểm xuất phát trọng số trait bằng quái hoang).
    11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt. Sức chứa **đã xong** (2026-10-31, làm sớm cùng cấy ghép; luật ở `docs/rules/capacity.md`); thao tác hàng loạt còn ở `bulk-actions.md`.
-       11b. Khóa quái, yêu thích, đội hình mẫu (`roster-tools.md`).
+       11b. Khóa quái, yêu thích, đội hình mẫu. **Đã xong** (2026-11-02; luật ở `docs/rules/roster.md`; làm cùng Bí kíp ở Tàng Bảo Các; khóa còn chặn fuse / cấy ghép có thể mất quái; thứ thiếu ghi ở `teamPresets.lastMissing` thay vì log).
    12. Hệ thống event. **Đã xong** ở bước 5l+.11 (luật ở `docs/rules/events.md`).
        12b. Đấu giá hành (`auction.md`; sau event để tách rõ với chợ đen).
        12c. Độ khó và chế độ thử thách (`challenge-modes.md`; chạm nhiều hệ thống nên làm gần cuối).

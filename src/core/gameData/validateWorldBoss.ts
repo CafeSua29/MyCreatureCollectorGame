@@ -1,8 +1,7 @@
 // Kiểm tra dữ liệu boss thế giới (docs/rules/world-boss.md): config.worldBoss (chu kỳ, số lượt, level,
-// hệ số boss, phẩm cấp loài tối thiểu, bậc thưởng tăng dần) và vai trò cuồng bạo kích hoạt theo lượt.
+// hệ số boss, trọng số phẩm cấp loài, bậc thưởng tăng dần) và vai trò cuồng bạo kích hoạt theo lượt.
 
 import type { GameData } from '../model'
-import { speciesRankIndex } from '../registries'
 import { asObject, checkInteger, checkNumber } from '../shared'
 import { checkItemRewards, checkKnownFields } from './checks'
 
@@ -14,7 +13,7 @@ const CONFIG_FIELDS = [
   'turns',
   'levelOffset',
   'bossMultiplier',
-  'minSpeciesRankId',
+  'rankWeights',
   'largeWeight',
   'tiers'
 ]
@@ -71,9 +70,13 @@ export function checkWorldBossData(data: GameData, issues: string[]): void {
   issues.push(...checkInteger(config.levelOffset, `${WHERE}.levelOffset`))
   issues.push(...checkNumber(config.bossMultiplier, `${WHERE}.bossMultiplier`, 1))
   issues.push(...checkNumber(config.largeWeight, `${WHERE}.largeWeight`, 0))
-  const rankId = config.minSpeciesRankId
-  if (speciesRankIndex(data, String(rankId)) < 0) {
-    issues.push(`${WHERE}.minSpeciesRankId: phẩm cấp loài không tồn tại "${String(rankId)}"`)
+  const ranks = config.rankWeights
+  if (
+    !Array.isArray(ranks) ||
+    ranks.length === 0 ||
+    ranks.some((w) => typeof w !== 'number' || !Number.isFinite(w) || w < 0)
+  ) {
+    issues.push(`${WHERE}.rankWeights phải là danh sách số ≥ 0 không rỗng`)
   }
   checkTiers(data, config.tiers, issues)
 }

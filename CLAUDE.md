@@ -55,11 +55,15 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [treasures.md](docs/rules/treasures.md): thiên tài địa bảo
 - [soul-levels.md](docs/rules/soul-levels.md): hồn tinh
 - [monster-talents.md](docs/rules/monster-talents.md): thiên phú quái
+- [tamer-talents.md](docs/rules/tamer-talents.md): cây thiên phú ngự thú sư (điểm theo cảnh giới / nhiệm vụ / thành tựu, kênh thưởng chung với danh hiệu)
 - [alchemy.md](docs/rules/alchemy.md): luyện đan, luyện khí (công thức, cấp riêng, nguyên liệu nhóm như yêu đan) và linh điền
 - [cooking.md](docs/rules/cooking.md): linh thực (nấu ăn ở Đầu bếp, món ăn buff cả đội N trận)
 - [quests.md](docs/rules/quests.md): bảng nhiệm vụ (`quests/`)
+- [gacha.md](docs/rules/gacha.md): Cây thần (gacha trứng: giá theo tầng cao nhất, loài theo phẩm cấp, trait xịn hơn khi lên tầng)
 - [expeditions.md](docs/rules/expeditions.md): phái quái đi thám hiểm
 - [dwelling.md](docs/rules/dwelling.md): động phủ (công trình sản xuất kiểu Palworld, quái trong kho làm việc theo chỉ số / tốc độ / trait làm việc, đói / tinh thần / bệnh, linh điền là công trình)
+- [sects.md](docs/rules/sects.md): tông môn (cống hiến, chức vị, đồng môn NPC, nhiệm vụ tông, Tàng Bảo Các, luận võ, thi thăng chức, tông chiến)
+- [trades.md](docs/rules/trades.md): trao đổi với NPC (bảng đề nghị theo tuần, yêu cầu loài / race / hệ, nhận quái sinh sẵn hoặc vật phẩm)
 - [trainers.md](docs/rules/trainers.md): ngự thú sư NPC, đạo quán, giải đấu, đấu trường
 - [trials.md](docs/rules/trials.md): bí cảnh và tháp thí luyện
 - [instability.md](docs/rules/instability.md): độ bất ổn tầng (thuộc tính bất lợi tự chọn ở Đền dịch chuyển, thưởng thêm)
@@ -85,7 +89,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [aptitude.md](docs/rules/aptitude.md): phẩm cấp tư chất
 - [species-rank.md](docs/rules/species-rank.md): phẩm cấp loài
 - [skill-books.md](docs/rules/skill-books.md): sách kỹ năng
-- [roster.md](docs/rules/roster.md): danh sách quái, đội / kho (`roster/`)
+- [roster.md](docs/rules/roster.md): danh sách quái, đội / kho, khóa / yêu thích, đội hình mẫu (`roster/`)
 - [evolution-skills.md](docs/rules/evolution-skills.md): tiến hóa (kể cả có điều kiện), skill chờ học, học lại skill
 - [world-items.md](docs/rules/world-items.md): thị trấn, tầng và biome, giới tính, item và category, cửa hàng, giá thị trường
 - [equipment.md](docs/rules/equipment.md): trang bị và đồ cầm
@@ -286,6 +290,7 @@ Game sẽ có rất nhiều loại nội dung mới (category item, trạng thá
 - **Không cần đưa kế hoạch trước khi code** (chủ project chốt 2026-10-24): làm thẳng, chỉ gửi kế hoạch khi chủ project yêu cầu.
 - **Làm theo cách hợp lý và tối ưu nhất** (chủ project chốt 2026-10-25): luật chơi, con số, cấu trúc, sửa code cũ, sửa / lệch roadmap: tự chọn phương án hợp lý, tối ưu nhất rồi làm luôn, **không bị gò bó** bởi roadmap / md / code cũ; sửa md và roadmap theo (quy tắc 11). Cuối tin nhắn liệt kê ngắn các quyết định đã tự chốt (để chủ project đổi nếu muốn). Chỉ hỏi khi thật sự là sở thích của chủ project mà không có phương án nào tốt hơn rõ ràng (ví dụ hướng nội dung, tên gọi, danh sách nội dung cần duyệt).
 - **Ưu tiên giống game / tác phẩm / bản gốc nhất có thể** (chủ project chốt 2026-10-28): cơ chế, nội dung, con số, tên gọi, hiệu ứng, thời hạn, điều kiện lấy theo bản gốc (Pokémon, Siralim, truyện ngự thú, thần thoại...). Chỉ lệch khi bản gốc không áp được vào game (scale vô hạn, hệ thống game chưa có, xung đột luật đã chốt) hoặc gây mất cân bằng rõ; khi lệch thì chọn cách gần gốc nhất, ghi rõ chỗ lệch và lý do vào md, báo ở cuối tin nhắn. Thứ bản gốc cần mà game chưa có hệ thống thì làm thêm hệ thống / hook, không bỏ bớt. Giới hạn **do game tự đặt** (không có ở bản gốc) thì bỏ theo quy tắc "không gò bó"; giới hạn **của chính bản gốc** (ví dụ trần EV 252 / 510) thì giữ.
+- **Mọi kết quả hợp lệ đều có cơ hội** (chủ project chốt 2026-10-20, 2026-10-22, rà lại toàn bộ 2026-11-02): mọi chỗ random cho mọi lựa chọn hợp lệ có trọng số > 0 (hiếm thì để trọng số thấp), không cắt nhóm, không giới hạn kiểu tầng tối thiểu / danh sách cố định. Ngoại lệ đã chốt và phần chưa chốt ở mục "Luật ngẫu nhiên" của `balance-systems.md`.
 - **Mọi thứ cần chủ project trả lời / duyệt để ở cuối tin nhắn**, gom vào một mục riêng (ví dụ "Cần bạn trả lời"): đề xuất sửa code cũ, điểm cần chốt, câu hỏi, chỗ chưa hiểu. Mỗi mục đánh số, kèm phương án đề xuất. Phần trên của tin nhắn chỉ để báo cáo / giải thích (có thể nhắc "xem câu hỏi 2 ở cuối"), không đặt câu hỏi rải rác.
   - **Mỗi đề xuất cần duyệt là một mục riêng ở cuối, viết đủ nội dung** (chỗ sửa, lý do, phương án), kể cả khi đã nêu ở phần trên (ví dụ bảng rà soát code cũ): phần trên chỉ được tóm tắt và trỏ xuống cuối, không để nội dung cần duyệt chỉ nằm ở phần trên, không gộp nhiều đề xuất thành một câu "đồng ý không?".
 - **Báo cáo ngắn gọn** (chủ project chốt 2026-10-23, để tiết kiệm token): tin nhắn chỉ ghi thông tin cần thiết (kết quả, quyết định, chỗ lệch, câu hỏi); không liệt kê chi tiết code đã sửa hay từng bước đã làm nếu không quan trọng. Giữa các bước chỉ cập nhật một dòng ngắn.

@@ -8,6 +8,7 @@ import {
   abilityHasFlag,
   areItemsDisabled,
   collectionStatPercent,
+  tamerBonusAmount,
   mealStatPercent,
   blessingStatPercent,
   fieldIdMatches,
@@ -448,6 +449,7 @@ function buildBattleContext(
     teamBonuses: d.battle.teamBonuses[side],
     frenzyStatPercent: frenzyStatPercent(data, d, { side, monster }),
     collectionStatPercent: side === 'player' ? collectionStatPercent(data, d.dex) : 0,
+    tamerBonusStatPercent: side === 'player' ? tamerBonusAmount(data, d, 'teamStatPercent') : 0,
     mealStatPercent: side === 'player' ? mealStatPercent(data, d.cooking.meal) : {},
     blessingStatPercent:
       side === 'player'

@@ -89,6 +89,22 @@ Tách từ `simulation.md` (cách chạy, luật dùng kết quả, kịch bản
 - Chơi liên tục: mỗi lần về thị trấn (sau mốc Dex, trước thành tựu) "người chơi" nhận thưởng cấp nghiên cứu của mọi loài còn thưởng chờ (`claimResearchRewardsWhenPossible`, `species-research.md`); bộ đếm và lợi ích (tỉ lệ bắt, EXP, shiny theo loài) tự áp qua reducer. Cột trong ô kinh tế: `research` = số lần nhận, `researchLv` = cấp nghiên cứu cao nhất của một loài.
 - Chơi liên tục: mỗi lần về thị trấn (sau mốc Dex) "người chơi" nhận mọi bậc thành tựu đã đạt (`claimAchievementsWhenPossible`) rồi đeo danh hiệu đã có cho % EXP cao nhất (bằng thì % tiền). Ô `economy` của `progression.csv`: `achievement` (số bậc đã nhận). A/B: chạy `--parts progression` với dòng gọi `claimAchievementsWhenPossible` tắt so với bật, cùng code (`balance-systems.md` mục "Thành tựu và danh hiệu").
 
+## Thiên phú ngự thú sư (`talents.ts`, `progression.ts`)
+
+- Chơi liên tục: mỗi lần về thị trấn, sau đột phá (điểm theo cảnh giới) và nhận thành tựu (điểm theo bậc), "người chơi" dùng hết điểm thiên phú ngự thú sư, mỗi lần nâng nút nâng được rẻ nhất, hòa theo thứ tự trong `tamerTalents.json` (`allocateTamerTalents`, cùng cách chọn với thiên phú quái). Ô `economy` của `progression.csv`: `tamerTalent` (số lần nâng). A/B: chạy `--parts progression` với dòng gọi `allocateTamerTalents` tắt so với bật (`balance-systems.md` mục "Thiên phú ngự thú sư").
+
+## Tông môn (`sects.ts`, `progression.ts`)
+
+- Chơi liên tục: mỗi ngày ở thị trấn sau việc NPC, "người chơi" làm việc tông môn (`runSectActivities`): gia nhập tông vào được có buff tốt nhất, nộp nhiệm vụ tông, luận võ tới hết lượt, thi thăng chức khi đủ cống hiến, dự tông chiến khi mở; luật chọn ở `sects.md` mục "Mô phỏng". Ô `economy` của `progression.csv`: `sectMission`, `sectPromote`, `sectWar`, `sectBattle`. A/B: chạy `--parts progression` với dòng gọi `runSectActivities` tắt so với bật (`balance-systems.md` mục "Tông môn").
+
+## Trao đổi với NPC (`trades.ts`, `progression.ts`)
+
+- Chơi liên tục: mỗi ngày ở thị trấn sau tông môn, "người chơi" nhận mọi đề nghị trao đổi có quái kho thừa đúng yêu cầu (`runTrades`; luật chọn ở `trades.md` mục "Mô phỏng"). Ô `economy` của `progression.csv`: `trade`.
+
+## Cây thần (`gacha.ts`, `progression.ts`)
+
+- Chơi liên tục: mỗi ngày ở thị trấn sau trao đổi, "người chơi" quay ×10 khi dư tiền và kho còn chỗ (`runGacha`; luật chọn ở `gacha.md` mục "Mô phỏng"). Ô `economy` của `progression.csv`: `gacha`.
+
 ## Event (`events.ts`)
 
 - Mọi action của mô phỏng đi qua `simAct`: trước action, "người chơi" giải quyết event đang chờ (lựa chọn đầu tiên trả được vật phẩm; dữ liệu xếp lựa chọn chủ động trước) và thủ thành khi thú triều đang diễn ra (đánh đợt thường; trước mỗi đợt hồi máu bằng vật phẩm (`healWithItems`, mục dưới); đã mở thú vương mà máu cả đội còn ≥ `KING_HP_FRACTION` (60%) thì thách thú vương, không thì đánh tiếp đợt thường; không còn quái đánh được thì rút lui; thú triều kết thúc thì hồi máu ở NPC); event mới sau action (event thị trấn, thú triều bắt đầu) giải quyết ngay. Trận event / đợt thú triều đánh tới hết; chạm trần `EVENT_BATTLE_TURNS` (400) thì trận event bỏ như chưa đánh (giữ RNG) và thử lựa chọn kế tiếp, đợt thú triều thì rút lui; đếm ở cột `timeouts` của `events.csv`. Không mua ở cửa hàng tạm. Cửa hàng thị trấn đóng thì các phần mua đồ thấy hàng rỗng (`shopStock`).

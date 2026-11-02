@@ -114,6 +114,27 @@ describe('cấp luyện đan', () => {
     const titled = { ...townState(), titles: { owned: ['lucky'], active: 'lucky' } }
     expect(craftChance(data, titled, data.recipes.risky)).toBe(70)
   })
+
+  it('thiên phú ngự thú sư cộng % theo kênh của từng nơi luyện, cộng dồn với danh hiệu', () => {
+    // Bản sao công thức risky ở Thợ rèn / Đầu bếp (gốc 50%).
+    const stationData = makeAlchemyData((raw) => {
+      const risky = defined(raw.recipes.find((recipe) => recipe.id === 'risky'))
+      raw.recipes.push(
+        { ...risky, id: 'riskySmith', station: 'smithing' },
+        { ...risky, id: 'riskyCook', station: 'cooking' }
+      )
+    })
+    const base = townState()
+    // Nút fixture `trade`: +10% mỗi kênh luyện mỗi cấp.
+    const talented = { ...base, tamer: { ...base.tamer, talentRanks: { trade: 2 } } }
+    for (const id of ['risky', 'riskySmith', 'riskyCook']) {
+      expect(craftChance(stationData, talented, stationData.recipes[id])).toBe(70)
+    }
+    const both = { ...talented, titles: { owned: ['lucky'], active: 'lucky' } }
+    expect(craftChance(stationData, both, stationData.recipes.risky)).toBe(90)
+    // Danh hiệu lucky chỉ có kênh luyện đan.
+    expect(craftChance(stationData, both, stationData.recipes.riskySmith)).toBe(70)
+  })
 })
 
 describe('bộ đếm thành tựu', () => {

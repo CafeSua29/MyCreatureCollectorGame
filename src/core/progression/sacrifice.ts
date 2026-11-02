@@ -5,7 +5,13 @@
 
 import { assertNotBond } from '../tamer'
 import { ActionError, levelCost, malformedAction, spendMoney, type Decimal } from '../shared'
-import { addMilestone, assertNotBusy, sacrificeBloodlines, soulFuseRefund } from '../monster'
+import {
+  addMilestone,
+  assertNotBusy,
+  assertNotLocked,
+  sacrificeBloodlines,
+  soulFuseRefund
+} from '../monster'
 import { addSoulCrystalPoints } from '../inventory'
 import { assertOverflowConfirmed, returnEquipmentWithinCapacity } from '../registries'
 import { dayOf, type GameData, type GameState, type Monster } from '../model'
@@ -80,6 +86,7 @@ export function sacrifice(data: GameData, state: GameState, order: SacrificeOrde
   for (const sub of subs) {
     // Bản mệnh thú không làm quái phụ (docs/rules/tamer.md mục "Bản mệnh thú").
     assertNotBond(sub)
+    assertNotLocked(sub)
     if (!canSacrificeTo(base, sub)) {
       throw new ActionError('sacrificeMismatch', { baseId: base.id, subId: sub.id })
     }

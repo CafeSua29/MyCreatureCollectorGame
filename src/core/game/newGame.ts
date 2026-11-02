@@ -6,6 +6,8 @@ import { newTamerState } from '../tamer'
 import {
   defaultGameOptions,
   newDwellingState,
+  newSectState,
+  newTradeState,
   newLabState,
   restockLab,
   rollExpeditionBoard
@@ -35,7 +37,8 @@ import {
   newDexState,
   newTitleState,
   normalizeNickname,
-  syncDex
+  syncDex,
+  newTeamPresetState
 } from '../roster'
 import { startHistory } from '../monster'
 import { bindContract } from '../tamer'
@@ -226,6 +229,9 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     smithing: newSmithingState(),
     cooking: newCookingState(),
     trainers: newTrainerState(),
+    sect: newSectState(),
+    trades: newTradeState(),
+    teamPresets: newTeamPresetState(),
     trial: null,
     spiritPools: [],
     tower: { highest: 0 },
@@ -245,7 +251,7 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     achievements: newAchievementState(),
     titles: newTitleState(),
     dwelling: newDwellingState(data),
-    quests: { board: [], active: [], nextQuestId: 1 },
+    quests: { board: [], active: [], sect: [], nextQuestId: 1 },
     expeditions: {
       board: expeditionBoard,
       refreshDay: dayOf(data.config.clock.startHour) + data.config.expeditions.refreshDays,

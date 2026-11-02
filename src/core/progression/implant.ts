@@ -22,7 +22,7 @@ import {
   type Decimal,
   type RngState
 } from '../shared'
-import { addMilestone, assertNotBusy, dieForever, implantChance } from '../monster'
+import { addMilestone, assertNotBusy, assertNotLocked, dieForever, implantChance } from '../monster'
 import { woundIfBondDied } from '../tamer'
 import { locateOwned } from '../roster'
 import {
@@ -125,6 +125,7 @@ export function implant(data: GameData, state: GameState, order: ImplantOrder): 
   assertNotBusy(monster)
   const { maxFails } = data.config.implant
   const canDie = monster.implantFails + 1 >= maxFails
+  if (canDie) assertNotLocked(monster)
   if (canDie && state.party.every((m) => m.id === monster.id)) {
     throw new ActionError('partyWouldBeEmpty')
   }

@@ -54,7 +54,7 @@ Như passive skill của Palworld: mỗi quái có 0–4 **trait làm việc** (
 - **Breeding** (`makeOffspring`, tung cuối cùng): mỗi trait của bố / mẹ (gộp, không trùng) `inheritChance` (50%) được truyền (bỏ trait trùng nhóm, không quá tối đa), rồi `mutationChance` (10%) thêm một trait ngẫu nhiên; con shiny có May mắn. **Fuse** / **tiến hóa**: giữ.
 - **Phù cấy** (`workImplant<Trait>`, như Passive Skill Implant; 12 món: Thợ thủ công, Nghiêm túc, Nô lệ công việc, May mắn, 8 đốc công; hiệu ứng `addWorkTrait { traitId }`): thêm trait khi còn chỗ, thay trait cùng nhóm; đã có / đủ chỗ thì không tác dụng, không mất phù. **Phù tẩy tâm** (`workTraitPurge`, hiệu ứng `clearWorkTraits`; game tự thêm vì Palworld không có, để bỏ trait xấu như Lười biếng): xóa mọi trait. Bán ở cửa hàng (trọng số thấp, giá × tầng).
 - Kiểm tra: dữ liệu (trường, hiệu ứng theo loại, `countWeights` số ≥ 0 có ít nhất một số > 0, tỉ lệ 0–100, `shinyTraitId` tồn tại hoặc null, `workSpeed` của loài ≥ 0); save (`validateMonster`: id tồn tại, không lặp, ≤ tối đa, không trùng nhóm). Save v89 (`state-versions.md`).
-- **Sức công trình** = cấp × Σ sức quái đang làm × (1 + Σ % của công trình `outputBoost` / 100). Tính đầu mỗi ngày.
+- **Sức công trình** = cấp × Σ sức quái đang làm × (1 + (Σ % của công trình `outputBoost` + kênh thưởng ngự thú sư `dwellingOutputPercent`, `tamer-talents.md`) / 100). Tính đầu mỗi ngày.
 
 ## Đói và tinh thần
 

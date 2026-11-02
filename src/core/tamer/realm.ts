@@ -34,19 +34,28 @@ export function maxMana(data: GameData, realm: number): number {
   return manaBase + manaPerRealm * realm
 }
 
-/** Level cao nhất khế ước được ở cảnh giới `realm` (bắt bằng bóng không giới hạn level). */
-export function contractLevelLimit(data: GameData, realm: number): number {
+/**
+ * Level cao nhất khế ước được ở cảnh giới `realm` = ⌊(levelBase + levelPerRealm × realm) × (1 +
+ * levelPercent / 100)⌋ (`levelPercent`: kênh thưởng `contractLevelPercent`, docs/rules/
+ * tamer-talents.md). Bắt bằng bóng không giới hạn level.
+ */
+export function contractLevelLimit(data: GameData, realm: number, levelPercent = 0): number {
   const { levelBase, levelPerRealm } = data.config.tamer.contract
-  return levelBase + levelPerRealm * realm
+  return Math.floor((levelBase + levelPerRealm * realm) * Math.max(0, 1 + levelPercent / 100))
 }
 
-/** Cảnh giới thấp nhất khế ước được quái level `level`. */
-export function realmToContract(data: GameData, level: number): number {
+/** Cảnh giới thấp nhất khế ước được quái level `level` (cùng `levelPercent` với contractLevelLimit). */
+export function realmToContract(data: GameData, level: number, levelPercent = 0): number {
   const { levelBase, levelPerRealm } = data.config.tamer.contract
-  if (level <= levelBase) return 0
-  // levelPerRealm = 0: không cảnh giới nào khế ước được; trả về số lớn nhất an toàn.
-  if (levelPerRealm <= 0) return Number.MAX_SAFE_INTEGER
-  return Math.ceil((level - levelBase) / levelPerRealm)
+  const factor = 1 + levelPercent / 100
+  if (contractLevelLimit(data, 0, levelPercent) >= level) return 0
+  // levelPerRealm = 0 hoặc hệ số ≤ 0: không cảnh giới nào khế ước được; trả về số lớn nhất an toàn.
+  if (levelPerRealm <= 0 || factor <= 0) return Number.MAX_SAFE_INTEGER
+  let realm = Math.max(0, Math.ceil((level / factor - levelBase) / levelPerRealm))
+  // Chỉnh lệch làm tròn số thực: realm là số nhỏ nhất có giới hạn ≥ level.
+  while (realm > 0 && contractLevelLimit(data, realm - 1, levelPercent) >= level) realm--
+  while (contractLevelLimit(data, realm, levelPercent) < level) realm++
+  return realm
 }
 
 /** Số quái khế ước tối đa ở cảnh giới `realm` = slotsBase + slotsPerRealm × realm. */
@@ -79,15 +88,20 @@ export function tamerExpShare(battleExp: Decimal, percent: number): Decimal {
 
 /**
  * Ngự thú sư của một phe lúc vào trận: linh lực đầy, chưa hồi chiêu, chưa dùng kỹ năng nào.
- * `skillIds`: kỹ năng được dùng (ngự thú sư NPC); null = mọi kỹ năng đã mở.
+ * `skillIds`: kỹ năng được dùng (ngự thú sư NPC); null = mọi kỹ năng đã mở. `manaBonusPercent`: %
+ * linh lực tối đa cộng thêm (kênh thưởng `manaPercent`, docs/rules/tamer-talents.md). `manaPercent`:
+ * linh lực đầu trận còn % này của tối đa (đạo thương, mục "Bản mệnh thú"); mặc định đầy.
  */
 export function newBattleTamer(
   data: GameData,
   realm: number,
-  skillIds: string[] | null = null,
-  /** Linh lực đầu trận còn % này của tối đa (đạo thương, mục "Bản mệnh thú"); mặc định đầy. */
-  manaPercent = 100
+  {
+    skillIds = null,
+    manaBonusPercent = 0,
+    manaPercent = 100
+  }: { skillIds?: string[] | null; manaBonusPercent?: number; manaPercent?: number } = {}
 ): BattleTamer {
-  const mana = Math.floor((maxMana(data, realm) * manaPercent) / 100)
+  const max = Math.floor(maxMana(data, realm) * Math.max(0, 1 + manaBonusPercent / 100))
+  const mana = Math.floor((max * manaPercent) / 100)
   return { realm, mana, cooldowns: {}, uses: {}, skillIds }
 }

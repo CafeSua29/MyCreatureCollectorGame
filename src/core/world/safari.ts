@@ -3,7 +3,7 @@
 // Hết lượt gặp / hết bóng / tự rời thì ra khu (cả lượt tốn clock.hours.safari, tính ở reducer).
 
 import { recordQuestEvent } from '../quests'
-import { getBaseSpecies, startHistory } from '../monster'
+import { autoLockCaught, getBaseSpecies, startHistory } from '../monster'
 import { getItemCount, removeItems } from '../inventory'
 import {
   charmEffect,
@@ -15,7 +15,7 @@ import {
   hasRosterRoom,
   countCaught,
   mealMultiplier,
-  titleMultiplier,
+  tamerBonusMultiplier,
   recordCaughtResearch,
   researchMultiplier
 } from '../registries'
@@ -76,7 +76,7 @@ function lureMultipliers(
  */
 export function safariCatchChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'cooking' | 'titles' | 'research'>,
+  state: Pick<GameState, 'party' | 'cooking' | 'titles' | 'tamer' | 'sect' | 'research'>,
   encounter: SafariEncounter
 ): number {
   const ball = {
@@ -87,7 +87,7 @@ export function safariCatchChance(
     playerMultiplier:
       partnerMultiplier(data, state.party, 'catchRatePercent') *
       mealMultiplier(data, state.cooking.meal, 'catchRatePercent') *
-      titleMultiplier(data, state.titles, 'catchRatePercent') *
+      tamerBonusMultiplier(data, state, 'catchRatePercent') *
       researchMultiplier(data, state.research, encounter.monster.speciesId, 'catchRatePercent')
   })
   return withCatchPity(data, chance, encounter.misses)
@@ -131,7 +131,7 @@ function rollSafariMonster(data: GameData, state: GameState): [Monster, RngState
     shinyChance:
       data.config.shiny.wildChance *
       charmEffect(data, state.inventory, 'shinyChanceMultiplier') *
-      titleMultiplier(data, state.titles, 'shinyChancePercent'),
+      tamerBonusMultiplier(data, state, 'shinyChancePercent'),
     speciesShinyMultiplier: (speciesId: string) =>
       researchMultiplier(data, state.research, speciesId, 'shinyChancePercent'),
     aging: state.options.lifespanEnabled
@@ -195,7 +195,7 @@ function takeCaught(data: GameData, draft: SafariDraft, monster: Monster): Safar
   const { state } = draft
   const met = { day: dayOf(state.time), floor: null, level: monster.level }
   const caught = startHistory(
-    { ...monster, affinity: data.config.affinity.start.caught },
+    autoLockCaught({ ...monster, affinity: data.config.affinity.start.caught }),
     { kind: 'safari' },
     met
   )

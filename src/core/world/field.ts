@@ -34,9 +34,13 @@ function requireNoBattle(state: GameState): void {
  * Đi tới thị trấn hoặc một tầng đã mở (1 đến highestFloor). Từ tầng về thị trấn thì cửa hàng
  * random lại hàng; đang ở thị trấn mà đi tới thị trấn thì giữ nguyên (không đổi hàng miễn phí).
  */
-/** Đang trong giải đấu thì không hồi máu, không rời thị trấn (docs/rules/trainers.md). */
+/**
+ * Đang trong giải đấu (docs/rules/trainers.md) hoặc tông chiến (docs/rules/sects.md) thì không hồi
+ * máu, không rời thị trấn, không vào trận / phó bản khác.
+ */
 export function assertNoTournament(state: GameState): void {
   if (state.trainers.tournament.round !== null) throw new ActionError('tournamentInProgress')
+  if (state.sect.war.round !== null) throw new ActionError('sectWarInProgress')
 }
 
 /**

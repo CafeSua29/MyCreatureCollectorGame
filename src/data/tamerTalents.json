@@ -1,0 +1,208 @@
+[
+  {
+    "id": "beastMastery",
+    "branchId": "taming",
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "spiritReservoir",
+    "branchId": "taming",
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "manaPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "tamerInsight",
+    "branchId": "taming",
+    "requires": {
+      "beastMastery": 3
+    },
+    "costPerRank": 2,
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "swiftCommand",
+    "branchId": "taming",
+    "requires": {
+      "spiritReservoir": 3
+    },
+    "maxRank": 2,
+    "costPerRank": 4,
+    "effects": [
+      {
+        "type": "tamerSkillCooldown",
+        "params": {
+          "turns": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "keenThrow",
+    "branchId": "capture",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "silverTongue",
+    "branchId": "capture",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "pactBreadth",
+    "branchId": "capture",
+    "requires": {
+      "keenThrow": 3
+    },
+    "costPerRank": 2,
+    "effects": [
+      {
+        "type": "contractLevelPercent",
+        "params": {
+          "percent": 5
+        }
+      }
+    ]
+  },
+  {
+    "id": "luckyStar",
+    "branchId": "capture",
+    "requires": {
+      "silverTongue": 3
+    },
+    "maxRank": 5,
+    "costPerRank": 3,
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "merchantEye",
+    "branchId": "commerce",
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "haggling",
+    "branchId": "commerce",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": -2
+        }
+      }
+    ]
+  },
+  {
+    "id": "deftHands",
+    "branchId": "commerce",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "effects": [
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 1
+        }
+      },
+      {
+        "type": "smithingSuccessPercent",
+        "params": {
+          "percent": 1
+        }
+      },
+      {
+        "type": "cookingSuccessPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "dwellingSteward",
+    "branchId": "commerce",
+    "requires": {
+      "merchantEye": 3
+    },
+    "costPerRank": 2,
+    "effects": [
+      {
+        "type": "dwellingOutputPercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "treasureHunter",
+    "branchId": "commerce",
+    "requires": {
+      "haggling": 3
+    },
+    "maxRank": 10,
+    "costPerRank": 2,
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  }
+]

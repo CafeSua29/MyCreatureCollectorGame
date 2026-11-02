@@ -101,11 +101,10 @@ const shelfCache = new WeakMap<GameData['skills'], ShopCandidate[]>()
 function bookCandidates(data: GameData): ShopCandidate[] {
   const cached = shelfCache.get(data.skills)
   if (cached) return cached
-  const { shopMaxPower } = data.config.skillBook
+  const { shopMaxPower, shopRareSkillFactor } = data.config.skillBook
   const byTier = new Map<string, Skill[]>()
   for (const skill of Object.values(data.skills)) {
-    if (!isBookableSkill(data, skill) || skill.power > shopMaxPower) continue
-    if (skillLearnerCount(data, skill.id) === 0) continue
+    if (!isBookableSkill(data, skill)) continue
     const tierId = skillBookRarityOf(data, skill.id).id
     byTier.set(tierId, [...(byTier.get(tierId) ?? []), skill])
   }
@@ -114,7 +113,10 @@ function bookCandidates(data: GameData): ShopCandidate[] {
     const skills = byTier.get(tier.id) ?? []
     for (const skill of skills) {
       const ref: StackableItemRef = { storage: 'book', skillId: skill.id, reusable: false }
-      candidates.push({ ref, weight: tier.shopWeight / skills.length })
+      // Chiêu quá mạnh / không loài nào học: vẫn có cơ hội lên kệ nhưng hiếm (chợ đen dễ gặp hơn).
+      const rare = skill.power > shopMaxPower || skillLearnerCount(data, skill.id) === 0
+      const weight = (tier.shopWeight / skills.length) * (rare ? shopRareSkillFactor : 1)
+      candidates.push({ ref, weight })
     }
   }
   shelfCache.set(data.skills, candidates)

@@ -10,6 +10,8 @@ import {
   validateSmithingState
 } from './validateAlchemyState'
 import { validateQuestState } from './validateQuestState'
+import { validateSectState } from './validateSectState'
+import { validateTeamPresetState, validateTradeState } from './validateTradeState'
 import { validateDwellingState } from './validateDwellingState'
 import { validateExpeditionState } from './validateExpeditionState'
 import { checkBattleTrainer, validateTrainerState } from './validateTrainerState'
@@ -119,6 +121,25 @@ function checkMonster(
 }
 
 /** Kiểm tra danh sách quái tại `path`; trả về id của các quái để kiểm tra trùng. */
+/**
+ * Quái không hệ chỉ hợp lệ khi đang đổi hệ trong trận (có originalIdentity để trả lại hệ lúc rời sân /
+ * hết trận; Burn Up, Double Shock, docs/rules/pokemon-moves.md).
+ */
+function checkTypelessMonsters(state: Record<string, unknown>, issues: string[]): void {
+  const battle = asObject(state.battle)
+  const volatiles = asObject(battle?.volatiles)
+  const lists = [state.party, state.storage, battle?.enemies]
+  for (const list of lists) {
+    if (!Array.isArray(list)) continue
+    for (const entry of list) {
+      const monster = asObject(entry)
+      if (!Array.isArray(monster?.elementIds) || monster.elementIds.length > 0) continue
+      if (asObject(volatiles?.[String(monster.id)])?.originalIdentity) continue
+      issues.push(`quái "${String(monster.id)}".elementIds: chỉ trong trận mới được không hệ`)
+    }
+  }
+}
+
 function checkMonsterList(
   data: GameData,
   list: unknown,
@@ -681,16 +702,20 @@ export function validateGameState(data: GameData, value: unknown): string[] {
     checkWild: (monster, path) => checkMonster(data, monster, { path, ownership: 'wild' }, issues),
     issues
   })
+  const tradeIds = validateTradeState(data, state, {
+    checkWild: (monster, path) => checkMonster(data, monster, { path, ownership: 'wild' }, issues),
+    issues
+  })
 
   // Hồn phách giữ id của quái đã chết: không trùng quái đang sống, cùng bộ đếm nextMonsterId.
   checkIds(
-    [...partyIds, ...storageIds, ...eggIds, ...battleIds, ...safariIds, ...souls.ids],
+    [...partyIds, ...storageIds, ...eggIds, ...battleIds, ...safariIds, ...tradeIds, ...souls.ids],
     state.nextMonsterId,
     issues
   )
   issues.push(...validateEquipmentState(data, state))
   issues.push(...validateTimeState(state))
-  issues.push(...validateTamer(state.tamer))
+  issues.push(...validateTamer(data, state.tamer))
   issues.push(...validateBondState(state))
   issues.push(...validateFormationState(data, state.formations))
   issues.push(...validateAlchemyState(data, state.alchemy))
@@ -698,6 +723,9 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateCookingState(data, state.cooking))
   issues.push(...validateDwellingState(data, state))
   issues.push(...validateQuestState(data, state.quests))
+  issues.push(...validateSectState(data, state))
+  checkTypelessMonsters(state, issues)
+  issues.push(...validateTeamPresetState(data, state.teamPresets))
   issues.push(
     ...validateTrainerState(data, state.trainers, {
       highestFloor: state.highestFloor,

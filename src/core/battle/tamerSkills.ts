@@ -10,7 +10,13 @@ import {
   rollPercent,
   type TamerSkillBlocker
 } from '../shared'
-import { applyItemEffects, ITEM_EFFECTS, SKILL_EFFECTS, soulLinkTier } from '../registries'
+import {
+  applyItemEffects,
+  ITEM_EFFECTS,
+  SKILL_EFFECTS,
+  soulLinkTier,
+  tamerBonusAmount
+} from '../registries'
 import { getMaxHp } from '../monster'
 import type {
   BattleSide,
@@ -146,10 +152,27 @@ export function validateTamerCommand(data: GameData, d: Draft, command: TamerCom
   }
 }
 
+/**
+ * Hồi chiêu thật của kỹ năng cho một phe: phe người chơi giảm theo kênh thưởng ngự thú sư
+ * `tamerSkillCooldown` (thiên phú, docs/rules/tamer-talents.md), không dưới 0.
+ */
+export function tamerSkillCooldown(
+  data: GameData,
+  d: Pick<Draft, 'titles' | 'tamer' | 'sect'>,
+  { side, skill }: { side: BattleSide; skill: TamerSkill }
+): number {
+  if (side !== 'player') return skill.cooldown
+  return Math.max(0, skill.cooldown - tamerBonusAmount(data, d, 'tamerSkillCooldown'))
+}
+
 /** Trừ linh lực, đặt hồi chiêu (+1 vì cuối lượt này đã trừ một), đếm lần dùng. */
-function payForSkill(tamer: BattleTamer, skill: TamerSkill, manaCost: number): void {
+function payForSkill(
+  tamer: BattleTamer,
+  skill: TamerSkill,
+  { manaCost, cooldown }: { manaCost: number; cooldown: number }
+): void {
   tamer.mana -= manaCost
-  if (skill.cooldown > 0) tamer.cooldowns[skill.id] = skill.cooldown + 1
+  if (cooldown > 0) tamer.cooldowns[skill.id] = cooldown + 1
   tamer.uses[skill.id] = (tamer.uses[skill.id] ?? 0) + 1
 }
 
@@ -228,7 +251,10 @@ export function runTamerStep(
       tamerSkillBlocker(tamer, skill, cost) === null &&
       runTamerCommand(data, d, side, command)
     ) {
-      payForSkill(tamer, skill, cost)
+      payForSkill(tamer, skill, {
+        manaCost: cost,
+        cooldown: tamerSkillCooldown(data, d, { side, skill })
+      })
     } else {
       log(d, { type: 'tamerSkillNoEffect', side, skillId: skill.id, targetId: command.targetId })
     }

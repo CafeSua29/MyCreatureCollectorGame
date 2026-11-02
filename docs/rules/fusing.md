@@ -73,7 +73,7 @@ Code: `progression/fusionChance.ts` (tỉ lệ), `progression/fusion.ts` (action
 
   - Action `fuse` có thêm `boostItemId?` (ô `boost`) và `protectItemId?` (ô `protect`): **tối đa 1 bùa mỗi ô**. Bùa **bị tiêu hao dù thành công hay thất bại**. Id không phải chuỗi: `malformedAction`; không tồn tại: `unknownItem`; không phải bùa fuse hoặc sai ô: `wrongFusionAid { itemId, slot }`; không có trong túi: `notEnoughItem`.
   - Không dùng qua `useItem`. Bán và vứt được như mọi vật phẩm. **Không rơi** từ quái hoang hay boss (kiểm tra dữ liệu chặn, `itemDropsFromMonsters`).
-  - **Nguồn:** cửa hàng thị trấn (`shopWeight` thấp hơn thuốc), chợ đen (`events.md`) trọng số thấp.
+  - **Nguồn:** cửa hàng thị trấn (`shopWeight` thấp hơn thuốc), chợ đen (`extraItemIds`, `events.md`).
   - **Giá theo tầng** như mọi vật phẩm có `price` (`price × highestFloor`, mục "Cửa hàng và vứt vật phẩm" ở `world-items.md`); bán lại 50% giá lúc bán.
 
 - Không đổi cấu trúc quái hay `GameState` (save vẫn `version: 17`).

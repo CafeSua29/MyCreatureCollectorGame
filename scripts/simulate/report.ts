@@ -391,6 +391,14 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['deityBuy', count.deityBuys],
     ['favorRank', count.favorRank],
     ['achievement', count.achievementTiers],
+    ['tamerTalent', count.tamerTalentUpgrades],
+    ['sectMission', count.sectMissions],
+    ['sectPromote', count.sectPromotions],
+    ['sectWar', count.sectWarsWon],
+    ['sectBattle', count.sectBattles],
+    ['trade', count.trades],
+    ['tradePower%', Math.round(count.tradePowerPercent)],
+    ['gacha', count.gachaEggs],
     ['research', count.researchRewards],
     ['researchLv', count.researchLevelPeak]
   ]

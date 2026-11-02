@@ -67,7 +67,8 @@ export function mergeBlocker(
 
 /** Hệ của thực thể: hệ đầu của mỗi con (trùng thì một hệ). */
 const mergedElementIds = (lead: Monster, partner: Monster): string[] => [
-  ...new Set([lead.elementIds[0], partner.elementIds[0]])
+  // Quái đang không hệ (Burn Up) không góp hệ nào.
+  ...new Set([...lead.elementIds.slice(0, 1), ...partner.elementIds.slice(0, 1)])
 ]
 
 /**

@@ -85,6 +85,8 @@ function mapMonster(value: unknown, convert: Convert): void {
   if (Array.isArray(monster.statuses)) {
     for (const status of monster.statuses) mapField(asObject(status), 'amount', convert)
   }
+  // Quái phụ của thực thể hợp thể (docs/rules/battle-merge.md) là một quái đầy đủ.
+  mapMonster(asObject(asObject(monster.battleTransform)?.mergePartner)?.monster, convert)
 }
 
 /** Bản ghi trận: tổng máu đã mất / đã gây / đã được hồi. */
@@ -143,9 +145,9 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
   // Ân sủng theo thần (docs/rules/deities.md).
   const favor = asObject(state.favor)
   for (const deityId of Object.keys(favor ?? {})) mapField(favor, deityId, convert)
-  // Tiền thưởng nhiệm vụ trên bảng và đang nhận (docs/rules/quests.md).
+  // Tiền thưởng nhiệm vụ trên bảng, đang nhận và nhiệm vụ tông (docs/rules/quests.md, sects.md).
   const quests = asObject(state.quests)
-  for (const list of [quests?.board, quests?.active]) {
+  for (const list of [quests?.board, quests?.active, quests?.sect]) {
     if (Array.isArray(list))
       for (const quest of list) mapField(asObject(asObject(quest)?.reward), 'money', convert)
   }
@@ -171,6 +173,12 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
   for (const field of ['hpUnit', 'bestDamage']) mapField(current, field, convert)
   for (const reward of listOrEmpty(worldBoss?.rewards)) {
     mapField(asObject(reward), 'bestDamage', convert)
+  }
+  // Quái đang gặp trong lượt vào khu bảo tồn (docs/rules/safari-zone.md).
+  mapMonster(asObject(asObject(asObject(state.safari)?.visit)?.encounter)?.monster, convert)
+  // Quái NPC đưa trên bảng trao đổi (docs/rules/trades.md).
+  for (const offer of listOrEmpty(asObject(state.trades)?.offers)) {
+    mapMonster(asObject(asObject(offer)?.give)?.monster, convert)
   }
   mapBattle(state.battle, convert)
   mapEvents(state.dayEvents, DAY_EVENT_BIG_FIELDS, convert)

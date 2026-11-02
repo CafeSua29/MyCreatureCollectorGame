@@ -21,5 +21,5 @@ Code: `progression/sacrifice.ts` (`sacrifice`, `sacrificeCost`, `canSacrificeTo`
 - **Breeding không truyền:** con luôn có `sacrificeStacks = 0` (`breeding-eggs.md`). Lý do (đã chốt): breeding không làm mất bố mẹ, nếu truyền thì breed liên tục sẽ nhân bản stack miễn phí. Fuse thì được truyền vì quái phụ mất đi (stack chỉ chuyển chỗ). Quái hoang / boss / trứng boss 0 stack.
 - **Lý lịch:** mốc `sacrificed { count }` (số quái phụ của lần đó) trên quái chính (`monster-history.md`).
 - `MonsterView.sacrifice = { stacks, statPercent }` (`sacrificeStatPercent`). Kiểm tra save: `sacrificeStacks` nguyên ≥ 0 (`validateMonster`). Migrate v74 → v75 đặt 0 cho mọi quái (kể cả trứng).
-- Chưa có: chặn quái đã khóa (`monsterLocked`, chờ `roster-tools.md`), bộ lọc chọn quái phụ hàng loạt ở UI (chờ `bulk-actions.md` / `ui-overhaul.md`).
+- Quái phụ đang khóa báo `monsterLocked` (`roster.md`). Chưa có: bộ lọc chọn quái phụ hàng loạt ở UI (chờ `bulk-actions.md` / `ui-overhaul.md`).
 - Mô phỏng: mục "Hiến tế" ở `simulation-features.md`.

@@ -47,6 +47,11 @@ export interface ActiveQuest extends QuestInstance {
 export interface QuestState {
   board: QuestInstance[]
   active: ActiveQuest[]
+  /**
+   * Nhiệm vụ tông môn (docs/rules/sects.md): tự nhận khi ra (tiến độ tính ngay), thưởng cống hiến
+   * thay cho tiền / vật phẩm; chung bộ đếm id với bảng thường.
+   */
+  sect: ActiveQuest[]
   /** Bộ đếm id nhiệm vụ "q<số>". */
   nextQuestId: number
 }

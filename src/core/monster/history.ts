@@ -64,6 +64,11 @@ const expeditionField: FieldCheck = (data, value, where) =>
     ? []
     : [`${where}: mẫu thám hiểm không tồn tại "${String(value)}"`]
 
+const npcNameField: FieldCheck = (data, value, where) =>
+  typeof value === 'string' && Object.hasOwn(data.npcNames, value)
+    ? []
+    : [`${where}: tên NPC không tồn tại "${String(value)}"`]
+
 const eventField: FieldCheck = (data, value, where) =>
   typeof value === 'string' && Object.hasOwn(data.events, value)
     ? []
@@ -104,6 +109,8 @@ const ORIGIN_RULES: Record<HistoryOriginKind, FieldRules> = {
   legacy: { parentSpeciesId: speciesField },
   recruit: { method: recruitMethodField },
   safari: {},
+  trade: { npcNameId: npcNameField },
+  gacha: {},
   unknown: {}
 }
 

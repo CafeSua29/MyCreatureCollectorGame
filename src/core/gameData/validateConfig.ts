@@ -199,8 +199,7 @@ function checkFuseChanceConfig(data: GameData, issues: string[]): void {
  * Trọng số loại trait của quái hoang: mỗi khóa là loại `wildRollable`, trọng số hữu hạn ≥ 0, có ít
  * nhất một loại > 0.
  */
-function checkTraitKindWeights(value: unknown): string[] {
-  const field = 'config.wild.traitKindWeights'
+export function checkTraitKindWeights(value: unknown, field: string): string[] {
   const weights = asObject(value)
   if (!weights) return [`${field} phải là object`]
   const issues: string[] = []
@@ -381,7 +380,7 @@ export function checkConfig(data: GameData, issues: string[]): void {
       'config.wild.traitCountWeights phải là danh sách trọng số ≥ 0, có ít nhất một số > 0'
     )
   }
-  issues.push(...checkTraitKindWeights(wild.traitKindWeights))
+  issues.push(...checkTraitKindWeights(wild.traitKindWeights, 'config.wild.traitKindWeights'))
 
   const floors = config.floors ?? ({} as GameData['config']['floors'])
   // ≥ 2 để khoảng level quái thường [L(N − 1) + 1, LN − 1] không rỗng.

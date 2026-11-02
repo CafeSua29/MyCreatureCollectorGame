@@ -22,6 +22,8 @@ import { soulLinkDailyTask } from '../tamer'
 import { ageOneDay } from './oldAge'
 import { imprintOneDay } from './imprint'
 import { dwellingDailyTask } from './dwelling'
+import { sectDailyTask } from './sects'
+import { tradesDailyTask } from './trades'
 import { expeditionDailyTask } from './expeditions'
 import { beastTideDailyTask } from './beastTide'
 import { labDailyTask } from './implant'
@@ -81,7 +83,11 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   // Tâm linh tương thông: quái đã khế ước thêm một ngày khế ước (docs/rules/tamer.md mục "Khế ước").
   soulLink: soulLinkDailyTask,
   // Linh dịch: quái đang nhiễm ở đội bớt một ngày; kho đứng yên (docs/rules/spirit-virus.md).
-  spiritVirus: (_data, state) => ({ ...state, party: state.party.map(tickSpiritVirusDay) })
+  spiritVirus: (_data, state) => ({ ...state, party: state.party.map(tickSpiritVirusDay) }),
+  // Tông môn: đồng môn tích cống hiến / lên chức, làm mới nhiệm vụ tông (docs/rules/sects.md).
+  sect: sectDailyTask,
+  // Trao đổi với NPC: làm mới bảng đề nghị khi tới ngày (docs/rules/trades.md).
+  trades: tradesDailyTask
 }
 
 /**

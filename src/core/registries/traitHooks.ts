@@ -663,6 +663,7 @@ export const HOOK_SOURCE_KINDS = [
   'partner',
   'frenzy',
   'collection',
+  'tamerBonus',
   'meal',
   'blessing',
   'bloodline',
@@ -696,6 +697,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'aura':
     case 'frenzy':
     case 'collection':
+    case 'tamerBonus':
     case 'meal':
     case 'blessing':
     case 'rule':
@@ -1161,48 +1163,25 @@ function resolveTraitHooks(
       })
     }
   }
-  // Cuồng bạo (docs/rules/frenzy.md): % công / đặc công tới hết trận, cộng như mọi nguồn %.
+  // % chỉ số theo bối cảnh trận, cộng như mọi nguồn %: cuồng bạo (frenzy.md, công / đặc công tới hết
+  // trận), thưởng sưu tập (dex.md), kênh thưởng ngự thú sư (tamer-talents.md), linh thực
+  // (cooking.md), chúc phúc của thần ở map của thần (deities.md); các nguồn sau chỉ phe người chơi.
   const frenzyPercent = ctx?.frenzyStatPercent ?? 0
-  if (frenzyPercent !== 0) {
+  const contextPercents: [HookSourceKind, PartialStats][] = [
+    ['frenzy', frenzyPercent === 0 ? {} : { attack: frenzyPercent, spAttack: frenzyPercent }],
+    ['collection', uniformPercent(ctx?.collectionStatPercent ?? 0)],
+    ['tamerBonus', uniformPercent(ctx?.tamerBonusStatPercent ?? 0)],
+    ['meal', ctx?.mealStatPercent ?? {}],
+    ['blessing', ctx?.blessingStatPercent ?? {}]
+  ]
+  for (const [kind, percent] of contextPercents) {
+    if (Object.keys(percent).length === 0) continue
     entries.push({
       handler: statModifier,
-      params: { percent: { attack: frenzyPercent, spAttack: frenzyPercent } },
+      params: { percent },
       scale: 1,
-      sourceId: 'frenzy',
-      source: { kind: 'frenzy', ownerId: monster.id }
-    })
-  }
-  // Thưởng sưu tập (docs/rules/dex.md): % mọi chỉ số của phe người chơi, cộng như mọi nguồn %.
-  const collectionPercent = ctx?.collectionStatPercent ?? 0
-  if (collectionPercent !== 0) {
-    entries.push({
-      handler: statModifier,
-      params: { percent: uniformPercent(collectionPercent) },
-      scale: 1,
-      sourceId: 'collection',
-      source: { kind: 'collection', ownerId: monster.id }
-    })
-  }
-  // Linh thực (docs/rules/cooking.md): % chỉ số của món ăn đang có tác dụng, phe người chơi.
-  const mealPercent = ctx?.mealStatPercent ?? {}
-  if (Object.keys(mealPercent).length > 0) {
-    entries.push({
-      handler: statModifier,
-      params: { percent: mealPercent },
-      scale: 1,
-      sourceId: 'meal',
-      source: { kind: 'meal', ownerId: monster.id }
-    })
-  }
-  // Chúc phúc của thần (docs/rules/deities.md): % chỉ số trong trận ở map của thần.
-  const blessingPercent = ctx?.blessingStatPercent ?? {}
-  if (Object.keys(blessingPercent).length > 0) {
-    entries.push({
-      handler: statModifier,
-      params: { percent: blessingPercent },
-      scale: 1,
-      sourceId: 'blessing',
-      source: { kind: 'blessing', ownerId: monster.id }
+      sourceId: kind,
+      source: { kind, ownerId: monster.id }
     })
   }
   const auras: AuraEntry[] = []

@@ -4,8 +4,8 @@
 
 import { describe, expect, it } from 'vitest'
 import { createGameData } from '../gameData'
-import { gameReducer } from '../game'
-import { getCurrentHp, getMaxHp } from '../monster'
+import { gameReducer, validateGameState } from '../game'
+import { getCurrentHp, getMaxHp, validateMonster } from '../monster'
 import { expectedDamage, hiddenPowerElement } from './damage'
 import {
   dataIssuesAfter,
@@ -13,6 +13,7 @@ import {
   held,
   makeBattleState,
   makeField,
+  makeGameState,
   makeMonster,
   makeSideFieldRawData,
   toBigStats,
@@ -622,6 +623,59 @@ describe('trạng thái và hệ', () => {
       return getMaxHp(data, enemy).minus(getCurrentHp(data, enemy)).toString()
     }
     expect(Number(lost(['water']))).toBeGreaterThan(Number(lost(['normal'])))
+  })
+
+  it('quái một hệ dùng Burn Up thành không hệ: trận vẫn chạy, bị đánh được', () => {
+    const state = makeBattleState(
+      [fighter('a', ['burnUp', 'idle'], 100, { elementIds: ['fire'] })],
+      [fighter('e', ['strike'], 1)]
+    )
+    const burned = gameReducer(data, state, {
+      type: 'submitTurn',
+      commands: [{ slot: 0, kind: 'skill', skillId: 'burnUp', target: 0 }]
+    })
+    const typeless = defined(burned.party.find((m) => m.id === 'a'))
+    expect(typeless.elementIds).toEqual([])
+    expect(validateGameState(data, burned)).toEqual([])
+    // Quái địch đánh vào quái không hệ: tính sát thương không được crash.
+    const next = gameReducer(data, burned, {
+      type: 'submitTurn',
+      commands: [{ slot: 0, kind: 'skill', skillId: 'idle' }]
+    })
+    expect(next.battle).not.toBeNull()
+    // Biến hình lúc đang không hệ: hệ gốc rỗng vẫn hợp lệ, tính chỉ số không crash.
+    const transformed: Monster = {
+      ...typeless,
+      battleTransform: {
+        kind: 'tera',
+        turnsLeft: null,
+        originalElementIds: [],
+        ended: false
+      } as unknown as Monster['battleTransform']
+    }
+    expect(
+      validateMonster(data, transformed).filter((i) => i.includes('originalElementIds'))
+    ).toEqual([])
+  })
+
+  it('hết trận quái không hệ được trả lại hệ', () => {
+    const weak = idle('e')
+    const foe = { ...weak, damageTaken: getMaxHp(data, weak).minus(1) }
+    const { state: won } = turn(
+      makeBattleState([fighter('a', ['burnUp'], 100, { elementIds: ['fire'] })], [foe]),
+      'burnUp'
+    )
+    expect(defined(won.battle).outcome).toBe('won')
+    const left = gameReducer(data, won, { type: 'leaveBattle' })
+    expect(defined(left.party[0]).elementIds).toEqual(['fire'])
+    expect(validateGameState(data, left)).toEqual([])
+  })
+
+  it('save ngoài trận: quái không hệ báo lỗi', () => {
+    const state = makeGameState({ seed: 1, party: [fighter('a', ['idle'], 1, { elementIds: [] })] })
+    expect(validateGameState(data, state)).toContainEqual(
+      expect.stringContaining('elementIds: chỉ trong trận mới được không hệ')
+    )
   })
 
   it('Burn Up bỏ hệ Lửa; không có hệ Lửa thì thất bại', () => {

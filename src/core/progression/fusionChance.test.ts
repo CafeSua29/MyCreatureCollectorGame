@@ -173,6 +173,17 @@ describe('action fuse — thất bại', () => {
     expect(fuseOutcome(state, next, 'a')).toBe('failed')
   })
 
+  it('quái gốc khóa (docs/rules/roster.md): tỉ lệ < 100% phải có Bùa Hộ Mệnh, không thì báo lỗi', () => {
+    const state = fuseState()
+    const base = { ...defined(state.party[0]), locked: true }
+    const locked = { ...state, party: [base, ...state.party.slice(1)] }
+    expectActionError(() => gameReducer(failData, locked, fuseAction), 'monsterLocked', {
+      monsterId: base.id
+    })
+    const next = gameReducer(failData, locked, { ...fuseAction, protectItemId: 'fusionAmulet' })
+    expect(next.party.map((m) => m.id)).toContain(base.id)
+  })
+
   it('Bùa Hộ Mệnh: quái gốc giữ nguyên, quái phụ và tiền vẫn mất, bùa mất', () => {
     const state = fuseState()
     const next = gameReducer(failData, state, { ...fuseAction, protectItemId: 'fusionAmulet' })

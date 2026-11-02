@@ -3,7 +3,7 @@
 
 import { describe, expect, it } from 'vitest'
 import { createGameData } from '../gameData'
-import { gameReducer, validateGameState } from '../game'
+import { gameReducer, migrateState, serializeState, validateGameState } from '../game'
 import { computeStats, getMaxHp, masteryOf } from '../monster'
 import { toBig } from '../shared'
 import { suggestTamerCommand } from './tamerSkills'
@@ -111,6 +111,9 @@ describe('hợp thể: bắt đầu', () => {
     // Lệnh của quái phụ ở ô 1 thành hành động thứ hai của thực thể ngay lượt hợp thể.
     const uses = battle.log.filter((e) => e.type === 'useSkill' && e.monsterId === 'a')
     expect(uses).toHaveLength(2)
+    // Save giữa trận hợp thể (quái phụ nằm trong biến hình, có trường Decimal) ghi / đọc lại đúng.
+    const loaded = migrateState(JSON.parse(JSON.stringify(serializeState(after))), data)
+    expect(validateGameState(data, loaded)).toEqual([])
   })
 
   it('chỉ số: cao hơn + 50% thấp hơn (tính trên chỉ số riêng của từng con), HP cộng', () => {

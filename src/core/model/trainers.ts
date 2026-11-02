@@ -21,7 +21,10 @@ export const TRAINER_MODES = [
   'tournament',
   'arena',
   'trial',
-  'event'
+  'event',
+  'sectDuel',
+  'sectPromotion',
+  'sectWar'
 ] as const
 
 export type TrainerMode = (typeof TRAINER_MODES)[number]
@@ -56,6 +59,10 @@ export interface BattleTrainer {
   elementId: string | null
   /** Hệ số tiền thưởng của chế độ (vòng giải đấu, đánh lại đạo quán); nhân thêm rewardMultiplier. */
   rewardMultiplier: number
+  /** Đồng môn đang đấu (luận võ, thi thăng chức; docs/rules/sects.md). */
+  memberId?: string
+  /** Tên NPC (id trong npcNames.json) khi đối thủ không phải đồng môn (tông chiến). */
+  npcNameId?: string
 }
 
 /** Một đạo quán (mỗi `gym.every` tầng; hệ tung lúc mở tầng). */
@@ -99,6 +106,10 @@ export interface ItemReward {
 export interface TrainerConfig {
   /** % gặp ngự thú sư thay quái hoang khi startWildBattle. */
   encounterChance: number
+  /** Trọng số loài không gặp ở map nào trong đội NPC (loài hoang = 1). */
+  nonWildSpeciesWeight: number
+  /** Trọng số gặp lớp NPC khi map không có loài đúng hệ của lớp. */
+  offThemeClassWeight: number
   /** Đồ thưởng mỗi trận NPC thắng (tung từng món, × hệ số rơi). */
   rewardDrops: DropEntry[]
   ai: {

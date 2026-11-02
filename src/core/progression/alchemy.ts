@@ -4,7 +4,7 @@
 
 import { addItems, recipeInputCount, removeItems, removeRecipeInput } from '../inventory'
 import { partnerAmount } from '../tamer'
-import { bumpStat, titlePercent } from '../registries'
+import { bumpStat, tamerBonusAmount } from '../registries'
 import { dwellingCraftBonus } from './dwelling'
 import { requireTown } from './town'
 import {
@@ -24,7 +24,8 @@ import {
   type GameData,
   type GameState,
   type RecipeDef,
-  type StatKey
+  type StatKey,
+  type TamerBonusType
 } from '../model'
 
 /** Luật theo nơi luyện: đường cong cấp, phần state, mã lỗi thiếu cấp, cộng thêm % thành công. */
@@ -36,8 +37,10 @@ interface CraftStationRule {
   levelError: 'alchemyLevelTooLow' | 'smithingLevelTooLow' | 'cookingLevelTooLow'
   /** Tên dùng trong lỗi dữ liệu của đường cong cấp. */
   label: string
-  /** % thành công cộng thêm ngoài cấp (kỹ năng đồng hành, danh hiệu...). */
+  /** % thành công cộng thêm ngoài cấp, kênh thưởng ngự thú sư (danh hiệu, thiên phú) và động phủ. */
   bonusPercent: (data: GameData, state: GameState) => number
+  /** Kênh thưởng ngự thú sư cộng vào % thành công (docs/rules/tamer-talents.md). */
+  bonusChannel: TamerBonusType
   /** Khóa bộ đếm thành tựu cộng số lần luyện thành công (docs/rules/achievements.md). */
   craftedStat: StatKey
 }
@@ -52,8 +55,8 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     label: 'luyện đan',
     bonusPercent: (data, state) =>
       partnerAmount(data, state.party, 'alchemySuccessPercent') +
-      titlePercent(data, state.titles, 'alchemySuccessPercent') +
       dwellingCraftBonus(data, state, 'alchemy'),
+    bonusChannel: 'alchemySuccessPercent',
     craftedStat: 'pillsCrafted'
   },
   smithing: {
@@ -64,6 +67,7 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     levelError: 'smithingLevelTooLow',
     label: 'luyện khí',
     bonusPercent: (data, state) => dwellingCraftBonus(data, state, 'smithing'),
+    bonusChannel: 'smithingSuccessPercent',
     craftedStat: 'itemsForged'
   },
   // Linh thực ở Đầu bếp (docs/rules/cooking.md); giữ món ăn đang có tác dụng khi cộng exp.
@@ -75,6 +79,7 @@ const CRAFT_STATION_RULES: Record<CraftStation, CraftStationRule> = {
     levelError: 'cookingLevelTooLow',
     label: 'nấu ăn',
     bonusPercent: (data, state) => dwellingCraftBonus(data, state, 'cooking'),
+    bonusChannel: 'cookingSuccessPercent',
     craftedStat: 'dishesCooked'
   }
 }
@@ -134,13 +139,18 @@ export function requireCraftLevel(state: GameState, station: CraftStation, need:
 /**
  * % thành công của công thức: gốc + levelBonusPercent của nơi luyện mỗi cấp trên cấp yêu cầu + cộng
  * thêm của nơi luyện (luyện đan: kỹ năng đồng hành `alchemySuccessPercent`, partner-skills.md; công
- * trình `craftBonus` của động phủ, dwelling.md), kẹp 0–100.
+ * trình `craftBonus` của động phủ, dwelling.md) + kênh thưởng ngự thú sư của nơi luyện (danh hiệu,
+ * thiên phú; tamer-talents.md), kẹp 0–100.
  */
 export function craftChance(data: GameData, state: GameState, recipe: RecipeDef): number {
   const station = recipeStation(recipe)
   const rule = CRAFT_STATION_RULES[station]
   const levelBonus = (craftLevel(state, station) - recipe.minLevel) * rule.levelBonusPercent(data)
-  const chance = recipe.successChance + levelBonus + rule.bonusPercent(data, state)
+  const chance =
+    recipe.successChance +
+    levelBonus +
+    rule.bonusPercent(data, state) +
+    tamerBonusAmount(data, state, rule.bonusChannel)
   return Math.min(100, Math.max(0, chance))
 }
 

@@ -1,19 +1,26 @@
 // Kiểm tra phần ngự thú sư trong save (docs/rules/tamer.md): GameState.tamer và
 // BattleState.tamers. Gọi từ validateGameState.
 
+import { validateRanks } from '../monster'
 import type { GameData } from '../model'
 import { asObject, checkBig, checkInteger } from '../shared'
 
 /**
  * GameState.tamer: cảnh giới nguyên ≥ 0, EXP Decimal ≥ 0, ngày kết bản mệnh / đạo thương null hoặc
- * nguyên ≥ 0.
+ * nguyên ≥ 0, cấp thiên phú ngự thú sư (nút tồn tại, nguyên ≥ 1, không quá maxRank; không xét điểm).
  */
-export function validateTamer(value: unknown): string[] {
+export function validateTamer(data: GameData, value: unknown): string[] {
   const tamer = asObject(value)
-  if (!tamer) return ['tamer phải là object { realm, exp, bondDay, woundUntilDay }']
+  if (!tamer) {
+    return [
+      'tamer phải là object { realm, exp, bondDay, woundUntilDay, talentRanks, bonusTalentPoints }'
+    ]
+  }
   const issues = [
     ...checkInteger(tamer.realm, 'tamer.realm', 0),
-    ...checkBig(tamer.exp, 'tamer.exp', 0)
+    ...checkBig(tamer.exp, 'tamer.exp', 0),
+    ...validateRanks(data.tamerTalents, tamer.talentRanks, 'tamer.talentRanks'),
+    ...checkInteger(tamer.bonusTalentPoints, 'tamer.bonusTalentPoints', 0)
   ]
   for (const key of ['bondDay', 'woundUntilDay'] as const) {
     if (tamer[key] !== null) issues.push(...checkInteger(tamer[key], `tamer.${key}`, 0))

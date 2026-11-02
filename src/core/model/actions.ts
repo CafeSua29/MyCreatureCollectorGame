@@ -122,6 +122,26 @@ export type GameAction =
   | { type: 'forfeitTournament' }
   | { type: 'challengeArena' }
   /**
+   * Tông môn (ở thị trấn; docs/rules/sects.md): gia nhập / rời, nộp nhiệm vụ tông, Tàng Bảo Các,
+   * luận võ với đồng môn, thi thăng chức, tông chiến.
+   */
+  | { type: 'joinSect'; sectId: string }
+  | { type: 'leaveSect' }
+  | { type: 'claimSectMission'; questId: string }
+  | { type: 'buySectItem'; item: ItemRef; count: number }
+  | { type: 'challengeSectMember'; memberId: string }
+  | { type: 'challengePromotion' }
+  | { type: 'enterSectWar' }
+  | { type: 'challengeSectWar' }
+  | { type: 'forfeitSectWar' }
+  /**
+   * Trao đổi với NPC ở thị trấn (docs/rules/trades.md): đưa quái `monsterId` cho đề nghị `offerId`.
+   * `discardOverflow`: đồng ý bỏ trang bị của quái đưa đi không vừa túi (docs/rules/capacity.md).
+   */
+  | { type: 'acceptTrade'; offerId: string; monsterId: string; discardOverflow?: boolean }
+  /** Quay Cây thần (thị trấn; count là một trong config.gacha.pullOptions; docs/rules/gacha.md). */
+  | { type: 'pullGacha'; count: number }
+  /**
    * Bí cảnh (ở thị trấn, tiêu một Bí Cảnh Lệnh) và tháp thí luyện (ở thị trấn; docs/rules/trials.md).
    */
   | { type: 'enterTrial' }
@@ -283,6 +303,13 @@ export type GameAction =
   /** Danh sách id mới của đội, phải là hoán vị của đội hiện tại. */
   | { type: 'reorderParty'; monsterIds: string[] }
   | { type: 'releaseMonster'; monsterId: string; discardOverflow?: boolean }
+  /** Đội hình mẫu (ngoài trận; docs/rules/roster.md): lưu mới hoặc ghi đè `presetId`, xóa, áp. */
+  | { type: 'saveTeamPreset'; name: string | null; presetId?: string }
+  | { type: 'deleteTeamPreset'; presetId: string }
+  | { type: 'applyTeamPreset'; presetId: string; withEquipment: boolean }
+  /** Khóa / yêu thích (ngoài trận, miễn phí; docs/rules/roster.md). */
+  | { type: 'setMonsterLocked'; monsterId: string; locked: boolean }
+  | { type: 'setMonsterFavorite'; monsterId: string; favorite: boolean }
   /** Lắp món trong túi (trang bị, đồ cầm) lên quái vào ô trống tiếp theo (ngoài trận). */
   | { type: 'equipItem'; monsterId: string; item: ItemRef }
   /** Tháo món ở ô `slotIndex` (0 = ô đầu) của quái về túi (ngoài trận). */
@@ -309,6 +336,10 @@ export type GameAction =
   | { type: 'upgradeSoulLevel'; monsterId: string; stat: StatName | 'workSpeed' }
   /** Nâng một nút thiên phú của quái thêm 1 cấp, ngoài trận (docs/rules/monster-talents.md). */
   | { type: 'allocateTalent'; monsterId: string; nodeId: string }
+  /** Nâng một nút thiên phú ngự thú sư thêm 1 cấp, ngoài trận (docs/rules/tamer-talents.md). */
+  | { type: 'allocateTamerTalent'; nodeId: string }
+  /** Tẩy cả cây thiên phú ngự thú sư, tiêu 1 vật phẩm config.tamerTalents.resetItemId. */
+  | { type: 'resetTamerTalents' }
   /** Kết / đổi bản mệnh thú ở thị trấn (docs/rules/tamer.md mục "Bản mệnh thú"). */
   | { type: 'bindBond'; monsterId: string }
   /** Khế ước quái đang sở hữu (thị trấn; có thể thất bại; docs/rules/tamer.md mục "Khế ước"). */

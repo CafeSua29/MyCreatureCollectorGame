@@ -8,7 +8,7 @@ Code: `model/imprint.ts` (type, `IMPRINT_REQUEST_KINDS`, `imprintPercent`), `mon
 
 ## Ai được dưỡng dục
 
-- Chỉ quái **nở từ trứng** của người chơi: mọi đường nở đi qua `hatchMonster` (`progression/eggs.ts`: trứng breeding, trứng boss, trứng truyền thừa; gacha / event sau này dùng lại). Quái bắt / khởi đầu / trao đổi... thì `imprint` = null mãi. **Mỗi quái một lần trong đời**: `startImprint` bỏ qua quái đã có `imprint` (luân hồi trẻ lại cũng không dưỡng dục lại).
+- Chỉ quái **nở từ trứng** của người chơi: mọi đường nở đi qua `hatchMonster` (`progression/eggs.ts`: trứng breeding, trứng boss, trứng truyền thừa, gacha; event dùng lại). Quái bắt / khởi đầu / trao đổi... thì `imprint` = null mãi. **Mỗi quái một lần trong đời**: `startImprint` bỏ qua quái đã có `imprint` (luân hồi trẻ lại cũng không dưỡng dục lại).
 - `Monster.imprint`: `null` | `{ phase: 'active', completed, total, endDay, request }` | `{ phase: 'done', completed, total }`. **Lưu số yêu cầu đã làm / tổng** (chủ project chốt 2026-10-24, thay cho cộng `percent` số thực để làm hết là đúng 100%): % = `completed × 100 / total` (`imprintPercent`).
 - **Thời gian dưỡng dục** (chủ project chốt: `endDay` **cố định lúc nở**): bật thọ nguyên thì tới hết ấu niên tính theo thọ nguyên lúc nở (`ageDaysAtPercent(youngBelowPercent)` − tuổi, tối thiểu 1 ngày); tắt thọ nguyên thì `fallbackDays` (30) ngày. Lên level (thọ nguyên tăng, ấu niên kéo dài) hay bật / tắt thọ nguyên giữa chừng không đổi `endDay`. `endDay` kẹp ở số nguyên an toàn.
 - `total` = ⌈(endDay − ngày nở) / `requestEveryDays`⌉, tính sẵn lúc nở.

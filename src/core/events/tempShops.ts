@@ -2,7 +2,7 @@
 // với TEMP_SHOP_POOL_CHECKS ở gameData/validateEvents.ts), mua bằng buyEventItem. Cửa hàng mất khi
 // rời chỗ gặp hoặc đi tiếp (khám phá, đánh quái hoang).
 
-import { assertBagRoom } from '../registries'
+import { assertBagRoom, tamerBonusMultiplier } from '../registries'
 import {
   ActionError,
   malformedAction,
@@ -30,11 +30,11 @@ import {
   rollEquipment,
   rollRarity,
   shopEntryRef,
-  skillLearnerCount
+  skillLearnerCount,
+  itemStorage
 } from '../inventory'
 import { rollShopStock } from '../shop'
 import type {
-  BlackMarketItem,
   EquipmentItem,
   GameData,
   GameState,
@@ -112,10 +112,36 @@ const normalEquipmentOf = (data: GameData): EquipmentItem[] =>
     (item): item is EquipmentItem => item.category === 'equipment' && isRandomEquipment(item)
   )
 
+/** Một vật phẩm trong hàng chợ đen, trọng số theo giá. */
+interface BlackMarketOffer {
+  itemId: string
+  weight: number
+}
+
 type BlackMarketCandidate =
-  | { kind: 'item'; entry: BlackMarketItem; weight: number }
+  | { kind: 'item'; entry: BlackMarketOffer; weight: number }
   | { kind: 'equipment'; weight: number }
   | { kind: 'book'; weight: number }
+
+const blackMarketItemCache = new WeakMap<GameData, readonly BlackMarketOffer[]>()
+
+/**
+ * Hàng vật phẩm của chợ đen: chỉ đồ hiếm, khó tìm (docs/rules/events.md): gộp chồng, không bán ở cửa
+ * hàng thị trấn, giá gốc ≥ minItemPrice, cộng các món extraItemIds; trọng số = giá^itemWeightPower.
+ */
+export function blackMarketItems(data: GameData): readonly BlackMarketOffer[] {
+  const cached = blackMarketItemCache.get(data)
+  if (cached) return cached
+  const { minItemPrice, itemWeightPower, extraItemIds } = data.config.events.blackMarket
+  const pool = Object.values(data.items).flatMap((item) => {
+    if (itemStorage(item.category) !== 'stack' || !('price' in item) || item.price <= 0) return []
+    const hardToFind = !('shop' in item && item.shop === true) && item.price >= minItemPrice
+    if (!hardToFind && !extraItemIds.includes(item.id)) return []
+    return [{ itemId: item.id, weight: item.price ** itemWeightPower }]
+  })
+  blackMarketItemCache.set(data, pool)
+  return pool
+}
 
 /**
  * Chợ đen (config.events.blackMarket): số lượt đều trong count; mỗi lượt chọn theo trọng số giữa
@@ -126,9 +152,13 @@ function rollBlackMarket({ data, state, rng, nextItemId, floor }: RollInput): Ro
   const config = data.config.events.blackMarket
   const equipmentPool = normalEquipmentOf(data)
   const skillIds = blackMarketSkillIds(data)
-  let items = config.items.filter(
-    (entry) => entry.weight > 0 && isItemOffered(data.items[entry.itemId], state.options)
-  )
+  // Như cửa hàng: món cần vật phẩm chìa khóa (đá Mega, Z-Crystal) chỉ bán khi đã có món đó.
+  let items = blackMarketItems(data).filter((entry) => {
+    const item = data.items[entry.itemId]
+    const keyItemId = 'requiresKeyItemId' in item ? item.requiresKeyItemId : undefined
+    if (keyItemId && !state.inventory.stacks[keyItemId]) return false
+    return isItemOffered(item, state.options)
+  })
   const stock: TempShopEntry[] = []
   let size: number
   ;[size, rng] = nextInt(rng, config.count.min, config.count.max)
@@ -146,9 +176,7 @@ function rollBlackMarket({ data, state, rng, nextItemId, floor }: RollInput): Ro
     if (chosen.kind === 'item') {
       const { entry } = chosen
       items = items.filter((candidate) => candidate !== entry)
-      let count: number
-      ;[count, rng] = nextInt(rng, entry.min, entry.max)
-      pushEntry(stock, { storage: 'stack', itemId: entry.itemId }, count)
+      pushEntry(stock, { storage: 'stack', itemId: entry.itemId }, 1)
     } else if (chosen.kind === 'equipment') {
       let base: EquipmentItem
       ;[base, rng] = pick(rng, equipmentPool)
@@ -196,13 +224,18 @@ export const TEMP_SHOP_ROLLERS: Readonly<Record<TempShopPool, (input: RollInput)
   crystal: rollCrystals
 }
 
-/** Giá mua một món ở cửa hàng tạm: giá cửa hàng × priceMultiplier, làm tròn xuống. */
+/**
+ * Giá mua một món ở cửa hàng tạm: giá cửa hàng × priceMultiplier × kênh thưởng ngự thú sư
+ * `shopPricePercent` (docs/rules/tamer-talents.md), làm tròn xuống.
+ */
 export function tempShopPrice(
   data: GameData,
   state: GameState,
   { entry, priceMultiplier }: { entry: ShopEntry; priceMultiplier: number }
 ): Decimal {
-  return itemBuyPrice(data, entry, state.highestFloor).times(priceMultiplier).floor()
+  return itemBuyPrice(data, entry, state.highestFloor)
+    .times(priceMultiplier * tamerBonusMultiplier(data, state, 'shopPricePercent'))
+    .floor()
 }
 
 /** Chỗ đang đứng (tầng, null = thị trấn). */

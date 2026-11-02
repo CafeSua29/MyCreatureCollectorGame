@@ -555,6 +555,7 @@
     "shopMin": 3,
     "shopMax": 5,
     "shopMaxPower": 80,
+    "shopRareSkillFactor": 0.05,
     "partyMultiplier": 5,
     "bossDropChance": 20,
     "reusableDropChance": 2
@@ -1091,28 +1092,25 @@
       {
         "fromFloor": 1,
         "drops": [
-          {
-            "itemId": "expCandyS",
-            "chance": 30
-          }
+          { "itemId": "expCandyS", "chance": 30 },
+          { "itemId": "expCandyM", "chance": 3 },
+          { "itemId": "expCandyL", "chance": 0.5 }
         ]
       },
       {
         "fromFloor": 20,
         "drops": [
-          {
-            "itemId": "expCandyM",
-            "chance": 30
-          }
+          { "itemId": "expCandyS", "chance": 5 },
+          { "itemId": "expCandyM", "chance": 30 },
+          { "itemId": "expCandyL", "chance": 3 }
         ]
       },
       {
         "fromFloor": 50,
         "drops": [
-          {
-            "itemId": "expCandyL",
-            "chance": 30
-          }
+          { "itemId": "expCandyS", "chance": 2 },
+          { "itemId": "expCandyM", "chance": 5 },
+          { "itemId": "expCandyL", "chance": 30 }
         ]
       }
     ],
@@ -1870,6 +1868,8 @@
   },
   "trainers": {
     "encounterChance": 10,
+    "nonWildSpeciesWeight": 0.1,
+    "offThemeClassWeight": 0.02,
     "rewardDrops": [
       {
         "itemId": "expCandyS",
@@ -2315,7 +2315,7 @@
       }
     },
     "opposeBonus": 10,
-    "unlockFloor": 30,
+    "unlockFloor": 1,
     "wildChance": 10,
     "bossChance": 25,
     "traitIds": {
@@ -2352,6 +2352,114 @@
       }
     ]
   },
+  "tamerTalents": {
+    "pointsPerRealm": 2,
+    "pointsPerQuest": 1,
+    "pointsPerAchievementTier": 1,
+    "resetItemId": "restorationPill"
+  },
+  "teamPresets": {
+    "slots": 10
+  },
+  "trades": {
+    "refreshDays": 7,
+    "offerCount": {
+      "min": 1,
+      "max": 3
+    },
+    "wantWeights": {
+      "species": 3,
+      "race": 1,
+      "element": 1
+    },
+    "giveWeights": {
+      "monster": 3,
+      "item": 1
+    },
+    "wantLevelPercent": 50,
+    "giveRankWeights": [1, 2, 4, 6, 6, 4, 2, 1, 0.5],
+    "giveLevelOffset": 0,
+    "giveGeneMultiplier": 1.25,
+    "giveShinyMultiplier": 4,
+    "itemWeightPower": 0.5,
+    "expBonusPercent": 50
+  },
+  "gacha": {
+    "costBase": 500,
+    "pullOptions": [
+      { "count": 1, "costMultiplier": 1 },
+      { "count": 10, "costMultiplier": 9 }
+    ],
+    "rankWeights": [100, 70, 45, 30, 20, 12, 6, 3, 1],
+    "traitKindWeights": { "positive": 79, "negative": 11, "rare": 10 },
+    "traitKindFloorGrowth": { "rare": 0.02 },
+    "traitKindFloorFalloff": { "negative": 0.05 }
+  },
+  "sects": {
+    "rejoinCooldownDays": 30,
+    "rankBase": 200,
+    "rankPower": 2,
+    "memberCount": 12,
+    "memberRankWeights": [40, 30, 15, 10, 5, 1],
+    "memberDailyContribution": {
+      "min": 5,
+      "max": 20
+    },
+    "masterRankLead": 2,
+    "missions": {
+      "count": 3,
+      "refreshDays": 7,
+      "contributionPerCount": 10,
+      "talentPointChance": 10
+    },
+    "duel": {
+      "perDay": 3,
+      "levelPerRank": 1,
+      "contribution": 15
+    },
+    "promotion": {
+      "levelOffset": 2,
+      "levelPerRank": 2,
+      "talentPoints": 1
+    },
+    "war": {
+      "everyDays": 60,
+      "rounds": [
+        {
+          "levelOffset": 0,
+          "rewardMultiplier": 1,
+          "contribution": 30
+        },
+        {
+          "levelOffset": 2,
+          "rewardMultiplier": 1.2,
+          "contribution": 50
+        },
+        {
+          "levelOffset": 4,
+          "rewardMultiplier": 1.5,
+          "contribution": 80
+        },
+        {
+          "levelOffset": 6,
+          "rewardMultiplier": 2,
+          "contribution": 120
+        }
+      ],
+      "championContribution": 300,
+      "championTalentPoints": 2,
+      "championRewards": [
+        {
+          "itemId": "rareCandy",
+          "count": 1
+        },
+        {
+          "itemId": "expCandyL",
+          "count": 1
+        }
+      ]
+    }
+  },
   "events": {
     "wildBattleChance": 10,
     "exploreChance": 30,
@@ -2361,469 +2469,216 @@
         "min": 3,
         "max": 5
       },
-      "items": [
-        {
-          "itemId": "fusionCharm",
-          "weight": 3,
-          "min": 1,
-          "max": 2
-        },
-        {
-          "itemId": "rebirthPill",
-          "weight": 2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "greatFusionCharm",
-          "weight": 2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "ultraFusionCharm",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "fusionAmulet",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "greaterLongevityPill",
-          "weight": 3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "myriadLongevityPill",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "recipeScrollMyriadLongevityPill",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "recipeScrollHumanFormPill",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "fourSymbolsScroll",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "dragonGateScroll",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "sixHarmoniesScroll",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "fiveElementsScroll",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "secretRealmToken",
-          "weight": 4,
-          "min": 1,
-          "max": 2
-        },
-        {
-          "itemId": "rareCandy",
-          "weight": 4,
-          "min": 1,
-          "max": 3
-        },
-        {
-          "itemId": "expCandyL",
-          "weight": 2,
-          "min": 1,
-          "max": 2
-        },
-        {
-          "itemId": "expCandyXL",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "heartDew",
-          "weight": 3,
-          "min": 1,
-          "max": 2
-        },
-        {
-          "itemId": "mutationStone",
-          "weight": 2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "dragonBloodFruit",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "marrowCleansingPill",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreNormal",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreFire",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreWater",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreElectric",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreGrass",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreIce",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreFighting",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCorePoison",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreGround",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreFlying",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCorePsychic",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreBug",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreRock",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreGhost",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreDragon",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreDark",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreSteel",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreFairy",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "demonCoreLight",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "burnDrive",
-          "weight": 0.1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "chillDrive",
-          "weight": 0.1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "douseDrive",
-          "weight": 0.1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "shockDrive",
-          "weight": 0.1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "abilityPatch",
-          "weight": 0.2,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintHardy",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintLonely",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintBrave",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintAdamant",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintNaughty",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintBold",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintDocile",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintRelaxed",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintImpish",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintLax",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintTimid",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintHasty",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintSerious",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintJolly",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintNaive",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintModest",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintMild",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintQuiet",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintBashful",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintRash",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintCalm",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintGentle",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintSassy",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintCareful",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "mintQuirky",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "masterBall",
-          "weight": 0.3,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "yinStone",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "yangStone",
-          "weight": 1,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "poleSwapStone",
-          "weight": 0.5,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "poleResetStone",
-          "weight": 0.5,
-          "min": 1,
-          "max": 1
-        },
-        {
-          "itemId": "soulGuidingOrb",
-          "weight": 3,
-          "min": 1,
-          "max": 2
-        },
-        {
-          "itemId": "realmBreakTalisman",
-          "weight": 2,
-          "min": 1,
-          "max": 2
-        }
+      "minItemPrice": 1000,
+      "itemWeightPower": -0.5,
+      "extraItemIds": [
+        "fusionCharm",
+        "greatFusionCharm",
+        "ultraFusionCharm",
+        "fusionAmulet",
+        "yinStone",
+        "yangStone",
+        "poleSwapStone",
+        "poleResetStone",
+        "realmBreakTalisman",
+        "abilityCapsule",
+        "restorationPill",
+        "mintHardy",
+        "mintLonely",
+        "mintBrave",
+        "mintAdamant",
+        "mintNaughty",
+        "mintBold",
+        "mintDocile",
+        "mintRelaxed",
+        "mintImpish",
+        "mintLax",
+        "mintTimid",
+        "mintHasty",
+        "mintSerious",
+        "mintJolly",
+        "mintNaive",
+        "mintModest",
+        "mintMild",
+        "mintQuiet",
+        "mintBashful",
+        "mintRash",
+        "mintCalm",
+        "mintGentle",
+        "mintSassy",
+        "mintCareful",
+        "mintQuirky",
+        "venusaurMegaStone",
+        "charizardMegaXStone",
+        "charizardMegaYStone",
+        "blastoiseMegaStone",
+        "beedrillMegaStone",
+        "pidgeotMegaStone",
+        "raichuMegaXStone",
+        "raichuMegaYStone",
+        "clefableMegaStone",
+        "alakazamMegaStone",
+        "victreebelMegaStone",
+        "slowbroMegaStone",
+        "gengarMegaStone",
+        "kangaskhanMegaStone",
+        "starmieMegaStone",
+        "pinsirMegaStone",
+        "gyaradosMegaStone",
+        "aerodactylMegaStone",
+        "dragoniteMegaStone",
+        "mewtwoMegaXStone",
+        "mewtwoMegaYStone",
+        "meganiumMegaStone",
+        "feraligatrMegaStone",
+        "ampharosMegaStone",
+        "steelixMegaStone",
+        "scizorMegaStone",
+        "heracrossMegaStone",
+        "skarmoryMegaStone",
+        "houndoomMegaStone",
+        "tyranitarMegaStone",
+        "sceptileMegaStone",
+        "blazikenMegaStone",
+        "swampertMegaStone",
+        "gardevoirMegaStone",
+        "sableyeMegaStone",
+        "mawileMegaStone",
+        "aggronMegaStone",
+        "medichamMegaStone",
+        "manectricMegaStone",
+        "sharpedoMegaStone",
+        "cameruptMegaStone",
+        "altariaMegaStone",
+        "banetteMegaStone",
+        "chimechoMegaStone",
+        "absolMegaStone",
+        "absolMegaZStone",
+        "glalieMegaStone",
+        "salamenceMegaStone",
+        "metagrossMegaStone",
+        "latiasMegaStone",
+        "latiosMegaStone",
+        "kyogrePrimalStone",
+        "groudonPrimalStone",
+        "staraptorMegaStone",
+        "lopunnyMegaStone",
+        "garchompMegaStone",
+        "garchompMegaZStone",
+        "lucarioMegaStone",
+        "lucarioMegaZStone",
+        "abomasnowMegaStone",
+        "galladeMegaStone",
+        "froslassMegaStone",
+        "heatranMegaStone",
+        "darkraiMegaStone",
+        "emboarMegaStone",
+        "excadrillMegaStone",
+        "audinoMegaStone",
+        "scolipedeMegaStone",
+        "scraftyMegaStone",
+        "eelektrossMegaStone",
+        "chandelureMegaStone",
+        "golurkMegaStone",
+        "chesnaughtMegaStone",
+        "delphoxMegaStone",
+        "greninjaMegaStone",
+        "pyroarMegaStone",
+        "floetteMegaStone",
+        "meowsticMMegaStone",
+        "meowsticFMegaStone",
+        "malamarMegaStone",
+        "barbaracleMegaStone",
+        "dragalgeMegaStone",
+        "hawluchaMegaStone",
+        "zygardeMegaStone",
+        "diancieMegaStone",
+        "crabominableMegaStone",
+        "golisopodMegaStone",
+        "drampaMegaStone",
+        "magearnaMegaStone",
+        "magearnaOriginalMegaStone",
+        "zeraoraMegaStone",
+        "falinksMegaStone",
+        "scovillainMegaStone",
+        "glimmoraMegaStone",
+        "tatsugiriCurlyMegaStone",
+        "tatsugiriDroopyMegaStone",
+        "tatsugiriStretchyMegaStone",
+        "baxcaliburMegaStone",
+        "normalZCrystal",
+        "fightingZCrystal",
+        "flyingZCrystal",
+        "poisonZCrystal",
+        "groundZCrystal",
+        "rockZCrystal",
+        "bugZCrystal",
+        "ghostZCrystal",
+        "steelZCrystal",
+        "fireZCrystal",
+        "waterZCrystal",
+        "grassZCrystal",
+        "electricZCrystal",
+        "psychicZCrystal",
+        "iceZCrystal",
+        "dragonZCrystal",
+        "darkZCrystal",
+        "fairyZCrystal",
+        "lightZCrystal",
+        "aloraichiumZCrystal",
+        "decidiumZCrystal",
+        "eeviumZCrystal",
+        "inciniumZCrystal",
+        "kommoniumZCrystal",
+        "lunaliumZCrystal",
+        "lycaniumZCrystal",
+        "marshadiumZCrystal",
+        "mewniumZCrystal",
+        "mimikiumZCrystal",
+        "pikaniumZCrystal",
+        "pikashuniumZCrystal",
+        "primariumZCrystal",
+        "snorliumZCrystal",
+        "solganiumZCrystal",
+        "tapuniumZCrystal",
+        "ultranecroziumZCrystal",
+        "dragonEssence",
+        "phoenixEssence",
+        "rocEssence",
+        "foxEssence",
+        "wolfEssence",
+        "tigerEssence",
+        "turtleEssence",
+        "serpentEssence",
+        "qilinEssence",
+        "bullEssence",
+        "seaEssence",
+        "insectEssence",
+        "undeadEssence",
+        "demonEssence",
+        "giantEssence",
+        "plantEssence",
+        "saurianEssence",
+        "workImplantArtisan",
+        "workImplantSerious",
+        "workImplantWorkSlave",
+        "workImplantLucky",
+        "workImplantMineForeman",
+        "workImplantFarmForeman",
+        "workImplantWaterForeman",
+        "workImplantFireForeman",
+        "workImplantVeinForeman",
+        "workImplantHaulForeman",
+        "workImplantCareForeman",
+        "workImplantScholar",
+        "workManualMining",
+        "workManualFarming",
+        "workManualWatering",
+        "workManualKindling",
+        "workManualGenerating",
+        "workManualTransporting",
+        "workManualCaring",
+        "workManualResearch"
       ],
       "equipment": {
         "weight": 15,
@@ -3619,7 +3474,7 @@
     "turns": 10,
     "levelOffset": 0,
     "bossMultiplier": 1.5,
-    "minSpeciesRankId": "S",
+    "rankWeights": [1, 1, 1, 2, 3, 5, 8, 12, 20],
     "largeWeight": 3,
     "tiers": [
       {
@@ -3637,7 +3492,7 @@
           }
         ],
         "skillBooks": 1,
-        "eggChance": 0
+        "eggChance": 1
       },
       {
         "id": "B",
@@ -3658,7 +3513,7 @@
           }
         ],
         "skillBooks": 1,
-        "eggChance": 0
+        "eggChance": 2
       },
       {
         "id": "A",
@@ -3683,7 +3538,7 @@
           }
         ],
         "skillBooks": 2,
-        "eggChance": 0
+        "eggChance": 3
       },
       {
         "id": "S",

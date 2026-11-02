@@ -7,30 +7,42 @@ import {
   talentPointsEarned,
   talentPointsSpent,
   talentRankCost,
+  type RankedNode,
   type TalentBlocker
 } from '../registries'
 import { asObject, checkInteger } from '../shared'
 import type { GameData, Monster } from '../model'
 
-/** Cấp nút trong save: nút tồn tại, nguyên ≥ 1, không quá maxRank (không xét điểm: dữ liệu đổi giá được). */
-export function validateTalentRanks(data: GameData, value: unknown, path: string): string[] {
+/**
+ * Cấp nút trong save (thiên phú quái, thiên phú ngự thú sư): nút tồn tại trong `nodes`, nguyên ≥ 1,
+ * không quá maxRank (không xét điểm: dữ liệu đổi giá được).
+ */
+export function validateRanks(
+  nodes: Readonly<Record<string, Pick<RankedNode, 'maxRank'>>>,
+  value: unknown,
+  path: string
+): string[] {
   const ranks = asObject(value)
   if (!ranks) return [`${path} phải là object id nút → cấp`]
   const issues: string[] = []
   for (const [nodeId, rank] of Object.entries(ranks)) {
     const where = `${path}.${nodeId}`
-    if (!Object.hasOwn(data.talents, nodeId)) {
+    if (!Object.hasOwn(nodes, nodeId)) {
       issues.push(`${where}: thiên phú không tồn tại`)
       continue
     }
     issues.push(...checkInteger(rank, where, 1))
-    const { maxRank } = data.talents[nodeId]
+    const { maxRank } = nodes[nodeId]
     if (maxRank !== undefined && typeof rank === 'number' && rank > maxRank) {
       issues.push(`${where} tối đa ${maxRank}, nhận ${rank}`)
     }
   }
   return issues
 }
+
+/** Cấp thiên phú quái trong save (validateRanks với các nút thiên phú quái). */
+export const validateTalentRanks = (data: GameData, value: unknown, path: string): string[] =>
+  validateRanks(data.talents, value, path)
 
 /** Một nút trong MonsterView: cấp, giá cấp tiếp theo, lý do chưa nâng được (null = nâng được). */
 export interface TalentNodeView {

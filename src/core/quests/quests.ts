@@ -2,7 +2,7 @@
 // sự kiện), ra nhiệm vụ theo trọng số mẫu, bổ sung bảng, nhận / hủy / nhận thưởng, ghi tiến độ khi có
 // sự kiện. Thêm loại nhiệm vụ = thêm một handler, nơi phát sự kiện gọi recordQuestEvent.
 
-import { raceMatches } from '../registries'
+import { bumpStat, raceMatches } from '../registries'
 import { addItems } from '../inventory'
 import {
   ActionError,
@@ -162,7 +162,10 @@ export function abandonQuest(state: GameState, questId: string): GameState {
   return { ...state, quests: { ...state.quests, active } }
 }
 
-/** Nhận thưởng nhiệm vụ đã hoàn thành (về thị trấn). */
+/**
+ * Nhận thưởng nhiệm vụ đã hoàn thành (về thị trấn); + bộ đếm questsCompleted (điểm thiên phú ngự thú
+ * sư, docs/rules/tamer-talents.md).
+ */
 export function claimQuest(state: GameState, questId: string): GameState {
   requireTown(state)
   const quest = state.quests.active.find((q) => q.id === questId)
@@ -183,22 +186,28 @@ export function claimQuest(state: GameState, questId: string): GameState {
     ...state,
     money: state.money.plus(quest.reward.money),
     inventory,
-    quests: { ...state.quests, active }
+    quests: { ...state.quests, active },
+    stats: bumpStat(state.stats, 'questsCompleted')
   }
 }
 
-/** Ghi tiến độ: mỗi nhiệm vụ đang nhận khớp sự kiện + 1 (không vượt target). */
+/**
+ * Ghi tiến độ: mỗi nhiệm vụ đang nhận và nhiệm vụ tông môn (docs/rules/sects.md) khớp sự kiện + 1
+ * (không vượt target).
+ */
 export function recordQuestEvent(
   data: GameData,
   quests: QuestState,
   event: QuestEvent
 ): QuestState {
   let changed = false
-  const active = quests.active.map((quest): ActiveQuest => {
+  const advance = (quest: ActiveQuest): ActiveQuest => {
     if (quest.progress >= quest.target) return quest
     if (!QUEST_TYPES[quest.objective.type].matches(quest.objective, event, data)) return quest
     changed = true
     return { ...quest, progress: quest.progress + 1 }
-  })
-  return changed ? { ...quests, active } : quests
+  }
+  const active = quests.active.map(advance)
+  const sect = quests.sect.map(advance)
+  return changed ? { ...quests, active, sect } : quests
 }

@@ -12,7 +12,7 @@ import {
   achievementTiersReached
 } from './achievements'
 import { bumpStat, countCaught, newGameStats } from './gameStats'
-import { titleMultiplier, titlePercent } from './titles'
+import { tamerBonusMultiplier, tamerBonusAmount } from './tamerBonuses'
 
 const data = makeData()
 
@@ -163,21 +163,21 @@ describe('bậc', () => {
 
 describe('danh hiệu', () => {
   const state = makeGameState({ seed: 1 })
-  const wearing = (titleId: string | null): GameState['titles'] => ({
-    owned: titleId ? [titleId] : [],
-    active: titleId
+  const wearing = (titleId: string | null): GameState => ({
+    ...state,
+    titles: { owned: titleId ? [titleId] : [], active: titleId }
   })
 
   it('không đeo: 0 % / hệ số 1; đeo: % theo kênh, kênh không có = 0', () => {
-    expect(titlePercent(data, state.titles, 'expPercent')).toBe(0)
-    expect(titleMultiplier(data, state.titles, 'expPercent')).toBe(1)
+    expect(tamerBonusAmount(data, state, 'expPercent')).toBe(0)
+    expect(tamerBonusMultiplier(data, state, 'expPercent')).toBe(1)
     const veteran = wearing(FIXTURE_TITLE_IDS.veteran)
-    expect(titlePercent(data, veteran, 'expPercent')).toBe(50)
-    expect(titleMultiplier(data, veteran, 'expPercent')).toBe(1.5)
-    expect(titlePercent(data, veteran, 'moneyPercent')).toBe(0)
+    expect(tamerBonusAmount(data, veteran, 'expPercent')).toBe(50)
+    expect(tamerBonusMultiplier(data, veteran, 'expPercent')).toBe(1.5)
+    expect(tamerBonusAmount(data, veteran, 'moneyPercent')).toBe(0)
   })
 
   it('id không còn trong dữ liệu: không có tác dụng', () => {
-    expect(titlePercent(data, wearing('removed'), 'expPercent')).toBe(0)
+    expect(tamerBonusAmount(data, wearing('removed'), 'expPercent')).toBe(0)
   })
 })

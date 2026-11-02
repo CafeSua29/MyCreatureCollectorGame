@@ -21,6 +21,15 @@ export { enterZone, exploreZone, leaveZone } from './zones'
 export { gather } from './gathering'
 export { challengeWorldBoss } from './worldBoss'
 export { assertReadyForBattle } from './trainerBattles'
+export {
+  challengePromotion,
+  challengeSectMember,
+  challengeSectWar,
+  enterSectWar,
+  forfeitSectWar,
+  promotionExaminer,
+  sectWarPeriod
+} from './sectBattles'
 export { failBeastTide, isFloorSpecialKind } from './specialBattles'
 export {
   acceptRecruit,

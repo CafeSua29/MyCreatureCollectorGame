@@ -19,6 +19,8 @@ import type { SkillStyleOverrides } from './moveStyles'
 import type { PartialStats, StatName, Stats } from './stats'
 import type { NonHpStat } from './state'
 import type { TalentBranchDef, TalentNodeDef } from './talents'
+import type { NpcNameDef, SectDef, SectRankDef } from './sects'
+import type { TamerTalentBranchDef, TamerTalentNodeDef } from './tamerTalents'
 import type { TamerRealmDef, TamerSkill } from './tamer'
 import type { TextData } from './text'
 import type { ActiveTime, GameOptionFlag } from './time'
@@ -408,6 +410,8 @@ export interface NormalSpecies {
   teraFormId?: string
   /** Ghi đè phẩm cấp loài (id trong speciesRanks.json; docs/rules/species-rank.md). */
   rank?: string
+  /** Ghi đè trọng số Cây thần (0 = không ra; chỉ dạng đầu; docs/rules/gacha.md). */
+  gachaWeight?: number
   /**
    * Điểm nỗ lực quái loài này cho khi bị hạ / bị bắt (EV yield của Pokémon; nguyên ≥ 1 mỗi chỉ số
    * ghi; docs/rules/effort-values.md); bỏ trống = suy từ chỉ số gốc (config.effort.derivedYield).
@@ -1715,6 +1719,8 @@ export interface RawGameData {
   affinityTiers: AffinityTierDef[]
   talentBranches: TalentBranchDef[]
   talents: TalentNodeDef[]
+  tamerTalentBranches: TamerTalentBranchDef[]
+  tamerTalents: TamerTalentNodeDef[]
   synergies: SynergyDef[]
   formations: FormationDef[]
   comboSkills: RawComboSkill[]
@@ -1740,6 +1746,9 @@ export interface RawGameData {
   artifactSpirits: ArtifactSpiritDef[]
   achievements: AchievementDef[]
   titles: TitleDef[]
+  sects: SectDef[]
+  sectRanks: SectRankDef[]
+  npcNames: NpcNameDef[]
   text: TextData
 }
 
@@ -1769,6 +1778,9 @@ export interface GameData {
   /** Nhánh và nút thiên phú (docs/rules/monster-talents.md); thứ tự key = thứ tự trong JSON. */
   talentBranches: Record<string, TalentBranchDef>
   talents: Record<string, TalentNodeDef>
+  /** Nhánh và nút thiên phú ngự thú sư (docs/rules/tamer-talents.md); thứ tự key = thứ tự JSON. */
+  tamerTalentBranches: Record<string, TamerTalentBranchDef>
+  tamerTalents: Record<string, TamerTalentNodeDef>
   /** Cộng hưởng đội, trận pháp, phần riêng của hợp kích kỹ (docs/rules/team.md). */
   synergies: Record<string, SynergyDef>
   formations: Record<string, FormationDef>
@@ -1815,6 +1827,10 @@ export interface GameData {
   /** Thành tựu, danh hiệu (docs/rules/achievements.md). */
   achievements: Record<string, AchievementDef>
   titles: Record<string, TitleDef>
+  /** Tông môn, tên chức vị theo thứ tự, tên NPC dùng chung (docs/rules/sects.md). */
+  sects: Record<string, SectDef>
+  sectRanks: Record<string, SectRankDef>
+  npcNames: Record<string, NpcNameDef>
   /** Chữ nội dung theo ngôn ngữ; logic core không dùng, chỉ tra qua contentName. */
   text: TextData
 }

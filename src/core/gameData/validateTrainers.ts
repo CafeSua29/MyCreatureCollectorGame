@@ -231,11 +231,24 @@ export function checkTrainerData(data: GameData, issues: string[]): void {
   }
   checkKnownFields(
     config,
-    ['encounterChance', 'rewardDrops', 'ai', 'gym', 'tournament', 'arena'],
+    [
+      'encounterChance',
+      'nonWildSpeciesWeight',
+      'offThemeClassWeight',
+      'rewardDrops',
+      'ai',
+      'gym',
+      'tournament',
+      'arena'
+    ],
     'config.trainers',
     'config',
     issues
   )
+  issues.push(
+    ...checkNumber(config.nonWildSpeciesWeight, 'config.trainers.nonWildSpeciesWeight', 0)
+  )
+  issues.push(...checkNumber(config.offThemeClassWeight, 'config.trainers.offThemeClassWeight', 0))
   issues.push(...checkNumber(config.encounterChance, 'config.trainers.encounterChance', 0, 100))
   if (!Array.isArray(config.rewardDrops))
     issues.push('config.trainers.rewardDrops phải là danh sách')

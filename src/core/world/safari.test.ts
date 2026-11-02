@@ -2,7 +2,7 @@
 // ném bóng / mồi / đá, bỏ đi, chạy trốn, bắt trượt, ra khu (24 giờ), chặn action khác, save, migrate.
 
 import { describe, expect, it } from 'vitest'
-import { gameReducer, migrateState, validateGameState } from '../game'
+import { gameReducer, migrateState, serializeState, validateGameState } from '../game'
 import { createGameData } from '../gameData'
 import { cloneData, toBig } from '../shared'
 import { advanceTime } from '../progression'
@@ -71,6 +71,9 @@ describe('vào khu bảo tồn', () => {
     expect(inside.money).toEqual(toBig(10_000 - 1000))
     const visit = visitOf(inside)
     expect(visit).toMatchObject({ encountersLeft: 19, balls: 30, caught: 0 })
+    // Save giữa lượt vào khu (quái đang gặp có trường Decimal) ghi / đọc lại đúng.
+    const loaded = migrateState(JSON.parse(JSON.stringify(serializeState(inside))), sure)
+    expect(validateGameState(sure, loaded)).toEqual([])
     expect(visit.encounter).toMatchObject({ misses: 0, lure: null })
     const monster = visit.encounter.monster
     expect(monster).toMatchObject({ id: 'm10', speciesId: 'weakling', contractRealm: null })
@@ -133,25 +136,24 @@ describe('vào khu bảo tồn', () => {
 })
 
 describe('danh sách loài', () => {
-  it('chỉ loài quái thường của map đã mở; một nhóm hết loài thì lấy nhóm kia; không trùng', () => {
+  it('loài quái thường của mọi map; một nhóm hết loài thì lấy nhóm kia; không trùng', () => {
     const mappedOnly = safariData({ rosterSize: 1, unmappedChance: 0 })
-    expect(rollSafariRoster(mappedOnly, 1, ['field'])[0]).toEqual(['weakling'])
+    expect(rollSafariRoster(mappedOnly, 1)[0]).toEqual(['weakling'])
     const wide = safariData({ rosterSize: 50, unmappedChance: 0 })
-    const [roster] = rollSafariRoster(wide, 1, ['field'])
+    const [roster] = rollSafariRoster(wide, 1)
     expect(roster[0]).toBe('weakling')
     expect(new Set(roster).size).toBe(roster.length)
-    // Boss (strongling), dạng Mega (megaWeakling) không vào khu.
-    expect(roster).not.toContain('strongling')
+    // Dạng Mega (megaWeakling) không vào khu; không lấy nhóm loài không gặp ở map (tỉ lệ 0).
     expect(roster).not.toContain('megaWeakling')
     expect(roster.length).toBeGreaterThan(1)
   })
 
   it('unmappedChance 100: lấy loài không gán vào map nào; không có map nào thì cũng vậy', () => {
     const unmapped = safariData({ rosterSize: 1, unmappedChance: 100 })
-    const [roster] = rollSafariRoster(unmapped, 3, ['field'])
+    const [roster] = rollSafariRoster(unmapped, 3)
     expect(roster).toHaveLength(1)
     expect(['weakling', 'strongling', 'megaWeakling']).not.toContain(roster[0])
-    expect(rollSafariRoster(safariData({ rosterSize: 1 }), 3, [])[0]).toHaveLength(1)
+    expect(rollSafariRoster(safariData({ rosterSize: 1 }), 3)[0]).toHaveLength(1)
   })
 
   it('trọng số: catchRate thấp nặng hơn, phẩm cấp cao nhẹ hơn, luôn > 0', () => {

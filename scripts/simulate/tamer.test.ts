@@ -9,7 +9,14 @@ const data = makeData()
 function town(overrides: Partial<GameState> = {}): GameState {
   return {
     ...makeGameState({ seed: 3, party: [makeMonster({ id: 'm1' })], money: 1_000_000 }),
-    tamer: { bondDay: null, woundUntilDay: null, realm: 0, exp: toBig(500) },
+    tamer: {
+      bondDay: null,
+      woundUntilDay: null,
+      talentRanks: {},
+      bonusTalentPoints: 0,
+      realm: 0,
+      exp: toBig(500)
+    },
     ...overrides
   }
 }
@@ -43,7 +50,16 @@ describe('đột phá trong mô phỏng', () => {
   })
 
   it('thiếu EXP: không làm gì', () => {
-    const state = town({ tamer: { bondDay: null, woundUntilDay: null, realm: 0, exp: toBig(99) } })
+    const state = town({
+      tamer: {
+        bondDay: null,
+        woundUntilDay: null,
+        talentRanks: {},
+        bonusTalentPoints: 0,
+        realm: 0,
+        exp: toBig(99)
+      }
+    })
     expect(readyToBreakthrough(data, state)).toBe(false)
     expect(breakthroughWhilePossible(data, state).state).toBe(state)
   })

@@ -1704,5 +1704,6 @@
   "calmPill": "Calming Pill",
   "medicineLow": "Low Grade Medicine",
   "medicine": "Medicine",
-  "medicineHigh": "High Grade Medicine"
+  "medicineHigh": "High Grade Medicine",
+  "restorationPill": "Restoration Pill"
 }

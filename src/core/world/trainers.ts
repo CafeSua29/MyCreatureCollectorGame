@@ -4,6 +4,7 @@
 
 import { isFormationMet, partySlotsOf, partySlotsUsed } from '../registries'
 import { nextInt, pick, pickWeighted, type RngState } from '../shared'
+import { BATTLE_FORM_KINDS } from '../model'
 import type {
   Biome,
   EncounterEntry,
@@ -44,8 +45,9 @@ function wildSpeciesIds(data: GameData): string[] {
 }
 
 /**
- * Bảng loài của đội NPC: loài hoang có ít nhất một hệ thuộc `elementIds` (rỗng = mọi loài hoang),
- * mỗi loài trọng số 1; không loài nào khớp thì lấy mọi loài hoang.
+ * Bảng loài của đội NPC: mọi loài thường trừ dạng chỉ có trong trận, có ít nhất một hệ thuộc
+ * `elementIds` (rỗng = mọi loài); loài hoang trọng số 1, loài không gặp ở map nào trọng số
+ * nonWildSpeciesWeight; không loài nào khớp thì lấy mọi loài.
  */
 export function trainerSpeciesPool(
   data: GameData,
@@ -71,12 +73,24 @@ function buildTrainerSpeciesPool(
   data: GameData,
   elementIds: readonly string[]
 ): readonly EncounterEntry[] {
-  const all = wildSpeciesIds(data)
-  const matching =
-    elementIds.length === 0
-      ? all
-      : all.filter((id) => speciesElements(data, id).some((e) => elementIds.includes(e)))
-  return (matching.length > 0 ? matching : all).map((speciesId) => ({ speciesId, weight: 1 }))
+  const wild = new Set(wildSpeciesIds(data))
+  const { nonWildSpeciesWeight } = data.config.trainers
+  const all: EncounterEntry[] = [
+    ...[...wild].map((speciesId) => ({ speciesId, weight: 1 })),
+    ...Object.values(data.species).flatMap((species) =>
+      species.kind === 'normal' &&
+      !wild.has(species.id) &&
+      !BATTLE_FORM_KINDS.includes(species.formKind ?? 'alternate') &&
+      nonWildSpeciesWeight > 0
+        ? [{ speciesId: species.id, weight: nonWildSpeciesWeight }]
+        : []
+    )
+  ]
+  if (elementIds.length === 0) return all
+  const matching = all.filter((entry) =>
+    speciesElements(data, entry.speciesId).some((e) => elementIds.includes(e))
+  )
+  return matching.length > 0 ? matching : all
 }
 
 /** Lớp NPC thường (không phải quán chủ). */
@@ -92,8 +106,22 @@ export function biomeTrainerClasses(
   data: GameData,
   biome: Biome
 ): { trainerClass: TrainerClass; weight: number }[] {
+  const { offThemeClassWeight } = data.config.trainers
   if (biome.trainerClassIds) {
-    return biome.trainerClassIds.map((id) => ({ trainerClass: data.trainers[id], weight: 1 }))
+    // Lớp map khai riêng trọng số 1; lớp thường khác vẫn có cơ hội (offThemeClassWeight).
+    const listed = biome.trainerClassIds.map((id) => ({
+      trainerClass: data.trainers[id],
+      weight: 1
+    }))
+    const others = regularTrainerClasses(data).filter(
+      (trainerClass) => !biome.trainerClassIds?.includes(trainerClass.id)
+    )
+    return offThemeClassWeight > 0
+      ? [
+          ...listed,
+          ...others.map((trainerClass) => ({ trainerClass, weight: offThemeClassWeight }))
+        ]
+      : listed
   }
   const total = biome.encounters.reduce((sum, entry) => sum + entry.weight, 0)
   return regularTrainerClasses(data).flatMap((trainerClass) => {
@@ -103,7 +131,9 @@ export function biomeTrainerClasses(
         speciesElements(data, entry.speciesId).some((e) => trainerClass.elementIds.includes(e))
       )
       .reduce((sum, entry) => sum + entry.weight, 0)
-    return total > 0 && share > 0 ? [{ trainerClass, weight: share / total }] : []
+    // Map không có loài đúng hệ của lớp: vẫn có cơ hội gặp, trọng số offThemeClassWeight.
+    const weight = total > 0 && share > 0 ? share / total : offThemeClassWeight
+    return weight > 0 ? [{ trainerClass, weight }] : []
   })
 }
 

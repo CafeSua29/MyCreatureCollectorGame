@@ -91,7 +91,14 @@ describe('EXP ngự thú sư', () => {
     const huge = toBig(10).pow(400)
     const state = {
       ...bossBattleAt(2, 3),
-      tamer: { bondDay: null, woundUntilDay: null, realm: 0, exp: huge }
+      tamer: {
+        bondDay: null,
+        woundUntilDay: null,
+        talentRanks: {},
+        bonusTalentPoints: 0,
+        realm: 0,
+        exp: huge
+      }
     }
     const won = gameReducer(data, state, { type: 'submitTurn', commands: [strike] })
     expect(won.tamer.exp.isFinite()).toBe(true)

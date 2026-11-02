@@ -47,7 +47,7 @@ import {
   charmEffect,
   isTooYoungToBreed,
   researchMultiplier,
-  titleMultiplier
+  tamerBonusMultiplier
 } from '../registries'
 import { baseFormsOf } from '../inventory'
 import { skillsAtLevel } from '../world'
@@ -309,7 +309,9 @@ export function makeOffspring(
     // No và tinh thần đầy (docs/rules/dwelling.md mục "Đói và tinh thần").
     fullness: data.config.dwelling.needs.max,
     sanity: data.config.dwelling.needs.max,
-    ailment: null
+    ailment: null,
+    locked: false,
+    favorite: false
   }
 
   child = withEggSkills(data, child, inheritedEggSkills(species, father, mother))
@@ -385,7 +387,7 @@ export function breed(
     {
       shinyMultiplier:
         charmEffect(data, state.inventory, 'shinyChanceMultiplier') *
-        titleMultiplier(data, state.titles, 'shinyChancePercent'),
+        tamerBonusMultiplier(data, state, 'shinyChancePercent'),
       speciesShinyMultiplier: (speciesId: string) =>
         researchMultiplier(data, state.research, speciesId, 'shinyChancePercent')
     }

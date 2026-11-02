@@ -12,7 +12,7 @@ Code: luật trong trận `battle/zMoves.ts` (`zMoveFor`, `zMovePower`, `zMoveBl
 - **Z-Crystal** (category `zCrystal`): gộp chồng, **lắp vào ô như đồ cầm**, không tiêu hao (dùng Z-Move không mất crystal), không hook, không dùng trực tiếp; bán / vứt / rơi được. Hai dạng (union trong `ZCrystalItem`):
   - **Crystal hệ** (`elementId`): skill hệ đó thành Z-Move của hệ. Mỗi hệ một crystal (18 hệ Pokémon, tên như Showdown "Normalium Z"...; hệ ánh sáng tự đặt: Luminium Z). Hệ phải có Z-Move theo hệ.
   - **Crystal loài** (`baseSkillId`, `zSkillId`, `speciesIds`): quái loài trong `speciesIds`, **không fuse** (như đá Mega), biết `baseSkillId` thì skill đó thành Z-Move riêng `zSkillId` (Pikanium Z: Pikachu + Volt Tackle → Catastropika...).
-- **Nguồn:** cửa hàng (trọng số 1, `requiresKeyItemId: zRing`: chỉ bán khi đã có Vòng Z; crystal hệ giá 3000, crystal loài 5000 × tầng); hạ boss rơi một crystal `crystalDropChance` % (10, × trait kiểu Pickup), chọn đều trong crystal loài của loài boss và crystal các hệ của boss.
+- **Nguồn:** chợ đen (`events.md`, sau khi có Vòng Z); cửa hàng (trọng số 1, `requiresKeyItemId: zRing`: chỉ bán khi đã có Vòng Z; crystal hệ giá 3000, crystal loài 5000 × tầng); hạ boss rơi một crystal `crystalDropChance` % (10, × trait kiểu Pickup), chọn đều trong crystal loài của loài boss và crystal các hệ của boss.
 
 ## Điều kiện dùng
 

@@ -2,6 +2,7 @@
 // đấu trường, giải đấu) và BattleState.trainer. Gọi từ validateGameState.
 
 import { TRAINER_MODES, type GameData } from '../model'
+import { checkSectBattle } from './validateSectState'
 import { asObject, checkInteger, checkNumber } from '../shared'
 import { battleHasNoTamers } from './validateTrialState'
 
@@ -120,4 +121,5 @@ export function checkBattleTrainer(
   if (trainer.mode === 'tournament' && battle.phase !== 'ended' && round === null) {
     issues.push('battle.trainer: trận giải đấu nhưng không đang dự giải')
   }
+  checkSectBattle(data, { trainer, battle, state }, issues)
 }

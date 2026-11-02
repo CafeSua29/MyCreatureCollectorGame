@@ -3,7 +3,7 @@
 
 import { addItems, grantKeyItems } from '../inventory'
 import { pick, rollPercent } from '../shared'
-import { bumpStat } from '../registries'
+import { addBonusTalentPoints, addSectContribution, bumpStat } from '../registries'
 import type { BattleState, GameData, Gym, TrainerMode } from '../model'
 import { Draft, log } from './draft'
 import { grantItemRewards } from './rewards'
@@ -54,6 +54,25 @@ const resetGymProgress = (_data: GameData, d: Draft): void => {
 }
 
 const noop = (): void => {}
+
+/** + cống hiến tông môn trong trận, kèm log. */
+function gainContribution(d: Draft, amount: number): void {
+  if (amount <= 0) return
+  d.sect = addSectContribution(d.sect, amount)
+  log(d, { type: 'sectContributionGained', amount })
+}
+
+/** + điểm thiên phú ngự thú sư thưởng trong trận, kèm log. */
+function gainTalentPoints(d: Draft, amount: number): void {
+  if (amount <= 0) return
+  d.tamer = addBonusTalentPoints(d.tamer, amount)
+  log(d, { type: 'tamerTalentPointsGained', amount })
+}
+
+/** Rời tông chiến (vô địch, bị loại). */
+function endSectWar(d: Draft): void {
+  d.sect = { ...d.sect, war: { ...d.sect.war, round: null, rivalSectId: null } }
+}
 
 export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
   floor: { inMap: true, onWin: noop, onLoss: noop },
@@ -112,6 +131,48 @@ export const TRAINER_MODE_RULES: Record<TrainerMode, TrainerModeRule> = {
       if (rank % milestoneEvery === 0) grantItemRewards(d, milestoneRewards)
     },
     onLoss: noop
+  },
+  // Tông môn (docs/rules/sects.md): trận ở Diễn võ trường trong thị trấn.
+  sectDuel: {
+    inMap: false,
+    onWin(data, d) {
+      const member = d.sect.members.find((m) => m.id === d.battle.trainer?.memberId)
+      gainContribution(d, data.config.sects.duel.contribution * ((member?.rank ?? 0) + 1))
+    },
+    onLoss: noop
+  },
+  sectPromotion: {
+    inMap: false,
+    onWin(data, d) {
+      const rank = d.sect.rank + 1
+      d.sect = { ...d.sect, rank }
+      log(d, { type: 'sectPromoted', rank })
+      gainTalentPoints(d, data.config.sects.promotion.talentPoints)
+    },
+    onLoss: noop
+  },
+  sectWar: {
+    inMap: false,
+    onWin(data, d) {
+      const round = d.sect.war.round ?? 0
+      const { rounds, championContribution, championTalentPoints, championRewards } =
+        data.config.sects.war
+      log(d, { type: 'sectWarRoundWon', round })
+      gainContribution(d, rounds[round]?.contribution ?? 0)
+      if (round + 1 < rounds.length) {
+        d.sect = { ...d.sect, war: { ...d.sect.war, round: round + 1 } }
+        return
+      }
+      endSectWar(d)
+      log(d, { type: 'sectWarWon' })
+      gainContribution(d, championContribution)
+      gainTalentPoints(d, championTalentPoints)
+      grantItemRewards(d, championRewards)
+    },
+    onLoss(_data, d) {
+      log(d, { type: 'sectWarEliminated', round: d.sect.war.round ?? 0 })
+      endSectWar(d)
+    }
   }
 }
 

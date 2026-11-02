@@ -9,7 +9,7 @@ import {
   returnEquipmentWithinCapacity
 } from '../registries'
 import { assertNotBond } from '../tamer'
-import { assertNotBusy } from '../monster'
+import { assertNotBusy, assertNotLocked } from '../monster'
 import { ActionError, malformedAction } from '../shared'
 import { TACTICS, type GameData, type GameState, type Monster, type Tactic } from '../model'
 import { locateOwned } from './owned'
@@ -117,6 +117,7 @@ export function releaseMonster(
   // Bản mệnh thú không thả được (đổi bản mệnh trước; docs/rules/tamer.md).
   const target = inParty ?? state.storage.find((m) => m.id === monsterId)
   if (target) assertNotBond(target)
+  if (target) assertNotLocked(target)
   if (inParty) requirePartyCanShrink(state)
   const monster = inParty ?? state.storage[storageIndexOf(state, monsterId)]
   if (!inParty) assertNotBusy(monster)
@@ -127,6 +128,28 @@ export function releaseMonster(
     storage: state.storage.filter((m) => m.id !== monsterId),
     inventory: returnEquipmentWithinCapacity(data, state, state.inventory, monster)
   }
+}
+
+/** Bật / tắt khóa của quái (đội hoặc kho), ngoài trận, miễn phí; quái đang làm việc cũng đổi được. */
+export function setMonsterLocked(
+  state: GameState,
+  { monsterId, locked }: { monsterId: string; locked: boolean }
+): GameState {
+  requireNoBattle(state)
+  if (typeof locked !== 'boolean') throw malformedAction('locked phải là boolean')
+  const { monster, replace } = locateOwned(state, monsterId)
+  return monster.locked === locked ? state : replace({ ...monster, locked })
+}
+
+/** Bật / tắt yêu thích của quái (chỉ để lọc / sắp xếp), ngoài trận, miễn phí. */
+export function setMonsterFavorite(
+  state: GameState,
+  { monsterId, favorite }: { monsterId: string; favorite: boolean }
+): GameState {
+  requireNoBattle(state)
+  if (typeof favorite !== 'boolean') throw malformedAction('favorite phải là boolean')
+  const { monster, replace } = locateOwned(state, monsterId)
+  return monster.favorite === favorite ? state : replace({ ...monster, favorite })
 }
 
 /** Chuẩn hóa biệt danh: cắt khoảng trắng hai đầu; rỗng thành null. Ném lỗi nếu quá dài. */

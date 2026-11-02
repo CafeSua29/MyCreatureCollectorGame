@@ -3,7 +3,7 @@
 // recruit, lý lịch `recruit`; không khế ước, không giới hạn level (khế ước là bước riêng, tamer.md).
 
 import { recordQuestEvent } from '../quests'
-import { getBaseSpecies, mergeTraitLevel, startHistory } from '../monster'
+import { autoLockCaught, getBaseSpecies, mergeTraitLevel, startHistory } from '../monster'
 import {
   blessingPercent,
   countCaught,
@@ -13,7 +13,7 @@ import {
   partyAfterJoining,
   capacityOf,
   hasRosterRoom,
-  titlePercent,
+  tamerBonusAmount,
   recordCaughtResearch
 } from '../registries'
 import {
@@ -70,13 +70,13 @@ export const isRecruitBattle = (battle: BattleState): boolean =>
  */
 function recruitBonusPercent(
   data: GameData,
-  state: Pick<GameState, 'party' | 'recruit' | 'titles'>,
+  state: Pick<GameState, 'party' | 'recruit' | 'titles' | 'tamer' | 'sect'>,
   { monster, blessingBonus }: { monster: Monster; blessingBonus: number }
 ): number {
   return (
     partnerAmount(data, state.party, 'recruitPercent') +
     baitRecruitPercent(data, state.recruit.bait, monster) +
-    titlePercent(data, state.titles, 'recruitPercent') +
+    tamerBonusAmount(data, state, 'recruitPercent') +
     blessingBonus
   )
 }
@@ -97,7 +97,10 @@ const bonusMultiplier = (percent: number): number => Math.max(0, 1 + percent / 1
  */
 export function recruitChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'storage' | 'recruit' | 'capacity' | 'tamer' | 'titles'>,
+  state: Pick<
+    GameState,
+    'party' | 'storage' | 'recruit' | 'capacity' | 'tamer' | 'titles' | 'sect'
+  >,
   {
     enemy,
     isBoss,
@@ -140,7 +143,7 @@ function recruitedMonster(
   }
   const withBoss = d.battle.isBoss ? mergeTraitLevel(healed, data.config.boss.traitId, 1) : healed
   const met = { day: dayOf(d.time), floor: d.battle.floor, level: enemy.level }
-  return startHistory(withBoss, { kind: 'recruit', method }, met)
+  return startHistory(autoLockCaught(withBoss), { kind: 'recruit', method }, met)
 }
 
 /**

@@ -25,7 +25,7 @@ import { floorLevelRange, generateWildMonster } from '../world'
 import { openEventBattle, type EventBattleKind } from '../battle'
 import {
   dayOf,
-  type BlackMarketItem,
+  type EventLootItem,
   type Egg,
   type EncounterEntry,
   type EventResultDef,
@@ -61,14 +61,14 @@ function addOwnedMonster(ctx: EventContext, monster: Monster): 'party' | 'storag
 }
 
 const giveItems: Applier = (ctx, params) => {
-  const { items, rolls } = params as { items: BlackMarketItem[]; rolls: number }
+  const { items, rolls } = params as { items: EventLootItem[]; rolls: number }
   const entries = items.filter(
     (entry) => entry.weight > 0 && isItemOffered(ctx.data.items[entry.itemId], ctx.state.options)
   )
   if (entries.length === 0) return
   let { rng, inventory } = ctx.state
   for (let i = 0; i < rolls; i++) {
-    let entry: BlackMarketItem
+    let entry: EventLootItem
     ;[entry, rng] = pickWeighted(rng, entries, (candidate) => candidate.weight)
     let count: number
     ;[count, rng] = nextInt(rng, entry.min, entry.max)

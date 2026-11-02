@@ -646,7 +646,7 @@
     "category": "fusionAid",
     "price": 800,
     "shop": true,
-    "shopWeight": 60,
+    "shopWeight": 6,
     "effects": [
       {
         "type": "fuseChanceBonus",
@@ -661,7 +661,7 @@
     "category": "fusionAid",
     "price": 2000,
     "shop": true,
-    "shopWeight": 30,
+    "shopWeight": 3,
     "effects": [
       {
         "type": "fuseChanceBonus",
@@ -676,7 +676,7 @@
     "category": "fusionAid",
     "price": 5000,
     "shop": true,
-    "shopWeight": 12,
+    "shopWeight": 1,
     "effects": [
       {
         "type": "fuseChanceBonus",
@@ -691,7 +691,7 @@
     "category": "fusionAid",
     "price": 6000,
     "shop": true,
-    "shopWeight": 20,
+    "shopWeight": 2,
     "effects": [
       {
         "type": "fuseProtect",
@@ -49332,6 +49332,13 @@
         "params": {}
       }
     ]
+  },
+  {
+    "id": "restorationPill",
+    "category": "material",
+    "price": 20000,
+    "shop": true,
+    "shopWeight": 1
   },
   {
     "id": "gatherSpiritPill",

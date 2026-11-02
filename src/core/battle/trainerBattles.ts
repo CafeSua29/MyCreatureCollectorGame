@@ -31,7 +31,7 @@ export function assertReadyForBattle(data: GameData, state: GameState): void {
   if (!state.party.some((m) => !isFainted(data, m))) throw new ActionError('noHealthyMonster')
 }
 
-interface TrainerBattleSpec {
+export interface TrainerBattleSpec {
   site: FloorSite
   trainerClass: TrainerClass
   mode: TrainerMode
@@ -50,6 +50,9 @@ interface TrainerBattleSpec {
   trial?: BattleTrial
   /** Trận do event mở (docs/rules/events.md). */
   special?: SpecialBattle
+  /** Đồng môn đang đấu / tên NPC đối thủ (tông môn, docs/rules/sects.md). */
+  memberId?: string
+  npcNameId?: string
 }
 
 /**
@@ -90,7 +93,9 @@ export function openTrainerBattle(
           classId: trainerClass.id,
           mode,
           elementId: elementId ?? null,
-          rewardMultiplier: spec.rewardMultiplier ?? 1
+          rewardMultiplier: spec.rewardMultiplier ?? 1,
+          ...(spec.memberId === undefined ? {} : { memberId: spec.memberId }),
+          ...(spec.npcNameId === undefined ? {} : { npcNameId: spec.npcNameId })
         },
         realm,
         tamerSkillIds: trainerClass.tamerSkillIds,

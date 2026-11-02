@@ -11,7 +11,6 @@ import {
   type GameState,
   type NormalSpecies
 } from '../model'
-import { findBiome } from './floors'
 
 /** Loài vào khu được: loài thường, không phải dạng chỉ có trong trận (Mega, gmax, battleOnly). */
 const isSafariSpecies = (species: NormalSpecies): boolean =>
@@ -23,15 +22,15 @@ function normalSpecies(data: GameData, speciesId: string): NormalSpecies | null 
 }
 
 /** Loài quái thường của các map đã mở (không trùng, theo thứ tự tầng). Boss không vào khu. */
-function mappedSpecies(data: GameData, floorBiomeIds: readonly string[]): NormalSpecies[] {
+function mappedSpecies(data: GameData): NormalSpecies[] {
   const ids = new Set<string>()
-  for (const biomeId of new Set(floorBiomeIds)) {
-    for (const entry of findBiome(data, biomeId)?.encounters ?? []) ids.add(entry.speciesId)
+  for (const biome of Object.values(data.biomes)) {
+    for (const entry of biome.encounters) ids.add(entry.speciesId)
   }
   return [...ids].flatMap((id) => normalSpecies(data, id) ?? [])
 }
 
-/** Loài không gán vào map nào (không là quái thường, boss hay boss tầng của biome nào). */
+/** Loài không là quái thường của map nào (gồm loài chỉ làm boss). */
 const unmappedCache = new WeakMap<GameData['species'], NormalSpecies[]>()
 
 function unmappedSpecies(data: GameData): NormalSpecies[] {
@@ -40,8 +39,6 @@ function unmappedSpecies(data: GameData): NormalSpecies[] {
   const mapped = new Set<string>()
   for (const biome of Object.values(data.biomes)) {
     for (const entry of biome.encounters) mapped.add(entry.speciesId)
-    for (const boss of biome.bosses) mapped.add(boss.speciesId)
-    mapped.add(biome.floorBossSpeciesId)
   }
   const result = Object.keys(data.species).flatMap((id) =>
     mapped.has(id) ? [] : (normalSpecies(data, id) ?? [])
@@ -65,13 +62,9 @@ export function safariSpeciesWeight(data: GameData, species: NormalSpecies): num
  * Tung danh sách loài mới: rosterSize ô không trùng, mỗi ô tung unmappedChance lấy loài không gán
  * vào map nào (một nhóm hết loài thì lấy nhóm kia), rồi chọn theo trọng số trong nhóm.
  */
-export function rollSafariRoster(
-  data: GameData,
-  rng: RngState,
-  floorBiomeIds: readonly string[]
-): [string[], RngState] {
+export function rollSafariRoster(data: GameData, rng: RngState): [string[], RngState] {
   const { rosterSize, unmappedChance } = data.config.safari
-  const mapped = mappedSpecies(data, floorBiomeIds)
+  const mapped = mappedSpecies(data)
   const unmapped = unmappedSpecies(data)
   const roster: string[] = []
   const notChosen = (species: NormalSpecies): boolean => !roster.includes(species.id)
@@ -103,7 +96,7 @@ export const newSafariState = (): GameState['safari'] => ({
 /** Tới ngày làm mới (`day` ≥ refreshDay) thì tung danh sách mới, làm mới tiếp sau rotationDays. */
 export function refreshSafariRoster(data: GameData, state: GameState, day: number): GameState {
   if (day < state.safari.refreshDay) return state
-  const [roster, rng] = rollSafariRoster(data, state.rng, state.floorBiomeIds)
+  const [roster, rng] = rollSafariRoster(data, state.rng)
   const refreshDay = day + data.config.safari.rotationDays
   return { ...state, rng, safari: { ...state.safari, roster, refreshDay } }
 }

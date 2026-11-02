@@ -32,6 +32,7 @@ import {
   addMilestone,
   addShinyStacks,
   assertNotBusy,
+  assertNotLocked,
   betterSpiritVirus,
   computeStats,
   fuseBloodlines,
@@ -288,6 +289,7 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   const sub = find(subId)
   // Bản mệnh thú không làm quái phụ (docs/rules/tamer.md mục "Bản mệnh thú").
   assertNotBond(sub)
+  assertNotLocked(sub)
   if (newFusionSpecies(base, sub).length === 0) {
     throw new ActionError('fuseNoNewSpecies', { speciesIds: speciesOf(sub) })
   }
@@ -312,6 +314,8 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   }
 
   const chance = fuseSuccessChance(data, base, sub, boostItem)
+  // Quái gốc khóa không được đặt cược: thất bại không hộ mệnh sẽ mất nó.
+  if (!isProtected && chance < 100) assertNotLocked(base)
   const [succeeded, rolledRng] = rollPercent(state.rng, chance)
   let rng = rolledRng
   let result: Monster | null = isProtected ? base : null

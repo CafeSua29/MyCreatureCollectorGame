@@ -16,6 +16,7 @@ import {
   makeData,
   makeEventData,
   makeGameState,
+  makeInventory,
   makeMonster,
   uniformStats,
   withPendingEvent
@@ -523,24 +524,56 @@ describe('cửa hàng tạm', () => {
       'browse'
     )
     const shop = defined(state.events.tempShop, 'cửa hàng tạm')
-    // Fixture: chợ đen chỉ có thuốc (2 cái), trang bị / sách trọng số 0.
-    expect(shop.stock).toEqual([{ entry: { storage: 'stack', itemId: 'potion' }, remaining: 2 }])
-    const item = { storage: 'stack' as const, itemId: 'potion' }
+    // Fixture: trang bị / sách trọng số 0; mỗi lượt một vật phẩm hiếm (không có cờ shop), 1 cái.
+    expect(shop.stock).toHaveLength(3)
+    for (const entry of shop.stock) {
+      expect(entry.remaining).toBe(1)
+      const { itemId } = entry.entry as { itemId: string }
+      const def = data.items[itemId]
+      expect('shop' in def && def.shop === true).toBe(false)
+    }
+    const item = shop.stock[0].entry as { storage: 'stack'; itemId: string }
     expectActionError(
-      () => act(state, { type: 'buyEventItem', item, count: 3 }),
+      () => act(state, { type: 'buyEventItem', item, count: 2 }),
       'tempShopStockLow',
-      { remaining: 2 }
+      { remaining: 1 }
     )
-    const one = act(state, { type: 'buyEventItem', item, count: 1 })
-    expect(one.events.tempShop?.stock[0].remaining).toBe(1)
-    const all = act(one, { type: 'buyEventItem', item, count: 1 })
-    expect(all.events.tempShop?.stock).toEqual([])
-    expectActionError(() => act(all, { type: 'buyEventItem', item, count: 1 }), 'notInShop')
+    const bought = act(state, { type: 'buyEventItem', item, count: 1 })
+    expect(bought.events.tempShop?.stock).toHaveLength(2)
+    expectActionError(() => act(bought, { type: 'buyEventItem', item, count: 1 }), 'notInShop')
+  })
+
+  it('chợ đen: món cần vật phẩm chìa khóa chỉ bán khi đã có món đó', () => {
+    const gated = dataWith((raw) => {
+      raw.config.events.blackMarket.minItemPrice = 1e12
+      raw.config.events.blackMarket.extraItemIds = ['gatedStone']
+      raw.items.push({ id: 'ringKey', category: 'keyItem' })
+      raw.items.push({
+        id: 'gatedStone',
+        category: 'material',
+        price: 100,
+        requiresKeyItemId: 'ringKey'
+      } as (typeof raw.items)[number])
+    })
+    const open = (state: GameState): GameState =>
+      gameReducer(gated, withPendingEvent(state, 'market', { floor: 1 }), {
+        type: 'chooseEventOption',
+        optionId: 'browse'
+      })
+    expect(defined(open(floorState({ money: 100_000 })).events.tempShop).stock).toEqual([])
+    const withRing = {
+      ...floorState({ money: 100_000 }),
+      inventory: makeInventory({ ringKey: 1 })
+    }
+    expect(defined(open(withRing).events.tempShop).stock.map((s) => s.entry)).toContainEqual({
+      storage: 'stack',
+      itemId: 'gatedStone'
+    })
   })
 
   it('chợ đen có trang bị: món riêng, dòng ở phần trên của khoảng, mua đúng 1', () => {
     const gear = dataWith((raw) => {
-      raw.config.events.blackMarket.items = [{ itemId: 'potion', weight: 0, min: 1, max: 1 }]
+      raw.config.events.blackMarket.minItemPrice = 1e12
       raw.config.events.blackMarket.equipment.weight = 1
     })
     const state = choose(
@@ -581,7 +614,7 @@ describe('cửa hàng tạm', () => {
 
   it('chợ đen bán sách chiêu không loài nào học (chiêu sự kiện kiểu Happy Hour)', () => {
     const books = dataWith((raw) => {
-      raw.config.events.blackMarket.items = [{ itemId: 'potion', weight: 0, min: 1, max: 1 }]
+      raw.config.events.blackMarket.minItemPrice = 1e12
       raw.config.events.blackMarket.skillBooks.weight = 1
       // Power mọi skill đều ≤ shopMaxPower: chỉ còn chiêu không loài nào học.
       raw.config.skillBook = { ...raw.config.skillBook, shopMaxPower: 1e9 }
@@ -614,7 +647,10 @@ describe('cửa hàng tạm', () => {
       withPendingEvent(floorState({ money: 0 }), 'market', { floor: 1 }),
       'browse'
     )
-    const item = { storage: 'stack' as const, itemId: 'potion' }
+    const item = defined(state.events.tempShop, 'cửa hàng tạm').stock[0].entry as {
+      storage: 'stack'
+      itemId: string
+    }
     expectActionError(() => act(state, { type: 'buyEventItem', item, count: 1 }), 'notEnoughMoney')
     const moved = act(state, { type: 'travel', to: { type: 'floor', floor: 2 } })
     expectActionError(() => act(moved, { type: 'buyEventItem', item, count: 1 }), 'noTempShop')

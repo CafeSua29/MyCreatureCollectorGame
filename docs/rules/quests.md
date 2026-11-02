@@ -36,4 +36,4 @@ Code: module `quests/` (`quests.ts`: registry `QUEST_TYPES`, `rollQuest`, `refil
 
 - Chơi liên tục: "người chơi" nhận thưởng nhiệm vụ xong, hủy loại mô phỏng không làm được, nhận loại làm được; bảng không có thì nhận rồi hủy để đổi nhiệm vụ. Cột `quests` ở `progression.csv` (`scripts/simulate/quests.ts`, `simulation-features.md`).
 
-- Chưa có: nhiệm vụ tông môn dùng lại registry (chờ `sects.md`), điểm thiên phú từ nhiệm vụ (chờ `tamer-talents.md`).
+- Nhiệm vụ tông môn dùng lại registry ở danh sách riêng `quests.sect` (tự nhận, thưởng cống hiến; `recordQuestEvent` tính cả hai danh sách; `sects.md`). `claimQuest` cộng bộ đếm `questsCompleted` (điểm thiên phú ngự thú sư, `tamer-talents.md`).

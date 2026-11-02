@@ -47,7 +47,7 @@ import {
 import { feedCandies } from './candy'
 import { feedTreasures } from './treasures'
 import { upgradeSoulLevels } from './soulLevels'
-import { allocateTalents } from './talents'
+import { allocateTalents, allocateTamerTalents } from './talents'
 import { tuneTeamTraits } from './traitCrystals'
 import { implantSharePercent, implantTeam } from './implant'
 import { sacrificeSpareFodder } from './sacrifice'
@@ -57,6 +57,9 @@ import { castWithCores, enhanceTeamGear, imbueTeamGear, salvageSurplus } from '.
 import { runAlchemy } from './alchemy'
 import { runCooking } from './cooking'
 import { runQuests } from './quests'
+import { runSectActivities } from './sects'
+import { runTrades } from './trades'
+import { runGacha } from './gacha'
 import { runTrainerChallenges } from './trainers'
 import { runTrials } from './trials'
 import { sendExpeditions } from './expeditions'
@@ -743,6 +746,10 @@ function afterBattle(
     const tried = breakthroughWhilePossible(data, run.state)
     run.state = tried.state
     run.counter.breakthroughFails += tried.failures
+    // Sau đột phá và nhận thành tựu: dùng hết điểm thiên phú ngự thú sư (tamer-talents.md).
+    const tamerTalents = allocateTamerTalents(data, run.state)
+    run.state = tamerTalents.state
+    run.economy.tamerTalentUpgrades += tamerTalents.upgrades
     const awakened = awakenWhilePossible(data, run.state, teamIds)
     run.state = awakened.state
     run.counter.awakenings += awakened.successes
@@ -784,6 +791,22 @@ function afterBattle(
       run.counter.trainerWins += trained.wins
       run.counter.badges += trained.badges
       run.counter.tournamentsWon += trained.tournamentsWon
+      // Tông môn cùng nhịp mỗi ngày (sects.ts): đội đã hồi máu sau việc NPC.
+      const sectRun = runSectActivities(data, run.state, { maxTurns: trainerMaxTurns })
+      run.state = sectRun.state
+      run.economy.sectMissions += sectRun.missions
+      run.economy.sectPromotions += sectRun.promotions
+      run.economy.sectWarsWon += sectRun.warsWon
+      run.economy.sectBattles += sectRun.battles
+      // Trao đổi với NPC cùng nhịp (trades.ts): đưa quái kho thừa đúng yêu cầu.
+      const traded = runTrades(data, run.state, teamIds)
+      run.state = traded.state
+      run.economy.trades += traded.trades
+      run.economy.tradePowerPercent = Math.max(run.economy.tradePowerPercent, traded.powerPercent)
+      // Cây thần cùng nhịp (gacha.ts): quay ×10 khi dư tiền.
+      const pulled = runGacha(data, run.state)
+      run.state = pulled.state
+      run.economy.gachaEggs += pulled.eggs
       // Bí cảnh (khi có lệnh) và tháp thí luyện cùng nhịp mỗi ngày (trials.ts).
       const trialRun = runTrials(data, run.state, {
         limits: { maxTurns: trainerMaxTurns, maxTurnsBoss: bossMaxTurns },

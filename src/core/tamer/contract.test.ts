@@ -14,6 +14,7 @@ import {
   disobeyChance,
   raiseOwnedContracts
 } from './contract'
+import { contractLevelLimit } from './realm'
 
 const data = makeData()
 
@@ -108,20 +109,28 @@ describe('contractChance / contractEscapeChance', () => {
 
   it('base − levelPenalty × level / giới hạn − rankPenalty × bậc − bossPenalty + affinityBonus × thân mật / tối đa', () => {
     const monster = makeMonster({ level: 50, affinity: 0 })
-    expect(contractChance(data, monster, 0)).toBeCloseTo(90 - 40 * 0.5 - 4 * rankOf(monster))
+    expect(contractChance(data, monster, contractLevelLimit(data, 0))).toBeCloseTo(
+      90 - 40 * 0.5 - 4 * rankOf(monster)
+    )
     const trusted = { ...monster, affinity: 255 }
-    expect(contractChance(data, trusted, 0)).toBeCloseTo(90 - 20 - 4 * rankOf(monster) + 20)
+    expect(contractChance(data, trusted, contractLevelLimit(data, 0))).toBeCloseTo(
+      90 - 20 - 4 * rankOf(monster) + 20
+    )
     const boss = { ...monster, bossMultiplier: 3 }
-    expect(contractChance(data, boss, 0)).toBeCloseTo(90 - 20 - 4 * rankOf(monster) - 15)
+    expect(contractChance(data, boss, contractLevelLimit(data, 0))).toBeCloseTo(
+      90 - 20 - 4 * rankOf(monster) - 15
+    )
     // Cảnh giới cao hơn: giới hạn level cao hơn nên dễ hơn.
-    expect(contractChance(data, monster, 4)).toBeGreaterThan(contractChance(data, monster, 0))
+    expect(contractChance(data, monster, contractLevelLimit(data, 4))).toBeGreaterThan(
+      contractChance(data, monster, contractLevelLimit(data, 0))
+    )
   })
 
   it('kẹp min 10 / max 100 (số cực lớn)', () => {
     const hard = makeMonster({ level: 100, affinity: 0, bossMultiplier: 1e12 })
-    expect(contractChance(data, hard, 0)).toBeGreaterThanOrEqual(10)
+    expect(contractChance(data, hard, contractLevelLimit(data, 0))).toBeGreaterThanOrEqual(10)
     const easy = makeMonster({ level: 1, affinity: 255 })
-    expect(contractChance(data, easy, 1_000_000)).toBeLessThanOrEqual(100)
+    expect(contractChance(data, easy, contractLevelLimit(data, 1_000_000))).toBeLessThanOrEqual(100)
   })
 
   it('bỏ trốn = escapeChance × (1 − thân mật / tối đa): 0 thân mật 20%, thân mật tối đa 0%', () => {
@@ -137,23 +146,37 @@ describe('disobeyChance (quái chưa khế ước không nghe lệnh)', () => {
     makeMonster({ contractRealm: null, affinity: 0, ...overrides })
 
   it('đã khế ước: 0', () => {
-    expect(disobeyChance(data, makeMonster({ contractRealm: 0, level: 10_000 }), 0)).toBe(0)
+    expect(
+      disobeyChance(
+        data,
+        makeMonster({ contractRealm: 0, level: 10_000 }),
+        contractLevelLimit(data, 0)
+      )
+    ).toBe(0)
   })
 
   it('trong giới hạn level: 1 + 5 × level / giới hạn (tối đa 6%)', () => {
-    expect(disobeyChance(data, free({ level: 1 }), 0)).toBeCloseTo(1 + 5 * 0.01)
-    expect(disobeyChance(data, free({ level: 50 }), 0)).toBeCloseTo(3.5)
-    expect(disobeyChance(data, free({ level: 100 }), 0)).toBeCloseTo(6)
+    expect(disobeyChance(data, free({ level: 1 }), contractLevelLimit(data, 0))).toBeCloseTo(
+      1 + 5 * 0.01
+    )
+    expect(disobeyChance(data, free({ level: 50 }), contractLevelLimit(data, 0))).toBeCloseTo(3.5)
+    expect(disobeyChance(data, free({ level: 100 }), contractLevelLimit(data, 0))).toBeCloseTo(6)
     // Cảnh giới cao hơn: giới hạn cao hơn nên ít hơn.
-    expect(disobeyChance(data, free({ level: 100 }), 1)).toBeCloseTo(1 + 5 * 0.5)
+    expect(disobeyChance(data, free({ level: 100 }), contractLevelLimit(data, 1))).toBeCloseTo(
+      1 + 5 * 0.5
+    )
   })
 
   it('vượt giới hạn: + 30 × phần vượt, kẹp 50 (số cực lớn)', () => {
-    expect(disobeyChance(data, free({ level: 150 }), 0)).toBeCloseTo(6 + 15)
-    expect(disobeyChance(data, free({ level: 1_000_000 }), 0)).toBe(50)
+    expect(disobeyChance(data, free({ level: 150 }), contractLevelLimit(data, 0))).toBeCloseTo(
+      6 + 15
+    )
+    expect(disobeyChance(data, free({ level: 1_000_000 }), contractLevelLimit(data, 0))).toBe(50)
   })
 
   it('thân mật giảm tới 80%', () => {
-    expect(disobeyChance(data, free({ level: 100, affinity: 255 }), 0)).toBeCloseTo(6 * 0.2)
+    expect(
+      disobeyChance(data, free({ level: 100, affinity: 255 }), contractLevelLimit(data, 0))
+    ).toBeCloseTo(6 * 0.2)
   })
 })

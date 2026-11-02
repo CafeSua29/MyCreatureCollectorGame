@@ -4,7 +4,7 @@
 
 **Thành tựu** ghi nhận cột mốc theo bậc; bậc đạt rồi thì nhận thưởng (tiền, vật phẩm, **danh hiệu**). Ngự thú sư đeo một danh hiệu để nhận buff nhỏ toàn cục. Bước 8b (2026-11-01, sau Bộ sưu tập). Số thưởng / buff là **số tạm** trong `achievements.json` / `titles.json`.
 
-Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`, `TITLE_EFFECT_TYPES`), `registries/gameStats.ts` (bộ đếm), `registries/achievements.ts` (điều kiện, bậc), `registries/titles.ts` (hiệu ứng danh hiệu), `roster/achievements.ts` (action, tình trạng cho UI), `gameData/validateAchievements.ts`, `game/validateAchievementState.ts`.
+Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`, `TAMER_BONUS_TYPES` ở `model/tamerTalents.ts`), `registries/gameStats.ts` (bộ đếm), `registries/achievements.ts` (điều kiện, bậc), `registries/tamerBonuses.ts` (hiệu ứng danh hiệu = kênh thưởng ngự thú sư, `tamer-talents.md`), `roster/achievements.ts` (action, tình trạng cho UI), `gameData/validateAchievements.ts`, `game/validateAchievementState.ts`.
 
 ## Bộ đếm
 
@@ -20,6 +20,8 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 | `tournamentsWon`                             | vô địch giải đấu                                                                                                                            |
 | `pillsCrafted`, `itemsForged`, `dishesCooked` | số lần luyện thành công theo nơi luyện (`CRAFT_STATION_RULES.craftedStat`); đúc trang bị cộng `itemsForged`                                  |
 | `oldAgeDeaths`                               | quái tọa hóa (`ageOneDay`)                                                                                                                   |
+| `questsCompleted`                            | nhận thưởng nhiệm vụ (`claimQuest`; điểm thiên phú ngự thú sư, `tamer-talents.md`; save v93)                                                 |
+| `gachaPulls`                                 | số trứng quay ở Cây thần (`pullGacha`, `gacha.md`; save v96)                                           |
 
 - Thêm khóa: thêm vào `STAT_KEYS` + gọi `bumpStat` ở chỗ phát sinh + migrate thêm khóa 0 (kiểm tra save đòi đủ khóa).
 
@@ -52,13 +54,7 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 ## Danh hiệu
 
 - `src/data/titles.json`: `{ id, effects: [{ type, params: { percent } }] }` (danh sách có thể rỗng: danh hiệu chỉ để trưng), tên ở i18n `titles`. Nguồn: thưởng bậc thành tựu (gồm thành tựu đạo quán / giải đấu / tháp / Dex / nghiên cứu loài, thay cho nguồn riêng ở từng tính năng).
-- Hiệu ứng là **kênh %** theo registry `TITLE_EFFECTS` (`percent` khác 0, ≥ −100; kiểm tra chung `checkPercentParams` với chúc phúc / món ăn), chỉ danh hiệu **đang đeo** có tác dụng (`titlePercent` / `titleMultiplier`):
-  - `expPercent`, `moneyPercent`, `dropRatePercent`: nhân EXP / tiền / tỉ lệ đồ rơi sau trận thắng (`applyWin`, cùng chỗ chúc phúc).
-  - `catchRatePercent`: nhân tỉ lệ bắt trong trận (`battleCatchChance`) và khu bảo tồn (`safariCatchChance`).
-  - `shinyChancePercent`: nhân tỉ lệ shiny ở mọi chỗ Bùa Lấp Lánh nhân (quái hoang, khu bảo tồn, con breeding).
-  - `recruitPercent`: cộng vào % thu phục (`recruitBonusPercent`, cả Thị Uy).
-  - `alchemySuccessPercent`: cộng vào % thành công luyện đan (`CRAFT_STATION_RULES.alchemy.bonusPercent`, cùng kỹ năng đồng hành).
-- Danh hiệu không cộng % chỉ số (nguồn % chỉ số chưa có loại danh hiệu; thêm thì làm nguồn mới trong `STAT_PERCENT_SOURCES`).
+- Hiệu ứng là **kênh thưởng ngự thú sư** (`TAMER_BONUSES`, dùng chung với cây thiên phú ngự thú sư; bảng kênh và nơi dùng ở mục "Kênh thưởng" của `tamer-talents.md`; kiểm tra `checkTamerBonusEffects`), chỉ danh hiệu **đang đeo** có tác dụng; nơi dùng hỏi tổng của mọi nguồn qua `tamerBonusAmount` / `tamerBonusMultiplier`, lượng của riêng một danh hiệu `titleBonusAmount`. Danh hiệu dùng được mọi kênh, kể cả % chỉ số đội (`teamStatPercent`, nguồn % `tamerBonus`); dữ liệu hiện chỉ dùng các kênh EXP / tiền / đồ rơi / bắt / thu phục / shiny / luyện đan.
 - **Đeo** `setTitle { titleId | null }` (ngoài trận, miễn phí; null = tháo; đeo lại cái đang đeo thì state giữ nguyên). Lỗi: `inBattle`, `titleNotFound { titleId }`, `titleNotOwned { titleId }`, `malformedAction`.
 
 ## State, save
@@ -72,4 +68,4 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 ## Chưa có
 
 - Màn hình thành tựu / danh hiệu (chờ UI, bước 7).
-- Thành tựu theo chế độ thử thách (chờ `challenge-modes.md`), điểm thiên phú ngự thú sư theo bậc thành tựu (chờ `tamer-talents.md`), event thưởng danh hiệu (chưa có event nào cần: thêm loại kết quả event khi có).
+- Thành tựu theo chế độ thử thách (chờ `challenge-modes.md`), event thưởng danh hiệu (chưa có event nào cần: thêm loại kết quả event khi có).

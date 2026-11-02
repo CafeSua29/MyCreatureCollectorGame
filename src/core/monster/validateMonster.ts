@@ -153,7 +153,7 @@ function checkBattleForm(data: GameData, value: unknown, path: string): string[]
   if (species?.kind !== 'normal' || species.formKind !== 'battleOnly') {
     issues.push(`${path}.speciesId: không phải dạng trong trận "${String(form.speciesId)}"`)
   }
-  checkElementIds(data, form.originalElementIds, `${path}.originalElementIds`, issues)
+  checkOriginalElements(data, form.originalElementIds, `${path}.originalElementIds`, issues)
   if (form.untilLeave !== undefined && form.untilLeave !== true) {
     issues.push(`${path}.untilLeave chỉ được là true`)
   }
@@ -175,7 +175,7 @@ function checkBattleTransform(data: GameData, value: unknown, path: string): str
   if (transform.teraElementId !== undefined && !isTeraElement(data, transform.teraElementId)) {
     issues.push(`${path}.teraElementId không hợp lệ "${String(transform.teraElementId)}"`)
   }
-  checkElementIds(data, transform.originalElementIds, `${path}.originalElementIds`, issues)
+  checkOriginalElements(data, transform.originalElementIds, `${path}.originalElementIds`, issues)
   if (transform.turnsLeft !== undefined) {
     issues.push(...checkInteger(transform.turnsLeft, `${path}.turnsLeft`, 0))
   }
@@ -247,6 +247,22 @@ function checkImplantEffects(data: GameData, value: unknown, where: string): str
 }
 
 /**
+ * Hệ của quái trong trận: danh sách rỗng hợp lệ (Burn Up, Double Shock, docs/rules/pokemon-moves.md;
+ * biến hình lúc đang không hệ giữ hệ gốc rỗng); ngoài trận và quái không đang đổi hệ thì
+ * validateGameState chặn (checkTypelessMonsters).
+ */
+function checkOriginalElements(
+  data: GameData,
+  elementIds: unknown,
+  where: string,
+  issues: string[]
+): void {
+  if (!Array.isArray(elementIds) || elementIds.length > 0) {
+    checkElementIds(data, elementIds, where, issues)
+  }
+}
+
+/**
  * Kiểm tra một quái so với dữ liệu game. Trả về danh sách lỗi; rỗng nếu hợp lệ.
  * `path` (ví dụ "party[0]") được ghép vào thông báo để chỉ rõ trường lỗi ("party[0].genes.attack").
  */
@@ -261,6 +277,9 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   }
 
   if (typeof monster.id !== 'string' || monster.id === '') addIssue('thiếu id')
+  for (const field of ['locked', 'favorite'] as const) {
+    if (typeof monster[field] !== 'boolean') issues.push(`${at(field)} phải là boolean`)
+  }
   if (monster.nickname !== null) {
     if (
       typeof monster.nickname !== 'string' ||
@@ -298,7 +317,7 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   }
 
   if (!(monster.raceId in data.races)) addIssue(`race không tồn tại "${monster.raceId}"`)
-  checkElementIds(data, monster.elementIds, at('elementIds'), issues)
+  checkOriginalElements(data, monster.elementIds, at('elementIds'), issues)
 
   issues.push(...checkInteger(monster.level, at('level'), 1))
   issues.push(...checkBig(monster.exp, at('exp'), 0))

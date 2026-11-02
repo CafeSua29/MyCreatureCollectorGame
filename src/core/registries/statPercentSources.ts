@@ -96,6 +96,9 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   frenzy: {},
   // Thưởng sưu tập (chỉ trong trận, phe người chơi, docs/rules/dex.md): mọi chỉ số qua bối cảnh trận.
   collection: {},
+  // Kênh thưởng ngự thú sư `teamStatPercent` (chỉ trong trận, phe người chơi, thiên phú / danh hiệu,
+  // docs/rules/tamer-talents.md): mọi chỉ số qua bối cảnh trận.
+  tamerBonus: {},
   // Linh thực (chỉ trong trận, phe người chơi, docs/rules/cooking.md): % của món ăn qua bối cảnh trận.
   meal: {},
   // Chúc phúc của thần (chỉ trong trận ở map của thần, quái ta có hệ của thần, docs/rules/deities.md).
@@ -192,6 +195,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   partner: 'partner',
   frenzy: 'frenzy',
   collection: 'collection',
+  tamerBonus: 'tamerBonus',
   meal: 'meal',
   blessing: 'blessing',
   implant: 'implant',

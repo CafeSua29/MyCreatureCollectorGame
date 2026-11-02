@@ -63,6 +63,10 @@ export interface Monster {
   id: string
   /** Biệt danh người chơi đặt; null = hiển thị tên loài. */
   nickname: string | null
+  /** Khóa: không thể làm mất quái bằng action của người chơi (docs/rules/roster.md mục "Khóa"). */
+  locked: boolean
+  /** Yêu thích: chỉ để lọc / sắp xếp. */
+  favorite: boolean
   /** Loài hiện tại; quái đã fuse dùng BalanceConfig.fusedSpeciesId. */
   speciesId: string
   /** Loài cung cấp chỉ số gốc. Quái thường: bằng speciesId. Quái fuse: loài của quái gốc. */

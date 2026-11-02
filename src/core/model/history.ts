@@ -33,6 +33,10 @@ export type HistoryOrigin =
   | { kind: 'recruit'; method: RecruitMethod }
   /** Bắt bằng Bóng Bảo Tồn ở khu bảo tồn (docs/rules/safari-zone.md). */
   | { kind: 'safari' }
+  /** Nhận qua trao đổi với NPC (docs/rules/trades.md): tên NPC (chủ cũ). */
+  | { kind: 'trade'; npcNameId: string }
+  /** Trứng quay ở Cây thần (docs/rules/gacha.md). */
+  | { kind: 'gacha' }
   /** Quái từ save cũ, trước khi có lý lịch. */
   | { kind: 'unknown' }
 

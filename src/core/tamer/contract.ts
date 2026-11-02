@@ -2,9 +2,27 @@
 // không tự khế ước). Công thức tỉ lệ, số quái đang khế ước, nâng khế ước khi đột phá. Action khế ước /
 // giải trừ ở roster/contractActions.ts. Cảnh giới khế ước không bao giờ hạ khi còn khế ước.
 
-import { monsterSpeciesRankOf, speciesRankIndex } from '../registries'
+import {
+  monsterSpeciesRankOf,
+  speciesRankIndex,
+  tamerBonusAmount,
+  type TamerBonusState
+} from '../registries'
 import type { DayEvent, GameData, GameState, Monster } from '../model'
 import { contractLevelLimit } from './realm'
+
+/** Phần state cần để tính giới hạn level khế ước của người chơi. */
+export type ContractLimitState = TamerBonusState & {
+  tamer: Pick<GameState['tamer'], 'realm' | 'talentRanks'>
+}
+
+/** % giới hạn level khế ước cộng thêm của người chơi (kênh thưởng `contractLevelPercent`). */
+export const contractLevelPercent = (data: GameData, state: ContractLimitState): number =>
+  tamerBonusAmount(data, state, 'contractLevelPercent')
+
+/** Giới hạn level khế ước của người chơi: cảnh giới hiện tại + kênh thưởng `contractLevelPercent`. */
+export const playerContractLevelLimit = (data: GameData, state: ContractLimitState): number =>
+  contractLevelLimit(data, state.tamer.realm, contractLevelPercent(data, state))
 
 /** Khế ước quái với ngự thú sư cảnh giới `realm`: cảnh giới khế ước = max(đang có, realm). */
 export function bindContract(monster: Monster, realm: number): Monster {
@@ -38,13 +56,14 @@ export function raiseOwnedContracts(state: GameState, realm: number): GameState 
 }
 
 /**
- * % khế ước thành công quái `monster` ở cảnh giới `realm` (chưa kiểm tra giới hạn level / số ô):
+ * % khế ước thành công quái `monster` với giới hạn level khế ước `levelLimit` (playerContractLevelLimit;
+ * chưa kiểm tra giới hạn level / số ô):
  * kẹp(base − levelPenalty × level / giới hạn level − rankPenalty × thứ hạng phẩm cấp loài −
  * bossPenalty (quái mang hệ số boss) + affinityBonus × thân mật / thân mật tối đa, min, max).
  */
-export function contractChance(data: GameData, monster: Monster, realm: number): number {
+export function contractChance(data: GameData, monster: Monster, levelLimit: number): number {
   const { chance } = data.config.tamer.contract
-  const levelRatio = Math.min(1, monster.level / contractLevelLimit(data, realm))
+  const levelRatio = Math.min(1, monster.level / levelLimit)
   const rank = Math.max(0, speciesRankIndex(data, monsterSpeciesRankOf(data, monster).id))
   const raw =
     chance.base -
@@ -63,15 +82,16 @@ export function contractEscapeChance(data: GameData, monster: Monster): number {
 }
 
 /**
- * % quái của người chơi **chưa khế ước** không nghe lệnh skill ở cảnh giới `realm` (0 nếu đã khế ước):
+ * % quái của người chơi **chưa khế ước** không nghe lệnh skill với giới hạn level khế ước `levelLimit`
+ * (0 nếu đã khế ước):
  * nhỏ khi level trong giới hạn khế ước, tăng nhanh khi vượt, giảm theo thân mật (như Pokémon đổi
  * về khi chưa đủ huy hiệu).
  */
-export function disobeyChance(data: GameData, monster: Monster, realm: number): number {
+export function disobeyChance(data: GameData, monster: Monster, levelLimit: number): number {
   if (isContracted(monster)) return 0
   const { base, levelScale, overLimitScale, max, affinityReduction } =
     data.config.tamer.contract.disobey
-  const ratio = monster.level / contractLevelLimit(data, realm)
+  const ratio = monster.level / levelLimit
   const raw = base + levelScale * Math.min(ratio, 1) + overLimitScale * Math.max(0, ratio - 1)
   const trust = Math.min(1, Math.max(0, monster.affinity / data.config.affinity.max))
   return Math.min(max, raw) * (1 - affinityReduction * trust)

@@ -134,6 +134,8 @@ export interface MonsterView {
   id: string
   /** Biệt danh; tên hiển thị lấy bằng monsterName (chữ theo ngôn ngữ, mục "Đa ngôn ngữ"). */
   nickname: string | null
+  locked: boolean
+  favorite: boolean
   speciesId: string
   /** Loài cung cấp chỉ số gốc (khác speciesId với quái fuse). */
   baseSpeciesId: string
@@ -519,6 +521,8 @@ export function buildMonsterView(
   return {
     id: monster.id,
     nickname: monster.nickname,
+    locked: monster.locked,
+    favorite: monster.favorite,
     speciesId: monster.speciesId,
     baseSpeciesId: monster.baseSpeciesId,
     location,
@@ -686,7 +690,15 @@ export function getMonsterView(
 }
 
 export type MonsterSortKey =
-  'default' | 'level' | 'totalStats' | 'aptitude' | 'speciesRank' | 'name' | 'species' | StatName
+  | 'default'
+  | 'level'
+  | 'favorite'
+  | 'totalStats'
+  | 'aptitude'
+  | 'speciesRank'
+  | 'name'
+  | 'species'
+  | StatName
 
 export interface MonsterQuery {
   /** Mặc định 'all'. */
@@ -699,6 +711,8 @@ export interface MonsterQuery {
   boss?: boolean
   fused?: boolean
   fainted?: boolean
+  locked?: boolean
+  favorite?: boolean
   /** Chỉ quái có tư chất từ bậc này trở lên (id bậc tư chất). */
   minAptitudeTierId?: string
   /** Chỉ quái có phẩm cấp loài từ bậc này trở lên (id phẩm cấp loài). */
@@ -722,6 +736,8 @@ function matches(data: GameData, view: MonsterView, query: MonsterQuery): boolea
     flag(query.boss, view.bossMultiplier > 1) &&
     flag(query.fused, view.fused) &&
     flag(query.fainted, view.fainted) &&
+    flag(query.locked, view.locked) &&
+    flag(query.favorite, view.favorite) &&
     (query.minAptitudeTierId === undefined ||
       aptitudeTierRank(data, view.aptitude.tierId) >=
         aptitudeTierRank(data, query.minAptitudeTierId)) &&
@@ -761,6 +777,8 @@ function compare(
       return 0
     case 'level':
       return a.level - b.level
+    case 'favorite':
+      return Number(a.favorite) - Number(b.favorite)
     case 'totalStats':
       return a.totalStats.cmp(b.totalStats)
     case 'aptitude':

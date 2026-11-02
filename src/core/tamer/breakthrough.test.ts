@@ -31,7 +31,14 @@ function ready(realm: number, overrides: Partial<GameState> = {}): GameState {
     ...state,
     storage: [makeMonster({ id: 'b', contractRealm: realm })],
     inventory: makeInventory({ breakthroughPill: 20 }),
-    tamer: { bondDay: null, woundUntilDay: null, realm, exp: toBig(1_000_000) },
+    tamer: {
+      bondDay: null,
+      woundUntilDay: null,
+      talentRanks: {},
+      bonusTalentPoints: 0,
+      realm,
+      exp: toBig(1_000_000)
+    },
     ...overrides
   }
 }
@@ -77,7 +84,14 @@ describe('tamerBreakthrough', () => {
 
   it('thiếu EXP / tiền / đan: lỗi đúng mã, state giữ nguyên', () => {
     const lowExp = ready(2, {
-      tamer: { bondDay: null, woundUntilDay: null, realm: 2, exp: toBig(899) }
+      tamer: {
+        bondDay: null,
+        woundUntilDay: null,
+        talentRanks: {},
+        bonusTalentPoints: 0,
+        realm: 2,
+        exp: toBig(899)
+      }
     })
     expectActionError(() => breakthrough(lowExp), 'tamerExpTooLow', {
       need: toBig(900),
@@ -93,7 +107,14 @@ describe('tamerBreakthrough', () => {
 
   it('EXP vừa khít (biên): đột phá được, còn 0 EXP', () => {
     const exact = ready(0, {
-      tamer: { bondDay: null, woundUntilDay: null, realm: 0, exp: toBig(100) }
+      tamer: {
+        bondDay: null,
+        woundUntilDay: null,
+        talentRanks: {},
+        bonusTalentPoints: 0,
+        realm: 0,
+        exp: toBig(100)
+      }
     })
     expect(breakthrough(exact).tamer.exp.toNumber()).toBe(0)
   })

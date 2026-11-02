@@ -241,6 +241,10 @@ describe('sức làm việc', () => {
     state = assign(build(state, 'vein'), 'vein', 'v')
     // Linh mạch: bay sai việc nhưng vận chuyển 2 × 0,5 → sức 4 → +50%.
     expect(buildingPowers(data, state)).toMatchObject({ forge: 24, vein: 4 })
+    // Thiên phú ngự thú sư `dwellingOutputPercent` (+50%/cấp ở nút fixture `trade`, docs/rules/
+    // tamer-talents.md) cộng vào cùng tổng % với Linh mạch, không cộng cho Linh mạch.
+    const talented = { ...state, tamer: { ...state.tamer, talentRanks: { trade: 1 } } }
+    expect(buildingPowers(data, talented)).toMatchObject({ forge: 32, vein: 4 })
   })
 })
 

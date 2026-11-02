@@ -45,10 +45,12 @@ export function assertNotBond(monster: Monster): void {
   if (monster.bond) throw new ActionError('isBondBeast', { monsterId: monster.id })
 }
 
-/** Ngự thú sư mới (game mới, test): chưa từng kết bản mệnh, không đạo thương. */
+/** Ngự thú sư mới (game mới, test): chưa từng kết bản mệnh, không đạo thương, chưa nâng thiên phú. */
 export const newTamerState = (realm = 0): GameState['tamer'] => ({
   realm,
   exp: BIG_ZERO,
   bondDay: null,
-  woundUntilDay: null
+  woundUntilDay: null,
+  talentRanks: {},
+  bonusTalentPoints: 0
 })

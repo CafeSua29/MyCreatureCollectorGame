@@ -1,0 +1,1496 @@
+[
+  {
+    "id": "beastSect",
+    "minRealm": 0,
+    "rankBonuses": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ],
+    "trainerClassIds": ["rookieTamer", "demonHunter"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "bondFruit",
+        "cost": 30,
+        "minRank": 0
+      },
+      {
+        "itemId": "heartDew",
+        "cost": 120,
+        "minRank": 2
+      },
+      {
+        "itemId": "abilityCapsule",
+        "cost": 250,
+        "minRank": 3
+      },
+      {
+        "itemId": "wolfClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "tackle",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "bodySlam",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "mauling",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "bugBite",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "xScissor",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "megahorn",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "bodySlam",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["netherHall", "heavenSword", "poisonGate"]
+  },
+  {
+    "id": "dragonAbyss",
+    "minRealm": 2,
+    "rankBonuses": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 1
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "trainerClassIds": ["dragonKnight"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "demonCoreDragon",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "dragonEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "dragonClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "dragonBloodFruit",
+        "cost": 80,
+        "minRank": 2
+      },
+      {
+        "itemId": "awakeningPillDragon",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "dragonBreath",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "dragonPulse",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "outrage",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "dragonPulse",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["mysticIce", "blazingFlame"]
+  },
+  {
+    "id": "hundredHerbs",
+    "minRealm": 0,
+    "rankBonuses": [
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 2
+        }
+      },
+      {
+        "type": "cookingSuccessPercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ],
+    "trainerClassIds": ["herbalist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "lingzhi",
+        "cost": 5,
+        "minRank": 0
+      },
+      {
+        "itemId": "ginseng",
+        "cost": 5,
+        "minRank": 0
+      },
+      {
+        "itemId": "snowLotus",
+        "cost": 5,
+        "minRank": 0
+      },
+      {
+        "itemId": "longevityPill",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "plantClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "recipeScrollHumanFormPill",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "recipeScrollMyriadLongevityPill",
+        "cost": 150,
+        "minRank": 3
+      },
+      {
+        "skillId": "grassKnot",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "energyBall",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "solarBeam",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "energyBall",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["poisonGate", "windValley"]
+  },
+  {
+    "id": "heavenSword",
+    "minRealm": 1,
+    "rankBonuses": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 1.5
+        }
+      }
+    ],
+    "trainerClassIds": ["martialArtist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "cost": 20,
+        "minRank": 0
+      },
+      {
+        "itemId": "protein",
+        "cost": 30,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreFighting",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "refiningStone",
+        "cost": 50,
+        "minRank": 1
+      },
+      {
+        "itemId": "tigerClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "awakeningPillFighting",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "lowKick",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "brickBreak",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "closeCombat",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "metalClaw",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "ironHead",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "ironbreakerCharge",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "brickBreak",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["beastSect", "diamondTemple"]
+  },
+  {
+    "id": "mysticIce",
+    "minRealm": 1,
+    "rankBonuses": [
+      {
+        "type": "manaPercent",
+        "params": {
+          "percent": 4
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 0.5
+        }
+      }
+    ],
+    "trainerClassIds": ["sailor"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "spiritStoneIce",
+        "cost": 8,
+        "minRank": 0
+      },
+      {
+        "itemId": "iceHeartLotus",
+        "cost": 30,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreIce",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "seaClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "awakeningPillIce",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "icyWind",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "iceBeam",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "blizzard",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "waterGun",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "surf",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "hydroPump",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "iceBeam",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["blazingFlame", "dragonAbyss"]
+  },
+  {
+    "id": "netherHall",
+    "minRealm": 2,
+    "rankBonuses": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 2
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "trainerClassIds": ["witch", "taoist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "demonCoreGhost",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreDark",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "undeadEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "undeadClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "soulGuidingOrb",
+        "cost": 120,
+        "minRank": 2
+      },
+      {
+        "itemId": "yinStone",
+        "cost": 100,
+        "minRank": 2
+      },
+      {
+        "skillId": "astonish",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "shadowBall",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "shadowForce",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "bite",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "darkPulse",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "nightmareBall",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "shadowBall",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["radiantPalace", "beastSect", "heavenlySecrets"]
+  },
+  {
+    "id": "blazingFlame",
+    "minRealm": 1,
+    "rankBonuses": [
+      {
+        "type": "smithingSuccessPercent",
+        "params": {
+          "percent": 2
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 0.5
+        }
+      }
+    ],
+    "trainerClassIds": ["fireMage"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "enhanceStone",
+        "cost": 5,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreFire",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "refiningStone",
+        "cost": 50,
+        "minRank": 1
+      },
+      {
+        "itemId": "phoenixEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "phoenixClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "awakeningPillFire",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "ember",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "flamethrower",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "fireBlast",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "flamethrower",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["mysticIce", "hundredHerbs"]
+  },
+  {
+    "id": "thunderPavilion",
+    "minRealm": 1,
+    "rankBonuses": [
+      {
+        "type": "manaPercent",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 1.5
+        }
+      }
+    ],
+    "trainerClassIds": ["scientist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "spiritStoneElectric",
+        "cost": 8,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreElectric",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "rocClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "awakeningPillElectric",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "itemId": "dynamaxCandy",
+        "cost": 100,
+        "minRank": 2
+      },
+      {
+        "skillId": "thunderShock",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "thunderbolt",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "thunder",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "thunderbolt",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["diamondTemple", "windValley"]
+  },
+  {
+    "id": "heavenlySecrets",
+    "minRealm": 2,
+    "rankBonuses": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 2
+        }
+      },
+      {
+        "type": "contractLevelPercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ],
+    "trainerClassIds": ["taoist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "enlightenmentTea",
+        "cost": 15,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCorePsychic",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "fourSymbolsScroll",
+        "cost": 80,
+        "minRank": 1
+      },
+      {
+        "itemId": "fiveElementsScroll",
+        "cost": 80,
+        "minRank": 1
+      },
+      {
+        "itemId": "sixHarmoniesScroll",
+        "cost": 80,
+        "minRank": 2
+      },
+      {
+        "itemId": "secretRealmToken",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "confusion",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "psychic",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "dreamEater",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "psychic",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["netherHall", "treasureHouse"]
+  },
+  {
+    "id": "diamondTemple",
+    "minRealm": 1,
+    "rankBonuses": [
+      {
+        "type": "dwellingOutputPercent",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 0.5
+        }
+      }
+    ],
+    "trainerClassIds": ["miner"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "enhanceStone",
+        "cost": 5,
+        "minRank": 0
+      },
+      {
+        "itemId": "iron",
+        "cost": 30,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreRock",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreSteel",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "blackTortoiseShell",
+        "cost": 30,
+        "minRank": 1
+      },
+      {
+        "itemId": "turtleClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "rockThrow",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "rockSlide",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "stoneEdge",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "mudSlap",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "stampede",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "earthquake",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "rockSlide",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["heavenSword", "thunderPavilion"]
+  },
+  {
+    "id": "hundredFlowers",
+    "minRealm": 0,
+    "rankBonuses": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "trainerClassIds": ["saintess", "herbalist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "spiritHoney",
+        "cost": 10,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreFairy",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "mintModest",
+        "cost": 40,
+        "minRank": 1
+      },
+      {
+        "itemId": "foxEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "foxClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "heartDew",
+        "cost": 120,
+        "minRank": 2
+      },
+      {
+        "skillId": "fairyWind",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "playRough",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "mistyExplosion",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "playRough",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["poisonGate", "blazingFlame"]
+  },
+  {
+    "id": "treasureHouse",
+    "minRealm": 0,
+    "rankBonuses": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 3
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "trainerClassIds": ["rookieTamer", "scientist"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "soulCrystalSmall",
+        "cost": 15,
+        "minRank": 0
+      },
+      {
+        "itemId": "fusionCharm",
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "itemId": "greatFusionCharm",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "expCandyL",
+        "cost": 350,
+        "minRank": 3
+      },
+      {
+        "itemId": "ultraFusionCharm",
+        "cost": 250,
+        "minRank": 3
+      },
+      {
+        "itemId": "fusionAmulet",
+        "cost": 300,
+        "minRank": 3
+      },
+      {
+        "skillId": "tackle",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "bodySlam",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "mauling",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "bodySlam",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["heavenlySecrets", "beastSect"]
+  },
+  {
+    "id": "windValley",
+    "minRealm": 0,
+    "rankBonuses": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 2
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "trainerClassIds": ["windRider"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "windSpiritGrass",
+        "cost": 30,
+        "minRank": 0
+      },
+      {
+        "itemId": "carbos",
+        "cost": 30,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreFlying",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "rocEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "awakeningPillFlying",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "gust",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "airSlash",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "diveBomb",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "airSlash",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["thunderPavilion", "hundredHerbs"]
+  },
+  {
+    "id": "radiantPalace",
+    "minRealm": 2,
+    "rankBonuses": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 1
+        }
+      },
+      {
+        "type": "manaPercent",
+        "params": {
+          "percent": 2
+        }
+      }
+    ],
+    "trainerClassIds": ["saintess"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "fullHeal",
+        "cost": 20,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCoreLight",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "qilinEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "qilinClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "yangStone",
+        "cost": 100,
+        "minRank": 2
+      },
+      {
+        "itemId": "awakeningPillLight",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "glimmer",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "talismanStrike",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "fistOfHeavens",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "talismanStrike",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["netherHall", "poisonGate"]
+  },
+  {
+    "id": "poisonGate",
+    "minRealm": 1,
+    "rankBonuses": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 2
+        }
+      },
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 1
+        }
+      }
+    ],
+    "trainerClassIds": ["herbalist", "witch"],
+    "shop": [
+      {
+        "itemId": "breakthroughPill",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "expCandyM",
+        "cost": 120,
+        "minRank": 1
+      },
+      {
+        "itemId": "rareCandy",
+        "cost": 150,
+        "minRank": 2
+      },
+      {
+        "itemId": "restorationPill",
+        "cost": 400,
+        "minRank": 2
+      },
+      {
+        "itemId": "poisonBomb",
+        "cost": 8,
+        "minRank": 0
+      },
+      {
+        "itemId": "demonCorePoison",
+        "cost": 50,
+        "minRank": 0
+      },
+      {
+        "itemId": "serpentEssence",
+        "cost": 60,
+        "minRank": 1
+      },
+      {
+        "itemId": "serpentClanScroll",
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "itemId": "awakeningPillPoison",
+        "cost": 60,
+        "minRank": 2
+      },
+      {
+        "skillId": "poisonSting",
+        "reusable": false,
+        "cost": 40,
+        "minRank": 0
+      },
+      {
+        "skillId": "sludgeBomb",
+        "reusable": false,
+        "cost": 100,
+        "minRank": 1
+      },
+      {
+        "skillId": "gunkShot",
+        "reusable": false,
+        "cost": 220,
+        "minRank": 2
+      },
+      {
+        "skillId": "sludgeBomb",
+        "reusable": true,
+        "cost": 1500,
+        "minRank": 4
+      }
+    ],
+    "rivalSectIds": ["hundredHerbs", "hundredFlowers", "radiantPalace"]
+  }
+]

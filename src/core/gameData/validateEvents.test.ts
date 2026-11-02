@@ -149,7 +149,7 @@ describe('dữ liệu event', () => {
   it('config.events: tỉ lệ 0–100, chợ đen, thú triều', () => {
     const issues = issuesAfter((raw) => {
       raw.config.events.exploreChance = 150
-      raw.config.events.blackMarket.items = [{ itemId: 'nope', weight: 1, min: 1, max: 1 }]
+      raw.config.events.blackMarket.minItemPrice = -1
       raw.config.events.blackMarket.equipment.minRollPercent = 120
       raw.config.events.beastTide.intervalDays = { min: 0, max: 5 }
       raw.config.events.beastTide.waves = { min: 3, max: 1 }
@@ -158,9 +158,7 @@ describe('dữ liệu event', () => {
     expect(issues).toEqual(
       expect.arrayContaining([
         expect.stringContaining('config.events.exploreChance'),
-        expect.stringContaining(
-          'config.events.blackMarket.items[0]: vật phẩm không tồn tại "nope"'
-        ),
+        expect.stringContaining('config.events.blackMarket.minItemPrice'),
         expect.stringContaining('minRollPercent'),
         expect.stringContaining('config.events.beastTide.intervalDays.min'),
         expect.stringContaining('config.events.beastTide.waves: max phải ≥ min'),

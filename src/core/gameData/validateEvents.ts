@@ -387,9 +387,25 @@ function checkBlackMarket(data: GameData, value: unknown, issues: string[]): voi
     issues.push(`${at} phải là object`)
     return
   }
-  checkKnownFields(market, ['count', 'items', 'equipment', 'skillBooks'], at, 'chợ đen', issues)
+  checkKnownFields(
+    market,
+    ['count', 'minItemPrice', 'itemWeightPower', 'extraItemIds', 'equipment', 'skillBooks'],
+    at,
+    'chợ đen',
+    issues
+  )
   checkIntRange(market.count, `${at}.count`, 1, issues)
-  issues.push(...checkWeightedItems(data, market.items, `${at}.items`))
+  issues.push(...checkNumber(market.minItemPrice, `${at}.minItemPrice`, 0))
+  issues.push(...checkNumber(market.itemWeightPower, `${at}.itemWeightPower`))
+  if (!Array.isArray(market.extraItemIds)) {
+    issues.push(`${at}.extraItemIds phải là danh sách`)
+  } else {
+    market.extraItemIds.forEach((itemId: unknown, i) => {
+      issues.push(
+        ...checkStackItemId(data, String(itemId), `${at}.extraItemIds[${i}]`, 'vật phẩm chợ đen')
+      )
+    })
+  }
   const equipment = asObject(market.equipment) ?? {}
   issues.push(...checkNumber(equipment.weight, `${at}.equipment.weight`, 0))
   issues.push(...checkRarityWeights(equipment.rarityWeights, `${at}.equipment.rarityWeights`))

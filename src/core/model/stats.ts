@@ -59,6 +59,7 @@ export const STAT_PERCENT_SOURCE_IDS = [
   'talent',
   'frenzy',
   'collection',
+  'tamerBonus',
   'meal',
   'blessing',
   'polarity',

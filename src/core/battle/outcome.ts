@@ -6,7 +6,8 @@ import {
   createBossEgg,
   hatchMonster,
   incubateEggs,
-  rollAilmentOf
+  rollAilmentOf,
+  tradeExpMultiplier
 } from '../progression'
 import {
   addEffortValues,
@@ -49,7 +50,7 @@ import {
   traitEggHatchExtra,
   traitExpMultiplier,
   traitMoneyMultiplier,
-  titleMultiplier,
+  tamerBonusMultiplier,
   hasPartyRoom,
   partyAfterJoining,
   hasRosterRoom
@@ -258,7 +259,7 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(d.battle.special ? specialRule(d.battle.special).moneyMultiplier(d.battle.special) : 1)
     .times(instabilityMultiplier)
     .times(battleBlessingMultiplier(data, d, 'moneyPercent'))
-    .times(titleMultiplier(data, d.titles, 'moneyPercent'))
+    .times(tamerBonusMultiplier(data, d, 'moneyPercent'))
     .floor()
   const exp = battleExp(data, d)
   d.money = d.money.plus(money)
@@ -297,7 +298,7 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(mealMultiplier(data, d.cooking.meal, 'expPercent'))
     .times(instabilityMultiplier)
     .times(battleBlessingMultiplier(data, d, 'expPercent'))
-    .times(titleMultiplier(data, d.titles, 'expPercent'))
+    .times(tamerBonusMultiplier(data, d, 'expPercent'))
     .floor()
   const defeated = [...enemies, ...d.battle.captured]
   d.party = d.party.map((monster) => {
@@ -371,7 +372,7 @@ export function applyWin(data: GameData, d: Draft): void {
     floorModifierMultiplier(data, d, 'dropRatePercent') *
     instabilityMultiplier *
     battleBlessingMultiplier(data, d, 'dropRatePercent') *
-    titleMultiplier(data, d.titles, 'dropRatePercent')
+    tamerBonusMultiplier(data, d, 'dropRatePercent')
   // Trận NPC: đồ thưởng chung của trận thay cho đồ rơi của từng quái (docs/rules/trainers.md).
   if (d.battle.trainer) dropTrainerRewards(data, d, dropMultiplier)
   for (const enemy of d.battle.trainer ? [] : enemies) {
@@ -725,9 +726,11 @@ function dropEquipment(
  * tuổi (mục "Tuổi và thọ nguyên"), làm tròn xuống; hệ số còn > 0 thì không dưới minExp (quái level thấp vẫn có EXP).
  */
 function expWithTraits(data: GameData, monster: Monster, exp: Decimal): Decimal {
+  // Quái nhận qua trao đổi với NPC được thêm EXP (docs/rules/trades.md).
   const multiplier =
     traitExpMultiplier(data, monster, spiritVirusExpPercent(data, monster)) *
-    ageExpMultiplier(data, monster)
+    ageExpMultiplier(data, monster) *
+    tradeExpMultiplier(data, monster)
   if (multiplier === 1) return exp
   if (multiplier <= 0) return BIG_ZERO
   return maxBig(data.config.rewards.minExp, exp.times(multiplier).floor())

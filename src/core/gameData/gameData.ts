@@ -64,6 +64,10 @@ import { checkPolarityData } from './validatePolarity'
 import { checkGrowthRates } from './validateGrowthRate'
 import { checkAbilityData } from './validateAbilities'
 import { checkTalentData } from './validateTalents'
+import { checkTamerTalentData } from './validateTamerTalents'
+import { checkSectData } from './validateSects'
+import { checkTeamPresetData, checkTradeData } from './validateTrades'
+import { checkGachaData } from './validateGacha'
 import { checkSoulRelicData } from './validateSoulRelics'
 import { checkForgeConfig } from './validateForge'
 import { checkItemGroups } from './validateItemGroups'
@@ -191,6 +195,8 @@ export function createGameData(raw: RawGameData): GameData {
     affinityTiers: indexById(raw.affinityTiers, 'affinityTiers', issues),
     talentBranches: indexById(raw.talentBranches, 'talentBranches', issues),
     talents: indexById(raw.talents, 'talents', issues),
+    tamerTalentBranches: indexById(raw.tamerTalentBranches, 'tamerTalentBranches', issues),
+    tamerTalents: indexById(raw.tamerTalents, 'tamerTalents', issues),
     synergies: indexById(raw.synergies, 'synergies', issues),
     formations: indexById(raw.formations, 'formations', issues),
     comboSkills,
@@ -215,6 +221,9 @@ export function createGameData(raw: RawGameData): GameData {
     deities: indexById(raw.deities, 'deities', issues),
     achievements: indexById(raw.achievements, 'achievements', issues),
     titles: indexById(raw.titles, 'titles', issues),
+    sects: indexById(raw.sects, 'sects', issues),
+    sectRanks: indexById(raw.sectRanks, 'sectRanks', issues),
+    npcNames: indexById(raw.npcNames, 'npcNames', issues),
     artifactSpirits: indexById(raw.artifactSpirits, 'artifactSpirits', issues),
     text: raw.text
   }
@@ -271,6 +280,11 @@ export function createGameData(raw: RawGameData): GameData {
   checkGrowthRates(data, issues)
   checkAbilityData(data, issues)
   checkTalentData(data, issues)
+  checkTamerTalentData(data, issues)
+  checkSectData(data, issues)
+  checkTradeData(data, issues)
+  checkTeamPresetData(data, issues)
+  checkGachaData(data, issues)
   checkSoulRelicData(data, issues)
   checkItemGroups(data, issues)
   checkForgeConfig(data, issues)

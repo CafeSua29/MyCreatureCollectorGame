@@ -29,9 +29,9 @@ export interface WorldBossConfig {
   /** Level boss = level boss tầng của tầng cao nhất + levelOffset (tối thiểu 1). */
   levelOffset: number
   bossMultiplier: number
-  /** Loài: dạng cuối (không tiến hóa tiếp) có phẩm cấp loài từ bậc này trở lên. */
-  minSpeciesRankId: string
-  /** Trọng số loài lớn (docs/rules/monster-size.md); loài thường trọng số 1. */
+  /** Trọng số loài theo thứ hạng phẩm cấp loài (vượt danh sách lấy số cuối). */
+  rankWeights: number[]
+  /** Hệ số trọng số của loài lớn (docs/rules/monster-size.md). */
   largeWeight: number
   tiers: WorldBossTier[]
 }

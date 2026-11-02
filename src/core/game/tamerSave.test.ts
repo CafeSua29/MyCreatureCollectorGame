@@ -48,7 +48,14 @@ describe('migrate v26 → v27', () => {
     const migrated = migrateState(asV26(state), data) as GameState
     expect(migrated.version).toBe(SAVE_VERSION)
     // Đi tiếp tới v50: chưa kết bản mệnh, không đạo thương.
-    expect(migrated.tamer).toEqual({ realm: 2, exp: toBig(0), bondDay: null, woundUntilDay: null })
+    expect(migrated.tamer).toEqual({
+      realm: 2,
+      exp: toBig(0),
+      bondDay: null,
+      woundUntilDay: null,
+      talentRanks: {},
+      bonusTalentPoints: 0
+    })
     expect(migrated.party[0].contractRealm).toBe(2)
     expect(migrated.storage[0].contractRealm).toBe(2)
     expect(migrated.eggs[0].monster.contractRealm).toBe(2)
@@ -81,7 +88,14 @@ describe('kiểm tra save', () => {
   it('state hợp lệ; EXP Decimal lớn ghi / đọc lại đúng', () => {
     const big = {
       ...state,
-      tamer: { bondDay: null, woundUntilDay: null, realm: 3, exp: toBig(10).pow(500) }
+      tamer: {
+        bondDay: null,
+        woundUntilDay: null,
+        talentRanks: {},
+        bonusTalentPoints: 0,
+        realm: 3,
+        exp: toBig(10).pow(500)
+      }
     }
     expect(validateGameState(data, big)).toEqual([])
     const loaded = migrateState(JSON.parse(JSON.stringify(serializeState(big))), data)
@@ -93,7 +107,13 @@ describe('kiểm tra save', () => {
     const issues = (tamer: unknown): string[] =>
       validateGameState(data, {
         ...state,
-        tamer: tamer && { bondDay: null, woundUntilDay: null, ...(tamer as object) }
+        tamer: tamer && {
+          bondDay: null,
+          woundUntilDay: null,
+          talentRanks: {},
+          bonusTalentPoints: 0,
+          ...(tamer as object)
+        }
       })
     expect(issues({ realm: -1, exp: toBig(0) })).toEqual([
       'tamer.realm phải là số nguyên ≥ 0, nhận -1'
@@ -101,7 +121,7 @@ describe('kiểm tra save', () => {
     expect(issues({ realm: 1.5, exp: toBig(0) })).toHaveLength(1)
     expect(issues({ realm: 0, exp: toBig(-1) })).toHaveLength(1)
     expect(issues(undefined)).toEqual([
-      'tamer phải là object { realm, exp, bondDay, woundUntilDay }'
+      'tamer phải là object { realm, exp, bondDay, woundUntilDay, talentRanks, bonusTalentPoints }'
     ])
     expect(issues({ realm: 0, exp: toBig(0), bondDay: -1, woundUntilDay: 1.5 })).toHaveLength(2)
   })

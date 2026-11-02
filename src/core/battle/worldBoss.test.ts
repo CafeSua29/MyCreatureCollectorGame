@@ -147,14 +147,12 @@ describe('lịch xuất hiện', () => {
     expect(events).toEqual([])
   })
 
-  it('loài: dạng cuối, đủ phẩm cấp; không có loài nào thì không xuất hiện', () => {
+  it('loài: mọi loài thường theo trọng số phẩm cấp, kể cả dạng chưa tiến hóa; trọng số 0 thì không xuất hiện', () => {
     const ids = worldBossCandidates(data).map((candidate) => candidate.speciesId)
     expect(ids).toContain('strongling')
-    // weakling còn tiến hóa (không phải dạng cuối).
-    expect(ids).not.toContain('weakling')
+    expect(ids).toContain('weakling')
     const none = makeWorldBossData((raw) => {
-      raw.config.worldBoss = { ...raw.config.worldBoss, minSpeciesRankId: 'X' }
-      for (const species of raw.species) if (species.kind === 'normal') species.rank = 'G'
+      raw.config.worldBoss = { ...raw.config.worldBoss, rankWeights: [0] }
     })
     expect(worldBossCandidates(none)).toEqual([])
     const state = makeGameState({ seed: 9, party: [hero()] })
@@ -417,12 +415,12 @@ describe('kiểm tra dữ liệu và save', () => {
         ...raw.config.worldBoss,
         everyDays: 2,
         activeDays: 3,
-        minSpeciesRankId: 'Z',
+        rankWeights: [],
         tiers: [tiers[1], { ...tiers[0], id: tiers[1].id }]
       }
     })
     expect(issues.some((issue) => issue.includes('activeDays không được vượt'))).toBe(true)
-    expect(issues.some((issue) => issue.includes('minSpeciesRankId'))).toBe(true)
+    expect(issues.some((issue) => issue.includes('rankWeights'))).toBe(true)
     expect(issues.some((issue) => issue.includes('minHpMultiple phải > 0'))).toBe(true)
     expect(issues.some((issue) => issue.includes('bị trùng'))).toBe(true)
   })

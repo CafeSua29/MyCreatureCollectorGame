@@ -128,7 +128,7 @@ describe('runProgression', () => {
     // Trần 1 lượt: mỗi trận boss tối đa 1 lượt; trận quái hoang vẫn theo maxTurns.
     expect(boss.turns).toBeLessThanOrEqual(boss.battles)
     expect(wild.turns).toBeGreaterThan(wild.battles)
-  }, 20_000) // nhiều trận (cả trận NPC mỗi ngày, trainers.ts): chậm khi cả bộ test chạy song song
+  }, 40_000) // nhiều trận (cả trận NPC và trận tông môn mỗi ngày, trainers.ts, sects.ts): chậm khi cả bộ test chạy song song
 
   it('levelTarget: farm tới khi level trung bình ≥ level boss tầng + margin rồi mới đánh boss', () => {
     // Fixture: quái level 1 cho 0 EXP (expFactor 0,5), tầng 3 quái level 5, boss tầng 3 level 6.

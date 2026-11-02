@@ -20,6 +20,8 @@ import tamerRealms from './tamerRealms.json'
 import affinityTiers from './affinityTiers.json'
 import talentBranches from './talentBranches.json'
 import talents from './talents.json'
+import tamerTalentBranches from './tamerTalentBranches.json'
+import tamerTalents from './tamerTalents.json'
 import synergies from './synergies.json'
 import formations from './formations.json'
 import comboSkills from './comboSkills.json'
@@ -45,6 +47,9 @@ import deities from './deities.json'
 import artifactSpirits from './artifactSpirits.json'
 import achievements from './achievements.json'
 import titles from './titles.json'
+import sects from './sects.json'
+import sectRanks from './sectRanks.json'
+import npcNames from './npcNames.json'
 import textConfig from './i18n/config.json'
 
 // Mỗi ngôn ngữ là một folder i18n/<mã>/ (language.json + một file cho mỗi loại nội dung). Tự tìm
@@ -98,6 +103,8 @@ export const rawGameData = {
   affinityTiers,
   talentBranches,
   talents,
+  tamerTalentBranches,
+  tamerTalents,
   synergies,
   formations,
   comboSkills,
@@ -123,5 +130,8 @@ export const rawGameData = {
   artifactSpirits,
   achievements,
   titles,
+  sects,
+  sectRanks,
+  npcNames,
   text: { ...textConfig, languages: collectLanguages() }
 } as unknown as RawGameData

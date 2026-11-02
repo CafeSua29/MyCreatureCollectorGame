@@ -16,7 +16,7 @@ import {
   shopEntryRef,
   takeEquipment
 } from '../inventory'
-import { assertBagRoom, eventModifierMultiplier } from '../registries'
+import { assertBagRoom, eventModifierMultiplier, tamerBonusMultiplier } from '../registries'
 import { dayOf, type GameData, type GameState, type ShopEntry } from '../model'
 import { addMarketSale, marketSellTotal } from './market'
 
@@ -36,10 +36,13 @@ function requireShop(state: GameState): void {
 
 /**
  * Giá mua một món ở cửa hàng thị trấn: giá gốc × modifier giá cửa hàng của event (kiểu Hội chợ,
- * docs/rules/events.md), làm tròn xuống.
+ * docs/rules/events.md) × kênh thưởng ngự thú sư `shopPricePercent` (thiên phú Trả Giá,
+ * docs/rules/tamer-talents.md), làm tròn xuống.
  */
 export function shopBuyPrice(data: GameData, state: GameState, entry: ShopEntry): Decimal {
-  const multiplier = eventModifierMultiplier(data, state.events.modifiers, 'shopPricePercent')
+  const multiplier =
+    eventModifierMultiplier(data, state.events.modifiers, 'shopPricePercent') *
+    tamerBonusMultiplier(data, state, 'shopPricePercent')
   const price = itemBuyPrice(data, entry, state.highestFloor)
   return multiplier === 1 ? price : price.times(multiplier).floor()
 }

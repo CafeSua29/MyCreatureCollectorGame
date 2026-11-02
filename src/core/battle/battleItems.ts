@@ -3,7 +3,7 @@
 
 import { recordQuestEvent } from '../quests'
 import { ActionError, BIG_ZERO } from '../shared'
-import { isFainted, mergeTraitLevel, startHistory } from '../monster'
+import { autoLockCaught, isFainted, mergeTraitLevel, startHistory } from '../monster'
 import {
   applyItemToMonster,
   ballBonusMultiplier,
@@ -16,7 +16,7 @@ import {
   hasRosterRoom,
   mealMultiplier,
   partyAfterJoining,
-  titleMultiplier,
+  tamerBonusMultiplier,
   recordEvolutionResearch,
   recordMonsterResearch,
   researchMultiplier
@@ -92,6 +92,8 @@ export function battleCatchChance(
     | 'floorBiomeIds'
     | 'favor'
     | 'titles'
+    | 'tamer'
+    | 'sect'
     | 'research'
   > & {
     battle: BattleState
@@ -111,7 +113,7 @@ export function battleCatchChance(
       partnerMultiplier(data, state.party, 'catchRatePercent') *
       mealMultiplier(data, state.cooking.meal, 'catchRatePercent') *
       battleBlessingMultiplier(data, state, 'catchRatePercent') *
-      titleMultiplier(data, state.titles, 'catchRatePercent') *
+      tamerBonusMultiplier(data, state, 'catchRatePercent') *
       researchMultiplier(data, state.research, target.speciesId, 'catchRatePercent'),
     bonusMultiplier: ballBonusMultiplier(ball, ctx),
     catchRateBonus: ballCatchRateBonus(ball, ctx)
@@ -190,7 +192,7 @@ export function throwBall(
   // Bắt bằng bóng không khế ước: khế ước là bước riêng (docs/rules/tamer.md mục "Khế ước").
   d.battle.captured.push(
     startHistory(
-      caughtMonster,
+      autoLockCaught(caughtMonster),
       { kind: d.battle.isBoss ? 'boss' : 'wild', ballItemId: ball.id },
       { day: dayOf(d.time), floor: d.battle.floor, level: target.level }
     )

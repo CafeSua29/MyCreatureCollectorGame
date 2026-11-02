@@ -179,6 +179,7 @@ export function makeRawData(): RawGameData {
         shopMin: 0,
         shopMax: 0,
         shopMaxPower: 80,
+        shopRareSkillFactor: 0,
         partyMultiplier: 5,
         bossDropChance: 0,
         reusableDropChance: 2
@@ -592,6 +593,8 @@ export function makeRawData(): RawGameData {
       // NPC tự bật. Không đồ thưởng chung.
       trainers: {
         encounterChance: 0,
+        nonWildSpeciesWeight: 0,
+        offThemeClassWeight: 0,
         rewardDrops: [],
         ai: { switchRatio: 0.35, switchMinScore: 0.3 },
         gym: {
@@ -690,6 +693,62 @@ export function makeRawData(): RawGameData {
       },
       // Thiên phú (docs/rules/monster-talents.md): không rơi để RNG của test cũ không đổi.
       talents: { levelsPerPoint: 5, pointsPerAwakening: 1, pointsPerRebirth: 3, bossDrops: [] },
+      tamerTalents: {
+        pointsPerRealm: 2,
+        pointsPerQuest: 1,
+        pointsPerAchievementTier: 1,
+        resetItemId: 'restorationPill'
+      },
+      // Cây thần (docs/rules/gacha.md): trọng số loài và loại trait không đổi theo tầng.
+      gacha: {
+        costBase: 100,
+        pullOptions: [
+          { count: 1, costMultiplier: 1 },
+          { count: 10, costMultiplier: 9 }
+        ],
+        rankWeights: [1],
+        traitKindWeights: { positive: 1 },
+        traitKindFloorGrowth: {},
+        traitKindFloorFalloff: {}
+      },
+      teamPresets: { slots: 2 },
+      // Trao đổi với NPC (docs/rules/trades.md): luôn 2 đề nghị, chỉ yêu cầu đúng loài.
+      trades: {
+        refreshDays: 7,
+        offerCount: { min: 2, max: 2 },
+        wantWeights: { species: 1, race: 0, element: 0 },
+        giveWeights: { monster: 1, item: 1 },
+        wantLevelPercent: 50,
+        giveRankWeights: [1],
+        giveLevelOffset: 0,
+        giveGeneMultiplier: 1,
+        giveShinyMultiplier: 1,
+        itemWeightPower: 0.5,
+        expBonusPercent: 50
+      },
+      // Tông môn (docs/rules/sects.md): số nhỏ dễ đếm trong test.
+      sects: {
+        rejoinCooldownDays: 30,
+        rankBase: 100,
+        rankPower: 2,
+        memberCount: 4,
+        memberRankWeights: [1, 1],
+        memberDailyContribution: { min: 10, max: 10 },
+        masterRankLead: 2,
+        missions: { count: 2, refreshDays: 7, contributionPerCount: 10, talentPointChance: 0 },
+        duel: { perDay: 2, levelPerRank: 1, contribution: 20 },
+        promotion: { levelOffset: 0, levelPerRank: 0, talentPoints: 1 },
+        war: {
+          everyDays: 60,
+          rounds: [
+            { levelOffset: 0, rewardMultiplier: 1, contribution: 30 },
+            { levelOffset: 0, rewardMultiplier: 1, contribution: 50 }
+          ],
+          championContribution: 100,
+          championTalentPoints: 2,
+          championRewards: [{ itemId: 'rareCandy', count: 1 }]
+        }
+      },
       // Bản mệnh thú (docs/rules/tamer.md): số như dữ liệu thật.
       bond: {
         minAffinity: 200,
@@ -809,7 +868,7 @@ export function makeRawData(): RawGameData {
         turns: 10,
         levelOffset: 0,
         bossMultiplier: 3,
-        minSpeciesRankId: 'G',
+        rankWeights: [1],
         largeWeight: 3,
         tiers: [
           {
@@ -890,7 +949,9 @@ export function makeRawData(): RawGameData {
         townChance: 15,
         blackMarket: {
           count: { min: 3, max: 3 },
-          items: [{ itemId: 'potion', weight: 1, min: 2, max: 2 }],
+          minItemPrice: 1,
+          itemWeightPower: 0,
+          extraItemIds: [],
           equipment: { weight: 0, rarityWeights: { rare: 1 }, minRollPercent: 50 },
           skillBooks: { weight: 0, reusableChance: 0 }
         },
@@ -1398,6 +1459,32 @@ export function makeRawData(): RawGameData {
         tiers: [{ value: 2, rewards: { titleId: FIXTURE_TITLE_IDS.lucky } }]
       }
     ],
+    // Tông môn mẫu (docs/rules/sects.md): hai tông đối địch nhau, buff % EXP / tiền theo chức vị.
+    sects: [
+      {
+        id: 'sword',
+        minRealm: 0,
+        rankBonuses: [{ type: 'expPercent', params: { percent: 10 } }],
+        trainerClassIds: [FIXTURE_TRAINER_ID],
+        shop: [
+          { itemId: 'potion', cost: 10, minRank: 0 },
+          { itemId: 'rareCandy', cost: 50, minRank: 1 },
+          { skillId: 'strike', reusable: false, cost: 40, minRank: 0 },
+          { skillId: 'strike', reusable: true, cost: 300, minRank: 2 }
+        ],
+        rivalSectIds: ['beast']
+      },
+      {
+        id: 'beast',
+        minRealm: 2,
+        rankBonuses: [{ type: 'moneyPercent', params: { percent: 5 } }],
+        trainerClassIds: [FIXTURE_TRAINER_ID],
+        shop: [],
+        rivalSectIds: ['sword']
+      }
+    ],
+    sectRanks: [{ id: 'outer' }, { id: 'inner' }, { id: 'elder' }],
+    npcNames: [{ id: 'linFeng' }, { id: 'yeXue' }, { id: 'xiaoHao' }],
     titles: [
       {
         id: FIXTURE_TITLE_IDS.veteran,
@@ -1558,6 +1645,58 @@ export function makeRawData(): RawGameData {
         branchId: 'bruteArts',
         costPerRank: 1,
         hooks: [{ type: 'statModifier', params: { percent: { attack: 5 } } }]
+      }
+    ],
+    // Thiên phú ngự thú sư mẫu (docs/rules/tamer-talents.md): đủ mọi kênh thưởng để test từng nơi
+    // dùng; game fixture mặc định chưa nâng nút nào nên test cũ không đổi.
+    tamerTalentBranches: [{ id: 'taming' }, { id: 'capture' }, { id: 'commerce' }],
+    tamerTalents: [
+      {
+        id: 'drill',
+        branchId: 'taming',
+        costPerRank: 1,
+        effects: [{ type: 'teamStatPercent', params: { percent: 10 } }]
+      },
+      {
+        id: 'focus',
+        branchId: 'taming',
+        maxRank: 3,
+        costPerRank: 1,
+        effects: [{ type: 'manaPercent', params: { percent: 50 } }]
+      },
+      {
+        id: 'haste',
+        branchId: 'taming',
+        requires: { focus: 1 },
+        maxRank: 2,
+        costPerRank: 1,
+        effects: [{ type: 'tamerSkillCooldown', params: { turns: 1 } }]
+      },
+      {
+        id: 'charm',
+        branchId: 'capture',
+        costPerRank: 1,
+        effects: [
+          { type: 'catchRatePercent', params: { percent: 10 } },
+          { type: 'recruitPercent', params: { percent: 10 } },
+          { type: 'shinyChancePercent', params: { percent: 100 } },
+          { type: 'contractLevelPercent', params: { percent: 50 } }
+        ]
+      },
+      {
+        id: 'trade',
+        branchId: 'commerce',
+        costPerRank: 1,
+        effects: [
+          { type: 'expPercent', params: { percent: 10 } },
+          { type: 'moneyPercent', params: { percent: 10 } },
+          { type: 'dropRatePercent', params: { percent: 10 } },
+          { type: 'shopPricePercent', params: { percent: -10 } },
+          { type: 'dwellingOutputPercent', params: { percent: 50 } },
+          { type: 'alchemySuccessPercent', params: { percent: 10 } },
+          { type: 'smithingSuccessPercent', params: { percent: 10 } },
+          { type: 'cookingSuccessPercent', params: { percent: 10 } }
+        ]
       }
     ],
     // Mức thân mật mẫu: quái fixture mặc định thân mật 0 (mức stranger, không hook).
@@ -2051,6 +2190,8 @@ export function makeRawData(): RawGameData {
         target: 'ally' as const,
         effects: [{ type: 'setPolarity', params: { change } }]
       })),
+      // Hoàn Nguyên Đan (docs/rules/tamer-talents.md): tẩy thiên phú ngự thú sư.
+      { id: 'restorationPill', category: 'material', price: 5000 },
       // Vong Ưu Thủy (docs/rules/monster-talents.md): tẩy thiên phú.
       {
         id: 'forgetWater',
@@ -2487,7 +2628,9 @@ function baseFields(): Omit<
     // No / tinh thần đầy (needs.max của fixture = 100).
     fullness: 100,
     sanity: 100,
-    ailment: null
+    ailment: null,
+    locked: false,
+    favorite: false
   }
 }
 
@@ -2735,6 +2878,7 @@ export function makeBattleContext(
     frenzyStatPercent: 0,
     mealStatPercent: {},
     collectionStatPercent: 0,
+    tamerBonusStatPercent: 0,
     ...overrides
   }
 }

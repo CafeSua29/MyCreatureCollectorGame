@@ -148,6 +148,7 @@ const WILD_ORIGINS: ReadonlySet<string> = new Set(['wild', 'boss', 'recruit'])
 /** Quái bắt / thu phục về trong kho, rảnh. */
 const isCaughtSpare = (monster: Monster, teamIds: ReadonlySet<string>): boolean =>
   !teamIds.has(monster.id) &&
+  !monster.locked &&
   isFree(monster) &&
   WILD_ORIGINS.has(monster.history?.origin.kind ?? '')
 
@@ -415,6 +416,7 @@ export function fuseWhenPossible(
       .filter(
         (m) =>
           !teamIds.has(m.id) &&
+          !m.locked &&
           isFree(m) &&
           newFusionSpecies(current, m).length > 0 &&
           fuseSuccessChance(data, current, m) >= GROWTH_POLICY.minFuseChance

@@ -62,7 +62,7 @@ import { failUnfinishedCombos, runComboCommand } from './combos'
 import { runTamerStep, tamersAtTurnEnd } from './tamerSkills'
 import { minionsAtTurnEnd } from './minions'
 import { frenziedPlayerSlots, frenzyAtTurnEnd, isFrenzied, rollFrenzyExtraAction } from './frenzy'
-import { disobeyChance } from '../tamer'
+import { disobeyChance, playerContractLevelLimit } from '../tamer'
 import { emitTraitEvent } from './eventQueue'
 import { flushTraitEvents } from './traitEvents'
 import { guard } from './traitEffects'
@@ -341,7 +341,10 @@ function frenzyCommands(data: GameData, d: Draft): BattleCommand[] {
 function rollDisobey(data: GameData, d: Draft, action: TurnAction, user: Monster): boolean {
   if (action.side !== 'player' || !action.command || isFrenzied(d.battle, user.id)) return false
   let disobeys: boolean
-  ;[disobeys, d.rng] = rollPercent(d.rng, disobeyChance(data, user, d.tamer.realm))
+  ;[disobeys, d.rng] = rollPercent(
+    d.rng,
+    disobeyChance(data, user, playerContractLevelLimit(data, d))
+  )
   if (disobeys) log(d, { type: 'disobey', monsterId: user.id })
   return disobeys
 }

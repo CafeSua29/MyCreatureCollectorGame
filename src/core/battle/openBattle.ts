@@ -7,6 +7,7 @@ import {
   eventModifierFields,
   hasTrialRule,
   trialEnemyMultiplier,
+  tamerBonusAmount,
   trialFixedField
 } from '../registries'
 import { equipBossUnique, type Encounter, type FloorSite } from '../world'
@@ -204,15 +205,13 @@ export function openBattle(
       player:
         tribulation || noTamers
           ? null
-          : newBattleTamer(
-              data,
-              state.tamer.realm,
-              null,
-              isTamerWounded(state) ? data.config.bond.woundManaPercent : 100
-            ),
+          : newBattleTamer(data, state.tamer.realm, {
+              manaBonusPercent: tamerBonusAmount(data, state, 'manaPercent'),
+              manaPercent: isTamerWounded(state) ? data.config.bond.woundManaPercent : 100
+            }),
       enemy:
         trainer && !noTamers
-          ? newBattleTamer(data, trainer.realm, [...trainer.tamerSkillIds])
+          ? newBattleTamer(data, trainer.realm, { skillIds: [...trainer.tamerSkillIds] })
           : null
     },
     // Cộng hưởng / trận pháp tính một lần từ cả đội lúc vào trận (đội không đổi trong trận);

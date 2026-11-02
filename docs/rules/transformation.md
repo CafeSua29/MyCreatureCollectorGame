@@ -28,7 +28,7 @@ Ba cơ chế biến hình của Pokémon, làm giống Pokémon trên nền batt
 - **Điều kiện:** Vòng Mega, quái không fuse, đang cầm đá có dạng thuộc loài hiện tại (`formOf = speciesId`), hoặc dạng có `megaSkillId` mà quái biết skill đó (Rayquaza: `dragonAscent`, vẫn cần Vòng Mega). Dạng dùng được: `megaFormsByStone` (`monster/forms.ts`). Loài nhiều dạng (Charizard / Mewtwo / Raichu X–Y, Absol / Garchomp / Lucario thường–Z...) mỗi dạng một loài và một đá riêng; cầm nhiều đá thì lệnh chọn dạng.
 - **Hiệu ứng tới hết trận** (đổi quái, gục vẫn giữ): chỉ số gốc lấy từ loài dạng Mega (bước đầu của `computeStats`), hệ theo dạng Mega; race, trait, skill, gen, level giữ nguyên.
 - **Primal** (Blue / Red Orb, `auto`): tự biến khi ra sân (mở trận, đổi quái, thay quái gục; trước trait vào sân, `autoTransformOnEntry`), không cần Vòng Mega, không tính lượt Mega của phe, vẫn là biến hình của quái.
-- **Nguồn đá:** hạ boss thuộc loài có dạng Mega rơi đá của một dạng (`mega.stoneDropChance`, × trait kiểu Pickup); cửa hàng trọng số thấp sau khi có Vòng Mega (đá Primal không cần).
+- **Nguồn đá:** hạ boss thuộc loài có dạng Mega rơi đá của một dạng (`mega.stoneDropChance`, × trait kiểu Pickup); cửa hàng trọng số thấp và chợ đen (`events.md`) sau khi có Vòng Mega (đá Primal không cần).
 
 ## Ultra Burst
 

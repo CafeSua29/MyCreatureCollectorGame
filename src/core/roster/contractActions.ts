@@ -11,10 +11,11 @@ import {
   assertNotWounded,
   contractChance,
   contractEscapeChance,
-  contractLevelLimit,
+  contractLevelPercent,
   contractedCount,
   isContracted,
   maxContracts,
+  playerContractLevelLimit,
   realmToContract
 } from '../tamer'
 import { dayOf, type GameData, type GameState, type Monster } from '../model'
@@ -35,8 +36,8 @@ function requireTownIdle(state: GameState): void {
 export function assertCanContract(data: GameData, state: GameState, monster: Monster): void {
   if (isContracted(monster)) throw new ActionError('alreadyContracted', { monsterId: monster.id })
   const { realm } = state.tamer
-  if (monster.level > contractLevelLimit(data, realm)) {
-    const needRealm = realmToContract(data, monster.level)
+  if (monster.level > playerContractLevelLimit(data, state)) {
+    const needRealm = realmToContract(data, monster.level, contractLevelPercent(data, state))
     throw new ActionError('tamerRealmTooLow', { monsterId: monster.id, needRealm })
   }
   const max = maxContracts(data, realm)
@@ -77,7 +78,10 @@ export function formContract(data: GameData, state: GameState, monsterId: string
   assertNotBusy(monster)
   assertCanContract(data, state, monster)
   const { realm } = state.tamer
-  const [success, rng] = rollPercent(state.rng, contractChance(data, monster, realm))
+  const [success, rng] = rollPercent(
+    state.rng,
+    contractChance(data, monster, playerContractLevelLimit(data, state))
+  )
   if (success) {
     const contracted = addMilestone(
       data,

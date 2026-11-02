@@ -229,8 +229,11 @@ describe('về theo ngày', () => {
     const event = defined(back.dayEvents.find((e) => e.type === 'expeditionReturned'))
     const egg = defined(back.eggs[0], 'trứng')
     expect(event).toMatchObject({ eggId: egg.id })
-    expect(egg.id).toBe(`m${state.nextMonsterId}`)
-    expect(back.nextMonsterId).toBe(state.nextMonsterId + 1)
+    // + 1 trứng (id mới nhất); bảng trao đổi ra ở lần qua ngày đầu (trước khi đội về) cũng giữ id
+    // cho quái NPC đưa (trades.md).
+    const traded = back.trades.offers.filter((offer) => offer.give.kind === 'monster').length
+    expect(back.nextMonsterId).toBe(state.nextMonsterId + 1 + traded)
+    expect(egg.id).toBe(`m${back.nextMonsterId - 1}`)
     // Tầng 1 = map field, boss strongling → dạng đầu weakling.
     expect(egg.monster.speciesId).toBe('weakling')
     expect(egg.monster.level).toBe(1)

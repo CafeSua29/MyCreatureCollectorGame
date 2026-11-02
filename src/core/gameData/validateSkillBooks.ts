@@ -16,6 +16,7 @@ const CONFIG_FIELDS = [
   'shopMin',
   'shopMax',
   'shopMaxPower',
+  'shopRareSkillFactor',
   'partyMultiplier',
   'bossDropChance',
   'reusableDropChance'

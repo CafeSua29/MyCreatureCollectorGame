@@ -19,6 +19,8 @@ export const CONTENT_KINDS = [
   'affinityTiers',
   'talentBranches',
   'talents',
+  'tamerTalentBranches',
+  'tamerTalents',
   'synergies',
   'formations',
   'natures',
@@ -41,7 +43,10 @@ export const CONTENT_KINDS = [
   'deities',
   'artifactSpirits',
   'achievements',
-  'titles'
+  'titles',
+  'sects',
+  'sectRanks',
+  'npcNames'
 ] as const
 
 export type ContentKind = (typeof CONTENT_KINDS)[number]

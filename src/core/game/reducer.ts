@@ -28,7 +28,12 @@ import {
   challengeWorldBoss,
   defendTown,
   acceptRecruit,
-  declineRecruit
+  declineRecruit,
+  challengePromotion,
+  challengeSectMember,
+  challengeSectWar,
+  enterSectWar,
+  forfeitSectWar
 } from '../battle'
 import {
   assertEventAllows,
@@ -65,7 +70,15 @@ import {
   hoursUntilWake,
   petMonster,
   setGameOption,
-  defaultGameOptions
+  defaultGameOptions,
+  newSectState,
+  newTradeState,
+  acceptTrade,
+  pullGacha,
+  joinSect,
+  leaveSect,
+  claimSectMission,
+  buySectItem
 } from '../progression'
 import {
   applyBait,
@@ -91,7 +104,13 @@ import {
 import { createInventory, discardItem } from '../inventory'
 import { newGameStats } from '../registries'
 import { buyCharm, buyItem, sellItem } from '../shop'
-import { bindContract, newTamerState, tamerBreakthrough } from '../tamer'
+import {
+  allocateTamerTalent,
+  bindContract,
+  newTamerState,
+  resetTamerTalents,
+  tamerBreakthrough
+} from '../tamer'
 import {
   fuse,
   implant,
@@ -124,6 +143,12 @@ import {
   takeHumanForm,
   upgradeSoulLevel,
   allocateTalent,
+  applyTeamPreset,
+  deleteTeamPreset,
+  newTeamPresetState,
+  saveTeamPreset,
+  setMonsterFavorite,
+  setMonsterLocked,
   bindBond,
   claimAchievement,
   claimDexReward,
@@ -151,7 +176,7 @@ import {
 import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 92
+export const SAVE_VERSION = 97
 
 export function createGameState(options: {
   seed: number
@@ -204,9 +229,12 @@ export function createGameState(options: {
     alchemy: newAlchemyState(),
     smithing: newSmithingState(),
     cooking: newCookingState(),
-    quests: { board: [], active: [], nextQuestId: 1 },
+    quests: { board: [], active: [], sect: [], nextQuestId: 1 },
     expeditions: { board: [], refreshDay: 0, active: [], nextId: 1 },
     trainers: newTrainerState(),
+    sect: newSectState(),
+    trades: newTradeState(),
+    teamPresets: newTeamPresetState(),
     trial: null,
     spiritPools: [],
     tower: { highest: 0 },
@@ -406,6 +434,45 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return forfeitTournament(state)
     case 'challengeArena':
       return challengeArena(data, state)
+    case 'joinSect':
+      return joinSect(data, state, action.sectId)
+    case 'leaveSect':
+      return leaveSect(data, state)
+    case 'claimSectMission':
+      return claimSectMission(data, state, action.questId)
+    case 'buySectItem':
+      return buySectItem(data, state, { item: action.item, count: action.count })
+    case 'challengeSectMember':
+      return challengeSectMember(data, state, action.memberId)
+    case 'challengePromotion':
+      return challengePromotion(data, state)
+    case 'enterSectWar':
+      return enterSectWar(data, state)
+    case 'challengeSectWar':
+      return challengeSectWar(data, state)
+    case 'forfeitSectWar':
+      return forfeitSectWar(state)
+    case 'saveTeamPreset':
+      return saveTeamPreset(data, state, { name: action.name, presetId: action.presetId })
+    case 'deleteTeamPreset':
+      return deleteTeamPreset(state, action.presetId)
+    case 'applyTeamPreset':
+      return applyTeamPreset(data, state, {
+        presetId: action.presetId,
+        withEquipment: action.withEquipment
+      })
+    case 'setMonsterLocked':
+      return setMonsterLocked(state, { monsterId: action.monsterId, locked: action.locked })
+    case 'setMonsterFavorite':
+      return setMonsterFavorite(state, { monsterId: action.monsterId, favorite: action.favorite })
+    case 'acceptTrade':
+      return acceptTrade(data, state, {
+        offerId: action.offerId,
+        monsterId: action.monsterId,
+        discardOverflow: action.discardOverflow
+      })
+    case 'pullGacha':
+      return pullGacha(data, state, action.count)
     case 'enterTrial':
       return enterTrial(data, state)
     case 'challengeTrial':
@@ -576,6 +643,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return upgradeSoulLevel(data, state, action.monsterId, action.stat)
     case 'allocateTalent':
       return allocateTalent(data, state, action.monsterId, action.nodeId)
+    case 'allocateTamerTalent':
+      return allocateTamerTalent(data, state, action.nodeId)
+    case 'resetTamerTalents':
+      return resetTamerTalents(data, state)
     case 'renameMonster':
       return renameMonster(data, state, action.monsterId, action.nickname)
     case 'bindBond':

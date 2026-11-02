@@ -1,6 +1,7 @@
 // Thành tựu và danh hiệu (docs/rules/achievements.md): bộ đếm chung của game, thành tựu theo bậc đọc
 // bộ đếm / state, danh hiệu đeo một cái để nhận buff nhỏ toàn cục.
 
+import type { TamerBonusDef } from './tamerTalents'
 import type { ItemReward } from './trainers'
 
 /**
@@ -21,7 +22,9 @@ export const STAT_KEYS = [
   'pillsCrafted',
   'itemsForged',
   'dishesCooked',
-  'oldAgeDeaths'
+  'oldAgeDeaths',
+  'questsCompleted',
+  'gachaPulls'
 ] as const
 
 export type StatKey = (typeof STAT_KEYS)[number]
@@ -91,31 +94,13 @@ export interface AchievementState {
 }
 
 /**
- * Loại hiệu ứng danh hiệu (registry TITLE_EFFECTS ở registries/titles.ts): mọi loại là một kênh %,
- * nhân phần thưởng / tỉ lệ như chúc phúc (recruitPercent, alchemySuccessPercent cộng thẳng vào %).
+ * Một danh hiệu (src/data/titles.json; tên ở i18n): hiệu ứng là kênh thưởng ngự thú sư
+ * (TAMER_BONUS_TYPES, docs/rules/tamer-talents.md), có tác dụng khi đang đeo.
  */
-export const TITLE_EFFECT_TYPES = [
-  'expPercent',
-  'moneyPercent',
-  'dropRatePercent',
-  'catchRatePercent',
-  'recruitPercent',
-  'shinyChancePercent',
-  'alchemySuccessPercent'
-] as const
-
-export type TitleEffectType = (typeof TITLE_EFFECT_TYPES)[number]
-
-export interface TitleEffectDef {
-  type: TitleEffectType
-  params: unknown
-}
-
-/** Một danh hiệu (src/data/titles.json; tên ở i18n): hiệu ứng có tác dụng khi đang đeo. */
 export interface TitleDef {
   id: string
   /** Có thể rỗng (danh hiệu chỉ để trưng). */
-  effects: TitleEffectDef[]
+  effects: TamerBonusDef[]
 }
 
 /** Danh hiệu trong save: đã có (không trùng), đang đeo (một trong owned hoặc null). */

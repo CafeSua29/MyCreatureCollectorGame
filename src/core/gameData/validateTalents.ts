@@ -1,7 +1,7 @@
 // Kiểm tra dữ liệu thiên phú quái (docs/rules/monster-talents.md): config.talents,
 // talentBranches.json, talents.json.
 
-import { TRAIT_HOOKS, checkIdList, raceRefIds } from '../registries'
+import { TRAIT_HOOKS, checkIdList, raceRefIds, type RankedNode } from '../registries'
 import type { GameData, TalentNodeDef } from '../model'
 import { asObject, checkInteger } from '../shared'
 import { checkDrops, checkEffects, checkKnownFields } from './checks'
@@ -35,46 +35,66 @@ function checkBranches(data: GameData, issues: string[]): void {
   }
 }
 
+type RankedNodeDef = RankedNode & { id: string }
+
 /**
- * Nút yêu cầu: tồn tại, khác chính nút, cùng nhánh hoặc ở nhánh chung (nút nhánh race khác thì
- * không bao giờ đủ), cấp nguyên trong [1, maxRank của nút đó].
+ * Phần chung của nút nâng theo cấp (thiên phú quái, thiên phú ngự thú sư): costPerRank / maxRank
+ * nguyên ≥ 1; nút yêu cầu tồn tại, khác chính nút, cấp nguyên trong [1, maxRank của nút đó], không
+ * thành vòng.
  */
-function checkRequires(data: GameData, node: TalentNodeDef, where: string): string[] {
-  if (node.requires === undefined) return []
+export function checkRankedNode(
+  nodes: Readonly<Record<string, RankedNodeDef>>,
+  node: RankedNodeDef,
+  where: string
+): string[] {
+  const issues = checkInteger(node.costPerRank, `${where}: costPerRank`, 1)
+  if (node.maxRank !== undefined) issues.push(...checkInteger(node.maxRank, `${where}: maxRank`, 1))
+  if (node.requires === undefined) return issues
   const requires = asObject(node.requires)
-  if (!requires) return [`${where}: requires phải là object id nút → cấp`]
-  const issues: string[] = []
+  if (!requires) return [...issues, `${where}: requires phải là object id nút → cấp`]
   for (const [requiredId, rank] of Object.entries(requires)) {
     const at = `${where}: requires.${requiredId}`
-    const required = data.talents[requiredId]
+    const required = Object.hasOwn(nodes, requiredId) ? nodes[requiredId] : undefined
     if (!required || requiredId === node.id) {
       issues.push(`${at}: nút không tồn tại hoặc trùng chính nút`)
       continue
-    }
-    const branch = data.talentBranches[required.branchId]
-    if (required.branchId !== node.branchId && branch?.raceIds !== undefined) {
-      issues.push(`${at}: nút yêu cầu phải cùng nhánh hoặc ở nhánh chung`)
     }
     issues.push(...checkInteger(rank, at, 1))
     if (required.maxRank !== undefined && typeof rank === 'number' && rank > required.maxRank) {
       issues.push(`${at}: vượt cấp tối đa ${required.maxRank} của nút yêu cầu`)
     }
   }
+  if (findRequireCycle(nodes, node.id)) issues.push(`${where}: yêu cầu thành vòng`)
   return issues
 }
 
 /** Nút nằm trong vòng yêu cầu (A cần B, B cần A): không bao giờ nâng được. */
-function findRequireCycle(data: GameData, startId: string): boolean {
+function findRequireCycle(nodes: Readonly<Record<string, RankedNode>>, startId: string): boolean {
   const seen = new Set<string>()
-  const stack = Object.keys(data.talents[startId].requires ?? {})
+  const stack = Object.keys(nodes[startId].requires ?? {})
   while (stack.length > 0) {
     const id = stack.pop()
-    if (id === undefined || seen.has(id) || !data.talents[id]) continue
+    if (id === undefined || seen.has(id) || !Object.hasOwn(nodes, id)) continue
     if (id === startId) return true
     seen.add(id)
-    stack.push(...Object.keys(data.talents[id].requires ?? {}))
+    stack.push(...Object.keys(nodes[id].requires ?? {}))
   }
   return false
+}
+
+/** Nút thiên phú quái chỉ được yêu cầu nút cùng nhánh hoặc ở nhánh chung (nhánh race khác không bao giờ đủ). */
+function checkRequiredBranches(data: GameData, node: TalentNodeDef, where: string): string[] {
+  const issues: string[] = []
+  for (const requiredId of Object.keys(asObject(node.requires) ?? {})) {
+    const required = data.talents[requiredId]
+    if (!required || required.branchId === node.branchId) continue
+    if (data.talentBranches[required.branchId]?.raceIds !== undefined) {
+      issues.push(
+        `${where}: requires.${requiredId}: nút yêu cầu phải cùng nhánh hoặc ở nhánh chung`
+      )
+    }
+  }
+  return issues
 }
 
 function checkNodes(data: GameData, issues: string[]): void {
@@ -84,12 +104,8 @@ function checkNodes(data: GameData, issues: string[]): void {
     if (!Object.hasOwn(data.talentBranches, node.branchId)) {
       issues.push(`${where}: nhánh không tồn tại "${String(node.branchId)}"`)
     }
-    issues.push(...checkInteger(node.costPerRank, `${where}: costPerRank`, 1))
-    if (node.maxRank !== undefined) {
-      issues.push(...checkInteger(node.maxRank, `${where}: maxRank`, 1))
-    }
-    issues.push(...checkRequires(data, node, where))
-    if (findRequireCycle(data, node.id)) issues.push(`${where}: yêu cầu thành vòng`)
+    issues.push(...checkRankedNode(data.talents, node, where))
+    issues.push(...checkRequiredBranches(data, node, where))
     checkEffects(TRAIT_HOOKS, node.hooks, where, data, issues)
   }
 }

@@ -247,6 +247,17 @@ describe('cấy ghép', () => {
     expect(implant(doomed, stored).storage).toEqual([])
     const alone = labState([hero({ implantFails: 2, implantAttempts: 2 })])
     expectActionError(() => implant(doomed, alone), 'partyWouldBeEmpty')
+    // Quái khóa không được liều mạng (docs/rules/roster.md); còn thất bại được thì vẫn cấy.
+    const locked = labState(
+      [makeMonster({ id: 'b' })],
+      [hero({ implantFails: 2, implantAttempts: 2, locked: true })]
+    )
+    expectActionError(() => implant(doomed, locked), 'monsterLocked')
+    const safe = labState(
+      [makeMonster({ id: 'b' })],
+      [hero({ implantFails: 1, implantAttempts: 1, locked: true })]
+    )
+    expect(implant(doomed, safe).storage).toHaveLength(1)
     // Chưa tới lần thất bại cuối thì quái duy nhất vẫn cấy được.
     expect(
       heroOf(implant(doomed, labState([hero({ implantFails: 1, implantAttempts: 1 })])))

@@ -3,7 +3,7 @@
 // linh điền lớn, thân mật quái làm việc), lấy đồ về túi, cộng % luyện.
 
 import { addBooks, addItems, learnsetSkillIds, removeItems, rollSkillBooks } from '../inventory'
-import { changeAffinity, workerPower } from '../registries'
+import { changeAffinity, tamerBonusAmount, workerPower } from '../registries'
 import { assertNotBusy, isFainted } from '../monster'
 import { biomeOfFloor } from '../world'
 import {
@@ -51,12 +51,13 @@ function basePower(
 }
 
 /**
- * Sức làm việc của mọi công trình đã xây: sức gốc × (1 + Σ % của công trình `outputBoost` / 100);
- * công trình `outputBoost` không tự cộng cho mình.
+ * Sức làm việc của mọi công trình đã xây: sức gốc × (1 + (Σ % của công trình `outputBoost` + kênh
+ * thưởng ngự thú sư `dwellingOutputPercent`, docs/rules/tamer-talents.md) / 100); công trình
+ * `outputBoost` không tự cộng cho mình.
  */
 export function buildingPowers(data: GameData, state: GameState): Record<string, number> {
   const base: Record<string, number> = {}
-  let boostPercent = 0
+  let boostPercent = tamerBonusAmount(data, state, 'dwellingOutputPercent')
   for (const [id, building] of Object.entries(state.dwelling.buildings)) {
     const def = data.buildings[id]
     base[id] = basePower(data, state, { def, building })
@@ -65,7 +66,9 @@ export function buildingPowers(data: GameData, state: GameState): Record<string,
   return Object.fromEntries(
     Object.entries(base).map(([id, power]) => [
       id,
-      data.buildings[id].effect.type === 'outputBoost' ? power : power * (1 + boostPercent / 100)
+      data.buildings[id].effect.type === 'outputBoost'
+        ? power
+        : power * Math.max(0, 1 + boostPercent / 100)
     ])
   )
 }

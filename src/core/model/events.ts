@@ -219,17 +219,17 @@ export type SpecialBattle =
 export type SpecialBattleKind = SpecialBattle['kind']
 
 /** Loại pool của cửa hàng tạm (registry TEMP_SHOP_POOLS ở registries/eventResults.ts). */
-export const TEMP_SHOP_POOLS = ['regular', 'blackMarket', 'crystal'] as const
-
-export type TempShopPool = (typeof TEMP_SHOP_POOLS)[number]
-
-/** Một món vật phẩm của chợ đen: trọng số, số lượng bán đều trong [min, max]. */
-export interface BlackMarketItem {
+/** Một món theo trọng số, số lượng đều trong [min, max] (kết quả event `giveItems`...). */
+export interface EventLootItem {
   itemId: string
   weight: number
   min: number
   max: number
 }
+
+export const TEMP_SHOP_POOLS = ['regular', 'blackMarket', 'crystal'] as const
+
+export type TempShopPool = (typeof TEMP_SHOP_POOLS)[number]
 
 export interface EventConfig {
   /** % startWildBattle gặp event khám phá thay cho trận. */
@@ -240,7 +240,15 @@ export interface EventConfig {
   townChance: number
   blackMarket: {
     count: { min: number; max: number }
-    items: BlackMarketItem[]
+    /**
+     * Vật phẩm chợ đen: chỉ đồ hiếm, khó tìm = vật phẩm gộp chồng không bán ở cửa hàng thị trấn (không
+     * có `shop`), giá gốc ≥ minItemPrice; mỗi lượt 1 cái, trọng số = giá^itemWeightPower (âm: càng đắt
+     * càng hiếm).
+     */
+    minItemPrice: number
+    itemWeightPower: number
+    /** Món hiếm dù cửa hàng có bán hoặc giá thấp (bùa fuse): luôn vào hàng chợ đen. */
+    extraItemIds: string[]
     /** Trang bị thường (không unique): trọng số của mỗi lượt, bậc, dòng tung ở minRollPercent % trên. */
     equipment: {
       weight: number

@@ -1,11 +1,6 @@
 // Kiểm tra dữ liệu thành tựu và danh hiệu (docs/rules/achievements.md): achievements.json, titles.json.
 
-import {
-  ACHIEVEMENT_CONDITIONS,
-  TITLE_EFFECTS,
-  checkTypedParams,
-  isTitleEffectType
-} from '../registries'
+import { ACHIEVEMENT_CONDITIONS, checkTypedParams } from '../registries'
 import type {
   AchievementDef,
   AchievementRepeat,
@@ -16,6 +11,7 @@ import type {
 } from '../model'
 import { asObject, checkInteger, isFiniteNumber } from '../shared'
 import { checkItemRewards, checkKnownFields, fieldList } from './checks'
+import { checkTamerBonusEffects } from './validateTamerTalents'
 
 const ACHIEVEMENT_FIELDS = fieldList<AchievementDef>({
   id: true,
@@ -133,23 +129,7 @@ function checkAchievement(data: GameData, achievement: AchievementDef, issues: s
 function checkTitle(title: TitleDef, issues: string[]): void {
   const where = `Danh hiệu "${title.id}"`
   checkKnownFields(title, TITLE_FIELDS, where, 'danh hiệu', issues)
-  if (!Array.isArray(title.effects)) {
-    issues.push(`${where}: effects phải là danh sách`)
-    return
-  }
-  title.effects.forEach((effect: unknown, i) => {
-    const at = `${where}: effects[${i}]`
-    const obj = asObject(effect)
-    const type = obj?.type
-    if (typeof type !== 'string' || !isTitleEffectType(type)) {
-      issues.push(`${at}: loại hiệu ứng lạ "${String(type)}"`)
-      return
-    }
-    checkKnownFields(obj, ['type', 'params'], at, 'hiệu ứng', issues)
-    for (const issue of TITLE_EFFECTS[type].validateParams(obj?.params)) {
-      issues.push(`${at} (${type}): ${issue}`)
-    }
-  })
+  checkTamerBonusEffects(title.effects, where, issues)
 }
 
 /** Kiểm tra thành tựu và danh hiệu. */
