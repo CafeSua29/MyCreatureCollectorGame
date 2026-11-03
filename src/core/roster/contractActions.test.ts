@@ -7,6 +7,7 @@ import { gameReducer, validateGameState } from '../game'
 import { createGameData } from '../gameData'
 import { toBig } from '../shared'
 import {
+  findLog,
   defined,
   expectActionError,
   makeGameState,
@@ -15,7 +16,6 @@ import {
   type MonsterOverrides
 } from '../testing'
 import type { ContractConfig, GameData, GameState, Monster } from '../model'
-import { contractOutcome } from './contractActions'
 
 /** Dữ liệu fixture với tỉ lệ khế ước cố định `chance` (min = max) và % bỏ trốn `escape`. */
 function contractData(chance: number, escape = 0, extra: Partial<ContractConfig> = {}): GameData {
@@ -69,7 +69,7 @@ describe('khế ước thành công', () => {
     const monster = defined(find(after, 'b'))
     expect(monster.contractRealm).toBe(2)
     expect(monster.history?.milestones.at(-1)).toEqual({ day: 2, kind: 'contracted', realm: 2 })
-    expect(contractOutcome(state, after, 'b')).toBe('success')
+    expect(after.log).toEqual([{ type: 'contractAttempted', monsterId: 'b', outcome: 'success' }])
     expect(validateGameState(sure, after)).toEqual([])
   })
 
@@ -87,7 +87,7 @@ describe('khế ước thất bại (phản phệ)', () => {
     const after = contract(fail, state)
     expect(defined(find(after, 'b'))).toMatchObject({ contractRealm: null, affinity: 70 })
     expect(after.tamer.woundUntilDay).toBe(4)
-    expect(contractOutcome(state, after, 'b')).toBe('failed')
+    expect(findLog(after, 'contractAttempted')?.outcome).toBe('failed')
     // Đang bị thương: không khế ước được, không đột phá được.
     expectActionError(() => contract(sure, after), 'tamerWounded', { untilDay: 4 })
     expect(contract(sure, { ...after, time: 5 * 24 }).party[1].contractRealm).toBe(0)
@@ -107,7 +107,7 @@ describe('khế ước thất bại (phản phệ)', () => {
     const after = contract(flee, state)
     expect(find(after, 'b')).toBeUndefined()
     expect(after.inventory.stacks.ball).toBe(1)
-    expect(contractOutcome(state, after, 'b')).toBe('escaped')
+    expect(findLog(after, 'contractAttempted')?.outcome).toBe('escaped')
   })
 
   it('quái duy nhất trong đội không bỏ trốn; thân mật tối đa không bỏ trốn', () => {

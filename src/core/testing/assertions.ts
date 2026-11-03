@@ -1,5 +1,6 @@
 import { expect } from 'vitest'
 import { ActionError, type ActionErrorCode, type ActionErrorParams } from '../shared'
+import type { GameLogEntry, GameLogType, GameState } from '../model'
 
 /**
  * Thay cho `!` trong test: trả về giá trị nếu có, không thì ném lỗi rõ ràng để test đỏ đúng chỗ
@@ -8,6 +9,16 @@ import { ActionError, type ActionErrorCode, type ActionErrorParams } from '../sh
 export function defined<T>(value: T | null | undefined, what = 'giá trị'): T {
   if (value === null || value === undefined) throw new Error(`Thiếu ${what} (null / undefined)`)
   return value
+}
+
+/** Dòng log ngoài trận đầu tiên loại `type` của action vừa làm (không có thì undefined). */
+export function findLog<T extends GameLogType>(
+  state: Pick<GameState, 'log'>,
+  type: T
+): Extract<GameLogEntry, { type: T }> | undefined {
+  // Ép kiểu: vừa lọc theo type.
+  return state.log.find((entry) => entry.type === type) as
+    Extract<GameLogEntry, { type: T }> | undefined
 }
 
 /**

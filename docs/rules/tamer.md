@@ -28,7 +28,7 @@ Code: `tamer/realm.ts` (mọi công thức theo cảnh giới), `tamer/contract.
   - Tỉ lệ thành công `max(minChance, baseChance − n × chanceStep)` (tung RNG của state).
   - Thất bại: mất tiền và đan, **giữ EXP** và cảnh giới. Không có rủi ro chết.
   - Thành công: `realm + 1`, trừ EXP cần (dư giữ lại), nâng khế ước mọi quái đang sở hữu.
-  - Ngoài trận không có log (như fuse): UI so state trước / sau bằng `breakthroughOutcome(before, after)` → `success` / `failed`.
+  - Kết quả: log ngoài trận `breakthrough { success, realm }` (realm = cảnh giới sau lần thử; `game-log.md`).
 - **Phá Cảnh Đan** (`breakthroughPill`, category `material`, `world-items.md`): rơi khi hạ **boss tầng của map** (`tamer.floorBossDrops`, cùng chỗ với bảng rơi Thọ Nguyên Đan / Kẹo Hiếm của boss tầng), bán ở cửa hàng (trọng số thấp, giá × tầng như vật phẩm thường). Luyện được (`alchemy.md`): cần **3 yêu đan cùng một hệ** (hệ nào cũng được; ngự thú sư không có hệ nên không ép một hệ cụ thể) + Tinh Phách Thiên Giới + 2 Nhân Sâm.
 
 ## Hiệu lực theo cảnh giới
@@ -39,7 +39,7 @@ Code: `tamer/realm.ts` (mọi công thức theo cảnh giới), `tamer/contract.
 - **Giới hạn khế ước** (chỉ áp cho **khế ước**, không áp cho bắt bóng / thu phục / khu bảo tồn): mục "Khế ước" dưới.
 - **Ô đồ cầm:** `equipmentSlotCount` cộng số mốc cảnh giới đã đạt (`realmMilestones` 2, 5, 10 rồi gấp đôi mãi: 20, 40…; `countMilestonesReached`, `world-items.md`).
 - **Linh lực** (kỹ năng trong trận): tối đa `manaBase + manaPerRealm × realm` (người chơi × (1 + kênh thưởng `manaPercent` / 100), thiên phú ngự thú sư, `tamer-talents.md`), đầy lại mỗi đầu trận.
-- Mở khóa (kỹ năng, ô) và sức mạnh (giới hạn level và số ô khế ước, linh lực) theo **cảnh giới hiện tại** (hiện cảnh giới không bao giờ giảm nên bằng cảnh giới cao nhất từng đạt). Chưa có: mở khóa / ô / thọ nguyên theo **cảnh giới cao nhất từng đạt** khi có phi thăng (chờ `ascension.md`, ghi ở đó).
+- Cảnh giới chỉ giảm khi phi thăng. Phi thăng reset cảnh giới: mở khóa (kỹ năng, ô) theo **cảnh giới cao nhất từng đạt**, sức mạnh (giới hạn level, số ô khế ước, linh lực) theo cảnh giới hiện tại (`ascension.md`).
 - Chưa có (ghi ở roadmap của mục đó): ô thám hiểm `1 + ⌊cảnh giới / 2⌋` (`expeditions.md`). Mốc cảnh giới cộng sức chứa kho / túi trang bị (đã làm, `capacity.md`).
 
 ## Khế ước
@@ -58,7 +58,7 @@ Như truyện ngự thú: bắt là một việc, **khế ước** là việc kh
   - **Không nghe lệnh:** lệnh skill người chơi ra cho quái chưa khế ước có `disobeyChance` % bỏ lượt (log `disobey { monsterId }`, kiểm sau trait / trạng thái mất lượt): `min(max, base + levelScale × min(r, 1) + overLimitScale × max(0, r − 1)) × (1 − affinityReduction × thân mật / 255)`, `r` = level / giới hạn level khế ước của cảnh giới hiện tại = `min(50, 1 + 5 × min(r, 1) + 30 × max(0, r − 1)) × (1 − 0,8 × thân mật / 255)`: trong giới hạn level chỉ 1–6% (thân mật cao còn 0,2–1,2%), vượt giới hạn tăng nhanh (level gấp đôi giới hạn: 36%). Hành động thêm / lệnh do AI chọn (cuồng bạo) không xét; tỉ lệ 0 không tốn RNG.
   - **Dễ cuồng bạo:** vai trò `unbound` (`frenzy.md`): ngưỡng 25% HP, mất điều khiển như quái race khó kiểm soát.
   - Mô phỏng A/B biến thể `unbound` (đội mẫu chưa khế ước, `balance-capture.md`).
-- **Kết quả** cho UI: `contractOutcome(before, after, monsterId)` → `success` / `failed` / `escaped` (ngoài trận không có log, như đột phá).
+- **Kết quả** cho UI: log ngoài trận `contractAttempted { monsterId, outcome }`, outcome `success` / `failed` / `escaped` (`game-log.md`).
 - **`dissolveContract { monsterId }`** (thị trấn, ngoài trận, quái rảnh): giải trừ, `contractRealm` = null, mất tâm linh tương thông (`contractDays` = 0), quái − `dissolveAffinityLoss` (50) thân mật, **ngự thú sư bị phản phệ** `dissolveBacklashDays` (2) ngày (như thất bại khế ước: không khế ước / đột phá, linh lực đầu trận giảm; không rút ngắn vết cũ); trả ô.
 - **Tâm linh tương thông** (chủ project chốt 2026-10-25): `Monster.contractDays` = số ngày đã khế ước liên tục (việc theo ngày `soulLink`: +1 mỗi ngày cho quái đã khế ước ở đội / kho; khế ước thành công / giải trừ đặt 0; chưa khế ước luôn 0). Mức (`contract.soulLinkTiers`, tăng dần theo `days`; `soulLinkTier`, điểm duy nhất ở `registries/soulLink.ts`) đạt khi đủ cả số ngày và thân mật, lấy mức cao nhất:
 
@@ -81,7 +81,7 @@ Như truyện ngự thú: ngự thú sư chọn **một quái làm bản mệnh*
 - **Đổi bản mệnh** (đang có bản mệnh khác): tốn `rebindCostPerRealm × (cảnh giới + 1)` (5.000), bản mệnh cũ − `rebindAffinityLoss` (100) thân mật và hết là bản mệnh. Đã từng kết thì phải chờ `rebindCooldownDays` (30) ngày kể từ lần kết trước, kể cả khi bản mệnh cũ đã chết (`bondCooldown { readyDay }`).
 - **Lợi ích:** cộng hưởng khế ước × `resonanceMultiplier` (3; nguồn % `contract`, `stats-traits.md`); thọ nguyên × `lifespanMultiplier` (2; mục `bond` của `LIFESPAN_MODIFIERS`, `lifespan.md`); bản mệnh còn sống trên sân thì kỹ năng ngự thú sư tốn `manaCostPercent` % linh lực (50%, làm tròn lên; `tamerSkillManaCost`, giá tính trước khi kỹ năng chạy); không giảm thân mật khi gục.
 - **Chặn:** thả (`releaseMonster`), làm quái phụ fuse / hiến tế (`sacrifice.md`): `isBondBeast { monsterId }` (đổi bản mệnh trước). Trao đổi NPC làm sau tự gọi `assertNotBond`. Cấy ghép **không chặn** bản mệnh (chọn liều là việc của người chơi, như độ kiếp; `implant.md`).
-- **Bản mệnh chết hẳn** (tọa hóa, chết trong độ kiếp, cấy ghép thất bại lần cuối; đều gọi `woundIfBondDied`): đạo thương tới hết ngày `hôm nay + woundDays − 1` (30 ngày); log `bondBroken { monsterId, woundUntilDay }` (`dayEvents` khi tọa hóa, log trận khi độ kiếp; cấy ghép không có log, UI đọc `tamer.woundUntilDay`). Trong đạo thương: **không đột phá** (`tamerWounded { untilDay }`) và linh lực đầu trận chỉ còn `woundManaPercent` % (50%). Roadmap ghi "mất cộng hưởng khế ước": Claude đổi thành giảm linh lực (2026-10-25) vì cộng hưởng tính trên từng quái từ `(data, monster)`, không đọc được state ngự thú sư.
+- **Bản mệnh chết hẳn** (tọa hóa, chết trong độ kiếp, cấy ghép thất bại lần cuối; đều gọi `woundIfBondDied`): đạo thương tới hết ngày `hôm nay + woundDays − 1` (30 ngày); log `bondBroken { monsterId, woundUntilDay }` (log ngoài trận khi tọa hóa / cấy ghép thất bại lần cuối, log trận khi độ kiếp). Trong đạo thương: **không đột phá** (`tamerWounded { untilDay }`) và linh lực đầu trận chỉ còn `woundManaPercent` % (50%). Roadmap ghi "mất cộng hưởng khế ước": Claude đổi thành giảm linh lực (2026-10-25) vì cộng hưởng tính trên từng quái từ `(data, monster)`, không đọc được state ngự thú sư.
 - **Save** (v50): `bond` boolean trên mọi quái; một bản mệnh tối đa, quái trong trứng / quái địch không là bản mệnh, có bản mệnh thì `bondDay` khác null (`validateBondState`).
 - **Mô phỏng:** "người chơi" kết bản mệnh với quái đội mẫu mạnh nhất đủ thân mật khi chưa có (`bindBondWhenPossible`, `simulation-features.md`).
 

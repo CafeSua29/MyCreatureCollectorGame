@@ -21,6 +21,7 @@ import type { NonHpStat } from './state'
 import type { TalentBranchDef, TalentNodeDef } from './talents'
 import type { NpcNameDef, SectDef, SectRankDef } from './sects'
 import type { TamerTalentBranchDef, TamerTalentNodeDef } from './tamerTalents'
+import type { AscensionUpgradeDef, DestinyDef } from './ascension'
 import type { TamerRealmDef, TamerSkill } from './tamer'
 import type { TextData } from './text'
 import type { ActiveTime, GameOptionFlag } from './time'
@@ -1721,6 +1722,8 @@ export interface RawGameData {
   talents: TalentNodeDef[]
   tamerTalentBranches: TamerTalentBranchDef[]
   tamerTalents: TamerTalentNodeDef[]
+  ascensionUpgrades: AscensionUpgradeDef[]
+  destinies: DestinyDef[]
   synergies: SynergyDef[]
   formations: FormationDef[]
   comboSkills: RawComboSkill[]
@@ -1781,6 +1784,8 @@ export interface GameData {
   /** Nhánh và nút thiên phú ngự thú sư (docs/rules/tamer-talents.md); thứ tự key = thứ tự JSON. */
   tamerTalentBranches: Record<string, TamerTalentBranchDef>
   tamerTalents: Record<string, TamerTalentNodeDef>
+  ascensionUpgrades: Record<string, AscensionUpgradeDef>
+  destinies: Record<string, DestinyDef>
   /** Cộng hưởng đội, trận pháp, phần riêng của hợp kích kỹ (docs/rules/team.md). */
   synergies: Record<string, SynergyDef>
   formations: Record<string, FormationDef>

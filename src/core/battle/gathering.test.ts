@@ -13,18 +13,29 @@ import {
   dataIssuesAfter,
   defined,
   expectActionError,
+  findLog,
   makeGameState,
   makeMonster,
   makeRawData,
   uniformStats,
   withFixtureText
 } from '../testing'
-import type { GameAction, GameData, GameState, Monster, RawGameData } from '../model'
+import type { GameAction, GameData, GameLogEntry, GameState, Monster, RawGameData } from '../model'
 import { suggestBattleCommands } from './ai'
 import { gather } from './gathering'
 import { isRecruitBattle } from './recruit'
 
 const ids = FIXTURE_GATHERING_ITEM_IDS
+
+/** Kết quả thu thập trong log của action vừa làm, bỏ trường type (không có thì null). */
+function gatheredOf(
+  state: GameState
+): Omit<Extract<GameLogEntry, { type: 'gathered' }>, 'type'> | null {
+  const entry = findLog(state, 'gathered')
+  if (!entry) return null
+  const { type: _type, ...result } = entry
+  return result
+}
 
 function makeGatheringData(edit: (raw: RawGameData) => void = () => {}): GameData {
   const raw = makeRawData()
@@ -107,7 +118,7 @@ describe('câu cá', () => {
     const after = fish(itemsOnly, start)
     expect(after.battle).toBeNull()
     expect(after.time).toBe(start.time + itemsOnly.config.clock.hours.fishing)
-    expect(after.gathering.lastResult).toEqual({
+    expect(gatheredOf(after)).toEqual({
       method: 'fishing',
       tier: 1,
       lureItemId: null,
@@ -123,17 +134,17 @@ describe('câu cá', () => {
   it('cấp 1 không ra món minTier 3 / món của map hệ khác; cấp 3 ra được, tung itemRolls lượt', () => {
     const itemsOnly = withBattleChance(0)
     const low = runSeeds(60, (seed) => fish(itemsOnly, floorState({ [ids.oldRod]: 1 }, seed)))
-    const lowItems = low.flatMap((s) => defined(s.gathering.lastResult, 'kết quả').items)
+    const lowItems = low.flatMap((s) => defined(gatheredOf(s), 'kết quả').items)
     expect(lowItems.every((item) => item.itemId === 'potion')).toBe(true)
     const high = runSeeds(60, (seed) => fish(itemsOnly, floorState({ [ids.superRod]: 1 }, seed)))
     for (const state of high) {
-      const result = defined(state.gathering.lastResult, 'kết quả')
+      const result = defined(gatheredOf(state), 'kết quả')
       expect(result.tier).toBe(3)
       expect(result.items).toHaveLength(itemsOnly.config.gathering.fishing.tiers[2].itemRolls)
       // Món theo hệ nước của map không bao giờ ra ở map field (không có hệ chủ đạo nước).
       expect(result.items.some((item) => item.itemId === 'revive')).toBe(false)
     }
-    const highItems = high.flatMap((s) => defined(s.gathering.lastResult, 'kết quả').items)
+    const highItems = high.flatMap((s) => defined(gatheredOf(s), 'kết quả').items)
     expect(highItems.some((item) => item.itemId === 'masterBall')).toBe(true)
   })
 
@@ -142,7 +153,7 @@ describe('câu cá', () => {
       defined(raw.biomes[0], 'map field').elementIds = ['water']
     })
     const results = runSeeds(40, (seed) => fish(watery, floorState({ [ids.oldRod]: 1 }, seed)))
-    const items = results.flatMap((s) => defined(s.gathering.lastResult, 'kết quả').items)
+    const items = results.flatMap((s) => defined(gatheredOf(s), 'kết quả').items)
     expect(items.some((item) => item.itemId === 'revive')).toBe(true)
   })
 
@@ -156,8 +167,8 @@ describe('câu cá', () => {
     expect(battle.enemies).toHaveLength(1)
     // Tầng 1 level 1, cần câu thường −2 → tối thiểu 1.
     expect(defined(battle.enemies[0], 'quái').level).toBe(1)
-    expect(biting.gathering.lastResult?.encounter).toBe('bite')
-    expect(biting.gathering.lastResult?.items).toEqual([])
+    expect(gatheredOf(biting)?.encounter).toBe('bite')
+    expect(gatheredOf(biting)?.items).toEqual([])
     expect(biting.time).toBe(start.time)
     expect(isRecruitBattle(battle)).toBe(true)
     const fled = gameReducer(always, biting, { type: 'flee' })
@@ -192,7 +203,7 @@ describe('câu cá', () => {
     )
     for (const state of lured) {
       expect(getItemCount(state.inventory, ids.lure)).toBe(1)
-      expect(state.gathering.lastResult?.lureItemId).toBe(ids.lure)
+      expect(gatheredOf(state)?.lureItemId).toBe(ids.lure)
     }
     expect(lured.filter((s) => enemySpecies(s) === 'strongling').length).toBeGreaterThan(70)
   })
@@ -230,7 +241,7 @@ describe('khai thác', () => {
     expect(after.battle).toBeNull()
     expect(after.time).toBe(start.time + calm.config.clock.hours.mining)
     expect(getItemCount(after.inventory, FIXTURE_ENHANCE_STONE_ID)).toBe(2)
-    expect(after.gathering.lastResult?.encounter).toBe('none')
+    expect(gatheredOf(after)?.encounter).toBe('none')
   })
 
   it('phục kích: vẫn nhận khoáng, quái hợp cách khai thác, không chạy được ở lượt đầu', () => {
@@ -240,7 +251,7 @@ describe('khai thác', () => {
     expect(battle.special).toEqual({ kind: 'gathering', method: 'mining', ambush: true })
     expect(enemySpecies(fighting)).toBe('weakling')
     expect(getItemCount(fighting.inventory, FIXTURE_ENHANCE_STONE_ID)).toBe(2)
-    expect(fighting.gathering.lastResult?.encounter).toBe('ambush')
+    expect(gatheredOf(fighting)?.encounter).toBe('ambush')
     expectActionError(
       () => gameReducer(ambushed, fighting, { type: 'flee' }),
       'specialBattleRestricted',
@@ -370,17 +381,12 @@ describe('save', () => {
     expect(validateGameState(ambushed, fighting)).toEqual([])
   })
 
-  it('báo lỗi save: kết quả sai, trận thu thập sai', () => {
+  it('báo lỗi save: dòng log thu thập thiếu trường, trận thu thập sai', () => {
     const fished = fish(withBattleChance(0), floorState({ [ids.oldRod]: 1 }))
-    const result = defined(fished.gathering.lastResult, 'kết quả')
-    const broken = (lastResult: unknown): string[] =>
-      // Ép kiểu: save sai cố ý.
-      validateGameState(data, { ...fished, gathering: { lastResult } } as unknown as GameState)
-    expect(broken({ ...result, method: 'hunting' }).join('\n')).toMatch(/lastResult\.method/)
-    expect(broken({ ...result, tier: 0 }).join('\n')).toMatch(/lastResult\.tier/)
-    expect(broken({ ...result, lureItemId: 'potion' }).join('\n')).toMatch(/lureItemId/)
-    expect(broken({ ...result, encounter: 'boss' }).join('\n')).toMatch(/encounter/)
-    expect(broken({ ...result, items: [{ itemId: 'nope', count: 0 }] }).length).toBe(2)
+    const { encounter: _encounter, ...partial } = defined(findLog(fished, 'gathered'), 'kết quả')
+    // Ép kiểu: save sai cố ý.
+    const brokenLog = { ...fished, log: [partial] } as unknown as GameState
+    expect(validateGameState(data, brokenLog).join('\n')).toMatch(/log\[0\]: thiếu encounter/)
     const ambushed = withBattleChance(100)
     const fighting = mine(ambushed, floorState({ [ids.pickaxe]: 1 }))
     const battle = defined(fighting.battle, 'trận')
@@ -393,12 +399,13 @@ describe('save', () => {
     expect(text).toMatch(/battle\.special\.ambush/)
   })
 
-  it('migrate v80 → v81: chưa có kết quả thu thập', () => {
+  it('migrate save cũ: gathering.lastResult bỏ, kết quả thu thập ở log ngoài trận', () => {
     const state = floorState()
     const raw = serializeState(state) as Record<string, unknown>
-    const { gathering: _gathering, ...old } = raw
+    const { gathering: _gathering, log: _log, ...old } = raw
     const migrated = migrateState({ ...old, version: 80 }, data)
-    expect(migrated.gathering).toEqual({ lastResult: null })
+    expect(migrated).not.toHaveProperty('gathering')
+    expect(migrated.log).toEqual([])
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

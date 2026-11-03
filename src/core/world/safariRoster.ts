@@ -89,8 +89,7 @@ export function rollSafariRoster(data: GameData, rng: RngState): [string[], RngS
 export const newSafariState = (): GameState['safari'] => ({
   roster: [],
   refreshDay: 0,
-  visit: null,
-  log: []
+  visit: null
 })
 
 /** Tới ngày làm mới (`day` ≥ refreshDay) thì tung danh sách mới, làm mới tiếp sau rotationDays. */

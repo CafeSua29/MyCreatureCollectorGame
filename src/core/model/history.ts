@@ -37,6 +37,8 @@ export type HistoryOrigin =
   | { kind: 'trade'; npcNameId: string }
   /** Trứng quay ở Cây thần (docs/rules/gacha.md). */
   | { kind: 'gacha' }
+  /** Trứng thắng ở Đấu giá hành (docs/rules/auction.md). */
+  | { kind: 'auction' }
   /** Quái từ save cũ, trước khi có lý lịch. */
   | { kind: 'unknown' }
 

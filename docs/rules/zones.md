@@ -27,16 +27,16 @@ Code: model `model/zones.ts` (`ZoneDef`, `ZoneRequirement`, `ZoneVisit`, `allMap
 
 ## Vào, khám phá, rời
 
-- **Vào** `enterZone { zoneId }` (thị trấn, ngoài trận, còn quái đánh được, không trong bí cảnh / hiểm địa / giải đấu / khu bảo tồn): hiểm địa không đang khóa (`zoneClosed { zoneId, reopenDay }`), mọi điều kiện đạt (điều kiện đầu tiên chưa đạt: `zoneRequirementUnmet { zoneId, index, requirementType }`), mất vật phẩm của điều kiện `consume`. Sinh `zones.visit = { zoneId, floor, steps, stepsTaken: 0, lastStep: null }`: **tầng sức mạnh** = `highestFloor + floorOffset` (−3, tối thiểu 1; level, gen, bậc trang bị của quái như tầng đó), **số bước** đều trong `steps` [5, 8] (gồm bước boss canh giữ). Không tốn giờ.
+- **Vào** `enterZone { zoneId }` (thị trấn, ngoài trận, còn quái đánh được, không trong bí cảnh / hiểm địa / giải đấu / khu bảo tồn): hiểm địa không đang khóa (`zoneClosed { zoneId, reopenDay }`), mọi điều kiện đạt (điều kiện đầu tiên chưa đạt: `zoneRequirementUnmet { zoneId, index, requirementType }`), mất vật phẩm của điều kiện `consume`. Sinh `zones.visit = { zoneId, floor, steps, stepsTaken: 0 }`: **tầng sức mạnh** = `highestFloor + floorOffset` (−3, tối thiểu 1; level, gen, bậc trang bị của quái như tầng đó), **số bước** đều trong `steps` [5, 8] (gồm bước boss canh giữ). Không tốn giờ.
 - **Khám phá** `exploreZone` (thị trấn, ngoài trận, còn quái đánh được):
   - Bước thứ `steps` (khi `stepsTaken + 1 = steps`) là **boss canh giữ**: boss tầng của map hiểm địa (level boss tầng của tầng sức mạnh). Bước này **không tính** vào `stepsTaken`: chạy thì lần khám phá sau gặp lại.
   - Bước khác: `stepsTaken + 1`, tung loại theo `stepWeights` (trận 55, tinh anh 10, rương 20, rương hiếm 5, linh tuyền 10; trọng số 0 thì bỏ), làm theo registry **`ZONE_STEPS`** (thêm loại bước = thêm vào `ZONE_STEP_KINDS` + một mục):
     - `battle`: trận quái hoang của map (như `startWildBattle`: có thể gặp 2 quái, boss ngẫu nhiên theo `bossChance` của map).
     - `elite`: **quái tinh anh** = boss ngẫu nhiên của map (map không có thì boss canh giữ).
-    - `treasure` / `rareTreasure`: tung bảng rương, món vào túi (`lastStep.items`).
+    - `treasure` / `rareTreasure`: tung bảng rương, món vào túi (log `zoneStep` kèm `items`).
     - `spring`: **linh tuyền** hồi `springHealPercent` (40) % max HP cho mọi quái trong đội, **kể cả quái đã gục**.
   - Bước không mở trận tốn `clock.hours.zoneStep` (1) giờ; trận tốn giờ như trận thường lúc rời trận (quái hoang 2, boss 4).
-  - `zones.visit.lastStep`: kết quả bước gần nhất cho UI (`battle` / `elite` / `guardian`, rương kèm `items`, linh tuyền kèm `healPercent`).
+  - Kết quả mỗi bước ghi log ngoài trận `zoneStep { zoneId, result }`, result `{ kind }` (`battle` / `elite` / `guardian`, rương kèm `items`, linh tuyền kèm `healPercent`; `game-log.md`).
 - **Trận hiểm địa**: `battle.special = { kind: 'zone', zoneId, guardian }`, `battle.floor` = tầng sức mạnh (không bị giới hạn bởi tầng đã mở). Map của trận (đồ rơi, môi trường, boss) tra qua `battleBiome` (điểm duy nhất). **Được bắt, được chạy** như trận thường; phần thưởng mỗi trận như trận thường (tiền, EXP, đồ rơi `drops` / `bossDrops` của map, trứng boss, thân mật). Không phải trận trên tầng (`isFloorBattle` false): không đếm modifier / chuỗi event, **không mở tầng** (kể cả boss canh giữ trùng loài boss tầng), không có quái xin theo (trận đặc biệt).
   - **Thắng** trận thường / tinh anh: **không hồi máu** (chủ project chốt 2026-10-28), lượt vào tiếp tục. Hồi máu chỉ có ở linh tuyền và bằng vật phẩm của người chơi.
   - **Thắng / bắt boss canh giữ**: log `zoneCompleted { zoneId }`, rương hiếm × `guardianRareRolls` (2) lần, hết lượt vào.
@@ -85,7 +85,7 @@ Bốn kiểu hiểm địa (49 cái; tên do Claude đặt, chủ project duyệ
 
 ## Save
 
-- `GameState.zones = { visit, reopenDay }` (game mới: `{ visit: null, reopenDay: {} }`). Kiểm tra (`validateZoneState`): hiểm địa tồn tại, ngày nguyên ≥ 0; lượt vào: tầng ≥ 1, `0 ≤ stepsTaken < steps`, `lastStep` đúng loại, đang ở thị trấn, không đồng thời bí cảnh / khu bảo tồn. Trận hiểm địa chưa kết thúc phải có lượt vào đúng hiểm địa đó; boss canh giữ chỉ ở bước cuối.
+- `GameState.zones = { visit, reopenDay }` (game mới: `{ visit: null, reopenDay: {} }`). Kiểm tra (`validateZoneState`): hiểm địa tồn tại, ngày nguyên ≥ 0; lượt vào: tầng ≥ 1, `0 ≤ stepsTaken < steps`, đang ở thị trấn, không đồng thời bí cảnh / khu bảo tồn. Trận hiểm địa chưa kết thúc phải có lượt vào đúng hiểm địa đó; boss canh giữ chỉ ở bước cuối.
 - v63 migrate: `zones: { visit: null, reopenDay: {} }` (`state-versions.md`).
 
 ## Chưa có

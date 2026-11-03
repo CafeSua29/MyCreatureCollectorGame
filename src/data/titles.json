@@ -281,5 +281,38 @@
         }
       }
     ]
+  },
+  {
+    "id": "nightmareConqueror",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "survivor",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "ironWill",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
   }
 ]

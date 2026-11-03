@@ -1,7 +1,7 @@
 // Thao tác save phía renderer: tạo nội dung file (core), gọi main đọc / ghi qua window.api.saves.
 // Load luôn: parse + migrate + kiểm tra (core.parseSave), rồi đổi seed (reroll được).
 
-import { parseSave, reseedState, serializeSave, type SaveKind } from '@core'
+import { canSaveManually, parseSave, reseedState, serializeSave, type SaveKind } from '@core'
 import type { GameData, GameState } from '@core'
 import { newSeed } from '../../shared/game/gameData'
 
@@ -58,7 +58,8 @@ export async function exportSave(data: GameData, session: Session): Promise<stri
 
 /**
  * Nhập save từ file: kiểm tra đầy đủ, lưu vào thư mục save như một bản lưu tay của game đó
- * (cùng gameId thì nối tiếp game cũ), rồi load. null nếu người chơi hủy.
+ * (cùng gameId thì nối tiếp game cũ; game Hardcore lưu thành bản tự lưu vì không có lưu tay), rồi
+ * load. null nếu người chơi hủy.
  */
 export async function importSave(data: GameData): Promise<LoadResult | null> {
   const text = await api().importFile()
@@ -66,7 +67,8 @@ export async function importSave(data: GameData): Promise<LoadResult | null> {
   const parsed = parseSave(data, text)
   if (!parsed.ok) return parsed
   const session = { gameId: parsed.save.gameId, state: parsed.save.state }
-  await manualSave(data, session)
+  if (canSaveManually(parsed.save.summary)) await manualSave(data, session)
+  else await api().writeAuto(session.gameId, serialize(data, session, 'auto'))
   return { ok: true, gameId: session.gameId, state: reseedState(session.state, newSeed()) }
 }
 

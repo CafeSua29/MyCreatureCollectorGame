@@ -21,6 +21,8 @@ export const CONTENT_KINDS = [
   'talents',
   'tamerTalentBranches',
   'tamerTalents',
+  'ascensionUpgrades',
+  'destinies',
   'synergies',
   'formations',
   'natures',

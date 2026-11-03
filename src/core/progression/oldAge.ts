@@ -85,13 +85,14 @@ export function ageOneDay(data: GameData, state: GameState, events: DayEvent[]):
 /**
  * Đội không được trống sau khi quái chết hẳn (tọa hóa, chết thật trong trận): quái level cao nhất
  * trong kho (bằng level thì con đứng trước) tự vào đội; kho cũng trống thì hồn phách mới nhất tự ấp
- * thành trứng truyền thừa và nở ngay vào đội. Trả sự kiện để nơi gọi báo (null = đội không trống).
+ * thành trứng truyền thừa và nở ngay vào đội (Nuzlocke: thua game, đội để trống). Trả sự kiện để
+ * nơi gọi báo (null = đội không trống hoặc đã thua game từ trước).
  */
 export function refillEmptyParty(
   data: GameData,
   state: GameState
 ): { state: GameState; event: PartyRefillEvent | null } {
-  if (state.party.length > 0) return { state, event: null }
+  if (state.party.length > 0 || state.challenge.gameOver) return { state, event: null }
   if (state.storage.length > 0) {
     const strongest = state.storage.reduce((best, monster) =>
       monster.level > best.level ? monster : best
@@ -103,6 +104,14 @@ export function refillEmptyParty(
         storage: state.storage.filter((monster) => monster !== strongest)
       },
       event: { type: 'monsterAutoJoined', monsterId: strongest.id }
+    }
+  }
+  // Nuzlocke: đội và kho trống hoàn toàn là thua game, không có trứng truyền thừa cứu
+  // (docs/rules/challenge-modes.md).
+  if (state.options.nuzlocke) {
+    return {
+      state: { ...state, challenge: { ...state.challenge, gameOver: true } },
+      event: { type: 'gameOver' }
     }
   }
   const soul = state.inventory.souls.at(-1)

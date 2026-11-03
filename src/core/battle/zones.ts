@@ -18,6 +18,7 @@ import {
   type FloorSite
 } from '../world'
 import {
+  appendLog,
   ZONE_STEP_KINDS,
   type GameData,
   type GameState,
@@ -82,11 +83,12 @@ interface StepContext {
   visit: ZoneVisit
 }
 
-/** Ghi lượt vào (kèm kết quả bước) vào state. */
-const withVisit = (state: GameState, visit: ZoneVisit, lastStep: ZoneStepResult): GameState => ({
-  ...state,
-  zones: { ...state.zones, visit: { ...visit, lastStep } }
-})
+/** Ghi lượt vào vào state, kết quả bước vào log ngoài trận. */
+const withVisit = (state: GameState, visit: ZoneVisit, result: ZoneStepResult): GameState =>
+  appendLog(
+    { ...state, zones: { ...state.zones, visit } },
+    { type: 'zoneStep', zoneId: visit.zoneId, result }
+  )
 
 /** Rương: tung bảng của hiểm địa, món vào túi. */
 function openTreasure(

@@ -10,7 +10,7 @@ Code: `progression/sacrifice.ts` (`sacrifice`, `sacrificeCost`, `canSacrificeTo`
 
 - Action `sacrifice { baseId, subIds }` ở **NPC fusing ở thị trấn**, ngoài trận. Quái chính và quái phụ ở đội hoặc kho, **không đang làm việc** (`assertNotBusy`). `subIds` khác rỗng, không trùng (`malformedAction`), không chứa quái chính (`sacrificeSameMonster`). Đội vẫn còn ít nhất 1 con sau khi mất các quái phụ (`partyWouldBeEmpty`). Bản mệnh thú không làm quái phụ (`isBondBeast`); làm quái chính được.
 - **Điều kiện** (`canSacrificeTo`): hai quái **cùng race** và **`lineage` y hệt nhau** (so như tập hợp loài), không thì `sacrificeMismatch { baseId, subId }`. Quái thường có `lineage` rỗng nên hai quái thường cùng race luôn được; quái fuse chỉ hiến tế với quái fuse có đúng cùng `lineage` (không phải "race nằm trong lineage").
-- **Hiến tế hàng loạt:** nhiều quái phụ trong **một action** (chọn theo bộ lọc ở UI, `bulk-actions.md`); mỗi con tính như một lần hiến tế, xử lý lần lượt theo thứ tự `subIds` (stack, giá, độ thuần cộng dồn).
+- **Hiến tế hàng loạt:** nhiều quái phụ trong **một action** (UI lọc quái phụ bằng `listMonsters`, `bulk-actions.md`); mỗi con tính như một lần hiến tế, xử lý lần lượt theo thứ tự `subIds` (stack, giá, độ thuần cộng dồn).
 - **Quái phụ mất đi.** Trang bị / đồ cầm trên quái phụ tự về túi (túi không đủ chỗ thì `bagOverflow`, cần `discardOverflow`; `capacity.md`). Quái phụ có hồn tinh thì hoàn `soulLevels.fuseRefundPercent` (50%) điểm đã dùng như quái phụ của fuse (`soul-levels.md`).
 - **Cô đặc** (như Condenser của Palworld): đủ `dwelling.condenseStacks` (4) stack thì mọi chỉ số làm việc đang có + `condensePercent` (50) % chỉ số gốc TB (`dwelling.md`).
 - **Giá** (`sacrificeCost`, `balance.json` khóa `sacrifice`, số tạm): mỗi quái phụ `costPerLevel × (level chính + level phụ)`, `costPerLevel` = **20** (rẻ hơn fuse 50 vì hiệu quả thấp hơn), cộng dồn, tính bằng `Decimal`. Thiếu tiền `notEnoughMoney`.
@@ -21,5 +21,5 @@ Code: `progression/sacrifice.ts` (`sacrifice`, `sacrificeCost`, `canSacrificeTo`
 - **Breeding không truyền:** con luôn có `sacrificeStacks = 0` (`breeding-eggs.md`). Lý do (đã chốt): breeding không làm mất bố mẹ, nếu truyền thì breed liên tục sẽ nhân bản stack miễn phí. Fuse thì được truyền vì quái phụ mất đi (stack chỉ chuyển chỗ). Quái hoang / boss / trứng boss 0 stack.
 - **Lý lịch:** mốc `sacrificed { count }` (số quái phụ của lần đó) trên quái chính (`monster-history.md`).
 - `MonsterView.sacrifice = { stacks, statPercent }` (`sacrificeStatPercent`). Kiểm tra save: `sacrificeStacks` nguyên ≥ 0 (`validateMonster`). Migrate v74 → v75 đặt 0 cho mọi quái (kể cả trứng).
-- Quái phụ đang khóa báo `monsterLocked` (`roster.md`). Chưa có: bộ lọc chọn quái phụ hàng loạt ở UI (chờ `bulk-actions.md` / `ui-overhaul.md`).
+- Quái phụ đang khóa báo `monsterLocked` (`roster.md`). Chưa có: màn chọn quái phụ hàng loạt (chờ `ui-overhaul.md`).
 - Mô phỏng: mục "Hiến tế" ở `simulation-features.md`.

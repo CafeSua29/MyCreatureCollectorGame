@@ -18,7 +18,9 @@ import {
   type GameData,
   type NormalRarity,
   type RawGameData,
-  type TraitInstance
+  type TraitInstance,
+  DIFFICULTIES,
+  type Difficulty
 } from '@core'
 import type { BattleKind } from './battleRunner'
 import type { BossPolicy, FarmSpec } from './bossPolicy'
@@ -107,6 +109,12 @@ export interface Variant {
    * dùng mức này với thuộc tính tung theo seed của trận, bỏ qua mức tối đa theo tầng; 0 = tắt.
    */
   instabilityLevel: number
+  /** Thiên mệnh khi quét tầng (A/B, docs/rules/ascension.md); đội bớt ô theo thiên mệnh. */
+  destinyIds: string[]
+  /** Cấp nâng cấp Tiên giới khi quét tầng (A/B): id → cấp. */
+  ascensionUpgrades: Record<string, number>
+  /** Độ khó của game khi quét tầng (A/B độ khó, docs/rules/challenge-modes.md); mặc định Thường. */
+  difficulty: Difficulty
 }
 
 /** Trường skill biến thể được bỏ (skill-synergy-hold.md, move-styles.md, hit-locations.md). */
@@ -136,6 +144,11 @@ export interface ProgressionSpec {
    * mỗi chế độ (true = "người chơi" bắt quái, fuse, breeding, đưa con vào đội). Bỏ trống = [true].
    */
   growthModes: boolean[]
+  /**
+   * Độ khó của game (docs/rules/challenge-modes.md): mỗi đội chạy thêm một lần cho mỗi mức khác
+   * Thường (chỉ chế độ đan / fuse đầu tiên, để đỡ thời gian). Bỏ trống = ['normal'].
+   */
+  difficultyModes: Difficulty[]
   /**
    * Quét tầng bằng đội thật (pha 2): mỗi tầng đã tới, đánh wildBattles / bossBattles trận với đội mẫu
    * lúc vừa tới tầng đó. null = tắt.
@@ -358,6 +371,7 @@ const PROGRESSION_FIELDS = fieldList<ProgressionSpec>({
   genesFollowFloor: true,
   pillModes: true,
   growthModes: true,
+  difficultyModes: true,
   sweep: true
 })
 
@@ -527,7 +541,10 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     'tamerRealm',
     'assumedPurity',
     'assumedPolarity',
-    'instabilityLevel'
+    'instabilityLevel',
+    'destinyIds',
+    'ascensionUpgrades',
+    'difficulty'
   ])
   return {
     id: r.string(obj.id, `${path}.id`),
@@ -558,8 +575,50 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     instabilityLevel:
       obj.instabilityLevel === undefined
         ? 0
-        : r.integer(obj.instabilityLevel, `${path}.instabilityLevel`, 0)
+        : r.integer(obj.instabilityLevel, `${path}.instabilityLevel`, 0),
+    destinyIds:
+      obj.destinyIds === undefined
+        ? []
+        : readDestinyIds(r, data, obj.destinyIds, `${path}.destinyIds`),
+    ascensionUpgrades:
+      obj.ascensionUpgrades === undefined
+        ? {}
+        : readAscensionUpgrades(r, data, obj.ascensionUpgrades, `${path}.ascensionUpgrades`),
+    difficulty:
+      obj.difficulty === undefined
+        ? 'normal'
+        : readDifficulty(r, obj.difficulty, `${path}.difficulty`)
   }
+}
+
+/** Danh sách id thiên mệnh của biến thể; id lạ thì báo lỗi và bỏ. */
+function readDestinyIds(r: Reader, data: GameData, value: unknown, path: string): string[] {
+  return r.array(value, path).flatMap((entry, i) => {
+    const id = r.string(entry, `${path}[${i}]`)
+    if (Object.hasOwn(data.destinies, id)) return [id]
+    r.issues.push(`${path}[${i}]: thiên mệnh không tồn tại "${id}"`)
+    return []
+  })
+}
+
+/** Cấp nâng cấp Tiên giới của biến thể; id lạ thì báo lỗi và bỏ. */
+function readAscensionUpgrades(
+  r: Reader,
+  data: GameData,
+  value: unknown,
+  path: string
+): Record<string, number> {
+  const obj = r.object(value, path, Object.keys(data.ascensionUpgrades))
+  return Object.fromEntries(
+    Object.entries(obj).map(([id, rank]) => [id, r.integer(rank, `${path}.${id}`, 1)])
+  )
+}
+
+/** Một mức độ khó; lạ thì báo lỗi, đọc tiếp như Thường. */
+function readDifficulty(r: Reader, value: unknown, path: string): Difficulty {
+  const known = DIFFICULTIES.find((difficulty) => difficulty === value)
+  if (!known) r.issues.push(`${path}: độ khó lạ "${String(value)}"`)
+  return known ?? 'normal'
 }
 
 function readPole(r: Reader, value: unknown, path: string): Pole | null {
@@ -678,6 +737,12 @@ function readProgression(r: Reader, value: unknown, teams: readonly TeamSpec[]):
         : r
             .array(obj.growthModes, 'progression.growthModes')
             .map((mode, i) => r.boolean(mode, `progression.growthModes[${i}]`)),
+    difficultyModes:
+      obj.difficultyModes === undefined
+        ? ['normal']
+        : r
+            .array(obj.difficultyModes, 'progression.difficultyModes')
+            .map((mode, i) => readDifficulty(r, mode, `progression.difficultyModes[${i}]`)),
     sweep: obj.sweep === undefined ? null : readProgressionSweep(r, obj.sweep)
   }
 }

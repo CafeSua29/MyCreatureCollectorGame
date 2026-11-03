@@ -1,6 +1,7 @@
 // Điểm vào duy nhất cho mọi action: gameReducer(data, state, action) => newState.
 
 import { abandonQuest, acceptQuest, claimQuest } from '../quests'
+import { ascend, assertDestinyChosen, buyAscensionUpgrade, chooseDestinies } from './ascension'
 import {
   challengeArena,
   challengeBoss,
@@ -70,10 +71,19 @@ import {
   hoursUntilWake,
   petMonster,
   setGameOption,
+  setDifficulty,
+  assertNotGameOver,
+  newChallengeState,
   defaultGameOptions,
   newSectState,
   newTradeState,
   acceptTrade,
+  newAuctionState,
+  placeAuctionBid,
+  cancelAuctionBid,
+  consignItem,
+  withdrawConsignment,
+  claimAuctionHeld,
   pullGacha,
   joinSect,
   leaveSect,
@@ -101,9 +111,9 @@ import {
   throwSafariBall,
   throwSafariRock
 } from '../world'
-import { createInventory, discardItem } from '../inventory'
-import { newGameStats } from '../registries'
-import { buyCharm, buyItem, sellItem } from '../shop'
+import { createInventory, discardItem, discardItems } from '../inventory'
+import { gameDataFor, newGameStats } from '../registries'
+import { buyCharm, buyItem, sellItem, sellItems } from '../shop'
 import {
   allocateTamerTalent,
   bindContract,
@@ -126,6 +136,7 @@ import {
   moveToParty,
   moveToStorage,
   releaseMonster,
+  releaseMonsters,
   renameMonster,
   reorderParty,
   swapWithStorage,
@@ -160,6 +171,7 @@ import {
   dissolveContract,
   newDexState,
   syncDex,
+  researchLevelUps,
   formContract,
   enhanceEquipment,
   rerollEquipmentAffixes,
@@ -169,14 +181,26 @@ import {
   summonSpirit,
   moveSpirit,
   mergeSpirits,
+  mergeSpiritsInto,
+  moveSpirits,
   feedSpirit,
   breedSpirits,
   collectSpiritPool
 } from '../roster'
-import type { GameAction, GameData, GameState, GatheringMethod, Location, Monster } from '../model'
+import {
+  appendLog,
+  newAscensionState,
+  type GameAction,
+  type GameData,
+  type ChallengeOptions,
+  type GameState,
+  type GatheringMethod,
+  type Location,
+  type Monster
+} from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 97
+export const SAVE_VERSION = 102
 
 export function createGameState(options: {
   seed: number
@@ -199,6 +223,8 @@ export function createGameState(options: {
   permadeathEnabled?: boolean
   /** Cảnh giới ngự thú sư (mặc định 0); quái trong party được khế ước theo cảnh giới này. */
   tamerRealm?: number
+  /** Độ khó / chế độ thử thách (docs/rules/challenge-modes.md); mặc định Thường, không chế độ. */
+  challengeOptions?: Partial<ChallengeOptions>
 }): GameState {
   const realm = options.tamerRealm ?? 0
   const party = (options.party ?? []).map((monster) => bindContract(monster, realm))
@@ -220,10 +246,12 @@ export function createGameState(options: {
     teraOrbCharged: true,
     time: options.time ?? 0,
     options: defaultGameOptions({
+      ...options.challengeOptions,
       lifespanEnabled: options.lifespanEnabled ?? false,
       permadeathEnabled: options.permadeathEnabled ?? false
     }),
-    dayEvents: [],
+    challenge: newChallengeState(),
+    log: [],
     tamer: newTamerState(realm),
     formations: { known: [], active: null },
     alchemy: newAlchemyState(),
@@ -234,6 +262,7 @@ export function createGameState(options: {
     trainers: newTrainerState(),
     sect: newSectState(),
     trades: newTradeState(),
+    auction: newAuctionState(),
     teamPresets: newTeamPresetState(),
     trial: null,
     spiritPools: [],
@@ -246,13 +275,14 @@ export function createGameState(options: {
     lab: newLabState(),
     capacity: newCapacityState(),
     zones: newZoneState(),
-    gathering: newGatheringState(),
     worldBoss: { current: null, rewards: [] },
     dex: newDexState(),
     research: {},
     stats: newGameStats(),
     achievements: newAchievementState(),
     titles: newTitleState(),
+    ascension: newAscensionState(),
+    destinies: [],
     // Chưa xây công trình nào (game mới dùng newDwellingState theo dữ liệu, docs/rules/dwelling.md).
     dwelling: { buildings: {}, plots: [], storage: { stacks: {}, books: [] }, feedBox: {} },
     battle: null
@@ -270,22 +300,19 @@ export const newTrainerState = (): GameState['trainers'] => ({
 export const newAlchemyState = (): GameState['alchemy'] => ({
   level: 1,
   exp: toBig(0),
-  knownRecipes: [],
-  lastCraft: null
+  knownRecipes: []
 })
 
 /** Luyện khí lúc bắt đầu: cấp 1 (docs/rules/alchemy.md). */
 export const newSmithingState = (): GameState['smithing'] => ({
   level: 1,
-  exp: toBig(0),
-  lastCraft: null
+  exp: toBig(0)
 })
 
 /** Nấu ăn lúc bắt đầu: cấp 1, chưa ăn món nào (docs/rules/cooking.md). */
 export const newCookingState = (): GameState['cooking'] => ({
   level: 1,
   exp: toBig(0),
-  lastCraft: null,
   meal: null
 })
 
@@ -316,15 +343,23 @@ function chooseEventWithTime(data: GameData, state: GameState, optionId: string)
   return chosen.battle ? chosen : advanceTime(data, chosen, data.config.clock.hours.event)
 }
 
-export function gameReducer(data: GameData, state: GameState, action: GameAction): GameState {
+export function gameReducer(rawData: GameData, state: GameState, action: GameAction): GameState {
+  // Randomizer xáo learnset: mọi action dùng dữ liệu của game này (docs/rules/challenge-modes.md).
+  const data = gameDataFor(rawData, state)
   // Event đang chờ / thú triều chặn action trước khi xử lý (docs/rules/events.md); trong khu bảo
   // tồn chỉ làm action của khu (docs/rules/safari-zone.md).
+  // Nuzlocke đã thua game: save chỉ còn xem (docs/rules/challenge-modes.md).
+  assertNotGameOver(state, action)
+  assertDestinyChosen(state, action)
   assertEventAllows(state, action)
   assertSafariAllows(state, action)
+  // Log ngoài trận chỉ giữ kết quả của action này (docs/rules/game-log.md): xóa trước khi xử lý.
   // Bộ sưu tập ghi sau mọi action: một chỗ cho mọi cách gặp / có quái (docs/rules/dex.md). Action
-  // không đổi gì giữ nguyên state (không ghi Dex).
-  const next = dispatchAction(data, state, action)
-  return next === state ? state : syncDex(data, next)
+  // không đổi gì giữ nguyên state (không ghi Dex, giữ log cũ).
+  const cleared = state.log.length === 0 ? state : { ...state, log: [] }
+  const next = dispatchAction(data, cleared, action)
+  if (next === cleared) return state
+  return appendLog(syncDex(data, next), ...researchLevelUps(data, state.research, next.research))
 }
 
 /**
@@ -348,9 +383,6 @@ function gatherWithTime(
   const gathered = gather(data, state, { method, lureItemId })
   return gathered.battle ? gathered : advanceTime(data, gathered, data.config.clock.hours[method])
 }
-
-/** Câu cá / khai thác lúc bắt đầu: chưa có kết quả nào. */
-export const newGatheringState = (): GameState['gathering'] => ({ lastResult: null })
 
 /** Action trong khu bảo tồn: ra khu (lượt vào khu kết thúc) thì cả lượt tốn clock.hours.safari. */
 function withSafariTime(data: GameData, before: GameState, after: GameState): GameState {
@@ -471,6 +503,20 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
         monsterId: action.monsterId,
         discardOverflow: action.discardOverflow
       })
+    case 'placeAuctionBid':
+      return placeAuctionBid(data, state, { lotId: action.lotId, amount: action.amount })
+    case 'cancelAuctionBid':
+      return cancelAuctionBid(state, action.lotId)
+    case 'consignItem':
+      return consignItem(data, state, {
+        item: action.item,
+        count: action.count,
+        reservePrice: action.reservePrice
+      })
+    case 'withdrawConsignment':
+      return withdrawConsignment(data, state, action.consignmentId)
+    case 'claimAuctionHeld':
+      return claimAuctionHeld(data, state)
     case 'pullGacha':
       return pullGacha(data, state, action.count)
     case 'enterTrial':
@@ -487,6 +533,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return moveSpirit(data, state, action)
     case 'mergeSpirits':
       return mergeSpirits(data, state, action)
+    case 'moveSpirits':
+      return moveSpirits(data, state, action)
+    case 'mergeSpiritsInto':
+      return mergeSpiritsInto(data, state, action)
     case 'feedSpirit':
       return feedSpirit(data, state, action)
     case 'breedSpirits':
@@ -575,6 +625,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return advanceTime(data, healParty(data, state), data.config.clock.hours.healParty)
     case 'setGameOption':
       return setGameOption(data, state, action.option, action.enabled)
+    case 'setDifficulty':
+      return setDifficulty(state, action.difficulty)
     case 'chooseEvolution':
       return chooseEvolution(data, state, action.monsterId, action.speciesId)
     case 'learnPendingSkill':
@@ -607,6 +659,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return discardItem(data, state, action.item, action.count)
     case 'sellItem':
       return sellItem(data, state, action.item, action.count)
+    case 'discardItems':
+      return discardItems(data, state, action.items)
+    case 'sellItems':
+      return sellItems(data, state, action.items)
     case 'buyItem':
       return buyItem(data, state, action.item, action.count)
     case 'moveToStorage':
@@ -619,6 +675,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return reorderParty(state, action.monsterIds)
     case 'releaseMonster':
       return releaseMonster(data, state, action)
+    case 'releaseMonsters':
+      return releaseMonsters(data, state, action)
     case 'equipItem':
       return equipItem(data, state, action.monsterId, action.item)
     case 'unequipItem':
@@ -643,6 +701,12 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return upgradeSoulLevel(data, state, action.monsterId, action.stat)
     case 'allocateTalent':
       return allocateTalent(data, state, action.monsterId, action.nodeId)
+    case 'ascend':
+      return ascend(data, state)
+    case 'chooseDestinies':
+      return chooseDestinies(data, state, action.destinyIds)
+    case 'buyAscensionUpgrade':
+      return buyAscensionUpgrade(data, state, action.upgradeId)
     case 'allocateTamerTalent':
       return allocateTamerTalent(data, state, action.nodeId)
     case 'resetTamerTalents':

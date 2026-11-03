@@ -200,7 +200,7 @@ describe('về theo ngày', () => {
     const a = storageOf(back, 'a')
     expect(a.assignment).toBeNull()
     expect(a.exp.gt(worker('a').exp)).toBe(true)
-    const event = defined(back.dayEvents.find((e) => e.type === 'expeditionReturned'))
+    const event = defined(back.log.find((e) => e.type === 'expeditionReturned'))
     // Đội rất mạnh: độ thành công kẹp 150%.
     expect(event).toEqual({
       type: 'expeditionReturned',
@@ -226,7 +226,7 @@ describe('về theo ngày', () => {
       eggData
     )
     const back = days(state, 2, eggData)
-    const event = defined(back.dayEvents.find((e) => e.type === 'expeditionReturned'))
+    const event = defined(back.log.find((e) => e.type === 'expeditionReturned'))
     const egg = defined(back.eggs[0], 'trứng')
     expect(event).toMatchObject({ eggId: egg.id })
     // + 1 trứng (id mới nhất); bảng trao đổi ra ở lần qua ngày đầu (trước khi đội về) cũng giữ id

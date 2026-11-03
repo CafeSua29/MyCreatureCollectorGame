@@ -21,6 +21,17 @@ import { soulLinkTier } from './soulLink'
 import { workTraitStatPercent } from './work'
 import type { HookSourceKind } from './traitHooks'
 
+/** % mọi chỉ số từ cộng hưởng khế ước của quái (nguồn `contract`). */
+export function contractStatPercent(data: GameData, monster: Monster): number {
+  if (monster.contractRealm === null) return 0
+  const { contract, statPercentPerRealm } = data.config.tamer
+  return (
+    (contract.baseStatPercent + monster.contractRealm * statPercentPerRealm) *
+      (monster.bond ? data.config.bond.resonanceMultiplier : 1) +
+    (soulLinkTier(data, monster)?.statPercent ?? 0)
+  )
+}
+
 /** Mọi chỉ số (kể cả hp) cùng một %; 0 thì không có mục nào. */
 export function uniformPercent(percent: number): PartialStats {
   if (percent === 0) return {}
@@ -58,15 +69,7 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   // khế ước; bản mệnh thú × resonanceMultiplier (mục "Bản mệnh thú"); cộng mức tâm linh tương thông
   // (không nhân bản mệnh). Chưa khế ước: 0.
   contract: {
-    percent: (data, monster) =>
-      uniformPercent(
-        monster.contractRealm === null
-          ? 0
-          : (data.config.tamer.contract.baseStatPercent +
-              monster.contractRealm * data.config.tamer.statPercentPerRealm) *
-              (monster.bond ? data.config.bond.resonanceMultiplier : 1) +
-              (soulLinkTier(data, monster)?.statPercent ?? 0)
-      )
+    percent: (data, monster) => uniformPercent(contractStatPercent(data, monster))
   },
   // Giai đoạn tuổi (mục "Tuổi và thọ nguyên"): mọi chỉ số kể cả max HP.
   age: { percent: (data, monster) => uniformPercent(ageStatPercent(data, monster)) },

@@ -21,7 +21,10 @@ import {
   type GameData,
   type Monster,
   type Pole,
-  type Tactic
+  type Tactic,
+  gameDataFor,
+  partySlotsUsed,
+  type Difficulty
 } from '@core'
 import {
   addHitLocationCounts,
@@ -131,6 +134,20 @@ export interface FloorSweepOptions {
   assumedPolarity?: Pole | null
   /** Mức độ bất ổn của biến thể (`instabilityLevel`); 0 / không ghi = tắt. */
   instabilityLevel?: number
+  /** Thiên mệnh của biến thể (`destinyIds`); đội bớt ô theo thiên mệnh. */
+  destinyIds?: readonly string[]
+  /** Cấp nâng cấp Tiên giới của biến thể (`ascensionUpgrades`). */
+  ascensionUpgrades?: Readonly<Record<string, number>>
+  /** Độ khó của biến thể (`difficulty`); không ghi = Thường. */
+  difficulty?: Difficulty
+}
+
+/** Đội chỉ giữ số quái vừa số ô đội của game (thiên mệnh bớt ô, docs/rules/ascension.md). */
+function withinPartySlots(data: GameData, state: GameState): GameState {
+  const { partySize } = gameDataFor(data, state).config
+  let party = state.party
+  while (party.length > 1 && partySlotsUsed(data, party) > partySize) party = party.slice(0, -1)
+  return { ...state, party }
 }
 
 /**
@@ -274,6 +291,10 @@ export function sweepFloor(data: GameData, options: FloorSweepOptions): FloorRes
     const fresh = createGameState({
       // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
       lifespanEnabled: true,
+      challengeOptions: {
+        difficulty: options.difficulty ?? 'normal',
+        lowestDifficulty: options.difficulty ?? 'normal'
+      },
       seed: deriveSeed(seed, 'battle', team.id, floor, kind, i),
       party,
       location: { type: 'floor', floor },
@@ -296,10 +317,12 @@ export function sweepFloor(data: GameData, options: FloorSweepOptions): FloorRes
       party: options.uncontracted
         ? fresh.party.map((m) => ({ ...m, contractRealm: null }))
         : fresh.party,
-      inventory: inventoryWithKeyItems(data, fresh)
+      inventory: inventoryWithKeyItems(data, fresh),
+      destinies: [...(options.destinyIds ?? [])],
+      ascension: { ...fresh.ascension, upgrades: { ...options.ascensionUpgrades } }
     }
     // Có Vòng Z thì quái đầu đội cầm Z-Crystal hợp skill của nó (như người chơi; z-moves.md).
-    const state = withLeadZCrystal(data, keyed)
+    const state = withLeadZCrystal(data, withinPartySlots(data, keyed))
     const { state: after, stats } = runBattle(data, state, { kind, maxTurns: options.maxTurns })
     hitParts = after.dex.hitParts
     if (stats.outcome === 'won') result.won++

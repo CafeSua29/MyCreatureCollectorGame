@@ -6,6 +6,7 @@
 import { tickSpiritVirusDay } from '../monster'
 import {
   HOURS_PER_DAY,
+  appendLog,
   dayOf,
   hourOf,
   type DayEvent,
@@ -24,6 +25,7 @@ import { imprintOneDay } from './imprint'
 import { dwellingDailyTask } from './dwelling'
 import { sectDailyTask } from './sects'
 import { tradesDailyTask } from './trades'
+import { auctionDailyTask } from './auction'
 import { expeditionDailyTask } from './expeditions'
 import { beastTideDailyTask } from './beastTide'
 import { labDailyTask } from './implant'
@@ -87,12 +89,15 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   // Tông môn: đồng môn tích cống hiến / lên chức, làm mới nhiệm vụ tông (docs/rules/sects.md).
   sect: sectDailyTask,
   // Trao đổi với NPC: làm mới bảng đề nghị khi tới ngày (docs/rules/trades.md).
-  trades: tradesDailyTask
+  trades: tradesDailyTask,
+  // Đấu giá hành: tới ngày đóng thì đóng phiên (thắng / thua, ký gửi), mở phiên mới
+  // (docs/rules/auction.md). Sau market: đồ ký gửi bán theo độ bão hòa đã hồi trong ngày.
+  auction: auctionDailyTask
 }
 
 /**
- * Thời gian trôi `hours` giờ: chạy DAILY_TASKS cho từng ngày vừa qua, dayEvents thay bằng sự kiện
- * của lần trôi này (không qua ngày nào thì rỗng).
+ * Thời gian trôi `hours` giờ: chạy DAILY_TASKS cho từng ngày vừa qua, sự kiện theo ngày ghi thêm vào
+ * log ngoài trận (docs/rules/game-log.md).
  */
 export function advanceTime(data: GameData, state: GameState, hours: number): GameState {
   if (!Number.isSafeInteger(hours) || hours < 0) {
@@ -104,7 +109,7 @@ export function advanceTime(data: GameData, state: GameState, hours: number): Ga
   for (let day = dayOf(state.time) + 1; day <= dayOf(time); day++) {
     for (const task of Object.values(DAILY_TASKS)) next = task(data, next, events, day)
   }
-  return { ...next, dayEvents: events }
+  return appendLog(next, ...events)
 }
 
 /** Số giờ ngủ tới giờ thức (config.clock.wakeHour) kế tiếp, luôn ≥ 1. */

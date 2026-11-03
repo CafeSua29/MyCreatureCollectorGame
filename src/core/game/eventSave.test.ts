@@ -27,9 +27,9 @@ function fullState(): GameState {
   return {
     ...state,
     nextItemId: 10,
+    log: [{ type: 'moneyGained', amount: toBig('1e50') }],
     events: {
       ...state.events,
-      log: [{ type: 'moneyGained', amount: toBig('1e50') }],
       modifiers: [
         { modifierId: 'lucky', battlesLeft: 2 },
         { modifierId: 'sale', battlesLeft: null }

@@ -13,6 +13,7 @@ import {
 import { equipBossUnique, type Encounter, type FloorSite } from '../world'
 import { isFainted } from '../monster'
 import {
+  bestRealmReached,
   GLOBAL_FIELD_LAYERS,
   type BattleState,
   type BattleTrainer,
@@ -44,6 +45,7 @@ import { rollBossTransformPlan } from './transform'
 import { isTamerWounded, newBattleTamer, partnerTeamBonus } from '../tamer'
 import { countsAsFloorBattle } from './specialBattles'
 import { applyEnemyRules, battleInstabilityFor, ruleTeamBonuses } from './instability'
+import { claimNuzlockeEncounter } from './nuzlocke'
 
 /** Boss trong trận mang món unique của loài (sinh sau cả trận để không đổi quái đã sinh). */
 function equipBosses(
@@ -179,6 +181,8 @@ export function openBattle(
     trial: trial ?? null,
     instability,
     special: special ?? null,
+    difficulty: state.options.difficulty,
+    nuzlockeEncounter: false,
     phase: 'chooseActions',
     outcome: null,
     turn: 1,
@@ -205,7 +209,8 @@ export function openBattle(
       player:
         tribulation || noTamers
           ? null
-          : newBattleTamer(data, state.tamer.realm, {
+          : newBattleTamer(data, bestRealmReached(state), {
+              manaRealm: state.tamer.realm,
               manaBonusPercent: tamerBonusAmount(data, state, 'manaPercent'),
               manaPercent: isTamerWounded(state) ? data.config.bond.woundManaPercent : 100
             }),
@@ -246,6 +251,7 @@ export function openBattle(
       mode: trainer.trainer.mode
     })
   if (trial) log(d, { type: 'trialRules', ruleIds: trial.rules.map((rule) => rule.ruleId) })
+  claimNuzlockeEncounter(data, d)
   if (instability)
     log(d, { type: 'instability', ...instability, ruleIds: [...instability.ruleIds] })
   if (tribulation) placeTribulationField(data, d)

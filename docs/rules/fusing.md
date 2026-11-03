@@ -59,7 +59,7 @@ Code: `progression/fusionChance.ts` (tỉ lệ), `progression/fusion.ts` (action
   - Shiny và boss không ảnh hưởng. Trait có thể cộng / trừ điểm qua pha `modifyFuseChance` (handler `fuseChanceBonus { points }`, điểm × hệ số cấp trait, chỉ xét trait của quái gốc); chưa có trait thật dùng.
   - Tung bằng `rollPercent` (≥ 100 hoặc ≤ 0 không tốn RNG), **trước** phần random trait của `fuseMonsters`.
 - **Thất bại:** mất **cả quái gốc lẫn quái phụ** và mất tiền fuse. Món đang lắp trên hai quái (quái gốc chỉ khi không có Bùa Hộ Mệnh) tự về túi (mục "Trang bị và đồ cầm" ở `equipment.md`). Fuse thành công: món trên quái phụ về túi, quái gốc giữ món của nó.
-- **Báo kết quả cho UI:** không có log ngoài trận và không đổi state (chủ project chốt); UI gọi `fuseOutcome(stateTrước, stateSau, baseId)` → `success` / `failed` (quái gốc mất) / `protected` (quái gốc còn mà lineage không thêm loài: thất bại có Bùa Hộ Mệnh).
+- **Báo kết quả cho UI:** log ngoài trận `fused { baseId, outcome }`, outcome `success` / `failed` (quái gốc mất) / `protected` (thất bại có Bùa Hộ Mệnh, quái gốc còn) (`game-log.md`; thay hàm `fuseOutcome` so state trước / sau).
 - **Load lại để thử lại:** chấp nhận. Load đổi seed nên người chơi có thể mở file tự lưu trước lần fuse rồi thử lại; game offline một người nên không chặn.
 - **Bùa fuse** (category `fusionAid`, `effects` theo registry `FUSION_AID_EFFECTS`, mỗi handler thuộc một ô `boost` / `protect`; mọi hiệu ứng của một bùa cùng ô). Số tạm trong `items.json`:
 

@@ -22,6 +22,7 @@ import {
   type RngState
 } from '../shared'
 import {
+  bestRealmReached,
   STAT_NAMES,
   dayOf,
   type ActiveExpedition,
@@ -34,7 +35,8 @@ import {
 } from '../model'
 
 /** Số đội thám hiểm cùng lúc: 1 + ⌊cảnh giới ngự thú sư / 2⌋ (docs/rules/tamer.md). */
-export const expeditionSlots = (state: GameState): number => 1 + Math.floor(state.tamer.realm / 2)
+export const expeditionSlots = (state: GameState): number =>
+  1 + Math.floor(bestRealmReached(state) / 2)
 
 /** Yêu cầu đầu tiên đội chưa đủ (type), null = đủ. */
 export function unmetRequirement(

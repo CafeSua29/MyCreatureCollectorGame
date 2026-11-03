@@ -101,6 +101,20 @@ Tách từ `simulation.md` (cách chạy, luật dùng kết quả, kịch bản
 
 - Chơi liên tục: mỗi ngày ở thị trấn sau tông môn, "người chơi" nhận mọi đề nghị trao đổi có quái kho thừa đúng yêu cầu (`runTrades`; luật chọn ở `trades.md` mục "Mô phỏng"). Ô `economy` của `progression.csv`: `trade`.
 
+## Độ khó (`floorSweep.ts`, `progression.ts`, `difficulty.ts`)
+
+- **Quét tầng**: biến thể có trường `difficulty` (`hard`, `nightmare` trong kịch bản mặc định) chơi game ở mức đó (`createGameState({ challengeOptions })`), cùng đội, cùng seed với `current`: đo tỉ lệ thắng, EXP / tiền mỗi trận theo tầng (`floors.csv`, `ai-summary.csv`).
+- **Chơi liên tục**: `progression.difficultyModes` (mặc định `["normal", "hard", "nightmare"]`): mỗi đội chạy thêm một lần cho mỗi mức khác Thường, chỉ với chế độ đan / fuse đầu tiên. Bảng `difficulty.csv`: mỗi lần chơi một dòng (kèm lần Thường cùng chế độ): số tầng qua, tầng kẹt, số trận, trận mỗi tầng, lần đánh boss / thua boss / thua, level lúc qua tầng cuối, tiền tăng trong trận (`battleMoney`) và mỗi trận. Lần chơi khác Thường không tạo snapshot cho `progressionSweep`.
+- **Mục tiêu** (Claude đặt 2026-11-03, chủ project chốt Ác mộng không bắt buộc qua được): cùng đội cùng level, Khó thấp hơn Thường khoảng 10 điểm % tỉ lệ thắng quái hoang, Ác mộng khoảng 20 điểm, **đều ở mọi tầng** (không nhạt dần theo tầng); boss tầng Khó ~0,6×, Ác mộng ~0,3× tỉ lệ thắng của Thường; EXP mỗi trận **thắng** gần như Thường, tiền mỗi trận cao hơn.
+- **Kết quả 2026-11-03** (kịch bản mặc định, chỉ 3 biến thể, `--parts sweep,progression`):
+  - Số theo roadmap (+5 / +10 level, % thưởng chung cho EXP): quái hoang Thường / Khó / Ác mộng 68,9 / 57,2 / 46,7%, nhưng khoảng cách **nhạt dần theo tầng** (tầng 2: 71 / 56 / 38%; tầng 10: 73 / 65 / 54%), boss tầng Khó ở tầng 9–10 bằng Thường (11–14%); EXP mỗi trận Khó / Ác mộng cao hơn Thường 16–26% (quái level cao cho EXP theo level² + thưởng). Chơi liên tục ở Khó / Ác mộng không chậm hơn Thường. → đổi sang `levelPercent` +10 / +20% và `expPercent` −17 / −30 (Dễ −10% / +25).
+  - Số mới: quái hoang 68,9 / 59,3 / 49,0%, **đều từ tầng 2 tới 10** (tầng 2: 71 / 66 / 55%; tầng 5: 69 / 58 / 47%; tầng 10: 73 / 61 / 50%); boss tầng 10,5 / 7,0 / 4,0% (tầng 10: 14 / 12 / 4%); tiền mỗi trận quái hoang +5–15% (Khó) / +15–30% (Ác mộng). Khớp mục tiêu, giữ số.
+  - **Chơi liên tục chưa đo được độ khó**: cả hai lần, mọi đội đều qua 10 tầng ở mọi mức, số trận mỗi tầng 4–15 lẫn lộn (Thường không chậm hơn), vì đội mẫu mạnh lên chủ yếu nhờ nguồn ngoài EXP trận (fuse / breeding, kẹo, trang bị...; level lúc qua tầng 10 là 130–280 so với boss tầng 100) và mỗi đội chỉ một quỹ đạo (đổi chuỗi RNG là lệch hẳn). Ghi lại để rà khi cân bằng tiến trình chung (chơi liên tục ở Thường đang quá dễ so với quét tầng), không phải lỗi của độ khó.
+
+## Đấu giá hành (`auction.ts`, `progression.ts`)
+
+- Chơi liên tục: mỗi ngày ở thị trấn sau Cây thần, "người chơi" đặt giá 170% khởi điểm cho mọi lô chưa đặt khi giá ≤ 10% tiền (`runAuction`; luật chọn ở `auction.md` mục "Mô phỏng"). Ô `economy` của `progression.csv`: `auctionBid`.
+
 ## Cây thần (`gacha.ts`, `progression.ts`)
 
 - Chơi liên tục: mỗi ngày ở thị trấn sau trao đổi, "người chơi" quay ×10 khi dư tiền và kho còn chỗ (`runGacha`; luật chọn ở `gacha.md` mục "Mô phỏng"). Ô `economy` của `progression.csv`: `gacha`.
@@ -246,3 +260,9 @@ Chỉ đo gen, chỉ số và giá; gọi thẳng hàm thuần (`makeOffspring`,
 - Phần `itemWorld` (luật và mục tiêu ở `artifact-spirits.md`, số ở `balance-systems.md`): mỗi (đội trong `itemWorld.teamIds` × tầng trong `itemWorld.floors` × bậc món trong `itemWorld.rarities`) đi Khí giới bí cảnh bằng action thật (`enterItemWorld` với một món thường mới cấp 1 của bậc đó, `challengeItemWorld`, AI chung chọn lệnh, `runBattle` trần lượt `maxTurns`) từ tầng 0 tới khi thua / hết lượt / đủ `maxDepth` tầng. **Giả định:** đội mẫu như boss thế giới (`withAssumedGrowth`, `assumedTamerRealm`, vật phẩm chìa khóa), món mẫu là trang bị thường đầu tiên của dữ liệu.
 - Bảng `item-world.csv`: đội, tầng, bậc, số cấp lên được (= tầng qua), số trận, dừng sớm, giờ mỗi cấp, tiền mỗi giờ trong lượt đi, giá cường hóa cùng số cấp (tiền, Đá cường hóa, yêu đan), `enhanceHours` (giờ đi Khí giới bí cảnh để kiếm đủ tiền cường hóa đó), `itemWorldVsEnhance` (giờ Khí giới bí cảnh ÷ `enhanceHours`; < 1 là Khí giới bí cảnh nhanh hơn, so thêm với tiền mỗi trận ở `floors.csv` vì farm tầng thường ra tiền nhiều hơn), dã linh đã thu phục. Kịch bản mặc định `duo` / `full6` ở tầng 10 / 30, common / rare / legendary, tối đa 40 tầng (12 việc, ~35 giây cộng mọi worker); kịch bản nhanh một đội, tầng 10, rare, 10 tầng.
 
+
+## Phi thăng và thiên mệnh (`floorSweep.ts`, quét tầng)
+
+- Biến thể `destinyIds` (danh sách thiên mệnh, đội bớt ô theo thiên mệnh) và `ascensionUpgrades` (`{ id: cấp }`) so với `current` trên cùng đội / seed ở `floors.csv` / `ai-summary.csv` (`ascension.md`). Kịch bản mặc định chỉ giữ `lonelyStar`, `immortalMight5` (đo được rõ nhất, đỡ thời gian); muốn đo thiên mệnh khác thì thêm biến thể vào kịch bản riêng.
+- Lần đo 2026-11-03 (tầng 1–10, đội `duo` / `full6`, % thắng quái hoang / boss so với `current` 71,0 / 2,8 và 97,4 / 18,4): `killingStar` 71,8 / 3,4 và 97,7 / 20,4; `lonelyStar` 76,5 / 4,0 và 95,7 / 11,6; `tamerSaintBody` 72,3 / 3,0 và 97,9 / 19,4; `immortalMight5` (30 Tiên nguyên) 79,6 / 4,8 và 98,7 / 28,4. **Tiêu chí:** thiên mệnh có mặt hại phải đổi cách chơi: `lonelyStar` có lợi cho đội nhỏ, thiệt cho đội đủ ô (đạt). `tamerSaintBody` nhạt ở đây vì cộng hưởng tăng theo cảnh giới, tầng thấp cảnh giới còn thấp; chưa đo ở tầng cao. Đợt 36 thiên mệnh (cùng mốc `current`): `bloodFiend` 70,6 / 3,0 và 97,8 / 22,0; `overlordFate` 73,0 / 3,6 và 98,1 / 22,8; `heavenDefier` 79,6 / 4,8 và 98,7 / 28,4; `solitaryPath` 80,8 / 5,0 và 86,4 / 4,6. `solitaryPath` đạt cùng tiêu chí (đội 2 quái có lợi nhưng vẫn yếu hơn đội đủ ô không thiên mệnh, đội đủ ô thiệt nặng). Quét tầng không đo mặt hại ngoài trận (EXP, giá, bắt, thu phục) nên `heavenDefier` / `overlordFate` chưa kiểm chứng được cái giá; giữ số tạm.
+- Chưa có: "người chơi" phi thăng trong chơi liên tục (kịch bản không tới tầng `minFloor`).

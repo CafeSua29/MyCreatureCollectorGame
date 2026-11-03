@@ -197,6 +197,75 @@ describe('gộp', () => {
   })
 })
 
+describe('di dời / gộp hàng loạt', () => {
+  it('di dời nhiều khí linh từ kho lên món trong một action', () => {
+    const state = townState({
+      equipment: [makeEquipment({ rarity: 'rare' })],
+      spirits: [spirit(1), spirit(2, GUARD), spirit(3)]
+    })
+    const next = act(state, {
+      type: 'moveSpirits',
+      from: [inStorage(0), inStorage(2)],
+      to: { kind: 'equipment', instanceId: 'e1' }
+    })
+    expect(next.inventory.spirits).toEqual([spirit(2, GUARD)])
+    // Xử lý từ vị trí lớn xuống: khí linh ở index 2 tới trước.
+    expect(bagItem(next).spirits).toEqual([spirit(3), spirit(1)])
+    expect(next.money.eq(1e9 - 20 * 4 * state.highestFloor)).toBe(true)
+    expect(validateGameState(data, next)).toEqual([])
+  })
+
+  it('di dời từ nhiều món về kho', () => {
+    const state = townState({
+      equipment: [
+        makeEquipment({ spirits: [spirit(4)] }),
+        makeEquipment({ id: 'e2', spirits: [spirit(5)] })
+      ]
+    })
+    const next = act(state, {
+      type: 'moveSpirits',
+      from: [onItem(0), onItem(0, 'e2')],
+      to: { kind: 'storage' }
+    })
+    expect(next.inventory.spirits.map((entry) => entry.value).sort()).toEqual([4, 5])
+  })
+
+  it('gộp nhiều khí linh vào một, kể cả khi khí linh giữ lại đứng sau', () => {
+    const state = townState({
+      spirits: [spirit(1), spirit(2, GUARD), spirit(10), spirit(1e15), spirit(4)]
+    })
+    const next = act(state, {
+      type: 'mergeSpiritsInto',
+      first: inStorage(2),
+      others: [inStorage(0), inStorage(4), inStorage(3)]
+    })
+    expect(next.inventory.spirits).toEqual([spirit(2, GUARD), spirit(1e15 + 15)])
+  })
+
+  it('lỗi: rỗng, trùng, gộp với chính nó, khác loại, ô món đầy (cả lệnh lỗi)', () => {
+    const state = townState({
+      equipment: [makeEquipment()],
+      spirits: [spirit(1), spirit(2, GUARD), spirit(3), spirit(4)]
+    })
+    const merge = (others: SpiritLocation[]): GameState =>
+      act(state, { type: 'mergeSpiritsInto', first: inStorage(0), others })
+    expectActionError(() => merge([]), 'malformedAction')
+    expectActionError(() => merge([inStorage(2), inStorage(2)]), 'malformedAction')
+    expectActionError(() => merge([inStorage(0)]), 'malformedAction')
+    expectActionError(() => merge([inStorage(2), inStorage(1)]), 'spiritTypesDiffer')
+    // Món thường có 1 ô: khí linh đầu vào được, khí linh sau báo hết ô.
+    expectActionError(
+      () =>
+        act(state, {
+          type: 'moveSpirits',
+          from: [inStorage(2), inStorage(3)],
+          to: { kind: 'equipment', instanceId: 'e1' }
+        }),
+      'spiritSlotsFull'
+    )
+  })
+})
+
 describe('nuôi dưỡng', () => {
   it('yêu đan bất kỳ: + coreValue mỗi viên', () => {
     const state = townState({ stacks: { [FIXTURE_CORE_IDS[0]]: 5 }, spirits: [spirit(3)] })

@@ -10,6 +10,7 @@ import {
   isSameItemRef,
   itemBuyPrice,
   itemSellPrice,
+  parseItemBatch,
   parseItemRef,
   removeByRef,
   requireItemCount,
@@ -17,7 +18,7 @@ import {
   takeEquipment
 } from '../inventory'
 import { assertBagRoom, eventModifierMultiplier, tamerBonusMultiplier } from '../registries'
-import { dayOf, type GameData, type GameState, type ShopEntry } from '../model'
+import { bestFloorReached, dayOf, type GameData, type GameState, type ShopEntry } from '../model'
 import { addMarketSale, marketSellTotal } from './market'
 
 /** Cửa hàng thị trấn đang mở (không đóng cửa sau thú triều thất bại; docs/rules/events.md). */
@@ -94,7 +95,8 @@ export function buyCharm(data: GameData, state: GameState, itemId: string): Game
     throw new ActionError('charmNotForSale', { itemId, reason: 'owned' })
   }
   const minFloor = item.townMinFloor ?? 1
-  if (state.highestFloor < minFloor) throw new ActionError('charmFloorLocked', { itemId, minFloor })
+  if (bestFloorReached(state) < minFloor)
+    throw new ActionError('charmFloorLocked', { itemId, minFloor })
   const paid = spendMoney(state, toBig(item.townPrice))
   return { ...paid, inventory: addByRef(state.inventory, { storage: 'stack', itemId }, 1) }
 }
@@ -122,4 +124,29 @@ export function sellItem(
   const inventory = removeByRef(state.inventory, ref, count)
   const earned = marketSellTotal(data, state, ref, count)
   return { ...addMarketSale(state, ref, count), inventory, money: state.money.plus(earned) }
+}
+
+/**
+ * Bán nhiều dòng item trong một action (hàng loạt, docs/rules/bulk-actions.md): lần lượt như sellItem
+ * (giá thị trường tụt dần theo số đã bán trước đó trong lệnh); một dòng lỗi thì cả lệnh lỗi.
+ */
+export function sellItems(data: GameData, state: GameState, items: unknown): GameState {
+  return parseItemBatch(items).reduce(
+    (current, line) => sellItem(data, current, line.item, line.count),
+    state
+  )
+}
+
+/**
+ * Xem trước bán hàng loạt (UI hiện trước khi xác nhận): tổng số cái và tổng tiền nhận được, đúng như
+ * khi gửi sellItems. Lệnh không hợp lệ thì ném lỗi như sellItems.
+ */
+export function previewSellItems(
+  data: GameData,
+  state: GameState,
+  items: unknown
+): { count: number; money: Decimal } {
+  const sold = sellItems(data, state, items)
+  const count = parseItemBatch(items).reduce((total, line) => total + Number(line.count), 0)
+  return { count, money: sold.money.minus(state.money) }
 }

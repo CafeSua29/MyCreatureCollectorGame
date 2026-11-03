@@ -46,18 +46,10 @@ export interface RecipeDef {
   scroll?: true
 }
 
-/** Kết quả lần luyện gần nhất (UI hiện số thành / bại). */
-export interface CraftResult {
-  recipeId: string
-  successes: number
-  failures: number
-}
-
-/** Cấp của một nơi luyện (nguyên ≥ 1, không trần, suy từ tổng exp) và lần luyện gần nhất. */
+/** Cấp của một nơi luyện (nguyên ≥ 1, không trần, suy từ tổng exp). */
 export interface CraftSkillState {
   level: number
   exp: Decimal
-  lastCraft: CraftResult | null
 }
 
 export interface AlchemyState extends CraftSkillState {

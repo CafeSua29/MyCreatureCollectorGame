@@ -15,17 +15,17 @@ import { floorSite, travel, type FloorSite } from '../world'
 import { activateBeastTideIfDue } from '../progression'
 import { partnerMultiplier } from '../tamer'
 import { requireBattleStart, startWildBattle } from '../battle'
-import type {
-  ActiveChain,
-  EventDef,
-  EventGroup,
-  EventLogEntry,
-  EventOutcomeDef,
-  EventResultDef,
-  GameData,
-  GameState,
-  Location,
-  PendingEvent
+import {
+  appendLog,
+  type ActiveChain,
+  type EventDef,
+  type EventGroup,
+  type EventOutcomeDef,
+  type EventResultDef,
+  type GameData,
+  type GameState,
+  type Location,
+  type PendingEvent
 } from '../model'
 import { applyResults } from './eventResults'
 import type { EventContext } from './context'
@@ -90,9 +90,9 @@ function dueChain(data: GameData, state: GameState, site: FloorSite): ActiveChai
   )
 }
 
-/** Event xuất hiện: chờ người chơi chọn (mọi action khác bị chặn), log kết quả cũ được xóa. */
+/** Event xuất hiện: chờ người chơi chọn (mọi action khác bị chặn). */
 function presentEvent(state: GameState, pending: PendingEvent): GameState {
-  return { ...state, events: { ...state.events, pending, log: [] } }
+  return { ...state, events: { ...state.events, pending } }
 }
 
 /**
@@ -161,8 +161,7 @@ export function travelWithEvents(data: GameData, state: GameState, to: Location)
   const tided = activateBeastTideIfDue(data, arrived)
   const tide = tided.events.beastTide
   if (tided !== arrived && tide?.phase === 'active') {
-    const log: EventLogEntry[] = [{ type: 'beastTideArrived', waves: tide.waves }]
-    return { ...tided, events: { ...tided.events, log } }
+    return appendLog(tided, { type: 'beastTideArrived', waves: tide.waves })
   }
   if (rollableEvents(data, 'town').length === 0) return arrived
   const site = floorSite(data, arrived, arrived.highestFloor)
@@ -211,7 +210,7 @@ function battleResultParams(
 
 /**
  * Chọn lựa chọn của event đang chờ: trả vật phẩm của lựa chọn, tung một kết quả theo trọng số rồi
- * áp lần lượt (có thể mở trận). Event hết chờ ngay, log kết quả thay bằng của lần này.
+ * áp lần lượt (có thể mở trận). Event hết chờ ngay, kết quả ghi vào log ngoài trận.
  */
 export function chooseEventOption(data: GameData, state: GameState, optionId: unknown): GameState {
   const pending = state.events.pending
@@ -239,7 +238,7 @@ export function chooseEventOption(data: GameData, state: GameState, optionId: un
     ctx.log.push({ type: 'itemSpent', itemId, count })
   }
   applyOutcome(ctx, outcome)
-  return { ...ctx.state, events: { ...ctx.state.events, log: ctx.log } }
+  return appendLog(ctx.state, ...ctx.log)
 }
 
 /** Áp một kết quả của lựa chọn; bước chuỗi không đi tiếp (và không mở trận) thì chuỗi kết thúc. */
@@ -273,5 +272,5 @@ export function settleEventBattle(data: GameData, before: GameState, after: Game
     }
   )
   applyOutcome(ctx, { weight: 1, results: (won ? params.onWin : params.onLoss) ?? [] })
-  return { ...ctx.state, events: { ...ctx.state.events, log: ctx.log } }
+  return appendLog(ctx.state, ...ctx.log)
 }

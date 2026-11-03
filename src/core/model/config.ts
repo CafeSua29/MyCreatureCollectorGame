@@ -28,6 +28,9 @@ import type { TamerTalentConfig } from './tamerTalents'
 import type { SectConfig } from './sects'
 import type { TeamPresetConfig } from './teamPresets'
 import type { TradeConfig } from './trades'
+import type { AuctionConfig } from './auction'
+import type { AscensionConfig } from './ascension'
+import type { ChallengeConfig } from './challenge'
 import type { GachaConfig } from './gacha'
 import type { Tactic } from './monster'
 import type { ImprintConfig } from './imprint'
@@ -188,6 +191,12 @@ export interface BalanceConfig {
   sects: SectConfig
   /** Trao đổi với NPC (docs/rules/trades.md). */
   trades: TradeConfig
+  /** Đấu giá hành (docs/rules/auction.md). */
+  auction: AuctionConfig
+  /** Độ khó và chế độ thử thách (docs/rules/challenge-modes.md). */
+  challenge: ChallengeConfig
+  /** Phi thăng và thiên mệnh (docs/rules/ascension.md). */
+  ascension: AscensionConfig
   /** Đội hình mẫu (docs/rules/roster.md). */
   teamPresets: TeamPresetConfig
   /** Cây thần: gacha trứng quái (docs/rules/gacha.md). */

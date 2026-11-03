@@ -10,6 +10,7 @@ import { getMaxHp } from '../monster'
 import type { GameData, GameState, RawGameData } from '../model'
 import { toBig } from '../shared'
 import {
+  findLog,
   atFloor,
   dataIssuesAfter,
   defined,
@@ -140,7 +141,7 @@ describe('cấp luyện đan', () => {
 describe('bộ đếm thành tựu', () => {
   it('luyện thành công cộng pillsCrafted theo số lần thành công; thất bại không tính', () => {
     const next = craft(townState({ herb: 20 }), 'risky', 10)
-    const { successes } = defined(next.alchemy.lastCraft)
+    const { successes } = defined(findLog(next, 'crafted'))
     expect(successes).toBeGreaterThan(0)
     expect(successes).toBeLessThan(10)
     expect(next.stats.pillsCrafted).toBe(successes)
@@ -156,13 +157,15 @@ describe('luyện đan', () => {
     expect(next.money.toString()).toBe('970')
     expect(next.alchemy.exp.toString()).toBe('30')
     expect(next.alchemy.level).toBe(2)
-    expect(next.alchemy.lastCraft).toEqual({ recipeId: 'potion', successes: 3, failures: 0 })
+    expect(next.log).toEqual([
+      { type: 'crafted', station: 'alchemy', recipeId: 'potion', successes: 3, failures: 0 }
+    ])
     expect(validateGameState(data, next)).toEqual([])
   })
 
   it('thất bại mất nguyên liệu; mỗi lần tung riêng, tất định theo seed', () => {
     const next = craft(townState({ herb: 40 }), 'risky', 20)
-    const { successes, failures } = defined(next.alchemy.lastCraft)
+    const { successes, failures } = defined(findLog(next, 'crafted'))
     expect(successes + failures).toBe(20)
     expect(successes).toBeGreaterThan(0)
     expect(failures).toBeGreaterThan(0)
@@ -279,7 +282,7 @@ describe('dữ liệu và save', () => {
     const state = townState()
     const issues = validateGameState(data, {
       ...state,
-      alchemy: { level: 5, exp: toBig(0), knownRecipes: ['potion'], lastCraft: null }
+      alchemy: { level: 5, exp: toBig(0), knownRecipes: ['potion'] }
     })
     expect(issues).toEqual(
       expect.arrayContaining([

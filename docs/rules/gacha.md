@@ -10,7 +10,7 @@ Code: `model/gacha.ts` (kiểu), `progression/gacha.ts` (`gachaCost`, `gachaSpec
 
 - `pullGacha { count }` (thị trấn, ngoài trận): `count` là một trong `pullOptions` (×1, ×10), khác thì `gachaInvalidCount { count }`. Thiếu tiền `notEnoughMoney`, bảng loài rỗng `gachaPoolEmpty`; lỗi thì state giữ nguyên.
 - **Giá** = `costBase` × `costMultiplier` × `highestFloor` (`gachaCost`). ×10 có hệ số 9 (giảm 10%). **Không có bảo hiểm (pity).**
-- Nhận `count` trứng (cơ chế chung ở `breeding-eggs.md`: nở sau 5–10 trận thắng, không giới hạn số trứng mang theo, id từ `nextMonsterId`). Bộ đếm `stats.gachaPulls` + `count` (`achievements.md`).
+- Nhận `count` trứng (cơ chế chung ở `breeding-eggs.md`: nở sau 5–10 trận thắng, không giới hạn số trứng mang theo, id từ `nextMonsterId`). Bộ đếm `stats.gachaPulls` + `count` (`achievements.md`). Log ngoài trận `gachaPulled { eggIds }` (id trứng mới theo thứ tự; `game-log.md`).
 
 ## Loài
 

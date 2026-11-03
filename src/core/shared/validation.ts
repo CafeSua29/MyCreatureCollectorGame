@@ -1,6 +1,7 @@
 // Hàm nhỏ dùng chung khi kiểm tra dữ liệu JSON (params của hook, config...) và state.
 
 import { Decimal, isValidBig } from './big'
+import { malformedAction } from './errors'
 
 export function asObject(value: unknown): Record<string, unknown> | null {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
@@ -46,4 +47,19 @@ export function checkEnumList(value: unknown, field: string, allowed: readonly s
     .map((id) => `${field}: "${String(id)}" phải là ${allowed.join(' / ')}`)
   if (new Set(value).size !== value.length) issues.push(`${field} có phần tử trùng`)
   return issues
+}
+
+/**
+ * Đọc danh sách id nhận từ action (thao tác hàng loạt): mảng chuỗi khác rỗng, không trùng; sai thì
+ * malformedAction nêu tên trường.
+ */
+export function parseIdList(value: unknown, field: string): string[] {
+  if (!Array.isArray(value) || value.length === 0) {
+    throw malformedAction(`${field} phải là danh sách có ít nhất một id`)
+  }
+  if (!value.every((id): id is string => typeof id === 'string')) {
+    throw malformedAction(`${field} chỉ gồm chuỗi`)
+  }
+  if (new Set(value).size !== value.length) throw malformedAction(`${field} bị trùng`)
+  return [...value]
 }

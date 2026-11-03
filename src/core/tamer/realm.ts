@@ -90,7 +90,8 @@ export function tamerExpShare(battleExp: Decimal, percent: number): Decimal {
  * Ngự thú sư của một phe lúc vào trận: linh lực đầy, chưa hồi chiêu, chưa dùng kỹ năng nào.
  * `skillIds`: kỹ năng được dùng (ngự thú sư NPC); null = mọi kỹ năng đã mở. `manaBonusPercent`: %
  * linh lực tối đa cộng thêm (kênh thưởng `manaPercent`, docs/rules/tamer-talents.md). `manaPercent`:
- * linh lực đầu trận còn % này của tối đa (đạo thương, mục "Bản mệnh thú"); mặc định đầy.
+ * linh lực đầu trận còn % này của tối đa (đạo thương, mục "Bản mệnh thú"); mặc định đầy. `manaRealm`:
+ * cảnh giới tính linh lực khi khác cảnh giới mở kỹ năng (sau phi thăng, docs/rules/ascension.md).
  */
 export function newBattleTamer(
   data: GameData,
@@ -98,10 +99,16 @@ export function newBattleTamer(
   {
     skillIds = null,
     manaBonusPercent = 0,
-    manaPercent = 100
-  }: { skillIds?: string[] | null; manaBonusPercent?: number; manaPercent?: number } = {}
+    manaPercent = 100,
+    manaRealm = realm
+  }: {
+    skillIds?: string[] | null
+    manaBonusPercent?: number
+    manaPercent?: number
+    manaRealm?: number
+  } = {}
 ): BattleTamer {
-  const max = Math.floor(maxMana(data, realm) * Math.max(0, 1 + manaBonusPercent / 100))
+  const max = Math.floor(maxMana(data, manaRealm) * Math.max(0, 1 + manaBonusPercent / 100))
   const mana = Math.floor((max * manaPercent) / 100)
   return { realm, mana, cooldowns: {}, uses: {}, skillIds }
 }

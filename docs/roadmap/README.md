@@ -12,11 +12,17 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [bulk-actions.md](docs/roadmap/bulk-actions.md): Thao tác hàng loạt
-- [auction.md](docs/roadmap/auction.md): Đấu giá hành (đặt giá kín với NPC, ký gửi)
-- [challenge-modes.md](docs/roadmap/challenge-modes.md): Độ khó, Nuzlocke, Hardcore, Randomizer (tùy chọn theo từng game)
-- [ascension.md](docs/roadmap/ascension.md): Phi thăng (prestige toàn game, Tiên nguyên, Tiên giới)
-- [destiny.md](docs/roadmap/destiny.md): Thiên mệnh (chọn lúc tạo game / phi thăng)
+- [type-chemistry.md](docs/roadmap/type-chemistry.md): Phản ứng hệ (Cassette Beasts: trúng đòn hệ X thì mục tiêu buff / debuff / biến hệ)
+- [stamina.md](docs/roadmap/stamina.md): Thể lực cho skill (Temtem: skill tốn thể lực, quá sức mất máu và mất lượt, lệnh Nghỉ)
+- [skill-stickers.md](docs/roadmap/skill-stickers.md): Sticker skill (Cassette Beasts: sách kỹ năng có độ hiếm và thuộc tính ngẫu nhiên gắn vào skill)
+- [body-marks.md](docs/roadmap/body-marks.md): Dấu ấn trên quái (sẹo, đột biến, thích nghi, ám ảnh, chiến tích; từ phá bộ phận, chí mạng, suýt chết, hiểm địa, đan dược...; đột biến di truyền)
+- [bootleg.md](docs/roadmap/bootleg.md): Biến thể Bootleg (Cassette Beasts: quái hiếm mang hệ khác loài gốc)
+- [devolution.md](docs/roadmap/devolution.md): Thoái hóa (Digimon Cyber Sleuth: về dạng trước để đổi nhánh tiến hóa)
+- [star-rank.md](docs/roadmap/star-rank.md): Bậc sao (Fomon: ghép quái cùng chuỗi tiến hóa để lên sao, không trần)
+- [equipment-sets.md](docs/roadmap/equipment-sets.md): Bộ trang bị mọi bậc (bộ ngẫu nhiên kiểu Summoners War + bộ đặt tên kiểu Diablo / Grim Dawn)
+- [tamer-specializations.md](docs/roadmap/tamer-specializations.md): Chuyên môn ngự thú sư (Siralim Ultimate: chọn lớp, perk và kỹ năng riêng theo lớp, xức dầu mượn perk)
+- [trial-boons.md](docs/roadmap/trial-boons.md): Ân huệ trong lượt bí cảnh / tháp (Dinotica: chọn 1 trong 3 buff tạm sau mỗi trận)
+- [challenge-extras.md](docs/roadmap/challenge-extras.md): Phần còn lại của độ khó / chế độ thử thách (mô phỏng Nuzlocke)
 - [settings.md](docs/roadmap/settings.md): Cài đặt
 - [theme.md](docs/roadmap/theme.md): Theme
 - [ui-overhaul.md](docs/roadmap/ui-overhaul.md): Toàn bộ UI, Đa ngôn ngữ: phần UI
@@ -61,7 +67,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       5i. Tính cách. **Đã xong** (luật ở `docs/rules/natures.md`; Bạc Hà ở chợ đen đã có ở bước 5l+.11, nấu ở Đầu bếp đã có ở 6k, `cooking.md`).
       5j. Phẩm cấp tư chất. **Đã xong** (luật ở `docs/rules/aptitude.md`; dùng cho thành tựu đã làm ở 8b, `docs/rules/achievements.md`, đối thủ NPC chờ UI, `docs/rules/trainers.md`).
       5j2. Phẩm cấp loài. **Đã xong** (luật ở `docs/rules/species-rank.md`; chỗ dùng ở Dex / gacha / khu bảo tồn / thu phục / thành tựu / trao đổi NPC / mở khóa quái khởi đầu ghi ở roadmap của từng mục).
-      5k. Sách kỹ năng. **Đã xong** (luật ở `docs/rules/skill-books.md`; chợ đen đã có ở bước 5l+.11, bí cảnh đã làm ở `docs/rules/trials.md`, đấu giá chờ `auction.md`, thần thông không có sách chờ `awakening.md`).
+      5k. Sách kỹ năng. **Đã xong** (luật ở `docs/rules/skill-books.md`; chợ đen đã có ở bước 5l+.11, bí cảnh đã làm ở `docs/rules/trials.md`, đấu giá đã làm ở `docs/rules/auction.md`, thần thông không có sách chờ `awakening.md`).
       5k2. Kế thừa skill khi fuse. **Đã xong** (luật ở mục "Kế thừa skill" của `docs/rules/fusing.md`; thần thông chờ `awakening.md`, ô nhân hình đã làm ở `docs/rules/human-form.md`).
       5l. Kỹ năng đồng hành. **Đã xong** (luật ở `docs/rules/partner-skills.md`; hiệu ứng tỉ lệ event / sức thám hiểm / tỉ lệ luyện đan chờ ba hệ thống dưới).
       **5l+. Làm ngay sau 5l** (chủ project chốt 2026-10-24: làm luôn ba hệ thống mà kỹ năng đồng hành còn chờ, kèm mọi phần phụ thuộc chưa có), theo thứ tự phụ thuộc; các bước này được kéo lên trước 5m, ở danh sách dưới chỉ còn dòng trỏ về đây:
@@ -90,7 +96,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
           5u. Linh dịch. **Đã xong** (luật ở `docs/rules/spirit-virus.md`; tỉ lệ nhiễm / lây theo Pokérus gốc thay cho số tạm của roadmap).
           5v. Âm / Dương hóa. **Đã xong** (luật ở `docs/rules/polarity.md`; quái hoang / boss có cực theo tầng đang đánh thay cho `highestFloor`).
    6. Extract / inject trait. **Đã xong** (2026-10-31; luật ở `docs/rules/trait-crystals.md`; tinh thể rơi đồ để sau).
-      6b. Hiến tế. **Đã xong** (2026-10-31; luật ở `docs/rules/sacrifice.md`; độ thuần không vượt độ thuần cao hơn của hai quái thay cho cộng thẳng; chặn quái khóa đã làm ở bước 11b, `roster.md`.md`, bộ lọc hàng loạt chờ `bulk-actions.md`).
+      6b. Hiến tế. **Đã xong** (2026-10-31; luật ở `docs/rules/sacrifice.md`; độ thuần không vượt độ thuần cao hơn của hai quái thay cho cộng thẳng; chặn quái khóa đã làm ở bước 11b, `roster.md`.md`, bộ lọc hàng loạt ở `bulk-actions.md`).
       6c. Phòng Thí Nghiệm: cấy ghép (`implant`). **Đã xong** (2026-10-31; luật ở `docs/rules/implant.md`; bậc huyết thanh ở `balance.json` thay `serums.json`, bản mệnh cấy được (chết thì đạo thương), kết quả qua mốc lý lịch thay log riêng; huyết thanh hiệu ứng + registry `SERUM_EFFECTS` làm ngay sau (5 hiệu ứng theo hook có sẵn, cấp có dấu); hỏi khi túi đầy đã làm cùng sức chứa (`docs/rules/capacity.md`, 2026-10-31, save v77)).
       6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần đã làm ở 6b, `sacrifice.md`).
       6e. Thức tỉnh và độ kiếp. **Đã xong** ở bước 5l+.1 (luật ở `docs/rules/awakening.md`).
@@ -112,7 +118,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       7g. Khí linh và Khí giới bí cảnh. **Đã xong** (2026-11-01; luật ở `docs/rules/artifact-spirits.md`; kho khí linh là `inventory.spirits` thay `GameState.spiritStorage`, khí linh / tầng đã qua là trường tùy chọn của món, thêm `softCap` cho hiệu ứng có trần tự nhiên, nuôi bằng yêu đan / hồn phách, Khí giới bí cảnh dùng `GameState.trial` union `TrialRun`, độ dốc tầng 1 / tầng + 0,5 / cấp theo mô phỏng).
    8. Bộ sưu tập (Dex). **Đã xong** (luật ở `docs/rules/dex.md`; màn hình Dex chờ UI).
       8b. Thành tựu và danh hiệu. **Đã xong** (2026-11-01; luật ở `docs/rules/achievements.md`; thưởng nhận bằng action `claimAchievement` thay cho tự cộng kèm log, bộ đếm chỉ cho việc không suy ra được từ state, danh hiệu đạo quán / giải đấu / tháp qua thành tựu, danh hiệu chỉ có kênh %, không % chỉ số).
-      8c. Mở khóa quái khởi đầu. **Đã xong** (2026-11-01; luật ở mục "Mở khóa xuyên save" của `docs/rules/starters.md`; điều kiện dùng chung registry điều kiện thành tựu thay bộ điều kiện riêng, mở theo chuỗi đã sở hữu là cờ `unlockOwnedLines`, `ascensions` chờ phi thăng).
+      8c. Mở khóa quái khởi đầu. **Đã xong** (2026-11-01; luật ở mục "Mở khóa xuyên save" của `docs/rules/starters.md`; điều kiện dùng chung registry điều kiện thành tựu thay bộ điều kiện riêng, mở theo chuỗi đã sở hữu là cờ `unlockOwnedLines`, điều kiện `ascensions` đã có ở 12d).
       8d. Nghiên cứu loài. **Đã xong** (2026-11-01; luật ở `docs/rules/species-research.md`; mẫu nhiệm vụ trong `balance.json` thay file riêng, cấp suy ra từ bộ đếm không lưu, không log lên cấp, Bùa Lấp Lánh / danh hiệu qua thành tựu `researchCompleted`, thưởng cấp (Kẹo Hiếm) nhận bằng action, thêm lợi ích mở điểm yếu ở cấp 6).
    9. Bảng nhiệm vụ. **Đã xong** ở bước 5l+.5 (luật ở `docs/rules/quests.md`).
       9b. Phái quái đi thám hiểm. **Đã xong** ở bước 5l+.6 (luật ở `docs/rules/expeditions.md`).
@@ -121,12 +127,23 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
       9e. Tông môn. **Đã xong** (2026-11-02; luật ở `docs/rules/sects.md`; 15 tông, đồng môn NPC có tên / chức vị / tích cống hiến theo ngày, luận võ, thi thăng chức đấu giám khảo, tông chiến, điểm thiên phú ngự thú sư thưởng lưu ở `tamer.bonusTalentPoints`).
       9f. Trao đổi với NPC. **Đã xong** (2026-11-02; luật ở `docs/rules/trades.md`; quái nhận thế chỗ quái đưa nên không cần chỗ trống, + 50% EXP như Pokémon, NPC dùng chung tên với tông môn).
    10. Cây thần (gacha trứng). **Đã xong** (2026-11-02; luật ở `docs/rules/gacha.md`; trọng số loài mặc định theo phẩm cấp với `gachaWeight` là ghi đè thay vì khai từng loài, loài không giới tính ra được, điểm xuất phát trọng số trait bằng quái hoang).
-   11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt. Sức chứa **đã xong** (2026-10-31, làm sớm cùng cấy ghép; luật ở `docs/rules/capacity.md`); thao tác hàng loạt còn ở `bulk-actions.md`.
-       11b. Khóa quái, yêu thích, đội hình mẫu. **Đã xong** (2026-11-02; luật ở `docs/rules/roster.md`; làm cùng Bí kíp ở Tàng Bảo Các; khóa còn chặn fuse / cấy ghép có thể mất quái; thứ thiếu ghi ở `teamPresets.lastMissing` thay vì log).
+   11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt. Sức chứa **đã xong** (2026-10-31, làm sớm cùng cấy ghép; luật ở `docs/rules/capacity.md`); thao tác hàng loạt **đã xong** (2026-11-03; luật ở `docs/rules/bulk-actions.md`; bán có xem trước tổng tiền ở core, bộ lọc cấp áp cho cả trang bị).
+       11b. Khóa quái, yêu thích, đội hình mẫu. **Đã xong** (2026-11-02; luật ở `docs/rules/roster.md`; làm cùng Bí kíp ở Tàng Bảo Các; khóa còn chặn fuse / cấy ghép có thể mất quái; thứ thiếu ghi log ngoài trận `presetMissing`, `game-log.md`).
+       11c. **Tính năng lấy từ game khác** (chủ project chốt 2026-11-03), theo thứ tự phụ thuộc: luật trận dùng chung trước (đổi cân bằng nhiều, mô phỏng sớm), sticker sau thể lực (có thuộc tính giảm thể lực), Bootleg sau sticker (tăng tỉ lệ thuộc tính), thoái hóa sau Bootleg (giữ hệ Bootleg), ân huệ bí cảnh sau thể lực (ân huệ hồi thể lực):
+          1. Phản ứng hệ (`type-chemistry.md`).
+          2. Thể lực cho skill (`stamina.md`).
+          3. Sticker skill (`skill-stickers.md`).
+          4. Dấu ấn trên quái (`body-marks.md`).
+          5. Biến thể Bootleg (`bootleg.md`).
+          6. Thoái hóa (`devolution.md`).
+          7. Bậc sao (`star-rank.md`).
+          8. Bộ trang bị (`equipment-sets.md`).
+          9. Ân huệ trong lượt bí cảnh (`trial-boons.md`).
+          10. Chuyên môn ngự thú sư (`tamer-specializations.md`; sau ân huệ vì dùng chung loại hiệu ứng hook trận theo phe).
    12. Hệ thống event. **Đã xong** ở bước 5l+.11 (luật ở `docs/rules/events.md`).
-       12b. Đấu giá hành (`auction.md`; sau event để tách rõ với chợ đen).
-       12c. Độ khó và chế độ thử thách (`challenge-modes.md`; chạm nhiều hệ thống nên làm gần cuối).
-       12d. Phi thăng + Thiên mệnh (`ascension.md`, `destiny.md`; làm sau cùng trong phần core vì reset gần hết hệ thống).
+       12b. Đấu giá hành. **Đã xong** (2026-11-03; luật ở `docs/rules/auction.md`; ký gửi lấy giá bán ở cửa hàng làm mốc thay giá gốc để không in tiền, giá khởi điểm = 100% giá trị, lô trang bị tách thường / unique, bể đồ hiếm dùng chung với chợ đen).
+       12c. Độ khó và chế độ thử thách. **Đã xong** (2026-11-03; luật ở `docs/rules/challenge-modes.md`; khu Nuzlocke gồm cả hiểm địa (`zone:<id>`), bí cảnh / tháp không có lượt gặp; boss giữ loài khi Randomizer (đồ rơi / mở tầng tra theo loài); Hardcore không đổi seed khi mở; Randomizer xáo learnset qua dữ liệu của game `gameDataFor`; độ khó đổi sang % level + `expPercent` theo mô phỏng; phần còn lại (mô phỏng Nuzlocke) ở `challenge-extras.md`, làm khi có lối chơi cẩn thận trong mô phỏng).
+       12d. Phi thăng + Thiên mệnh. **Đã xong** (2026-11-03; luật ở `docs/rules/ascension.md`; giá trị cao nhất suy bằng `max` với mốc lúc phi thăng thay cho cập nhật liên tục, chọn thiên mệnh là action riêng sau `ascend`, bớt ô đội qua dữ liệu của game `gameDataFor`, Đan Đạo Kỳ Tài đổi mặt hại sang luyện khí vì thọ nguyên mặc định tắt).
    - Sau mỗi mục: chạy lại script mô phỏng, **dựa vào số liệu sửa chỗ chưa hợp lý / chưa cân bằng** rồi chạy lại để kiểm chứng (mục "Dùng kết quả mô phỏng" ở `simulation.md`), không chỉ báo số.
 7. **Toàn bộ UI (làm sau cùng)**: mọi màn cho mọi hệ thống đã có core, kèm **Theme** (mục cùng tên trong Lộ trình) và **Đa ngôn ngữ: phần UI** (trong `docs/roadmap/ui-overhaul.md`). Thay màn tạm "Đội của bạn". Trước khi code UI: đưa thiết kế tổng (bản đồ màn hình, bố cục ASCII, luồng thao tác) cho chủ project duyệt.
 8. **Thiết lập build đa nền tảng** (mục "Build & phát hành": cấu hình electron-builder, icon, lệnh build, log lỗi, phiên bản, thư mục save theo kiểu bản build). Chủ project chốt làm sau toàn bộ UI, trước khi build bản phát hành.

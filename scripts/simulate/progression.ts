@@ -16,6 +16,8 @@ import {
   mapBigStats,
   maxBig,
   pick,
+  type Decimal,
+  type Difficulty,
   type GameAction,
   type GameData,
   type GameState,
@@ -60,6 +62,7 @@ import { runQuests } from './quests'
 import { runSectActivities } from './sects'
 import { runTrades } from './trades'
 import { runGacha } from './gacha'
+import { runAuction } from './auction'
 import { runTrainerChallenges } from './trainers'
 import { runTrials } from './trials'
 import { sendExpeditions } from './expeditions'
@@ -269,6 +272,10 @@ export interface ProgressionResult {
   battleTotals: BattleTotalsByKind
   /** Số liệu event cả lần chơi (events.ts). */
   eventTotals: EventTally
+  /** Độ khó của lần chơi (difficulty.csv). */
+  difficulty: Difficulty
+  /** Tổng tiền tăng trong các trận (thưởng thắng trận, event trong trận), chuỗi Decimal. */
+  battleMoney: string
 }
 
 export interface ProgressionOptions extends ProgressionSpec {
@@ -282,6 +289,8 @@ export interface ProgressionOptions extends ProgressionSpec {
   usePills: boolean
   /** "Người chơi" bắt quái, fuse, breeding, đưa con vào đội (growth.ts). */
   growth: boolean
+  /** Độ khó của game (docs/rules/challenge-modes.md); bỏ trống = Thường. */
+  difficulty?: Difficulty
 }
 
 type FloorCounter = Omit<
@@ -372,6 +381,8 @@ interface Run {
   lastBreedDay: number
   /** Ngày gần nhất đã làm việc NPC ở thị trấn (trainers.ts: mỗi ngày tối đa một lần). */
   trainerDay: number
+  /** Tiền tăng trong các trận (difficulty.csv). */
+  battleMoney: Decimal
 }
 
 /** Đội mẫu của state lúc vừa tới `floor`, hồi đầy máu và bỏ trạng thái. */
@@ -403,6 +414,10 @@ export function runProgression(data: GameData, options: ProgressionOptions): Pro
       createGameState({
         // Mô phỏng đo với thọ nguyên bật (game mới mặc định tắt, docs/rules/options.md).
         lifespanEnabled: true,
+        challengeOptions: {
+          difficulty: options.difficulty ?? 'normal',
+          lowestDifficulty: options.difficulty ?? 'normal'
+        },
         seed: deriveSeed(seed, 'progression', team.id),
         party,
         location: { type: 'floor', floor: 1 },
@@ -423,7 +438,8 @@ export function runProgression(data: GameData, options: ProgressionOptions): Pro
     growth: newGrowthCount(),
     economy: newEconomyCount(),
     lastBreedDay: -Infinity,
-    trainerDay: -1
+    trainerDay: -1,
+    battleMoney: BIG_ZERO
   }
   run.snapshots.push(snapshotOf(run.state, { teamId: team.id, teamIds, floor: 1 }))
   // Luồng ngẫu nhiên riêng cho lựa chọn của "người chơi" (rẽ nhánh tiến hóa).
@@ -462,6 +478,8 @@ export function runProgression(data: GameData, options: ProgressionOptions): Pro
   previewRelics(data, run.state, { teamIds, tracker: run.lifespan })
   return {
     teamId: team.id,
+    difficulty: options.difficulty ?? 'normal',
+    battleMoney: run.battleMoney.toString(),
     snapshots: run.snapshots,
     usePills: options.usePills,
     growth: options.growth,
@@ -519,6 +537,7 @@ function playBattle(
   run.growth.intimidates += stats.intimidates
   run.growth.intimidateWins += stats.intimidateWins
   run.lifespan.battleFallen += stats.playerFallen
+  run.battleMoney = run.battleMoney.plus(maxBig(BIG_ZERO, state.money.minus(atFloor.money)))
   run.state = state
   // Trận vừa rời (leaveBattle) làm thời gian trôi.
   recordDayEvents(run.lifespan, state, { battle: run.battles + 1, teamIds })
@@ -807,6 +826,10 @@ function afterBattle(
       const pulled = runGacha(data, run.state)
       run.state = pulled.state
       run.economy.gachaEggs += pulled.eggs
+      // Đấu giá hành cùng nhịp (auction.ts): đặt giá kín cho lô mới.
+      const auctioned = runAuction(data, run.state)
+      run.state = auctioned.state
+      run.economy.auctionBids += auctioned.bids
       // Bí cảnh (khi có lệnh) và tháp thí luyện cùng nhịp mỗi ngày (trials.ts).
       const trialRun = runTrials(data, run.state, {
         limits: { maxTurns: trainerMaxTurns, maxTurnsBoss: bossMaxTurns },

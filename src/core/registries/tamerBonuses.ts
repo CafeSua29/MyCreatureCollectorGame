@@ -1,5 +1,5 @@
 // Kênh thưởng ngự thú sư (docs/rules/tamer-talents.md mục "Kênh thưởng"): danh hiệu đang đeo, cây
-// thiên phú ngự thú sư và buff chức vị tông môn cùng cộng vào các kênh ở đây. Nơi dùng hỏi qua tamerBonusAmount /
+// thiên phú ngự thú sư, buff chức vị tông môn, nâng cấp Tiên giới và thiên mệnh cùng cộng vào các kênh ở đây. Nơi dùng hỏi qua tamerBonusAmount /
 // tamerBonusMultiplier theo kênh, không rẽ nhánh theo id danh hiệu / nút, không biết nguồn nào cộng.
 
 import type { GameData, GameState, TamerBonusDef, TamerBonusType } from '../model'
@@ -20,18 +20,18 @@ const percentBonus: TamerBonusHandler = {
   amount: (params) => (params as { percent: number }).percent
 }
 
-/** Giảm hồi chiêu theo lượt: `{ turns }` nguyên ≥ 1. */
-const turnsBonus: TamerBonusHandler = {
+/** Kênh theo số nguyên ≥ 1 trong một trường của params (lượt hồi chiêu, số ô). */
+const countBonus = (field: string): TamerBonusHandler => ({
   validateParams(params) {
     const obj = asObject(params)
     if (!obj) return ['params phải là object']
-    const issues = checkInteger(obj.turns, 'turns', 1)
-    for (const key of Object.keys(obj)) if (key !== 'turns') issues.push(`trường lạ "${key}"`)
+    const issues = checkInteger(obj[field], field, 1)
+    for (const key of Object.keys(obj)) if (key !== field) issues.push(`trường lạ "${key}"`)
     return issues
   },
-  // Ép kiểu: validateParams đảm bảo params có turns.
-  amount: (params) => (params as { turns: number }).turns
-}
+  // Ép kiểu: validateParams đảm bảo params có trường này.
+  amount: (params) => (params as Record<string, number>)[field]
+})
 
 export const TAMER_BONUSES: Readonly<Record<TamerBonusType, TamerBonusHandler>> = {
   expPercent: percentBonus,
@@ -48,7 +48,14 @@ export const TAMER_BONUSES: Readonly<Record<TamerBonusType, TamerBonusHandler>> 
   teamStatPercent: percentBonus,
   manaPercent: percentBonus,
   contractLevelPercent: percentBonus,
-  tamerSkillCooldown: turnsBonus
+  tamerSkillCooldown: countBonus('turns'),
+  teamDamagePercent: percentBonus,
+  contractResonancePercent: percentBonus,
+  breakthroughCostPercent: percentBonus,
+  startFloorPercent: percentBonus,
+  keepMoneyPercent: percentBonus,
+  destinySlots: countBonus('slots'),
+  partySlotPenalty: countBonus('slots')
 }
 
 export const isTamerBonusType = (type: string): type is TamerBonusType =>
@@ -65,10 +72,14 @@ function sumBonus(
     .reduce((sum, effect) => sum + TAMER_BONUSES[channel].amount(effect.params) * scale, 0)
 }
 
-/** Phần state cần để tính kênh thưởng: danh hiệu đang đeo, cấp thiên phú ngự thú sư, tông môn. */
-export type TamerBonusState = Pick<GameState, 'titles'> & {
+/**
+ * Phần state cần để tính kênh thưởng: danh hiệu đang đeo, cấp thiên phú ngự thú sư, tông môn, nâng
+ * cấp Tiên giới, thiên mệnh.
+ */
+export type TamerBonusState = Pick<GameState, 'titles' | 'destinies'> & {
   tamer: Pick<GameState['tamer'], 'talentRanks'>
   sect: Pick<GameState['sect'], 'sectId' | 'rank'>
+  ascension: Pick<GameState['ascension'], 'upgrades'>
 }
 
 /** Lượng một kênh của danh hiệu `titleId` (null / id không còn trong dữ liệu: 0). */
@@ -83,8 +94,8 @@ export function titleBonusAmount(
 
 /**
  * Tổng lượng một kênh (% hoặc lượt) = danh hiệu đang đeo + mọi nút thiên phú ngự thú sư (lượng ×
- * cấp) + buff tông môn (lượng × (chức vị + 1), docs/rules/sects.md). Id không còn trong dữ liệu thì
- * bỏ qua.
+ * cấp) + buff tông môn (lượng × (chức vị + 1), docs/rules/sects.md) + nâng cấp Tiên giới (lượng ×
+ * cấp) + thiên mệnh (docs/rules/ascension.md). Id không còn trong dữ liệu thì bỏ qua.
  */
 export function tamerBonusAmount(
   data: GameData,
@@ -97,6 +108,14 @@ export function tamerBonusAmount(
   }
   const sect = sectBonusScales(data, state.sect)
   if (sect) total += sumBonus(sect.effects, channel, sect.scale)
+  for (const [upgradeId, rank] of Object.entries(state.ascension.upgrades)) {
+    const upgrade = data.ascensionUpgrades[upgradeId]
+    if (upgrade) total += sumBonus(upgrade.effects, channel, rank)
+  }
+  for (const destinyId of state.destinies) {
+    const destiny = data.destinies[destinyId]
+    if (destiny) total += sumBonus(destiny.effects, channel, 1)
+  }
   return total
 }
 

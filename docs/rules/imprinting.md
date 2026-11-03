@@ -22,11 +22,11 @@ Code: `model/imprint.ts` (type, `IMPRINT_REQUEST_KINDS`, `imprintPercent`), `mon
   - **Nghỉ ngơi** `rest`: `rest` hoặc `healParty` khi quái ở trong đội. **Đội đầy máu vẫn nghỉ / hồi máu được nếu có quái trong đội đang đòi nghỉ** (chủ project chốt; không thì vẫn `partyFullHp`). `rest` vẫn tốn tiền và ngủ tới sáng.
   - **Vuốt ve** `pet`: action `petMonster { monsterId }` (ngoài trận, miễn phí, đội hoặc kho). Quái không đang đòi vuốt ve (hoặc đã làm) thì `imprintNotRequested { monsterId, kind }`; đang trong trận `inBattle`; không sở hữu `monsterNotOwned`.
 - Làm đúng yêu cầu chưa xong: `completed + 1`, yêu cầu đánh dấu `done` (không làm hai lần). Việc khác loại / sai món không tính.
-- **Việc theo ngày** `imprint` (`DAILY_TASKS`, chạy sau `aging`): mỗi quái đang dưỡng dục trong đội / kho, ngày hiện tại ≥ `dueDay` thì yêu cầu cũ hết (chưa làm thì **mất phần đó**) và sinh yêu cầu mới (`dayEvents`: `imprintRequest { monsterId, request }`); thời gian nhảy nhiều ngày thì sinh lần lượt theo lịch. Quái trong trứng chưa nở không có yêu cầu.
+- **Việc theo ngày** `imprint` (`DAILY_TASKS`, chạy sau `aging`): mỗi quái đang dưỡng dục trong đội / kho, ngày hiện tại ≥ `dueDay` thì yêu cầu cũ hết (chưa làm thì **mất phần đó**) và sinh yêu cầu mới (log ngoài trận `imprintRequest { monsterId, request }`); thời gian nhảy nhiều ngày thì sinh lần lượt theo lịch. Quái trong trứng chưa nở không có yêu cầu.
 
 ## Phần thưởng
 
-- Hết thời gian (ngày ≥ `endDay`): `phase: 'done'`, `dayEvents` `imprintFinished { monsterId, percent }`.
+- Hết thời gian (ngày ≥ `endDay`): `phase: 'done'`, log ngoài trận `imprintFinished { monsterId, percent }`.
   - Buff **vĩnh viễn** mọi chỉ số (kể cả max HP) = `maxStatPercent` (15) × percent / 100: nguồn **`imprint`** của `STAT_PERCENT_SOURCES` (cộng vào tổng % ở bước áp trait, `stats-traits.md`). Đang dưỡng dục thì chưa có buff.
   - Thân mật + ⌊percent / 2⌋ qua `changeAffinity` (nhân hook `affinityGainPercent` như mọi lượng tăng, `affinity.md`).
   - Đạt **100%** (`completed = total`): mốc lý lịch `imprintPerfected` (`monster-history.md`).

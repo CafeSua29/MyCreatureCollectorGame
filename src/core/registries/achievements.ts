@@ -3,7 +3,12 @@
 // = thêm mục vào ACHIEVEMENT_CONDITIONS (TypeScript báo khi thiếu mục cho loại mới).
 
 import {
+  bestRealmReached,
+  CHALLENGE_MODES,
+  DIFFICULTIES,
   STAT_KEYS,
+  type ChallengeMode,
+  type Difficulty,
   type AchievementConditionType,
   type AchievementDef,
   type AchievementRewards,
@@ -15,6 +20,7 @@ import { aptitudeFloor, hasAptitudeAtLeast } from './aptitude'
 import { dexOwnedPercent } from './dex'
 import { researchCompletedCount } from './research'
 import { speciesRankIndex, speciesRankOf } from './speciesRank'
+import { difficultyRank, hasChallengeMode } from './challenge'
 
 /** Phần state điều kiện thành tựu đọc. */
 export type AchievementScope = Pick<
@@ -23,11 +29,13 @@ export type AchievementScope = Pick<
   | 'dex'
   | 'research'
   | 'highestFloor'
+  | 'ascension'
   | 'tamer'
   | 'tower'
   | 'trainers'
   | 'party'
   | 'storage'
+  | 'options'
 >
 
 export interface AchievementConditionHandler {
@@ -84,7 +92,10 @@ export const ACHIEVEMENT_CONDITIONS: Readonly<
   researchCompleted: plain((state, data) => researchCompletedCount(data, state.research)),
   // Tầng cao nhất từng đạt (cùng mốc với tư chất, đổi theo phi thăng ở một chỗ).
   highestFloor: plain((state) => aptitudeFloor(state)),
-  tamerRealm: plain((state) => state.tamer.realm),
+  // Cảnh giới cao nhất từng đạt (phi thăng reset cảnh giới).
+  tamerRealm: plain((state) => bestRealmReached(state)),
+  // Số lần phi thăng (docs/rules/ascension.md).
+  ascensions: plain((state) => state.ascension.count),
   towerFloor: plain((state) => state.tower.highest),
   // Huy hiệu = đạo quán đã thắng quán chủ ít nhất một lần (docs/rules/trainers.md).
   gymBadges: plain((state) => state.trainers.gyms.filter((gym) => gym.wins > 0).length),
@@ -131,6 +142,32 @@ export const ACHIEVEMENT_CONDITIONS: Readonly<
           speciesRankIndex(data, speciesRankOf(data, species).id) >= min
         )
       }).length
+    },
+    maxProgress: () => null
+  },
+  // { difficulty?, modes? } (docs/rules/challenge-modes.md): tầng cao nhất khi chưa từng chơi dễ hơn
+  // `difficulty` (mức thấp nhất từng dùng) và đang chơi đủ mọi chế độ trong `modes`; không thì 0.
+  challengeFloor: {
+    fields: ['difficulty', 'modes'],
+    validateParams: (params) => [
+      ...(params.difficulty === undefined || DIFFICULTIES.some((d) => d === params.difficulty)
+        ? []
+        : [`độ khó lạ "${String(params.difficulty)}"`]),
+      ...(params.modes === undefined ||
+      (Array.isArray(params.modes) &&
+        params.modes.every((mode) => CHALLENGE_MODES.some((known) => known === mode)))
+        ? []
+        : [`modes phải là danh sách trong ${CHALLENGE_MODES.join(', ')}`])
+    ],
+    parse: (params) => params,
+    progress: (params, state) => {
+      // Ép kiểu: validateParams đảm bảo độ khó / chế độ hợp lệ.
+      const difficulty = (params.difficulty ?? 'easy') as Difficulty
+      const modes = (params.modes ?? []) as ChallengeMode[]
+      const hardEnough =
+        difficultyRank(state.options.lowestDifficulty) >= difficultyRank(difficulty)
+      const inModes = modes.every((mode) => hasChallengeMode(state.options, mode))
+      return hardEnough && inModes ? aptitudeFloor(state) : 0
     },
     maxProgress: () => null
   }

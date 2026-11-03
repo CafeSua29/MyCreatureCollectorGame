@@ -1,5 +1,6 @@
 // Cấp cao nhất: reducer, game mới, migrate, save.
 
+export * from './ascension'
 export * from './migrate'
 export * from './newGame'
 export * from './profile'

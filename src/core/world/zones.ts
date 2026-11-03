@@ -6,6 +6,7 @@ import { ActionError, nextInt, type RngState } from '../shared'
 import { evolutionLineOf, getItemCount } from '../inventory'
 import { isFainted } from '../monster'
 import {
+  bestFloorReached,
   dayOf,
   type GameData,
   type GameState,
@@ -40,7 +41,7 @@ const countFighters = (
 export const ZONE_REQUIREMENTS: {
   [K in ZoneRequirementType]: (data: GameData, state: GameState, req: Requirement<K>) => boolean
 } = {
-  minFloor: (_data, state, req) => state.highestFloor >= req.floor,
+  minFloor: (_data, state, req) => bestFloorReached(state) >= req.floor,
   partyElement: (data, state, req) =>
     countFighters(data, state.party, (m) => m.elementIds.includes(req.elementId)) >= req.count,
   partyRace: (data, state, req) =>
@@ -100,7 +101,7 @@ export function rollZoneVisit(
   const config = data.config.zones
   const [steps, next] = nextInt(rng, config.steps.min, config.steps.max)
   const floor = Math.max(1, highestFloor + config.floorOffset)
-  return [{ zoneId, floor, steps, stepsTaken: 0, lastStep: null }, next]
+  return [{ zoneId, floor, steps, stepsTaken: 0 }, next]
 }
 
 /** Tầng sức mạnh và map của lượt vào: đủ để sinh quái như một tầng thường. */

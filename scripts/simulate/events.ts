@@ -120,7 +120,7 @@ function fightOpenBattle(
 
 /** Đếm tiền nhận / mất của log kết quả event. */
 function tallyLog(state: GameState): void {
-  for (const entry of state.events.log) {
+  for (const entry of state.log) {
     if (entry.type === 'moneyGained') tally.moneyGained = tally.moneyGained.plus(entry.amount)
     if (entry.type === 'moneyLost') tally.moneyLost = tally.moneyLost.plus(entry.amount)
   }

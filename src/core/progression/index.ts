@@ -1,6 +1,7 @@
 // Phát triển quái: tiến hóa, breeding, fusing, trứng.
 
 export * from './alchemy'
+export * from './auction'
 export * from './beastTide'
 export * from './worldBoss'
 export * from './cooking'

@@ -407,8 +407,8 @@ describe('save', () => {
     ])
   })
 
-  it('migrate v50 → v51: túi thêm souls rỗng, bỏ sự kiện legacyEggCreated', () => {
-    const current = withSouls([])
+  it('migrate v50 → v51: túi thêm souls rỗng, sự kiện cũ (dayEvents) không làm hỏng save', () => {
+    const { log: _log, ...current } = withSouls([])
     const { souls: _souls, ...inventory } = current.inventory
     const old = {
       ...current,
@@ -420,10 +420,8 @@ describe('save', () => {
       ]
     }
     const migrated = migrateState(JSON.parse(JSON.stringify(old)), data)
-    // Migrate chạy tiếp tới version hiện tại; chỉ kiểm tra phần của bước v50 → v51.
-    expect(migrated).toMatchObject({
-      inventory: { souls: [] },
-      dayEvents: [{ type: 'monsterAutoJoined', monsterId: 'm2' }]
-    })
+    // Migrate chạy tiếp tới version hiện tại: dayEvents gộp vào log ngoài trận (v98, bắt đầu rỗng).
+    expect(migrated).toMatchObject({ inventory: { souls: [] }, log: [] })
+    expect(migrated).not.toHaveProperty('dayEvents')
   })
 })

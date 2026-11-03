@@ -24,5 +24,11 @@
   "talentScout": "Talent Scout",
   "rareSpecies": "Rare Species",
   "legendaryBirds": "Legendary Birds",
-  "speciesResearch": "Species Research"
+  "speciesResearch": "Species Research",
+  "hardPioneer": "Hard Pioneer",
+  "nightmarePioneer": "Nightmare Pioneer",
+  "nuzlockeRun": "One Life",
+  "hardcoreRun": "No Turning Back",
+  "randomizerRun": "Chaos Walker",
+  "ascensionPath": "Ascension"
 }

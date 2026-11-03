@@ -29,7 +29,10 @@ function ownedMonsters(state: Raw): { monster: unknown; path: string }[] {
   )
 }
 
-/** Mọi món trang bị (object thô) trong save: trên quái, trong túi, cửa hàng, cửa hàng tạm. */
+/**
+ * Mọi món trang bị (object thô) trong save: trên quái (kể cả trong trứng), trong túi, cửa hàng, cửa
+ * hàng tạm, Đấu giá hành.
+ */
 function allEquipmentInstances(state: Raw): Raw[] {
   const battle = asObject(state.battle)
   const monsters = [
@@ -48,12 +51,20 @@ function allEquipmentInstances(state: Raw): Raw[] {
   const tempShop = listOf(asObject(asObject(state.events)?.tempShop)?.stock).map(
     (entry) => asObject(asObject(entry)?.entry)?.instance
   )
+  // Đấu giá hành (docs/rules/auction.md): món trong lô, đồ ký gửi, món giữ hộ.
+  const auction = asObject(state.auction)
+  const auctionEntries = [
+    ...listOf(auction?.lots).map((lot) => asObject(asObject(lot)?.good)?.entry),
+    ...listOf(auction?.consignments).map((consignment) => asObject(consignment)?.entry)
+  ].map((entry) => asObject(entry)?.instance)
   return [
     ...monsters.flatMap(equippedInstances),
     ...bag,
     ...inItemWorld,
     ...shop,
-    ...tempShop
+    ...tempShop,
+    ...auctionEntries,
+    ...listOf(auction?.held)
   ].flatMap((instance) => {
     const object = asObject(instance)
     return object ? [object] : []
@@ -89,11 +100,21 @@ export function validateEquipmentState(data: GameData, state: Raw): string[] {
     issues.push(`nextItemId phải lớn hơn mọi id món trang bị (hiện có e${maxId})`)
   }
   const realm = asObject(state.tamer)?.realm
-  if (Number.isSafeInteger(state.highestFloor) && Number.isSafeInteger(realm)) {
+  const ascension = asObject(state.ascension)
+  if (
+    Number.isSafeInteger(state.highestFloor) &&
+    Number.isSafeInteger(realm) &&
+    Number.isSafeInteger(ascension?.bestFloor) &&
+    Number.isSafeInteger(ascension?.bestRealm)
+  ) {
     // Đã kiểm tra là số nguyên (cảnh giới sai do validateGameState báo).
     const slots = equipmentSlotCount(data, {
       highestFloor: state.highestFloor as number,
-      tamer: { realm: realm as number }
+      tamer: { realm: realm as number },
+      ascension: {
+        bestFloor: ascension?.bestFloor as number,
+        bestRealm: ascension?.bestRealm as number
+      }
     })
     for (const { monster, path } of ownedMonsters(state)) {
       const count = listOf(asObject(monster)?.equipment).length

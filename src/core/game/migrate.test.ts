@@ -18,6 +18,7 @@ import {
 } from '../testing'
 import { ageDaysAtPercent, isDexSpecies } from '../registries'
 import type { GameState, Monster } from '../model'
+import { defaultGameOptions } from '../progression'
 
 /** Dữ liệu game cho migrate (bước v24 cần thọ nguyên theo loài). */
 const migrateData = makeLegacyData()
@@ -68,8 +69,8 @@ function lifeMigrated(state: GameState): GameState {
   return {
     ...state,
     time: migrateData.config.clock.startHour,
-    options: { lifespanEnabled: true, permadeathEnabled: false },
-    dayEvents: [],
+    options: defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false }),
+    log: [],
     party: state.party.map(lifeMigratedMonster),
     storage: state.storage.map(lifeMigratedMonster),
     eggs: state.eggs.map((egg) => ({

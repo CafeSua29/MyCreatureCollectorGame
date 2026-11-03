@@ -13,6 +13,7 @@ import {
   canReceiveMonster,
   capacityOf,
   hasRosterRoom,
+  isNuzlockeDupe,
   countCaught,
   mealMultiplier,
   tamerBonusMultiplier,
@@ -22,13 +23,14 @@ import {
 import { ActionError, rollPercent, toBig, type Decimal, type RngState } from '../shared'
 import { partnerMultiplier } from '../tamer'
 import {
+  appendLog,
   dayOf,
   type GameAction,
   type GameData,
   type GameState,
   type Monster,
   type SafariEncounter,
-  type SafariEvent,
+  type SafariLogEntry,
   type SafariLure,
   type SafariLureEffect,
   type SafariVisit
@@ -76,7 +78,10 @@ function lureMultipliers(
  */
 export function safariCatchChance(
   data: GameData,
-  state: Pick<GameState, 'party' | 'cooking' | 'titles' | 'tamer' | 'sect' | 'research'>,
+  state: Pick<
+    GameState,
+    'party' | 'cooking' | 'titles' | 'tamer' | 'sect' | 'research' | 'ascension' | 'destinies'
+  >,
   encounter: SafariEncounter
 ): number {
   const ball = {
@@ -111,13 +116,12 @@ function requireVisit(state: GameState): SafariVisit {
 interface SafariDraft {
   state: GameState
   visit: SafariVisit | null
-  log: SafariEvent[]
+  log: SafariLogEntry[]
 }
 
-const finish = ({ state, visit, log }: SafariDraft): GameState => ({
-  ...state,
-  safari: { ...state.safari, visit, log }
-})
+/** Kết thúc action: ghi lượt vào khu, diễn biến vào log ngoài trận. */
+const finish = ({ state, visit, log }: SafariDraft): GameState =>
+  appendLog({ ...state, safari: { ...state.safari, visit } }, ...log)
 
 /** Quái mới cho lượt gặp: loài đều trong danh sách, level / gen như quái hoang của highestFloor. */
 function rollSafariMonster(data: GameData, state: GameState): [Monster, RngState, number] {
@@ -151,12 +155,12 @@ function nextEncounter(data: GameData, draft: SafariDraft, visit: VisitCounters)
     return {
       ...draft,
       visit: null,
-      log: [...draft.log, { type: 'visitEnded', caught: visit.caught }]
+      log: [...draft.log, { type: 'safariVisitEnded', caught: visit.caught }]
     }
   }
   const [monster, rng, nextMonsterId] = rollSafariMonster(data, draft.state)
-  const event: SafariEvent = {
-    type: 'encounter',
+  const event: SafariLogEntry = {
+    type: 'safariEncounter',
     monsterId: monster.id,
     speciesId: monster.speciesId
   }
@@ -215,7 +219,7 @@ function takeCaught(data: GameData, draft: SafariDraft, monster: Monster): Safar
       party: destination === 'party' ? [...state.party, caught] : state.party,
       storage: destination === 'storage' ? [...state.storage, caught] : state.storage
     },
-    log: [...draft.log, { type: 'caught', monsterId: caught.id, destination }]
+    log: [...draft.log, { type: 'safariCaught', monsterId: caught.id, destination }]
   }
 }
 
@@ -228,7 +232,7 @@ function endTurn(data: GameData, draft: SafariDraft, visit: SafariVisit): Safari
   const [fled, rng] = rollPercent(draft.state.rng, safariFleeChance(data, encounter))
   const next = { ...draft, state: { ...draft.state, rng } }
   if (fled) {
-    const log = [...next.log, { type: 'fled' as const, monsterId: encounter.monster.id }]
+    const log = [...next.log, { type: 'safariFled' as const, monsterId: encounter.monster.id }]
     return nextEncounter(data, { ...next, log }, visit)
   }
   if (visit.balls <= 0) return nextEncounter(data, next, visit)
@@ -246,6 +250,11 @@ export function throwSafariBall(data: GameData, state: GameState): GameState {
   if (!hasRosterRoom(data, state, { newcomer: encounter.monster })) {
     throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
   }
+  // Nuzlocke: mỗi lượt vào khu bắt một con, không bắt quái trùng (docs/rules/challenge-modes.md).
+  if (state.options.nuzlocke && visit.caught > 0) throw new ActionError('nuzlockeVisitUsed')
+  if (isNuzlockeDupe(data, state, encounter.monster)) {
+    throw new ActionError('nuzlockeDupe', { speciesId: encounter.monster.baseSpeciesId })
+  }
   const chance = safariCatchChance(data, state, encounter)
   const { caught, critical, shakes, rng } = rollCapture(data, state.rng, {
     chance,
@@ -255,7 +264,7 @@ export function throwSafariBall(data: GameData, state: GameState): GameState {
   const draft: SafariDraft = {
     state: { ...state, rng },
     visit: thrown,
-    log: [{ type: 'throwBall', monsterId, chance, critical, shakes }]
+    log: [{ type: 'safariThrowBall', monsterId, chance, critical, shakes }]
   }
   if (caught) {
     const taken = takeCaught(data, draft, encounter.monster)
@@ -265,7 +274,7 @@ export function throwSafariBall(data: GameData, state: GameState): GameState {
     ...thrown,
     encounter: { ...encounter, misses: encounter.misses + 1 }
   }
-  const log = [...draft.log, { type: 'breakFree' as const, monsterId }]
+  const log = [...draft.log, { type: 'safariBreakFree' as const, monsterId }]
   return finish(endTurn(data, { ...draft, visit: missed, log }, missed))
 }
 
@@ -279,8 +288,8 @@ function throwLure(
   const { encounter } = visit
   const lure: SafariLureEffect = { kind, turnsLeft: data.config.safari.lures[kind].turns, favorite }
   const lured: SafariVisit = { ...visit, encounter: { ...encounter, lure } }
-  const event: SafariEvent = {
-    type: 'lure',
+  const event: SafariLogEntry = {
+    type: 'safariLure',
     monsterId: encounter.monster.id,
     kind,
     itemId,
@@ -314,12 +323,12 @@ export const throwSafariRock = (data: GameData, state: GameState): GameState =>
 /** Bỏ quái đang gặp, sang lượt gặp kế (hết lượt gặp thì ra khu). */
 export function skipSafariEncounter(data: GameData, state: GameState): GameState {
   const visit = requireVisit(state)
-  const event: SafariEvent = { type: 'skipped', monsterId: visit.encounter.monster.id }
+  const event: SafariLogEntry = { type: 'safariSkipped', monsterId: visit.encounter.monster.id }
   return finish(nextEncounter(data, { state, visit, log: [event] }, visit))
 }
 
 /** Rời khu ngay: mất lượt gặp và bóng còn lại. */
 export function leaveSafari(state: GameState): GameState {
   const visit = requireVisit(state)
-  return finish({ state, visit: null, log: [{ type: 'visitEnded', caught: visit.caught }] })
+  return finish({ state, visit: null, log: [{ type: 'safariVisitEnded', caught: visit.caught }] })
 }

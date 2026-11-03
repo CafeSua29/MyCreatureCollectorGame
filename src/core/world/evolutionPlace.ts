@@ -47,7 +47,7 @@ export function evolutionScene(
   data: GameData,
   state: Pick<
     GameState,
-    'battle' | 'location' | 'floorBiomeIds' | 'party' | 'highestFloor' | 'time'
+    'battle' | 'location' | 'floorBiomeIds' | 'party' | 'highestFloor' | 'ascension' | 'time'
   >
 ): EvolutionScene {
   return {

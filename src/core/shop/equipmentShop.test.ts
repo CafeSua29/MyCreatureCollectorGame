@@ -12,6 +12,7 @@ import {
 import type { GameState, ItemRef } from '../model'
 import { rollShopStock } from './shopStock'
 import { validateShop } from './validateShop'
+import { defaultGameOptions } from '../progression'
 
 const data = makeEquipmentData()
 // Kiếm common: price 100 × 1 × tầng; epic × 10.
@@ -115,7 +116,7 @@ describe('danh sách hàng có trang bị', () => {
     for (let seed = 0; seed < 200; seed++) {
       const roll = rollShopStock(swordOnly, createRng(seed), {
         highestFloor: 1,
-        options: { lifespanEnabled: false, permadeathEnabled: false },
+        options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false }),
         nextItemId: 7,
         inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
       })

@@ -158,7 +158,7 @@ export function validateTamerCommand(data: GameData, d: Draft, command: TamerCom
  */
 export function tamerSkillCooldown(
   data: GameData,
-  d: Pick<Draft, 'titles' | 'tamer' | 'sect'>,
+  d: Pick<Draft, 'titles' | 'tamer' | 'sect' | 'ascension' | 'destinies'>,
   { side, skill }: { side: BattleSide; skill: TamerSkill }
 ): number {
   if (side !== 'player') return skill.cooldown

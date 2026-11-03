@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { toBig } from '../shared'
 import { gameReducer } from '../game'
-import { getRefCount } from '../inventory'
+import { filterBagItems, getRefCount } from '../inventory'
+import { previewSellItems } from './shopActions'
 import {
   atFloor,
   expectActionError,
@@ -148,6 +149,45 @@ describe('sellItem', () => {
     expectActionError(
       () => sell(stocked(), { storage: 'crystal', traitId: 'shiny', level: 1 }, 1),
       'malformedAction'
+    )
+  })
+})
+
+describe('sellItems (hàng loạt)', () => {
+  const stocked = (): GameState =>
+    shopState({
+      inventory: makeInventory({ potion: 5, masterBall: 1 }, [
+        { traitId: 'immunity', level: 3, count: 2 }
+      ])
+    })
+  const sellAll = (state: GameState, items: unknown): GameState =>
+    // Ép kiểu để giả lập action sai dạng từ UI.
+    run(state, { type: 'sellItems', items } as GameAction)
+
+  it('bán mọi dòng trong một action, bằng tổng bán lẻ; xem trước khớp kết quả', () => {
+    const state = stocked()
+    const items = filterBagItems(data, state.inventory)
+    const next = sellAll(state, items)
+    expect(next.money.toNumber()).toBe(1000 + 5 * 25 + 499 + 2 * 1350)
+    expect(next.inventory.stacks).toEqual({})
+    expect(next.inventory.crystals).toEqual([])
+    const preview = previewSellItems(data, state, items)
+    expect(preview.count).toBe(8)
+    expect(preview.money.toNumber()).toBe(5 * 25 + 499 + 2 * 1350)
+    expect(state.inventory.stacks.potion).toBe(5)
+  })
+
+  it('lỗi: một dòng sai thì cả lệnh lỗi; rỗng; ngoài thị trấn', () => {
+    const items = [
+      { item: potion, count: 1 },
+      { item: fast1, count: 1 }
+    ]
+    expectActionError(() => sellAll(stocked(), items), 'notEnoughCrystals')
+    expectActionError(() => sellAll(stocked(), []), 'malformedAction')
+    expectActionError(() => sellAll(atFloor(stocked(), 1), items.slice(0, 1)), 'notInTown')
+    expectActionError(
+      () => previewSellItems(data, stocked(), [{ item: potion, count: 9 }]),
+      'notEnoughItem'
     )
   })
 })

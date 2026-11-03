@@ -12,6 +12,8 @@ import {
   type RngState
 } from '../shared'
 import {
+  bestFloorReached,
+  bestRealmReached,
   EQUIPMENT_RARITIES,
   type EquipmentInstance,
   type EquippedItem,
@@ -50,22 +52,23 @@ export function equipmentIdNumber(id: string): number | null {
   return match ? Number(match[1]) : null
 }
 
-/** Phần state quyết định số ô: tầng cao nhất và cảnh giới ngự thú sư. */
+/** Phần state quyết định số ô: tầng và cảnh giới ngự thú sư cao nhất từng đạt. */
 export interface EquipmentSlotSource {
   highestFloor: number
   tamer: { realm: number }
+  ascension: { bestFloor: number; bestRealm: number }
 }
 
 /**
  * Số ô trên mọi quái của người chơi = baseSlots + số mốc tầng đã đạt + số mốc cảnh giới ngự thú sư
  * đã đạt. Mốc: danh sách rồi gấp đôi mốc cuối mãi (countMilestonesReached; không trần, tăng kiểu
- * log). Tầng cao nhất và cảnh giới không bao giờ giảm nên số ô không giảm.
+ * log). Theo giá trị cao nhất từng đạt nên phi thăng không làm giảm số ô.
  */
 export function equipmentSlotCount(data: GameData, state: EquipmentSlotSource): number {
   return (
     data.config.equipment.baseSlots +
-    countMilestonesReached(data.config.equipment.floorMilestones, state.highestFloor) +
-    countMilestonesReached(data.config.tamer.realmMilestones, state.tamer.realm)
+    countMilestonesReached(data.config.equipment.floorMilestones, bestFloorReached(state)) +
+    countMilestonesReached(data.config.tamer.realmMilestones, bestRealmReached(state))
   )
 }
 

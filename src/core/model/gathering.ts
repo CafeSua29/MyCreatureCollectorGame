@@ -2,7 +2,6 @@
 // dụng cụ (bùa cấp cần câu / cuốc), ra quái của map hoặc vật phẩm. Map nào làm được ghi ở trường
 // `gathering` của biome; quái, bảng vật phẩm và số ở balance.json khóa `gathering`.
 
-import type { ItemReward } from './trainers'
 import type { ChestItemEntry } from './trials'
 
 /** Cách thu thập trên tầng; thêm cách = thêm vào đây + một mục ở GATHERING_METHOD_RULES. */
@@ -49,17 +48,3 @@ export type GatheringConfig = Record<GatheringMethod, GatheringMethodConfig>
 
 /** Quái của lần thu thập: không có, cắn câu (trận thường), phục kích (không chạy được ở lượt 1). */
 export type GatheringEncounter = 'none' | 'bite' | 'ambush'
-
-/** Kết quả lần thu thập gần nhất (cho UI). */
-export interface GatheringResult {
-  method: GatheringMethod
-  tier: number
-  /** Mồi câu đã dùng (null = không dùng). */
-  lureItemId: string | null
-  items: ItemReward[]
-  encounter: GatheringEncounter
-}
-
-export interface GatheringState {
-  lastResult: GatheringResult | null
-}

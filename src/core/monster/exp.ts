@@ -3,9 +3,24 @@
 import { getBaseSpecies } from './validateMonster'
 import { shinyFactor } from './shiny'
 import { offerSkills } from './skills'
-import { maxBig, toBig, type BigValue, type Decimal } from '../shared'
-import { levelFromExp, monsterGrowthRate } from './growthRates'
+import { BIG_ZERO, maxBig, toBig, type BigValue, type Decimal } from '../shared'
+import { expForLevel, levelFromExp, monsterGrowthRate } from './growthRates'
 import type { BattleEvent, GameData, Monster } from '../model'
+
+/**
+ * Về level 1, hồi đầy máu và bỏ trạng thái (luân hồi, phi thăng): max HP tụt theo level nên giữ máu
+ * đã mất thì gục. Level cao nhất từng đạt giữ nên thọ nguyên và điểm thiên phú không tụt.
+ */
+export function resetMonsterLevel(data: GameData, monster: Monster): Monster {
+  return {
+    ...monster,
+    level: 1,
+    exp: expForLevel(1, monsterGrowthRate(data, monster)),
+    maxLevelReached: Math.max(monster.level, monster.maxLevelReached),
+    damageTaken: BIG_ZERO,
+    statuses: []
+  }
+}
 
 /** Hệ số thưởng của quái địch: × hệ số shiny × bossMultiplier. */
 function rewardFactor(data: GameData, enemy: Monster): Decimal {

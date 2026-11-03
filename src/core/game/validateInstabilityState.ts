@@ -45,7 +45,12 @@ export function validateInstabilityState(data: GameData, state: Record<string, u
   if (issues.length > 0) return issues
   const level = instability.level as number
   const highestFloor = state.highestFloor
-  if (typeof highestFloor === 'number' && level > maxInstabilityLevel(data, { highestFloor })) {
+  const bestFloor = asObject(state.ascension)?.bestFloor
+  if (
+    typeof highestFloor === 'number' &&
+    typeof bestFloor === 'number' &&
+    level > maxInstabilityLevel(data, { highestFloor, ascension: { bestFloor } })
+  ) {
     issues.push(`instability.level ${level} vượt mức tối đa theo tầng cao nhất`)
   }
   const { visiblePerLevel, hiddenPerLevel } = data.config.instability

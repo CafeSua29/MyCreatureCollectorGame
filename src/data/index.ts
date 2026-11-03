@@ -22,6 +22,8 @@ import talentBranches from './talentBranches.json'
 import talents from './talents.json'
 import tamerTalentBranches from './tamerTalentBranches.json'
 import tamerTalents from './tamerTalents.json'
+import ascensionUpgrades from './ascensionUpgrades.json'
+import destinies from './destinies.json'
 import synergies from './synergies.json'
 import formations from './formations.json'
 import comboSkills from './comboSkills.json'
@@ -105,6 +107,8 @@ export const rawGameData = {
   talents,
   tamerTalentBranches,
   tamerTalents,
+  ascensionUpgrades,
+  destinies,
   synergies,
   formations,
   comboSkills,

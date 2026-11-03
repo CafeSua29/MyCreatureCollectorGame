@@ -19,7 +19,7 @@ import {
 } from '../testing'
 import type { BallItem, BattleCommand, Egg, GameAction, GameState, ResearchState } from '../model'
 import { dexEntry } from './dex'
-import { claimResearchReward, researchStatus } from './research'
+import { claimResearchReward, researchLevelUps, researchStatus } from './research'
 
 const data = makeData()
 
@@ -132,6 +132,44 @@ describe('đếm ngoài trận', () => {
     const next = run(state, { type: 'useItem', itemId: 'fireStone', monsterId: 't' })
     expect(next.party[0].speciesId).toBe('cinder')
     expect(next.research.cinder.counters).toEqual({ evolvedInto: 1 })
+  })
+})
+
+describe('log lên cấp (docs/rules/game-log.md)', () => {
+  it('chỉ loài có cấp tăng; mục không đổi bỏ qua; nhảy nhiều cấp ghi cấp mới', () => {
+    const before = weaklingResearch(LEVEL5)
+    expect(researchLevelUps(data, before, before)).toEqual([])
+    expect(researchLevelUps(data, before, weaklingResearch({ ...LEVEL5, defeated: 6 }))).toEqual([])
+    expect(researchLevelUps(data, {}, weaklingResearch(COMPLETE))).toEqual([
+      { type: 'researchLevelUp', speciesId: 'weakling', level: 10 }
+    ])
+    // Số cực lớn: mỗi nhiệm vụ chỉ tính tới mốc cuối (bắt 25 lần → cấp 4).
+    const huge = weaklingResearch({ caught: Number.MAX_SAFE_INTEGER })
+    expect(researchLevelUps(data, {}, huge)).toEqual([
+      { type: 'researchLevelUp', speciesId: 'weakling', level: 4 }
+    ])
+  })
+
+  it('gameReducer ghi sau action ngoài trận (tiến hóa bằng đá), save hợp lệ', () => {
+    const state = {
+      ...makeGameState({
+        seed: 1,
+        party: [
+          makeMonster({
+            id: 't',
+            speciesId: 'twig',
+            baseSpeciesId: 'twig',
+            level: 3,
+            exp: toBig(27)
+          })
+        ]
+      }),
+      inventory: makeInventory({ fireStone: 1 })
+    }
+    const next = run(state, { type: 'useItem', itemId: 'fireStone', monsterId: 't' })
+    // Tiến hóa ra 1 lần = 20 điểm = cấp 2 của cinder.
+    expect(next.log).toContainEqual({ type: 'researchLevelUp', speciesId: 'cinder', level: 2 })
+    expect(validateGameState(data, next)).toEqual([])
   })
 })
 

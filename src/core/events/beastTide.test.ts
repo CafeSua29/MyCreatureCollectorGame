@@ -114,7 +114,7 @@ describe('lên lịch, báo trước và bắt đầu', () => {
     expect(day6.events.beastTide).toEqual({ phase: 'scheduled', day: 10 })
     const day7 = advanceTime(data, day6, HOURS_PER_DAY)
     expect(day7.events.beastTide).toEqual({ phase: 'warned', day: 10 })
-    expect(day7.dayEvents).toContainEqual({ type: 'beastTideWarning', day: 10 })
+    expect(day7.log).toContainEqual({ type: 'beastTideWarning', day: 10 })
   })
 
   it('đang ở thị trấn đúng ngày: bắt đầu (số đợt, mốc thú vương)', () => {
@@ -130,7 +130,7 @@ describe('lên lịch, báo trước và bắt đầu', () => {
       waves: 2,
       kingAfter: 1
     })
-    expect(arrived.dayEvents).toContainEqual({ type: 'beastTideArrived', waves: 2 })
+    expect(arrived.log).toContainEqual({ type: 'beastTideArrived', waves: 2 })
   })
 
   it('mốc thú vương theo quy mô: ⌈đợt × %⌉, trong [1, số đợt]', () => {
@@ -155,7 +155,7 @@ describe('lên lịch, báo trước và bắt đầu', () => {
     expect(waited.events.beastTide?.phase).toBe('warned')
     const home = act(waited, { type: 'travel', to: { type: 'town' } })
     expect(home.events.beastTide).toEqual({ phase: 'active', cleared: 0, waves: 2, kingAfter: 1 })
-    expect(home.events.log).toEqual([{ type: 'beastTideArrived', waves: 2 }])
+    expect(home.log).toEqual([{ type: 'beastTideArrived', waves: 2 }])
   })
 })
 
@@ -289,7 +289,7 @@ describe('trong thú triều', () => {
     const retreated = act(rich, { type: 'retreatBeastTide' })
     expect(retreated.money.eq(toBig('9e299'))).toBe(true)
     expect(retreated.events.beastTide).toBeNull()
-    expect(retreated.events.log[0]).toMatchObject({ type: 'beastTideRetreated' })
+    expect(retreated.log[0]).toMatchObject({ type: 'beastTideRetreated' })
     expectActionError(() => act(retreated, { type: 'retreatBeastTide' }), 'noBeastTide')
     expectActionError(() => act(retreated, { type: 'defendTown' }), 'noBeastTide')
     expectActionError(() => act(retreated, { type: 'challengeBeastKing' }), 'noBeastTide')

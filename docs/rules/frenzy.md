@@ -25,7 +25,7 @@ Một hàm duy nhất `frenzyRole(data, battle, { side, monster })` (`registries
 
 Bước cuối cùng của cuối lượt (`frenzyAtTurnEnd`, `battle/frenzy.ts`; sau bước ngự thú sư): mỗi quái **còn sống trên sân** thỏa cả hai thì cuồng bạo, log `frenzy { monsterId }`:
 
-- HP hiện tại ≤ ngưỡng % max HP (`roles.<vai trò>.hpThresholdPercent` + điểm % của trait, xem dưới);
+- HP hiện tại ≤ ngưỡng % max HP (`roles.<vai trò>.hpThresholdPercent` + điểm % của trait, xem dưới; vai trò `wild` / `boss` cộng thêm điểm theo độ khó của trận, cả tỉ lệ hành động thêm, kẹp 0–100: `frenzyNumbers(data, role, difficulty)`, `challenge-modes.md`);
 - **phe của nó đang thua**: tổng HP / tổng max HP **cả phe** (kể cả dự bị, `teamOf`) thấp hơn phe địch (bằng nhau không tính thua; so nhân chéo `Decimal`).
 
 - **Kích hoạt theo lượt** (trường tùy chọn `fromTurn` của vai trò, nguyên ≥ 2; hiện chỉ `worldBoss` = 5): thay cho hai điều kiện trên, kích hoạt ở cuối lượt `fromTurn − 1` (cuồng bạo có tác dụng từ lượt `fromTurn`), không xét HP / phe thua (boss thế giới HP vô hạn). Trait chặn cuồng bạo (Điềm tĩnh) vẫn chặn; `hpThresholdPercent` của vai trò đó không dùng (để 0).

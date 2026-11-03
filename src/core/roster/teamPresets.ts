@@ -12,24 +12,23 @@ import {
 import { assertNoInstance, assertNoTournament } from '../world'
 import { bagUsed, capacityOf, hasPartyRoom } from '../registries'
 import { ActionError, malformedAction } from '../shared'
-import type {
-  EquippedItem,
-  GameData,
-  GameState,
-  Inventory,
-  Monster,
-  PresetEquipment,
-  PresetMissing,
-  TeamPreset,
-  TeamPresetState
+import {
+  appendLog,
+  type EquippedItem,
+  type GameData,
+  type GameState,
+  type Inventory,
+  type Monster,
+  type PresetEquipment,
+  type TeamPreset,
+  type TeamPresetState
 } from '../model'
 import { normalizeNickname } from './rosterActions'
 
 /** Chưa có mẫu nào (game mới, test). */
 export const newTeamPresetState = (): TeamPresetState => ({
   presets: [],
-  nextPresetId: 1,
-  lastMissing: null
+  nextPresetId: 1
 })
 
 const toPresetEquipment = (entry: EquippedItem): PresetEquipment =>
@@ -192,7 +191,7 @@ function refitTeam(
 
 /**
  * Áp mẫu: đúng quái theo thứ tự, quái cũ về cuối kho; `withEquipment` thì lắp lại đúng món. Quái / món
- * không còn thì bỏ qua, ghi `lastMissing`. Không còn quái nào áp được: `presetEmpty`; kho không đủ chỗ
+ * không còn thì bỏ qua, ghi log `presetMissing`. Không còn quái nào áp được: `presetEmpty`; kho không đủ chỗ
  * cho quái cũ: `rosterFull`; túi không đủ chỗ cho món thừa sau khi đổi: `bagOverflow`. Không đang dự
  * giải / tông chiến, không đang đi phó bản (như không được đổi đội giữa chuỗi trận).
  */
@@ -227,13 +226,7 @@ export function applyTeamPreset(
   if (storage.length > Math.max(storageCapacity, state.storage.length)) {
     throw new ActionError('rosterFull', { capacity: storageCapacity })
   }
-  const lastMissing: PresetMissing | null =
-    missingMonsters.length > 0 || items.length > 0 ? { monsterIds: missingMonsters, items } : null
-  return {
-    ...state,
-    party: team.map(current),
-    storage,
-    inventory: workshop.inventory,
-    teamPresets: { ...state.teamPresets, lastMissing }
-  }
+  const applied = { ...state, party: team.map(current), storage, inventory: workshop.inventory }
+  if (missingMonsters.length === 0 && items.length === 0) return applied
+  return appendLog(applied, { type: 'presetMissing', presetId, monsterIds: missingMonsters, items })
 }

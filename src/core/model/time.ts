@@ -2,6 +2,8 @@
 // nguyên" ở lifespan.md).
 
 import type { Decimal } from '../shared'
+import type { AuctionDayEvent } from './auction'
+import type { ChallengeOptions } from './challenge'
 import type { ImprintRequest } from './imprint'
 
 /** Số giờ một ngày game (giờ thường). */
@@ -56,8 +58,11 @@ export const GAME_OPTION_FLAGS = ['lifespanEnabled', 'permadeathEnabled'] as con
 
 export type GameOptionFlag = (typeof GAME_OPTION_FLAGS)[number]
 
-/** Tùy chọn luật chơi của một game (mục sau thêm tùy chọn mới vào đây). */
-export type GameOptions = Record<GameOptionFlag, boolean>
+/**
+ * Tùy chọn luật chơi của một game: công tắc bật / tắt (GAME_OPTION_FLAGS) cùng độ khó và chế độ
+ * thử thách (docs/rules/challenge-modes.md).
+ */
+export type GameOptions = Record<GameOptionFlag, boolean> & ChallengeOptions
 
 /** Việc làm tốn giờ game (số giờ ở config.clock.hours); nghỉ thì ngủ tới sáng nên không có ở đây. */
 export const TIMED_ACTIVITIES = [
@@ -90,11 +95,14 @@ export type AgeStage = (typeof AGE_STAGES)[number]
  * sự kiện theo ngày lẫn log trận.
  */
 export type PartyRefillEvent =
-  { type: 'legacyEggHatched'; monsterId: string } | { type: 'monsterAutoJoined'; monsterId: string }
+  | { type: 'legacyEggHatched'; monsterId: string }
+  | { type: 'monsterAutoJoined'; monsterId: string }
+  /** Nuzlocke: đội và kho trống hoàn toàn, thua game (docs/rules/challenge-modes.md). */
+  | { type: 'gameOver' }
 
 /**
- * Sự kiện xảy ra khi thời gian trôi (việc theo ngày), ngoài log trận. GameState.dayEvents giữ các
- * sự kiện của lần trôi thời gian gần nhất để UI báo người chơi.
+ * Sự kiện xảy ra khi thời gian trôi (việc theo ngày): dòng log ngoài trận (GameState.log,
+ * model/gameLog.ts) của action làm thời gian trôi.
  */
 export type DayEvent =
   /**
@@ -131,3 +139,5 @@ export type DayEvent =
   | { type: 'worldBossAppeared'; speciesId: string; endDay: number }
   /** Boss thế giới rời đi: bậc thưởng theo kỷ lục (nhận ở thị trấn); null = chưa đạt bậc nào. */
   | { type: 'worldBossLeft'; speciesId: string; tierId: string | null }
+  /** Đóng phiên Đấu giá hành (docs/rules/auction.md). */
+  | AuctionDayEvent

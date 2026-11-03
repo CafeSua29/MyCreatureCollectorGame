@@ -9,8 +9,14 @@ import {
   type Decimal,
   type RngState
 } from '../shared'
-import { bestFloorReached, rollInstabilityRules } from '../registries'
-import type { GameData, GameState, InstabilityProperty, InstabilityState } from '../model'
+import { rollInstabilityRules } from '../registries'
+import {
+  bestFloorReached,
+  type GameData,
+  type GameState,
+  type InstabilityProperty,
+  type InstabilityState
+} from '../model'
 import { assertNoInstance, assertNoTournament } from './field'
 
 /** Độ bất ổn tắt (game mới). */
@@ -19,7 +25,7 @@ export const newInstabilityState = (): InstabilityState => ({ level: 0, properti
 /** Mức bất ổn tối đa: ⌊tầng cao nhất từng đạt / floorsPerLevel⌋ (không trần). */
 export function maxInstabilityLevel(
   data: GameData,
-  state: Pick<GameState, 'highestFloor'>
+  state: { highestFloor: number; ascension: { bestFloor: number } }
 ): number {
   return Math.floor(bestFloorReached(state) / data.config.instability.floorsPerLevel)
 }

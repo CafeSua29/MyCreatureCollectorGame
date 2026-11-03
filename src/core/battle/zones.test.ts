@@ -9,6 +9,7 @@ import { toBig } from '../shared'
 import { expForLevel, getMaxHp, isFainted } from '../monster'
 import { battleBiome } from '../world'
 import {
+  findLog,
   FIXTURE_TRIAL_TOKEN_ID,
   FIXTURE_ZONE_ID,
   dataIssuesAfter,
@@ -113,8 +114,7 @@ describe('vào hiểm địa', () => {
       zoneId: FIXTURE_ZONE_ID,
       floor: 2,
       steps: 3,
-      stepsTaken: 0,
-      lastStep: null
+      stepsTaken: 0
     })
     expect(entered.battle).toBeNull()
     expect(entered.time).toBe(townState().time)
@@ -241,7 +241,12 @@ describe('khám phá', () => {
     expect(battle.floor).toBe(2)
     expect(battle.isBoss).toBe(false)
     expect(battleBiome(data, fighting, battle)).toBe(data.zones[FIXTURE_ZONE_ID].map)
-    expect(fighting.zones.visit).toMatchObject({ stepsTaken: 1, lastStep: { kind: 'battle' } })
+    expect(fighting.zones.visit?.stepsTaken).toBe(1)
+    expect(findLog(fighting, 'zoneStep')).toEqual({
+      type: 'zoneStep',
+      zoneId: FIXTURE_ZONE_ID,
+      result: { kind: 'battle' }
+    })
   })
 
   it('thắng trận thường: lượt vào tiếp tục, tốn giờ như trận quái hoang', () => {
@@ -292,7 +297,7 @@ describe('khám phá', () => {
   it('bước tinh anh: trận boss ngẫu nhiên của map', () => {
     const fighting = explore(enter(townState()), onlyStep('elite'))
     expect(defined(fighting.battle, 'trận').isBoss).toBe(true)
-    expect(fighting.zones.visit?.lastStep).toEqual({ kind: 'elite' })
+    expect(findLog(fighting, 'zoneStep')?.result).toEqual({ kind: 'elite' })
   })
 
   it('bước rương thường / hiếm: món vào túi, không mở trận, tốn zoneStep giờ', () => {
@@ -303,7 +308,7 @@ describe('khám phá', () => {
     expect(getItemCount(opened.inventory, 'potion')).toBe(
       getItemCount(start.inventory, 'potion') + 1
     )
-    expect(opened.zones.visit?.lastStep).toEqual({
+    expect(findLog(opened, 'zoneStep')?.result).toEqual({
       kind: 'treasure',
       items: [{ itemId: 'potion', count: 1 }]
     })
@@ -325,7 +330,8 @@ describe('khám phá', () => {
       defined(raw.zones[0], 'hiểm địa').treasure = { rolls: 3, items: [] }
     })
     const opened = explore(enter(townState(), empty), empty)
-    expect(opened.zones.visit).toMatchObject({ stepsTaken: 1, lastStep: { items: [] } })
+    expect(opened.zones.visit?.stepsTaken).toBe(1)
+    expect(findLog(opened, 'zoneStep')?.result).toEqual({ kind: 'treasure', items: [] })
   })
 
   it('linh tuyền: hồi % max HP cho mọi quái, kể cả quái đã gục', () => {

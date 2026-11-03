@@ -7,7 +7,7 @@
 
 import * as fs from 'node:fs'
 import * as path from 'node:path'
-import { parseSaveSummary } from '@core'
+import { canLoadSave, canSaveManually, parseSaveSummary } from '@core'
 import type { SaveEntry } from '../../preload/api'
 
 /** Số file tự lưu xoay vòng cho mỗi game. */
@@ -85,9 +85,33 @@ export function listSaves(saveDir: string): SaveEntry[] {
   return entries.sort((a, b) => b.savedAt.localeCompare(a.savedAt))
 }
 
+/** Đọc một save; game Hardcore chỉ mở được save mới nhất (docs/rules/challenge-modes.md). */
 export function readSave(saveDir: string, id: string): string {
   const { gameId, file } = parseId(id)
+  if (!canLoadSave(listGameSaves(saveDir, gameId), id)) {
+    throw new Error('Game Hardcore chỉ mở được save mới nhất')
+  }
   return fs.readFileSync(path.join(saveDir, gameId, file), 'utf8')
+}
+
+/** Mọi save của một game (thư mục chưa có: rỗng). */
+function listGameSaves(saveDir: string, gameId: string): SaveEntry[] {
+  const gameDir = path.join(saveDir, gameId)
+  if (!fs.existsSync(gameDir)) return []
+  return fs
+    .readdirSync(gameDir)
+    .filter((file) => SAVE_FILE.test(file))
+    .map((file) => readEntry(saveDir, gameId, file))
+}
+
+/** Tóm tắt trong nội dung file sắp ghi (null nếu không đọc được). */
+function summaryOfText(text: string): ReturnType<typeof parseSaveSummary> {
+  try {
+    return parseSaveSummary(JSON.parse(text)?.summary)
+  } catch {
+    // Nội dung không phải JSON: không có tóm tắt, coi như game thường.
+    return null
+  }
 }
 
 /** Tự lưu: ghi vào ô còn trống, hết ô thì ghi đè ô có savedAt cũ nhất. Trả về id. */
@@ -108,7 +132,10 @@ export function writeAutosave(saveDir: string, gameId: string, text: string): st
   return `${gameId}/${target.file}`
 }
 
-/** Lưu tay: luôn tạo file mới. `now` là thời điểm (ms) dùng làm tên file. Trả về id. */
+/**
+ * Lưu tay: luôn tạo file mới. `now` là thời điểm (ms) dùng làm tên file. Trả về id. Game Hardcore
+ * không lưu tay được (docs/rules/challenge-modes.md).
+ */
 export function writeManualSave(
   saveDir: string,
   gameId: string,
@@ -116,6 +143,7 @@ export function writeManualSave(
   now: number
 ): string {
   checkGameId(gameId)
+  if (!canSaveManually(summaryOfText(text))) throw new Error('Game Hardcore không lưu tay được')
   let file = `manual-${now}.json`
   for (let i = 1; fs.existsSync(path.join(saveDir, gameId, file)); i++)
     file = `manual-${now}-${i}.json`

@@ -23,12 +23,12 @@
 - **Khóa** `locked` / **yêu thích** `favorite` (trường trên quái; `setMonsterLocked { monsterId, locked }`, `setMonsterFavorite { monsterId, favorite }`, ngoài trận, miễn phí, quái đang làm việc cũng đổi được; lọc `locked` / `favorite`, sắp xếp `favorite`; `MonsterView` có cả hai).
   - **Quái khóa không thể mất do action của người chơi** (`assertNotLocked`, lỗi `monsterLocked { monsterId }`; `monster/assignment.ts`): thả, làm quái phụ fuse / hiến tế, đưa đi trao đổi (`trades.md`). Lệch roadmap (thêm vì "khóa" phải giữ được quái): quái gốc fuse khi tỉ lệ < 100% mà không có Bùa Hộ Mệnh (thất bại sẽ mất quái gốc), cấy ghép khi lần thất bại này sẽ giết quái (`implant.md`). Vẫn ra trận, breed, tiến hóa, làm quái gốc fuse an toàn. Không chặn rủi ro do luật trận (độ kiếp, chết thật, tọa hóa, bỏ trốn khi khế ước thất bại).
   - **Tự khóa** (`autoLockCaught`): quái shiny hoặc boss **bắt / thu phục** về (bóng, Thị Uy, nhận lời xin theo, khu bảo tồn); mở được. Quái từ trứng, event, trao đổi không tự khóa. Save cũ: mọi quái chưa khóa.
-  - Thao tác hàng loạt có mất quái: áp cùng luật khi làm `bulk-actions.md`.
-- **Đội hình mẫu** (`roster/teamPresets.ts`, `model/teamPresets.ts`; `GameState.teamPresets = { presets, nextPresetId, lastMissing }`; tối đa `config.teamPresets.slots` (10) mẫu; ngoài trận, ở thị trấn hoặc tầng):
+  - Thả hàng loạt (`releaseMonsters`) áp cùng luật cho từng con (`bulk-actions.md`).
+- **Đội hình mẫu** (`roster/teamPresets.ts`, `model/teamPresets.ts`; `GameState.teamPresets = { presets, nextPresetId }`; tối đa `config.teamPresets.slots` (10) mẫu; ngoài trận, ở thị trấn hoặc tầng):
   - `saveTeamPreset { name, presetId? }`: lưu đội hiện tại (id quái theo thứ tự ô, món đang lắp của từng con), có `presetId` thì ghi đè; tên chuẩn hóa như biệt danh (null = chưa đặt). Lỗi: `presetSlotsFull { max }`, `presetNotFound { presetId }`. `deleteTeamPreset { presetId }`.
   - `applyTeamPreset { presetId, withEquipment }` (không đang dự giải / tông chiến / đi phó bản): đội thành đúng các quái của mẫu theo thứ tự, quái cũ về cuối kho. Quái không còn, đang làm việc hoặc không vừa ô đội (quái lớn, `monster-size.md`) thì bỏ qua. Không còn con nào: `presetEmpty { presetId }`. Kho không đủ chỗ cho quái cũ: `rosterFull`.
   - `withEquipment`: tháo mọi món của đội về túi, rồi lắp đúng món của mẫu, lấy trong túi trước, rồi từ quái rảnh ngoài đội (tháo sang); món không còn, quá số ô hoặc không đeo được thì bỏ qua. Túi không đủ chỗ cho món thừa: `bagOverflow`. State giữ nguyên khi lỗi.
-  - Thứ bị bỏ qua ghi vào `teamPresets.lastMissing { monsterIds, items }` (null = đủ hết). Lệch roadmap ("log `presetMissing`"): ngoài trận không có log, UI đọc trường này (như `gathering.lastResult`).
+  - Thứ bị bỏ qua ghi log ngoài trận `presetMissing { presetId, monsterIds, items }` (đủ hết thì không ghi; `game-log.md`).
   - Kiểm tra save (`validateTeamPresetState`): chỉ kiểm dạng; id quái / món đã mất vẫn hợp lệ.
   - Không có mô phỏng: chỉ là tiện ích, không đổi cân bằng.
 - **Quản lý quái:** chỉ dùng **ngoài trận**.
@@ -37,5 +37,5 @@
   - Chuyển vào kho / vào đội: quái được đặt ở **cuối** danh sách đích. Vào đội báo lỗi khi đội đã đủ 6. Kho đầy (`capacity.md`) thì `moveToStorage` báo `rosterFull`.
   - Đổi chỗ đội ↔ kho: mỗi con nhận vị trí của con kia (dùng được khi đội đầy).
   - Sắp xếp đội: phải là hoán vị đúng của đội hiện tại. Thứ tự đội quyết định 2 con còn sống đầu tiên ra sân.
-  - **Thả quái:** xóa vĩnh viễn khỏi đội hoặc kho, **không nhận gì**. UI phải hỏi xác nhận. Món đang lắp về túi; túi trang bị không đủ chỗ thì `bagOverflow`, gửi lại với `discardOverflow: true` để bỏ món thừa (`capacity.md`).
+  - **Thả quái** (`releaseMonster`; hàng loạt `releaseMonsters`, `bulk-actions.md`)**:** xóa vĩnh viễn khỏi đội hoặc kho, **không nhận gì**. UI phải hỏi xác nhận. Món đang lắp về túi; túi trang bị không đủ chỗ thì `bagOverflow`, gửi lại với `discardOverflow: true` để bỏ món thừa (`capacity.md`).
   - **Biệt danh:** cắt khoảng trắng hai đầu; `null` hoặc chuỗi rỗng thì xóa biệt danh; độ dài đếm theo ký tự Unicode (chữ có dấu tính 1 ký tự), tối đa `maxNicknameLength`.

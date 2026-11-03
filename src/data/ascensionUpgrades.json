@@ -1,0 +1,40 @@
+[
+  {
+    "id": "immortalInsight",
+    "costPerRank": 1,
+    "effects": [{ "type": "expPercent", "params": { "percent": 10 } }]
+  },
+  {
+    "id": "immortalFortune",
+    "costPerRank": 1,
+    "effects": [{ "type": "moneyPercent", "params": { "percent": 10 } }]
+  },
+  {
+    "id": "immortalLuck",
+    "costPerRank": 1,
+    "effects": [{ "type": "dropRatePercent", "params": { "percent": 5 } }]
+  },
+  {
+    "id": "immortalMight",
+    "costPerRank": 2,
+    "effects": [{ "type": "teamStatPercent", "params": { "percent": 5 } }]
+  },
+  {
+    "id": "fateVessel",
+    "maxRank": 3,
+    "costPerRank": 10,
+    "effects": [{ "type": "destinySlots", "params": { "slots": 1 } }]
+  },
+  {
+    "id": "shortcutPath",
+    "maxRank": 10,
+    "costPerRank": 2,
+    "effects": [{ "type": "startFloorPercent", "params": { "percent": 5 } }]
+  },
+  {
+    "id": "hiddenTreasury",
+    "maxRank": 10,
+    "costPerRank": 1,
+    "effects": [{ "type": "keepMoneyPercent", "params": { "percent": 5 } }]
+  }
+]

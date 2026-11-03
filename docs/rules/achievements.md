@@ -37,7 +37,7 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 | `dexPercent`            | % loài đã sở hữu (`dexOwnedPercent`)                                                             | 100              |
 | `shinySpecies`          | số loài đã có bản shiny                                                                          | không            |
 | `researchCompleted`     | số loài đã Hoàn thành nghiên cứu (`researchCompletedCount`, `species-research.md`)                | không            |
-| `highestFloor`          | tầng cao nhất từng đạt (`aptitudeFloor`, đổi theo phi thăng cùng tư chất)                         | không            |
+| `highestFloor`          | tầng cao nhất từng đạt (`aptitudeFloor`, kể cả trước khi phi thăng)                         | không            |
 | `tamerRealm`            | cảnh giới ngự thú sư                                                                             | không            |
 | `towerFloor`            | tầng tháp thí luyện cao nhất (`tower.highest`)                                                   | không            |
 | `gymBadges`             | số huy hiệu (đạo quán `wins > 0`)                                                                | không            |
@@ -45,10 +45,11 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 | `ownSpecies { speciesIds }` | số loài trong danh sách đã từng sở hữu (Dex)                                                 | số loài của danh sách |
 | `aptitude { tierId }`   | số quái đang sở hữu (đội + kho) có tư chất từ bậc này (`hasAptitudeAtLeast`)                      | không            |
 | `speciesRank { rankId }` | số loài đã sở hữu có phẩm cấp từ bậc này (`speciesRankOf` / `speciesRankIndex`)                 | không            |
+| `challengeFloor { difficulty?, modes? }` | tầng cao nhất nếu mức thấp nhất từng dùng không dễ hơn `difficulty` và đang chơi đủ chế độ `modes` (`nuzlocke` / `hardcore` / `randomizer`), không thì 0 (`challenge-modes.md`) | không |
 
 - **Bậc**: `tiers` không rỗng, `value` số dương tăng ngặt, không vượt trần của điều kiện. **Không trần**: `repeat { factor, rewards }` sinh tiếp sau bậc cuối, mỗi bậc = max(bậc trước + 1, ⌈bậc trước × factor⌉) (`factor` > 1); bậc lặp không thưởng danh hiệu (mỗi danh hiệu một nguồn); điều kiện có trần không được có `repeat`. Bậc vượt `MAX_SAFE_INTEGER` coi như không có (tiến độ không bao giờ tới).
 - **Thưởng** `rewards { moneyPerFloor?, items?: [{ itemId, count }], titleId? }`: tiền = `moneyPerFloor × highestFloor` (như Dex), vật phẩm gộp chồng, danh hiệu (đã có thì thôi).
-- **Nhận thưởng** `claimAchievement { achievementId }` (ngoài trận, ở đâu cũng được): nhận **mọi bậc đã đạt mà chưa nhận** một lần, `achievements.claimedTiers[id]` = số bậc đã nhận. Thưởng nhận bằng action (như mốc Dex, nhiệm vụ) thay cho tự cộng kèm log `achievementUnlocked` của roadmap: log chỉ có trong trận, còn tiến độ đọc từ state nên UI tự biết bậc nào chờ nhận (`achievementStatus`: tiến độ, bậc đã đạt / đã nhận, giá trị bậc kế tiếp). Lỗi: `inBattle`, `achievementNotFound { achievementId }`, `achievementNotReached { achievementId, need, have }`, `achievementCompleted { achievementId }` (đã nhận hết bậc của thành tựu có trần).
+- **Nhận thưởng** `claimAchievement { achievementId }` (ngoài trận, ở đâu cũng được): nhận **mọi bậc đã đạt mà chưa nhận** một lần, `achievements.claimedTiers[id]` = số bậc đã nhận. Thưởng nhận bằng action (như mốc Dex, nhiệm vụ) thay cho tự cộng kèm log `achievementUnlocked` của roadmap: tiến độ đọc từ state nên UI tự biết bậc nào chờ nhận; đạt bậc không ghi log ngoài trận vì phải tính lại mọi thành tựu sau mỗi action (`game-log.md`) (`achievementStatus`: tiến độ, bậc đã đạt / đã nhận, giá trị bậc kế tiếp). Lỗi: `inBattle`, `achievementNotFound { achievementId }`, `achievementNotReached { achievementId, need, have }`, `achievementCompleted { achievementId }` (đã nhận hết bậc của thành tựu có trần).
 - Tiến độ của `aptitude` là số quái **hiện có** (thả quái thì giảm); bậc đã nhận không mất.
 
 ## Danh hiệu

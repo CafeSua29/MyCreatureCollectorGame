@@ -140,6 +140,39 @@ describe('releaseMonster', () => {
   })
 })
 
+describe('releaseMonsters (hàng loạt)', () => {
+  const releaseAll = (state: GameState, monsterIds: unknown): GameState =>
+    // Ép kiểu để giả lập action sai dạng từ UI.
+    run(state, { type: 'releaseMonsters', monsterIds } as GameAction)
+
+  it('thả nhiều quái ở đội và kho trong một action', () => {
+    const state = stateWith(['a', 'b', 'c'], ['x', 'y'])
+    expect(idsOf(releaseAll(state, ['a', 'y', 'c']))).toEqual({ party: ['b'], storage: ['x'] })
+    expect(idsOf(state)).toEqual({ party: ['a', 'b', 'c'], storage: ['x', 'y'] })
+  })
+
+  it('thả hết kho được; hết đội thì không', () => {
+    expect(idsOf(releaseAll(stateWith(['a'], ['x', 'y']), ['x', 'y'])).storage).toEqual([])
+    expectActionError(
+      () => releaseAll(stateWith(['a', 'b'], ['x']), ['a', 'b', 'x']),
+      'partyWouldBeEmpty'
+    )
+  })
+
+  it('một con không thả được thì cả lệnh lỗi', () => {
+    const locked = { ...stateWith(['a', 'b']), storage: [mon('x', { locked: true })] }
+    expectActionError(() => releaseAll(locked, ['b', 'x']), 'monsterLocked', { monsterId: 'x' })
+    expectActionError(() => releaseAll(stateWith(['a', 'b']), ['b', 'z']), 'monsterNotInStorage')
+  })
+
+  it('danh sách rỗng, trùng, sai dạng: malformedAction', () => {
+    const state = stateWith(['a', 'b'])
+    for (const monsterIds of [[], ['b', 'b'], [1], 'b']) {
+      expectActionError(() => releaseAll(state, monsterIds), 'malformedAction')
+    }
+  })
+})
+
 describe('renameMonster', () => {
   const rename = (state: GameState, monsterId: string, nickname: string | null): GameState =>
     run(state, { type: 'renameMonster', monsterId, nickname })

@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest'
 import { createGameData } from '../gameData'
 import { toBig } from '../shared'
-import { dataIssuesAfter, makeData, makeRawData, uniformStats } from '../testing'
+import { dataIssuesAfter, makeData, makeGameState, makeRawData, uniformStats } from '../testing'
 import type { BigStats, GameData, RawGameData } from '../model'
 import {
   aptitudeFloor,
@@ -80,7 +80,7 @@ describe('aptitudeOf', () => {
   })
 
   it('tầng mốc là tầng cao nhất từng đạt', () => {
-    expect(aptitudeFloor({ highestFloor: 7 })).toBe(7)
+    expect(aptitudeFloor({ ...makeGameState({ seed: 1 }), highestFloor: 7 })).toBe(7)
   })
 })
 

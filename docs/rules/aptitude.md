@@ -7,7 +7,7 @@ Nhãn **tư chất** (资质) cho biết gen của quái tốt cỡ nào **so v�
 ## Luật
 
 - **Hàm duy nhất** `aptitudeOf(data, monster, floor)` (`registries/aptitude.ts`): tỉ lệ (`Decimal`) = tổng gen của quái ÷ **tổng gen tối đa của quái hoang ở tầng mốc** (`wildGeneMaxTotal`: mỗi chỉ số `floor(geneMax × floorGeneMultiplier)`, cùng công thức khoảng gen theo tầng ở "Tầng và biome" của `world-items.md`). Trả về tỉ lệ và bậc.
-- **Tầng mốc** `aptitudeFloor(state)` = `bestFloorReached(state)` = `highestFloor` (tầng cao nhất từng đạt; dùng chung với mức bất ổn tối đa, `instability.md`). Khi làm phi thăng (`ascension.md`) đổi `bestFloorReached` sang `bestFloor` để **không đổi bậc sau phi thăng**; nơi khác không phải sửa.
+- **Tầng mốc** `aptitudeFloor(state)` = `bestFloorReached(state)` (tầng cao nhất từng đạt, kể cả trước khi phi thăng, `ascension.md`; dùng chung với mức bất ổn tối đa, `instability.md`) nên **không đổi bậc sau phi thăng**.
 - **Bậc** (`src/data/aptitudeTiers.json`, theo thứ tự tăng dần, như `affinityTiers.json`; tên ở i18n `aptitudeTiers`): bậc cao nhất có `from` ≤ tỉ lệ (ngưỡng thuộc bậc trên). Hiện có: **Phàm** `mortal` < 0,3; **Lương** `good` 0,3–0,6; **Ưu** `superior` 0,6–0,9; **Tinh** `refined` 0,9–1,2; **Thiên** `heavenly` 1,2–2; **Thần** `divine` ≥ 2 (chỉ đạt qua breeding / thiên tài địa bảo / đột biến). Thứ hạng bậc: `aptitudeTierRank` (thứ tự trong file); đạt từ bậc nào: `hasAptitudeAtLeast`.
 - Chỉ xét **gen** (fuse không đổi gen nên không đổi tư chất; `fusingBonusStats` không tính).
 - Vì so với tầng cao nhất từng đạt, quái cũ **tụt bậc** khi người chơi lên tầng cao: đúng ý "tư chất so với thời đại", báo hiệu nên breed / thay quái.

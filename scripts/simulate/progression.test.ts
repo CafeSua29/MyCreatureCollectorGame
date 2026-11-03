@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { createGameData, type GameData } from '@core'
+import { createGameData, toBig, type GameData } from '@core'
 import { makeRawData, withFixtureText } from '@core/testing'
 import type { BossPolicy } from './bossPolicy'
 import type { TeamSpec } from './scenarios'
@@ -48,6 +48,7 @@ const options = (overrides: Partial<ProgressionOptions> = {}): ProgressionOption
   genesFollowFloor: false,
   pillModes: [true],
   growthModes: [false],
+  difficultyModes: ['normal'],
   usePills: true,
   // Test cũ đo nhịp không fuse / breeding; test growth tự bật.
   growth: false,
@@ -86,6 +87,15 @@ describe('runProgression', () => {
     )
     expect(result.unlocks[0].bossWin).toMatchObject({ margin: 0 })
     expect(runProgression(data, options())).toEqual(result)
+  })
+
+  it('độ khó: game chơi ở mức đã chọn, ghi tiền thắng trận; Ác mộng quái địch level cao hơn', () => {
+    const normal = runProgression(data, options())
+    expect(normal.difficulty).toBe('normal')
+    expect(toBig(normal.battleMoney).gt(0)).toBe(true)
+    const nightmare = runProgression(data, options({ difficulty: 'nightmare' }))
+    expect(nightmare.difficulty).toBe('nightmare')
+    expect(nightmare).not.toEqual(normal)
   })
 
   it('map luôn gặp boss tầng ngẫu nhiên: mở tầng ngay trong trận quái hoang đầu tiên', () => {

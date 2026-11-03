@@ -14,6 +14,7 @@ import { computeStats, getMaxHp, validateMonster } from '../monster'
 import { getMonsterView } from '../roster'
 import { BIG_ZERO, createRng, toBig, type Decimal } from '../shared'
 import {
+  findLog,
   atFloor,
   dataIssuesAfter,
   defined,
@@ -185,6 +186,9 @@ describe('cấy ghép', () => {
     expect(monster.implantFails).toBe(0)
     expect(next.money.toNumber()).toBe(1e6 - 2000)
     expect(monster.history?.milestones.at(-1)).toMatchObject({ kind: 'implanted', tierId: 'rare' })
+    expect(next.log).toEqual([
+      { type: 'implanted', monsterId: 'a', tierId: 'rare', success: true, fails: 0, died: false }
+    ])
     // Huyết thanh dùng không giới hạn số lần.
     expect(next.lab.stock).toEqual(state.lab.stock)
     expect(bonus(heroOf(implant(sure, next)))).toMatchObject({ attack: 50, speed: 40 })
@@ -212,6 +216,9 @@ describe('cấy ghép', () => {
       tierId: 'rare',
       fails: 1
     })
+    expect(next.log).toEqual([
+      { type: 'implanted', monsterId: 'a', tierId: 'rare', success: false, fails: 1, died: false }
+    ])
     expect(validateGameState(data, next)).toEqual([])
   })
 
@@ -227,6 +234,9 @@ describe('cấy ghép', () => {
     expect(soul.history?.milestones.at(-1)).toMatchObject({ kind: 'died', cause: 'implant' })
     expect(soul.history?.milestones.at(-2)).toMatchObject({ kind: 'implantFailed', fails: 3 })
     expect(next.tamer.woundUntilDay).toBeNull()
+    expect(next.log).toEqual([
+      { type: 'implanted', monsterId: 'a', tierId: 'rare', success: false, fails: 3, died: true }
+    ])
     expect(validateGameState(data, next)).toEqual([])
   })
 
@@ -237,6 +247,12 @@ describe('cấy ghép', () => {
     )
     const next = implant(doomed, { ...state, tamer: { ...state.tamer, bondDay: 0 } })
     expect(next.tamer.woundUntilDay).toBe(data.config.bond.woundDays - 1)
+    expect(next.log.map((entry) => entry.type)).toEqual(['implanted', 'bondBroken'])
+    expect(findLog(next, 'bondBroken')).toEqual({
+      type: 'bondBroken',
+      monsterId: 'a',
+      woundUntilDay: data.config.bond.woundDays - 1
+    })
   })
 
   it('quái trong kho cấy được; quái cuối cùng của đội không được liều mạng', () => {

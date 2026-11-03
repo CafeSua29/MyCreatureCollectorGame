@@ -31,7 +31,7 @@ Code: thuộc tính là luật trong `trialRules.json`, **cùng registry `TRIAL_
 ## Đặt mức ở Đền dịch chuyển
 
 - `GameState.instability: { level, properties: [{ ruleId, hidden }] }`; game mới `{ 0, [] }` (tắt).
-- `setInstability { level }` (thị trấn, ngoài trận, không dự giải, không trong bí cảnh / hiểm địa): mức nguyên ≥ 0 (sai dạng: `malformedAction`), tối đa ⌊tầng cao nhất từng đạt / `floorsPerLevel` (10)⌋ (`maxInstabilityLevel`, tầng qua `bestFloorReached`, đổi sang `bestFloor` khi có phi thăng; không trần). Vượt: `instabilityLevelTooHigh { level, max }`; bằng mức đang có: `instabilityUnchanged { level }`.
+- `setInstability { level }` (thị trấn, ngoài trận, không dự giải, không trong bí cảnh / hiểm địa): mức nguyên ≥ 0 (sai dạng: `malformedAction`), tối đa ⌊tầng cao nhất từng đạt / `floorsPerLevel` (10)⌋ (`maxInstabilityLevel`, tầng qua `bestFloorReached`, không tụt khi phi thăng; không trần). Vượt: `instabilityLevelTooHigh { level, max }`; bằng mức đang có: `instabilityUnchanged { level }`.
   - **Tăng mức giữ thuộc tính cũ**, tung thêm cho từng mức mới; **giảm mức** bỏ thuộc tính của các mức trên; 0 = tắt.
   - Mỗi mức `visiblePerLevel` (1) thuộc tính **hiện** rồi `hiddenPerLevel` (1) thuộc tính **ẩn**, tung theo `instability.weight`; loại không stackable mỗi loại tối đa một lần (tính cả thuộc tính đã có). Hết thuộc tính hợp lệ thì mức đó ít thuộc tính hơn (dữ liệu hiện có luôn còn loại stackable nên không xảy ra).
 - `rerollInstability` (cùng chỗ): trả `rerollCostPerLevel` (2.500) × mức tiền (`levelCost`, thiếu: `notEnoughMoney`), tung lại toàn bộ thuộc tính của mọi mức (ẩn lại như mới). Mức 0: `instabilityOff`. Giá tuyến tính theo mức vì tiền một trận quái hoang tăng tuyến tính theo tầng (level), nên đổi luôn tốn khoảng cùng số trận ở tầng mở mức đó.
@@ -46,7 +46,7 @@ Code: thuộc tính là luật trong `trialRules.json`, **cùng registry `TRIAL_
 
 ## Thưởng
 
-- % thưởng = mức × `rewardPercentPerLevel` (25) + tổng `rewardPercent` của từng thuộc tính (trùng thì tính mỗi lần) (`instabilityRewardPercent`, cộng, không nhân). Tiền thắng, EXP (cả trận, trước trait / tuổi của từng con) và hệ số tỉ lệ đồ rơi (mọi món rơi của trận) cùng × (1 + % / 100).
+- % thưởng = mức × `rewardPercentPerLevel` (25) + tổng `rewardPercent` của từng thuộc tính (trùng thì tính mỗi lần) (`instabilityRewardPercent`, cộng, không nhân; cộng tiếp `rewardPercent` của độ khó trận, `challenge-modes.md`). Tiền thắng, EXP (cả trận, trước trait / tuổi của từng con) và hệ số tỉ lệ đồ rơi (mọi món rơi của trận) cùng × (1 + % / 100).
 - Ví dụ mức 2 với `noItems` (8) và `fierceFoes` (10): +68%. `rewardPercent` của thuộc tính hiện 3–20 (trung bình theo trọng số ~5), nhỏ so với phần theo mức để thưởng chủ yếu theo mức người chơi chọn.
 
 ## Save

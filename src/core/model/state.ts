@@ -1,5 +1,6 @@
 // State game (được lưu vào save): vị trí, đội, kho, trứng, trận đấu, sự kiện trận.
 
+import type { AscensionState } from './ascension'
 import type { EventState, SpecialBattle } from './events'
 import type { ExpeditionState } from './expeditions'
 import type { BattleTrainer, TrainerMode, TrainerState } from './trainers'
@@ -28,14 +29,15 @@ import type { MoveStyle } from './moveStyles'
 import type { BattleStages, PartialStats, StageStat, StatName } from './stats'
 import type { PlannedTransform, TransformKind } from './transform'
 import type { BattleTamer, TamerState } from './tamer'
-import type { DayEvent, GameOptions, PartyRefillEvent } from './time'
+import type { GameOptions, PartyRefillEvent } from './time'
+import type { ChallengeState, Difficulty } from './challenge'
+import type { GameLogEntry } from './gameLog'
 import type { SoulImprint, SoulRemnant } from './soul'
 import type { RecruitMethod, RecruitState } from './recruit'
 import type { SafariState } from './safari'
 import type { LabState } from './implant'
 import type { CapacityState } from './capacity'
 import type { ZoneState } from './zones'
-import type { GatheringState } from './gathering'
 import type { WorldBossState } from './worldBoss'
 import type { DexState } from './dex'
 import type { ResearchState } from './research'
@@ -43,6 +45,7 @@ import type { AchievementState, GameStats, TitleState } from './achievements'
 import type { SectState } from './sects'
 import type { TeamPresetState } from './teamPresets'
 import type { TradeState } from './trades'
+import type { AuctionState } from './auction'
 
 // ---------- State game (được lưu vào save) ----------
 
@@ -87,10 +90,15 @@ export interface GameState {
    * làm việc tốn giờ (đánh trận, đi lại, hồi máu, nghỉ); mục "Đồng hồ game" ở lifespan.md.
    */
   time: number
-  /** Tùy chọn luật chơi của game này (bật / tắt thọ nguyên...). */
+  /** Tùy chọn luật chơi của game này (bật / tắt thọ nguyên, độ khó, chế độ thử thách...). */
   options: GameOptions
-  /** Sự kiện của lần trôi thời gian gần nhất (tọa hóa, trứng truyền thừa...); UI báo người chơi. */
-  dayEvents: DayEvent[]
+  /** Tiến độ chế độ thử thách: khu Nuzlocke đã dùng, thua game (docs/rules/challenge-modes.md). */
+  challenge: ChallengeState
+  /**
+   * Log ngoài trận của action gần nhất (thời gian trôi, event, kết quả action...); UI báo người chơi
+   * (docs/rules/game-log.md).
+   */
+  log: GameLogEntry[]
   /** Ngự thú sư của người chơi: cảnh giới, EXP (docs/rules/tamer.md). */
   tamer: TamerState
   /** Trận pháp đã học và đang dùng (docs/rules/team.md). */
@@ -113,6 +121,8 @@ export interface GameState {
   sect: SectState
   /** Bảng trao đổi với NPC ở thị trấn (docs/rules/trades.md). */
   trades: TradeState
+  /** Đấu giá hành ở thị trấn: phiên đang mở, đồ ký gửi, món giữ hộ (docs/rules/auction.md). */
+  auction: AuctionState
   /** Đội hình mẫu (docs/rules/roster.md mục "Đội hình mẫu"). */
   teamPresets: TeamPresetState
   /**
@@ -142,8 +152,6 @@ export interface GameState {
   capacity: CapacityState
   /** Hiểm địa: lượt vào đang diễn ra, ngày mở lại của từng hiểm địa (docs/rules/zones.md). */
   zones: ZoneState
-  /** Kết quả câu cá / khai thác gần nhất (docs/rules/gathering.md). */
-  gathering: GatheringState
   /** Boss thế giới: lần xuất hiện đang diễn ra, thưởng chờ nhận (docs/rules/world-boss.md). */
   worldBoss: WorldBossState
   /** Bộ sưu tập: loài đã gặp / đã sở hữu, mốc thưởng đã nhận (docs/rules/dex.md). */
@@ -156,6 +164,10 @@ export interface GameState {
   achievements: AchievementState
   /** Danh hiệu đã có / đang đeo. */
   titles: TitleState
+  /** Phi thăng: Tiên nguyên, nâng cấp Tiên giới, thành tích cao nhất (docs/rules/ascension.md). */
+  ascension: AscensionState
+  /** Thiên mệnh đang mang (id); rỗng = Phàm nhân. Chỉ đổi khi phi thăng. */
+  destinies: string[]
   battle: BattleState | null
 }
 
@@ -247,6 +259,12 @@ export type StackableItemRef =
  * tinh thể theo trait + cấp, trang bị theo id món. Dùng chung cho vứt, bán, mua, lắp.
  */
 export type ItemRef = StackableItemRef | { storage: 'instance'; instanceId: string }
+
+/** Một dòng của thao tác item hàng loạt (bán / vứt; docs/rules/bulk-actions.md): item và số lượng. */
+export interface ItemBatchEntry {
+  item: ItemRef
+  count: number
+}
 
 /**
  * Item kèm nội dung để tính giá: item gộp được theo định danh, hoặc chính món trang bị (giá theo
@@ -412,6 +430,8 @@ export interface MonsterBattleContext {
    * docs/rules/tamer-talents.md); 0 = không có.
    */
   tamerBonusStatPercent: number
+  /** % sát thương skill của kênh thưởng `teamDamagePercent` (phe người chơi); 0 = không có. */
+  tamerBonusDamagePercent: number
   /** % chỉ số của món ăn linh thực đang có tác dụng (phe người chơi; docs/rules/cooking.md). */
   mealStatPercent: PartialStats
   /**
@@ -726,6 +746,13 @@ export interface BattleState {
   instability: BattleInstability | null
   /** Trận do event mở / một đợt thú triều (docs/rules/events.md); null = trận thường. */
   special: SpecialBattle | null
+  /** Độ khó lúc mở trận (cuồng bạo, % thưởng; docs/rules/challenge-modes.md). */
+  difficulty: Difficulty
+  /**
+   * Nuzlocke: trận này là lượt gặp đầu tiên của khu (tầng / hiểm địa) và chưa bắt / thu phục con
+   * nào (được bắt một quái hợp lệ); false = không bắt được gì (hoặc không chơi Nuzlocke).
+   */
+  nuzlockeEncounter: boolean
   phase: BattlePhase
   outcome: BattleOutcome | null
   turn: number
@@ -784,6 +811,10 @@ export interface BattleState {
 }
 
 export type BattleEvent =
+  /** Nuzlocke: trận này là lượt gặp đầu tiên của khu (docs/rules/challenge-modes.md). */
+  | { type: 'nuzlockeEncounter'; area: string }
+  /** Nuzlocke: bóng / Thị Uy không có tác dụng vì khu đã hết lượt gặp (không mất bóng). */
+  | { type: 'nuzlockeBlocked'; monsterId: string }
   /** Hạ / bắt boss canh giữ: xong lượt vào hiểm địa (docs/rules/zones.md). */
   | { type: 'zoneCompleted'; zoneId: string }
   /** Thua trận hiểm địa: lượt vào kết thúc. */

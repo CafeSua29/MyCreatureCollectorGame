@@ -187,7 +187,7 @@ describe('nhận yêu cầu', () => {
 })
 
 describe('việc theo ngày', () => {
-  it('qua nửa đêm tới hạn: yêu cầu mới (dayEvents), quái trong kho cũng nhận', () => {
+  it('qua nửa đêm tới hạn: yêu cầu mới (log), quái trong kho cũng nhận', () => {
     const state: GameState = {
       ...makeGameState({ seed: 1, party: [makeMonster({ id: 'a', damageTaken: 1 })], money: 100 }),
       storage: [caring({ kind: 'pet' }, { id: 's' })],
@@ -196,12 +196,12 @@ describe('việc theo ngày', () => {
     const rested = run(state, { type: 'rest' })
     const imprint = rested.storage[0].imprint
     expect(imprint?.phase === 'active' && imprint.request.dueDay).toBe(4)
-    expect(rested.dayEvents).toContainEqual(
+    expect(rested.log).toContainEqual(
       expect.objectContaining({ type: 'imprintRequest', monsterId: 's' })
     )
   })
 
-  it('hết thời gian: chốt buff, dayEvents imprintFinished', () => {
+  it('hết thời gian: chốt buff, log imprintFinished', () => {
     const last: Imprint = { ...activeImprint({ kind: 'pet' }), endDay: 2 }
     const state: GameState = {
       ...makeGameState({
@@ -213,7 +213,7 @@ describe('việc theo ngày', () => {
     }
     const rested = run(state, { type: 'rest' })
     expect(rested.party[0].imprint).toEqual({ phase: 'done', completed: 0, total: 5 })
-    expect(rested.dayEvents).toContainEqual({
+    expect(rested.log).toContainEqual({
       type: 'imprintFinished',
       monsterId: 'm1',
       percent: 0

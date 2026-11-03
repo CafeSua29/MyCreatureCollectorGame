@@ -162,8 +162,6 @@ export type BeastTideState =
 
 export interface EventState {
   pending: PendingEvent | null
-  /** Kết quả của lần giải quyết event gần nhất (chọn lựa chọn, sau trận event, rút lui); UI báo. */
-  log: EventLogEntry[]
   modifiers: ActiveModifier[]
   chains: ActiveChain[]
   tempShop: TempShop | null

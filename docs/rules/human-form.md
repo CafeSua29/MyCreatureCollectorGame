@@ -15,7 +15,7 @@ Code: `model/humanForm.ts` (`isHumanShape`), `HUMAN_FORM_ON_TRANSFORM` (`model/t
 
 - Action `takeHumanForm { monsterId }` (quái trong đội hoặc kho): ở thị trấn, ngoài trận, không gục, không trọng thương; `awakening ≥ humanForm.minAwakening` (1); 1 **Hóa Hình Đan** (`pillItemId`, category `material`) + tiền `costPerLevel × level` (`spendMoney`). Thành công chắc chắn, thành `'human'`, mốc lý lịch `humanFormed`.
 - Mã lỗi: `cannotTakeHumanForm { monsterId, reason: 'race' | 'awakeningTooLow' | 'alreadyTaken' }`; dùng lại `inBattle`, `notInTown`, `monsterNotOwned`, `monsterFainted`, `injured`, `notEnoughItem`, `notEnoughMoney`.
-- Không ghi log (action ngoài trận; kết quả là trường `humanForm` của quái).
+- Không ghi log ngoài trận: kết quả tất định, đọc trường `humanForm` của quái (`game-log.md`).
 
 ## Trên quái
 

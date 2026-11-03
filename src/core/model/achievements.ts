@@ -41,12 +41,14 @@ export const ACHIEVEMENT_CONDITION_TYPES = [
   'researchCompleted',
   'highestFloor',
   'tamerRealm',
+  'ascensions',
   'towerFloor',
   'gymBadges',
   'arenaRank',
   'ownSpecies',
   'aptitude',
-  'speciesRank'
+  'speciesRank',
+  'challengeFloor'
 ] as const
 
 export type AchievementConditionType = (typeof ACHIEVEMENT_CONDITION_TYPES)[number]

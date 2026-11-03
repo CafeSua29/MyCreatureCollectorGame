@@ -12,6 +12,7 @@ import {
 import { validateQuestState } from './validateQuestState'
 import { validateSectState } from './validateSectState'
 import { validateTeamPresetState, validateTradeState } from './validateTradeState'
+import { validateAuctionState } from './validateAuctionState'
 import { validateDwellingState } from './validateDwellingState'
 import { validateExpeditionState } from './validateExpeditionState'
 import { checkBattleTrainer, validateTrainerState } from './validateTrainerState'
@@ -41,6 +42,8 @@ import {
   checkRecords,
   checkVolatileExtras
 } from './validateBattleExtras'
+import { isGameOverSave, validateChallengeState } from './validateChallengeState'
+import { validateAscensionState } from './validateAscensionState'
 import { validateTimeState } from './validateTimeState'
 import { checkBattleTamers, validateBondState, validateTamer } from './validateTamerState'
 import { validateRecruitState } from './validateRecruitState'
@@ -48,7 +51,7 @@ import { validateSafariState } from './validateSafariState'
 import { validateLabState } from './validateLabState'
 import { validateCapacityState } from './validateCapacityState'
 import { validateZoneState } from './validateZoneState'
-import { validateGatheringState } from './validateGatheringState'
+import { validateGameLog } from './validateGameLog'
 import { validateWorldBossState } from './validateWorldBossState'
 import { validateSpiritState } from './validateSpiritState'
 import { validateDexState } from './validateDexState'
@@ -221,29 +224,30 @@ function checkInfusions(data: GameData, value: unknown, path: string, issues: st
   })
 }
 
+/** Một trứng ở `path` (trong eggs, lô Đấu giá hành); trả về id trứng ('' nếu hỏng). */
+function checkEgg(data: GameData, value: unknown, path: string, issues: string[]): string {
+  const egg = asObject(value)
+  if (!egg) {
+    issues.push(`${path}: không hợp lệ`)
+    return ''
+  }
+  checkMonster(data, egg.monster, { path: `${path}.monster`, ownership: 'owned' }, issues)
+  if (asObject(egg.monster)?.imprint != null) {
+    issues.push(`${path}.monster.imprint: quái chưa nở phải là null`)
+  }
+  if (egg.id !== asObject(egg.monster)?.id) issues.push(`${path}.id phải bằng id quái bên trong`)
+  // 0 = đã tới lúc nở nhưng đội / kho hết chỗ (docs/rules/capacity.md).
+  issues.push(...checkInteger(egg.battlesLeft, `${path}.battlesLeft`, 0))
+  checkInfusions(data, egg.infusions, `${path}.infusions`, issues)
+  return String(egg.id)
+}
+
 function checkEggs(data: GameData, eggs: unknown, issues: string[]): string[] {
   if (!Array.isArray(eggs)) {
     issues.push('eggs phải là danh sách')
     return []
   }
-  return eggs.map((value, i) => {
-    const egg = asObject(value)
-    if (!egg) {
-      issues.push(`eggs[${i}]: không hợp lệ`)
-      return ''
-    }
-    checkMonster(data, egg.monster, { path: `eggs[${i}].monster`, ownership: 'owned' }, issues)
-    if (asObject(egg.monster)?.imprint != null) {
-      issues.push(`eggs[${i}].monster.imprint: quái chưa nở phải là null`)
-    }
-    if (egg.id !== asObject(egg.monster)?.id) {
-      issues.push(`eggs[${i}].id phải bằng id quái bên trong`)
-    }
-    // 0 = đã tới lúc nở nhưng đội / kho hết chỗ (docs/rules/capacity.md).
-    issues.push(...checkInteger(egg.battlesLeft, `eggs[${i}].battlesLeft`, 0))
-    checkInfusions(data, egg.infusions, `eggs[${i}].infusions`, issues)
-    return String(egg.id)
-  })
+  return eggs.map((value, i) => checkEgg(data, value, `eggs[${i}]`, issues))
 }
 
 function checkStages(stages: unknown, issues: string[]): void {
@@ -458,7 +462,9 @@ function checkBattle(
   }
   // Trận bí cảnh / tháp / hiểm địa đánh ở tầng sức mạnh riêng, có thể cao hơn tầng đã mở (trials.md,
   // zones.md).
-  const ownFloor = battle.trial || asObject(battle.special)?.kind === 'zone'
+  // Boss thế giới giữ tầng lúc xuất hiện, có thể cao hơn tầng đang mở sau khi phi thăng.
+  const specialKind = asObject(battle.special)?.kind
+  const ownFloor = battle.trial || specialKind === 'zone' || specialKind === 'worldBoss'
   checkFloor(battle.floor, ownFloor ? undefined : state.highestFloor, 'battle.floor', issues)
   if (!BATTLE_PHASES.includes(String(battle.phase))) issues.push('battle.phase không hợp lệ')
   issues.push(...checkInteger(battle.turn, 'battle.turn', 1))
@@ -679,11 +685,13 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   const party = (state as unknown as GameState).party
   // Quái lớn chiếm nhiều ô đội (docs/rules/monster-size.md); quái hỏng đã báo ở checkMonsterList.
   const valid = Array.isArray(party) ? party.filter((m) => asObject(m) !== null) : []
+  // Đội trống chỉ khi đã thua game Nuzlocke (docs/rules/challenge-modes.md).
+  const minParty = isGameOverSave(state) ? 0 : 1
   if (
     Array.isArray(party) &&
-    (party.length === 0 || partySlotsUsed(data, valid) > data.config.partySize)
+    (party.length < minParty || partySlotsUsed(data, valid) > data.config.partySize)
   ) {
-    issues.push(`party phải có từ 1 quái, chiếm tối đa ${data.config.partySize} ô`)
+    issues.push(`party phải có từ ${minParty} quái, chiếm tối đa ${data.config.partySize} ô`)
   }
   const storageIds = checkMonsterList(
     data,
@@ -706,15 +714,31 @@ export function validateGameState(data: GameData, value: unknown): string[] {
     checkWild: (monster, path) => checkMonster(data, monster, { path, ownership: 'wild' }, issues),
     issues
   })
+  const auctionEggIds = validateAuctionState(data, state, {
+    checkEgg: (egg, path) => checkEgg(data, egg, path, issues),
+    issues
+  })
 
   // Hồn phách giữ id của quái đã chết: không trùng quái đang sống, cùng bộ đếm nextMonsterId.
   checkIds(
-    [...partyIds, ...storageIds, ...eggIds, ...battleIds, ...safariIds, ...tradeIds, ...souls.ids],
+    [
+      ...partyIds,
+      ...storageIds,
+      ...eggIds,
+      ...battleIds,
+      ...safariIds,
+      ...tradeIds,
+      ...auctionEggIds,
+      ...souls.ids
+    ],
     state.nextMonsterId,
     issues
   )
   issues.push(...validateEquipmentState(data, state))
   issues.push(...validateTimeState(state))
+  issues.push(...validateChallengeState(state))
+  issues.push(...validateAscensionState(data, state))
+  issues.push(...validateGameLog(state))
   issues.push(...validateTamer(data, state.tamer))
   issues.push(...validateBondState(state))
   issues.push(...validateFormationState(data, state.formations))
@@ -739,7 +763,6 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateDeityState(state))
   issues.push(...validateEventState(data, state))
   issues.push(...validateZoneState(data, state))
-  issues.push(...validateGatheringState(data, state))
   issues.push(...validateWorldBossState(data, state))
   issues.push(...validateSpiritState(data, state))
   issues.push(...validateLabState(data, state.lab))

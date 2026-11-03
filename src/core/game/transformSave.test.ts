@@ -24,6 +24,7 @@ import { STELLAR, type GameState, type Item, type Monster, type RawGameData } fr
 import { migrateState, serializeState } from './index'
 import { gameReducer } from './reducer'
 import { validateGameState } from './validateGameState'
+import { defaultGameOptions } from '../progression'
 
 const data = makeTransformData()
 
@@ -150,7 +151,7 @@ describe('vật phẩm chìa khóa', () => {
     const roll = (stacks: Record<string, number>): string[] =>
       rollShopStock(shopData, createRng(1), {
         highestFloor: 1,
-        options: { lifespanEnabled: false, permadeathEnabled: false },
+        options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false }),
         nextItemId: 1,
         inventory: makeInventory(stacks)
       }).stock.map((entry) => (entry.storage === 'stack' ? entry.itemId : ''))

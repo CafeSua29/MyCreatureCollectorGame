@@ -35,18 +35,30 @@ export interface SafariVisit {
   caught: number
 }
 
-/** Diễn biến của action khu bảo tồn gần nhất, để UI hiển thị. */
-export type SafariEvent =
-  | { type: 'encounter'; monsterId: string; speciesId: string }
-  | { type: 'throwBall'; monsterId: string; chance: number; critical: boolean; shakes: number }
-  | { type: 'breakFree'; monsterId: string }
-  | { type: 'caught'; monsterId: string; destination: 'party' | 'storage' }
+/** Diễn biến một action trong khu bảo tồn (dòng log ngoài trận, model/gameLog.ts). */
+export type SafariLogEntry =
+  | { type: 'safariEncounter'; monsterId: string; speciesId: string }
+  | {
+      type: 'safariThrowBall'
+      monsterId: string
+      chance: number
+      critical: boolean
+      shakes: number
+    }
+  | { type: 'safariBreakFree'; monsterId: string }
+  | { type: 'safariCaught'; monsterId: string; destination: 'party' | 'storage' }
   /** Ném mồi (itemId: mồi trong túi; null = mồi thường miễn phí) hoặc đá. */
-  | { type: 'lure'; monsterId: string; kind: SafariLure; itemId: string | null; favorite: boolean }
-  | { type: 'fled'; monsterId: string }
-  | { type: 'skipped'; monsterId: string }
+  | {
+      type: 'safariLure'
+      monsterId: string
+      kind: SafariLure
+      itemId: string | null
+      favorite: boolean
+    }
+  | { type: 'safariFled'; monsterId: string }
+  | { type: 'safariSkipped'; monsterId: string }
   /** Hết lượt vào khu: hết lượt gặp, hết bóng hoặc tự rời. */
-  | { type: 'visitEnded'; caught: number }
+  | { type: 'safariVisitEnded'; caught: number }
 
 /** Phần khu bảo tồn trong save. */
 export interface SafariState {
@@ -55,7 +67,6 @@ export interface SafariState {
   refreshDay: number
   /** Lượt vào khu đang diễn ra; null = không ở trong khu. */
   visit: SafariVisit | null
-  log: SafariEvent[]
 }
 
 /** Hệ số của mồi / đá: nhân tỉ lệ bắt, nhân tỉ lệ chạy, số lượt có tác dụng (kể cả lượt ném). */

@@ -162,6 +162,22 @@
       "instabilityLevel": 3
     },
     {
+      "id": "lonelyStar",
+      "destinyIds": ["lonelyStar"]
+    },
+    {
+      "id": "immortalMight5",
+      "ascensionUpgrades": { "immortalMight": 5 }
+    },
+    {
+      "id": "hard",
+      "difficulty": "hard"
+    },
+    {
+      "id": "nightmare",
+      "difficulty": "nightmare"
+    },
+    {
       "id": "unbound",
       "uncontracted": true
     },
@@ -243,6 +259,7 @@
     "genesFollowFloor": true,
     "pillModes": [true, false],
     "growthModes": [true, false],
+    "difficultyModes": ["normal", "hard", "nightmare"],
     "sweep": {
       "wildBattles": 200,
       "bossBattles": 50

@@ -17,9 +17,16 @@ export function validateCapacityState(data: GameData, state: Record<string, unkn
   for (const kind of CAPACITY_KINDS) {
     issues.push(...checkInteger(capacity[kind], `capacity.${kind}`, 0))
   }
-  if (issues.length > 0 || !Array.isArray(state.storage) || !asObject(state.tamer)) return issues
+  if (
+    issues.length > 0 ||
+    !Array.isArray(state.storage) ||
+    !asObject(state.tamer) ||
+    !asObject(state.ascension)
+  ) {
+    return issues
+  }
   // Đã kiểm tra capacity / tamer / storage có đúng dạng ở trên và ở validateGameState.
-  const holder = state as unknown as Pick<GameState, 'capacity' | 'tamer'>
+  const holder = state as unknown as Pick<GameState, 'capacity' | 'tamer' | 'ascension'>
   const max = capacityOf(data, holder, 'storage')
   if (state.storage.length > max) {
     issues.push(`storage có ${state.storage.length} quái, vượt sức chứa ${max}`)

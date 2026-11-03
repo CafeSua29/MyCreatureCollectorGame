@@ -2,15 +2,9 @@
 // % mọi chỉ số vĩnh viễn, gen, điểm thiên phú và trẻ lại. Mọi thuộc tính khác trên quái giữ nguyên
 // (trường mới thêm vào Monster mặc định giữ, vì luân hồi chỉ đổi đúng các trường liệt kê ở đây).
 
-import { ActionError, BIG_ONE, BIG_ZERO, maxBig, spendMoney, toBig, type Decimal } from '../shared'
+import { ActionError, BIG_ONE, maxBig, spendMoney, toBig, type Decimal } from '../shared'
 import { removeItems } from '../inventory'
-import {
-  addMilestone,
-  assertNotBusy,
-  expForLevel,
-  mapBigStats,
-  monsterGrowthRate
-} from '../monster'
+import { addMilestone, assertNotBusy, mapBigStats, resetMonsterLevel } from '../monster'
 import { dayOf, type GameData, type GameState, type Monster, type RebirthConfig } from '../model'
 
 /** Điều kiện của lần luân hồi kế tiếp (lần thứ `count`). */
@@ -46,14 +40,10 @@ export function applyRebirth(data: GameData, monster: Monster, day: number): Mon
   })
   const rebirths = monster.rebirths + 1
   const reborn: Monster = {
-    ...monster,
-    level: 1,
-    exp: expForLevel(1, monsterGrowthRate(data, monster)),
+    ...resetMonsterLevel(data, monster),
     rebirths,
     genes,
-    ageDays: 0,
-    damageTaken: BIG_ZERO,
-    statuses: []
+    ageDays: 0
   }
   return addMilestone(data, reborn, { day, kind: 'reborn', count: rebirths })
 }

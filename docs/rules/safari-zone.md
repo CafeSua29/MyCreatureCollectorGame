@@ -30,13 +30,14 @@ Không có trận. Mỗi action là một lượt:
 - Mồi / đá có tác dụng **`turns` (3) lượt kể cả lượt ném**; ném mới thì thay hiệu ứng cũ (mồi và đá không chồng).
 - **Bỏ đi** (`skipSafariEncounter`): sang lượt gặp kế (không tung chạy trốn).
 - **Chạy trốn:** cuối lượt quái chưa bị bắt (ném bóng trượt, ném mồi / đá) tung `safariFleeChance` = `(fleeBase + fleeRarity × (1 − catchRate / 100)) × hệ số mồi / đá`, kẹp 0–100 (10 + 20: loài càng hiếm càng dễ chạy). Chạy mất thì sang lượt gặp kế; không chạy thì mồi / đá bớt một lượt. Hết bóng sau lượt đó thì ra khu.
+- **Nuzlocke** (`challenge-modes.md`): mỗi lượt vào khu bắt được một con (`nuzlockeVisitUsed`), theo dupes clause (`nuzlockeDupe`).
 - **Quái bắt được:** lý lịch nguồn gốc `safari` (`metFloor` null = thị trấn; `monster-history.md`), thân mật khởi đầu như bắt bóng (`affinity.start.caught`), **chưa khế ước** (mục "Khế ước" ở `tamer.md`), vào đội nếu còn chỗ, không thì vào kho; tính vào nhiệm vụ bắt quái (`quests.md`).
-- `GameState.safari.log`: sự kiện của action gần nhất cho UI (`encounter`, `throwBall { chance, critical, shakes }` (lắc bóng / chí mạng như trong trận, `rollCapture`), `breakFree`, `caught { destination }`, `lure { kind, itemId, favorite }`, `fled`, `skipped`, `visitEnded { caught }`).
+- Diễn biến mỗi action ghi log ngoài trận (`game-log.md`): `safariEncounter`, `safariThrowBall { chance, critical, shakes }` (lắc bóng / chí mạng như trong trận, `rollCapture`), `safariBreakFree`, `safariCaught { destination }`, `safariLure { kind, itemId, favorite }`, `safariFled`, `safariSkipped`, `safariVisitEnded { caught }` (trước v98 là `safari.log`, tên không có tiền tố).
 
 ## State, save
 
-- `GameState.safari = { roster, refreshDay, visit, log }`; `visit` null khi không ở trong khu, không thì `{ encountersLeft (≥ 0, chưa kể quái đang gặp), balls (≥ 1), encounter: { monster, misses, lure }, caught }`. Quái đang gặp là quái hoang (chưa khế ước, chưa có lý lịch), id tính vào kiểm tra `nextMonsterId`. Đang trong khu thì phải ở thị trấn, không có trận. Save v54 (`state-versions.md`).
-- Kiểm tra save (`validateSafariState`): loài trong danh sách là loài thường, không trùng; số nguyên đúng khoảng; mồi / đá đúng loại, `turnsLeft` ≥ 1, `favorite` chỉ ở mồi; log mỗi dòng có `type`.
+- `GameState.safari = { roster, refreshDay, visit }`; `visit` null khi không ở trong khu, không thì `{ encountersLeft (≥ 0, chưa kể quái đang gặp), balls (≥ 1), encounter: { monster, misses, lure }, caught }`. Quái đang gặp là quái hoang (chưa khế ước, chưa có lý lịch), id tính vào kiểm tra `nextMonsterId`. Đang trong khu thì phải ở thị trấn, không có trận. Save v54 (`state-versions.md`).
+- Kiểm tra save (`validateSafariState`): loài trong danh sách là loài thường, không trùng; số nguyên đúng khoảng; mồi / đá đúng loại, `turnsLeft` ≥ 1, `favorite` chỉ ở mồi.
 
 ## Chưa có
 

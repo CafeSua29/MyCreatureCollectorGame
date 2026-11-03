@@ -277,6 +277,17 @@ describe('phân giải', () => {
     expect(getItemCount(next.inventory, ENHANCE)).toBe(2 + 30 + 16)
     expect(getItemCount(next.inventory, REFINING)).toBeGreaterThanOrEqual(1)
     expect(soulCrystalPoints(data, next.inventory)).toBe(8)
+    // Log ngoài trận: tổng thứ nhận được của cả lần (docs/rules/game-log.md).
+    expect(next.log).toEqual([
+      {
+        type: 'equipmentSalvaged',
+        instanceIds: ['e1', 'e2', 'e3'],
+        enhanceStones: 48,
+        refiningStones: getItemCount(next.inventory, REFINING),
+        soulPoints: 8,
+        spirits: 0
+      }
+    ])
     expect(validateGameState(data, next)).toEqual([])
   })
 

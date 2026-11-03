@@ -129,7 +129,7 @@ describe('lịch xuất hiện', () => {
     expect(current.level).toBe(worldBossLevel(data, 3))
     expect(current.bestDamage.eq(0)).toBe(true)
     expect(current.hpUnit.gt(0)).toBe(true)
-    expect(next.dayEvents).toContainEqual({
+    expect(next.log).toContainEqual({
       type: 'worldBossAppeared',
       speciesId: current.speciesId,
       endDay: 4

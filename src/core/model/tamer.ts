@@ -160,7 +160,7 @@ export interface TamerRealmDef {
 
 /** Ngự thú sư của một phe trong trận: linh lực, hồi chiêu, số lần đã dùng. */
 export interface BattleTamer {
-  /** Cảnh giới lúc vào trận (mở kỹ năng, linh lực tối đa). */
+  /** Cảnh giới mở kỹ năng lúc vào trận; người chơi: cao nhất từng đạt (docs/rules/ascension.md). */
   realm: number
   /** Linh lực còn lại, nguyên ≥ 0. */
   mana: number

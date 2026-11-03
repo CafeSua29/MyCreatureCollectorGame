@@ -4,7 +4,7 @@
 import { describe, expect, it } from 'vitest'
 import { gameReducer, migrateState, serializeState, validateGameState } from '../game'
 import { getMaxHp } from '../monster'
-import { setGameOption } from '../progression'
+import { setGameOption, defaultGameOptions } from '../progression'
 import { BIG_ZERO } from '../shared'
 import {
   defined,
@@ -187,7 +187,9 @@ describe('setGameOption: chết thật', () => {
     const raw = JSON.parse(JSON.stringify(serializeState(state)))
     const v71 = { ...raw, version: 71, options: { lifespanEnabled: false } }
     const migrated = migrateState(v71, data)
-    expect(migrated.options).toEqual({ lifespanEnabled: false, permadeathEnabled: false })
+    expect(migrated.options).toEqual(
+      defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false })
+    )
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

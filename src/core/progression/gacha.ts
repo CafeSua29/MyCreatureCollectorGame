@@ -14,6 +14,7 @@ import {
 import { ActionError, levelCost, spendMoney, type Decimal, type RngState } from '../shared'
 import { floorGeneMultiplier, rollMonster, type MonsterRollSpec } from '../world'
 import {
+  appendLog,
   BATTLE_FORM_KINDS,
   dayOf,
   type EncounterEntry,
@@ -128,11 +129,13 @@ export function pullGacha(data: GameData, state: GameState, count: number): Game
     nextMonsterId++
     eggs.push(egg)
   }
-  return {
+  const pulled = {
     ...paid,
     rng,
     nextMonsterId,
     eggs,
     stats: bumpStat(state.stats, 'gachaPulls', count)
   }
+  const eggIds = eggs.slice(state.eggs.length).map((egg) => egg.id)
+  return appendLog(pulled, { type: 'gachaPulled', eggIds })
 }

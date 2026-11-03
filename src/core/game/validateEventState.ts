@@ -11,8 +11,6 @@ import { checkWorldBossBattle } from './validateWorldBossState'
 
 type Raw = Record<string, unknown>
 
-const listOf = (value: unknown): unknown[] => (Array.isArray(value) ? value : [])
-
 /** Tầng null (thị trấn) hoặc tầng đã mở. */
 function checkFloorOrTown(value: unknown, highestFloor: unknown, path: string): string[] {
   if (value === null) return []
@@ -183,10 +181,6 @@ export function validateEventState(data: GameData, state: Raw): string[] {
   if (!events) return ['events phải là object']
   const issues: string[] = []
   checkPending(data, state, events.pending, issues)
-  if (!Array.isArray(events.log)) issues.push('events.log phải là danh sách')
-  else if (listOf(events.log).some((entry) => typeof asObject(entry)?.type !== 'string')) {
-    issues.push('events.log: mỗi dòng phải có type')
-  }
   checkModifiers(data, events.modifiers, issues)
   checkChains(data, events.chains, issues)
   checkTempShop(data, state, events.tempShop, issues)

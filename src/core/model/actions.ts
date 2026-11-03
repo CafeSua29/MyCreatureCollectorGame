@@ -1,12 +1,14 @@
 // Action: mọi thứ người chơi làm, đi qua gameReducer.
 
+import type { Decimal } from '../shared'
 import type { MoveStyle } from './moveStyles'
 import type { Tactic } from './monster'
-import type { ItemRef, Location } from './state'
+import type { ItemBatchEntry, ItemRef, Location } from './state'
 import type { TamerCommand } from './tamer'
 import type { TransformKind } from './transform'
 import type { StatName } from './stats'
 import type { GameOptionFlag } from './time'
+import type { Difficulty } from './challenge'
 import type { CapacityKind } from './capacity'
 import type { SpiritDestination, SpiritFood, SpiritLocation } from './artifactSpirits'
 
@@ -139,6 +141,15 @@ export type GameAction =
    * `discardOverflow`: đồng ý bỏ trang bị của quái đưa đi không vừa túi (docs/rules/capacity.md).
    */
   | { type: 'acceptTrade'; offerId: string; monsterId: string; discardOverflow?: boolean }
+  /**
+   * Đấu giá hành (thị trấn; docs/rules/auction.md): đặt / đổi / rút giá kín cho lô `lotId` (tiền bị
+   * giữ tới khi phiên đóng), ký gửi / rút đồ ký gửi, nhận món trang bị giữ hộ.
+   */
+  | { type: 'placeAuctionBid'; lotId: string; amount: Decimal }
+  | { type: 'cancelAuctionBid'; lotId: string }
+  | { type: 'consignItem'; item: ItemRef; count: number; reservePrice: Decimal }
+  | { type: 'withdrawConsignment'; consignmentId: string }
+  | { type: 'claimAuctionHeld' }
   /** Quay Cây thần (thị trấn; count là một trong config.gacha.pullOptions; docs/rules/gacha.md). */
   | { type: 'pullGacha'; count: number }
   /**
@@ -156,6 +167,9 @@ export type GameAction =
   | { type: 'summonSpirit' }
   | { type: 'moveSpirit'; from: SpiritLocation; to: SpiritDestination }
   | { type: 'mergeSpirits'; first: SpiritLocation; second: SpiritLocation }
+  /** Hàng loạt (docs/rules/bulk-actions.md): di dời nhiều khí linh tới `to`, gộp nhiều vào `first`. */
+  | { type: 'moveSpirits'; from: SpiritLocation[]; to: SpiritDestination }
+  | { type: 'mergeSpiritsInto'; first: SpiritLocation; others: SpiritLocation[] }
   | { type: 'feedSpirit'; target: SpiritLocation; food: SpiritFood }
   | { type: 'breedSpirits'; first: number; second: number }
   | { type: 'collectSpiritPool'; index: number }
@@ -290,10 +304,15 @@ export type GameAction =
   | { type: 'useItem'; itemId: string; monsterId: string; count?: number; skillId?: string }
   /** Bật / tắt tùy chọn luật chơi của game này (ngoài trận, ở đâu cũng được; options.md). */
   | { type: 'setGameOption'; option: GameOptionFlag; enabled: boolean }
+  /** Đổi độ khó của game này (ngoài trận; docs/rules/challenge-modes.md). */
+  | { type: 'setDifficulty'; difficulty: Difficulty }
   /** Vứt item (ngoài trận, ở đâu cũng được): không nhận gì. */
   | { type: 'discardItem'; item: ItemRef; count: number }
   /** Cửa hàng ở thị trấn: bán item có giá, nhận % giá. */
   | { type: 'sellItem'; item: ItemRef; count: number }
+  /** Hàng loạt (docs/rules/bulk-actions.md): vứt / bán nhiều dòng trong một action. */
+  | { type: 'discardItems'; items: ItemBatchEntry[] }
+  | { type: 'sellItems'; items: ItemBatchEntry[] }
   /** Cửa hàng ở thị trấn: mua món đang có trong danh sách hàng. */
   | { type: 'buyItem'; item: ItemRef; count: number }
   // Quản lý quái (chỉ ngoài trận)
@@ -303,6 +322,8 @@ export type GameAction =
   /** Danh sách id mới của đội, phải là hoán vị của đội hiện tại. */
   | { type: 'reorderParty'; monsterIds: string[] }
   | { type: 'releaseMonster'; monsterId: string; discardOverflow?: boolean }
+  /** Thả nhiều quái trong một action (hàng loạt, docs/rules/bulk-actions.md). */
+  | { type: 'releaseMonsters'; monsterIds: string[]; discardOverflow?: boolean }
   /** Đội hình mẫu (ngoài trận; docs/rules/roster.md): lưu mới hoặc ghi đè `presetId`, xóa, áp. */
   | { type: 'saveTeamPreset'; name: string | null; presetId?: string }
   | { type: 'deleteTeamPreset'; presetId: string }
@@ -338,6 +359,12 @@ export type GameAction =
   | { type: 'allocateTalent'; monsterId: string; nodeId: string }
   /** Nâng một nút thiên phú ngự thú sư thêm 1 cấp, ngoài trận (docs/rules/tamer-talents.md). */
   | { type: 'allocateTamerTalent'; nodeId: string }
+  /** Phi thăng ở thị trấn (docs/rules/ascension.md): reset tiến trình chính, nhận Tiên nguyên. */
+  | { type: 'ascend' }
+  /** Chọn thiên mệnh sau khi phi thăng; rỗng = Phàm nhân. */
+  | { type: 'chooseDestinies'; destinyIds: string[] }
+  /** Mua một cấp nâng cấp Tiên giới bằng Tiên nguyên. */
+  | { type: 'buyAscensionUpgrade'; upgradeId: string }
   /** Tẩy cả cây thiên phú ngự thú sư, tiêu 1 vật phẩm config.tamerTalents.resetItemId. */
   | { type: 'resetTamerTalents' }
   /** Kết / đổi bản mệnh thú ở thị trấn (docs/rules/tamer.md mục "Bản mệnh thú"). */

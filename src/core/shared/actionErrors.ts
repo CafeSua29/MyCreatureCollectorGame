@@ -21,6 +21,16 @@ export interface ActionErrorParams {
   notEnoughMoney: { need: Decimal; have: Decimal }
   /** Thiếu điểm hồn tinh khi nâng cấp hồn tinh (docs/rules/soul-levels.md). */
   notEnoughSoulCrystals: { need: number; have: number }
+  // ---------- Phi thăng và thiên mệnh (docs/rules/ascension.md) ----------
+  ascensionLocked: { minFloor: number; highestFloor: number }
+  destinyChoicePending: NoParams
+  noDestinyChoice: NoParams
+  notDestinyChoice: { destinyId: string }
+  tooManyDestinies: { max: number }
+  /** Thiên mệnh bớt ô đội mà kho không đủ chỗ cho quái thừa. */
+  storageFullForParty: NoParams
+  unknownAscensionUpgrade: { upgradeId: string }
+  notEnoughImmortalEssence: { need: Decimal; have: Decimal }
   // ---------- Thiên phú quái (docs/rules/monster-talents.md) ----------
   unknownTalent: { nodeId: string }
   /** Nhánh race của nút không mở cho race của quái. */
@@ -182,6 +192,19 @@ export interface ActionErrorParams {
   teraElementFixed: { speciesId: string }
   /** Bật / tắt tùy chọn luật chơi đúng như nó đang là. */
   optionUnchanged: { option: string; enabled: boolean }
+  // ---------- Độ khó và chế độ thử thách (docs/rules/challenge-modes.md) ----------
+  /** Đổi độ khó sang đúng mức đang chơi. */
+  difficultyUnchanged: { difficulty: string }
+  /** Nuzlocke ép bật chết thật: không tắt được. */
+  nuzlockeLocked: { option: string }
+  /** Nuzlocke: khu đã dùng lượt gặp (hoặc trận không phải lượt gặp); null = trận không có khu. */
+  nuzlockeAreaUsed: { area: string | null }
+  /** Nuzlocke, dupes clause: chuỗi tiến hóa của loài đã từng sở hữu. */
+  nuzlockeDupe: { speciesId: string }
+  /** Nuzlocke: lượt vào khu bảo tồn này đã bắt một con. */
+  nuzlockeVisitUsed: NoParams
+  /** Nuzlocke: đã thua game, save chỉ còn xem. */
+  gameOver: NoParams
   /** Đột phá cảnh giới ngự thú sư khi chưa đủ EXP (docs/rules/tamer.md). */
   tamerExpTooLow: { need: Decimal; have: Decimal }
   /** Khế ước quái vượt giới hạn level: cần cảnh giới needRealm (docs/rules/tamer.md mục "Khế ước"). */
@@ -330,6 +353,16 @@ export interface ActionErrorParams {
   tradeNotFound: { offerId: string }
   /** Quái đưa không đúng yêu cầu của đề nghị (loài / race / hệ, level tối thiểu). */
   tradeWantNotMet: { offerId: string; monsterId: string }
+  // ---------- Đấu giá hành (docs/rules/auction.md) ----------
+  auctionLotNotFound: { lotId: string }
+  /** Giá đặt phải là số nguyên ≥ giá khởi điểm của lô. */
+  auctionBidTooLow: { lotId: string; minimum: Decimal }
+  auctionNoBid: { lotId: string }
+  /** Giá sàn ký gửi phải là số nguyên ≥ 0. */
+  auctionInvalidReserve: NoParams
+  auctionConsignmentNotFound: { consignmentId: string }
+  /** Không có món trang bị nào đang được giữ hộ. */
+  auctionNothingHeld: NoParams
   // ---------- Cây thần (docs/rules/gacha.md) ----------
   gachaInvalidCount: { count: number }
   gachaPoolEmpty: NoParams
@@ -463,6 +496,15 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
     `Race "${raceId}" không nâng được thiên phú "${nodeId}"`,
   talentMaxRank: ({ nodeId, maxRank }) => `Thiên phú "${nodeId}" đã đạt cấp tối đa ${maxRank}`,
   tamerTalentsEmpty: () => 'Chưa nâng thiên phú ngự thú sư nào để tẩy',
+  ascensionLocked: ({ minFloor, highestFloor }) =>
+    `Phải đạt tầng ${minFloor} mới phi thăng được (đang ở tầng ${highestFloor})`,
+  destinyChoicePending: () => 'Phải chọn thiên mệnh trước',
+  noDestinyChoice: () => 'Không có thiên mệnh nào đang chờ chọn',
+  notDestinyChoice: ({ destinyId }) => `"${destinyId}" không nằm trong các lựa chọn`,
+  tooManyDestinies: ({ max }) => `Chỉ chọn được tối đa ${max} thiên mệnh`,
+  storageFullForParty: () => 'Kho không đủ chỗ cho quái thừa khi đội bớt ô',
+  unknownAscensionUpgrade: ({ upgradeId }) => `Nâng cấp Tiên giới lạ "${upgradeId}"`,
+  notEnoughImmortalEssence: ({ need, have }) => `Cần ${need} Tiên nguyên, có ${have}`,
   talentRequires: ({ nodeId, requiredId, rank }) =>
     `Thiên phú "${nodeId}" cần "${requiredId}" cấp ${rank} trước`,
   notEnoughTalentPoints: ({ need, have }) => `Cần ${need} điểm thiên phú, có ${have}`,
@@ -580,6 +622,15 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   teraElementFixed: ({ speciesId }) => `Loài "${speciesId}" có hệ Tera cố định`,
   optionUnchanged: ({ option, enabled }) =>
     `Tùy chọn "${option}" đã ${enabled ? 'bật' : 'tắt'} sẵn`,
+  difficultyUnchanged: ({ difficulty }) => `Độ khó đã là "${difficulty}"`,
+  nuzlockeLocked: ({ option }) => `Nuzlocke: không tắt được tùy chọn "${option}"`,
+  nuzlockeAreaUsed: ({ area }) =>
+    area === null
+      ? 'Nuzlocke: trận này không bắt / thu phục được quái'
+      : `Nuzlocke: khu "${area}" đã dùng lượt gặp đầu tiên`,
+  nuzlockeDupe: ({ speciesId }) => `Nuzlocke: đã từng sở hữu chuỗi tiến hóa của "${speciesId}"`,
+  nuzlockeVisitUsed: () => 'Nuzlocke: lượt vào khu bảo tồn này đã bắt một con',
+  gameOver: () => 'Nuzlocke: đã thua game, save chỉ còn xem',
   tamerExpTooLow: ({ need, have }) =>
     `Cần ${need.toString()} EXP ngự thú sư để đột phá, có ${have.toString()}`,
   noRecruitOffer: () => 'Không có quái nào đang xin theo',
@@ -697,6 +748,13 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   tradeNotFound: ({ offerId }) => `Không có đề nghị trao đổi "${offerId}"`,
   tradeWantNotMet: ({ offerId, monsterId }) =>
     `Quái "${monsterId}" không đúng yêu cầu của đề nghị "${offerId}"`,
+  auctionLotNotFound: ({ lotId }) => `Không có lô đấu giá "${lotId}"`,
+  auctionBidTooLow: ({ lotId, minimum }) =>
+    `Giá đặt cho lô "${lotId}" phải là số nguyên ≥ ${String(minimum)}`,
+  auctionNoBid: ({ lotId }) => `Chưa đặt giá cho lô "${lotId}"`,
+  auctionInvalidReserve: () => 'Giá sàn ký gửi phải là số nguyên ≥ 0',
+  auctionConsignmentNotFound: ({ consignmentId }) => `Không có đồ ký gửi "${consignmentId}"`,
+  auctionNothingHeld: () => 'Đấu giá hành không giữ hộ món nào',
   gachaInvalidCount: ({ count }) => `Cây thần không có cách quay ${count} trứng`,
   gachaPoolEmpty: () => 'Cây thần không có loài nào để ra',
   trialRestricted: ({ command }) => `Không được dùng lệnh "${command}" trong bí cảnh / tháp`,

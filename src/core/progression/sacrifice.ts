@@ -4,7 +4,7 @@
 // tính như một lần (stack, giá, độ thuần cộng dồn theo thứ tự).
 
 import { assertNotBond } from '../tamer'
-import { ActionError, levelCost, malformedAction, spendMoney, type Decimal } from '../shared'
+import { ActionError, levelCost, parseIdList, spendMoney, type Decimal } from '../shared'
 import {
   addMilestone,
   assertNotBusy,
@@ -55,16 +55,9 @@ export interface SacrificeOrder {
 
 /** Đọc danh sách id quái phụ: mảng chuỗi khác rỗng, không trùng, không chứa quái chính. */
 function parseSubIds(order: SacrificeOrder): string[] {
-  const { subIds } = order
-  if (!Array.isArray(subIds) || subIds.length === 0) {
-    throw malformedAction('subIds phải là mảng id quái phụ khác rỗng')
-  }
-  if (!subIds.every((id): id is string => typeof id === 'string')) {
-    throw malformedAction('subIds chỉ chứa id quái')
-  }
-  if (new Set(subIds).size !== subIds.length) throw malformedAction('subIds có id trùng')
+  const subIds = parseIdList(order.subIds, 'subIds')
   if (subIds.includes(order.baseId)) throw new ActionError('sacrificeSameMonster')
-  return [...subIds]
+  return subIds
 }
 
 /** Quái người chơi sở hữu (đội / kho), không đang làm việc. */

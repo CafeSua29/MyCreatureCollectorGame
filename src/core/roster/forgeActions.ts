@@ -4,7 +4,14 @@
 // linh cộng exp luyện khí (alchemy.md).
 
 import { assertBagRoom, bagUsed, bumpStat, capacityOf } from '../registries'
-import { ActionError, malformedAction, rollPercent, spendMoney, toBig } from '../shared'
+import {
+  ActionError,
+  malformedAction,
+  parseIdList,
+  rollPercent,
+  spendMoney,
+  toBig
+} from '../shared'
 import {
   addEquipment,
   addItems,
@@ -31,7 +38,7 @@ import {
   takeEquipment
 } from '../inventory'
 import { craftLevel, gainCraftExp, requireCraftLevel } from '../progression'
-import type { EquipmentInstance, GameData, GameState } from '../model'
+import { appendLog, type EquipmentInstance, type GameData, type GameState } from '../model'
 import { locateEquipment } from './locateEquipment'
 
 /** Thợ rèn ở thị trấn, ngoài trận. */
@@ -111,14 +118,17 @@ export function castEquipment(
     instance: rolled,
     elementId: core.elementId
   })
-  const forged = {
-    ...paid,
-    rng,
-    nextItemId: paid.nextItemId + 1,
-    inventory: addEquipment(paid.inventory, instance),
-    // Đúc trang bị tính một món luyện khí cho thành tựu (docs/rules/achievements.md).
-    stats: bumpStat(paid.stats, 'itemsForged')
-  }
+  const forged = appendLog(
+    {
+      ...paid,
+      rng,
+      nextItemId: paid.nextItemId + 1,
+      inventory: addEquipment(paid.inventory, instance),
+      // Đúc trang bị tính một món luyện khí cho thành tựu (docs/rules/achievements.md).
+      stats: bumpStat(paid.stats, 'itemsForged')
+    },
+    { type: 'equipmentCast', instanceId: instance.id, itemId, rarity: instance.rarity }
+  )
   return gainCraftExp(data, forged, { station: 'smithing', exp: toBig(cast.exp) })
 }
 
@@ -204,10 +214,13 @@ export function salvageEquipment(
   instanceIds: unknown
 ): GameState {
   assertAtForge(state)
-  const ids = parseInstanceIds(instanceIds)
+  const ids = parseIdList(instanceIds, 'instanceIds')
   let inventory = state.inventory
   let rng = state.rng
   const { enhanceStoneItemId, refiningStoneItemId } = data.config.forge
+  // Tổng thứ nhận được cho log; kẹp ở số nguyên an toàn như số lượng trong túi.
+  const total = { enhanceStones: 0, refiningStones: 0, soulPoints: 0, spirits: 0 }
+  const add = (a: number, b: number): number => Math.min(Number.MAX_SAFE_INTEGER, a + b)
   for (const id of ids) {
     const worn = findWearer(state, id)
     if (worn) {
@@ -226,9 +239,16 @@ export function salvageEquipment(
     // Khí linh đã thu phục về kho khí linh, dã linh mất (docs/rules/artifact-spirits.md).
     const subdued = spiritsOf(instance).filter((spirit) => spirit.subdued)
     inventory = { ...inventory, spirits: [...inventory.spirits, ...subdued] }
+    total.enhanceStones = add(total.enhanceStones, gained.enhanceStones)
+    total.refiningStones += refined ? 1 : 0
+    total.soulPoints = add(total.soulPoints, gained.soulPoints)
+    total.spirits += subdued.length
   }
   assertSalvageFits(data, state, inventory)
-  return { ...state, inventory, rng }
+  return appendLog(
+    { ...state, inventory, rng },
+    { type: 'equipmentSalvaged', instanceIds: ids, ...total }
+  )
 }
 
 /**
@@ -241,18 +261,4 @@ function assertSalvageFits(data: GameData, state: GameState, after: GameState['i
   if (used > capacity && used > bagUsed(state.inventory)) {
     throw new ActionError('bagFull', { capacity })
   }
-}
-
-/** Danh sách id món: ít nhất một, mỗi id là chuỗi, không trùng. */
-function parseInstanceIds(value: unknown): string[] {
-  if (!Array.isArray(value) || value.length === 0) {
-    throw malformedAction('instanceIds phải là danh sách có ít nhất một id')
-  }
-  if (!value.every((id) => typeof id === 'string')) {
-    throw malformedAction('instanceIds chỉ gồm chuỗi')
-  }
-  // Đã kiểm tra mọi phần tử là chuỗi.
-  const ids = value as string[]
-  if (new Set(ids).size !== ids.length) throw malformedAction('instanceIds bị trùng')
-  return ids
 }

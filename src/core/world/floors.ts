@@ -2,7 +2,7 @@
 // tầng (floorGeneMultiplier) ở registries/aptitude.ts, dùng chung với tư chất.
 
 import { pick, type RngState } from '../shared'
-import type { Biome, BiomeBoss, GameData, GameState } from '../model'
+import type { Biome, BiomeBoss, Difficulty, GameData, GameState, RandomizerOptions } from '../model'
 
 // Xuất lại cho bên ngoài core (sinh quái theo tầng ở script mô phỏng).
 export { floorGeneMultiplier } from '../registries'
@@ -20,6 +20,13 @@ export interface FloorSite {
   time: number | null
   /** Hệ số tỉ lệ gặp từ phía người chơi (kỹ năng đồng hành); bỏ trống = 1. Chỉ trận ở tầng. */
   odds?: EncounterOdds
+  /**
+   * Độ khó của game (docs/rules/challenge-modes.md): level / gen của quái địch sinh ở đây; bỏ trống
+   * = Thường. Quái không phải địch (trao đổi, quà) không áp.
+   */
+  difficulty?: Difficulty
+  /** Randomizer của game: loài quái hoang / quà sinh ở đây; bỏ trống = không đổi loài. */
+  randomizer?: RandomizerOptions | null
 }
 
 export interface EncounterOdds {
@@ -86,7 +93,9 @@ export function floorSite(
     floor,
     biome: biomeOfFloor(data, state, floor),
     aging: state.options.lifespanEnabled,
-    time: state.time
+    time: state.time,
+    difficulty: state.options.difficulty,
+    randomizer: state.options.randomizer
   }
 }
 

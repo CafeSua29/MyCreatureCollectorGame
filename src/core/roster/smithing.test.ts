@@ -7,6 +7,7 @@ import { castRarityWeights, enhanceCost, getItemCount, imbuedElementId } from '.
 import { craftExpForLevel, craftLevelFromExp, craftableTimes } from '../progression'
 import { toBig } from '../shared'
 import {
+  findLog,
   FIXTURE_CORE_GROUP_ID as GROUP,
   FIXTURE_CORE_IDS,
   FIXTURE_ENHANCE_STONE_ID as ENHANCE,
@@ -105,7 +106,7 @@ function townState({
 const act = (state: GameState, action: GameAction): GameState => gameReducer(data, state, action)
 const withSmithing = (state: GameState, level: number): GameState => ({
   ...state,
-  smithing: { level, exp: craftExpForLevel(data, 'smithing', level), lastCraft: null }
+  smithing: { level, exp: craftExpForLevel(data, 'smithing', level) }
 })
 
 describe('cấp luyện khí', () => {
@@ -122,7 +123,13 @@ describe('cấp luyện khí', () => {
     expect(getItemCount(next.inventory, FIRE)).toBe(0)
     expect(next.smithing.exp.eq(60)).toBe(true)
     expect(next.smithing.level).toBe(3)
-    expect(next.smithing.lastCraft).toEqual({ recipeId: 'smithStone', successes: 2, failures: 0 })
+    expect(findLog(next, 'crafted')).toEqual({
+      type: 'crafted',
+      station: 'smithing',
+      recipeId: 'smithStone',
+      successes: 2,
+      failures: 0
+    })
     expect(next.alchemy).toEqual(state.alchemy)
     expect(validateGameState(data, next)).toEqual([])
   })
@@ -203,6 +210,9 @@ describe('đúc trang bị', () => {
     expect(getItemCount(next.inventory, WATER)).toBe(5)
     expect(next.money.eq(1000 - 200 * floors.length)).toBe(true)
     expect(next.smithing.exp.eq(10)).toBe(true)
+    expect(next.log).toEqual([
+      { type: 'equipmentCast', instanceId: 'e100', itemId: 'sword', rarity: made.rarity }
+    ])
     expect(validateGameState(data, next)).toEqual([])
   })
 
@@ -410,28 +420,19 @@ describe('dữ liệu và save', () => {
     }
   })
 
-  it('save: cấp luyện khí lệch exp, lastCraft là công thức luyện đan', () => {
+  it('save: cấp luyện khí lệch exp', () => {
     const issues = validateGameState(data, {
       ...townState(),
-      smithing: {
-        level: 4,
-        exp: toBig(0),
-        lastCraft: { recipeId: 'ghost', successes: 1, failures: 0 }
-      }
+      smithing: { level: 4, exp: toBig(0) }
     })
-    expect(issues).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('smithing.level'),
-        expect.stringContaining('smithing.lastCraft')
-      ])
-    )
+    expect(issues).toEqual([expect.stringContaining('smithing.level')])
   })
 
   it('migrate v59 → v60: luyện khí cấp 1; state hợp lệ', () => {
     const raw = serializeState(townState()) as Record<string, unknown>
     const { smithing: _smithing, ...old } = raw
     const migrated = migrateState({ ...old, version: 59 }, data)
-    expect(migrated.smithing).toEqual({ level: 1, exp: toBig(0), lastCraft: null })
+    expect(migrated.smithing).toEqual({ level: 1, exp: toBig(0) })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

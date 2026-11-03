@@ -14,7 +14,7 @@ import {
   makeMonster
 } from '../testing'
 import { advanceTime, calendarAt, hoursUntilWake } from './time'
-import { setGameOption } from './gameOptions'
+import { setGameOption, defaultGameOptions } from './gameOptions'
 import { dayOf, hourOf } from '../model'
 
 // Quái fixture level 1 thọ 101 năm = 1010 ngày (10 ngày một năm).
@@ -44,16 +44,16 @@ describe('đồng hồ', () => {
     expect(hoursUntilWake(data, 23)).toBe(7)
   })
 
-  it('không qua ngày: chỉ đổi giờ, không già đi, dayEvents về rỗng', () => {
+  it('không qua ngày: chỉ đổi giờ, không già đi; log cũ giữ nguyên (chỉ gameReducer xóa log)', () => {
     const state = {
       ...lifespanState({ seed: 1, party: [aged(500)] }),
-      dayEvents: [{ type: 'monsterAutoJoined' as const, monsterId: 'm1' }]
+      log: [{ type: 'monsterAutoJoined' as const, monsterId: 'm1' }]
     }
     const next = advanceTime(data, state, 5)
     expect(next.time).toBe(5)
     expect(next.party[0].ageDays).toBe(500)
-    expect(next.dayEvents).toEqual([])
-    expect(advanceTime(data, state, 0)).toEqual({ ...state, dayEvents: [] })
+    expect(next.log).toEqual(state.log)
+    expect(advanceTime(data, state, 0)).toEqual(state)
   })
 
   it('qua nhiều ngày: già thêm đúng số ngày; quái không già đi và trứng giữ tuổi', () => {
@@ -102,7 +102,7 @@ describe('tọa hóa: để lại hồn phách', () => {
       kind: 'died',
       cause: 'oldAge'
     })
-    expect(next.dayEvents).toEqual([
+    expect(next.log).toEqual([
       { type: 'diedOfOldAge', monsterId: 'm1', speciesId: 'weakling', nickname: null }
     ])
     expect(next.stats.oldAgeDeaths).toBe(1)
@@ -121,7 +121,7 @@ describe('tọa hóa: để lại hồn phách', () => {
     const next = advanceTime(data, state, 1)
     expect(next.party.map((m) => m.id)).toEqual(['m5'])
     expect(next.storage.map((m) => m.id)).toEqual(['m4', 'm6'])
-    expect(next.dayEvents).toContainEqual({ type: 'monsterAutoJoined', monsterId: 'm5' })
+    expect(next.log).toContainEqual({ type: 'monsterAutoJoined', monsterId: 'm5' })
     expect(validateGameState(data, next)).toEqual([])
   })
 
@@ -139,17 +139,17 @@ describe('tọa hóa: để lại hồn phách', () => {
     expect(next.nextMonsterId).toBe(10 + traded)
     // Hồn phách của m2 (mới nhất) đã ấp, hồn phách m1 còn trong túi.
     expect(next.inventory.souls.map((soul) => soul.id)).toEqual(['m1'])
-    expect(next.dayEvents).toContainEqual({ type: 'legacyEggHatched', monsterId: 'm9' })
+    expect(next.log).toContainEqual({ type: 'legacyEggHatched', monsterId: 'm9' })
     expect(validateGameState(data, next)).toEqual([])
   })
 
   it('cảnh báo lần đầu vượt 90% thọ nguyên, ngày sau không lặp lại', () => {
     const state = lateNight({ seed: 3, party: [aged(908)] })
     const next = advanceTime(data, state, 1)
-    expect(next.dayEvents).toHaveLength(1)
-    const [warning] = next.dayEvents
+    expect(next.log).toHaveLength(1)
+    const [warning] = next.log
     expect(warning.type === 'nearingLifespanEnd' && warning.yearsLeft.toNumber()).toBe(10.1)
-    expect(advanceTime(data, next, 24).dayEvents).toEqual([])
+    expect(advanceTime(data, { ...next, log: [] }, 24).log).toEqual([])
   })
 
   it('quái không già đi không bao giờ tọa hóa', () => {
@@ -157,7 +157,10 @@ describe('tọa hóa: để lại hồn phách', () => {
     expect(
       advanceTime(
         data,
-        { ...state, options: { lifespanEnabled: false, permadeathEnabled: false } },
+        {
+          ...state,
+          options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false })
+        },
         1
       ).party
     ).toHaveLength(1)
@@ -199,7 +202,10 @@ describe('setGameOption: thọ nguyên', () => {
     const young = { ...makeMonster(), ageDays: 1 }
     const full = getMaxHp(data, young)
     const state = lifespanState({ seed: 1, party: [{ ...young, damageTaken: full.minus(1) }] })
-    const off = { ...state, options: { lifespanEnabled: false, permadeathEnabled: false } }
+    const off = {
+      ...state,
+      options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false })
+    }
     const on = setGameOption(data, off, 'lifespanEnabled', true)
     const monster = on.party[0]
     expect(monster.damageTaken.eq(getMaxHp(data, monster).minus(1))).toBe(true)

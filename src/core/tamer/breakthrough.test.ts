@@ -6,6 +6,7 @@ import { gameReducer } from '../game'
 import { computeStats } from '../monster'
 import { toBig } from '../shared'
 import {
+  findLog,
   defined,
   expectActionError,
   makeBattleState,
@@ -15,7 +16,6 @@ import {
   makeMonster
 } from '../testing'
 import type { GameState } from '../model'
-import { breakthroughOutcome } from './breakthrough'
 
 const data = makeData()
 
@@ -50,7 +50,7 @@ describe('tamerBreakthrough', () => {
   it('thành công (100% ở cảnh giới 0): lên 1, trừ EXP cần (dư giữ), tiền, 1 đan, nâng khế ước', () => {
     const before = ready(0)
     const after = breakthrough(before)
-    expect(breakthroughOutcome(before, after)).toBe('success')
+    expect(after.log).toEqual([{ type: 'breakthrough', success: true, realm: 1 }])
     expect(after.tamer.realm).toBe(1)
     expect(after.tamer.exp.toNumber()).toBe(1_000_000 - 100)
     expect(after.money.toNumber()).toBe(1_000_000 - 1000)
@@ -74,9 +74,10 @@ describe('tamerBreakthrough', () => {
         const before = { ...ready(7), rng: seed }
         return { before, after: breakthrough(before) }
       })
-      .find(({ before, after }) => breakthroughOutcome(before, after) === 'failed')
+      .find(({ after }) => findLog(after, 'breakthrough')?.success === false)
     const { before, after } = defined(failed, 'lần thất bại')
     expect(after.tamer).toEqual(before.tamer)
+    expect(after.log).toEqual([{ type: 'breakthrough', success: false, realm: 7 }])
     expect(after.money.toNumber()).toBe(1_000_000 - 1000 * 64)
     expect(after.inventory.stacks.breakthroughPill).toBe(20 - 8)
     expect(after.party[0].contractRealm).toBe(7)

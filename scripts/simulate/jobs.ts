@@ -3,7 +3,13 @@
 // chơi liên tục mỗi đội, breed, fuse. Seed mỗi việc đã tất định
 // (deriveSeed) nên kết quả không phụ thuộc thứ tự chạy; nơi gọi gom kết quả theo thứ tự listJobs.
 
-import { createGameData, type GameData, type NormalRarity, type RawGameData } from '@core'
+import {
+  createGameData,
+  type GameData,
+  type NormalRarity,
+  type RawGameData,
+  type Difficulty
+} from '@core'
 import type { BattleKind, BattleTotals } from './battleRunner'
 import { searchBossLevel, type BossLevelRow } from './bossLevel'
 import { sweepFloor, type FloorResult } from './floorSweep'
@@ -28,7 +34,13 @@ export type SimJob =
   | { type: 'sweep'; variantId: string; teamId: string; floor: number }
   | { type: 'biomeSweep'; biomeId: string }
   | { type: 'bossLevel'; teamId: string; floor: number }
-  | { type: 'progression'; teamId: string; usePills: boolean; growth: boolean }
+  | {
+      type: 'progression'
+      teamId: string
+      usePills: boolean
+      growth: boolean
+      difficulty: Difficulty
+    }
   | { type: 'breeding' }
   | { type: 'fusion' }
   /** Độ kiếp lên một tầng (tribulation.ts). */
@@ -144,11 +156,18 @@ export function listJobs(scenarios: Scenarios, data?: GameData): SimJob[] {
       }
     }
   }
+  const { pillModes, growthModes, difficultyModes } = scenarios.progression
   for (const teamId of scenarios.progression.teamIds) {
-    for (const usePills of scenarios.progression.pillModes) {
-      for (const growth of scenarios.progression.growthModes) {
-        jobs.push({ type: 'progression', teamId, usePills, growth })
+    for (const usePills of pillModes) {
+      for (const growth of growthModes) {
+        jobs.push({ type: 'progression', teamId, usePills, growth, difficulty: 'normal' })
       }
+    }
+    // Độ khó khác Thường: một lần mỗi đội với chế độ đan / fuse đầu tiên (so với lần Thường cùng chế độ).
+    for (const difficulty of difficultyModes.filter((mode) => mode !== 'normal')) {
+      const usePills = pillModes[0] ?? true
+      const growth = growthModes[0] ?? true
+      jobs.push({ type: 'progression', teamId, usePills, growth, difficulty })
     }
   }
   if (scenarios.tribulation) {
@@ -242,7 +261,8 @@ export function runJob(context: JobContext, job: SimJob): SimJobResult {
           maxTurnsBoss: scenarios.maxTurnsBoss,
           seed: scenarios.seed,
           usePills: job.usePills,
-          growth: job.growth
+          growth: job.growth,
+          difficulty: job.difficulty
         })
       }
     case 'breeding':
@@ -399,7 +419,8 @@ export function listProgressionSweepJobs(
   const seen = new Set<string>()
   for (const variant of scenarios.variants) {
     seen.clear()
-    for (const result of progression) {
+    // Chỉ đội của lần chơi Thường (độ khó khác đo ở difficulty.csv).
+    for (const result of progression.filter((run) => run.difficulty === 'normal')) {
       if (seen.has(result.teamId)) continue
       seen.add(result.teamId)
       for (const snapshot of result.snapshots) {
@@ -459,6 +480,9 @@ function runSweepJob(context: JobContext, job: Extract<SimJob, { type: 'sweep' }
     assumedPurity: variant?.assumedPurity ?? null,
     assumedPolarity: variant?.assumedPolarity ?? null,
     instabilityLevel: variant?.instabilityLevel ?? 0,
+    destinyIds: variant?.destinyIds ?? [],
+    ascensionUpgrades: variant?.ascensionUpgrades ?? {},
+    difficulty: variant?.difficulty ?? 'normal',
     floor: job.floor,
     biomeId: null,
     seed: scenarios.seed,

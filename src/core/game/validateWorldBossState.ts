@@ -13,15 +13,22 @@ function checkSpecies(data: GameData, value: unknown, at: string, issues: string
   }
 }
 
-/** Phần chung của lần xuất hiện và thưởng chờ: loài, tầng đã mở, level, kỷ lục. */
+/** Tầng cao nhất từng đạt: boss xuất hiện trước khi phi thăng vẫn còn sau đó (docs/rules/ascension.md). */
+function bestFloorOf(state: Raw): unknown {
+  const best = asObject(state.ascension)?.bestFloor
+  if (typeof best !== 'number' || typeof state.highestFloor !== 'number') return undefined
+  return Math.max(best, state.highestFloor)
+}
+
+/** Phần chung của lần xuất hiện và thưởng chờ: loài, tầng từng mở, level, kỷ lục. */
 function checkSource(
   data: GameData,
-  { value, at, highestFloor }: { value: Raw; at: string; highestFloor: unknown },
+  { value, at, bestFloor }: { value: Raw; at: string; bestFloor: unknown },
   issues: string[]
 ): void {
   checkSpecies(data, value.speciesId, `${at}.speciesId`, issues)
   issues.push(...checkInteger(value.floor, `${at}.floor`, 1))
-  if (typeof highestFloor === 'number' && Number(value.floor) > highestFloor) {
+  if (typeof bestFloor === 'number' && Number(value.floor) > bestFloor) {
     issues.push(`${at}.floor: tầng ${String(value.floor)} chưa mở`)
   }
   issues.push(...checkInteger(value.level, `${at}.level`, 1))
@@ -36,7 +43,7 @@ function checkCurrent(data: GameData, value: unknown, state: Raw, issues: string
     issues.push(`${at} phải là null hoặc lần xuất hiện`)
     return
   }
-  checkSource(data, { value: current, at, highestFloor: state.highestFloor }, issues)
+  checkSource(data, { value: current, at, bestFloor: bestFloorOf(state) }, issues)
   issues.push(...checkInteger(current.cycle, `${at}.cycle`, 0))
   issues.push(...checkInteger(current.endDay, `${at}.endDay`, 0))
   issues.push(...checkInteger(current.seed, `${at}.seed`, 0))
@@ -55,7 +62,7 @@ function checkRewards(data: GameData, value: unknown, state: Raw, issues: string
   value.forEach((raw: unknown, i) => {
     const reward = asObject(raw) ?? {}
     const where = `${at}[${i}]`
-    checkSource(data, { value: reward, at: where, highestFloor: state.highestFloor }, issues)
+    checkSource(data, { value: reward, at: where, bestFloor: bestFloorOf(state) }, issues)
     if (!tierIds.includes(String(reward.tierId))) {
       issues.push(`${where}.tierId: bậc thưởng không tồn tại "${String(reward.tierId)}"`)
     }

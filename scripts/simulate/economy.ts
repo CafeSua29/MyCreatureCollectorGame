@@ -16,7 +16,6 @@ import {
   assertCanContract,
   computeStats,
   contractChance,
-  contractOutcome,
   dayOf,
   dexOwnedPercent,
   equipmentSlotCount,
@@ -31,6 +30,7 @@ import {
   tempShopPrice,
   type GameAction,
   type GameData,
+  type ContractOutcome,
   type GameState,
   type HeldItem,
   type Item,
@@ -123,6 +123,8 @@ export interface EconomyCount {
   tradePowerPercent: number
   /** Số trứng quay ở Cây thần (runGacha, gacha.md). */
   gachaEggs: number
+  /** Số lô Đấu giá hành đã đặt giá (runAuction, auction.md). */
+  auctionBids: number
   /**
    * Nghiên cứu loài (claimResearchRewardsWhenPossible, species-research.md): lần nhận thưởng cấp,
    * cấp nghiên cứu cao nhất của một loài thấy ở thị trấn.
@@ -173,6 +175,7 @@ export const newEconomyCount = (): EconomyCount => ({
   trades: 0,
   tradePowerPercent: 0,
   gachaEggs: 0,
+  auctionBids: 0,
   researchRewards: 0,
   researchLevelPeak: 0
 })
@@ -467,6 +470,14 @@ export function bindBondWhenPossible(
   return simAct(data, state, { type: 'bindBond', monsterId: best.id })
 }
 
+/** Kết quả lần khế ước `monsterId` vừa làm, đọc từ log ngoài trận (docs/rules/game-log.md). */
+function contractOutcomeOf(state: GameState, monsterId: string): ContractOutcome {
+  for (const entry of state.log) {
+    if (entry.type === 'contractAttempted' && entry.monsterId === monsterId) return entry.outcome
+  }
+  throw new Error(`Không có log khế ước của "${monsterId}"`)
+}
+
 /**
  * Ở thị trấn: khế ước quái đội mẫu chưa khế ước (quái mới từ trứng / bắt; docs/rules/tamer.md mục
  * "Khế ước") khi khế ước được và tỉ lệ ≥ minContractChance. Thất bại thì ngự thú sư bị phản phệ
@@ -494,9 +505,8 @@ export function contractTeamWhenPossible(
       ECONOMY_POLICY.minContractChance
     )
       continue
-    const before = state
     state = simAct(data, state, { type: 'formContract', monsterId: monster.id })
-    const outcome = contractOutcome(before, state, monster.id)
+    const outcome = contractOutcomeOf(state, monster.id)
     if (outcome === 'success') {
       count.contracts++
       continue

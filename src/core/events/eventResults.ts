@@ -155,7 +155,9 @@ const giveEgg: Applier = (ctx, params) => {
 /** Một quái hoang thường của map đi theo người chơi (chưa khế ước, thân mật như quái bắt được). */
 const giveMonster: Applier = (ctx) => {
   const { data, state } = ctx
-  const [wild, rng] = generateWildMonster(data, state.rng, ctx.site, `m${state.nextMonsterId}`)
+  // Quà không phải quái địch: theo Randomizer, không theo độ khó (docs/rules/challenge-modes.md).
+  const { difficulty: _difficulty, ...site } = ctx.site
+  const [wild, rng] = generateWildMonster(data, state.rng, site, `m${state.nextMonsterId}`)
   const monster = startHistory(
     { ...wild, affinity: data.config.affinity.start.caught },
     { kind: 'event', eventId: ctx.eventId },

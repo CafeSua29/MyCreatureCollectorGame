@@ -19,6 +19,7 @@ import {
   type LevelCurve
 } from '../shared'
 import {
+  appendLog,
   type CraftSkillState,
   type CraftStation,
   type GameData,
@@ -110,23 +111,18 @@ export const alchemyLevelFromExp = (data: GameData, exp: Decimal): number =>
 export const craftLevel = (state: GameState, station: CraftStation): number =>
   CRAFT_STATION_RULES[station].skill(state).level
 
-/** Cộng exp cho nơi luyện (cấp tính lại từ tổng exp); có `lastCraft` thì ghi đè. */
+/** Cộng exp cho nơi luyện (cấp tính lại từ tổng exp). */
 export function gainCraftExp(
   data: GameData,
   state: GameState,
-  {
-    station,
-    exp,
-    lastCraft
-  }: { station: CraftStation; exp: Decimal; lastCraft?: CraftSkillState['lastCraft'] }
+  { station, exp }: { station: CraftStation; exp: Decimal }
 ): GameState {
   const rule = CRAFT_STATION_RULES[station]
   const skill = rule.skill(state)
   const total = skill.exp.plus(exp)
   return rule.withSkill(state, {
     exp: total,
-    level: craftLevelFromExp(data, station, total),
-    lastCraft: lastCraft === undefined ? skill.lastCraft : lastCraft
+    level: craftLevelFromExp(data, station, total)
   })
 }
 
@@ -196,15 +192,11 @@ export function craft(
   }
   const station = recipeStation(recipe)
   const stats = bumpStat(state.stats, CRAFT_STATION_RULES[station].craftedStat, successes)
-  return gainCraftExp(
-    data,
+  const crafted = appendLog(
     { ...paid, rng, inventory, stats },
-    {
-      station,
-      exp: toBig(recipe.exp).times(times),
-      lastCraft: { recipeId, successes, failures: times - successes }
-    }
+    { type: 'crafted', station, recipeId, successes, failures: times - successes }
   )
+  return gainCraftExp(data, crafted, { station, exp: toBig(recipe.exp).times(times) })
 }
 
 /** Học đan phương (ngoài trận): tiêu một đan phương, biết công thức của nó. */

@@ -8,10 +8,10 @@ Code: `model/tamerTalents.ts` (kiểu, `TAMER_BONUS_TYPES`), `registries/tamerTa
 
 ## Điểm
 
-- **Không lưu điểm** (quy tắc 3, như thiên phú quái; lệch roadmap: roadmap ghi `talents: { points, ranks }`): **điểm nhận** `tamerTalentPointsEarned` = cảnh giới × `pointsPerRealm` (2, mỗi lần đột phá) + `stats.questsCompleted` × `pointsPerQuest` (1) + tổng `achievements.claimedTiers` × `pointsPerAchievementTier` (1) + `tamer.bonusTalentPoints`. Điểm đã dùng = Σ `costPerRank` × (1 + … + cấp); điểm còn = nhận − đã dùng (có thể âm nếu dữ liệu tăng giá sau khi nâng: chỉ không nâng thêm được).
+- **Không lưu điểm** (quy tắc 3, như thiên phú quái; lệch roadmap: roadmap ghi `talents: { points, ranks }`): **điểm nhận** `tamerTalentPointsEarned` = cảnh giới cao nhất từng đạt × `pointsPerRealm` (2, mỗi lần đột phá) + `stats.questsCompleted` × `pointsPerQuest` (1) + tổng `achievements.claimedTiers` × `pointsPerAchievementTier` (1) + `tamer.bonusTalentPoints`. Điểm đã dùng = Σ `costPerRank` × (1 + … + cấp); điểm còn = nhận − đã dùng (có thể âm nếu dữ liệu tăng giá sau khi nâng: chỉ không nâng thêm được).
 - Bộ đếm mới **`questsCompleted`** (`STAT_KEYS`, `achievements.md`): + 1 mỗi lần `claimQuest` thành công.
 - **Điểm thưởng đã lưu** `tamer.bonusTalentPoints` (nguyên ≥ 0, cộng thẳng vào điểm nhận): nguồn không suy ra được từ state, hiện là tông môn (nộp nhiệm vụ tông, thăng chức, vô địch tông chiến; `sects.md`); giữ khi rời tông.
-- Chưa có: phi thăng reset cảnh giới: điểm theo cảnh giới phải tính bằng cảnh giới cao nhất từng đạt `bestRealm` để không tụt (chờ `ascension.md`, ghi ở đó).
+- Phi thăng reset cảnh giới nên điểm theo cảnh giới tính bằng cảnh giới cao nhất từng đạt (`bestRealmReached`, `ascension.md`); cấp đã nâng giữ.
 
 ## Dữ liệu
 
@@ -21,7 +21,7 @@ Code: `model/tamerTalents.ts` (kiểu, `TAMER_BONUS_TYPES`), `registries/tamerTa
 
 ## Kênh thưởng
 
-Danh hiệu đang đeo (`achievements.md`), nút thiên phú ngự thú sư và buff chức vị tông môn (× (chức vị + 1), `sects.md`) **cùng cộng vào một bộ kênh** (`TAMER_BONUS_TYPES`); nơi dùng chỉ hỏi `tamerBonusAmount(data, state, kênh)` (tổng % hoặc lượt) / `tamerBonusMultiplier` (1 + % / 100, không dưới 0), không biết nguồn nào cộng. Thêm kênh = thêm vào `TAMER_BONUS_TYPES` + một mục `TAMER_BONUSES` + gọi ở nơi dùng. Kênh `...Percent` có params `{ percent }` (khác 0, ≥ −100), `tamerSkillCooldown` có `{ turns }` (nguyên ≥ 1).
+Danh hiệu đang đeo (`achievements.md`), nút thiên phú ngự thú sư, buff chức vị tông môn (× (chức vị + 1), `sects.md`), nâng cấp Tiên giới và thiên mệnh (`ascension.md`, kèm bảng kênh riêng của mục đó) **cùng cộng vào một bộ kênh** (`TAMER_BONUS_TYPES`); nơi dùng chỉ hỏi `tamerBonusAmount(data, state, kênh)` (tổng % hoặc lượt) / `tamerBonusMultiplier` (1 + % / 100, không dưới 0), không biết nguồn nào cộng. Thêm kênh = thêm vào `TAMER_BONUS_TYPES` + một mục `TAMER_BONUSES` + gọi ở nơi dùng. Kênh `...Percent` có params `{ percent }` (khác 0, ≥ −100), `tamerSkillCooldown` có `{ turns }` (nguyên ≥ 1).
 
 | Kênh | Nơi dùng |
 | ---- | -------- |

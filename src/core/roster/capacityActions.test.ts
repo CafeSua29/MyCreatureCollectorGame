@@ -186,6 +186,17 @@ describe('túi trang bị đầy', () => {
     ).toHaveLength(2)
   })
 
+  it('thả hàng loạt: món của mọi con tính chung khi xét chỗ trong túi', () => {
+    const first = mon('a', { equipment: [equipped(sword('w1'))] })
+    const second = mon('b', { equipment: [equipped(sword('w2'))] })
+    const state = town([first, second, mon('c')])
+    const release: GameAction = { type: 'releaseMonsters', monsterIds: ['a', 'b'] }
+    expectActionError(() => act(state, release), 'bagOverflow', { lost: 1 })
+    const released = act(state, { ...release, discardOverflow: true })
+    expect(released.party.map((m) => m.id)).toEqual(['c'])
+    expect(released.inventory.equipment.map((e) => e.id)).toEqual(['w1'])
+  })
+
   it('quái phụ hiến tế / fuse: như thả quái', () => {
     const sub = mon('b', { equipment: [equipped(sword('w1')), equipped(sword('w2'))] })
     const state = town([mon('a', { level: 10 }), sub])

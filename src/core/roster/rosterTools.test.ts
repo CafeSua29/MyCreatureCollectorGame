@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { gameReducer, migrateState, serializeState, validateGameState } from '../game'
 import { autoLockCaught } from '../monster'
 import {
+  findLog,
   defined,
   expectActionError,
   makeData,
@@ -108,7 +109,7 @@ describe('khóa', () => {
     )
     expect(migrated.party[0].locked).toBe(false)
     expect(migrated.storage[0].favorite).toBe(false)
-    expect(migrated.teamPresets).toEqual({ presets: [], nextPresetId: 1, lastMissing: null })
+    expect(migrated.teamPresets).toEqual({ presets: [], nextPresetId: 1 })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })
@@ -148,16 +149,19 @@ describe('đội hình mẫu', () => {
     const applied = apply(changed)
     expect(applied.party.map((m) => m.id)).toEqual(['a', 'b'])
     expect(applied.storage.map((m) => m.id)).toEqual(['c'])
-    expect(applied.teamPresets.lastMissing).toBeNull()
+    expect(applied.log).toEqual([])
     expect(validateGameState(data, applied)).toEqual([])
   })
 
-  it('thiếu quái: bỏ qua, ghi lastMissing; không còn quái nào: báo lỗi; quái đang bận bỏ qua', () => {
+  it('thiếu quái: bỏ qua, ghi log presetMissing; không còn quái nào: báo lỗi; quái đang bận bỏ qua', () => {
     const saved = save(withStorage([mon('a'), mon('b')], [mon('c')]))
     const released = act(saved, { type: 'releaseMonster', monsterId: 'b' })
     const applied = apply(released)
     expect(applied.party.map((m) => m.id)).toEqual(['a'])
-    expect(applied.teamPresets.lastMissing).toEqual({ monsterIds: ['b'], items: [] })
+    expect(applied.log).toEqual([
+      { type: 'presetMissing', presetId: 'p1', monsterIds: ['b'], items: [] }
+    ])
+    expect(validateGameState(data, applied)).toEqual([])
     const gone: GameState = {
       ...saved,
       party: [mon('x')],
@@ -167,7 +171,7 @@ describe('đội hình mẫu', () => {
     expectActionError(() => apply(saved, false, 'p9'), 'presetNotFound')
   })
 
-  it('có trang bị: lắp lại đúng món, món ở quái khác tháo sang; món mất ghi lastMissing', () => {
+  it('có trang bị: lắp lại đúng món, món ở quái khác tháo sang; món mất ghi log presetMissing', () => {
     const blade: EquipmentInstance = makeEquipment({ id: 'e1' })
     const state = {
       ...withStorage(
@@ -188,13 +192,15 @@ describe('đội hình mẫu', () => {
       defined(applied.party[0]).equipment.map((e) => e.storage === 'instance' && e.instance.id)
     ).toEqual(['e1'])
     expect(defined(applied.storage[0]).equipment).toEqual([])
-    expect(applied.teamPresets.lastMissing).toBeNull()
+    expect(findLog(applied, 'presetMissing')).toBeUndefined()
     expect(validateGameState(makeEquipmentData(), applied)).toEqual([])
     // Không trang bị: giữ nguyên món.
     expect(defined(apply(moved, false).storage[0]).equipment).toHaveLength(1)
     // Món đã mất.
     const lost: GameState = { ...saved, party: [mon('a')], storage: [mon('c')] }
-    expect(apply(lost, true).teamPresets.lastMissing).toEqual({
+    expect(findLog(apply(lost, true), 'presetMissing')).toEqual({
+      type: 'presetMissing',
+      presetId: 'p1',
       monsterIds: [],
       items: [{ storage: 'instance', instanceId: 'e1' }]
     })
@@ -210,7 +216,7 @@ describe('đội hình mẫu', () => {
     }
     expect(defined(apply(inBag, true).party[0]).equipment).toEqual([held])
     const none: GameState = { ...saved, party: [mon('a')], inventory: makeInventory({}) }
-    expect(apply(none, true).teamPresets.lastMissing?.items).toEqual([held])
+    expect(findLog(apply(none, true), 'presetMissing')?.items).toEqual([held])
   })
 
   it('trong trận / đang dự giải: báo lỗi', () => {

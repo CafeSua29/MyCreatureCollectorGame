@@ -58,6 +58,7 @@ describe('pullGacha', () => {
     )
     expect(next.nextMonsterId).toBe(state.nextMonsterId + 10)
     expect(next.stats.gachaPulls).toBe(10)
+    expect(next.log).toEqual([{ type: 'gachaPulled', eggIds: next.eggs.map((egg) => egg.id) }])
     // state cũ không đổi.
     expect(state.eggs).toEqual([])
     expect(state.stats.gachaPulls).toBe(0)

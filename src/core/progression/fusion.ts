@@ -52,6 +52,7 @@ import {
   type FusionAidSlot
 } from '../registries'
 import {
+  appendLog,
   dayOf,
   usesTraitSlot,
   type BigStats,
@@ -340,7 +341,7 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
     })
   // Nhiệm vụ fuse chỉ tính lần fuse thành công (docs/rules/quests.md).
   const quests = succeeded ? recordQuestEvent(data, state.quests, { type: 'fused' }) : state.quests
-  return {
+  const fused: GameState = {
     ...paid,
     rng,
     inventory,
@@ -349,21 +350,6 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
     quests,
     stats: succeeded ? bumpStat(state.stats, 'fusions') : state.stats
   }
-}
-
-/** Kết quả một lần fuse, cho UI báo người chơi. */
-export type FuseOutcome = 'success' | 'failed' | 'protected'
-
-/**
- * Suy kết quả từ state trước / sau một action fuse không lỗi: quái gốc mất là thất bại; còn mà
- * lineage không thêm loài là thất bại có Bùa Hộ Mệnh (fuse thành công luôn thêm ít nhất 1 loài).
- */
-export function fuseOutcome(before: GameState, after: GameState, baseId: string): FuseOutcome {
-  const findIn = (state: GameState): Monster | undefined =>
-    state.party.find((m) => m.id === baseId) ?? state.storage.find((m) => m.id === baseId)
-  const baseBefore = findIn(before)
-  if (!baseBefore) throw new Error(`fuseOutcome: không có quái gốc "${baseId}" trước khi fuse`)
-  const baseAfter = findIn(after)
-  if (!baseAfter) return 'failed'
-  return baseAfter.lineage.length > baseBefore.lineage.length ? 'success' : 'protected'
+  const outcome = succeeded ? 'success' : result ? 'protected' : 'failed'
+  return appendLog(fused, { type: 'fused', baseId, outcome })
 }

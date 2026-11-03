@@ -12,7 +12,7 @@ import { biomeOfFloor } from '../world'
 import { unequipIneligible, type UnequippedItem } from '../roster'
 import { grantKeyItems } from '../inventory'
 import { migrateState } from './migrate'
-import type { GameData, GameState } from '../model'
+import { DIFFICULTIES, type Difficulty, type GameData, type GameState } from '../model'
 
 export const SAVE_FORMAT = 'my-creature-collector-save'
 
@@ -38,6 +38,17 @@ export interface SaveSummary {
   money: string
   location: SaveLocationSummary
   inBattle: boolean
+  /** Độ khó và chế độ thử thách (docs/rules/challenge-modes.md): hiện ở danh sách, luật Hardcore. */
+  challenge: SaveChallengeSummary
+}
+
+/** Phần thử thách của tóm tắt save. */
+export interface SaveChallengeSummary {
+  difficulty: Difficulty
+  nuzlocke: boolean
+  hardcore: boolean
+  randomizer: boolean
+  gameOver: boolean
 }
 
 export interface SaveFile {
@@ -88,7 +99,14 @@ export function summarizeState(data: GameData, state: GameState): SaveSummary {
             floor: location.floor,
             biomeId: biomeOfFloor(data, state, location.floor).id
           },
-    inBattle: state.battle !== null
+    inBattle: state.battle !== null,
+    challenge: {
+      difficulty: state.options.difficulty,
+      nuzlocke: state.options.nuzlocke !== null,
+      hardcore: state.options.hardcore,
+      randomizer: state.options.randomizer !== null,
+      gameOver: state.challenge.gameOver
+    }
   }
 }
 
@@ -106,6 +124,21 @@ function parseLocationSummary(value: unknown): SaveLocationSummary | null {
   return { type: 'floor', floor: location.floor, biomeId: location.biomeId }
 }
 
+function parseChallengeSummary(value: unknown): SaveChallengeSummary | null {
+  const raw = asObject(value)
+  if (!raw || !DIFFICULTIES.some((difficulty) => difficulty === raw.difficulty)) return null
+  const flags = [raw.nuzlocke, raw.hardcore, raw.randomizer, raw.gameOver]
+  if (flags.some((flag) => typeof flag !== 'boolean')) return null
+  return {
+    // Ép kiểu vì đã kiểm tra thuộc DIFFICULTIES và boolean ở trên.
+    difficulty: raw.difficulty as Difficulty,
+    nuzlocke: raw.nuzlocke as boolean,
+    hardcore: raw.hardcore as boolean,
+    randomizer: raw.randomizer as boolean,
+    gameOver: raw.gameOver as boolean
+  }
+}
+
 /**
  * Đọc summary trong file save (chỉ để hiện danh sách, không tin khi load). Sai dạng hoặc dạng cũ
  * (trước khi tách chữ, có leaderName / locationName) thì null: danh sách hiện gameId cho tới lần
@@ -115,8 +148,10 @@ export function parseSaveSummary(value: unknown): SaveSummary | null {
   const raw = asObject(value)
   if (!raw) return null
   const location = parseLocationSummary(raw.location)
+  const challenge = parseChallengeSummary(raw.challenge)
   if (
     !location ||
+    !challenge ||
     !isStringOrNull(raw.leaderNickname) ||
     !isStringOrNull(raw.leaderSpeciesId) ||
     !isCount(raw.highestLevel) ||
@@ -135,7 +170,8 @@ export function parseSaveSummary(value: unknown): SaveSummary | null {
     totalMonsters: raw.totalMonsters,
     money: raw.money,
     location,
-    inBattle: raw.inBattle
+    inBattle: raw.inBattle,
+    challenge
   }
 }
 
@@ -220,9 +256,40 @@ export function parseSave(data: GameData, text: string): ParsedSave {
 
 /**
  * Đổi seed sau khi load: trộn entropy mới vào rng để làm lại cùng action ra kết quả khác
- * (reroll). Core vẫn tất định: state sau khi trộn đã khác state trong file.
+ * (reroll). Core vẫn tất định: state sau khi trộn đã khác state trong file. Game Hardcore giữ seed.
  */
 export function reseedState(state: GameState, entropy: number): GameState {
+  // Hardcore: mở lại ra đúng kết quả cũ, không reroll được (docs/rules/challenge-modes.md).
+  if (state.options.hardcore) return state
   const [, rng] = nextUint32(createRng((state.rng ^ entropy) >>> 0))
   return { ...state, rng }
+}
+
+// ---------- Hardcore (docs/rules/challenge-modes.md) ----------
+
+/** Thông tin một save trong danh sách đủ để xét luật Hardcore. */
+export interface SaveListing {
+  id: string
+  gameId: string
+  kind: SaveKind
+  savedAt: string
+  summary: SaveSummary | null
+}
+
+/** Lưu tay được không: game Hardcore chỉ có tự lưu. */
+export const canSaveManually = (summary: SaveSummary | null): boolean =>
+  summary?.challenge.hardcore !== true
+
+/**
+ * Mở được save `id` không: game Hardcore (theo save mới nhất của game) chỉ mở được save mới nhất,
+ * chặn tải lại save cũ để thử lại. Save không có trong danh sách: được (main báo lỗi đọc file).
+ */
+export function canLoadSave(saves: readonly SaveListing[], id: string): boolean {
+  const target = saves.find((save) => save.id === id)
+  if (!target) return true
+  const newest = saves
+    .filter((save) => save.gameId === target.gameId)
+    .reduce((best, save) => (save.savedAt > best.savedAt ? save : best), target)
+  if (!newest.summary?.challenge.hardcore) return true
+  return newest.id === target.id
 }

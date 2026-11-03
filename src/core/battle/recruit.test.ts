@@ -327,6 +327,25 @@ describe('Thị Uy', () => {
     expect(() => act(sure, high, intimidate('e1'))).not.toThrow()
   })
 
+  it('Nuzlocke: Thị Uy chỉ ở lượt gặp của khu, thành công thì hết lượt gặp; xin theo cũng vậy', () => {
+    const nuzlocke = (state: GameState, encounter: boolean): GameState => ({
+      ...state,
+      options: { ...state.options, nuzlocke: { dupesClause: false }, permadeathEnabled: true },
+      battle: { ...battleOf(state), nuzlockeEncounter: encounter }
+    })
+    expectActionError(
+      () => act(sure, nuzlocke(fresh(), false), intimidate('e1')),
+      'nuzlockeAreaUsed'
+    )
+    const after = act(sure, nuzlocke(fresh(), true), intimidate('e1'))
+    expect(battleOf(after).captured.map((m) => m.id)).toEqual(['e1'])
+    expect(battleOf(after).nuzlockeEncounter).toBe(false)
+    // Hết lượt gặp: không quái nào xin theo sau trận thắng.
+    const data = recruitData({ baseChance: 100 })
+    const spent = nuzlocke(twoOnTwo(), false)
+    expect(eventsOf(winBattle(data, spent), 'recruitOffered')).toEqual([])
+  })
+
   it('AI không gợi ý Thị Uy', () => {
     const command = suggestTamerCommand(sure, fresh())
     expect(command?.skillId).not.toBe('intimidate')

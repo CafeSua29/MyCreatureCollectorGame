@@ -24,7 +24,7 @@ afterEach(() => {
 })
 
 /** Summary hợp lệ (chỉ id và số) để listSaves đọc được; money ghi chuỗi như save thật. */
-const summary = (money: number): SaveSummary => ({
+const summary = (money: number, hardcore = false): SaveSummary => ({
   leaderNickname: null,
   leaderSpeciesId: 'weakling',
   highestLevel: 1,
@@ -32,11 +32,18 @@ const summary = (money: number): SaveSummary => ({
   totalMonsters: 1,
   money: String(money),
   location: { type: 'town' },
-  inBattle: false
+  inBattle: false,
+  challenge: {
+    difficulty: 'normal',
+    nuzlocke: false,
+    hardcore,
+    randomizer: false,
+    gameOver: false
+  }
 })
 
-const save = (savedAt: string, money = 0): string =>
-  JSON.stringify({ savedAt, summary: summary(money), state: {} })
+const save = (savedAt: string, money = 0, hardcore = false): string =>
+  JSON.stringify({ savedAt, summary: summary(money, hardcore), state: {} })
 
 describe('tự lưu xoay vòng', () => {
   it(`dùng tối đa ${AUTOSAVE_SLOTS} file, ghi đè file cũ nhất`, () => {
@@ -106,6 +113,26 @@ describe('lưu tay, đọc, xóa', () => {
     expect(() => readSave(dir, 'g-a/../../x.json')).toThrow(/không hợp lệ/)
     expect(() => writeAutosave(dir, '../x', '{}')).toThrow(/không hợp lệ/)
     expect(() => deleteGame(dir, '..')).toThrow(/không hợp lệ/)
+  })
+})
+
+describe('Hardcore (docs/rules/challenge-modes.md)', () => {
+  it('không lưu tay được; game thường vẫn lưu tay', () => {
+    expect(() => writeManualSave(dir, 'g-h', save('2026-10-18T10:00:00.000Z', 0, true), 1)).toThrow(
+      'Hardcore'
+    )
+    expect(fs.existsSync(path.join(dir, 'g-h'))).toBe(false)
+    expect(writeManualSave(dir, 'g-n', save('2026-10-18T10:00:00.000Z'), 1)).toBe('g-n/manual-1.json')
+  })
+
+  it('chỉ mở được save mới nhất của game Hardcore; game thường mở được mọi save', () => {
+    const old = writeAutosave(dir, 'g-h', save('2026-10-18T10:00:00.000Z', 1, true))
+    const newest = writeAutosave(dir, 'g-h', save('2026-10-18T10:05:00.000Z', 2, true))
+    expect(() => readSave(dir, old)).toThrow('Hardcore')
+    expect(JSON.parse(readSave(dir, newest)).summary.money).toBe('2')
+    const normalOld = writeAutosave(dir, 'g-n', save('2026-10-18T10:00:00.000Z', 1))
+    writeAutosave(dir, 'g-n', save('2026-10-18T10:05:00.000Z', 2))
+    expect(JSON.parse(readSave(dir, normalOld)).summary.money).toBe('1')
   })
 })
 

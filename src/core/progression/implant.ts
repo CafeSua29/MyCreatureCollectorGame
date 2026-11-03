@@ -26,6 +26,8 @@ import { addMilestone, assertNotBusy, assertNotLocked, dieForever, implantChance
 import { woundIfBondDied } from '../tamer'
 import { locateOwned } from '../roster'
 import {
+  type GameLogEntry,
+  appendLog,
   dayOf,
   type DayEvent,
   type GameData,
@@ -141,13 +143,15 @@ export function implant(data: GameData, state: GameState, order: ImplantOrder): 
   const [succeeded, rng] = rollPercent(paid.rng, implantChance(data, monster))
   const day = dayOf(state.time)
   const attempted = { ...monster, implantAttempts: monster.implantAttempts + 1 }
+  const logBase = { type: 'implanted', monsterId: monster.id, tierId: serum.tierId } as const
   if (succeeded) {
     const implanted = addMilestone(data, applySerum(attempted, serum, 1), {
       day,
       kind: 'implanted',
       tierId: serum.tierId
     })
-    return { ...replace(implanted), money: paid.money, rng }
+    const done = { ...replace(implanted), money: paid.money, rng }
+    return appendLog(done, { ...logBase, success: true, fails: monster.implantFails, died: false })
   }
   const fails = monster.implantFails + 1
   const failed = addMilestone(data, applySerum({ ...attempted, implantFails: fails }, serum, -1), {
@@ -156,8 +160,10 @@ export function implant(data: GameData, state: GameState, order: ImplantOrder): 
     tierId: serum.tierId,
     fails
   })
-  if (fails < maxFails) return { ...replace(failed), money: paid.money, rng }
-  return loseMonster(data, { ...paid, rng }, failed)
+  const died = fails >= maxFails
+  const failedLog: GameLogEntry = { ...logBase, success: false, fails, died }
+  if (!died) return appendLog({ ...replace(failed), money: paid.money, rng }, failedLog)
+  return loseMonster(data, appendLog({ ...paid, rng }, failedLog), failed)
 }
 
 /** Thất bại lần cuối: quái chết hẳn, rời đội / kho; bản mệnh thì ngự thú sư bị đạo thương. */
@@ -174,14 +180,17 @@ function loseMonster(data: GameData, state: GameState, monster: Monster): GameSt
       cause: 'implant'
     }
   )
-  // Bản mệnh chết hẳn (docs/rules/tamer.md mục "Bản mệnh thú"): tamer.woundUntilDay cho UI biết.
-  const { tamer } = woundIfBondDied(data, state, [monster])
+  // Bản mệnh chết hẳn (docs/rules/tamer.md mục "Bản mệnh thú"): đạo thương, log bondBroken.
+  const { tamer, bondId, woundUntilDay } = woundIfBondDied(data, state, [monster])
   const without = (list: Monster[]): Monster[] => list.filter((m) => m.id !== monster.id)
-  return {
+  const lost = {
     ...state,
     inventory,
     tamer,
     party: without(state.party),
     storage: without(state.storage)
   }
+  return bondId === null
+    ? lost
+    : appendLog(lost, { type: 'bondBroken', monsterId: bondId, woundUntilDay })
 }

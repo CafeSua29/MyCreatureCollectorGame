@@ -41,6 +41,7 @@ import {
   recordResearch,
   researchMultiplier,
   changeAffinity,
+  difficultyNumbers,
   instabilityRewardPercent,
   mealMultiplier,
   mealPercent,
@@ -80,6 +81,7 @@ import {
 import {
   dayOf,
   type BattleOutcome,
+  type BattleState,
   type Biome,
   type DropEntry,
   type Egg,
@@ -235,6 +237,22 @@ function clearBattleOnly(data: GameData, d: Draft): void {
   }
 }
 
+/**
+ * Hệ số thưởng chung của trận: 1 + (% độ bất ổn + % độ khó) / 100; độ khó dùng `expPercent` cho EXP,
+ * `rewardPercent` cho tiền / đồ rơi.
+ */
+function battleRewardMultiplier(
+  data: GameData,
+  battle: BattleState,
+  channel: 'reward' | 'exp'
+): number {
+  const difficulty = difficultyNumbers(data, battle.difficulty)
+  const percent =
+    instabilityRewardPercent(data, battle.instability) +
+    (channel === 'exp' ? difficulty.expPercent : difficulty.rewardPercent)
+  return 1 + percent / 100
+}
+
 export function applyWin(data: GameData, d: Draft): void {
   // Phần thưởng, EXP, tiến hóa tính trên dạng thường (mục "Biến hình trong trận").
   revertTransforms(data, d)
@@ -244,10 +262,12 @@ export function applyWin(data: GameData, d: Draft): void {
   // Hiệu ứng theo phe người chơi (kiểu Happy Hour), trait của quái đã tham chiến (kể cả đã gục,
   // như Amulet Coin) rồi kỹ năng đồng hành (quái đầu đội còn sống lúc thắng) nhân tiền thưởng.
   const fought = d.party.filter((monster) => participants.includes(monster.id))
-  // Độ bất ổn tầng (docs/rules/instability.md): cùng một % cộng cho tiền, EXP, tỉ lệ đồ rơi.
-  // Chúc phúc của thần cai quản map (docs/rules/deities.md) và danh hiệu đang đeo
-  // (docs/rules/achievements.md) nhân tiền, EXP, tỉ lệ đồ rơi theo kênh.
-  const instabilityMultiplier = 1 + instabilityRewardPercent(data, d.battle.instability) / 100
+  // Độ bất ổn tầng (docs/rules/instability.md) và độ khó (docs/rules/challenge-modes.md): cộng %
+  // rồi nhân một lần cho tiền, EXP (độ khó: expPercent), tỉ lệ đồ rơi. Chúc phúc của thần cai quản map
+  // (docs/rules/deities.md) và danh hiệu đang đeo (docs/rules/achievements.md) nhân tiền, EXP, tỉ lệ
+  // đồ rơi theo kênh.
+  const rewardMultiplier = battleRewardMultiplier(data, d.battle, 'reward')
+  const expMultiplier = battleRewardMultiplier(data, d.battle, 'exp')
   const money = enemies
     .reduce((sum, enemy) => sum.plus(moneyReward(data, enemy)), BIG_ZERO)
     .times(sideMoneyMultiplier(data, d.battle.field, 'player'))
@@ -257,7 +277,7 @@ export function applyWin(data: GameData, d: Draft): void {
     .times(trainerMoneyMultiplier(data, d.battle))
     .times(floorModifierMultiplier(data, d, 'moneyPercent'))
     .times(d.battle.special ? specialRule(d.battle.special).moneyMultiplier(d.battle.special) : 1)
-    .times(instabilityMultiplier)
+    .times(rewardMultiplier)
     .times(battleBlessingMultiplier(data, d, 'moneyPercent'))
     .times(tamerBonusMultiplier(data, d, 'moneyPercent'))
     .floor()
@@ -296,7 +316,7 @@ export function applyWin(data: GameData, d: Draft): void {
   const partnerExp = exp
     .times(partnerMultiplier(data, d.party, 'expPercent'))
     .times(mealMultiplier(data, d.cooking.meal, 'expPercent'))
-    .times(instabilityMultiplier)
+    .times(expMultiplier)
     .times(battleBlessingMultiplier(data, d, 'expPercent'))
     .times(tamerBonusMultiplier(data, d, 'expPercent'))
     .floor()
@@ -370,7 +390,7 @@ export function applyWin(data: GameData, d: Draft): void {
     partnerMultiplier(data, d.party, 'dropRatePercent') *
     mealMultiplier(data, d.cooking.meal, 'dropRatePercent') *
     floorModifierMultiplier(data, d, 'dropRatePercent') *
-    instabilityMultiplier *
+    rewardMultiplier *
     battleBlessingMultiplier(data, d, 'dropRatePercent') *
     tamerBonusMultiplier(data, d, 'dropRatePercent')
   // Trận NPC: đồ thưởng chung của trận thay cho đồ rơi của từng quái (docs/rules/trainers.md).

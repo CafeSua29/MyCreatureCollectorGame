@@ -21,6 +21,7 @@ import {
   type RngState
 } from '../shared'
 import {
+  bestRealmReached,
   dayOf,
   type ActiveQuest,
   type DayEvent,
@@ -137,7 +138,7 @@ export function joinSect(data: GameData, state: GameState, sectId: string): Game
     throw new ActionError('sectNotFound', { sectId: String(sectId) })
   }
   const sect = data.sects[sectId]
-  if (state.tamer.realm < sect.minRealm) {
+  if (bestRealmReached(state) < sect.minRealm) {
     throw new ActionError('sectRealmTooLow', { sectId, minRealm: sect.minRealm })
   }
   const day = dayOf(state.time)

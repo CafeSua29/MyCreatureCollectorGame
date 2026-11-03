@@ -36,9 +36,28 @@ describe('listJobs', () => {
       { type: 'sweep', variantId: 'current', teamId: 'solo', floor: 2 },
       { type: 'sweep', variantId: 'ko', teamId: 'solo', floor: 1 },
       { type: 'sweep', variantId: 'ko', teamId: 'solo', floor: 2 },
-      { type: 'progression', teamId: 'solo', usePills: true, growth: true },
+      { type: 'progression', teamId: 'solo', usePills: true, growth: true, difficulty: 'normal' },
       { type: 'breeding' },
       { type: 'fusion' }
+    ])
+  })
+})
+
+describe('listJobs: độ khó (docs/rules/challenge-modes.md)', () => {
+  it('mức khác Thường: một lần mỗi đội với chế độ đan / fuse đầu tiên, sau các lần Thường', () => {
+    const parsed = scenarios((raw) => {
+      raw.progression = {
+        ...(raw.progression as object),
+        pillModes: [true, false],
+        difficultyModes: ['normal', 'hard', 'nightmare']
+      }
+    })
+    const progression = listJobs(parsed).filter((job) => job.type === 'progression')
+    expect(progression).toEqual([
+      { type: 'progression', teamId: 'solo', usePills: true, growth: true, difficulty: 'normal' },
+      { type: 'progression', teamId: 'solo', usePills: false, growth: true, difficulty: 'normal' },
+      { type: 'progression', teamId: 'solo', usePills: true, growth: true, difficulty: 'hard' },
+      { type: 'progression', teamId: 'solo', usePills: true, growth: true, difficulty: 'nightmare' }
     ])
   })
 })
@@ -69,7 +88,13 @@ describe('listJobs: tìm level cần để thắng boss', () => {
     expect(result.type === 'bossLevel' && result.rows.map((row) => row.target)).toEqual([50])
     expect(jobPriority(bossLevelJobs[0])).toBeGreaterThan(jobPriority(jobs[0]))
     expect(jobPriority(bossLevelJobs[0])).toBeLessThan(
-      jobPriority({ type: 'progression', teamId: 'solo', usePills: true, growth: true })
+      jobPriority({
+        type: 'progression',
+        teamId: 'solo',
+        usePills: true,
+        growth: true,
+        difficulty: 'normal'
+      })
     )
   })
 })
@@ -155,7 +180,13 @@ describe('runJob', () => {
       runJob(context, { type: 'sweep', variantId: 'ghost', teamId: 'solo', floor: 1 })
     ).toThrow('ghost')
     expect(() =>
-      runJob(context, { type: 'progression', teamId: 'ghost', usePills: true, growth: true })
+      runJob(context, {
+        type: 'progression',
+        teamId: 'ghost',
+        usePills: true,
+        growth: true,
+        difficulty: 'normal'
+      })
     ).toThrow('ghost')
   })
 
@@ -211,7 +242,8 @@ describe('quét tầng bằng đội thật (pha 2)', () => {
     type: 'progression',
     teamId: 'solo',
     usePills: true,
-    growth: true
+    growth: true,
+    difficulty: 'normal'
   })
   if (progression.type !== 'progression') throw new Error('sai loại kết quả')
   const { snapshots } = progression.progression
@@ -246,7 +278,13 @@ describe('quét tầng bằng đội thật (pha 2)', () => {
     ])
     expect(runJob(context, decodeTransfer(encodeTransfer(job)) as typeof job)).toEqual(result)
     expect(jobPriority(job)).toBeLessThan(
-      jobPriority({ type: 'progression', teamId: 'solo', usePills: true, growth: true })
+      jobPriority({
+        type: 'progression',
+        teamId: 'solo',
+        usePills: true,
+        growth: true,
+        difficulty: 'normal'
+      })
     )
   })
 })

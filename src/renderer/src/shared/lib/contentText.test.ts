@@ -20,6 +20,13 @@ const summary = (overrides: Partial<SaveSummary> = {}): SaveSummary => ({
   money: '500',
   location: { type: 'town' },
   inBattle: false,
+  challenge: {
+    difficulty: 'normal',
+    nuzlocke: false,
+    hardcore: false,
+    randomizer: false,
+    gameOver: false
+  },
   ...overrides
 })
 

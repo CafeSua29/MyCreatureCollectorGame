@@ -94,6 +94,13 @@ describe('parseScenarios', () => {
     expect(scenarios.teams[0].skipBoss).toBe(true)
   })
 
+  it('progression.difficultyModes: bỏ trống = Thường; mức lạ báo lỗi', () => {
+    expect(parseScenarios(data, validScenarios()).progression.difficultyModes).toEqual(['normal'])
+    const raw = validScenarios()
+    raw.progression = { ...(raw.progression as object), difficultyModes: ['hard', 'insane'] }
+    expect(issuesOf(raw)).toContainEqual(expect.stringContaining('progression.difficultyModes[1]'))
+  })
+
   it('báo lỗi trường mới sai kèm đường dẫn', () => {
     const raw = validScenarios()
     raw.earlyStop = { minBattles: 0, ciWidth: 0, extra: 1 }
@@ -244,7 +251,10 @@ describe('rawWithVariant', () => {
         tamerRealm: null,
         assumedPurity: null,
         assumedPolarity: null,
-        instabilityLevel: 0
+        instabilityLevel: 0,
+        destinyIds: [],
+        ascensionUpgrades: {},
+        difficulty: 'normal' as const
       })
     )
     expect(varied.config.ai).toEqual({ ...raw.config.ai, koBonus: 3 })
@@ -266,7 +276,10 @@ describe('rawWithVariant', () => {
         tamerRealm: null,
         assumedPurity: null,
         assumedPolarity: null,
-        instabilityLevel: 0
+        instabilityLevel: 0,
+        destinyIds: [],
+        ascensionUpgrades: {},
+        difficulty: 'normal' as const
       })
     )
     expect(varied.config.mastery).toEqual({ ...raw.config.mastery, ...off })
@@ -287,7 +300,10 @@ describe('rawWithVariant', () => {
       tamerRealm: null,
       assumedPurity: null,
       assumedPolarity: null,
-      instabilityLevel: 0
+      instabilityLevel: 0,
+      destinyIds: [],
+      ascensionUpgrades: {},
+      difficulty: 'normal' as const
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(varied.skills[raw.skills[0].id].hold).toBeUndefined()
@@ -309,7 +325,10 @@ describe('rawWithVariant', () => {
       tamerRealm: null,
       assumedPurity: null,
       assumedPolarity: null,
-      instabilityLevel: 0
+      instabilityLevel: 0,
+      destinyIds: [],
+      ascensionUpgrades: {},
+      difficulty: 'normal' as const
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(varied.skills[raw.skills[0].id].reach).toBe('ranged')
@@ -331,7 +350,10 @@ describe('rawWithVariant', () => {
       tamerRealm: null,
       assumedPurity: null,
       assumedPolarity: null,
-      instabilityLevel: 0
+      instabilityLevel: 0,
+      destinyIds: [],
+      ascensionUpgrades: {},
+      difficulty: 'normal' as const
     }
     expect(createGameData(rawWithVariant(raw, variant)).skills[raw.skills[0].id].styles).toBe(
       undefined
@@ -356,7 +378,10 @@ describe('rawWithVariant', () => {
       tamerRealm: null,
       assumedPurity: null,
       assumedPolarity: null,
-      instabilityLevel: 0
+      instabilityLevel: 0,
+      destinyIds: [],
+      ascensionUpgrades: {},
+      difficulty: 'normal' as const
     }
     const varied = createGameData(rawWithVariant(raw, variant))
     expect(Object.values(varied.partnerSkills).map((skill) => skill.effects)).toEqual([[]])
@@ -376,7 +401,10 @@ describe('rawWithVariant', () => {
       tamerRealm: null,
       assumedPurity: null,
       assumedPolarity: null,
-      instabilityLevel: 0
+      instabilityLevel: 0,
+      destinyIds: [],
+      ascensionUpgrades: {},
+      difficulty: 'normal' as const
     })
     expect(() => createGameData(bad)).toThrow()
   })

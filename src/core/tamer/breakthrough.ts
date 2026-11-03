@@ -4,7 +4,8 @@
 
 import { ActionError, rollPercent, spendMoney } from '../shared'
 import { removeItems } from '../inventory'
-import type { GameData, GameState } from '../model'
+import { tamerBonusMultiplier } from '../registries'
+import { appendLog, type GameData, type GameState } from '../model'
 import { raiseOwnedContracts } from './contract'
 import { assertNotWounded } from './bond'
 import {
@@ -14,7 +15,7 @@ import {
   expToNextRealm
 } from './realm'
 
-/** Đột phá lên cảnh giới tiếp theo; kết quả xem bằng breakthroughOutcome (không có log ngoài trận). */
+/** Đột phá lên cảnh giới tiếp theo; kết quả ghi log ngoài trận `breakthrough`. */
 export function tamerBreakthrough(data: GameData, state: GameState): GameState {
   if (state.battle) throw new ActionError('inBattle')
   if (state.location.type !== 'town') throw new ActionError('notInTown')
@@ -23,20 +24,19 @@ export function tamerBreakthrough(data: GameData, state: GameState): GameState {
   const { realm, exp } = state.tamer
   const need = expToNextRealm(data, realm)
   if (exp.lt(need)) throw new ActionError('tamerExpTooLow', { need, have: exp })
-  const paid = spendMoney(state, breakthroughCost(data, realm))
+  const cost = breakthroughCost(data, realm)
+    .times(tamerBonusMultiplier(data, state, 'breakthroughCostPercent'))
+    .ceil()
+  const paid = spendMoney(state, cost)
   const { itemId } = data.config.tamer.breakthrough
   const inventory = removeItems(paid.inventory, itemId, breakthroughItemCount(realm))
   const [success, rng] = rollPercent(state.rng, breakthroughChance(data, realm))
   const next: GameState = { ...paid, inventory, rng }
-  if (!success) return next
+  if (!success) return appendLog(next, { type: 'breakthrough', success, realm })
   const nextRealm = realm + 1
-  return raiseOwnedContracts(
+  const raised = raiseOwnedContracts(
     { ...next, tamer: { ...state.tamer, realm: nextRealm, exp: exp.minus(need) } },
     nextRealm
   )
-}
-
-/** Kết quả đột phá cho UI, so state trước / sau action tamerBreakthrough. */
-export function breakthroughOutcome(before: GameState, after: GameState): 'success' | 'failed' {
-  return after.tamer.realm > before.tamer.realm ? 'success' : 'failed'
+  return appendLog(raised, { type: 'breakthrough', success, realm: nextRealm })
 }

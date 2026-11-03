@@ -13,7 +13,7 @@ Ba cơ chế biến hình của Pokémon, làm giống Pokémon trên nền batt
 - **Trên quái:** `Monster.battleTransform` (chỉ có trong trận, như `battleMaxHpDelta`): `{ kind, formSpeciesId?, teraElementId?, originalElementIds, turnsLeft?, ended?, stellarBoostedElementIds? }`. Lưu trên quái vì chỉ số gốc (Mega) và max HP (Dynamax) phải như nhau ở mọi nơi tính chỉ số / HP.
 - **Hệ hiện tại:** biến hình đổi thẳng `monster.elementIds` (Mega: hệ dạng Mega; Tera: chỉ hệ Tera, Stellar giữ hệ gốc), hệ gốc thật giữ ở `originalElementIds`; mọi chỗ xét hệ (khắc hệ, miễn trạng thái, môi trường, mặt đất, hút bẫy, hook trait) tự đúng. Quái đang bị đổi hệ bởi trait Siralim thì phần trả lại khi rời sân cũng thành hệ mới. **Quái đã Tera không bị đổi hệ** bởi hiệu ứng đổi hệ Siralim (đổi race vẫn được).
 - **Hết trận** (`revertTransforms`, đầu `applyWin` và `finish`): mọi quái (đội, địch, quái đã bắt) về dạng thường, hệ gốc, giữ tỉ lệ máu nếu đang Dynamax. Phần thưởng, EXP, tiến hóa tính trên dạng thường.
-- **Log:** `transformed { monsterId, kind, formSpeciesId?, teraElementId? }`, `transformEnded { monsterId, kind }`, `protected { monsterId, userId }`, `skillFailed` lý do `protectFailed`, `keyItemReceived { itemId }`. (Sạc Tera Orb ở thị trấn không có log: action ngoài trận không có log; UI đọc `teraOrbCharged`.)
+- **Log:** `transformed { monsterId, kind, formSpeciesId?, teraElementId? }`, `transformEnded { monsterId, kind }`, `protected { monsterId, userId }`, `skillFailed` lý do `protectFailed`, `keyItemReceived { itemId }`. (Sạc Tera Orb ở thị trấn không ghi log ngoài trận: UI đọc `teraOrbCharged`.)
 
 ## Vật phẩm chìa khóa
 

@@ -8,7 +8,7 @@ Code: nơi luyện `cooking` trong `CRAFT_STATION_RULES` (`progression/alchemy.t
 
 ## Nấu
 
-- Công thức `station: "cooking"`, dùng chung action `craft` (thị trấn, NPC **Đầu bếp**; luật kiểm tra / tung / thất bại như luyện đan). **Cấp nấu ăn riêng** `GameState.cooking: { level, exp, lastCraft, meal }`, đường cong `config.cooking { expBase, expPower, levelBonusPercent }` (cùng luật cấp / tỉ lệ với luyện đan); thiếu cấp `cookingLevelTooLow { need, have }`. Chưa có cộng thêm % thành công ngoài cấp (kỹ năng đồng hành nấu ăn: chưa có loài / race nào). Công thức nấu có `scroll` bị kiểm tra dữ liệu chặn ("chưa hỗ trợ", công thức đã học chỉ lưu ở `alchemy.knownRecipes`).
+- Công thức `station: "cooking"`, dùng chung action `craft` (thị trấn, NPC **Đầu bếp**; luật kiểm tra / tung / thất bại như luyện đan). **Cấp nấu ăn riêng** `GameState.cooking: { level, exp, meal }`, đường cong `config.cooking { expBase, expPower, levelBonusPercent }` (cùng luật cấp / tỉ lệ với luyện đan); thiếu cấp `cookingLevelTooLow { need, have }`. Chưa có cộng thêm % thành công ngoài cấp (kỹ năng đồng hành nấu ăn: chưa có loài / race nào). Công thức nấu có `scroll` bị kiểm tra dữ liệu chặn ("chưa hỗ trợ", công thức đã học chỉ lưu ở `alchemy.knownRecipes`).
 - Công thức hiện có: 10 món ăn, **25 Bạc Hà Tính Cách** (2 dược liệu theo chỉ số tăng của tính cách: công Nhân Sâm, thủ Hà Thủ Ô, đặc công Linh Chi, đặc thủ Tuyết Liên, tốc Linh Quả; tính cách trung tính 1 Linh Chi + 1 Nhân Sâm; + 1 Linh Mật), **mồi dụ** (mồi khẩu vị: 1 tinh phách của race khẩu vị đầu + 1 Linh Quả ra 2; Mồi Dụ Thú: tinh phách thú + Linh Quả ra 2; Linh Mồi: tinh phách thú + Linh Mật + Nhân Sâm).
 
 ## Món ăn (category `dish`)
@@ -25,7 +25,7 @@ Code: nơi luyện `cooking` trong `CRAFT_STATION_RULES` (`progression/alchemy.t
 
 ## Kiểm tra save
 
-- `cooking`: cấp khớp tổng exp (như luyện đan), `lastCraft` null hoặc công thức nấu ăn, `meal` null hoặc `{ itemId là món ăn, battlesLeft nguyên ≥ 1 }` (trường lạ báo lỗi). Save v79 thêm `cooking` (`state-versions.md`). Trường Decimal: `cooking.exp` (`bigFields.ts`).
+- `cooking`: cấp khớp tổng exp (như luyện đan), `meal` null hoặc `{ itemId là món ăn, battlesLeft nguyên ≥ 1 }` (trường lạ báo lỗi). Save v79 thêm `cooking` (`state-versions.md`). Trường Decimal: `cooking.exp` (`bigFields.ts`).
 
 ## Mô phỏng
 

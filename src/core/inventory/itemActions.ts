@@ -5,6 +5,7 @@ import type { GameData, GameState, ItemRef } from '../model'
 import { requireItemCount } from './inventory'
 import { parseItemRef, removeByRef } from './itemRefs'
 import { canLeaveBag } from './itemRules'
+import { parseItemBatch } from './bulkItems'
 
 /** Ném ActionError nếu item là vật phẩm chìa khóa (không bán, không vứt). */
 export function assertCanLeaveBag(data: GameData, ref: ItemRef): void {
@@ -26,4 +27,12 @@ export function discardItem(
   assertCanLeaveBag(data, ref)
   requireItemCount(count)
   return { ...state, inventory: removeByRef(state.inventory, ref, count) }
+}
+
+/** Vứt nhiều dòng item trong một action (hàng loạt, docs/rules/bulk-actions.md); lỗi thì cả lệnh lỗi. */
+export function discardItems(data: GameData, state: GameState, items: unknown): GameState {
+  return parseItemBatch(items).reduce(
+    (current, line) => discardItem(data, current, line.item, line.count),
+    state
+  )
 }

@@ -12,6 +12,7 @@ import { toBig } from '../shared'
 import { safariCatchChance } from '../world'
 import { battleStats, monsterBattleContext, type Draft } from '../battle/draft'
 import {
+  findLog,
   dataIssuesAfter,
   defined,
   expectActionError,
@@ -140,7 +141,13 @@ describe('nấu ăn (craft ở nơi luyện cooking)', () => {
     expect(getItemCount(next.inventory, 'feast')).toBe(2)
     expect(next.cooking.exp.toString()).toBe('20')
     expect(next.cooking.level).toBe(2)
-    expect(next.cooking.lastCraft).toEqual({ recipeId: 'feast', successes: 2, failures: 0 })
+    expect(findLog(next, 'crafted')).toEqual({
+      type: 'crafted',
+      station: 'cooking',
+      recipeId: 'feast',
+      successes: 2,
+      failures: 0
+    })
     expect(next.alchemy.exp.toString()).toBe('0')
     expect(next.smithing.exp.toString()).toBe('0')
     expect(validateGameState(data, next)).toEqual([])
@@ -386,14 +393,13 @@ describe('dữ liệu và save', () => {
     expect(text).not.toContain('config.imprint.foods: "bun"')
   })
 
-  it('save: cấp lệch exp, lần nấu là công thức luyện đan, món ăn sai', () => {
+  it('save: cấp lệch exp, món ăn sai', () => {
     const state = townState()
     const issues = validateGameState(data, {
       ...state,
       cooking: {
         level: 4,
         exp: toBig(0),
-        lastCraft: null,
         meal: { itemId: 'herb', battlesLeft: 0, extra: 1 }
       }
     })
@@ -405,24 +411,6 @@ describe('dữ liệu và save', () => {
         expect.stringContaining('extra')
       ])
     )
-    const alchemyRecipe = makeCookingData((raw) =>
-      raw.recipes.push({
-        id: 'pill',
-        output: { itemId: 'herb', count: 1 },
-        inputs: [{ itemId: 'herb', count: 1 }],
-        money: 0,
-        minLevel: 1,
-        successChance: 100,
-        exp: 1
-      })
-    )
-    const wrongStation = {
-      ...state,
-      cooking: { ...state.cooking, lastCraft: { recipeId: 'pill', successes: 1, failures: 0 } }
-    }
-    expect(validateGameState(alchemyRecipe, wrongStation)).toEqual([
-      expect.stringContaining('cooking.lastCraft')
-    ])
     expect(validateGameState(data, { ...state, cooking: null })).toContain('cooking phải là object')
   })
 
@@ -435,7 +423,6 @@ describe('dữ liệu và save', () => {
         cooking: {
           level: craftLevelFromExp(data, 'cooking', exp),
           exp,
-          lastCraft: null,
           meal: null
         }
       },
@@ -451,7 +438,7 @@ describe('dữ liệu và save', () => {
     const raw = serializeState(townState()) as Record<string, unknown>
     const { cooking: _cooking, ...old } = raw
     const migrated = migrateState({ ...old, version: 78 }, data)
-    expect(migrated.cooking).toEqual({ level: 1, exp: toBig(0), lastCraft: null, meal: null })
+    expect(migrated.cooking).toEqual({ level: 1, exp: toBig(0), meal: null })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

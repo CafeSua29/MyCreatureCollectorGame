@@ -4,7 +4,7 @@
 
 Mục tiêu: tăng tính ngẫu nhiên. Gồm event khám phá (ở tầng), event thị trấn, hiệu ứng toàn cục (modifier), chuỗi event, cửa hàng tạm (thương nhân, chợ đen, khách lạ) và thú triều. Thời tiết trong trận ở mục "Môi trường" (`battle-environment.md`); event chỉ dùng lại qua modifier `fixedField`.
 
-Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết quả `eventResults.ts`, cửa hàng tạm `tempShops.ts`, chặn action + rút lui thú triều `guards.ts`, state đầu `state.ts`), trận đặc biệt `battle/specialBattles.ts` (luật theo loại, sổ sách trận trên tầng) và `battle/eventBattles.ts` (mở trận event, `defendTown`), thú triều theo ngày `progression/beastTide.ts`, modifier `registries/eventModifiers.ts`, kiểm tra dữ liệu `gameData/validateEvents.ts`, kiểm tra save `game/validateEventState.ts`. Số ở `balance.json` khóa `events` (hiện tại ở `balance-systems.md`).
+Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết quả `eventResults.ts`, cửa hàng tạm `tempShops.ts` (bể đồ hiếm `shop/rareGoods.ts`, dùng chung với Đấu giá hành `auction.md`), chặn action + rút lui thú triều `guards.ts`, state đầu `state.ts`), trận đặc biệt `battle/specialBattles.ts` (luật theo loại, sổ sách trận trên tầng) và `battle/eventBattles.ts` (mở trận event, `defendTown`), thú triều theo ngày `progression/beastTide.ts`, modifier `registries/eventModifiers.ts`, kiểm tra dữ liệu `gameData/validateEvents.ts`, kiểm tra save `game/validateEventState.ts`. Số ở `balance.json` khóa `events` (hiện tại ở `balance-systems.md`).
 
 ## Dữ liệu
 
@@ -42,7 +42,7 @@ Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết qu�
   - Cửa hàng tạm cũ mất khi đi tiếp (`startWildBattle` / `explore`) hoặc rời chỗ gặp.
 - **Thị trấn**: `travel` từ tầng vào thị trấn (sau khi cửa hàng random lại hàng, bảng nhiệm vụ bổ sung): thú triều đã tới ngày thì bắt đầu (mục dưới), không thì `events.townChance` (15%, × cùng hệ số) gặp event nhóm `town` (map của tầng cao nhất). Thua trận về thị trấn không tung event thị trấn.
 - **Event chờ** (`events.pending { eventId, floor, chainId }`; `floor` null = thị trấn): có event chờ thì **mọi action khác** báo `eventPending { eventId }` (chặn ở `assertEventAllows` đầu `gameReducer`), chỉ `chooseEventOption { optionId }`. Event nằm trong save nên tắt app mở lại vẫn là event đó; kết quả tất định theo RNG của save.
-- **Chọn lựa chọn**: tiêu `costItems`, tung outcome, áp lần lượt các kết quả (scale theo tầng của event; thị trấn: tầng cao nhất), `events.log` thay bằng log của lần này (`eventResolved`, `itemSpent`, rồi log từng kết quả). Tốn `clock.hours.event` (1) giờ nếu không mở trận (trận tính giờ lúc rời trận như mọi trận). Lỗi: `noPendingEvent`, `eventOptionUnknown`.
+- **Chọn lựa chọn**: tiêu `costItems`, tung outcome, áp lần lượt các kết quả (scale theo tầng của event; thị trấn: tầng cao nhất), ghi log ngoài trận (`eventResolved`, `itemSpent`, rồi log từng kết quả; `game-log.md`). Tốn `clock.hours.event` (1) giờ nếu không mở trận (trận tính giờ lúc rời trận như mọi trận). Lỗi: `noPendingEvent`, `eventOptionUnknown`.
 
 ## Modifier
 
@@ -62,7 +62,7 @@ Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết qu�
 
 - `startBattle` mở trận với `battle.special = { kind: 'event', eventId, noFlee, moneyMultiplier }` ở map của event: `wild` = `count` quái hoang thường (không tung boss / số quái của map), `boss` = boss bất kỳ của map (`generateAnyBossEncounter`), `trainer` = lớp NPC của map (không có thì lớp thường bất kỳ), chế độ NPC `event`, `levelOffset` level cộng thêm. Quái hoang / boss: `bossMultiplier × strength`, vào trận còn `enemyHpPercent` % máu (ít nhất 1).
 - `noFlee`: `flee` báo `specialBattleRestricted { command: 'flee' }`. Bắt được quái (trừ NPC). Tiền thắng × `moneyMultiplier`. Thua: phạt thua thường.
-- `events.battle` (vị trí của kết quả `startBattle`: event, lựa chọn, outcome, kết quả, chuỗi) giữ tới lúc **rời trận**: thắng áp `onWin`, thua / chạy áp `onLoss` (log mới ở `events.log`).
+- `events.battle` (vị trí của kết quả `startBattle`: event, lựa chọn, outcome, kết quả, chuỗi) giữ tới lúc **rời trận**: thắng áp `onWin`, thua / chạy áp `onLoss` (log ngoài trận của action `leaveBattle`).
 - Không còn quái đánh được lúc mở trận: coi như thua, áp `onLoss`, không mở trận.
 
 ## Chuỗi event
@@ -72,8 +72,8 @@ Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết qu�
 
 ## Thú triều
 
-- **Lịch** (việc theo ngày `beastTide`, `DAILY_TASKS`): chưa có thú triều thì lần qua ngày kế tiếp lên lịch thú triều sau số ngày đều trong `intervalDays` (30–50): `{ phase: 'scheduled', day }`. Số ngày băm từ ngày và RNG của save (`hashToUnit`), không tung RNG (lên lịch không đổi các giá trị random khác; mỗi save một lịch). Còn `warningDays` (3) ngày thì báo trước: `{ phase: 'warned', day }`, `dayEvents` `beastTideWarning { day }`. Thú triều kết thúc (thắng, thua, rút lui) thì lần qua ngày kế tiếp lên lịch lại.
-- **Bắt đầu**: tới ngày, khi đang ở thị trấn và rảnh (không trong trận, bí cảnh, giải đấu, không có event chờ): lúc qua ngày (`dayEvents` `beastTideArrived`) hoặc lúc vào thị trấn (`events.log` `beastTideArrived`). Quy mô: số đợt đều trong `waves` (5–20); mốc thú vương `kingAfter` = ⌈số đợt × `kingAfterPercent` / 100⌉ (40%, trong [1, số đợt]; `beastKingAfter`): `{ phase: 'active', cleared: 0, waves, kingAfter }`.
+- **Lịch** (việc theo ngày `beastTide`, `DAILY_TASKS`): chưa có thú triều thì lần qua ngày kế tiếp lên lịch thú triều sau số ngày đều trong `intervalDays` (30–50): `{ phase: 'scheduled', day }`. Số ngày băm từ ngày và RNG của save (`hashToUnit`), không tung RNG (lên lịch không đổi các giá trị random khác; mỗi save một lịch). Còn `warningDays` (3) ngày thì báo trước: `{ phase: 'warned', day }`, log `beastTideWarning { day }`. Thú triều kết thúc (thắng, thua, rút lui) thì lần qua ngày kế tiếp lên lịch lại.
+- **Bắt đầu**: tới ngày, khi đang ở thị trấn và rảnh (không trong trận, bí cảnh, giải đấu, không có event chờ): lúc qua ngày (log `beastTideArrived`) hoặc lúc vào thị trấn (log `beastTideArrived` của action `travel`). Quy mô: số đợt đều trong `waves` (5–20); mốc thú vương `kingAfter` = ⌈số đợt × `kingAfterPercent` / 100⌉ (40%, trong [1, số đợt]; `beastKingAfter`): `{ phase: 'active', cleared: 0, waves, kingAfter }`.
 - Trong thú triều: không `travel`, hồi máu ở NPC (`healParty`), nghỉ (`rest`), đấu trường, giải đấu, bí cảnh, tháp, độ kiếp, vào khu bảo tồn (`beastTideActive`). **Không tự hồi máu giữa các đợt** (chủ project chốt 2026-10-25): người chơi tự hồi bằng vật phẩm (dùng ngoài trận được, cửa hàng thị trấn vẫn mở để mua thêm), skill / kỹ năng ngự thú sư trong trận, trait...
 - Quái thú triều: map của tầng cao nhất + `floorOffset` (−1, tối thiểu 1); đợt n (= `cleared + 1`) chỉ số × (1 + `strengthPerWavePercent` × (n − 1) / 100) (5%). `battle.special = { kind: 'beastTide', wave, waves, king }`; không chạy, không tính là trận trên tầng.
 - **Thủ thành** `defendTown` (thị trấn): đợt thường = 2 quái hoang thường, không bắt (`specialBattleRestricted`). Thắng: thưởng thường của trận + `waveDrops` (× hệ số rơi), log `beastTideWaveWon` (máu giữ nguyên sang đợt sau). Đã thắng đủ `waves` đợt thì `defendTown` là trận thú vương (bắt buộc).

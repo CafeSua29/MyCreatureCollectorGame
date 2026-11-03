@@ -7,6 +7,7 @@ import { createGameData } from '../gameData'
 import { cloneData, toBig } from '../shared'
 import { advanceTime } from '../progression'
 import {
+  findLog,
   dataIssuesAfter,
   defined,
   expectActionError,
@@ -84,8 +85,8 @@ describe('vào khu bảo tồn', () => {
     expect(inside.nextMonsterId).toBe(11)
     expect(inside.safari.roster).toEqual(['weakling'])
     expect(inside.safari.refreshDay).toBe(7) // ngày 0 + rotationDays
-    expect(inside.safari.log).toEqual([
-      { type: 'encounter', monsterId: 'm10', speciesId: 'weakling' }
+    expect(inside.log).toEqual([
+      { type: 'safariEncounter', monsterId: 'm10', speciesId: 'weakling' }
     ])
     expect(inside.time).toBe(state.time) // giờ tính lúc ra khu
     expect(validateGameState(sure, inside)).toEqual([])
@@ -182,7 +183,7 @@ describe('danh sách loài', () => {
   })
 
   it('vào khu khi danh sách rỗng mà chưa tới ngày làm mới: báo safariUnavailable', () => {
-    const state = town({ safari: { roster: [], refreshDay: 5, visit: null, log: [] } })
+    const state = town({ safari: { roster: [], refreshDay: 5, visit: null } })
     expectActionError(() => enter(sure, state), 'safariUnavailable')
   })
 })
@@ -201,7 +202,13 @@ describe('ném bóng', () => {
     // Bộ đếm thành tựu (docs/rules/achievements.md): tính một quái bắt.
     expect(after.stats.monstersCaught).toBe(1)
     expect(visit.encounter.monster.id).toBe('m11')
-    expect(after.safari.log.map((e) => e.type)).toEqual(['throwBall', 'caught', 'encounter'])
+    // Bắt lần đầu làm nghiên cứu loài lên cấp: log ghi ở gameReducer sau diễn biến của khu.
+    expect(after.log.map((e) => e.type)).toEqual([
+      'safariThrowBall',
+      'safariCaught',
+      'safariEncounter',
+      'researchLevelUp'
+    ])
     expect(validateGameState(sure, after)).toEqual([])
   })
 
@@ -236,7 +243,7 @@ describe('ném bóng', () => {
     }
     const out = act(never, last, { type: 'throwSafariBall' })
     expect(out.safari.visit).toBeNull()
-    expect(out.safari.log.at(-1)).toEqual({ type: 'visitEnded', caught: 0 })
+    expect(findLog(out, 'safariVisitEnded')).toEqual({ type: 'safariVisitEnded', caught: 0 })
     expect(out.time).toBe(6 + 24)
   })
 
@@ -244,13 +251,41 @@ describe('ném bóng', () => {
     const flighty = safariData({ ...calm, fleeBase: 100, ballCatchMultiplier: 0 })
     const inside = enter(flighty)
     const after = act(flighty, inside, { type: 'throwSafariBall' })
-    expect(after.safari.log.map((e) => e.type)).toEqual([
-      'throwBall',
-      'breakFree',
-      'fled',
-      'encounter'
+    expect(after.log.map((e) => e.type)).toEqual([
+      'safariThrowBall',
+      'safariBreakFree',
+      'safariFled',
+      'safariEncounter'
     ])
     expect(visitOf(after).encountersLeft).toBe(18)
+  })
+})
+
+describe('Nuzlocke trong khu bảo tồn (docs/rules/challenge-modes.md)', () => {
+  const nuzlocke = (dupesClause: boolean, owned: string[] = []): GameState => {
+    const state = town()
+    return {
+      ...state,
+      options: { ...state.options, nuzlocke: { dupesClause }, permadeathEnabled: true },
+      dex: { ...state.dex, owned }
+    }
+  }
+
+  it('mỗi lượt vào khu bắt một con; lượt vào sau lại được', () => {
+    const inside = enter(sure, nuzlocke(false))
+    const caught = act(sure, inside, { type: 'throwSafariBall' })
+    expect(visitOf(caught).caught).toBe(1)
+    expectActionError(() => act(sure, caught, { type: 'throwSafariBall' }), 'nuzlockeVisitUsed')
+    const left = act(sure, caught, { type: 'leaveSafari' })
+    const again = enter(sure, left)
+    expect(visitOf(act(sure, again, { type: 'throwSafariBall' })).caught).toBe(1)
+  })
+
+  it('dupes clause: không bắt được loài đã sở hữu', () => {
+    const inside = enter(sure, nuzlocke(true, ['weakling']))
+    expectActionError(() => act(sure, inside, { type: 'throwSafariBall' }), 'nuzlockeDupe', {
+      speciesId: 'weakling'
+    })
   })
 })
 
@@ -279,7 +314,7 @@ describe('mồi, đá, bỏ đi, rời khu', () => {
     expect(lured.lure).toEqual({ kind: 'bait', turnsLeft: 2, favorite: false })
     expect(safariFleeChance(flee, lured)).toBeCloseTo(20 * 0.5 + 0)
     expect(safariCatchChance(flee, baited, lured)).toBeCloseTo(plainCatch * 0.8)
-    expect(baited.safari.log[0]).toMatchObject({ type: 'lure', kind: 'bait', itemId: null })
+    expect(baited.log[0]).toMatchObject({ type: 'safariLure', kind: 'bait', itemId: null })
     expect(baited.inventory).toEqual(inside.inventory)
   })
 
@@ -339,7 +374,7 @@ describe('mồi, đá, bỏ đi, rời khu', () => {
     const inside = enter(sure, town({ time: 6 }))
     const skipped = act(sure, inside, { type: 'skipSafariEncounter' })
     expect(visitOf(skipped)).toMatchObject({ encountersLeft: 18, balls: 30 })
-    expect(skipped.safari.log.map((e) => e.type)).toEqual(['skipped', 'encounter'])
+    expect(skipped.log.map((e) => e.type)).toEqual(['safariSkipped', 'safariEncounter'])
     const last = {
       ...inside,
       safari: { ...inside.safari, visit: { ...visitOf(inside), encountersLeft: 0 } }
@@ -354,7 +389,7 @@ describe('mồi, đá, bỏ đi, rời khu', () => {
     const caughtOne = act(sure, inside, { type: 'throwSafariBall' })
     const out = act(sure, caughtOne, { type: 'leaveSafari' })
     expect(out.safari.visit).toBeNull()
-    expect(out.safari.log).toEqual([{ type: 'visitEnded', caught: 1 }])
+    expect(out.log).toEqual([{ type: 'safariVisitEnded', caught: 1 }])
     expect(out.time).toBe(30)
     // Ra khu thì làm việc khác được.
     expect(act(sure, out, { type: 'travel', to: { type: 'floor', floor: 1 } }).time).toBe(31)
@@ -407,7 +442,7 @@ describe('save khu bảo tồn', () => {
     const { safari: _safari, ...rest } = cloneData(current)
     const old = JSON.parse(JSON.stringify({ ...rest, version: 53 }))
     const migrated = migrateState(old, base)
-    expect(migrated.safari).toEqual({ roster: [], refreshDay: 0, visit: null, log: [] })
+    expect(migrated.safari).toEqual({ roster: [], refreshDay: 0, visit: null })
     expect(validateGameState(base, migrated)).toEqual([])
   })
 

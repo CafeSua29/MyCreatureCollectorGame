@@ -693,6 +693,18 @@ export function makeRawData(): RawGameData {
       },
       // Thiên phú (docs/rules/monster-talents.md): không rơi để RNG của test cũ không đổi.
       talents: { levelsPerPoint: 5, pointsPerAwakening: 1, pointsPerRebirth: 3, bossDrops: [] },
+      // Phi thăng (docs/rules/ascension.md): tầng thấp để test không phải mở nhiều tầng.
+      ascension: {
+        minFloor: 4,
+        essenceBase: 10,
+        startFloorMaxPercent: 50,
+        keepMoneyMaxPercent: 50,
+        destiny: {
+          baseSlots: 1,
+          choiceCount: 3,
+          rarityWeights: { common: 60, rare: 30, epic: 10 }
+        }
+      },
       tamerTalents: {
         pointsPerRealm: 2,
         pointsPerQuest: 1,
@@ -725,6 +737,63 @@ export function makeRawData(): RawGameData {
         giveShinyMultiplier: 1,
         itemWeightPower: 0.5,
         expBonusPercent: 50
+      },
+      // Độ khó (docs/rules/challenge-modes.md): số tròn dễ đếm, Thường không đổi gì.
+      challenge: {
+        difficulties: {
+          easy: {
+            levelPercent: -50,
+            geneMultiplier: 0.5,
+            frenzyThresholdPercent: -10,
+            frenzyExtraActionPercent: -5,
+            rewardPercent: -20,
+            expPercent: 0
+          },
+          normal: {
+            levelPercent: 0,
+            geneMultiplier: 1,
+            frenzyThresholdPercent: 0,
+            frenzyExtraActionPercent: 0,
+            rewardPercent: 0,
+            expPercent: 0
+          },
+          hard: {
+            levelPercent: 50,
+            geneMultiplier: 2,
+            frenzyThresholdPercent: 10,
+            frenzyExtraActionPercent: 5,
+            rewardPercent: 20,
+            expPercent: -20
+          },
+          nightmare: {
+            levelPercent: 100,
+            geneMultiplier: 3,
+            frenzyThresholdPercent: 20,
+            frenzyExtraActionPercent: 10,
+            rewardPercent: 50,
+            expPercent: -50
+          }
+        },
+        randomizer: { tierSize: 3 }
+      },
+      // Đấu giá hành (docs/rules/auction.md): luôn 2 lô vật phẩm, số tròn dễ đếm.
+      auction: {
+        sessionDays: 7,
+        lotCount: { min: 2, max: 2 },
+        lotWeights: { equipment: 0, unique: 0, egg: 0, book: 0, item: 1 },
+        startPercent: 100,
+        npcMinPercent: 90,
+        npcMaxPercent: 250,
+        equipmentRarityWeights: { legendary: 1 },
+        equipmentMinRollPercent: 50,
+        itemCount: { min: 1, max: 1 },
+        bookReusableChance: 50,
+        eggCatchRatePower: -1,
+        eggValuePerFloor: 100,
+        eggRankMultipliers: [1, 2],
+        consignMinPercent: 60,
+        consignMaxPercent: 180,
+        feePercent: 10
       },
       // Tông môn (docs/rules/sects.md): số nhỏ dễ đếm trong test.
       sects: {
@@ -1649,6 +1718,63 @@ export function makeRawData(): RawGameData {
     ],
     // Thiên phú ngự thú sư mẫu (docs/rules/tamer-talents.md): đủ mọi kênh thưởng để test từng nơi
     // dùng; game fixture mặc định chưa nâng nút nào nên test cũ không đổi.
+    // Phi thăng và thiên mệnh mẫu (docs/rules/ascension.md).
+    ascensionUpgrades: [
+      {
+        id: 'immortalMight',
+        costPerRank: 2,
+        effects: [{ type: 'teamStatPercent', params: { percent: 5 } }]
+      },
+      {
+        id: 'fateVessel',
+        maxRank: 2,
+        costPerRank: 1,
+        effects: [{ type: 'destinySlots', params: { slots: 1 } }]
+      },
+      {
+        id: 'shortcutPath',
+        maxRank: 20,
+        costPerRank: 1,
+        effects: [{ type: 'startFloorPercent', params: { percent: 25 } }]
+      },
+      {
+        id: 'hiddenTreasury',
+        maxRank: 20,
+        costPerRank: 1,
+        effects: [{ type: 'keepMoneyPercent', params: { percent: 25 } }]
+      }
+    ],
+    destinies: [
+      {
+        id: 'killingStar',
+        rarity: 'common',
+        effects: [
+          { type: 'teamDamagePercent', params: { percent: 10 } },
+          { type: 'catchRatePercent', params: { percent: -20 } }
+        ]
+      },
+      {
+        id: 'fortuneStar',
+        rarity: 'common',
+        effects: [{ type: 'expPercent', params: { percent: -10 } }]
+      },
+      {
+        id: 'lonelyStar',
+        rarity: 'epic',
+        effects: [
+          { type: 'teamStatPercent', params: { percent: 15 } },
+          { type: 'partySlotPenalty', params: { slots: 2 } }
+        ]
+      },
+      {
+        id: 'tamerSaintBody',
+        rarity: 'rare',
+        effects: [
+          { type: 'contractResonancePercent', params: { percent: 50 } },
+          { type: 'breakthroughCostPercent', params: { percent: 100 } }
+        ]
+      }
+    ],
     tamerTalentBranches: [{ id: 'taming' }, { id: 'capture' }, { id: 'commerce' }],
     tamerTalents: [
       {
@@ -2826,6 +2952,8 @@ export function makeBattleState(
       trial: null,
       instability: null,
       special: null,
+      difficulty: 'normal',
+      nuzlockeEncounter: false,
       log: [],
       ...overrides
     }
@@ -2837,6 +2965,7 @@ export function makeBattleContext(
   overrides: Partial<MonsterBattleContext> = {}
 ): MonsterBattleContext {
   return {
+    tamerBonusDamagePercent: 0,
     turnsOnField: 1,
     allies: [],
     knockouts: 0,

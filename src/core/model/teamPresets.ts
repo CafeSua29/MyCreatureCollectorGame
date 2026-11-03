@@ -14,16 +14,9 @@ export interface TeamPreset {
   equipmentByMonster: Record<string, PresetEquipment[]>
 }
 
-/** Thứ không áp được ở lần áp gần nhất (UI báo cho người chơi); null = đủ hết hoặc chưa áp. */
-export interface PresetMissing {
-  monsterIds: string[]
-  items: PresetEquipment[]
-}
-
 export interface TeamPresetState {
   presets: TeamPreset[]
   nextPresetId: number
-  lastMissing: PresetMissing | null
 }
 
 export interface TeamPresetConfig {

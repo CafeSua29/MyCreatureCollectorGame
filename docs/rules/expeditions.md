@@ -22,7 +22,7 @@ Code: kiểu `model/expeditions.ts`, yêu cầu đội `EXPEDITION_REQUIREMENTS`
   - Tiền `moneyPerFloor × tầng cao nhất × độ thành công`; mỗi món trong `drops` tung tỉ lệ, số lượng random đều trong [min, max] × độ thành công (làm tròn xuống, tối thiểu 1 khi trúng).
   - Mỗi quái + EXP `expPerDayPerFloor × durationDays × tầng cao nhất` (`gainExp`); mỗi quái `injuryChance`% bị trọng thương (`awakening.injuryBattles` trận, `awakening.md`), **không chết**. Gỡ việc.
   - **Trứng hiếm** (`createExpeditionEgg`, `progression/eggs.ts`): tung min(100, `eggChance` × độ thành công) % (0 không tốn RNG); trứng chứa loài đều trong mọi boss của map tầng cao nhất (dạng đầu tiên chưa tiến hóa), level 1, gen như quái hoang tầng đó, shiny theo tỉ lệ chung, **không** có trait "Huyết thống boss", thân mật trứng, chưa khế ước, lý lịch nguồn gốc `expeditionEgg { expeditionId }`; vào `eggs`, id từ `nextMonsterId`. Map không có boss thì không có trứng.
-  - `dayEvents`: `expeditionReturned { activeId, expeditionId, successPercent, injuredIds, eggId }` (`eggId` null = không có trứng).
+  - Log ngoài trận: `expeditionReturned { activeId, expeditionId, successPercent, injuredIds, eggId }` (`eggId` null = không có trứng).
   - Quái tọa hóa khi đang đi rời kho như thường; đội về chỉ tính quái còn lại (không còn ai thì không thưởng).
 - **Kiểm tra save** (`validateExpeditionState`): bảng là mẫu tồn tại không lặp, `refreshDay` / `nextId` nguyên, đội có id `x<số>` không trùng và nhỏ hơn `nextId`, mẫu tồn tại, `monsterIds` không rỗng không lặp, quái của đội còn trong kho phải mang đúng việc; quái có việc thám hiểm phải thuộc một đội (việc động phủ kiểm ở `validateDwellingState`).
 

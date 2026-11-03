@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { fuseOutcome, previewFusion } from './fusion'
+import { previewFusion } from './fusion'
 import { fuseRaceMatch, fuseSuccessChance } from './fusionChance'
 import { createGameData } from '../gameData'
 import { gameReducer } from '../game'
 import { createInventory } from '../inventory'
 import { cloneData, toBig } from '../shared'
 import {
+  findLog,
   dataIssuesAfter,
   FIXTURE_RACE_TRAIT_ID,
   FIXTURE_PARTNER_SKILL_ID,
@@ -170,7 +171,7 @@ describe('action fuse — thất bại', () => {
     expect(next.money).toEqual(toBig(10_000 - 50 * 6))
     expect(next.rng).toEqual(state.rng)
     expect(next.inventory).toEqual(state.inventory) // không dùng bùa thì túi giữ nguyên
-    expect(fuseOutcome(state, next, 'a')).toBe('failed')
+    expect(findLog(next, 'fused')?.outcome).toBe('failed')
   })
 
   it('quái gốc khóa (docs/rules/roster.md): tỉ lệ < 100% phải có Bùa Hộ Mệnh, không thì báo lỗi', () => {
@@ -197,7 +198,7 @@ describe('action fuse — thất bại', () => {
     expect(next.storage).toEqual([])
     expect(next.money).toEqual(toBig(10_000 - 50 * 6))
     expect(next.inventory.stacks).toEqual({ fusionCharm: 1 })
-    expect(fuseOutcome(state, next, 'a')).toBe('protected')
+    expect(findLog(next, 'fused')?.outcome).toBe('protected')
   })
 
   it('bùa tăng tỉ lệ tiêu hao cả khi thất bại', () => {
@@ -224,7 +225,7 @@ describe('action fuse — thành công, tỉ lệ ngẫu nhiên', () => {
     expect(next.party[0].fused).toBe(true)
     expect(next.party[0].lineage).toEqual(['twig'])
     expect(next.inventory.stacks).toEqual({})
-    expect(fuseOutcome(state, next, 'a')).toBe('success')
+    expect(findLog(next, 'fused')?.outcome).toBe('success')
   })
 
   it('tỉ lệ 50%: khoảng một nửa số seed thành công, tất định theo seed', () => {
@@ -234,7 +235,7 @@ describe('action fuse — thành công, tỉ lệ ngẫu nhiên', () => {
       const state = { ...fuseState(), rng: makeGameState({ seed }).rng }
       const next = gameReducer(half, state, fuseAction)
       expect(gameReducer(half, state, fuseAction)).toEqual(next)
-      if (fuseOutcome(state, next, 'a') === 'success') successes++
+      if (findLog(next, 'fused')?.outcome === 'success') successes++
     }
     expect(successes).toBeGreaterThan(160)
     expect(successes).toBeLessThan(240)
@@ -247,7 +248,7 @@ describe('action fuse — thành công, tỉ lệ ngẫu nhiên', () => {
       const state = { ...fuseState(), rng: makeGameState({ seed }).rng }
       const next = gameReducer(failData, state, { ...fuseAction, boostItemId: 'fusionCharm' })
       expect(next.rng).not.toEqual(state.rng)
-      outcomes.add(fuseOutcome(state, next, 'a'))
+      outcomes.add(defined(findLog(next, 'fused')).outcome)
     }
     expect(outcomes).toEqual(new Set(['success', 'failed']))
   })
@@ -357,13 +358,6 @@ describe('kiểm tra dữ liệu: tỉ lệ fuse, hook trait', () => {
       { regenerateText: true }
     ).join('\n')
     expect(issues).toMatch(/"fuseChanceBonus": points/)
-  })
-})
-
-describe('fuseOutcome', () => {
-  it('quái gốc không có trước khi fuse: lỗi lập trình', () => {
-    const state = makeGameState({ seed: 1, party: [makeMonster({ id: 'p' })] })
-    expect(() => fuseOutcome(state, state, 'a')).toThrow(/không có quái gốc/)
   })
 })
 

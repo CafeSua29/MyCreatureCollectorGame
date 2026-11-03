@@ -26,7 +26,7 @@ Code: model `model/gathering.ts` (`GATHERING_METHODS`, `GatheringConfig`, `Gathe
   - **Khai thác**: luôn **đào ra** vật phẩm trước (`itemRolls` lượt), rồi ra trận là **bị phục kích** (`'ambush'`).
 - **Trận**: một quái thường (không boss, không gặp 2 quái) của `gatheringEncounters`, level quái thường của tầng + `levelOffset` (tối thiểu 1), gen / shiny / tuổi / cực như quái hoang. `battle.special = { kind: 'gathering', method, ambush }`: là **trận trên tầng** (đếm modifier / chuỗi event như trận quái hoang), được bắt, có quái xin theo / Thị Uy (`canRecruit`), thua như trận thường. Phục kích: **không chạy được ở lượt đầu** (`specialBattleRestricted { command: 'flee' }`), từ lượt 2 chạy như thường.
 - **Thời gian**: lần không mở trận tốn `clock.hours.fishing` (1) / `mining` (2) giờ; lần mở trận tính giờ lúc rời trận như trận quái hoang. Lệch roadmap ("tính như một trận cho thời hạn theo trận"): lần không có trận **không** đếm thời hạn theo trận (linh thực, modifier, trọng thương, trứng) vì đó là việc gắn với chiến đấu (quy ước đồng hồ ở `lifespan.md`); lần có trận đếm như trận thường.
-- `GameState.gathering.lastResult` = `{ method, tier, lureItemId, items, encounter: 'none' | 'bite' | 'ambush' }` của lần gần nhất (cho UI); `null` lúc bắt đầu.
+- Kết quả: log ngoài trận `gathered { method, tier, lureItemId, items, encounter: 'none' | 'bite' | 'ambush' }` (`game-log.md`; trước v98 là `GameState.gathering.lastResult`).
 
 ## Nội dung
 

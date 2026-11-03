@@ -1,24 +1,10 @@
 // Kiểm tra phần hiểm địa trong save (docs/rules/zones.md): GameState.zones và trận hiểm địa
 // (BattleState.special kind 'zone'). Gọi từ validateGameState / checkBattleSpecial.
 
-import { ZONE_STEP_KINDS, type GameData } from '../model'
+import type { GameData } from '../model'
 import { asObject, checkInteger } from '../shared'
 
 type Raw = Record<string, unknown>
-
-/** Kết quả bước gần nhất: null hoặc { kind } (rương kèm items, linh tuyền kèm healPercent). */
-function checkLastStep(value: unknown, issues: string[]): void {
-  if (value === null) return
-  const step = asObject(value)
-  const kinds: readonly unknown[] = [...ZONE_STEP_KINDS, 'guardian']
-  if (!step || !kinds.includes(step.kind)) {
-    issues.push('zones.visit.lastStep phải là null hoặc { kind } hợp lệ')
-    return
-  }
-  if ((step.kind === 'treasure' || step.kind === 'rareTreasure') && !Array.isArray(step.items)) {
-    issues.push('zones.visit.lastStep.items phải là danh sách')
-  }
-}
 
 /**
  * zones: { visit, reopenDay }; reopenDay theo id hiểm địa tồn tại, ngày nguyên ≥ 0. Lượt vào: hiểm
@@ -50,7 +36,6 @@ export function validateZoneState(data: GameData, state: Raw): string[] {
   if (Number(visit.stepsTaken) >= Number(visit.steps)) {
     issues.push('zones.visit.stepsTaken phải nhỏ hơn steps')
   }
-  checkLastStep(visit.lastStep, issues)
   if (asObject(state.location)?.type !== 'town') issues.push('zones.visit: phải ở thị trấn')
   if (state.trial !== null) issues.push('zones.visit: không đồng thời đi bí cảnh')
   if (asObject(state.safari)?.visit !== null)

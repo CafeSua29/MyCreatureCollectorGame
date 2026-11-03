@@ -23,6 +23,7 @@ import {
   makeRawData
 } from '../testing'
 import type { GameData, GameState, ItemRef, RawGameData, SkillBookConfig } from '../model'
+import { defaultGameOptions } from '../progression'
 
 const data = makeData()
 
@@ -50,7 +51,7 @@ describe('kệ sách của cửa hàng', () => {
       highestFloor: 1,
       nextItemId: 1,
       inventory: makeInventory(),
-      options: { lifespanEnabled: false, permadeathEnabled: false }
+      options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false })
     })
 
   it('shopMax = 0: không có sách, RNG như khi chưa có kệ sách', () => {
@@ -102,7 +103,7 @@ describe('kệ sách của cửa hàng', () => {
         highestFloor: 1,
         nextItemId: 1,
         inventory: makeInventory(),
-        options: { lifespanEnabled: false, permadeathEnabled: false },
+        options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false }),
         party: [pine]
       })
       const [entry] = stock.filter((candidate) => candidate.storage === 'book')

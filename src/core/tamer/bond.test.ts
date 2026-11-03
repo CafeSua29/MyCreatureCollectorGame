@@ -7,7 +7,7 @@ import { describe, expect, it } from 'vitest'
 import { gameReducer, migrateState, serializeState, validateGameState } from '../game'
 import { computeStats, getMaxHp } from '../monster'
 import { lifespanYears } from '../registries'
-import { advanceTime } from '../progression'
+import { advanceTime, defaultGameOptions } from '../progression'
 import { toBig } from '../shared'
 import {
   atFloor,
@@ -153,14 +153,14 @@ describe('chặn và đạo thương', () => {
     const old = { ...friend(), bond: true, aging: true, ageDays: 1_000_000 }
     const base = {
       ...town([old, friend('b')]),
-      options: { lifespanEnabled: true, permadeathEnabled: false },
+      options: defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false }),
       tamer: { ...town().tamer, bondDay: 0 }
     }
     const state = { ...base, party: base.party.map((m) => ({ ...m, aging: true })) }
     const next = advanceTime(data, state, HOURS_PER_DAY)
     expect(next.party.some((m) => m.id === 'a')).toBe(false)
     expect(next.tamer.woundUntilDay).toBe(1 + 30 - 1)
-    expect(next.dayEvents).toContainEqual({ type: 'bondBroken', monsterId: 'a', woundUntilDay: 30 })
+    expect(next.log).toContainEqual({ type: 'bondBroken', monsterId: 'a', woundUntilDay: 30 })
     expectActionError(
       () => gameReducer(data, next, { type: 'tamerBreakthrough' }),
       'tamerWounded',

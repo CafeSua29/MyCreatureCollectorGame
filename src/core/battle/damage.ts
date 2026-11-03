@@ -755,6 +755,8 @@ function rawDamage(
     .times(sizeDamageMultiplier(data, attacker))
     // Âm dương tương khắc (docs/rules/polarity.md).
     .times(polarityDamageMultiplier(data, attacker, defender))
+    // Kênh thưởng teamDamagePercent của phe người chơi (Sát Tinh, docs/rules/ascension.md).
+    .times(Math.max(0, 1 + (arena?.attackerContext?.tamerBonusDamagePercent ?? 0) / 100))
     .div(defense.times(100))
   const extra = bonusDamage(
     input,

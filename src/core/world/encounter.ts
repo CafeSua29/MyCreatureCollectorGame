@@ -18,8 +18,10 @@ import {
   activeTimeMultiplier,
   ageDaysAtPercent,
   bloodlineGroupsOf,
+  difficultyNumbers,
   isLargeMonster,
   purityOf,
+  randomizeEncounters,
   withPurity
 } from '../registries'
 import {
@@ -369,6 +371,43 @@ function floorRollSpec(
 }
 
 /**
+ * Spec của quái địch trên tầng (quái hoang, boss, câu cá...): spec chung của tầng rồi áp độ khó của
+ * game (docs/rules/challenge-modes.md): level × (1 + levelPercent %) (làm tròn, tối thiểu 1), gen ×
+ * geneMultiplier.
+ */
+function enemyRollSpec(
+  data: GameData,
+  site: FloorSite,
+  encounters: readonly EncounterEntry[]
+): MonsterRollSpec {
+  return withDifficulty(data, site, floorRollSpec(data, site, encounters))
+}
+
+/** Áp độ khó của `site` lên spec quái địch đã có level / gen (cả đội ngự thú sư NPC). */
+export function withDifficulty(
+  data: GameData,
+  site: FloorSite,
+  spec: MonsterRollSpec
+): MonsterRollSpec {
+  if (site.difficulty === undefined) return spec
+  const { levelPercent, geneMultiplier } = difficultyNumbers(data, site.difficulty)
+  const scale = (level: number): number => Math.max(1, Math.round(level * (1 + levelPercent / 100)))
+  return {
+    ...spec,
+    levelMin: scale(spec.levelMin),
+    levelMax: scale(spec.levelMax),
+    geneMultiplier: spec.geneMultiplier.times(geneMultiplier)
+  }
+}
+
+/** Danh sách gặp của quái hoang / quà sau Randomizer của game (docs/rules/challenge-modes.md). */
+const siteEncounters = (
+  data: GameData,
+  site: FloorSite,
+  encounters: readonly EncounterEntry[]
+): readonly EncounterEntry[] => randomizeEncounters(data, site.randomizer ?? null, encounters)
+
+/**
  * Tuổi khi xuất hiện (mục "Tuổi và thọ nguyên"): random theo ngày trong khoảng % thọ nguyên, tung
  * sau cùng (sau cả hệ số boss, vì thọ nguyên boss nhân bossMultiplier). Quái không già đi (tắt thọ
  * nguyên) lấy giữa khoảng, không tốn RNG.
@@ -409,7 +448,7 @@ export function generateWildMonster(
   site: FloorSite,
   id: string
 ): [Monster, RngState] {
-  const spec = floorRollSpec(data, site, site.biome.encounters)
+  const spec = enemyRollSpec(data, site, siteEncounters(data, site, site.biome.encounters))
   return rollWildFromSpec(data, rng, { site, spec, id })
 }
 
@@ -437,11 +476,13 @@ export function generateTradeMonster(
     shinyMultiplier: number
   }
 ): [Monster, RngState] {
-  const base = floorRollSpec(data, site, encounters)
+  // Quái NPC đưa là quà: theo Randomizer, không theo độ khó (không phải quái địch).
+  const randomized = siteEncounters(data, site, encounters)
+  const base = floorRollSpec(data, site, randomized)
   const spec: MonsterRollSpec = {
     ...base,
     // Loài trao đổi không theo giờ gặp của map (encountersAt): giữ nguyên danh sách.
-    encounters,
+    encounters: randomized,
     levelMin: Math.max(1, base.levelMin + levelOffset),
     levelMax: Math.max(1, base.levelMax + levelOffset),
     geneMultiplier: base.geneMultiplier.times(geneMultiplier),
@@ -470,12 +511,12 @@ export function generateGatheringEncounter(
     nextMonsterId: number
   }
 ): Encounter {
-  const base = floorRollSpec(data, site, encounters)
-  const spec: MonsterRollSpec = {
+  const base = floorRollSpec(data, site, siteEncounters(data, site, encounters))
+  const spec = withDifficulty(data, site, {
     ...base,
     levelMin: Math.max(1, base.levelMin + levelOffset),
     levelMax: Math.max(1, base.levelMax + levelOffset)
-  }
+  })
   let monster: Monster
   ;[monster, rng] = rollWildFromSpec(data, rng, { site, spec, id: `m${nextMonsterId}` })
   return { enemies: [monster], isBoss: false, rng, nextMonsterId: nextMonsterId + 1 }
@@ -567,7 +608,8 @@ export function generateBoss(
     weight: boss.weight ?? 0
   }))
   let monster: Monster
-  ;[monster, rng] = rollMonster(data, rng, floorRollSpec(data, site, encounters), id)
+  // Boss giữ loài khi bật Randomizer: đồ rơi / môi trường riêng của boss tra theo loài.
+  ;[monster, rng] = rollMonster(data, rng, enemyRollSpec(data, site, encounters), id)
   ;[monster, rng] = rollBossMultiplier(data, rng, biome, monster)
   ;[monster, rng] = rollBossTransformTraits(data, rng, { floor: site.floor, boss: monster })
   return rollBossAgeAndPolarity(data, rng, { site, boss: monster })
@@ -582,11 +624,12 @@ export function generateFloorBoss(
 ): [Monster, RngState] {
   const { biome } = site
   const level = floorBossLevel(data, site.floor)
-  const spec: MonsterRollSpec = {
+  // Boss tầng giữ loài khi bật Randomizer: hạ boss tầng (mở tầng sau) tra theo loài.
+  const spec = withDifficulty(data, site, {
     ...floorRollSpec(data, site, [{ speciesId: biome.floorBossSpeciesId, weight: 1 }]),
     levelMin: level,
     levelMax: level
-  }
+  })
   let monster: Monster
   ;[monster, rng] = rollMonster(data, rng, spec, id)
   ;[monster, rng] = rollBossMultiplier(data, rng, biome, monster)

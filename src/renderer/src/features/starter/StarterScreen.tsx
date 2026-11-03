@@ -57,7 +57,11 @@ export function StarterScreen({
   const views = useMemo(() => {
     // Game mới bắt đầu ở tầng 1, ngự thú sư cảnh giới 0: số ô trang bị lúc đó; chưa có đội, chưa ở đâu;
     // tư chất chấm theo tầng 1.
-    const equipmentSlots = equipmentSlotCount(data, { highestFloor: 1, tamer: { realm: 0 } })
+    const equipmentSlots = equipmentSlotCount(data, {
+      highestFloor: 1,
+      tamer: { realm: 0 },
+      ascension: { bestFloor: 1, bestRealm: 0 }
+    })
     return shown.map((monster, index) =>
       buildMonsterView(data, monster, {
         location: 'party',

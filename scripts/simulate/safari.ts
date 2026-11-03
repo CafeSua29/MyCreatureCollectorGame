@@ -11,7 +11,7 @@ import {
   type GameAction,
   type GameData,
   type GameState,
-  type SafariEvent
+  type GameLogEntry
 } from '@core'
 import { floorMapsFor } from './floorSweep'
 import { assumedTamerRealm } from './tamer'
@@ -63,15 +63,15 @@ function nextAction(
 function tally(
   data: GameData,
   row: SafariRow,
-  { events, mapped }: { events: readonly SafariEvent[]; mapped: ReadonlySet<string> },
+  { events, mapped }: { events: readonly GameLogEntry[]; mapped: ReadonlySet<string> },
   state: GameState
 ): void {
   const ranks = Object.keys(data.speciesRanks)
   for (const event of events) {
-    if (event.type === 'encounter') row.encounters++
-    else if (event.type === 'throwBall') row.ballsThrown++
-    else if (event.type === 'fled') row.fled++
-    else if (event.type === 'caught') {
+    if (event.type === 'safariEncounter') row.encounters++
+    else if (event.type === 'safariThrowBall') row.ballsThrown++
+    else if (event.type === 'safariFled') row.fled++
+    else if (event.type === 'safariCaught') {
       row.caught++
       const monster = [...state.party, ...state.storage].find((m) => m.id === event.monsterId)
       const species = monster ? data.species[monster.baseSpeciesId] : undefined
@@ -141,14 +141,14 @@ export function runSafari(
     // (việc theo ngày) không đo ở phần này nên bỏ.
     state = { ...state, money: fee, party: start.party, storage: [], events: start.events }
     state = gameReducer(data, state, { type: 'enterSafari' })
-    tally(data, row, { events: state.safari.log, mapped }, state)
+    tally(data, row, { events: state.log, mapped }, state)
     let lured = false
     let encounterId = state.safari.visit?.encounter.monster.id
     while (state.safari.visit) {
       const action = nextAction(data, state, { policy, lured })
       if (action.type === 'throwSafariRock' || action.type === 'throwSafariBait') lured = true
       state = gameReducer(data, state, action)
-      tally(data, row, { events: state.safari.log, mapped }, state)
+      tally(data, row, { events: state.log, mapped }, state)
       const current = state.safari.visit?.encounter.monster.id
       if (current !== encounterId) {
         encounterId = current

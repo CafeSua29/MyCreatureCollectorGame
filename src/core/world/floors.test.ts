@@ -16,6 +16,7 @@ import {
   isValidFloor
 } from './floors'
 import type { GameData, Monster } from '../model'
+import { defaultGameOptions } from '../progression'
 
 const data = makeData()
 
@@ -36,7 +37,7 @@ describe('biomeOfFloor', () => {
   it('đọc map của tầng trong floorBiomeIds (phần tử N − 1), không theo thứ tự file', () => {
     const state = {
       floorBiomeIds: ['pairs', 'pairs', 'field'],
-      options: { lifespanEnabled: true, permadeathEnabled: false },
+      options: defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false }),
       time: 30
     }
     expect([1, 2, 3].map((floor) => biomeOfFloor(data, state, floor).id)).toEqual([
@@ -48,7 +49,9 @@ describe('biomeOfFloor', () => {
       floor: 3,
       biome: data.biomes.field,
       aging: true,
-      time: 30
+      time: 30,
+      difficulty: 'normal',
+      randomizer: null
     })
   })
 

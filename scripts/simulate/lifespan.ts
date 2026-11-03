@@ -95,15 +95,15 @@ export function handleSouls(data: GameData, state: GameState, tracker: LifespanT
 }
 
 /**
- * Ghi sự kiện của lần trôi thời gian vừa xong (gọi ngay sau mỗi action tốn giờ, vì dayEvents bị thay
- * ở lần trôi sau).
+ * Ghi sự kiện của lần trôi thời gian vừa xong (gọi ngay sau mỗi action tốn giờ, vì log ngoài trận bị
+ * xóa ở action sau).
  */
 export function recordDayEvents(
   tracker: LifespanTracker,
   state: GameState,
   { battle, teamIds }: { battle: number; teamIds: ReadonlySet<string> }
 ): void {
-  for (const event of state.dayEvents) {
+  for (const event of state.log) {
     if (event.type === 'nearingLifespanEnd') tracker.warnings++
     if (event.type !== 'diedOfOldAge') continue
     tracker.deaths.push({

@@ -1,0 +1,692 @@
+[
+  {
+    "id": "heavenChosen",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 100
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": -20
+        }
+      }
+    ]
+  },
+  {
+    "id": "killingStar",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": -20
+        }
+      }
+    ]
+  },
+  {
+    "id": "fortuneStar",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "lonelyStar",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "partySlotPenalty",
+        "params": {
+          "slots": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "alchemyProdigy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "smithingSuccessPercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "tamerSaintBody",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "contractResonancePercent",
+        "params": {
+          "percent": 50
+        }
+      },
+      {
+        "type": "breakthroughCostPercent",
+        "params": {
+          "percent": 100
+        }
+      }
+    ]
+  },
+  {
+    "id": "wealthStar",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scholarStar",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "frugalFate",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": -15
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastWhisperer",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenNet",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "ironBones",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "spiritSea",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "manaPercent",
+        "params": {
+          "percent": 30
+        }
+      },
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "forgeProdigy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "smithingSuccessPercent",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "kitchenGod",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "cookingSuccessPercent",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "caveLord",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "dwellingOutputPercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "wandererFate",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "gamblerStar",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 40
+        }
+      },
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "hastyFate",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "tamerSkillCooldown",
+        "params": {
+          "turns": 1
+        }
+      },
+      {
+        "type": "manaPercent",
+        "params": {
+          "percent": -25
+        }
+      }
+    ]
+  },
+  {
+    "id": "bloodFiend",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "blackTortoise",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 10
+        }
+      },
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "contractSage",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "contractLevelPercent",
+        "params": {
+          "percent": 30
+        }
+      },
+      {
+        "type": "contractResonancePercent",
+        "params": {
+          "percent": -20
+        }
+      }
+    ]
+  },
+  {
+    "id": "wealthGod",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 50
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": -20
+        }
+      }
+    ]
+  },
+  {
+    "id": "beastsBow",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "alchemySaint",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "alchemySuccessPercent",
+        "params": {
+          "percent": 30
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "realmBreaker",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "breakthroughCostPercent",
+        "params": {
+          "percent": -50
+        }
+      },
+      {
+        "type": "contractLevelPercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "fortuneChild",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 50
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 15
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": -5
+        }
+      }
+    ]
+  },
+  {
+    "id": "lateBloomer",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 40
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": -8
+        }
+      }
+    ]
+  },
+  {
+    "id": "treasureKeeper",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": -30
+        }
+      },
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "overlordFate",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "recruitPercent",
+        "params": {
+          "percent": -30
+        }
+      },
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": -30
+        }
+      }
+    ]
+  },
+  {
+    "id": "ancientSoul",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": 30
+        }
+      },
+      {
+        "type": "tamerSkillCooldown",
+        "params": {
+          "turns": 1
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": -30
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenDefier",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 25
+        }
+      },
+      {
+        "type": "expPercent",
+        "params": {
+          "percent": -30
+        }
+      },
+      {
+        "type": "shopPricePercent",
+        "params": {
+          "percent": 30
+        }
+      }
+    ]
+  },
+  {
+    "id": "solitaryPath",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": 30
+        }
+      },
+      {
+        "type": "partySlotPenalty",
+        "params": {
+          "slots": 4
+        }
+      }
+    ]
+  },
+  {
+    "id": "karmicDebt",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "dropRatePercent",
+        "params": {
+          "percent": 50
+        }
+      },
+      {
+        "type": "moneyPercent",
+        "params": {
+          "percent": 30
+        }
+      },
+      {
+        "type": "teamStatPercent",
+        "params": {
+          "percent": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "immortalSeed",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "contractResonancePercent",
+        "params": {
+          "percent": 100
+        }
+      },
+      {
+        "type": "breakthroughCostPercent",
+        "params": {
+          "percent": 150
+        }
+      }
+    ]
+  },
+  {
+    "id": "heavenFavorite",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "shinyChancePercent",
+        "params": {
+          "percent": 200
+        }
+      },
+      {
+        "type": "catchRatePercent",
+        "params": {
+          "percent": 20
+        }
+      },
+      {
+        "type": "teamDamagePercent",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  }
+]

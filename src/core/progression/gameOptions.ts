@@ -3,8 +3,13 @@
 
 import { ActionError, malformedAction } from '../shared'
 import { isFainted, keepAlive } from '../monster'
+import { difficultyRank } from '../registries'
 import {
+  DIFFICULTIES,
   GAME_OPTION_FLAGS,
+  type ChallengeState,
+  type Difficulty,
+  type GameAction,
   type GameData,
   type GameOptionFlag,
   type GameOptions,
@@ -37,12 +42,32 @@ const GAME_OPTION_RULES: Record<GameOptionFlag, OptionChange> = {
   permadeathEnabled: (_data, state) => state
 }
 
-/** Tùy chọn của game mới: mặc định tắt hết (chủ project chốt 2026-10-31). */
+/**
+ * Tùy chọn của game mới: mặc định tắt hết (chủ project chốt 2026-10-31), độ khó Thường, không chế độ
+ * thử thách. Mức thấp nhất từng dùng = độ khó lúc tạo game; Nuzlocke ép bật chết thật
+ * (docs/rules/challenge-modes.md).
+ */
 export function defaultGameOptions(overrides: Partial<GameOptions> = {}): GameOptions {
-  const options = Object.fromEntries(GAME_OPTION_FLAGS.map((flag) => [flag, false]))
-  // Ép kiểu vì vừa tạo đủ mọi khóa của GAME_OPTION_FLAGS ở trên.
-  return { ...(options as GameOptions), ...overrides }
+  // Ép kiểu vì vừa tạo đủ mọi khóa của GAME_OPTION_FLAGS.
+  const flags = Object.fromEntries(GAME_OPTION_FLAGS.map((flag) => [flag, false])) as Record<
+    GameOptionFlag,
+    boolean
+  >
+  const difficulty = overrides.difficulty ?? 'normal'
+  const options: GameOptions = {
+    ...flags,
+    difficulty,
+    lowestDifficulty: difficulty,
+    nuzlocke: null,
+    hardcore: false,
+    randomizer: null,
+    ...overrides
+  }
+  return options.nuzlocke ? { ...options, permadeathEnabled: true } : options
 }
+
+/** Tùy chọn Nuzlocke ép bật: không tắt được khi đang chơi Nuzlocke. */
+const NUZLOCKE_FORCED: readonly GameOptionFlag[] = ['permadeathEnabled']
 
 /** Bật / tắt một tùy chọn luật chơi (ngoài trận, ở đâu cũng được). */
 export function setGameOption(
@@ -57,6 +82,32 @@ export function setGameOption(
   if (state.options[option] === enabled) {
     throw new ActionError('optionUnchanged', { option, enabled })
   }
+  if (state.options.nuzlocke && NUZLOCKE_FORCED.includes(option)) {
+    throw new ActionError('nuzlockeLocked', { option })
+  }
   const next = { ...state, options: { ...state.options, [option]: enabled } }
   return GAME_OPTION_RULES[option](data, next, enabled)
 }
+
+/**
+ * Đổi độ khó (ngoài trận, ở đâu cũng được; docs/rules/challenge-modes.md). Xuống thấp hơn mức thấp
+ * nhất từng dùng thì ghi lại mức mới.
+ */
+export function setDifficulty(state: GameState, difficulty: Difficulty): GameState {
+  if (!DIFFICULTIES.includes(difficulty)) throw malformedAction('difficulty không hợp lệ')
+  if (state.battle) throw new ActionError('inBattle')
+  if (state.options.difficulty === difficulty) {
+    throw new ActionError('difficultyUnchanged', { difficulty })
+  }
+  const lowest = state.options.lowestDifficulty
+  const lowestDifficulty = difficultyRank(difficulty) < difficultyRank(lowest) ? difficulty : lowest
+  return { ...state, options: { ...state.options, difficulty, lowestDifficulty } }
+}
+
+/** Nuzlocke đã thua game: chỉ còn rời trận vừa kết thúc, mọi action khác báo lỗi. */
+export function assertNotGameOver(state: GameState, action: GameAction): void {
+  if (state.challenge.gameOver && action.type !== 'leaveBattle') throw new ActionError('gameOver')
+}
+
+/** Tiến độ thử thách của game mới: chưa dùng khu Nuzlocke nào, chưa thua. */
+export const newChallengeState = (): ChallengeState => ({ nuzlockeAreas: [], gameOver: false })

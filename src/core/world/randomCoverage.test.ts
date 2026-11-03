@@ -2,9 +2,9 @@
 // NPC lệch hệ của map, sách mạnh, map chưa mở vẫn có cơ hội ra, trọng số có thể thấp nhưng không bằng 0.
 
 import { describe, expect, it } from 'vitest'
-import { blackMarketItems } from '../events'
+import { blackMarketItems } from '../shop'
 import { createGameData } from '../gameData'
-import { gachaSpeciesPool } from '../progression'
+import { gachaSpeciesPool, defaultGameOptions } from '../progression'
 import { rollShopStock } from '../shop'
 import { createRng } from '../shared'
 import { defined, makeInventory, makeRawData, withFixtureText } from '../testing'
@@ -149,7 +149,7 @@ describe('kệ sách', () => {
       highestFloor: 1,
       nextItemId: 1,
       inventory: makeInventory(),
-      options: { lifespanEnabled: false, permadeathEnabled: false }
+      options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false })
     }).stock.flatMap((entry) => (entry.storage === 'book' ? [entry.skillId] : []))
 
   it('chiêu mạnh hơn shopMaxPower: hệ số > 0 thì lên kệ được, hệ số 0 thì không', () => {

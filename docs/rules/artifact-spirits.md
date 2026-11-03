@@ -61,4 +61,4 @@ Mọi action: `inBattle` / `notInTown`. Vị trí khí linh `SpiritLocation`: `{
 
 ## Chưa có
 
-- Hiển thị khí linh, phẩm cấp, Khí Linh Các, Khí giới bí cảnh (chờ `ui-overhaul.md`); di dời / gộp hàng loạt (chờ `bulk-actions.md`); khí linh của pháp bảo ngự thú sư (chủ project đã bỏ pháp bảo).
+- Hiển thị khí linh, phẩm cấp, Khí Linh Các, Khí giới bí cảnh (chờ `ui-overhaul.md`); khí linh của pháp bảo ngự thú sư (chủ project đã bỏ pháp bảo).

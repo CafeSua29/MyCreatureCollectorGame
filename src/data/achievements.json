@@ -844,5 +844,213 @@
         "moneyPerFloor": 40000
       }
     }
+  },
+  {
+    "id": "hardPioneer",
+    "condition": {
+      "type": "challengeFloor",
+      "difficulty": "hard"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 25,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "nightmarePioneer",
+    "condition": {
+      "type": "challengeFloor",
+      "difficulty": "nightmare"
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 25,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "nightmareConqueror"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "nuzlockeRun",
+    "condition": {
+      "type": "challengeFloor",
+      "modes": ["nuzlocke"]
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 25,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "survivor"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "hardcoreRun",
+    "condition": {
+      "type": "challengeFloor",
+      "modes": ["hardcore"]
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 25,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000,
+          "titleId": "ironWill"
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "randomizerRun",
+    "condition": {
+      "type": "challengeFloor",
+      "modes": ["randomizer"]
+    },
+    "tiers": [
+      {
+        "value": 10,
+        "rewards": {
+          "moneyPerFloor": 2000
+        }
+      },
+      {
+        "value": 25,
+        "rewards": {
+          "moneyPerFloor": 5000
+        }
+      },
+      {
+        "value": 50,
+        "rewards": {
+          "moneyPerFloor": 10000
+        }
+      },
+      {
+        "value": 100,
+        "rewards": {
+          "moneyPerFloor": 20000
+        }
+      }
+    ],
+    "repeat": {
+      "factor": 2,
+      "rewards": {
+        "moneyPerFloor": 40000
+      }
+    }
+  },
+  {
+    "id": "ascensionPath",
+    "condition": { "type": "ascensions" },
+    "tiers": [
+      { "value": 1, "rewards": { "moneyPerFloor": 10000 } },
+      { "value": 3, "rewards": { "moneyPerFloor": 20000 } },
+      { "value": 10, "rewards": { "moneyPerFloor": 50000 } }
+    ],
+    "repeat": { "factor": 2, "rewards": { "moneyPerFloor": 50000 } }
   }
 ]

@@ -107,7 +107,7 @@ function checkPresetItem(value: unknown, at: string, issues: string[]): void {
  */
 export function validateTeamPresetState(data: GameData, value: unknown): string[] {
   const state = asObject(value)
-  if (!state) return ['teamPresets phải là object { presets, nextPresetId, lastMissing }']
+  if (!state) return ['teamPresets phải là object { presets, nextPresetId }']
   const issues = checkInteger(state.nextPresetId, 'teamPresets.nextPresetId', 1)
   if (!Array.isArray(state.presets)) return [...issues, 'teamPresets.presets phải là danh sách']
   const { slots } = data.config.teamPresets
@@ -142,11 +142,5 @@ export function validateTeamPresetState(data: GameData, value: unknown): string[
     }
   })
   if (new Set(ids).size !== ids.length) issues.push('teamPresets.presets: id bị trùng')
-  if (state.lastMissing !== null) {
-    const missing = asObject(state.lastMissing)
-    if (!missing || !Array.isArray(missing.monsterIds) || !Array.isArray(missing.items)) {
-      issues.push('teamPresets.lastMissing phải là null hoặc { monsterIds, items }')
-    }
-  }
   return issues
 }

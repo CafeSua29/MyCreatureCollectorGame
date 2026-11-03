@@ -1,32 +1,12 @@
 // Kiểm tra phần luyện đan, luyện khí, nấu ăn trong save (docs/rules/alchemy.md, cooking.md); linh
 // điền ở validateDwellingState.ts.
 
-import { craftLevelFromExp, recipeStation } from '../progression'
+import { craftLevelFromExp } from '../progression'
 import { asObject, checkBig, checkInteger, type Decimal } from '../shared'
 import { checkKnownFields } from '../gameData'
 import type { CraftStation, GameData } from '../model'
 
-/** lastCraft: null hoặc { recipeId là công thức của đúng nơi luyện, successes, failures }. */
-function checkLastCraft(
-  data: GameData,
-  { value, station, field }: { value: unknown; station: CraftStation; field: string },
-  issues: string[]
-): void {
-  if (value === null) return
-  const craft = asObject(value)
-  const recipe =
-    craft && typeof craft.recipeId === 'string' && Object.hasOwn(data.recipes, craft.recipeId)
-      ? data.recipes[craft.recipeId]
-      : undefined
-  if (!craft || !recipe || recipeStation(recipe) !== station) {
-    issues.push(`${field}.lastCraft phải là null hoặc { recipeId, successes, failures } hợp lệ`)
-    return
-  }
-  issues.push(...checkInteger(craft.successes, `${field}.lastCraft.successes`, 0))
-  issues.push(...checkInteger(craft.failures, `${field}.lastCraft.failures`, 0))
-}
-
-/** Cấp của một nơi luyện: nguyên ≥ 1 khớp tổng exp, lần luyện gần nhất hợp lệ. */
+/** Cấp của một nơi luyện: nguyên ≥ 1 khớp tổng exp. */
 function checkCraftSkill(
   data: GameData,
   {
@@ -46,11 +26,10 @@ function checkCraftSkill(
       issues.push(`${field}.level phải khớp tổng exp (${expected}), nhận ${String(skill.level)}`)
     }
   }
-  checkLastCraft(data, { value: skill.lastCraft, station, field }, issues)
   return issues
 }
 
-/** smithing: cấp luyện khí khớp tổng exp, lần luyện gần nhất là công thức luyện khí. */
+/** smithing: cấp luyện khí khớp tổng exp. */
 export function validateSmithingState(data: GameData, value: unknown): string[] {
   const smithing = asObject(value)
   if (!smithing) return ['smithing phải là object']
@@ -72,7 +51,7 @@ function checkMeal(data: GameData, value: unknown, issues: string[]): void {
   issues.push(...checkInteger(meal.battlesLeft, 'cooking.meal.battlesLeft', 1))
 }
 
-/** cooking: cấp nấu ăn khớp tổng exp, lần nấu gần nhất là công thức nấu ăn, món ăn đang có. */
+/** cooking: cấp nấu ăn khớp tổng exp, món ăn đang có. */
 export function validateCookingState(data: GameData, value: unknown): string[] {
   const cooking = asObject(value)
   if (!cooking) return ['cooking phải là object']

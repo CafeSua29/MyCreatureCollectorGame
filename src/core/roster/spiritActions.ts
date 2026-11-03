@@ -207,6 +207,72 @@ export function mergeSpirits(
   )
 }
 
+/** Danh sách vị trí khí linh của lệnh hàng loạt: khác rỗng, không trùng vị trí. */
+function parseLocations(value: unknown, field: string): SpiritLocation[] {
+  if (!Array.isArray(value) || value.length === 0) {
+    throw malformedAction(`${field} phải là danh sách có ít nhất một vị trí khí linh`)
+  }
+  const locations = value.map(parseLocation)
+  locations.forEach((location, i) => {
+    if (locations.slice(0, i).some((other) => isSameLocation(other, location))) {
+      throw malformedAction(`${field} bị trùng vị trí`)
+    }
+  })
+  return locations
+}
+
+const isSameLocation = (a: SpiritLocation, b: SpiritLocation): boolean =>
+  sameHolder(a, b) && a.index === b.index
+
+/**
+ * Bỏ một khí linh khỏi nơi chứa làm lùi index các khí linh sau nó trong cùng nơi: xử lý từ index
+ * lớn xuống để vị trí của các lệnh còn lại vẫn đúng (sort ổn định giữ thứ tự cho index bằng nhau).
+ */
+const byIndexDescending = (locations: readonly SpiritLocation[]): SpiritLocation[] =>
+  [...locations].sort((a, b) => b.index - a.index)
+
+/**
+ * Di dời nhiều khí linh tới cùng một nơi trong một action (hàng loạt, docs/rules/bulk-actions.md):
+ * lần lượt như moveSpirit, từ vị trí lớn xuống nhỏ (khí linh tới nơi theo thứ tự đó); một khí linh
+ * lỗi (hết ô, túi đầy, thiếu tiền...) thì cả lệnh lỗi.
+ */
+export function moveSpirits(
+  data: GameData,
+  state: GameState,
+  { from, to }: { from: unknown; to: unknown }
+): GameState {
+  assertAtPavilion(state)
+  return byIndexDescending(parseLocations(from, 'from')).reduce(
+    (current, source) => moveSpirit(data, current, { from: source, to }),
+    state
+  )
+}
+
+/**
+ * Gộp nhiều khí linh cùng loại vào khí linh `first` trong một action (hàng loạt): lần lượt như
+ * mergeSpirits; khí linh giữ lại lùi vị trí khi khí linh bị gộp đứng trước nó trong cùng nơi chứa.
+ */
+export function mergeSpiritsInto(
+  data: GameData,
+  state: GameState,
+  { first, others }: { first: unknown; others: unknown }
+): GameState {
+  assertAtPavilion(state)
+  let keep = parseLocation(first)
+  const absorbed = parseLocations(others, 'others')
+  if (absorbed.some((location) => isSameLocation(location, keep))) {
+    throw malformedAction('không gộp một khí linh với chính nó')
+  }
+  let current = state
+  for (const second of byIndexDescending(absorbed)) {
+    current = mergeSpirits(data, current, { first: keep, second })
+    if (sameHolder(second, keep) && second.index < keep.index) {
+      keep = { ...keep, index: keep.index - 1 }
+    }
+  }
+  return current
+}
+
 /** Thức ăn: yêu đan bất kỳ (số nguyên ≥ 1) hoặc một hồn phách theo id. */
 function parseFood(value: unknown): SpiritFood {
   const object =

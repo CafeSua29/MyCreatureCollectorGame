@@ -5,6 +5,7 @@
 import type {
   BattleSide,
   BattleState,
+  Difficulty,
   FrenzyRole,
   FrenzyRoleNumbers,
   GameData,
@@ -12,6 +13,10 @@ import type {
   MonsterBattleContext
 } from '../model'
 import { forEachTraitHook } from './traitHooks'
+import { difficultyNumbers } from './challenge'
+
+/** Vai trò của quái hoang chịu độ khó (docs/rules/challenge-modes.md); boss thế giới không. */
+const DIFFICULTY_ROLES: readonly FrenzyRole[] = ['wild', 'boss']
 
 /**
  * Vai trò cuồng bạo của quái trong trận; null = không bao giờ cuồng bạo. Quái hoang (không có chủ)
@@ -33,9 +38,25 @@ export function frenzyRole(
   return battle.isBoss ? 'boss' : 'wild'
 }
 
-/** Số cuồng bạo của vai trò. */
-export const frenzyNumbers = (data: GameData, role: FrenzyRole): FrenzyRoleNumbers =>
-  data.config.frenzy.roles[role]
+/**
+ * Số cuồng bạo của vai trò; quái hoang / boss cộng thêm ngưỡng HP và tỉ lệ hành động thêm theo độ
+ * khó của trận (kẹp 0–100).
+ */
+export function frenzyNumbers(
+  data: GameData,
+  role: FrenzyRole,
+  difficulty: Difficulty
+): FrenzyRoleNumbers {
+  const numbers = data.config.frenzy.roles[role]
+  if (!DIFFICULTY_ROLES.includes(role)) return numbers
+  const { frenzyThresholdPercent, frenzyExtraActionPercent } = difficultyNumbers(data, difficulty)
+  const clamp = (value: number): number => Math.min(100, Math.max(0, value))
+  return {
+    ...numbers,
+    hpThresholdPercent: clamp(numbers.hpThresholdPercent + frenzyThresholdPercent),
+    extraActionChance: clamp(numbers.extraActionChance + frenzyExtraActionPercent)
+  }
+}
 
 /**
  * Ngưỡng HP kích hoạt (% max HP) của quái theo vai trò, cộng điểm % của trait (kiểu Cuồng tính);
@@ -43,7 +64,12 @@ export const frenzyNumbers = (data: GameData, role: FrenzyRole): FrenzyRoleNumbe
  */
 export function frenzyThreshold(
   data: GameData,
-  { monster, role, ctx }: { monster: Monster; role: FrenzyRole; ctx?: MonsterBattleContext }
+  {
+    monster,
+    role,
+    difficulty,
+    ctx
+  }: { monster: Monster; role: FrenzyRole; difficulty: Difficulty; ctx?: MonsterBattleContext }
 ): number | null {
   let prevented = false
   let bonus = 0
@@ -56,5 +82,5 @@ export function frenzyThreshold(
     },
     ctx
   )
-  return prevented ? null : frenzyNumbers(data, role).hpThresholdPercent + bonus
+  return prevented ? null : frenzyNumbers(data, role, difficulty).hpThresholdPercent + bonus
 }

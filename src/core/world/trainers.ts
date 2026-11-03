@@ -17,12 +17,7 @@ import type {
   WeightedItem
 } from '../model'
 import { equipmentInstanceId, rollEquipment, rollRarity, pickZCrystalFor } from '../inventory'
-import {
-  rollBossTransformTraits,
-  rollMonster,
-  rollSpawnAge,
-  type MonsterRollSpec
-} from './encounter'
+import { rollBossTransformTraits, rollMonster, rollSpawnAge, withDifficulty } from './encounter'
 import { floorGeneMultiplier, floorLevelRange, type FloorSite } from './floors'
 
 /** Loài hoang (xuất hiện trong bảng gặp của ít nhất một map), theo thứ tự map; mỗi loài một lần. */
@@ -233,14 +228,14 @@ export function generateTrainerTeam(
   let { nextMonsterId, nextItemId } = spec
   const levels = floorLevelRange(data, site.floor)
   const offset = trainerClass.levelOffset + spec.extraLevels
-  const rollSpec: MonsterRollSpec = {
+  const rollSpec = withDifficulty(data, site, {
     encounters: trainerSpeciesPool(data, spec.elementIds ?? trainerClass.elementIds),
     levelMin: Math.max(1, levels.min + offset),
     levelMax: Math.max(1, levels.max + offset),
     geneMultiplier: floorGeneMultiplier(data, site.floor),
     shinyChance: 0,
     aging: site.aging
-  }
+  })
   let size: number
   ;[size, rng] = nextInt(rng, trainerClass.teamSize.min, trainerClass.teamSize.max)
   const enemies: Monster[] = []

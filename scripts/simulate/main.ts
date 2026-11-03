@@ -2,6 +2,7 @@
 // việc (jobs.ts), chạy tuần tự hoặc trên nhiều worker, gom kết quả theo thứ tự cố định rồi in bảng
 // và ghi CSV. Chỗ duy nhất của script đụng file và console (ngoài worker).
 
+import { difficultyTable } from './difficulty'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { totalmem } from 'node:os'
 import { resolve } from 'node:path'
@@ -137,6 +138,7 @@ function outputTables(
     ['Level cần để thắng boss tầng', 'boss-level.csv', 'bossLevel', bossLevelTable(bossLevels)],
     ['Chơi liên tục', 'progression.csv', 'progression', progressionTable(progression)],
     ['Chơi liên tục: thọ nguyên', 'lifespan.csv', 'progression', lifespanTable(lifespan)],
+    ['Chơi liên tục: độ khó', 'difficulty.csv', 'progression', difficultyTable(progression)],
     [
       'Chơi liên tục: event',
       'events.csv',

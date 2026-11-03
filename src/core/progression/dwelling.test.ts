@@ -314,7 +314,7 @@ describe('việc theo ngày', () => {
     const day1 = days(state, 1)
     expect(cropDaysLeft(data, day1, 0)).toBe(2)
     const day2 = days(day1, 1)
-    expect(day2.dayEvents).toContainEqual({
+    expect(day2.log).toContainEqual({
       type: 'cropRipe',
       plotIndex: 0,
       seedItemId: 'seedHerb'
@@ -370,7 +370,7 @@ describe('linh điền', () => {
     expect(planted.dwelling.plots[0]).toEqual({ seedItemId: 'seedHerb', growth: 0 })
     expectActionError(() => reap(planted), 'cropNotReady', { plotIndex: 0, daysLeft: 4 })
     const ripe = days(planted, 5)
-    expect(ripe.dayEvents.filter((e) => e.type === 'cropRipe')).toEqual([
+    expect(ripe.log.filter((e) => e.type === 'cropRipe')).toEqual([
       { type: 'cropRipe', plotIndex: 0, seedItemId: 'seedHerb' }
     ])
     const reaped = reap(ripe)

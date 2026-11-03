@@ -18,11 +18,16 @@ import {
   playerContractLevelLimit,
   realmToContract
 } from '../tamer'
-import { dayOf, type GameData, type GameState, type Monster } from '../model'
+import {
+  appendLog,
+  dayOf,
+  type ContractOutcome,
+  type GameLogEntry,
+  type GameData,
+  type GameState,
+  type Monster
+} from '../model'
 import { locateOwned } from './owned'
-
-/** Kết quả một lần khế ước, UI so state trước / sau (như breakthroughOutcome). */
-export type ContractOutcome = 'success' | 'failed' | 'escaped'
 
 function requireTownIdle(state: GameState): void {
   if (state.battle) throw new ActionError('inBattle')
@@ -70,7 +75,8 @@ const canEscape = (state: GameState, monster: Monster): boolean =>
 /**
  * Khế ước quái `monsterId` (đội hoặc kho): tung `contractChance`. Thành công: cảnh giới khế ước =
  * cảnh giới ngự thú sư, mốc lý lịch `contracted`. Thất bại: quái − affinityLoss thân mật, ngự thú sư
- * bị phản phệ backlashDays ngày, rồi tung `contractEscapeChance` quái bỏ trốn.
+ * bị phản phệ backlashDays ngày, rồi tung `contractEscapeChance` quái bỏ trốn. Kết quả ghi log ngoài
+ * trận `contractAttempted`.
  */
 export function formContract(data: GameData, state: GameState, monsterId: string): GameState {
   requireTownIdle(state)
@@ -78,6 +84,11 @@ export function formContract(data: GameData, state: GameState, monsterId: string
   assertNotBusy(monster)
   assertCanContract(data, state, monster)
   const { realm } = state.tamer
+  const attempted = (outcome: ContractOutcome): GameLogEntry => ({
+    type: 'contractAttempted',
+    monsterId,
+    outcome
+  })
   const [success, rng] = rollPercent(
     state.rng,
     contractChance(data, monster, playerContractLevelLimit(data, state))
@@ -88,16 +99,18 @@ export function formContract(data: GameData, state: GameState, monsterId: string
       { ...monster, contractRealm: realm, contractDays: 0 },
       { day: dayOf(state.time), kind: 'contracted', realm }
     )
-    return { ...replace(contracted), rng }
+    return appendLog({ ...replace(contracted), rng }, attempted('success'))
   }
   const { affinityLoss } = data.config.tamer.contract.failure
   const hurt = changeAffinity(data, monster, -affinityLoss)
   const days = data.config.tamer.contract.failure.backlashDays
   const failed: GameState = { ...replace(hurt), rng, tamer: backlash(state, days) }
-  if (!canEscape(state, monster)) return failed
+  if (!canEscape(state, monster)) return appendLog(failed, attempted('failed'))
   const [escaped, afterEscape] = rollPercent(rng, contractEscapeChance(data, hurt))
   const next = { ...failed, rng: afterEscape }
-  return escaped ? escape(next, hurt) : next
+  return escaped
+    ? appendLog(escape(next, hurt), attempted('escaped'))
+    : appendLog(next, attempted('failed'))
 }
 
 /**
@@ -118,16 +131,4 @@ export function dissolveContract(data: GameData, state: GameState, monsterId: st
     contractDays: 0
   }
   return { ...replace(freed), tamer: backlash(state, dissolveBacklashDays) }
-}
-
-/** Kết quả lần khế ước `monsterId` từ state trước sang state sau. */
-export function contractOutcome(
-  before: GameState,
-  after: GameState,
-  monsterId: string
-): ContractOutcome {
-  const owned = [...after.party, ...after.storage].find((m) => m.id === monsterId)
-  if (!owned) return 'escaped'
-  const was = [...before.party, ...before.storage].find((m) => m.id === monsterId)
-  return isContracted(owned) && !(was && isContracted(was)) ? 'success' : 'failed'
 }

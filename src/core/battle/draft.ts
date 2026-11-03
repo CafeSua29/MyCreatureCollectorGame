@@ -9,6 +9,7 @@ import {
   areItemsDisabled,
   collectionStatPercent,
   tamerBonusAmount,
+  contractStatPercent,
   mealStatPercent,
   blessingStatPercent,
   fieldIdMatches,
@@ -305,7 +306,7 @@ function frenzyStatPercent(
 ): number {
   if (!hasUsedOnce(d, monster.id, 'frenzy')) return 0
   const role = frenzyRole(data, d.battle, { side, monster })
-  return role === null ? 0 : frenzyNumbers(data, role).statPercent
+  return role === null ? 0 : frenzyNumbers(data, role, d.battle.difficulty).statPercent
 }
 
 /**
@@ -449,7 +450,15 @@ function buildBattleContext(
     teamBonuses: d.battle.teamBonuses[side],
     frenzyStatPercent: frenzyStatPercent(data, d, { side, monster }),
     collectionStatPercent: side === 'player' ? collectionStatPercent(data, d.dex) : 0,
-    tamerBonusStatPercent: side === 'player' ? tamerBonusAmount(data, d, 'teamStatPercent') : 0,
+    // Kênh contractResonancePercent nhân phần cộng hưởng khế ước của chính quái (Ngự Thú Thánh Thể).
+    tamerBonusStatPercent:
+      side === 'player'
+        ? tamerBonusAmount(data, d, 'teamStatPercent') +
+          (contractStatPercent(data, monster) *
+            tamerBonusAmount(data, d, 'contractResonancePercent')) /
+            100
+        : 0,
+    tamerBonusDamagePercent: side === 'player' ? tamerBonusAmount(data, d, 'teamDamagePercent') : 0,
     mealStatPercent: side === 'player' ? mealStatPercent(data, d.cooking.meal) : {},
     blessingStatPercent:
       side === 'player'

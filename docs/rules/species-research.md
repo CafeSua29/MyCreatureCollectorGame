@@ -28,7 +28,7 @@ Code: `model/research.ts` (type, `RESEARCH_TASK_KINDS`, `RESEARCH_TASK_SCOPES`, 
 ## Cấp nghiên cứu
 
 - Điểm = tổng `points` × số mốc đã đạt của mọi nhiệm vụ của loài (`researchPoints`). Cấp = số mốc `levelPoints` đã đạt (`researchLevel`; 0 = chưa nghiên cứu). Số tạm `[10, 20, 30, 45, 60, 75, 90, 105, 120, 130]`: cấp 1 = bắt 1 lần, **Hoàn thành** (cấp 10, `isResearchComplete`) = 130 điểm, đạt được chỉ bằng bắt / hạ / skill / trạng thái nên loài không breed được, dạng đầu, không shiny vẫn hoàn thành được (như PLA cần 100 điểm, không bắt buộc mọi nhiệm vụ).
-- Cấp **suy ra từ bộ đếm**, không lưu (lệch roadmap `{ counters, level }`: lưu cấp là lưu số suy ra được). Không có log `researchLevelUp` (log chỉ có trong trận, mà bộ đếm tăng cả ngoài trận; UI so cấp trước / sau như thành tựu).
+- Cấp **suy ra từ bộ đếm**, không lưu (lệch roadmap `{ counters, level }`: lưu cấp là lưu số suy ra được). Lên cấp ghi log ngoài trận `researchLevelUp { speciesId, level }` (cấp mới) ở `gameReducer` sau mọi action (`researchLevelUps`, chỉ xét loài có mục đổi; bộ đếm tăng cả trong lẫn ngoài trận; `game-log.md`).
 
 ## Lợi ích theo cấp
 

@@ -13,13 +13,14 @@ import {
   gatheringToolTier
 } from '../registries'
 import { generateGatheringEncounter } from '../world'
-import type {
-  FishingLureItem,
-  GameData,
-  GameState,
-  GatheringEncounter,
-  GatheringMethod,
-  ItemReward
+import {
+  appendLog,
+  type FishingLureItem,
+  type GameData,
+  type GameState,
+  type GatheringEncounter,
+  type GatheringMethod,
+  type ItemReward
 } from '../model'
 import type { FloorSite } from '../world'
 import { openBattle } from './openBattle'
@@ -110,14 +111,17 @@ export function gather(
   const encounterKind: GatheringEncounter = !hasBattle ? 'none' : rule.ambush ? 'ambush' : 'bite'
   let inventory = lure ? removeItems(state.inventory, lure.id, 1) : state.inventory
   inventory = items.reduce((inv, { itemId, count }) => addItems(inv, itemId, count), inventory)
-  const next: GameState = {
-    ...state,
-    rng,
-    inventory,
-    gathering: {
-      lastResult: { method, tier, lureItemId: lure?.id ?? null, items, encounter: encounterKind }
+  const next = appendLog(
+    { ...state, rng, inventory },
+    {
+      type: 'gathered',
+      method,
+      tier,
+      lureItemId: lure?.id ?? null,
+      items,
+      encounter: encounterKind
     }
-  }
+  )
   if (!hasBattle) return next
   const encounters = withRarity(gatheringEncounters(data, site.biome, method), exponent)
   const encounter = generateGatheringEncounter(data, rng, {

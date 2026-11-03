@@ -111,6 +111,7 @@ const ORIGIN_RULES: Record<HistoryOriginKind, FieldRules> = {
   safari: {},
   trade: { npcNameId: npcNameField },
   gacha: {},
+  auction: {},
   unknown: {}
 }
 

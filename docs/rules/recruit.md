@@ -10,6 +10,7 @@ Cách có quái **ngoài bóng**, như Dragon Quest Monsters (quái bị hạ xi
 - Quái thu phục (mọi cách): **HP đầy**, hết trạng thái, bỏ max HP đổi trong trận, thân mật khởi đầu `affinity.start.recruit` (70), lý lịch nguồn gốc `{ kind: 'recruit', method }` (`method`: `afterBattle` / `intimidate` / `bossSubmit`; `monster-history.md`), **chưa khế ước** (khế ước là bước riêng, mục "Khế ước" ở `tamer.md`). Boss thu phục giữ `bossMultiplier` và nhận trait "Huyết thống boss" như bắt boss. Tính một lần "bắt quái" cho nhiệm vụ (`quests.md`, event `caught`).
 - **Không có giới hạn level** (chủ project chốt 2026-10-25): quái level nào cũng xin theo / quy phục / Thị Uy được; giới hạn level chỉ áp lúc khế ước (`tamer.md`).
 - **Sức chứa** (`capacity.md`): đội đủ và kho đầy thì không xin theo / quy phục (`recruitChance` = 0), `acceptRecruit` / Thị Uy báo `rosterFull`.
+- **Nuzlocke** (`challenge-modes.md`): xin theo / quy phục / Thị Uy chỉ ở trận là lượt gặp của khu, một con mỗi lượt gặp (chung với bóng), theo dupes clause; lỗi `nuzlockeAreaUsed` / `nuzlockeDupe`.
 
 ## Xin theo sau trận thắng, boss quy phục
 

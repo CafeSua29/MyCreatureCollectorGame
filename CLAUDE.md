@@ -49,6 +49,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [rebirth.md](docs/rules/rebirth.md): luân hồi quái (về level 1, +% mọi chỉ số vĩnh viễn, gen, điểm thiên phú, trẻ lại)
 - [sacrifice.md](docs/rules/sacrifice.md): hiến tế (quái phụ cùng race / lineage mất đi, quái chính +1% mọi chỉ số mỗi stack)
 - [implant.md](docs/rules/implant.md): Phòng Thí Nghiệm: cấy ghép (huyết thanh cộng chỉ số gốc hoặc hiệu ứng hook, thất bại trừ / hiệu ứng ngược, thất bại lần 3 mất quái)
+- [bulk-actions.md](docs/rules/bulk-actions.md): thao tác hàng loạt (thả quái, bán / vứt item theo bộ lọc, di dời / gộp khí linh; một action mỗi lệnh)
 - [capacity.md](docs/rules/capacity.md): sức chứa kho quái / túi trang bị (mở rộng bằng tiền, theo cảnh giới; chặn khi đầy, xác nhận bỏ món thừa)
 - [awakening.md](docs/rules/awakening.md): thức tỉnh và độ kiếp
 - [human-form.md](docs/rules/human-form.md): hóa hình
@@ -64,6 +65,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [dwelling.md](docs/rules/dwelling.md): động phủ (công trình sản xuất kiểu Palworld, quái trong kho làm việc theo chỉ số / tốc độ / trait làm việc, đói / tinh thần / bệnh, linh điền là công trình)
 - [sects.md](docs/rules/sects.md): tông môn (cống hiến, chức vị, đồng môn NPC, nhiệm vụ tông, Tàng Bảo Các, luận võ, thi thăng chức, tông chiến)
 - [trades.md](docs/rules/trades.md): trao đổi với NPC (bảng đề nghị theo tuần, yêu cầu loài / race / hệ, nhận quái sinh sẵn hoặc vật phẩm)
+- [auction.md](docs/rules/auction.md): Đấu giá hành (phiên theo tuần, đặt giá kín với giá trần NPC ẩn, ký gửi, giữ hộ khi túi đầy)
 - [trainers.md](docs/rules/trainers.md): ngự thú sư NPC, đạo quán, giải đấu, đấu trường
 - [trials.md](docs/rules/trials.md): bí cảnh và tháp thí luyện
 - [instability.md](docs/rules/instability.md): độ bất ổn tầng (thuộc tính bất lợi tự chọn ở Đền dịch chuyển, thưởng thêm)
@@ -76,6 +78,8 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [team.md](docs/rules/team.md): cộng hưởng đội, trận pháp, hợp kích
 - [imprinting.md](docs/rules/imprinting.md): dưỡng dục
 - [options.md](docs/rules/options.md): tùy chọn luật chơi theo từng game (mặc định tắt): thọ nguyên, chết thật
+- [ascension.md](docs/rules/ascension.md): phi thăng (prestige: reset tiến trình, Tiên nguyên, nâng cấp Tiên giới) và thiên mệnh (chọn lúc tạo game / phi thăng)
+- [challenge-modes.md](docs/rules/challenge-modes.md): độ khó (level / gen / cuồng bạo địch, % thưởng) và chế độ thử thách: Nuzlocke, Hardcore, Randomizer
 - [lifespan.md](docs/rules/lifespan.md): tuổi, thọ nguyên, đồng hồ game, việc theo ngày
 - [calendar.md](docs/rules/calendar.md): ngày đêm, mùa, tuần trăng (gặp loài, thời tiết, tiến hóa, event theo lịch)
 - [soul-relics.md](docs/rules/soul-relics.md): hồn phách và hồn khí (quái chết hẳn)
@@ -107,6 +111,7 @@ Bảng chi tiết (tên mục, code liên quan của từng file; tra "mục X" 
 - [fusing.md](docs/rules/fusing.md): fusing, kế thừa skill, fuse thất bại và bùa fuse
 - [breeding-eggs.md](docs/rules/breeding-eggs.md): breeding, trứng
 - [shiny-boss.md](docs/rules/shiny-boss.md): shiny, boss, trứng boss
+- [game-log.md](docs/rules/game-log.md): log ngoài trận (`GameState.log`: kết quả action gần nhất, `appendLog`, loại dòng)
 - [saves.md](docs/rules/saves.md): lưu / đọc save, Xuất / Nhập (`game/save.ts`, `main/saves/`)
 - [starters.md](docs/rules/starters.md): quái khởi đầu (ô random theo điều kiện, dạng đầu có tiến hóa)
 - [ui.md](docs/rules/ui.md): UI hiện có, kiểm tra UI bằng Playwright (`src/renderer/`)

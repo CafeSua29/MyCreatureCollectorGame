@@ -4,7 +4,7 @@
 
 import { ActionError } from '../shared'
 import { failBeastTide } from '../battle'
-import type { EventLogEntry, GameAction, GameData, GameState } from '../model'
+import { appendLog, type GameAction, type GameData, type GameState } from '../model'
 
 /** Action bị chặn khi thú triều đang diễn ra (thủ thành, rút lui, quản lý quái vẫn được). */
 const BLOCKED_DURING_TIDE: ReadonlySet<GameAction['type']> = new Set<GameAction['type']>([
@@ -19,7 +19,8 @@ const BLOCKED_DURING_TIDE: ReadonlySet<GameAction['type']> = new Set<GameAction[
   'challengeTower',
   'startTribulation',
   'enterSafari',
-  'challengeWorldBoss'
+  'challengeWorldBoss',
+  'ascend'
 ])
 
 /** Ném ActionError nếu state event không cho làm action này. */
@@ -41,10 +42,8 @@ export function retreatBeastTide(data: GameData, state: GameState): GameState {
   const moneyLost = state.money.times(lossMoneyPercent).div(100).floor()
   const next = { time: state.time, events: state.events }
   const shopClosedUntilDay = failBeastTide(data, next)
-  const log: EventLogEntry[] = [{ type: 'beastTideRetreated', moneyLost, shopClosedUntilDay }]
-  return {
-    ...state,
-    money: state.money.minus(moneyLost),
-    events: { ...next.events, log }
-  }
+  return appendLog(
+    { ...state, money: state.money.minus(moneyLost), events: next.events },
+    { type: 'beastTideRetreated', moneyLost, shopClosedUntilDay }
+  )
 }

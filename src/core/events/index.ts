@@ -9,5 +9,5 @@ export {
   travelWithEvents
 } from './encounters'
 export { assertEventAllows, retreatBeastTide } from './guards'
-export { blackMarketItems, buyEventItem, tempShopPrice } from './tempShops'
+export { buyEventItem, tempShopPrice } from './tempShops'
 export { newEventState } from './state'

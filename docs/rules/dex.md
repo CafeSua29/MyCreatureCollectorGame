@@ -62,4 +62,4 @@ Code: `registries/dex.ts` (loài nào tính, %, hệ số chí mạng, thưởng
 - Màn hình Dex: danh sách theo số Dex, trang loài (`dexEntry`), Dex theo map, lọc / sắp xếp theo phẩm cấp loài (`species-rank.md`), tên loài, đã gặp / sở hữu / shiny (chờ UI, bước 7).
 - Ghi nhận giới tính đã gặp (Pokémon HOME có), mô tả tiếng Việt, chữ cho loài của các nguồn chưa có (xem trên).
 - Thành tựu đọc `state.dex` (`dexOwned`, `dexPercent`, `shinySpecies`, `ownSpecies`, `speciesRank`; `achievements.md`). Mở khóa quái khởi đầu cũng đọc `state.dex` (`dexOwned`, chuỗi đã sở hữu; `starters.md`). Nghiên cứu loài (`species-research.md`) có bộ đếm riêng `state.research`, dùng chung `dexSpeciesOf` / `isDexSpecies`; trang loài `dexEntry` nhận `{ dex, research }`, kèm cấp nghiên cứu, cờ mở thông tin, điểm yếu mở theo cấp.
-- Giữ Dex qua phi thăng (chờ `ascension.md`: không reset `dex`).
+- Giữ Dex qua phi thăng (`ascension.md`).

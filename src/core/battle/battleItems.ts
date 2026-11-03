@@ -40,6 +40,7 @@ import { refreshPartnerBonus } from './hpChanges'
 import { runSkillEffects } from './skillResults'
 import { isShielded } from './volatiles'
 import { isDynamaxed } from './transform'
+import { nuzlockeCaptureError, spendNuzlockeEncounter } from './nuzlocke'
 import { partnerMultiplier } from '../tamer'
 import { catchChance, evolutionScene, rollCapture, withCatchPity } from '../world'
 
@@ -95,6 +96,8 @@ export function battleCatchChance(
     | 'tamer'
     | 'sect'
     | 'research'
+    | 'ascension'
+    | 'destinies'
   > & {
     battle: BattleState
   },
@@ -140,6 +143,11 @@ export function throwBall(
   // Hai bóng cùng lượt mà bóng trước đã lấp chỗ cuối: không ném, không mất bóng (capacity.md).
   if (!hasRosterRoom(data, d, { pending: d.battle.captured, newcomer: target })) {
     log(d, { type: 'rosterFull', monsterId: user.id })
+    return
+  }
+  // Nuzlocke: bóng trước cùng lượt đã bắt con của lượt gặp thì không ném, không mất bóng.
+  if (nuzlockeCaptureError(data, d, target)) {
+    log(d, { type: 'nuzlockeBlocked', monsterId: user.id })
     return
   }
   consumeItem(d, ball.id)
@@ -197,6 +205,7 @@ export function throwBall(
       { day: dayOf(d.time), floor: d.battle.floor, level: target.level }
     )
   )
+  spendNuzlockeEncounter(d)
   log(d, { type: 'caught', monsterId: targetId, destination })
   // Nhiệm vụ bắt quái (docs/rules/quests.md): hệ / race lúc bắt.
   d.quests = recordQuestEvent(data, d.quests, {
@@ -320,6 +329,12 @@ export function validateItemCommand(
     ) {
       throw new ActionError('rosterFull', { capacity: capacityOf(data, state, 'storage') })
     }
+    // Nuzlocke: chỉ bắt được ở lượt gặp đầu tiên của khu (docs/rules/challenge-modes.md).
+    const nuzlocke =
+      item.category === 'ball'
+        ? nuzlockeCaptureError(data, { ...state, battle }, found.target)
+        : null
+    if (nuzlocke) throw nuzlocke
     return
   }
   const target = state.party.find((m) => m.id === targetId)

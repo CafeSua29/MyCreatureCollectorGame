@@ -10,7 +10,7 @@ import {
   researchPoints,
   researchTasksOf
 } from '../registries'
-import type { GameData, GameState, ResearchState, ResearchTaskKind } from '../model'
+import type { GameData, GameLogEntry, GameState, ResearchState, ResearchTaskKind } from '../model'
 
 // Câu hỏi về nghiên cứu cho UI / mô phỏng (core dùng thẳng registries).
 export {
@@ -54,6 +54,27 @@ export function claimResearchReward(
     inventory,
     research: { ...state.research, [speciesId]: { ...entry, claimedLevel: level } }
   }
+}
+
+/**
+ * Dòng log `researchLevelUp` cho loài lên cấp nghiên cứu giữa hai bản research (bộ đếm tăng cả trong
+ * lẫn ngoài trận nên gameReducer gọi một chỗ sau mọi action). Chỉ xét loài có mục đổi.
+ */
+export function researchLevelUps(
+  data: GameData,
+  before: ResearchState,
+  after: ResearchState
+): GameLogEntry[] {
+  if (after === before) return []
+  const entries: GameLogEntry[] = []
+  for (const [speciesId, entry] of Object.entries(after)) {
+    if (Object.hasOwn(before, speciesId) && before[speciesId] === entry) continue
+    const level = researchLevel(data, after, speciesId)
+    if (level > researchLevel(data, before, speciesId)) {
+      entries.push({ type: 'researchLevelUp', speciesId, level })
+    }
+  }
+  return entries
 }
 
 /** Tiến độ một nhiệm vụ của loài (cho UI). */

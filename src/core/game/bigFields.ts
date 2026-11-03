@@ -2,7 +2,7 @@
 // cho cả migrate (số cũ → chuỗi) lẫn đọc save (chuỗi → Decimal). Thêm trường Decimal mới vào
 // state thì thêm vào đây (và tăng SAVE_VERSION nếu đổi cấu trúc save).
 
-import { STAT_NAMES, type BattleEvent, type DayEvent, type EventLogEntry } from '../model'
+import { STAT_NAMES, type BattleEvent, type GameLogEntry } from '../model'
 import { asObject, type Decimal } from '../shared'
 
 /** Trường Decimal trên mỗi quái (genes / fusingBonusStats / implantBonusStats: từng chỉ số). */
@@ -42,24 +42,21 @@ const EVENT_BIG_FIELDS: EventBigFields = {
   worldBossDamage: 'total'
 }
 
-/** Trường Decimal trong sự kiện khi thời gian trôi (GameState.dayEvents), như EVENT_BIG_FIELDS. */
-type DayEventBigFields = {
-  readonly [E in DayEvent as DecimalKeys<E> extends never ? never : E['type']]: DecimalKeys<E>
+/** Trường Decimal trong log ngoài trận (GameState.log, docs/rules/game-log.md), như EVENT_BIG_FIELDS. */
+type LogBigFields = {
+  readonly [E in GameLogEntry as DecimalKeys<E> extends never ? never : E['type']]: DecimalKeys<E>
 }
 
-const DAY_EVENT_BIG_FIELDS: DayEventBigFields = {
-  nearingLifespanEnd: 'yearsLeft'
-}
-
-/** Trường Decimal trong log kết quả event (GameState.events.log, docs/rules/events.md). */
-type EventLogBigFields = {
-  readonly [E in EventLogEntry as DecimalKeys<E> extends never ? never : E['type']]: DecimalKeys<E>
-}
-
-const EVENT_LOG_BIG_FIELDS: EventLogBigFields = {
+export const LOG_BIG_FIELDS: LogBigFields = {
+  nearingLifespanEnd: 'yearsLeft',
   moneyGained: 'amount',
   moneyLost: 'amount',
-  beastTideRetreated: 'moneyLost'
+  beastTideRetreated: 'moneyLost',
+  auctionWon: 'price',
+  auctionLost: 'npcPrice',
+  consignmentSold: 'earned',
+  consignmentReturned: 'npcPrice',
+  ascended: 'essenceGained'
 }
 
 type Convert = (value: unknown) => unknown
@@ -180,7 +177,20 @@ export function mapBigFieldsInPlace(rawState: unknown, convert: Convert): void {
   for (const offer of listOrEmpty(asObject(state.trades)?.offers)) {
     mapMonster(asObject(asObject(offer)?.give)?.monster, convert)
   }
+  // Đấu giá hành (docs/rules/auction.md): giá của lô, quái trong trứng của lô, giá sàn ký gửi.
+  const auction = asObject(state.auction)
+  for (const value of listOrEmpty(auction?.lots)) {
+    const lot = asObject(value)
+    for (const field of ['startPrice', 'npcPrice', 'bid']) mapField(lot, field, convert)
+    mapMonster(asObject(asObject(lot?.good)?.egg)?.monster, convert)
+  }
+  for (const value of listOrEmpty(auction?.consignments)) {
+    mapField(asObject(value), 'reservePrice', convert)
+  }
+  // Phi thăng (docs/rules/ascension.md).
+  for (const field of ['immortalEssence', 'totalEssenceEarned']) {
+    mapField(asObject(state.ascension), field, convert)
+  }
   mapBattle(state.battle, convert)
-  mapEvents(state.dayEvents, DAY_EVENT_BIG_FIELDS, convert)
-  mapEvents(asObject(state.events)?.log, EVENT_LOG_BIG_FIELDS, convert)
+  mapEvents(state.log, LOG_BIG_FIELDS, convert)
 }

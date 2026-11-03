@@ -339,7 +339,7 @@ function unlockRow(teamId: string, unlock: FloorUnlock): string[] {
   ]
 }
 
-function stuckNote(result: ProgressionResult): string {
+export function stuckNote(result: ProgressionResult): string {
   switch (result.stuckReason) {
     case 'maxBattles':
       return `kẹt sau ${result.totalBattles} trận`
@@ -399,6 +399,7 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['trade', count.trades],
     ['tradePower%', Math.round(count.tradePowerPercent)],
     ['gacha', count.gachaEggs],
+    ['auctionBid', count.auctionBids],
     ['research', count.researchRewards],
     ['researchLv', count.researchLevelPeak]
   ]
@@ -409,8 +410,11 @@ function economyCell(count: FloorUnlock['economy']): string {
 }
 
 /** Tên lần chơi: đội, thêm "(no growth)" khi không fuse / breeding. */
-export const runLabel = (result: { teamId: string; growth: boolean }): string =>
-  result.growth ? result.teamId : `${result.teamId} (no growth)`
+/** Tên lần chơi: đội, kèm "(no growth)" khi không fuse / breeding và "[độ khó]" khi khác Thường. */
+export function runLabel(result: { teamId: string; growth: boolean; difficulty: string }): string {
+  const base = result.growth ? result.teamId : `${result.teamId} (no growth)`
+  return result.difficulty === 'normal' ? base : `${base} [${result.difficulty}]`
+}
 
 export function progressionTable(results: readonly ProgressionResult[]): Table {
   const rows = results.flatMap((result) => {

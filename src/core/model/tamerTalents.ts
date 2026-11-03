@@ -4,7 +4,7 @@
 /**
  * Loại kênh thưởng (registry TAMER_BONUSES ở registries/tamerBonuses.ts). Kênh `...Percent` có params
  * `{ percent }` (khác 0, ≥ −100), `tamerSkillCooldown` có `{ turns }` (giảm hồi chiêu kỹ năng ngự
- * thú sư của người chơi).
+ * thú sư của người chơi), `destinySlots` / `partySlotPenalty` có `{ slots }` (nguyên ≥ 1).
  */
 export const TAMER_BONUS_TYPES = [
   'expPercent',
@@ -21,7 +21,14 @@ export const TAMER_BONUS_TYPES = [
   'teamStatPercent',
   'manaPercent',
   'contractLevelPercent',
-  'tamerSkillCooldown'
+  'tamerSkillCooldown',
+  'teamDamagePercent',
+  'contractResonancePercent',
+  'breakthroughCostPercent',
+  'startFloorPercent',
+  'keepMoneyPercent',
+  'destinySlots',
+  'partySlotPenalty'
 ] as const
 
 export type TamerBonusType = (typeof TAMER_BONUS_TYPES)[number]

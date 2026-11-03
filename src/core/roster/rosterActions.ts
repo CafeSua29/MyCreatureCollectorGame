@@ -10,7 +10,7 @@ import {
 } from '../registries'
 import { assertNotBond } from '../tamer'
 import { assertNotBusy, assertNotLocked } from '../monster'
-import { ActionError, malformedAction } from '../shared'
+import { ActionError, malformedAction, parseIdList } from '../shared'
 import { TACTICS, type GameData, type GameState, type Monster, type Tactic } from '../model'
 import { locateOwned } from './owned'
 
@@ -112,21 +112,45 @@ export function releaseMonster(
   state: GameState,
   { monsterId, discardOverflow }: { monsterId: string; discardOverflow?: boolean }
 ): GameState {
-  requireNoBattle(state)
+  return releaseMonsters(data, state, { monsterIds: [monsterId], discardOverflow })
+}
+
+/** Quái sẽ bị thả: có trong đội / kho, không phải bản mệnh thú, không khóa, không đang làm việc. */
+function releasableMonster(state: GameState, monsterId: string): Monster {
   const inParty = state.party.find((m) => m.id === monsterId)
-  // Bản mệnh thú không thả được (đổi bản mệnh trước; docs/rules/tamer.md).
-  const target = inParty ?? state.storage.find((m) => m.id === monsterId)
-  if (target) assertNotBond(target)
-  if (target) assertNotLocked(target)
-  if (inParty) requirePartyCanShrink(state)
   const monster = inParty ?? state.storage[storageIndexOf(state, monsterId)]
+  // Bản mệnh thú không thả được (đổi bản mệnh trước; docs/rules/tamer.md).
+  assertNotBond(monster)
+  assertNotLocked(monster)
   if (!inParty) assertNotBusy(monster)
-  assertOverflowConfirmed(data, state, { monsters: [monster], discardOverflow })
+  return monster
+}
+
+/**
+ * Thả nhiều quái trong một action (thao tác hàng loạt, docs/rules/bulk-actions.md): mọi con cùng
+ * luật như thả một con; đội phải còn ít nhất 1 con; món đang lắp của mọi con về túi, phần không vừa
+ * cần `discardOverflow`. Một con không thả được thì cả lệnh lỗi, state giữ nguyên.
+ */
+export function releaseMonsters(
+  data: GameData,
+  state: GameState,
+  { monsterIds, discardOverflow }: { monsterIds: unknown; discardOverflow?: boolean }
+): GameState {
+  requireNoBattle(state)
+  const ids = parseIdList(monsterIds, 'monsterIds')
+  const monsters = ids.map((id) => releasableMonster(state, id))
+  const released = new Set(ids)
+  if (state.party.every((m) => released.has(m.id))) throw new ActionError('partyWouldBeEmpty')
+  assertOverflowConfirmed(data, state, { monsters, discardOverflow })
+  let inventory = state.inventory
+  for (const monster of monsters) {
+    inventory = returnEquipmentWithinCapacity(data, state, inventory, monster)
+  }
   return {
     ...state,
-    party: state.party.filter((m) => m.id !== monsterId),
-    storage: state.storage.filter((m) => m.id !== monsterId),
-    inventory: returnEquipmentWithinCapacity(data, state, state.inventory, monster)
+    party: state.party.filter((m) => !released.has(m.id)),
+    storage: state.storage.filter((m) => !released.has(m.id)),
+    inventory
   }
 }
 

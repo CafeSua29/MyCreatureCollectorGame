@@ -58,10 +58,15 @@ function shouldFrenzy(
   const role = frenzyRole(data, d.battle, { side, monster })
   if (role === null) return false
   const ctx = monsterBattleContext(data, d, monster)
-  const threshold = frenzyThreshold(data, { monster, role, ctx })
+  const threshold = frenzyThreshold(data, {
+    monster,
+    role,
+    difficulty: d.battle.difficulty,
+    ctx
+  })
   if (threshold === null) return false
   // Kích hoạt cuối lượt fromTurn − 1: cuồng bạo có tác dụng từ lượt fromTurn.
-  const { fromTurn } = frenzyNumbers(data, role)
+  const { fromTurn } = frenzyNumbers(data, role, d.battle.difficulty)
   if (fromTurn !== undefined) return d.battle.turn >= fromTurn - 1
   if (!losing) return false
   return getCurrentHp(data, monster).times(100).lte(getMaxHp(data, monster).times(threshold))
@@ -94,7 +99,10 @@ export function rollFrenzyExtraAction(data: GameData, d: Draft, action: TurnActi
   const role = monster && frenzyRole(data, d.battle, { side: action.side, monster })
   if (!role) return
   let hit: boolean
-  ;[hit, d.rng] = rollPercent(d.rng, frenzyNumbers(data, role).extraActionChance)
+  ;[hit, d.rng] = rollPercent(
+    d.rng,
+    frenzyNumbers(data, role, d.battle.difficulty).extraActionChance
+  )
   if (!hit) return
   insertExtraAction(d, { ...action })
   log(d, { type: 'frenzyAction', monsterId: action.monsterId })

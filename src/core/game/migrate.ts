@@ -16,10 +16,23 @@ import { ageDaysAtPercent, isDexSpecies, newGameStats } from '../registries'
 import { newBattleTamer } from '../tamer'
 import { masteryExpForLevel } from '../monster'
 import { gymElementIds } from '../world'
-import { dwellingPlotCount, newDwellingState, newSectState, newTradeState } from '../progression'
+import {
+  dwellingPlotCount,
+  newAuctionState,
+  newDwellingState,
+  newSectState,
+  newTradeState
+} from '../progression'
 import { mapBigFieldsInPlace } from './bigFields'
 import { SAVE_VERSION } from './reducer'
-import { dayOf, type CapacityKind, type GameData, type GameState, type Monster } from '../model'
+import {
+  dayOf,
+  newAscensionState,
+  type CapacityKind,
+  type GameData,
+  type GameState,
+  type Monster
+} from '../model'
 
 type SaveObject = Record<string, unknown> & { version: number }
 type RawMonster = Record<string, unknown>
@@ -102,14 +115,22 @@ function mapSafariVisitMonster(
 
 /** Áp fn lên quái bên trong mọi trứng (mapAllMonsters không gồm trứng). */
 function mapEggMonsters(save: SaveObject, fn: (m: RawMonster) => RawMonster): SaveObject {
-  if (!Array.isArray(save.eggs)) return save
   // Trứng hỏng giữ nguyên để validateGameState báo lỗi.
-  const eggs = save.eggs.map((value: unknown) => {
+  const mapEgg = (value: unknown): unknown => {
     const egg = asObject(value)
     const monster = asObject(egg?.monster)
     return egg && monster ? { ...egg, monster: fn(monster) } : value
+  }
+  const eggs = Array.isArray(save.eggs) ? save.eggs.map(mapEgg) : save.eggs
+  // Trứng trong lô Đấu giá hành (docs/rules/auction.md; save từ v99 mới có).
+  const auction = asObject(save.auction)
+  if (!auction || !Array.isArray(auction.lots)) return { ...save, eggs }
+  const lots = auction.lots.map((value: unknown) => {
+    const lot = asObject(value)
+    const good = asObject(lot?.good)
+    return good?.kind === 'egg' ? { ...lot, good: { ...good, egg: mapEgg(good.egg) } } : value
   })
-  return { ...save, eggs }
+  return { ...save, eggs, auction: { ...auction, lots } }
 }
 
 /** v10 → v11: thêm danh sách trạng thái bất thường rỗng cho mọi quái, kể cả quái trong trứng. */
@@ -1111,6 +1132,53 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
       version: 97,
       teamPresets: { presets: [], nextPresetId: 1, lastMissing: null }
     }
+  },
+  97: addGameLog,
+  // v98 → v99: Đấu giá hành (docs/rules/auction.md): chưa có phiên, phiên đầu mở ở lần qua ngày đầu.
+  98: (save) => ({ ...save, version: 99, auction: newAuctionState() }),
+  99: addChallengeModes,
+  // v100 → v101: Randomizer có thêm công tắc xáo learnset; game Randomizer cũ không xáo.
+  100: (save) => {
+    const options = asObject(save.options)
+    const randomizer = asObject(options?.randomizer)
+    return {
+      ...save,
+      version: 101,
+      options:
+        options && randomizer
+          ? { ...options, randomizer: { ...randomizer, learnsets: false } }
+          : save.options
+    }
+  },
+  // v101 → v102: phi thăng và thiên mệnh (docs/rules/ascension.md): chưa phi thăng, Phàm nhân.
+  101: (save) => ({ ...save, version: 102, ascension: newAscensionState(), destinies: [] })
+}
+
+/**
+ * v97 → v98 (log ngoài trận, docs/rules/game-log.md): các chỗ ghi kết quả rời rạc (dayEvents,
+ * events.log, safari.log, gathering, teamPresets.lastMissing, lastCraft của nơi luyện,
+ * zones.visit.lastStep) gộp vào `log`. Log chỉ là kết quả của action gần nhất nên bắt đầu rỗng.
+ */
+function addGameLog(save: SaveObject): SaveObject {
+  const { dayEvents: _dayEvents, gathering: _gathering, ...rest } = save
+  const without = (value: unknown, key: string): unknown => {
+    const object = asObject(value)
+    if (!object) return value
+    const { [key]: _removed, ...kept } = object
+    return kept
+  }
+  const zones = asObject(save.zones)
+  return {
+    ...rest,
+    version: 98,
+    log: [],
+    events: without(save.events, 'log'),
+    safari: without(save.safari, 'log'),
+    teamPresets: without(save.teamPresets, 'lastMissing'),
+    alchemy: without(save.alchemy, 'lastCraft'),
+    smithing: without(save.smithing, 'lastCraft'),
+    cooking: without(save.cooking, 'lastCraft'),
+    zones: zones ? { ...zones, visit: without(zones.visit, 'lastStep') } : save.zones
   }
 }
 
@@ -1161,6 +1229,32 @@ function addDwelling(save: SaveObject, data: GameData): SaveObject {
     plots: Array.from({ length: count }, (_, i) => plots[i] ?? null)
   }
   return { ...rest, version: 88, dwelling }
+}
+
+/**
+ * v99 → v100 (độ khó và chế độ thử thách, docs/rules/challenge-modes.md): save cũ chơi Thường (mức
+ * thấp nhất Thường), không Nuzlocke / Hardcore / Randomizer; trận đang dở Thường, không phải lượt gặp
+ * Nuzlocke.
+ */
+function addChallengeModes(save: SaveObject): SaveObject {
+  const options = asObject(save.options)
+  const battle = asObject(save.battle)
+  return {
+    ...save,
+    version: 100,
+    options: options
+      ? {
+          ...options,
+          difficulty: 'normal',
+          lowestDifficulty: 'normal',
+          nuzlocke: null,
+          hardcore: false,
+          randomizer: null
+        }
+      : save.options,
+    challenge: { nuzlockeAreas: [], gameOver: false },
+    battle: battle ? { ...battle, difficulty: 'normal', nuzlockeEncounter: false } : save.battle
+  }
 }
 
 /**

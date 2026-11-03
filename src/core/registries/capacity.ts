@@ -3,18 +3,28 @@
 
 import { ActionError, countMilestonesReached, toBig, type Decimal } from '../shared'
 import { returnEquippedItem } from '../inventory'
-import type { CapacityKind, GameData, GameState, Inventory, Monster } from '../model'
+import {
+  bestRealmReached,
+  type CapacityKind,
+  type GameData,
+  type GameState,
+  type Inventory,
+  type Monster
+} from '../model'
 import { partyAfterJoining, partySlotsUsed } from './size'
 
-type CapacityHolder = Pick<GameState, 'capacity' | 'tamer'>
+type CapacityHolder = Pick<GameState, 'capacity' | 'tamer' | 'ascension'>
 
 /**
  * Sức chứa hiện tại: base + perExpansion × số lần đã mở rộng + realmBonus × số mốc cảnh giới đã đạt
- * (không gian ngự thú; cảnh giới không bao giờ giảm nên sức chứa không giảm).
+ * (không gian ngự thú; theo cảnh giới cao nhất từng đạt nên phi thăng không làm giảm sức chứa).
  */
 export function capacityOf(data: GameData, state: CapacityHolder, kind: CapacityKind): number {
   const rule = data.config.capacity[kind]
-  const milestones = countMilestonesReached(data.config.tamer.realmMilestones, state.tamer.realm)
+  const milestones = countMilestonesReached(
+    data.config.tamer.realmMilestones,
+    bestRealmReached(state)
+  )
   return rule.base + rule.perExpansion * state.capacity[kind] + rule.realmBonus * milestones
 }
 

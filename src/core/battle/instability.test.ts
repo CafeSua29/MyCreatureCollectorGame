@@ -82,10 +82,12 @@ function fightToEnd(state: GameState): GameState {
 
 describe('mức bất ổn tối đa', () => {
   it('⌊tầng cao nhất / 10⌋, không trần', () => {
-    expect(maxInstabilityLevel(data, { highestFloor: 9 })).toBe(0)
-    expect(maxInstabilityLevel(data, { highestFloor: 10 })).toBe(1)
-    expect(maxInstabilityLevel(data, { highestFloor: 25 })).toBe(2)
-    expect(maxInstabilityLevel(data, { highestFloor: 1e12 })).toBe(1e11)
+    expect(maxInstabilityLevel(data, { highestFloor: 9, ascension: { bestFloor: 1 } })).toBe(0)
+    expect(maxInstabilityLevel(data, { highestFloor: 10, ascension: { bestFloor: 1 } })).toBe(1)
+    expect(maxInstabilityLevel(data, { highestFloor: 25, ascension: { bestFloor: 1 } })).toBe(2)
+    expect(maxInstabilityLevel(data, { highestFloor: 1e12, ascension: { bestFloor: 1 } })).toBe(
+      1e11
+    )
   })
 })
 

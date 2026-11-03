@@ -277,7 +277,7 @@ describe('event đang chờ', () => {
       .times(floorLevelRange(data, 1).max)
       .times(2)
     expect(next.money.eq(toBig(1000).plus(money))).toBe(true)
-    expect(next.events.log.map((entry) => entry.type)).toEqual([
+    expect(next.log.map((entry) => entry.type)).toEqual([
       'eventResolved',
       'itemGained',
       'moneyGained'
@@ -299,7 +299,7 @@ describe('event đang chờ', () => {
           withPendingEvent(floorState({ seed: i + 1 }), 'gamble', { floor: 1 }),
           'try'
         )
-        return next.events.log[1].type
+        return next.log[1].type
       })
     )
     expect(outcomes).toEqual(new Set(['moneyGained', 'moneyLost']))
@@ -321,7 +321,7 @@ describe('kết quả event', () => {
     const joined = next.party[1]
     expect(joined.history?.origin).toEqual({ kind: 'event', eventId: 'injured' })
     expect(joined.contractRealm).toBeNull() // chưa khế ước (tamer.md mục "Khế ước")
-    expect(next.events.log.map((entry) => entry.type)).toEqual([
+    expect(next.log.map((entry) => entry.type)).toEqual([
       'eventResolved',
       'itemSpent',
       'monsterJoined'
@@ -368,7 +368,7 @@ describe('kết quả event', () => {
       [],
       []
     ])
-    expect(next.events.log.slice(1)).toEqual([
+    expect(next.log.slice(1)).toEqual([
       { type: 'statusApplied', monsterId: 'a', statusId: 'poison' },
       { type: 'statusImmune', monsterId: 'g', statusId: 'poison' }
     ])
@@ -682,7 +682,7 @@ describe('trận event', () => {
     })
     const ended = defined(fightAndLeave(opened), 'sau trận')
     expect(ended.events.battle).toBeNull()
-    expect(ended.events.log).toEqual([{ type: 'itemGained', itemId: 'potion', count: 1 }])
+    expect(ended.log).toEqual([{ type: 'itemGained', itemId: 'potion', count: 1 }])
   })
 
   it('tiền thắng trận event × moneyMultiplier', () => {
@@ -781,7 +781,7 @@ describe('chuỗi event', () => {
     state = choose(state, 'open', never)
     expect(state.money.gt(before.money)).toBe(true)
     expect(state.inventory.equipment).toHaveLength(before.inventory.equipment.length + 1)
-    expect(state.events.log.at(-1)).toEqual({ type: 'chainEnded', chainId: 'hunt' })
+    expect(state.log.at(-1)).toEqual({ type: 'chainEnded', chainId: 'hunt' })
     expect(state.events.chains).toEqual([])
   })
 
@@ -799,7 +799,7 @@ describe('chuỗi event', () => {
     const shown = act(due, { type: 'startWildBattle' }, never)
     const left = choose(shown, 'leave', never)
     expect(left.events.chains).toEqual([])
-    expect(left.events.log.at(-1)).toEqual({ type: 'chainEnded', chainId: 'hunt' })
+    expect(left.log.at(-1)).toEqual({ type: 'chainEnded', chainId: 'hunt' })
   })
 })
 

@@ -293,7 +293,8 @@ describe('trait', () => {
   const thresholdOf = (traits: string[]): number | null =>
     frenzyThreshold(data, {
       monster: fighter('e1', { traits: traits.map((id) => ({ id, level: 1 })) }),
-      role: 'wild'
+      role: 'wild',
+      difficulty: 'normal'
     })
 
   it('Cuồng tính +10 điểm ngưỡng, Điềm tĩnh không bao giờ cuồng bạo', () => {

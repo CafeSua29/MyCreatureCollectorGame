@@ -7,6 +7,7 @@ import { isSameItemRef, shopEntryRef } from '../inventory'
 import { makeData, makeMonster, makeRawData, makeGameState } from '../testing'
 import { enterTown, rollShopStock } from './shopStock'
 import type { GameData, RawGameData, ShopEntry } from '../model'
+import { defaultGameOptions } from '../progression'
 
 const data = makeData()
 
@@ -29,7 +30,7 @@ function removeShopItems(raw: RawGameData): void {
 function rollStock(gameData: GameData, rng: RngState): [ShopEntry[], RngState] {
   const { stock, rng: next } = rollShopStock(gameData, rng, {
     highestFloor: 1,
-    options: { lifespanEnabled: false, permadeathEnabled: false },
+    options: defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false }),
     nextItemId: 1,
     inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
   })

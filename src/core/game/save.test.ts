@@ -50,7 +50,14 @@ describe('serializeSave / parseSave', () => {
       totalMonsters: 1,
       money: '500',
       location: { type: 'town' },
-      inBattle: false
+      inBattle: false,
+      challenge: {
+        difficulty: 'normal',
+        nuzlocke: false,
+        hardcore: false,
+        randomizer: false,
+        gameOver: false
+      }
     })
   })
 

@@ -27,10 +27,23 @@ import {
 const data = makeEquipmentData()
 const item = (id: string): EquipmentItem => defined(findEquipmentItem(data, id), id)
 
+/** Chưa phi thăng: mốc cao nhất từng đạt chính là giá trị hiện tại. */
+const NOT_ASCENDED = { bestFloor: 1, bestRealm: 0 }
+
 describe('equipmentSlotCount', () => {
+  it('sau phi thăng số ô giữ theo mốc cao nhất từng đạt', () => {
+    const reset = { highestFloor: 1, tamer: { realm: 0 } }
+    const before = equipmentSlotCount(data, { ...reset, ascension: NOT_ASCENDED })
+    const after = equipmentSlotCount(data, {
+      ...reset,
+      ascension: { bestFloor: 1000, bestRealm: 10 }
+    })
+    expect(after).toBeGreaterThan(before)
+  })
+
   it('3 ô cơ bản, +1 ở mỗi mốc tầng 20, 50 rồi gấp đôi (100, 200, 400...)', () => {
     const slots = (highestFloor: number): number =>
-      equipmentSlotCount(data, { highestFloor, tamer: { realm: 0 } })
+      equipmentSlotCount(data, { highestFloor, tamer: { realm: 0 }, ascension: NOT_ASCENDED })
     expect(slots(1)).toBe(3)
     expect(slots(19)).toBe(3)
     expect(slots(20)).toBe(4)
@@ -46,7 +59,8 @@ describe('equipmentSlotCount', () => {
   it('tầng cực lớn: số ô hữu hạn, tăng kiểu log', () => {
     const slots = equipmentSlotCount(data, {
       highestFloor: Number.MAX_SAFE_INTEGER,
-      tamer: { realm: 0 }
+      tamer: { realm: 0 },
+      ascension: NOT_ASCENDED
     })
     // 2^53 / 100 ≈ 2^46: mốc 100 · 2^k ≤ 2^53 với k ≤ 46 → 3 + 2 + 47.
     expect(slots).toBe(52)
@@ -56,12 +70,18 @@ describe('equipmentSlotCount', () => {
     const none = makeEquipmentData((raw) => {
       raw.config.equipment = { ...raw.config.equipment, floorMilestones: [] }
     })
-    expect(equipmentSlotCount(none, { highestFloor: 1_000_000, tamer: { realm: 0 } })).toBe(3)
+    expect(
+      equipmentSlotCount(none, {
+        highestFloor: 1_000_000,
+        tamer: { realm: 0 },
+        ascension: NOT_ASCENDED
+      })
+    ).toBe(3)
   })
 
   it('mốc cảnh giới ngự thú sư 2, 5, 10 rồi gấp đôi cộng thêm ô (docs/rules/tamer.md)', () => {
     const slots = (realm: number): number =>
-      equipmentSlotCount(data, { highestFloor: 1, tamer: { realm } })
+      equipmentSlotCount(data, { highestFloor: 1, tamer: { realm }, ascension: NOT_ASCENDED })
     expect(slots(0)).toBe(3)
     expect(slots(1)).toBe(3)
     expect(slots(2)).toBe(4)
@@ -71,7 +91,9 @@ describe('equipmentSlotCount', () => {
     expect(slots(20)).toBe(7)
     expect(slots(40)).toBe(8)
     // Cộng dồn với mốc tầng.
-    expect(equipmentSlotCount(data, { highestFloor: 50, tamer: { realm: 10 } })).toBe(8)
+    expect(
+      equipmentSlotCount(data, { highestFloor: 50, tamer: { realm: 10 }, ascension: NOT_ASCENDED })
+    ).toBe(8)
   })
 })
 

@@ -2,11 +2,11 @@
 // Điểm không lưu trong save (quy tắc 3): suy từ cảnh giới, bộ đếm nhiệm vụ, bậc thành tựu đã nhận,
 // trừ phần đã dùng. Giá / trần / nút yêu cầu dùng chung với thiên phú quái (talents.ts).
 
-import type { GameData, GameState, TamerTalentNodeDef } from '../model'
+import { bestRealmReached, type GameData, type GameState, type TamerTalentNodeDef } from '../model'
 import { rankedNodeBlocker, rankedPointsSpent, type RankedNodeBlocker } from './talents'
 
 /** Phần state cần để tính điểm thiên phú ngự thú sư. */
-export type TamerTalentState = Pick<GameState, 'stats' | 'achievements'> & {
+export type TamerTalentState = Pick<GameState, 'stats' | 'achievements' | 'ascension'> & {
   tamer: Pick<GameState['tamer'], 'realm' | 'talentRanks' | 'bonusTalentPoints'>
 }
 
@@ -15,14 +15,14 @@ export const claimedAchievementTiers = (state: Pick<GameState, 'achievements'>):
   Object.values(state.achievements.claimedTiers).reduce((sum, tiers) => sum + tiers, 0)
 
 /**
- * Tổng điểm thiên phú ngự thú sư đã nhận = cảnh giới × pointsPerRealm + nhiệm vụ đã hoàn thành ×
+ * Tổng điểm thiên phú ngự thú sư đã nhận = cảnh giới cao nhất từng đạt × pointsPerRealm + nhiệm vụ đã hoàn thành ×
  * pointsPerQuest + bậc thành tựu đã nhận × pointsPerAchievementTier + điểm thưởng đã lưu
  * (bonusTalentPoints: tông môn).
  */
 export function tamerTalentPointsEarned(data: GameData, state: TamerTalentState): number {
   const { pointsPerRealm, pointsPerQuest, pointsPerAchievementTier } = data.config.tamerTalents
   return (
-    state.tamer.realm * pointsPerRealm +
+    bestRealmReached(state) * pointsPerRealm +
     state.stats.questsCompleted * pointsPerQuest +
     claimedAchievementTiers(state) * pointsPerAchievementTier +
     state.tamer.bonusTalentPoints

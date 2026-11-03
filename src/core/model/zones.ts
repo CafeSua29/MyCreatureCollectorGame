@@ -69,7 +69,7 @@ export const allMaps = (data: Pick<GameData, 'biomes' | 'zones'>): Biome[] => [
   ...Object.values(data.zones).map((zone) => zone.map)
 ]
 
-/** Kết quả bước khám phá gần nhất (cho UI); trận thì xem log của trận. */
+/** Kết quả một bước khám phá (log ngoài trận `zoneStep`); trận thì xem log của trận. */
 export type ZoneStepResult =
   | { kind: 'battle' | 'elite' | 'guardian' }
   | { kind: 'treasure' | 'rareTreasure'; items: ItemReward[] }
@@ -84,7 +84,6 @@ export interface ZoneVisit {
   steps: number
   /** Số bước đã đi (không tính boss canh giữ: thắng boss là xong lượt). */
   stepsTaken: number
-  lastStep: ZoneStepResult | null
 }
 
 export interface ZoneState {

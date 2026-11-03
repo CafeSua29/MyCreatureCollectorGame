@@ -27,7 +27,7 @@ describe('recordDayEvents', () => {
       ...lifespanState({ seed: 1, party: [agingMonster(data, 50)] }),
       highestFloor: 3,
       floorBiomeIds: ['field', 'lair', 'pairs'],
-      dayEvents: [
+      log: [
         { type: 'diedOfOldAge', monsterId: 'm1', speciesId: 'weakling', nickname: null },
         { type: 'diedOfOldAge', monsterId: 'm7', speciesId: 'twig', nickname: null },
         { type: 'monsterAutoJoined', monsterId: 'm2' }

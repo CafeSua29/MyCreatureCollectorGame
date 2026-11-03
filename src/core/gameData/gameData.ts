@@ -67,6 +67,9 @@ import { checkTalentData } from './validateTalents'
 import { checkTamerTalentData } from './validateTamerTalents'
 import { checkSectData } from './validateSects'
 import { checkTeamPresetData, checkTradeData } from './validateTrades'
+import { checkAuctionData } from './validateAuction'
+import { checkChallengeData } from './validateChallenge'
+import { checkAscensionData } from './validateAscension'
 import { checkGachaData } from './validateGacha'
 import { checkSoulRelicData } from './validateSoulRelics'
 import { checkForgeConfig } from './validateForge'
@@ -197,6 +200,8 @@ export function createGameData(raw: RawGameData): GameData {
     talents: indexById(raw.talents, 'talents', issues),
     tamerTalentBranches: indexById(raw.tamerTalentBranches, 'tamerTalentBranches', issues),
     tamerTalents: indexById(raw.tamerTalents, 'tamerTalents', issues),
+    ascensionUpgrades: indexById(raw.ascensionUpgrades, 'ascensionUpgrades', issues),
+    destinies: indexById(raw.destinies, 'destinies', issues),
     synergies: indexById(raw.synergies, 'synergies', issues),
     formations: indexById(raw.formations, 'formations', issues),
     comboSkills,
@@ -283,6 +288,9 @@ export function createGameData(raw: RawGameData): GameData {
   checkTamerTalentData(data, issues)
   checkSectData(data, issues)
   checkTradeData(data, issues)
+  checkAuctionData(data, issues)
+  checkChallengeData(data, issues)
+  checkAscensionData(data, issues)
   checkTeamPresetData(data, issues)
   checkGachaData(data, issues)
   checkSoulRelicData(data, issues)

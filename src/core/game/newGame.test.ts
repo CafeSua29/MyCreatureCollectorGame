@@ -3,7 +3,7 @@ import { rawGameData } from '@data'
 import { createGameData } from '../gameData'
 import { canHaveGmaxFactor } from '../inventory'
 import { validateMonster } from '../monster'
-import { newDwellingState } from '../progression'
+import { newDwellingState, defaultGameOptions } from '../progression'
 import { starterSlotPool } from '../registries'
 import { ActionError, toBig } from '../shared'
 import { rollShopStock } from '../shop'
@@ -142,7 +142,7 @@ describe('createNewGame', () => {
     const shop = rollShopStock(data, rollStarters(data, 99).rng, {
       highestFloor: 1,
       nextItemId: 1,
-      options: { lifespanEnabled: true, permadeathEnabled: false },
+      options: defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false }),
       inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
     })
     expect(state.shop.stock).toEqual(shop.stock)

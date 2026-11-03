@@ -6,6 +6,7 @@
 import { BIG_ZERO, floorBig, toBig, type Decimal } from '../shared'
 import {
   STAT_NAMES,
+  bestFloorReached,
   type AptitudeTierDef,
   type GameData,
   type GameState,
@@ -18,16 +19,9 @@ export function floorGeneMultiplier(data: GameData, floor: number): Decimal {
   return toBig(data.config.floors.geneGrowthPerFloor).pow(floor - 1)
 }
 
-/**
- * Tầng cao nhất từng đạt (mở khóa vĩnh viễn: tư chất, mức bất ổn tối đa). Khi có phi thăng
- * (ascension.md) đổi thành `bestFloor` ở đây, nơi khác không phải sửa.
- */
-export function bestFloorReached(state: Pick<GameState, 'highestFloor'>): number {
-  return state.highestFloor
-}
-
-/** Tầng mốc để chấm tư chất: tầng cao nhất từng đạt. */
-export const aptitudeFloor = bestFloorReached
+/** Tầng mốc để chấm tư chất: tầng cao nhất từng đạt, nên phi thăng không đổi bậc. */
+export const aptitudeFloor = (state: Pick<GameState, 'highestFloor' | 'ascension'>): number =>
+  bestFloorReached(state)
 
 /** Tổng gen tối đa của quái hoang ở tầng (mỗi chỉ số floor(geneMax × hệ số gen của tầng)). */
 export function wildGeneMaxTotal(data: GameData, floor: number): Decimal {

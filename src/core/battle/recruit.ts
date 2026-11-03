@@ -53,6 +53,7 @@ import { applyStageChange } from './stageChanges'
 import { enemyTarget } from './battleItems'
 import { isDynamaxed } from './transform'
 import { specialRule } from './specialBattles'
+import { nuzlockeCaptureError, spendNuzlockeEncounter } from './nuzlocke'
 
 /**
  * Trận có thể thu phục: quái hoang / boss trên tầng, kể cả câu cá / khai thác (không NPC, bí cảnh,
@@ -70,7 +71,10 @@ export const isRecruitBattle = (battle: BattleState): boolean =>
  */
 function recruitBonusPercent(
   data: GameData,
-  state: Pick<GameState, 'party' | 'recruit' | 'titles' | 'tamer' | 'sect'>,
+  state: Pick<
+    GameState,
+    'party' | 'recruit' | 'titles' | 'tamer' | 'sect' | 'ascension' | 'destinies'
+  >,
   { monster, blessingBonus }: { monster: Monster; blessingBonus: number }
 ): number {
   return (
@@ -99,7 +103,15 @@ export function recruitChance(
   data: GameData,
   state: Pick<
     GameState,
-    'party' | 'storage' | 'recruit' | 'capacity' | 'tamer' | 'titles' | 'sect'
+    | 'party'
+    | 'storage'
+    | 'recruit'
+    | 'capacity'
+    | 'tamer'
+    | 'titles'
+    | 'sect'
+    | 'ascension'
+    | 'destinies'
   >,
   {
     enemy,
@@ -170,7 +182,9 @@ export function rollRecruitOffer(data: GameData, d: Draft, bait: ActiveBait | nu
   const isBoss = d.battle.isBoss
   const state = { ...d, recruit: { ...d.recruit, bait } }
   const blessingBonus = battleRecruitBlessing(data, d)
+  // Nuzlocke: chỉ quái hợp lệ của lượt gặp xin theo được (docs/rules/challenge-modes.md).
   const candidates = d.battle.enemies
+    .filter((enemy) => nuzlockeCaptureError(data, d, enemy) === null)
     .map((enemy) => ({
       enemy,
       chance: recruitChance(data, state, { enemy, isBoss, blessingBonus })
@@ -216,6 +230,7 @@ export function acceptRecruit(data: GameData, state: GameState): GameState {
   d.storage = destination === 'storage' ? [...state.storage, monster] : state.storage
   d.battle.enemies = battle.enemies.filter((m) => m.id !== offerId)
   d.battle.recruitOfferId = null
+  spendNuzlockeEncounter(d)
   log(d, { type: 'recruited', monsterId: monster.id, method, destination })
   recordRecruit(data, d, monster)
   // Thu phục trong map có thần: ân sủng như bắt quái (docs/rules/deities.md).
@@ -281,6 +296,8 @@ export function validateIntimidateTarget(
   if (!hasRosterRoom(data, d, { pending: d.battle.captured, newcomer: found.target })) {
     throw new ActionError('rosterFull', { capacity: capacityOf(data, d, 'storage') })
   }
+  const nuzlocke = nuzlockeCaptureError(data, d, found.target)
+  if (nuzlocke) throw nuzlocke
 }
 
 /**
@@ -305,6 +322,11 @@ export function runIntimidate(data: GameData, d: Draft, targetId: string | undef
   const { target } = found
   if (!hasRosterRoom(data, d, { pending: d.battle.captured, newcomer: target })) {
     log(d, { type: 'rosterFull', monsterId: target.id })
+    return false
+  }
+  // Nuzlocke: quái khác cùng lượt đã bắt con của lượt gặp.
+  if (nuzlockeCaptureError(data, d, target)) {
+    log(d, { type: 'nuzlockeBlocked', monsterId: target.id })
     return false
   }
   const chance = intimidateChanceAgainst(data, d, target)
@@ -334,6 +356,7 @@ export function runIntimidate(data: GameData, d: Draft, targetId: string | undef
     ? 'party'
     : 'storage'
   d.battle.captured.push(monster)
+  spendNuzlockeEncounter(d)
   log(d, { type: 'recruited', monsterId: monster.id, method: 'intimidate', destination })
   recordRecruit(data, d, monster)
   return true

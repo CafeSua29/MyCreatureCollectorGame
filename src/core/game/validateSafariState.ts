@@ -97,9 +97,5 @@ export function validateSafariState(
   )
   checkRoster(data, safari.roster, issues)
   issues.push(...checkInteger(safari.refreshDay, 'safari.refreshDay', 0))
-  if (!Array.isArray(safari.log)) issues.push('safari.log phải là danh sách')
-  else if (safari.log.some((entry) => typeof asObject(entry)?.type !== 'string')) {
-    issues.push('safari.log: mỗi dòng phải có type')
-  }
   return checkVisit(state, safari.visit, { checkWild, issues })
 }

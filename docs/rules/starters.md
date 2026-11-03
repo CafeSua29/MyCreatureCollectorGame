@@ -49,4 +49,4 @@ Bước 8c (2026-11-01). Loài khởi đầu **mở khóa dần qua các lần c
 | Cá Chép Vàng (→ Rồng phương Đông) | `tamerRealm` 3 |
 | Imugi (→ Yong) | `towerFloor` 20 |
 
-- Lệch roadmap: không có loài Sơn Hải Kinh dạng đầu có tiến hóa nên thay bằng Cá Chép Vàng / Imugi; điều kiện `ascensions` chưa có (chờ phi thăng, `ascension.md`).
+- Lệch roadmap: không có loài Sơn Hải Kinh dạng đầu có tiến hóa nên thay bằng Cá Chép Vàng / Imugi; điều kiện `ascensions` đã có (số lần phi thăng, `ascension.md`), chưa mục mở khóa nào dùng.

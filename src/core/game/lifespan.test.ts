@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { createRng, toBig } from '../shared'
 import { getMaxHp } from '../monster'
 import { ageDaysAtPercent, lifespanYears } from '../registries'
-import { breedBlocker, fuseMonsters, makeOffspring } from '../progression'
+import { breedBlocker, fuseMonsters, makeOffspring, defaultGameOptions } from '../progression'
 import { rollShopStock } from '../shop'
 import { generateFloorBoss, generateWildMonster } from '../world'
 import { getMonsterView } from '../roster'
@@ -107,7 +107,7 @@ describe('breed và fuse theo tuổi', () => {
 describe('Thọ Nguyên Đan', () => {
   const withPills = (lifespanEnabled: boolean): GameState => ({
     ...lifespanState({ seed: 1, party: [agingMonster(data, 50, { aging: lifespanEnabled })] }),
-    options: { lifespanEnabled, permadeathEnabled: false },
+    options: defaultGameOptions({ lifespanEnabled, permadeathEnabled: false }),
     inventory: makeInventory({ smallPill: 3 })
   })
   const use: GameAction = { type: 'useItem', itemId: 'smallPill', monsterId: 'm1' }
@@ -133,7 +133,7 @@ describe('Thọ Nguyên Đan', () => {
         highestFloor: 1,
         nextItemId: 1,
         inventory: makeInventory(),
-        options: { lifespanEnabled, permadeathEnabled: false }
+        options: defaultGameOptions({ lifespanEnabled, permadeathEnabled: false })
       }).stock.flatMap((entry) => (entry.storage === 'stack' ? [entry.itemId] : []))
     const seeds = [1, 2, 3, 4, 5]
     expect(seeds.some((seed) => roll(true, seed).includes('smallPill'))).toBe(true)
@@ -160,7 +160,10 @@ describe('Thọ Nguyên Đan', () => {
           isBoss: true
         }
       )
-      return { ...state, options: { lifespanEnabled, permadeathEnabled: false } }
+      return {
+        ...state,
+        options: defaultGameOptions({ lifespanEnabled, permadeathEnabled: false })
+      }
     }
     const strike = { slot: 0, kind: 'skill', skillId: 'strike' } as const
     const on = run(battle(true), { type: 'submitTurn', commands: [strike] })
@@ -180,7 +183,7 @@ describe('EXP theo giai đoạn tuổi', () => {
     const gained = (monster: Monster): number => {
       const state = {
         ...makeBattleState([{ ...monster, id: 'a' }], [hurtEnemy]),
-        options: { lifespanEnabled: monster.aging, permadeathEnabled: false }
+        options: defaultGameOptions({ lifespanEnabled: monster.aging, permadeathEnabled: false })
       }
       const next = run(state, { type: 'submitTurn', commands: [strike] })
       return next.party[0].exp.minus(monster.exp).toNumber()
@@ -237,11 +240,15 @@ describe('tuổi khi xuất hiện', () => {
     expect(starter.aging).toBe(true)
     expect(starter.ageDays).toBe(ageDaysAtPercent(data, starter, 10))
     expect(game.time).toBe(6)
-    expect(game.options).toEqual({ lifespanEnabled: true, permadeathEnabled: false })
+    expect(game.options).toEqual(
+      defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false })
+    )
     expect(getMonsterView(data, game, starter.id)?.life?.stage).toBe('adult')
     expect(validateGameState(data, game)).toEqual([])
     const off = createNewGame(data, options)
-    expect(off.options).toEqual({ lifespanEnabled: false, permadeathEnabled: false })
+    expect(off.options).toEqual(
+      defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false })
+    )
     expect(off.party[0].aging).toBe(false)
     expect(getMonsterView(data, off, starter.id)?.life).toBeNull()
     expect(validateGameState(data, off)).toEqual([])
@@ -295,14 +302,17 @@ describe('kiểm tra save', () => {
     expect(issues((s) => ((s as Record<string, unknown>).options = { foo: true }))).toMatch(
       /options: tùy chọn lạ "foo"[\s\S]*options\.lifespanEnabled phải là boolean/
     )
-    expect(issues((s) => ((s as Record<string, unknown>).dayEvents = [{ type: 'boom' }]))).toMatch(
-      /dayEvents\[0\]: loại sự kiện lạ "boom"/
+    expect(issues((s) => ((s as Record<string, unknown>).log = [{ type: 'boom' }]))).toMatch(
+      /log\[0\]: loại dòng log lạ "boom"/
     )
     expect(
-      issues((s) => ((s as Record<string, unknown>).dayEvents = [{ type: 'monsterAutoJoined' }]))
-    ).toMatch(/dayEvents\[0\]: thiếu monsterId/)
+      issues((s) => ((s as Record<string, unknown>).log = [{ type: 'monsterAutoJoined' }]))
+    ).toMatch(/log\[0\]: thiếu monsterId/)
     expect(
-      issues((s) => (s.options = { lifespanEnabled: false, permadeathEnabled: false }))
+      issues(
+        (s) =>
+          (s.options = defaultGameOptions({ lifespanEnabled: false, permadeathEnabled: false }))
+      )
     ).toMatch(/party\[0\]\.aging phải bằng options\.lifespanEnabled \(false\)/)
   })
 })
@@ -344,7 +354,7 @@ describe('migrate v23 → v24', () => {
       return rest
     }
     const raw = JSON.parse(JSON.stringify(serializeState(current)))
-    const { time: _time, options: _options, dayEvents: _events, ...rest } = raw
+    const { time: _time, options: _options, log: _events, ...rest } = raw
     const v23 = {
       ...rest,
       version: 23,
@@ -357,8 +367,10 @@ describe('migrate v23 → v24', () => {
     const migrated = migrateState(v23, data)
     expect(migrated.version).toBe(SAVE_VERSION)
     expect(migrated.time).toBe(6)
-    expect(migrated.options).toEqual({ lifespanEnabled: true, permadeathEnabled: false })
-    expect(migrated.dayEvents).toEqual([])
+    expect(migrated.options).toEqual(
+      defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false })
+    )
+    expect(migrated.log).toEqual([])
     const monster = migrated.party[0]
     expect(monster.maxLevelReached).toBe(7)
     expect(monster.ageDays).toBe(ageDaysAtPercent(data, monster, 20))
