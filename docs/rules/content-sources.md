@@ -8,7 +8,7 @@ Tách từ `content-data.md`: quyết định của từng đợt nhập loài /
 
 Chủ project yêu cầu nhập toàn bộ hệ, trait, loài và skill của Pokémon và Palworld, biến đổi cho hợp với luật game. Dữ liệu sinh bằng script ngoài project (nguồn: `@pkmn/dex`, CSV của PokeAPI, bộ dữ liệu Palworld 137 Pal bản 2024), đã qua kiểm tra dữ liệu đầy đủ (`tryCreateGameData`).
 
-- Trong `src/data`: `elements.json` (19 hệ), `traits.json` (46 trait), `species.json` (1463 loài Pokémon / Pal; tổng số loài của mọi nguồn xem mục Dữ liệu), `skills.json` (653 skill lúc nhập Pokémon / Pal; khoảng 1352 sau các đợt dữ liệu sau), `races.json` (14 race lúc nhập; 23 sau các đợt sau), `items.json` (22 vật phẩm). Số lượng chỉ để tham khảo (xem luật "JSON chỉ để tham khảo" ở mục Dữ liệu).
+- Trong `src/data`: `elements.json` (22 hệ), `traits.json` (46 trait), `species.json` (1463 loài Pokémon / Pal; tổng số loài của mọi nguồn xem mục Dữ liệu), `skills.json` (653 skill lúc nhập Pokémon / Pal; khoảng 1352 sau các đợt dữ liệu sau), `races.json` (14 race lúc nhập; 23 sau các đợt sau), `items.json` (22 vật phẩm). Số lượng chỉ để tham khảo (xem luật "JSON chỉ để tham khảo" ở mục Dữ liệu).
 - `traits-planned.json` (68 trait chờ hook mới; 4 trait miễn trạng thái đã chuyển vào `traits.json` ở bước 6.1, 12 trait theo hệ / thời tiết ở bước 5c giai đoạn 1) và `import-report.json` nằm ở `scripts/data-import/` (xem đầu file).
 
 **Đã chốt khi nhập dữ liệu:**

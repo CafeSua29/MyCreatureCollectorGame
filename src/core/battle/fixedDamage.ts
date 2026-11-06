@@ -3,7 +3,7 @@
 // Gambit, Fissure. Không qua công thức công / thủ, không chí mạng, không khắc hệ (miễn nhiễm vẫn
 // chặn: công thức gọi sau khi xét hệ số khắc chế 0).
 
-import { getCurrentHp } from '../monster'
+import { getCurrentHp, getMaxHp } from '../monster'
 import {
   BIG_ZERO,
   assertNever,
@@ -76,6 +76,11 @@ function computeFixed(
       const percent = Math.floor(min + roll * (max - min + 1))
       return { amount: maxBig(1, toBig(attacker.level).times(percent).div(100).floor()), rng: next }
     }
+    case 'maxHpPercent':
+      return {
+        amount: maxBig(1, getMaxHp(data, defender).times(spec.percent).div(100).floor()),
+        rng
+      }
     case 'targetHpPercent':
       return { amount: maxBig(1, targetHp.times(spec.percent).div(100).floor()), rng }
     case 'hpDifference': {

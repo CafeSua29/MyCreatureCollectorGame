@@ -224,8 +224,10 @@ export function runBreeding(
     for (let i = 0; i < spec.offspringPerGeneration; i++) {
       let child: Monster
       ;[child, rng] = makeOffspring(data, rng, father, mother, `child${generation}-${i}`)
-      for (let stone = 0; stone < infusions; stone++) {
-        ;[child, rng] = infuseMonster(data, rng, child, child.elementIds[0])
+      // Loài không hệ không có linh thạch cùng hệ để ấp.
+      const stoneElementId = child.elementIds.at(0)
+      for (let stone = 0; stoneElementId && stone < infusions; stone++) {
+        ;[child, rng] = infuseMonster(data, rng, child, stoneElementId)
       }
       children.push(child)
       if (child.gender !== 'female') continue
@@ -300,7 +302,7 @@ export function runFusion(data: GameData, spec: FusionSpec, seed: number): Linea
     const successChance = fuseSuccessChance(data, base, sub)
     reachChance = (reachChance * successChance) / 100
     const inheritance = chooseInheritance(data, base, sub)
-    ;[base, rng] = fuseMonsters(data, rng, base, sub, inheritance)
+    ;[base, rng] = fuseMonsters(data, rng, base, sub, { inheritance })
     rows.push(
       makeRow(
         data,

@@ -1,0 +1,226 @@
+[
+  {
+    "from": "FungalSpirit",
+    "to": "FungalSoldier"
+  },
+  {
+    "from": "FungalSpirit",
+    "to": "FungalGlider"
+  },
+  {
+    "from": "FungalSpirit",
+    "to": "FungalStrider"
+  },
+  {
+    "from": "FireSpirit",
+    "to": "FireCat"
+  },
+  {
+    "from": "FireSpirit",
+    "to": "LavaDrinker"
+  },
+  {
+    "from": "FireSpirit",
+    "to": "Lavorm"
+  },
+  {
+    "from": "FireSpirit",
+    "to": "DragonWelp"
+  },
+  {
+    "from": "FireSpirit",
+    "to": "LavaFrog"
+  },
+  {
+    "from": "FireSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "FireCat",
+    "to": "HellBeast"
+  },
+  {
+    "from": "FireCat",
+    "to": "FireSnake"
+  },
+  {
+    "from": "DragonWelp",
+    "to": "FireDragon"
+  },
+  {
+    "from": "LavaFrog",
+    "to": "HellBeast"
+  },
+  {
+    "from": "LavaFrog",
+    "to": "FireSnake"
+  },
+  {
+    "from": "Lavorm",
+    "to": "HellBeast"
+  },
+  {
+    "from": "Lavorm",
+    "to": "FireSnake"
+  },
+  {
+    "from": "LavaDrinker",
+    "to": "LavaSpider"
+  },
+  {
+    "from": "GrassSpirit",
+    "to": "GrassCat"
+  },
+  {
+    "from": "GrassSpirit",
+    "to": "PlantSpider"
+  },
+  {
+    "from": "GrassSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "PlantSpider",
+    "to": "PoisonArachnid"
+  },
+  {
+    "from": "WaterSpider",
+    "to": "LoveSpider"
+  },
+  {
+    "from": "GrassCat",
+    "to": "GrassSteed"
+  },
+  {
+    "from": "ElectroSpirit",
+    "to": "Elexolotl"
+  },
+  {
+    "from": "ElectroSpirit",
+    "to": "StaticSpider"
+  },
+  {
+    "from": "ElectroSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "WaterSpirit",
+    "to": "WaterFish"
+  },
+  {
+    "from": "WaterSpirit",
+    "to": "WaterSpider"
+  },
+  {
+    "from": "WaterSpirit",
+    "to": "OrbFish"
+  },
+  {
+    "from": "WaterSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "WaterFish",
+    "to": "ShellDrake",
+    "req": "Hp genes 3+. "
+  },
+  {
+    "from": "WaterFish",
+    "to": "SeaSerpent",
+    "req": "Strength genes 3+. "
+  },
+  {
+    "from": "OrbFish",
+    "to": "ShellDrake",
+    "req": "Hp genes 3+. "
+  },
+  {
+    "from": "OrbFish",
+    "to": "SeaSerpent",
+    "req": "Strength genes 3+. "
+  },
+  {
+    "from": "IceSpirit",
+    "to": "IceBall"
+  },
+  {
+    "from": "IceSpirit",
+    "to": "FrostWeaver"
+  },
+  {
+    "from": "IceSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "IceBall",
+    "to": "IceBeast"
+  },
+  {
+    "from": "RockSpirit",
+    "to": "RockGolem"
+  },
+  {
+    "from": "RockSpirit",
+    "to": "RockCrab"
+  },
+  {
+    "from": "RockSpirit",
+    "to": "RockHugger"
+  },
+  {
+    "from": "RockSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "RockGolem",
+    "to": "RockGuardian"
+  },
+  {
+    "from": "RockGolem",
+    "to": "RockThrower"
+  },
+  {
+    "from": "LightSpirit",
+    "to": "LightOrb"
+  },
+  {
+    "from": "LightSpirit",
+    "to": "LightBee"
+  },
+  {
+    "from": "LightSpirit",
+    "to": "SpiritBeast"
+  },
+  {
+    "from": "LightSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "LightOrb",
+    "to": "RingBeast"
+  },
+  {
+    "from": "LightOrb",
+    "to": "HolySpirit"
+  },
+  {
+    "from": "ShadowSpirit",
+    "to": "DeathFly"
+  },
+  {
+    "from": "ShadowSpirit",
+    "to": "ElementalSeed"
+  },
+  {
+    "from": "Seedling",
+    "to": "SeedlingMonster"
+  },
+  {
+    "from": "Seedling",
+    "to": "SeedlingBattery"
+  },
+  {
+    "from": "SeedlingMonster",
+    "to": "SeedlingDragon"
+  }
+]

@@ -24,6 +24,7 @@ const EVENT_BIG_FIELDS: EventBigFields = {
   damage: 'amount',
   heal: 'amount',
   statusDamage: 'amount',
+  overexerted: 'damage',
   selfHit: 'amount',
   fieldDamage: 'amount',
   perished: 'amount',

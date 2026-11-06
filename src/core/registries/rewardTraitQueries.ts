@@ -57,6 +57,30 @@ export function traitEggHatchExtra(data: GameData, monsters: readonly Monster[])
   return extra
 }
 
+/** Điểm % sức lớn / độ ổn định của trứng chứa `monster` ở phòng ấp (docs/rules/hatchery.md). */
+export const traitEggRoomPercent = (
+  data: GameData,
+  monster: Monster,
+  kind: 'growth' | 'stability'
+): number =>
+  sumPercent(data, [monster], (handler, params, scale) =>
+    kind === 'growth'
+      ? handler.eggGrowthPercent?.(params, scale)
+      : handler.eggStabilityPercent?.(params, scale)
+  )
+
+/** % sức ấp của `monster` khi làm người ấp (docs/rules/hatchery.md). */
+export const traitHatcherPercent = (data: GameData, monster: Monster): number =>
+  sumPercent(data, [monster], (handler, params, scale) =>
+    handler.hatcherPowerPercent?.(params, scale)
+  )
+
+/** % truyền thêm một trait của `monster` cho con khi breed. */
+export const traitExtraInheritPercent = (data: GameData, monster: Monster): number =>
+  sumPercent(data, [monster], (handler, params, scale) =>
+    handler.traitExtraInheritPercent?.(params, scale)
+  )
+
 /** Quái truyền tính cách cho con khi breed (lắp Bất Biến Thạch; docs/rules/natures.md). */
 export const passesNature = (data: GameData, monster: Monster): boolean =>
   hasTraitFlag(data, monster, (handler, params) => handler.passesNature?.(params))

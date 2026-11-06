@@ -1,0 +1,1926 @@
+{
+  "source": "koltera2",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Moss",
+      "elements": ["flying"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 39,
+        "attack": 35,
+        "defense": 39,
+        "spAttack": 70,
+        "spDefense": 54,
+        "speed": 53
+      },
+      "tier": "small",
+      "category": "T1 Wind creature",
+      "flavor": "A leaf-like creature that can glide through the wind effortlessly with its leaf-like features. A jack of all trades who enjoys learning everything it can around it."
+    },
+    {
+      "name": "Scoots",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 87,
+        "attack": 35,
+        "defense": 87,
+        "spAttack": 13,
+        "spDefense": 50,
+        "speed": 17
+      },
+      "tier": "small",
+      "category": "T1 Earth creature",
+      "flavor": "A ball-like creature who's just happy to roll around chasing after it's friends. It often runs into walls, but has quite the hard shell, which is perfect for bonking."
+    },
+    {
+      "name": "Slick",
+      "elements": ["ground"],
+      "raceId": "waterfowl",
+      "stats": {
+        "hp": 70,
+        "attack": 40,
+        "defense": 70,
+        "spAttack": 30,
+        "spDefense": 50,
+        "speed": 30
+      },
+      "tier": "small",
+      "category": "T1 Earth creature",
+      "flavor": "A hedgehog-bear-like creature that is very slick and greedy and will stop at nothing to earn a little gold to add to its collection. It's also one lucky duck."
+    },
+    {
+      "name": "Chroma",
+      "elements": ["ground"],
+      "raceId": "lizard",
+      "stats": {
+        "hp": 25,
+        "attack": 19,
+        "defense": 25,
+        "spAttack": 108,
+        "spDefense": 67,
+        "speed": 45
+      },
+      "tier": "small",
+      "category": "T1 Earth creature",
+      "flavor": "A chameleon-like creature that can change colors to blend in with its surroundings. It loves to watch humans mine, often blending with rocks to get a closer look."
+    },
+    {
+      "name": "Sunny",
+      "elements": ["fire"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 29,
+        "attack": 143,
+        "defense": 29,
+        "spAttack": 21,
+        "spDefense": 25,
+        "speed": 43
+      },
+      "tier": "small",
+      "category": "T1 Fire creature",
+      "flavor": "A fox-like creature that loves laying in the sun. It is always warm and is said to brighten up the mood of any human or creature around it."
+    },
+    {
+      "name": "Mizu",
+      "elements": ["water"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 65,
+        "attack": 37,
+        "defense": 65,
+        "spAttack": 28,
+        "spDefense": 47,
+        "speed": 47
+      },
+      "tier": "small",
+      "category": "T1 Water creature",
+      "flavor": "A frog-like creature that loves swimming in any pond or lake it can find. It is very noisy and loves to sing, especially at night or during a rain storm."
+    },
+    {
+      "name": "Ranger",
+      "elements": ["fire"],
+      "raceId": "ursid",
+      "stats": {
+        "hp": 29,
+        "attack": 147,
+        "defense": 29,
+        "spAttack": 22,
+        "spDefense": 26,
+        "speed": 37
+      },
+      "tier": "small",
+      "category": "T1 Fire creature",
+      "flavor": "A bear-like creature that loves to explore the forests. It is an expert tracker, often finding food left behind by humans, keeping the forests clean of any scraps!"
+    },
+    {
+      "name": "Baabaa",
+      "elements": ["flying"],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 48,
+        "attack": 29,
+        "defense": 48,
+        "spAttack": 68,
+        "spDefense": 58,
+        "speed": 39
+      },
+      "tier": "small",
+      "category": "T1 Wind creature",
+      "flavor": "A ram-like creature that is very fluffy, but a menace with its horns. It loves to butt heads with its friends, sometimes even humans if they get too close!"
+    },
+    {
+      "name": "Dinkee",
+      "elements": ["fire"],
+      "raceId": "equid",
+      "stats": {
+        "hp": 51,
+        "attack": 31,
+        "defense": 51,
+        "spAttack": 61,
+        "spDefense": 56,
+        "speed": 41
+      },
+      "tier": "small",
+      "category": "T1 Fire creature",
+      "flavor": "A donkey-like creature that has quite the fireball. It is often seen grazing in fields, eating all the bad grass and weeds to help the farmers out."
+    },
+    {
+      "name": "Mooberry",
+      "elements": ["fire"],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 55,
+        "attack": 33,
+        "defense": 55,
+        "spAttack": 44,
+        "spDefense": 49,
+        "speed": 55
+      },
+      "tier": "small",
+      "category": "T1 Fire creature",
+      "flavor": "A cow-like creature that loves to graze pastures. It is said that the gem on its head helps it find the tastiest food."
+    },
+    {
+      "name": "Mushy",
+      "elements": ["ground"],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 53,
+        "attack": 26,
+        "defense": 53,
+        "spAttack": 70,
+        "spDefense": 62,
+        "speed": 26
+      },
+      "tier": "small",
+      "category": "T1 Earth creature",
+      "flavor": "A mushroom-like creature that enjoys laying around. It blends right into the forest, make it great at camouflage."
+    },
+    {
+      "name": "Gummy",
+      "elements": ["ground"],
+      "raceId": "mollusk",
+      "stats": {
+        "hp": 51,
+        "attack": 115,
+        "defense": 51,
+        "spAttack": 19,
+        "spDefense": 35,
+        "speed": 19
+      },
+      "tier": "small",
+      "category": "T1 Earth creature",
+      "flavor": "A gummy-snail-like creature with infinite joy. Everything around it finds it impossible to be angry. "
+    },
+    {
+      "name": "Sizzle",
+      "elements": ["fire"],
+      "raceId": "myriapod",
+      "stats": {
+        "hp": 47,
+        "attack": 59,
+        "defense": 47,
+        "spAttack": 36,
+        "spDefense": 41,
+        "speed": 59
+      },
+      "tier": "small",
+      "category": "T1 Fire creature",
+      "flavor": "A centipede-like creature that that is hot to the touch. It is a very heat resistent creature and often crawling around volcanos."
+    },
+    {
+      "name": "Crank",
+      "elements": ["water"],
+      "raceId": "crustacean",
+      "stats": {
+        "hp": 86,
+        "attack": 36,
+        "defense": 86,
+        "spAttack": 15,
+        "spDefense": 51,
+        "speed": 15
+      },
+      "tier": "small",
+      "category": "T1 Water creature",
+      "flavor": "A robotic-crab-like creature that is incredibly smart and industructible. Its brain is powered by CPUs and GPUs, giving it great processing power."
+    },
+    {
+      "name": "Mochi",
+      "elements": ["water"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 41,
+        "attack": 28,
+        "defense": 41,
+        "spAttack": 69,
+        "spDefense": 55,
+        "speed": 55
+      },
+      "tier": "small",
+      "category": "T1 Water creature",
+      "flavor": "A axolotl-like creature that is swift and agile in the water. It is said to be one of the hardest creatures to catch when it is in the water."
+    },
+    {
+      "name": "Pips",
+      "elements": ["water"],
+      "raceId": "cetacean",
+      "stats": {
+        "hp": 54,
+        "attack": 27,
+        "defense": 54,
+        "spAttack": 40,
+        "spDefense": 47,
+        "speed": 67
+      },
+      "tier": "small",
+      "category": "T1 Water creature",
+      "flavor": "A seahorse-like creature that loves to swim near the top of water due to the sun. It enjoys the warmth and can rarely be seen jumping out of the water like a dolphin."
+    },
+    {
+      "name": "Stella",
+      "elements": ["water"],
+      "raceId": "cnidarian",
+      "stats": {
+        "hp": 26,
+        "attack": 17,
+        "defense": 26,
+        "spAttack": 43,
+        "spDefense": 34,
+        "speed": 145
+      },
+      "tier": "small",
+      "category": "T1 Water creature",
+      "flavor": "A starfish-like creature with incredible luck. No one understands where the luck comes from, but having one around is said to make you one lucky person."
+    },
+    {
+      "name": "Poko",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 24,
+        "attack": 24,
+        "defense": 24,
+        "spAttack": 104,
+        "spDefense": 64,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "T1 Wind creature",
+      "flavor": "A wood-pecker-like creature that is keen. It is said that they understand humans well and are quick learners."
+    },
+    {
+      "name": "Sakura",
+      "elements": ["flying"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 21,
+        "attack": 21,
+        "defense": 21,
+        "spAttack": 50,
+        "spDefense": 35,
+        "speed": 141
+      },
+      "tier": "small",
+      "category": "T1 Wind creature",
+      "flavor": "A bird-like creature that was named after the sakura tree. They are great scouters and know their trees very well."
+    },
+    {
+      "name": "Coco",
+      "elements": ["flying"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 27,
+        "attack": 20,
+        "defense": 27,
+        "spAttack": 48,
+        "spDefense": 38,
+        "speed": 130
+      },
+      "tier": "small",
+      "category": "T1 Wind creature",
+      "flavor": "A parrot-like creature that enjoys singing morning songs. It is a common bird in Koltera, always singing its favorite songs early in the morning."
+    },
+    {
+      "name": "Ignis",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 54,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 19,
+        "spDefense": 37,
+        "speed": 23
+      },
+      "tier": "small",
+      "category": "T2 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Luna",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 22,
+        "attack": 22,
+        "defense": 22,
+        "spAttack": 113,
+        "spDefense": 68,
+        "speed": 44
+      },
+      "tier": "small",
+      "category": "T2 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Nibsy",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 56,
+        "attack": 105,
+        "defense": 56,
+        "spAttack": 16,
+        "spDefense": 36,
+        "speed": 20
+      },
+      "tier": "small",
+      "category": "T2 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Karn",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 69,
+        "attack": 20,
+        "defense": 69,
+        "spAttack": 49,
+        "spDefense": 59,
+        "speed": 25
+      },
+      "tier": "small",
+      "category": "T2 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Wiggle",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 41,
+        "attack": 28,
+        "defense": 41,
+        "spAttack": 83,
+        "spDefense": 62,
+        "speed": 35
+      },
+      "tier": "small",
+      "category": "T2 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Belle",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 41,
+        "attack": 23,
+        "defense": 41,
+        "spAttack": 87,
+        "spDefense": 64,
+        "speed": 35
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Krubs",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 46,
+        "attack": 129,
+        "defense": 46,
+        "spAttack": 18,
+        "spDefense": 32,
+        "speed": 18
+      },
+      "tier": "small",
+      "category": "T2 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Hippa",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 85,
+        "attack": 43,
+        "defense": 85,
+        "spAttack": 15,
+        "spDefense": 50,
+        "speed": 12
+      },
+      "tier": "small",
+      "category": "T2 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Zibby",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 30,
+        "attack": 60,
+        "defense": 30,
+        "spAttack": 84,
+        "spDefense": 57,
+        "speed": 30
+      },
+      "tier": "small",
+      "category": "T2 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Luma",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 21,
+        "attack": 17,
+        "defense": 21,
+        "spAttack": 108,
+        "spDefense": 65,
+        "speed": 58
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Misty",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 19,
+        "attack": 19,
+        "defense": 19,
+        "spAttack": 58,
+        "spDefense": 39,
+        "speed": 135
+      },
+      "tier": "small",
+      "category": "T2 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Echo",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 20,
+        "attack": 16,
+        "defense": 20,
+        "spAttack": 112,
+        "spDefense": 66,
+        "speed": 56
+      },
+      "tier": "small",
+      "category": "T2 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Gusty",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 19,
+        "attack": 24,
+        "defense": 19,
+        "spAttack": 57,
+        "spDefense": 38,
+        "speed": 133
+      },
+      "tier": "small",
+      "category": "T2 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Miko",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 24,
+        "attack": 68,
+        "defense": 24,
+        "spAttack": 24,
+        "spDefense": 24,
+        "speed": 126
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Penny",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 46,
+        "attack": 119,
+        "defense": 46,
+        "spAttack": 23,
+        "spDefense": 34,
+        "speed": 23
+      },
+      "tier": "small",
+      "category": "T2 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Buzz",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 27,
+        "attack": 127,
+        "defense": 27,
+        "spAttack": 18,
+        "spDefense": 23,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "T2 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Splash",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 42,
+        "attack": 25,
+        "defense": 42,
+        "spAttack": 50,
+        "spDefense": 46,
+        "speed": 84
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Spud",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 91,
+        "attack": 18,
+        "defense": 91,
+        "spAttack": 18,
+        "spDefense": 54,
+        "speed": 18
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Squish",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 40,
+        "attack": 32,
+        "defense": 40,
+        "spAttack": 79,
+        "spDefense": 60,
+        "speed": 40
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Tuskers",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 53,
+        "attack": 114,
+        "defense": 53,
+        "spAttack": 18,
+        "spDefense": 35,
+        "speed": 18
+      },
+      "tier": "small",
+      "category": "T2 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Flaire",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 34,
+        "attack": 146,
+        "defense": 34,
+        "spAttack": 22,
+        "spDefense": 28,
+        "speed": 155
+      },
+      "tier": "medium",
+      "category": "T3 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Koral",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 134,
+        "attack": 35,
+        "defense": 134,
+        "spAttack": 21,
+        "spDefense": 78,
+        "speed": 18
+      },
+      "tier": "medium",
+      "category": "T3 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Spike",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 105,
+        "attack": 117,
+        "defense": 105,
+        "spAttack": 15,
+        "spDefense": 60,
+        "speed": 18
+      },
+      "tier": "medium",
+      "category": "T3 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Honey",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 35,
+        "attack": 198,
+        "defense": 35,
+        "spAttack": 58,
+        "spDefense": 47,
+        "speed": 47
+      },
+      "tier": "medium",
+      "category": "T3 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Mooyak",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 105,
+        "attack": 117,
+        "defense": 105,
+        "spAttack": 15,
+        "spDefense": 60,
+        "speed": 18
+      },
+      "tier": "medium",
+      "category": "T3 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Winter",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 27,
+        "attack": 169,
+        "defense": 27,
+        "spAttack": 22,
+        "spDefense": 24,
+        "speed": 151
+      },
+      "tier": "medium",
+      "category": "T3 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Budbud",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 48,
+        "attack": 24,
+        "defense": 48,
+        "spAttack": 164,
+        "spDefense": 106,
+        "speed": 29
+      },
+      "tier": "medium",
+      "category": "T3 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Peak",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 129,
+        "attack": 23,
+        "defense": 129,
+        "spAttack": 38,
+        "spDefense": 83,
+        "speed": 19
+      },
+      "tier": "medium",
+      "category": "T3 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Tilly",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 49,
+        "attack": 24,
+        "defense": 49,
+        "spAttack": 166,
+        "spDefense": 107,
+        "speed": 24
+      },
+      "tier": "medium",
+      "category": "T3 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Dottie",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 38,
+        "attack": 57,
+        "defense": 38,
+        "spAttack": 162,
+        "spDefense": 100,
+        "speed": 24
+      },
+      "tier": "medium",
+      "category": "T3 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Kroko",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 103,
+        "attack": 115,
+        "defense": 103,
+        "spAttack": 15,
+        "spDefense": 59,
+        "speed": 24
+      },
+      "tier": "medium",
+      "category": "T3 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Strawberry",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 55,
+        "attack": 27,
+        "defense": 55,
+        "spAttack": 155,
+        "spDefense": 105,
+        "speed": 23
+      },
+      "tier": "medium",
+      "category": "T3 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Whisk",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 47,
+        "attack": 133,
+        "defense": 47,
+        "spAttack": 20,
+        "spDefense": 33,
+        "speed": 141
+      },
+      "tier": "medium",
+      "category": "T3 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Bubbles",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 52,
+        "attack": 41,
+        "defense": 52,
+        "spAttack": 83,
+        "spDefense": 67,
+        "speed": 124
+      },
+      "tier": "medium",
+      "category": "T3 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Corala",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 135,
+        "attack": 15,
+        "defense": 135,
+        "spAttack": 30,
+        "spDefense": 83,
+        "speed": 23
+      },
+      "tier": "medium",
+      "category": "T3 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Ruby",
+      "elements": ["fire"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 55,
+        "attack": 44,
+        "defense": 55,
+        "spAttack": 87,
+        "spDefense": 71,
+        "speed": 109
+      },
+      "tier": "medium",
+      "category": "T3 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Flutter",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 23,
+        "attack": 16,
+        "defense": 23,
+        "spAttack": 132,
+        "spDefense": 78,
+        "speed": 148
+      },
+      "tier": "medium",
+      "category": "T3 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Peach",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 20,
+        "attack": 16,
+        "defense": 20,
+        "spAttack": 148,
+        "spDefense": 84,
+        "speed": 133
+      },
+      "tier": "medium",
+      "category": "T3 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Rustle",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 24,
+        "attack": 20,
+        "defense": 24,
+        "spAttack": 133,
+        "spDefense": 79,
+        "speed": 141
+      },
+      "tier": "medium",
+      "category": "T3 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Toto",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 23,
+        "attack": 19,
+        "defense": 23,
+        "spAttack": 140,
+        "spDefense": 82,
+        "speed": 132
+      },
+      "tier": "medium",
+      "category": "T3 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Porkie",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 98,
+        "attack": 106,
+        "defense": 98,
+        "spAttack": 23,
+        "spDefense": 61,
+        "speed": 34
+      },
+      "tier": "medium",
+      "category": "T4 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Rumble",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 100,
+        "attack": 104,
+        "defense": 100,
+        "spAttack": 22,
+        "spDefense": 61,
+        "speed": 33
+      },
+      "tier": "medium",
+      "category": "T4 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Terra",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 101,
+        "attack": 93,
+        "defense": 101,
+        "spAttack": 36,
+        "spDefense": 68,
+        "speed": 22
+      },
+      "tier": "medium",
+      "category": "T4 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Mantis",
+      "elements": ["ground"],
+      "raceId": "orthopteran",
+      "stats": {
+        "hp": 47,
+        "attack": 132,
+        "defense": 47,
+        "spAttack": 28,
+        "spDefense": 38,
+        "speed": 127
+      },
+      "tier": "medium",
+      "category": "T4 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Snooze",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 99,
+        "attack": 103,
+        "defense": 99,
+        "spAttack": 23,
+        "spDefense": 61,
+        "speed": 34
+      },
+      "tier": "medium",
+      "category": "T4 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Joeyroo",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 44,
+        "attack": 128,
+        "defense": 44,
+        "spAttack": 29,
+        "spDefense": 37,
+        "speed": 138
+      },
+      "tier": "medium",
+      "category": "T4 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Pandy",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 60,
+        "attack": 30,
+        "defense": 60,
+        "spAttack": 130,
+        "spDefense": 95,
+        "speed": 45
+      },
+      "tier": "medium",
+      "category": "T4 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Pudge",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 110,
+        "attack": 25,
+        "defense": 110,
+        "spAttack": 55,
+        "spDefense": 82,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "T4 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Chomp",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 115,
+        "attack": 55,
+        "defense": 115,
+        "spAttack": 26,
+        "spDefense": 70,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "T4 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Nutty",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 100,
+        "attack": 104,
+        "defense": 100,
+        "spAttack": 22,
+        "spDefense": 61,
+        "speed": 33
+      },
+      "tier": "medium",
+      "category": "T4 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Rookie",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 102,
+        "attack": 98,
+        "defense": 102,
+        "spAttack": 23,
+        "spDefense": 62,
+        "speed": 34
+      },
+      "tier": "medium",
+      "category": "T4 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Rascal",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 58,
+        "attack": 116,
+        "defense": 58,
+        "spAttack": 27,
+        "spDefense": 42,
+        "speed": 120
+      },
+      "tier": "medium",
+      "category": "T4 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Chonk",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 99,
+        "attack": 103,
+        "defense": 99,
+        "spAttack": 23,
+        "spDefense": 61,
+        "speed": 34
+      },
+      "tier": "medium",
+      "category": "T4 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Diamond",
+      "elements": ["water"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 51,
+        "attack": 34,
+        "defense": 51,
+        "spAttack": 93,
+        "spDefense": 72,
+        "speed": 119
+      },
+      "tier": "medium",
+      "category": "T4 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Wally",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 92,
+        "attack": 31,
+        "defense": 92,
+        "spAttack": 54,
+        "spDefense": 73,
+        "speed": 77
+      },
+      "tier": "medium",
+      "category": "T4 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Finn",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 42,
+        "attack": 28,
+        "defense": 42,
+        "spAttack": 70,
+        "spDefense": 56,
+        "speed": 182
+      },
+      "tier": "medium",
+      "category": "T4 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Nari",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 41,
+        "attack": 28,
+        "defense": 41,
+        "spAttack": 69,
+        "spDefense": 55,
+        "speed": 186
+      },
+      "tier": "medium",
+      "category": "T4 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Skipper",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 20,
+        "attack": 30,
+        "defense": 20,
+        "spAttack": 132,
+        "spDefense": 76,
+        "speed": 142
+      },
+      "tier": "medium",
+      "category": "T4 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Twilight",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 29,
+        "attack": 19,
+        "defense": 29,
+        "spAttack": 135,
+        "spDefense": 82,
+        "speed": 126
+      },
+      "tier": "medium",
+      "category": "T4 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Prism",
+      "elements": ["fire"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 35,
+        "attack": 23,
+        "defense": 35,
+        "spAttack": 161,
+        "spDefense": 98,
+        "speed": 69
+      },
+      "tier": "medium",
+      "category": "T4 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Kango",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 116,
+        "attack": 122,
+        "defense": 116,
+        "spAttack": 34,
+        "spDefense": 75,
+        "speed": 56
+      },
+      "tier": "peak",
+      "category": "T5 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Brunk",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 116,
+        "attack": 122,
+        "defense": 116,
+        "spAttack": 34,
+        "spDefense": 75,
+        "speed": 56
+      },
+      "tier": "peak",
+      "category": "T5 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Astra",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 52,
+        "attack": 85,
+        "defense": 52,
+        "spAttack": 180,
+        "spDefense": 116,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "T5 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Shelldon",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 122,
+        "attack": 116,
+        "defense": 122,
+        "spAttack": 31,
+        "spDefense": 77,
+        "speed": 53
+      },
+      "tier": "peak",
+      "category": "T5 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Skitter",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 69,
+        "attack": 137,
+        "defense": 69,
+        "spAttack": 42,
+        "spDefense": 55,
+        "speed": 149
+      },
+      "tier": "peak",
+      "category": "T5 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Naria",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 69,
+        "attack": 150,
+        "defense": 69,
+        "spAttack": 39,
+        "spDefense": 54,
+        "speed": 139
+      },
+      "tier": "peak",
+      "category": "T5 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Ruff",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 116,
+        "attack": 125,
+        "defense": 116,
+        "spAttack": 32,
+        "spDefense": 74,
+        "speed": 58
+      },
+      "tier": "peak",
+      "category": "T5 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Fleece",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 104,
+        "attack": 32,
+        "defense": 104,
+        "spAttack": 115,
+        "spDefense": 109,
+        "speed": 57
+      },
+      "tier": "peak",
+      "category": "T5 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Bram",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 104,
+        "attack": 32,
+        "defense": 104,
+        "spAttack": 115,
+        "spDefense": 109,
+        "speed": 57
+      },
+      "tier": "peak",
+      "category": "T5 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Porkchop",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 114,
+        "attack": 31,
+        "defense": 114,
+        "spAttack": 102,
+        "spDefense": 108,
+        "speed": 52
+      },
+      "tier": "peak",
+      "category": "T5 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Wooly",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 104,
+        "attack": 32,
+        "defense": 104,
+        "spAttack": 117,
+        "spDefense": 110,
+        "speed": 54
+      },
+      "tier": "peak",
+      "category": "T5 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Bandit",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 69,
+        "attack": 137,
+        "defense": 69,
+        "spAttack": 42,
+        "spDefense": 55,
+        "speed": 149
+      },
+      "tier": "peak",
+      "category": "T5 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Bill",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 118,
+        "attack": 124,
+        "defense": 118,
+        "spAttack": 32,
+        "spDefense": 75,
+        "speed": 54
+      },
+      "tier": "peak",
+      "category": "T5 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Scruff",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 111,
+        "defense": 108,
+        "spAttack": 29,
+        "spDefense": 68,
+        "speed": 96
+      },
+      "tier": "peak",
+      "category": "T5 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Floe",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 145,
+        "attack": 26,
+        "defense": 145,
+        "spAttack": 41,
+        "spDefense": 93,
+        "speed": 71
+      },
+      "tier": "peak",
+      "category": "T5 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Blorp",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 84,
+        "attack": 33,
+        "defense": 84,
+        "spAttack": 151,
+        "spDefense": 117,
+        "speed": 51
+      },
+      "tier": "peak",
+      "category": "T5 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Zorb",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 130,
+        "attack": 25,
+        "defense": 130,
+        "spAttack": 36,
+        "spDefense": 83,
+        "speed": 117
+      },
+      "tier": "peak",
+      "category": "T5 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Twitch",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 44,
+        "attack": 28,
+        "defense": 44,
+        "spAttack": 156,
+        "spDefense": 100,
+        "speed": 148
+      },
+      "tier": "peak",
+      "category": "T5 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Mothie",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 41,
+        "attack": 29,
+        "defense": 41,
+        "spAttack": 157,
+        "spDefense": 99,
+        "speed": 153
+      },
+      "tier": "peak",
+      "category": "T5 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Snowby",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 42,
+        "attack": 29,
+        "defense": 42,
+        "spAttack": 150,
+        "spDefense": 96,
+        "speed": 162
+      },
+      "tier": "peak",
+      "category": "T5 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Ivan",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 120,
+        "attack": 123,
+        "defense": 120,
+        "spAttack": 46,
+        "spDefense": 83,
+        "speed": 67
+      },
+      "tier": "large",
+      "category": "T6 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Clad",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 121,
+        "attack": 116,
+        "defense": 121,
+        "spAttack": 64,
+        "spDefense": 93,
+        "speed": 45
+      },
+      "tier": "large",
+      "category": "T6 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Kragg",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 124,
+        "attack": 116,
+        "defense": 124,
+        "spAttack": 46,
+        "spDefense": 85,
+        "speed": 66
+      },
+      "tier": "large",
+      "category": "T6 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Kong",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 106,
+        "attack": 118,
+        "defense": 106,
+        "spAttack": 43,
+        "spDefense": 75,
+        "speed": 111
+      },
+      "tier": "large",
+      "category": "T6 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Rusty",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 112,
+        "attack": 114,
+        "defense": 112,
+        "spAttack": 41,
+        "spDefense": 76,
+        "speed": 105
+      },
+      "tier": "large",
+      "category": "T6 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Blitz",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 105,
+        "attack": 120,
+        "defense": 105,
+        "spAttack": 42,
+        "spDefense": 73,
+        "speed": 115
+      },
+      "tier": "large",
+      "category": "T6 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Ravager",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 112,
+        "attack": 117,
+        "defense": 112,
+        "spAttack": 41,
+        "spDefense": 76,
+        "speed": 102
+      },
+      "tier": "large",
+      "category": "T6 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Firebelly",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 109,
+        "attack": 43,
+        "defense": 109,
+        "spAttack": 119,
+        "spDefense": 114,
+        "speed": 66
+      },
+      "tier": "large",
+      "category": "T6 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Midnight",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 89,
+        "attack": 58,
+        "defense": 89,
+        "spAttack": 161,
+        "spDefense": 125,
+        "speed": 38
+      },
+      "tier": "large",
+      "category": "T6 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Pippy",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 119,
+        "attack": 30,
+        "defense": 119,
+        "spAttack": 124,
+        "spDefense": 122,
+        "speed": 46
+      },
+      "tier": "large",
+      "category": "T6 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Cackle",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 104,
+        "attack": 108,
+        "defense": 104,
+        "spAttack": 64,
+        "spDefense": 84,
+        "speed": 97
+      },
+      "tier": "large",
+      "category": "T6 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Hedge",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 49,
+        "attack": 131,
+        "defense": 49,
+        "spAttack": 120,
+        "spDefense": 85,
+        "speed": 126
+      },
+      "tier": "large",
+      "category": "T6 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Quill",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 105,
+        "attack": 120,
+        "defense": 105,
+        "spAttack": 42,
+        "spDefense": 73,
+        "speed": 115
+      },
+      "tier": "large",
+      "category": "T6 Earth creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Sarge",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 48,
+        "attack": 189,
+        "defense": 48,
+        "spAttack": 114,
+        "spDefense": 81,
+        "speed": 79
+      },
+      "tier": "large",
+      "category": "T6 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Tooth",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 48,
+        "attack": 75,
+        "defense": 48,
+        "spAttack": 114,
+        "spDefense": 81,
+        "speed": 193
+      },
+      "tier": "large",
+      "category": "T6 Water creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Coralite",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 140,
+        "attack": 34,
+        "defense": 140,
+        "spAttack": 81,
+        "spDefense": 110,
+        "speed": 56
+      },
+      "tier": "large",
+      "category": "T6 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Gale",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 57,
+        "attack": 38,
+        "defense": 57,
+        "spAttack": 155,
+        "spDefense": 106,
+        "speed": 148
+      },
+      "tier": "large",
+      "category": "T6 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Lilith",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 57,
+        "attack": 38,
+        "defense": 57,
+        "spAttack": 155,
+        "spDefense": 106,
+        "speed": 146
+      },
+      "tier": "large",
+      "category": "T6 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Orango",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 38,
+        "attack": 58,
+        "defense": 38,
+        "spAttack": 160,
+        "spDefense": 99,
+        "speed": 167
+      },
+      "tier": "large",
+      "category": "T6 Fire creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    },
+    {
+      "name": "Rocket",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 37,
+        "attack": 57,
+        "defense": 37,
+        "spAttack": 161,
+        "spDefense": 99,
+        "speed": 168
+      },
+      "tier": "large",
+      "category": "T6 Wind creature",
+      "flavor": "Placeholder flavor text, to be written in the future."
+    }
+  ]
+}

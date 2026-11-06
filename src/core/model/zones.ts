@@ -34,10 +34,19 @@ export const ZONE_REQUIREMENT_TYPES = [
 
 /**
  * Loại bước khám phá (registry ZONE_STEPS ở battle/zones.ts): trận quái hoang của map, quái tinh anh
- * (boss ngẫu nhiên của map), rương thường, rương hiếm, linh tuyền (hồi máu). Bước cuối luôn là boss
- * canh giữ (không tung).
+ * (boss ngẫu nhiên của map), rương thường, rương hiếm, linh tuyền (hồi máu); riêng cổng thế giới:
+ * tổ quái (`hive`: trận tinh anh, thắng thì cổng bớt một tổ) và công trình thu thập (`gather`: rương
+ * thường thêm lượt). Bước cuối luôn là boss canh giữ (không tung).
  */
-export const ZONE_STEP_KINDS = ['battle', 'elite', 'treasure', 'rareTreasure', 'spring'] as const
+export const ZONE_STEP_KINDS = [
+  'battle',
+  'elite',
+  'treasure',
+  'rareTreasure',
+  'spring',
+  'hive',
+  'gather'
+] as const
 
 export type ZoneStepKind = (typeof ZONE_STEP_KINDS)[number]
 
@@ -56,6 +65,11 @@ export interface RawZoneDef {
   treasure: ZoneLootTable
   /** Rương hiếm (bước `rareTreasure`, thưởng hạ boss canh giữ). */
   rareTreasure: ZoneLootTable
+  /**
+   * Mẫu cổng thế giới (true): không vào thẳng bằng enterZone; mỗi cổng mở ra là một bản có thời hạn
+   * (ZoneState.portals, mục "Cổng thế giới" ở zones.md).
+   */
+  portal?: true
 }
 
 /** Hiểm địa đã nạp: map đủ trường như biome (sinh quái, đồ rơi, môi trường dùng chung với tầng). */
@@ -71,8 +85,8 @@ export const allMaps = (data: Pick<GameData, 'biomes' | 'zones'>): Biome[] => [
 
 /** Kết quả một bước khám phá (log ngoài trận `zoneStep`); trận thì xem log của trận. */
 export type ZoneStepResult =
-  | { kind: 'battle' | 'elite' | 'guardian' }
-  | { kind: 'treasure' | 'rareTreasure'; items: ItemReward[] }
+  | { kind: 'battle' | 'elite' | 'guardian' | 'hive' }
+  | { kind: 'treasure' | 'rareTreasure' | 'gather'; items: ItemReward[] }
   | { kind: 'spring'; healPercent: number }
 
 /** Lượt vào hiểm địa đang diễn ra (GameState.zones.visit). */
@@ -84,6 +98,28 @@ export interface ZoneVisit {
   steps: number
   /** Số bước đã đi (không tính boss canh giữ: thắng boss là xong lượt). */
   stepsTaken: number
+  /** Lượt vào một cổng thế giới (id trong ZoneState.portals); bỏ trống = hiểm địa thường. */
+  portalId?: string
+}
+
+/**
+ * Một cổng thế giới đang mở (Portal của Portals of Phereon): bản có thời hạn của một mẫu cổng
+ * (`zoneId`, hiểm địa có `portal`), tiến độ khám phá giữ qua các lượt vào.
+ */
+export interface PortalWorld {
+  id: string
+  zoneId: string
+  /** Độ hung hiểm (≥ 1): + tầng sức mạnh; cổng kế tiếp sau khi đóng cổng này +1. */
+  hostility: number
+  /** Số bước tổng (gồm bước boss canh giữ) và số bước đã đi, giữ qua các lượt vào. */
+  steps: number
+  stepsTaken: number
+  /** Số tổ quái: mỗi ngày mọc thêm, mỗi tổ + tầng sức mạnh. */
+  hives: number
+  /** Ngày cổng đóng (từ ngày này không vào được, cổng biến mất ở việc theo ngày). */
+  closesDay: number
+  /** Số lần đã gia cố (giá lần sau tăng). */
+  stabilizations: number
 }
 
 export interface ZoneState {
@@ -93,6 +129,10 @@ export interface ZoneState {
    * thúc (xong, thua, rời) thì khóa cooldownDays ngày.
    */
   reopenDay: Record<string, number>
+  /** Cổng thế giới đang mở. */
+  portals: PortalWorld[]
+  /** Số dùng cho id cổng kế tiếp ("portal-N"). */
+  nextPortalId: number
 }
 
 export interface ZoneConfig {
@@ -108,4 +148,28 @@ export interface ZoneConfig {
   guardianRareRolls: number
   /** Số ngày hiểm địa khóa sau một lượt vào (tính từ ngày lượt vào kết thúc). */
   cooldownDays: number
+  portals: PortalConfig
+}
+
+/** Cổng thế giới (mục "Cổng thế giới" ở zones.md). */
+export interface PortalConfig {
+  /** Mỗi ngày % mở một cổng mới (khi còn dưới maxOpen). */
+  spawnChance: number
+  maxOpen: number
+  /** Số ngày cổng mở (tính từ ngày mở). */
+  durationDays: number
+  steps: { min: number; max: number }
+  stepWeights: Record<ZoneStepKind, number>
+  /** Tầng sức mạnh = tầng cao nhất + floorOffset + hostility × floorsPerHostility + hives × floorsPerHive. */
+  floorsPerHostility: number
+  floorsPerHive: number
+  /** Tổ quái lúc mở, mọc thêm mỗi ngày, tối đa. */
+  startHives: number
+  hivesPerDay: number
+  maxHives: number
+  /** Gia cố: giá = stabilizeCost × hostility × (lần gia cố + 1), thêm stabilizeDays ngày. */
+  stabilizeCost: number
+  stabilizeDays: number
+  /** Bước công trình thu thập: số lượt tung rương thường. */
+  gatherRolls: number
 }

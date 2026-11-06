@@ -4,7 +4,8 @@
     "effectiveness": {
       "rock": 0.5,
       "ghost": 0,
-      "steel": 0.5
+      "steel": 0.5,
+      "glass": 2
     }
   },
   {
@@ -17,9 +18,12 @@
       "bug": 2,
       "rock": 0.5,
       "dragon": 0.5,
-      "steel": 2
+      "steel": 2,
+      "fungal": 2
     },
-    "statusImmunities": ["burn"]
+    "statusImmunities": [
+      "burn"
+    ]
   },
   {
     "id": "water",
@@ -29,7 +33,8 @@
       "grass": 0.5,
       "ground": 2,
       "rock": 2,
-      "dragon": 0.5
+      "dragon": 0.5,
+      "fungal": 0.5
     }
   },
   {
@@ -40,9 +45,13 @@
       "grass": 0.5,
       "ground": 0,
       "flying": 2,
-      "dragon": 0.5
+      "dragon": 0.5,
+      "plastic": 0.5,
+      "fungal": 0.5
     },
-    "statusImmunities": ["paralysis"]
+    "statusImmunities": [
+      "paralysis"
+    ]
   },
   {
     "id": "grass",
@@ -56,10 +65,15 @@
       "bug": 0.5,
       "rock": 2,
       "dragon": 0.5,
-      "steel": 0.5
+      "steel": 0.5,
+      "fungal": 0.5
     },
-    "statusImmunities": ["seeded"],
-    "immuneMoveFlags": ["powder"]
+    "statusImmunities": [
+      "seeded"
+    ],
+    "immuneMoveFlags": [
+      "powder"
+    ]
   },
   {
     "id": "ice",
@@ -71,9 +85,12 @@
       "ground": 2,
       "flying": 2,
       "dragon": 2,
-      "steel": 0.5
+      "steel": 0.5,
+      "fungal": 2
     },
-    "statusImmunities": ["freeze"]
+    "statusImmunities": [
+      "freeze"
+    ]
   },
   {
     "id": "fighting",
@@ -102,7 +119,10 @@
       "steel": 0,
       "fairy": 2
     },
-    "statusImmunities": ["poison", "badPoison"]
+    "statusImmunities": [
+      "poison",
+      "badPoison"
+    ]
   },
   {
     "id": "ground",
@@ -114,7 +134,9 @@
       "flying": 0,
       "bug": 0.5,
       "rock": 2,
-      "steel": 2
+      "steel": 2,
+      "plastic": 2,
+      "fungal": 0.5
     }
   },
   {
@@ -125,7 +147,8 @@
       "fighting": 2,
       "bug": 2,
       "rock": 0.5,
-      "steel": 0.5
+      "steel": 0.5,
+      "glass": 2
     },
     "airborne": true
   },
@@ -194,7 +217,8 @@
       "ghost": 2,
       "dark": 0.5,
       "fairy": 0.5,
-      "light": 2
+      "light": 2,
+      "fungal": 0.5
     }
   },
   {
@@ -206,9 +230,13 @@
       "ice": 2,
       "rock": 2,
       "steel": 0.5,
-      "fairy": 2
+      "fairy": 2,
+      "glass": 2
     },
-    "statusImmunities": ["poison", "badPoison"]
+    "statusImmunities": [
+      "poison",
+      "badPoison"
+    ]
   },
   {
     "id": "fairy",
@@ -229,7 +257,39 @@
       "steel": 0.5,
       "light": 0.5,
       "ghost": 2,
-      "dark": 2
+      "dark": 2,
+      "fungal": 2
+    }
+  },
+  {
+    "id": "glass",
+    "effectiveness": {
+      "electric": 2
+    }
+  },
+  {
+    "id": "plastic",
+    "effectiveness": {
+      "psychic": 2,
+      "electric": 2,
+      "fire": 0.5
+    }
+  },
+  {
+    "id": "glitter",
+    "effectiveness": {}
+  },
+  {
+    "id": "fungal",
+    "effectiveness": {
+      "grass": 2,
+      "ground": 2,
+      "water": 2,
+      "fire": 0.5,
+      "steel": 0.5,
+      "poison": 0.5,
+      "flying": 0.5,
+      "fungal": 0.5
     }
   }
 ]

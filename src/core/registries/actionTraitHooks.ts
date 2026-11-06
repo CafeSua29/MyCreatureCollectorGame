@@ -95,6 +95,8 @@ interface ConditionalPriorityParams {
   amount: number
   /** Chỉ skill các hệ này (Gale Wings: Bay). */
   elementIds?: string[]
+  /** Chỉ skill có power từ 1 tới số này (Nimble của WILDERLOCKE). */
+  maxPower?: number
   /** Chỉ khi máu đầy (Gale Wings). */
   fullHp?: true
   /** Chỉ skill hồi máu: có hiệu ứng heal / drain (Triage). */
@@ -123,6 +125,7 @@ const conditionalPriority: TraitHookHandler = {
     const p = params as ConditionalPriorityParams
     if (p.elementIds && !p.elementIds.includes(skill.elementId)) return 0
     if (p.fullHp && !fullHp) return 0
+    if (p.maxPower !== undefined && (skill.power <= 0 || skill.power > p.maxPower)) return 0
     if (p.healing && !isHealingSkill(skill)) return 0
     return p.amount
   }

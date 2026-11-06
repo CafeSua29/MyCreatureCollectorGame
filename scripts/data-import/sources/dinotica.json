@@ -1,0 +1,1604 @@
+{
+  "source": "dinotica",
+  "origin": "fantasy",
+  "prune": true,
+  "update": {
+    "work": true
+  },
+  "species": [
+    {
+      "name": "Bonkzilla",
+      "elements": [],
+      "raceId": "theropod",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 70,
+        "farming": 70,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Aerowing",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "pterosaur",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 70,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Thornodon",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "ornithischian",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 70,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 70
+      }
+    },
+    {
+      "name": "Domey",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "ornithischian",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Botoad",
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Leafstrider",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "cervid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 105,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Stormwing",
+      "elements": [
+        "electric",
+        "flying"
+      ],
+      "raceId": "raptor",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 140,
+        "caring": 105,
+        "research": 35
+      }
+    },
+    {
+      "name": "Sylvanantler",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "cervid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 140,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 105
+      }
+    },
+    {
+      "name": "Muckjaw",
+      "elements": [
+        "ground",
+        "flying"
+      ],
+      "raceId": "pterosaur",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 70,
+        "farming": 35,
+        "watering": 70,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Buddybeak",
+      "elements": [],
+      "raceId": "ratite",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 70,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Sandhopper",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "marsupial",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 70,
+        "caring": 35,
+        "research": 70
+      }
+    },
+    {
+      "name": "Crystagon",
+      "elements": [
+        "rock",
+        "dragon"
+      ],
+      "raceId": "crystal",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 70,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Gusttail",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "caudate",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 105,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Barkhorn",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "pachyderm",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 70,
+        "watering": 105,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Shadowhoof",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "buffalo",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 140,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Burrower",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "annelid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 140,
+        "research": 35
+      }
+    },
+    {
+      "name": "Glaciris",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "owl",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Elder Glaciris",
+          "level": 16
+        }
+      ],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 70,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Crystalux",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "wildBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Elder Crystalux",
+          "level": 16
+        }
+      ],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 70
+      }
+    },
+    {
+      "name": "Mammothus",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "proboscid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Elder Mammothus",
+          "level": 16
+        }
+      ],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 70,
+        "farming": 70,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Zephyron",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "mustelid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 70,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Cryora",
+      "elements": [
+        "ice",
+        "ghost"
+      ],
+      "raceId": "ghost",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Elder Cryora",
+          "level": 16
+        }
+      ],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 105,
+        "caring": 35,
+        "research": 70
+      }
+    },
+    {
+      "name": "Aqualyn",
+      "elements": [
+        "water"
+      ],
+      "raceId": "marineReptile",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 105,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Duogon",
+      "elements": [
+        "ice",
+        "fire"
+      ],
+      "raceId": "westernDragon",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 140,
+        "generating": 140,
+        "transporting": 35,
+        "caring": 35,
+        "research": 105
+      }
+    },
+    {
+      "name": "Astrilla",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "cnidarian",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 315,
+        "generating": 315,
+        "transporting": 35,
+        "caring": 35,
+        "research": 315
+      }
+    },
+    {
+      "name": "Sakuku",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "cnidarian",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 70,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Nyaax",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "felid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 210,
+        "research": 210
+      }
+    },
+    {
+      "name": "Ignis",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "divineBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 70,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 70,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Cindarok",
+      "elements": [
+        "fire",
+        "flying"
+      ],
+      "raceId": "mythicBird",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 70,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Phantom",
+      "elements": [
+        "fire",
+        "bug"
+      ],
+      "raceId": "lepidopteran",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 105
+      }
+    },
+    {
+      "name": "Azura",
+      "elements": [
+        "fire",
+        "flying"
+      ],
+      "raceId": "mythicBird",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 70,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Pyraeon",
+      "elements": [
+        "fire",
+        "water"
+      ],
+      "raceId": "fish",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 140,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 105,
+        "research": 35
+      }
+    },
+    {
+      "name": "Pinchy",
+      "elements": [
+        "water"
+      ],
+      "raceId": "crustacean",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 140,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 105,
+        "generating": 105,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Speedy",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 105,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Mr. Mochu",
+      "elements": [
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Pamboo",
+      "elements": [
+        "grass",
+        "fighting"
+      ],
+      "raceId": "ursid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 140,
+        "generating": 140,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Pom-pom",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 105,
+        "watering": 105,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Vexora",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 140,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 105
+      }
+    },
+    {
+      "name": "Gluttony",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "divineBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 140,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Qynaxx",
+      "elements": [
+        "dark",
+        "flying"
+      ],
+      "raceId": "divineBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 105,
+        "generating": 105,
+        "transporting": 140,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Lord Lavava",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 140,
+        "research": 105
+      }
+    },
+    {
+      "name": "Kapi Bee",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "rodent",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 105,
+        "generating": 105,
+        "transporting": 105,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Amethyst Beetle",
+      "elements": [
+        "bug",
+        "rock"
+      ],
+      "raceId": "beetle",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 70,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Velvet-tailed Poison Scorpion",
+      "elements": [
+        "poison",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 70,
+        "research": 70
+      }
+    },
+    {
+      "name": "Azure Feather Swift Dragon",
+      "elements": [
+        "flying",
+        "dragon"
+      ],
+      "raceId": "wyvern",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 70,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 70,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Bubble Scale Sea Beast",
+      "elements": [
+        "water"
+      ],
+      "raceId": "leviathan",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 70,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Azure Flame Wyvern",
+      "elements": [
+        "fire",
+        "dragon"
+      ],
+      "raceId": "wyvern",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 70,
+        "generating": 70,
+        "transporting": 35,
+        "caring": 35,
+        "research": 105
+      }
+    },
+    {
+      "name": "Nether Flame Siren",
+      "elements": [
+        "dark",
+        "water"
+      ],
+      "raceId": "cephalopod",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 70,
+        "farming": 105,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 70,
+        "research": 35
+      }
+    },
+    {
+      "name": "Dark Green Thorn Fiend",
+      "elements": [
+        "poison",
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 35,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 105,
+        "research": 140
+      }
+    },
+    {
+      "name": "Mudcarp",
+      "elements": [
+        "water"
+      ],
+      "raceId": "fish",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 105,
+        "farming": 35,
+        "watering": 140,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 35,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Chaos",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "divineBeast",
+      "tier": "medium",
+      "evolutions": [],
+      "category": "Dino Pet",
+      "workStats": {
+        "mining": 35,
+        "farming": 105,
+        "watering": 35,
+        "kindling": 35,
+        "generating": 35,
+        "transporting": 140,
+        "caring": 35,
+        "research": 35
+      }
+    },
+    {
+      "name": "Cunninga",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Evil Snowman",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "golem",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Lava Hatchling",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Red Tide Beast",
+      "elements": [
+        "fire",
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Fire Kun",
+      "elements": [
+        "fire",
+        "water"
+      ],
+      "raceId": "fish",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Dungtarou",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "slime",
+      "tier": "peak",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Venomthorn",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "flower",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Venomthorn",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Venomthorn",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Venomthorn",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Venomthorn",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "flower",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Viletoad",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "anuran",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Viletoad",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Viletoad",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "anuran",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Viletoad",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Viletoad",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "anuran",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Furylla",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "primate",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Furylla",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Furylla",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "primate",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Furylla",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Furylla",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "primate",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Shadowweaver",
+      "elements": [
+        "dark",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Shadowweaver",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Shadowweaver",
+      "elements": [
+        "dark",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Shadowweaver",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Shadowweaver",
+      "elements": [
+        "dark",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Mirajhin",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "djinn",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Mirajhin",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Mirajhin",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "djinn",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Mirajhin",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Mirajhin",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "djinn",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Dunescourge",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "annelid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Dunescourge",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Dunescourge",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "annelid",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Dunescourge",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Dunescourge",
+      "elements": [
+        "ground"
+      ],
+      "raceId": "annelid",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Crystalshell",
+      "elements": [
+        "rock",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Crystalshell",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Crystalshell",
+      "elements": [
+        "rock",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Crystalshell",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Crystalshell",
+      "elements": [
+        "rock",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Sonicfox",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Elder Sonicfox",
+          "level": 16
+        }
+      ],
+      "category": "Monster"
+    },
+    {
+      "name": "Elder Sonicfox",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Sonicfox",
+          "level": 32
+        }
+      ],
+      "category": "Elite"
+    },
+    {
+      "name": "Ancient Sonicfox",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss"
+    },
+    {
+      "name": "Elder Glaciris",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "owl",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Glaciris",
+          "level": 32
+        }
+      ],
+      "category": "Elite",
+      "workStats": {
+        "mining": 43,
+        "farming": 43,
+        "watering": 43,
+        "kindling": 43,
+        "generating": 43,
+        "transporting": 87,
+        "caring": 87,
+        "research": 43
+      }
+    },
+    {
+      "name": "Ancient Glaciris",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "owl",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss",
+      "workStats": {
+        "mining": 47,
+        "farming": 47,
+        "watering": 47,
+        "kindling": 47,
+        "generating": 47,
+        "transporting": 93,
+        "caring": 93,
+        "research": 47
+      }
+    },
+    {
+      "name": "Elder Crystalux",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "wildBeast",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Crystalux",
+          "level": 32
+        }
+      ],
+      "category": "Elite",
+      "workStats": {
+        "mining": 43,
+        "farming": 43,
+        "watering": 43,
+        "kindling": 87,
+        "generating": 87,
+        "transporting": 43,
+        "caring": 43,
+        "research": 87
+      }
+    },
+    {
+      "name": "Ancient Crystalux",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "wildBeast",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss",
+      "workStats": {
+        "mining": 47,
+        "farming": 47,
+        "watering": 47,
+        "kindling": 93,
+        "generating": 93,
+        "transporting": 47,
+        "caring": 47,
+        "research": 93
+      }
+    },
+    {
+      "name": "Elder Mammothus",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "proboscid",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Mammothus",
+          "level": 32
+        }
+      ],
+      "category": "Elite",
+      "workStats": {
+        "mining": 87,
+        "farming": 87,
+        "watering": 43,
+        "kindling": 43,
+        "generating": 43,
+        "transporting": 43,
+        "caring": 43,
+        "research": 43
+      }
+    },
+    {
+      "name": "Ancient Mammothus",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "proboscid",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss",
+      "workStats": {
+        "mining": 93,
+        "farming": 93,
+        "watering": 47,
+        "kindling": 47,
+        "generating": 47,
+        "transporting": 47,
+        "caring": 47,
+        "research": 47
+      }
+    },
+    {
+      "name": "Elder Cryora",
+      "elements": [
+        "ice",
+        "ghost"
+      ],
+      "raceId": "ghost",
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ancient Cryora",
+          "level": 32
+        }
+      ],
+      "category": "Elite",
+      "workStats": {
+        "mining": 43,
+        "farming": 43,
+        "watering": 43,
+        "kindling": 43,
+        "generating": 43,
+        "transporting": 130,
+        "caring": 43,
+        "research": 87
+      }
+    },
+    {
+      "name": "Ancient Cryora",
+      "elements": [
+        "ice",
+        "ghost"
+      ],
+      "raceId": "ghost",
+      "tier": "large",
+      "evolutions": [],
+      "category": "Boss",
+      "workStats": {
+        "mining": 47,
+        "farming": 47,
+        "watering": 47,
+        "kindling": 47,
+        "generating": 47,
+        "transporting": 140,
+        "caring": 47,
+        "research": 93
+      }
+    }
+  ]
+}

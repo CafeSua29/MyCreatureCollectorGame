@@ -12,8 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [type-chemistry.md](docs/roadmap/type-chemistry.md): Phản ứng hệ (Cassette Beasts: trúng đòn hệ X thì mục tiêu buff / debuff / biến hệ)
-- [stamina.md](docs/roadmap/stamina.md): Thể lực cho skill (Temtem: skill tốn thể lực, quá sức mất máu và mất lượt, lệnh Nghỉ)
 - [skill-stickers.md](docs/roadmap/skill-stickers.md): Sticker skill (Cassette Beasts: sách kỹ năng có độ hiếm và thuộc tính ngẫu nhiên gắn vào skill)
 - [body-marks.md](docs/roadmap/body-marks.md): Dấu ấn trên quái (sẹo, đột biến, thích nghi, ám ảnh, chiến tích; từ phá bộ phận, chí mạng, suýt chết, hiểm địa, đan dược...; đột biến di truyền)
 - [bootleg.md](docs/roadmap/bootleg.md): Biến thể Bootleg (Cassette Beasts: quái hiếm mang hệ khác loài gốc)
@@ -130,8 +128,8 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
    11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt. Sức chứa **đã xong** (2026-10-31, làm sớm cùng cấy ghép; luật ở `docs/rules/capacity.md`); thao tác hàng loạt **đã xong** (2026-11-03; luật ở `docs/rules/bulk-actions.md`; bán có xem trước tổng tiền ở core, bộ lọc cấp áp cho cả trang bị).
        11b. Khóa quái, yêu thích, đội hình mẫu. **Đã xong** (2026-11-02; luật ở `docs/rules/roster.md`; làm cùng Bí kíp ở Tàng Bảo Các; khóa còn chặn fuse / cấy ghép có thể mất quái; thứ thiếu ghi log ngoài trận `presetMissing`, `game-log.md`).
        11c. **Tính năng lấy từ game khác** (chủ project chốt 2026-11-03), theo thứ tự phụ thuộc: luật trận dùng chung trước (đổi cân bằng nhiều, mô phỏng sớm), sticker sau thể lực (có thuộc tính giảm thể lực), Bootleg sau sticker (tăng tỉ lệ thuộc tính), thoái hóa sau Bootleg (giữ hệ Bootleg), ân huệ bí cảnh sau thể lực (ân huệ hồi thể lực):
-          1. Phản ứng hệ (`type-chemistry.md`).
-          2. Thể lực cho skill (`stamina.md`).
+          1. Phản ứng hệ. **Đã xong** (2026-11-03; luật ở `docs/rules/element-reactions.md`; dùng lại đổi hệ tạm của Soak thay `transmutedElementId`, một mục nhiều cặp thay một mục mỗi cặp, thêm trạng thái đổi mục tiêu / dẫn hệ; chủ project yêu cầu thêm: ba hệ Thủy tinh / Nhựa / Kim tuyến, đủ mọi cặp trên bảng 22 hệ, save v103; chiêu gốc chưa nhập ghi ở `element-reactions.md`).
+          2. Thể lực cho skill. **Đã xong** (2026-11-05; luật ở `docs/rules/stamina.md`; làm trước vì tường của Cassette Beasts cần; lưu phần đã mất ở bản ghi trận thay `BattleFighter.stamina`, 1 AP của Cassette Beasts = 10 thể lực; trait Phereon dựa trên AP / mana đã xong 2026-11-06, `content-sources-real.md`).
           3. Sticker skill (`skill-stickers.md`).
           4. Dấu ấn trên quái (`body-marks.md`).
           5. Biến thể Bootleg (`bootleg.md`).
@@ -151,3 +149,8 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
 
 - **Nội dung** (thêm loài, race, skill, biome trong JSON): làm xen kẽ khi cần, luôn hỏi chủ project trước khi thêm nội dung mới. Việc đang chờ: tiến hóa cần vật phẩm chưa có, cân nặng tên chung, rà race (`docs/roadmap/biome-content.md`; nhập loài mới theo `docs/rules/content-sources-real.md` rồi chạy lại `scripts/data-import/biomes-import.mjs` để gán vào map); skill / trait chờ hiệu ứng mới (`scripts/data-import/skills-planned.json`, `traits-planned.json`; hiện rỗng): mỗi khi làm xong một hiệu ứng / hook mới (ví dụ trạng thái mới, hook trait chờ) thì rà hai file này, chuyển các mục đã đủ hiệu ứng vào `src/data` (kèm tên `i18n` và learnset ghi trong mục), xóa khỏi file chờ.
 - Nhiều bước đổi state: mỗi bước tự tăng version save và viết migrate riêng (quy tắc 9), không gộp nhiều bước vào một lần đổi.
+
+## Portals of Phereon: phần còn chờ
+
+- Đo cổng thế giới, phòng ấp, tinh chất trong mô phỏng: chưa làm, số đang là số tạm (`../rules/simulation-features.md`).
+- Màn hình: chờ UI (`ui-overhaul.md`).

@@ -24,7 +24,9 @@ import type {
   RawGameData,
   StatusInstance
 } from '../model'
-import { battleStats, cloneDraft } from './draft'
+import { battleStats, cloneDraft, emptyRecord, monsterBattleContext } from './draft'
+import { rollRandomStatusId, statusBurstAmount } from './statuses'
+import { checkAmount, recordTotal } from '../registries'
 
 const data = makeSiralimData()
 
@@ -630,5 +632,205 @@ describe('kiểm tra dữ liệu và save', () => {
     )
     expect(defined(migrated.battle).records).toEqual({})
     expect(validateGameState(data, migrated)).toEqual([])
+  })
+})
+
+describe('Trait luôn có trạng thái (enforcedStatuses, actsThroughStatus)', () => {
+  const idle = { slot: 0, kind: 'skill', skillId: 'idle' } as const
+  const statusIds = (monster: Monster): string[] => monster.statuses.map((s) => s.statusId)
+  const inheritBattle = (): GameState =>
+    makeBattleState(
+      [{ ...mon('a', ['inheritEarth']), skillIds: ['idle'] }],
+      [{ ...mon('e'), skillIds: ['idle'] }]
+    )
+
+  it('mọi quái trên sân có trạng thái đang tới phiên, đổi phiên mỗi lượt', () => {
+    const first = turn(inheritBattle(), idle)
+    const second = turn(first, idle)
+    const third = turn(second, idle)
+    for (const [state, expected] of [
+      [first, 'silenced'],
+      [second, 'scorned'],
+      [third, 'silenced']
+    ] as const) {
+      expect(statusIds(state.party[0])).toEqual([expected])
+      expect(statusIds(defined(state.battle).enemies[0])).toEqual([expected])
+    }
+  })
+
+  it('quái miễn debuff vẫn có trạng thái vì luật "luôn có" bỏ qua chặn', () => {
+    const state = makeBattleState(
+      [{ ...mon('a', ['inheritEarth']), skillIds: ['idle'] }],
+      [{ ...mon('e', [], { statuses: withStatus('immune') }), skillIds: ['idle'] }]
+    )
+    expect(statusIds(defined(turn(state, idle).battle).enemies[0])).toContain('silenced')
+  })
+
+  it('scope self chỉ áp lên quái mang; quái mang gục thì không áp nữa', () => {
+    const state = makeBattleState(
+      [{ ...mon('a', ['frostAffinity']), skillIds: ['idle'] }],
+      [{ ...mon('e'), skillIds: ['idle'] }]
+    )
+    const after = turn(state, idle)
+    expect(statusIds(after.party[0])).toEqual(['frozen'])
+    expect(statusIds(defined(after.battle).enemies[0])).toEqual([])
+    const fainted = makeBattleState(
+      [
+        { ...mon('a', ['inheritEarth'], { damageTaken: toBig('1e30') }), skillIds: ['idle'] },
+        { ...mon('b'), skillIds: ['idle'] }
+      ],
+      [{ ...mon('e'), skillIds: ['idle'] }]
+    )
+    const enemy = defined(turn(fainted, { ...idle, slot: 1 }).battle).enemies[0]
+    expect(statusIds(enemy)).toEqual([])
+  })
+
+  it('actsThroughStatus: đóng băng vẫn hành động; không có trait thì mất lượt', () => {
+    const withTrait = turn(
+      makeBattleState([mon('a', ['frostAffinity'])], [{ ...mon('e'), skillIds: ['idle'] }]),
+      strike()
+    )
+    expect(eventsOf(withTrait, 'statusSkipTurn')).toEqual([])
+    expect(damageOn(withTrait, 'e')).toBeGreaterThan(0)
+    const without = turn(
+      makeBattleState(
+        [mon('a', [], { statuses: [{ statusId: 'frozen', turnsLeft: null }] })],
+        [{ ...mon('e'), skillIds: ['idle'] }]
+      ),
+      strike()
+    )
+    expect(eventsOf(without, 'statusSkipTurn')).toHaveLength(1)
+  })
+
+  it('kiểm tra dữ liệu: scope lạ, statusIds rỗng hoặc id lạ bị báo lỗi', () => {
+    for (const [params, expected] of [
+      [{ scope: 'nowhere', statusIds: ['sleep'] }, 'scope'],
+      [{ scope: 'any', statusIds: [] }, 'statusIds'],
+      [{ scope: 'any', statusIds: ['noSuchStatus'] }, 'noSuchStatus']
+    ] as const) {
+      const issues = dataIssuesAfter((raw: RawGameData) => {
+        raw.traits.push({
+          id: 'badEnforced',
+          kind: 'rare',
+          hooks: [{ type: 'enforcedStatuses', params }]
+        })
+      })
+      expect(issues.join('\n')).toContain(expected)
+    }
+  })
+})
+
+describe('Mania (amountDamage, excludeFromRandom, bản ghi cả trận)', () => {
+  const idle = { slot: 0, kind: 'skill', skillId: 'idle' } as const
+
+  it('cuối lượt mất máu bằng lượng × potency, hết sau 1 lượt', () => {
+    const state = makeBattleState(
+      [{ ...mon('a'), skillIds: ['idle'] }],
+      [
+        {
+          ...mon('e', [], { statuses: withStatus('mania', { turnsLeft: 1, amount: toBig(40) }) }),
+          skillIds: ['idle']
+        }
+      ]
+    )
+    const after = turn(state, idle)
+    const enemy = defined(after.battle).enemies[0]
+    expect(enemy.damageTaken.toNumber()).toBe(40)
+    expect(enemy.statuses).toEqual([])
+    // Potency 50% thì nửa lượng.
+    const half = turn(
+      makeBattleState(
+        [{ ...mon('a'), skillIds: ['idle'] }],
+        [
+          {
+            ...mon('e', [], {
+              statuses: withStatus('mania', { turnsLeft: 1, amount: toBig(40), potency: 50 })
+            }),
+            skillIds: ['idle']
+          }
+        ]
+      ),
+      idle
+    )
+    expect(defined(half.battle).enemies[0].damageTaken.toNumber()).toBe(20)
+  })
+
+  it('không có lượng thì không gây sát thương; lượng cực lớn chỉ hạ gục, không ra NaN', () => {
+    const run = (amount?: number): Monster =>
+      defined(
+        turn(
+          makeBattleState(
+            [{ ...mon('a'), skillIds: ['idle'] }],
+            [
+              {
+                ...mon('e', [], {
+                  statuses: withStatus('mania', {
+                    turnsLeft: 1,
+                    ...(amount === undefined ? {} : { amount: toBig(amount) })
+                  })
+                }),
+                skillIds: ['idle']
+              }
+            ]
+          ),
+          idle
+        ).battle
+      ).enemies[0]
+    expect(run().damageTaken.toNumber()).toBe(0)
+    const huge = run(1e300)
+    expect(huge.damageTaken.isFinite()).toBe(true)
+    expect(huge.damageTaken.gte(getMaxHp(data, huge))).toBe(true)
+  })
+
+  it('debuff ngẫu nhiên không bao giờ ra trạng thái excludeFromRandom', () => {
+    const d = cloneDraft(makeBattleState([mon('a')], [mon('e')]))
+    const rolled = new Set<string | undefined>()
+    for (let i = 0; i < 300; i++) rolled.add(rollRandomStatusId(data, d, 'debuff'))
+    expect(rolled.has('mania')).toBe(false)
+    expect(rolled.size).toBeGreaterThan(1)
+  })
+
+  it('lượng theo bản ghi: riêng quái / cả phe / mọi quái trong trận', () => {
+    const d = cloneDraft(makeBattleState([mon('a'), mon('b')], [mon('e')]))
+    d.battle.records = {
+      a: { ...emptyRecord(), healingReceived: toBig(100) },
+      b: { ...emptyRecord(), healingReceived: toBig(30) },
+      e: { ...emptyRecord(), healingReceived: toBig(50) }
+    }
+    const ctx = defined(monsterBattleContext(data, d, defined(d.party[0])))
+    expect(recordTotal(ctx, 'healingReceived', undefined).toNumber()).toBe(100)
+    expect(recordTotal(ctx, 'healingReceived', true).toNumber()).toBe(130)
+    expect(recordTotal(ctx, 'healingReceived', 'all').toNumber()).toBe(180)
+    expect(recordTotal(undefined, 'healingReceived', 'all').toNumber()).toBe(0)
+  })
+
+  it('statusBurst: Bomb theo lần nổ, Mania theo lượng × số lượt, trạng thái không sát thương thì không', () => {
+    const d = cloneDraft(makeBattleState([mon('a')], [mon('e')]))
+    const enemy = defined(d.battle.enemies[0])
+    const maxHp = getMaxHp(data, enemy).toNumber()
+    const burst = (status: StatusInstance, turns: number): number | undefined =>
+      statusBurstAmount(data, d, enemy, status, turns)?.toNumber()
+    expect(burst({ statusId: 'bomb', turnsLeft: 3 }, 1)).toBe(Math.ceil(maxHp * 0.25))
+    expect(burst({ statusId: 'mania', turnsLeft: 1, amount: toBig(40) }, 2)).toBe(80)
+    expect(burst({ statusId: 'mania', turnsLeft: 1 }, 2)).toBeUndefined()
+    expect(burst({ statusId: 'shelled', turnsLeft: null }, 1)).toBeUndefined()
+  })
+
+  it('kiểm tra dữ liệu: side chỉ true / "all", excludeFromRandom chỉ true', () => {
+    const amount = (side: unknown): string[] =>
+      checkAmount({ record: 'healingReceived', of: 'self', percent: 3, side }, 'x')
+    expect(amount('all')).toEqual([])
+    expect(amount(true)).toEqual([])
+    expect(amount('foes')).toEqual(['x.side chỉ được là true hoặc "all"'])
+    const issues = dataIssuesAfter((raw) => {
+      Object.assign(raw, makeSiralimRawData())
+      raw.statuses.push({
+        id: 'badRandom',
+        kind: 'debuff',
+        hooks: [],
+        excludeFromRandom: 1 as unknown as true
+      })
+    })
+    expect(issues.some((i) => i.includes('excludeFromRandom chỉ được là true'))).toBe(true)
   })
 })

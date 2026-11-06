@@ -204,8 +204,11 @@ export type SpecialBattle =
   | { kind: 'event'; eventId: string; noFlee: boolean; moneyMultiplier: number }
   /** Đợt thú triều thứ `wave`; `king` = trận thú vương (bắt được, hạ / bắt là hết thú triều). */
   | { kind: 'beastTide'; wave: number; waves: number; king: boolean }
-  /** Trận trong hiểm địa (docs/rules/zones.md); `guardian` = boss canh giữ ở bước cuối. */
-  | { kind: 'zone'; zoneId: string; guardian: boolean }
+  /**
+   * Trận trong hiểm địa (docs/rules/zones.md); `guardian` = boss canh giữ ở bước cuối; `hive` = tổ quái
+   * của cổng thế giới (thắng thì cổng bớt một tổ).
+   */
+  | { kind: 'zone'; zoneId: string; guardian: boolean; hive?: true }
   /**
    * Trận câu cá / khai thác trên tầng (docs/rules/gathering.md); `ambush` = bị phục kích (không chạy
    * được ở lượt đầu).

@@ -1,0 +1,984 @@
+{
+  "source": "visionOfTheAnt",
+  "origin": "fantasy",
+  "prune": true,
+  "update": {
+    "stats": true,
+    "catchRate": true,
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Golom",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "tier": "small",
+      "stats": {
+        "hp": 129,
+        "attack": 39,
+        "defense": 39,
+        "spAttack": 26,
+        "spDefense": 32,
+        "speed": 26
+      },
+      "category": "Level 2 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Svalax",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 151,
+        "attack": 23,
+        "defense": 23,
+        "spAttack": 35,
+        "spDefense": 29,
+        "speed": 28
+      },
+      "category": "Level 1 monster",
+      "evolutions": [
+        {
+          "name": "Svalaxus",
+          "level": 16
+        }
+      ]
+    },
+    {
+      "name": "Scheusal",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 137,
+        "attack": 36,
+        "defense": 19,
+        "spAttack": 41,
+        "spDefense": 30,
+        "speed": 27
+      },
+      "category": "Level 2 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Hufos",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 168,
+        "attack": 32,
+        "defense": 25,
+        "spAttack": 21,
+        "spDefense": 23,
+        "speed": 21
+      },
+      "category": "Level 1 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Malum",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 134,
+        "attack": 40,
+        "defense": 27,
+        "spAttack": 32,
+        "spDefense": 30,
+        "speed": 27
+      },
+      "category": "Level 1 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Phantom",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "ghost",
+      "tier": "medium",
+      "stats": {
+        "hp": 177,
+        "attack": 55,
+        "defense": 55,
+        "spAttack": 33,
+        "spDefense": 44,
+        "speed": 55
+      },
+      "category": "Level 4 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Djinn",
+      "elements": [
+        "psychic"
+      ],
+      "raceId": "djinn",
+      "tier": "medium",
+      "stats": {
+        "hp": 173,
+        "attack": 41,
+        "defense": 45,
+        "spAttack": 62,
+        "spDefense": 54,
+        "speed": 45
+      },
+      "category": "Level 4 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Colossus",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "tier": "medium",
+      "stats": {
+        "hp": 218,
+        "attack": 47,
+        "defense": 31,
+        "spAttack": 31,
+        "spDefense": 31,
+        "speed": 62
+      },
+      "category": "Level 4 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Ophidra",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 164,
+        "attack": 31,
+        "defense": 60,
+        "spAttack": 63,
+        "spDefense": 61,
+        "speed": 41
+      },
+      "category": "Level 5 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Starva",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 180,
+        "attack": 60,
+        "defense": 54,
+        "spAttack": 30,
+        "spDefense": 42,
+        "speed": 54
+      },
+      "category": "Level 6 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Migas",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 168,
+        "attack": 61,
+        "defense": 76,
+        "spAttack": 31,
+        "spDefense": 53,
+        "speed": 31
+      },
+      "category": "Level 8 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Krana",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 196,
+        "attack": 59,
+        "defense": 49,
+        "spAttack": 33,
+        "spDefense": 41,
+        "speed": 42
+      },
+      "category": "Level 5 monster",
+      "evolutions": [
+        {
+          "name": "Kranarus",
+          "level": 16
+        }
+      ]
+    },
+    {
+      "name": "Yava",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 159,
+        "attack": 35,
+        "defense": 64,
+        "spAttack": 64,
+        "spDefense": 64,
+        "speed": 35
+      },
+      "category": "Level 4 monster",
+      "evolutions": [
+        {
+          "name": "Yavaus",
+          "level": 16
+        }
+      ]
+    },
+    {
+      "name": "Aros",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 181,
+        "attack": 72,
+        "defense": 36,
+        "spAttack": 36,
+        "spDefense": 36,
+        "speed": 58
+      },
+      "category": "Level 5 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Lavesh",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 172,
+        "attack": 32,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 54
+      },
+      "category": "Level 5 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Kranarus",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 202,
+        "attack": 66,
+        "defense": 43,
+        "spAttack": 29,
+        "spDefense": 36,
+        "speed": 43
+      },
+      "category": "Level 7 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Fane",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 171,
+        "attack": 28,
+        "defense": 71,
+        "spAttack": 57,
+        "spDefense": 64,
+        "speed": 28
+      },
+      "category": "Level 7 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Moska",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 195,
+        "attack": 60,
+        "defense": 60,
+        "spAttack": 30,
+        "spDefense": 45,
+        "speed": 30
+      },
+      "category": "Level 6 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Svalaxus",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 156,
+        "attack": 31,
+        "defense": 62,
+        "spAttack": 62,
+        "spDefense": 62,
+        "speed": 47
+      },
+      "category": "Level 6 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Balfas",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 213,
+        "attack": 57,
+        "defense": 28,
+        "spAttack": 28,
+        "spDefense": 28,
+        "speed": 65
+      },
+      "category": "Level 6 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Erki",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 167,
+        "attack": 47,
+        "defense": 47,
+        "spAttack": 47,
+        "spDefense": 47,
+        "speed": 63
+      },
+      "category": "Level 6 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Yavaus",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 137,
+        "attack": 44,
+        "defense": 34,
+        "spAttack": 68,
+        "spDefense": 51,
+        "speed": 85
+      },
+      "category": "Level 8 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Taurus",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 221,
+        "attack": 111,
+        "defense": 22,
+        "spAttack": 22,
+        "spDefense": 22,
+        "speed": 22
+      },
+      "category": "Level 8 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Owarak",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 219,
+        "attack": 68,
+        "defense": 41,
+        "spAttack": 68,
+        "spDefense": 55,
+        "speed": 68
+      },
+      "category": "Level 9 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Moskona",
+      "elements": [],
+      "raceId": "insectoid",
+      "tier": "medium",
+      "stats": {
+        "hp": 193,
+        "attack": 55,
+        "defense": 50,
+        "spAttack": 39,
+        "spDefense": 44,
+        "speed": 39
+      },
+      "category": "Level 7 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Jubok",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 165,
+        "attack": 33,
+        "defense": 46,
+        "spAttack": 66,
+        "spDefense": 56,
+        "speed": 53
+      },
+      "category": "Level 6 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Kraxus",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 197,
+        "attack": 82,
+        "defense": 99,
+        "spAttack": 39,
+        "spDefense": 69,
+        "speed": 33
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Felaxo",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 191,
+        "attack": 104,
+        "defense": 69,
+        "spAttack": 35,
+        "spDefense": 52,
+        "speed": 69
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Svabor",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 216,
+        "attack": 93,
+        "defense": 50,
+        "spAttack": 33,
+        "spDefense": 42,
+        "speed": 86
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Booker",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 159,
+        "attack": 35,
+        "defense": 49,
+        "spAttack": 116,
+        "spDefense": 83,
+        "speed": 78
+      },
+      "category": "Level 14 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Shelwhale",
+      "elements": [
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 254,
+        "attack": 76,
+        "defense": 32,
+        "spAttack": 32,
+        "spDefense": 32,
+        "speed": 95
+      },
+      "category": "Level 14 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Magmar",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 178,
+        "attack": 107,
+        "defense": 64,
+        "spAttack": 50,
+        "spDefense": 57,
+        "speed": 64
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Rukka",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 109,
+        "attack": 36,
+        "defense": 109,
+        "spAttack": 91,
+        "spDefense": 100,
+        "speed": 73
+      },
+      "category": "Level 14 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Crossrob",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 209,
+        "attack": 93,
+        "defense": 74,
+        "spAttack": 32,
+        "spDefense": 53,
+        "speed": 58
+      },
+      "category": "Level 14 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Skulltor",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 193,
+        "attack": 45,
+        "defense": 58,
+        "spAttack": 80,
+        "spDefense": 69,
+        "speed": 74
+      },
+      "category": "Level 14 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Pumpki",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "livingObject",
+      "tier": "peak",
+      "stats": {
+        "hp": 186,
+        "attack": 71,
+        "defense": 56,
+        "spAttack": 71,
+        "spDefense": 63,
+        "speed": 74
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Ztala",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 159,
+        "attack": 52,
+        "defense": 79,
+        "spAttack": 87,
+        "spDefense": 83,
+        "speed": 60
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Ztalix",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 158,
+        "attack": 85,
+        "defense": 57,
+        "spAttack": 85,
+        "spDefense": 71,
+        "speed": 63
+      },
+      "category": "Level 14 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Balam",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 164,
+        "attack": 73,
+        "defense": 62,
+        "spAttack": 95,
+        "spDefense": 78,
+        "speed": 47
+      },
+      "category": "Level 12 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Cell",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 227,
+        "attack": 92,
+        "defense": 37,
+        "spAttack": 37,
+        "spDefense": 37,
+        "speed": 92
+      },
+      "category": "Level 10 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Denam",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 179,
+        "attack": 40,
+        "defense": 79,
+        "spAttack": 87,
+        "spDefense": 83,
+        "speed": 52
+      },
+      "category": "Level 10 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Volcano",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 236,
+        "attack": 74,
+        "defense": 44,
+        "spAttack": 40,
+        "spDefense": 42,
+        "speed": 84
+      },
+      "category": "Level 11 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Urmacca",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 170,
+        "attack": 38,
+        "defense": 26,
+        "spAttack": 94,
+        "spDefense": 60,
+        "speed": 132
+      },
+      "category": "Level 11 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Piscara",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 216,
+        "attack": 36,
+        "defense": 43,
+        "spAttack": 83,
+        "spDefense": 63,
+        "speed": 79
+      },
+      "category": "Level 11 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Ilnocta",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 248,
+        "attack": 73,
+        "defense": 66,
+        "spAttack": 33,
+        "spDefense": 50,
+        "speed": 50
+      },
+      "category": "Level 10 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Stonak",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 207,
+        "attack": 35,
+        "defense": 86,
+        "spAttack": 76,
+        "spDefense": 81,
+        "speed": 35
+      },
+      "category": "Level 10 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Kaya",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 323,
+        "attack": 73,
+        "defense": 18,
+        "spAttack": 53,
+        "spDefense": 35,
+        "speed": 18
+      },
+      "category": "Level 10 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Depraved",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 230,
+        "attack": 41,
+        "defense": 35,
+        "spAttack": 41,
+        "spDefense": 38,
+        "speed": 35
+      },
+      "category": "Level 7 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Zait",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 190,
+        "attack": 34,
+        "defense": 103,
+        "spAttack": 86,
+        "spDefense": 95,
+        "speed": 52
+      },
+      "category": "Level 16 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Dynamo",
+      "elements": [
+        "electric"
+      ],
+      "raceId": "machine",
+      "tier": "large",
+      "stats": {
+        "hp": 224,
+        "attack": 76,
+        "defense": 59,
+        "spAttack": 76,
+        "spDefense": 67,
+        "speed": 59
+      },
+      "category": "Level 16 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Malox",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 246,
+        "attack": 95,
+        "defense": 53,
+        "spAttack": 35,
+        "spDefense": 44,
+        "speed": 88
+      },
+      "category": "Level 16 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Tyrant",
+      "elements": [
+        "bug",
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "tier": "large",
+      "stats": {
+        "hp": 208,
+        "attack": 90,
+        "defense": 32,
+        "spAttack": 90,
+        "spDefense": 61,
+        "speed": 80
+      },
+      "category": "Level 19 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Blooma",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "large",
+      "stats": {
+        "hp": 272,
+        "attack": 102,
+        "defense": 51,
+        "spAttack": 34,
+        "spDefense": 43,
+        "speed": 58
+      },
+      "category": "Level 19 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Waido",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 193,
+        "attack": 39,
+        "defense": 62,
+        "spAttack": 116,
+        "spDefense": 89,
+        "speed": 62
+      },
+      "category": "Level 19 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Sofina",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 207,
+        "attack": 35,
+        "defense": 86,
+        "spAttack": 86,
+        "spDefense": 86,
+        "speed": 59
+      },
+      "category": "Level 17 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Sushi",
+      "elements": [
+        "water"
+      ],
+      "raceId": "fish",
+      "tier": "large",
+      "stats": {
+        "hp": 237,
+        "attack": 85,
+        "defense": 51,
+        "spAttack": 74,
+        "spDefense": 63,
+        "speed": 51
+      },
+      "category": "Level 17 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Automo",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "machine",
+      "tier": "large",
+      "stats": {
+        "hp": 195,
+        "attack": 151,
+        "defense": 78,
+        "spAttack": 30,
+        "spDefense": 54,
+        "speed": 52
+      },
+      "category": "Level 17 monster",
+      "evolutions": []
+    },
+    {
+      "name": "Grimgore",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 143,
+        "attack": 24,
+        "defense": 41,
+        "spAttack": 14,
+        "spDefense": 27,
+        "speed": 41
+      },
+      "category": "Level 2 monster",
+      "evolutions": []
+    }
+  ]
+}

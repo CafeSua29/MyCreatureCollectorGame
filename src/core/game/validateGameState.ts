@@ -3,7 +3,7 @@
 // null nên save đã tràn số sẽ đọc lên thành null); số nguyên phải là số nguyên an toàn (≤ 2^53 − 1).
 // Thông báo lỗi luôn ghi đường dẫn trường, ví dụ "party[0].genes.attack" (mục Lưu / đọc save).
 
-import { isLargeMonster, partySlotsUsed } from '../registries'
+import { isLargeMonster, isTypelessSpecies, partySlotsUsed } from '../registries'
 import {
   validateAlchemyState,
   validateCookingState,
@@ -51,6 +51,7 @@ import { validateSafariState } from './validateSafariState'
 import { validateLabState } from './validateLabState'
 import { validateCapacityState } from './validateCapacityState'
 import { validateZoneState } from './validateZoneState'
+import { validateEssenceState, validateHatcheryState } from './validatePhereonState'
 import { validateGameLog } from './validateGameLog'
 import { validateWorldBossState } from './validateWorldBossState'
 import { validateSpiritState } from './validateSpiritState'
@@ -125,10 +126,15 @@ function checkMonster(
 
 /** Kiểm tra danh sách quái tại `path`; trả về id của các quái để kiểm tra trùng. */
 /**
- * Quái không hệ chỉ hợp lệ khi đang đổi hệ trong trận (có originalIdentity để trả lại hệ lúc rời sân /
- * hết trận; Burn Up, Double Shock, docs/rules/pokemon-moves.md).
+ * Quái không hệ chỉ hợp lệ khi loài của nó không hệ (data.md mục "Loài không hệ") hoặc đang đổi hệ
+ * trong trận (có originalIdentity để trả lại hệ lúc rời sân / hết trận; Burn Up, Double Shock,
+ * docs/rules/pokemon-moves.md).
  */
-function checkTypelessMonsters(state: Record<string, unknown>, issues: string[]): void {
+function checkTypelessMonsters(
+  data: GameData,
+  state: Record<string, unknown>,
+  issues: string[]
+): void {
   const battle = asObject(state.battle)
   const volatiles = asObject(battle?.volatiles)
   const lists = [state.party, state.storage, battle?.enemies]
@@ -138,6 +144,9 @@ function checkTypelessMonsters(state: Record<string, unknown>, issues: string[])
       const monster = asObject(entry)
       if (!Array.isArray(monster?.elementIds) || monster.elementIds.length > 0) continue
       if (asObject(volatiles?.[String(monster.id)])?.originalIdentity) continue
+      if ([monster.speciesId, monster.baseSpeciesId].some((id) => isTypelessSpecies(data, id))) {
+        continue
+      }
       issues.push(`quái "${String(monster.id)}".elementIds: chỉ trong trận mới được không hệ`)
     }
   }
@@ -308,6 +317,9 @@ function checkVolatiles(
     }
     if (volatile.knockouts !== undefined) {
       issues.push(...checkInteger(volatile.knockouts, `${path}.knockouts`, 1))
+    }
+    if (volatile.resonance !== undefined) {
+      issues.push(...checkInteger(volatile.resonance, `${path}.resonance`, 1))
     }
     if (volatile.absorbBoosts !== undefined) {
       checkAbsorbBoosts(data, volatile.absorbBoosts, `${path}.absorbBoosts`, issues)
@@ -748,7 +760,7 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateDwellingState(data, state))
   issues.push(...validateQuestState(data, state.quests))
   issues.push(...validateSectState(data, state))
-  checkTypelessMonsters(state, issues)
+  checkTypelessMonsters(data, state, issues)
   issues.push(...validateTeamPresetState(data, state.teamPresets))
   issues.push(
     ...validateTrainerState(data, state.trainers, {
@@ -763,6 +775,8 @@ export function validateGameState(data: GameData, value: unknown): string[] {
   issues.push(...validateDeityState(state))
   issues.push(...validateEventState(data, state))
   issues.push(...validateZoneState(data, state))
+  issues.push(...validateHatcheryState(data, state))
+  issues.push(...validateEssenceState(data, state))
   issues.push(...validateWorldBossState(data, state))
   issues.push(...validateSpiritState(data, state))
   issues.push(...validateLabState(data, state.lab))

@@ -202,5 +202,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   meal: 'meal',
   blessing: 'blessing',
   implant: 'implant',
+  passiveSkill: 'traits',
+  refinement: 'traits',
   rule: 'rules'
 }

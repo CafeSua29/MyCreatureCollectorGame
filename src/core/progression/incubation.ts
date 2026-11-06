@@ -7,6 +7,7 @@ import { addShinyStacks, mapBigStats } from '../monster'
 import { charmEffect } from '../registries'
 import { removeItems } from '../inventory'
 import type { Biome, Egg, GameData, GameState, Monster } from '../model'
+import { roomSteps } from './hatchery'
 import { mutateGenes } from './genes'
 
 /** Hệ của linh thạch `itemId` (config.alchemy.elementStoneItemIds); không phải linh thạch thì null. */
@@ -97,14 +98,27 @@ export function isSpiritLand(biome: Biome, egg: Egg): boolean {
 export function incubateEggs(
   data: GameData,
   rng: RngState,
-  { eggs, steps, biome }: { eggs: readonly Egg[]; steps: number; biome: Biome }
+  {
+    eggs,
+    steps,
+    biome,
+    room
+  }: {
+    eggs: readonly Egg[]
+    steps: number
+    biome: Biome
+    /** Phòng ấp và tinh chất (docs/rules/hatchery.md): trứng trong phòng nhân bước theo sức lớn. */
+    room?: Pick<GameState, 'hatchery' | 'essences' | 'storage'>
+  }
 ): { eggs: Egg[]; hatched: Egg[]; rng: RngState } {
+  const roomState = room ? { ...room, eggs } : undefined
   const { spiritLandExtraSteps, spiritLandMutationChance } = data.config.egg.incubation
   const remaining: Egg[] = []
   const hatched: Egg[] = []
   for (const egg of eggs) {
     let next = egg
     let amount = steps
+    if (roomState) [amount, rng] = roomSteps(data, rng, { state: roomState, egg, steps })
     if (isSpiritLand(biome, egg)) {
       amount += spiritLandExtraSteps
       let mutated: boolean

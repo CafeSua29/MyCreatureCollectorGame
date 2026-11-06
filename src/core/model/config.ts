@@ -42,6 +42,9 @@ import type { SafariConfig } from './safari'
 import type { ImplantConfig } from './implant'
 import type { CapacityConfig } from './capacity'
 import type { ZoneConfig } from './zones'
+import type { BodyRefinementConfig } from './refinement'
+import type { HatcheryConfig } from './hatchery'
+import type { EssenceConfig } from './essences'
 import type { GatheringConfig } from './gathering'
 import type { WorldBossConfig } from './worldBoss'
 import type { ArtifactSpiritConfig } from './artifactSpirits'
@@ -80,6 +83,7 @@ export interface BalanceConfig {
   /** Số skill tối đa mỗi quái. */
   maxSkills: number
   battle: BattleConfig
+  stamina: StaminaConfig
   status: StatusConfig
   field: FieldConfig
   ai: AiConfig
@@ -221,6 +225,12 @@ export interface BalanceConfig {
   capacity: CapacityConfig
   /** Hiểm địa (docs/rules/zones.md). */
   zones: ZoneConfig
+  /** Luyện thể (docs/rules/body-refinement.md). */
+  bodyRefinement: BodyRefinementConfig
+  /** Phòng ấp theo môi trường (docs/rules/hatchery.md). */
+  hatchery: HatcheryConfig
+  /** Tinh chất (docs/rules/essences.md). */
+  essences: EssenceConfig
   /** Câu cá và khai thác (docs/rules/gathering.md). */
   gathering: GatheringConfig
   /** Boss thế giới (docs/rules/world-boss.md). */
@@ -711,6 +721,11 @@ export type FuseRaceMatch = (typeof FUSE_RACE_MATCHES)[number]
 export interface FusionConfig {
   /** Số skill tối đa của quái phụ được chọn kế thừa mỗi lần fuse. */
   inheritSkills: number
+  /**
+   * Trait mỗi bên được chọn giữ khi fuse (GeneCapacity của Portals of Phereon): % số trait chiếm ô của
+   * bên đó, làm tròn lên (gốc: một nửa); tinh chất fusionTraitChoices cộng thêm (docs/rules/fusing.md).
+   */
+  keptTraitPercent: number
 }
 
 /** Hiến tế (docs/rules/sacrifice.md). */
@@ -912,6 +927,16 @@ export interface AbilityConfig {
 }
 
 export interface BossConfig {
+  /** Lợi thế boss (docs/rules/shiny-boss.md): trait kind boss; bỏ trống = không có lợi thế. */
+  advantages?: {
+    /** % một boss có lợi thế. */
+    randomChance: number
+    /** Trọng số số lợi thế: phần tử i = trọng số của i + 1 lợi thế. */
+    countWeights: number[]
+    entries: { traitId: string; weight: number }[]
+  }
+  /** Giá do thám boss tầng mỗi tầng; bỏ trống = miễn phí. */
+  scoutPricePerFloor?: number
   /** Trait "Huyết thống boss": boss bị bắt và quái nở từ trứng boss nhận trait này (cấp 1). */
   traitId: string
   /** % một trận quái hoang là trận boss (biome có thể ghi đè bằng Biome.bossChance). */
@@ -1040,6 +1065,27 @@ export interface CaptureConfig {
 }
 
 /** Mọi tỉ lệ tính bằng % (0–100). */
+/** Thể lực cho skill (docs/rules/stamina.md); số theo mức Temtem. */
+export interface StaminaConfig {
+  /** Thể lực tối đa, thang cố định cho mọi quái. */
+  max: number
+  /** Cuối lượt hồi % tối đa + số cố định. */
+  regenPercent: number
+  regenFlat: number
+  /** Lệnh Nghỉ hồi thêm % tối đa. */
+  restPercent: number
+  /** Quá sức: mất % max HP mỗi điểm thiếu. */
+  overexertHpPercent: number
+  /** Giá theo power, tăng dần `upToPower`; power lớn hơn mọi mức thì lấy mức cuối. */
+  costByPower: { upToPower: number; cost: number }[]
+  /** Giá skill trạng thái. */
+  statusCost: number
+  /** AI: điểm Nghỉ khi cạn thể lực (× phần thể lực đã mất). */
+  restWeight: number
+  /** AI: điểm trừ thêm vì mất lượt khi quá sức. */
+  exhaustedPenalty: number
+}
+
 export interface BattleConfig {
   /** Hệ số K trong công thức sát thương. */
   damageFactor: number

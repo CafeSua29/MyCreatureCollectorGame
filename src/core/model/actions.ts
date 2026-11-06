@@ -39,6 +39,8 @@ export type BattleCommand =
       formSpeciesId?: string
       /** Nhắm đồng đội bằng skill có `onAlly` (Pollen Puff: hồi máu thay vì gây sát thương). */
       targetAlly?: true
+      /** Nhắm địch bằng skill có `onFoe` (Wall của Cassette Beasts); ô địch ở `target`. */
+      targetFoe?: true
       /**
        * Dùng skill thành Z-Move (docs/rules/z-moves.md): quái cầm Z-Crystal hợp skill, phe chưa
        * dùng Z-Move trong trận; skillId vẫn là skill gốc.
@@ -59,6 +61,8 @@ export type BattleCommand =
    */
   | { slot: number; kind: 'defend' }
   | { slot: number; kind: 'provoke' }
+  /** Nghỉ: không làm gì, hồi thêm thể lực (docs/rules/stamina.md). */
+  | { slot: number; kind: 'rest' }
   /**
    * Hợp kích kỹ (docs/rules/team.md): cả hai quái trên sân cùng ghi lệnh này (cùng comboId và
    * target), tốn lượt của cả hai; chiêu tung ở lượt của quái chậm hơn.
@@ -191,6 +195,10 @@ export type GameAction =
   | { type: 'buyDeityItem'; deityId: string; itemId: string; count: number }
   /** Hiểm địa (ở thị trấn; docs/rules/zones.md): vào khi đạt điều kiện, khám phá bước kế, rời. */
   | { type: 'enterZone'; zoneId: string }
+  /** Vào một cổng thế giới đang mở (docs/rules/zones.md mục "Cổng thế giới"). */
+  | { type: 'enterPortal'; portalId: string }
+  /** Trả tiền gia cố cổng: cổng mở thêm vài ngày. */
+  | { type: 'stabilizePortal'; portalId: string }
   | { type: 'exploreZone' }
   | { type: 'leaveZone' }
   /**
@@ -201,6 +209,8 @@ export type GameAction =
   | { type: 'mine' }
   /** Gọi boss tầng của tầng đang đứng: miễn phí, không giới hạn số lần. */
   | { type: 'challengeBoss' }
+  /** Do thám boss tầng đang đứng (docs/rules/shiny-boss.md). */
+  | { type: 'scoutBoss' }
   /**
    * Một lệnh cho mỗi ô có quái ta còn sống; `tamer`: tối đa một lệnh ngự thú sư (không chiếm lượt
    * quái, docs/rules/tamer.md).
@@ -262,9 +272,23 @@ export type GameAction =
       protectItemId?: string
       inheritSkillIds?: readonly string[]
       forgetSkillIds?: readonly string[]
+      /** Trait chọn giữ, gen từng chỉ số lấy của bên nào (fusing.md mục "Chọn trait và gen"). */
+      keepTraitIds?: readonly string[]
+      geneSources?: Partial<Record<StatName, 'base' | 'sub'>>
       /** Xác nhận bỏ món đang lắp không đủ chỗ về túi (docs/rules/capacity.md). */
       discardOverflow?: boolean
     }
+  /** Luyện thể ở NPC thị trấn (docs/rules/body-refinement.md). */
+  | { type: 'refineBody'; monsterId: string; refinementId: string }
+  | { type: 'removeRefinement'; monsterId: string; partId: string }
+  /** Phòng ấp (docs/rules/hatchery.md): dựng môi trường, đặt / lấy trứng (roomIndex null = mang theo). */
+  | { type: 'buildHatcheryHabitat'; roomIndex: number; habitatId: string }
+  | { type: 'placeEgg'; eggId: string; roomIndex: number | null }
+  | { type: 'buyHatcheryUpgrade'; roomIndex: number; upgradeId: string }
+  /** Đặt người ấp (quái trong kho); monsterId null = cho nghỉ. */
+  | { type: 'setHatcher'; roomIndex: number; monsterId: string | null }
+  /** Chọn một tinh chất trong lựa chọn đang chờ (docs/rules/essences.md). */
+  | { type: 'chooseEssence'; essenceId: string }
   /**
    * NPC fusing ở thị trấn, hiến tế (docs/rules/sacrifice.md): các quái phụ `subIds` (cùng race, cùng
    * lineage với quái chính) mất đi, quái chính nhận stack hiến tế; nhiều quái phụ = hàng loạt.

@@ -1,0 +1,306 @@
+{
+  "source": "digimon",
+  "origin": "fantasy",
+  "update": {
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Arcadiamon In-Training",
+      "elements": ["normal"],
+      "raceId": "eldritch",
+      "tier": "baby",
+      "style": "fast",
+      "evolutions": [
+        {
+          "name": "Arcadiamon Rookie",
+          "level": 10
+        }
+      ],
+      "flavor": "Arcadiamon (In-Training) is a Digimon. It is a Digimon artificially created from the data of various Digimon."
+    },
+    {
+      "name": "Arcadiamon Rookie",
+      "elements": ["normal", "ghost"],
+      "raceId": "eldritch",
+      "tier": "small",
+      "style": "bruiser",
+      "evolutions": [
+        {
+          "name": "Arcadiamon Champion",
+          "level": 20
+        }
+      ],
+      "category": "Mysterious Beast Digimon"
+    },
+    {
+      "name": "Arcadiamon Champion",
+      "elements": ["normal", "ghost"],
+      "raceId": "eldritch",
+      "tier": "medium",
+      "style": "bruiser",
+      "evolutions": [
+        {
+          "name": "Arcadiamon Ultimate",
+          "level": 32
+        }
+      ],
+      "category": "Mysterious Beast Digimon",
+      "flavor": "Arcadiamon (Champion) is a Mysterious Beast Digimon. A cursed Digimon artificially created from the data of various Digimon."
+    },
+    {
+      "name": "ShellNumemon",
+      "elements": ["water", "ground"],
+      "raceId": "eldritch",
+      "tier": "medium",
+      "style": "bruiser",
+      "evolutions": [
+        {
+          "name": "BlackKingNumemon",
+          "level": 46
+        },
+        {
+          "name": "Pandamon",
+          "level": 46
+        }
+      ],
+      "category": "Crustacean Digimon",
+      "flavor": "ShellNumemon is a Crustacean Digimon. It was a Numemon that made use of its intelligence and found a shell to cover itself in order to protect its body."
+    },
+    {
+      "name": "Sorcermon",
+      "elements": ["psychic", "flying"],
+      "raceId": "human",
+      "tier": "medium",
+      "style": "balanced",
+      "evolutions": [],
+      "category": "Wizard Digimon",
+      "flavor": "Sorcermon is a Wizard Digimon. It has a form very similar to Wizardmon."
+    },
+    {
+      "name": "MudFrigimon",
+      "elements": ["ground"],
+      "raceId": "mutant",
+      "tier": "medium",
+      "style": "caster",
+      "evolutions": [
+        {
+          "name": "Pandamon",
+          "level": 46
+        },
+        {
+          "name": "Frigimon",
+          "level": 46
+        }
+      ],
+      "category": "Mutant Digimon",
+      "flavor": "MudFrigimon is a Mutant Digimon. Its body is mostly made of earth data."
+    },
+    {
+      "name": "Arcadiamon Ultimate",
+      "elements": ["normal", "ghost"],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "style": "bruiser",
+      "evolutions": [
+        {
+          "name": "Arcadiamon Mega",
+          "level": 46
+        }
+      ],
+      "category": "Mysterious Beast Digimon",
+      "flavor": "Arcadiamon (Ultimate) is a Mysterious Beast Digimon. A cursed Digimon artificially created from the data of various Digimon."
+    },
+    {
+      "name": "Meteormon",
+      "elements": ["rock", "steel"],
+      "raceId": "golem",
+      "tier": "peak",
+      "style": "caster",
+      "evolutions": [
+        {
+          "name": "MetalEtemon",
+          "level": 46
+        }
+      ],
+      "category": "Rock Digimon",
+      "flavor": "Meteormon is a Rock Digimon. It is a form of Gotsumon which, for some reason, had the meteorite data within the ore data it possesses appear on its surface."
+    },
+    {
+      "name": "SkullMeramon",
+      "elements": ["fire", "dark"],
+      "raceId": "elementalSpirit",
+      "tier": "peak",
+      "style": "caster",
+      "evolutions": [
+        {
+          "name": "Boltmon",
+          "level": 46
+        },
+        {
+          "name": "Beelzemon",
+          "level": 46
+        }
+      ],
+      "category": "Flame Digimon",
+      "flavor": "SkullMeramon is a Flame Digimon. A Digivolution of Meramon, its body is surrounded by intensely hot flames."
+    },
+    {
+      "name": "Arcadiamon Mega",
+      "elements": ["normal", "ghost"],
+      "raceId": "eldritch",
+      "tier": "large",
+      "style": "bruiser",
+      "evolutions": [
+        {
+          "name": "Arcadiamon Ultra",
+          "level": 46
+        }
+      ],
+      "category": "Mysterious Beast Digimon",
+      "flavor": "Arcadiamon (Mega) is a Mysterious Beast Digimon. It is a cursed Digimon artificially created based on the data of various Digimon."
+    },
+    {
+      "name": "Goldramon",
+      "elements": ["dragon", "light"],
+      "raceId": "westernDragon",
+      "tier": "large",
+      "style": "balanced",
+      "evolutions": [],
+      "category": "Holy Dragon Digimon",
+      "flavor": "Goldramon is a Holy Dragon Digimon. One of the \"Four Great Dragons\", it is a God Dragon Digimon with six hardened wings and a body that shines gold."
+    },
+    {
+      "name": "Arcadiamon Ultra",
+      "elements": ["normal", "ghost"],
+      "raceId": "eldritch",
+      "tier": "large",
+      "style": "bruiser",
+      "evolutions": [],
+      "category": "Mysterious Beast Digimon",
+      "flavor": "Arcadiamon (Ultra) is a Mysterious Beast Digimon. The form taken when Arcadiamon (Mega) evolved even further when it absorbed energy generated from battles."
+    },
+    {
+      "name": "Alphamon (X-Antibody)",
+      "elements": ["light", "dragon"],
+      "raceId": "human",
+      "tier": "large",
+      "style": "balanced",
+      "evolutions": [],
+      "category": "Holy Warrior Digimon",
+      "flavor": "Alphamon is a Warrior Digimon and a carrier of the X-Antibody. It is one of the \"Royal Knights\", and while it is a holy knight, it is said that it is a being to the holy knights, and as it doesn't appear in normal times, it is also called the \"Aloof Hermit\" who flutters a blue mantle, and is the Royal Knight assigned to the place called the \"\"."
+    },
+    {
+      "name": "Crusadermon (X-Antibody)",
+      "elements": ["light"],
+      "raceId": "human",
+      "tier": "large",
+      "style": "bruiser",
+      "evolutions": [],
+      "category": "Holy Warrior Digimon",
+      "flavor": "Crusadermon X is a Holy Warrior Digimon and carrier of the X-Antibody. Wielding the Rose's Pile Bunker, a rose-shaped shield used for both offense and defense, as well as the Rose's Fencer, a rapier, it sports a noble form and has attained even more power befitting of the Lord of Knights."
+    },
+    {
+      "name": "Kamemon",
+      "elements": ["water", "steel"],
+      "raceId": "machine",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "ShellNumemon",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Gotsumon",
+      "elements": ["rock"],
+      "raceId": "golem",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "MudFrigimon",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Icemon",
+      "elements": ["ice", "water"],
+      "raceId": "eldritch",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Meteormon",
+          "level": 32
+        }
+      ]
+    },
+    {
+      "name": "Meramon",
+      "elements": ["fire"],
+      "raceId": "elementalSpirit",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "SkullMeramon",
+          "level": 32
+        }
+      ]
+    },
+    {
+      "name": "MagnaAngemon",
+      "elements": ["light", "steel"],
+      "raceId": "angel",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Goldramon",
+          "level": 46
+        }
+      ]
+    },
+    {
+      "name": "Alphamon",
+      "elements": ["dragon", "dark"],
+      "raceId": "human",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Alphamon (X-Antibody)",
+          "level": 46
+        }
+      ]
+    },
+    {
+      "name": "Crusadermon",
+      "elements": ["steel", "fairy"],
+      "raceId": "angel",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Crusadermon (X-Antibody)",
+          "level": 46
+        }
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Dianamon",
+      "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+    },
+    {
+      "name": "Neptunemon",
+      "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+    },
+    {
+      "name": "Minervamon",
+      "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+    },
+    {
+      "name": "Merukimon",
+      "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+    }
+  ]
+}

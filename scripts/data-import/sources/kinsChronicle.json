@@ -1,0 +1,679 @@
+{
+  "source": "kinsChronicle",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Aquarius",
+      "elements": [
+        "water"
+      ],
+      "raceId": "elementalSpirit",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Aries",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Cancer",
+      "elements": [],
+      "raceId": "crustacean",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Capricorn",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Leo",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "King Libra",
+      "elements": [],
+      "raceId": "golem",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Queen Libra",
+      "elements": [],
+      "raceId": "golem",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Pisces",
+      "elements": [],
+      "raceId": "fish",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Saggitarius",
+      "elements": [],
+      "raceId": "centaur",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Scorpio",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Taurus",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Virgo",
+      "elements": [],
+      "raceId": "angel",
+      "tier": "large",
+      "category": "ZODIAC GUARDIANS",
+      "evolutions": []
+    },
+    {
+      "name": "Megalodile",
+      "elements": [],
+      "raceId": "crocodilian",
+      "tier": "large",
+      "category": "ELEMENTAL TITANS",
+      "evolutions": []
+    },
+    {
+      "name": "Pegausi",
+      "elements": [],
+      "raceId": "equid",
+      "tier": "large",
+      "category": "ELEMENTAL TITANS",
+      "evolutions": []
+    },
+    {
+      "name": "Voidoll",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "large",
+      "category": "ELEMENTAL TITANS",
+      "evolutions": []
+    },
+    {
+      "name": "The Grim Reaper",
+      "elements": [],
+      "raceId": "wraith",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Earth Worm",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "annelid",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Karkinos",
+      "elements": [],
+      "raceId": "crustacean",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Carnivorous Plant",
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "flower",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Manticora",
+      "elements": [],
+      "raceId": "chimera",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Mantis Hunter",
+      "elements": [],
+      "raceId": "insectfolk",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Dark Hunter",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "human",
+      "tier": "large",
+      "category": "TAROT I",
+      "evolutions": []
+    },
+    {
+      "name": "Black Ant Queen",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Bonemask",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Continental Turtle",
+      "elements": [],
+      "raceId": "turtle",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Dragon Sovereign",
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "elderDragon",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Earth Horse",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "equid",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Insect Queen",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "insectoid",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Jiangshi",
+      "elements": [],
+      "raceId": "zombie",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Kitsune",
+      "elements": [],
+      "raceId": "yokai",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Gigan",
+      "elements": [],
+      "raceId": "giant",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": [
+        {
+          "name": "Gigan Volcanica",
+          "level": 32
+        }
+      ]
+    },
+    {
+      "name": "Gigan Volcanica",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "giant",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Magma Dragon",
+      "elements": [
+        "fire",
+        "dragon"
+      ],
+      "raceId": "westernDragon",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Parrot King",
+      "elements": [],
+      "raceId": "parrot",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Rafflesia",
+      "elements": [],
+      "raceId": "flower",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Weretiger Maxima",
+      "elements": [],
+      "raceId": "lycanthrope",
+      "tier": "large",
+      "category": "TAROT II",
+      "evolutions": []
+    },
+    {
+      "name": "Eldritch Knight",
+      "elements": [
+        "dark",
+        "steel"
+      ],
+      "raceId": "eldritch",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "Arcane Golem",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "Clockwork Skull",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "machine",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "Cyberwolf",
+      "elements": [],
+      "raceId": "machine",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "Phoenix",
+      "elements": [],
+      "raceId": "mythicBird",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "Runic Stone Golem",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "The Fallen",
+      "elements": [],
+      "raceId": "angel",
+      "tier": "large",
+      "category": "TAROT III",
+      "evolutions": []
+    },
+    {
+      "name": "Queen Bee",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "tier": "large",
+      "category": "SUBPLOT – STOLEN HIVE",
+      "evolutions": []
+    },
+    {
+      "name": "The Electric Hivemind",
+      "elements": [
+        "electric",
+        "psychic"
+      ],
+      "raceId": "hive",
+      "tier": "large",
+      "category": "SUBPLOT _ ELECTRIC HORROR",
+      "evolutions": []
+    },
+    {
+      "name": "Amalgamate",
+      "elements": [],
+      "raceId": "mutant",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Apex Behemoth",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "kaiju",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Clockwork Knight",
+      "elements": [
+        "dark",
+        "steel"
+      ],
+      "raceId": "machine",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Crababoon",
+      "elements": [],
+      "raceId": "crustacean",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Minotaur",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "High Dragon",
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "westernDragon",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Frost Lich",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "lich",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Gazer Skull",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Gazer",
+      "elements": [],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": [
+        {
+          "name": "Gazer Skull",
+          "level": 32
+        }
+      ]
+    },
+    {
+      "name": "Huanglong",
+      "elements": [],
+      "raceId": "easternDragon",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Lich Warlord",
+      "elements": [],
+      "raceId": "lich",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Mountoll",
+      "elements": [],
+      "raceId": "troll",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Primal Demon",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Slime Guardian",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "slime",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Soulless One",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "wraith",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Void Mage",
+      "elements": [
+        "psychic"
+      ],
+      "raceId": "human",
+      "tier": "peak",
+      "category": "WANDERING MOBS",
+      "evolutions": []
+    },
+    {
+      "name": "Huge Snail",
+      "elements": [],
+      "raceId": "mollusk",
+      "tier": "small",
+      "category": "GORGE",
+      "evolutions": []
+    },
+    {
+      "name": "Singing Slime",
+      "elements": [],
+      "raceId": "slime",
+      "tier": "small",
+      "category": "GORGE",
+      "evolutions": []
+    },
+    {
+      "name": "Walking Tree",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "tree",
+      "tier": "small",
+      "category": "GORGE",
+      "evolutions": []
+    },
+    {
+      "name": "Void Hive",
+      "elements": [],
+      "raceId": "hive",
+      "tier": "small",
+      "category": "GORGE2",
+      "evolutions": []
+    },
+    {
+      "name": "Emberhound",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "canid",
+      "tier": "small",
+      "category": "GORGE2",
+      "evolutions": []
+    },
+    {
+      "name": "Grotto Guardian",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "golem",
+      "tier": "medium",
+      "category": "GROTTO",
+      "evolutions": []
+    },
+    {
+      "name": "Kelp Quetzal",
+      "elements": [],
+      "raceId": "bird",
+      "tier": "medium",
+      "category": "GROTTO",
+      "evolutions": []
+    },
+    {
+      "name": "Jubokko",
+      "elements": [],
+      "raceId": "yokai",
+      "tier": "medium",
+      "category": "DRY BASIN",
+      "evolutions": []
+    },
+    {
+      "name": "Scarlet Wyrm",
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "drake",
+      "tier": "medium",
+      "category": "DRY BASIN",
+      "evolutions": []
+    },
+    {
+      "name": "Dark Crow",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "bird",
+      "tier": "peak",
+      "category": "CLOCK TOWER",
+      "evolutions": []
+    },
+    {
+      "name": "Radulac",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "category": "CLOCK TOWER",
+      "evolutions": []
+    },
+    {
+      "name": "Clockwork Prototype",
+      "elements": [],
+      "raceId": "machine",
+      "tier": "peak",
+      "category": "CLOCK TOWER",
+      "evolutions": []
+    },
+    {
+      "name": "Mimik",
+      "elements": [],
+      "raceId": "mimic",
+      "tier": "peak",
+      "category": "CLOCK TOWER",
+      "evolutions": []
+    }
+  ]
+}

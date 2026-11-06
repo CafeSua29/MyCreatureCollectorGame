@@ -28,6 +28,7 @@ Union theo chủ đề (thêm loại = thêm vào union con đúng chủ đề +
 | `presetMissing` | `presetId, monsterIds, items` | `applyTeamPreset` khi có quái / món bỏ qua (`roster.md`) |
 | `crafted` | `station, recipeId, successes, failures` | `craft` (`alchemy.md`, `cooking.md`) |
 | `zoneStep` | `zoneId, result` (`ZoneStepResult`) | `exploreZone` (`zones.md`) |
+| `portalOpened` / `portalClosed` | `portalId, zoneId` | việc theo ngày (`zones.md` mục "Cổng thế giới") |
 | `fused` | `baseId, outcome` (`success` / `failed` / `protected`) | `fuse` (`fusing.md`) |
 | `breakthrough` | `success, realm` (cảnh giới sau lần thử) | `tamerBreakthrough` (`tamer.md`) |
 | `contractAttempted` | `monsterId, outcome` (`success` / `failed` / `escaped`) | `formContract` (`tamer.md`) |

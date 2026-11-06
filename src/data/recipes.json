@@ -2108,5 +2108,105 @@
     "minLevel": 6,
     "successChance": 75,
     "exp": 8
+  },
+  {
+    "id": "awakeningPillGlass",
+    "output": {
+      "itemId": "awakeningPillGlass",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreGlass",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneGlass",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillPlastic",
+    "output": {
+      "itemId": "awakeningPillPlastic",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCorePlastic",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStonePlastic",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillGlitter",
+    "output": {
+      "itemId": "awakeningPillGlitter",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreGlitter",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneGlitter",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
+  },
+  {
+    "id": "awakeningPillFungal",
+    "output": {
+      "itemId": "awakeningPillFungal",
+      "count": 1
+    },
+    "inputs": [
+      {
+        "itemId": "demonCoreFungal",
+        "count": 2
+      },
+      {
+        "itemId": "spiritStoneFungal",
+        "count": 1
+      },
+      {
+        "itemId": "ginseng",
+        "count": 2
+      }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 65,
+    "exp": 20
   }
 ]

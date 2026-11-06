@@ -1,0 +1,1092 @@
+{
+  "source": "haypiMonster",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Frizzy",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [],
+      "flavor": "\"Can control fire. The flames on its back never extinguish\""
+    },
+    {
+      "name": "Gogo",
+      "elements": ["normal"],
+      "raceId": "bird",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [],
+      "flavor": "\"Dodo has evolved into a beautiful new bird. This bird can carry heavy loads and run at high speed\""
+    },
+    {
+      "name": "Kernel",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [],
+      "flavor": "\"An independant soldier that strives to protect his breed\""
+    },
+    {
+      "name": "Leetle",
+      "elements": ["grass"],
+      "raceId": "tree",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [],
+      "flavor": "\" Likes to live on trees. Though small in size, this little monster packs quite a bit of power.\""
+    },
+    {
+      "name": "Lizzy",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [
+        {
+          "name": "Frizzy",
+          "level": 19
+        }
+      ],
+      "flavor": "\"Lives on the Volcano. When angered, it shoots fire out of the holes on its back\""
+    },
+    {
+      "name": "Luminous",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [],
+      "flavor": "\"No longer needs electricity to glitter. No one knows why.\""
+    },
+    {
+      "name": "Luxx",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [
+        {
+          "name": "Luminous",
+          "level": 17
+        }
+      ],
+      "flavor": "\"Glitters when absorbing electricity. Has high survivability.\""
+    },
+    {
+      "name": "Maize",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [
+        {
+          "name": "Kernel",
+          "level": 16
+        }
+      ],
+      "flavor": "\"An ordinary bushel of corn was blessed with life, giving it the ability to think for itself\""
+    },
+    {
+      "name": "Phony",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "catchRate": 70,
+      "evolutions": [],
+      "flavor": "\" Carved out of magical wood. Dreams of carrying riders one day.\""
+    },
+    {
+      "name": "Armon",
+      "elements": ["ground"],
+      "raceId": "rodent",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Armordillo",
+          "level": 19
+        }
+      ],
+      "flavor": "\"This is actually a mouse, but it rolled around over a bunch of rocks to encase its body in thick armor.\""
+    },
+    {
+      "name": "Armordillo",
+      "elements": ["ground"],
+      "raceId": "rodent",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"This monster is even larger than Armon. It looks nothing like a mouse anymore..\""
+    },
+    {
+      "name": "Bloom",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Leader of an army of roses. It is so beautiful that all creatures are charmed by its presence.\""
+    },
+    {
+      "name": "Blossom",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Bloom",
+          "level": 23
+        }
+      ],
+      "flavor": "\"This young flower is not yet in full bloom\""
+    },
+    {
+      "name": "Bud",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Blossom",
+          "level": 12
+        }
+      ],
+      "flavor": "\"This little thing is waiting to grow into a flower\""
+    },
+    {
+      "name": "Chowda",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Shelly",
+          "level": 18
+        }
+      ],
+      "flavor": "\"This timid little thing is always huddling in its shell.\""
+    },
+    {
+      "name": "Flare",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Furor",
+          "level": 12
+        }
+      ],
+      "flavor": "\"Lives in hot climates. Shoots fire out of its mouth\""
+    },
+    {
+      "name": "Fright",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Uses the power of lightning to strengthen itself,it is so powerful that it doesn't fear dragons\""
+    },
+    {
+      "name": "Fritz",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Fright",
+          "level": 26
+        }
+      ],
+      "flavor": "\"The strange pattern on its body appeared one time when it absorbed too much electricity\""
+    },
+    {
+      "name": "Frizz",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Fritz",
+          "level": 12
+        }
+      ],
+      "flavor": "\"Absorbs lightning. Warns enemies not to get too close\""
+    },
+    {
+      "name": "Furocity",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"The flames along the outside of its body can never be extinguished.\""
+    },
+    {
+      "name": "Furor",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Surrounded by a wreath of flames. Has incredible power.\""
+    },
+    {
+      "name": "Geo",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [
+        {
+          "name": "Igneous",
+          "level": 19
+        }
+      ],
+      "flavor": "\" Flew out of an erupting volcano. Has a very high temperate..\""
+    },
+    {
+      "name": "Gnasher",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Respected and powerful. No one dares to bully it.\""
+    },
+    {
+      "name": "Igneous",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Formed from a great collectiong of rocks. The embodiment of teamwork.\""
+    },
+    {
+      "name": "Katch",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Easily Bullied due to its small size\""
+    },
+    {
+      "name": "Mythik",
+      "elements": ["psychic"],
+      "raceId": "eldritch",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Has unusual purple eyes and very powerful psychic abilities\""
+    },
+    {
+      "name": "Ripper",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"Not easily bullied due to its vicious teeth\""
+    },
+    {
+      "name": "Shelly",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 60,
+      "evolutions": [],
+      "flavor": "\"In spite of its hard shell, it is a timid thing.\""
+    },
+    {
+      "name": "Blocky",
+      "elements": ["ground"],
+      "raceId": "human",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The rocks on this monster's body have been reinforced to make it a stronger, better guard.\""
+    },
+    {
+      "name": "Branchy",
+      "elements": ["grass"],
+      "raceId": "tree",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "This big tree is covered in durians. Chucks durians at its opponents when angry."
+    },
+    {
+      "name": "Bubbles",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\" Lives deep in the ocean, out of the reach of normal creatures. Its skin is pink due to the lack of sunlight\""
+    },
+    {
+      "name": "Champ",
+      "elements": ["normal"],
+      "raceId": "primate",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "This fully grown chimp loves to cause mischief, but everyone is too afraid to chase after it."
+    },
+    {
+      "name": "Cheeky",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": []
+    },
+    {
+      "name": "Chimp",
+      "elements": ["normal"],
+      "raceId": "primate",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Champ",
+          "level": 20
+        }
+      ],
+      "flavor": "\"It's almost as if this chimp just escaped from the circus.\""
+    },
+    {
+      "name": "Crabby",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Crusty",
+          "level": 20
+        }
+      ],
+      "flavor": "\"Has a hard shell of armor on its back\""
+    },
+    {
+      "name": "Crusty",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"This aggressive warrior is covered in battle scars\""
+    },
+    {
+      "name": "Electroe",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The evolved form of Poe after eating Honey (Electric). Its fur generates static electricity.\""
+    },
+    {
+      "name": "Escarglow",
+      "elements": ["fire"],
+      "raceId": "mollusk",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"A rare snail that lives in the depths of the Volcano. Its hard shell can withstand high temeratures.\""
+    },
+    {
+      "name": "Grubby",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"It digs tunnels underground with its flat snout. It often digs in the wrong place, due to its lack of intellect.\""
+    },
+    {
+      "name": "Hydroe",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\" The evolved form of Poe after eating Honey (Water). This tranquil beast cannot stand high temperatures.\""
+    },
+    {
+      "name": "Infernoe",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The evolved form of Poe after eating Honey (Fire). Shoots flames out of its paws\""
+    },
+    {
+      "name": "Lambush",
+      "elements": ["grass"],
+      "raceId": "buffalo",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "This little sheep thinks it is green and hides in bushes for camouflage, but its white fleece always gives it away"
+    },
+    {
+      "name": "Lupa",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\" Carries its young in a pouch on its belly. No one knows how Lupas breed.\""
+    },
+    {
+      "name": "Mineroe",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The evolved form of Poe after eating Honey (Earth). It likes to chew on mud.\""
+    },
+    {
+      "name": "Octobud",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "Hides behind the flowers bud on its back, killing its enemies in ambush."
+    },
+    {
+      "name": "Octomom",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "While intimidating to look at, this monster is actually quite meek."
+    },
+    {
+      "name": "Psychoe",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The evolved form of Poe after eating Honey (Psychic). Has mysterious powers.\""
+    },
+    {
+      "name": "Ricky",
+      "elements": ["ground"],
+      "raceId": "human",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Rocky",
+          "level": 18
+        }
+      ],
+      "flavor": "\"This monster used to guard a temple. Then one day, it suddenly gained self-awareness..\""
+    },
+    {
+      "name": "Rocky",
+      "elements": ["ground"],
+      "raceId": "human",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [
+        {
+          "name": "Blocky",
+          "level": 32
+        }
+      ],
+      "flavor": "\"Attended a boxing match once. It won a belt for its victory.\""
+    },
+    {
+      "name": "Sally",
+      "elements": ["electric"],
+      "raceId": "crystal",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The gems around its head can trigger lightning strikes. Legend has it that these gems can help some other monsters evolve.\""
+    },
+    {
+      "name": "Securitey",
+      "elements": ["ground"],
+      "raceId": "slime",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"Thanks to its thick armor of slime, this monster is protected against any physical attacks.\""
+    },
+    {
+      "name": "Sorcerey",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "Rare"
+    },
+    {
+      "name": "Stinger",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"Flies by generating its own electricity. It is said to have relatives that live in the ocean.\""
+    },
+    {
+      "name": "Twiggy",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "Covered in thorns to keep others at bay."
+    },
+    {
+      "name": "Vegetaboe",
+      "elements": ["grass"],
+      "raceId": "tree",
+      "tier": "medium",
+      "catchRate": 40,
+      "evolutions": [],
+      "flavor": "\"The evolved form of Poe after eating Honey (Plant). Loves nature and planting trees.\""
+    },
+    {
+      "name": "Bahamut",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": []
+    },
+    {
+      "name": "Bluegway",
+      "elements": ["water"],
+      "raceId": "cnidarian",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Pewgway",
+          "level": 32
+        }
+      ],
+      "flavor": "\"This tortoise grew too fast and suffered growing pains. That's why he's always looking so sleepy.\""
+    },
+    {
+      "name": "Boomer",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Brawny",
+          "level": 32
+        }
+      ],
+      "flavor": "\"Can stab through anything with its horn. It fears no enemies.\""
+    },
+    {
+      "name": "Boopie",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Boomer",
+          "level": 18
+        }
+      ],
+      "flavor": "\"Made up entirely of rocks, so it has no fear of being hit. However, the day after a fight it might feel a bit sore.\""
+    },
+    {
+      "name": "Brawny",
+      "elements": ["ground"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"It stands out among a herd of Boomers and has the power to do quite a bit of damage.\""
+    },
+    {
+      "name": "Cygness",
+      "elements": ["fire", "water"],
+      "raceId": "bird",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"This magnificent bird can walk on water. It can be identified by its unique tail.\""
+    },
+    {
+      "name": "Draco",
+      "elements": ["fire"],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Draconio",
+          "level": 12
+        }
+      ],
+      "flavor": "\"This Young dragonling can only blink its bright, Innocent eyes\""
+    },
+    {
+      "name": "Draconio",
+      "elements": ["fire"],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Draconius",
+          "level": 25
+        }
+      ],
+      "flavor": "\"This adolescent is almost the size of a full-grown dragon. However, if has trouble controlling its powers.\""
+    },
+    {
+      "name": "Draconius",
+      "elements": ["fire"],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"Became the leader of a flight of dragons through countless victories. Safeguards the treasures of its flight\""
+    },
+    {
+      "name": "Flicker",
+      "elements": ["fire"],
+      "raceId": "equid",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Searbiscuit",
+          "level": 18
+        }
+      ],
+      "flavor": "\"This little horse is too young to know how to truly master the element of fire\""
+    },
+    {
+      "name": "Ignightmare",
+      "elements": ["fire"],
+      "raceId": "equid",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"Gallops from dream to dream. Is the sworn enemy of Felicity\""
+    },
+    {
+      "name": "Kreepie",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": []
+    },
+    {
+      "name": "Mantis",
+      "elements": ["ground"],
+      "raceId": "orthopteran",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Scythe",
+          "level": 24
+        }
+      ],
+      "flavor": "\"A praying mantis that has been sealed in a rock. It bears a stronger resemblance to a rock with each passing day.\""
+    },
+    {
+      "name": "Neo",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Neon",
+          "level": 18
+        }
+      ],
+      "flavor": "\"Able to turn matter into electricity. Produces currents when angry\""
+    },
+    {
+      "name": "Neon",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"It evolved from Neo, using a Lightning Bead seized from other monsters. Holds the power of heavens.\""
+    },
+    {
+      "name": "Oogway",
+      "elements": ["water"],
+      "raceId": "cnidarian",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Bluegway",
+          "level": 18
+        }
+      ],
+      "flavor": "\"This little cutie grows coral on its back.\""
+    },
+    {
+      "name": "Pewgway",
+      "elements": ["water"],
+      "raceId": "cnidarian",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"This giant tortoise is so powerful that it is on par with dragons.\""
+    },
+    {
+      "name": "Rhor",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"The most powerful monster to ever exist. It is said that the only thing that can defeat it is a legendary bird.\" (False)"
+    },
+    {
+      "name": "Scythe",
+      "elements": ["ground"],
+      "raceId": "orthopteran",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"Now that its body has completely calcified, its forearms have turned into deadly scythes.\""
+    },
+    {
+      "name": "Seafoam",
+      "elements": ["water"],
+      "raceId": "bird",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Cygness",
+          "level": 24
+        }
+      ],
+      "flavor": "\"This bird prefers swimming over flying. It acknowledges its heritage through its unique tail feathers\""
+    },
+    {
+      "name": "Searbiscuit",
+      "elements": ["fire"],
+      "raceId": "equid",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Ignightmare",
+          "level": 36
+        }
+      ],
+      "flavor": "\"Not easy to get close to, due to the intense heat generated by its body\""
+    },
+    {
+      "name": "Skelly",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": []
+    },
+    {
+      "name": "Slider",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Swiper",
+          "level": 18
+        }
+      ],
+      "flavor": "\"Likes to climb onto bamboo shoots. Difficult to find\""
+    },
+    {
+      "name": "Smiter",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"Evolved from snake to dragon using the magic of an enchanted dragon scale. Gained incredible power.\""
+    },
+    {
+      "name": "Swiper",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Smiter",
+          "level": 36
+        }
+      ],
+      "flavor": "\"Once its skin was shed, it grew legs! This monster is special because it changes species when evolving.\""
+    },
+    {
+      "name": "Thor",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [
+        {
+          "name": "Rhor",
+          "level": 27
+        }
+      ],
+      "flavor": "\"Came out of nowhere. Extremely violent and territorial.\""
+    },
+    {
+      "name": "Devil",
+      "elements": ["normal"],
+      "raceId": "fiend",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"Arrived here from a world full of dragons and plans to conquer this land.\""
+    },
+    {
+      "name": "Echo",
+      "elements": ["normal"],
+      "raceId": "chiropteran",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"Created by a wizard out of cats and bats. It is the embodiment of evil.\""
+    },
+    {
+      "name": "Flaunt",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": []
+    },
+    {
+      "name": "Freezy",
+      "elements": ["normal"],
+      "raceId": "penguin",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\"This penguin is a curious little creature. It is easily recognizable, thanks to the yellow feather on its head.\""
+    },
+    {
+      "name": "Hippogon",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": []
+    },
+    {
+      "name": "Pampurred",
+      "elements": ["normal"],
+      "raceId": "felid",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": [],
+      "flavor": "\" This young kitty is learning yoga.\""
+    },
+    {
+      "name": "Setanic",
+      "elements": ["ground"],
+      "raceId": "demigod",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Descended from titans. Its shell was formed by rocks and provides armor for its entire body.\""
+    },
+    {
+      "name": "Trunky",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "catchRate": 20,
+      "evolutions": []
+    },
+    {
+      "name": "Angelo",
+      "elements": ["psychic"],
+      "raceId": "westernDragon",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Arrived here from a world of dragons and plans to conquer this land.\""
+    },
+    {
+      "name": "Behemoth",
+      "elements": ["grass"],
+      "raceId": "lepidopteran",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"This mythical beast grazes on prairie grass. It is said to be one of the toughest monsters in the world.\""
+    },
+    {
+      "name": "Cerberus",
+      "elements": ["fire"],
+      "raceId": "canid",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"This three-headed hound guards the gates to the Underworld. He's the loyal servant of Hades..\""
+    },
+    {
+      "name": "Chimera",
+      "elements": ["electric"],
+      "raceId": "chimera",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Its body was formed by parts of multiple animals. No one understood how this savage and violent creature can to be.\""
+    },
+    {
+      "name": "Fenrir",
+      "elements": ["normal"],
+      "raceId": "canid",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": []
+    },
+    {
+      "name": "Gryphion",
+      "elements": ["electric"],
+      "raceId": "raptor",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"This monster has the head and claws of an eagle. It absorbed the force of thunder to gain lightning speed.\""
+    },
+    {
+      "name": "Hydra",
+      "elements": ["water"],
+      "raceId": "serpent",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"This multi-headed serpent can have up to nine heads. This magnificent beast stands out over all others.\""
+    },
+    {
+      "name": "Lava",
+      "elements": ["fire"],
+      "raceId": "westernDragon",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Arrived here from a world of dragons and plans to conquer the land\""
+    },
+    {
+      "name": "Leshy",
+      "elements": ["grass"],
+      "raceId": "westernDragon",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Arrived here from a world of dragons and plans to conquer this land\""
+    },
+    {
+      "name": "Minotaur",
+      "elements": ["ground"],
+      "raceId": "beastfolk",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"A beast with the head of a bull on the body of a man. Few have survived encounters with it.\""
+    },
+    {
+      "name": "Pegasus",
+      "elements": ["normal"],
+      "raceId": "equid",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": []
+    },
+    {
+      "name": "Phoenix",
+      "elements": ["fire"],
+      "raceId": "mythicBird",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"This immortal bird is reborn every one thousand years\""
+    },
+    {
+      "name": "Plantosaurus",
+      "elements": ["grass"],
+      "raceId": "ursid",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Bears a holy tree on its back. This strong beast is blessed by the spirits of nature.\""
+    },
+    {
+      "name": "Roco",
+      "elements": ["ground"],
+      "raceId": "westernDragon",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Arrived here from a world of dragons and plans to conquer this land.\""
+    },
+    {
+      "name": "Sphierx",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": []
+    },
+    {
+      "name": "Splashy",
+      "elements": ["water"],
+      "raceId": "westernDragon",
+      "tier": "mythic",
+      "catchRate": 5,
+      "evolutions": [],
+      "flavor": "\"Arrived here from a world of dragons and plans to conquer this land.\""
+    }
+  ],
+  "excluded": [
+    {
+      "name": "More",
+      "reason": "không phải trang quái"
+    }
+  ]
+}

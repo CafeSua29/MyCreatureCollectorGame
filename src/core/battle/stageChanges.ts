@@ -91,13 +91,57 @@ function isLowerBlocked(data: GameData, d: Draft, target: Monster, change: Stage
   return false
 }
 
+const DEFENSE_TO_ATTACK: Partial<Record<StageStat, StageStat>> = {
+  defense: 'attack',
+  spDefense: 'spAttack'
+}
+
+/** Harmony của WILDERLOCKE: quái khác trên sân đổi bậc thì quái mang hook chép đúng chỉ số đó. */
+function copyStagesToOthers(
+  data: GameData,
+  d: Draft,
+  source: Monster,
+  stat: StageStat,
+  changed: number
+): void {
+  for (const side of ['player', 'enemy'] as const) {
+    for (const { monster } of aliveOnField(data, d, side)) {
+      if (monster.id === source.id) continue
+      let copies = false
+      forEachTraitHook(
+        data,
+        monster,
+        (handler, params) => {
+          if (handler.copiesStagesOf?.(params).includes(stat)) copies = true
+        },
+        monsterBattleContext(data, d, monster)
+      )
+      if (copies) {
+        applyStageChange(data, d, {
+          targetId: monster.id,
+          stat,
+          delta: changed,
+          cause: 'self',
+          echoed: true
+        })
+      }
+    }
+  }
+}
+
 /**
  * Đổi bậc một quái: quái gục thì bỏ qua; hạ bậc thì xét chặn theo nguyên nhân; bị phe địch hạ bậc
  * thật (sau kẹp giới hạn) thì chạy trait stageOnStatLowered của nó.
  */
-export function applyStageChange(data: GameData, d: Draft, change: StageChange): void {
-  const target = findMonster(d, change.targetId)
+export function applyStageChange(data: GameData, d: Draft, rawChange: StageChange): void {
+  const target = findMonster(d, rawChange.targetId)
   if (isFainted(data, target)) return
+  const ctx = monsterBattleContext(data, d, target)
+  // Savage của WILDERLOCKE: đổi bậc thủ thành đổi bậc công cùng loại.
+  const change: StageChange =
+    hasAbilityFlag(data, target, 'defenseStagesToAttack', ctx) && DEFENSE_TO_ATTACK[rawChange.stat]
+      ? { ...rawChange, stat: DEFENSE_TO_ATTACK[rawChange.stat] as StageStat }
+      : rawChange
   if (change.delta < 0 && isLowerBlocked(data, d, target, change)) return
   if (change.delta < 0 && reflectsLower(data, d, target, change)) return
   if (change.delta > 0 && blocksGain(data, d, target)) return
@@ -108,6 +152,24 @@ export function applyStageChange(data: GameData, d: Draft, change: StageChange):
   const turnLog = changed === 0 ? undefined : currentTurnLog(d, target.id)
   if (turnLog && changed > 0) turnLog.statsRaised = true
   if (turnLog && changed < 0) turnLog.statsLowered = true
+  // Reflect của WILDERLOCKE: đổi bậc bất kỳ cũng áp lên quái gây ra.
+  if (
+    changed !== 0 &&
+    !change.echoed &&
+    change.sourceId !== undefined &&
+    change.sourceId !== target.id &&
+    hasAbilityFlag(data, target, 'reflectsAllStages', ctx)
+  ) {
+    applyStageChange(data, d, {
+      targetId: change.sourceId,
+      stat: change.stat,
+      delta: change.delta,
+      cause: 'foe',
+      sourceId: target.id,
+      echoed: true
+    })
+  }
+  if (changed !== 0 && !change.echoed) copyStagesToOthers(data, d, target, change.stat, changed)
   if (changed > 0) emitTraitEvent(d, { type: 'statGain', subjectId: target.id })
   if (changed > 0 && !change.echoed) copyFoeBoost(data, d, target, { stat: change.stat, changed })
   if (changed < 0) emitTraitEvent(d, { type: 'statLoss', subjectId: target.id })

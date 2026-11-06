@@ -22,9 +22,13 @@ import { placeRoom } from './rooms'
 import { placeSideField, removeSideFields, swapSideFields } from './sideFields'
 import { applyStageChange, stageCause } from './stageChanges'
 import { cureAllStatuses, inflictStatus } from './statuses'
-import { createSubstitute, raiseProtect, reduceHold, startPerish } from './volatiles'
+import { addResonance, createSubstitute, raiseProtect, reduceHold, startPerish } from './volatiles'
 import { eatHeldItems } from './heldItems'
 import { forceSwitchOut } from './forceSwitch'
+import { changeIdentity } from './traitEffects'
+import { crumbleWalls, raiseWall, recycleWall, stealWall } from './walls'
+import { setBoobyTrap } from './boobyTraps'
+import { startCoating, transferCoating } from './coatings'
 
 /** Xóa mọi bậc trận của quái (kiểu Haze); quái chưa đổi bậc nào thì không log. */
 function resetStages(d: Draft, monsterId: string): void {
@@ -49,7 +53,7 @@ function effectScope(
 function applyMonsterChanges(
   data: GameData,
   d: Draft,
-  { user, statusTurnsBonus }: Pick<EffectRun, 'user' | 'statusTurnsBonus'>,
+  { user, statusTurnsBonus, skillId }: Pick<EffectRun, 'user' | 'statusTurnsBonus' | 'skillId'>,
   result: SkillEffectResult
 ): void {
   for (const { monsterId, stat, delta } of result.stageChanges) {
@@ -84,6 +88,25 @@ function applyMonsterChanges(
   for (const monsterId of result.stageResets) resetStages(d, monsterId)
   for (const { monsterId, turns } of result.perishStarts) startPerish(data, d, monsterId, turns)
   for (const monsterId of result.forceSwitches) forceSwitchOut(data, d, monsterId)
+  for (const { monsterId, elementIds, turns } of result.elementChanges) {
+    changeIdentity(d, findMonster(d, monsterId), { elementIds })
+    startCoating(d, monsterId, turns)
+  }
+  for (const resonance of result.resonances) addResonance(data, d, resonance)
+  for (const wall of result.walls) raiseWall(data, d, { user, skillId, ...wall })
+  for (const steal of result.wallSteals) stealWall(data, d, steal)
+  for (const crumble of result.wallCrumbles) crumbleWalls(data, d, { user, ...crumble })
+  for (const transfer of result.coatingTransfers) transferCoating(d, transfer)
+  for (const recycle of result.wallRecycles) {
+    if (!recycleWall(data, d, recycle) && skillId !== null) {
+      log(d, { type: 'skillFailed', monsterId: user.id, skillId, reason: 'condition' })
+    }
+  }
+  for (const trap of result.boobyTraps) {
+    if (!setBoobyTrap(d, trap) && skillId !== null) {
+      log(d, { type: 'skillFailed', monsterId: user.id, skillId, reason: 'condition' })
+    }
+  }
   for (const { monsterId, turns } of result.holdReductions) {
     reduceHold(data, d, findMonster(d, monsterId), turns)
   }
@@ -128,7 +151,10 @@ export interface EffectRun {
 const withoutShielded = (result: SkillEffectResult, targetId: string): SkillEffectResult => ({
   ...result,
   stageChanges: result.stageChanges.filter((change) => change.monsterId !== targetId),
-  statusChanges: result.statusChanges.filter((change) => change.monsterId !== targetId)
+  statusChanges: result.statusChanges.filter((change) => change.monsterId !== targetId),
+  elementChanges: result.elementChanges.filter((change) => change.monsterId !== targetId),
+  resonances: result.resonances.filter((change) => change.monsterId !== targetId),
+  boobyTraps: result.boobyTraps.filter((change) => change.monsterId !== targetId)
 })
 
 /**

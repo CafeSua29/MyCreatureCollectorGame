@@ -294,3 +294,25 @@ export function traitNegateChance(view: DslView): number {
     )
   )
 }
+
+/**
+ * Thể lực tối đa của quái: thang `stamina.max` × hook `staminaMaxPercent` (stamina.md). Đặt ở đây
+ * để bộ đếm `stamina` của ngôn ngữ trait và `battle/stamina.ts` dùng chung một công thức.
+ */
+export function staminaMaxOf(data: GameData, monster: Monster, ctx?: MonsterBattleContext): number {
+  let percent = 100
+  forEachTraitHook(
+    data,
+    monster,
+    (handler, params, scale) => {
+      percent += handler.staminaMaxPercent?.(params, scale) ?? 0
+    },
+    ctx
+  )
+  return Math.max(1, Math.round((data.config.stamina.max * percent) / 100))
+}
+
+/** Thể lực hiện tại theo bản ghi trận (ngoài trận = đầy). */
+export function staminaOf(data: GameData, monster: Monster, ctx?: MonsterBattleContext): number {
+  return Math.max(0, staminaMaxOf(data, monster, ctx) - (ctx?.record.staminaUsed ?? 0))
+}

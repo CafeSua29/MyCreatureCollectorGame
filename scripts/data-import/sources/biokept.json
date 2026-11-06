@@ -1,0 +1,1826 @@
+{
+ "source": "biokept",
+ "origin": "fantasy",
+ "species": [
+  {
+   "name": "Frog",
+   "elements": [
+    "water"
+   ],
+   "raceId": "anuran",
+   "tier": "small",
+   "stats": {
+    "hp": 107,
+    "attack": 31,
+    "defense": 14,
+    "spAttack": 31,
+    "spDefense": 14,
+    "speed": 94
+   },
+   "category": "Level 0 creature",
+   "evolutions": [
+    {
+     "name": "Super Frog",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Small Stinger",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "small",
+   "stats": {
+    "hp": 97,
+    "attack": 34,
+    "defense": 14,
+    "spAttack": 34,
+    "spDefense": 14,
+    "speed": 95
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Armor Scorpion",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "small",
+   "stats": {
+    "hp": 93,
+    "attack": 29,
+    "defense": 24,
+    "spAttack": 29,
+    "spDefense": 24,
+    "speed": 91
+   },
+   "category": "Level 2 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Mental Frog",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "anuran",
+   "tier": "small",
+   "stats": {
+    "hp": 110,
+    "attack": 25,
+    "defense": 20,
+    "spAttack": 25,
+    "spDefense": 20,
+    "speed": 90
+   },
+   "category": "Level 2 creature",
+   "evolutions": [
+    {
+     "name": "Super Mental Frog",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Snake",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "serpent",
+   "tier": "small",
+   "stats": {
+    "hp": 102,
+    "attack": 30,
+    "defense": 15,
+    "spAttack": 30,
+    "spDefense": 15,
+    "speed": 97
+   },
+   "category": "Level 3 creature",
+   "evolutions": [
+    {
+     "name": "Super Snake",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Mosquito",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "neopteron",
+   "tier": "small",
+   "stats": {
+    "hp": 83,
+    "attack": 32,
+    "defense": 18,
+    "spAttack": 32,
+    "spDefense": 18,
+    "speed": 107
+   },
+   "category": "Level 4 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Scorpion",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "small",
+   "stats": {
+    "hp": 105,
+    "attack": 34,
+    "defense": 18,
+    "spAttack": 34,
+    "spDefense": 18,
+    "speed": 83
+   },
+   "category": "Level 5 creature",
+   "evolutions": [
+    {
+     "name": "Super Scorpion",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Ice Snake",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "serpent",
+   "tier": "small",
+   "stats": {
+    "hp": 105,
+    "attack": 35,
+    "defense": 18,
+    "spAttack": 35,
+    "spDefense": 18,
+    "speed": 80
+   },
+   "category": "Level 6 creature",
+   "evolutions": [
+    {
+     "name": "Super Ice Snake",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Wolf",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "small",
+   "stats": {
+    "hp": 109,
+    "attack": 39,
+    "defense": 17,
+    "spAttack": 39,
+    "spDefense": 17,
+    "speed": 69
+   },
+   "category": "Level 8 creature",
+   "evolutions": [
+    {
+     "name": "Super Wolf",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Dove",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "bird",
+   "tier": "small",
+   "stats": {
+    "hp": 107,
+    "attack": 37,
+    "defense": 16,
+    "spAttack": 37,
+    "spDefense": 16,
+    "speed": 76
+   },
+   "category": "Level 8 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Green Stinger",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "small",
+   "stats": {
+    "hp": 101,
+    "attack": 40,
+    "defense": 17,
+    "spAttack": 40,
+    "spDefense": 17,
+    "speed": 75
+   },
+   "category": "Level 10 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Poison Spirit",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 101,
+    "attack": 41,
+    "defense": 17,
+    "spAttack": 41,
+    "spDefense": 17,
+    "speed": 72
+   },
+   "category": "Level 12 creature",
+   "evolutions": [
+    {
+     "name": "Super Poison Spirit",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Mental Dove",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "bird",
+   "tier": "small",
+   "stats": {
+    "hp": 119,
+    "attack": 39,
+    "defense": 16,
+    "spAttack": 39,
+    "spDefense": 16,
+    "speed": 61
+   },
+   "category": "Level 12 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Ice Frog",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "anuran",
+   "tier": "small",
+   "stats": {
+    "hp": 112,
+    "attack": 38,
+    "defense": 15,
+    "spAttack": 38,
+    "spDefense": 15,
+    "speed": 72
+   },
+   "category": "Level 15 creature",
+   "evolutions": [
+    {
+     "name": "Super Ice Frog",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Monkey Thrower",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "primate",
+   "tier": "small",
+   "stats": {
+    "hp": 118,
+    "attack": 40,
+    "defense": 16,
+    "spAttack": 40,
+    "spDefense": 16,
+    "speed": 62
+   },
+   "category": "Level 15 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Blue Stinger",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "medium",
+   "stats": {
+    "hp": 135,
+    "attack": 82,
+    "defense": 19,
+    "spAttack": 82,
+    "spDefense": 19,
+    "speed": 83
+   },
+   "category": "Level 18 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Monkey",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "primate",
+   "tier": "medium",
+   "stats": {
+    "hp": 164,
+    "attack": 63,
+    "defense": 20,
+    "spAttack": 63,
+    "spDefense": 20,
+    "speed": 90
+   },
+   "category": "Level 18 creature",
+   "evolutions": [
+    {
+     "name": "Super Monkey",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Blood Crocodile",
+   "elements": [
+    "water"
+   ],
+   "raceId": "crocodilian",
+   "tier": "medium",
+   "stats": {
+    "hp": 165,
+    "attack": 70,
+    "defense": 27,
+    "spAttack": 70,
+    "spDefense": 27,
+    "speed": 60
+   },
+   "category": "Level 22 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Red Mosquito",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "neopteron",
+   "tier": "medium",
+   "stats": {
+    "hp": 169,
+    "attack": 66,
+    "defense": 14,
+    "spAttack": 66,
+    "spDefense": 14,
+    "speed": 91
+   },
+   "category": "Level 22 creature",
+   "evolutions": [
+    {
+     "name": "Super Red Mosquito",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Crocodile",
+   "elements": [
+    "water"
+   ],
+   "raceId": "crocodilian",
+   "tier": "medium",
+   "stats": {
+    "hp": 171,
+    "attack": 74,
+    "defense": 18,
+    "spAttack": 74,
+    "spDefense": 18,
+    "speed": 64
+   },
+   "category": "Level 27 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Spider",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "medium",
+   "stats": {
+    "hp": 167,
+    "attack": 73,
+    "defense": 18,
+    "spAttack": 73,
+    "spDefense": 18,
+    "speed": 72
+   },
+   "category": "Level 27 creature",
+   "evolutions": [
+    {
+     "name": "Super Spider",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Mental Wolf",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 179,
+    "attack": 68,
+    "defense": 17,
+    "spAttack": 68,
+    "spDefense": 17,
+    "speed": 70
+   },
+   "category": "Level 30 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Ice Spider",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "arachnid",
+   "tier": "medium",
+   "stats": {
+    "hp": 147,
+    "attack": 70,
+    "defense": 25,
+    "spAttack": 70,
+    "spDefense": 25,
+    "speed": 82
+   },
+   "category": "Level 30 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Ice Spirit",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "medium",
+   "stats": {
+    "hp": 154,
+    "attack": 75,
+    "defense": 18,
+    "spAttack": 75,
+    "spDefense": 18,
+    "speed": 80
+   },
+   "category": "Level 30 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Ghost",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "stats": {
+    "hp": 151,
+    "attack": 67,
+    "defense": 20,
+    "spAttack": 67,
+    "spDefense": 20,
+    "speed": 95
+   },
+   "category": "Level 21 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Black Stinger",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "medium",
+   "stats": {
+    "hp": 151,
+    "attack": 67,
+    "defense": 20,
+    "spAttack": 67,
+    "spDefense": 20,
+    "speed": 95
+   },
+   "category": "Level 21 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Mental Scorpion",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "arachnid",
+   "tier": "medium",
+   "stats": {
+    "hp": 163,
+    "attack": 67,
+    "defense": 22,
+    "spAttack": 67,
+    "spDefense": 22,
+    "speed": 80
+   },
+   "category": "Level 21 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Fire Snake",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "serpent",
+   "tier": "medium",
+   "stats": {
+    "hp": 156,
+    "attack": 69,
+    "defense": 19,
+    "spAttack": 69,
+    "spDefense": 19,
+    "speed": 87
+   },
+   "category": "Level 24 creature",
+   "evolutions": [
+    {
+     "name": "Super Fire Snake",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Spider Woman",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "insectfolk",
+   "tier": "medium",
+   "stats": {
+    "hp": 156,
+    "attack": 71,
+    "defense": 17,
+    "spAttack": 71,
+    "spDefense": 17,
+    "speed": 87
+   },
+   "category": "Level 24 creature",
+   "evolutions": [
+    {
+     "name": "Super Spider Woman",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Mech Big",
+   "elements": [
+    "steel"
+   ],
+   "raceId": "machine",
+   "tier": "medium",
+   "stats": {
+    "hp": 169,
+    "attack": 67,
+    "defense": 18,
+    "spAttack": 67,
+    "spDefense": 18,
+    "speed": 81
+   },
+   "category": "Level 27 creature",
+   "evolutions": [
+    {
+     "name": "Super Mech Big",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Light Dove",
+   "elements": [
+    "light"
+   ],
+   "raceId": "bird",
+   "tier": "medium",
+   "stats": {
+    "hp": 159,
+    "attack": 71,
+    "defense": 18,
+    "spAttack": 71,
+    "spDefense": 18,
+    "speed": 82
+   },
+   "category": "Level 30 creature",
+   "evolutions": [
+    {
+     "name": "Super Light Dove",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Ghost Low",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "stats": {
+    "hp": 153,
+    "attack": 73,
+    "defense": 18,
+    "spAttack": 73,
+    "spDefense": 18,
+    "speed": 85
+   },
+   "category": "Level 30 creature",
+   "evolutions": [
+    {
+     "name": "Super Ghost Low",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Red Spider",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "peak",
+   "stats": {
+    "hp": 199,
+    "attack": 89,
+    "defense": 22,
+    "spAttack": 89,
+    "spDefense": 22,
+    "speed": 100
+   },
+   "category": "Level 33 creature",
+   "evolutions": [
+    {
+     "name": "Super Red Spider",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Skeleton Throw",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "skeleton",
+   "tier": "peak",
+   "stats": {
+    "hp": 215,
+    "attack": 86,
+    "defense": 18,
+    "spAttack": 86,
+    "spDefense": 18,
+    "speed": 96
+   },
+   "category": "Level 33 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Skeleton",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "skeleton",
+   "tier": "peak",
+   "stats": {
+    "hp": 214,
+    "attack": 86,
+    "defense": 20,
+    "spAttack": 86,
+    "spDefense": 20,
+    "speed": 93
+   },
+   "category": "Level 36 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Claw Snake",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "serpent",
+   "tier": "peak",
+   "stats": {
+    "hp": 200,
+    "attack": 90,
+    "defense": 21,
+    "spAttack": 90,
+    "spDefense": 21,
+    "speed": 97
+   },
+   "category": "Level 36 creature",
+   "evolutions": [
+    {
+     "name": "Super Claw Snake",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Blood Wolf",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "peak",
+   "stats": {
+    "hp": 215,
+    "attack": 87,
+    "defense": 20,
+    "spAttack": 87,
+    "spDefense": 20,
+    "speed": 91
+   },
+   "category": "Level 39 creature",
+   "evolutions": [
+    {
+     "name": "Super Blood Wolf",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Bomb Scorpion",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "peak",
+   "stats": {
+    "hp": 219,
+    "attack": 89,
+    "defense": 20,
+    "spAttack": 89,
+    "spDefense": 20,
+    "speed": 83
+   },
+   "category": "Level 39 creature",
+   "evolutions": [
+    {
+     "name": "Super Bomb Scorpion",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Shadow Monkey",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "primate",
+   "tier": "peak",
+   "stats": {
+    "hp": 216,
+    "attack": 88,
+    "defense": 19,
+    "spAttack": 88,
+    "spDefense": 19,
+    "speed": 90
+   },
+   "category": "Level 42 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Fire Spirit",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "peak",
+   "stats": {
+    "hp": 203,
+    "attack": 93,
+    "defense": 19,
+    "spAttack": 93,
+    "spDefense": 19,
+    "speed": 92
+   },
+   "category": "Level 45 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Ghost Fear",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "peak",
+   "stats": {
+    "hp": 196,
+    "attack": 96,
+    "defense": 19,
+    "spAttack": 96,
+    "spDefense": 19,
+    "speed": 95
+   },
+   "category": "Level 45 creature",
+   "evolutions": [
+    {
+     "name": "Super Ghost Fear",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Light Spirit",
+   "elements": [
+    "light"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "large",
+   "stats": {
+    "hp": 220,
+    "attack": 101,
+    "defense": 20,
+    "spAttack": 101,
+    "spDefense": 20,
+    "speed": 98
+   },
+   "category": "Level 48 creature",
+   "evolutions": [
+    {
+     "name": "Super Light Spirit",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Shadow Wolf",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 235,
+    "attack": 96,
+    "defense": 19,
+    "spAttack": 96,
+    "spDefense": 19,
+    "speed": 93
+   },
+   "category": "Level 48 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Skeleton Mage",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "skeleton",
+   "tier": "large",
+   "stats": {
+    "hp": 238,
+    "attack": 98,
+    "defense": 17,
+    "spAttack": 98,
+    "spDefense": 17,
+    "speed": 93
+   },
+   "category": "Level 51 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Frog",
+   "elements": [
+    "water"
+   ],
+   "raceId": "anuran",
+   "tier": "large",
+   "stats": {
+    "hp": 297,
+    "attack": 45,
+    "defense": 17,
+    "spAttack": 45,
+    "spDefense": 17,
+    "speed": 137
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Snake",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "serpent",
+   "tier": "large",
+   "stats": {
+    "hp": 293,
+    "attack": 47,
+    "defense": 21,
+    "spAttack": 47,
+    "spDefense": 21,
+    "speed": 131
+   },
+   "category": "Level 3 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Mental Frog",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "anuran",
+   "tier": "large",
+   "stats": {
+    "hp": 291,
+    "attack": 52,
+    "defense": 24,
+    "spAttack": 52,
+    "spDefense": 24,
+    "speed": 117
+   },
+   "category": "Level 6 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Ice Snake",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "serpent",
+   "tier": "large",
+   "stats": {
+    "hp": 295,
+    "attack": 56,
+    "defense": 22,
+    "spAttack": 56,
+    "spDefense": 22,
+    "speed": 107
+   },
+   "category": "Level 9 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Scorpion",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 295,
+    "attack": 56,
+    "defense": 22,
+    "spAttack": 56,
+    "spDefense": 22,
+    "speed": 107
+   },
+   "category": "Level 9 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Wolf",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 298,
+    "attack": 59,
+    "defense": 22,
+    "spAttack": 59,
+    "spDefense": 22,
+    "speed": 99
+   },
+   "category": "Level 12 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Poison Spirit",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "large",
+   "stats": {
+    "hp": 302,
+    "attack": 62,
+    "defense": 20,
+    "spAttack": 62,
+    "spDefense": 20,
+    "speed": 94
+   },
+   "category": "Level 15 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Ice Frog",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "anuran",
+   "tier": "large",
+   "stats": {
+    "hp": 305,
+    "attack": 64,
+    "defense": 19,
+    "spAttack": 64,
+    "spDefense": 19,
+    "speed": 89
+   },
+   "category": "Level 18 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Monkey",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "primate",
+   "tier": "large",
+   "stats": {
+    "hp": 307,
+    "attack": 65,
+    "defense": 18,
+    "spAttack": 65,
+    "spDefense": 18,
+    "speed": 85
+   },
+   "category": "Level 21 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Fire Snake",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "serpent",
+   "tier": "large",
+   "stats": {
+    "hp": 310,
+    "attack": 67,
+    "defense": 17,
+    "spAttack": 67,
+    "spDefense": 17,
+    "speed": 82
+   },
+   "category": "Level 24 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Red Mosquito",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "neopteron",
+   "tier": "large",
+   "stats": {
+    "hp": 310,
+    "attack": 67,
+    "defense": 17,
+    "spAttack": 67,
+    "spDefense": 17,
+    "speed": 82
+   },
+   "category": "Level 24 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Spider Woman",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "insectfolk",
+   "tier": "large",
+   "stats": {
+    "hp": 310,
+    "attack": 67,
+    "defense": 17,
+    "spAttack": 67,
+    "spDefense": 17,
+    "speed": 82
+   },
+   "category": "Level 24 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Spider",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 312,
+    "attack": 68,
+    "defense": 17,
+    "spAttack": 68,
+    "spDefense": 17,
+    "speed": 79
+   },
+   "category": "Level 27 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Mech Big",
+   "elements": [
+    "steel"
+   ],
+   "raceId": "machine",
+   "tier": "large",
+   "stats": {
+    "hp": 312,
+    "attack": 68,
+    "defense": 17,
+    "spAttack": 68,
+    "spDefense": 17,
+    "speed": 79
+   },
+   "category": "Level 27 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Red Spider",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 316,
+    "attack": 69,
+    "defense": 15,
+    "spAttack": 69,
+    "spDefense": 15,
+    "speed": 75
+   },
+   "category": "Level 33 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Claw Snake",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "serpent",
+   "tier": "large",
+   "stats": {
+    "hp": 317,
+    "attack": 70,
+    "defense": 15,
+    "spAttack": 70,
+    "spDefense": 15,
+    "speed": 73
+   },
+   "category": "Level 36 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Ghost Fear",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "large",
+   "stats": {
+    "hp": 320,
+    "attack": 72,
+    "defense": 14,
+    "spAttack": 72,
+    "spDefense": 14,
+    "speed": 69
+   },
+   "category": "Level 45 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Forest Guardian",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "stats": {
+    "hp": 161,
+    "attack": 32,
+    "defense": 13,
+    "spAttack": 32,
+    "spDefense": 13,
+    "speed": 40
+   },
+   "category": "Level 15 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Spiker",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "wildBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 242,
+    "attack": 51,
+    "defense": 15,
+    "spAttack": 51,
+    "spDefense": 15,
+    "speed": 47
+   },
+   "category": "Level 30 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Nature Mother",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "natureSpirit",
+   "tier": "peak",
+   "stats": {
+    "hp": 304,
+    "attack": 65,
+    "defense": 17,
+    "spAttack": 65,
+    "spDefense": 17,
+    "speed": 53
+   },
+   "category": "Level 40 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Mech King",
+   "elements": [
+    "steel"
+   ],
+   "raceId": "machine",
+   "tier": "large",
+   "stats": {
+    "hp": 332,
+    "attack": 72,
+    "defense": 16,
+    "spAttack": 72,
+    "spDefense": 16,
+    "speed": 53
+   },
+   "category": "Level 55 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Green Ghost",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "ghost",
+   "tier": "peak",
+   "stats": {
+    "hp": 278,
+    "attack": 79,
+    "defense": 16,
+    "spAttack": 79,
+    "spDefense": 16,
+    "speed": 52
+   },
+   "category": "Level 33 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Red Ghost",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "large",
+   "stats": {
+    "hp": 304,
+    "attack": 88,
+    "defense": 15,
+    "spAttack": 88,
+    "spDefense": 15,
+    "speed": 50
+   },
+   "category": "Level 51 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Deathgod",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "large",
+   "stats": {
+    "hp": 306,
+    "attack": 89,
+    "defense": 14,
+    "spAttack": 89,
+    "spDefense": 14,
+    "speed": 47
+   },
+   "category": "Level 60 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Miner",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "dwarf",
+   "tier": "small",
+   "stats": {
+    "hp": 152,
+    "attack": 47,
+    "defense": 15,
+    "spAttack": 47,
+    "spDefense": 15,
+    "speed": 15
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Miner 1",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "dwarf",
+   "tier": "small",
+   "stats": {
+    "hp": 152,
+    "attack": 47,
+    "defense": 15,
+    "spAttack": 47,
+    "spDefense": 15,
+    "speed": 15
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Miner 2",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "dwarf",
+   "tier": "small",
+   "stats": {
+    "hp": 152,
+    "attack": 47,
+    "defense": 15,
+    "spAttack": 47,
+    "spDefense": 15,
+    "speed": 15
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Miner 3",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "dwarf",
+   "tier": "small",
+   "stats": {
+    "hp": 152,
+    "attack": 47,
+    "defense": 15,
+    "spAttack": 47,
+    "spDefense": 15,
+    "speed": 15
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Miner 4",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "dwarf",
+   "tier": "small",
+   "stats": {
+    "hp": 152,
+    "attack": 47,
+    "defense": 15,
+    "spAttack": 47,
+    "spDefense": 15,
+    "speed": 15
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "small",
+   "stats": {
+    "hp": 1,
+    "attack": 1,
+    "defense": 97,
+    "spAttack": 1,
+    "spDefense": 97,
+    "speed": 97
+   },
+   "category": "Level 5 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog1",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 236,
+    "attack": 63,
+    "defense": 25,
+    "spAttack": 63,
+    "spDefense": 25,
+    "speed": 7
+   },
+   "category": "Level 20 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog2",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 251,
+    "attack": 63,
+    "defense": 19,
+    "spAttack": 63,
+    "spDefense": 19,
+    "speed": 5
+   },
+   "category": "Level 30 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog3",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "peak",
+   "stats": {
+    "hp": 321,
+    "attack": 80,
+    "defense": 17,
+    "spAttack": 80,
+    "spDefense": 17,
+    "speed": 4
+   },
+   "category": "Level 40 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog4",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 1,
+    "attack": 1,
+    "defense": 187,
+    "spAttack": 1,
+    "spDefense": 187,
+    "speed": 187
+   },
+   "category": "Level 50 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog5",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 1,
+    "attack": 1,
+    "defense": 187,
+    "spAttack": 1,
+    "spDefense": 187,
+    "speed": 187
+   },
+   "category": "Level 60 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Dog6",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 1,
+    "attack": 1,
+    "defense": 187,
+    "spAttack": 1,
+    "spDefense": 187,
+    "speed": 187
+   },
+   "category": "Level 70 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Guard",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "stats": {
+    "hp": 120,
+    "attack": 37,
+    "defense": 12,
+    "spAttack": 37,
+    "spDefense": 12,
+    "speed": 73
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Jelly",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cnidarian",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Light Jelly",
+   "elements": [
+    "light"
+   ],
+   "raceId": "cnidarian",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Mental Jelly",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "cnidarian",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Spike Jelly",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cnidarian",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Color Jelly",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cnidarian",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Octopus",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cephalopod",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Mental Octopus",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "cephalopod",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Black Squid",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "cephalopod",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Big Squid",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cephalopod",
+   "tier": "small",
+   "stats": {
+    "hp": 114,
+    "attack": 35,
+    "defense": 11,
+    "spAttack": 35,
+    "spDefense": 11,
+    "speed": 83
+   },
+   "category": "Level 0 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Ghost Low",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "large",
+   "stats": {
+    "hp": 355,
+    "attack": 65,
+    "defense": 15,
+    "spAttack": 65,
+    "spDefense": 15,
+    "speed": 46
+   },
+   "category": "Level 22 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Bomb Scorpion",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 353,
+    "attack": 63,
+    "defense": 19,
+    "spAttack": 63,
+    "spDefense": 19,
+    "speed": 44
+   },
+   "category": "Level 24 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Blood Wolf",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 352,
+    "attack": 64,
+    "defense": 18,
+    "spAttack": 64,
+    "spDefense": 18,
+    "speed": 45
+   },
+   "category": "Level 28 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Light Dove",
+   "elements": [
+    "light"
+   ],
+   "raceId": "bird",
+   "tier": "large",
+   "stats": {
+    "hp": 365,
+    "attack": 60,
+    "defense": 16,
+    "spAttack": 60,
+    "spDefense": 16,
+    "speed": 43
+   },
+   "category": "Level 32 creature",
+   "evolutions": []
+  },
+  {
+   "name": "Super Light Spirit",
+   "elements": [
+    "light"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "large",
+   "stats": {
+    "hp": 378,
+    "attack": 57,
+    "defense": 14,
+    "spAttack": 57,
+    "spDefense": 14,
+    "speed": 40
+   },
+   "category": "Level 36 creature",
+   "evolutions": []
+  }
+ ]
+}

@@ -35,6 +35,8 @@ export interface MemberSpec {
   levelOffset: number
   genes: GeneSpec
   traits: TraitInstance[]
+  /** Kiểu luyện thể đang lắp (id; bộ phận quái không có thì bỏ qua, body-refinement.md). */
+  refinements?: string[]
 }
 
 export interface TeamSpec {
@@ -81,6 +83,8 @@ export interface Variant {
   withoutSkillFields: SkillFieldToggle[]
   /** Bỏ mọi hiệu ứng của kỹ năng đồng hành (A/B, docs/rules/partner-skills.md); không ghi = false. */
   withoutPartnerSkills: boolean
+  /** Bỏ mọi phản ứng hệ (A/B, docs/rules/element-reactions.md); không ghi = false. */
+  withoutElementReactions: boolean
   /** Chiến thuật của đội mẫu khi quét tầng (docs/rules/auto-battle.md); không ghi = balanced. */
   tactic: Tactic
   /**
@@ -346,7 +350,8 @@ const MEMBER_FIELDS = fieldList<MemberSpec>({
   speciesId: true,
   levelOffset: true,
   genes: true,
-  traits: true
+  traits: true,
+  refinements: true
 })
 const BREEDING_FIELDS = fieldList<BreedingSpec>({
   speciesId: true,
@@ -525,7 +530,14 @@ function readMember(r: Reader, value: unknown, path: string): MemberSpec {
     speciesId: r.speciesId(obj.speciesId, `${path}.speciesId`),
     levelOffset: r.integer(obj.levelOffset, `${path}.levelOffset`, -Number.MAX_SAFE_INTEGER),
     genes: r.genes(obj.genes, `${path}.genes`),
-    traits
+    traits,
+    ...(obj.refinements === undefined
+      ? {}
+      : {
+          refinements: r
+            .array(obj.refinements, `${path}.refinements`)
+            .map((id, i) => r.string(id, `${path}.refinements[${i}]`))
+        })
   }
 }
 
@@ -536,6 +548,7 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
     'config',
     'withoutSkillFields',
     'withoutPartnerSkills',
+    'withoutElementReactions',
     'tactic',
     'uncontracted',
     'tamerRealm',
@@ -555,6 +568,10 @@ function readVariant(r: Reader, data: GameData, value: unknown, path: string): V
       obj.withoutSkillFields === undefined
         ? []
         : readSkillFieldToggles(r, obj.withoutSkillFields, `${path}.withoutSkillFields`),
+    withoutElementReactions:
+      obj.withoutElementReactions === undefined
+        ? false
+        : r.boolean(obj.withoutElementReactions, `${path}.withoutElementReactions`),
     withoutPartnerSkills:
       obj.withoutPartnerSkills === undefined
         ? false
@@ -1075,6 +1092,17 @@ export function turnLimit(
 }
 
 /** Dữ liệu thô với config đã ghi đè theo biến thể; nơi gọi kiểm tra lại bằng createGameData. */
+/** Bỏ mọi phản ứng hệ kèm tên của chúng (kiểm tra chữ báo lỗi nếu còn tên của id không tồn tại). */
+function withoutElementReactions(raw: RawGameData): RawGameData {
+  const languages = Object.fromEntries(
+    Object.entries(raw.text.languages).map(([code, language]) => [
+      code,
+      { ...language, content: { ...language.content, elementReactions: {} } }
+    ])
+  )
+  return { ...raw, elementReactions: [], text: { ...raw.text, languages } }
+}
+
 export function rawWithVariant(raw: RawGameData, variant: Variant): RawGameData {
   const config: Record<string, unknown> = { ...raw.config }
   for (const [section, fields] of Object.entries(variant.config)) {
@@ -1094,5 +1122,11 @@ export function rawWithVariant(raw: RawGameData, variant: Variant): RawGameData 
     ? raw.partnerSkills.map((skill) => ({ ...skill, effects: [] }))
     : raw.partnerSkills
   // Ép kiểu: chỉ ghi đè khóa đã có của config; createGameData kiểm tra lại toàn bộ.
-  return { ...raw, skills, partnerSkills, config: config as unknown as RawGameData['config'] }
+  const varied: RawGameData = {
+    ...raw,
+    skills,
+    partnerSkills,
+    config: config as unknown as RawGameData['config']
+  }
+  return variant.withoutElementReactions ? withoutElementReactions(varied) : varied
 }

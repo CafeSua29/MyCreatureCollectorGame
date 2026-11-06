@@ -11,7 +11,7 @@ Code: `registries/size.ts` (điểm duy nhất hỏi kích cỡ / ô đội), ô
 - **Không có trường riêng trong dữ liệu**: kích cỡ suy ra từ cân nặng (`registries/weight.ts`, mục "Cân nặng" ở `battle.md`): cân nặng ≥ `size.largeWeightKg` (1000 kg) là **quái lớn**, còn lại thường. Muốn đổi kích cỡ một loài thì sửa / thêm `weightKg` của loài (hoặc race).
 - Quái theo loài hiện tại; quái fuse theo loài gốc. **Không theo dạng biến hình** (Mega / gmax chỉ là dạng trong trận) nên kích cỡ không đổi giữa trận.
 - Không lưu trong save (suy ra từ loài). Kết quả nhớ theo bộ dữ liệu (chỉ số tính lại rất nhiều lần).
-- Dữ liệu thật (2026-10-26): ~10% loài là quái lớn (voi, tê giác, hà mã, cá voi, khủng long cổ dài, rồng cổ Monster Hunter, kaiju...). Dạng gmax có `weightKg` 1000 nhưng không bao giờ là loài của quái (chỉ là dạng hiển thị) nên không ảnh hưởng.
+- Beastmancer: quái `big` của game gốc nhập với `weightKg` 1000 (`content-sources-real.md`). **Không có giới hạn tỉ lệ quái lớn**, theo loài hay theo nguồn (chủ project chốt 2026-11-04): loài nào to theo bản gốc thì là quái lớn. Ví dụ: (voi, tê giác, hà mã, cá voi, khủng long cổ dài, rồng cổ Monster Hunter, kaiju...). Dạng gmax có `weightKg` 1000 nhưng không bao giờ là loài của quái (chỉ là dạng hiển thị) nên không ảnh hưởng.
 
 ## Đội
 

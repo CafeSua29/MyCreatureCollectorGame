@@ -3,9 +3,17 @@
 // ngược gục (Perish Song), thế thân (Substitute), giảm lượt chờ của hold (Tĩnh Tâm Chú). Gộp vào
 // registry SKILL_EFFECTS ở skillEffects.ts.
 
-import { asObject, checkInteger, checkNumber } from '../shared'
-import { heldSkills, isGrounded } from '../monster'
+import { asObject, checkInteger, checkNumber, pick } from '../shared'
+import {
+  activeTransform,
+  basicWallOfElement,
+  heldSkills,
+  isGrounded,
+  statusTurnsLeft,
+  wallStatusesOf
+} from '../monster'
 import type { BattleStages, GameData, Monster, StatName } from '../model'
+import { elementEffectiveness } from './elementReactions'
 import { isBattleStageStat } from './paramChecks'
 import { checkElements, hasElement } from './fieldHookUtils'
 import { boostedDelta, noChanges, type SkillEffectHandler } from './skillEffectTypes'
@@ -257,6 +265,281 @@ const substitute: SkillEffectHandler = {
   aiValue: () => 0
 }
 
+// ---------- transmute: mục tiêu thành đúng một hệ (biến hệ của phản ứng hệ, kiểu Soak) ----------
+
+/** Quái không đổi hệ được nữa: đang Tera (Tera khóa hệ) hoặc đã đúng hệ đó. */
+const cannotTransmute = (monster: Monster, elementId: string): boolean =>
+  activeTransform(monster)?.kind === 'tera' ||
+  (monster.elementIds.length === 1 && monster.elementIds[0] === elementId)
+
+/** Số lượt của lớp phủ (bỏ trống = tới khi rời sân). */
+const checkTurns = (value: unknown): string[] =>
+  value === undefined ? [] : checkInteger(value, 'turns', 1)
+
+interface TransmuteParams {
+  /** Hệ mới; bỏ trống thì `elementFromUser`: hệ đầu của quái dùng (Elemental Coating). */
+  elementId?: string
+  elementFromUser?: true
+  turns?: number
+}
+
+const transmute: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    const issues =
+      obj.elementFromUser === true ||
+      (typeof obj.elementId === 'string' && Object.hasOwn(data.elements, obj.elementId))
+        ? []
+        : [`hệ không tồn tại "${String(obj.elementId)}"`]
+    return [...issues, ...checkTurns(obj.turns)]
+  },
+  apply(params, { user, target, rng }) {
+    const typed = params as TransmuteParams
+    const elementId = typed.elementId ?? user.elementIds[0]
+    const { turns } = typed
+    if (!elementId) return noChanges(rng)
+    return {
+      ...noChanges(rng),
+      elementChanges: cannotTransmute(target, elementId)
+        ? []
+        : [{ monsterId: target.id, elementIds: [elementId], ...(turns ? { turns } : {}) }]
+    }
+  },
+  // Chấm theo khắc hệ của hệ quái dùng lên mục tiêu trước và sau: đánh địch dễ hơn thì có lợi.
+  aiValue(params, { data, user, target, targetIsAlly }) {
+    const elementId = (params as TransmuteParams).elementId ?? user.elementIds[0]
+    if (!elementId || cannotTransmute(target, elementId)) return 0
+    const gain = user.elementIds.reduce(
+      (sum, id) =>
+        sum +
+        elementEffectiveness(data, id, [elementId]) -
+        elementEffectiveness(data, id, target.elementIds),
+      0
+    )
+    const value = (gain / Math.max(1, user.elementIds.length)) * data.config.ai.stageValuePerStep
+    return targetIsAlly ? -value : value
+  }
+}
+
+// ---------- resonate: cộng dồn, đủ số lần thì mục tiêu gục (Resonance của Cassette Beasts) ----------
+
+const resonate: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams(params) {
+    const obj = asObject(params)
+    return obj ? checkInteger(obj.threshold, 'threshold', 1) : ['params phải là object']
+  },
+  apply(params, { target, rng }) {
+    const { threshold } = params as { threshold: number }
+    return { ...noChanges(rng), resonances: [{ monsterId: target.id, threshold }] }
+  },
+  // Mỗi lần góp một phần của việc hạ gục; boss hoang không bị nên 0 (như Perish Song).
+  aiValue(params, { data, target, targetIsAlly, isBoss, volatiles }) {
+    if (isBoss && !targetIsAlly) return 0
+    const { threshold } = params as { threshold: number }
+    const count = volatiles?.[target.id]?.resonance ?? 0
+    const value = (data.config.ai.koBonus * (count + 1)) / threshold
+    return targetIsAlly ? -value : value
+  }
+}
+
+// ---------- transmuteRandom: thành một hệ ngẫu nhiên (Prismatic của Cassette Beasts) ----------
+
+const transmuteRandom: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    const ids = obj.elementIds
+    const issues =
+      ids === undefined ||
+      (Array.isArray(ids) && ids.every((id) => Object.hasOwn(data.elements, id)))
+        ? []
+        : ['elementIds phải là danh sách hệ có thật']
+    return [...issues, ...checkTurns(obj.turns)]
+  },
+  // Mọi hệ hợp lệ đều có cơ hội (bỏ trống = mọi hệ), kể cả hệ đang mang.
+  apply(params, { data, target, rng }) {
+    const { elementIds, turns } = params as { elementIds?: string[]; turns?: number }
+    const pool = elementIds ?? Object.keys(data.elements)
+    const [elementId, next] = pick(rng, pool)
+    return {
+      ...noChanges(next),
+      elementChanges: cannotTransmute(target, elementId)
+        ? []
+        : [{ monsterId: target.id, elementIds: [elementId], ...(turns ? { turns } : {}) }]
+    }
+  },
+  aiValue: () => 0
+}
+
+// ---------- wall / stealWall / recycleWall / crumbleWalls: tường của Cassette Beasts ----------
+
+interface WallParams {
+  /** Trạng thái tường; bỏ trống thì `elementFromUser`: tường thường theo hệ đầu của quái dùng. */
+  statusId?: string
+  elementFromUser?: true
+  /** Thời hạn thay cho thời hạn của trạng thái (Air Wall của phản ứng hệ: 2). */
+  turns?: number
+  hpCostPercent?: number
+}
+
+const wallStatusIdOf = (data: GameData, user: Monster, params: WallParams): string | null =>
+  params.statusId ?? basicWallOfElement(data, user.elementIds[0] ?? '')
+
+const wall: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    const issues: string[] = []
+    const statusId = obj.statusId
+    if (statusId === undefined && obj.elementFromUser !== true) {
+      issues.push('cần statusId hoặc elementFromUser')
+    }
+    if (
+      statusId !== undefined &&
+      (typeof statusId !== 'string' || !data.statuses[statusId]?.wall)
+    ) {
+      issues.push(`trạng thái không phải tường "${String(statusId)}"`)
+    }
+    if (obj.turns !== undefined) issues.push(...checkInteger(obj.turns, 'turns', 1))
+    if (obj.hpCostPercent !== undefined) {
+      issues.push(...checkNumber(obj.hpCostPercent, 'hpCostPercent', 0, 100))
+    }
+    return issues
+  },
+  apply(params, { data, user, target, rng }) {
+    const typed = params as WallParams
+    const statusId = wallStatusIdOf(data, user, typed)
+    if (!statusId) return noChanges(rng)
+    return {
+      ...noChanges(rng),
+      walls: [
+        {
+          monsterId: target.id,
+          statusId,
+          ...(typed.turns ? { turns: typed.turns } : {}),
+          ...(typed.hpCostPercent ? { hpCostPercent: typed.hpCostPercent } : {})
+        }
+      ]
+    }
+  },
+  // Mỗi đòn chặn được như một bậc thủ, trừ phần máu phải mất; dựng tường cho địch là có hại.
+  aiValue(params, { data, user, target, targetIsAlly }) {
+    const typed = params as WallParams
+    const statusId = wallStatusIdOf(data, user, typed)
+    const hits = statusId ? (data.statuses[statusId].wall?.hits ?? 0) : 0
+    const value = hits * data.config.ai.stageValuePerStep - (typed.hpCostPercent ?? 0) / 100
+    return targetIsAlly && !hasWall(data, target) ? value : targetIsAlly ? 0 : -value
+  }
+}
+
+const hasWall = (data: GameData, monster: Monster): boolean =>
+  wallStatusesOf(data, monster).length > 0
+
+const stealWall: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams: validateEmptyParams,
+  apply: (_params, { user, target, rng }) => ({
+    ...noChanges(rng),
+    wallSteals: [{ fromId: target.id, toId: user.id }]
+  }),
+  aiValue(_params, { data, target, targetIsAlly }) {
+    const hits = wallStatusesOf(data, target).at(-1)?.hitsLeft ?? 0
+    return targetIsAlly ? 0 : 2 * hits * data.config.ai.stageValuePerStep
+  }
+}
+
+const recycleWall: SkillEffectHandler = {
+  timing: 'afterHits',
+  userOnly: () => true,
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return checkNumber(obj.staminaPerTurn, 'staminaPerTurn', Number.MIN_VALUE)
+  },
+  apply: (params, { user, rng }) => ({
+    ...noChanges(rng),
+    wallRecycles: [
+      { monsterId: user.id, staminaPerTurn: (params as { staminaPerTurn: number }).staminaPerTurn }
+    ]
+  }),
+  // Đổi tường lấy thể lực: chỉ đáng khi tường còn ít lượt chặn so với thời hạn.
+  aiValue(_params, { data, user }) {
+    const current = wallStatusesOf(data, user).at(-1)
+    if (!current) return 0
+    const turns = statusTurnsLeft(user, current.statusId) ?? 1
+    return (turns - current.hitsLeft) * data.config.ai.stageValuePerStep
+  }
+}
+
+const crumbleWalls: SkillEffectHandler = {
+  timing: 'perSkill',
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    const issues = checkNumber(obj.power, 'power', Number.MIN_VALUE)
+    if (typeof obj.elementId !== 'string' || !Object.hasOwn(data.elements, obj.elementId)) {
+      issues.push(`hệ không tồn tại "${String(obj.elementId)}"`)
+    }
+    return issues
+  },
+  apply(params, { rng }) {
+    const { power, elementId } = params as { power: number; elementId: string }
+    return { ...noChanges(rng), wallCrumbles: [{ power, elementId }] }
+  },
+  // Có lợi khi địch có nhiều tường hơn phe mình.
+  aiValue(_params, { data, allies, foes }) {
+    const count = (list: readonly Monster[]): number =>
+      list.reduce((sum, monster) => sum + wallStatusesOf(data, monster).length, 0)
+    return (count(foes) - count(allies)) * data.config.ai.koBonus
+  }
+}
+
+// ---------- stickerTrick: skill vừa dùng của mục tiêu thành Booby Trap ----------
+
+const stickerTrick: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return [
+      ...checkInteger(obj.turns, 'turns', 1),
+      ...checkNumber(obj.power, 'power', Number.MIN_VALUE)
+    ]
+  },
+  apply(params, { target, rng }) {
+    const { turns, power } = params as { turns: number; power: number }
+    return { ...noChanges(rng), boobyTraps: [{ monsterId: target.id, turns, power }] }
+  },
+  aiValue(_params, { data, target, targetIsAlly, volatiles }) {
+    const lastId = volatiles?.[target.id]?.skillStreak?.skillId
+    const trapped = volatiles?.[target.id]?.boobyTraps?.some((trap) => trap.skillId === lastId)
+    if (targetIsAlly || !lastId || trapped) return 0
+    return 2 * data.config.ai.stageValuePerStep
+  }
+}
+
+// ---------- transferCoating: chuyển lớp phủ hệ của quái dùng sang mục tiêu (Paint Swipe) ----------
+
+const transferCoating: SkillEffectHandler = {
+  timing: 'afterHits',
+  validateParams: validateEmptyParams,
+  apply: (_params, { user, target, rng }) => ({
+    ...noChanges(rng),
+    coatingTransfers: [{ fromId: user.id, toId: target.id }]
+  }),
+  // Lớp phủ đổi hệ địch: chấm theo khắc hệ như biến hệ, hệ của lớp phủ là hệ quái dùng đang mang.
+  aiValue(_params, ctx) {
+    const elementId = ctx.user.elementIds[0]
+    if (!elementId || ctx.targetIsAlly) return 0
+    return transmute.aiValue({ elementId }, ctx)
+  }
+}
+
 export const SUPPORT_SKILL_EFFECTS: Readonly<Record<string, SkillEffectHandler>> = {
   consumeHeldItems,
   cureStatus,
@@ -265,5 +548,14 @@ export const SUPPORT_SKILL_EFFECTS: Readonly<Record<string, SkillEffectHandler>>
   fieldStatStage,
   perishSong,
   substitute,
-  reduceHold
+  reduceHold,
+  transmute,
+  transmuteRandom,
+  resonate,
+  wall,
+  stealWall,
+  recycleWall,
+  crumbleWalls,
+  transferCoating,
+  stickerTrick
 }

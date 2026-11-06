@@ -108,6 +108,10 @@ const skipChargeTurn: TraitHookHandler = {
 
 /** Cờ hành vi bật / tắt của ability (hook abilityFlag). */
 export const ABILITY_FLAGS = [
+  'keepsTargetAsleep',
+  'stagesUnremovable',
+  'reflectsAllStages',
+  'defenseStagesToAttack',
   'ignoresTargetAbility',
   'bouncesStatusMoves',
   'keepsItems',

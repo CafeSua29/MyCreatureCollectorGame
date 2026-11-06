@@ -8,6 +8,8 @@ export * from './autoBattle'
 export { suggestTamerCommand, tamerSkillBlocker } from './tamerSkills'
 export { battleCatchChance } from './battleItems'
 export * from './damage'
+export * from './damagePreview'
+export * from './bossScout'
 export {
   challengeArena,
   challengeGym,
@@ -17,7 +19,7 @@ export {
 } from './trainerBattles'
 export { abandonTrial, challengeTower, challengeTrial, enterTrial } from './trials'
 export { challengeItemWorld, enterItemWorld, leaveItemWorld } from './itemWorld'
-export { enterZone, exploreZone, leaveZone } from './zones'
+export { enterPortal, enterZone, exploreZone, leaveZone } from './zones'
 export { gather } from './gathering'
 export { challengeWorldBoss } from './worldBoss'
 export { assertReadyForBattle } from './trainerBattles'

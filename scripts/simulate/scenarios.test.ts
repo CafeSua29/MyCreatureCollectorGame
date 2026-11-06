@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { DataError, createGameData } from '@core'
-import { makeData, makeRawData } from '@core/testing'
+import { makeData, makeRawData, withFixtureText } from '@core/testing'
 import { validScenarios } from './scenarioFixture'
 import { parseScenarios, rawWithVariant, turnLimit } from './scenarios'
 
@@ -237,6 +237,23 @@ describe('parseScenarios', () => {
 })
 
 describe('rawWithVariant', () => {
+  it('withoutElementReactions: bỏ phản ứng cùng tên của chúng, dữ liệu vẫn hợp lệ', () => {
+    const raw = makeRawData()
+    raw.elementReactions.push({
+      id: 'steamed',
+      pairs: [{ attackElementId: 'fire', defenderElementId: 'water' }],
+      effects: [{ type: 'statStage', params: { who: 'target', stat: 'attack', delta: -1 } }]
+    })
+    const withText = withFixtureText(raw)
+    const variant = parseScenarios(data, validScenarios()).variants[0]
+    const kept = createGameData(rawWithVariant(withText, variant))
+    expect(Object.keys(kept.elementReactionIndex)).toEqual(['fire>water'])
+    const off = { ...variant, withoutElementReactions: true }
+    const varied = createGameData(rawWithVariant(withText, off))
+    expect(varied.elementReactions).toEqual({})
+    expect(varied.elementReactionIndex).toEqual({})
+  })
+
   it('chỉ ghi đè các trọng số được khai báo, dữ liệu vẫn qua createGameData', () => {
     const raw = makeRawData()
     const varied = createGameData(
@@ -246,6 +263,7 @@ describe('rawWithVariant', () => {
         config: {},
         withoutSkillFields: [],
         withoutPartnerSkills: false,
+        withoutElementReactions: false,
         tactic: 'balanced' as const,
         uncontracted: false,
         tamerRealm: null,
@@ -271,6 +289,7 @@ describe('rawWithVariant', () => {
         config: { mastery: off },
         withoutSkillFields: [],
         withoutPartnerSkills: false,
+        withoutElementReactions: false,
         tactic: 'balanced' as const,
         uncontracted: false,
         tamerRealm: null,
@@ -295,6 +314,7 @@ describe('rawWithVariant', () => {
       config: {},
       withoutSkillFields: ['hold' as const],
       withoutPartnerSkills: false,
+      withoutElementReactions: false,
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
@@ -320,6 +340,7 @@ describe('rawWithVariant', () => {
       config: {},
       withoutSkillFields: ['reach' as const],
       withoutPartnerSkills: false,
+      withoutElementReactions: false,
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
@@ -345,6 +366,7 @@ describe('rawWithVariant', () => {
       config: {},
       withoutSkillFields: ['styles' as const],
       withoutPartnerSkills: false,
+      withoutElementReactions: false,
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
@@ -373,6 +395,7 @@ describe('rawWithVariant', () => {
       config: {},
       withoutSkillFields: [],
       withoutPartnerSkills: true,
+      withoutElementReactions: false,
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,
@@ -396,6 +419,7 @@ describe('rawWithVariant', () => {
       config: { mastery: { baseExp: 0 } },
       withoutSkillFields: [],
       withoutPartnerSkills: false,
+      withoutElementReactions: false,
       tactic: 'balanced' as const,
       uncontracted: false,
       tamerRealm: null,

@@ -91,6 +91,31 @@ function checkIdentity(data: GameData, value: unknown, path: string, issues: str
 }
 
 /** Phần thêm của một trạng thái tạm (trait Siralim). */
+/** Bẫy Booby Trap, lớp phủ hệ (docs/rules/cassette-mechanics.md). */
+function checkCassetteVolatiles(
+  data: GameData,
+  volatile: Record<string, unknown>,
+  path: string,
+  issues: string[]
+): void {
+  if (volatile.boobyTraps !== undefined) {
+    if (!Array.isArray(volatile.boobyTraps)) issues.push(`${path}.boobyTraps phải là danh sách`)
+    else {
+      volatile.boobyTraps.forEach((value: unknown, i) => {
+        const trap = asObject(value)
+        const at = `${path}.boobyTraps[${i}]`
+        checkIds([trap?.skillId], `${at}.skillId`, data.skills, issues)
+        issues.push(...checkInteger(trap?.turnsLeft, `${at}.turnsLeft`, 1))
+        issues.push(...checkNumber(trap?.power, `${at}.power`, Number.MIN_VALUE))
+      })
+    }
+  }
+  if (volatile.coatingTurnsLeft !== undefined) {
+    issues.push(...checkInteger(volatile.coatingTurnsLeft, `${path}.coatingTurnsLeft`, 1))
+    if (!volatile.originalIdentity) issues.push(`${path}.coatingTurnsLeft cần originalIdentity`)
+  }
+}
+
 export function checkVolatileExtras(
   data: GameData,
   volatile: Record<string, unknown>,
@@ -119,6 +144,7 @@ export function checkVolatileExtras(
   if (volatile.healsReplacement !== undefined && volatile.healsReplacement !== true) {
     issues.push(`${path}.healsReplacement chỉ được là true`)
   }
+  checkCassetteVolatiles(data, volatile, path, issues)
   if (volatile.focusStages !== undefined) {
     issues.push(...checkInteger(volatile.focusStages, `${path}.focusStages`, 1))
   }
@@ -383,6 +409,12 @@ export function checkRecords(
     const path = `battle.records.${monsterId}`
     if (!known.includes(monsterId)) issues.push(`${path}: quái không có trong trận`)
     const record = asObject(entry) ?? {}
+    if (record.staminaUsed !== undefined) {
+      issues.push(...checkNumber(record.staminaUsed, `${path}.staminaUsed`, 0))
+    }
+    if (record.exhaustedTurn !== undefined) {
+      issues.push(...checkInteger(record.exhaustedTurn, `${path}.exhaustedTurn`, 1))
+    }
     for (const field of RECORD_COUNTS)
       issues.push(...checkInteger(record[field], `${path}.${field}`, 0))
     for (const field of RECORD_AMOUNTS) issues.push(...checkBig(record[field], `${path}.${field}`))
@@ -411,6 +443,14 @@ export function checkRecords(
           issues.push(`${path}.skillUses: skill không tồn tại "${skillId}"`)
         }
         issues.push(...checkInteger(count, `${path}.skillUses.${skillId}`, 1))
+      }
+    }
+    for (const key of ['skillTargetUses', 'elementUses'] as const) {
+      if (record[key] === undefined) continue
+      const uses = asObject(record[key])
+      if (!uses) issues.push(`${path}.${key} phải là object`)
+      for (const [id, count] of Object.entries(uses ?? {})) {
+        issues.push(...checkInteger(count, `${path}.${key}.${id}`, 1))
       }
     }
     checkRecordParts(data, record, path, issues)

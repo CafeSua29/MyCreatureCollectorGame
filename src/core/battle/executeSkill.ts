@@ -8,9 +8,10 @@
 // synergy theo đồng đội (skillSynergy.ts), skill đang chờ (hold), thế mạnh / nhanh (moveStyles.ts).
 // Áp kết quả hiệu ứng ở skillResults.ts, trạng thái tạm ở volatiles.ts.
 
-import { computeDamage, statDamage, type DamagePartner } from './damage'
-import { rollHitCount } from './multiHit'
+import { computeDamage, skillEffectivenessOn, statDamage, type DamagePartner } from './damage'
+import { rollHitCount, withHitsByHp } from './multiHit'
 import {
+  activeTransform,
   addMasteryExp,
   getCurrentHp,
   getMaxHp,
@@ -25,6 +26,7 @@ import {
   SKILL_EFFECTS,
   findStatusHook,
   forEachTraitHook,
+  hpRatioOf,
   hasStatusFlag,
   hasTraitFlag,
   fieldBlockingSkill,
@@ -96,12 +98,18 @@ import {
   revealPart,
   type AimedPart
 } from './hitLocations'
-import { canReach, markSwoop } from './reach'
-import { runTraitEffects } from './traitEffects'
+import { canReach, markSwoop, skillReach } from './reach'
+import { consumeWall, wallAbsorbs } from './walls'
+import { startCoating } from './coatings'
+import { overexert, payStamina } from './stamina'
+import { springBoobyTrap } from './boobyTraps'
+import { isPassiveOnly } from './passiveSkills'
+import { changeIdentity, runTraitEffects } from './traitEffects'
 import { breakScreens } from './sideFields'
 import { resolveTargets } from './targeting'
 import { battleSkill, recordStellarUse } from './transform'
 import { startZMove } from './zMoves'
+import { runElementReactions } from './elementReactions'
 import { synergyPartner, withSynergyEffects } from './skillSynergy'
 import { markStyleUsed, styleStatusTurnsBonus, styledSkill } from './moveStyles'
 import { movePendingAction, pendingSkillOf, recordSkillThisTurn } from './actionQueue'
@@ -165,6 +173,8 @@ export interface SkillUse {
   reflected?: true
   /** Nhắm đồng đội bằng skill có `onAlly` (Pollen Puff). */
   targetAlly?: true
+  /** Nhắm địch bằng skill có `onFoe` (Wall của Cassette Beasts). */
+  targetFoe?: true
   /** Bộ phận địch được nhắm (docs/rules/hit-locations.md); bỏ trống = không nhắm. */
   aim?: string
 }
@@ -187,7 +197,8 @@ function applySkillEffects(
     skill,
     target,
     style,
-    chanceBonus = 1
+    chanceBonus = 1,
+    walled = false
   }: {
     user: Monster
     skill: Skill
@@ -195,6 +206,8 @@ function applySkillEffects(
     style?: MoveStyle
     /** Hệ số tỉ lệ thêm (hiệu ứng trúng điểm yếu, docs/rules/hit-locations.md); bỏ trống = 1. */
     chanceBonus?: number
+    /** Tường của mục tiêu đã chặn đòn (như thế thân: bỏ đổi bậc / trạng thái lên mục tiêu). */
+    walled?: boolean
   },
   timing: SkillEffectTiming,
   damageDealt: Decimal,
@@ -212,7 +225,7 @@ function applySkillEffects(
       target,
       damageDealt,
       skillId: skill.id,
-      shielded: isShielded(d, user, target),
+      shielded: walled || isShielded(d, user, target),
       // Trait kiểu Serene Grace × mốc thuần thục của skill (docs/rules/skill-mastery.md); Shield
       // Dust của mục tiêu phe địch tắt hiệu ứng phụ.
       chanceMultiplier:
@@ -274,13 +287,21 @@ function invertedStatusId(data: GameData, user: Monster): string | undefined {
   )?.statusId
 }
 
-/** Kết quả một đòn: sát thương thực, miễn nhiễm, bị kháng hệ, chí mạng, thế thân nhận thay. */
+/** Wall nhắm địch: skill thành skill trạng thái nhắm địch với hiệu ứng `onFoe`. */
+function foeVersion(skill: Skill): Skill {
+  if (!skill.onFoe) return skill
+  return { ...skill, category: 'status', power: 0, target: 'enemy', effects: skill.onFoe }
+}
+
+/** Kết quả một đòn: sát thương thực, miễn nhiễm, bị kháng hệ, chí mạng, thế thân / tường nhận thay. */
 interface StrikeResult {
   dealt: Decimal
   immune: boolean
   resisted: boolean
   critical: boolean
   shielded: boolean
+  /** Tường của mục tiêu chặn trọn đòn (docs/rules/element-reactions.md). */
+  walled?: boolean
 }
 
 const MISSED_STRIKE: StrikeResult = {
@@ -345,6 +366,13 @@ function strikeOnce(
     return MISSED_STRIKE
   }
   const shielded = !immune && isShielded(d, user, target)
+  // Tường (Cassette Beasts): chặn trọn đòn, đòn khắc hệ phá tường rồi trúng như thường.
+  if (
+    !shielded &&
+    wallAbsorbs(data, d, { user, target, skill, effectiveness: result.effectiveness })
+  ) {
+    return { ...MISSED_STRIKE, shielded: true, walled: true }
+  }
   // Disguise / Ice Face: chặn hẳn đòn (sau thế thân, như Pokémon).
   if (!immune && !shielded && disguiseBlocks(data, d, { user, target, skill })) {
     return MISSED_STRIKE
@@ -412,8 +440,9 @@ function strikeTarget(
   d: Draft,
   hit: SkillUse & { target: Monster },
   { spread, aimed }: { spread: boolean; aimed: AimedPart | null }
-): Decimal {
-  const { user, skill, target } = hit
+): { total: Decimal; walled: boolean } {
+  const { user, target } = hit
+  const skill = withHitsByHp(hit.skill, hpRatioOf(data, user) * 100)
   let hitCount: number
   const { minHitsBonus } = skillMasteryBonus(data, user, skill)
   // Skill Link: đòn nhiều lần luôn đủ số tối đa.
@@ -434,6 +463,7 @@ function strikeTarget(
   let total = BIG_ZERO
   let landed = 0
   let resisted = false
+  let walled = false
   let bodyDealt = BIG_ZERO
   while (landed < hitCount) {
     // Triple Axel / Triple Kick: đòn thứ n power × n.
@@ -445,6 +475,7 @@ function strikeTarget(
     })
     const { dealt, immune, shielded } = strike
     resisted ||= strike.resisted
+    walled ||= strike.walled === true
     // Vị trí ra đòn: sát thương vào bộ phận (thế thân nhận thay thì không), phá bộ phận, đòn hạ gục.
     const partDealt = shielded ? BIG_ZERO : dealt
     recordPartHit(data, d, { user, target, skill, aimed, dealt: partDealt })
@@ -459,7 +490,8 @@ function strikeTarget(
   }
   // Mất thế: trúng điểm yếu (thế thân nhận thay thì không), bị kháng hệ (hit-locations.md).
   if (aimed) afterAimedStrike(data, d, { user, target, aimed, dealt: bodyDealt, resisted })
-  return total
+  // Tường chặn mọi đòn (không đòn nào xuyên qua) thì hiệu ứng và phản ứng không tới mục tiêu.
+  return { total, walled: walled && total.lte(0) }
 }
 
 /**
@@ -470,10 +502,14 @@ function strikeTarget(
 function switchUserOut(
   data: GameData,
   d: Draft,
-  { side, slot, user, switchTo }: SkillUse,
-  request: NonNullable<SkillEffectResult['switchOut']>
+  { side, slot, user, switchTo, skill, reactive }: SkillUse,
+  request: NonNullable<SkillEffectResult['switchOut']>,
+  firstHit: Monster
 ): void {
   if (isFainted(data, user) || slotsOf(d.battle, side)[slot] !== user.id) return
+  if (request.onlyIfResisted && !resistedBy(data, d, user, skill, firstHit)) return
+  // Crossfade không gọi được bằng chiêu / trait khác (gốc: thất bại khi bị gọi).
+  if (request.coatIncomingTurns !== undefined && reactive) return
   // Quái lớn chỉ vào khi mọi ô khác đã trống (docs/rules/monster-size.md).
   const slots = slotsOf(d.battle, side)
   const reserves = reservesOnSide(data, d, side).filter((monster) =>
@@ -481,12 +517,56 @@ function switchUserOut(
   )
   const incoming = reserves.find((m) => m.id === switchTo) ?? reserves[0]
   if (!incoming) return
-  // Lấy trước khi quái rút về rời sân (rời sân thì mất bậc trận và trạng thái tạm).
+  // Lấy trước khi quái rút về rời sân (rời sân thì mất bậc trận và trạng thái tạm, trả hệ gốc).
   const passed = snapshotPassedState(d, user.id)
+  const outgoingElementIds = [...user.elementIds]
   enterField(data, d, { side, slot, monster: incoming })
+  if (request.coatIncomingTurns !== undefined && !isFainted(data, incoming)) {
+    coatWith(d, incoming, outgoingElementIds, request.coatIncomingTurns)
+  }
   if (request.passOn) {
     passOnState(data, d, { from: user, to: incoming, mode: request.passOn, passed })
   }
+  if (request.incomingEffects?.length) {
+    runTraitEffects(
+      data,
+      d,
+      { owner: incoming, scale: 1, subject: incoming, other: incoming, skillId: skill.id },
+      request.incomingEffects as TraitEffect[]
+    )
+  }
+}
+
+/** Lớp phủ giữ hệ cho quái (Crossfade): đang Tera hoặc đã đúng hệ đó thì thôi. */
+function coatWith(d: Draft, monster: Monster, elementIds: readonly string[], turns: number): void {
+  if (activeTransform(monster)?.kind === 'tera') return
+  if (
+    elementIds.length === monster.elementIds.length &&
+    elementIds.every((id, i) => monster.elementIds[i] === id)
+  ) {
+    return
+  }
+  changeIdentity(d, monster, { elementIds: [...elementIds] })
+  startCoating(d, monster.id, turns)
+}
+
+/** Đòn bị kháng (hệ số khắc chế dưới 1, không tính miễn nhiễm) lên mục tiêu trúng đầu tiên. */
+function resistedBy(
+  data: GameData,
+  d: Draft,
+  user: Monster,
+  skill: Skill,
+  target: Monster
+): boolean {
+  const factor = skillEffectivenessOn({
+    data,
+    attacker: user,
+    defender: target,
+    skill,
+    spread: false,
+    arena: damageArena(data, d, { attacker: user, defender: target })
+  })
+  return factor > 0 && factor < 1
 }
 
 /** Log dùng skill; hệ do môi trường đổi (kiểu Weather Ball) ghi vào để UI hiện hệ thật đã dùng. */
@@ -636,6 +716,28 @@ function electrified(data: GameData, user: Monster, skill: Skill): Skill {
   return skill
 }
 
+/**
+ * Multitarget / Unitarget (element-reactions.md): trạng thái đổi mục tiêu skill gây sát thương nhắm
+ * địch. Skill đánh nhiều lần và skill tự nhắm kẻ vừa đánh giữ nguyên (luật "Skill đánh nhiều lần").
+ */
+function retargetedByStatus(data: GameData, user: Monster, skill: Skill): Skill {
+  if (skill.power <= 0 || skill.hits || skill.targetsLastAttacker) return skill
+  if (skill.target !== 'enemy' && skill.target !== 'allEnemies') return skill
+  for (const status of user.statuses) {
+    const target = data.statuses[status.statusId]?.skillTargetOverride
+    if (target) return target === skill.target ? skill : { ...skill, target }
+  }
+  return skill
+}
+
+/** Spring-Loaded: skill cận chiến của quái mang trạng thái thành tầm xa (không tiếp xúc). */
+function springLoaded(data: GameData, user: Monster, skill: Skill): Skill {
+  if (skillReach(skill) !== 'melee') return skill
+  if (!user.statuses.some((status) => data.statuses[status.statusId]?.meleeAsRanged)) return skill
+  const { contact: _contact, ...rest } = skill
+  return { ...rest, reach: 'ranged' }
+}
+
 /** Long Reach: skill của quái không tiếp xúc (không dính Spiky Shield, Rough Skin theo tiếp xúc...). */
 function withoutContact(data: GameData, d: Draft, user: Monster, skill: Skill): Skill {
   if (!skill.contact) return skill
@@ -693,11 +795,23 @@ export function isSkillBlocked(
   d: Draft,
   { user, skill, reactive }: { user: Monster; skill: Skill; reactive?: boolean }
 ): boolean {
+  // Skill chỉ bị động (passive của Cassette Beasts) không dùng được, kể cả do trait chọn.
+  if (isPassiveOnly(skill)) return true
+  // Paint Swipe: chỉ dùng được khi đang có lớp phủ hệ.
+  if (skill.requiresCoating && d.battle.volatiles[user.id]?.coatingTurnsLeft === undefined) {
+    return true
+  }
   const byStatus = hasStatusFlag(data, user, (handler, params) =>
     handler.blockedCategories?.(params).includes(skill.category)
   )
   if (byStatus) return true
   if (d.battle.volatiles[user.id]?.sealedSkillIds?.includes(skill.id)) return true
+  if (
+    skill.maxUsesPerBattle !== undefined &&
+    (d.battle.records[user.id]?.skillUses?.[skill.id] ?? 0) >= skill.maxUsesPerBattle
+  ) {
+    return true
+  }
   // Bộ phận ra chiêu đã bị phá (hit-locations.md mục "Phá bộ phận"), kể cả skill do trait.
   if (usesBrokenPart(d, user, skill)) return true
   // Ô skill nhân hình đang khóa (docs/rules/human-form.md): AI bỏ qua, dùng (kể cả do trait) thất bại.
@@ -1021,7 +1135,11 @@ function performSkillOnce(
   zSkill: Skill | null
 ): SkillOutcome {
   const { user } = chosen
-  const original = chosen.targetAlly ? allyVersion(chosen.skill) : chosen.skill
+  const original = chosen.targetAlly
+    ? allyVersion(chosen.skill)
+    : chosen.targetFoe
+      ? foeVersion(chosen.skill)
+      : chosen.skill
   // Hợp kích kỹ không đổi theo biến hình (không thành chiêu Max). Thế đổi skill thật khi dùng
   // (chiêu Max không có thế nên giữ nguyên). Z-Move đã tính sẵn lúc bắt đầu (startZMove).
   const actual = chosen.partner
@@ -1035,10 +1153,18 @@ function performSkillOnce(
             data,
             d,
             user,
-            electrified(
+            retargetedByStatus(
               data,
               user,
-              zSkill ?? styledSkill(data, battleSkill(data, d, user, original), chosen.style)
+              springLoaded(
+                data,
+                user,
+                electrified(
+                  data,
+                  user,
+                  zSkill ?? styledSkill(data, battleSkill(data, d, user, original), chosen.style)
+                )
+              )
             )
           ),
           user
@@ -1085,8 +1211,13 @@ function performSkillOnce(
     applySelfCosts(data, d, actual, { ...FAILED, totalDealt: BIG_ZERO })
     return FAILED
   }
-  const outcome = applyToTargets(data, d, use)
-  applySelfCosts(data, d, use, outcome)
+  const thrown = throwWall(data, d, use)
+  if (!thrown) {
+    log(d, { type: 'skillFailed', monsterId: user.id, skillId: use.skill.id, reason: 'condition' })
+    return FAILED
+  }
+  const outcome = applyToTargets(data, d, thrown)
+  applySelfCosts(data, d, thrown, outcome)
   return outcome
 }
 
@@ -1194,8 +1325,8 @@ function applyToTargets(data: GameData, d: Draft, use: SkillUse): TargetsOutcome
     if (skill.stealsBoosts && hitsFoe) stealBoosts(data, d, { user, target })
     const strike = protection === 'pierced' ? piercingStrike(data, use, target) : { ...use, target }
     const wasStanding = !isFainted(data, target)
-    const dealt = strikeTarget(data, d, strike, { spread, aimed })
-    applySkillEffects(data, d, strike, 'afterHits', dealt, firstHit !== null)
+    const { total: dealt, walled } = strikeTarget(data, d, strike, { spread, aimed })
+    applySkillEffects(data, d, { ...strike, walled }, 'afterHits', dealt, firstHit !== null)
     // Hiệu ứng khi trúng bộ phận (một lần cho cả chiêu lên mục tiêu, như hiệu ứng phụ của skill).
     if (aimed && dealt.gt(0) && !isFainted(data, target)) {
       const partHit = { ...strike.skill, effects: aimed.part.hitEffects }
@@ -1207,6 +1338,7 @@ function applyToTargets(data: GameData, d: Draft, use: SkillUse): TargetsOutcome
         dealt
       )
     }
+    runElementReactions(data, d, { user, skill, target, walled })
     runSpellEffects(data, d, { user, skill, target, amount: dealt }, spellTargetEffects(skill))
     if (hitsFoe && dealt.gt(0) && skill.category === 'physical') {
       emitTraitEvent(d, {
@@ -1244,8 +1376,15 @@ function applyToTargets(data: GameData, d: Draft, use: SkillUse): TargetsOutcome
     { user, skill, target: firstHit, amount: totalDealt },
     spellAfterEffects(skill)
   )
-  if (request) switchUserOut(data, d, use, request)
+  if (request) switchUserOut(data, d, use, request, firstHit)
   return { knockouts, landed: true, totalDealt }
+}
+
+/** Throw: dùng tường của quái làm đạn, sát thương × lượt còn lại; không có tường thì null. */
+function throwWall(data: GameData, d: Draft, use: SkillUse): SkillUse | null {
+  if (!use.skill.consumesWall) return use
+  const turns = consumeWall(data, d, use.user)
+  return turns === null ? null : { ...use, damagePercent: (use.damagePercent ?? 100) * turns }
 }
 
 /** Có quái trên sân mang ability Damp (chặn chiêu tự gục). */
@@ -1421,12 +1560,41 @@ export function resolveDelayedAttacks(data: GameData, d: Draft): void {
   }
 }
 
+/** Skill đổi theo lần dùng (`alternateUse`) và mục tiêu bắt buộc (`targetsHighestHpFoe`). */
+function resolvedUse(data: GameData, d: Draft, use: SkillUse): SkillUse {
+  let result = use
+  const alternate = use.skill.alternateUse
+  if (alternate && (d.battle.records[use.user.id]?.skillUses?.[use.skill.id] ?? 0) % 2 === 1) {
+    result = { ...result, skill: { ...result.skill, ...alternate } }
+  }
+  if (use.skill.targetsHighestHpFoe) {
+    const foes = aliveOnField(data, d, opponentOf(sideOf(d, use.user.id))).map((e) => e.monster)
+    const highest = foes.reduce<Monster | undefined>(
+      (best, foe) => (!best || getCurrentHp(data, foe).gt(getCurrentHp(data, best)) ? foe : best),
+      undefined
+    )
+    if (highest) result = { ...result, targetId: highest.id }
+  }
+  return result
+}
+
 /**
  * Dùng skill, rồi lặp thêm theo trait (kiểu Multicast: mọi lần, kể cả lần đầu, theo % hiệu quả
  * của trait). Dừng lặp khi quái dùng gục hoặc rời ô sân. Skill đang chờ (hold) dùng bằng lệnh của
  * quái (kể cả skill do trait chọn ngẫu nhiên) thì thất bại; dùng được thì bắt đầu chờ lại.
  */
-export function executeSkill(data: GameData, d: Draft, use: SkillUse): void {
+export function executeSkill(data: GameData, d: Draft, rawUse: SkillUse): void {
+  const use = resolvedUse(data, d, rawUse)
+  // Thể lực (docs/rules/stamina.md): chỉ skill bằng lệnh của chính quái, skill còn đang chờ thì không
+  // ra đòn nên không tốn; quá sức phạt sau khi skill xong (vẫn ra đòn).
+  const paysStamina =
+    !use.reactive && !use.partner && holdTurnsLeft(d.battle, use.user, use.skill) === 0
+  const deficit = paysStamina ? payStamina(data, d, use.user, use.skill) : 0
+  runResolvedSkill(data, d, use)
+  if (deficit > 0) overexert(data, d, use.user, deficit)
+}
+
+function runResolvedSkill(data: GameData, d: Draft, use: SkillUse): void {
   const ownAction = !use.reactive && !use.partner
   if (ownAction && holdTurnsLeft(d.battle, use.user, use.skill) > 0) {
     logSkillUse(data, d, use)
@@ -1450,6 +1618,11 @@ export function executeSkill(data: GameData, d: Draft, use: SkillUse): void {
       if (volatile.lockedMove.turnsLeft <= 0) delete volatile.lockedMove
     }
     recordStreak(d, use.user, use.skill)
+    // Sticker Trick: skill đã bị thay bằng Booby Trap thì tự đánh chính mình thay cho skill.
+    if (springBoobyTrap(data, d, use.user, use.skill.id)) {
+      recordSkillOutcome(d, use.user, false)
+      return
+    }
     recordFieldStreak(d, use.skill)
     // Chiêu nhiều lượt (pokemon-moves.md mục "Chiêu nhiều lượt"): nạp, đòn đến muộn.
     if (beginMultiTurn(data, d, use)) {
@@ -1487,6 +1660,18 @@ export function executeSkill(data: GameData, d: Draft, use: SkillUse): void {
     record.skillUses = {
       ...record.skillUses,
       [use.skill.id]: (record.skillUses?.[use.skill.id] ?? 0) + 1
+    }
+    record.lastSkillCategory = use.skill.category
+    record.elementUses = {
+      ...record.elementUses,
+      [use.skill.elementId]: (record.elementUses?.[use.skill.elementId] ?? 0) + 1
+    }
+    if (use.targetId) {
+      const key = `${use.skill.id}|${use.targetId}`
+      record.skillTargetUses = {
+        ...record.skillTargetUses,
+        [key]: (record.skillTargetUses?.[key] ?? 0) + 1
+      }
     }
     recordSkillOutcome(d, use.user, landed)
     scheduleRecharge(d, use.user, use.skill, landed)

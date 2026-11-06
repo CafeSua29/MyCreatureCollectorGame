@@ -425,7 +425,7 @@ export function fuseWhenPossible(
     const sub = subs[0]
     if (!sub) continue
     let charms = charmsInBag(data, state)
-    let plain = previewFusion(data, current, sub, charms.boost)
+    let plain = previewFusion(data, current, sub, { boostItemId: charms.boost })
     if (plain.cost.gt(state.money.times(GROWTH_POLICY.spendFraction))) {
       skip(count, 'money')
       continue
@@ -439,7 +439,7 @@ export function fuseWhenPossible(
         if (getItemCount(state.inventory, id) > 0) break
       }
       charms = charmsInBag(data, state)
-      plain = previewFusion(data, current, sub, charms.boost)
+      plain = previewFusion(data, current, sub, { boostItemId: charms.boost })
     }
     if (plain.successChance < GROWTH_POLICY.safeFuseChance && !charms.protect) {
       for (const id of protectCharmIds(data)) state = buyIfCheap(data, state, id)

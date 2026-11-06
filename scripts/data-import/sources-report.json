@@ -6811,5 +6811,1899 @@
     "droppedEvolutions": [],
     "skipped": [],
     "excluded": []
+  },
+  "cassetteBeasts": {
+    "file": "sources/cassetteBeasts.json",
+    "totalSpecies": 145,
+    "added": 1,
+    "updated": 0,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "nexomon": {
+    "file": "sources/nexomon.json",
+    "totalSpecies": 696,
+    "added": 696,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "eurusNexomon",
+        "name": "Eurus (Nexomon)"
+      },
+      {
+        "id": "grimmonNexomon",
+        "name": "Grimmon (Nexomon)"
+      },
+      {
+        "id": "lumeNexomon",
+        "name": "Lume (Nexomon)"
+      },
+      {
+        "id": "maraNexomon",
+        "name": "Mara (Nexomon)"
+      },
+      {
+        "id": "titanNexomon",
+        "name": "Titan (Nexomon)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "mySingingMonsters": {
+    "file": "sources/mySingingMonsters.json",
+    "totalSpecies": 270,
+    "added": 0,
+    "updated": 0,
+    "renamed": [],
+    "pruned": [
+      "glowbes",
+      "wublins"
+    ],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "Dipsters",
+        "reason": "trang nhóm, không phải một quái"
+      },
+      {
+        "name": "Legendary Monsters",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "DJ Epic",
+        "reason": "trang nhóm, không phải một quái"
+      },
+      {
+        "name": "Werdos",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Celestial Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Celestials",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Wublin Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Electricity Element",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Fuzer",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Glowbes",
+        "reason": "trang nhóm, không phải một quái"
+      },
+      {
+        "name": "Life-Formula",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Polarity",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Polarity Amplifier",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Recording Studio",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Storage",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Time Machine",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Wublin Island Grid Planning",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Wublins",
+        "reason": "trang nhóm, không phải một quái"
+      },
+      {
+        "name": "Zapping",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Air Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Bone Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Cold Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Dipster Digs",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Earth Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Ethereal Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Faerie Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Fire Haven",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Fire Oasis",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Light Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Magical Sanctum",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Air Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Bone Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Cold Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Earth Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Faerie Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Light Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Plant Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Psychic Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mirror Water Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Plant Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Psychic Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Water Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Titansouls",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Shugabush Island",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Air Element",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Bakery",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Breeding Structure",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Castle",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Cold Element",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Colossals",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Earth Element",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Echoes of Eco",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Hotel",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Legendary Islands",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Mini-Mine",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Nursery",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Plant Element",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Shugafam",
+        "reason": "trang nhóm, không phải một quái"
+      },
+      {
+        "name": "Unity Tree",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Water Element",
+        "reason": "không có infobox quái"
+      },
+      {
+        "name": "Wishing Torch",
+        "reason": "không có infobox quái"
+      }
+    ]
+  },
+  "summonersWar": {
+    "file": "sources/summonersWar.json",
+    "totalSpecies": 863,
+    "added": 863,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "maraSummonersWar",
+        "name": "Mara (Summoners War)"
+      },
+      {
+        "id": "arielSummonersWar",
+        "name": "Ariel (Summoners War)"
+      },
+      {
+        "id": "vritraSummonersWar",
+        "name": "Vritra (Summoners War)"
+      },
+      {
+        "id": "orionSummonersWar",
+        "name": "Orion (Summoners War)"
+      },
+      {
+        "id": "devaSummonersWar",
+        "name": "Deva (Summoners War)"
+      },
+      {
+        "id": "belialSummonersWar",
+        "name": "Belial (Summoners War)"
+      },
+      {
+        "id": "bastetSummonersWar",
+        "name": "Bastet (Summoners War)"
+      },
+      {
+        "id": "huanSummonersWar",
+        "name": "Huan (Summoners War)"
+      },
+      {
+        "id": "franSummonersWar",
+        "name": "Fran (Summoners War)"
+      },
+      {
+        "id": "bulldozerSummonersWar",
+        "name": "Bulldozer (Summoners War)"
+      },
+      {
+        "id": "waterGhostSummonersWar",
+        "name": "Water Ghost (Summoners War)"
+      },
+      {
+        "id": "chachaSummonersWar",
+        "name": "Chacha (Summoners War)"
+      },
+      {
+        "id": "lalaSummonersWar",
+        "name": "Lala (Summoners War)"
+      },
+      {
+        "id": "jojoSummonersWar",
+        "name": "Jojo (Summoners War)"
+      },
+      {
+        "id": "feiSummonersWar",
+        "name": "Fei (Summoners War)"
+      },
+      {
+        "id": "antaresSummonersWar",
+        "name": "Antares (Summoners War)"
+      },
+      {
+        "id": "rigelSummonersWar",
+        "name": "Rigel (Summoners War)"
+      },
+      {
+        "id": "odinSummonersWar",
+        "name": "Odin (Summoners War)"
+      },
+      {
+        "id": "kikiSummonersWar",
+        "name": "Kiki (Summoners War)"
+      },
+      {
+        "id": "cocoSummonersWar",
+        "name": "Coco (Summoners War)"
+      },
+      {
+        "id": "nanaSummonersWar",
+        "name": "Nana (Summoners War)"
+      },
+      {
+        "id": "momoSummonersWar",
+        "name": "Momo (Summoners War)"
+      },
+      {
+        "id": "astarSummonersWar",
+        "name": "Astar (Summoners War)"
+      },
+      {
+        "id": "luminaSummonersWar",
+        "name": "Lumina (Summoners War)"
+      },
+      {
+        "id": "bettaSummonersWar",
+        "name": "Betta (Summoners War)"
+      },
+      {
+        "id": "tetraSummonersWar",
+        "name": "Tetra (Summoners War)"
+      },
+      {
+        "id": "hanSummonersWar",
+        "name": "Han (Summoners War)"
+      },
+      {
+        "id": "orochiSummonersWar",
+        "name": "Orochi (Summoners War)"
+      },
+      {
+        "id": "ongyoukiSummonersWar",
+        "name": "Ongyouki (Summoners War)"
+      },
+      {
+        "id": "junoSummonersWar",
+        "name": "Juno (Summoners War)"
+      },
+      {
+        "id": "poseidonSummonersWar",
+        "name": "Poseidon (Summoners War)"
+      },
+      {
+        "id": "renSummonersWar",
+        "name": "Ren (Summoners War)"
+      },
+      {
+        "id": "danielSummonersWar",
+        "name": "Daniel (Summoners War)"
+      },
+      {
+        "id": "lionelSummonersWar",
+        "name": "Lionel (Summoners War)"
+      },
+      {
+        "id": "rexSummonersWar",
+        "name": "Rex (Summoners War)"
+      },
+      {
+        "id": "gronnSummonersWar",
+        "name": "Gronn (Summoners War)"
+      },
+      {
+        "id": "mayaSummonersWar",
+        "name": "Maya (Summoners War)"
+      },
+      {
+        "id": "tatu",
+        "name": "Tatu (Summoners War)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "Altaïr (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Anubis (Dark) - Thebae",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Anubis (Fire) - Khmun",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Anubis (Light) - Amarna",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Anubis (Water) - Avaris",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Anubis (Wind) - Iunu",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Aragorn (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Aragorn (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Aragorn (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Aragorn (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Aragorn (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Bayek (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Bayek (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Bayek (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Bayek (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Bayek (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "CHUN-LI (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ciri (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ciri (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ciri (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ciri (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ciri (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "DHALSIM (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "DHALSIM (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "DHALSIM (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "DHALSIM (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "DHALSIM (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Eivor (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Eivor (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Eivor (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Eivor (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Eivor (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Espresso Cookie (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Espresso Cookie (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Espresso Cookie (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Espresso Cookie (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Espresso Cookie (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ezio (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ezio (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ezio (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ezio (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ezio (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Frodo (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gandalf (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gandalf (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gandalf (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gandalf (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gandalf (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Geralt (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Geralt (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Geralt (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Geralt (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Geralt (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "GingerBrave (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gollum (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gollum (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gollum (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gollum (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gollum (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Gyomei Himejima (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Heihachi Mishima (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hollyberry Cookie (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hollyberry Cookie (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hollyberry Cookie (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hollyberry Cookie (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hollyberry Cookie (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Horus (Dark) - Amduat",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Horus (Fire) - Duamutef",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Horus (Light) - Wedjat",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Horus (Water) - Qebehsenuef",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Horus (Wind) - Imesety",
+        "reason": "thần có tên dạng đầu thú thân người"
+      },
+      {
+        "name": "Hwoarang (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hwoarang (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hwoarang (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hwoarang (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Hwoarang (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Indra (Dark) - Devaraja",
+        "reason": "thần có tên dạng người"
+      },
+      {
+        "name": "Indra (Fire) - Vendhan",
+        "reason": "thần có tên dạng người"
+      },
+      {
+        "name": "Indra (Light) - Dyeus",
+        "reason": "thần có tên dạng người"
+      },
+      {
+        "name": "Indra (Water) - Parjanya",
+        "reason": "thần có tên dạng người"
+      },
+      {
+        "name": "Indra (Wind) - Chakra",
+        "reason": "thần có tên dạng người"
+      },
+      {
+        "name": "Inosuke Hashibira (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Inosuke Hashibira (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Inosuke Hashibira (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Inosuke Hashibira (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Inosuke Hashibira (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Jin Kazama (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Jin Kazama (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Jin Kazama (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Jin Kazama (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Jin Kazama (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Kassandra (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Kassandra (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Kassandra (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Kassandra (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Kassandra (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Legolas (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Legolas (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Legolas (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Legolas (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Legolas (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Madeleine Cookie (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Madeleine Cookie (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Madeleine Cookie (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Madeleine Cookie (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Madeleine Cookie (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Megumi Fushiguro (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Megumi Fushiguro (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Megumi Fushiguro (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Megumi Fushiguro (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Megumi Fushiguro (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Monkey King (Dark) - Son Zhang Lao",
+        "reason": "nhân vật độc nhất (Tôn Ngộ Không)"
+      },
+      {
+        "name": "Monkey King (Fire) - Mei Hou Wang",
+        "reason": "nhân vật độc nhất (Tôn Ngộ Không)"
+      },
+      {
+        "name": "Monkey King (Light) - Qitian Dasheng",
+        "reason": "nhân vật độc nhất (Tôn Ngộ Không)"
+      },
+      {
+        "name": "Monkey King (Water) - Shi Hou",
+        "reason": "nhân vật độc nhất (Tôn Ngộ Không)"
+      },
+      {
+        "name": "Monkey King (Wind) - Xing Zhe",
+        "reason": "nhân vật độc nhất (Tôn Ngộ Không)"
+      },
+      {
+        "name": "Nezuko Kamado (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nezuko Kamado (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nezuko Kamado (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nezuko Kamado (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nezuko Kamado (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nina Williams (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nina Williams (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nina Williams (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nina Williams (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nina Williams (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nobara Kugisaki (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nobara Kugisaki (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nobara Kugisaki (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nobara Kugisaki (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Nobara Kugisaki (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Paul Phoenix (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Paul Phoenix (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Paul Phoenix (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Paul Phoenix (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Paul Phoenix (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Pure Vanilla Cookie (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Pure Vanilla Cookie (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Pure Vanilla Cookie (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Pure Vanilla Cookie (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Pure Vanilla Cookie (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Ryomen Sukuna (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Satoru Gojo (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Satoru Gojo (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Satoru Gojo (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Satoru Gojo (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Satoru Gojo (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Tanjiro Kamado (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Tanjiro Kamado (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Tanjiro Kamado (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Tanjiro Kamado (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Tanjiro Kamado (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Triss (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Triss (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Triss (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Triss (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Triss (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yennefer (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yennefer (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yennefer (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yennefer (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yennefer (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yuji Itadori (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yuji Itadori (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yuji Itadori (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yuji Itadori (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Yuji Itadori (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Zenitsu Agatsuma (Dark)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Zenitsu Agatsuma (Fire)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Zenitsu Agatsuma (Light)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Zenitsu Agatsuma (Water)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      },
+      {
+        "name": "Zenitsu Agatsuma (Wind)",
+        "reason": "nhân vật collab (nhân vật độc nhất)"
+      }
+    ]
+  },
+  "haypiMonster": {
+    "file": "sources/haypiMonster.json",
+    "totalSpecies": 105,
+    "added": 105,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "blossomHaypiMonster",
+        "name": "Blossom (Haypi Monster)"
+      },
+      {
+        "id": "geoHaypiMonster",
+        "name": "Geo (Haypi Monster)"
+      },
+      {
+        "id": "ripperHaypiMonster",
+        "name": "Ripper (Haypi Monster)"
+      },
+      {
+        "id": "champHaypiMonster",
+        "name": "Champ (Haypi Monster)"
+      },
+      {
+        "id": "rockyHaypiMonster",
+        "name": "Rocky (Haypi Monster)"
+      },
+      {
+        "id": "stingerHaypiMonster",
+        "name": "Stinger (Haypi Monster)"
+      },
+      {
+        "id": "twiggyHaypiMonster",
+        "name": "Twiggy (Haypi Monster)"
+      },
+      {
+        "id": "dracoHaypiMonster",
+        "name": "Draco (Haypi Monster)"
+      },
+      {
+        "id": "flickerHaypiMonster",
+        "name": "Flicker (Haypi Monster)"
+      },
+      {
+        "id": "neonHaypiMonster",
+        "name": "Neon (Haypi Monster)"
+      },
+      {
+        "id": "behemothHaypiMonster",
+        "name": "Behemoth (Haypi Monster)"
+      },
+      {
+        "id": "cerberusHaypiMonster",
+        "name": "Cerberus (Haypi Monster)"
+      },
+      {
+        "id": "chimeraHaypiMonster",
+        "name": "Chimera (Haypi Monster)"
+      },
+      {
+        "id": "fenrirHaypiMonster",
+        "name": "Fenrir (Haypi Monster)"
+      },
+      {
+        "id": "hydraHaypiMonster",
+        "name": "Hydra (Haypi Monster)"
+      },
+      {
+        "id": "leshyHaypiMonster",
+        "name": "Leshy (Haypi Monster)"
+      },
+      {
+        "id": "minotaurHaypiMonster",
+        "name": "Minotaur (Haypi Monster)"
+      },
+      {
+        "id": "pegasusHaypiMonster",
+        "name": "Pegasus (Haypi Monster)"
+      },
+      {
+        "id": "phoenixHaypiMonster",
+        "name": "Phoenix (Haypi Monster)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "More",
+        "reason": "không phải trang quái"
+      }
+    ]
+  },
+  "digimonCyberSleuth": {
+    "file": "sources/digimonCyberSleuth.json",
+    "totalSpecies": 1493,
+    "added": 14,
+    "updated": 0,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "Dianamon",
+        "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+      },
+      {
+        "name": "Neptunemon",
+        "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+      },
+      {
+        "name": "Minervamon",
+        "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+      },
+      {
+        "name": "Merukimon",
+        "reason": "thần Olympus XII (thần dạng người có tên riêng)"
+      }
+    ]
+  },
+  "siralimExtra": {
+    "file": "sources/siralimExtra.json",
+    "totalSpecies": 1323,
+    "added": 161,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "badAppleSiralim",
+        "name": "Bad Apple (Siralim)"
+      },
+      {
+        "id": "ironMaidenSiralim",
+        "name": "Iron Maiden (Siralim)"
+      },
+      {
+        "id": "jackFrostSiralim",
+        "name": "Jack Frost (Siralim)"
+      },
+      {
+        "id": "lunarisSiralim",
+        "name": "Lunaris (Siralim)"
+      },
+      {
+        "id": "megalodonSiralim",
+        "name": "Megalodon (Siralim)"
+      },
+      {
+        "id": "ouroborosSiralim",
+        "name": "Ouroboros (Siralim)"
+      },
+      {
+        "id": "ripperSiralim",
+        "name": "Ripper (Siralim)"
+      },
+      {
+        "id": "solarisSiralim",
+        "name": "Solaris (Siralim)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "Apollinaire",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Davey",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Dr. Concocto",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Furious Frank",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Greybeard",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Grom’met",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Loki",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Pandora",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Pumking",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Sir Roquefort",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "The Bearon",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "The First Spawn",
+        "reason": "nhân vật độc nhất"
+      },
+      {
+        "name": "Zantai",
+        "reason": "nhân vật độc nhất"
+      }
+    ]
+  },
+  "koltera2": {
+    "file": "sources/koltera2.json",
+    "totalSpecies": 120,
+    "added": 120,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "stellaKoltera2",
+        "name": "Stella (Koltera2)"
+      },
+      {
+        "id": "cocoKoltera2",
+        "name": "Coco (Koltera2)"
+      },
+      {
+        "id": "lunaKoltera2",
+        "name": "Luna (Koltera2)"
+      },
+      {
+        "id": "mistyKoltera2",
+        "name": "Misty (Koltera2)"
+      },
+      {
+        "id": "echoKoltera2",
+        "name": "Echo (Koltera2)"
+      },
+      {
+        "id": "spikeKoltera2",
+        "name": "Spike (Koltera2)"
+      },
+      {
+        "id": "strawberryKoltera2",
+        "name": "Strawberry (Koltera2)"
+      },
+      {
+        "id": "bubblesKoltera2",
+        "name": "Bubbles (Koltera2)"
+      },
+      {
+        "id": "mantisKoltera2",
+        "name": "Mantis (Koltera2)"
+      },
+      {
+        "id": "skipperKoltera2",
+        "name": "Skipper (Koltera2)"
+      },
+      {
+        "id": "fleeceKoltera2",
+        "name": "Fleece (Koltera2)"
+      },
+      {
+        "id": "ravagerKoltera2",
+        "name": "Ravager (Koltera2)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "aniimo": {
+    "file": "sources/aniimo.json",
+    "totalSpecies": 118,
+    "added": 118,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "irisAniimo",
+        "name": "Iris (Aniimo)"
+      },
+      {
+        "id": "shellyAniimo",
+        "name": "Shelly (Aniimo)"
+      },
+      {
+        "id": "infergonAniimo",
+        "name": "Infergon (Aniimo)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "idleMonsterFrontier": {
+    "file": "sources/idleMonsterFrontier.json",
+    "totalSpecies": 144,
+    "added": 3,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "cyclopsIdleMonsterFrontier",
+        "name": "Cyclops (Idle Monster Frontier)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "beastmancer": {
+    "file": "sources/beastmancer.json",
+    "totalSpecies": 62,
+    "added": 0,
+    "updated": 6,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "Samael",
+        "reason": "nhân vật độc nhất (thiên thần / ác quỷ có tên riêng)"
+      },
+      {
+        "name": "Sathanus",
+        "reason": "nhân vật độc nhất (thiên thần / ác quỷ có tên riêng)"
+      }
+    ]
+  },
+  "visionOfTheAnt": {
+    "file": "sources/visionOfTheAnt.json",
+    "totalSpecies": 58,
+    "added": 8,
+    "updated": 50,
+    "renamed": [
+      {
+        "id": "volcanoVisionOfTheAnt",
+        "name": "Volcano (Vision Of The Ant)"
+      }
+    ],
+    "pruned": [
+      "souleater",
+      "shelwale",
+      "skultor"
+    ],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "voidMonsters": {
+    "file": "sources/voidMonsters.json",
+    "totalSpecies": 103,
+    "added": 26,
+    "updated": 1,
+    "renamed": [
+      {
+        "id": "phoenixVoidMonsters",
+        "name": "Phoenix (Void Monsters)"
+      }
+    ],
+    "pruned": [
+      "dizzora",
+      "truffelscorn",
+      "batanay",
+      "mossified",
+      "iorwright",
+      "whisperVoidMonsters",
+      "snorpion",
+      "scarykin",
+      "sporranHaunt",
+      "icecapper",
+      "fluffaneye"
+    ],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "creatureClicker": {
+    "file": "sources/creatureClicker.json",
+    "totalSpecies": 98,
+    "added": 83,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "chaosDragonCreatureClicker",
+        "name": "Chaos Dragon (Creature Clicker)"
+      },
+      {
+        "id": "fireElementalCreatureClicker",
+        "name": "Fire Elemental (Creature Clicker)"
+      },
+      {
+        "id": "corruptedPhoenixCreatureClicker",
+        "name": "Corrupted Phoenix (Creature Clicker)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "siralimNether": {
+    "file": "sources/siralimNether.json",
+    "totalSpecies": 1330,
+    "added": 7,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "scyllaSiralim",
+        "name": "Scylla (Siralim)"
+      },
+      {
+        "id": "charybdisSiralim",
+        "name": "Charybdis (Siralim)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "koltera": {
+    "file": "sources/koltera.json",
+    "totalSpecies": 41,
+    "added": 0,
+    "updated": 29,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "pochimoon": {
+    "file": "sources/pochimoon.json",
+    "totalSpecies": 28,
+    "added": 0,
+    "updated": 20,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "dinotica": {
+    "file": "sources/dinotica.json",
+    "totalSpecies": 88,
+    "added": 0,
+    "updated": 58,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "faeterra": {
+    "file": "sources/faeterra.json",
+    "totalSpecies": 121,
+    "added": 121,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "phantomFaeterra",
+        "name": "Phantom (Faeterra)"
+      },
+      {
+        "id": "harpyFaeterra",
+        "name": "Harpy (Faeterra)"
+      },
+      {
+        "id": "revenantFaeterra",
+        "name": "Revenant (Faeterra)"
+      },
+      {
+        "id": "marlinFaeterra",
+        "name": "Marlin (Faeterra)"
+      },
+      {
+        "id": "enchantressFaeterra",
+        "name": "Enchantress (Faeterra)"
+      },
+      {
+        "id": "avionFaeterra",
+        "name": "Avion (Faeterra)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "fantasyIdleDungeon": {
+    "file": "sources/fantasyIdleDungeon.json",
+    "totalSpecies": 96,
+    "added": 96,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "devourerFantasyIdleDungeon",
+        "name": "Devourer (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "reaperFantasyIdleDungeon",
+        "name": "Reaper (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "redCrownedCraneFantasyIdleDungeon",
+        "name": "Red-crowned Crane (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "kirinFantasyIdleDungeon",
+        "name": "Kirin (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "hellhoundFantasyIdleDungeon",
+        "name": "Hellhound (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "pixieFantasyIdleDungeon",
+        "name": "Pixie (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "tanukiFantasyIdleDungeon",
+        "name": "Tanuki (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "kunpengFantasyIdleDungeon",
+        "name": "Kunpeng (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "zhuqueFantasyIdleDungeon",
+        "name": "Zhuque (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "flameDemonFantasyIdleDungeon",
+        "name": "Flame Demon (Fantasy Idle Dungeon)"
+      },
+      {
+        "id": "hellionFantasyIdleDungeon",
+        "name": "Hellion (Fantasy Idle Dungeon)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "biokept": {
+    "file": "sources/biokept.json",
+    "totalSpecies": 95,
+    "added": 95,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "frogBiokept",
+        "name": "Frog (Biokept)"
+      },
+      {
+        "id": "mosquitoBiokept",
+        "name": "Mosquito (Biokept)"
+      },
+      {
+        "id": "scorpionBiokept",
+        "name": "Scorpion (Biokept)"
+      },
+      {
+        "id": "wolfBiokept",
+        "name": "Wolf (Biokept)"
+      },
+      {
+        "id": "doveBiokept",
+        "name": "Dove (Biokept)"
+      },
+      {
+        "id": "monkeyBiokept",
+        "name": "Monkey (Biokept)"
+      },
+      {
+        "id": "crocodileBiokept",
+        "name": "Crocodile (Biokept)"
+      },
+      {
+        "id": "spiderBiokept",
+        "name": "Spider (Biokept)"
+      },
+      {
+        "id": "iceSpiderBiokept",
+        "name": "Ice Spider (Biokept)"
+      },
+      {
+        "id": "ghostBiokept",
+        "name": "Ghost (Biokept)"
+      },
+      {
+        "id": "fireSnakeBiokept",
+        "name": "Fire Snake (Biokept)"
+      },
+      {
+        "id": "skeletonBiokept",
+        "name": "Skeleton (Biokept)"
+      },
+      {
+        "id": "fireSpiritBiokept",
+        "name": "Fire Spirit (Biokept)"
+      },
+      {
+        "id": "lightSpiritBiokept",
+        "name": "Light Spirit (Biokept)"
+      },
+      {
+        "id": "shadowWolfBiokept",
+        "name": "Shadow Wolf (Biokept)"
+      },
+      {
+        "id": "skeletonMageBiokept",
+        "name": "Skeleton Mage (Biokept)"
+      },
+      {
+        "id": "forestGuardianBiokept",
+        "name": "Forest Guardian (Biokept)"
+      },
+      {
+        "id": "dogBiokept",
+        "name": "Dog (Biokept)"
+      },
+      {
+        "id": "octopusBiokept",
+        "name": "Octopus (Biokept)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "kinsChronicle": {
+    "file": "sources/kinsChronicle.json",
+    "totalSpecies": 74,
+    "added": 74,
+    "updated": 0,
+    "renamed": [
+      {
+        "id": "leoKinsChronicle",
+        "name": "Leo (Kins Chronicle)"
+      },
+      {
+        "id": "taurusKinsChronicle",
+        "name": "Taurus (Kins Chronicle)"
+      },
+      {
+        "id": "karkinosKinsChronicle",
+        "name": "Karkinos (Kins Chronicle)"
+      },
+      {
+        "id": "jiangshiKinsChronicle",
+        "name": "Jiangshi (Kins Chronicle)"
+      },
+      {
+        "id": "kitsuneKinsChronicle",
+        "name": "Kitsune (Kins Chronicle)"
+      },
+      {
+        "id": "phoenixKinsChronicle",
+        "name": "Phoenix (Kins Chronicle)"
+      },
+      {
+        "id": "queenBeeKinsChronicle",
+        "name": "Queen Bee (Kins Chronicle)"
+      },
+      {
+        "id": "minotaurKinsChronicle",
+        "name": "Minotaur (Kins Chronicle)"
+      },
+      {
+        "id": "highDragonKinsChronicle",
+        "name": "High Dragon (Kins Chronicle)"
+      },
+      {
+        "id": "huanglongKinsChronicle",
+        "name": "Huanglong (Kins Chronicle)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "wilderlocke": {
+    "file": "sources/wilderlocke.json",
+    "totalSpecies": 62,
+    "added": 62,
+    "updated": 0,
+    "renamed": [],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": []
+  },
+  "portalsOfPhereon": {
+    "file": "sources/portalsOfPhereon.json",
+    "totalSpecies": 159,
+    "added": 6,
+    "updated": 148,
+    "renamed": [
+      {
+        "id": "goblinPortalsOfPhereon",
+        "name": "Goblin (Portals Of Phereon)"
+      },
+      {
+        "id": "elfPortalsOfPhereon",
+        "name": "Elf (Portals Of Phereon)"
+      },
+      {
+        "id": "orcPortalsOfPhereon",
+        "name": "Orc (Portals Of Phereon)"
+      }
+    ],
+    "pruned": [],
+    "droppedEvolutions": [],
+    "skipped": [],
+    "excluded": [
+      {
+        "name": "Robot, ForestDragon, WaterDragon, Spiderling, SlimeGod, Toad, TinyShroom, BigShroom, SkyWhale, IceStrider, Rift, Lamia",
+        "reason": "không có CharacterData trong bản game đã cài (v0.32)"
+      },
+      {
+        "name": "Loài gợi dục của gốc",
+        "reason": "chủ project chốt không nhập nội dung người lớn"
+      }
+    ]
   }
 }

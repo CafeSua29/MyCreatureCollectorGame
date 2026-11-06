@@ -26,6 +26,7 @@ import {
 } from './draft'
 import { consumeHeldItem } from './heldItems'
 import { queueOf, type QueuedEvent } from './eventQueue'
+import { syncEnforcedStatuses } from './statuses'
 import { findMonsterSafe, runTraitEffects } from './traitEffects'
 
 /** Một trait khớp sự kiện, chờ chạy. */
@@ -213,6 +214,8 @@ function fire(data: GameData, d: Draft, listener: Listener, event: QueuedEvent):
  * phụ cho hành động gốc kế tiếp.
  */
 export function flushTraitEvents(data: GameData, d: Draft): void {
+  // Mọi bước của trận đều đi qua đây nên là điểm duy nhất giữ trait "luôn có trạng thái".
+  syncEnforcedStatuses(data, d)
   const queue = queueOf(d)
   const { maxDepth } = data.config.battle.traitChain
   while (queue.events.length > 0) {

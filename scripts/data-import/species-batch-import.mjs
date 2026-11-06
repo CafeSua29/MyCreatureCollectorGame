@@ -5,9 +5,11 @@
 // sources/temtem.json [sources/...]. Chạy lại an toàn: loài đã có (cùng source, cùng tên tiếng Anh)
 // chỉ được cập nhật các phần file nguồn cho phép (`update`), không tạo lại.
 //
-// File nguồn: { source, origin, update?: { race, stats, elements, evolutions (true | 'add'), catchRate }, species: [{
+// File nguồn: { source, origin, update?: { race, stats, elements, evolutions (true | 'add'), catchRate, work }, species: [{
 //   name, elements, raceId, tier? | stats?, style?, catchRate? (0–100) | catchRate255?,
-//   evolutions?: [{ name, level }], genderless?, heightM?, weightKg?, flavor?, category? }] }
+//   evolutions?: [{ name, level }], genderless?, heightM?, weightKg?, workStats?, eggType?, flavor?, category? }] }
+// update.stats / update.catchRate với mục chỉ có `tier`: dựng lại chỉ số / tỉ lệ bắt theo bậc (nguồn
+// mới có độ mạnh thật thay cho bậc đoán của lần nhập trước, ví dụ Void Monsters).
 
 import { readFileSync, writeFileSync } from 'node:fs'
 import {
@@ -55,6 +57,7 @@ const byId = new Map(species.map((s) => [s.id, s]))
 for (const table of [names.vi, names.en, info.flavor, info.category])
   for (const id of Object.keys(table)) if (!byId.has(id)) delete table[id]
 const enNameTaken = new Map(Object.entries(names.en).map(([id, name]) => [name.toLowerCase(), id]))
+const viNameTaken = new Map(Object.entries(names.vi).map(([id, name]) => [name.toLowerCase(), id]))
 
 /** Nhãn tác phẩm cho tên trùng: "Golem (Dragon Quest)". */
 const LABELS = {
@@ -70,8 +73,8 @@ const labelOf = (source) =>
 
 function checkEntry(entry, where) {
   if (!entry.name) throw new Error(`${where}: thiếu name`)
-  if (!Array.isArray(entry.elements) || entry.elements.length === 0)
-    throw new Error(`${where}: thiếu elements`)
+  // Rỗng = loài không hệ (data.md mục "Loài không hệ").
+  if (!Array.isArray(entry.elements)) throw new Error(`${where}: thiếu elements`)
   for (const id of entry.elements)
     if (!elements.has(id)) throw new Error(`${where}: hệ không tồn tại "${id}"`)
   if (!raceGroup.has(entry.raceId))
@@ -110,6 +113,7 @@ function pruneMissing(batch, idOfName, result) {
   for (const id of removed) {
     byId.delete(id)
     enNameTaken.delete((names.en[id] ?? '').toLowerCase())
+    viNameTaken.delete((names.vi[id] ?? '').toLowerCase())
     for (const table of [names.vi, names.en, info.flavor, info.category]) delete table[id]
   }
   for (const [name, id] of [...idOfName]) if (removed.has(id)) idOfName.delete(name)
@@ -164,7 +168,8 @@ function importFile(file) {
       continue
     }
     let enName = entry.name
-    if (enNameTaken.has(enName.toLowerCase())) {
+    // Tên mới dùng cho cả vi lẫn en nên phải tránh trùng cả tên tiếng Việt của loài khác ("La" = con la).
+    if (enNameTaken.has(enName.toLowerCase()) || viNameTaken.has(enName.toLowerCase())) {
       enName = `${entry.name} (${labelOf(sourceKey)})`
       result.renamed.push({ id, name: enName })
     }
@@ -187,6 +192,8 @@ function importFile(file) {
         catchRate
       }),
       ...(entry.weightKg ? { weightKg: entry.weightKg } : {}),
+      ...(entry.workStats ? { workStats: entry.workStats } : {}),
+      ...(entry.eggType ? { eggType: entry.eggType } : {}),
       ...(entry.heightM ? { heightM: entry.heightM } : {}),
       ...(entry.genderless ? { genderless: true } : {}),
       origin,
@@ -196,6 +203,7 @@ function importFile(file) {
     byId.set(id, sp)
     idOfName.set(key, id)
     enNameTaken.set(enName.toLowerCase(), id)
+    viNameTaken.set(enName.toLowerCase(), id)
     names.en[id] = enName
     names.vi[id] = enName
     writeInfo(id, entry)
@@ -242,15 +250,21 @@ function importFile(file) {
   }
   const totalSpecies = species.filter(sameSource).length
   console.log(`${sourceKey}: thêm ${result.added.length}, cập nhật ${result.updated.length}`)
+  // Mỗi file nguồn một mục báo cáo, khóa theo tên file (bỏ tiền tố "extra-"): file bổ sung của cùng
+  // nguồn (digimonCyberSleuth.json của digimon) không đè báo cáo của file chính.
+  const reportKey = file
+    .replace(/^.*\//, '')
+    .replace(/\.json$/, '')
+    .replace(/^extra-/, '')
   // Lần chạy lại không đổi gì: giữ báo cáo của lần nhập trước (lịch sử), chỉ cập nhật tổng.
   if (
     result.added.length + result.updated.length + (result.pruned?.length ?? 0) === 0 &&
-    report[sourceKey]
+    report[reportKey]
   ) {
-    report[sourceKey].totalSpecies = totalSpecies
+    report[reportKey].totalSpecies = totalSpecies
     return
   }
-  report[sourceKey] = {
+  report[reportKey] = {
     file,
     totalSpecies,
     added: result.added.length,
@@ -273,11 +287,14 @@ function updateExisting(sp, entry, update, result) {
     sp.elementIds = entry.elements.slice(0, 2)
     changed.push('elements')
   }
-  if (update.stats && entry.stats && JSON.stringify(sp.baseStats) !== JSON.stringify(entry.stats)) {
-    sp.baseStats = entry.stats
+  // Nguồn chỉ có bậc (không có chỉ số thật): dựng lại theo bậc, tất định theo id như lúc nhập mới.
+  const stats = entry.stats ?? (entry.tier ? buildStats(sp.id, entry.tier, entry.style) : undefined)
+  if (update.stats && stats && JSON.stringify(sp.baseStats) !== JSON.stringify(stats)) {
+    sp.baseStats = stats
     changed.push('stats')
   }
-  const hasCatchRate = entry.catchRate !== undefined || entry.catchRate255 !== undefined
+  const hasCatchRate =
+    entry.catchRate !== undefined || entry.catchRate255 !== undefined || entry.tier !== undefined
   if (update.catchRate && hasCatchRate && sp.catchRate !== catchRateOf(entry)) {
     sp.catchRate = catchRateOf(entry)
     changed.push('catchRate')
@@ -286,9 +303,21 @@ function updateExisting(sp, entry, update, result) {
     sp.weightKg = entry.weightKg
     changed.push('weightKg')
   }
+  if (entry.eggType && sp.eggType !== entry.eggType) {
+    sp.eggType = entry.eggType
+    changed.push('eggType')
+  }
   if (entry.heightM && !sp.heightM) {
     sp.heightM = entry.heightM
     changed.push('heightM')
+  }
+  if (
+    update.work &&
+    entry.workStats &&
+    JSON.stringify(sp.workStats) !== JSON.stringify(entry.workStats)
+  ) {
+    sp.workStats = entry.workStats
+    changed.push('workStats')
   }
   if (writeInfo(sp.id, entry)) changed.push('info')
   if (changed.length > 0) result.updated.push({ id: sp.id, changed })

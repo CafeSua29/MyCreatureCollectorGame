@@ -40,7 +40,7 @@ Code: trên quái `monster/awakening.ts` (`awakeningStatMultiplier`, `awakeningR
 
 ## Vật phẩm
 
-- **Thức tỉnh đan theo hệ** (19 món `awakeningPill<Hệ>`, thay Thức tỉnh đan chung từ 2026-10-27, chủ project chốt: đột phá của quái cần đan làm từ yêu đan cùng hệ): category `material`, giá × tầng, cửa hàng trọng số 15 mỗi hệ (gấp 3 đan chung cũ để bù việc phải đúng hệ, theo mô phỏng); boss rơi đan của **hệ đầu** của boss (`bossPillChance` %, boss tầng của map cộng thêm `floorBossPillChance` %; tỉ lệ 0 hoặc hệ không có đan thì không tung), cộng bảng `bossDrops` / `floorBossDrops` (hiện rỗng), trong `EXTRA_DROP_TABLES`; rương bí cảnh chia đều trọng số cũ cho 19 hệ. Luyện (cấp luyện đan 4): 2 yêu đan cùng hệ + 1 linh thạch cùng hệ + 2 Nhân Sâm + 1.000 tiền (`alchemy.md`). Số: `bossPillChance` 30, `floorBossPillChance` 30. Nhập dữ liệu: `scripts/data-import/element-cores-import.mjs`.
+- **Thức tỉnh đan theo hệ** (22 món `awakeningPill<Hệ>`, thay Thức tỉnh đan chung từ 2026-10-27, chủ project chốt: đột phá của quái cần đan làm từ yêu đan cùng hệ): category `material`, giá × tầng, cửa hàng trọng số 15 mỗi hệ (gấp 3 đan chung cũ để bù việc phải đúng hệ, theo mô phỏng); boss rơi đan của **hệ đầu** của boss (`bossPillChance` %, boss tầng của map cộng thêm `floorBossPillChance` %; tỉ lệ 0 hoặc hệ không có đan thì không tung), cộng bảng `bossDrops` / `floorBossDrops` (hiện rỗng), trong `EXTRA_DROP_TABLES`; rương bí cảnh chia đều trọng số cũ cho 19 hệ. Luyện (cấp luyện đan 4): 2 yêu đan cùng hệ + 1 linh thạch cùng hệ + 2 Nhân Sâm + 1.000 tiền (`alchemy.md`). Số: `bossPillChance` 30, `floorBossPillChance` 30. Nhập dữ liệu: `scripts/data-import/element-cores-import.mjs`.
 
 ## Mô phỏng
 

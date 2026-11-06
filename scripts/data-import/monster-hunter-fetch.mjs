@@ -86,19 +86,26 @@ for (const [title, wikitext] of texts) {
     .trim()
   // Lớp "???" / không rõ (Gore Magala, Estrellian...): vẫn nhập, race đoán theo tên.
   const [raceId, classElement] = CLASS[type] ?? [guessRace([name], 'mythicBeast'), null]
-  const elements = [
-    ...plainText(p.element ?? '')
-      .toLowerCase()
-      .split(/[^a-z]+/)
-      .map((e) => ELEMENT[e]),
-    classElement
-  ].filter(Boolean)
+  const elementText = plainText(p.element ?? '').trim()
+  // Gốc ghi "None" = quái không nguyên tố (non-elemental): không hệ (data.md mục "Loài không hệ").
+  // Quái có nguyên tố ghi bằng template lồng `{{Element|...}}` mà infoboxParams chưa đọc được nên
+  // chỉ còn hệ theo lớp (docs/roadmap/biome-content.md mục "Monster Hunter").
+  const nonElemental = /^none$/i.test(elementText)
+  const elements = nonElemental
+    ? []
+    : [
+        ...elementText
+          .toLowerCase()
+          .split(/[^a-z]+/)
+          .map((e) => ELEMENT[e]),
+        classElement
+      ].filter(Boolean)
   const size = plainText(p['monster size'] ?? '').toLowerCase()
   const tier = type === 'elder dragon' ? 'large' : size.includes('small') ? 'small' : 'peak'
   const physiology = /==\s*Physiology\s*==\s*\n+([^\n=][^\n]+)/.exec(wikitext)?.[1]
   species.push({
     name,
-    elements: elements.length ? [...new Set(elements)].slice(0, 2) : ['normal'],
+    elements: nonElemental ? [] : elements.length ? [...new Set(elements)].slice(0, 2) : ['normal'],
     raceId: existing.get(name.toLowerCase())?.raceId ?? raceId,
     tier,
     category: type.replace(/\b\w/g, (c) => c.toUpperCase()),

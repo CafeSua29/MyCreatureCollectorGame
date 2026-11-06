@@ -40,14 +40,16 @@ import {
   startHistory,
   uniformBigStats,
   emptySoulLevels,
-  emptyEffortValues
+  emptyEffortValues,
+  teraElementChoices
 } from '../monster'
 import {
   bumpStat,
   charmEffect,
   isTooYoungToBreed,
   researchMultiplier,
-  tamerBonusMultiplier
+  tamerBonusMultiplier,
+  traitExtraInheritPercent
 } from '../registries'
 import { baseFormsOf } from '../inventory'
 import { skillsAtLevel } from '../world'
@@ -74,7 +76,8 @@ import {
   type GameState,
   type Monster,
   type NormalSpecies,
-  type TraitInstance
+  type TraitInstance,
+  STELLAR
 } from '../model'
 
 /** Lý do không breed được; null nếu breed được (a, b theo thứ tự bất kỳ). */
@@ -148,6 +151,24 @@ function rollTraits(
     const same = result.find((t) => t.id === picked.id)
     if (same) same.level += picked.level
     else result.push({ ...picked })
+  }
+  // Gen Mutating / Stud của Portals of Phereon: % truyền thêm một trait của bên mang hook, còn ô.
+  const slots = Math.max(father.traitSlots, mother.traitSlots)
+  for (const parent of [mother, father]) {
+    const chance = traitExtraInheritPercent(data, parent)
+    if (chance <= 0 || result.length >= slots) continue
+    const extra = parent.traits.filter(
+      (t) =>
+        isInheritable(data, t) &&
+        !result.some((other) => other.id === t.id || conflicts(data, t, other))
+    )
+    if (extra.length === 0) continue
+    let hit: boolean
+    ;[hit, rng] = rollPercent(rng, chance)
+    if (!hit) continue
+    let picked: TraitInstance
+    ;[picked, rng] = pick(rng, extra)
+    result.push({ ...picked })
   }
   return [result, rng]
 }
@@ -254,7 +275,7 @@ export function makeOffspring(
     // Con breeding không thừa hưởng trang bị; Gmax Factor, cấp Dynamax không di truyền (như
     // Pokémon), hệ Tera random theo hệ của con (tung sau shiny).
     equipment: [],
-    teraElementId: species.elementIds[0],
+    teraElementId: species.elementIds[0] ?? STELLAR,
     gmaxFactor: false,
     dynamaxLevel: 0,
     // Tuổi 0 lúc nở; già đi theo tùy chọn của game (bố mẹ luôn cùng cờ aging với game).
@@ -299,6 +320,7 @@ export function makeOffspring(
     // Không truyền cấy ghép, cùng lý do như hiến tế (docs/rules/implant.md).
     implantBonusStats: uniformBigStats(0),
     implantEffects: {},
+    refinements: {},
     implantAttempts: 0,
     implantFails: 0,
     // Tung sau cùng (rollChildWorkTraits) theo trait của bố mẹ.
@@ -341,7 +363,9 @@ export function makeOffspring(
     child = addShinyStacks(data, child, Math.max(1, father.shinyStacks, mother.shinyStacks))
   }
   let teraElementId = species.teraElementId
-  if (teraElementId === undefined) [teraElementId, rng] = pick(rng, species.elementIds)
+  if (teraElementId === undefined) {
+    ;[teraElementId, rng] = pick(rng, teraElementChoices(data, species))
+  }
   let natureId: string
   ;[natureId, rng] = rollChildNature(data, rng, [father, mother])
   let abilitySlot: AbilitySlot = mother.abilitySlot

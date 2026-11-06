@@ -2,7 +2,7 @@
 // của quái (`assignment`), bảng thám hiểm và đội đang đi trong state, config.
 
 /** Loại việc của quái: thám hiểm (expeditions.md), động phủ (dwelling.md). */
-export const ASSIGNMENT_KINDS = ['expedition', 'dwelling'] as const
+export const ASSIGNMENT_KINDS = ['expedition', 'dwelling', 'hatchery'] as const
 
 export type AssignmentKind = (typeof ASSIGNMENT_KINDS)[number]
 

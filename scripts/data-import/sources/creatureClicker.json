@@ -1,0 +1,1254 @@
+{
+  "source": "creatureClicker",
+  "origin": "fantasy",
+  "update": {
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "elements": [
+        "fire",
+        "dragon"
+      ],
+      "raceId": "westernDragon",
+      "evolutions": [],
+      "name": "Fire Dragon",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "water",
+        "dragon"
+      ],
+      "raceId": "westernDragon",
+      "evolutions": [],
+      "name": "Water Dragon",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "dark",
+        "dragon"
+      ],
+      "raceId": "westernDragon",
+      "evolutions": [],
+      "name": "Chaos Dragon",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "rock",
+        "dragon"
+      ],
+      "raceId": "westernDragon",
+      "evolutions": [],
+      "name": "Earth Dragon",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [
+        {
+          "name": "Kernet",
+          "level": 16
+        }
+      ],
+      "name": "Forest Stinger",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [
+        {
+          "name": "Meisnet",
+          "level": 32
+        }
+      ],
+      "name": "Kernet",
+      "tier": "medium",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [
+        {
+          "name": "Hailnet",
+          "level": 48
+        },
+        {
+          "name": "Tronet",
+          "level": 48
+        }
+      ],
+      "name": "Meisnet",
+      "tier": "peak",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [],
+      "name": "Hailnet",
+      "tier": "large",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [],
+      "raceId": "cervid",
+      "evolutions": [
+        {
+          "name": "Lighthorn",
+          "level": 16
+        }
+      ],
+      "name": "Thorntail Deer",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [],
+      "raceId": "cervid",
+      "evolutions": [
+        {
+          "name": "Brightfoot",
+          "level": 32
+        }
+      ],
+      "name": "Lighthorn",
+      "tier": "medium",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [],
+      "raceId": "cervid",
+      "evolutions": [
+        {
+          "name": "Flashhoof",
+          "level": 48
+        },
+        {
+          "name": "Cinderhoof",
+          "level": 48
+        },
+        {
+          "name": "Frostmane",
+          "level": 48
+        }
+      ],
+      "name": "Brightfoot",
+      "tier": "peak",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [],
+      "raceId": "cervid",
+      "evolutions": [],
+      "name": "Flashhoof",
+      "tier": "large",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [],
+      "raceId": "rodent",
+      "evolutions": [
+        {
+          "name": "Mischeak",
+          "level": 16
+        }
+      ],
+      "name": "Field Rat",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [],
+      "raceId": "rodent",
+      "evolutions": [
+        {
+          "name": "Mousestache",
+          "level": 32
+        }
+      ],
+      "name": "Mischeak",
+      "tier": "medium",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [],
+      "raceId": "rodent",
+      "evolutions": [
+        {
+          "name": "Ratastrophe",
+          "level": 48
+        },
+        {
+          "name": "Ratasha",
+          "level": 48
+        },
+        {
+          "name": "Catastere",
+          "level": 48
+        }
+      ],
+      "name": "Mousestache",
+      "tier": "peak",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [],
+      "raceId": "rodent",
+      "evolutions": [],
+      "name": "Ratastrophe",
+      "tier": "large",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "evolutions": [
+        {
+          "name": "Aragnaw",
+          "level": 16
+        }
+      ],
+      "name": "Arachnor",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "evolutions": [
+        {
+          "name": "Arachne",
+          "level": 32
+        }
+      ],
+      "name": "Aragnaw",
+      "tier": "medium",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "evolutions": [
+        {
+          "name": "Arachnegorge",
+          "level": 48
+        }
+      ],
+      "name": "Arachne",
+      "tier": "peak",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "evolutions": [],
+      "name": "Arachnegorge",
+      "tier": "large",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "water",
+        "poison"
+      ],
+      "raceId": "annelid",
+      "evolutions": [
+        {
+          "name": "Guisein",
+          "level": 16
+        }
+      ],
+      "name": "Swamp Leech",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "water",
+        "poison"
+      ],
+      "raceId": "annelid",
+      "evolutions": [
+        {
+          "name": "Guiswei",
+          "level": 32
+        }
+      ],
+      "name": "Guisein",
+      "tier": "medium",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "water",
+        "poison"
+      ],
+      "raceId": "annelid",
+      "evolutions": [
+        {
+          "name": "Guisdrei",
+          "level": 48
+        }
+      ],
+      "name": "Guiswei",
+      "tier": "peak",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "water",
+        "poison"
+      ],
+      "raceId": "annelid",
+      "evolutions": [],
+      "name": "Guisdrei",
+      "tier": "large",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [],
+      "raceId": "slime",
+      "evolutions": [
+        {
+          "name": "Lutuboo",
+          "level": 16
+        }
+      ],
+      "name": "Flotsam",
+      "tier": "small",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [],
+      "raceId": "slime",
+      "evolutions": [
+        {
+          "name": "Lutugeist",
+          "level": 32
+        }
+      ],
+      "name": "Lutuboo",
+      "tier": "medium",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [],
+      "raceId": "slime",
+      "evolutions": [
+        {
+          "name": "Lututere",
+          "level": 48
+        }
+      ],
+      "name": "Lutugeist",
+      "tier": "peak",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [],
+      "raceId": "slime",
+      "evolutions": [],
+      "name": "Lututere",
+      "tier": "large",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "serpent",
+      "evolutions": [
+        {
+          "name": "Nokohebi",
+          "level": 16
+        }
+      ],
+      "name": "Stone Serpent",
+      "tier": "medium",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "serpent",
+      "evolutions": [
+        {
+          "name": "Kaehebi",
+          "level": 32
+        }
+      ],
+      "name": "Nokohebi",
+      "tier": "peak",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "serpent",
+      "evolutions": [
+        {
+          "name": "Xiuhcoatl",
+          "level": 48
+        }
+      ],
+      "name": "Kaehebi",
+      "tier": "large",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "serpent",
+      "evolutions": [],
+      "name": "Xiuhcoatl",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [
+        {
+          "name": "Veneus",
+          "level": 16
+        }
+      ],
+      "name": "Hard Stinger",
+      "tier": "medium",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [
+        {
+          "name": "Venescor",
+          "level": 32
+        }
+      ],
+      "name": "Veneus",
+      "tier": "peak",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [
+        {
+          "name": "Veneqet",
+          "level": 48
+        }
+      ],
+      "name": "Venescor",
+      "tier": "large",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [],
+      "name": "Veneqet",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "evolutions": [
+        {
+          "name": "Puerna",
+          "level": 16
+        }
+      ],
+      "name": "River Toad",
+      "tier": "medium",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "evolutions": [
+        {
+          "name": "Pernina",
+          "level": 32
+        }
+      ],
+      "name": "Puerna",
+      "tier": "peak",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "evolutions": [
+        {
+          "name": "Iculana",
+          "level": 48
+        },
+        {
+          "name": "Malana",
+          "level": 48
+        },
+        {
+          "name": "Malinawa",
+          "level": 48
+        }
+      ],
+      "name": "Pernina",
+      "tier": "large",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "evolutions": [],
+      "name": "Iculana",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "rock",
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "evolutions": [
+        {
+          "name": "Calfoal",
+          "level": 16
+        }
+      ],
+      "name": "Cliff Minotaur",
+      "tier": "medium",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "rock",
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "evolutions": [
+        {
+          "name": "Minorus",
+          "level": 32
+        }
+      ],
+      "name": "Calfoal",
+      "tier": "peak",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "rock",
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "evolutions": [
+        {
+          "name": "Centaurus",
+          "level": 48
+        }
+      ],
+      "name": "Minorus",
+      "tier": "large",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "rock",
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "evolutions": [],
+      "name": "Centaurus",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "rock",
+        "flying"
+      ],
+      "raceId": "raptor",
+      "evolutions": [
+        {
+          "name": "Dhigaraa",
+          "level": 16
+        }
+      ],
+      "name": "Rock Hawk",
+      "tier": "medium",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "rock",
+        "flying"
+      ],
+      "raceId": "raptor",
+      "evolutions": [
+        {
+          "name": "Dhigayaa",
+          "level": 32
+        }
+      ],
+      "name": "Dhigaraa",
+      "tier": "peak",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "rock",
+        "flying"
+      ],
+      "raceId": "raptor",
+      "evolutions": [
+        {
+          "name": "Ghigayaa",
+          "level": 48
+        },
+        {
+          "name": "Sakkarasu",
+          "level": 48
+        }
+      ],
+      "name": "Dhigayaa",
+      "tier": "large",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "rock",
+        "flying"
+      ],
+      "raceId": "raptor",
+      "evolutions": [],
+      "name": "Ghigayaa",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [
+        {
+          "name": "Igavis",
+          "level": 16
+        }
+      ],
+      "name": "Pyro Phoenix",
+      "tier": "medium",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [
+        {
+          "name": "Ardevis",
+          "level": 32
+        }
+      ],
+      "name": "Igavis",
+      "tier": "peak",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "fire"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [
+        {
+          "name": "Infernevis",
+          "level": 48
+        },
+        {
+          "name": "Voltevis",
+          "level": 48
+        },
+        {
+          "name": "Glacevis",
+          "level": 48
+        }
+      ],
+      "name": "Ardevis",
+      "tier": "large",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "fire",
+        "flying"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [],
+      "name": "Infernevis",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "evolutions": [
+        {
+          "name": "Gai",
+          "level": 16
+        }
+      ],
+      "name": "Rock Golem",
+      "tier": "peak",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "evolutions": [
+        {
+          "name": "Gaiatain",
+          "level": 32
+        }
+      ],
+      "name": "Gai",
+      "tier": "large",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "evolutions": [
+        {
+          "name": "Gaiaroth",
+          "level": 48
+        }
+      ],
+      "name": "Gaiatain",
+      "tier": "mythic",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "evolutions": [],
+      "name": "Gaiaroth",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "evolutions": [
+        {
+          "name": "Elezar",
+          "level": 16
+        }
+      ],
+      "name": "Raptor",
+      "tier": "peak",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "evolutions": [
+        {
+          "name": "Volzar",
+          "level": 32
+        }
+      ],
+      "name": "Elezar",
+      "tier": "large",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "evolutions": [
+        {
+          "name": "Tyranrai",
+          "level": 48
+        },
+        {
+          "name": "Ignitiorant",
+          "level": 48
+        },
+        {
+          "name": "Tyranakurao",
+          "level": 48
+        }
+      ],
+      "name": "Volzar",
+      "tier": "mythic",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "evolutions": [],
+      "name": "Tyranrai",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [],
+      "raceId": "ornithischian",
+      "evolutions": [
+        {
+          "name": "Spible",
+          "level": 16
+        }
+      ],
+      "name": "Ankylo",
+      "tier": "peak",
+      "category": "Wild creature"
+    },
+    {
+      "elements": [],
+      "raceId": "ornithischian",
+      "evolutions": [
+        {
+          "name": "Stegock",
+          "level": 32
+        }
+      ],
+      "name": "Spible",
+      "tier": "large",
+      "category": "Ascension 1"
+    },
+    {
+      "elements": [],
+      "raceId": "ornithischian",
+      "evolutions": [
+        {
+          "name": "Stegobald",
+          "level": 48
+        },
+        {
+          "name": "Stegoberg",
+          "level": 48
+        }
+      ],
+      "name": "Stegock",
+      "tier": "mythic",
+      "category": "Ascension 2"
+    },
+    {
+      "elements": [],
+      "raceId": "ornithischian",
+      "evolutions": [],
+      "name": "Stegobald",
+      "tier": "mythic",
+      "category": "Ascension 3"
+    },
+    {
+      "elements": [
+        "electric",
+        "flying"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [],
+      "name": "Voltevis",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [],
+      "name": "Glacevis",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "fire"
+      ],
+      "raceId": "cervid",
+      "evolutions": [],
+      "name": "Cinderhoof",
+      "tier": "large",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "ice"
+      ],
+      "raceId": "cervid",
+      "evolutions": [],
+      "name": "Frostmane",
+      "tier": "large",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "fire",
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "evolutions": [],
+      "name": "Ignitiorant",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "theropod",
+      "evolutions": [],
+      "name": "Tyranakurao",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [],
+      "raceId": "rodent",
+      "evolutions": [],
+      "name": "Ratasha",
+      "tier": "large",
+      "category": "Variant"
+    },
+    {
+      "elements": [],
+      "raceId": "rodent",
+      "evolutions": [],
+      "name": "Catastere",
+      "tier": "large",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "evolutions": [],
+      "name": "Malana",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [],
+      "raceId": "ornithischian",
+      "evolutions": [],
+      "name": "Stegoberg",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "evolutions": [],
+      "name": "Malinawa",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "rock",
+        "flying"
+      ],
+      "raceId": "raptor",
+      "evolutions": [
+        {
+          "name": "Nightcrest Sakkarasu",
+          "level": 48
+        }
+      ],
+      "name": "Sakkarasu",
+      "tier": "mythic",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [],
+      "name": "Tronet",
+      "tier": "large",
+      "category": "Variant"
+    },
+    {
+      "elements": [
+        "dark"
+      ],
+      "raceId": "raptor",
+      "evolutions": [],
+      "name": "Nightcrest Sakkarasu",
+      "tier": "mythic",
+      "category": "Loyalty variant"
+    },
+    {
+      "elements": [
+        "fire"
+      ],
+      "raceId": "elementalSpirit",
+      "evolutions": [],
+      "name": "Fire Elemental",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "fire"
+      ],
+      "raceId": "mythicBird",
+      "evolutions": [],
+      "name": "Corrupted Phoenix",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "bug"
+      ],
+      "raceId": "hive",
+      "evolutions": [],
+      "name": "Corrupted Swarm",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "evolutions": [],
+      "name": "Corrupted Scorpion",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "flying"
+      ],
+      "raceId": "chiropteran",
+      "evolutions": [],
+      "name": "Corrupted Bat",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "grass"
+      ],
+      "raceId": "flower",
+      "evolutions": [],
+      "name": "Corrupted Cactara",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "grass"
+      ],
+      "raceId": "tree",
+      "evolutions": [],
+      "name": "Corrupted Ent",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark",
+        "water"
+      ],
+      "raceId": "cephalopod",
+      "evolutions": [],
+      "name": "Corrupted Octopus",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "dark"
+      ],
+      "raceId": "imp",
+      "evolutions": [],
+      "name": "Chaos Imp",
+      "tier": "large",
+      "category": "Raid boss"
+    },
+    {
+      "elements": [
+        "fire"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [],
+      "name": "Fire Wasp",
+      "tier": "small",
+      "category": "Farm wasp"
+    },
+    {
+      "elements": [
+        "ice"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [],
+      "name": "Ice Wasp",
+      "tier": "small",
+      "category": "Farm wasp"
+    },
+    {
+      "elements": [
+        "poison"
+      ],
+      "raceId": "hymenopteran",
+      "evolutions": [],
+      "name": "Toxic Wasp",
+      "tier": "small",
+      "category": "Farm wasp"
+    },
+    {
+      "elements": [],
+      "raceId": "parrot",
+      "evolutions": [],
+      "name": "Tawny Parrot",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [],
+      "raceId": "anuran",
+      "evolutions": [],
+      "name": "Marsh Toad",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [],
+      "raceId": "marsupial",
+      "evolutions": [],
+      "name": "Jabaroo",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [
+        "flying"
+      ],
+      "raceId": "chiropteran",
+      "evolutions": [],
+      "name": "Batchrink",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [
+        "water"
+      ],
+      "raceId": "turtle",
+      "evolutions": [],
+      "name": "Spineshell",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [],
+      "raceId": "cephalopod",
+      "evolutions": [],
+      "name": "Mana Squid",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [],
+      "raceId": "tree",
+      "evolutions": [],
+      "name": "Entrian",
+      "tier": "small",
+      "category": "Forest Deck card"
+    },
+    {
+      "elements": [],
+      "raceId": "goblin",
+      "evolutions": [],
+      "name": "Gobshuk",
+      "tier": "small",
+      "category": "Forest Deck card"
+    }
+  ]
+}

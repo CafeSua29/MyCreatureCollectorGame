@@ -312,12 +312,14 @@ describe('previewFusion — tỉ lệ', () => {
       successChance: 30,
       raceMatch: 'other'
     })
-    expect(previewFusion(data, neutral('a'), brute('b'), 'fusionCharm')).toMatchObject({
+    expect(
+      previewFusion(data, neutral('a'), brute('b'), { boostItemId: 'fusionCharm' })
+    ).toMatchObject({
       successChance: 60,
       raceMatch: 'breedable'
     })
     expectActionError(
-      () => previewFusion(data, neutral('a'), brute('b'), 'potion'),
+      () => previewFusion(data, neutral('a'), brute('b'), { boostItemId: 'potion' }),
       'wrongFusionAid'
     )
   })

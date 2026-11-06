@@ -73,7 +73,8 @@ import {
   type StatBlend,
   type StrikeView,
   sizeDamageMultiplier,
-  polarityDamageMultiplier
+  polarityDamageMultiplier,
+  elementEffectiveness
 } from '../registries'
 import {
   NON_HP_STATS,
@@ -89,15 +90,7 @@ import {
   type Skill
 } from '../model'
 
-/** Hệ số khắc chế: nhân dồn qua mọi hệ của bên phòng thủ. */
-export function elementEffectiveness(
-  data: GameData,
-  attackElementId: string,
-  defenderElementIds: readonly string[]
-): number {
-  const table = data.elements[attackElementId].effectiveness
-  return defenderElementIds.reduce((product, id) => product * (table[id] ?? 1), 1)
-}
+export { elementEffectiveness }
 
 /** Room gỡ miễn nhiễm của quái đang bay với hệ của skill (Gravity: hệ Đất); ngoài trận thì không. */
 const airborneImmunityRemoved = (input: DamageFormulaInput): boolean =>
@@ -123,6 +116,7 @@ const strikeOf = (input: DamageFormulaInput): StrikeView => ({
 /** Chế độ khắc hệ do trait của bên đánh / bên nhận (Siralim: luôn khắc, đảo ngược...). */
 function effectivenessModes(input: DamageFormulaInput): Set<EffectivenessMode> {
   const modes = new Set<EffectivenessMode>()
+  if (input.skill.effectiveness?.noResist) modes.add('noResist')
   const collect = (
     monster: Monster,
     ctx: DamageArena['attackerContext'],
@@ -136,7 +130,8 @@ function effectivenessModes(input: DamageFormulaInput): Set<EffectivenessMode> {
         if (!mode) return
         // alwaysStrong: bên đánh luôn khắc; neverWeak: bên nhận luôn nhận như bị kháng; reverse: cả hai.
         if (mode === 'reverse' || (mode === 'alwaysStrong' && side === 'dealt')) modes.add(mode)
-        if (mode === 'neverWeak' && side === 'taken') modes.add(mode)
+        if ((mode === 'neverWeak' || mode === 'noResist') && side === 'taken') modes.add(mode)
+        if (mode === 'neutral' && side === 'dealt') modes.add(mode)
       },
       ctx
     )
@@ -153,6 +148,9 @@ function applyModes(effectiveness: number, modes: ReadonlySet<EffectivenessMode>
   if (modes.has('reverse')) result = 1 / result
   if (modes.has('alwaysStrong')) result = Math.max(result, 2)
   if (modes.has('neverWeak')) result = Math.min(result, 0.5)
+  // Miễn nhiễm (0) giữ nguyên: game này có hệ miễn nhiễm, hai chế độ dưới chỉ bỏ kháng / khắc.
+  if (modes.has('neutral') && result !== 0) result = 1
+  if (modes.has('noResist') && result > 0) result = Math.max(result, 1)
   return result
 }
 
@@ -162,6 +160,11 @@ function applyModes(effectiveness: number, modes: ReadonlySet<EffectivenessMode>
  * Room gỡ miễn nhiễm (Gravity): bỏ qua trait miễn nhiễm, hệ số 0 lên hệ đang bay thành 1. Sau đó
  * chế độ khắc hệ của trait (luôn khắc, đảo ngược).
  */
+/** Hệ số khắc chế của skill (đã đổi hệ theo quái dùng) lên bên nhận, không tốn RNG. */
+export function skillEffectivenessOn(input: DamageFormulaInput): number {
+  return effectivenessAgainst(withUserElement(input))
+}
+
 function effectivenessAgainst(input: DamageFormulaInput): number {
   const { data, defender, skill } = input
   // Đòn không hệ (Struggle, Bide): trúng mọi hệ, kể cả hệ miễn nhiễm (như Pokémon).
@@ -582,9 +585,7 @@ function amountAsDamage(
   if ('record' in amount) {
     const ctx =
       monster === input.defender ? input.arena?.defenderContext : input.arena?.attackerContext
-    return recordTotal(ctx, amount.record, amount.side === true)
-      .times(amount.percent)
-      .div(100)
+    return recordTotal(ctx, amount.record, amount.side).times(amount.percent).div(100)
   }
   const monsterStats = monster === input.defender ? stats.defender : stats.attacker
   if ('stat' in amount) {
@@ -601,11 +602,34 @@ function amountAsDamage(
   return base.times(amount.percent).div(100)
 }
 
+/** Bậc công của đòn `doublesAttackStage` tính gấp đôi; đòn khác giữ nguyên bậc. */
+function doubledAttackStage(input: DamageFormulaInput): DamageFormulaInput['attackerStages'] {
+  const stages = input.attackerStages
+  if (!input.skill.doublesAttackStage || !stages) return stages
+  const stat = input.skill.category === 'physical' ? 'attack' : 'spAttack'
+  return { ...stages, [stat]: (stages[stat] ?? 0) * 2 }
+}
+
+/** Kẹp sát thương theo % max HP mục tiêu của skill (`damageFloorPercent`, `damageCapPercent`). */
+function clampedBySkill(input: DamageFormulaInput, damage: Decimal): Decimal {
+  const { damageFloorPercent: floor, damageCapPercent: cap } = input.skill
+  if (floor === undefined && cap === undefined) return damage
+  const maxHp = getMaxHp(input.data, input.defender)
+  const low = floor === undefined ? damage : maxBig(damage, maxHp.times(floor).div(100).ceil())
+  return cap === undefined ? low : minBig(low, maxHp.times(cap).div(100).floor())
+}
+
 /**
  * Đòn tính như vật lý không: theo loại skill, hoặc theo `categoryRule` (Photon Geyser: công >
  * đặc công thì vật lý; Shell Side Arm: chọn loại gây nhiều sát thương hơn theo công / thủ mục tiêu).
  */
-function isPhysicalStrike(skill: Skill, attacker: BigStats, defender: BigStats): boolean {
+function isPhysicalStrike(
+  skill: Skill,
+  attacker: BigStats,
+  defender: BigStats,
+  forcedSpecial = false
+): boolean {
+  if (forcedSpecial) return false
   switch (skill.categoryRule) {
     case undefined:
       return skill.category === 'physical'
@@ -635,7 +659,7 @@ const masteryPowerMultiplier = (input: DamageFormulaInput): number =>
 function rawDamage(
   input: DamageFormulaInput,
   effectiveness: number,
-  { critFactor, random }: { critFactor: number; random: number }
+  { critFactor, random, critical }: { critFactor: number; random: number; critical?: boolean }
 ): Decimal {
   const { data, attacker, defender, skill, arena } = input
   const { battle } = data.config
@@ -654,7 +678,7 @@ function rawDamage(
     arena?.defenderContext
   )
   const attackerStats = memoStats(input, attacker, {
-    stages: defenderUnaware ? undefined : input.attackerStages,
+    stages: defenderUnaware ? undefined : doubledAttackStage(input),
     field,
     side: arena?.attackerSide,
     battle: arena?.attackerContext
@@ -666,11 +690,20 @@ function rawDamage(
     side: arena?.defenderSide,
     battle: arena?.defenderContext
   })
-  const physical = isPhysicalStrike(skill, attackerStats, defenderStats)
+  const physical = isPhysicalStrike(
+    skill,
+    attackerStats,
+    defenderStats,
+    attacker.statuses.some((status) => input.data.statuses[status.statusId]?.forcesSpecialDamage)
+  )
   const attackStat = physical ? 'attack' : 'spAttack'
-  const baseAttack = skill.attackFrom
-    ? (skill.attackFrom.who === 'target' ? defenderStats : attackerStats)[skill.attackFrom.stat]
-    : attackerStats[attackStat]
+  const ally = skill.attackFromAlly ? arena?.attackerContext?.allies[0] : undefined
+  const baseAttack =
+    ally && skill.attackFromAlly
+      ? computeStats(input.data, ally).final[skill.attackFromAlly]
+      : skill.attackFrom
+        ? (skill.attackFrom.who === 'target' ? defenderStats : attackerStats)[skill.attackFrom.stat]
+        : attackerStats[attackStat]
   const attack = blendedAttack(input, attackerStats, comboAttack(input, baseAttack))
   const strike = strikeOf(input)
   const ignored = Math.min(100, traitDefenseIgnoredPercent(strike) + spellDefenseIgnored(skill))
@@ -711,7 +744,8 @@ function rawDamage(
     effectiveness,
     power,
     attackerHpRatio: hpRatio(attackerStats, attacker),
-    defenderHpRatio: hpRatio(defenderStats, defender)
+    defenderHpRatio: hpRatio(defenderStats, defender),
+    ...(critical === undefined ? {} : { critical })
   }
   const views = { attacker: attackerView(strike), defender: defenderView(strike) }
   // Nhân hết các hệ số rồi chia một lần cho (100 × thủ) để làm tròn xuống không bị lệch.
@@ -958,9 +992,16 @@ export function computeDamage(rawInput: DamageInput): DamageResult {
   const heldUsed: HeldItemUse[] = []
   const raw = rawDamage({ ...input, heldUsed }, effectiveness, {
     critFactor: critOrScreen(input, critical, screenMultiplier(input)),
-    random
+    random,
+    critical
   })
-  return { damage: maxBig(1, raw.floor()), effectiveness, critical, rng, heldUsed }
+  return {
+    damage: clampedBySkill(input, maxBig(1, raw.floor())),
+    effectiveness,
+    critical,
+    rng,
+    heldUsed
+  }
 }
 
 /**
@@ -998,6 +1039,49 @@ function expectedCounterDamage(
     total = total.plus(hit.times(spec.multiplier))
   }
   return total.div(damaging.length).floor()
+}
+
+/** Khoảng sát thương của một đòn nếu trúng (xem trước, docs/rules/battle.md mục "Xem trước sát thương"). */
+export interface DamageRange {
+  /** Dao động thấp nhất / cao nhất khi không chí mạng. */
+  min: Decimal
+  max: Decimal
+  /** Cao nhất khi chí mạng. */
+  critMax: Decimal
+  critPercent: number
+  effectiveness: number
+}
+
+/** Khoảng sát thương một đòn, không tốn RNG. Skill status hoặc mục tiêu miễn nhiễm cho 0. */
+export function damageRange(rawInput: DamageFormulaInput): DamageRange {
+  const input = withAveragePower(withUserElement(rawInput))
+  const effectiveness = effectivenessAgainst(input)
+  const zero = { min: BIG_ZERO, max: BIG_ZERO, critMax: BIG_ZERO, critPercent: 0, effectiveness }
+  if (input.skill.power <= 0 || effectiveness === 0 || isSpellNullified(input)) return zero
+  const fixed = fixedDamageAmount({ ...input, attackerContext: input.arena?.attackerContext })
+  if (fixed) return { ...zero, min: fixed.amount, max: fixed.amount, critMax: fixed.amount }
+  const { min, max } = varianceRange(input)
+  const screen = screenMultiplier(input)
+  const strike = (critical: boolean, random: number): Decimal =>
+    clampedBySkill(
+      input,
+      maxBig(
+        1,
+        rawDamage({ ...input, heldUsed: [] }, effectiveness, {
+          critFactor: critOrScreen(input, critical, screen),
+          random,
+          critical
+        }).floor()
+      )
+    )
+  const critPercent = critChanceOf(input)
+  return {
+    min: strike(false, min),
+    max: strike(false, max),
+    critMax: critPercent > 0 ? strike(true, max) : strike(false, max),
+    critPercent,
+    effectiveness
+  }
 }
 
 /**

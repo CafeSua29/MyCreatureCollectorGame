@@ -6,6 +6,7 @@ import { isFormationMet, partySlotsOf, partySlotsUsed } from '../registries'
 import { nextInt, pick, pickWeighted, type RngState } from '../shared'
 import { BATTLE_FORM_KINDS } from '../model'
 import type {
+  TrainerFixedMonster,
   Biome,
   EncounterEntry,
   EquipmentInstance,
@@ -236,12 +237,25 @@ export function generateTrainerTeam(
     shinyChance: 0,
     aging: site.aging
   })
+  let fixedTeam: readonly TrainerFixedMonster[] | undefined
+  if (!spec.elementIds && trainerClass.fixedTeams?.length) {
+    ;[fixedTeam, rng] = pick(rng, trainerClass.fixedTeams)
+  }
   let size: number
   ;[size, rng] = nextInt(rng, trainerClass.teamSize.min, trainerClass.teamSize.max)
+  // Đội cố định: đủ ô cho mọi con của đội (quái lớn 2 ô).
+  if (fixedTeam) size = fixedTeam.length * data.config.size.largePartySlots
   const enemies: Monster[] = []
-  while (partySlotsUsed(data, enemies) < size) {
+  for (let i = 0; fixedTeam ? i < fixedTeam.length : partySlotsUsed(data, enemies) < size; i++) {
+    const fixed = fixedTeam?.[i]
     let monster: Monster
-    ;[monster, rng] = rollMonster(data, rng, rollSpec, `m${nextMonsterId}`)
+    ;[monster, rng] = rollMonster(
+      data,
+      rng,
+      fixed ? { ...rollSpec, encounters: [{ speciesId: fixed.speciesId, weight: 1 }] } : rollSpec,
+      `m${nextMonsterId}`
+    )
+    if (fixed?.skillIds.length) monster = { ...monster, skillIds: fixed.skillIds }
     nextMonsterId++
     if (partySlotsUsed(data, enemies) + partySlotsOf(data, monster) > size) break
     ;[monster, rng] = rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)

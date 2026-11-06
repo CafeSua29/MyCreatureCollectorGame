@@ -1,0 +1,205 @@
+{
+  "source": "pochimoon",
+  "origin": "fantasy",
+  "update": {
+    "race": true
+  },
+  "species": [
+    {
+      "name": "Gorilla Pochimoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Cow Pochimoon",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Alpaca Pochimoon",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Kangaroo Pochimoon",
+      "elements": [],
+      "raceId": "marsupial",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Fox Pochimoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Puma Pochimoon",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Dog Pochimoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Bear Pochimoon",
+      "elements": [],
+      "raceId": "ursid",
+      "tier": "small",
+      "category": "Basic Pochimoon"
+    },
+    {
+      "name": "Gocomoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Gocamoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Goromoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Cocamoon",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Coromoon",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Caromoon",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Fomamoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Foimoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Fobemoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Punumoon",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Puarmoon",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Nubemoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "medium",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Gocoamoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Gocoromoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Goaromoon",
+      "elements": [],
+      "raceId": "primate",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Cocaromoon",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Funumoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Fuamoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Fonubemoon",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    },
+    {
+      "name": "Manubemoon",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "peak",
+      "category": "Fused Pochimoon"
+    }
+  ]
+}

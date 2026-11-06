@@ -50,7 +50,7 @@ export interface StatBlend {
   weight: number
 }
 
-export type EffectivenessMode = 'alwaysStrong' | 'reverse' | 'neverWeak'
+export type EffectivenessMode = 'alwaysStrong' | 'reverse' | 'neverWeak' | 'neutral' | 'noResist'
 
 /** Đổi trạng thái sắp dính sang loại khác / sang quái khác. */
 export interface StatusConversion {
@@ -141,6 +141,12 @@ export interface PassiveTraitPhases {
   /** Trạng thái này hồi máu thay vì gây sát thương, theo % hiệu quả; 0 = không. */
   statusHealPercent?(params: unknown, statusId: string): number
   blocksStatusGain?(params: unknown, kind: StatusKind, view: DslView): boolean
+  /** Luật "luôn có trạng thái" của quái mang trait (đồng bộ ở `syncEnforcedStatuses`). */
+  enforcedStatusRule?(params: unknown): EnforcedStatusRule
+  /** Chỉ số quái này chép khi quái khác trên sân đổi bậc (Harmony của WILDERLOCKE). */
+  copiesStagesOf?(params: unknown): readonly string[]
+  /** Trạng thái này không làm quái mất lượt (kiểu Frost Affinity). */
+  actsThroughStatus?(params: unknown, statusId: string): boolean
   minionModifier?(
     params: unknown,
     scale: number,
@@ -597,7 +603,13 @@ const bonusDamage: TraitHookHandler = {
 
 // ---------- Khắc hệ ----------
 
-const EFFECTIVENESS_MODES: readonly EffectivenessMode[] = ['alwaysStrong', 'reverse', 'neverWeak']
+const EFFECTIVENESS_MODES: readonly EffectivenessMode[] = [
+  'alwaysStrong',
+  'reverse',
+  'neverWeak',
+  'neutral',
+  'noResist'
+]
 
 const effectiveness: TraitHookHandler = {
   validateParams: (params) =>
@@ -879,6 +891,44 @@ const statusGainBlock: TraitHookHandler = {
   }
 }
 
+const ENFORCED_STATUS_SCOPES = ['self', 'side', 'foes', 'any'] as const
+
+/** Phạm vi và danh sách trạng thái luân phiên của hook `enforcedStatuses`. */
+export interface EnforcedStatusRule {
+  scope: (typeof ENFORCED_STATUS_SCOPES)[number]
+  statusIds: readonly string[]
+}
+
+const enforcedStatuses: TraitHookHandler = {
+  validateParams: (params, data) =>
+    withObject(params, (obj) => [
+      ...((ENFORCED_STATUS_SCOPES as readonly unknown[]).includes(obj.scope)
+        ? []
+        : [`scope phải là ${ENFORCED_STATUS_SCOPES.join(' / ')}`]),
+      ...(Array.isArray(obj.statusIds) && obj.statusIds.length > 0
+        ? checkIdList(obj.statusIds, 'statusIds', data.statuses, { label: 'trạng thái' })
+        : ['statusIds phải có ít nhất 1 trạng thái'])
+    ]),
+  enforcedStatusRule: (params) => params as EnforcedStatusRule
+}
+
+const copiesStages: TraitHookHandler = {
+  validateParams: (params) =>
+    withObject(params, (obj) =>
+      Array.isArray(obj.stats) && obj.stats.length > 0 ? [] : ['stats phải là danh sách không rỗng']
+    ),
+  copiesStagesOf: (params) => (params as { stats: readonly string[] }).stats
+}
+
+const actsThroughStatus: TraitHookHandler = {
+  validateParams: (params, data) =>
+    withObject(params, (obj) =>
+      checkIdList(obj.statusIds, 'statusIds', data.statuses, { label: 'trạng thái' })
+    ),
+  actsThroughStatus: (params, statusId) =>
+    (params as { statusIds: readonly string[] }).statusIds.includes(statusId)
+}
+
 // ---------- Minion ----------
 
 const minionModifier: TraitHookHandler = {
@@ -958,5 +1008,8 @@ export const PASSIVE_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
   statusDamageModifier,
   statusHeals,
   statusGainBlock,
+  enforcedStatuses,
+  actsThroughStatus,
+  copiesStages,
   minionModifier
 }

@@ -22,6 +22,7 @@ Code: model `model/zones.ts` (`ZoneDef`, `ZoneRequirement`, `ZoneVisit`, `allMap
 | `partySpeciesLine` | `speciesId`, `count` ≥ 1                     | ≥ count quái còn đánh được cùng dòng tiến hóa với loài đó (chính nó, dạng trước hoặc dạng sau; `evolutionLineOf`) |
 | `item`             | `itemId` (gộp chồng), `count` ≥ 1, `consume` | có đủ vật phẩm; `consume` = mất khi vào                                                                           |
 
+- **`portal`** (tùy chọn, `true`): mẫu cổng thế giới (mục "Cổng thế giới").
 - **`treasure` / `rareTreasure`**: `{ rolls, items: [{ itemId, weight, min, max }] }` (rương thường / hiếm; món chỉ có theo tùy chọn đang tắt thì bỏ, như rương bí cảnh).
 - Thêm loại điều kiện = thêm một mục vào union `ZoneRequirement`, `ZONE_REQUIREMENTS` (`world/zones.ts`) và `REQUIREMENT_CHECKS` (`validateZones.ts`); hai bảng là mapped type nên TypeScript báo thiếu.
 
@@ -81,11 +82,30 @@ Bốn kiểu hiểm địa (49 cái; tên do Claude đặt, chủ project duyệ
 
 - Đồ đặc biệt (đồ riêng của từng hiểm địa, nguyên liệu mới...) chỉ cần thêm item rồi thêm vào bảng của hiểm địa trong `zones-import.mjs` (dữ liệu, không sửa code). Điều kiện loài cụ thể (`partySpecies`) đã có, chưa có hiểm địa dùng (cố hương dùng dòng tiến hóa).
 
+- **Hệ không có loài mang làm hệ chính** (Kim tuyến, như gốc) thì không có hiểm địa theo hệ.
+
 - **Thần cai quản**: mỗi map hiểm địa có `deityId` = thần của hệ chủ đạo của hiểm địa (`deityAssign.mjs`); trận hiểm địa tăng ân sủng / nhận chúc phúc của thần đó (`deities.md`).
+
+## Cổng thế giới
+
+Hiểm địa có thời hạn, theo Portal của Portals of Phereon (chủ project yêu cầu 2026-11-05). Code: `world/portals.ts` (`spawnPortal`, `portalFloor`, `portalVisit`, `stabilizePortal`, `portalStabilizeCost`, `destroyPortalHive`, `conquerPortal`, `portalDailyTask`), action `enterPortal` ở `battle/zones.ts`, việc sau trận ở `SPECIAL_BATTLE_RULES.zone`. Số ở `config.zones.portals`.
+
+- **Mẫu cổng**: hiểm địa có `portal: true` trong `zones.json` (10 mẫu theo môi trường của gốc, `portal<Chủ đề>`, sinh ở `zones-import.mjs`; không điều kiện vào). Không vào thẳng bằng `enterZone` (`zoneIsPortal`).
+- **Mở**: việc theo ngày, khi còn dưới `maxOpen` (3) cổng thì tung `spawnChance` (15%) mở một cổng từ mẫu ngẫu nhiên (log `portalOpened`): hung hiểm 1, số bước đều trong `steps` [8, 12], `startHives` (1) tổ quái, đóng sau `durationDays` (7) ngày.
+- **Mỗi ngày**: tổ quái + `hivesPerDay` (1), tối đa `maxHives` (8). Tới ngày đóng thì cổng biến mất (log `portalClosed`), trừ cổng đang có lượt vào.
+- **Vào** `enterPortal { portalId }` (thị trấn, như vào hiểm địa): `portalNotFound`, `portalClosed`, `zoneInProgress`. **Tầng sức mạnh** = tầng cao nhất + `floorOffset` + hung hiểm × `floorsPerHostility` (2) + tổ × `floorsPerHive` (1), tối thiểu 1, tính lúc vào.
+- **Khám phá** dùng chung `exploreZone`, trọng số `portals.stepWeights` (trận 45, tinh anh 8, rương 12, rương hiếm 3, linh tuyền 8, tổ quái 14, thu thập 10). Hai loại bước riêng của cổng (hiểm địa thường trọng số 0):
+  - `hive`: trận tinh anh; thắng thì cổng bớt một tổ (`special.hive`).
+  - `gather` (công trình thu thập của gốc): rương thường × `gatherRolls` (2).
+- **Tiến độ giữ qua lượt vào**: rời / thua thì `stepsTaken` ghi lại vào cổng, cổng không khóa, vào lại đi tiếp (`closeZoneVisit`). Khác hiểm địa thường (khóa `cooldownDays`, đi lại từ đầu).
+- **Hạ boss canh giữ**: thưởng như hiểm địa, cổng biến mất, mở ngay cổng kế tiếp hung hiểm + 1 (mẫu ngẫu nhiên), được một lựa chọn tinh chất (`essences.md`).
+- **Gia cố** `stabilizePortal { portalId }` (ngoài trận): giá `stabilizeCost` (5.000) × hung hiểm × (số lần đã gia cố + 1), cổng mở thêm `stabilizeDays` (5) ngày.
+- **Lệch gốc**: gốc đi trên bản đồ, % khám phá theo ô, gia cố bằng pha lê / tiền và rẻ hơn khi có ≥ 3 đèn hiệu, cổng mới chọn từ nhiều cổng. Game dùng bước khám phá của hiểm địa (% khám phá = `stepsTaken` / `steps`), gia cố bằng tiền, chưa có đèn hiệu. Số là số tạm.
+- **Chưa có**: màn hình cổng (chờ UI, `ui-overhaul.md`); mô phỏng cổng chưa đo (`simulation-features.md` mục "Cổng thế giới").
 
 ## Save
 
-- `GameState.zones = { visit, reopenDay }` (game mới: `{ visit: null, reopenDay: {} }`). Kiểm tra (`validateZoneState`): hiểm địa tồn tại, ngày nguyên ≥ 0; lượt vào: tầng ≥ 1, `0 ≤ stepsTaken < steps`, đang ở thị trấn, không đồng thời bí cảnh / khu bảo tồn. Trận hiểm địa chưa kết thúc phải có lượt vào đúng hiểm địa đó; boss canh giữ chỉ ở bước cuối.
+- `GameState.zones = { visit, reopenDay, portals, nextPortalId }` (game mới: `{ visit: null, reopenDay: {} }`). Kiểm tra (`validateZoneState`): hiểm địa tồn tại, ngày nguyên ≥ 0; lượt vào: tầng ≥ 1, `0 ≤ stepsTaken < steps`, đang ở thị trấn, không đồng thời bí cảnh / khu bảo tồn. Trận hiểm địa chưa kết thúc phải có lượt vào đúng hiểm địa đó; boss canh giữ chỉ ở bước cuối.
 - v63 migrate: `zones: { visit: null, reopenDay: {} }` (`state-versions.md`).
 
 ## Chưa có

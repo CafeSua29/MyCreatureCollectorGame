@@ -12,5 +12,12 @@
   "scientist": "Scientist",
   "fireMage": "Fire Mage",
   "saintess": "Saintess",
-  "gymLeader": "Gym Leader"
+  "gymLeader": "Gym Leader",
+  "wlSportsgirl": "Sportsgirl (WILDERLOCKE)",
+  "wlHiker": "Hiker (WILDERLOCKE)",
+  "wlFisherman": "Fisherman (WILDERLOCKE)",
+  "wlBugCatcher": "Bug Catcher (WILDERLOCKE)",
+  "wlStudent": "Student (WILDERLOCKE)",
+  "wlStrongman": "Strongman (WILDERLOCKE)",
+  "wlChampion": "Champion (WILDERLOCKE)"
 }

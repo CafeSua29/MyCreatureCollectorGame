@@ -46,7 +46,10 @@ const uniqueName = (name, taken) => {
 const remaining = []
 const counts = { converted: 0, rejected: 0, deferred: 0, pending: 0 }
 for (const trait of planned) {
-  const conversion = conversions[trait.id]
+  // Mục nhập bổ sung có id thêm hậu tố vì trùng: quy đổi ghi theo `conversionKey` (siralim-update/ids.mjs).
+  // Chỉ mục của Siralim: mục chờ của nguồn khác trùng id (strengthInNumbers của TWW3) giữ nguyên.
+  const conversion =
+    trait.source === 'siralim' ? conversions[trait.conversionKey ?? trait.id] : undefined
   if (!conversion) {
     remaining.push(trait)
     counts.pending++

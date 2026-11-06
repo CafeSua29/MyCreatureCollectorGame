@@ -21,6 +21,38 @@ import { asObject, checkInteger, checkNumber, isFiniteNumber } from '../shared'
 import { checkDrops, checkEffectTargets, checkEffects, checkElementIds, checkStats } from './checks'
 import { checkSpeciesEvolutions } from './validateEvolutions'
 
+/** Giới hạn lần dùng, kẹp sát thương, đổi theo lần dùng của skill (nguồn WILDERLOCKE). */
+function checkUseRules(data: GameData, skill: Skill, where: string): string[] {
+  const issues: string[] = []
+  if (skill.maxUsesPerBattle !== undefined) {
+    issues.push(...checkInteger(skill.maxUsesPerBattle, `${where}.maxUsesPerBattle`, 1))
+  }
+  for (const key of ['damageFloorPercent', 'damageCapPercent'] as const) {
+    if (skill[key] !== undefined) {
+      issues.push(...checkNumber(skill[key], `${where}.${key}`, Number.MIN_VALUE, 100))
+    }
+  }
+  for (const key of ['targetsHighestHpFoe', 'doublesAttackStage'] as const) {
+    if (skill[key] !== undefined && skill[key] !== true) {
+      issues.push(`${where}: ${key} chỉ được là true`)
+    }
+  }
+  for (const [index, step] of (skill.hitsByHp ?? []).entries()) {
+    issues.push(
+      ...checkNumber(step.atOrBelowPercent, `${where}.hitsByHp[${index}].atOrBelowPercent`, 0, 100)
+    )
+    issues.push(...checkInteger(step.hits, `${where}.hitsByHp[${index}].hits`, 1))
+  }
+  const alternate = skill.alternateUse
+  if (alternate?.elementId !== undefined && !Object.hasOwn(data.elements, alternate.elementId)) {
+    issues.push(`${where}.alternateUse: hệ không tồn tại "${alternate.elementId}"`)
+  }
+  if (alternate && alternate.elementId === undefined && alternate.category === undefined) {
+    issues.push(`${where}.alternateUse cần elementId hoặc category`)
+  }
+  return issues
+}
+
 export function checkElements(data: GameData, issues: string[]): void {
   for (const element of Object.values(data.elements)) {
     const airborne: unknown = element.airborne
@@ -87,7 +119,8 @@ export function checkSpecies(data: GameData, issues: string[]): void {
     if (!(species.raceId in data.races)) {
       issues.push(`${where}: race không tồn tại "${species.raceId}"`)
     }
-    checkElementIds(data, species.elementIds, where, issues)
+    // Loài không hệ (Archangel của Cassette Beasts...): danh sách rỗng hợp lệ.
+    checkElementIds(data, species.elementIds, where, issues, { allowEmpty: true })
     checkStats(species.baseStats, `${where}.baseStats`, Number.MIN_VALUE, issues)
     checkSpeciesEvolutions(data, species, issues)
     if (!Array.isArray(species.learnset)) {
@@ -148,6 +181,7 @@ export function checkSkills(data: GameData, issues: string[]): void {
     if (skill.alwaysHits !== undefined && skill.alwaysHits !== true) {
       issues.push(`${where}: alwaysHits chỉ được là true`)
     }
+    issues.push(...checkUseRules(data, skill, where))
     issues.push(...checkSkillMechanics(data, skill, where))
     issues.push(...checkSkillFormFields(data, skill, where))
     for (const field of ['curesUserStatuses', 'curesTargetStatuses'] as const) {

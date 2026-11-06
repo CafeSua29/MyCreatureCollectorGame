@@ -16,14 +16,17 @@
     "traitsPlanned": 1591,
     "speciesLearnsetEntries": 6674,
     "plannedLearnsetEntries": 6414,
-    "newRaces": ["celestial", "deity"],
+    "newRaces": [
+      "celestial",
+      "deity"
+    ],
     "siralimSpellConversion": {
-      "converted": 444,
-      "reused": 9,
-      "rejected": 103,
-      "deferred": 4,
+      "converted": 65,
+      "reused": 0,
+      "rejected": 15,
+      "deferred": 0,
       "pending": 0,
-      "learnset": 4941,
+      "learnset": 0,
       "missingSpecies": 0
     }
   },
@@ -621,7 +624,9 @@
     "volcano",
     "zombieClap"
   ],
-  "importedTraits": ["drakesFavor"],
+  "importedTraits": [
+    "drakesFavor"
+  ],
   "rejectedSpells": [
     {
       "id": "absoluteFocus",
@@ -1240,6 +1245,96 @@
       "nameEn": "Vaccination",
       "reason": "statusPotency",
       "description": "Your creatures gain their lowest stat equal to 100% of the target's Poisoned potency."
+    },
+    {
+      "id": "colorwave",
+      "nameEn": "Colorwave",
+      "reason": "spellGem",
+      "description": "Target takes a devastating amount of damage, plus 50% more damage for each Chaos Infusion you have."
+    },
+    {
+      "id": "entropicSwing",
+      "nameEn": "Entropic Swing",
+      "reason": "autoCast",
+      "description": "All creatures' end-of-turn effects are activated and the Timeline is shuffled. This spell cannot be Cast manually, and has a 5% chance to be Cast at the start of each creature's turn."
+    },
+    {
+      "id": "gemConversion",
+      "nameEn": "Gem Conversion",
+      "reason": "charge",
+      "description": "Target's Charges are redistributed."
+    },
+    {
+      "id": "gemGamble",
+      "nameEn": "Gem Gamble",
+      "reason": "charge",
+      "description": "Target's Charges are set to either 0% or 100%."
+    },
+    {
+      "id": "luckyGem",
+      "nameEn": "Lucky Gem",
+      "reason": "charge",
+      "description": "Target recovers 100% Charges. Does not affect Ultimate Spell. This spell cannot be cast manually, but has a 20% chance to cast on an ally at the end of its turn."
+    },
+    {
+      "id": "magnification",
+      "nameEn": "Magnification",
+      "reason": "castHistory",
+      "description": "Casts the last single-target spell your creatures Cast. The spell targets all enemies."
+    },
+    {
+      "id": "mysteryGem",
+      "nameEn": "Mystery Gem",
+      "reason": "charge",
+      "description": "Target's Charges are randomized."
+    },
+    {
+      "id": "necromancy",
+      "nameEn": "Necromancy",
+      "reason": "countBonus",
+      "description": "Caster gains one stack of Zombies for each buff it has."
+    },
+    {
+      "id": "partyInTheBack",
+      "nameEn": "Party in the Back",
+      "reason": "autoCast",
+      "description": "A random enemy recovers a large amount of Health. This spell cannot be cast manually, but has a 100% chance to be cast after its owner is forcibly moved to the bottom of the Timeline."
+    },
+    {
+      "id": "shiningJewel",
+      "nameEn": "Shining Jewel",
+      "reason": "charge",
+      "description": "Target recovers 100% Charges. This spell does not work on Ultimate Spell."
+    },
+    {
+      "id": "supremacy",
+      "nameEn": "Supremacy",
+      "reason": "killChance",
+      "description": "Enemies have a 1% chance to be killed for every 1% Health they're missing."
+    },
+    {
+      "id": "thoughtsAndPrayers",
+      "nameEn": "Thoughts and Prayers",
+      "reason": "joke",
+      "description": "This spell Casts three additional times, but doesn't do anything."
+    },
+    {
+      "id": "tradeOffer",
+      "nameEn": "Trade Offer",
+      "reason": "artifact",
+      "description": "Target gains this creature's Artifact's Trait."
+    },
+    {
+      "id": "treasonousMind",
+      "nameEn": "Treasonous Mind",
+      "reason": "autoCast",
+      "description": "Caster's buffs are removed and this Spell Gem's owner steals 5% of the caster's highest stat. This spell cannot be cast manually, but has a 20% chance to be cast by enemies at the start of their turns."
+    },
+    {
+      "id": "witchcraft",
+      "nameEn": "Witchcraft",
+      "reason": "forcedCast",
+      "description": "Enemies with Cursed Cast one of their single-target damage spells on a random creature."
     }
   ],
   "rejectedTraits": [
@@ -2562,6 +2657,438 @@
       "nameEn": "Excruciating Venom",
       "reason": "statusPotency",
       "description": "After this creature Attacks an enemy with Poisoned, it gains Attack equal to 50% of the potency of this debuff."
+    },
+    {
+      "id": "yowl",
+      "nameEn": "Yowl!",
+      "reason": "spellGem",
+      "description": "This creature can equip Spell Gems from any class. Your creatures have 10% more Speed for each Sealed Spell Gem each of your creatures have. This trait does not stack."
+    },
+    {
+      "id": "maow",
+      "nameEn": "Maow!",
+      "reason": "spellGem",
+      "description": "This creature can equip Spell Gems from any class. Your creatures have 10% more Intelligence for each Sealed Spell Gem each of your creatures have. This trait does not stack."
+    },
+    {
+      "id": "weaponsOfMassDistortion",
+      "nameEn": "Weapons of Mass Distortion",
+      "reason": "artifact",
+      "description": "At the start of battle, this creature's Artifact's Spell Slot gem is replaced with an Ultimate Spell Gem of this creature's equipped Relic's corresponding Avatar."
+    },
+    {
+      "id": "hisss",
+      "nameEn": "Hisss!",
+      "reason": "spellGem",
+      "description": "This creature can equip Spell Gems from any class. Your creatures have 10% more Defense for each Sealed Spell Gem each of your creatures have. This trait does not stack."
+    },
+    {
+      "id": "oneOfUsMustChange",
+      "nameEn": "One Of Us Must change",
+      "reason": "personality",
+      "description": "This creature deals 200% more damage to enemies with the same Personalities that increase the same stats as this creature's Personality."
+    },
+    {
+      "id": "spiteMatch",
+      "nameEn": "Spite Match",
+      "reason": "personality",
+      "description": "Enemies cannot gain this creature's Personality-decreased stats, and this creature attacks enemies when this would happen."
+    },
+    {
+      "id": "stolenValor",
+      "nameEn": "Stolen Valor",
+      "reason": "traitRemoval",
+      "description": "Your creatures cannot lose extra traits and Spell Gems in battle."
+    },
+    {
+      "id": "falseBravado",
+      "nameEn": "False Bravado",
+      "reason": "personality",
+      "description": "Your creatures gain 100% more benefit from their Personalities. This trait does not stack."
+    },
+    {
+      "id": "suCasaEsMiCasa",
+      "nameEn": "Su Casa Es Mi Casa",
+      "reason": "personality",
+      "description": "This creature deals 200% more damage to enemies with the same Personalities that decrease the same stats as this creature's Personality."
+    },
+    {
+      "id": "loadBearingMakeup",
+      "nameEn": "Load-Bearing Makeup",
+      "reason": "personality",
+      "description": "Your creatures' Personality-increased stats cannot be decreased."
+    },
+    {
+      "id": "impedence",
+      "nameEn": "Impedence",
+      "reason": "spellGem",
+      "description": "At the start of battle, this creature Seals one of each enemy's Spell Gems. This trait does not stack."
+    },
+    {
+      "id": "timeFractureResonance",
+      "nameEn": "Time Fracture Resonance",
+      "reason": "timelinePosition",
+      "description": "While this creature is at the bottom of the Timeline, your creatures do not consume Charges when they Cast spells. In addition, their spells always deal critical damage and have 100% more potency."
+    },
+    {
+      "id": "massEffect",
+      "nameEn": "Mass Effect",
+      "reason": "triggerRepeat",
+      "description": "Your creatures act as if they have taken damage, Attacked, and Cast spells 1 additional time for each time their on-critical effects have triggered in the current battle. This trait does not stack."
+    },
+    {
+      "id": "theGrudge",
+      "nameEn": "The Grudge",
+      "reason": "statusBasis",
+      "description": "This creature always has Cursed. The damage your creatures take from Cursed is based on their lowest stat rather than Attackstat."
+    },
+    {
+      "id": "fishingForCompliments",
+      "nameEn": "Fishing for Compliments",
+      "reason": "forcedCast",
+      "description": "After one of your creatures Cast a single-target healing spell on an enemy with Mania, that enemy Casts that spell on your creature as well. This trait does not stack."
+    },
+    {
+      "id": "ancientWisdom",
+      "nameEn": "Ancient Wisdom",
+      "reason": "statConversion",
+      "description": "When a creature would gain or lose stats, 10% of this creature's Intelligence is added to this amount for each turn it has taken this battle. This creature starts battles with its turn counter at 3. This trait does not stack."
+    },
+    {
+      "id": "chatteringChant",
+      "nameEn": "Chattering Chant",
+      "reason": "spellGem",
+      "description": "This creature can equip Spell Gems from any class. Your creatures have 10% more Attackstat for each Sealed Spell Gem each of your creatures have. This trait does not stack."
+    },
+    {
+      "id": "gatheringStorm",
+      "nameEn": "Gathering Storm",
+      "reason": "timelinePosition",
+      "description": "After this creature is forcibly moved on the Timeline, it casts Snowstorm, Firestorm, or Sandstorm if they're equipped. In addition, your creatures cast these spells as if they have 50% more intelligence. This trait does not stack."
+    },
+    {
+      "id": "lunaticGenerosity",
+      "nameEn": "Lunatic Generosity",
+      "reason": "spellGem",
+      "description": "At the start of battle, all creatures gain a copy of this creature's first 3 Spell Gems. These Spell Gems have 1 Charge."
+    },
+    {
+      "id": "massMutation",
+      "nameEn": "Mass Mutation",
+      "reason": "fusion",
+      "description": "At the start of battle, this creature shares its Fused trait with one creature of each class on your team. If this trait is the creature's Fused Trait, it shares its innate trait instead. This trait does not stack."
+    },
+    {
+      "id": "thrillfulTrills",
+      "nameEn": "Thrillful Trills",
+      "reason": "spellGem",
+      "description": "This creature can equip Spell Gems from any class. At the start of your creatures' turns, they are healed for 5% of their Maximum Health for each Sealed Spell Gem each of your creatures have. This trait does not stack."
+    },
+    {
+      "id": "beyondTheVeil",
+      "nameEn": "Beyond the Veil",
+      "reason": "deathTiming",
+      "description": "This creature can be affected by stat changes while dead and does not lose stats on death. This creature's traits remain active while dead, except for traits that would redirect attacks or take damage in place of allies."
+    },
+    {
+      "id": "destructionBeam",
+      "nameEn": "Destruction Beam",
+      "reason": "targetStat",
+      "description": "At the start of this creature's turn, it kills the creature with the highest Speed in normal battles. In boss battles, this creature instead Attacks it. This trait can only activate once per battle."
+    },
+    {
+      "id": "totalDiscord",
+      "nameEn": "Total Discord",
+      "reason": "targetChange",
+      "description": "When this creature casts a spell, the targets of the spell are reversed. This trait does not apply to enemies."
+    },
+    {
+      "id": "prismaticOne",
+      "nameEn": "Prismatic One",
+      "reason": "identityChange",
+      "description": "At the start of battle, this creature's class is randomized, prioritizing classes not on your team. Then, it copies the top-most Spell Gem of each ally of a different class, but current Charges are set to 1."
+    },
+    {
+      "id": "weaponizedSpirit",
+      "nameEn": "Weaponized Spirit",
+      "reason": "spellFamily",
+      "description": "Booze Spells also count as Arsenal Spells and vice-versa."
+    },
+    {
+      "id": "coPilots",
+      "nameEn": "Co-Pilots",
+      "reason": "adjacency",
+      "description": "This creature acts as if it is adjacent to all the Robodomi creatures fighting on your side."
+    },
+    {
+      "id": "consumingKnowledge",
+      "nameEn": "Consuming Knowledge",
+      "reason": "charge",
+      "description": "After your creatures Attack, their non-Ultimate Spell gems gain 1 Charge. This trait can only activate once per turn for each creature. This trait does not stack."
+    },
+    {
+      "id": "theGoldenSign",
+      "nameEn": "The Golden Sign",
+      "reason": "randomChoice",
+      "description": "At the start of battle, your creatures either gain 100% Attackstat and Scorned, or 100% Intelligence and Silenced. This trait does not stack."
+    },
+    {
+      "id": "soulExchange",
+      "nameEn": "Soul Exchange",
+      "reason": "statSet",
+      "description": "At the start of battle, your creatures' Attackstat and Intelligence are set to whichever is highest."
+    },
+    {
+      "id": "bigWings",
+      "nameEn": "Big Wings",
+      "reason": "statDifference",
+      "description": "If this creature's Attackstat and Intelligence are within 100% of each other, it always deals critical damage and enemies cannot dodge its attacks."
+    },
+    {
+      "id": "innocence",
+      "nameEn": "Innocence",
+      "reason": "statusPotency",
+      "description": "Enemies with Cursed take 10% more damage from this debuff for each time an enemy has taken Cursed damage in the current battle. This trait does not stack."
+    },
+    {
+      "id": "adoration",
+      "nameEn": "Adoration",
+      "reason": "forcedCast",
+      "description": "At the end of each enemy's turn, they Cast a healing Spell Gem equipped by this creature in your favor. This trait does not stack."
+    },
+    {
+      "id": "heartstrings",
+      "nameEn": "Heartstrings",
+      "reason": "forcedCast",
+      "description": "At the end of each enemy's turn, they Cast one of their spells. After an enemy with Cursed Casts a spell, they take damage equal 20% of this creature's intelligence. This trait does not stack."
+    },
+    {
+      "id": "communicationServices",
+      "nameEn": "Communication Services",
+      "reason": "adjacency",
+      "description": "At the start of battle, your Robodomi creatures share their innate traits with adjacent Robodomi creatures."
+    },
+    {
+      "id": "endOnAHighNote",
+      "nameEn": "End On a High Note",
+      "reason": "reviveBlock",
+      "description": "If an enemy's Mania potency is greater that 100% of its maximum Health when it dies, it cannot be resurrected."
+    },
+    {
+      "id": "surpriseTreat",
+      "nameEn": "Surprise Treat",
+      "reason": "triggerActivation",
+      "description": "After you creatures receive a debuff, their on-buff effects activate. If you have a Dumpling or Mimic creature fighting on your side, this effect repeats 1 additional time. This trait does not stack."
+    },
+    {
+      "id": "powerInBalance",
+      "nameEn": "Power In Balance",
+      "reason": "statAverage",
+      "description": "After all start-of-battle effects, this creature's stats are averaged, then it gains 10% stats for each unique class among your creatures. This creature's stat changes persist through death."
+    },
+    {
+      "id": "enfeeblingHaze",
+      "nameEn": "Enfeebling Haze",
+      "reason": "statConversion",
+      "description": "Creatures lose 10% more stats for each unique class among your creatures. Creatures receive additional damage from attacks and spells equal to 5% of their lost stats. This trait does not stack."
+    },
+    {
+      "id": "scoundrelsStrike",
+      "nameEn": "Scoundrel's Strike",
+      "reason": "skillModify",
+      "description": "Toxic Frogmania cast by your creatures always deals massive damage based on the caster's lowest stat and afflicts the target with Poisoned. The potency of the spell is increased by 20% for each unique class among your creatures. This trait does not stack."
+    },
+    {
+      "id": "rainOfMagic",
+      "nameEn": "Rain of Magic",
+      "reason": "charge",
+      "description": "At the start of battle, this creature's spells with the \"Cascading\" property gain 4 additional maximum Charges for each unique class among your creatures. Does not work on Ultimate Spells."
+    },
+    {
+      "id": "conduitStrike",
+      "nameEn": "Conduit Strike",
+      "reason": "charge",
+      "description": "This creature can equip an additional Spell Gem for each unique class among your creatures. When this creature Attacks, it consumes a Charge from each of its Spell Gems to deal additional damage equal to 5% of its lowest stat for each consumed Charge. This creature cannot Cast spells."
+    },
+    {
+      "id": "oneHitWonder",
+      "nameEn": "One-Hit Wonder",
+      "reason": "extraHitMerge",
+      "description": "When you creatures Attack, their additional attacks are consolidated into the original attack with 100% more damage. This trait does not stack."
+    },
+    {
+      "id": "powerfulDraw",
+      "nameEn": "Powerful Draw",
+      "reason": "spellFamily",
+      "description": "This creature can only equip Arrow spells, but they can be from any class. This creature's single-target Arrow spells deal additional damage equal to 50% of its Attackstat. This creature's Splitting Arrow and Fragmenting Arrow spells deal 100% more damage."
+    },
+    {
+      "id": "imprudence",
+      "nameEn": "Imprudence",
+      "reason": "guardRemoval",
+      "description": "At the end of each creature's turn, this creature stops Defending and Provoking and gains 20% Attackstat if it was Defending or Provoking."
+    },
+    {
+      "id": "eureka",
+      "nameEn": "Eureka!",
+      "reason": "statusPotency",
+      "description": "This creature always has Mania and has additional Intelligence equal to 5% of the potency of its Mania. This creature cannot be immune to Mania."
+    },
+    {
+      "id": "purrr",
+      "nameEn": "Purrr",
+      "reason": "spellGem",
+      "description": "This creature can equip Spell Gems from any class. After this creature Casts a spell, it is Sealed."
+    },
+    {
+      "id": "dontTouchMyGarbage",
+      "nameEn": "Don't Touch My Garbage",
+      "reason": "spellGem",
+      "description": "This creature gains a copy of all different Ethereal Spell Gems other creatures receive after start-of-battle effects. After this creature is killed, each other creature takes damage equal to 3% of the stats corresponding to its gems' classes per Ethereal Spell Gem it has. After this creature is resurrected, it is killed."
+    },
+    {
+      "id": "prismagic",
+      "nameEn": "Prismagic",
+      "reason": "spellGem",
+      "description": "This creature can equip 3 additional Spell Gems, and it can equip spells from any class. Your creatures with Arcane Cast spells with 15% more Intelligence for each different class of spell this creature has equipped. This trait does not stack."
+    },
+    {
+      "id": "perfectReplica",
+      "nameEn": "Perfect Replica",
+      "reason": "transform",
+      "description": "After this creature Attacks, it transforms into a copy of the target and gains its Spell Gems."
+    },
+    {
+      "id": "colorShift",
+      "nameEn": "Color Shift",
+      "reason": "identityChange",
+      "description": "At the start of battle, this creature's class is randomized and it gains a copy of your other creatures' innate traits and Artifact traits that match that class."
+    },
+    {
+      "id": "warpedSoul",
+      "nameEn": "Warped Soul",
+      "reason": "identityChange",
+      "description": "At the start of battle, enemies' classes are changed to this creature's class."
+    },
+    {
+      "id": "spectometry",
+      "nameEn": "Spectometry",
+      "reason": "spellGem",
+      "description": "Your Spelljuggler creatures can equip Spell Gems from any class."
+    },
+    {
+      "id": "prismaticAmplifier",
+      "nameEn": "Prismatic Amplifier",
+      "reason": "castHistory",
+      "description": "Your creatures' spells have 100% more potency if the spell's class is different from the last spell cast in the current battle. This trait does not stack."
+    },
+    {
+      "id": "lucidRenewal",
+      "nameEn": "Lucid Renewal",
+      "reason": "charge",
+      "description": "If your creatures have collectively Cast a spell from each class in the current battle, their Spell Gems no longer consume Charges and have 50% more potency. This trait does not stack."
+    },
+    {
+      "id": "shiftingBrilliance",
+      "nameEn": "Shifting Brilliance",
+      "reason": "castHistory",
+      "description": "After this creature Casts a spell of a different class from the last spell cast in the current battle, your creatures gain 40% Intelligence. This trait does not stack."
+    },
+    {
+      "id": "enochian",
+      "nameEn": "Enochian",
+      "reason": "castHistory",
+      "description": "After this creature Casts a spell of a different class from the last spell cast in the current battle, enemies take damage equal to 35% of its Intelligence."
+    },
+    {
+      "id": "addToTheMix",
+      "nameEn": "Add to the Mix",
+      "reason": "castHistory",
+      "description": "After an ally Casts a spell of a different class from the last spell cast in the current battle, this creature Casts one of its spells."
+    },
+    {
+      "id": "gemBlade",
+      "nameEn": "Gem Blade",
+      "reason": "artifact",
+      "description": "After this creature gains Animated Gem, it Casts the spell in its Artifact's Spell Slot. After this creature gains Animated Weapon, it Attacks a random enemy."
+    },
+    {
+      "id": "duality",
+      "nameEn": "Duality",
+      "reason": "partyOrder",
+      "description": "At the start of battle, this creature Attacks a random enemy if it is on the left-most side of your party, or Defends if it is on the right-most side of your party."
+    },
+    {
+      "id": "qualityOverQuantity",
+      "nameEn": "Quality Over Quantity",
+      "reason": "charge",
+      "description": "Your creatures' Spell Gems with the 'Singular' property have 100% more Charges if they only have one non-Ethereal Spell Gem equipped. This trait does not stack."
+    },
+    {
+      "id": "theEndOfAllThings",
+      "nameEn": "The End of All Things",
+      "reason": "triggerActivation",
+      "description": "At the end of this creature's turn, adjacent creatures activate their end-of-turn effects. This trait does not work on creatures that also have this trait. This trait does not stack."
+    },
+    {
+      "id": "negativeCharge",
+      "nameEn": "Negative Charge",
+      "reason": "skillModify",
+      "description": "This creature always has Silenced. Your creatures' Lightning Storm acts as if they have 50% more Intelligence for each creature on your team afflicted with Silenced. This trait does not stack."
+    },
+    {
+      "id": "tardyToTheParty",
+      "nameEn": "Tardy to the Party",
+      "reason": "spellGem",
+      "description": "At the start of battle, if your creature's top-most Spell Gem is Party in the Back, they cast Chrysalis on themselves. This trait does not stack."
+    },
+    {
+      "id": "robbingTheGrave",
+      "nameEn": "Robbing the Grave",
+      "reason": "statConversion",
+      "description": "Creatures lose 35% more stats. Your creatures Cast spells that interact with Feared with 50% more potency. This trait does not stack."
+    },
+    {
+      "id": "miseryLovesCompany",
+      "nameEn": "Misery Loves Company",
+      "reason": "statConversion",
+      "description": "Your creatures have 2 more base stats that correspond to each of your creatures' classes. This trait does not stack."
+    },
+    {
+      "id": "mortalTerror",
+      "nameEn": "Mortal Terror",
+      "reason": "triggerActivation",
+      "description": "After all start-of-battle effects, this creature Attacks a random enemy with Feared and activates that enemy's on-death effects."
+    },
+    {
+      "id": "darkRitual",
+      "nameEn": "Dark Ritual",
+      "reason": "statConversion",
+      "description": "At the start of battle, your creatures share 10% of their class' corresponding stats with your other creatures. Your creatures start battles at 50% Health. This trait does not stack."
+    },
+    {
+      "id": "feastAndFamine",
+      "nameEn": "Feast and Famine",
+      "reason": "reviveBlock",
+      "description": "Enemies that die with Feared cannot be resurrected."
+    },
+    {
+      "id": "whatAreYouBuying",
+      "nameEn": "What Are You Buying?",
+      "reason": "artifact",
+      "description": "At the start of this creature's turn, enemy creatures gain this creature's Artifact trait."
+    },
+    {
+      "id": "sandstorm",
+      "nameEn": "Sandstorm",
+      "reason": "targetChange",
+      "description": "This creature always has Blind. When your creatures with Blind Cast a spell that targets more than one creature, it instead targets all creatures and has 100% more potency. This trait does not stack."
+    },
+    {
+      "id": "phasers",
+      "nameEn": "Phasers",
+      "reason": "charge",
+      "description": "When this creature Attacks, it always does 0 damage but restores 1 Charge to a non-Ultimate Spell."
     }
   ],
   "readdedSummonSpells": [

@@ -2,11 +2,11 @@
   "maps": [
     {
       "id": "meadow",
-      "species": 255,
+      "species": 281,
       "floorBoss": "tidehorn",
       "randomBosses": [
         "emberling",
-        "skunch",
+        "chocolateStatue",
         "dorbickmondarknessmodeDragonArmy",
         "rodian"
       ],
@@ -15,32 +15,32 @@
     },
     {
       "id": "volcano",
-      "species": 247,
+      "species": 280,
       "floorBoss": "pyrodrake",
       "randomBosses": [
         "ashgrunt",
-        "ashuuRamii",
-        "retriever",
-        "plusKomasan"
+        "rakshaga",
+        "infernoe",
+        "metsuryuutaiJibanyan"
       ],
       "doubleChance": 60,
       "bossChance": 3
     },
     {
       "id": "reikland",
-      "species": 250,
+      "species": 277,
       "floorBoss": "demigryph",
       "randomBosses": [
-        "tuwire",
-        "dorbickmondarknessmodeDragonArmy",
-        "pd700rOrigin"
+        "squall",
+        "delusionalGrindere",
+        "dorbickmondarknessmodeDragonArmy"
       ],
       "doubleChance": 42,
       "bossChance": 2.9
     },
     {
       "id": "drakwaldForest",
-      "species": 251,
+      "species": 277,
       "floorBoss": "chaosWarhound",
       "randomBosses": [
         "centigor",
@@ -52,43 +52,43 @@
     },
     {
       "id": "middenland",
-      "species": 251,
-      "floorBoss": "soboros",
+      "species": 277,
+      "floorBoss": "cookieBag",
       "randomBosses": [
         "demigryph",
-        "kimonashiKaDa",
-        "dorbickmondarknessmodeDragonArmy"
+        "gokuFubukiHimeShouKyou",
+        "equestrion"
       ],
       "doubleChance": 67,
       "bossChance": 3.2
     },
     {
       "id": "ostland",
-      "species": 250,
+      "species": 277,
       "floorBoss": "dento",
       "randomBosses": [
         "demigryph",
         "dorbickmondarknessmodeDragonArmy",
-        "shoutmonx6"
+        "greaterPlatypink"
       ],
       "doubleChance": 41,
       "bossChance": 2.4
     },
     {
       "id": "stirland",
-      "species": 251,
-      "floorBoss": "xibian",
+      "species": 277,
+      "floorBoss": "zombiePaladin",
       "randomBosses": [
         "demigryph",
-        "doggySpecialTaskForce",
-        "dorbickmondarknessmodeDragonArmy"
+        "narikirog",
+        "cloudWillOTheWhips"
       ],
       "doubleChance": 37,
       "bossChance": 2
     },
     {
       "id": "averland",
-      "species": 251,
+      "species": 277,
       "floorBoss": "hundunDragonQuest",
       "randomBosses": [
         "demigryph",
@@ -100,55 +100,55 @@
     },
     {
       "id": "wissenland",
-      "species": 249,
-      "floorBoss": "jaouGunGokuBushinyan",
+      "species": 276,
+      "floorBoss": "ryuutaSatobaShukuen",
       "randomBosses": [
         "demigryph",
-        "chimaeraXy",
-        "redRobbinOod"
+        "putaranoden",
+        "grottoGuardian"
       ],
       "doubleChance": 32,
       "bossChance": 4.1
     },
     {
       "id": "hochland",
-      "species": 251,
-      "floorBoss": "chocolateStatue",
+      "species": 277,
+      "floorBoss": "rhododendronFae",
       "randomBosses": [
         "demigryph",
-        "shoutmonx6",
-        "pawnshoutmon"
+        "tendo",
+        "wildNakk"
       ],
       "doubleChance": 31,
       "bossChance": 2.9
     },
     {
       "id": "talabecland",
-      "species": 250,
-      "floorBoss": "monkko",
+      "species": 277,
+      "floorBoss": "yuzuken",
       "randomBosses": [
         "demigryph",
-        "yuzuken",
-        "dorbickmondarknessmodeDragonArmy"
+        "dorbickmondarknessmodeDragonArmy",
+        "shoutmonx6"
       ],
       "doubleChance": 67,
       "bossChance": 2.2
     },
     {
       "id": "nordland",
-      "species": 251,
-      "floorBoss": "skunch",
+      "species": 277,
+      "floorBoss": "skoi",
       "randomBosses": [
         "demigryph",
         "eelHound",
-        "zora"
+        "mermidon"
       ],
       "doubleChance": 70,
       "bossChance": 3
     },
     {
       "id": "sylvania",
-      "species": 251,
+      "species": 277,
       "floorBoss": "cryptGhoul",
       "randomBosses": [
         "graveGuard",
@@ -160,31 +160,31 @@
     },
     {
       "id": "bretonnia",
-      "species": 251,
-      "floorBoss": "cadable",
+      "species": 277,
+      "floorBoss": "hostileMerger",
       "randomBosses": [
-        "mingniao",
-        "goldenChocolate",
-        "xrosupgumdramonKotemon"
+        "kimonashiKaDa",
+        "speechHimeGuKi",
+        "togenyanChouUn"
       ],
       "doubleChance": 58,
       "bossChance": 2
     },
     {
       "id": "grailChapelsOfBretonnia",
-      "species": 558,
-      "floorBoss": "centaurIsh",
+      "species": 720,
+      "floorBoss": "mewbat",
       "randomBosses": [
-        "speedyWJupiter",
-        "ogyoIsh",
-        "yamagamiSakurako"
+        "glinodon",
+        "naguaco",
+        "lusha"
       ],
       "doubleChance": 34,
       "bossChance": 2.9
     },
     {
       "id": "athelLoren",
-      "species": 251,
+      "species": 277,
       "floorBoss": "treeKin",
       "randomBosses": [
         "woodElf",
@@ -196,7 +196,7 @@
     },
     {
       "id": "laurelornForest",
-      "species": 251,
+      "species": 277,
       "floorBoss": "woodElf",
       "randomBosses": [
         "treeKin",
@@ -208,115 +208,115 @@
     },
     {
       "id": "kislev",
-      "species": 249,
+      "species": 276,
       "floorBoss": "elementalBear",
       "randomBosses": [
-        "captainBird",
-        "anquiloden",
-        "apelicanBaTou"
+        "iceWizzrobe",
+        "cadout",
+        "kungFuDragon"
       ],
       "doubleChance": 43,
       "bossChance": 4.1
     },
     {
       "id": "iceCourt",
-      "species": 250,
-      "floorBoss": "mummycanth",
+      "species": 276,
+      "floorBoss": "spurk",
       "randomBosses": [
         "elementalBear",
-        "madleomonFinalMode",
-        "gattaiancientvolcamon"
+        "zombiePaladin",
+        "maderena"
       ],
       "doubleChance": 64,
       "bossChance": 1.7
     },
     {
       "id": "trollCountry",
-      "species": 250,
-      "floorBoss": "ancientGlobsto",
+      "species": 276,
+      "floorBoss": "neptune",
       "randomBosses": [
-        "neptune",
-        "roegadyn",
-        "elementalBear"
+        "bagir",
+        "ancientGlobsto",
+        "globsto"
       ],
       "doubleChance": 63,
       "bossChance": 3
     },
     {
       "id": "norsca",
-      "species": 252,
+      "species": 277,
       "floorBoss": "fimir",
       "randomBosses": [
         "skinwolf",
-        "jaouGunHyperMicchy",
-        "erynia"
+        "usapyon",
+        "netherRay"
       ],
       "doubleChance": 47,
       "bossChance": 4.1
     },
     {
       "id": "gianthomeMountains",
-      "species": 249,
+      "species": 276,
       "floorBoss": "goliath",
       "randomBosses": [
         "fimir",
-        "kolossEradicator",
-        "kolossChampion"
+        "blizstrong",
+        "kolossEradicator"
       ],
       "doubleChance": 56,
       "bossChance": 3.7
     },
     {
       "id": "seaOfClaws",
-      "species": 251,
-      "floorBoss": "daiyanyanChouUn",
+      "species": 277,
+      "floorBoss": "octodas",
       "randomBosses": [
-        "genkitchi",
-        "baleenMage",
-        "earthman"
+        "shouseiPinkEmperor",
+        "vorapest",
+        "houshindoushiTaikoubou"
       ],
       "doubleChance": 41,
       "bossChance": 2.4
     },
     {
       "id": "marienburg",
-      "species": 251,
-      "floorBoss": "silverKillingMachine",
+      "species": 277,
+      "floorBoss": "evilMetalSlime",
       "randomBosses": [
-        "skullknightmonWhite",
-        "evilMetalSlime",
-        "goldWoebergine"
+        "goldWoebergine",
+        "gobiMarine",
+        "extremeKillingMachine"
       ],
       "doubleChance": 38,
       "bossChance": 1.8
     },
     {
       "id": "skavenblight",
-      "species": 251,
-      "floorBoss": "plagueMonk",
+      "species": 277,
+      "floorBoss": "stormvermin",
       "randomBosses": [
-        "warlockEngineer",
-        "stormvermin",
-        "gutterRunner"
+        "gutterRunner",
+        "plagueMonk",
+        "warlockEngineer"
       ],
       "doubleChance": 55,
       "bossChance": 1.8
     },
     {
       "id": "greyMountains",
-      "species": 249,
-      "floorBoss": "warCrafter",
+      "species": 275,
+      "floorBoss": "dwarfIdleMonsterFrontier",
       "randomBosses": [
-        "crystalSmith",
+        "warCrafter",
         "pettyDwarf",
-        "earthen"
+        "celine"
       ],
       "doubleChance": 40,
       "bossChance": 1.6
     },
     {
       "id": "worldsEdgeMountains",
-      "species": 252,
+      "species": 277,
       "floorBoss": "dwarfThunderer",
       "randomBosses": [
         "savageOrc",
@@ -328,19 +328,19 @@
     },
     {
       "id": "karakEightPeaks",
-      "species": 251,
-      "floorBoss": "warlockEngineer",
+      "species": 277,
+      "floorBoss": "plagueMonk",
       "randomBosses": [
-        "plagueMonk",
-        "savageOrc",
-        "stormvermin"
+        "stormvermin",
+        "warlockEngineer",
+        "savageOrc"
       ],
       "doubleChance": 56,
       "bossChance": 3.9
     },
     {
       "id": "silverRoad",
-      "species": 250,
+      "species": 276,
       "floorBoss": "ironbreaker",
       "randomBosses": [
         "dwarfThunderer",
@@ -352,7 +352,7 @@
     },
     {
       "id": "blackFirePass",
-      "species": 249,
+      "species": 276,
       "floorBoss": "dwarfSlayer",
       "randomBosses": [
         "dwarfThunderer",
@@ -364,7 +364,7 @@
     },
     {
       "id": "badlands",
-      "species": 259,
+      "species": 281,
       "floorBoss": "savageOrc",
       "randomBosses": [
         "blackOrc",
@@ -376,7 +376,7 @@
     },
     {
       "id": "mountainsOfMourn",
-      "species": 249,
+      "species": 276,
       "floorBoss": "sabretusk",
       "randomBosses": [
         "gorger",
@@ -388,43 +388,43 @@
     },
     {
       "id": "darkLands",
-      "species": 251,
+      "species": 277,
       "floorBoss": "bullCentaur",
       "randomBosses": [
         "kdaaiFireborn",
-        "nego",
-        "theHome"
+        "kuna",
+        "gladiatorTroll"
       ],
       "doubleChance": 37,
       "bossChance": 2.3
     },
     {
       "id": "plainOfZharr",
-      "species": 253,
+      "species": 278,
       "floorBoss": "kdaaiFireborn",
       "randomBosses": [
         "bullCentaur",
-        "goldMannequin",
-        "orochiSenpai"
+        "nagaSaurian",
+        "mikannyanChouUn"
       ],
       "doubleChance": 42,
       "bossChance": 3.7
     },
     {
       "id": "borderPrinces",
-      "species": 251,
-      "floorBoss": "imga",
+      "species": 277,
+      "floorBoss": "pd700rCustom",
       "randomBosses": [
-        "wanderingWarrior",
-        "mailbirdramonGolemon",
-        "spot"
+        "shoutmonx6",
+        "pawnshoutmon",
+        "plutoMortex"
       ],
       "doubleChance": 65,
       "bossChance": 2.6
     },
     {
       "id": "tilea",
-      "species": 250,
+      "species": 277,
       "floorBoss": "dorbickmondarknessmodeDragonArmy",
       "randomBosses": [
         "coralDimos",
@@ -436,31 +436,31 @@
     },
     {
       "id": "estalia",
-      "species": 250,
-      "floorBoss": "jollyGoodybag",
+      "species": 277,
+      "floorBoss": "spiritOfFire",
       "randomBosses": [
-        "gaouKaira",
-        "heptameron",
-        "juji"
+        "romperWall",
+        "orpheus",
+        "skullknightmonWhite"
       ],
       "doubleChance": 70,
       "bossChance": 3.4
     },
     {
       "id": "araby",
-      "species": 243,
-      "floorBoss": "musuterio",
+      "species": 275,
+      "floorBoss": "sandhopper",
       "randomBosses": [
-        "floppaflip",
-        "funanoriKomasan",
-        "renTamontenShiki"
+        "skullknightmonWhite",
+        "zeroberker",
+        "jinta"
       ],
       "doubleChance": 68,
       "bossChance": 2.4
     },
     {
       "id": "landOfTheDead",
-      "species": 250,
+      "species": 276,
       "floorBoss": "ushabti",
       "randomBosses": [
         "sepulchralStalker",
@@ -472,7 +472,7 @@
     },
     {
       "id": "greatDesert",
-      "species": 244,
+      "species": 276,
       "floorBoss": "sepulchralStalker",
       "randomBosses": [
         "ushabti",
@@ -484,7 +484,7 @@
     },
     {
       "id": "blackPyramidOfNagash",
-      "species": 251,
+      "species": 277,
       "floorBoss": "boneGiant",
       "randomBosses": [
         "ushabti",
@@ -496,7 +496,7 @@
     },
     {
       "id": "lustria",
-      "species": 250,
+      "species": 277,
       "floorBoss": "ripperdactyl",
       "randomBosses": [
         "skink",
@@ -508,35 +508,35 @@
     },
     {
       "id": "vampireCoast",
-      "species": 251,
-      "floorBoss": "speggtre",
+      "species": 277,
+      "floorBoss": "xibian",
       "randomBosses": [
-        "xibian",
         "dorbickmondarknessmodeDragonArmy",
-        "narikirog"
+        "skeletonXy",
+        "speggtre"
       ],
       "doubleChance": 34,
       "bossChance": 3.1
     },
     {
       "id": "galleonsGraveyard",
-      "species": 251,
-      "floorBoss": "hanakoSanSaiEn",
+      "species": 277,
+      "floorBoss": "shadowReaper",
       "randomBosses": [
-        "meidonoHanako",
-        "cursedReaper",
-        "knightAbhorrent"
+        "treasurePest",
+        "darkSlime",
+        "skellyfish"
       ],
       "doubleChance": 33,
       "bossChance": 3
     },
     {
       "id": "southlands",
-      "species": 250,
-      "floorBoss": "skink",
+      "species": 276,
+      "floorBoss": "terradon",
       "randomBosses": [
         "ripperdactyl",
-        "terradon",
+        "skink",
         "coldOne"
       ],
       "doubleChance": 44,
@@ -544,7 +544,7 @@
     },
     {
       "id": "naggaroth",
-      "species": 251,
+      "species": 277,
       "floorBoss": "darkElf",
       "randomBosses": [
         "witchElf",
@@ -556,7 +556,7 @@
     },
     {
       "id": "blackspineMountains",
-      "species": 260,
+      "species": 283,
       "floorBoss": "witchElf",
       "randomBosses": [
         "darkElf",
@@ -568,127 +568,127 @@
     },
     {
       "id": "ulthuan",
-      "species": 559,
+      "species": 722,
       "floorBoss": "highElf",
       "randomBosses": [
         "starDragon",
-        "speedyWJupiter",
-        "yamagamiSakurako"
+        "lusha",
+        "mewbat"
       ],
       "doubleChance": 47,
       "bossChance": 2.3
     },
     {
       "id": "caledor",
-      "species": 250,
+      "species": 276,
       "floorBoss": "starDragon",
       "randomBosses": [
         "highElf",
-        "vDragon",
-        "rastaBaron"
+        "furor",
+        "shoutmonx5s"
       ],
       "doubleChance": 51,
       "bossChance": 3.5
     },
     {
       "id": "avelorn",
-      "species": 545,
-      "floorBoss": "crazyMondae",
+      "species": 712,
+      "floorBoss": "mewkiri",
       "randomBosses": [
         "highElf",
         "starDragon",
-        "pinkipoo"
+        "holyNightTsubakiHime"
       ],
       "doubleChance": 53,
       "bossChance": 4.3
     },
     {
       "id": "saphery",
-      "species": 252,
-      "floorBoss": "toryo",
+      "species": 278,
+      "floorBoss": "clawnetic",
       "randomBosses": [
         "highElf",
         "starDragon",
-        "ryuutaSatobaHaiNoDaichi"
+        "chocolantern"
       ],
       "doubleChance": 64,
       "bossChance": 2.2
     },
     {
       "id": "chrace",
-      "species": 249,
-      "floorBoss": "agentM",
+      "species": 276,
+      "floorBoss": "kiwinyan",
       "randomBosses": [
         "highElf",
         "starDragon",
-        "tutsu"
+        "ragerock"
       ],
       "doubleChance": 44,
       "bossChance": 2.3
     },
     {
       "id": "eyeOfTheVortex",
-      "species": 252,
-      "floorBoss": "devilChiefJiggis",
+      "species": 278,
+      "floorBoss": "beelzebumonRevolmon",
       "randomBosses": [
         "highElf",
         "starDragon",
-        "bloodMage"
+        "neovamdemondarknessmodeShoutmon"
       ],
       "doubleChance": 47,
       "bossChance": 2.5
     },
     {
       "id": "grandCathay",
-      "species": 250,
+      "species": 277,
       "floorBoss": "terracottaSentinel",
       "randomBosses": [
         "longma",
-        "coralDimos",
-        "dorbickmondarknessmodeDragonArmy"
+        "ratatusk",
+        "auRa"
       ],
       "doubleChance": 36,
       "bossChance": 4.1
     },
     {
       "id": "theGreatBastion",
-      "species": 252,
+      "species": 278,
       "floorBoss": "longma",
       "randomBosses": [
         "terracottaSentinel",
-        "gigaGobblebox",
-        "xbakubaku"
+        "trickin",
+        "vega"
       ],
       "doubleChance": 45,
       "bossChance": 3.7
     },
     {
       "id": "jadeSea",
-      "species": 251,
-      "floorBoss": "platypusBear",
+      "species": 277,
+      "floorBoss": "xrosupomegashoutmonDorulumon",
       "randomBosses": [
         "terracottaSentinel",
         "longma",
-        "whiteKing"
+        "sakutekimonitamon"
       ],
       "doubleChance": 67,
       "bossChance": 3.1
     },
     {
       "id": "ind",
-      "species": 250,
-      "floorBoss": "piranhaPlant",
+      "species": 276,
+      "floorBoss": "kindredOfRot",
       "randomBosses": [
-        "ichigo",
-        "beedrill",
-        "grupus"
+        "soukaryuuou",
+        "jaba",
+        "goldenGecko"
       ],
       "doubleChance": 47,
       "bossChance": 1.6
     },
     {
       "id": "chaosWastes",
-      "species": 252,
+      "species": 277,
       "floorBoss": "chaosSpawn",
       "randomBosses": [
         "chaosWarhound",
@@ -700,7 +700,7 @@
     },
     {
       "id": "southernChaosWastes",
-      "species": 251,
+      "species": 277,
       "floorBoss": "centigor",
       "randomBosses": [
         "chaosWarhound",
@@ -712,19 +712,19 @@
     },
     {
       "id": "realmOfKhorne",
-      "species": 250,
+      "species": 276,
       "floorBoss": "bloodletter",
       "randomBosses": [
         "fleshHound",
         "bloodthirster",
-        "saya"
+        "asuraFleshstomper"
       ],
       "doubleChance": 33,
       "bossChance": 1.8
     },
     {
       "id": "realmOfNurgle",
-      "species": 250,
+      "species": 276,
       "floorBoss": "plaguebearer",
       "randomBosses": [
         "plagueDrone",
@@ -736,10 +736,10 @@
     },
     {
       "id": "realmOfTzeentch",
-      "species": 252,
-      "floorBoss": "pinkHorror",
+      "species": 277,
+      "floorBoss": "screamerOfTzeentch",
       "randomBosses": [
-        "screamerOfTzeentch",
+        "pinkHorror",
         "flamerOfTzeentch",
         "lordOfChange"
       ],
@@ -748,31 +748,31 @@
     },
     {
       "id": "realmOfSlaanesh",
-      "species": 252,
+      "species": 278,
       "floorBoss": "daemonette",
       "randomBosses": [
         "fiendOfSlaanesh",
         "keeperOfSecrets",
-        "rootOfAllEvil"
+        "daiouKinshouJashinKachiKachi"
       ],
       "doubleChance": 36,
       "bossChance": 3.2
     },
     {
       "id": "forbiddenFortress",
-      "species": 252,
+      "species": 277,
       "floorBoss": "shaggoth",
       "randomBosses": [
         "chaosWarhound",
         "chaosSpawn",
-        "toxdwellerSlasher"
+        "dementedCarver"
       ],
       "doubleChance": 44,
       "bossChance": 3.4
     },
     {
       "id": "viridianForest",
-      "species": 250,
+      "species": 276,
       "floorBoss": "houseCat",
       "randomBosses": [
         "dustox",
@@ -784,35 +784,35 @@
     },
     {
       "id": "mtMoon",
-      "species": 252,
-      "floorBoss": "daedream",
+      "species": 277,
+      "floorBoss": "tortoise",
       "randomBosses": [
         "greatHornedOwl",
         "killamari",
-        "nox"
+        "megalibgwilia"
       ],
       "doubleChance": 41,
       "bossChance": 3.4
     },
     {
       "id": "rockTunnel",
-      "species": 251,
-      "floorBoss": "katressIgnis",
+      "species": 277,
+      "floorBoss": "baboon",
       "randomBosses": [
         "gemsbok",
-        "shugMonkey",
-        "baboon"
+        "tortoise",
+        "stripedHyena"
       ],
       "doubleChance": 38,
       "bossChance": 4.4
     },
     {
       "id": "pokemonTower",
-      "species": 251,
-      "floorBoss": "honeyBadger",
+      "species": 277,
+      "floorBoss": "monocledCobra",
       "randomBosses": [
-        "monocledCobra",
-        "kingVulture",
+        "killamari",
+        "honeyBadger",
         "manyBandedKrait"
       ],
       "doubleChance": 64,
@@ -820,7 +820,7 @@
     },
     {
       "id": "powerPlant",
-      "species": 254,
+      "species": 278,
       "floorBoss": "plusle",
       "randomBosses": [
         "taipan",
@@ -832,130 +832,130 @@
     },
     {
       "id": "seafoamIslands",
-      "species": 250,
+      "species": 276,
       "floorBoss": "snappingTurtle",
       "randomBosses": [
-        "muskOx",
+        "wolfEel",
         "mixosaurus",
-        "baiji"
+        "hesperornis"
       ],
       "doubleChance": 35,
       "bossChance": 4.2
     },
     {
       "id": "cinnabarVolcano",
-      "species": 243,
-      "floorBoss": "radiatedTortoise",
+      "species": 276,
+      "floorBoss": "dimetrodon",
       "randomBosses": [
         "monitorLizard",
         "protoceratops",
-        "wildebeest"
+        "tahr"
       ],
       "doubleChance": 69,
       "bossChance": 3.2
     },
     {
       "id": "victoryRoadKanto",
-      "species": 252,
-      "floorBoss": "propleopus",
+      "species": 278,
+      "floorBoss": "serow",
       "randomBosses": [
+        "propleopus",
         "cynognathus",
-        "nox",
-        "deinonychus"
+        "nox"
       ],
       "doubleChance": 41,
       "bossChance": 2.7
     },
     {
       "id": "ceruleanCave",
-      "species": 252,
+      "species": 278,
       "floorBoss": "wobbuffet",
       "randomBosses": [
-        "rainbowBoa",
         "swoobat",
-        "brainCoral"
+        "brainCoral",
+        "chimecho"
       ],
       "doubleChance": 50,
       "bossChance": 2.6
     },
     {
       "id": "safariZone",
-      "species": 251,
-      "floorBoss": "farfetchd",
+      "species": 277,
+      "floorBoss": "vixy",
       "randomBosses": [
         "ledian",
         "carolinaParakeet",
-        "butterfree"
+        "wreathedHornbill"
       ],
       "doubleChance": 57,
       "bossChance": 4.4
     },
     {
       "id": "ilexForest",
-      "species": 252,
-      "floorBoss": "crestedArgus",
+      "species": 278,
+      "floorBoss": "lowlandAnoa",
       "randomBosses": [
+        "crestedArgus",
         "indri",
-        "unown",
-        "carnivine"
+        "sunflora"
       ],
       "doubleChance": 47,
       "bossChance": 3.8
     },
     {
       "id": "whirlIslands",
-      "species": 251,
-      "floorBoss": "electricEel",
+      "species": 277,
+      "floorBoss": "sparkit",
       "randomBosses": [
+        "electricEel",
         "minun",
-        "pachirisu",
-        "electricRay"
+        "pachirisu"
       ],
       "doubleChance": 57,
       "bossChance": 3.7
     },
     {
       "id": "icePath",
-      "species": 250,
+      "species": 276,
       "floorBoss": "beluga",
       "randomBosses": [
-        "snappingTurtle",
-        "coccosteus",
-        "steamhorn"
+        "steamhorn",
+        "reindeer",
+        "tidebull"
       ],
       "doubleChance": 37,
       "bossChance": 2.2
     },
     {
       "id": "dragonsDen",
-      "species": 251,
-      "floorBoss": "marabouStork",
+      "species": 278,
+      "floorBoss": "pygmyKillerWhale",
       "randomBosses": [
-        "raticateAlolaTotem",
-        "blacktipReefShark",
-        "arowana"
+        "eryops",
+        "alligatorGar",
+        "snakehead"
       ],
       "doubleChance": 56,
       "bossChance": 4
     },
     {
       "id": "mtSilver",
-      "species": 250,
+      "species": 276,
       "floorBoss": "pachycephalosaurus",
       "randomBosses": [
         "barHeadedGoose",
-        "redCrownedCrane",
-        "wallaroo"
+        "chimpanzee",
+        "protoceratops"
       ],
       "doubleChance": 42,
       "bossChance": 3
     },
     {
       "id": "burnedTower",
-      "species": 252,
-      "floorBoss": "marowakAlolaTotem",
+      "species": 277,
+      "floorBoss": "dugtrioAlola",
       "randomBosses": [
-        "oricorioSensu",
+        "marowakAlolaTotem",
         "palossand",
         "golurk"
       ],
@@ -964,163 +964,163 @@
     },
     {
       "id": "lakeOfRage",
-      "species": 250,
+      "species": 277,
       "floorBoss": "spinda",
       "randomBosses": [
-        "farfetchd",
-        "tegu",
-        "delcatty"
+        "antelope",
+        "brownPelican",
+        "gloopiePrimo"
       ],
       "doubleChance": 49,
       "bossChance": 3.5
     },
     {
       "id": "petalburgWoods",
-      "species": 251,
+      "species": 277,
       "floorBoss": "lamball",
       "randomBosses": [
+        "vixy",
         "cattiva",
-        "moa",
-        "sikaDeer"
+        "moa"
       ],
       "doubleChance": 51,
       "bossChance": 1.8
     },
     {
       "id": "mtChimney",
-      "species": 243,
-      "floorBoss": "dumudGild",
+      "species": 276,
+      "floorBoss": "barbarySheep",
       "randomBosses": [
-        "monitorLizard",
-        "lystrosaurus",
-        "hangyuCryst"
+        "hangyuCryst",
+        "emu",
+        "fuddler"
       ],
       "doubleChance": 39,
       "bossChance": 3.8
     },
     {
       "id": "route111Desert",
-      "species": 243,
-      "floorBoss": "sulcataTortoise",
+      "species": 276,
+      "floorBoss": "radiatedTortoise",
       "randomBosses": [
-        "zuniceratops",
-        "przewalskisHorse",
-        "roanAntelope"
+        "huayangosaurus",
+        "sulcataTortoise",
+        "tahr"
       ],
       "doubleChance": 55,
       "bossChance": 4.2
     },
     {
       "id": "meteorFalls",
-      "species": 251,
-      "floorBoss": "cynognathus",
+      "species": 277,
+      "floorBoss": "nox",
       "randomBosses": [
-        "nox",
+        "hoocrates",
         "dropBear",
-        "greatHornedOwl"
+        "kingVulture"
       ],
       "doubleChance": 58,
       "bossChance": 4.5
     },
     {
       "id": "mtPyre",
-      "species": 251,
-      "floorBoss": "monocledCobra",
+      "species": 277,
+      "floorBoss": "honeyBadger",
       "randomBosses": [
-        "daedream",
-        "manyBandedKrait",
-        "honeyBadger"
+        "hoocrates",
+        "monocledCobra",
+        "emperorScorpion"
       ],
       "doubleChance": 48,
       "bossChance": 1.7
     },
     {
       "id": "shoalCave",
-      "species": 251,
-      "floorBoss": "muskOx",
+      "species": 277,
+      "floorBoss": "swee",
       "randomBosses": [
+        "muskOx",
         "wolfEel",
-        "beluga",
-        "atopodentatus"
+        "beluga"
       ],
       "doubleChance": 43,
       "bossChance": 4.4
     },
     {
       "id": "seafloorCavern",
-      "species": 251,
+      "species": 277,
       "floorBoss": "muskellunge",
       "randomBosses": [
-        "cynognathus",
-        "propleopus",
-        "morayEel"
+        "alligatorGar",
+        "morayEel",
+        "pygmyKillerWhale"
       ],
       "doubleChance": 40,
       "bossChance": 2.1
     },
     {
       "id": "skyPillar",
-      "species": 250,
+      "species": 276,
       "floorBoss": "pachirisu",
       "randomBosses": [
         "minun",
         "plusle",
-        "sparkit"
+        "jolthogCryst"
       ],
       "doubleChance": 49,
       "bossChance": 2.4
     },
     {
       "id": "fortreeRainforest",
-      "species": 251,
-      "floorBoss": "beedrill",
+      "species": 277,
+      "floorBoss": "okapi",
       "randomBosses": [
+        "beedrill",
         "lifmunk",
-        "ariados",
-        "tigerSnake"
+        "deer"
       ],
       "doubleChance": 43,
       "bossChance": 3.6
     },
     {
       "id": "eternaForest",
-      "species": 251,
+      "species": 277,
       "floorBoss": "kricketune",
       "randomBosses": [
         "spinda",
-        "vixy",
-        "merychippus"
+        "goat",
+        "ornithomimus"
       ],
       "doubleChance": 57,
       "bossChance": 4
     },
     {
       "id": "greatMarsh",
-      "species": 252,
-      "floorBoss": "angelShark",
+      "species": 278,
+      "floorBoss": "montaukMonster",
       "randomBosses": [
-        "montaukMonster",
+        "anomalocaris",
         "moeritherium",
-        "rissosDolphin"
+        "sandTigerShark"
       ],
       "doubleChance": 44,
       "bossChance": 3.4
     },
     {
       "id": "mtCoronet",
-      "species": 251,
-      "floorBoss": "tawnyEagle",
+      "species": 277,
+      "floorBoss": "wildebeest",
       "randomBosses": [
-        "wildebeest",
         "redCrownedCrane",
-        "medicham"
+        "sudowoodo",
+        "wallaroo"
       ],
       "doubleChance": 53,
       "bossChance": 4.1
     },
     {
       "id": "snowpointRoutes",
-      "species": 249,
+      "species": 276,
       "floorBoss": "arcticWolf",
       "randomBosses": [
         "tapejara",
@@ -1132,107 +1132,107 @@
     },
     {
       "id": "oldChateau",
-      "species": 252,
-      "floorBoss": "manyBandedKrait",
+      "species": 278,
+      "floorBoss": "binturong",
       "randomBosses": [
         "monocledCobra",
-        "sableye",
-        "inlandTaipan"
+        "inlandTaipan",
+        "emperorScorpion"
       ],
       "doubleChance": 47,
       "bossChance": 3.4
     },
     {
       "id": "ironIsland",
-      "species": 251,
-      "floorBoss": "leezpunkIgnis",
+      "species": 277,
+      "floorBoss": "monitorLizard",
       "randomBosses": [
-        "kingVulture",
-        "stripedHyena",
-        "raven"
+        "killamari",
+        "raven",
+        "stripedHyena"
       ],
       "doubleChance": 54,
       "bossChance": 3.2
     },
     {
       "id": "starkMountain",
-      "species": 243,
-      "floorBoss": "dimetrodon",
+      "species": 276,
+      "floorBoss": "warthog",
       "randomBosses": [
-        "warthog",
-        "sudowoodo",
-        "camel"
+        "camel",
+        "przewalskisHorse",
+        "avaceratops"
       ],
       "doubleChance": 44,
       "bossChance": 3.1
     },
     {
       "id": "spearPillar",
-      "species": 252,
+      "species": 277,
       "floorBoss": "eotyrannus",
       "randomBosses": [
-        "hoocrates",
-        "swoobat",
-        "doverDemon"
+        "tasmanianDevil",
+        "daedream",
+        "sableye"
       ],
       "doubleChance": 56,
       "bossChance": 3
     },
     {
       "id": "distortionWorld",
-      "species": 252,
-      "floorBoss": "swoobat",
+      "species": 278,
+      "floorBoss": "shugMonkey",
       "randomBosses": [
-        "doverDemon",
-        "raticateAlola",
-        "raticateAlolaTotem"
+        "eotyrannus",
+        "nox",
+        "theriodictis"
       ],
       "doubleChance": 62,
       "bossChance": 3.6
     },
     {
       "id": "pinwheelForest",
-      "species": 251,
-      "floorBoss": "butterfree",
+      "species": 277,
+      "floorBoss": "giraffe",
       "randomBosses": [
         "kricketune",
-        "giraffe",
-        "merychippus"
+        "lamball",
+        "beardedPig"
       ],
       "doubleChance": 43,
       "bossChance": 1.9
     },
     {
       "id": "desertResort",
-      "species": 243,
-      "floorBoss": "huayangosaurus",
+      "species": 276,
+      "floorBoss": "oryx",
       "randomBosses": [
-        "dimetrodon",
-        "tortoise",
-        "warthog"
+        "flambelle",
+        "scelidosaurus",
+        "marowakAlolaTotem"
       ],
       "doubleChance": 31,
       "bossChance": 3
     },
     {
       "id": "relicCastle",
-      "species": 251,
+      "species": 276,
       "floorBoss": "megalibgwilia",
       "randomBosses": [
-        "stunfiskGalar",
-        "palossand",
-        "golurk"
+        "barnOwl",
+        "perrserker",
+        "skarmory"
       ],
       "doubleChance": 46,
       "bossChance": 3
     },
     {
       "id": "chargestoneCave",
-      "species": 252,
+      "species": 278,
       "floorBoss": "minun",
       "randomBosses": [
-        "pachirisu",
-        "spinyTailedIguana",
+        "mawile",
+        "sparkit",
         "jolthogCryst"
       ],
       "doubleChance": 57,
@@ -1240,94 +1240,94 @@
     },
     {
       "id": "twistMountain",
-      "species": 250,
+      "species": 277,
       "floorBoss": "hyacinthMacaw",
       "randomBosses": [
         "peregrineFalcon",
-        "tapejara",
-        "yak"
+        "arcticWolf",
+        "tapejara"
       ],
       "doubleChance": 50,
       "bossChance": 2.5
     },
     {
       "id": "dragonspiralTower",
-      "species": 251,
-      "floorBoss": "barnOwl",
+      "species": 276,
+      "floorBoss": "dracorex",
       "randomBosses": [
-        "stunfiskGalar",
-        "palossand",
-        "orthworm"
+        "barnOwl",
+        "skarmory",
+        "palossand"
       ],
       "doubleChance": 31,
       "bossChance": 4.1
     },
     {
       "id": "giantChasm",
-      "species": 250,
-      "floorBoss": "leopardSeal",
+      "species": 276,
+      "floorBoss": "hesperornis",
       "randomBosses": [
-        "orthoceras",
-        "marineIguana",
-        "corsola"
+        "leopardSeal",
+        "opabinia",
+        "arowana"
       ],
       "doubleChance": 47,
       "bossChance": 2.1
     },
     {
       "id": "santaluneForest",
-      "species": 251,
-      "floorBoss": "sheep",
+      "species": 277,
+      "floorBoss": "butterfree",
       "randomBosses": [
         "kricketune",
-        "ornithomimus",
-        "lifmunk"
+        "lifmunk",
+        "quagga"
       ],
       "doubleChance": 40,
       "bossChance": 2.6
     },
     {
       "id": "glitteringCave",
-      "species": 252,
-      "floorBoss": "doverDemon",
+      "species": 278,
+      "floorBoss": "rainbowBoa",
       "randomBosses": [
         "wobbuffet",
-        "brainCoral",
-        "chimecho"
+        "doverDemon",
+        "swoobat"
       ],
       "doubleChance": 34,
       "bossChance": 2.6
     },
     {
       "id": "frostCavern",
-      "species": 250,
+      "species": 276,
       "floorBoss": "emperorGoose",
       "randomBosses": [
         "snappingTurtle",
-        "steamhorn",
-        "tidebull"
+        "coccosteus",
+        "atopodentatus"
       ],
       "doubleChance": 54,
       "bossChance": 2.8
     },
     {
       "id": "lostHotel",
-      "species": 253,
+      "species": 278,
       "floorBoss": "taipan",
       "randomBosses": [
         "plusle",
-        "marowakAlolaTotem",
-        "togedemaru"
+        "pachirisu",
+        "sparkit"
       ],
       "doubleChance": 35,
       "bossChance": 3.8
     },
     {
       "id": "terminusCave",
-      "species": 252,
-      "floorBoss": "spinyTailedIguana",
+      "species": 278,
+      "floorBoss": "propleopus",
       "randomBosses": [
-        "deinonychus",
+        "spinyTailedIguana",
         "raticateAlola",
         "spottedHyena"
       ],
@@ -1336,103 +1336,103 @@
     },
     {
       "id": "lushJungle",
-      "species": 251,
+      "species": 277,
       "floorBoss": "dustox",
       "randomBosses": [
         "beedrill",
         "beautifly",
-        "hallucigenia"
+        "deer"
       ],
       "doubleChance": 53,
       "bossChance": 3.6
     },
     {
       "id": "welaVolcanoPark",
-      "species": 244,
-      "floorBoss": "protoceratops",
+      "species": 276,
+      "floorBoss": "huayangosaurus",
       "randomBosses": [
+        "barbarySheep",
         "sulcataTortoise",
-        "lystrosaurus",
-        "fuddler"
+        "lystrosaurus"
       ],
       "doubleChance": 58,
       "bossChance": 3.9
     },
     {
       "id": "hainaDesert",
-      "species": 244,
-      "floorBoss": "barbarySheep",
+      "species": 276,
+      "floorBoss": "giantGippslandEarthworm",
       "randomBosses": [
-        "huayangosaurus",
-        "tortoise",
-        "dimetrodon"
+        "radiatedTortoise",
+        "dimetrodon",
+        "lystrosaurus"
       ],
       "doubleChance": 33,
       "bossChance": 3.9
     },
     {
       "id": "mountLanakila",
-      "species": 249,
-      "floorBoss": "giantGoldenCrownedFlyingFox",
+      "species": 277,
+      "floorBoss": "blackKite",
       "randomBosses": [
-        "tibetanWolf",
-        "blackKite",
-        "blackNeckedCrane"
+        "blackNeckedCrane",
+        "dimorphodon",
+        "argali"
       ],
       "doubleChance": 37,
       "bossChance": 1.9
     },
     {
       "id": "vastPoniCanyon",
-      "species": 252,
+      "species": 278,
       "floorBoss": "egyptianVulture",
       "randomBosses": [
-        "babirusa",
-        "medicham",
-        "pterodactylus"
+        "wallaroo",
+        "dimorphodon",
+        "hangyuCryst"
       ],
       "doubleChance": 54,
       "bossChance": 2
     },
     {
       "id": "ultraSpace",
-      "species": 252,
-      "floorBoss": "hoocrates",
+      "species": 278,
+      "floorBoss": "wispaw",
       "randomBosses": [
-        "wobbuffet",
         "binturong",
-        "mauCryst"
+        "malamar",
+        "spiritomb"
       ],
       "doubleChance": 50,
       "bossChance": 3
     },
     {
       "id": "wildArea",
-      "species": 251,
+      "species": 277,
       "floorBoss": "tocotoco",
       "randomBosses": [
         "ledian",
-        "carolinaParakeet",
-        "wreathedHornbill"
+        "goat",
+        "carolinaParakeet"
       ],
       "doubleChance": 46,
       "bossChance": 3.2
     },
     {
       "id": "glimwoodTangle",
-      "species": 251,
-      "floorBoss": "lowlandAnoa",
+      "species": 277,
+      "floorBoss": "beardedPig",
       "randomBosses": [
+        "lowlandAnoa",
         "crestedArgus",
-        "indri",
-        "orangPendek"
+        "indri"
       ],
       "doubleChance": 50,
       "bossChance": 4.1
     },
     {
       "id": "slumberingWeald",
-      "species": 252,
+      "species": 277,
       "floorBoss": "shiinotic",
       "randomBosses": [
         "crestedArgus",
@@ -1444,68 +1444,68 @@
     },
     {
       "id": "isleOfArmor",
-      "species": 251,
+      "species": 277,
       "floorBoss": "python",
       "randomBosses": [
-        "lamball",
+        "coccosteus",
         "rhamphorhynchus",
-        "sinosauropteryx"
+        "chimpanzee"
       ],
       "doubleChance": 63,
       "bossChance": 4.2
     },
     {
       "id": "crownTundra",
-      "species": 251,
-      "floorBoss": "seaLion",
+      "species": 277,
+      "floorBoss": "goliathFrog",
       "randomBosses": [
         "emperorGoose",
-        "atopodentatus",
-        "baiji"
+        "sturgeon",
+        "champsosaurus"
       ],
       "doubleChance": 47,
       "bossChance": 4
     },
     {
       "id": "dynamaxAdventureDen",
-      "species": 252,
-      "floorBoss": "spottedHyena",
+      "species": 278,
+      "floorBoss": "raticateAlolaTotem",
       "randomBosses": [
-        "dropBear",
-        "fossa",
-        "baboon"
+        "propleopus",
+        "baboon",
+        "cynognathus"
       ],
       "doubleChance": 48,
       "bossChance": 4.2
     },
     {
       "id": "asadoDesert",
-      "species": 243,
-      "floorBoss": "sudowoodo",
+      "species": 276,
+      "floorBoss": "dumudGild",
       "randomBosses": [
-        "huayangosaurus",
-        "protoceratops",
-        "pyroraptor"
+        "radiatedTortoise",
+        "lystrosaurus",
+        "badger"
       ],
       "doubleChance": 55,
       "bossChance": 3.7
     },
     {
       "id": "glaseadoMountain",
-      "species": 250,
-      "floorBoss": "peregrineFalcon",
+      "species": 276,
+      "floorBoss": "muskOx",
       "randomBosses": [
         "hyacinthMacaw",
         "barHeadedGoose",
-        "reindeer"
+        "protoceratops"
       ],
       "doubleChance": 39,
       "bossChance": 4.3
     },
     {
       "id": "casseroyaLake",
-      "species": 251,
-      "floorBoss": "moa",
+      "species": 277,
+      "floorBoss": "cattiva",
       "randomBosses": [
         "farfetchd",
         "rhamphorhynchus",
@@ -1516,22 +1516,22 @@
     },
     {
       "id": "tagtreeThicket",
-      "species": 251,
-      "floorBoss": "vixy",
+      "species": 277,
+      "floorBoss": "chikipi",
       "randomBosses": [
         "dustox",
-        "tocotoco",
-        "chikipi"
+        "vixy",
+        "tocotoco"
       ],
       "doubleChance": 32,
       "bossChance": 2.6
     },
     {
       "id": "areaZero",
-      "species": 252,
-      "floorBoss": "dracorex",
+      "species": 277,
+      "floorBoss": "brainCoral",
       "randomBosses": [
-        "brainCoral",
+        "wobbuffet",
         "perrserker",
         "mawile"
       ],
@@ -1540,227 +1540,227 @@
     },
     {
       "id": "kitakami",
-      "species": 251,
+      "species": 277,
       "floorBoss": "delcatty",
       "randomBosses": [
-        "lamball",
         "spinda",
-        "chikipi"
+        "chikipi",
+        "lamball"
       ],
       "doubleChance": 36,
       "bossChance": 4.2
     },
     {
       "id": "obsidianFieldlands",
-      "species": 250,
+      "species": 277,
       "floorBoss": "pig",
       "randomBosses": [
+        "farfetchd",
         "tocotoco",
-        "ledian",
-        "cattiva"
+        "ledian"
       ],
       "doubleChance": 37,
       "bossChance": 2.5
     },
     {
       "id": "crimsonMirelands",
-      "species": 252,
-      "floorBoss": "montaukMonster",
+      "species": 278,
+      "floorBoss": "lemonShark",
       "randomBosses": [
-        "moeritherium",
-        "coccosteus",
-        "ichthyosaurus"
+        "montaukMonster",
+        "anomalocaris",
+        "moeritherium"
       ],
       "doubleChance": 62,
       "bossChance": 3.5
     },
     {
       "id": "cobaltCoastlands",
-      "species": 251,
-      "floorBoss": "teafant",
+      "species": 277,
+      "floorBoss": "farfetchd",
       "randomBosses": [
         "chicken",
-        "vixy",
-        "rhamphorhynchus"
+        "rhamphorhynchus",
+        "sinosauropteryx"
       ],
       "doubleChance": 53,
       "bossChance": 4.4
     },
     {
       "id": "coronetHighlands",
-      "species": 250,
-      "floorBoss": "chimpanzee",
+      "species": 277,
+      "floorBoss": "brahminyKite",
       "randomBosses": [
-        "brahminyKite",
         "pachycephalosaurus",
-        "redCrownedCrane"
+        "redCrownedCrane",
+        "medicham"
       ],
       "doubleChance": 65,
       "bossChance": 3.9
     },
     {
       "id": "alabasterIcelands",
-      "species": 250,
-      "floorBoss": "coccosteus",
+      "species": 276,
+      "floorBoss": "pygmyHippopotamus",
       "randomBosses": [
-        "pygmyHippopotamus",
         "teafant",
-        "humboldtSquid"
+        "pyukumuku",
+        "dugong"
       ],
       "doubleChance": 47,
       "bossChance": 1.9
     },
     {
       "id": "orreDesert",
-      "species": 252,
+      "species": 278,
       "floorBoss": "pyroraptor",
       "randomBosses": [
-        "raticateAlolaTotem",
         "stygimoloch",
-        "serow"
+        "raticateAlolaTotem",
+        "eotyrannus"
       ],
       "doubleChance": 69,
       "bossChance": 1.7
     },
     {
       "id": "tropicalRainforest",
-      "species": 250,
-      "floorBoss": "tamaraw",
+      "species": 276,
+      "floorBoss": "sundaCloudedLeopard",
       "randomBosses": [
-        "goliathBeetle",
-        "puffAdder",
-        "boomslang"
+        "tamaraw",
+        "tigerSnake",
+        "emeraldTreeBoa"
       ],
       "doubleChance": 50,
       "bossChance": 3.3
     },
     {
       "id": "tropicalMonsoonForest",
-      "species": 250,
-      "floorBoss": "sundaCloudedLeopard",
+      "species": 277,
+      "floorBoss": "electricEel",
       "randomBosses": [
-        "electricEel",
         "lemonShark",
-        "bullfrog"
+        "octopus",
+        "electricRay"
       ],
       "doubleChance": 69,
       "bossChance": 1.7
     },
     {
       "id": "tropicalSavanna",
-      "species": 250,
+      "species": 277,
       "floorBoss": "manedWolf",
       "randomBosses": [
         "python",
-        "rooster",
-        "topi"
+        "grevysZebra",
+        "rooster"
       ],
       "doubleChance": 50,
       "bossChance": 3
     },
     {
       "id": "hotDesert",
-      "species": 244,
-      "floorBoss": "tortoise",
+      "species": 276,
+      "floorBoss": "sulcataTortoise",
       "randomBosses": [
-        "monitorLizard",
-        "radiatedTortoise",
-        "sulcataTortoise"
+        "warthog",
+        "gelada",
+        "hartebeest"
       ],
       "doubleChance": 65,
       "bossChance": 1.8
     },
     {
       "id": "coldDesert",
-      "species": 248,
-      "floorBoss": "giantGippslandEarthworm",
+      "species": 276,
+      "floorBoss": "reindeer",
       "randomBosses": [
-        "reindeer",
-        "arcticWolf",
-        "tibetanWolf"
+        "giantGippslandEarthworm",
+        "monitorLizard",
+        "arcticWolf"
       ],
       "doubleChance": 45,
       "bossChance": 3.1
     },
     {
       "id": "semiAridSteppe",
-      "species": 250,
+      "species": 277,
       "floorBoss": "goat",
       "randomBosses": [
+        "manedWolf",
         "giantGippslandEarthworm",
-        "easternGrayKangaroo",
-        "hornbill"
+        "dingo"
       ],
       "doubleChance": 35,
       "bossChance": 3.5
     },
     {
       "id": "mediterraneanScrubland",
-      "species": 250,
+      "species": 276,
       "floorBoss": "yellowCheekedGibbon",
       "randomBosses": [
+        "redDeer",
         "cheetah",
-        "blackBear",
-        "mountainTapir"
+        "blackBear"
       ],
       "doubleChance": 48,
       "bossChance": 1.5
     },
     {
       "id": "humidSubtropicalForest",
-      "species": 251,
+      "species": 277,
       "floorBoss": "greaterFlamingo",
       "randomBosses": [
         "rainbowBoa",
-        "muteSwan",
-        "peacock"
+        "tegu",
+        "muteSwan"
       ],
       "doubleChance": 55,
       "bossChance": 3.5
     },
     {
       "id": "oceanicMoorland",
-      "species": 250,
+      "species": 277,
       "floorBoss": "banteng",
       "randomBosses": [
-        "sikaDeer",
-        "greyHeron",
-        "dikDik"
+        "greenPeafowl",
+        "jabiru",
+        "duck"
       ],
       "doubleChance": 37,
       "bossChance": 3.7
     },
     {
       "id": "subtropicalHighland",
-      "species": 250,
-      "floorBoss": "bateleur",
+      "species": 276,
+      "floorBoss": "beetle",
       "randomBosses": [
-        "grouse",
-        "beetle",
-        "garterSnake"
+        "ogreFacedSpider",
+        "garterSnake",
+        "lilacBreastedRoller"
       ],
       "doubleChance": 60,
       "bossChance": 2.5
     },
     {
       "id": "humidContinentalWoodland",
-      "species": 251,
-      "floorBoss": "giraffe",
+      "species": 277,
+      "floorBoss": "chicken",
       "randomBosses": [
+        "nyala",
         "redDeer",
-        "redShankedDouc",
-        "cheetah"
+        "redShankedDouc"
       ],
       "doubleChance": 68,
       "bossChance": 3.4
     },
     {
       "id": "subarcticTaiga",
-      "species": 255,
+      "species": 278,
       "floorBoss": "tibetanWolf",
       "randomBosses": [
-        "tonkinSnubNosedMonkey",
         "greatGrayOwl",
+        "tonkinSnubNosedMonkey",
         "sundaCloudedLeopard"
       ],
       "doubleChance": 41,
@@ -1768,47 +1768,47 @@
     },
     {
       "id": "arcticTundra",
-      "species": 250,
-      "floorBoss": "dingo",
+      "species": 277,
+      "floorBoss": "grevysZebra",
       "randomBosses": [
         "banteng",
         "giraffe",
-        "grevysZebra"
+        "reindeer"
       ],
       "doubleChance": 40,
       "bossChance": 2.3
     },
     {
       "id": "polarIceCap",
-      "species": 250,
+      "species": 277,
       "floorBoss": "marlin",
       "randomBosses": [
         "emperorGoose",
         "wolfEel",
-        "beluga"
+        "giantGourami"
       ],
       "doubleChance": 63,
       "bossChance": 3.1
     },
     {
       "id": "alpineHighland",
-      "species": 249,
-      "floorBoss": "reindeer",
+      "species": 276,
+      "floorBoss": "barHeadedGoose",
       "randomBosses": [
-        "giantGoldenCrownedFlyingFox",
         "hyacinthMacaw",
-        "peregrineFalcon"
+        "tibetanWolf",
+        "blackKite"
       ],
       "doubleChance": 54,
       "bossChance": 3.1
     },
     {
       "id": "alpineMeadow",
-      "species": 251,
+      "species": 277,
       "floorBoss": "zebra",
       "randomBosses": [
-        "goat",
-        "deer",
+        "houseCat",
+        "sikaDeer",
         "cow"
       ],
       "doubleChance": 31,
@@ -1816,44 +1816,44 @@
     },
     {
       "id": "highPlateau",
-      "species": 250,
-      "floorBoss": "easternGrayKangaroo",
+      "species": 277,
+      "floorBoss": "chimpanzee",
       "randomBosses": [
         "manedWolf",
-        "chimpanzee",
-        "dingo"
+        "easternGrayKangaroo",
+        "grevysZebra"
       ],
       "doubleChance": 56,
       "bossChance": 3.5
     },
     {
       "id": "canyon",
-      "species": 249,
-      "floorBoss": "brahminyKite",
+      "species": 276,
+      "floorBoss": "tawnyEagle",
       "randomBosses": [
-        "giantGoldenCrownedFlyingFox",
-        "giantGippslandEarthworm",
-        "coopersHawk"
+        "barbarySheep",
+        "brahminyKite",
+        "markhor"
       ],
       "doubleChance": 36,
       "bossChance": 4.4
     },
     {
       "id": "riverValley",
-      "species": 250,
-      "floorBoss": "duck",
+      "species": 277,
+      "floorBoss": "giantGoldenCrownedFlyingFox",
       "randomBosses": [
         "sarusCrane",
-        "tilapia",
-        "barasingha"
+        "duck",
+        "peregrineFalcon"
       ],
       "doubleChance": 55,
       "bossChance": 3.1
     },
     {
       "id": "rollingHills",
-      "species": 251,
-      "floorBoss": "nyala",
+      "species": 277,
+      "floorBoss": "sikaDeer",
       "randomBosses": [
         "houseCat",
         "banteng",
@@ -1864,47 +1864,47 @@
     },
     {
       "id": "prairie",
-      "species": 251,
-      "floorBoss": "scarletMacaw",
+      "species": 277,
+      "floorBoss": "nyala",
       "randomBosses": [
-        "nyala",
         "tawnyEagle",
-        "dingo"
+        "tortoise",
+        "giantForestHog"
       ],
       "doubleChance": 54,
       "bossChance": 3.7
     },
     {
       "id": "sandDunes",
-      "species": 244,
-      "floorBoss": "tahr",
+      "species": 276,
+      "floorBoss": "camel",
       "randomBosses": [
-        "radiatedTortoise",
-        "barbarySheep",
-        "emu"
+        "warthog",
+        "babirusa",
+        "mountainGoat"
       ],
       "doubleChance": 43,
       "bossChance": 2.4
     },
     {
       "id": "saltFlat",
-      "species": 251,
-      "floorBoss": "gemsbok",
+      "species": 277,
+      "floorBoss": "spinyTailedIguana",
       "randomBosses": [
-        "spinyTailedIguana",
-        "swordBilledHummingbird",
-        "prairieDog"
+        "mountainGoat",
+        "bactrianCamel",
+        "addax"
       ],
       "doubleChance": 52,
       "bossChance": 3.7
     },
     {
       "id": "desertOasis",
-      "species": 250,
-      "floorBoss": "okapi",
+      "species": 276,
+      "floorBoss": "purpleHeron",
       "randomBosses": [
-        "purpleHeron",
-        "alligatorSnappingTurtle",
+        "okapi",
+        "bullfrog",
         "coelacanth"
       ],
       "doubleChance": 50,
@@ -1912,236 +1912,236 @@
     },
     {
       "id": "erodedBadlands",
-      "species": 252,
-      "floorBoss": "kingVulture",
+      "species": 278,
+      "floorBoss": "lycaenops",
       "randomBosses": [
+        "kingVulture",
         "greatHornedOwl",
-        "honeyBadger",
-        "greatGrayOwl"
+        "raven"
       ],
       "doubleChance": 36,
       "bossChance": 3.8
     },
     {
       "id": "karstTowers",
-      "species": 250,
+      "species": 276,
       "floorBoss": "alligatorSnappingTurtle",
       "randomBosses": [
-        "okapi",
-        "seaLion",
-        "nurseShark"
+        "marlin",
+        "snappingTurtle",
+        "seaLion"
       ],
       "doubleChance": 57,
       "bossChance": 4.1
     },
     {
       "id": "limestoneCavern",
-      "species": 251,
-      "floorBoss": "pygmyKillerWhale",
+      "species": 277,
+      "floorBoss": "stripedHyena",
       "randomBosses": [
-        "baboon",
-        "shugMonkey",
-        "blacktipReefShark"
+        "morayEel",
+        "frilledShark",
+        "alligatorSnappingTurtle"
       ],
       "doubleChance": 57,
       "bossChance": 4.2
     },
     {
       "id": "sinkhole",
-      "species": 251,
+      "species": 277,
       "floorBoss": "timberWolf",
       "randomBosses": [
         "frilledShark",
         "sundaCloudedLeopard",
-        "binturong"
+        "pygmyHippopotamus"
       ],
       "doubleChance": 46,
       "bossChance": 1.9
     },
     {
       "id": "stratovolcano",
-      "species": 244,
-      "floorBoss": "mountainGoat",
+      "species": 276,
+      "floorBoss": "roanAntelope",
       "randomBosses": [
-        "barbarySheep",
-        "oryx",
-        "elk"
+        "perentie",
+        "elk",
+        "ethiopianWolf"
       ],
       "doubleChance": 31,
       "bossChance": 3.9
     },
     {
       "id": "lavaField",
-      "species": 243,
-      "floorBoss": "dgTrooper",
+      "species": 275,
+      "floorBoss": "karakaraSanBiShi",
       "randomBosses": [
-        "raican",
-        "toushouDouketsu",
-        "susanoBladus"
+        "miku",
+        "dewback",
+        "tasman"
       ],
       "doubleChance": 50,
       "bossChance": 2.1
     },
     {
       "id": "geyserBasin",
-      "species": 251,
-      "floorBoss": "purpleHeron",
+      "species": 277,
+      "floorBoss": "angelShark",
       "randomBosses": [
-        "angelShark",
-        "sandTigerShark",
-        "giantSalamander"
+        "purpleHeron",
+        "nurseShark",
+        "sandTigerShark"
       ],
       "doubleChance": 59,
       "bossChance": 4.1
     },
     {
       "id": "glacier",
-      "species": 250,
-      "floorBoss": "giantSalamander",
+      "species": 277,
+      "floorBoss": "seaLion",
       "randomBosses": [
+        "marlin",
         "muskOx",
-        "seaLion",
-        "rissosDolphin"
+        "giantSalamander"
       ],
       "doubleChance": 41,
       "bossChance": 2.1
     },
     {
       "id": "fjord",
-      "species": 251,
-      "floorBoss": "humboldtSquid",
+      "species": 277,
+      "floorBoss": "bullfrog",
       "randomBosses": [
-        "greyHeron",
-        "harborSeal",
-        "scarletMacaw"
+        "scarletMacaw",
+        "crabeaterSeal",
+        "commonBuzzard"
       ],
       "doubleChance": 67,
       "bossChance": 2.9
     },
     {
       "id": "sandyBeach",
-      "species": 250,
-      "floorBoss": "sandTigerShark",
+      "species": 277,
+      "floorBoss": "sarusCrane",
       "randomBosses": [
-        "goat",
         "angelShark",
-        "sarusCrane"
+        "giantGoldenCrownedFlyingFox",
+        "tawnyEagle"
       ],
       "doubleChance": 41,
       "bossChance": 3.7
     },
     {
       "id": "seaCliffs",
-      "species": 251,
-      "floorBoss": "sarusCrane",
+      "species": 277,
+      "floorBoss": "frog",
       "randomBosses": [
-        "giantOtter",
-        "hornbill",
-        "zebraShark"
+        "sarusCrane",
+        "woodpecker",
+        "grayFox"
       ],
       "doubleChance": 30,
       "bossChance": 4.5
     },
     {
       "id": "riverDelta",
-      "species": 250,
-      "floorBoss": "rhinocerosViper",
+      "species": 276,
+      "floorBoss": "duck",
       "randomBosses": [
+        "greaterFlamingo",
         "giantIsopod",
-        "duck",
-        "stingray"
+        "goldfish"
       ],
       "doubleChance": 58,
       "bossChance": 4.1
     },
     {
       "id": "estuary",
-      "species": 250,
-      "floorBoss": "seaLily",
+      "species": 276,
+      "floorBoss": "nurseShark",
       "randomBosses": [
-        "rhinocerosViper",
         "timberWolf",
-        "marlin"
+        "seaLion",
+        "yellowfinTuna"
       ],
       "doubleChance": 47,
       "bossChance": 2.2
     },
     {
       "id": "mangroveForest",
-      "species": 250,
-      "floorBoss": "giantIsopod",
+      "species": 277,
+      "floorBoss": "rhinocerosViper",
       "randomBosses": [
-        "portugueseManOWar",
-        "stingray",
-        "muteSwan"
+        "frog",
+        "giantIsopod",
+        "portugueseManOWar"
       ],
       "doubleChance": 35,
       "bossChance": 4.2
     },
     {
       "id": "saltMarsh",
-      "species": 250,
-      "floorBoss": "lemonShark",
+      "species": 276,
+      "floorBoss": "portugueseManOWar",
       "randomBosses": [
-        "portugueseManOWar",
         "sandTigerShark",
-        "giantSalamander"
+        "giantSalamander",
+        "rissosDolphin"
       ],
       "doubleChance": 59,
       "bossChance": 3.1
     },
     {
       "id": "peatBog",
-      "species": 250,
-      "floorBoss": "alligatorGar",
+      "species": 277,
+      "floorBoss": "barracuda",
       "randomBosses": [
         "montaukMonster",
-        "inlandTaipan",
-        "guitarfish"
+        "angelShark",
+        "inlandTaipan"
       ],
       "doubleChance": 58,
       "bossChance": 2.1
     },
     {
       "id": "freshwaterLake",
-      "species": 250,
-      "floorBoss": "wreathedHornbill",
+      "species": 277,
+      "floorBoss": "giantIsopod",
       "randomBosses": [
-        "giantIsopod",
+        "wreathedHornbill",
         "deer",
-        "greenPeafowl"
+        "rissosDolphin"
       ],
       "doubleChance": 49,
       "bossChance": 3.2
     },
     {
       "id": "waterfallGorge",
-      "species": 250,
-      "floorBoss": "barracuda",
+      "species": 276,
+      "floorBoss": "octopus",
       "randomBosses": [
+        "alligatorSnappingTurtle",
         "lemonShark",
-        "shoebill",
-        "tilapia"
+        "giantGoldenCrownedFlyingFox"
       ],
       "doubleChance": 40,
       "bossChance": 3.8
     },
     {
       "id": "tropicalArchipelago",
-      "species": 251,
-      "floorBoss": "beardedPig",
+      "species": 277,
+      "floorBoss": "blueShark",
       "randomBosses": [
-        "greyHeron",
-        "redDeer",
-        "barasingha"
+        "greenPeafowl",
+        "brownPelican",
+        "yellowfinTuna"
       ],
       "doubleChance": 66,
       "bossChance": 1.6
     },
     {
       "id": "coralAtoll",
-      "species": 250,
-      "floorBoss": "nurseShark",
+      "species": 276,
+      "floorBoss": "catBaLangur",
       "randomBosses": [
         "greaterFlamingo",
         "rhinocerosViper",
@@ -2152,11 +2152,11 @@
     },
     {
       "id": "kelpForest",
-      "species": 250,
-      "floorBoss": "portugueseManOWar",
+      "species": 277,
+      "floorBoss": "stingray",
       "randomBosses": [
-        "stingray",
-        "bullfrog",
+        "portugueseManOWar",
+        "barasingha",
         "blueShark"
       ],
       "doubleChance": 37,
@@ -2164,35 +2164,35 @@
     },
     {
       "id": "openOcean",
-      "species": 251,
-      "floorBoss": "jabiru",
+      "species": 277,
+      "floorBoss": "electricRay",
       "randomBosses": [
         "electricEel",
-        "electricRay",
-        "mantaRay"
+        "mantaRay",
+        "dalmatianPelican"
       ],
       "doubleChance": 69,
       "bossChance": 3.3
     },
     {
       "id": "deepSeaTrench",
-      "species": 251,
-      "floorBoss": "morayEel",
+      "species": 277,
+      "floorBoss": "arowana",
       "randomBosses": [
-        "pygmyKillerWhale",
-        "muskellunge",
-        "eryops"
+        "blacktipReefShark",
+        "grouper",
+        "marabouStork"
       ],
       "doubleChance": 58,
       "bossChance": 1.6
     },
     {
       "id": "hydrothermalVents",
-      "species": 254,
+      "species": 278,
       "floorBoss": "sawfish",
       "randomBosses": [
-        "purpleHeron",
         "taipan",
+        "purpleHeron",
         "swordfish"
       ],
       "doubleChance": 54,
@@ -2200,99 +2200,231 @@
     },
     {
       "id": "polarSea",
-      "species": 250,
-      "floorBoss": "octopus",
+      "species": 276,
+      "floorBoss": "giantSalamander",
       "randomBosses": [
-        "greaterFlamingo",
-        "marlin",
-        "capybara"
+        "beluga",
+        "capybara",
+        "tibetanWolf"
       ],
       "doubleChance": 37,
       "bossChance": 2.1
     },
     {
       "id": "temperateDeciduousForest",
-      "species": 251,
-      "floorBoss": "tegu",
+      "species": 277,
+      "floorBoss": "redDeer",
       "randomBosses": [
-        "python",
+        "yellowCheekedGibbon",
         "pig",
-        "chicken"
+        "dhole"
       ],
       "doubleChance": 56,
       "bossChance": 2.9
     },
     {
       "id": "bambooForest",
-      "species": 251,
-      "floorBoss": "peacock",
+      "species": 277,
+      "floorBoss": "tamaraw",
       "randomBosses": [
-        "yellowCheekedGibbon",
+        "peacock",
         "pig",
-        "tamaraw"
+        "holsteinCow"
       ],
       "doubleChance": 57,
       "bossChance": 3.4
     },
     {
       "id": "cloudForest",
-      "species": 250,
+      "species": 276,
       "floorBoss": "tonkinSnubNosedMonkey",
       "randomBosses": [
-        "beardedPig",
         "greenPeafowl",
-        "capercaillie"
+        "lilacBreastedRoller",
+        "cricket"
       ],
       "doubleChance": 57,
       "bossChance": 3
     },
     {
       "id": "rainforestCanopy",
-      "species": 250,
-      "floorBoss": "northernHarrier",
+      "species": 277,
+      "floorBoss": "peregrineFalcon",
       "randomBosses": [
-        "beardedPig",
-        "mexicanBeadedLizard",
-        "goliathBeetle"
+        "tigerSnake",
+        "goliathBeetle",
+        "capercaillie"
       ],
       "doubleChance": 41,
       "bossChance": 2.4
     },
     {
       "id": "prehistoricSwamp",
-      "species": 252,
-      "floorBoss": "ichthyostega",
+      "species": 278,
+      "floorBoss": "dilophosaurus",
       "randomBosses": [
-        "brontoscorpio",
-        "megalograptus",
-        "dilophosaurus"
+        "pachyrhachis",
+        "ichthyostega",
+        "brontoscorpio"
       ],
       "doubleChance": 65,
       "bossChance": 3.6
     },
     {
       "id": "iceAgeSteppe",
-      "species": 251,
-      "floorBoss": "hipparion",
+      "species": 277,
+      "floorBoss": "merychippus",
       "randomBosses": [
-        "ornithomimus",
-        "neohipparion",
+        "quagga",
+        "hipparion",
         "avaceratops"
       ],
       "doubleChance": 63,
       "bossChance": 4.1
+    },
+    {
+      "id": "glassBeach",
+      "species": 276,
+      "floorBoss": "fran",
+      "randomBosses": [
+        "rubyKikimo",
+        "glarlie",
+        "daiouGunOotsunonokami"
+      ],
+      "doubleChance": 35,
+      "bossChance": 1.7
+    },
+    {
+      "id": "greatSandSea",
+      "species": 275,
+      "floorBoss": "lili",
+      "randomBosses": [
+        "bluePhoenix",
+        "rubeusJ",
+        "floppaflip"
+      ],
+      "doubleChance": 52,
+      "bossChance": 1.6
+    },
+    {
+      "id": "murano",
+      "species": 276,
+      "floorBoss": "madleomonFinalMode",
+      "randomBosses": [
+        "kirinZuum",
+        "orochiMonsterRancher",
+        "anki"
+      ],
+      "doubleChance": 51,
+      "bossChance": 2.2
+    },
+    {
+      "id": "garbagePatch",
+      "species": 278,
+      "floorBoss": "ticken",
+      "randomBosses": [
+        "pain",
+        "darkcell",
+        "naraku"
+      ],
+      "doubleChance": 38,
+      "bossChance": 2.6
+    },
+    {
+      "id": "agbogbloshie",
+      "species": 278,
+      "floorBoss": "monkko",
+      "randomBosses": [
+        "chromeonDigital",
+        "radstag",
+        "ainz"
+      ],
+      "doubleChance": 31,
+      "bossChance": 1.6
+    },
+    {
+      "id": "rioCarnival",
+      "species": 277,
+      "floorBoss": "momoRabbit",
+      "randomBosses": [
+        "mailbirdramonGolemon",
+        "kelpien",
+        "youngWitch"
+      ],
+      "doubleChance": 70,
+      "bossChance": 3.9
+    },
+    {
+      "id": "veniceCarnival",
+      "species": 277,
+      "floorBoss": "hogShirayukiHime",
+      "randomBosses": [
+        "blackGolem",
+        "norukasoruka",
+        "shoutmonx5SkullGreymon"
+      ],
+      "doubleChance": 66,
+      "bossChance": 2.7
+    },
+    {
+      "id": "lasVegasStrip",
+      "species": 278,
+      "floorBoss": "liLYora",
+      "randomBosses": [
+        "yowlar",
+        "wildNakk",
+        "directator"
+      ],
+      "doubleChance": 59,
+      "bossChance": 3.7
+    },
+    {
+      "id": "malheurForest",
+      "species": 276,
+      "floorBoss": "yaohamaChitose",
+      "randomBosses": [
+        "nidrasil",
+        "pokey",
+        "dorbickmondarknessmodeDragonArmy"
+      ],
+      "doubleChance": 38,
+      "bossChance": 3.4
+    },
+    {
+      "id": "redForest",
+      "species": 276,
+      "floorBoss": "saurok",
+      "randomBosses": [
+        "yaohamaChitose",
+        "scorpi",
+        "nidrasil"
+      ],
+      "doubleChance": 37,
+      "bossChance": 2.2
+    },
+    {
+      "id": "yunnanMushroomValley",
+      "species": 276,
+      "floorBoss": "coconut",
+      "randomBosses": [
+        "brownMask",
+        "toutenJikokuten",
+        "pawnshoutmon"
+      ],
+      "doubleChance": 41,
+      "bossChance": 2.5
     }
   ],
   "speciesWithoutMap": [],
   "summary": {
-    "maps": 190,
-    "wildCandidates": 16136,
-    "placedSpecies": 16137,
-    "encounterEntries": 48473,
+    "maps": 201,
+    "wildCandidates": 18971,
+    "placedSpecies": 18972,
+    "encounterEntries": 56979,
     "speciesPerMap": {
-      "min": 243,
-      "median": 251,
-      "max": 559
+      "min": 275,
+      "median": 277,
+      "max": 722
     }
   }
 }

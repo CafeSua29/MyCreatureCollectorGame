@@ -1,0 +1,1294 @@
+{
+  "source": "aniimo",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Lunara",
+      "elements": ["light"],
+      "raceId": "eldritch",
+      "tier": "small",
+      "evolutions": [],
+      "flavor": "Their eyes shimmer with the deep blue light of the moon, and mysterious patterns appear when they wield their power."
+    },
+    {
+      "name": "Helion",
+      "elements": ["light"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Dazmand",
+          "level": 32
+        },
+        {
+          "name": "Fulmintis",
+          "level": 32
+        },
+        {
+          "name": "Hoptail",
+          "level": 32
+        },
+        {
+          "name": "Hypnyto",
+          "level": 32
+        },
+        {
+          "name": "Jaguaraun",
+          "level": 32
+        },
+        {
+          "name": "Sparkelf",
+          "level": 32
+        }
+      ],
+      "flavor": "Enthusiastic and confident, they always stand up for their friends at critical moments, displaying amazing power."
+    },
+    {
+      "name": "Dazmand",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They have flexible limbs and love to show off their flashy kicks to anyone watching. They wear their shed skin over their heads like a cool hood."
+    },
+    {
+      "name": "Fulmintis",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Evolved from a Wisptis with broken forelimbs absorbing the power of lightning. The reshaped reverse blades are incredibly sharp and flash with dazzling electric light."
+    },
+    {
+      "name": "Hoptail",
+      "elements": ["flying", "electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They use their special fur to capture charged particles in the air to produce and store electricity."
+    },
+    {
+      "name": "Hypnyto",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Lazy yet sharp, Hypnyto loves to lounge in soft, cozy nests. The pair of eye-like markings on its wings enhance the hypnotic effect when it releases its waves."
+    },
+    {
+      "name": "Jaguaraun",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Jaguaraun’s neck fur is incredibly thick, brimming with abundant Lightning Element. Like a brewing thundercloud, a dark tide churns beneath it. When it sprints, it tears past with the howl of a thunderstorm."
+    },
+    {
+      "name": "Sparkelf",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Sparkelves from the SylphIsle can draw energy from interactions with humans and Aniimo. The livelier and more joyful the gathering, the more energized they become."
+    },
+    {
+      "name": "Emberpup",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Flameruff",
+          "level": 16
+        }
+      ],
+      "flavor": "Lively and energetic, the creatures like to follow Flameruffs around. Once their fluffy charcoal-like fur starts to burn, they grow."
+    },
+    {
+      "name": "Flameruff",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Scorchhowl",
+          "level": 32
+        },
+        {
+          "name": "Inferlupa",
+          "level": 32
+        }
+      ],
+      "flavor": "Pack creatures that prize loyalty and unity, these hunters have calm, focused eyes that conceal their fiery hearts."
+    },
+    {
+      "name": "Scorchhowl",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "The scorch marks on their bodies are proof of victories in battle. They seek strong opponents to dominate."
+    },
+    {
+      "name": "Inferlupa",
+      "elements": ["fire", "dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "A Flameruff who challenged the strong and lost. Having absorbed the souls of companions who fell with equal bitterness, it is driven by the desire for revenge."
+    },
+    {
+      "name": "Celestis",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Stellarys",
+          "level": 32
+        }
+      ],
+      "flavor": "They love food! When they search the forest for food, the glowing stars on their heads are often mistaken for comets. They like hoarding food, adorning their nest with it."
+    },
+    {
+      "name": "Stellarys",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They prefer solitude and often move through the night. Their forms resemble mysterious mages draped in cloaks of stars, and they can teleport using psychic energy."
+    },
+    {
+      "name": "Chirpi",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Tromber",
+          "level": 32
+        },
+        {
+          "name": "Cornet",
+          "level": 32
+        },
+        {
+          "name": "Tubster",
+          "level": 32
+        }
+      ],
+      "flavor": "They often hover at low altitudes, paying attention to every movement on the beach and causing a ruckus."
+    },
+    {
+      "name": "Tromber",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They like having fun and producing rhythmic music, so don’t be surprised to see a grand symphony."
+    },
+    {
+      "name": "Cornet",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They can produce loud, piercing noises that resonate throughout the entire beach just to draw attention."
+    },
+    {
+      "name": "Tubster",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Creates deep, tuba-like sounds that match its steady, friendly character."
+    },
+    {
+      "name": "Iris",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Irisal",
+          "level": 32
+        }
+      ],
+      "flavor": "Iris possesses an extremely lightweight body, often lifted by the wind. It then either slowly spirals downward using the resistance from its petal skirt, or simply allows itself to be carried away by the wind."
+    },
+    {
+      "name": "Irisal",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Devoted to the art of dance, they constantly hone their craft, hoping to share the pure joy and energy of movement."
+    },
+    {
+      "name": "Skippy",
+      "elements": ["water"],
+      "raceId": "flower",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pranky",
+          "level": 16
+        }
+      ],
+      "flavor": "They like to hide underwater and observe their surroundings using a lotus leaf as a strikingly ineffective disguise."
+    },
+    {
+      "name": "Pranky",
+      "elements": ["water"],
+      "raceId": "flower",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Glacy",
+          "level": 32
+        },
+        {
+          "name": "Leafy",
+          "level": 32
+        }
+      ],
+      "flavor": "They like to stay cool and moist. That’s what the layer of film over their bodies is for."
+    },
+    {
+      "name": "Glacy",
+      "elements": ["water", "ice"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They are elegant and kind Aniimo that always take care of weaker ones, and freeze anyone who crosses them in ice."
+    },
+    {
+      "name": "Leafy",
+      "elements": ["grass", "water"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They live among lotus flowers and use their lotus leaf tails to conceal their face and show off their elegant nature."
+    },
+    {
+      "name": "Nimbi",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Turbo",
+          "level": 32
+        },
+        {
+          "name": "Dreaple",
+          "level": 32
+        }
+      ],
+      "flavor": "Don’t be surprised to see them floating in the clouds in small groups above the grasslands."
+    },
+    {
+      "name": "Turbo",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They like to sleep hidden in the clouds, because with the presence of wind pressure and static electricity, the fluffy wool easily attracts things carried by the winds."
+    },
+    {
+      "name": "Dreaple",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Their fur that has absorbed dream energy presents a mesmerizing illusion of colors. When the fur is used as a pillow, Pathfinders sink into sweet dreams."
+    },
+    {
+      "name": "Hummin",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Hexxin",
+          "level": 32
+        },
+        {
+          "name": "Tuckin",
+          "level": 32
+        }
+      ],
+      "flavor": "They live on the grassland in groups, they like burrowing for nutrients, and they love singing off-key together!"
+    },
+    {
+      "name": "Hexxin",
+      "elements": ["dark", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They make bizarre noises to drive intruders to madness, lower their defenses and even cause them to pass out."
+    },
+    {
+      "name": "Tuckin",
+      "elements": ["grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They need to absorb nutrients from the soil through their roots to maintain vitality and hate leaving the ground."
+    },
+    {
+      "name": "Budclaw",
+      "elements": ["rock", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Shrubclaw",
+          "level": 32
+        },
+        {
+          "name": "Geoclaw",
+          "level": 32
+        }
+      ],
+      "flavor": "Mating for life, they’re always found in pairs. The heartbloom atop their shells indicates their state of happiness."
+    },
+    {
+      "name": "Shrubclaw",
+      "elements": ["rock", "grass"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "The lush plants that cover their shells convert sunlight into nutrients, so they don’t even need to eat on sunny days."
+    },
+    {
+      "name": "Geoclaw",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They live in caves, feed on minerals, and use their beautifully crystallized shells to lure prey."
+    },
+    {
+      "name": "Sparki",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Flamerion",
+          "level": 32
+        }
+      ],
+      "flavor": "Though they look like fire, those flames are only flowing energy. They give off no heat at all—in fact, they absorb heat from their surroundings. Sometimes they use this to disguise themselves as campfires and play tricks on others."
+    },
+    {
+      "name": "Flamerion",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They only come out at night. Since their bodies are made of gaseous energy, they can split at will and even create clones."
+    },
+    {
+      "name": "Flutternym",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gracewing",
+          "level": 32
+        }
+      ],
+      "flavor": "They are timid and hide whenever they sense danger, but the fluorescent scales they shake off always give them away."
+    },
+    {
+      "name": "Gracewing",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Lone wanderers. They create illusions by shedding scales from their wings when threats approach."
+    },
+    {
+      "name": "Eko",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Eklue",
+          "level": 32
+        }
+      ],
+      "flavor": "With their big ears perked up, they are extremely sensitive to sound. They won’t miss any movement that catches their attention, near or far."
+    },
+    {
+      "name": "Eklue",
+      "elements": ["flying"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Curious and eager to search for traces and track targets. The ring on their tail amplifies ultrasound, allowing them to easily detect cloaked creatures."
+    },
+    {
+      "name": "Budsquire",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Thornblade",
+          "level": 32
+        },
+        {
+          "name": "Melloblum",
+          "level": 32
+        }
+      ],
+      "flavor": "The timid crybabies can also rise up against enemies when cornered. The buds on their heads will blossom as they do so."
+    },
+    {
+      "name": "Thornblade",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "The swords made from thorny stems are drawn only when it’s time to protect their family against enemies."
+    },
+    {
+      "name": "Melloblum",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "To quell disputes, they scatter fragrant petals, causing those who touch them to feel happiness and crush their fighting spirit."
+    },
+    {
+      "name": "Pomegg",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pomawk",
+          "level": 32
+        }
+      ],
+      "flavor": "They retreat into their shells to rest, often getting mistaken for eggs. They fear battle but love a crowd, dancing with grass pompoms to cheer others on."
+    },
+    {
+      "name": "Pomawk",
+      "elements": ["grass"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Their towering manes display their wild nature, while their feral roars reveal their true colors. Their tails are built to store sound waves, releasing a sonic boom when they strike an opponent."
+    },
+    {
+      "name": "Dewy",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Fragrancier",
+          "level": 32
+        }
+      ],
+      "flavor": "As partners to perfumers, they store and ferment nectar within their bodies, transforming it into perfume ingredients."
+    },
+    {
+      "name": "Fragrancier",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They’re picky about odors, so they harvest and store various nectar within them to craft unique perfume ingredients."
+    },
+    {
+      "name": "Wisptis",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Ignitis",
+          "level": 32
+        }
+      ],
+      "flavor": "If the only way to evolve is to defeat other Wisptises, then there is no other choice but to keep their claws sharp."
+    },
+    {
+      "name": "Ignitis",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They sharpen their blades and wait for the perfect moment, hiding in the shadows as they toy with their prey. As cold-blooded assassins, they seek to end every fight in a single strike."
+    },
+    {
+      "name": "Bonesky",
+      "elements": ["ice"],
+      "raceId": "canid",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Fenrier",
+          "level": 16
+        }
+      ],
+      "flavor": "An energetic pup with a pair of big ears. The ice-bone bow tie on its chest is its favorite toy. It hates Emberpups that don’t respect personal space."
+    },
+    {
+      "name": "Fenrier",
+      "elements": ["ice"],
+      "raceId": "canid",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Glynsera",
+          "level": 32
+        }
+      ],
+      "flavor": "Resisting gentle pets that might soften its resolve, it leads family hunts with its ice blade."
+    },
+    {
+      "name": "Glynsera",
+      "elements": ["ice"],
+      "raceId": "canid",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Proud and confident warriors, they send shivers down their enemies’ spines with the chilling blades in their mouths."
+    },
+    {
+      "name": "Bolty",
+      "elements": ["electric"],
+      "raceId": "tree",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Blazen",
+          "level": 32
+        }
+      ],
+      "flavor": "They live among the trees. When they attack, golden sparks flash from their tails with crackling electric sounds. Agile and quick on their feet, they are very difficult to catch."
+    },
+    {
+      "name": "Blazen",
+      "elements": ["electric"],
+      "raceId": "tree",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "It stores power by using the static electricity in its special fur to attract charged particles from the air. Water weakens this ability, so it rarely appears on rainy days."
+    },
+    {
+      "name": "Squarrel",
+      "elements": ["fire"],
+      "raceId": "eldritch",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Squashel",
+          "level": 32
+        }
+      ],
+      "flavor": "Squarrel has a large, fist-shaped tail. When its greasy tail fur is rubbed even slightly, it can burst into flames. Anyone who eyes its stockpiled pinecones will get a taste of its scorching fire fists."
+    },
+    {
+      "name": "Squashel",
+      "elements": ["fire"],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Squashel has twin fist-like tails, giving its power a super-boost. Pinecones thrown with that force strike like cannonballs — not to be underestimated."
+    },
+    {
+      "name": "Susuta",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Popota",
+          "level": 16
+        }
+      ],
+      "flavor": "They dig around to search for gifts to give to their crushes, but their wooing always fails because they are so shy."
+    },
+    {
+      "name": "Popota",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Piopiota",
+          "level": 32
+        },
+        {
+          "name": "Panpanta",
+          "level": 32
+        }
+      ],
+      "flavor": "They select shells and make them into shovels. It’s said that they produce pink bubbles when they see someone they love."
+    },
+    {
+      "name": "Piopiota",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Narcissistic little creatures who spend a large amount of time grooming their fur and striking the perfect pose."
+    },
+    {
+      "name": "Panpanta",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They are strong and powerful, but they’d rather stay in their nests and decorate than show off their muscles."
+    },
+    {
+      "name": "Shelly",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Sheldon",
+          "level": 16
+        }
+      ],
+      "flavor": "Conceals itself among beach shells using its soft appendages to hold shells in place. Remains sealed during daylight."
+    },
+    {
+      "name": "Sheldon",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Sherro",
+          "level": 32
+        }
+      ],
+      "flavor": "Lying on their shells, they face the night sky, falling into a deep dream woven by the stars."
+    },
+    {
+      "name": "Sherro",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They turn the shells that once covered them into swords and shields to protect fragile Shellies along the coastline."
+    },
+    {
+      "name": "Baleetle",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Waleetle",
+          "level": 32
+        },
+        {
+          "name": "Bouldus",
+          "level": 32
+        }
+      ],
+      "flavor": "From the moment it’s born, it’s inseparable from its mud ball, rolling it again and again until it gets rounder and rounder. But the mud ball it pushes doesn’t seem as simple as it looks."
+    },
+    {
+      "name": "Waleetle",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They move backwards like their kin, but in a much fancier way."
+    },
+    {
+      "name": "Bouldus",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "The minerals packed into its mud ball gradually bind and compress through constant jolts, turning it into a stone ball and awakening consciousness within. Sick of being pushed around, it devours an insect body and can finally move by its own will."
+    },
+    {
+      "name": "Fentuft",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Fenmane",
+          "level": 32
+        }
+      ],
+      "flavor": "They always wear their signature smiles and invite other Aniimo to play. Their mischief and greed may get them into trouble now and then, but they’re always forgiven."
+    },
+    {
+      "name": "Fenmane",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "With their highly conductive fur, they harness the power of lightning to extend their wings and dash forth, dispelling the haze and lifting their spirits."
+    },
+    {
+      "name": "Helmut",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pawney",
+          "level": 32
+        },
+        {
+          "name": "Rookey",
+          "level": 32
+        }
+      ],
+      "flavor": "That tough helmet keeps its squishy body safe, while those extendable mouth-claws help it hunt."
+    },
+    {
+      "name": "Pawney",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Armed with a broken sword and armor, blessed with courage and might, it defends its friends and challenges its foes."
+    },
+    {
+      "name": "Rookey",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Despite its imposing size, it is timid and gentle, always avoiding conflict. Whenever danger approaches, it curls up into a ball, but it always musters the courage to fight when its friends need protection."
+    },
+    {
+      "name": "Jawling",
+      "elements": ["flying"],
+      "raceId": "metal",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Helmwhelp",
+          "level": 16
+        }
+      ],
+      "flavor": "It loves to take a bite out of anything it comes across. Its highly flexible jaw can open extremely wide. It shows affection and happiness through gentle nibbles, and especially loves biting metal objects because they are hard to damage."
+    },
+    {
+      "name": "Helmwhelp",
+      "elements": ["flying"],
+      "raceId": "metal",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Helgon",
+          "level": 32
+        },
+        {
+          "name": "Infergon",
+          "level": 32
+        }
+      ],
+      "flavor": "A fledgling dragon that hides its weakness beneath its helmet, yearning to grow stronger so it can soar freely to every corner of the world in search of hidden treasures."
+    },
+    {
+      "name": "Helgon",
+      "elements": ["flying"],
+      "raceId": "metal",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Covered in hard armor, they look like tall statues when they stand still, as if standing guard over ancient treasures."
+    },
+    {
+      "name": "Infergon",
+      "elements": ["fire"],
+      "raceId": "metal",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Clad in heavy metal armor forged in searing flames, it can unleash a fury of fire that turns everything around it into molten lava. If you don’t want to be reduced to ash, stay as far away from it as possible."
+    },
+    {
+      "name": "Cubbo",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Grizbo",
+          "level": 32
+        }
+      ],
+      "flavor": "They spend their days sleepwalking. The moment they are awakened, they become agitated and lose control. Once they run out of energy, they peacefully drift back to sleep like a baby."
+    },
+    {
+      "name": "Grizbo",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Beneath their gentle exterior lies constant restraint and suppressed aggression. However, when provoked or hungry, they lose control and fall into a frenzy."
+    },
+    {
+      "name": "Pebbling",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Lavazar",
+          "level": 16
+        }
+      ],
+      "flavor": "They are natural geologists who like eating all kinds of ores. And what they eat determines how they grow."
+    },
+    {
+      "name": "Lavazar",
+      "elements": ["fire", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Magmarex",
+          "level": 32
+        }
+      ],
+      "flavor": "They use hard claws to crush crystals and eat them to store heat, causing fiery red patterns to appear on their body. Though small, they can continuously spew high-heat flame streams from their mouth."
+    },
+    {
+      "name": "Magmarex",
+      "elements": ["fire", "rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Scorching crystals grow on their body like solidified lava. If the stored heat erupts, it can melt everything in their path."
+    },
+    {
+      "name": "Geodeback",
+      "elements": ["rock"],
+      "raceId": "crystal",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Minespine",
+          "level": 32
+        }
+      ],
+      "flavor": "The minerals they eat are refined within their bodies and transformed into crystal spines infused with pure energy."
+    },
+    {
+      "name": "Minespine",
+      "elements": ["rock"],
+      "raceId": "crystal",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Wherever crystal minerals are found, so are they. Their hard spines serve both as protection and as storage for energy."
+    },
+    {
+      "name": "Cozite",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Bailite",
+          "level": 32
+        }
+      ],
+      "flavor": "Cozites build their shells bit by bit with mud. When in danger, they spray smoke from the top hole to cover the surroundings and hide themselves."
+    },
+    {
+      "name": "Bailite",
+      "elements": ["rock"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Their upper and lower bodies can rotate independently, allowing Bailites to survey their surroundings with ease and transform into turrets to drive off opponents."
+    },
+    {
+      "name": "Bulbly",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Veilfloat",
+          "level": 16
+        }
+      ],
+      "flavor": "Their first reaction to everything is to escape, and their bulb-like organs indicate whether they are healthy."
+    },
+    {
+      "name": "Veilfloat",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Luminelle",
+          "level": 32
+        }
+      ],
+      "flavor": "A light-dependent creature that glows when night falls, keeping its light on even while sleeping."
+    },
+    {
+      "name": "Luminelle",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Changes its glow to match its mood while its tentacles create mesmerizing patterns and deliver shocking attacks."
+    },
+    {
+      "name": "Fahloo",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Erlath",
+          "level": 32
+        },
+        {
+          "name": "Besauce",
+          "level": 32
+        }
+      ],
+      "flavor": "They rub the oils on their bodies to create lots of foam that cleans and protects them, though they sometimes step on it and slip."
+    },
+    {
+      "name": "Erlath",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Their feathers constantly secrete oil, which produces all kinds of bubbles with just a little rubbing. Naturally, they use the softest, fluffiest foam to protect the Fahloos on their backs."
+    },
+    {
+      "name": "Besauce",
+      "elements": ["electric"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Troubled by the beat of its own heart, Besauce constantly searches for rhythms to drown it out. It loves to groove to music and has a passion for avant-garde music."
+    },
+    {
+      "name": "Reefish",
+      "elements": ["rock", "water"],
+      "raceId": "fish",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Coraliz",
+          "level": 32
+        }
+      ],
+      "flavor": "They burrow underground to camouflage as coral and bite any prey that comes near. However, they sometimes get impatient and peek around."
+    },
+    {
+      "name": "Coraliz",
+      "elements": ["rock", "water"],
+      "raceId": "fish",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "They love to bury themselves in sand, mimicking coral clumps. They use the glow of the coral on their head and back to lure creatures for a surprise attack."
+    },
+    {
+      "name": "Hypnowl",
+      "elements": ["flying"],
+      "raceId": "eldritch",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Mesmerowl",
+          "level": 32
+        }
+      ],
+      "flavor": "Keen-eared, it can pick up every tiny sound around it. The moment it senses an intruder, it locks on with its big eyes, then unleashes hypnotic waves to confuse its target."
+    },
+    {
+      "name": "Mesmerowl",
+      "elements": ["flying"],
+      "raceId": "eldritch",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Mesmerowl beats its ear-feather wings as it patrols its territory at low altitude. When it unleashes hypnotic waves, its glowing tail tuft swings like a pendulum, leaving its opponent even more dazed."
+    },
+    {
+      "name": "Dewlop",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Dewple",
+          "level": 32
+        }
+      ],
+      "flavor": "Dewlop is active around waterways. Its body is almost entirely made of water, letting it shift shapes with ease. Maybe it’s just in its nature. It always wants to blend into any body of water it comes across."
+    },
+    {
+      "name": "Dewple",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Made up of multiple Dewlops, Dewple’s individuals may drift apart now and then, but they never truly separate—always moving in sync as they follow the largest one."
+    },
+    {
+      "name": "Coinwisp",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Pouchwisp",
+          "level": 32
+        }
+      ],
+      "flavor": "Coinwisp’s cap looks just like an oversized gold coin. It often hides inside, mischievously luring other creatures into chasing it. When danger strikes, it flings its cap to confuse its opponent, then slips away."
+    },
+    {
+      "name": "Pouchwisp",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Its body is like a super-springy giant coin pouch, home to a whole swarm of Pennywisps. It may look like it’s generously tossing gold coins everywhere, but it’s really just letting the Pennywisps out to play."
+    },
+    {
+      "name": "Bubbeep",
+      "elements": ["grass", "water"],
+      "raceId": "slime",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Glameep",
+          "level": 32
+        }
+      ],
+      "flavor": "It stretches its leafy feathers with lazy ease, always chewing away as it turns algae and slime into floating bubbles. One light hop, and off it drifts, riding the bubbles like a little boat in the breeze."
+    },
+    {
+      "name": "Glameep",
+      "elements": ["grass", "water"],
+      "raceId": "slime",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Draped in fresh green leaf-feathers, Glameep moves lightly along the lake shore. It adores clear water most of all, especially when that water reflects its own graceful, unhurried beauty."
+    },
+    {
+      "name": "Popapus",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Gachapus",
+          "level": 32
+        }
+      ],
+      "flavor": "It loves collecting colorful bubbles. They bob and sway inside its air sac as it moves, and when inspiration strikes, it uses them to doodle strange little wonders in the air."
+    },
+    {
+      "name": "Gachapus",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "With a quick tap from its nimble tentacles, it can launch all kinds of capsule bubbles from its head. No one knows what will pop out next, a delightful surprise or a complete accident."
+    },
+    {
+      "name": "Sugarfish",
+      "elements": ["ice"],
+      "raceId": "fish",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Sugarslime",
+          "level": 32
+        },
+        {
+          "name": "Sugartini",
+          "level": 32
+        }
+      ],
+      "flavor": "Sugarfish likes to stay in the shade, but once it’s out in the sun, it secretes slime to protect its fragile skin, making it look like it’s melting."
+    },
+    {
+      "name": "Sugarslime",
+      "elements": ["ice"],
+      "raceId": "fish",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Sugarslime is naturally warm and outgoing. It loves to scoop up slime in the shell it carries and share it with other Aniimo, but its odd looks often scare them off. Luckily, it’s so forgetful that the gloom fades fast."
+    },
+    {
+      "name": "Sugartini",
+      "elements": ["ice"],
+      "raceId": "fish",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Sugartini is all about appearances. To avoid messing up its carefully styled look, it keeps up a graceful demeanor at all times. But if you point out that its “bangs” are actually its nose, it instantly flies into a rage."
+    },
+    {
+      "name": "Lilipole",
+      "elements": ["water"],
+      "raceId": "easternDragon",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Scrubbit",
+          "level": 32
+        }
+      ],
+      "flavor": "Lively and mischievous, Lilipole loves to swish its long leaf-like tail and play around in the water. Whether it’s one of its own kind or a passing Aniimo, someone’s always getting splashed by its sudden spray."
+    },
+    {
+      "name": "Scrubbit",
+      "elements": ["water"],
+      "raceId": "easternDragon",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Though it’s round and chubby, Scrubbit is surprisingly nimble. That shed long tail-leaf in its hands is both a scrub towel for washing its body and a sharp tool for whipping opponents."
+    },
+    {
+      "name": "Salabask",
+      "elements": ["grass", "water"],
+      "raceId": "flower",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Crocobask",
+          "level": 32
+        }
+      ],
+      "flavor": "Salabask’s head looks like a piece of driftwood covered in moss. It loves soaking in the water with only its head above the surface, basking in the sun. Sometimes other Aniimo mistake it for a floating plank to cross the river, and one careless step can knock it out cold."
+    },
+    {
+      "name": "Crocobask",
+      "elements": ["grass", "water"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "It loves to float motionless on the river’s surface, soaking up the sun, and doesn’t mind being used like driftwood to step across. Just don’t stand on its back too long. It might suddenly flip over."
+    },
+    {
+      "name": "Puffby",
+      "elements": ["flying"],
+      "raceId": "flower",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Buffby",
+          "level": 32
+        },
+        {
+          "name": "Royalby",
+          "level": 32
+        }
+      ],
+      "flavor": "It flits busily through the night, gathering pollen from glowing plants and carefully rolling it into pretty pollen balls to bring back to the hive. When danger strikes, it swings the pollen ball like a weapon to bash its enemies."
+    },
+    {
+      "name": "Buffby",
+      "elements": ["flying"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "A burly powerhouse with exceptional strength but none of the brute attitude, it’s gentle at heart and meticulous in action. It patrols tirelessly around the hive, day and night, protecting the swarm."
+    },
+    {
+      "name": "Royalby",
+      "elements": ["flying"],
+      "raceId": "flower",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "The queen of the swarm and the hive’s highest ruler, she is revered by her kin and lives within the royal nest the workers craft for her, commanding the entire swarm."
+    },
+    {
+      "name": "Saws",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Whirlbite",
+          "level": 32
+        }
+      ],
+      "flavor": "The wave-splitting Saws is crazy about chasing creatures through the water. When it dashes, its serrated dorsal fin can quickly slice through anything in the raging current that gets in its way."
+    },
+    {
+      "name": "Whirlbite",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "A ferocious hunter that treats its extendable lower jaw as a weapon, it cruises between the shadows of the waves. The moment its grim dorsal fin breaks the surface, its prey has nowhere left to run."
+    },
+    {
+      "name": "Prawnch",
+      "elements": ["ice"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Jabster",
+          "level": 32
+        }
+      ],
+      "flavor": "Prawnch trains hard in the rapids, raising its claw-fists high and picking fights with every opponent in sight. It even treats passing creatures as imaginary enemies. The more it gets ignored, the more it itches to throw down."
+    },
+    {
+      "name": "Jabster",
+      "elements": ["dark", "ice"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "A master of all kinds of boxing combos, it constantly hones its techniques. With head-bobs and tail-wags as feints to confuse its opponent, it then ricochets its claw-fist forward for a fight-ending blow."
+    },
+    {
+      "name": "Jeglid",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "evolutions": [
+        {
+          "name": "Jeburst",
+          "level": 32
+        },
+        {
+          "name": "Ekrim",
+          "level": 32
+        }
+      ],
+      "flavor": "As Jeglid bursts from the water’s surface, the flying fins on either side blast out stored water with force, launching it into the air for a glide. Its form is especially agile and strong."
+    },
+    {
+      "name": "Jeburst",
+      "elements": ["water"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "The wing membranes sprouting from its forelimbs are airy yet tough. Two well-developed pairs of water storage organs on its wings can jet powerful streams, pushing its body like an arrow to cleave through the water pressure, surge upstream, and vault all the way to the top of the falls."
+    },
+    {
+      "name": "Ekrim",
+      "elements": ["dark"],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "evolutions": [],
+      "flavor": "Elusive Ekrim can skillfully grab treasures with the talon on its tail and then vanish into the darkness without a trace."
+    }
+  ]
+}

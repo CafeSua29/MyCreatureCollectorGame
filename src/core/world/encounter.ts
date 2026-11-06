@@ -12,7 +12,8 @@ import {
   rollSpawnPolarity,
   uniformBigStats,
   emptySoulLevels,
-  emptyEffortValues
+  emptyEffortValues,
+  teraElementChoices
 } from '../monster'
 import {
   activeTimeMultiplier,
@@ -245,7 +246,8 @@ export function rollMonster(
     pendingEvolutionIds: [],
     statuses: [],
     equipment: [],
-    teraElementId: species.elementIds[0],
+    // Tạm, tung lại ở dưới (teraElementChoices); loài không hệ chưa có hệ đầu.
+    teraElementId: species.elementIds[0] ?? STELLAR,
     gmaxFactor: false,
     dynamaxLevel: 0,
     // Tuổi 0; quái hoang / boss tung tuổi sau cùng (rollSpawnAge), trứng nở ở tuổi 0.
@@ -290,6 +292,7 @@ export function rollMonster(
     // Chưa từng được cấy ghép (docs/rules/implant.md).
     implantBonusStats: uniformBigStats(0),
     implantEffects: {},
+    refinements: {},
     implantAttempts: 0,
     implantFails: 0,
     // Tung sau cùng (rollWorkTraits) để không đổi các giá trị random phía trước.
@@ -311,7 +314,9 @@ export function rollMonster(
   )
   if (shiny) monster = addShinyStacks(data, monster, 1)
   let teraElementId = species.teraElementId
-  if (teraElementId === undefined) [teraElementId, rng] = pick(rng, species.elementIds)
+  if (teraElementId === undefined) {
+    ;[teraElementId, rng] = pick(rng, teraElementChoices(data, species))
+  }
   let natureId: string
   ;[natureId, rng] = rollNature(data, rng)
   // Loài không có ability thì ô không có tác dụng: không tung để giữ chuỗi random.
@@ -577,7 +582,9 @@ export function rollBossTransformTraits(
   if (!stellar && fixedTera === undefined) {
     let own: boolean
     ;[own, rng] = rollPercent(rng, tera.bossOwnElementChance)
-    ;[teraElementId, rng] = pick(rng, own ? boss.elementIds : Object.keys(data.elements))
+    // Boss không hệ: "hệ của nó" là mọi hệ (teraElementChoices).
+    const choices = own ? teraElementChoices(data, boss) : Object.keys(data.elements)
+    ;[teraElementId, rng] = pick(rng, choices)
   }
   let gmaxFactor = false
   if (canHaveGmaxFactor(data, boss.speciesId)) {
@@ -643,6 +650,8 @@ export interface Encounter {
   isBoss: boolean
   rng: RngState
   nextMonsterId: number
+  /** Tầng của boss tầng (lợi thế đã tung lúc do thám thì dùng lại). */
+  advantageFloor?: number
 }
 
 /**
@@ -692,7 +701,13 @@ export function generateFloorBossEncounter(
 ): Encounter {
   let boss: Monster
   ;[boss, rng] = generateFloorBoss(data, rng, site, `m${nextMonsterId}`)
-  return { enemies: [boss], isBoss: true, rng, nextMonsterId: nextMonsterId + 1 }
+  return {
+    enemies: [boss],
+    isBoss: true,
+    rng,
+    nextMonsterId: nextMonsterId + 1,
+    advantageFloor: site.floor
+  }
 }
 
 /**

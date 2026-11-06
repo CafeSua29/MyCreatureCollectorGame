@@ -1,0 +1,5104 @@
+{
+  "moves": [
+    {
+      "name": "Desperation",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Echolocation",
+      "elemental_type": "Air",
+      "tags": ["sound", "loud", "support", "passive", "artificial_electricity", "machine"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Galactic Beatdown",
+      "elemental_type": "Astral",
+      "tags": ["astral", "space", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Prismatic",
+      "elemental_type": "Glitter",
+      "tags": ["glitter", "glass", "support", "unsellable", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Sticky Tongue",
+      "elemental_type": "Beast",
+      "tags": ["tongue", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Thunder Blast",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "weather", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Blood Donation",
+      "elemental_type": "Beast",
+      "tags": ["beast", "healer", "blood", "undead", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Air Camouflage",
+      "elemental_type": "Air",
+      "tags": ["air", "flight", "bird", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Hypnotise",
+      "elemental_type": "Astral",
+      "tags": ["psychic", "deception", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Unshakeable",
+      "elemental_type": "Earth",
+      "tags": ["mountain", "tough", "righteous", "slow", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Dog Years",
+      "elemental_type": "Beast",
+      "tags": ["dog", "time", "support", "captain_dreadful"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Pole Vault Assault",
+      "elemental_type": "Air",
+      "tags": ["thwackalope", "unsellable", "offense"],
+      "ap_cost": 7
+    },
+    {
+      "name": "Trip",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Poison Wall",
+      "elemental_type": "Poison",
+      "tags": ["poison", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Shooting Star",
+      "elemental_type": "Astral",
+      "tags": ["astral", "space", "gun", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Dual Wield",
+      "elemental_type": "Typeless",
+      "tags": ["hands", "passive"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Chemical Imbalance",
+      "elemental_type": "Poison",
+      "tags": ["chemistry", "cooking", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Neutralise",
+      "elemental_type": "Water",
+      "tags": ["deception", "passive", "healer"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Self-Destruct",
+      "elemental_type": "Fire",
+      "tags": ["fire", "bomb", "machine", "offense", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Fog",
+      "elemental_type": "Water",
+      "tags": ["water", "weather", "air", "support", "captain_heather"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Quick Smack",
+      "elemental_type": "Typeless",
+      "tags": ["fast", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Sprint",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Déjà Vu",
+      "elemental_type": "Astral",
+      "tags": ["astral", "psychic", "fast", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Rapid Fire",
+      "elemental_type": "Fire",
+      "tags": ["fire", "gun", "bow", "fast", "offense"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Bon Bon Blast",
+      "elemental_type": "Typeless",
+      "tags": ["candevil", "unsellable"],
+      "ap_cost": 3
+    },
+    {
+      "name": "AP Steal",
+      "elemental_type": "Poison",
+      "tags": ["deception", "support"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Elemental Wall",
+      "elemental_type": "Typeless",
+      "tags": ["any", "wall", "support", "captain_wallace"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Meditate",
+      "elemental_type": "Astral",
+      "tags": ["psychic", "sleep", "support", "captain_zedd"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Superheated Fist",
+      "elemental_type": "Fire",
+      "tags": ["hands", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Self-Assured",
+      "elemental_type": "Typeless",
+      "tags": ["righteous", "slow", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Headshot",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "leader_ianthe"],
+      "ap_cost": 10
+    },
+    {
+      "name": "Leech",
+      "elemental_type": "Plant",
+      "tags": ["plant", "parasite", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Insomnia",
+      "elemental_type": "Astral",
+      "tags": ["astral", "psychic", "passive", "insomnia"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Critical AP",
+      "elemental_type": "Typeless",
+      "tags": ["any", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Lightning Bolt",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "weather", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Waterproof",
+      "elemental_type": "Water",
+      "tags": ["water", "crab", "plastic", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Guzzle Fuel",
+      "elemental_type": "Fire",
+      "tags": ["fire", "eat", "drink", "fuel", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Water Wall",
+      "elemental_type": "Water",
+      "tags": ["water", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Water Dance",
+      "elemental_type": "Water",
+      "tags": ["spirouette", "unsellable"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Wallop",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Incinerate",
+      "elemental_type": "Fire",
+      "tags": ["fire", "junk", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "AP Donate",
+      "elemental_type": "Typeless",
+      "tags": ["charity", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Trick",
+      "elemental_type": "Typeless",
+      "tags": ["annoy", "deception", "support", "halloween"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Status Resistance",
+      "elemental_type": "Metal",
+      "tags": ["tough", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Provoke",
+      "elemental_type": "Poison",
+      "tags": ["deception", "annoy", "tough", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Earth Coating",
+      "elemental_type": "Earth",
+      "tags": ["earth", "rock", "dirt", "coating", "petrify", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Treat",
+      "elemental_type": "Typeless",
+      "tags": ["annoy", "charity", "support", "halloween"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Iron Filings",
+      "elemental_type": "Metal",
+      "tags": ["metal", "support", "captain_lodestein"],
+      "ap_cost": 1
+    },
+    {
+      "name": "The Old 1-2",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Beast Camouflage",
+      "elemental_type": "Beast",
+      "tags": ["beast", "animal", "pet", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Radioactive",
+      "elemental_type": "Fire",
+      "tags": ["radiation", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Call For Help",
+      "elemental_type": "Typeless",
+      "tags": ["annoy", "deception", "sound", "elegant", "cute", "charming", "love", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Boil",
+      "elemental_type": "Water",
+      "tags": ["water", "fire", "cooking", "sickness", "crab", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Wonderful 7",
+      "elemental_type": "Astral",
+      "tags": ["allseer", "unsellable", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Smack",
+      "elemental_type": "Typeless",
+      "tags": ["any", "typeless_merchant", "no_randomization"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Jump Scare",
+      "elemental_type": "Typeless",
+      "tags": ["jump", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Earth Resistance",
+      "elemental_type": "Earth",
+      "tags": ["earth", "mountain", "dirt", "rock", "petrify", "building", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Phase Shift",
+      "elemental_type": "Astral",
+      "tags": ["astral", "spirit", "undead", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Crumble",
+      "elemental_type": "Earth",
+      "tags": ["earth", "mountain", "weather", "building"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Bite",
+      "elemental_type": "Beast",
+      "tags": ["beast", "teeth", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Copy That",
+      "elemental_type": "Air",
+      "tags": ["sound", "annoy", "shapeshift", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Air Wall",
+      "elemental_type": "Air",
+      "tags": ["air", "weather", "wall", "bird", "flight", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Two Heads",
+      "elemental_type": "Typeless",
+      "tags": ["twoheads", "love", "support", "passive"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Ice Wall",
+      "elemental_type": "Ice",
+      "tags": ["ice", "cold", "arctic", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Focus",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Lightning Wall",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "weather", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Gasoline Spray",
+      "elemental_type": "Fire",
+      "tags": ["fire", "annoy", "deception", "fuel", "support"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Sharp Edges",
+      "elemental_type": "Typeless",
+      "tags": ["glass", "metal", "knife", "sword", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Lightning Coating",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "metal", "weather", "coating", "artificial_electricity", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Inflame",
+      "elemental_type": "Fire",
+      "tags": ["fire", "annoy", "sickness", "rage", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Raise Shields",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Yule Regret That",
+      "elemental_type": "Ice",
+      "tags": ["elfless", "unsellable", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Battering Ram",
+      "elemental_type": "Typeless",
+      "tags": ["bansheep", "unsellable"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Booby Trap",
+      "elemental_type": "Typeless",
+      "tags": ["unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Machine Curse",
+      "elemental_type": "Metal",
+      "tags": ["passive", "annoy", "psychic", "deception", "machine_curse"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Plastic Wall",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "wall", "junk", "toy", "acrylic", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Cold Fusion",
+      "elemental_type": "Ice",
+      "tags": ["ice", "cold", "radiation", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Dodge",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Nurse",
+      "elemental_type": "Typeless",
+      "tags": ["healer", "love", "support", "charity"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Gemstone Wall",
+      "elemental_type": "Earth",
+      "tags": ["picksie", "unsellable"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Plastic Coating",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "junk", "acrylic", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Change the Record",
+      "elemental_type": "Typeless",
+      "tags": ["deception", "annoy", "sound", "support", "captain_cybil"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Air Coating",
+      "elemental_type": "Air",
+      "tags": ["air", "bird", "coating", "flight", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Sleep Walk",
+      "elemental_type": "Typeless",
+      "tags": ["asleep", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Sharpen",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Hurricane",
+      "elemental_type": "Air",
+      "tags": ["air", "weather", "offense"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Crystal Lens",
+      "elemental_type": "Glass",
+      "tags": ["glass", "ice", "offense", "crystal"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Toxic Stab",
+      "elemental_type": "Poison",
+      "tags": ["poison", "knife", "sword", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Glass Cannon",
+      "elemental_type": "Glass",
+      "tags": ["glass", "gun", "glass_cup", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Water Coating",
+      "elemental_type": "Water",
+      "tags": ["water", "crab", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Beast Coating",
+      "elemental_type": "Beast",
+      "tags": ["beast", "animal", "pet", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Throw",
+      "elemental_type": "Typeless",
+      "tags": ["tough", "air", "hands", "offense"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Metal Resistance",
+      "elemental_type": "Metal",
+      "tags": ["metal", "copper", "machine", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Metal Riff",
+      "elemental_type": "Metal",
+      "tags": ["metal", "sound", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Burning Passion",
+      "elemental_type": "Fire",
+      "tags": ["fire", "combustible", "love", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Abramacabra",
+      "elemental_type": "Beast",
+      "tags": ["macabra", "unsellable"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Icicle Dart",
+      "elemental_type": "Ice",
+      "tags": ["ice", "fast", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Frozen Ground",
+      "elemental_type": "Ice",
+      "tags": ["ice", "fast", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Plastic Resistance",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "acrylic", "toy", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Breathing Technique",
+      "elemental_type": "Astral",
+      "tags": ["psychic", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Pustule Bomb",
+      "elemental_type": "Poison",
+      "tags": ["poison", "sickness", "bomb", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Silicon Slash",
+      "elemental_type": "Glass",
+      "tags": ["glass", "data", "knife", "sword", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Vengeful Curse",
+      "elemental_type": "Astral",
+      "tags": ["astral", "psychic", "undead", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Meteor Barrage",
+      "elemental_type": "Earth",
+      "tags": ["artillerex", "unsellable", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Pity AP",
+      "elemental_type": "Typeless",
+      "tags": ["any", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Lightning Camouflage",
+      "elemental_type": "Lightning",
+      "tags": [
+        "lightning",
+        "metal",
+        "weather",
+        "coating",
+        "artificial_electricity",
+        "passive",
+        "camouflage"
+      ],
+      "ap_cost": 2
+    },
+    {
+      "name": "Plant Resistance",
+      "elemental_type": "Plant",
+      "tags": ["plant", "wood", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Pumpkin Pie",
+      "elemental_type": "Plant",
+      "tags": ["jumpkin", "unsellable"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Life Absorb",
+      "elemental_type": "Plant",
+      "tags": ["plant", "healer", "undead", "love", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Ice Resistance",
+      "elemental_type": "Ice",
+      "tags": ["ice", "mountain", "cold", "arctic", "weather", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Retribution",
+      "elemental_type": "Typeless",
+      "tags": ["love", "righteous", "support", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Clay-Fired",
+      "elemental_type": "Earth",
+      "tags": ["terracooka", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Astral Wall",
+      "elemental_type": "Astral",
+      "tags": ["astral", "space", "spirit", "psychic", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Crossfade",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Energy Shot",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Acid Reflex",
+      "elemental_type": "Poison",
+      "tags": ["jellyton", "unsellable", "passive", "captain_judas"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Fair Fight",
+      "elemental_type": "Metal",
+      "tags": ["palangolin", "unsellable"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Glass Bonds",
+      "elemental_type": "Glass",
+      "tags": ["glass", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Splinter",
+      "elemental_type": "Plant",
+      "tags": ["plant", "wood", "offense", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Acorn Mortar",
+      "elemental_type": "Plant",
+      "tags": ["plant", "gun", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Bloodlust",
+      "elemental_type": "Beast",
+      "tags": ["deception", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Stab In The Dark",
+      "elemental_type": "Typeless",
+      "tags": ["knife", "sword", "offense"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Custom Starter",
+      "elemental_type": "Typeless",
+      "tags": ["any", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Hardback",
+      "elemental_type": "Typeless",
+      "tags": ["hauntome", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Multi Smack",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Gear Shear",
+      "elemental_type": "Metal",
+      "tags": ["metal", "bulletino", "machine", "offense", "unsellable"],
+      "ap_cost": 10
+    },
+    {
+      "name": "Torrent",
+      "elemental_type": "Water",
+      "tags": ["water", "data", "crab", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "New Leaf",
+      "elemental_type": "Plant",
+      "tags": ["plant", "doctor", "healer", "support", "new_leaf"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Poison Pollen",
+      "elemental_type": "Plant",
+      "tags": ["plant", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Elemental Coating",
+      "elemental_type": "Typeless",
+      "tags": ["any", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Mountain Smash",
+      "elemental_type": "Earth",
+      "tags": ["earth", "mountain", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Critical Mass",
+      "elemental_type": "Fire",
+      "tags": ["radiation", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Radiation Breath",
+      "elemental_type": "Poison",
+      "tags": ["radiation", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Traffic Jam",
+      "elemental_type": "Plastic",
+      "tags": ["traffikrab", "unsellable"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Bolt From The Blue",
+      "elemental_type": "Lightning",
+      "tags": ["boltam", "unsellable", "support"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Random Starter",
+      "elemental_type": "Typeless",
+      "tags": ["any", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Tower Defence",
+      "elemental_type": "Earth",
+      "tags": ["averevoir", "unsellable", "support"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Tripwire",
+      "elemental_type": "Metal",
+      "tags": ["unsellable", "ferriclaw", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Liquid Body",
+      "elemental_type": "Poison",
+      "tags": ["jellyton", "padpole", "passive", "unsellable", "pondwalker"],
+      "ap_cost": 0
+    },
+    {
+      "name": "AP Drain",
+      "elemental_type": "Astral",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Binvasion",
+      "elemental_type": "Fire",
+      "tags": ["binvader", "unsellable", "offense", "captain_skip"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Binvitation",
+      "elemental_type": "Metal",
+      "tags": ["binvader", "unsellable", "support", "captain_skip"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Paint Swipe",
+      "elemental_type": "Typeless",
+      "tags": ["brushroom", "unsellable"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Bish Bash Bosh",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Shield Bash",
+      "elemental_type": "Metal",
+      "tags": ["metal", "tough", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Criticise",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Doc Leaf",
+      "elemental_type": "Plant",
+      "tags": ["plant", "healer", "doctor", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Suction Cup Dart",
+      "elemental_type": "Plastic",
+      "tags": ["clocksley", "unsellable", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Multi Shot",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Stony Look",
+      "elemental_type": "Earth",
+      "tags": ["petrify", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Cotton On",
+      "elemental_type": "Plant",
+      "tags": ["dandylion", "unsellable", "bansheep"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Multicopy",
+      "elemental_type": "Typeless",
+      "tags": ["annoy", "shapeshift", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Clockwork Mouse",
+      "elemental_type": "Plastic",
+      "tags": ["muskrateer", "unsellable", "offense"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Bone Cannon",
+      "elemental_type": "Beast",
+      "tags": ["beast", "bone", "gun", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Slice",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Energy Wave",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 3
+    },
+    {
+      "name": "AP Starter",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support", "passive", "captain_buffy"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Berserker",
+      "elemental_type": "Beast",
+      "tags": ["deception", "tough", "passive", "beast"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Poison Camouflage",
+      "elemental_type": "Poison",
+      "tags": ["poison", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Zoomies",
+      "elemental_type": "Beast",
+      "tags": ["pet", "offense", "cat", "dog"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Carnivore",
+      "elemental_type": "Beast",
+      "tags": ["teeth", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Fission Power",
+      "elemental_type": "Typeless",
+      "tags": ["anathema", "unsellable", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Fire Camouflage",
+      "elemental_type": "Fire",
+      "tags": ["fire", "combustible", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Scorch",
+      "elemental_type": "Fire",
+      "tags": ["fire", "hot", "cooking", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Compliment",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Sugar Rush",
+      "elemental_type": "Typeless",
+      "tags": ["candevil", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Waterworks",
+      "elemental_type": "Water",
+      "tags": ["faucetear", "unsellable"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Plant Wall",
+      "elemental_type": "Plant",
+      "tags": ["plant", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Astral Resistance",
+      "elemental_type": "Astral",
+      "tags": ["astral", "space", "spirit", "psychic", "undead", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Copper Chop",
+      "elemental_type": "Metal",
+      "tags": ["metal", "hands", "copper", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Sticky Spray",
+      "elemental_type": "Poison",
+      "tags": ["poison", "parasite", "support"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Beast Wall",
+      "elemental_type": "Beast",
+      "tags": ["beast", "animal", "pet", "bone", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Double Smack",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Bear Hug",
+      "elemental_type": "Beast",
+      "tags": ["unsellable", "bear"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Avalanche",
+      "elemental_type": "Ice",
+      "tags": ["ice", "weather", "support", "captain_heather"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Ice Coating",
+      "elemental_type": "Ice",
+      "tags": ["ice", "coating", "cold", "arctic", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Defend",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Plant Coating",
+      "elemental_type": "Plant",
+      "tags": ["plant", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "AP Factory",
+      "elemental_type": "Typeless",
+      "tags": ["charity", "fuel", "building", "machine", "passive", "support"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Shear Luck",
+      "elemental_type": "Typeless",
+      "tags": ["bansheep", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Sleep Talk",
+      "elemental_type": "Typeless",
+      "tags": ["asleep", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Last Rites",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense"],
+      "ap_cost": 10
+    },
+    {
+      "name": "Blizzard",
+      "elemental_type": "Ice",
+      "tags": ["ice", "weather", "offense"],
+      "ap_cost": 5
+    },
+    {
+      "name": "Woodcutter",
+      "elemental_type": "Plant",
+      "tags": ["plant", "wood", "sword", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Final Breath",
+      "elemental_type": "Typeless",
+      "tags": ["passive", "tough", "water"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Hibernate",
+      "elemental_type": "Astral",
+      "tags": ["stardigrade", "unsellable", "support", "captain_zedd", "bear"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Glass Resistance",
+      "elemental_type": "Glass",
+      "tags": ["glass", "junk", "glass_cup", "transparent", "building", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Delegate",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Mind-Meld",
+      "elemental_type": "Astral",
+      "tags": ["astral", "psychic", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Fireproof",
+      "elemental_type": "Fire",
+      "tags": ["fire", "hot", "cooking", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Fire Wall",
+      "elemental_type": "Fire",
+      "tags": ["fire", "data", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Glass Coating",
+      "elemental_type": "Glass",
+      "tags": ["glass", "coating", "transparent", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Ice Camouflage",
+      "elemental_type": "Ice",
+      "tags": ["ice", "cold", "arctic", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Wink",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Treasure Dig",
+      "elemental_type": "Earth",
+      "tags": ["unsellable", "picksie"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Astral Coating",
+      "elemental_type": "Astral",
+      "tags": ["astral", "space", "spirit", "psychic", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Copycat",
+      "elemental_type": "Beast",
+      "tags": ["pet", "cat", "dog", "shapeshift"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Bad Forecast",
+      "elemental_type": "Poison",
+      "tags": ["umbrahella", "unsellable"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Automation",
+      "elemental_type": "Typeless",
+      "tags": ["machine", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Peekaboo",
+      "elemental_type": "Typeless",
+      "tags": ["deception", "annoy", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Close Encounter",
+      "elemental_type": "Astral",
+      "tags": ["space", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Ionised Air",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "support"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Magnet",
+      "elemental_type": "Metal",
+      "tags": [
+        "metal",
+        "machine",
+        "lightning",
+        "artificial_electricity",
+        "data",
+        "support",
+        "passive"
+      ],
+      "ap_cost": 1
+    },
+    {
+      "name": "Air Resistance",
+      "elemental_type": "Air",
+      "tags": ["air", "sound", "flight", "weather", "bird", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Web Wrap",
+      "elemental_type": "Poison",
+      "tags": ["ferriclaw", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Trap Jaw",
+      "elemental_type": "Beast",
+      "tags": ["passive", "teeth"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Toy Hammer",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "toy", "hands", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Undertow",
+      "elemental_type": "Water",
+      "tags": ["water", "traffic", "offense"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Return Fire",
+      "elemental_type": "Typeless",
+      "tags": ["gun", "bow", "offense", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Metal Coating",
+      "elemental_type": "Metal",
+      "tags": ["metal", "machine", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Shrapnel",
+      "elemental_type": "Metal",
+      "tags": ["metal", "bomb", "offense", "machine"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Ricochet",
+      "elemental_type": "Typeless",
+      "tags": ["gun", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Earth Wall",
+      "elemental_type": "Earth",
+      "tags": ["earth", "rock", "dirt", "mountain", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Spit",
+      "elemental_type": "Typeless",
+      "tags": ["any", "typeless_merchant", "no_randomization"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Sturdy Armour",
+      "elemental_type": "Metal",
+      "tags": ["metal", "tough", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Gambit",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support", "captain_cleeo"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Plant Camouflage",
+      "elemental_type": "Plant",
+      "tags": ["plant", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Glass Camouflage",
+      "elemental_type": "Glass",
+      "tags": ["glass", "transparent", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Fuel Injection",
+      "elemental_type": "Fire",
+      "tags": ["passive", "machine", "fuel"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Djinntoxicate",
+      "elemental_type": "Astral",
+      "tags": ["djinn_entonic", "unsellable", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Grounded",
+      "elemental_type": "Lightning",
+      "tags": [
+        "lightning",
+        "copper",
+        "earth",
+        "metal",
+        "flight",
+        "artificial_electricity",
+        "weather",
+        "data",
+        "passive"
+      ],
+      "ap_cost": 0
+    },
+    {
+      "name": "Raise Arms",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Water Camouflage",
+      "elemental_type": "Water",
+      "tags": ["water", "crab", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Sandstorm",
+      "elemental_type": "Earth",
+      "tags": ["earth", "dirt", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Brick Blast",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "building", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Liftoff",
+      "elemental_type": "Air",
+      "tags": ["flight", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Suit Up",
+      "elemental_type": "Typeless",
+      "tags": ["braxsuit", "unsellable"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Zephyr",
+      "elemental_type": "Air",
+      "tags": ["air", "weather", "carniviper", "offense", "flight"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Clobber",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Butterfly Effect",
+      "elemental_type": "Air",
+      "tags": ["weather", "butterfly", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Roll Again",
+      "elemental_type": "Typeless",
+      "tags": [
+        "annoy",
+        "deception",
+        "gamble",
+        "rpg",
+        "support",
+        "passive",
+        "fast",
+        "captain_cleeo",
+        "ball"
+      ],
+      "ap_cost": 0
+    },
+    {
+      "name": "Snooze Spore",
+      "elemental_type": "Plant",
+      "tags": ["plant", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "bE rAnDoM!!",
+      "elemental_type": "Astral",
+      "tags": ["annoy"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Battery",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "hands", "artificial_electricity", "offense", "captain_lodestein"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Broadcast",
+      "elemental_type": "Air",
+      "tags": [
+        "air",
+        "sound",
+        "lightning",
+        "artificial_electricity",
+        "data",
+        "support",
+        "machine",
+        "captain_cybil"
+      ],
+      "ap_cost": 2
+    },
+    {
+      "name": "Unicast",
+      "elemental_type": "Lightning",
+      "tags": ["air", "sound", "lightning", "artificial_electricity", "data", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Heroic Blade",
+      "elemental_type": "Typeless",
+      "tags": ["knife", "sword", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Coal Story",
+      "elemental_type": "Earth",
+      "tags": ["earth", "fire", "cooking", "hot", "fuel", "offense"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Snow Rush",
+      "elemental_type": "Ice",
+      "tags": ["ice", "fast", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Revenge Strike",
+      "elemental_type": "Typeless",
+      "tags": ["deception", "offense", "passive", "captain_judas"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Jagged Edge",
+      "elemental_type": "Typeless",
+      "tags": ["glass", "metal", "knife", "sword", "ice", "offense", "passive", "captain_gladiola"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Poison Resistance",
+      "elemental_type": "Poison",
+      "tags": ["poison", "sickness", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Sonic Boom",
+      "elemental_type": "Air",
+      "tags": ["air", "sound", "flight", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Magic Tome",
+      "elemental_type": "Astral",
+      "tags": ["astral", "psychic", "rpg", "offense", "magic_tome", "book"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Glitter Bomb",
+      "elemental_type": "Glitter",
+      "tags": ["glitter", "annoy", "bomb", "art", "unsellable", "offense", "captain_codey"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Summon Tulpa",
+      "elemental_type": "Astral",
+      "tags": ["asleep", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Poison Coating",
+      "elemental_type": "Poison",
+      "tags": ["poison", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Plastic Camouflage",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "junk", "acrylic", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Recycle",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "junk", "support"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Haunt",
+      "elemental_type": "Astral",
+      "tags": ["astral", "spirit", "gamble", "undead", "support", "captain_dreadful"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Taunt",
+      "elemental_type": "Poison",
+      "tags": ["deception", "annoy", "tough", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Window",
+      "elemental_type": "Glass",
+      "tags": ["glass", "transparent", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Damage Roll",
+      "elemental_type": "Typeless",
+      "tags": ["annoy", "gamble", "rpg", "offense", "ball"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Plastic Knife",
+      "elemental_type": "Plastic",
+      "tags": ["plastic", "knife", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Deep Freeze",
+      "elemental_type": "Ice",
+      "tags": ["ice", "cold", "arctic", "support"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Vampire",
+      "elemental_type": "Beast",
+      "tags": ["blood", "passive", "parasite"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Nod",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Hot Potato",
+      "elemental_type": "Fire",
+      "tags": ["bomb", "food", "cooking", "farming", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Sticker Trick",
+      "elemental_type": "Glitter",
+      "tags": ["charlequin", "unsellable"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Bottle Volley",
+      "elemental_type": "Glass",
+      "tags": ["glass", "alcohol", "junk", "offense"],
+      "ap_cost": 3
+    },
+    {
+      "name": "Beast Resistance",
+      "elemental_type": "Beast",
+      "tags": ["beast", "animal", "pet", "bone", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Royal Flush",
+      "elemental_type": "Water",
+      "tags": ["offense", "royal"],
+      "ap_cost": 6
+    },
+    {
+      "name": "Charge",
+      "elemental_type": "Lightning",
+      "tags": ["lightning", "run", "artificial_electricity", "offense", "captain_lodestein"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Ice Breaker",
+      "elemental_type": "Ice",
+      "tags": ["ice", "mountain", "slow", "love", "offense"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Metal Camouflage",
+      "elemental_type": "Metal",
+      "tags": ["metal", "machine", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "AP Boost",
+      "elemental_type": "Astral",
+      "tags": ["any", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Glass Wall",
+      "elemental_type": "Glass",
+      "tags": ["glass", "transparent", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Bad Joke",
+      "elemental_type": "Typeless",
+      "tags": ["annoy", "book"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Sure-Fire",
+      "elemental_type": "Fire",
+      "tags": ["fire", "support", "captain_zedd"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Fossil",
+      "elemental_type": "Earth",
+      "tags": ["earth", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Fire Coating",
+      "elemental_type": "Fire",
+      "tags": ["fire", "combustible", "coating", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Glitter Resistance",
+      "elemental_type": "Glitter",
+      "tags": ["glitter", "annoy", "art", "passive"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Earth Camouflage",
+      "elemental_type": "Earth",
+      "tags": ["earth", "rock", "dirt", "coating", "petrify", "passive", "camouflage"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Double Slice",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Parry Stance",
+      "elemental_type": "Beast",
+      "tags": ["deception", "sword", "support", "captain_judas"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Metal Wall",
+      "elemental_type": "Metal",
+      "tags": ["metal", "machine", "wall", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Brace for Impact",
+      "elemental_type": "Metal",
+      "tags": ["offense", "metal", "tough"],
+      "ap_cost": 4
+    },
+    {
+      "name": "Moonshine",
+      "elemental_type": "Astral",
+      "tags": ["alcohol", "space", "offense", "drink", "cooking", "glass_cup"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Pre-emptive Strike",
+      "elemental_type": "Typeless",
+      "tags": ["deception", "offense", "passive", "captain_judas"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Revolving Door",
+      "elemental_type": "Glass",
+      "tags": ["glass", "building", "support"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Fusion Power",
+      "elemental_type": "Typeless",
+      "tags": ["fusion", "unsellable"],
+      "ap_cost": 10
+    },
+    {
+      "name": "Spray",
+      "elemental_type": "Typeless",
+      "tags": ["any", "offense", "typeless_merchant"],
+      "ap_cost": 1
+    },
+    {
+      "name": "AP Refund",
+      "elemental_type": "Typeless",
+      "tags": ["any", "support", "passive", "captain_buffy"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Flirt",
+      "elemental_type": "Typeless",
+      "tags": ["cool", "elegant", "love", "support"],
+      "ap_cost": 1
+    },
+    {
+      "name": "Cosmic Kunai",
+      "elemental_type": "Astral",
+      "tags": ["kuneko", "offense", "unsellable"],
+      "ap_cost": 10
+    },
+    {
+      "name": "Energy Reserves",
+      "elemental_type": "Lightning",
+      "tags": ["amphare", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Ritual",
+      "elemental_type": "Astral",
+      "tags": ["astral", "undead", "psychic", "love", "support", "captain_dreadful"],
+      "ap_cost": 6
+    },
+    {
+      "name": "Bushfire",
+      "elemental_type": "Plant",
+      "tags": ["busheye", "unsellable"],
+      "ap_cost": 2
+    },
+    {
+      "name": "Spring-Load",
+      "elemental_type": "Plastic",
+      "tags": ["clocksley", "unsellable"],
+      "ap_cost": 0
+    },
+    {
+      "name": "Astral Camouflage",
+      "elemental_type": "Astral",
+      "tags": ["astral", "space", "spirit", "psychic", "coating", "passive", "camouflage"],
+      "ap_cost": 2
+    }
+  ],
+  "species": [
+    {
+      "name": "Mardiusa",
+      "elemental_type": "Poison",
+      "tags": [
+        "carniviper",
+        "deception",
+        "teeth",
+        "rage",
+        "fast",
+        "elegant",
+        "twoheads",
+        "petrify",
+        "hands",
+        "gamble"
+      ],
+      "known": [
+        "Smack",
+        "Sharpen",
+        "Revenge Strike",
+        "Bite",
+        "Déjà Vu",
+        "Multi Smack",
+        "Hypnotise",
+        "Pre-emptive Strike",
+        "Stony Look",
+        "Two Heads",
+        "AP Refund",
+        "Elemental Wall",
+        "Provoke"
+      ]
+    },
+    {
+      "name": "Fortiwinx",
+      "elemental_type": "Earth",
+      "tags": ["sanzatime", "time", "slow", "glass", "charming", "dirt", "glitter", "psychic"],
+      "known": [
+        "Smack",
+        "Sharp Edges",
+        "Déjà Vu",
+        "Crumble",
+        "Clobber",
+        "Dog Years",
+        "Nod",
+        "Mountain Smash",
+        "Hypnotise",
+        "Silicon Slash",
+        "Insomnia"
+      ]
+    },
+    {
+      "name": "Plasmantler",
+      "elemental_type": "Lightning",
+      "tags": [
+        "boltam",
+        "artificial_electricity",
+        "fast",
+        "cool",
+        "animal",
+        "hands",
+        "glitter",
+        "copper",
+        "metal",
+        "tough"
+      ],
+      "known": [
+        "Smack",
+        "Broadcast",
+        "Charge",
+        "Battery",
+        "Thunder Blast",
+        "Bolt From The Blue",
+        "Magnet",
+        "Lightning Wall",
+        "Energy Wave",
+        "The Old 1-2",
+        "Iron Filings"
+      ]
+    },
+    {
+      "name": "Squirey",
+      "elemental_type": "Beast",
+      "tags": ["squirey", "animal", "sword", "fast", "hands"],
+      "known": ["Smack", "Sharpen", "Copper Chop", "Parry Stance", "Quick Smack", "Slice", "Dodge"]
+    },
+    {
+      "name": "Scubalrus",
+      "elemental_type": "Water",
+      "tags": ["diveal", "charming", "cold", "slow", "teeth"],
+      "known": [
+        "Spit",
+        "Elemental Wall",
+        "Torrent",
+        "Ice Resistance",
+        "Ice Breaker",
+        "Undertow",
+        "Bite",
+        "Fog",
+        "Energy Wave",
+        "Boil",
+        "Multi Shot"
+      ]
+    },
+    {
+      "name": "Decibelle",
+      "elemental_type": "Air",
+      "tags": [
+        "sirenade",
+        "sound",
+        "bird",
+        "annoy",
+        "toy",
+        "glitter",
+        "fast",
+        "flight",
+        "charity",
+        "cute",
+        "healer"
+      ],
+      "known": [
+        "Spit",
+        "Dodge",
+        "Sonic Boom",
+        "Call For Help",
+        "Air Wall",
+        "Taunt",
+        "New Leaf",
+        "Provoke",
+        "Echolocation",
+        "Hurricane",
+        "Metal Riff",
+        "Change the Record",
+        "Nurse"
+      ]
+    },
+    {
+      "name": "Carniviper",
+      "elemental_type": "Poison",
+      "tags": ["carniviper", "deception", "teeth", "rage"],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Toxic Stab",
+        "Revenge Strike",
+        "Sharpen",
+        "Bite",
+        "Multi Smack"
+      ]
+    },
+    {
+      "name": "Galagor",
+      "elemental_type": "Astral",
+      "tags": [
+        "stardigrade",
+        "bone",
+        "space",
+        "slow",
+        "artificial_electricity",
+        "flight",
+        "psychic",
+        "machine",
+        "sleep",
+        "gun",
+        "tough",
+        "deception",
+        "radiation"
+      ],
+      "known": [
+        "Spit",
+        "Focus",
+        "Meditate",
+        "Hibernate",
+        "Mind-Meld",
+        "Provoke",
+        "Déjà Vu",
+        "Broadcast",
+        "Breathing Technique",
+        "Astral Wall",
+        "Shooting Star",
+        "Magnet"
+      ]
+    },
+    {
+      "name": "Terracooka",
+      "elemental_type": "Earth",
+      "tags": ["terracooka", "cooking", "alcohol", "cute", "food", "knife", "space"],
+      "known": [
+        "Smack",
+        "Clay-Fired",
+        "Coal Story",
+        "Hot Potato",
+        "Earth Wall",
+        "Sandstorm",
+        "Crumble"
+      ]
+    },
+    {
+      "name": "Bulletino",
+      "elemental_type": "Fire",
+      "tags": ["bulletino", "bone", "teeth", "gun", "rage", "bomb", "metal", "machine", "fast"],
+      "known": [
+        "Spit",
+        "Sprint",
+        "Rapid Fire",
+        "Raise Arms",
+        "Ricochet",
+        "Multi Shot",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Pombomb",
+      "elemental_type": "Fire",
+      "tags": ["pombomb", "dog", "cute", "pet", "animal", "annoy", "bone", "bomb", "tongue"],
+      "known": [
+        "Spit",
+        "Dog Years",
+        "Sticky Tongue",
+        "Inflame",
+        "Zoomies",
+        "Hot Potato",
+        "Elemental Wall",
+        "bE rAnDoM!!"
+      ]
+    },
+    {
+      "name": "Magikrab",
+      "elemental_type": "Astral",
+      "tags": ["traffikrab", "crab", "traffic", "rage", "junk", "deception", "psychic", "spirit"],
+      "known": [
+        "Smack",
+        "Traffic Jam",
+        "Elemental Wall",
+        "Inflame",
+        "Multi Smack",
+        "Water Coating",
+        "Undertow",
+        "Shooting Star",
+        "Meditate",
+        "Multi Shot",
+        "Ritual",
+        "Galactic Beatdown"
+      ]
+    },
+    {
+      "name": "Allseer",
+      "elemental_type": "Metal",
+      "tags": [
+        "allseer",
+        "machine",
+        "artificial_electricity",
+        "space",
+        "psychic",
+        "deception",
+        "gun",
+        "flight",
+        "gamble",
+        "undead",
+        "radiation"
+      ],
+      "known": [
+        "Spit",
+        "Raise Shields",
+        "Wonderful 7",
+        "Shooting Star",
+        "Broadcast",
+        "Shield Bash",
+        "Close Encounter"
+      ]
+    },
+    {
+      "name": "Salamagus",
+      "elemental_type": "Fire",
+      "tags": ["salamagus", "psychic", "deception", "fast", "shapeshift", "healer", "hot", "rpg"],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Inflame",
+        "Damage Roll",
+        "Roll Again",
+        "Fire Wall",
+        "Sure-Fire"
+      ]
+    },
+    {
+      "name": "Rosehood",
+      "elemental_type": "Plant",
+      "tags": [
+        "littlered",
+        "teeth",
+        "animal",
+        "charming",
+        "dog",
+        "eat",
+        "hands",
+        "jump",
+        "fast",
+        "elegant",
+        "love",
+        "beast"
+      ],
+      "known": [
+        "Smack",
+        "Bite",
+        "Call For Help",
+        "Berserker",
+        "Zoomies",
+        "Dodge",
+        "Copycat",
+        "Woodcutter",
+        "Burning Passion",
+        "Splinter",
+        "Poison Pollen",
+        "Nurse"
+      ]
+    },
+    {
+      "name": "Burnace",
+      "elemental_type": "Fire",
+      "tags": [
+        "burnace",
+        "building",
+        "artificial_electricity",
+        "fuel",
+        "hands",
+        "junk",
+        "machine",
+        "sound",
+        "chemistry"
+      ],
+      "known": [
+        "Spit",
+        "Coal Story",
+        "Guzzle Fuel",
+        "Automation",
+        "Incinerate",
+        "Brick Blast",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Aeroboros",
+      "elemental_type": "Air",
+      "tags": [
+        "carniviper",
+        "poison",
+        "deception",
+        "teeth",
+        "rage",
+        "fast",
+        "gamble",
+        "weather",
+        "glitter",
+        "psychic",
+        "healer"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Revenge Strike",
+        "Zephyr",
+        "Déjà Vu",
+        "Multi Smack",
+        "Hypnotise",
+        "Pre-emptive Strike",
+        "Hurricane",
+        "Ritual",
+        "Air Wall",
+        "Thunder Blast",
+        "Blizzard"
+      ]
+    },
+    {
+      "name": "Kingrave",
+      "elemental_type": "Earth",
+      "tags": [
+        "pawndead",
+        "bone",
+        "slow",
+        "charity",
+        "rpg",
+        "gamble",
+        "undead",
+        "righteous",
+        "deception",
+        "royal"
+      ],
+      "known": [
+        "Smack",
+        "Fossil",
+        "Bone Cannon",
+        "Damage Roll",
+        "Beast Wall",
+        "Last Rites",
+        "Ritual",
+        "Life Absorb",
+        "Delegate",
+        "Vengeful Curse",
+        "Bish Bash Bosh",
+        "Retribution",
+        "Haunt"
+      ]
+    },
+    {
+      "name": "Binvader",
+      "elemental_type": "Metal",
+      "tags": ["binvader", "gun", "junk", "space", "artificial_electricity", "data", "machine"],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Metal Wall",
+        "Binvitation",
+        "Bottle Volley",
+        "Energy Shot",
+        "Binvasion"
+      ]
+    },
+    {
+      "name": "Amphare",
+      "elemental_type": "Lightning",
+      "tags": [
+        "amphare",
+        "animal",
+        "cute",
+        "artificial_electricity",
+        "machine",
+        "pet",
+        "tough",
+        "toy"
+      ],
+      "known": [
+        "Smack",
+        "Ionised Air",
+        "Energy Reserves",
+        "Lightning Wall",
+        "Zoomies",
+        "Call For Help",
+        "Magnet"
+      ]
+    },
+    {
+      "name": "Springheel",
+      "elemental_type": "Beast",
+      "tags": ["springheel", "deception", "hands", "fast", "flight", "jump"],
+      "known": ["Smack", "Peekaboo", "Jump Scare", "Bite", "Trick", "Clobber", "Taunt"]
+    },
+    {
+      "name": "Ramtasm",
+      "elemental_type": "Astral",
+      "tags": [
+        "bansheep",
+        "cute",
+        "healer",
+        "righteous",
+        "spirit",
+        "tough",
+        "beast",
+        "flight",
+        "psychic"
+      ],
+      "known": [
+        "Smack",
+        "Shear Luck",
+        "Battering Ram",
+        "Bite",
+        "Elemental Wall",
+        "Shooting Star",
+        "Phase Shift",
+        "New Leaf",
+        "Ritual",
+        "Mind-Meld",
+        "Galactic Beatdown",
+        "Haunt",
+        "Last Rites"
+      ]
+    },
+    {
+      "name": "Spirouette",
+      "elemental_type": "Water",
+      "tags": ["spirouette", "elegant", "charming", "fast"],
+      "known": [
+        "Spit",
+        "Sprint",
+        "Icicle Dart",
+        "Water Wall",
+        "Quick Smack",
+        "Water Coating",
+        "Torrent",
+        "Fog"
+      ]
+    },
+    {
+      "name": "Coaldron",
+      "elemental_type": "Earth",
+      "tags": ["terracooka", "cooking", "alcohol", "cute", "food", "knife", "space"],
+      "known": [
+        "Spit",
+        "Clay-Fired",
+        "Hot Potato",
+        "Earth Wall",
+        "Sandstorm",
+        "Crumble",
+        "Boil",
+        "AP Refund",
+        "Multi Shot",
+        "Focus",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Wyrmaw",
+      "elemental_type": "Earth",
+      "tags": ["trapwurm", "eat", "tough", "deception", "slow", "teeth", "rock", "metal"],
+      "known": [
+        "Smack",
+        "Trap Jaw",
+        "Custom Starter",
+        "Bite",
+        "Trick",
+        "Desperation",
+        "Shrapnel",
+        "Sharp Edges",
+        "Sturdy Armour",
+        "Mountain Smash",
+        "Crumble",
+        "Parry Stance",
+        "Last Rites"
+      ]
+    },
+    {
+      "name": "Southpaw",
+      "elemental_type": "Metal",
+      "tags": ["puppercut", "dog", "beast", "undead", "charming", "fast", "hands", "shapeshift"],
+      "known": [
+        "Smack",
+        "Sharpen",
+        "Metal Wall",
+        "Copper Chop",
+        "Dog Years",
+        "Sharp Edges",
+        "Battery",
+        "Superheated Fist",
+        "Throw",
+        "Magnet",
+        "The Old 1-2"
+      ]
+    },
+    {
+      "name": "Busheye",
+      "elemental_type": "Plant",
+      "tags": ["busheye", "cute", "combustible", "deception", "farming", "wood"],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Spray",
+        "Wallop",
+        "Elemental Wall",
+        "Doc Leaf",
+        "Acorn Mortar"
+      ]
+    },
+    {
+      "name": "Bansheep",
+      "elemental_type": "Beast",
+      "tags": ["bansheep", "cute", "healer", "righteous", "spirit", "tough"],
+      "known": [
+        "Smack",
+        "Shear Luck",
+        "Battering Ram",
+        "Sharpen",
+        "Bite",
+        "Elemental Wall",
+        "Cotton On"
+      ]
+    },
+    {
+      "name": "Pawper",
+      "elemental_type": "Beast",
+      "tags": [
+        "bear1",
+        "animal",
+        "annoy",
+        "twoheads",
+        "bone",
+        "deception",
+        "eat",
+        "fast",
+        "hands",
+        "jump",
+        "toy",
+        "teeth",
+        "bear"
+      ],
+      "known": [
+        "Smack",
+        "Berserker",
+        "Bear Hug",
+        "Jump Scare",
+        "Bite",
+        "Carnivore",
+        "Two Heads",
+        "Hibernate"
+      ]
+    },
+    {
+      "name": "Elfless",
+      "elemental_type": "Ice",
+      "tags": [
+        "elfless",
+        "wood",
+        "hands",
+        "annoy",
+        "fast",
+        "psychic",
+        "deception",
+        "charity",
+        "charming"
+      ],
+      "known": ["Smack", "Sprint", "Treat", "Snow Rush", "AP Donate", "Ice Wall", "Toy Hammer"]
+    },
+    {
+      "name": "Littlered",
+      "elemental_type": "Beast",
+      "tags": ["littlered", "teeth", "animal", "charming", "dog", "eat", "hands", "jump"],
+      "known": [
+        "Smack",
+        "Carnivore",
+        "Bite",
+        "Call For Help",
+        "Berserker",
+        "Zoomies",
+        "Dodge",
+        "Copycat"
+      ]
+    },
+    {
+      "name": "Arkidd",
+      "elemental_type": "Lightning",
+      "tags": ["arkidd", "machine", "data", "charming", "hands", "toy", "fast"],
+      "known": ["Smack", "Trip", "Charge", "Toy Hammer", "Plastic Wall", "Battery", "AP Boost"]
+    },
+    {
+      "name": "Scarleteeth",
+      "elemental_type": "Beast",
+      "tags": [
+        "littlered",
+        "teeth",
+        "animal",
+        "charming",
+        "dog",
+        "eat",
+        "hands",
+        "jump",
+        "slow",
+        "tough",
+        "shapeshift",
+        "deception"
+      ],
+      "known": [
+        "Smack",
+        "Carnivore",
+        "Bite",
+        "Call For Help",
+        "Berserker",
+        "Zoomies",
+        "Dodge",
+        "Copycat",
+        "Jump Scare",
+        "Bish Bash Bosh",
+        "Bloodlust",
+        "Trick",
+        "Copy That"
+      ]
+    },
+    {
+      "name": "Folklord",
+      "elemental_type": "Beast",
+      "tags": [
+        "macabra",
+        "teeth",
+        "bone",
+        "sickness",
+        "rage",
+        "eat",
+        "undead",
+        "blood",
+        "psychic",
+        "shapeshift",
+        "hands"
+      ],
+      "known": [
+        "Smack",
+        "Nod",
+        "Bite",
+        "Abramacabra",
+        "Bone Cannon",
+        "Desperation",
+        "Blood Donation",
+        "Copy That",
+        "Multi Smack",
+        "Crossfade",
+        "Ritual",
+        "Clobber"
+      ]
+    },
+    {
+      "name": "Adeptile",
+      "elemental_type": "Astral",
+      "tags": [
+        "salamagus",
+        "psychic",
+        "deception",
+        "fast",
+        "shapeshift",
+        "healer",
+        "hot",
+        "rpg",
+        "fire",
+        "doctor",
+        "tough"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Inflame",
+        "Damage Roll",
+        "Roll Again",
+        "Fire Wall",
+        "Sure-Fire",
+        "Status Resistance",
+        "Ritual",
+        "Magic Tome",
+        "Nurse",
+        "Meditate"
+      ]
+    },
+    {
+      "name": "Faerious",
+      "elemental_type": "Ice",
+      "tags": [
+        "elfless",
+        "wood",
+        "hands",
+        "annoy",
+        "fast",
+        "psychic",
+        "deception",
+        "charity",
+        "charming",
+        "sword"
+      ],
+      "known": [
+        "Smack",
+        "Sprint",
+        "Treat",
+        "Snow Rush",
+        "AP Donate",
+        "Ice Wall",
+        "Toy Hammer",
+        "Sharp Edges",
+        "Parry Stance",
+        "Heroic Blade",
+        "Woodcutter",
+        "Glitter Bomb"
+      ]
+    },
+    {
+      "name": "Hedgeherne",
+      "elemental_type": "Plant",
+      "tags": [
+        "busheye",
+        "cute",
+        "combustible",
+        "deception",
+        "farming",
+        "wood",
+        "charming",
+        "fire",
+        "tough"
+      ],
+      "known": [
+        "Smack",
+        "Elemental Wall",
+        "Doc Leaf",
+        "Acorn Mortar",
+        "Bushfire",
+        "New Leaf",
+        "Hot Potato",
+        "Desperation",
+        "Incinerate",
+        "Burning Passion",
+        "Woodcutter",
+        "Splinter",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Boltam",
+      "elemental_type": "Lightning",
+      "tags": [
+        "boltam",
+        "artificial_electricity",
+        "fast",
+        "cool",
+        "animal",
+        "hands",
+        "glitter",
+        "copper"
+      ],
+      "known": [
+        "Smack",
+        "Broadcast",
+        "Charge",
+        "Battery",
+        "Thunder Blast",
+        "Copper Chop",
+        "Bolt From The Blue"
+      ]
+    },
+    {
+      "name": "Hauntome",
+      "elemental_type": "Air",
+      "tags": [
+        "hauntome",
+        "art",
+        "book",
+        "crystal",
+        "flight",
+        "healer",
+        "rpg",
+        "spirit",
+        "psychic"
+      ],
+      "known": ["Spit", "Hardback", "Haunt", "New Leaf", "Last Rites", "Insomnia", "Mind-Meld"]
+    },
+    {
+      "name": "Faucetear",
+      "elemental_type": "Water",
+      "tags": ["faucetear", "metal", "cute", "cold", "hot"],
+      "known": ["Spit", "Call For Help", "Spray", "Waterworks", "Fog", "Torrent", "Elemental Wall"]
+    },
+    {
+      "name": "Pawprince",
+      "elemental_type": "Beast",
+      "tags": [
+        "bear1",
+        "animal",
+        "annoy",
+        "twoheads",
+        "bone",
+        "deception",
+        "eat",
+        "fast",
+        "hands",
+        "jump",
+        "toy",
+        "teeth",
+        "bear",
+        "royal",
+        "tongue"
+      ],
+      "known": [
+        "Smack",
+        "Berserker",
+        "Bear Hug",
+        "Jump Scare",
+        "Bite",
+        "Carnivore",
+        "Two Heads",
+        "Hibernate",
+        "Provoke",
+        "Bloodlust",
+        "Dual Wield",
+        "The Old 1-2",
+        "Royal Flush"
+      ]
+    },
+    {
+      "name": "Zeustrike",
+      "elemental_type": "Lightning",
+      "tags": [
+        "sparktan",
+        "glitter",
+        "fast",
+        "weather",
+        "flight",
+        "metal",
+        "spirit",
+        "cold",
+        "rpg",
+        "righteous",
+        "sound"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Thunder Blast",
+        "Dodge",
+        "Lightning Wall",
+        "Blizzard",
+        "Energy Shot",
+        "Iron Filings",
+        "Raise Shields",
+        "Energy Wave",
+        "Hurricane",
+        "Damage Roll"
+      ]
+    },
+    {
+      "name": "Jellyton",
+      "elemental_type": "Poison",
+      "tags": ["jellyton", "deception", "fast", "bone", "sickness", "combustible", "parasite"],
+      "known": [
+        "Smack",
+        "Acid Reflex",
+        "Liquid Body",
+        "Bone Cannon",
+        "Toxic Stab",
+        "Double Slice",
+        "Poison Wall",
+        "Multi Smack"
+      ]
+    },
+    {
+      "name": "Regensea",
+      "elemental_type": "Water",
+      "tags": ["spirouette", "elegant", "charming", "fast", "royal", "love"],
+      "known": [
+        "Spit",
+        "Sprint",
+        "Icicle Dart",
+        "Water Wall",
+        "Quick Smack",
+        "Water Coating",
+        "Torrent",
+        "Fog",
+        "Undertow",
+        "Delegate",
+        "Energy Wave",
+        "Water Dance",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Huntorch",
+      "elemental_type": "Plant",
+      "tags": [
+        "busheye",
+        "cute",
+        "combustible",
+        "deception",
+        "farming",
+        "wood",
+        "charming",
+        "fire"
+      ],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Wallop",
+        "Elemental Wall",
+        "Doc Leaf",
+        "Acorn Mortar",
+        "Bushfire",
+        "Scorch",
+        "New Leaf",
+        "Hot Potato",
+        "Desperation"
+      ]
+    },
+    {
+      "name": "Dominoth",
+      "elemental_type": "Air",
+      "tags": ["dominoth", "beast", "flight", "parasite", "deception", "charming", "butterfly"],
+      "known": ["Smack", "Sprint", "Zephyr", "Wallop", "Taunt", "Dodge", "Air Wall"]
+    },
+    {
+      "name": "Miss Mimic",
+      "elemental_type": "Metal",
+      "tags": [
+        "miss_mimic",
+        "shapeshift",
+        "acrylic",
+        "artificial_electricity",
+        "deception",
+        "fast",
+        "elegant",
+        "junk",
+        "knife",
+        "machine",
+        "sword",
+        "teeth"
+      ],
+      "known": [
+        "Smack",
+        "Pre-emptive Strike",
+        "Custom Starter",
+        "Sharp Edges",
+        "Double Slice",
+        "Plastic Knife",
+        "Toxic Stab",
+        "Flirt",
+        "Stab In The Dark"
+      ]
+    },
+    {
+      "name": "Glaistain",
+      "elemental_type": "Glass",
+      "tags": [
+        "glaistain",
+        "knife",
+        "rage",
+        "fast",
+        "flight",
+        "transparent",
+        "elegant",
+        "righteous",
+        "deception"
+      ],
+      "known": [
+        "Smack",
+        "Dodge",
+        "Crystal Lens",
+        "Jagged Edge",
+        "Window",
+        "Glass Bonds",
+        "Glass Cannon"
+      ]
+    },
+    {
+      "name": "Minortom",
+      "elemental_type": "Metal",
+      "tags": [
+        "minortom",
+        "space",
+        "flight",
+        "artificial_electricity",
+        "charming",
+        "bomb",
+        "fuel",
+        "machine",
+        "radiation",
+        "toy"
+      ],
+      "known": [
+        "Smack",
+        "Raise Shields",
+        "Sturdy Armour",
+        "Shooting Star",
+        "Sonic Boom",
+        "Astral Wall",
+        "Grounded",
+        "Brace for Impact"
+      ]
+    },
+    {
+      "name": "Velocirifle",
+      "elemental_type": "Fire",
+      "tags": ["bulletino", "bone", "teeth", "gun", "rage", "bomb", "metal", "machine", "fast"],
+      "known": [
+        "Spit",
+        "Rapid Fire",
+        "Raise Arms",
+        "Ricochet",
+        "Multi Shot",
+        "Focus",
+        "Inflame",
+        "Sure-Fire",
+        "Acorn Mortar",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Weevilite",
+      "elemental_type": "Plastic",
+      "tags": [
+        "traffikrab",
+        "crab",
+        "traffic",
+        "rage",
+        "junk",
+        "deception",
+        "fast",
+        "artificial_electricity"
+      ],
+      "known": [
+        "Spit",
+        "Traffic Jam",
+        "Elemental Wall",
+        "Inflame",
+        "Multi Smack",
+        "Water Coating",
+        "Undertow",
+        "Brick Blast",
+        "Déjà Vu",
+        "Charge",
+        "Hypnotise",
+        "Battery"
+      ]
+    },
+    {
+      "name": "Beanstalker",
+      "elemental_type": "Plant",
+      "tags": [
+        "jumpkin",
+        "cute",
+        "farming",
+        "food",
+        "fast",
+        "healer",
+        "toy",
+        "undead",
+        "teeth",
+        "knife",
+        "jump",
+        "halloween"
+      ],
+      "known": [
+        "Smack",
+        "Pumpkin Pie",
+        "Jump Scare",
+        "Trick",
+        "Treat",
+        "Bite",
+        "Plant Wall",
+        "Woodcutter",
+        "Toxic Stab",
+        "Sharp Edges",
+        "Plastic Knife",
+        "Stab In The Dark"
+      ]
+    },
+    {
+      "name": "Vendemon",
+      "elemental_type": "Metal",
+      "tags": [
+        "candevil",
+        "annoy",
+        "charming",
+        "fast",
+        "food",
+        "gamble",
+        "hot",
+        "rage",
+        "teeth",
+        "beast",
+        "machine",
+        "toy",
+        "tough"
+      ],
+      "known": [
+        "Spit",
+        "Sugar Rush",
+        "Bon Bon Blast",
+        "Bite",
+        "Elemental Wall",
+        "Taunt",
+        "Treat",
+        "Coal Story",
+        "Multi Shot",
+        "Raise Shields",
+        "Magnet"
+      ]
+    },
+    {
+      "name": "Spitzfyre",
+      "elemental_type": "Fire",
+      "tags": [
+        "pombomb",
+        "dog",
+        "cute",
+        "pet",
+        "animal",
+        "annoy",
+        "bone",
+        "bomb",
+        "flight",
+        "tongue"
+      ],
+      "known": [
+        "Spit",
+        "Dog Years",
+        "Sticky Tongue",
+        "Inflame",
+        "Zoomies",
+        "Hot Potato",
+        "Elemental Wall",
+        "bE rAnDoM!!",
+        "Sure-Fire",
+        "Rapid Fire",
+        "Glitter Bomb",
+        "Air Wall",
+        "Sonic Boom"
+      ]
+    },
+    {
+      "name": "Binterloper",
+      "elemental_type": "Plastic",
+      "tags": [
+        "binvader",
+        "metal",
+        "gun",
+        "junk",
+        "space",
+        "artificial_electricity",
+        "data",
+        "machine"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Metal Wall",
+        "Binvitation",
+        "Bottle Volley",
+        "Energy Shot",
+        "Binvasion",
+        "Recycle",
+        "Incinerate",
+        "Shooting Star",
+        "Broadcast",
+        "Galactic Beatdown"
+      ]
+    },
+    {
+      "name": "Majortom",
+      "elemental_type": "Metal",
+      "tags": [
+        "minortom",
+        "space",
+        "flight",
+        "artificial_electricity",
+        "charming",
+        "bomb",
+        "fuel",
+        "machine",
+        "radiation",
+        "toy",
+        "fast"
+      ],
+      "known": [
+        "Smack",
+        "Raise Shields",
+        "Sturdy Armour",
+        "Shooting Star",
+        "Sonic Boom",
+        "Astral Wall",
+        "Grounded",
+        "Brace for Impact",
+        "Liftoff",
+        "Close Encounter",
+        "Galactic Beatdown",
+        "Gear Shear",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Puppercut",
+      "elemental_type": "Metal",
+      "tags": ["puppercut", "dog", "beast", "undead", "charming", "fast", "hands", "shapeshift"],
+      "known": [
+        "Smack",
+        "Sharpen",
+        "Double Smack",
+        "Metal Wall",
+        "Copper Chop",
+        "Dog Years",
+        "Sharp Edges"
+      ]
+    },
+    {
+      "name": "Trapwurm",
+      "elemental_type": "Earth",
+      "tags": ["trapwurm", "eat", "tough", "deception", "slow", "teeth", "rock", "metal"],
+      "known": [
+        "Smack",
+        "Trap Jaw",
+        "Bite",
+        "Trick",
+        "Desperation",
+        "Shrapnel",
+        "Custom Starter",
+        "Sharp Edges"
+      ]
+    },
+    {
+      "name": "Blunderbusk",
+      "elemental_type": "Fire",
+      "tags": [
+        "charlequin",
+        "gun",
+        "annoy",
+        "combustible",
+        "bomb",
+        "deception",
+        "fast",
+        "glitter",
+        "hands",
+        "toy"
+      ],
+      "known": [
+        "Spit",
+        "Prismatic",
+        "Bad Joke",
+        "Inflame",
+        "Gasoline Spray",
+        "Multi Shot",
+        "Sticker Trick",
+        "bE rAnDoM!!",
+        "Roll Again",
+        "Neutralise",
+        "Elemental Wall",
+        "Hot Potato",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Kirikuri",
+      "elemental_type": "Plant",
+      "tags": ["dummy", "sword", "wood", "junk", "fast", "elegant", "hands", "righteous", "tough"],
+      "known": [
+        "Smack",
+        "Wink",
+        "Plant Wall",
+        "Defend",
+        "Splinter",
+        "Raise Shields",
+        "Desperation",
+        "Parry Stance",
+        "Quick Smack",
+        "Woodcutter",
+        "Sharpen",
+        "Retribution"
+      ]
+    },
+    {
+      "name": "Twirligig",
+      "elemental_type": "Plant",
+      "tags": ["dummy", "wood", "junk", "righteous"],
+      "known": ["Smack", "Wink", "Plant Wall", "Defend", "Splinter", "Raise Shields", "Desperation"]
+    },
+    {
+      "name": "Charlequin",
+      "elemental_type": "Fire",
+      "tags": [
+        "charlequin",
+        "gun",
+        "annoy",
+        "combustible",
+        "bomb",
+        "deception",
+        "fast",
+        "glitter",
+        "hands",
+        "toy"
+      ],
+      "known": [
+        "Spit",
+        "Prismatic",
+        "Bad Joke",
+        "Inflame",
+        "Gasoline Spray",
+        "Multi Shot",
+        "Sticker Trick",
+        "bE rAnDoM!!"
+      ]
+    },
+    {
+      "name": "Anathema",
+      "elemental_type": "Beast",
+      "tags": [
+        "anathema",
+        "animal",
+        "blood",
+        "hands",
+        "rage",
+        "sickness",
+        "twoheads",
+        "machine",
+        "deception",
+        "tough",
+        "teeth",
+        "bone",
+        "eat",
+        "undead",
+        "shapeshift"
+      ],
+      "known": [
+        "Smack",
+        "Fission Power",
+        "Desperation",
+        "Bite",
+        "Pustule Bomb",
+        "Random Starter",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Pinbolt",
+      "elemental_type": "Lightning",
+      "tags": [
+        "boltam",
+        "artificial_electricity",
+        "fast",
+        "cool",
+        "animal",
+        "hands",
+        "glitter",
+        "copper",
+        "ball"
+      ],
+      "known": [
+        "Smack",
+        "Copper Chop",
+        "Charge",
+        "Battery",
+        "Thunder Blast",
+        "Bolt From The Blue",
+        "Roll Again",
+        "Damage Roll",
+        "Dual Wield",
+        "Icicle Dart",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Jormungold",
+      "elemental_type": "Poison",
+      "tags": ["carniviper", "deception", "teeth", "rage", "fast", "metal", "flight", "gamble"],
+      "known": [
+        "Spit",
+        "Sharpen",
+        "Revenge Strike",
+        "Bite",
+        "Déjà Vu",
+        "Multi Smack",
+        "Hypnotise",
+        "Pre-emptive Strike",
+        "Call For Help",
+        "Dodge",
+        "Iron Filings",
+        "Jagged Edge",
+        "Air Wall"
+      ]
+    },
+    {
+      "name": "Zombleat",
+      "elemental_type": "Earth",
+      "tags": ["bansheep", "cute", "healer", "righteous", "spirit", "tough", "beast", "undead"],
+      "known": [
+        "Smack",
+        "Shear Luck",
+        "Battering Ram",
+        "Bite",
+        "Elemental Wall",
+        "Cotton On",
+        "Bone Cannon",
+        "Coal Story",
+        "Multi Smack",
+        "Defend",
+        "Crumble"
+      ]
+    },
+    {
+      "name": "Mothmanic",
+      "elemental_type": "Lightning",
+      "tags": [
+        "dominoth",
+        "flight",
+        "parasite",
+        "deception",
+        "artificial_electricity",
+        "air",
+        "beast",
+        "charming",
+        "cool",
+        "fast",
+        "butterfly"
+      ],
+      "known": [
+        "Spit",
+        "Zephyr",
+        "Dodge",
+        "Air Wall",
+        "Thunder Blast",
+        "Energy Shot",
+        "Fog",
+        "Broadcast",
+        "Charge",
+        "Battery",
+        "Hurricane",
+        "Energy Wave",
+        "Magnet"
+      ]
+    },
+    {
+      "name": "Traffikrab",
+      "elemental_type": "Plastic",
+      "tags": ["traffikrab", "crab", "traffic", "rage", "junk", "deception"],
+      "known": [
+        "Smack",
+        "Traffic Jam",
+        "Elemental Wall",
+        "Inflame",
+        "Multi Smack",
+        "Water Coating",
+        "Undertow"
+      ]
+    },
+    {
+      "name": "Malchemy",
+      "elemental_type": "Poison",
+      "tags": [
+        "candevil",
+        "annoy",
+        "charming",
+        "fast",
+        "food",
+        "gamble",
+        "hot",
+        "rage",
+        "teeth",
+        "beast",
+        "alcohol",
+        "glass_cup",
+        "hands",
+        "chemistry"
+      ],
+      "known": [
+        "Spit",
+        "Sugar Rush",
+        "Bon Bon Blast",
+        "Bite",
+        "Elemental Wall",
+        "Taunt",
+        "Trick",
+        "Pustule Bomb",
+        "Chemical Imbalance",
+        "Toxic Stab",
+        "Poison Coating"
+      ]
+    },
+    {
+      "name": "Umbrahella",
+      "elemental_type": "Poison",
+      "tags": ["umbrahella", "weather", "deception", "flight", "parasite", "slow", "loud"],
+      "known": [
+        "Spit",
+        "Echolocation",
+        "Bad Forecast",
+        "Butterfly Effect",
+        "Vampire",
+        "Pity AP",
+        "Critical AP",
+        "Neutralise"
+      ]
+    },
+    {
+      "name": "Dandylion",
+      "elemental_type": "Plant",
+      "tags": [
+        "dandylion",
+        "beast",
+        "teeth",
+        "run",
+        "pet",
+        "animal",
+        "charity",
+        "cat",
+        "healer",
+        "charming"
+      ],
+      "known": [
+        "Smack",
+        "Defend",
+        "Elemental Wall",
+        "Leech",
+        "Snooze Spore",
+        "Call For Help",
+        "Raise Shields"
+      ]
+    },
+    {
+      "name": "Tokusect",
+      "elemental_type": "Air",
+      "tags": [
+        "dominoth",
+        "beast",
+        "flight",
+        "parasite",
+        "deception",
+        "charming",
+        "hands",
+        "fast",
+        "cool",
+        "righteous",
+        "butterfly"
+      ],
+      "known": [
+        "Smack",
+        "Zephyr",
+        "Wallop",
+        "Taunt",
+        "Dodge",
+        "Air Wall",
+        "Copper Chop",
+        "Sonic Boom",
+        "Superheated Fist",
+        "Quick Smack",
+        "Rapid Fire"
+      ]
+    },
+    {
+      "name": "Lapacitor",
+      "elemental_type": "Lightning",
+      "tags": [
+        "amphare",
+        "animal",
+        "cute",
+        "artificial_electricity",
+        "machine",
+        "pet",
+        "tough",
+        "toy",
+        "hands"
+      ],
+      "known": [
+        "Smack",
+        "Ionised Air",
+        "Energy Reserves",
+        "Lightning Wall",
+        "Zoomies",
+        "Call For Help",
+        "Magnet",
+        "Automation",
+        "Shield Bash",
+        "Throw",
+        "Charge",
+        "Battery"
+      ]
+    },
+    {
+      "name": "Fungogh",
+      "elemental_type": "Plant",
+      "tags": [
+        "brushroom",
+        "coating",
+        "hands",
+        "poison",
+        "acrylic",
+        "cute",
+        "annoy",
+        "charming",
+        "fast",
+        "cool",
+        "art",
+        "chemistry"
+      ],
+      "known": [
+        "Smack",
+        "Plastic Coating",
+        "Paint Swipe",
+        "Elemental Wall",
+        "Water Coating",
+        "Poison Pollen",
+        "Snooze Spore",
+        "Leech",
+        "Throw",
+        "Glitter Bomb",
+        "Woodcutter",
+        "Doc Leaf",
+        "The Old 1-2"
+      ]
+    },
+    {
+      "name": "Artillerex",
+      "elemental_type": "Fire",
+      "tags": [
+        "bulletino",
+        "bone",
+        "teeth",
+        "gun",
+        "rage",
+        "bomb",
+        "slow",
+        "metal",
+        "machine",
+        "tough",
+        "fast",
+        "artillerex",
+        "loud"
+      ],
+      "known": [
+        "Smack",
+        "Rapid Fire",
+        "Raise Arms",
+        "Ricochet",
+        "Multi Shot",
+        "Sure-Fire",
+        "Acorn Mortar",
+        "Headshot",
+        "Meteor Barrage",
+        "Bite",
+        "Beast Wall",
+        "Bone Cannon",
+        "Shrapnel"
+      ]
+    },
+    {
+      "name": "Robindam",
+      "elemental_type": "Plastic",
+      "tags": [
+        "clocksley",
+        "bow",
+        "charity",
+        "cute",
+        "hands",
+        "knife",
+        "machine",
+        "righteous",
+        "toy",
+        "deception",
+        "cool"
+      ],
+      "known": [
+        "Spit",
+        "Spring-Load",
+        "Toy Hammer",
+        "Raise Arms",
+        "Return Fire",
+        "Brick Blast",
+        "AP Steal",
+        "AP Donate",
+        "Suction Cup Dart",
+        "Rapid Fire",
+        "Copper Chop",
+        "AP Refund",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Lobstacle",
+      "elemental_type": "Plastic",
+      "tags": [
+        "traffikrab",
+        "crab",
+        "traffic",
+        "rage",
+        "junk",
+        "deception",
+        "tough",
+        "building",
+        "wall"
+      ],
+      "known": [
+        "Smack",
+        "Traffic Jam",
+        "Elemental Wall",
+        "Inflame",
+        "Multi Smack",
+        "Water Coating",
+        "Undertow",
+        "Shield Bash",
+        "Toy Hammer",
+        "Throw",
+        "Recycle",
+        "Revolving Door"
+      ]
+    },
+    {
+      "name": "Cluckabilly",
+      "elemental_type": "Air",
+      "tags": ["cluckabilly", "rock", "sound", "annoy", "flight", "bird"],
+      "known": [
+        "Smack",
+        "Nod",
+        "Double Smack",
+        "Call For Help",
+        "Air Wall",
+        "bE rAnDoM!!",
+        "Metal Riff"
+      ]
+    },
+    {
+      "name": "Gumbaal",
+      "elemental_type": "Metal",
+      "tags": [
+        "candevil",
+        "annoy",
+        "charming",
+        "fast",
+        "food",
+        "gamble",
+        "hot",
+        "rage",
+        "teeth",
+        "beast",
+        "machine",
+        "toy",
+        "tough",
+        "undead"
+      ],
+      "known": [
+        "Spit",
+        "Sugar Rush",
+        "Bon Bon Blast",
+        "Bite",
+        "Elemental Wall",
+        "Treat",
+        "Multi Shot",
+        "Magnet",
+        "Ritual",
+        "Shield Bash",
+        "Shrapnel",
+        "Gambit",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Hopskin",
+      "elemental_type": "Beast",
+      "tags": ["springheel", "deception", "hands", "fast", "knife", "flight", "jump"],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Jump Scare",
+        "Bite",
+        "Clobber",
+        "Double Slice",
+        "Copper Chop",
+        "Revenge Strike",
+        "Toxic Stab",
+        "Sharp Edges"
+      ]
+    },
+    {
+      "name": "Pyromeleon",
+      "elemental_type": "Fire",
+      "tags": [
+        "salamagus",
+        "psychic",
+        "deception",
+        "fast",
+        "shapeshift",
+        "healer",
+        "hot",
+        "rpg",
+        "tongue"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Inflame",
+        "Damage Roll",
+        "Roll Again",
+        "Fire Wall",
+        "Sure-Fire",
+        "Frozen Ground",
+        "Guzzle Fuel",
+        "Crossfade",
+        "Energy Wave",
+        "Mind-Meld"
+      ]
+    },
+    {
+      "name": "Muskrateer",
+      "elemental_type": "Beast",
+      "tags": [
+        "muskrateer",
+        "toy",
+        "hands",
+        "sword",
+        "fast",
+        "pet",
+        "animal",
+        "charity",
+        "righteous",
+        "cute",
+        "annoy"
+      ],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Zoomies",
+        "Toy Hammer",
+        "Plastic Wall",
+        "Retribution",
+        "Parry Stance"
+      ]
+    },
+    {
+      "name": "Wingloom",
+      "elemental_type": "Lightning",
+      "tags": [
+        "dominoth",
+        "flight",
+        "parasite",
+        "deception",
+        "artificial_electricity",
+        "air",
+        "beast",
+        "charming",
+        "butterfly"
+      ],
+      "known": [
+        "Smack",
+        "Zephyr",
+        "Taunt",
+        "Dodge",
+        "Air Wall",
+        "Thunder Blast",
+        "Air Coating",
+        "Energy Shot",
+        "Fog",
+        "Broadcast"
+      ]
+    },
+    {
+      "name": "Nevermort",
+      "elemental_type": "Poison",
+      "tags": [
+        "nevermort",
+        "bone",
+        "annoy",
+        "sickness",
+        "rage",
+        "fast",
+        "flight",
+        "bird",
+        "blood",
+        "charming",
+        "sound"
+      ],
+      "known": [
+        "Spit",
+        "Call For Help",
+        "Pustule Bomb",
+        "Air Wall",
+        "Sonic Boom",
+        "Taunt",
+        "Toxic Stab"
+      ]
+    },
+    {
+      "name": "Skelevangelist",
+      "elemental_type": "Earth",
+      "tags": ["pawndead", "bone", "slow", "charity", "rpg", "gamble", "undead", "deception"],
+      "known": [
+        "Smack",
+        "Fossil",
+        "Bone Cannon",
+        "Damage Roll",
+        "AP Donate",
+        "Blood Donation",
+        "Beast Wall",
+        "Last Rites",
+        "Call For Help",
+        "Ritual",
+        "Life Absorb"
+      ]
+    },
+    {
+      "name": "Wooltergeist",
+      "elemental_type": "Astral",
+      "tags": [
+        "bansheep",
+        "cute",
+        "healer",
+        "righteous",
+        "spirit",
+        "tough",
+        "beast",
+        "flight",
+        "psychic"
+      ],
+      "known": [
+        "Smack",
+        "Shear Luck",
+        "Battering Ram",
+        "Bite",
+        "Elemental Wall",
+        "Cotton On",
+        "Shooting Star",
+        "Nurse",
+        "Zephyr",
+        "Phase Shift",
+        "New Leaf"
+      ]
+    },
+    {
+      "name": "Palangolin",
+      "elemental_type": "Metal",
+      "tags": ["squirey", "beast", "animal", "sword", "fast", "hands", "righteous", "palangolin"],
+      "known": [
+        "Smack",
+        "Sharpen",
+        "Copper Chop",
+        "Parry Stance",
+        "Quick Smack",
+        "Slice",
+        "Dodge",
+        "Metal Wall",
+        "Fair Fight",
+        "Wink",
+        "Multi Smack",
+        "Retribution"
+      ]
+    },
+    {
+      "name": "Thwackalope",
+      "elemental_type": "Air",
+      "tags": ["thwackalope", "animal", "flight", "cool", "fast", "glitter", "pet", "run"],
+      "known": ["Smack", "Sprint", "Zoomies", "Charge", "Air Wall", "Clobber", "Pole Vault Assault"]
+    },
+    {
+      "name": "Averevoir",
+      "elemental_type": "Air",
+      "tags": ["averevoir", "flight", "copper", "building", "bird", "elegant", "mountain"],
+      "known": [
+        "Smack",
+        "Raise Shields",
+        "Tower Defence",
+        "Grounded",
+        "Sonic Boom",
+        "Brick Blast",
+        "Copper Chop"
+      ]
+    },
+    {
+      "name": "Queenyx",
+      "elemental_type": "Earth",
+      "tags": [
+        "pawndead",
+        "bone",
+        "slow",
+        "charity",
+        "rpg",
+        "gamble",
+        "undead",
+        "fast",
+        "elegant",
+        "deception",
+        "royal"
+      ],
+      "known": [
+        "Smack",
+        "Fossil",
+        "Bone Cannon",
+        "Damage Roll",
+        "Beast Wall",
+        "Last Rites",
+        "Ritual",
+        "Life Absorb",
+        "Delegate",
+        "Gambit",
+        "Sprint",
+        "Icicle Dart",
+        "Déjà Vu"
+      ]
+    },
+    {
+      "name": "Pondwalker",
+      "elemental_type": "Water",
+      "tags": ["pondwalker", "machine", "artificial_electricity", "slow", "cute", "glass"],
+      "known": ["Spit", "Metal Wall", "Trip", "Call For Help", "Undertow", "Dodge", "Torrent"]
+    },
+    {
+      "name": "Braxsuit",
+      "elemental_type": "Air",
+      "tags": ["braxsuit", "space", "fast", "flight", "hands", "psychic"],
+      "known": [
+        "Smack",
+        "Suit Up",
+        "Slice",
+        "Astral Wall",
+        "Sonic Boom",
+        "Déjà Vu",
+        "Shooting Star"
+      ]
+    },
+    {
+      "name": "Auriclaw",
+      "elemental_type": "Metal",
+      "tags": [
+        "ferriclaw",
+        "poison",
+        "copper",
+        "deception",
+        "teeth",
+        "fast",
+        "undead",
+        "parasite",
+        "knife",
+        "royal"
+      ],
+      "known": [
+        "Smack",
+        "Tripwire",
+        "Sticky Spray",
+        "Web Wrap",
+        "Stab In The Dark",
+        "Toxic Stab",
+        "Quick Smack",
+        "Call For Help",
+        "Sharpen",
+        "Vengeful Curse",
+        "Bloodlust",
+        "Grounded",
+        "Sturdy Armour"
+      ]
+    },
+    {
+      "name": "Minosteam",
+      "elemental_type": "Metal",
+      "tags": [
+        "minosteam",
+        "machine",
+        "deception",
+        "building",
+        "fuel",
+        "hands",
+        "junk",
+        "slow",
+        "tough"
+      ],
+      "known": [
+        "Smack",
+        "Machine Curse",
+        "Guzzle Fuel",
+        "Fuel Injection",
+        "Copper Chop",
+        "Superheated Fist",
+        "Crumble",
+        "Shield Bash",
+        "Gear Shear"
+      ]
+    },
+    {
+      "name": "Icepeck",
+      "elemental_type": "Ice",
+      "tags": ["icepeck", "fast", "mountain", "bird", "run", "arctic"],
+      "known": ["Smack", "Sprint", "Snow Rush", "Sharpen", "Trip", "Frozen Ground", "Icicle Dart"]
+    },
+    {
+      "name": "Frillypad",
+      "elemental_type": "Water",
+      "tags": ["padpole", "plant", "teeth", "charming", "fast", "tongue", "deception"],
+      "known": [
+        "Smack",
+        "Plant Resistance",
+        "Sticky Tongue",
+        "Plant Wall",
+        "Double Smack",
+        "Doc Leaf",
+        "Torrent",
+        "Boil",
+        "Undertow",
+        "Leech",
+        "Fog"
+      ]
+    },
+    {
+      "name": "Capricorpse",
+      "elemental_type": "Earth",
+      "tags": ["bansheep", "cute", "healer", "righteous", "spirit", "tough", "beast", "undead"],
+      "known": [
+        "Smack",
+        "Shear Luck",
+        "Battering Ram",
+        "Bite",
+        "Elemental Wall",
+        "Coal Story",
+        "Multi Smack",
+        "Crumble",
+        "Ritual",
+        "Shield Bash",
+        "Mountain Smash",
+        "Haunt",
+        "Last Rites"
+      ]
+    },
+    {
+      "name": "Gearyu",
+      "elemental_type": "Metal",
+      "tags": [
+        "bulletino",
+        "fire",
+        "bone",
+        "teeth",
+        "gun",
+        "rage",
+        "bomb",
+        "slow",
+        "metal",
+        "machine",
+        "tough",
+        "gearyu",
+        "radiation"
+      ],
+      "known": [
+        "Spit",
+        "Rapid Fire",
+        "Raise Arms",
+        "Ricochet",
+        "Multi Shot",
+        "Sure-Fire",
+        "Gear Shear",
+        "Headshot",
+        "Radiation Breath",
+        "Shield Bash",
+        "Shrapnel",
+        "Metal Wall",
+        "Jagged Edge"
+      ]
+    },
+    {
+      "name": "Djinn Entonic",
+      "elemental_type": "Astral",
+      "tags": [
+        "djinn_entonic",
+        "spirit",
+        "alcohol",
+        "glass_cup",
+        "psychic",
+        "deception",
+        "drink",
+        "shapeshift",
+        "sleep",
+        "cooking",
+        "undead"
+      ],
+      "known": [
+        "Spit",
+        "Compliment",
+        "Moonshine",
+        "Bottle Volley",
+        "Glass Cannon",
+        "Haunt",
+        "Djinntoxicate"
+      ]
+    },
+    {
+      "name": "Sirenade",
+      "elemental_type": "Air",
+      "tags": [
+        "sirenade",
+        "sound",
+        "bird",
+        "annoy",
+        "toy",
+        "glitter",
+        "fast",
+        "flight",
+        "charity",
+        "cute",
+        "healer"
+      ],
+      "known": [
+        "Spit",
+        "Dodge",
+        "Call For Help",
+        "Sonic Boom",
+        "Provoke",
+        "Air Wall",
+        "Taunt",
+        "New Leaf"
+      ]
+    },
+    {
+      "name": "Manispear",
+      "elemental_type": "Metal",
+      "tags": ["squirey", "beast", "animal", "sword", "tough", "fast", "hands", "deception"],
+      "known": [
+        "Smack",
+        "Sharpen",
+        "Copper Chop",
+        "Parry Stance",
+        "Quick Smack",
+        "Slice",
+        "Dodge",
+        "Sturdy Armour",
+        "Bloodlust",
+        "Defend",
+        "Shield Bash",
+        "The Old 1-2"
+      ]
+    },
+    {
+      "name": "Mascotoy",
+      "elemental_type": "Plastic",
+      "tags": [
+        "mascotoy",
+        "deception",
+        "slow",
+        "teeth",
+        "rage",
+        "glitter",
+        "tough",
+        "undead",
+        "blood",
+        "cute",
+        "knife"
+      ],
+      "known": ["Smack", "Trip", "Toy Hammer", "Bite", "Plastic Knife", "Peekaboo", "Trick"]
+    },
+    {
+      "name": "Sparktan",
+      "elemental_type": "Lightning",
+      "tags": [
+        "sparktan",
+        "glitter",
+        "fast",
+        "weather",
+        "flight",
+        "metal",
+        "spirit",
+        "cold",
+        "rpg",
+        "righteous",
+        "sounds"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Thunder Blast",
+        "Dodge",
+        "Lightning Wall",
+        "Blizzard",
+        "Energy Shot"
+      ]
+    },
+    {
+      "name": "Candevil",
+      "elemental_type": "Beast",
+      "tags": ["candevil", "annoy", "charming", "fast", "food", "gamble", "hot", "rage", "teeth"],
+      "known": [
+        "Smack",
+        "Sugar Rush",
+        "Bon Bon Blast",
+        "Raise Arms",
+        "Bite",
+        "Elemental Wall",
+        "Taunt"
+      ]
+    },
+    {
+      "name": "Cat-5",
+      "elemental_type": "Lightning",
+      "tags": [
+        "kittelly",
+        "data",
+        "artificial_electricity",
+        "beast",
+        "cat",
+        "pet",
+        "hands",
+        "fast",
+        "machine",
+        "cool",
+        "sound"
+      ],
+      "known": [
+        "Smack",
+        "Criticise",
+        "Charge",
+        "Zoomies",
+        "Energy Shot",
+        "Copycat",
+        "Broadcast",
+        "Double Smack",
+        "Fire Wall",
+        "Battery",
+        "Silicon Slash",
+        "Critical AP",
+        "Berserker"
+      ]
+    },
+    {
+      "name": "Brushroom",
+      "elemental_type": "Plant",
+      "tags": [
+        "brushroom",
+        "coating",
+        "hands",
+        "poison",
+        "acrylic",
+        "cute",
+        "annoy",
+        "charming",
+        "art",
+        "chemistry"
+      ],
+      "known": [
+        "Smack",
+        "Plastic Coating",
+        "Paint Swipe",
+        "Elemental Wall",
+        "Water Coating",
+        "Poison Pollen",
+        "Snooze Spore",
+        "Leech"
+      ]
+    },
+    {
+      "name": "Ripterra",
+      "elemental_type": "Beast",
+      "tags": ["springheel", "deception", "hands", "fast", "knife", "flight", "astral", "jump"],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Jump Scare",
+        "Bite",
+        "Double Slice",
+        "Revenge Strike",
+        "Toxic Stab",
+        "Sharp Edges",
+        "Pre-emptive Strike",
+        "Sharpen",
+        "Plastic Knife",
+        "Stab In The Dark",
+        "Bloodlust"
+      ]
+    },
+    {
+      "name": "Mascotorn",
+      "elemental_type": "Plastic",
+      "tags": [
+        "mascotoy",
+        "deception",
+        "slow",
+        "teeth",
+        "rage",
+        "glitter",
+        "tough",
+        "undead",
+        "blood",
+        "cute",
+        "psychic",
+        "knife"
+      ],
+      "known": [
+        "Smack",
+        "Toy Hammer",
+        "Bite",
+        "Plastic Knife",
+        "Peekaboo",
+        "Trick",
+        "Haunt",
+        "Stab In The Dark",
+        "Double Slice",
+        "Pity AP",
+        "Ritual"
+      ]
+    },
+    {
+      "name": "Padpole",
+      "elemental_type": "Water",
+      "tags": ["padpole", "plant", "teeth", "charming", "fast", "tongue", "deception"],
+      "known": [
+        "Smack",
+        "Plant Resistance",
+        "Sticky Tongue",
+        "Plant Wall",
+        "Double Smack",
+        "Quick Smack",
+        "Doc Leaf"
+      ]
+    },
+    {
+      "name": "Miasmodeus",
+      "elemental_type": "Poison",
+      "tags": [
+        "candevil",
+        "annoy",
+        "charming",
+        "fast",
+        "food",
+        "gamble",
+        "hot",
+        "rage",
+        "teeth",
+        "beast",
+        "alcohol",
+        "glass_cup",
+        "hands",
+        "psychic",
+        "chemistry"
+      ],
+      "known": [
+        "Spit",
+        "Sugar Rush",
+        "Bon Bon Blast",
+        "Bite",
+        "Elemental Wall",
+        "Chemical Imbalance",
+        "Pustule Bomb",
+        "Toxic Stab",
+        "Ritual",
+        "Déjà Vu",
+        "Moonshine",
+        "Gambit",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Ferriclaw",
+      "elemental_type": "Metal",
+      "tags": [
+        "ferriclaw",
+        "poison",
+        "copper",
+        "deception",
+        "teeth",
+        "fast",
+        "undead",
+        "parasite",
+        "knife"
+      ],
+      "known": [
+        "Smack",
+        "Tripwire",
+        "Sticky Spray",
+        "Web Wrap",
+        "Stab In The Dark",
+        "Toxic Stab",
+        "Quick Smack",
+        "Call For Help"
+      ]
+    },
+    {
+      "name": "Scampire",
+      "elemental_type": "Beast",
+      "tags": [
+        "springheel",
+        "deception",
+        "hands",
+        "fast",
+        "flight",
+        "blood",
+        "teeth",
+        "psychic",
+        "jump",
+        "loud"
+      ],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Jump Scare",
+        "Bite",
+        "AP Steal",
+        "Energy Shot",
+        "Energy Wave",
+        "Raise Arms",
+        "Vampire",
+        "AP Drain",
+        "Air Wall",
+        "Hypnotise",
+        "Vengeful Curse"
+      ]
+    },
+    {
+      "name": "Stardigrade",
+      "elemental_type": "Astral",
+      "tags": [
+        "stardigrade",
+        "bone",
+        "space",
+        "slow",
+        "artificial_electricity",
+        "flight",
+        "psychic",
+        "machine",
+        "sleep",
+        "tough"
+      ],
+      "known": ["Smack", "Focus", "Meditate", "Hibernate", "Mind-Meld", "Provoke", "Déjà Vu"]
+    },
+    {
+      "name": "Fragliacci",
+      "elemental_type": "Fire",
+      "tags": [
+        "charlequin",
+        "gun",
+        "annoy",
+        "combustible",
+        "bomb",
+        "deception",
+        "fast",
+        "glitter",
+        "hands",
+        "toy"
+      ],
+      "known": [
+        "Spit",
+        "Prismatic",
+        "Bad Joke",
+        "Inflame",
+        "Gasoline Spray",
+        "Multi Shot",
+        "Sticker Trick",
+        "bE rAnDoM!!",
+        "Rapid Fire",
+        "Sure-Fire",
+        "Multicopy",
+        "Ricochet",
+        "Glass Cannon"
+      ]
+    },
+    {
+      "name": "Pawndead",
+      "elemental_type": "Earth",
+      "tags": ["pawndead", "bone", "slow", "charity", "rpg", "gamble", "undead"],
+      "known": [
+        "Smack",
+        "Fossil",
+        "Bone Cannon",
+        "Damage Roll",
+        "Earth Coating",
+        "AP Donate",
+        "Blood Donation"
+      ]
+    },
+    {
+      "name": "Undyin",
+      "elemental_type": "Water",
+      "tags": ["undyin", "teeth", "rage", "cold", "elegant", "undead", "blood", "love", "spirit"],
+      "known": ["Spit", "Flirt", "Torrent", "Life Absorb", "Ice Wall", "Ice Breaker", "Ritual"]
+    },
+    {
+      "name": "Diveberg",
+      "elemental_type": "Ice",
+      "tags": ["diveal", "charming", "cold", "slow", "water", "mountain", "arctic", "tough"],
+      "known": [
+        "Smack",
+        "Elemental Wall",
+        "Ice Coating",
+        "Ice Resistance",
+        "Ice Breaker",
+        "Undertow",
+        "Final Breath",
+        "Deep Freeze",
+        "Avalanche",
+        "Unshakeable",
+        "Cold Fusion"
+      ]
+    },
+    {
+      "name": "Jumpkin",
+      "elemental_type": "Plant",
+      "tags": [
+        "jumpkin",
+        "cute",
+        "farming",
+        "food",
+        "fast",
+        "healer",
+        "toy",
+        "undead",
+        "teeth",
+        "jump",
+        "halloween"
+      ],
+      "known": ["Smack", "Pumpkin Pie", "Jump Scare", "Trick", "Treat", "Bite", "Plant Wall"]
+    },
+    {
+      "name": "Draculeaf",
+      "elemental_type": "Plant",
+      "tags": [
+        "jumpkin",
+        "cute",
+        "farming",
+        "food",
+        "fast",
+        "healer",
+        "toy",
+        "undead",
+        "teeth",
+        "psychic",
+        "jump",
+        "halloween",
+        "blood"
+      ],
+      "known": [
+        "Smack",
+        "Pumpkin Pie",
+        "Jump Scare",
+        "Trick",
+        "Treat",
+        "Bite",
+        "Plant Wall",
+        "Snooze Spore",
+        "Ritual",
+        "Vampire",
+        "Leech",
+        "Déjà Vu"
+      ]
+    },
+    {
+      "name": "Liligator",
+      "elemental_type": "Water",
+      "tags": ["padpole", "plant", "teeth", "charming", "fast", "tough", "tongue", "deception"],
+      "known": [
+        "Smack",
+        "Plant Resistance",
+        "Sticky Tongue",
+        "Plant Wall",
+        "Boil",
+        "Undertow",
+        "Leech",
+        "Fog",
+        "Multi Smack",
+        "Defend",
+        "The Old 1-2",
+        "New Leaf",
+        "Throw"
+      ]
+    },
+    {
+      "name": "Diveal",
+      "elemental_type": "Water",
+      "tags": ["diveal", "charming", "cold", "slow"],
+      "known": [
+        "Spit",
+        "Ice Coating",
+        "Elemental Wall",
+        "Torrent",
+        "Ice Resistance",
+        "Ice Breaker",
+        "Undertow"
+      ]
+    },
+    {
+      "name": "Sharktanker",
+      "elemental_type": "Water",
+      "tags": [
+        "pondwalker",
+        "machine",
+        "artificial_electricity",
+        "slow",
+        "cute",
+        "glass",
+        "teeth",
+        "knife"
+      ],
+      "known": [
+        "Smack",
+        "Metal Wall",
+        "Trip",
+        "Undertow",
+        "Dodge",
+        "Torrent",
+        "Bite",
+        "Sharp Edges",
+        "Fog",
+        "Boil",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Blossomaw",
+      "elemental_type": "Plant",
+      "tags": [
+        "dandylion",
+        "beast",
+        "teeth",
+        "run",
+        "pet",
+        "animal",
+        "charity",
+        "cat",
+        "healer",
+        "charming",
+        "elegant",
+        "fire",
+        "tough"
+      ],
+      "known": [
+        "Smack",
+        "Defend",
+        "Elemental Wall",
+        "Leech",
+        "Snooze Spore",
+        "Call For Help",
+        "Raise Shields",
+        "Cotton On",
+        "New Leaf",
+        "Doc Leaf",
+        "AP Donate",
+        "Poison Pollen"
+      ]
+    },
+    {
+      "name": "Khufo",
+      "elemental_type": "Astral",
+      "tags": [
+        "allseer",
+        "metal",
+        "machine",
+        "artificial_electricity",
+        "space",
+        "psychic",
+        "deception",
+        "gun",
+        "flight",
+        "gamble",
+        "undead",
+        "sword",
+        "radiation"
+      ],
+      "known": [
+        "Spit",
+        "Raise Shields",
+        "Wonderful 7",
+        "Shooting Star",
+        "Broadcast",
+        "Shield Bash",
+        "Close Encounter",
+        "Astral Wall",
+        "Mind-Meld",
+        "Déjà Vu",
+        "Ritual",
+        "Galactic Beatdown"
+      ]
+    },
+    {
+      "name": "Apocrowlypse",
+      "elemental_type": "Poison",
+      "tags": [
+        "nevermort",
+        "bone",
+        "annoy",
+        "sickness",
+        "rage",
+        "fast",
+        "flight",
+        "bird",
+        "blood",
+        "charming",
+        "sound",
+        "undead"
+      ],
+      "known": [
+        "Spit",
+        "Call For Help",
+        "Pustule Bomb",
+        "Air Wall",
+        "Taunt",
+        "Toxic Stab",
+        "Bone Cannon",
+        "Beast Wall",
+        "Boil",
+        "Delegate",
+        "Last Rites"
+      ]
+    },
+    {
+      "name": "Smogmagog",
+      "elemental_type": "Fire",
+      "tags": [
+        "burnace",
+        "building",
+        "artificial_electricity",
+        "fuel",
+        "hands",
+        "junk",
+        "machine",
+        "sound",
+        "tough",
+        "radiation",
+        "chemistry"
+      ],
+      "known": [
+        "Smack",
+        "Coal Story",
+        "Guzzle Fuel",
+        "Automation",
+        "Incinerate",
+        "Self-Destruct",
+        "Superheated Fist",
+        "Critical Mass",
+        "Radiation Breath",
+        "Magnet",
+        "Shield Bash"
+      ]
+    },
+    {
+      "name": "Kuneko",
+      "elemental_type": "Air",
+      "tags": [
+        "kuneko",
+        "cat",
+        "animal",
+        "cute",
+        "fast",
+        "deception",
+        "psychic",
+        "annoy",
+        "knife",
+        "run",
+        "teeth",
+        "hands"
+      ],
+      "known": [
+        "Smack",
+        "Wink",
+        "Double Slice",
+        "Sharp Edges",
+        "Bad Joke",
+        "Elemental Wall",
+        "bE rAnDoM!!"
+      ]
+    },
+    {
+      "name": "Triphinx",
+      "elemental_type": "Metal",
+      "tags": [
+        "allseer",
+        "machine",
+        "artificial_electricity",
+        "space",
+        "psychic",
+        "deception",
+        "gun",
+        "flight",
+        "gamble",
+        "undead",
+        "radiation"
+      ],
+      "known": [
+        "Spit",
+        "Raise Shields",
+        "Wonderful 7",
+        "Shooting Star",
+        "Broadcast",
+        "Shield Bash",
+        "Close Encounter",
+        "Lightning Wall",
+        "Magnet",
+        "Energy Wave",
+        "Sonic Boom",
+        "Self-Destruct"
+      ]
+    },
+    {
+      "name": "Spooki-onna",
+      "elemental_type": "Ice",
+      "tags": [
+        "spooki-onna",
+        "rage",
+        "cold",
+        "arctic",
+        "weather",
+        "spirit",
+        "undead",
+        "slow",
+        "flight",
+        "psychic",
+        "elegant"
+      ],
+      "known": ["Spit", "Dodge", "Life Absorb", "Blizzard", "Ice Breaker", "Avalanche", "Fog"]
+    },
+    {
+      "name": "Rockertrice",
+      "elemental_type": "Air",
+      "tags": [
+        "cluckabilly",
+        "rock",
+        "sound",
+        "annoy",
+        "flight",
+        "fire",
+        "petrify",
+        "bird",
+        "rockertrice"
+      ],
+      "known": [
+        "Smack",
+        "Nod",
+        "Double Smack",
+        "Air Wall",
+        "bE rAnDoM!!",
+        "Metal Riff",
+        "Stony Look",
+        "Inflame",
+        "Echolocation",
+        "Sonic Boom",
+        "Incinerate"
+      ]
+    },
+    {
+      "name": "Fountess",
+      "elemental_type": "Water",
+      "tags": ["faucetear", "metal", "cute", "cold", "hot", "elegant", "royal"],
+      "known": [
+        "Spit",
+        "Spray",
+        "Waterworks",
+        "Fog",
+        "Torrent",
+        "Elemental Wall",
+        "Criticise",
+        "Boil",
+        "Energy Wave",
+        "Multi Shot",
+        "Headshot"
+      ]
+    },
+    {
+      "name": "Kittelly",
+      "elemental_type": "Lightning",
+      "tags": [
+        "kittelly",
+        "data",
+        "artificial_electricity",
+        "beast",
+        "cat",
+        "pet",
+        "hands",
+        "machine",
+        "sound",
+        "cool"
+      ],
+      "known": [
+        "Smack",
+        "Criticise",
+        "Charge",
+        "Zoomies",
+        "Double Smack",
+        "Energy Shot",
+        "Copycat",
+        "Broadcast"
+      ]
+    },
+    {
+      "name": "Macabra",
+      "elemental_type": "Beast",
+      "tags": ["macabra", "teeth", "bone", "sickness", "rage", "eat", "undead", "blood"],
+      "known": [
+        "Smack",
+        "Nod",
+        "Bite",
+        "Abramacabra",
+        "Bone Cannon",
+        "Desperation",
+        "Blood Donation"
+      ]
+    },
+    {
+      "name": "Picksie",
+      "elemental_type": "Earth",
+      "tags": [
+        "picksie",
+        "mountain",
+        "deception",
+        "hands",
+        "annoy",
+        "fast",
+        "charming",
+        "rock",
+        "crystal"
+      ],
+      "known": [
+        "Smack",
+        "Treasure Dig",
+        "Gemstone Wall",
+        "Peekaboo",
+        "Random Starter",
+        "Call For Help",
+        "AP Steal",
+        "Coal Story",
+        "Crumble",
+        "Crystal Lens",
+        "Mountain Smash"
+      ]
+    },
+    {
+      "name": "Flapwoods",
+      "elemental_type": "Air",
+      "tags": ["braxsuit", "space", "fast", "flight", "hands", "psychic", "radiation"],
+      "known": [
+        "Smack",
+        "Suit Up",
+        "Slice",
+        "Astral Wall",
+        "Sonic Boom",
+        "Déjà Vu",
+        "Shooting Star",
+        "Multi Shot",
+        "Mind-Meld",
+        "Galactic Beatdown",
+        "Broadcast",
+        "Close Encounter"
+      ]
+    },
+    {
+      "name": "Clocksley",
+      "elemental_type": "Plastic",
+      "tags": [
+        "clocksley",
+        "bow",
+        "charity",
+        "cute",
+        "hands",
+        "knife",
+        "machine",
+        "righteous",
+        "toy",
+        "deception"
+      ],
+      "known": [
+        "Smack",
+        "Spring-Load",
+        "Toy Hammer",
+        "Raise Arms",
+        "Return Fire",
+        "Brick Blast",
+        "AP Steal",
+        "AP Donate"
+      ]
+    },
+    {
+      "name": "Sanzatime",
+      "elemental_type": "Earth",
+      "tags": ["sanzatime", "time", "slow", "glass", "charming", "dirt", "glitter"],
+      "known": ["Smack", "Sharp Edges", "Sandstorm", "Déjà Vu", "Crumble", "Clobber", "Dog Years"]
+    },
+    {
+      "name": "Khepri",
+      "elemental_type": "Fire",
+      "tags": [
+        "khepri",
+        "space",
+        "bomb",
+        "parasite",
+        "flight",
+        "machine",
+        "mountain",
+        "butterfly",
+        "radiation"
+      ],
+      "known": [
+        "Spit",
+        "Raise Arms",
+        "Unshakeable",
+        "Crumble",
+        "Self-Destruct",
+        "Fire Wall",
+        "AP Boost",
+        "Rapid Fire"
+      ]
+    },
+    {
+      "name": "Ratcousel",
+      "elemental_type": "Plastic",
+      "tags": [
+        "muskrateer",
+        "toy",
+        "hands",
+        "sword",
+        "fast",
+        "pet",
+        "animal",
+        "charity",
+        "righteous",
+        "cute",
+        "annoy",
+        "tough",
+        "slow",
+        "beast",
+        "royal"
+      ],
+      "known": [
+        "Smack",
+        "Peekaboo",
+        "Toy Hammer",
+        "Plastic Wall",
+        "Retribution",
+        "Parry Stance",
+        "Treat",
+        "Clockwork Mouse",
+        "Glitter Bomb",
+        "bE rAnDoM!!",
+        "Self-Assured"
+      ]
+    },
+    {
+      "name": "Snoopin",
+      "elemental_type": "Beast",
+      "tags": ["springheel", "deception", "hands", "fast", "flight", "teeth", "psychic", "jump"],
+      "known": [
+        "Smack",
+        "Jump Scare",
+        "Peekaboo",
+        "Bite",
+        "Trick",
+        "Taunt",
+        "AP Steal",
+        "Energy Shot",
+        "Energy Wave",
+        "Raise Arms",
+        "Quick Smack"
+      ]
+    },
+    {
+      "name": "Shining Kuneko",
+      "elemental_type": "Astral",
+      "tags": [
+        "kuneko",
+        "cat",
+        "animal",
+        "cute",
+        "fast",
+        "deception",
+        "psychic",
+        "annoy",
+        "knife",
+        "run",
+        "teeth",
+        "hands",
+        "air"
+      ],
+      "known": [
+        "Smack",
+        "Wink",
+        "Double Slice",
+        "Sharp Edges",
+        "Bad Joke",
+        "Air Wall",
+        "bE rAnDoM!!",
+        "Ritual",
+        "Shooting Star",
+        "Galactic Beatdown",
+        "Broadcast",
+        "Cosmic Kunai"
+      ]
+    },
+    {
+      "name": "Masquerattle",
+      "elemental_type": "Poison",
+      "tags": ["carniviper", "deception", "teeth", "rage", "fast", "gamble"],
+      "known": [
+        "Spit",
+        "Sharpen",
+        "Revenge Strike",
+        "Bite",
+        "Multi Smack",
+        "Trip",
+        "Déjà Vu",
+        "Desperation",
+        "Hypnotise",
+        "Pre-emptive Strike"
+      ]
+    },
+    {
+      "name": "Cryoshear",
+      "elemental_type": "Ice",
+      "tags": [
+        "icepeck",
+        "fast",
+        "mountain",
+        "bird",
+        "run",
+        "arctic",
+        "tough",
+        "knife",
+        "sword",
+        "hands"
+      ],
+      "known": [
+        "Smack",
+        "Sprint",
+        "Snow Rush",
+        "Sharpen",
+        "Trip",
+        "Frozen Ground",
+        "Icicle Dart",
+        "Sharp Edges",
+        "Double Slice",
+        "Toxic Stab",
+        "Dual Wield",
+        "Ice Breaker"
+      ]
+    },
+    {
+      "name": "Grampus",
+      "elemental_type": "Ice",
+      "tags": [
+        "elfless",
+        "wood",
+        "hands",
+        "annoy",
+        "fast",
+        "psychic",
+        "deception",
+        "charity",
+        "charming",
+        "tough",
+        "slow",
+        "loud"
+      ],
+      "known": [
+        "Smack",
+        "Sprint",
+        "Treat",
+        "Snow Rush",
+        "AP Donate",
+        "Ice Wall",
+        "Toy Hammer",
+        "Yule Regret That",
+        "Trick",
+        "AP Steal",
+        "Ice Breaker",
+        "Avalanche"
+      ]
+    }
+  ]
+}

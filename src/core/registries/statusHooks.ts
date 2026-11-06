@@ -79,6 +79,8 @@ export interface StatusHookHandler {
   detonatePercent?(params: unknown): number
   /** Trạng thái là khiên hút sát thương theo `amount` (Barrier); tối đa % chỉ số cao nhất. */
   barrierCapPercent?(params: unknown): number
+  /** Cuối lượt mất máu bằng `amount` × potency của trạng thái (Mania). */
+  dealsAmountAtTurnEnd?(params: unknown): boolean
   /** Chặn hoàn toàn đòn / spell kế tiếp rồi hết (Shelled). */
   blocksNextHit?(params: unknown): boolean
   /** Địch không nhắm được quái mang trạng thái bằng skill đơn mục tiêu (Invisible). */

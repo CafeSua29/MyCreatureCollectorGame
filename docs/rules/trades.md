@@ -13,7 +13,7 @@ Code: `model/trades.ts` (kiểu, `TRADE_WANT_KINDS`), `progression/trades.ts` (r
 - **Yêu cầu** `want` (registry `TRADE_WANTS`, thêm loại = thêm mục `{ roll, matches, isValid }` + khóa trong `TRADE_WANT_KINDS` / `wantWeights`): tung từ **một loài trong bảng gặp của một map đã mở** (theo trọng số gặp; nên yêu cầu luôn làm được, như Pokémon muốn loài bắt được gần đó), loại theo `wantWeights` (3 / 1 / 1):
   - `species { speciesId }`: đúng loài hiện tại của quái;
   - `race { raceId }`: race của loài đó (khớp qua `raceMatches`);
-  - `element { elementId }`: một hệ của loài đó.
+  - `element { elementId }`: một hệ của loài đó (loài không hệ thì tung thành `species`).
   - Mọi loại có `minLevel` = ⌈level thấp nhất của quái hoang tầng cao nhất × `wantLevelPercent` (50) / 100⌉, tối thiểu 1.
 - **Thứ NPC đưa** `give`, loại theo `giveWeights` (quái 3 / vật phẩm 1):
   - `monster`: quái sinh sẵn lúc ra bảng (id lấy từ `nextMonsterId`, như quái đang gặp ở khu bảo tồn): **mọi loài thường trừ dạng chỉ có trong trận** (`tradeSpeciesPool`, kể cả loài không gặp ở map nào, theo luật "mọi kết quả hợp lệ đều có cơ hội") theo trọng số **phẩm cấp loài** `giveRankWeights` (G→X: 1, 2, 4, 6, 6, 4, 2, 1, 0,5; lệch bản gốc: NPC Pokémon không đưa huyền thoại, ở đây bậc X rất hiếm nhưng vẫn ra), level như quái hoang tầng cao nhất + `giveLevelOffset`, gen × `giveGeneMultiplier` (1,25), tỉ lệ shiny × `giveShinyMultiplier` (4), tuổi / Âm Dương như quái hoang. Lệch roadmap: không ép tính cách / trait riêng (gen và shiny đã làm quái đưa "đặc biệt" hơn quái hoang).

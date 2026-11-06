@@ -95,7 +95,10 @@ export function floorTable(results: readonly FloorResult[]): Table {
       'partsBroken',
       'offBalancePlayer',
       'offBalanceEnemy',
-      'partsRevealed'
+      'partsRevealed',
+      'elementReactions',
+      'rests',
+      'overexerted'
     ],
     rows: results.map((r) => [
       r.variantId,
@@ -129,7 +132,10 @@ export function floorTable(results: readonly FloorResult[]): Table {
         r.hitLocations.broken,
         r.hitLocations.offBalance.player,
         r.hitLocations.offBalance.enemy,
-        r.hitLocations.revealed
+        r.hitLocations.revealed,
+        r.hitLocations.reactions,
+        r.hitLocations.rests,
+        r.hitLocations.overexerted
       ].map((count) => formatRatio(r.played > 0 ? count / r.played : 0))
     ])
   }

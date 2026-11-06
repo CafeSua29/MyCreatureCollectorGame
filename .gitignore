@@ -68,3 +68,6 @@ desktop.ini
 .eslintcache
 .cache/
 tmp/
+
+# Dữ liệu trích từ game đã cài (không commit dữ liệu gốc của game)
+scripts/data-import/game-files/dump/

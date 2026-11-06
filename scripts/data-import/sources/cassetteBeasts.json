@@ -1,0 +1,3248 @@
+{
+  "source": "cassetteBeasts",
+  "origin": "fantasy",
+  "update": {
+    "stats": true,
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Mardiusa",
+      "elements": [
+        "poison",
+        "water"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 85,
+        "attack": 104,
+        "defense": 65,
+        "spAttack": 78,
+        "spDefense": 85,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A masked snake woman",
+      "flavor": "The Mardiusa isn’t an individual, but a hive-mind – a collection of tiny serpentile creatures with a singular unified goal. In this case, that goal is for the Mardiusa to dress like it is on its way to a fancy ball – and to have a good time doing it."
+    },
+    {
+      "name": "Fortiwinx",
+      "elements": [
+        "rock",
+        "steel"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 85,
+        "attack": 107,
+        "defense": 101,
+        "spAttack": 85,
+        "spDefense": 91,
+        "speed": 52
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A masked monster made of sand",
+      "flavor": "When a Sanzatime gathers enough sand from the environment, it can reconstitute itself with a much more powerful body. The Fortiwinx is a hulking figure, able to move its heavy sand body as if it was as light as air. A punch from a Fortiwinx carries the weight of an entire sandstorm."
+    },
+    {
+      "name": "Plasmantler",
+      "elements": [
+        "electric"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 78,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 78,
+        "spDefense": 104,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A monster with a metal head and antlers",
+      "flavor": "Plasmantlers are the mature stage of a Boltam’s life cycle, having absorbed enough electrical energy that its own body has grown significantly. Their magnetic fields are strong enough that they are able to attract and repel non-ferrous matter."
+    },
+    {
+      "name": "Squirey",
+      "elements": [
+        "normal",
+        "steel"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 59,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 65,
+        "spDefense": 59,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Palangolin",
+          "level": 30
+        },
+        {
+          "name": "Manispear",
+          "level": 30
+        }
+      ],
+      "category": "A pangolin with a spear",
+      "flavor": "The common Squirey is often seen roaming the plains of New Wirral, searching for opponents to battle. Despite their cute appearances, they are dedicated warriors and driven by an innate desire for self-improvement."
+    },
+    {
+      "name": "Scubalrus",
+      "elements": [
+        "water",
+        "steel"
+      ],
+      "raceId": "cetacean",
+      "stats": {
+        "hp": 85,
+        "attack": 81,
+        "defense": 104,
+        "spAttack": 104,
+        "spDefense": 81,
+        "speed": 65
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A walrus with a helmet",
+      "flavor": "The helmet of the Scubalrus has grown sturdy brass tusks, which allow them to fend off attackers. Having developed hind legs, they are also much more capable – and dangerous – on land than they were in their immature Diveal stage."
+    },
+    {
+      "name": "Decibelle",
+      "elements": [
+        "psychic",
+        "electric"
+      ],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 88,
+        "attack": 65,
+        "defense": 72,
+        "spAttack": 111,
+        "spDefense": 104,
+        "speed": 81
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A winged beast with ribbon wings",
+      "flavor": "Very few Decibelles have been seen in the wild. Early denizens of New Wirral whispered of seeing white dragons in the clouds, but it is unclear whether they were seeing Decibelles, or just losing their minds."
+    },
+    {
+      "name": "Carniviper",
+      "elements": [
+        "flying",
+        "poison"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 39,
+        "attack": 78,
+        "defense": 52,
+        "spAttack": 78,
+        "spDefense": 52,
+        "speed": 91
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Masquerattle",
+          "level": 30
+        }
+      ],
+      "category": "A small masked snake",
+      "flavor": "Despite its grinning visage, the Carniviper isn’t actually a friendly creature. It is very territorial, and will attack anyone who approaches that it deems a threat… which tends to be everything and everyone."
+    },
+    {
+      "name": "Galagor",
+      "elements": [
+        "psychic",
+        "light"
+      ],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 130,
+        "attack": 39,
+        "defense": 117,
+        "spAttack": 98,
+        "spDefense": 98,
+        "speed": 39
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A floating space bug with a cape",
+      "flavor": "A Stardigrade that has evolved super intelligence. Its outer armour almost entirely covers its pink worm-like core, which is partially visible through the glass dome on its helmet."
+    },
+    {
+      "name": "Terracooka",
+      "elements": [
+        "ground",
+        "fire"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 65,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 52
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Coaldron",
+          "level": 30
+        }
+      ],
+      "category": "A ceramic chef",
+      "flavor": "Terracookas are aspiring chefs, and will attempt to cook with whatever ingredients they can find in their subterranean cave habitats. Unfortunately this means that most of their practiced recipes include lichen, moss, or both lichen and moss."
+    },
+    {
+      "name": "Bulletino",
+      "elements": [
+        "fire",
+        "steel"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 52,
+        "attack": 46,
+        "defense": 46,
+        "spAttack": 65,
+        "spDefense": 46,
+        "speed": 130
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Velocirifle",
+          "level": 30
+        }
+      ],
+      "category": "A giant walking bullet",
+      "flavor": "The Bulletino only has one defense mechanism, and that is to launch itself headfirst into danger when panicked. This is a bad idea but the Bulletino will always do it anyway."
+    },
+    {
+      "name": "Pombomb",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 65,
+        "attack": 59,
+        "defense": 59,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Spitzfyre",
+          "level": 30
+        }
+      ],
+      "category": "A fiery dog",
+      "flavor": "Pombombs are universally considered to be one of the friendliest creatures of New Wirral. If it weren’t for their habits of accidentally setting anything and everything on fire, they would make quite good pets."
+    },
+    {
+      "name": "Magikrab",
+      "elements": [
+        "psychic"
+      ],
+      "raceId": "crustacean",
+      "stats": {
+        "hp": 68,
+        "attack": 104,
+        "defense": 68,
+        "spAttack": 104,
+        "spDefense": 98,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A crab with a wizard hat",
+      "flavor": "Magikrabs were the first monster to be brought to New Wirral in the ancient past. They are almost all extinct now, with one solitary Magikrab now residing on the island as its eternal and diligent station attendant."
+    },
+    {
+      "name": "Allseer",
+      "elements": [
+        "psychic"
+      ],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 65,
+        "attack": 33,
+        "defense": 78,
+        "spAttack": 98,
+        "spDefense": 52,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Khufo",
+          "level": 30
+        },
+        {
+          "name": "Triphinx",
+          "level": 30
+        }
+      ],
+      "category": "A flying saucer",
+      "flavor": "Allseers are mostly seen at night, hovering several meters off the ground. They get their name from their unnerving behaviour, wherein they appear to silently observe passing humans with a single unblinking scarlet “eye”."
+    },
+    {
+      "name": "Salamagus",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 65,
+        "attack": 33,
+        "defense": 52,
+        "spAttack": 98,
+        "spDefense": 78,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Adeptile",
+          "level": 30
+        },
+        {
+          "name": "Pyromeleon",
+          "level": 30
+        }
+      ],
+      "category": "A triangle-headed lizard",
+      "flavor": "The slippery Salamagus is a student of pyromancy and other arcane arts. It is able to breathe fire using fuel it stores in the pouches on its head – incidentally, these look like giant googly eyes to the untrained eye."
+    },
+    {
+      "name": "Rosehood",
+      "elements": [
+        "fairy",
+        "grass"
+      ],
+      "raceId": "human",
+      "stats": {
+        "hp": 104,
+        "attack": 72,
+        "defense": 65,
+        "spAttack": 104,
+        "spDefense": 72,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A hooded figure with a flower basket",
+      "flavor": "A Littlered that grows to adulthood without losing itself to its animal instincts. The Rosehood is often seen in wooded areas, arranging bouqets of fresh flowers to hand out to those passing by."
+    },
+    {
+      "name": "Burnace",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 65,
+        "attack": 39,
+        "defense": 98,
+        "spAttack": 65,
+        "spDefense": 98,
+        "speed": 26
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Smogmagog",
+          "level": 30
+        }
+      ],
+      "category": "A legless factory creature",
+      "flavor": "Burnaces have no legs, and can only move by sliding their heavy concrete bodies along the ground with their hands. Their endlessly burning internal furnaces allow them to emit flames and toxic smogs from their “chimneys” at a moment’s notice."
+    },
+    {
+      "name": "Aeroboros",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 124,
+        "attack": 20,
+        "defense": 65,
+        "spAttack": 104,
+        "spDefense": 104,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A flying snake wheel",
+      "flavor": "The Aeroboros is able to cycle winds through the inner ring of its circular body. Those swirling winds can then be projected out at great speed to sweep its foes off their feet."
+    },
+    {
+      "name": "Kingrave",
+      "elements": [
+        "ghost",
+        "steel"
+      ],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 72,
+        "attack": 143,
+        "defense": 72,
+        "spAttack": 104,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant “king” chess piece",
+      "flavor": "The Kingrave’s body is made of a dense, malleable stone, painted in ornate colours. It moves very slowly, dragging its fur cape along the ground as it slides."
+    },
+    {
+      "name": "Binvader",
+      "elements": [
+        "poison",
+        "steel"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 59,
+        "attack": 59,
+        "defense": 91,
+        "spAttack": 91,
+        "spDefense": 59,
+        "speed": 33
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Binterloper",
+          "level": 30
+        }
+      ],
+      "category": "An alien garbage can",
+      "flavor": "Binvaders appear to be tentacled green beings housed inside a combat vehicle that is reminiscent of a garbage can. It has two “arms” on its front – one for emitting deadly beam attacks, and the other for aggressively prodding."
+    },
+    {
+      "name": "Amphare",
+      "elements": [
+        "electric",
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 78,
+        "attack": 65,
+        "defense": 78,
+        "spAttack": 65,
+        "spDefense": 52,
+        "speed": 52
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Lapacitor",
+          "level": 30
+        }
+      ],
+      "category": "An armless battery-shaped rabbit",
+      "flavor": "The Amphare is little more than a living battery, having formed “limbs” by suspending scrap iron in the air around its body. It is not clear what first caused it to gain sentience."
+    },
+    {
+      "name": "Springheel",
+      "elements": [
+        "normal"
+      ],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 59,
+        "attack": 85,
+        "defense": 52,
+        "spAttack": 52,
+        "spDefense": 59,
+        "speed": 85
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Hopskin",
+          "level": 30
+        },
+        {
+          "name": "Snoopin",
+          "level": 30
+        }
+      ],
+      "category": "An imp with leather boots",
+      "flavor": "Springheels get their kicks by hiding behind corners under the cover of night, before leaping out to surprise their victims. It appears that they make their “wings” out of old discarded rags."
+    },
+    {
+      "name": "Ramtasm",
+      "elements": [
+        "ghost",
+        "fighting"
+      ],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 85,
+        "attack": 111,
+        "defense": 78,
+        "spAttack": 98,
+        "spDefense": 78,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "An angelic towering ram ghost",
+      "flavor": "The Ramtasm has honed its connection between the spiritual and physical realms, and is able to fully manifest itself across both simultaneously. This gives it access to an untapped well of tremendous astral energy."
+    },
+    {
+      "name": "Spirouette",
+      "elements": [
+        "water",
+        "fairy"
+      ],
+      "raceId": "cnidarian",
+      "stats": {
+        "hp": 91,
+        "attack": 46,
+        "defense": 46,
+        "spAttack": 72,
+        "spDefense": 46,
+        "speed": 91
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Regensea",
+          "level": 30
+        }
+      ],
+      "category": "A dancing sea creature with a shell head",
+      "flavor": "Spirouettes are advanced mollusc-like creatures. Their major organs all reside in its shell “head”, with its “body” being an extended set of limbs. Its movements are swift and elegant, and they often cloak themselves with seaweed for protection from the elements."
+    },
+    {
+      "name": "Coaldron",
+      "elements": [
+        "ground",
+        "fire"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 104,
+        "attack": 72,
+        "defense": 91,
+        "spAttack": 104,
+        "spDefense": 91,
+        "speed": 59
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A tall ceramic figure with a cauldron body",
+      "flavor": "Coaldrons are living cooking pots, constantly brewing a delicious broth in their basin bodies. Whilst not very mobile, they are able to turn their bodies in order to shoot streams of this steaming hot broth at anyone who may approach for a taste without invitation."
+    },
+    {
+      "name": "Wyrmaw",
+      "elements": [
+        "ground",
+        "bug"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 98,
+        "attack": 117,
+        "defense": 85,
+        "spAttack": 72,
+        "spDefense": 85,
+        "speed": 65
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A big serpent with a flag on its head",
+      "flavor": "Now too big to hide underground for prey, the Wyrmaw must instead lure potential victims with an inviting waving of its flag and a pleasant jingle-jangle of the bells that adorn its collar."
+    },
+    {
+      "name": "Southpaw",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "canid",
+      "stats": {
+        "hp": 85,
+        "attack": 104,
+        "defense": 91,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A tall wolf with shiny metal boxing gear",
+      "flavor": "Southpaws are the final stage of a Puppercut’s life cycle, having shed their rusty armour. Their bodies are now coated with a lightweight and flexible metal that allow them to withstand attacks and deliver swift blows with their spiked fists."
+    },
+    {
+      "name": "Busheye",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 98,
+        "attack": 59,
+        "defense": 59,
+        "spAttack": 59,
+        "spDefense": 59,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Huntorch",
+          "level": 30
+        }
+      ],
+      "category": "A walking bush with legs",
+      "flavor": "Busheyes are almost exclusively found hiding within bushes, which gives them the ability to both hide from predators and sneak up on prey. They can lie motionless in hiding for hours at a time, sometimes dozing off and missing their moment to pounce on their targets."
+    },
+    {
+      "name": "Bansheep",
+      "elements": [
+        "ghost",
+        "normal"
+      ],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 75,
+        "attack": 72,
+        "defense": 68,
+        "spAttack": 72,
+        "spDefense": 65,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Wooltergeist",
+          "level": 30
+        },
+        {
+          "name": "Zombleat",
+          "level": 30
+        }
+      ],
+      "category": "A moody floating sheep",
+      "flavor": "The eerie moans of the wild Bansheep at night have led many to believe that they are restless undead spirits, but this is untrue: they are very much alive, they just like to have a bit of a whine. Who doesn’t?"
+    },
+    {
+      "name": "Pawper",
+      "elements": [
+        "normal"
+      ],
+      "raceId": "ursid",
+      "stats": {
+        "hp": 78,
+        "attack": 85,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 85
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Pawprince",
+          "level": 30
+        }
+      ],
+      "category": "A little bear in a bear costume",
+      "flavor": "The amicable Pawper is a big fan of hugs and physical affection – it also possesses the ability to transfer any injuries or ailments it has sustained to another via touch. As you can imagine, the combination of these two facts has some chaotic results."
+    },
+    {
+      "name": "Elfless",
+      "elements": [
+        "fairy"
+      ],
+      "raceId": "halfling",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Faerious",
+          "level": 30
+        },
+        {
+          "name": "Grampus",
+          "level": 30
+        }
+      ],
+      "category": "A wooden-faced elf",
+      "flavor": "In order to hide their true emotions, Elfless fashion crude smiling masks out of tree bark. Unsubstantiated rumours claim that there is one day a year where all Elfless will assemble together to replace their old masks with new ones."
+    },
+    {
+      "name": "Littlered",
+      "elements": [
+        "fairy"
+      ],
+      "raceId": "human",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Scarleteeth",
+          "level": 30
+        },
+        {
+          "name": "Rosehood",
+          "level": 30
+        }
+      ],
+      "category": "A cat-like creature with a cloak and bow",
+      "flavor": "Littlereds, in their immature states, have the potential to maintain their civil and friendly personas into adulthood, or give in to their inner beasts. What would drive such a courteous creature to such bloodlust?"
+    },
+    {
+      "name": "Arkidd",
+      "elements": [
+        "electric",
+        "steel"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 65,
+        "attack": 98,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 163
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A robot with a lightning bolt emblem",
+      "flavor": "The Arkidds were first spotted on New Wirral after the arrival of Falldown Mall. There they have been seen running around, jumping on the heads of other monsters, and generally displaying a radical attitude."
+    },
+    {
+      "name": "Scarleteeth",
+      "elements": [
+        "fairy",
+        "dark"
+      ],
+      "raceId": "human",
+      "stats": {
+        "hp": 72,
+        "attack": 104,
+        "defense": 104,
+        "spAttack": 65,
+        "spDefense": 104,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant cloaked wolf",
+      "flavor": "A Littlered that turns feral can grow into this form: the Scarleteeth, a hulking clawed beast with a taste for flesh. For a person to take this form in battle is to lose oneself to pure animal bloodlust."
+    },
+    {
+      "name": "Folklord",
+      "elements": [
+        "ghost",
+        "fairy"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 91,
+        "attack": 88,
+        "defense": 88,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant with a skull head",
+      "flavor": "A fully mature Macabra, the Folklord wears a skull like the kind it used to perch upon, which has now molded to its head. Its arms and upper body are so dense with muscle that it cannot support itself on its legs for very long."
+    },
+    {
+      "name": "Adeptile",
+      "elements": [
+        "psychic",
+        "poison"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 72,
+        "attack": 52,
+        "defense": 117,
+        "spAttack": 98,
+        "spDefense": 117,
+        "speed": 65
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A reptile in a scholar’s robe",
+      "flavor": "The Adeptile has devoted everything to the pursuit of arcane knowledge. Little more than a head, it wears a long scholarly robe to hide its lack of a body."
+    },
+    {
+      "name": "Faerious",
+      "elements": [
+        "fairy",
+        "fighting"
+      ],
+      "raceId": "halfling",
+      "stats": {
+        "hp": 104,
+        "attack": 104,
+        "defense": 65,
+        "spAttack": 78,
+        "spDefense": 65,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A sword-wielding elf",
+      "flavor": "An Elfless who has channelled their surpressed fury into honing their combat skills. They strike down their foes with swords made of ice, and block incoming blows with a shield of tree bark."
+    },
+    {
+      "name": "Hedgeherne",
+      "elements": [
+        "grass",
+        "ghost"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 98,
+        "attack": 91,
+        "defense": 72,
+        "spAttack": 91,
+        "spDefense": 72,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A leaf-covered creature holding a flaming horn",
+      "flavor": "The Hedgeherne is a master hunter, and will relentlessly track down any target they deem a worthy chase. The horns they wield are constantly burning, and they have been known to burn down entire forests in aid of cornering their quarry."
+    },
+    {
+      "name": "Boltam",
+      "elements": [
+        "electric"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 59,
+        "attack": 59,
+        "defense": 59,
+        "spAttack": 59,
+        "spDefense": 59,
+        "speed": 98
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Pinbolt",
+          "level": 30
+        },
+        {
+          "name": "Plasmantler",
+          "level": 30
+        }
+      ],
+      "category": "A pinball-headed creature",
+      "flavor": "The metal heads of the Boltams are extremely conductive, and they passively absorb electric currents from the atmosphere. Boltams are able to channel this energy into a magnetic field, which they can use to travel across land and air with ease."
+    },
+    {
+      "name": "Hauntome",
+      "elements": [
+        "ghost",
+        "psychic"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 72,
+        "attack": 117,
+        "defense": 98,
+        "spAttack": 117,
+        "spDefense": 52,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A giant floating book",
+      "flavor": "The Hauntome may appear like a book possessed by a restless spirit, but its “eye” is an organic creature that has taken root inside a large tome. It flaps its pages to create powerful winds."
+    },
+    {
+      "name": "Faucetear",
+      "elements": [
+        "water",
+        "steel"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 59,
+        "attack": 65,
+        "defense": 59,
+        "spAttack": 72,
+        "spDefense": 65,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Fountess",
+          "level": 30
+        }
+      ],
+      "category": "A leaky tap",
+      "flavor": "The Faucetear’s ability to project powerful streams of pressurised water is tied directly to their emotional state. They are very easily startled and upset, which leads them to often unexpectedly use their water attacks without intending to."
+    },
+    {
+      "name": "Pawprince",
+      "elements": [
+        "normal"
+      ],
+      "raceId": "ursid",
+      "stats": {
+        "hp": 91,
+        "attack": 104,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 91,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A tall, thin bear in a bear costume",
+      "flavor": "A Pawper is always repairing, improving and expanding its own bear costume. If its costume becomes grand enough, it becomes a Pawprince. Towering over many smaller beasts, it’s unclear where the Pawprince ends and the costume begins."
+    },
+    {
+      "name": "Zeustrike",
+      "elements": [
+        "electric",
+        "flying"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 91,
+        "attack": 65,
+        "defense": 72,
+        "spAttack": 78,
+        "spDefense": 85,
+        "speed": 130
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A cloud wearing a helmet",
+      "flavor": "Zeustrikes often compete with each other in combat, and the clashes of their lightning bolt arms amongst the clouds are indistinguishable from thunderstorms."
+    },
+    {
+      "name": "Jellyton",
+      "elements": [
+        "water",
+        "poison"
+      ],
+      "raceId": "cnidarian",
+      "stats": {
+        "hp": 78,
+        "attack": 130,
+        "defense": 85,
+        "spAttack": 98,
+        "spDefense": 59,
+        "speed": 72
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A slimy creature with a skull head",
+      "flavor": "Jellytons form when unlucky Pawndeads fall into swamp water and can’t get out. Over time, their bodies break down and reform as beings mostly comprised of a smooth toxic slime. Supposedly, this slime makes for a great fertilizer."
+    },
+    {
+      "name": "Regensea",
+      "elements": [
+        "water",
+        "poison"
+      ],
+      "raceId": "cnidarian",
+      "stats": {
+        "hp": 111,
+        "attack": 75,
+        "defense": 65,
+        "spAttack": 94,
+        "spDefense": 65,
+        "speed": 111
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A dancing sea creature with a jellyfish head",
+      "flavor": "A vast metamorphosis can turn a Spirouette into a Regensea. Shedding its shell entirely, the Regensea’s body is 95% water. It is able to project powerful waves of water with its ballet-like movements – the more practiced its dances, the more powerful the water strikes."
+    },
+    {
+      "name": "Huntorch",
+      "elements": [
+        "grass",
+        "fire"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 98,
+        "attack": 91,
+        "defense": 59,
+        "spAttack": 59,
+        "spDefense": 59,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Hedgeherne",
+          "level": 30
+        }
+      ],
+      "category": "A horned bush carrying a torch",
+      "flavor": "Huntorches are avid trackers, able to pursue a target that is several miles ahead of them with little difficulty. They have been known to accidentally set their own leafy exteriors on fire with the torches they carry."
+    },
+    {
+      "name": "Dominoth",
+      "elements": [
+        "bug",
+        "psychic"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 52
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Tokusect",
+          "level": 30
+        },
+        {
+          "name": "Wingloom",
+          "level": 30
+        }
+      ],
+      "category": "A big moth",
+      "flavor": "Dominoths see themselves as defenders of peace, and spend their days patrolling the skies of woodland areas. The only thing that can distract them from their noble duties are bright lights, such as lamps."
+    },
+    {
+      "name": "Miss Mimic",
+      "elements": [
+        "dark",
+        "fairy"
+      ],
+      "raceId": "mimic",
+      "stats": {
+        "hp": 72,
+        "attack": 137,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 98
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A booby-trapped item locker",
+      "flavor": "Miss Mimics can replicate the appearance of objects of great value. Now on New Wirral, they have taken to resembling the item caches left across the island by the rangers. An unsuspecting ranger expecting some valuable supplies might instead find Miss Mimic’s barbed claws."
+    },
+    {
+      "name": "Glaistain",
+      "elements": [
+        "glass"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 78,
+        "attack": 104,
+        "defense": 59,
+        "spAttack": 104,
+        "spDefense": 59,
+        "speed": 143
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A stained glass fairy",
+      "flavor": "Glaistain resides, sleeping, in the ruins of an old church. Its body seemingly made of a thousand jagged shards of stained glass, it will prove a worthy challenge to any adventurer who foolishly wakes it from its slumber."
+    },
+    {
+      "name": "Minortom",
+      "elements": [
+        "steel",
+        "psychic"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 85,
+        "attack": 85,
+        "defense": 85,
+        "spAttack": 46,
+        "spDefense": 46,
+        "speed": 46
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Majortom",
+          "level": 30
+        }
+      ],
+      "category": "A retro rocket robot",
+      "flavor": "Minortoms were once novelty automatons, designed to entertain guests at a theme park on some unremarkable parallel Earth. Long outliving their creators, they have since gained a mechanical sentience of sorts, and now look to sail the stars like the space rockets they resemble."
+    },
+    {
+      "name": "Velocirifle",
+      "elements": [
+        "fire",
+        "steel"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 91,
+        "spDefense": 65,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Gearyu",
+          "level": 30
+        },
+        {
+          "name": "Artillerex",
+          "level": 30
+        }
+      ],
+      "category": "A lizard with a gun-shaped head",
+      "flavor": "The back of the Velocirifle’s skull contains a chamber filled with gunpowder that it can ignite at will, launching any projectile stored inside the “barrel” of its face. They have subsequently learned to have a very good aim."
+    },
+    {
+      "name": "Weevilite",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "crustacean",
+      "stats": {
+        "hp": 78,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 104,
+        "spDefense": 78,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A traffic light crab",
+      "flavor": "The Weevilite’s long necks allow them to spot weaker monsters from afar, and by alternating flashes of their red and green eyes they can paralyse their prey with dizziness and mild migraines."
+    },
+    {
+      "name": "Beanstalker",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 91,
+        "attack": 120,
+        "defense": 72,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 107
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A creepy axe-murdering pumpkin",
+      "flavor": "A Jumpkin that has developed a malicious personality. Now with a fully formed body made of vines and plant matter, they love nothing more than to chase terrified victims with an axe."
+    },
+    {
+      "name": "Vendemon",
+      "elements": [
+        "fire",
+        "steel"
+      ],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 85,
+        "attack": 72,
+        "defense": 85,
+        "spAttack": 78,
+        "spDefense": 85,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Gumbaal",
+          "level": 30
+        }
+      ],
+      "category": "A devil wearing a gumball machine",
+      "flavor": "A Candevil that has built itself a suit of protective armour out of metal and glass. It has been theorised that their strange attire is an attempt to resemble astronauts, but no-one knows for sure."
+    },
+    {
+      "name": "Spitzfyre",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 91,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 104,
+        "spDefense": 98,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A dog wearing goggles",
+      "flavor": "The Spitzfyre’s fire-breathing abilities have developed to such an extent that they must wear goggles to protect their eyes from the smoke they unwittingly cause by setting things on fire."
+    },
+    {
+      "name": "Binterloper",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 72,
+        "attack": 72,
+        "defense": 111,
+        "spAttack": 111,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A plastic bin with an alien inside",
+      "flavor": "Binterlopers are higher ranked warriors than Binvaders, and thus pilot more powerful combat chassis. The way they have been observed to “give orders” to Binvaders implies some sort of military hierarchy within their ranks."
+    },
+    {
+      "name": "Majortom",
+      "elements": [
+        "steel",
+        "psychic"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 98,
+        "attack": 98,
+        "defense": 98,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A long space shuttle robot",
+      "flavor": "Minortoms that upgrade their space rocket bodies can eventually advance to become Majortoms. Their large fuel tanks are filled with a powerful liquid propellant that can launch them into low orbit, finally realising their dream of space travel."
+    },
+    {
+      "name": "Puppercut",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "canid",
+      "stats": {
+        "hp": 65,
+        "attack": 78,
+        "defense": 72,
+        "spAttack": 52,
+        "spDefense": 52,
+        "speed": 72
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Southpaw",
+          "level": 30
+        }
+      ],
+      "category": "A squat wolf with rusted metal boxing gear",
+      "flavor": "The Puppercut is an aspiring boxer. Although they are born with an iron coating over various parts of their bodies, this outer layer is prone to rust. The rusty layer sheds as they mature to their adult forms."
+    },
+    {
+      "name": "Trapwurm",
+      "elements": [
+        "ground",
+        "bug"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 78,
+        "attack": 98,
+        "defense": 78,
+        "spAttack": 59,
+        "spDefense": 78,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Wyrmaw",
+          "level": 30
+        }
+      ],
+      "category": "A serpent with a huge jaw and legs",
+      "flavor": "Trapwurms can hold their breath for days at a time as they wait beneath mud and dirt for prey to step overhead. Their jaws have an incredible strength that make them almost impossible to pry apart."
+    },
+    {
+      "name": "Blunderbusk",
+      "elements": [
+        "steel",
+        "normal"
+      ],
+      "raceId": "pachyderm",
+      "stats": {
+        "hp": 98,
+        "attack": 78,
+        "defense": 98,
+        "spAttack": 98,
+        "spDefense": 65,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A clown with a bouncy ball body",
+      "flavor": "The Blunderbusk is able to “fire” projectiles with its hand by pointing their hands like guns. It has a very accurate aim, too, despite the fact that its always rocking back and forth, and also lacks eyes."
+    },
+    {
+      "name": "Kirikuri",
+      "elements": [
+        "flying",
+        "fairy"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 124,
+        "attack": 104,
+        "defense": 98,
+        "spAttack": 46,
+        "spDefense": 72,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A wooden dummy with a sword and shield",
+      "flavor": "Once dummies for weapon practice, Kirikuris have since taken up arms themselves. They fight using bokkens – wooden katanas used for sword practice."
+    },
+    {
+      "name": "Twirligig",
+      "elements": [
+        "flying",
+        "fairy"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 124,
+        "attack": 33,
+        "defense": 98,
+        "spAttack": 33,
+        "spDefense": 98,
+        "speed": 7
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Kirikuri",
+          "level": 30
+        }
+      ],
+      "category": "A jumping wooden dummy",
+      "flavor": "Twirligigs were once crudely made target practice dummies, but have since gained sentience through unknown means. Lacking any complex limbs, they are forced to move and attack by pivoting on the wooden stakes that run through their bodies."
+    },
+    {
+      "name": "Charlequin",
+      "elements": [
+        "fairy",
+        "psychic"
+      ],
+      "raceId": "pachyderm",
+      "stats": {
+        "hp": 52,
+        "attack": 72,
+        "defense": 52,
+        "spAttack": 78,
+        "spDefense": 65,
+        "speed": 72
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Blunderbusk",
+          "level": 30
+        },
+        {
+          "name": "Fragliacci",
+          "level": 30
+        }
+      ],
+      "category": "A starry-eyed clown",
+      "flavor": "The Charlequin uses its oversized sleeves to store items used for public performances. This includes fireworks, flammable materials, incendiary devices, and more."
+    },
+    {
+      "name": "Anathema",
+      "elements": [
+        "dark",
+        "psychic"
+      ],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 98,
+        "attack": 101,
+        "defense": 91,
+        "spAttack": 91,
+        "spDefense": 85,
+        "speed": 55
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A gross Frankenstein monster",
+      "flavor": "Anathemas are chimeras, hideous beasts created from the parts of various monsters that were surgically attached together. They must have been created on purpose, but by who? And for what purpose?"
+    },
+    {
+      "name": "Pinbolt",
+      "elements": [
+        "steel",
+        "electric"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 78,
+        "attack": 78,
+        "defense": 68,
+        "spAttack": 104,
+        "spDefense": 68,
+        "speed": 124
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A spring-shaped creature with a floating orb head",
+      "flavor": "The Pinbolt’s metal head floats separately from its body, suspended by a magnetic field generated by the two “flippers” on its body. It can channel this magnetic field to launch bolts of energy from its singular hand."
+    },
+    {
+      "name": "Jormungold",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 65,
+        "attack": 101,
+        "defense": 65,
+        "spAttack": 101,
+        "spDefense": 65,
+        "speed": 124
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant winged snake",
+      "flavor": "Curiously, the Jormungold’s wings aren’t actually capable of making the huge serpent airborne. Instead they help it slither along the ground at great speeds, each wingbeat sending the beast hurtling forwards."
+    },
+    {
+      "name": "Zombleat",
+      "elements": [
+        "ghost",
+        "poison"
+      ],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 85,
+        "attack": 85,
+        "defense": 85,
+        "spAttack": 72,
+        "spDefense": 85,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Capricorpse",
+          "level": 30
+        }
+      ],
+      "category": "A ghostly sheep carrying a gravestone",
+      "flavor": "The Zombleat is a spirit that has refused to ascend to the afterlife. It clings to the grave and earth where it was buried, and may perhaps leave the mortal plane forever if it were to let go of its own headstone."
+    },
+    {
+      "name": "Mothmanic",
+      "elements": [
+        "bug",
+        "psychic"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 85,
+        "attack": 72,
+        "defense": 78,
+        "spAttack": 117,
+        "spDefense": 91,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A big creepy moth",
+      "flavor": "The Mothmanic’s whole body surges with powerful currents of electricity. It can wield this power offensively, and is able to dispense devastating bolts of lightning towards its targets with a beat of its wings."
+    },
+    {
+      "name": "Traffikrab",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "crustacean",
+      "stats": {
+        "hp": 52,
+        "attack": 78,
+        "defense": 52,
+        "spAttack": 78,
+        "spDefense": 72,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Magikrab",
+          "level": 30
+        },
+        {
+          "name": "Lobstacle",
+          "level": 30
+        },
+        {
+          "name": "Weevilite",
+          "level": 30
+        }
+      ],
+      "category": "A big traffic cone crab",
+      "flavor": "The Traffikrab’s cone isn’t actually part of its body – it is merely a traffic cone that has washed up on the shores of New Wirral and been occupied by the creature. It is said that in the past, they would instead find other objects to live inside."
+    },
+    {
+      "name": "Malchemy",
+      "elements": [
+        "fire",
+        "poison"
+      ],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 78,
+        "attack": 81,
+        "defense": 72,
+        "spAttack": 94,
+        "spDefense": 72,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Miasmodeus",
+          "level": 30
+        }
+      ],
+      "category": "A smiling devil holding a glass vial",
+      "flavor": "A series of strange internal chemical changes can cause a Candevil to mature into a Malchemy. This also causes the Malchemy to become fixated on the esoteric art of potion making, which often ends up badly for the Malchemy."
+    },
+    {
+      "name": "Umbrahella",
+      "elements": [
+        "ghost",
+        "water"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 98,
+        "attack": 78,
+        "defense": 91,
+        "spAttack": 111,
+        "spDefense": 130,
+        "speed": 39
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A creepy living umbrella",
+      "flavor": "The enigmatic Umbrahella is said to be a bad omen – riding fell winds like a kite on an updraft, it appears only where disaster and misery is soon to strike."
+    },
+    {
+      "name": "Dandylion",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 78,
+        "attack": 52,
+        "defense": 78,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 39
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Blossomaw",
+          "level": 30
+        }
+      ],
+      "category": "A big flowery lion",
+      "flavor": "Dandylions are loyal, defensive guardians. They’re typically found standing at the entrances to important caves in the grassy plains of New Wirral. If you find one with no cave nearby, it may be a hint that something is hidden!"
+    },
+    {
+      "name": "Tokusect",
+      "elements": [
+        "bug",
+        "light"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 78,
+        "attack": 111,
+        "defense": 78,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 111
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A bug warrior",
+      "flavor": "Tokusects have extremely aerodynamic bodies, aiding a fighting style that is focused around using their pointed legs to strike opponents and channel powerful currents of air."
+    },
+    {
+      "name": "Lapacitor",
+      "elements": [
+        "electric",
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 98,
+        "attack": 81,
+        "defense": 98,
+        "spAttack": 81,
+        "spDefense": 98,
+        "speed": 65
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A battery-shaped rabbit with a giant claw arm",
+      "flavor": "If the electrical energy within an Amphare grows strong enough, it is able to extend its own body and form proper limbs. It still relies on magnetised scrap metal for self-defense, however."
+    },
+    {
+      "name": "Fungogh",
+      "elements": [
+        "grass",
+        "poison"
+      ],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 78,
+        "attack": 104,
+        "defense": 104,
+        "spAttack": 65,
+        "spDefense": 91,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A mushroom with a moustache",
+      "flavor": "The Fungogh has combined the art of combat with the art of calligraphy. Its movements are swift and effective, incorporating strikes from its paintbrush staff with disciplined stances."
+    },
+    {
+      "name": "Artillerex",
+      "elements": [
+        "fire",
+        "steel"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 72,
+        "attack": 111,
+        "defense": 78,
+        "spAttack": 111,
+        "spDefense": 72,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A huge lizard with a gun in its belly",
+      "flavor": "The body of the Artillerex contains a pit of molten metal, which it can form into shrapnel and shoot out in blasts from the “turret” on its belly. Its ballistic capabilities and towering stature make it a truly fearsome foe to stand against."
+    },
+    {
+      "name": "Robindam",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 72,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 130,
+        "spDefense": 98,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A big robot with a bow and arrow",
+      "flavor": "Robindams are keen shots with their plastic bows and arrows, and are able to accurately strike a target with a suction cup arrow from 300 meters out. They pride themselves on their keen aim, and keener sense of justice."
+    },
+    {
+      "name": "Lobstacle",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "crustacean",
+      "stats": {
+        "hp": 98,
+        "attack": 78,
+        "defense": 104,
+        "spAttack": 78,
+        "spDefense": 104,
+        "speed": 59
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A plastic barrel with legs",
+      "flavor": "Lobstacles are docile and patient creatures. When retracted into their plastic “shells”, the heavy Lobstacle is almost impossible to move or overturn. "
+    },
+    {
+      "name": "Cluckabilly",
+      "elements": [
+        "normal",
+        "fighting"
+      ],
+      "raceId": "bird",
+      "stats": {
+        "hp": 65,
+        "attack": 75,
+        "defense": 59,
+        "spAttack": 68,
+        "spDefense": 59,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Rockertrice",
+          "level": 30
+        }
+      ],
+      "category": "A giant punk chicken",
+      "flavor": "Cluckabillies are defined by their antisocial attitudes. The severity of their angry clucks is so great that they can create small shockwaves."
+    },
+    {
+      "name": "Gumbaal",
+      "elements": [
+        "fairy"
+      ],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 98,
+        "attack": 72,
+        "defense": 104,
+        "spAttack": 85,
+        "spDefense": 104,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A towering living gumball machine",
+      "flavor": "Gumbaals have fused with their metal armour and have morphed into a towering being. The glass dome that forms its head is filled with various elemental spheres, which the Gumbaal can spit up as an offensive measure."
+    },
+    {
+      "name": "Hopskin",
+      "elements": [
+        "normal",
+        "fighting"
+      ],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 59,
+        "attack": 111,
+        "defense": 65,
+        "spAttack": 59,
+        "spDefense": 65,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ripterra",
+          "level": 30
+        }
+      ],
+      "category": "A shifty imp in a coat",
+      "flavor": "The Hopskin will entice its prey to approach with its unblinking amber eyes and a big smile. However, any creature that is lured in by this charade will be swiftly cut down by the razor sharp claws it conceals beneath a dirty coat."
+    },
+    {
+      "name": "Pyromeleon",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 98,
+        "attack": 39,
+        "defense": 65,
+        "spAttack": 130,
+        "spDefense": 98,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A lizard with a long tongue",
+      "flavor": "The Pyromeleon is a master of pyromancy, able to not only breathe fire but control it. They are often seen holding flames on the tips of their tongues, as a display of their sheer mastery over the element."
+    },
+    {
+      "name": "Muskrateer",
+      "elements": [
+        "normal",
+        "fighting"
+      ],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 52,
+        "attack": 65,
+        "defense": 52,
+        "spAttack": 52,
+        "spDefense": 52,
+        "speed": 78
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Ratcousel",
+          "level": 30
+        }
+      ],
+      "category": "A mouse with a sword and hat",
+      "flavor": "Muskrateers can often be found sharpening their swords on stones in the underground caves where they dwell. It is not uncommon to find them duelling any Squireys that happen to cross their paths. "
+    },
+    {
+      "name": "Wingloom",
+      "elements": [
+        "bug",
+        "psychic"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 78,
+        "attack": 65,
+        "defense": 78,
+        "spAttack": 65,
+        "spDefense": 78,
+        "speed": 59
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Mothmanic",
+          "level": 30
+        }
+      ],
+      "category": "A lightbulb moth",
+      "flavor": "The lightbulbs in a Wingloom’s head channel an electric current that runs through the creature’s entire body. The lights generated by them are reflected out its eyes, allowing them perfect vision at night."
+    },
+    {
+      "name": "Nevermort",
+      "elements": [
+        "dark",
+        "ghost"
+      ],
+      "raceId": "bird",
+      "stats": {
+        "hp": 98,
+        "attack": 46,
+        "defense": 49,
+        "spAttack": 52,
+        "spDefense": 49,
+        "speed": 98
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Apocrowlypse",
+          "level": 30
+        }
+      ],
+      "category": "A crow with a hood and mask",
+      "flavor": "It must be noted that the Nevermort does not have a beak – rather, it is wearing what appears to be a porcelain plague doctor mask. What face lies beneath the mask is something better left undiscovered."
+    },
+    {
+      "name": "Skelevangelist",
+      "elements": [
+        "ghost",
+        "light"
+      ],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 72,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Kingrave",
+          "level": 30
+        },
+        {
+          "name": "Queenyx",
+          "level": 30
+        }
+      ],
+      "category": "A floating skeleton with a robe",
+      "flavor": "The Skelevangelists are constantly emitting a strange whispered vocal chant. This chanting grows louder when they engage with their ability to psychically manipulate rocks and stones."
+    },
+    {
+      "name": "Wooltergeist",
+      "elements": [
+        "ghost",
+        "normal"
+      ],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 78,
+        "attack": 94,
+        "defense": 72,
+        "spAttack": 81,
+        "spDefense": 72,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Ramtasm",
+          "level": 30
+        }
+      ],
+      "category": "A sheep-like ghost with a tired expression",
+      "flavor": "Unlike the Bansheep, the Wooltergeist is an undead spirit that only partially manifests on the physical plane. It is said that when it is in proximity to a place where a death recently took place, the horns on its head grow sharper."
+    },
+    {
+      "name": "Palangolin",
+      "elements": [
+        "steel",
+        "light"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 98,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A knight with a halberd",
+      "flavor": "The Palangolin is the mature form of a Squirey who has remained true to their principles, and has become a knight of great virtue. Palangolins wield striking golden halberds, which they use to defend their allies in the heat of battle."
+    },
+    {
+      "name": "Thwackalope",
+      "elements": [
+        "normal",
+        "fighting"
+      ],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 72,
+        "attack": 117,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 117
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A winged rabbit",
+      "flavor": "When a Thwackalope matures to the age where it can defend itself, it makes a makeshift weapon from its environment. Their preference is for metal posts ripped right out of the ground – including the slab of earth where it was initially buried. "
+    },
+    {
+      "name": "Averevoir",
+      "elements": [
+        "ghost",
+        "fairy"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 98,
+        "attack": 65,
+        "defense": 98,
+        "spAttack": 65,
+        "spDefense": 98,
+        "speed": 124
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "An enormous bird standing on a plinth",
+      "flavor": "Averevoir is an almost mythical being, having only been sighted a dozen times in the entire history of New Wirral. Local legend says that the plant it clasps in its beak can cure any illness and grant eternal life – not that anyone has obtained it to prove if this is true, of course."
+    },
+    {
+      "name": "Queenyx",
+      "elements": [
+        "ghost",
+        "dark"
+      ],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 117,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 130
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant “queen” chess piece",
+      "flavor": "Queenyx are able to channel elemental energy into the orbs they wield, which they can throw at opponents with precise aim. They are fast movers despite lacking any legs, and slide across solid ground as if they were gliding through the air."
+    },
+    {
+      "name": "Pondwalker",
+      "elements": [
+        "water",
+        "steel"
+      ],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Sharktanker",
+          "level": 30
+        }
+      ],
+      "category": "A goldfish in a mech suit",
+      "flavor": "Pondwalkers are clear proof that the monsters of New Wirral must have originated elsewhere, and cannot be native creatures to the island. The robotic “walker” exoskeleton of the Pondwalker is a highly advanced mechanical creation, perfectly protecting the fish within."
+    },
+    {
+      "name": "Braxsuit",
+      "elements": [
+        "psychic",
+        "steel"
+      ],
+      "raceId": "human",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 46,
+        "spAttack": 65,
+        "spDefense": 59,
+        "speed": 91
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Flapwoods",
+          "level": 30
+        }
+      ],
+      "category": "A floating round-faced creature with a tie",
+      "flavor": "Braxsuits put a lot of attention into their appearance. They seem to become very distressed if their collars and ties become lop-sided or dishevelled. "
+    },
+    {
+      "name": "Auriclaw",
+      "elements": [
+        "steel",
+        "light"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 65,
+        "attack": 111,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 111,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A spider wearing a gold mask",
+      "flavor": "To reach maturity, Ferriclaws undergo a state of alchemical metamorphosis during which the iron plating and decorations on their bodies transform into a gold alloy. These Auriclaws act as front-line defenders of their vast territories."
+    },
+    {
+      "name": "Minosteam",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 98,
+        "attack": 117,
+        "defense": 117,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A brazen bull",
+      "flavor": "The Minosteam constantly builds pressurised steam within its brass body, channelling it to deliver powerful strikes with its enormous fists. It seems to have been summoned to New Wirral from somewhere else – the question is, where exactly…?"
+    },
+    {
+      "name": "Icepeck",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "bird",
+      "stats": {
+        "hp": 52,
+        "attack": 98,
+        "defense": 52,
+        "spAttack": 52,
+        "spDefense": 52,
+        "speed": 124
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Cryoshear",
+          "level": 30
+        }
+      ],
+      "category": "A bird with an icicle beak",
+      "flavor": "Icepecks have icicle “beaks” that they use to fend off attackers. In warmer climates these beaks are known to melt away entirely, which is why the Icepeck is found almost exclusively in the cold heights of Mt. Wirral."
+    },
+    {
+      "name": "Frillypad",
+      "elements": [
+        "water",
+        "grass"
+      ],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 91,
+        "attack": 117,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Liligator",
+          "level": 30
+        }
+      ],
+      "category": "A big-eyed frog creature",
+      "flavor": "A Padpole’s mature state. The Frillypad’s limbs allow it to hunt for food: they can often be found hiding by the edges of ponds and lakes. If someone or something passes by that the Frillypad deems edible, it will attempt to ensnare it with its long tongue."
+    },
+    {
+      "name": "Capricorpse",
+      "elements": [
+        "ghost",
+        "dark"
+      ],
+      "raceId": "buffalo",
+      "stats": {
+        "hp": 104,
+        "attack": 91,
+        "defense": 104,
+        "spAttack": 72,
+        "spDefense": 104,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A skeletal sheep with a gravestone on its back",
+      "flavor": "The Capricorpse’s spirit has merged entirely with its own remains, forming a body of bone, soil and stone. They are hulking beasts, and can grow larger over centuries as more earth slowly adds to their mass."
+    },
+    {
+      "name": "Gearyu",
+      "elements": [
+        "steel",
+        "dragon"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 72,
+        "attack": 78,
+        "defense": 111,
+        "spAttack": 111,
+        "spDefense": 72,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A metal gear lizard",
+      "flavor": "The Gearyu’s body is centered around several enormous gears that are held together with a magnetic force. It spins its gears to generate kinetic energy which it can emit from its mouth as powerful elemental breath attacks."
+    },
+    {
+      "name": "Djinn Entonic",
+      "elements": [
+        "fire",
+        "psychic"
+      ],
+      "raceId": "djinn",
+      "stats": {
+        "hp": 98,
+        "attack": 65,
+        "defense": 98,
+        "spAttack": 98,
+        "spDefense": 65,
+        "speed": 98
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A cosmic waiter",
+      "flavor": "A mysterious cosmic waiter with impeccable table service. It isn’t entirely clear what kind of drinks they serve, only that they are “family-friendly” and “not affecting the age rating of the game”. "
+    },
+    {
+      "name": "Sirenade",
+      "elements": [
+        "water",
+        "fairy"
+      ],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 72,
+        "attack": 46,
+        "defense": 52,
+        "spAttack": 85,
+        "spDefense": 78,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Decibelle",
+          "level": 30
+        }
+      ],
+      "category": "A winged beast with a microphone tail",
+      "flavor": "Sirenades are particularly loud creatures, and can amplify their own singing voices through their microphone tails and wings. They don’t seem to have much awareness as to whether or not their singing is too loud for those around them."
+    },
+    {
+      "name": "Manispear",
+      "elements": [
+        "steel",
+        "fighting"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 72,
+        "attack": 78,
+        "defense": 111,
+        "spAttack": 65,
+        "spDefense": 98,
+        "speed": 65
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A dark-armoured knight with an enormous spear",
+      "flavor": "If a Squirey gives in to their dark impulses whilst training, it is destined to become a Manispear. Hiding its face beneath a black helmet, the Manispear fights without restraint or self-control."
+    },
+    {
+      "name": "Mascotoy",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 78,
+        "attack": 98,
+        "defense": 65,
+        "spAttack": 52,
+        "spDefense": 52,
+        "speed": 46
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Mascotorn",
+          "level": 30
+        }
+      ],
+      "category": "A clawed mascot costume",
+      "flavor": "Once some sort of character costume, the Mascotoy is now closer to a shambling corpse. They are known to shamble endlessly in the abandoned halls of Falldown Mall, their polyester stuffing slowly leaking out of their bodies."
+    },
+    {
+      "name": "Sparktan",
+      "elements": [
+        "electric"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 65,
+        "attack": 52,
+        "defense": 59,
+        "spAttack": 59,
+        "spDefense": 59,
+        "speed": 98
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Zeustrike",
+          "level": 30
+        }
+      ],
+      "category": "A living thundercloud",
+      "flavor": "Sparktans are living thunderclouds. Their “arms” are formed of concentrated electrical energy and can be extended at will. They prefer to live at higher altitudes, where they can quietly amass more cloud matter."
+    },
+    {
+      "name": "Candevil",
+      "elements": [
+        "fire",
+        "dark"
+      ],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 75,
+        "attack": 72,
+        "defense": 65,
+        "spAttack": 72,
+        "spDefense": 68,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Malchemy",
+          "level": 30
+        },
+        {
+          "name": "Vendemon",
+          "level": 30
+        }
+      ],
+      "category": "A pastel horned devil",
+      "flavor": "Candevils possess the peculiar ability to generate sugary sweets from their bodies, which can be used as gifts or as ballistic projectiles. Some find this quite charming, whereas others argue that it’s actually very weird and gross."
+    },
+    {
+      "name": "Cat-5",
+      "elements": [
+        "steel",
+        "electric"
+      ],
+      "raceId": "felid",
+      "stats": {
+        "hp": 98,
+        "attack": 104,
+        "defense": 65,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A beast with a flat screen for a head",
+      "flavor": "Whilst its face may resemble a plasma screen display, Cat-5 appears to have no difficulty in seeing. Since it lacks a mouth, it draws static electricity out of the atmosphere with its twin cable tails in order to power itself."
+    },
+    {
+      "name": "Brushroom",
+      "elements": [
+        "grass",
+        "poison"
+      ],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 59,
+        "spDefense": 72,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Fungogh",
+          "level": 30
+        }
+      ],
+      "category": "A mushroom with a paintbrush and bandana",
+      "flavor": "Brushrooms are keen artists, and paint using the strange pigments that ooze from their heads. It has been observed that they are able to change the physical properties of an object they paint over depending on the colour they use."
+    },
+    {
+      "name": "Ripterra",
+      "elements": [
+        "normal",
+        "ground"
+      ],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 78,
+        "attack": 130,
+        "defense": 65,
+        "spAttack": 59,
+        "spDefense": 78,
+        "speed": 111
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A creepy trenchcoat monster",
+      "flavor": "The anatomy of the Ripterra is not easily described. It barely has a body to speak of, instead more a tangled web of claw-tipped limbs haphazardly bound together beneath a stained trench coat and hat."
+    },
+    {
+      "name": "Mascotorn",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 98,
+        "attack": 130,
+        "defense": 98,
+        "spAttack": 65,
+        "spDefense": 72,
+        "speed": 59
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant mascot costume that’s leaking stuffing",
+      "flavor": "A Mascotoy whose polyester stuffing has increased in mass to such an extent that its body has torn itself apart from within. It will keep growing until its body is unable to hold itself together, at which point it will inevitably fall to pieces."
+    },
+    {
+      "name": "Padpole",
+      "elements": [
+        "water"
+      ],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 78,
+        "attack": 78,
+        "defense": 52,
+        "spAttack": 52,
+        "spDefense": 52,
+        "speed": 78
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Frillypad",
+          "level": 30
+        }
+      ],
+      "category": "A lily pad creature with a tail",
+      "flavor": "The Padpole is the larval state of the Frillypad, residing underwater until it matures. Since it has not developed proper limbs yet, it is able to attack with its long tongue, which secretes a gluey mucus that can slow down any would-be attackers."
+    },
+    {
+      "name": "Miasmodeus",
+      "elements": [
+        "fire",
+        "poison"
+      ],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 85,
+        "attack": 98,
+        "defense": 78,
+        "spAttack": 111,
+        "spDefense": 78,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A witch demon riding a lollipop",
+      "flavor": "Packs of Miasmodeus are said to soar through the skies on their flying lollipops on a full moon. They use their many alchemical concoctions in battle, unleashing poisonous potions and deadly elements to lay waste to their opponents."
+    },
+    {
+      "name": "Ferriclaw",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 59,
+        "attack": 91,
+        "defense": 65,
+        "spAttack": 59,
+        "spDefense": 91,
+        "speed": 91
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Auriclaw",
+          "level": 30
+        }
+      ],
+      "category": "A spider wearing a rusted mask",
+      "flavor": "Ferriclaws have only recently been discovered on New Wirral due to their habitats being deep underground cave networks. They adorn themselves with ancient death masks they unearth from the tombs of ancient civilisations."
+    },
+    {
+      "name": "Scampire",
+      "elements": [
+        "flying",
+        "dark"
+      ],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 78,
+        "attack": 104,
+        "defense": 52,
+        "spAttack": 117,
+        "spDefense": 59,
+        "speed": 111
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A vampire with a hat",
+      "flavor": "Scampires create lairs of countless stolen riches and goods before waiting for potential prey to wander in. In recent years they have also gained the ability to fly, though it is unclear whether they use their wings to do it."
+    },
+    {
+      "name": "Stardigrade",
+      "elements": [
+        "psychic",
+        "light"
+      ],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 117,
+        "attack": 26,
+        "defense": 98,
+        "spAttack": 26,
+        "spDefense": 98,
+        "speed": 26
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Galagor",
+          "level": 30
+        }
+      ],
+      "category": "A floating worm creature",
+      "flavor": "Stardigrades are curious creatures, spending much of their time asleep in the lower atmosphere of New Wirral. Occasionally they will float down to ground-level to feed, before ascending once more using the rockets on their backs. "
+    },
+    {
+      "name": "Fragliacci",
+      "elements": [
+        "fairy",
+        "ice"
+      ],
+      "raceId": "pachyderm",
+      "stats": {
+        "hp": 65,
+        "attack": 91,
+        "defense": 65,
+        "spAttack": 111,
+        "spDefense": 104,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A clown with a cannon head",
+      "flavor": "The Fragliacci’s whole body is something akin to a ballistic cannon – it’s “face” is merely a cover to the cannon’s barrel, which is able to fire objects with a terrifying velocity."
+    },
+    {
+      "name": "Pawndead",
+      "elements": [
+        "ghost",
+        "fighting"
+      ],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 59,
+        "attack": 59,
+        "defense": 59,
+        "spAttack": 59,
+        "spDefense": 59,
+        "speed": 59
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Skelevangelist",
+          "level": 30
+        }
+      ],
+      "category": "A big-headed skeleton with no arms",
+      "flavor": "Pawndeads spend much of their time in a dormant state, transmuting their bodies into a durable granite. These Pawndead “statues” can alarm unwitting travellers passing by, who find themselves unexpectedly in the company of expressionless, skull-faced monsters."
+    },
+    {
+      "name": "Undyin",
+      "elements": [
+        "ghost",
+        "water"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 130,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 104,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A scary ghost woman",
+      "flavor": "Undyins appear like ghostly apparitions, rising out of the shallow waters of the Cast Iron Shore to ambush any unlucky soul who approaches them. Legends say they were born from the vengeful spirit of a bride who was murdered and thrown overboard from her lover’s ship."
+    },
+    {
+      "name": "Diveberg",
+      "elements": [
+        "ice",
+        "water"
+      ],
+      "raceId": "cetacean",
+      "stats": {
+        "hp": 65,
+        "attack": 104,
+        "defense": 98,
+        "spAttack": 81,
+        "spDefense": 88,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "An iceberg creature with a diving helmet",
+      "flavor": "If exposed to sub-zero conditions for long enough, the Diveal will adapt into its “Diveberg” form. It is theorised that it developing a bipedal skeleton helps the Diveberg traverse hostile, snowy terrain easier."
+    },
+    {
+      "name": "Jumpkin",
+      "elements": [
+        "grass",
+        "ghost"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 85,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 49,
+        "spDefense": 65,
+        "speed": 91
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Draculeaf",
+          "level": 30
+        },
+        {
+          "name": "Beanstalker",
+          "level": 30
+        }
+      ],
+      "category": "A jumping pumpkin",
+      "flavor": "Jumpkins are created when the “jelly” from a Jellyton is smeared on to a regular pumpkin, giving it sentience. The Jumpkin is a curious and friendly being that seems to never stop moving."
+    },
+    {
+      "name": "Draculeaf",
+      "elements": [
+        "grass",
+        "dark"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 104,
+        "attack": 81,
+        "defense": 81,
+        "spAttack": 81,
+        "spDefense": 81,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A fanged pumpkin with a big cloak",
+      "flavor": "A Jumpkin that has developed a scheming personality. Cloaking themselves in dead leaves, the Draculeaf poses as a friend to those it wishes to feed on. When their prey lowers their guard, they absorb their life force with flesh-piercing roots."
+    },
+    {
+      "name": "Liligator",
+      "elements": [
+        "water",
+        "grass"
+      ],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 98,
+        "attack": 130,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 98
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A lily pad creature with no eyes",
+      "flavor": "One in every hundred Frillypads in natural environments will develop into a Liligator. The Liligators act as bodyguards for the Frillypads in their waters, fending off any drastically stronger aggressors that the Frillypad would not stand a chance against otherwise. "
+    },
+    {
+      "name": "Diveal",
+      "elements": [
+        "water"
+      ],
+      "raceId": "cetacean",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 81,
+        "spAttack": 81,
+        "spDefense": 65,
+        "speed": 33
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Diveberg",
+          "level": 30
+        },
+        {
+          "name": "Scubalrus",
+          "level": 30
+        }
+      ],
+      "category": "A seal with a helmet",
+      "flavor": "The Diveal’s helmet heads not only allow them to breathe in water, but contain an air pocket that helps them float in water. Whereas they are very mobile in lakes and seas, they are a little slower on land."
+    },
+    {
+      "name": "Sharktanker",
+      "elements": [
+        "water",
+        "steel"
+      ],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 85,
+        "attack": 98,
+        "defense": 91,
+        "spAttack": 85,
+        "spDefense": 91,
+        "speed": 72
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A shark in a mech suit",
+      "flavor": "The fish within the “Pondwalker” has grown to become a shark, and its exoskeleton has adapted to support it. Its steel combat claws also contain sophisticated water pumps, allowing it to emit powerful jets of water to attack from a distance as well as in close quarters."
+    },
+    {
+      "name": "Blossomaw",
+      "elements": [
+        "grass",
+        "fighting"
+      ],
+      "raceId": "flower",
+      "stats": {
+        "hp": 104,
+        "attack": 65,
+        "defense": 104,
+        "spAttack": 85,
+        "spDefense": 104,
+        "speed": 59
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A long dragon with a mane of petals",
+      "flavor": "Dandylions that enter a long hibernation period are said to emerge as elegant Blossomaws in spring, just as the first flowers begin to bloom. They can breathe fierce clouds of pollen in the way a dragon might breathe fire."
+    },
+    {
+      "name": "Khufo",
+      "elements": [
+        "psychic"
+      ],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 78,
+        "attack": 104,
+        "defense": 91,
+        "spAttack": 104,
+        "spDefense": 65,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A pyramid alien",
+      "flavor": "The Khufo is an alternate form of the Allseer that has shed its “flying saucer” shell. Aggressive and uninterested in negotiation, the Khufo attacks its victims using a battle staff forged with mysterious unearthly technologies."
+    },
+    {
+      "name": "Apocrowlypse",
+      "elements": [
+        "dark",
+        "ghost"
+      ],
+      "raceId": "bird",
+      "stats": {
+        "hp": 104,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A creepy four-legged bird",
+      "flavor": "As well as its cloak and mask, the Apocrowlypse also wears a belt adorned with a polished animal skull. This gives the creature the silhouette of a cloaked figure riding a skeletal steed."
+    },
+    {
+      "name": "Smogmagog",
+      "elements": [
+        "fire",
+        "poison"
+      ],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 91,
+        "attack": 72,
+        "defense": 127,
+        "spAttack": 72,
+        "spDefense": 127,
+        "speed": 33
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A concrete cooling tower giant",
+      "flavor": "Smogmagog’s “bodies” are actually outer shells made of steel and concrete that house a purely elemental fire being within. As long as a single ember still remains alight within its shell, the Smogmagog will continue to fight."
+    },
+    {
+      "name": "Kuneko",
+      "elements": [
+        "normal",
+        "psychic"
+      ],
+      "raceId": "felid",
+      "stats": {
+        "hp": 75,
+        "attack": 75,
+        "defense": 75,
+        "spAttack": 75,
+        "spDefense": 75,
+        "speed": 75
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Shining Kuneko",
+          "level": 30
+        }
+      ],
+      "category": "An anime catgirl",
+      "flavor": "The daughter of an angel and a demon, Kuneko was left on the doorsteps of a ninja clan hideout as a baby. Trained in the arts of ninjutsu and friendship, Kuneko now travels across the land in search of the four elemental shrines of power. Will she ever find her true calling?"
+    },
+    {
+      "name": "Triphinx",
+      "elements": [
+        "psychic",
+        "ground"
+      ],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 91,
+        "attack": 33,
+        "defense": 91,
+        "spAttack": 124,
+        "spDefense": 91,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant metal tripod",
+      "flavor": "The metal exterior of the Triphinx is completely impenetrable. It is speculated that it is actually an organic creature piloting some sort of exoskeleton or transport vessel."
+    },
+    {
+      "name": "Spooki-onna",
+      "elements": [
+        "ghost",
+        "ice"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 124,
+        "attack": 78,
+        "defense": 85,
+        "spAttack": 85,
+        "spDefense": 85,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A spooky mist woman",
+      "flavor": "Legend says that the Spooki-onna appears to foolish souls attempting to reach the peak of Mt. Wirral. Sightings describe a womanly apparition who encourages climbers to approach her, before enveloping them with a deadly cold blanket of mist."
+    },
+    {
+      "name": "Rockertrice",
+      "elements": [
+        "rock",
+        "fighting"
+      ],
+      "raceId": "bird",
+      "stats": {
+        "hp": 85,
+        "attack": 94,
+        "defense": 85,
+        "spAttack": 88,
+        "spDefense": 85,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant beaked dragon with a mohawk",
+      "flavor": "The Rockertrice is known for its piercing gaze, which is said to be able to freeze someone where they stand if they make eye contact with it. It’s also known for its dislike of anyone making eye contact with it. This is a dangerous combination."
+    },
+    {
+      "name": "Fountess",
+      "elements": [
+        "water",
+        "fairy"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 81,
+        "attack": 88,
+        "defense": 81,
+        "spAttack": 101,
+        "spDefense": 88,
+        "speed": 81
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A sad showerhead",
+      "flavor": "Fountess’ take a lot of pride in the manners and etiquette of their own behaviour, and that of others. If they perceive someone acting uncouth, they are immediately distressed – which drastically increases the pressure in the streams of water pouring from their heads."
+    },
+    {
+      "name": "Kittelly",
+      "elements": [
+        "steel",
+        "electric"
+      ],
+      "raceId": "felid",
+      "stats": {
+        "hp": 65,
+        "attack": 72,
+        "defense": 59,
+        "spAttack": 72,
+        "spDefense": 59,
+        "speed": 65
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Cat-5",
+          "level": 30
+        }
+      ],
+      "category": "A cat with a broken television head",
+      "flavor": "The Kittelly’s only way to communicate is through the static patterns on its television-like “face”. These messages are difficult to decipher, and this hurdle often prevents the common Kittelly from being able to connect with other creatures."
+    },
+    {
+      "name": "Macabra",
+      "elements": [
+        "ghost",
+        "fairy"
+      ],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 91,
+        "attack": 78,
+        "defense": 39,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 78
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Folklord",
+          "level": 30
+        }
+      ],
+      "category": "A fanged creature perched on a skull",
+      "flavor": "The Macabra cannot see, but instead has the ability to “taste” the air around it for potential prey. It prefers to do so from a higher vantage point, and will often find a rock or animal skull to perch on whilst hunting."
+    },
+    {
+      "name": "Picksie",
+      "elements": [
+        "fairy",
+        "rock"
+      ],
+      "raceId": "halfling",
+      "stats": {
+        "hp": 85,
+        "attack": 85,
+        "defense": 85,
+        "spAttack": 85,
+        "spDefense": 85,
+        "speed": 98
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A masked goblin with a pick axe",
+      "flavor": "Picksies are avid miners, and will spend years of their lives excavating caves and tombs for gemstones and treasures. They often adorn themselves with the treasures they uncover, and equip themselves with armour or weapons they find, too."
+    },
+    {
+      "name": "Flapwoods",
+      "elements": [
+        "flying",
+        "dark"
+      ],
+      "raceId": "human",
+      "stats": {
+        "hp": 91,
+        "attack": 91,
+        "defense": 65,
+        "spAttack": 91,
+        "spDefense": 65,
+        "speed": 117
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A hovering alien with round eyes and floating arms",
+      "flavor": "The Flapwoods’ billowing cloak-like body gives it the appearance of a rag, suspended in the air on a gust of wind. It is generally agreed that its vacant, yellow-eyed stare is extremely unnerving."
+    },
+    {
+      "name": "Clocksley",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "machine",
+      "stats": {
+        "hp": 52,
+        "attack": 52,
+        "defense": 52,
+        "spAttack": 98,
+        "spDefense": 85,
+        "speed": 52
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Robindam",
+          "level": 30
+        }
+      ],
+      "category": "A toy creature with a long claw arm",
+      "flavor": "The Clocksley’s long claw limb gives them a unique advantage in ranged combat, as they are able to wield handheld weaponry at a safe distance. This makes up for the fact that they’re not very fast."
+    },
+    {
+      "name": "Sanzatime",
+      "elements": [
+        "psychic",
+        "steel"
+      ],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 65,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 65,
+        "spDefense": 72,
+        "speed": 33
+      },
+      "tier": "medium",
+      "evolutions": [
+        {
+          "name": "Fortiwinx",
+          "level": 30
+        }
+      ],
+      "category": "A broken hourglass with a hand",
+      "flavor": "The “core” of the Sanzatimes appears to be their broken hourglass “heads”. Any sand separated from the central mass will become entirely inanimate. Conversely, the Sanzatime can grow in mass by making contact with sand."
+    },
+    {
+      "name": "Khepri",
+      "elements": [
+        "bug",
+        "light"
+      ],
+      "raceId": "insectoid",
+      "stats": {
+        "hp": 65,
+        "attack": 1,
+        "defense": 65,
+        "spAttack": 195,
+        "spDefense": 163,
+        "speed": 51
+      },
+      "tier": "medium",
+      "evolutions": [],
+      "category": "A floating scarab creature",
+      "flavor": "Each Khepri wields a miniature sun between its horns, from which it draws energy that sustains it. It is able to agitate this sun when attacked, projecting solar flames towards anyone who may threaten it."
+    },
+    {
+      "name": "Ratcousel",
+      "elements": [
+        "plastic"
+      ],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 88,
+        "attack": 88,
+        "defense": 88,
+        "spAttack": 88,
+        "spDefense": 88,
+        "speed": 78
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A giant fairground ride",
+      "flavor": "Ratcousels are towering creatures that somewhat resemble fairground carousel rides. The smaller “rats” that constantly rotate around the base of their bodies are said only to open their eyes at the moment the creature dies."
+    },
+    {
+      "name": "Snoopin",
+      "elements": [
+        "normal"
+      ],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 59,
+        "attack": 104,
+        "defense": 52,
+        "spAttack": 98,
+        "spDefense": 59,
+        "speed": 85
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Scampire",
+          "level": 30
+        }
+      ],
+      "category": "An imp with a cane",
+      "flavor": "Snoopins are master thieves, and will often adorn themselves with their stolen treasures. As such, you can judge a Snoopin’s skill in thievery by the amount of trinkets it is wearing."
+    },
+    {
+      "name": "Shining Kuneko",
+      "elements": [
+        "light",
+        "psychic"
+      ],
+      "raceId": "felid",
+      "stats": {
+        "hp": 91,
+        "attack": 91,
+        "defense": 91,
+        "spAttack": 91,
+        "spDefense": 91,
+        "speed": 91
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A glowing anime catgirl",
+      "flavor": "When Kuneko unites the four elements of the world within herself, she unlocks the true potential within herself. The cosmic energy flowing within her gives her a power level that is off the scale. "
+    },
+    {
+      "name": "Masquerattle",
+      "elements": [
+        "normal"
+      ],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 59,
+        "attack": 91,
+        "defense": 52,
+        "spAttack": 91,
+        "spDefense": 59,
+        "speed": 104
+      },
+      "tier": "peak",
+      "evolutions": [
+        {
+          "name": "Aeroboros",
+          "level": 30
+        },
+        {
+          "name": "Mardiusa",
+          "level": 30
+        },
+        {
+          "name": "Jormungold",
+          "level": 30
+        }
+      ],
+      "category": "A giant masked snake",
+      "flavor": "It is often presumed that Masquerattles use the face-like armour plates on their heads to lure in unsuspecting prey. This is a myth – the faces on their heads are actually very creepy, and couldn’t possibly convince anyone to approach them."
+    },
+    {
+      "name": "Cryoshear",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "bird",
+      "stats": {
+        "hp": 98,
+        "attack": 117,
+        "defense": 59,
+        "spAttack": 59,
+        "spDefense": 59,
+        "speed": 130
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "A cloaked being with ice blades",
+      "flavor": "Cryoshears are mostly seen wielding two blades formed entirely of ice that they use for offensive purposes. Their most common method of attack is to use the blades like two halves of an enormous pair of scissors."
+    },
+    {
+      "name": "Grampus",
+      "elements": [
+        "fairy",
+        "dark"
+      ],
+      "raceId": "halfling",
+      "stats": {
+        "hp": 104,
+        "attack": 98,
+        "defense": 104,
+        "spAttack": 65,
+        "spDefense": 85,
+        "speed": 65
+      },
+      "tier": "peak",
+      "evolutions": [],
+      "category": "An angry yeti",
+      "flavor": "Grampus is the fully matured form of Elfless. Having spent many years suppressing its emotions, the Grampus is a hulking brute with a desire to impart its own misery onto others, particularly during festive seasons."
+    },
+    {
+      "name": "Mourningstar",
+      "elements": [],
+      "raceId": "angel",
+      "stats": {
+        "hp": 390,
+        "attack": 130,
+        "defense": 130,
+        "spAttack": 130,
+        "spDefense": 130,
+        "speed": 65
+      },
+      "tier": "mythic",
+      "evolutions": [],
+      "category": "Serpent God",
+      "flavor": "The malevolent Mourningstar feeds on the devotion of others, sometimes to a lethal extent if the individual’s commitment is strong enough. It whispers from its underground station, hoping that its acolytes will eventually find their way down to it - and their deaths."
+    }
+  ]
+}

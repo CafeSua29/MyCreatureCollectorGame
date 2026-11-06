@@ -26,6 +26,8 @@ import {
 interface ElementDamageTakenParams {
   elementIds: string[]
   percent: number
+  /** Không áp cho đòn chí mạng (Resistance của Cassette Beasts). */
+  exceptCritical?: true
 }
 
 const elementDamageTaken: TraitHookHandler = {
@@ -35,11 +37,15 @@ const elementDamageTaken: TraitHookHandler = {
     if (!obj) return ['params phải là object']
     return [
       ...checkNumber(obj.percent, 'percent', -100),
-      ...checkIdList(obj.elementIds, 'elementIds', data.elements, { label: 'hệ' })
+      ...checkIdList(obj.elementIds, 'elementIds', data.elements, { label: 'hệ' }),
+      ...(obj.exceptCritical === undefined || obj.exceptCritical === true
+        ? []
+        : ['exceptCritical chỉ được là true'])
     ]
   },
-  modifyDamageTaken(params, scale, { skill }) {
-    const { elementIds, percent } = params as ElementDamageTakenParams
+  modifyDamageTaken(params, scale, { skill, critical }) {
+    const { elementIds, percent, exceptCritical } = params as ElementDamageTakenParams
+    if (exceptCritical && critical) return 1
     return elementIds.includes(skill.elementId) ? percentToMultiplier(percent * scale) : 1
   },
   // −100% khai báo trong dữ liệu là miễn nhiễm thật (sát thương 0, kiểu Levitate). Hệ số đã nhân
@@ -48,6 +54,46 @@ const elementDamageTaken: TraitHookHandler = {
     const { elementIds, percent } = params as ElementDamageTakenParams
     return percent <= -100 && elementIds.includes(elementId)
   }
+}
+
+// ---------- blocksElementReactions: không chịu phản ứng hệ của skill các hệ (Resistance) ----------
+
+const blocksElementReactions: TraitHookHandler = {
+  validateParams(params, data) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return checkIdList(obj.elementIds, 'elementIds', data.elements, { label: 'hệ' })
+  },
+  blocksElementReaction: (params, elementId) =>
+    (params as { elementIds: string[] }).elementIds.includes(elementId)
+}
+
+// ---------- wallIgnoreChance: đòn tầm xa có % đi xuyên tường địch (Ricochet) ----------
+
+const wallIgnoreChance: TraitHookHandler = {
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return checkNumber(obj.percent, 'percent', Number.MIN_VALUE, 100)
+  },
+  wallIgnoreChance: (params) => (params as { percent: number }).percent
+}
+
+// ---------- staminaMaxPercent / staminaCostPercent: thể lực tối đa, giá skill ----------
+
+const validateStaminaPercent = (params: unknown): string[] => {
+  const obj = asObject(params)
+  return obj ? checkNumber(obj.percent, 'percent', -100) : ['params phải là object']
+}
+
+const staminaMaxPercent: TraitHookHandler = {
+  validateParams: validateStaminaPercent,
+  staminaMaxPercent: (params, scale) => (params as { percent: number }).percent * scale
+}
+
+const staminaCostPercent: TraitHookHandler = {
+  validateParams: validateStaminaPercent,
+  staminaCostPercent: (params, scale) => (params as { percent: number }).percent * scale
 }
 
 // ---------- airborne: không đứng trên mặt đất (kiểu Levitate) ----------
@@ -337,6 +383,10 @@ const weatherShield: TraitHookHandler = {
 /** Hook trait theo hệ và môi trường; gộp vào TRAIT_HOOKS. */
 export const FIELD_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
   elementDamageTaken,
+  blocksElementReactions,
+  wallIgnoreChance,
+  staminaMaxPercent,
+  staminaCostPercent,
   airborne,
   grounded,
   trapped,

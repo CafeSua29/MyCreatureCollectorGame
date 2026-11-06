@@ -49,6 +49,16 @@ export interface TrainerClass {
   equipmentSlots: number
   transforms: boolean
   formationIds: string[]
+  /**
+   * Đội cố định (như đội đặt tay của game gốc): mỗi đội một danh sách loài và skill; có thì sinh đội theo đây
+   * thay vì theo hệ, trừ trận đạo quán (đội theo hệ đạo quán).
+   */
+  fixedTeams?: TrainerFixedMonster[][]
+}
+
+export interface TrainerFixedMonster {
+  speciesId: string
+  skillIds: string[]
 }
 
 /** Trận NPC đang đánh: lớp, chế độ, hệ đội (đạo quán), hệ số tiền thưởng của chế độ. */

@@ -20,7 +20,12 @@ import {
 import type { FloorSite } from './floors'
 
 /** Hiểm địa lúc bắt đầu game: không có lượt vào, mọi hiểm địa đều mở. */
-export const newZoneState = (): ZoneState => ({ visit: null, reopenDay: {} })
+export const newZoneState = (): ZoneState => ({
+  visit: null,
+  reopenDay: {},
+  portals: [],
+  nextPortalId: 1
+})
 
 /** Hiểm địa theo id; không có thì zoneNotFound. */
 export function requireZone(data: GameData, zoneId: string): ZoneDef {
@@ -120,13 +125,26 @@ export function zoneSite(
   }
 }
 
-/** Lượt vào kết thúc (xong, thua, rời): hiểm địa khóa cooldownDays ngày tính từ hôm nay. */
+/**
+ * Lượt vào kết thúc (xong, thua, rời): hiểm địa khóa cooldownDays ngày tính từ hôm nay. Cổng thế giới
+ * không khóa: tiến độ khám phá ghi lại vào cổng (cổng đã đóng thì thôi).
+ */
 export function closeZoneVisit(
   data: GameData,
   state: Pick<GameState, 'zones' | 'time'>
 ): ZoneState {
   const visit = state.zones.visit
   if (!visit) return state.zones
+  if (visit.portalId !== undefined) {
+    const portals = state.zones.portals.map((portal) =>
+      portal.id === visit.portalId ? { ...portal, stepsTaken: visit.stepsTaken } : portal
+    )
+    return { ...state.zones, visit: null, portals }
+  }
   const reopenDay = dayOf(state.time) + data.config.zones.cooldownDays
-  return { visit: null, reopenDay: { ...state.zones.reopenDay, [visit.zoneId]: reopenDay } }
+  return {
+    ...state.zones,
+    visit: null,
+    reopenDay: { ...state.zones.reopenDay, [visit.zoneId]: reopenDay }
+  }
 }

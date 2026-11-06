@@ -119,7 +119,7 @@ Tách sang `equipment.md` (2026-10-25, file này quá 40 KB): ô, lắp / tháo,
 Code: `world/floors.ts` (map của tầng, level / hệ số gen theo tầng), `world/encounter.ts` (sinh quái), `battle/outcome.ts` (mở tầng, đồ rơi), `game/newGame.ts` (map tầng 1).
 
 - Thế giới là các **tầng** 1, 2, 3... không có trần. Tầng sau mạnh hơn; quay lại tầng thấp để farm được.
-- **Biome (map)** khai báo trong `biomes.json` (thứ tự trong file không quyết định tầng). Hiện có **190 map**: 62 vùng Total War: WARHAMMER III, 71 vùng Pokémon, 55 map khí hậu / địa hình thực tế, cùng Đồng cỏ và Núi lửa làm tay (sinh bằng script, xem "Dữ liệu map ngẫu nhiên theo tầng" ở `content-data.md`).
+- **Biome (map)** khai báo trong `biomes.json` (thứ tự trong file không quyết định tầng). Hiện có **198 map**: 62 vùng Total War: WARHAMMER III, 71 vùng Pokémon, 63 map khí hậu / địa hình thực tế, cùng Đồng cỏ và Núi lửa làm tay (sinh bằng script, xem "Dữ liệu map ngẫu nhiên theo tầng" ở `content-data.md`).
 - **Map của tầng được tung ngẫu nhiên** (chủ project chốt 2026-10-22), lưu trong save ở `GameState.floorBiomeIds` (phần tử thứ N − 1 là id map của tầng N, độ dài luôn = `highestFloor`):
   - Tung **đều trên mọi biome** (`rollFloorBiome`, RNG của core): tầng nào cũng ra được mọi map, **được trùng** kể cả hai tầng liền nhau. Không có tầng tối thiểu hay trọng số riêng theo map.
   - **Tầng 1** cũng random: tung lúc tạo game mới, **sau** quái khởi đầu và hàng cửa hàng (để hai thứ đó không đổi theo luật mới).

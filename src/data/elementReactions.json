@@ -1,0 +1,3957 @@
+[
+  {
+    "id": "disturbed",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "disturbed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tipped",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "tipped"
+        }
+      }
+    ]
+  },
+  {
+    "id": "fueled",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "fire"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "energised"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyPoison",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "poison",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "absorbedPoison",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "poison",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "distracted",
+    "pairs": [
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "drained"
+        }
+      }
+    ]
+  },
+  {
+    "id": "smoke",
+    "pairs": [
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "fire"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "agile"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyPlastic",
+    "pairs": [
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "plastic",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "insulated",
+    "pairs": [
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "electric"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "grounded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyGlitter",
+    "pairs": [
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "glitter",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "updraft",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "flying"
+      }
+    ],
+    "effects": [
+      {
+        "type": "wall",
+        "params": {
+          "statusId": "wallFlying",
+          "turns": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "energised",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "energised"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyFire",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "fire",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "meltedIce",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "ice"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "water",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "meltedMetal",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "burn",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "ignited",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "bug"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "burn",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "meltedPlastic",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "poison",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "steamed",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "water"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "healingMist"
+        }
+      }
+    ]
+  },
+  {
+    "id": "extinguished",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "fire"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "extinguished"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyGround",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "ground",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "grounded",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "flying"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "grounded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "buried",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "buried"
+        }
+      }
+    ]
+  },
+  {
+    "id": "chilled",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "dragon"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "chilled"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyIce",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "ice",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "conducted",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "electric"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "conducted"
+        }
+      }
+    ]
+  },
+  {
+    "id": "frozen",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "water"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "ice",
+          "turns": 3
+        }
+      },
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "flinch"
+        }
+      }
+    ]
+  },
+  {
+    "id": "drained",
+    "pairs": [
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "water"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "drained"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyPsychic",
+    "pairs": [
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "psychic",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "shattered",
+    "pairs": [
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "glass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "shattered"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyNormal",
+    "pairs": [
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "normal",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "seeded",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "ground"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "seeded",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyGrass",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "grass",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "potentiated",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "poison"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "potentiated"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sapped",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "water"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "seeded",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "smashed",
+    "pairs": [
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklySteel",
+    "pairs": [
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "steel",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "eroded",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "rock"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyWater",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "water",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "bulkedUp",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "ice"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "bulkedUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "corroded",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "absorbedWater",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "grass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "healingMist"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyGlass",
+    "pairs": [
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "glass",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "electrified",
+    "pairs": [
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "water"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "conductive"
+        }
+      }
+    ]
+  },
+  {
+    "id": "vitrified",
+    "pairs": [
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "ground"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "glass",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyElectric",
+    "pairs": [
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "electric",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "staticShock",
+    "pairs": [
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "staticCharged"
+        }
+      }
+    ]
+  },
+  {
+    "id": "resonating",
+    "pairs": [
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "glass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "resonate",
+        "params": {
+          "threshold": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyFlying",
+    "pairs": [
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "flying",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "uprooted",
+    "pairs": [
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "grass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "drained"
+        }
+      }
+    ]
+  },
+  {
+    "id": "subdued",
+    "pairs": [
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "normal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "extinguished"
+        }
+      }
+    ]
+  },
+  {
+    "id": "warded",
+    "pairs": [
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "protected",
+          "turns": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "infested",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "grass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "seeded",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "pestered",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "disturbed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mothToFlame",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "fire"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "potentiated"
+        }
+      }
+    ]
+  },
+  {
+    "id": "haunted",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "confused"
+        }
+      }
+    ]
+  },
+  {
+    "id": "terrified",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "ghost"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "feared"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hexed",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "cursed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "spectralized",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "normal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "ghost",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "dragonAwe",
+    "pairs": [
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "dragon"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "extinguished"
+        }
+      }
+    ]
+  },
+  {
+    "id": "purified",
+    "pairs": [
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "healingMist"
+        }
+      }
+    ]
+  },
+  {
+    "id": "obscured",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "psychic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "blind"
+        }
+      }
+    ]
+  },
+  {
+    "id": "soulDevoured",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "ghost"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "drained"
+        }
+      }
+    ]
+  },
+  {
+    "id": "eclipsed",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "light"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "chilled"
+        }
+      }
+    ]
+  },
+  {
+    "id": "provoked",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "fighting"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "potentiated"
+        }
+      }
+    ]
+  },
+  {
+    "id": "corrupted",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "dark",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "charmed",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "dragon"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "extinguished"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bewitched",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "fighting"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "disturbed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cleansed",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "dark"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxicPollen",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "poison"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "tipped"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dispelled",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "dark"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "blind"
+        }
+      }
+    ]
+  },
+  {
+    "id": "exorcised",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "ghost"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "vulnerable"
+        }
+      }
+    ]
+  },
+  {
+    "id": "photosynthesis",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "grass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "healingMist"
+        }
+      }
+    ]
+  },
+  {
+    "id": "radiant",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "energised"
+        }
+      }
+    ]
+  },
+  {
+    "id": "crushed",
+    "pairs": [
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "bug"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparks",
+    "pairs": [
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "shattered"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyFighting",
+    "pairs": [
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "fighting",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyBug",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "bug",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyRock",
+    "pairs": [
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "rock",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyGhost",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "ghost",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyDragon",
+    "pairs": [
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "dragon",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyDark",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "dark",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyFairy",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "fairy",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyLight",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "light",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "sparklyFungal",
+    "pairs": [
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "transmute",
+        "params": {
+          "elementId": "fungal",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "impact",
+    "pairs": [
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rebounded",
+    "pairs": [
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "normal",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "singed",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "glass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softBurn"
+        }
+      }
+    ]
+  },
+  {
+    "id": "warmedUp",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "dragon"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "scorching",
+    "pairs": [
+      {
+        "attackElementId": "fire",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "burn",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "drenched",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "refreshed",
+    "pairs": [
+      {
+        "attackElementId": "water",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "water",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softRegen"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tingling",
+    "pairs": [
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "glass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "chargedUp",
+    "pairs": [
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "electric",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "rooted",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sprouted",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softRegen"
+        }
+      }
+    ]
+  },
+  {
+    "id": "entangled",
+    "pairs": [
+      {
+        "attackElementId": "grass",
+        "defenderElementId": "rock"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "seeded",
+          "turns": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "chilly",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "icedOver",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "frostbitten",
+    "pairs": [
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "ice",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "extinguished"
+        }
+      }
+    ]
+  },
+  {
+    "id": "bruised",
+    "pairs": [
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "tempered",
+    "pairs": [
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "ghost"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "beatenDown",
+    "pairs": [
+      {
+        "attackElementId": "fighting",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "queasy",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "inured",
+    "pairs": [
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "poison",
+        "defenderElementId": "ghost"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dustCloud",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "glass"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "steadied",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "smothered",
+    "pairs": [
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "ground",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "buried"
+        }
+      }
+    ]
+  },
+  {
+    "id": "buffeted",
+    "pairs": [
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "blownAway",
+    "pairs": [
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "bug"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "chilled"
+        }
+      }
+    ]
+  },
+  {
+    "id": "windborne",
+    "pairs": [
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "flying",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hazy",
+    "pairs": [
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "psychicStatic",
+    "pairs": [
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "poison"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "disturbed"
+        }
+      }
+    ]
+  },
+  {
+    "id": "focused",
+    "pairs": [
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "psychic",
+        "defenderElementId": "light"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "itchy",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "molted",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "fairy"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "gnawed",
+    "pairs": [
+      {
+        "attackElementId": "bug",
+        "defenderElementId": "dark"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "scraped",
+    "pairs": [
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "pinned",
+    "pairs": [
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "ice"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "buried"
+        }
+      }
+    ]
+  },
+  {
+    "id": "hardened",
+    "pairs": [
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "rock",
+        "defenderElementId": "ground"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "spooked",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "chillAura",
+    "pairs": [
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "ghost",
+        "defenderElementId": "light"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cowed",
+    "pairs": [
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "dragon",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "uneasy",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "awakened",
+    "pairs": [
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "dark",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dented",
+    "pairs": [
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "honed",
+    "pairs": [
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "steel"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAttackUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "cutDeep",
+    "pairs": [
+      {
+        "attackElementId": "steel",
+        "defenderElementId": "rock"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "eroded"
+        }
+      }
+    ]
+  },
+  {
+    "id": "fairyDust",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "blessed",
+    "pairs": [
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "fairy",
+        "defenderElementId": "light"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softRegen"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dazzled",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "aglow",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "light",
+        "defenderElementId": "light"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softRegen"
+        }
+      }
+    ]
+  },
+  {
+    "id": "blinding",
+    "pairs": [
+      {
+        "attackElementId": "light",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "chilled"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nicked",
+    "pairs": [
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "glass",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "gummedUp",
+    "pairs": [
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "ground"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "plastic"
+      },
+      {
+        "attackElementId": "plastic",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "glitterShower",
+    "pairs": [
+      {
+        "attackElementId": "glitter",
+        "defenderElementId": "glitter"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softSpeedUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sporeHaze",
+    "pairs": [
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "normal"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "electric"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "ice"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "fighting"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "psychic"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "bug"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "rock"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "ghost"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "dragon"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "dark"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "fairy"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "light"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "glass"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "plastic"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softAccuracyDown"
+        }
+      }
+    ]
+  },
+  {
+    "id": "mycelialShell",
+    "pairs": [
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "fire"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "poison"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "flying"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "steel"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "fungal"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "softDefenseUp"
+        }
+      }
+    ]
+  },
+  {
+    "id": "sporeInfested",
+    "pairs": [
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "water"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "grass"
+      },
+      {
+        "attackElementId": "fungal",
+        "defenderElementId": "ground"
+      }
+    ],
+    "effects": [
+      {
+        "type": "applyStatus",
+        "params": {
+          "statusId": "spored"
+        }
+      }
+    ]
+  }
+]

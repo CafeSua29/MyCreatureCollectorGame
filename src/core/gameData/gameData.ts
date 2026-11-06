@@ -23,6 +23,7 @@ import {
 import { checkItems } from './itemCategories'
 import { checkTexts } from './validateTexts'
 import { checkContentFields } from './contentFields'
+import { checkElementReactions, indexElementReactions } from './validateElementReactions'
 import { checkSpeciesInfo } from './validateSpeciesInfo'
 import { checkLifespanData } from './validateLifespan'
 import { checkCalendarData } from './validateCalendar'
@@ -41,6 +42,8 @@ import { checkFrenzyData } from './validateFrenzy'
 import { checkRecruitData } from './validateRecruit'
 import { checkSafariData } from './validateSafari'
 import { checkImplantData } from './validateImplant'
+import { checkHatcheryData } from './validateHatchery'
+import { checkEssenceData } from './validateEssences'
 import { checkCapacityData } from './validateCapacity'
 import { checkWeights } from './validateWeight'
 import { checkDexData } from './validateDex'
@@ -223,18 +226,23 @@ export function createGameData(raw: RawGameData): GameData {
     eventModifiers: indexById(raw.eventModifiers, 'eventModifiers', issues),
     zones: indexZones(raw, issues),
     serumEffects: indexById(raw.serumEffects, 'serumEffects', issues),
+    bodyRefinements: indexById(raw.bodyRefinements, 'bodyRefinements', issues),
+    essences: indexById(raw.essences, 'essences', issues),
     deities: indexById(raw.deities, 'deities', issues),
     achievements: indexById(raw.achievements, 'achievements', issues),
     titles: indexById(raw.titles, 'titles', issues),
     sects: indexById(raw.sects, 'sects', issues),
     sectRanks: indexById(raw.sectRanks, 'sectRanks', issues),
     npcNames: indexById(raw.npcNames, 'npcNames', issues),
+    elementReactions: indexById(raw.elementReactions, 'elementReactions', issues),
+    elementReactionIndex: indexElementReactions(raw.elementReactions),
     artifactSpirits: indexById(raw.artifactSpirits, 'artifactSpirits', issues),
     text: raw.text
   }
   checkConfig(data, issues)
   checkElements(data, issues)
   checkStatuses(data, issues)
+  checkElementReactions(data, issues)
   checkElementStatusImmunities(data, issues)
   checkFieldEffects(data, issues)
   checkFieldConfig(data, issues)
@@ -300,6 +308,8 @@ export function createGameData(raw: RawGameData): GameData {
   checkRecruitData(data, issues)
   checkSafariData(data, issues)
   checkImplantData(data, issues)
+  checkHatcheryData(data, issues)
+  checkEssenceData(data, issues)
   checkRebirthData(data, issues)
   checkCapacityData(data, issues)
   checkWeights(data, issues)

@@ -114,13 +114,15 @@ export const isTeraElement = (data: GameData, elementId: unknown): boolean =>
   typeof elementId === 'string' &&
   (elementId === STELLAR || Object.hasOwn(data.elements, elementId))
 
+/** Danh sách hệ có thật; `allowEmpty`: rỗng hợp lệ (loài không hệ, mục "Loài không hệ" ở data.md). */
 export function checkElementIds(
   data: GameData,
   elementIds: unknown,
   where: string,
-  issues: string[]
+  issues: string[],
+  { allowEmpty = false }: { allowEmpty?: boolean } = {}
 ): void {
-  if (!Array.isArray(elementIds) || elementIds.length === 0) {
+  if (!Array.isArray(elementIds) || (elementIds.length === 0 && !allowEmpty)) {
     issues.push(`${where}: cần ít nhất một hệ`)
     return
   }

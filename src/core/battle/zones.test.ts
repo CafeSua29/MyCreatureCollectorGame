@@ -46,7 +46,15 @@ const data = makeZoneData()
 /** Dữ liệu chỉ có một loại bước (để đoán được bước khám phá). */
 const onlyStep = (kind: ZoneStepKind): GameData =>
   makeZoneData((raw) => {
-    raw.config.zones.stepWeights = { battle: 0, elite: 0, treasure: 0, rareTreasure: 0, spring: 0 }
+    raw.config.zones.stepWeights = {
+      battle: 0,
+      elite: 0,
+      treasure: 0,
+      rareTreasure: 0,
+      spring: 0,
+      hive: 0,
+      gather: 0
+    }
     raw.config.zones.stepWeights[kind] = 1
   })
 
@@ -325,7 +333,9 @@ describe('khám phá', () => {
         elite: 0,
         treasure: 1,
         rareTreasure: 0,
-        spring: 0
+        spring: 0,
+        hive: 0,
+        gather: 0
       }
       defined(raw.zones[0], 'hiểm địa').treasure = { rolls: 3, items: [] }
     })
@@ -497,7 +507,9 @@ describe('kiểm tra dữ liệu', () => {
         elite: 0,
         treasure: 0,
         rareTreasure: 0,
-        spring: 0
+        spring: 0,
+        hive: 0,
+        gather: 0
       }
       raw.config.zones.steps = { min: 0, max: 2 }
       raw.config.zones.springHealPercent = 150
@@ -541,9 +553,9 @@ describe('save', () => {
     expect(broken({ location: { type: 'floor', floor: 1 } })).toContain(
       'zones.visit: phải ở thị trấn'
     )
-    expect(broken({ zones: { visit: null, reopenDay: { nope: 1 } } })).toContain(
-      'zones.reopenDay: hiểm địa lạ "nope"'
-    )
+    expect(
+      broken({ zones: { visit: null, reopenDay: { nope: 1 }, portals: [], nextPortalId: 1 } })
+    ).toContain('zones.reopenDay: hiểm địa lạ "nope"')
     const fighting = explore(inside)
     const battle = defined(fighting.battle, 'trận')
     const fakeGuardian = {
@@ -562,7 +574,7 @@ describe('save', () => {
     const raw = serializeState(townState()) as Record<string, unknown>
     const { zones: _zones, ...old } = raw
     const migrated = migrateState({ ...old, version: 62 }, data)
-    expect(migrated.zones).toEqual({ visit: null, reopenDay: {} })
+    expect(migrated.zones).toMatchObject({ visit: null, reopenDay: {} })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

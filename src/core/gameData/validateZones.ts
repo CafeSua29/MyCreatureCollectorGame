@@ -22,7 +22,8 @@ const ZONE_FIELDS = fieldList<ZoneDef>({
   map: true,
   requirements: true,
   treasure: true,
-  rareTreasure: true
+  rareTreasure: true,
+  portal: true
 })
 
 type Fields = Record<string, unknown>
@@ -166,7 +167,8 @@ export function checkZoneData(data: GameData, issues: string[]): void {
       'stepWeights',
       'springHealPercent',
       'guardianRareRolls',
-      'cooldownDays'
+      'cooldownDays',
+      'portals'
     ],
     at,
     'config',

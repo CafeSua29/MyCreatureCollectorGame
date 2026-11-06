@@ -126,7 +126,9 @@
       {
         "type": "endsOnElementHit",
         "params": {
-          "elementIds": ["fire"]
+          "elementIds": [
+            "fire"
+          ]
         }
       }
     ],
@@ -157,7 +159,10 @@
       {
         "type": "endsAfterAction",
         "params": {
-          "categories": ["special", "status"]
+          "categories": [
+            "special",
+            "status"
+          ]
         }
       }
     ],
@@ -166,7 +171,10 @@
         "type": "damageDealtModifier",
         "params": {
           "percent": 50,
-          "categories": ["special", "status"]
+          "categories": [
+            "special",
+            "status"
+          ]
         }
       }
     ],
@@ -375,7 +383,9 @@
         "type": "critChance",
         "params": {
           "percent": 25,
-          "categories": ["physical"]
+          "categories": [
+            "physical"
+          ]
         }
       }
     ],
@@ -633,7 +643,9 @@
       {
         "type": "blockCategories",
         "params": {
-          "categories": ["physical"]
+          "categories": [
+            "physical"
+          ]
         }
       }
     ],
@@ -652,7 +664,10 @@
       {
         "type": "blockCategories",
         "params": {
-          "categories": ["special", "status"]
+          "categories": [
+            "special",
+            "status"
+          ]
         }
       }
     ],
@@ -779,7 +794,9 @@
       {
         "type": "grounded",
         "params": {
-          "removesImmunityFromElementIds": ["ground"]
+          "removesImmunityFromElementIds": [
+            "ground"
+          ]
         }
       }
     ],
@@ -845,7 +862,10 @@
             {
               "do": "stage",
               "to": "self",
-              "stats": ["defense", "spDefense"],
+              "stats": [
+                "defense",
+                "spDefense"
+              ],
               "delta": -1
             }
           ]
@@ -873,7 +893,9 @@
       {
         "type": "grounded",
         "params": {
-          "removesImmunityFromElementIds": ["ground"]
+          "removesImmunityFromElementIds": [
+            "ground"
+          ]
         }
       },
       {
@@ -1012,7 +1034,10 @@
       {
         "type": "identified",
         "params": {
-          "elementIds": ["normal", "fighting"]
+          "elementIds": [
+            "normal",
+            "fighting"
+          ]
         }
       }
     ]
@@ -1027,7 +1052,9 @@
       {
         "type": "identified",
         "params": {
-          "elementIds": ["psychic"]
+          "elementIds": [
+            "psychic"
+          ]
         }
       }
     ]
@@ -1113,7 +1140,9 @@
       "max": 1
     },
     "explodesOnElement": {
-      "elementIds": ["fire"],
+      "elementIds": [
+        "fire"
+      ],
       "percent": 25
     },
     "hooks": []
@@ -1177,7 +1206,10 @@
         "params": {
           "percent": 12.5,
           "byElement": {
-            "elementIds": ["water", "steel"],
+            "elementIds": [
+              "water",
+              "steel"
+            ],
             "percent": 25
           }
         }
@@ -1205,7 +1237,9 @@
             {
               "do": "stage",
               "to": "self",
-              "stats": ["speed"],
+              "stats": [
+                "speed"
+              ],
               "delta": -1
             }
           ]
@@ -1257,7 +1291,9 @@
             {
               "do": "stage",
               "to": "self",
-              "stats": ["attack"],
+              "stats": [
+                "attack"
+              ],
               "delta": 1
             }
           ]
@@ -1299,7 +1335,9 @@
           "when": [
             {
               "if": "skillElement",
-              "elementIds": ["electric"]
+              "elementIds": [
+                "electric"
+              ]
             }
           ]
         }
@@ -1344,5 +1382,1633 @@
         }
       }
     ]
+  },
+  {
+    "id": "disturbed",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "blockCategories",
+        "params": {
+          "categories": [
+            "status"
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "tipped",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 6.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "energised",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "staminaPerTurn": 10
+  },
+  {
+    "id": "drained",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "staminaPerTurn": -10
+  },
+  {
+    "id": "grounded",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "skillTargetOverride": "enemy",
+    "traitHooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": -50
+        }
+      }
+    ]
+  },
+  {
+    "id": "conducted",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "skillTargetOverride": "allEnemies"
+  },
+  {
+    "id": "healingMist",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "extinguished",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": -33,
+            "spAttack": -33
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "potentiated",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 50,
+            "spAttack": 50
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "eroded",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": -33,
+            "spDefense": -33
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "bulkedUp",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 50,
+            "spDefense": 50
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "buried",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": -33
+          }
+        }
+      },
+      {
+        "type": "cannotDodge",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "chilled",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": -33
+        }
+      }
+    ]
+  },
+  {
+    "id": "shattered",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "conductive",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "conductsElement": {
+      "elementId": "electric",
+      "percent": 8
+    }
+  },
+  {
+    "id": "staticCharged",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "retaliateDamage",
+        "params": {
+          "category": "physical",
+          "percentOfAttackerMaxHp": 6.25
+        }
+      }
+    ]
+  },
+  {
+    "id": "softAttackDown",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": -15,
+            "spAttack": -15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softAttackUp",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 15,
+            "spAttack": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softDefenseDown",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": -15,
+            "spDefense": -15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softDefenseUp",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 15,
+            "spDefense": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softSpeedDown",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": -15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softSpeedUp",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "softAccuracyDown",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "accuracyModifier",
+        "params": {
+          "percent": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "softRegen",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "traitHooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "softBurn",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 3
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "mania",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [
+      {
+        "type": "amountDamage",
+        "params": {}
+      }
+    ],
+    "battleOnly": true,
+    "excludeFromRandom": true
+  },
+  {
+    "id": "dazed",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": -75
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "frostbite",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "self",
+              "amount": {
+                "event": true,
+                "percent": 30
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "self",
+              "amount": {
+                "event": true,
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "prioPlus",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "priorityModifier",
+        "params": {
+          "skillCategory": "any",
+          "amount": 1
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "anticipating",
+    "kind": "buff",
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "liquefied",
+    "kind": "debuff",
+    "duration": {
+      "min": 6,
+      "max": 6
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "forcesSpecialDamage": true
+  },
+  {
+    "id": "jinxed",
+    "kind": "debuff",
+    "duration": {
+      "min": 6,
+      "max": 6
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "effectiveness",
+        "params": {
+          "mode": "noResist"
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "overgrown",
+    "kind": "debuff",
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "convertSkillElement",
+        "params": {
+          "fromElementIds": [
+            "normal",
+            "fire",
+            "water",
+            "ground",
+            "electric",
+            "ice",
+            "flying"
+          ],
+          "toElementId": "grass",
+          "percent": 0
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "oilSlick",
+    "kind": "debuff",
+    "duration": {
+      "min": 4,
+      "max": 4
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": [
+                "fire"
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "do": "damage",
+              "to": "subjectAllies",
+              "amount": {
+                "event": true,
+                "percent": 100
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "drenched",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": 100,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": [
+                "electric"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": [
+                "fire"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "updraft",
+    "kind": "debuff",
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": [
+                "fire",
+                "flying"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "featherGuard",
+    "kind": "buff",
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "indirectDamage",
+        "params": {
+          "percent": -75
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "caltrops",
+    "kind": "debuff",
+    "duration": {
+      "min": 8,
+      "max": 8
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 4
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "fogged",
+    "kind": "debuff",
+    "duration": {
+      "min": 4,
+      "max": 4
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statGainBlock",
+        "params": {}
+      },
+      {
+        "type": "stageMultiplier",
+        "params": {
+          "loss": 0
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "fertilized",
+    "kind": "buff",
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": [
+                "grass"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "skillElement",
+                "elementIds": [
+                  "grass"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "lightUp",
+    "kind": "debuff",
+    "duration": {
+      "min": 4,
+      "max": 4
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "other",
+              "stats": [
+                "attack",
+                "spAttack"
+              ],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "bloodlust",
+    "kind": "buff",
+    "duration": {
+      "min": 5,
+      "max": 5
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 4
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "assisted",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 40
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "window",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "seeThroughWall": true
+  },
+  {
+    "id": "glassBonds",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "damageOnTransform": 25
+  },
+  {
+    "id": "springLoaded",
+    "kind": "buff",
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "meleeAsRanged": true
+  },
+  {
+    "id": "phereonStrength",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 50
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "phereonMagic",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 50
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "hardenedSkin",
+    "kind": "buff",
+    "duration": {
+      "min": 2,
+      "max": 2
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 50,
+            "spDefense": 50
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "enlightened",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 30,
+            "attack": -30
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "shadowForm",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 50
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 20,
+            "speed": 40
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "soaked",
+    "kind": "debuff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": -30,
+            "spAttack": -30,
+            "defense": -20
+          }
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "phereonInfected",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [
+      {
+        "type": "turnEndDamage",
+        "params": {
+          "percent": 10
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "spored",
+    "kind": "debuff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "minion",
+              "to": "randomFoe",
+              "minionId": "fungalSpores",
+              "stacks": 1
+            }
+          ]
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "phereonInvulnerable",
+    "kind": "buff",
+    "duration": {
+      "min": 1,
+      "max": 1
+    },
+    "hooks": [],
+    "traitHooks": [
+      {
+        "type": "negateDamage",
+        "params": {
+          "chance": 100
+        }
+      }
+    ],
+    "battleOnly": true
+  },
+  {
+    "id": "wallNormal",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "normal"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallFire",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "fire"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallWater",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "water"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallElectric",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "electric"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallGrass",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "grass"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallIce",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "ice"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallFighting",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "fighting"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallPoison",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "poison"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallGround",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "ground"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallFlying",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "flying"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallPsychic",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "psychic"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallBug",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "bug"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallRock",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "rock"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallGhost",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "ghost"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallDragon",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "dragon"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallDark",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "dark"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallSteel",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "steel"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallFairy",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "fairy"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallLight",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "light"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallGlass",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "glass"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallPlastic",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "plastic"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallGlitter",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "glitter"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "wallFungal",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "fungal"
+    },
+    "exclusiveGroup": "wall",
+    "overwritesGroup": true
+  },
+  {
+    "id": "gemstoneWall",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "ground",
+      "special": true
+    },
+    "staminaPerTurn": 10
+  },
+  {
+    "id": "abramacabra",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "normal",
+      "special": true,
+      "attackSkillId": "macabraMissile"
+    }
+  },
+  {
+    "id": "appleTree",
+    "kind": "buff",
+    "duration": {
+      "min": 3,
+      "max": 3
+    },
+    "hooks": [],
+    "battleOnly": true,
+    "endsOnLeave": true,
+    "wall": {
+      "hits": 3,
+      "elementId": "grass",
+      "special": true,
+      "onBlocked": [
+        {
+          "weight": 33,
+          "effects": [
+            {
+              "type": "applyStatus",
+              "params": {
+                "statusId": "poison"
+              }
+            }
+          ]
+        },
+        {
+          "weight": 67,
+          "effects": [
+            {
+              "type": "heal",
+              "params": {
+                "percent": 10,
+                "who": "target",
+                "basis": "current"
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 ]

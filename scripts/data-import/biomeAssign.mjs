@@ -131,21 +131,24 @@ export function hintMatch(species, map, factions) {
  * Điểm khớp môi trường sống của loài với map; null = không sống được ở đó. Loài mang hệ bị loại
  * (cáo tuyết hệ băng ở núi lửa), loài race thủy sinh ở map không có hệ nước, hoặc không có hệ nào
  * khớp: không sống được, trừ loài của phe Warhammer ở map của phe. `relaxed`: bỏ luật hệ bị loại
- * và luật thủy sinh (chỉ dùng cho loài không sống được ở map nào, để loài nào cũng gặp được).
+ * và luật thủy sinh (chỉ dùng cho loài không sống được ở map nào, để loài nào cũng gặp được). Loài
+ * không hệ (data.md mục "Loài không hệ") sống được mọi map (trừ luật thủy sinh), điểm hệ trung tính.
  */
 export function habitatScore(species, map, ctx, { relaxed = false } = {}) {
   const elements = mapElements(map, ctx.themes)
   const excluded = excludedElements(map, ctx.themes)
   const { faction, soft } = hintMatch(species, map, ctx.factions)
   const [primary, ...others] = species.elementIds
+  const typeless = species.elementIds.length === 0
   const matched = species.elementIds.filter((id) => elements.has(id)).length
   const livable =
-    matched > 0 &&
+    (typeless || matched > 0) &&
     (relaxed ||
       (!species.elementIds.some((id) => excluded.has(id)) &&
         (species.raceId !== 'aquatic' || elements.has('water'))))
   if (!livable && !faction) return null
   let score = 0
+  if (typeless) return score + (faction ? SCORE.faction : 0) + (soft ? SCORE.softHint : 0)
   if (elements.has(primary)) score += SCORE.primaryElement
   if (map.elements.includes(primary)) score += SCORE.primaryInMapOwnElements
   for (const id of others) score += elements.has(id) ? SCORE.otherElement : SCORE.foreignElement

@@ -36,6 +36,7 @@ import { maxMoveFor } from './maxMoves'
 import { TRANSFORMS, type TransformContext } from './transformHandlers'
 import { activeMergeLeads, unmerge } from './merge'
 import { emitTraitEvent } from './eventQueue'
+import { punishTransform } from './statuses'
 import { changeBattleForm, currentFormId } from './battleForms'
 
 /** Một yêu cầu biến hình trong lượt. */
@@ -215,6 +216,7 @@ export function applyTransform(
   if (kind === 'tera') teraForm(data, d, monster)
   // Embody Aspect / Teraform Zero phản ứng khi quái biến hình (sau khi đã đổi dạng Tera).
   emitTraitEvent(d, { type: 'transformed', subjectId: monster.id })
+  punishTransform(data, d, monster)
   log(d, {
     type: 'transformed',
     monsterId: monster.id,

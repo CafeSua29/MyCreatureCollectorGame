@@ -116,7 +116,7 @@ export function makeRawData(): RawGameData {
       fuseCostPerLevel: 50,
       // Fuse luôn thành công (100%, không tốn RNG) để test khác tất định; test tỉ lệ tự đổi.
       fuseChance: { raceChances: { same: 100, breedable: 100, other: 100 }, lineageFactor: 1 },
-      fusion: { inheritSkills: 2 },
+      fusion: { inheritSkills: 2, keptTraitPercent: 50 },
       // Hiến tế (docs/rules/sacrifice.md): số như dữ liệu thật.
       sacrifice: { costPerLevel: 20, statPercentPerStack: 1 },
       // Luân hồi (docs/rules/rebirth.md): số như dữ liệu thật.
@@ -258,6 +258,17 @@ export function makeRawData(): RawGameData {
         provoke: { priority: 4, damageTakenPercent: -25 },
         traitChain: { maxDepth: 3, maxActions: 10, maxRepeats: 10 },
         stagePercentSteps: [35, 75]
+      },
+      stamina: {
+        max: 100,
+        regenPercent: 5,
+        regenFlat: 1,
+        restPercent: 15,
+        overexertHpPercent: 2,
+        costByPower: [],
+        statusCost: 0,
+        restWeight: 0,
+        exhaustedPenalty: 0.5
       },
       status: { bossDamageMultiplier: 0.5 },
       field: { defaults: { weather: 'clear', terrain: 'none' }, sunWeatherId: 'sun' },
@@ -912,11 +923,141 @@ export function makeRawData(): RawGameData {
       zones: {
         floorOffset: 0,
         steps: { min: 3, max: 3 },
-        stepWeights: { battle: 1, elite: 0, treasure: 0, rareTreasure: 0, spring: 0 },
+        stepWeights: {
+          battle: 1,
+          elite: 0,
+          treasure: 0,
+          rareTreasure: 0,
+          spring: 0,
+          hive: 0,
+          gather: 0
+        },
         springHealPercent: 50,
         guardianRareRolls: 2,
-        cooldownDays: 3
+        cooldownDays: 3,
+        // Cổng thế giới: không tự mở (spawnChance 0, không tốn RNG); test cổng tự đặt số.
+        portals: {
+          spawnChance: 0,
+          maxOpen: 3,
+          durationDays: 5,
+          steps: { min: 3, max: 3 },
+          stepWeights: {
+            battle: 1,
+            elite: 0,
+            treasure: 0,
+            rareTreasure: 0,
+            spring: 0,
+            hive: 0,
+            gather: 0
+          },
+          floorsPerHostility: 2,
+          floorsPerHive: 1,
+          startHives: 1,
+          hivesPerDay: 1,
+          maxHives: 3,
+          stabilizeCost: 100,
+          stabilizeDays: 3,
+          gatherRolls: 2
+        }
       },
+      // Luyện thể (docs/rules/body-refinement.md).
+      bodyRefinement: {
+        costPerLevel: 10,
+        removeCostPercent: 50,
+        tagBonuses: [
+          {
+            tag: 'lava',
+            count: 2,
+            hooks: [{ type: 'statModifier', params: { percent: { attack: 10 } } }]
+          },
+          {
+            tag: 'lava',
+            count: 3,
+            hooks: [{ type: 'statModifier', params: { percent: { attack: 30 } } }]
+          }
+        ]
+      },
+      // Phòng ấp (docs/rules/hatchery.md): số như gốc ở các luật test dùng.
+      hatchery: {
+        roomCount: 2,
+        eggsPerRoom: 2,
+        defaultHabitatId: 'basic',
+        habitats: [
+          { id: 'basic', buildCost: 0 },
+          { id: 'lava', buildCost: 100 },
+          { id: 'ice', buildCost: 100 }
+        ],
+        eggTypes: ['normal', 'lava', 'ice', 'floral'],
+        eggTypeByElement: { fire: 'lava', water: 'ice', grass: 'floral' },
+        defaultEggType: 'normal',
+        baseStability: 100,
+        rules: [
+          { eggTypes: ['lava'], growth: 25 },
+          { eggTypes: ['lava'], notHabitatIds: ['lava'], stability: -35 },
+          { eggTypes: ['ice'], stability: 50 },
+          { eggTypes: ['ice'], notHabitatIds: ['ice'], growth: -50 }
+        ],
+        neighborRules: [
+          { eggTypes: ['floral'], neighborEggTypes: ['floral'], growth: 10, stability: 20 }
+        ],
+        minHatchChance: 5,
+        genePercentPerExcessStability: 1,
+        dailySteps: 1,
+        hatcher: {
+          statPerPoint: 10,
+          diminishEvery: 10,
+          diminishFactor: 0.75,
+          sameEggTypeGrowth: 10,
+          habitatEggTypes: { lava: 'lava', ice: 'ice' },
+          habitatGrowth: 10
+        },
+        upgradeCap: 2,
+        upgrades: [
+          { id: 'growth', price: 100, effects: [{ kind: 'bonus', growth: 10 }] },
+          { id: 'stability', price: 100, effects: [{ kind: 'bonus', stability: 10 }] },
+          { id: 'symbiotic', price: 100, effects: [{ kind: 'sameSpecies', growth: 10 }] },
+          { id: 'supporting', price: 100, effects: [{ kind: 'readyEggs', stability: 10 }] },
+          {
+            id: 'delayed',
+            price: 100,
+            effects: [
+              { kind: 'bonus', growthPercent: -50 },
+              { kind: 'hatchLevels', levels: 9 }
+            ]
+          },
+          { id: 'potential', price: 100, effects: [{ kind: 'hatchGenes', percent: 20 }] },
+          { id: 'energizing', price: 100, effects: [{ kind: 'hatchCare' }] },
+          { id: 'boosting', price: 100, effects: [{ kind: 'boostOthers', steps: 1 }] },
+          { id: 'continuous', price: 100, effects: [{ kind: 'onFail', battlesLeft: 3 }] },
+          { id: 'consuming', price: 100, effects: [{ kind: 'onFail', spreadSteps: 2 }] },
+          { id: 'soulCollector', price: 100, effects: [{ kind: 'onFail', soulPoints: 5 }] },
+          {
+            id: 'focusing',
+            price: 100,
+            effects: [{ kind: 'excessGenes', target: 'highest', multiplier: 2 }]
+          },
+          {
+            id: 'equalizing',
+            price: 100,
+            effects: [{ kind: 'excessGenes', target: 'lowest', multiplier: 2 }]
+          },
+          { id: 'mutating', price: 100, habitatIds: ['lava'], effects: [{ kind: 'randomTrait' }] },
+          { id: 'embiggening', price: 100, effects: [{ kind: 'hatchTrait', traitId: 'armored' }] },
+          {
+            id: 'farm',
+            price: 100,
+            habitatIds: ['lava'],
+            effects: [{ kind: 'hatchItem', eggTypes: ['lava'], itemId: 'potion', count: 1 }]
+          },
+          {
+            id: 'fruiting',
+            price: 100,
+            effects: [{ kind: 'dailyItem', eggTypes: ['floral'], itemId: 'potion', count: 1 }]
+          }
+        ]
+      },
+      // Tinh chất (docs/rules/essences.md).
+      essences: { offerSize: 2, rarityWeights: { common: 70, rare: 25, mythic: 5 } },
       gathering: gatheringTestConfig(),
       // Cuồng bạo (docs/rules/frenzy.md): ngưỡng 0 = không bao giờ kích hoạt để RNG / số của test cũ
       // không đổi; test cuồng bạo tự đặt số.
@@ -1554,6 +1695,7 @@ export function makeRawData(): RawGameData {
     ],
     sectRanks: [{ id: 'outer' }, { id: 'inner' }, { id: 'elder' }],
     npcNames: [{ id: 'linFeng' }, { id: 'yeXue' }, { id: 'xiaoHao' }],
+    elementReactions: [],
     titles: [
       {
         id: FIXTURE_TITLE_IDS.veteran,
@@ -1570,6 +1712,43 @@ export function makeRawData(): RawGameData {
           { type: 'alchemySuccessPercent', params: { percent: 20 } }
         ]
       }
+    ],
+    bodyRefinements: [
+      {
+        id: 'lavaArms',
+        partId: 'torso',
+        tags: ['lava'],
+        hooks: [{ type: 'statModifier', params: { percent: { attack: 5 } } }],
+        costMultiplier: 1
+      },
+      {
+        id: 'lavaLegs',
+        partId: 'legs',
+        tags: ['lava'],
+        hooks: [{ type: 'statModifier', params: { percent: { speed: 5 } } }],
+        costMultiplier: 2
+      },
+      {
+        id: 'clawArms',
+        partId: 'torso',
+        tags: [],
+        hooks: [{ type: 'statModifier', params: { percent: { attack: 8 } } }],
+        costMultiplier: 1
+      }
+    ],
+    essences: [
+      {
+        id: 'hpSpark',
+        rarity: 'common',
+        effect: { kind: 'growth', stats: ['hp'], percent: 50 }
+      },
+      {
+        id: 'balance',
+        rarity: 'common',
+        effect: { kind: 'growth', stats: 'lowest', percent: 100 }
+      },
+      { id: 'fusionMastery', rarity: 'rare', effect: { kind: 'fusionTraitChoices', extra: 1 } },
+      { id: 'eggWarmth', rarity: 'rare', effect: { kind: 'egg', growth: 20, stability: 20 } }
     ],
     serumEffects: [
       {
@@ -2746,6 +2925,7 @@ function baseFields(): Omit<
     sacrificeStacks: 0,
     rebirths: 0,
     implantEffects: {},
+    refinements: {},
     implantAttempts: 0,
     implantFails: 0,
     workTraits: [],

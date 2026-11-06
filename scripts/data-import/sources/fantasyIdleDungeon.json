@@ -1,0 +1,1564 @@
+{
+  "source": "fantasyIdleDungeon",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Boni",
+      "elements": [],
+      "raceId": "fey",
+      "tier": "small",
+      "stats": {
+        "hp": 77,
+        "attack": 58,
+        "defense": 39,
+        "spAttack": 39,
+        "spDefense": 39,
+        "speed": 39
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Flitbat",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "bird",
+      "tier": "small",
+      "stats": {
+        "hp": 34,
+        "attack": 34,
+        "defense": 34,
+        "spAttack": 85,
+        "spDefense": 34,
+        "speed": 68
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Greenleaf",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "small",
+      "stats": {
+        "hp": 45,
+        "attack": 45,
+        "defense": 45,
+        "spAttack": 67,
+        "spDefense": 45,
+        "speed": 45
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bobo Dog",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "small",
+      "stats": {
+        "hp": 61,
+        "attack": 61,
+        "defense": 46,
+        "spAttack": 31,
+        "spDefense": 46,
+        "speed": 46
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Shell Beast",
+      "elements": [
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 41,
+        "attack": 28,
+        "defense": 83,
+        "spAttack": 28,
+        "spDefense": 83,
+        "speed": 28
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "One-Eyed Bat",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "chiropteran",
+      "tier": "small",
+      "stats": {
+        "hp": 51,
+        "attack": 51,
+        "defense": 34,
+        "spAttack": 51,
+        "spDefense": 34,
+        "speed": 68
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Flywave",
+      "elements": [],
+      "raceId": "fey",
+      "tier": "small",
+      "stats": {
+        "hp": 51,
+        "attack": 34,
+        "defense": 34,
+        "spAttack": 68,
+        "spDefense": 34,
+        "speed": 68
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Heron Beast",
+      "elements": [],
+      "raceId": "waterfowl",
+      "tier": "small",
+      "stats": {
+        "hp": 68,
+        "attack": 51,
+        "defense": 51,
+        "spAttack": 34,
+        "spDefense": 51,
+        "speed": 34
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Shroomy",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "small",
+      "stats": {
+        "hp": 45,
+        "attack": 45,
+        "defense": 45,
+        "spAttack": 67,
+        "spDefense": 45,
+        "speed": 45
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Mirage",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 54,
+        "attack": 36,
+        "defense": 36,
+        "spAttack": 73,
+        "spDefense": 36,
+        "speed": 54
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Nightgrub",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 54,
+        "attack": 36,
+        "defense": 36,
+        "spAttack": 73,
+        "spDefense": 36,
+        "speed": 54
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Leafling",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "small",
+      "stats": {
+        "hp": 45,
+        "attack": 45,
+        "defense": 45,
+        "spAttack": 67,
+        "spDefense": 45,
+        "speed": 45
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Wind Sprite",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "fey",
+      "tier": "small",
+      "stats": {
+        "hp": 39,
+        "attack": 39,
+        "defense": 39,
+        "spAttack": 77,
+        "spDefense": 39,
+        "speed": 58
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Madshroom",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "small",
+      "stats": {
+        "hp": 46,
+        "attack": 92,
+        "defense": 31,
+        "spAttack": 31,
+        "spDefense": 31,
+        "speed": 61
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Demon Flower",
+      "elements": [
+        "grass",
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "small",
+      "stats": {
+        "hp": 77,
+        "attack": 58,
+        "defense": 39,
+        "spAttack": 39,
+        "spDefense": 39,
+        "speed": 39
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Eyeweaver",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 54,
+        "attack": 54,
+        "defense": 36,
+        "spAttack": 54,
+        "spDefense": 36,
+        "speed": 54
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Tree Sprite",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "fey",
+      "tier": "small",
+      "stats": {
+        "hp": 87,
+        "attack": 44,
+        "defense": 44,
+        "spAttack": 44,
+        "spDefense": 44,
+        "speed": 29
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Ape Demon",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "primate",
+      "tier": "small",
+      "stats": {
+        "hp": 67,
+        "attack": 67,
+        "defense": 45,
+        "spAttack": 33,
+        "spDefense": 45,
+        "speed": 33
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Boar Beast",
+      "elements": [],
+      "raceId": "suid",
+      "tier": "small",
+      "stats": {
+        "hp": 61,
+        "attack": 61,
+        "defense": 46,
+        "spAttack": 31,
+        "spDefense": 46,
+        "speed": 46
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Mewbun",
+      "elements": [],
+      "raceId": "wildBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 51,
+        "attack": 34,
+        "defense": 34,
+        "spAttack": 68,
+        "spDefense": 34,
+        "speed": 68
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Muddy",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 73,
+        "attack": 36,
+        "defense": 36,
+        "spAttack": 54,
+        "spDefense": 36,
+        "speed": 54
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Charmcat",
+      "elements": [],
+      "raceId": "bird",
+      "tier": "small",
+      "stats": {
+        "hp": 51,
+        "attack": 51,
+        "defense": 34,
+        "spAttack": 51,
+        "spDefense": 34,
+        "speed": 68
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Pig Knight",
+      "elements": [
+        "dark",
+        "steel"
+      ],
+      "raceId": "suid",
+      "tier": "small",
+      "stats": {
+        "hp": 76,
+        "attack": 50,
+        "defense": 50,
+        "spAttack": 25,
+        "spDefense": 50,
+        "speed": 38
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Devourer",
+      "elements": [],
+      "raceId": "wildBeast",
+      "tier": "small",
+      "stats": {
+        "hp": 50,
+        "attack": 50,
+        "defense": 38,
+        "spAttack": 76,
+        "spDefense": 38,
+        "speed": 38
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Earth Sprite",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "fey",
+      "tier": "medium",
+      "stats": {
+        "hp": 56,
+        "attack": 56,
+        "defense": 56,
+        "spAttack": 112,
+        "spDefense": 56,
+        "speed": 84
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Snowdeer",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "fey",
+      "tier": "medium",
+      "stats": {
+        "hp": 80,
+        "attack": 40,
+        "defense": 80,
+        "spAttack": 80,
+        "spDefense": 80,
+        "speed": 60
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Snowfluff",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "fey",
+      "tier": "medium",
+      "stats": {
+        "hp": 74,
+        "attack": 49,
+        "defense": 74,
+        "spAttack": 74,
+        "spDefense": 74,
+        "speed": 74
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Frost Bird",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "bird",
+      "tier": "medium",
+      "stats": {
+        "hp": 79,
+        "attack": 53,
+        "defense": 53,
+        "spAttack": 79,
+        "spDefense": 53,
+        "speed": 105
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Snowman Beast",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "beastfolk",
+      "tier": "medium",
+      "stats": {
+        "hp": 76,
+        "attack": 38,
+        "defense": 76,
+        "spAttack": 76,
+        "spDefense": 76,
+        "speed": 76
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Ice Witch",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 79,
+        "attack": 53,
+        "defense": 53,
+        "spAttack": 79,
+        "spDefense": 53,
+        "speed": 105
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Icescorp",
+      "elements": [
+        "ice",
+        "bug"
+      ],
+      "raceId": "wildBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 101,
+        "attack": 50,
+        "defense": 84,
+        "spAttack": 50,
+        "spDefense": 84,
+        "speed": 50
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Troll Beast",
+      "elements": [],
+      "raceId": "troll",
+      "tier": "medium",
+      "stats": {
+        "hp": 126,
+        "attack": 84,
+        "defense": 63,
+        "spAttack": 42,
+        "spDefense": 63,
+        "speed": 42
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Orc Knight",
+      "elements": [
+        "dark",
+        "steel"
+      ],
+      "raceId": "orc",
+      "tier": "medium",
+      "stats": {
+        "hp": 84,
+        "attack": 84,
+        "defense": 63,
+        "spAttack": 42,
+        "spDefense": 63,
+        "speed": 84
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Buu",
+      "elements": [],
+      "raceId": "beastfolk",
+      "tier": "medium",
+      "stats": {
+        "hp": 126,
+        "attack": 84,
+        "defense": 63,
+        "spAttack": 42,
+        "spDefense": 63,
+        "speed": 42
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Ironclad",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "beastfolk",
+      "tier": "medium",
+      "stats": {
+        "hp": 60,
+        "attack": 60,
+        "defense": 105,
+        "spAttack": 45,
+        "spDefense": 105,
+        "speed": 45
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Reaper",
+      "elements": [],
+      "raceId": "wraith",
+      "tier": "medium",
+      "stats": {
+        "hp": 67,
+        "attack": 118,
+        "defense": 50,
+        "spAttack": 67,
+        "spDefense": 50,
+        "speed": 67
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bloodwing",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 66,
+        "attack": 44,
+        "defense": 66,
+        "spAttack": 66,
+        "spDefense": 66,
+        "speed": 111
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Redtail",
+      "elements": [],
+      "raceId": "wildBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 67,
+        "attack": 50,
+        "defense": 101,
+        "spAttack": 50,
+        "spDefense": 101,
+        "speed": 50
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bone Grunt",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 70,
+        "attack": 70,
+        "defense": 70,
+        "spAttack": 70,
+        "spDefense": 70,
+        "speed": 70
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bone Warrior",
+      "elements": [
+        "ghost",
+        "fighting"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 76,
+        "attack": 57,
+        "defense": 95,
+        "spAttack": 38,
+        "spDefense": 95,
+        "speed": 57
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bone Archer",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 63,
+        "attack": 105,
+        "defense": 63,
+        "spAttack": 63,
+        "spDefense": 63,
+        "speed": 63
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bone Rogue",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 63,
+        "attack": 105,
+        "defense": 63,
+        "spAttack": 42,
+        "spDefense": 63,
+        "speed": 84
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bone Mage",
+      "elements": [
+        "ghost",
+        "psychic"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 66,
+        "attack": 44,
+        "defense": 66,
+        "spAttack": 66,
+        "spDefense": 66,
+        "speed": 111
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Bone Priest",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 84,
+        "attack": 42,
+        "defense": 63,
+        "spAttack": 105,
+        "spDefense": 63,
+        "speed": 63
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Goblin Minion",
+      "elements": [],
+      "raceId": "goblin",
+      "tier": "medium",
+      "stats": {
+        "hp": 84,
+        "attack": 84,
+        "defense": 63,
+        "spAttack": 63,
+        "spDefense": 63,
+        "speed": 63
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Goblin Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "goblin",
+      "tier": "medium",
+      "stats": {
+        "hp": 76,
+        "attack": 95,
+        "defense": 76,
+        "spAttack": 38,
+        "spDefense": 76,
+        "speed": 57
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Goblin Assassin",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "goblin",
+      "tier": "medium",
+      "stats": {
+        "hp": 66,
+        "attack": 133,
+        "defense": 44,
+        "spAttack": 44,
+        "spDefense": 44,
+        "speed": 88
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Goblin Priest",
+      "elements": [],
+      "raceId": "goblin",
+      "tier": "medium",
+      "stats": {
+        "hp": 70,
+        "attack": 47,
+        "defense": 70,
+        "spAttack": 93,
+        "spDefense": 70,
+        "speed": 70
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Red-crowned Crane",
+      "elements": [],
+      "raceId": "waterfowl",
+      "tier": "peak",
+      "stats": {
+        "hp": 78,
+        "attack": 52,
+        "defense": 78,
+        "spAttack": 104,
+        "spDefense": 78,
+        "speed": 130
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Flame Worm",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "annelid",
+      "tier": "peak",
+      "stats": {
+        "hp": 87,
+        "attack": 58,
+        "defense": 87,
+        "spAttack": 116,
+        "spDefense": 87,
+        "speed": 87
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Golden Fowlbeast",
+      "elements": [],
+      "raceId": "bird",
+      "tier": "peak",
+      "stats": {
+        "hp": 104,
+        "attack": 52,
+        "defense": 78,
+        "spAttack": 104,
+        "spDefense": 78,
+        "speed": 104
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Crab Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "crustacean",
+      "tier": "peak",
+      "stats": {
+        "hp": 95,
+        "attack": 71,
+        "defense": 118,
+        "spAttack": 71,
+        "spDefense": 118,
+        "speed": 47
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Kirin",
+      "elements": [],
+      "raceId": "divineBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 82,
+        "attack": 55,
+        "defense": 82,
+        "spAttack": 137,
+        "spDefense": 82,
+        "speed": 82
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Black Turtle",
+      "elements": [],
+      "raceId": "turtle",
+      "tier": "peak",
+      "stats": {
+        "hp": 142,
+        "attack": 47,
+        "defense": 95,
+        "spAttack": 95,
+        "spDefense": 95,
+        "speed": 47
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Black Bear Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "ursid",
+      "tier": "peak",
+      "stats": {
+        "hp": 104,
+        "attack": 104,
+        "defense": 104,
+        "spAttack": 52,
+        "spDefense": 104,
+        "speed": 52
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Hell Enforcer",
+      "elements": [],
+      "raceId": "beastfolk",
+      "tier": "peak",
+      "stats": {
+        "hp": 130,
+        "attack": 104,
+        "defense": 78,
+        "spAttack": 52,
+        "spDefense": 78,
+        "speed": 78
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Hell Arbiter",
+      "elements": [],
+      "raceId": "beastfolk",
+      "tier": "peak",
+      "stats": {
+        "hp": 71,
+        "attack": 95,
+        "defense": 118,
+        "spAttack": 47,
+        "spDefense": 118,
+        "speed": 71
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Sea Dragonbeast",
+      "elements": [
+        "water",
+        "dragon"
+      ],
+      "raceId": "beastfolk",
+      "tier": "peak",
+      "stats": {
+        "hp": 74,
+        "attack": 74,
+        "defense": 74,
+        "spAttack": 149,
+        "spDefense": 74,
+        "speed": 74
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Celestial Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "human",
+      "tier": "peak",
+      "stats": {
+        "hp": 90,
+        "attack": 113,
+        "defense": 90,
+        "spAttack": 68,
+        "spDefense": 90,
+        "speed": 68
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Celestial Guardian",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "tier": "peak",
+      "stats": {
+        "hp": 95,
+        "attack": 71,
+        "defense": 71,
+        "spAttack": 118,
+        "spDefense": 71,
+        "speed": 95
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Dire Elephant",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "proboscid",
+      "tier": "peak",
+      "stats": {
+        "hp": 156,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 52
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Dire Bear",
+      "elements": [],
+      "raceId": "ursid",
+      "tier": "peak",
+      "stats": {
+        "hp": 116,
+        "attack": 116,
+        "defense": 87,
+        "spAttack": 58,
+        "spDefense": 87,
+        "speed": 58
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Rat Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "rodent",
+      "tier": "peak",
+      "stats": {
+        "hp": 78,
+        "attack": 104,
+        "defense": 78,
+        "spAttack": 52,
+        "spDefense": 78,
+        "speed": 130
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Dire Tiger",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "peak",
+      "stats": {
+        "hp": 74,
+        "attack": 149,
+        "defense": 74,
+        "spAttack": 50,
+        "spDefense": 74,
+        "speed": 99
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Brutaur",
+      "elements": [],
+      "raceId": "wildBeast",
+      "tier": "peak",
+      "stats": {
+        "hp": 144,
+        "attack": 87,
+        "defense": 87,
+        "spAttack": 58,
+        "spDefense": 87,
+        "speed": 58
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Hellhound",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "peak",
+      "stats": {
+        "hp": 87,
+        "attack": 144,
+        "defense": 58,
+        "spAttack": 58,
+        "spDefense": 58,
+        "speed": 116
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Lucky Ram",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "peak",
+      "stats": {
+        "hp": 87,
+        "attack": 58,
+        "defense": 58,
+        "spAttack": 116,
+        "spDefense": 58,
+        "speed": 144
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Pixie",
+      "elements": [],
+      "raceId": "fey",
+      "tier": "peak",
+      "stats": {
+        "hp": 87,
+        "attack": 87,
+        "defense": 58,
+        "spAttack": 116,
+        "spDefense": 58,
+        "speed": 116
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Siegebreaker",
+      "elements": [],
+      "raceId": "beastfolk",
+      "tier": "peak",
+      "stats": {
+        "hp": 95,
+        "attack": 95,
+        "defense": 95,
+        "spAttack": 71,
+        "spDefense": 95,
+        "speed": 71
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Lotus Sprite",
+      "elements": [],
+      "raceId": "fey",
+      "tier": "peak",
+      "stats": {
+        "hp": 78,
+        "attack": 78,
+        "defense": 78,
+        "spAttack": 130,
+        "spDefense": 78,
+        "speed": 78
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Hell Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "human",
+      "tier": "peak",
+      "stats": {
+        "hp": 104,
+        "attack": 104,
+        "defense": 78,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 78
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Blood Demon",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "peak",
+      "stats": {
+        "hp": 78,
+        "attack": 130,
+        "defense": 78,
+        "spAttack": 78,
+        "spDefense": 78,
+        "speed": 78
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Octo-Beast",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 99,
+        "attack": 66,
+        "defense": 66,
+        "spAttack": 132,
+        "spDefense": 66,
+        "speed": 132
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Imperial Peacock",
+      "elements": [],
+      "raceId": "galliform",
+      "tier": "large",
+      "stats": {
+        "hp": 84,
+        "attack": 84,
+        "defense": 84,
+        "spAttack": 112,
+        "spDefense": 84,
+        "speed": 112
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Angel Pig",
+      "elements": [],
+      "raceId": "suid",
+      "tier": "large",
+      "stats": {
+        "hp": 105,
+        "attack": 70,
+        "defense": 70,
+        "spAttack": 105,
+        "spDefense": 70,
+        "speed": 140
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Tanuki",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "large",
+      "stats": {
+        "hp": 88,
+        "attack": 59,
+        "defense": 88,
+        "spAttack": 88,
+        "spDefense": 88,
+        "speed": 147
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Oracle Beast",
+      "elements": [],
+      "raceId": "fey",
+      "tier": "large",
+      "stats": {
+        "hp": 107,
+        "attack": 80,
+        "defense": 80,
+        "spAttack": 107,
+        "spDefense": 80,
+        "speed": 107
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Dire Panda",
+      "elements": [],
+      "raceId": "ursid",
+      "tier": "large",
+      "stats": {
+        "hp": 177,
+        "attack": 88,
+        "defense": 88,
+        "spAttack": 59,
+        "spDefense": 88,
+        "speed": 59
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Lobster Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "crustacean",
+      "tier": "large",
+      "stats": {
+        "hp": 112,
+        "attack": 112,
+        "defense": 84,
+        "spAttack": 84,
+        "spDefense": 84,
+        "speed": 84
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Butterfly Sprite",
+      "elements": [],
+      "raceId": "lepidopteran",
+      "tier": "large",
+      "stats": {
+        "hp": 105,
+        "attack": 70,
+        "defense": 70,
+        "spAttack": 140,
+        "spDefense": 70,
+        "speed": 105
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Eagle Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "raptor",
+      "tier": "large",
+      "stats": {
+        "hp": 102,
+        "attack": 102,
+        "defense": 102,
+        "spAttack": 51,
+        "spDefense": 102,
+        "speed": 102
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Kunpeng",
+      "elements": [],
+      "raceId": "fey",
+      "tier": "large",
+      "stats": {
+        "hp": 146,
+        "attack": 49,
+        "defense": 73,
+        "spAttack": 97,
+        "spDefense": 73,
+        "speed": 122
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "White Wyrmling",
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "wildBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 99,
+        "attack": 66,
+        "defense": 66,
+        "spAttack": 132,
+        "spDefense": 66,
+        "speed": 132
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Stormwyrm",
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "wildBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 118,
+        "attack": 88,
+        "defense": 59,
+        "spAttack": 147,
+        "spDefense": 59,
+        "speed": 88
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Ember Cat",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "felid",
+      "tier": "large",
+      "stats": {
+        "hp": 105,
+        "attack": 70,
+        "defense": 70,
+        "spAttack": 140,
+        "spDefense": 70,
+        "speed": 105
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Cinderfrog",
+      "elements": [],
+      "raceId": "anuran",
+      "tier": "large",
+      "stats": {
+        "hp": 133,
+        "attack": 80,
+        "defense": 80,
+        "spAttack": 80,
+        "spDefense": 80,
+        "speed": 107
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Rocktoise",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 117,
+        "attack": 47,
+        "defense": 140,
+        "spAttack": 70,
+        "spDefense": 140,
+        "speed": 47
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Zhuque",
+      "elements": [],
+      "raceId": "mythicBird",
+      "tier": "large",
+      "stats": {
+        "hp": 107,
+        "attack": 53,
+        "defense": 80,
+        "spAttack": 107,
+        "spDefense": 80,
+        "speed": 133
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Spirit Snake",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "serpent",
+      "tier": "large",
+      "stats": {
+        "hp": 88,
+        "attack": 59,
+        "defense": 59,
+        "spAttack": 118,
+        "spDefense": 59,
+        "speed": 177
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Flame Demon",
+      "elements": [
+        "fire",
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "large",
+      "stats": {
+        "hp": 112,
+        "attack": 84,
+        "defense": 56,
+        "spAttack": 140,
+        "spDefense": 56,
+        "speed": 112
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Rock Behemoth",
+      "elements": [
+        "rock",
+        "flying"
+      ],
+      "raceId": "lepidopteran",
+      "tier": "large",
+      "stats": {
+        "hp": 112,
+        "attack": 67,
+        "defense": 134,
+        "spAttack": 67,
+        "spDefense": 134,
+        "speed": 45
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Blazing Demon",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "large",
+      "stats": {
+        "hp": 88,
+        "attack": 88,
+        "defense": 59,
+        "spAttack": 147,
+        "spDefense": 59,
+        "speed": 118
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Hellion",
+      "elements": [],
+      "raceId": "beastfolk",
+      "tier": "large",
+      "stats": {
+        "hp": 102,
+        "attack": 102,
+        "defense": 102,
+        "spAttack": 76,
+        "spDefense": 102,
+        "speed": 76
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Rhino Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "pachyderm",
+      "tier": "large",
+      "stats": {
+        "hp": 118,
+        "attack": 118,
+        "defense": 88,
+        "spAttack": 88,
+        "spDefense": 88,
+        "speed": 59
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Naga Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "lizardfolk",
+      "tier": "large",
+      "stats": {
+        "hp": 76,
+        "attack": 153,
+        "defense": 76,
+        "spAttack": 76,
+        "spDefense": 76,
+        "speed": 102
+      },
+      "category": "Jenin"
+    },
+    {
+      "name": "Doomdrake",
+      "elements": [
+        "dragon"
+      ],
+      "raceId": "wildBeast",
+      "tier": "large",
+      "stats": {
+        "hp": 93,
+        "attack": 93,
+        "defense": 70,
+        "spAttack": 140,
+        "spDefense": 70,
+        "speed": 93
+      },
+      "category": "Jenin"
+    }
+  ]
+}

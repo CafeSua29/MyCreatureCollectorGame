@@ -21,6 +21,23 @@ export function isBookableSkill(data: GameData, skill: Skill): boolean {
   return !isBattleOnlyMove(skill) && !Object.hasOwn(data.comboSkills, skill.id)
 }
 
+/** Skill có `bookForElement` theo hệ; tính một lần cho mỗi bộ dữ liệu. */
+const elementBookCache = new WeakMap<GameData['skills'], Map<string, string[]>>()
+
+/** Skill mọi loài hệ này học được qua sách (`bookForElement`, docs/rules/skill-books.md). */
+export function elementBookSkillIds(data: GameData, elementId: string): readonly string[] {
+  let byElement = elementBookCache.get(data.skills)
+  if (!byElement) {
+    byElement = new Map()
+    for (const skill of Object.values(data.skills)) {
+      if (!skill.bookForElement) continue
+      byElement.set(skill.elementId, [...(byElement.get(skill.elementId) ?? []), skill.id])
+    }
+    elementBookCache.set(data.skills, byElement)
+  }
+  return byElement.get(elementId) ?? []
+}
+
 /** Số loài học được từng skill theo learnset + bookSkillIds; tính một lần cho mỗi bộ dữ liệu. */
 const learnerCache = new WeakMap<GameData['species'], Map<string, number>>()
 
@@ -36,7 +53,8 @@ export function skillLearnerCount(data: GameData, skillId: string): number {
       if (species.kind !== 'normal') continue
       const ids = [
         ...species.learnset.map((entry) => entry.skillId),
-        ...(species.bookSkillIds ?? [])
+        ...(species.bookSkillIds ?? []),
+        ...species.elementIds.flatMap((elementId) => elementBookSkillIds(data, elementId))
       ]
       for (const id of new Set(ids)) {
         counts.set(id, (counts.get(id) ?? 0) + 1)
@@ -164,9 +182,16 @@ export function rollSkillBooks(
   return [books, rng]
 }
 
-/** Skill trong learnset của các loài (bỏ loài không phải loài thường). */
+/**
+ * Skill trong learnset của các loài (bỏ loài không phải loài thường), cộng skill học qua sách theo hệ
+ * của loài (`bookForElement`).
+ */
 export const learnsetSkillIds = (data: GameData, speciesIds: readonly string[]): string[] =>
   speciesIds.flatMap((speciesId) => {
     const species = data.species[speciesId]
-    return species?.kind === 'normal' ? species.learnset.map((learn) => learn.skillId) : []
+    if (species?.kind !== 'normal') return []
+    return [
+      ...species.learnset.map((learn) => learn.skillId),
+      ...species.elementIds.flatMap((elementId) => elementBookSkillIds(data, elementId))
+    ]
   })

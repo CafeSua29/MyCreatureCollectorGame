@@ -54,7 +54,10 @@ const floorResult = (overrides: Partial<FloorResult> = {}): FloorResult => ({
     outOfReach: { player: 1, enemy: 3 },
     broken: 1,
     offBalance: { player: 2, enemy: 4 },
-    revealed: 3
+    revealed: 3,
+    reactions: 2,
+    rests: 1,
+    overexerted: 3
   },
   ...overrides
 })
@@ -116,6 +119,9 @@ describe('các bảng kết quả', () => {
       '0.25',
       '0.50',
       '1.00',
+      '0.75',
+      '0.50',
+      '0.25',
       '0.75'
     ])
   })

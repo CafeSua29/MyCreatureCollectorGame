@@ -101,6 +101,11 @@ export interface Monster {
    * cấp), âm = hiệu ứng ngược (failHooks × |cấp|). Breeding không truyền.
    */
   implantEffects: Record<string, number>
+  /**
+   * Luyện thể (docs/rules/body-refinement.md): bộ phận → kiểu luyện thể đang lắp (bodyRefinements.json).
+   * Breeding không truyền; fuse giữ của quái gốc.
+   */
+  refinements: Record<string, string>
   /** Số lần đã cấy (gộp mọi chỉ số, cả thành công lẫn thất bại), nguyên ≥ 0. */
   implantAttempts: number
   /** Số lần cấy thất bại, nguyên ≥ 0, không bao giờ reset; tới implant.maxFails thì mất quái. */

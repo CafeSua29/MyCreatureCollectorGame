@@ -53,6 +53,11 @@ import { applyWin, applyLoss, finish } from './outcome'
 import { isTribulationTimeUp, settleTribulation } from './tribulation'
 import { isSpecialTimeUp } from './specialBattles'
 import { perishAtTurnEnd } from './volatiles'
+import { passivesAtTurnEnd } from './passiveSkills'
+import { isExhausted, restStamina, staminaAtTurnEnd } from './stamina'
+import { wallAttacksOnAction } from './walls'
+import { boobyTrapsAtTurnEnd } from './boobyTraps'
+import { coatingsAtTurnEnd } from './coatings'
 import { traitsAtTurnEnd } from './turnEndTraits'
 import { cudChewAtTurnEnd } from './heldItems'
 import { chooseAiCommands } from './ai'
@@ -146,6 +151,8 @@ function commandPriority(
       return data.config.battle.defend.priority
     case 'provoke':
       return data.config.battle.provoke.priority
+    case 'rest':
+      return 0
     case 'skill': {
       // Priority của skill thật (đang Dynamax: chiêu Max priority 0, Max Guard +4; Z-Move gây sát
       // thương priority 0), cộng theo thế.
@@ -180,7 +187,8 @@ const canActFirst = (command: BattleCommand): boolean =>
   command.kind === 'skill' ||
   command.kind === 'combo' ||
   command.kind === 'defend' ||
-  command.kind === 'provoke'
+  command.kind === 'provoke' ||
+  command.kind === 'rest'
 
 /**
  * Đổi quái đi trước, rồi dùng vật phẩm / ném bóng, rồi phòng thủ / khiêu khích, rồi skill theo
@@ -434,6 +442,7 @@ function runSkillCommand(
     style: choice.style,
     ...(zMove ? { zMove: true } : {}),
     ...(command.targetAlly && choice.skillId === command.skillId ? { targetAlly: true } : {}),
+    ...(command.targetFoe && choice.skillId === command.skillId ? { targetFoe: true } : {}),
     // Trait đổi skill thì không còn nhắm bộ phận của lệnh.
     ...(command.aim !== undefined && choice.skillId === command.skillId
       ? { aim: command.aim }
@@ -452,6 +461,14 @@ function runAction(data: GameData, d: Draft, action: TurnAction): void {
   const command = action.command ?? extraCommand(data, d, action)
   if (!command) return
   recordOf(d, user.id).turnsTaken++
+  // Quá sức ở lượt trước: mất lượt này, chỉ được nghỉ (đổi quái / vật phẩm cũng không làm được).
+  if (isExhausted(d, user.id)) {
+    restStamina(data, d, user)
+    return
+  }
+  // Tường có đòn riêng (Abramacabra) đánh đầu lượt của quái; đòn phản có thể làm quái gục.
+  wallAttacksOnAction(data, d, user)
+  if (isFainted(data, user)) return
   switch (command.kind) {
     case 'switch': {
       const incoming = findMonster(d, command.monsterId)
@@ -478,6 +495,9 @@ function runAction(data: GameData, d: Draft, action: TurnAction): void {
     case 'defend':
     case 'provoke':
       guard(d, user, command.kind)
+      return
+    case 'rest':
+      restStamina(data, d, user)
       return
     case 'skill':
       runSkillCommand(data, d, action, command)
@@ -507,6 +527,12 @@ function resetDamageFlags(d: Draft): void {
   }
 }
 
+/** Thời hạn của tường, bẫy Booby Trap, lớp phủ hệ (docs/rules/element-reactions.md). */
+function cassetteTimersAtTurnEnd(_data: GameData, d: Draft): void {
+  boobyTrapsAtTurnEnd(d)
+  coatingsAtTurnEnd(d)
+}
+
 /** Các bước cuối lượt theo thứ tự; xử lý sự kiện trait sau mỗi bước. */
 function endOfTurn(data: GameData, d: Draft): void {
   const steps = [
@@ -518,6 +544,9 @@ function endOfTurn(data: GameData, d: Draft): void {
     statusesAtTurnEnd,
     minionsAtTurnEnd,
     perishAtTurnEnd,
+    passivesAtTurnEnd,
+    cassetteTimersAtTurnEnd,
+    staminaAtTurnEnd,
     fleesAtTurnEnd,
     transformsAtTurnEnd,
     tamersAtTurnEnd,

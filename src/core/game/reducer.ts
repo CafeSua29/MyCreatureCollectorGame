@@ -5,11 +5,13 @@ import { ascend, assertDestinyChosen, buyAscensionUpgrade, chooseDestinies } fro
 import {
   challengeArena,
   challengeBoss,
+  scoutBoss,
   challengeGym,
   challengeTournament,
   enterTournament,
   forfeitTournament,
   abandonTrial,
+  enterPortal,
   enterZone,
   exploreZone,
   gather,
@@ -103,6 +105,7 @@ import {
   buyIncense,
   newSafariState,
   newZoneState,
+  stabilizePortal,
   rerollInstability,
   rest,
   setInstability,
@@ -122,7 +125,14 @@ import {
   tamerBreakthrough
 } from '../tamer'
 import {
+  buildHatcheryHabitat,
+  buyHatcheryUpgrade,
+  setHatcher,
+  chooseEssence,
   fuse,
+  placeEgg,
+  refineBody,
+  removeRefinement,
   implant,
   infuseEgg,
   newLabState,
@@ -200,7 +210,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 102
+export const SAVE_VERSION = 109
 
 export function createGameState(options: {
   seed: number
@@ -275,6 +285,8 @@ export function createGameState(options: {
     lab: newLabState(),
     capacity: newCapacityState(),
     zones: newZoneState(),
+    hatchery: { rooms: [] },
+    essences: { owned: [], offer: null },
     worldBoss: { current: null, rewards: [] },
     dex: newDexState(),
     research: {},
@@ -282,6 +294,7 @@ export function createGameState(options: {
     achievements: newAchievementState(),
     titles: newTitleState(),
     ascension: newAscensionState(),
+    scoutedBosses: [],
     destinies: [],
     // Chưa xây công trình nào (game mới dùng newDwellingState theo dữ liệu, docs/rules/dwelling.md).
     dwelling: { buildings: {}, plots: [], storage: { stacks: {}, books: [] }, feedBox: {} },
@@ -456,6 +469,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return atavize(data, state, action)
     case 'challengeBoss':
       return challengeBoss(data, state)
+    case 'scoutBoss':
+      return scoutBoss(data, state)
     case 'challengeGym':
       return challengeGym(data, state)
     case 'enterTournament':
@@ -561,6 +576,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return buyDeityItem(data, state, action)
     case 'enterZone':
       return enterZone(data, state, action.zoneId)
+    case 'enterPortal':
+      return enterPortal(data, state, action.portalId)
+    case 'stabilizePortal':
+      return stabilizePortal(data, state, action.portalId)
     case 'exploreZone':
       return exploreZoneWithTime(data, state)
     case 'fish':
@@ -637,6 +656,20 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return breed(data, state, action.fatherId, action.motherId)
     case 'fuse':
       return fuse(data, state, action)
+    case 'refineBody':
+      return refineBody(data, state, action)
+    case 'removeRefinement':
+      return removeRefinement(data, state, action)
+    case 'buildHatcheryHabitat':
+      return buildHatcheryHabitat(data, state, action)
+    case 'placeEgg':
+      return placeEgg(data, state, action)
+    case 'buyHatcheryUpgrade':
+      return buyHatcheryUpgrade(data, state, action)
+    case 'setHatcher':
+      return setHatcher(data, state, action)
+    case 'chooseEssence':
+      return chooseEssence(data, state, action.essenceId)
     case 'sacrifice':
       return sacrifice(data, state, action)
     case 'rebirthMonster':

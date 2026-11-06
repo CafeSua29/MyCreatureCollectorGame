@@ -30,6 +30,8 @@ const GAME_LOG_FIELDS: { readonly [T in GameLogType]: FieldsOf<T> } = {
   beastTideArrived: ['waves'],
   worldBossAppeared: ['speciesId', 'endDay'],
   worldBossLeft: ['speciesId', 'tierId'],
+  portalOpened: ['portalId', 'zoneId'],
+  portalClosed: ['portalId', 'zoneId'],
   auctionWon: ['lotId', 'price', 'received'],
   auctionLost: ['lotId', 'npcPrice'],
   consignmentSold: ['consignmentId', 'item', 'count', 'earned'],

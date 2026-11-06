@@ -1,0 +1,1068 @@
+{
+  "source": "voidMonsters",
+  "origin": "fantasy",
+  "prune": true,
+  "update": {
+    "stats": true,
+    "catchRate": true,
+    "evolutions": "add"
+  },
+  "species": [
+    {
+      "name": "Marshbit",
+      "elements": [],
+      "raceId": "anuran",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Wizbundle",
+      "elements": [],
+      "raceId": "human",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Can wear a helmet.",
+      "evolutions": []
+    },
+    {
+      "name": "Sunflora",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Can evolve into Roseflora",
+      "evolutions": [
+        {
+          "name": "Roseflora",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Slumgus",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "slime",
+      "tier": "small",
+      "category": "Ethel rune",
+      "evolutions": []
+    },
+    {
+      "name": "Snufflehorn",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ethel rune",
+      "evolutions": []
+    },
+    {
+      "name": "Spiderling",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Can evolve into Spiderking. Resists sleep spells.",
+      "evolutions": [
+        {
+          "name": "Spiderking",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Baastabmew",
+      "elements": [],
+      "raceId": "felid",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Has healing magic. Can wear a helmet.",
+      "evolutions": []
+    },
+    {
+      "name": "Trufflescorn",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ethel rune",
+      "evolutions": []
+    },
+    {
+      "name": "Dizzoria",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ethel rune",
+      "evolutions": []
+    },
+    {
+      "name": "Tomblighter",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "ghost",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Resists confusion magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Torchrobe",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "human",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Has healing and revival magic. Can wear armour!",
+      "evolutions": []
+    },
+    {
+      "name": "Ramskewer",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "small",
+      "category": "Ethel rune",
+      "flavor": "Can evolve into Ramskewer Daemon. Can wear boots and helmets.",
+      "evolutions": [
+        {
+          "name": "Ramskewer Daemon",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Petaljaw",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "medium",
+      "category": "Ethel rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Scarekin",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Ethel rune",
+      "flavor": "Strong. Can use a bow and wear boots. Resists silence.",
+      "evolutions": []
+    },
+    {
+      "name": "Sludgebranch",
+      "elements": [
+        "poison"
+      ],
+      "raceId": "slime",
+      "tier": "peak",
+      "category": "Ethel rune",
+      "flavor": "Very Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Mothgenta",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "lepidopteran",
+      "tier": "peak",
+      "category": "Ethel rune",
+      "flavor": "Very Strong. Has healing magic. Resists confusion magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Rubybooslay",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Has revival magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Fictionfright",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Can evolve into Fictionwrite. Has healing magic.",
+      "evolutions": [
+        {
+          "name": "Fictionwrite",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Fluttersnort",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "lepidopteran",
+      "tier": "small",
+      "category": "Ear rune",
+      "evolutions": []
+    },
+    {
+      "name": "Pawbrand",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Can wear a helmet. Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Bataneye",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Can evolve into Fluffaneye. Resists sleep magic. Can dispell.",
+      "evolutions": [
+        {
+          "name": "Fluffeneye",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Mosstified",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ear rune",
+      "evolutions": []
+    },
+    {
+      "name": "Sporranhaunt",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Can use a bow. Can wear armour. Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Scorpiyawn",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "small",
+      "category": "Ear rune",
+      "evolutions": []
+    },
+    {
+      "name": "Skullder",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Has revival magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Sentrybot",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "machine",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Resists silence.",
+      "evolutions": []
+    },
+    {
+      "name": "Smokefolk",
+      "elements": [
+        "fire"
+      ],
+      "raceId": "elementalSpirit",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Resists confusion magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Swordsworn",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "small",
+      "category": "Ear rune",
+      "flavor": "Can steal.",
+      "evolutions": []
+    },
+    {
+      "name": "Voodean",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "medium",
+      "category": "Ear rune",
+      "flavor": "Strong. Resists sleep. Can wear boots.",
+      "evolutions": []
+    },
+    {
+      "name": "Beakslice",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "bird",
+      "tier": "peak",
+      "category": "Ear rune",
+      "flavor": "Very strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Stickshifter",
+      "elements": [],
+      "raceId": "orthopteran",
+      "tier": "peak",
+      "category": "Ear rune",
+      "flavor": "Very Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Wraithwait",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "wraith",
+      "tier": "large",
+      "category": "Ear rune",
+      "flavor": "Epic. Has healing magic. Resists Silence. Can wear boots and helmets.",
+      "evolutions": []
+    },
+    {
+      "name": "Destructsign",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "small",
+      "category": "Ior rune",
+      "evolutions": []
+    },
+    {
+      "name": "Glowden",
+      "elements": [],
+      "raceId": "wisp",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Resistes confusion magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Iorwight",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Can wear all armours. Has healing magic.",
+      "evolutions": [
+        {
+          "name": "Earwight",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Tentangle",
+      "elements": [],
+      "raceId": "cephalopod",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Can evolve into Techtangle. Has healing magic. Resists sleep.",
+      "evolutions": [
+        {
+          "name": "Techtangle",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Pricklemiss",
+      "elements": [],
+      "raceId": "flower",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Can wear boots and helmets.",
+      "evolutions": []
+    },
+    {
+      "name": "Spiralshroom",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "fungus",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Can steal.",
+      "evolutions": []
+    },
+    {
+      "name": "Snorepion",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Resists sleep.",
+      "evolutions": []
+    },
+    {
+      "name": "Hunchman",
+      "elements": [],
+      "raceId": "ghoul",
+      "tier": "medium",
+      "category": "Ior rune",
+      "flavor": "Can evolve into Hunchmummy. Strong. Can wear boots.",
+      "evolutions": [
+        {
+          "name": "Hunchmummy",
+          "level": 20
+        }
+      ]
+    },
+    {
+      "name": "Bladeshade",
+      "elements": [],
+      "raceId": "wraith",
+      "tier": "medium",
+      "category": "Ior rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Beakadillo",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "xenarthran",
+      "tier": "medium",
+      "category": "Ior rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Wildesneeze",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Ior rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Birden",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "bird",
+      "tier": "medium",
+      "category": "Ior rune",
+      "flavor": "Strong. Has healing magic. Resists sleep.",
+      "evolutions": []
+    },
+    {
+      "name": "Spearspur",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Ior rune",
+      "flavor": "Epic.",
+      "evolutions": []
+    },
+    {
+      "name": "Icecaper",
+      "elements": [
+        "ice"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Heagl rune",
+      "flavor": "Epic. Has healing magic. Can use a bow.",
+      "evolutions": []
+    },
+    {
+      "name": "Fayflower",
+      "elements": [
+        "grass",
+        "flying"
+      ],
+      "raceId": "flower",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.",
+      "evolutions": []
+    },
+    {
+      "name": "Spherite",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "wisp",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.",
+      "evolutions": []
+    },
+    {
+      "name": "Faycube",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "fey",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats. Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Princetoad",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "anuran",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.",
+      "evolutions": []
+    },
+    {
+      "name": "Starlight Novice",
+      "elements": [
+        "ice",
+        "flying"
+      ],
+      "raceId": "fey",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.  Has healing magic. Can wear boots and helmets.",
+      "evolutions": []
+    },
+    {
+      "name": "Star Shaman",
+      "elements": [
+        "psychic",
+        "flying"
+      ],
+      "raceId": "fey",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.  Can wear boots.",
+      "evolutions": []
+    },
+    {
+      "name": "Faybot",
+      "elements": [
+        "steel",
+        "flying"
+      ],
+      "raceId": "machine",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.  Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Starlight Reaver",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "fey",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats. Can wear helmets and boots.",
+      "evolutions": []
+    },
+    {
+      "name": "Landshark",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "shark",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.",
+      "evolutions": []
+    },
+    {
+      "name": "Faydrake",
+      "elements": [
+        "dragon",
+        "flying"
+      ],
+      "raceId": "drake",
+      "tier": "small",
+      "category": "Fairy rune",
+      "flavor": "Auto combats.",
+      "evolutions": []
+    },
+    {
+      "name": "Starlight Seeker",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "fey",
+      "tier": "medium",
+      "category": "Fairy rune",
+      "flavor": "Auto combats. Strong. Can wear boots and helmets.",
+      "evolutions": []
+    },
+    {
+      "name": "The Lost",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Fairy rune",
+      "flavor": "Auto combats. Strong. Can wear all armour.",
+      "evolutions": []
+    },
+    {
+      "name": "Starlight Queen",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "human",
+      "tier": "peak",
+      "category": "Fairy rune",
+      "flavor": "Auto combats. Very Strong. Can use a bow. Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Owlord",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "owl",
+      "tier": "large",
+      "category": "Fairy rune",
+      "flavor": "Auto combats. Epic.",
+      "evolutions": []
+    },
+    {
+      "name": "Dread",
+      "elements": [],
+      "raceId": "wraith",
+      "tier": "small",
+      "category": "Heagl rune",
+      "flavor": "Has healing magic",
+      "evolutions": []
+    },
+    {
+      "name": "Shademist",
+      "elements": [],
+      "raceId": "wraith",
+      "tier": "medium",
+      "category": "Heagl rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Shadowaxe",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "livingObject",
+      "tier": "peak",
+      "category": "Heagl rune",
+      "flavor": "Very strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Cloudcut",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Heagl rune",
+      "flavor": "Epic. Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Eaglord",
+      "elements": [],
+      "raceId": "raptor",
+      "tier": "peak",
+      "category": "Heagl rune",
+      "flavor": "Very Strong. Resists rage and sleep.",
+      "evolutions": []
+    },
+    {
+      "name": "Chilltoe",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Heagl rune",
+      "flavor": "Can wear boots and helmets. Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Auflair",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Heagl rune",
+      "flavor": "Epic. Resists silence and sleep. Can wear armour.",
+      "evolutions": []
+    },
+    {
+      "name": "Elmanapot",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "small",
+      "category": "Heagl rune",
+      "flavor": "Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Gravebot",
+      "elements": [
+        "ghost",
+        "steel"
+      ],
+      "raceId": "machine",
+      "tier": "small",
+      "category": "Heagl rune",
+      "evolutions": []
+    },
+    {
+      "name": "Maskerade",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "large",
+      "category": "Heagl rune",
+      "flavor": "Epic. Resists all states. Has revival magic,",
+      "evolutions": []
+    },
+    {
+      "name": "Skullsworn",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "small",
+      "category": "Ior rune",
+      "evolutions": []
+    },
+    {
+      "name": "Bonedread",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "small",
+      "category": "Heagl rune",
+      "flavor": "Has revival magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Desertlord",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Ethel rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Greenfinger",
+      "elements": [],
+      "raceId": "natureSpirit",
+      "tier": "small",
+      "category": "Ior rune",
+      "flavor": "Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Wizardhawk",
+      "elements": [
+        "flying",
+        "psychic"
+      ],
+      "raceId": "raptor",
+      "tier": "peak",
+      "category": "Ethel rune",
+      "flavor": "Very Strong. Resists all states.",
+      "evolutions": []
+    },
+    {
+      "name": "Lizgardio",
+      "elements": [],
+      "raceId": "lizardfolk",
+      "tier": "small",
+      "category": "Ear rune",
+      "evolutions": []
+    },
+    {
+      "name": "Megagoat",
+      "elements": [],
+      "raceId": "buffalo",
+      "tier": "peak",
+      "category": "Heagl rune",
+      "flavor": "Very Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Ethelbane",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Kalc rune",
+      "flavor": "Epic. Resists confusion and sleep.",
+      "evolutions": []
+    },
+    {
+      "name": "Roseflora",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "flower",
+      "tier": "medium",
+      "category": "Ear rune",
+      "flavor": "Has healing magic. Can Hypnotise.",
+      "evolutions": []
+    },
+    {
+      "name": "Ramskewer Daemon",
+      "elements": [],
+      "raceId": "fiend",
+      "tier": "medium",
+      "category": "Ethel rune",
+      "flavor": "Strong. Can wear boots and helmets.",
+      "evolutions": []
+    },
+    {
+      "name": "Techtangle",
+      "elements": [],
+      "raceId": "cephalopod",
+      "tier": "medium",
+      "category": "Ear rune",
+      "flavor": "Has revival magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Fictionwrite",
+      "elements": [],
+      "raceId": "livingObject",
+      "tier": "medium",
+      "category": "Ior rune",
+      "flavor": "Has healing magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Spiderking",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "medium",
+      "category": "Heagl rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Fluffeneye",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Ethel rune",
+      "flavor": "Strong.",
+      "evolutions": []
+    },
+    {
+      "name": "Earwight",
+      "elements": [],
+      "raceId": "wraith",
+      "tier": "medium",
+      "category": "Ear rune",
+      "flavor": "Strong. Can wear all armour.",
+      "evolutions": []
+    },
+    {
+      "name": "Hunchmummy",
+      "elements": [],
+      "raceId": "mummy",
+      "tier": "peak",
+      "category": "Heagl rune",
+      "flavor": "Very Strong. Has revival magic.",
+      "evolutions": []
+    },
+    {
+      "name": "Lovecrunch",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ior rune",
+      "evolutions": []
+    },
+    {
+      "name": "Wisper",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Ior rune",
+      "evolutions": []
+    },
+    {
+      "name": "Cubemist",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Heagl rune",
+      "evolutions": []
+    },
+    {
+      "name": "Light Watcher",
+      "elements": [],
+      "raceId": "eldritch",
+      "tier": "medium",
+      "category": "Ljósálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Sunndile",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "category": "Ljósálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Phoenix",
+      "elements": [],
+      "raceId": "mythicBird",
+      "tier": "large",
+      "category": "Ljósálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Darkbit",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Dokflower",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "small",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Dokkalflower",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Deathjaw",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Poisonshroom",
+      "elements": [
+        "grass",
+        "poison"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Deathwatch",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "peak",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Sharkness",
+      "elements": [],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Dökkálfar rune",
+      "evolutions": []
+    },
+    {
+      "name": "Treeshade",
+      "elements": [
+        "grass"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Boss rune",
+      "evolutions": []
+    },
+    {
+      "name": "Spidercano",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Boss rune",
+      "evolutions": []
+    },
+    {
+      "name": "Bonedean",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Boss rune",
+      "evolutions": []
+    },
+    {
+      "name": "Kalcbot",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "large",
+      "category": "Boss rune",
+      "evolutions": []
+    }
+  ]
+}

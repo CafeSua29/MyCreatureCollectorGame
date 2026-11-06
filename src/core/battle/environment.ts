@@ -64,6 +64,7 @@ import { ohkoAccuracy } from './fixedDamage'
 import { autoTransformOnEntry } from './transform'
 import { triggerStageTraits } from './stageChanges'
 import { emitTraitEvent } from './eventQueue'
+import { passivesOnEntry } from './passiveSkills'
 
 /**
  * Mọi lớp toàn sân ở môi trường mặc định (trời quang, không địa hình) kéo dài cả trận; chưa có
@@ -309,6 +310,8 @@ export function triggerEntryEffects(data: GameData, d: Draft, monsters: readonly
     }
     triggerStageTraits(data, d, monster, 'entry')
   }
+  // Skill bị động (Camouflage, Spring-Load): sau trait vào sân, trước sự kiện "đầu trận".
+  passivesOnEntry(data, d, monsters)
   // Sự kiện vào sân cho trait Siralim ("đầu trận"): mọi quái vừa vào, theo thứ tự truyền vào.
   for (const monster of monsters) emitTraitEvent(d, { type: 'entry', subjectId: monster.id })
 }

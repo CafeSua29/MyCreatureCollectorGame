@@ -58,12 +58,127 @@
     },
     "sunWeatherId": "sun"
   },
+  "stamina": {
+    "max": 100,
+    "regenPercent": 5,
+    "regenFlat": 1,
+    "restPercent": 15,
+    "overexertHpPercent": 2,
+    "costByPower": [
+      { "upToPower": 40, "cost": 10 },
+      { "upToPower": 70, "cost": 15 },
+      { "upToPower": 100, "cost": 20 },
+      { "upToPower": 130, "cost": 25 },
+      { "upToPower": 1000, "cost": 30 }
+    ],
+    "statusCost": 10,
+    "restWeight": 0.6,
+    "exhaustedPenalty": 0.5
+  },
   "ai": {
     "koBonus": 0.5,
     "lowHpTargetWeight": 0.2,
     "stageValuePerStep": 0.15,
     "healWeight": 1,
     "statusWeights": {
+      "appleTree": 0.15,
+
+      "abramacabra": 0.15,
+
+      "gemstoneWall": 0.15,
+
+      "wallFungal": 0.1,
+
+      "wallGlitter": 0.1,
+
+      "wallPlastic": 0.1,
+
+      "wallGlass": 0.1,
+
+      "wallLight": 0.1,
+
+      "wallFairy": 0.1,
+
+      "wallSteel": 0.1,
+
+      "wallDark": 0.1,
+
+      "wallDragon": 0.1,
+
+      "wallGhost": 0.1,
+
+      "wallRock": 0.1,
+
+      "wallBug": 0.1,
+
+      "wallPsychic": 0.1,
+
+      "wallFlying": 0.1,
+
+      "wallGround": 0.1,
+
+      "wallPoison": 0.1,
+
+      "wallFighting": 0.1,
+
+      "wallIce": 0.1,
+
+      "wallGrass": 0.1,
+
+      "wallElectric": 0.1,
+
+      "wallWater": 0.1,
+
+      "wallFire": 0.1,
+
+      "wallNormal": 0.1,
+
+      "phereonInvulnerable": 0.3,
+
+      "spored": 0.1,
+
+      "phereonInfected": 0.15,
+
+      "soaked": 0.1,
+
+      "shadowForm": 0.15,
+
+      "enlightened": 0.1,
+
+      "hardenedSkin": 0.1,
+
+      "phereonMagic": 0.1,
+
+      "phereonStrength": 0.1,
+
+      "springLoaded": 0.1,
+      "glassBonds": 0.1,
+      "window": 0.05,
+      "staticCharged": 0.1,
+      "softAttackDown": 0.05,
+      "softAttackUp": 0.05,
+      "softDefenseDown": 0.05,
+      "softDefenseUp": 0.05,
+      "softSpeedDown": 0.05,
+      "softSpeedUp": 0.05,
+      "softAccuracyDown": 0.05,
+      "softRegen": 0.05,
+      "softBurn": 0.05,
+      "disturbed": 0.1,
+      "tipped": 0.1,
+      "energised": 0.1,
+      "drained": 0.1,
+      "grounded": 0.2,
+      "conducted": 0.1,
+      "healingMist": 0.2,
+      "extinguished": 0.25,
+      "potentiated": 0.25,
+      "eroded": 0.25,
+      "bulkedUp": 0.25,
+      "buried": 0.15,
+      "chilled": 0.15,
+      "shattered": 0.1,
+      "conductive": 0.1,
       "poison": 0.3,
       "badPoison": 0.45,
       "burn": 0.2,
@@ -140,7 +255,25 @@
       "flinch": 0.1,
       "confusion": 0.25,
       "seeded": 0.3,
-      "minimized": 0.05
+      "minimized": 0.05,
+      "mania": 0.25,
+      "dazed": 0.25,
+      "frostbite": 0.25,
+      "prioPlus": 0.25,
+      "anticipating": 0.25,
+      "liquefied": 0.25,
+      "jinxed": 0.25,
+      "overgrown": 0.25,
+      "oilSlick": 0.25,
+      "drenched": 0.25,
+      "updraft": 0.25,
+      "featherGuard": 0.25,
+      "caltrops": 0.25,
+      "fogged": 0.25,
+      "fertilized": 0.25,
+      "lightUp": 0.25,
+      "bloodlust": 0.25,
+      "assisted": 0.25
     },
     "fieldWeight": 0.3,
     "defendWeight": 0.15,
@@ -375,7 +508,30 @@
     "chance": 3,
     "multiplierMin": 2,
     "multiplierMax": 5,
-    "eggChance": 30
+    "eggChance": 30,
+    "advantages": {
+      "randomChance": 100,
+      "countWeights": [85, 13, 2],
+      "entries": [
+        {
+          "traitId": "crescendoAdvantage",
+          "weight": 1
+        },
+        {
+          "traitId": "rainstormAdvantage",
+          "weight": 1
+        },
+        {
+          "traitId": "suppressionAdvantage",
+          "weight": 1
+        },
+        {
+          "traitId": "gardenAdvantage",
+          "weight": 1
+        }
+      ]
+    },
+    "scoutPricePerFloor": 200
   },
   "egg": {
     "hatchBattlesMin": 5,
@@ -503,7 +659,8 @@
     "lineageFactor": 0.9
   },
   "fusion": {
-    "inheritSkills": 2
+    "inheritSkills": 2,
+    "keptTraitPercent": 50
   },
   "crystal": {
     "extractCostBase": 100,
@@ -1092,25 +1249,52 @@
       {
         "fromFloor": 1,
         "drops": [
-          { "itemId": "expCandyS", "chance": 30 },
-          { "itemId": "expCandyM", "chance": 3 },
-          { "itemId": "expCandyL", "chance": 0.5 }
+          {
+            "itemId": "expCandyS",
+            "chance": 30
+          },
+          {
+            "itemId": "expCandyM",
+            "chance": 3
+          },
+          {
+            "itemId": "expCandyL",
+            "chance": 0.5
+          }
         ]
       },
       {
         "fromFloor": 20,
         "drops": [
-          { "itemId": "expCandyS", "chance": 5 },
-          { "itemId": "expCandyM", "chance": 30 },
-          { "itemId": "expCandyL", "chance": 3 }
+          {
+            "itemId": "expCandyS",
+            "chance": 5
+          },
+          {
+            "itemId": "expCandyM",
+            "chance": 30
+          },
+          {
+            "itemId": "expCandyL",
+            "chance": 3
+          }
         ]
       },
       {
         "fromFloor": 50,
         "drops": [
-          { "itemId": "expCandyS", "chance": 2 },
-          { "itemId": "expCandyM", "chance": 5 },
-          { "itemId": "expCandyL", "chance": 30 }
+          {
+            "itemId": "expCandyS",
+            "chance": 2
+          },
+          {
+            "itemId": "expCandyM",
+            "chance": 5
+          },
+          {
+            "itemId": "expCandyL",
+            "chance": 30
+          }
         ]
       }
     ],
@@ -1477,6 +1661,11 @@
     ],
     "repeatEvery": 5,
     "divineSkills": {
+      "fungal": ["sporeBurst", "mycelialCrush"],
+
+      "glitter": ["glitterStorm", "glitterBomb"],
+      "plastic": ["clockworkMouse", "suctionCupDart"],
+      "glass": ["glassCannon", "siliconSlash"],
       "normal": ["megatonImplode", "beeQuiet"],
       "fire": ["vCreate", "butcher"],
       "water": ["hydroLaser", "waterSpout"],
@@ -1512,6 +1701,11 @@
       "maxTurns": 50
     },
     "pillItemIds": {
+      "fungal": "awakeningPillFungal",
+
+      "glitter": "awakeningPillGlitter",
+      "plastic": "awakeningPillPlastic",
+      "glass": "awakeningPillGlass",
       "normal": "awakeningPillNormal",
       "fire": "awakeningPillFire",
       "water": "awakeningPillWater",
@@ -1609,6 +1803,11 @@
       }
     ],
     "demonCoreItemIds": {
+      "fungal": "demonCoreFungal",
+
+      "glitter": "demonCoreGlitter",
+      "plastic": "demonCorePlastic",
+      "glass": "demonCoreGlass",
       "normal": "demonCoreNormal",
       "fire": "demonCoreFire",
       "water": "demonCoreWater",
@@ -1664,6 +1863,11 @@
       "deity": "essenceDeity"
     },
     "elementStoneItemIds": {
+      "fungal": "spiritStoneFungal",
+
+      "glitter": "spiritStoneGlitter",
+      "plastic": "spiritStonePlastic",
+      "glass": "spiritStoneGlass",
       "normal": "spiritStoneNormal",
       "fire": "spiritStoneFire",
       "water": "spiritStoneWater",
@@ -1732,43 +1936,127 @@
   "dwelling": {
     "workStatPercents": {
       "elements": {
-        "normal": { "transporting": 50 },
-        "fire": { "kindling": 100 },
-        "water": { "watering": 100 },
-        "electric": { "generating": 100 },
-        "grass": { "farming": 100 },
-        "ice": { "watering": 50 },
-        "fighting": { "mining": 50, "transporting": 50 },
-        "poison": { "research": 50 },
-        "ground": { "mining": 100 },
-        "flying": { "transporting": 100 },
-        "psychic": { "research": 100 },
-        "bug": { "farming": 50 },
-        "rock": { "mining": 100 },
-        "ghost": { "research": 50 },
-        "dragon": { "kindling": 50, "mining": 50 },
-        "dark": { "mining": 50 },
-        "steel": { "mining": 100 },
-        "fairy": { "caring": 100 },
-        "light": { "caring": 50, "generating": 50 }
+        "fungal": { "farming": 50 },
+
+        "glitter": {
+          "caring": 50
+        },
+        "plastic": {
+          "transporting": 50
+        },
+        "glass": {
+          "mining": 50
+        },
+        "normal": {
+          "transporting": 50
+        },
+        "fire": {
+          "kindling": 100
+        },
+        "water": {
+          "watering": 100
+        },
+        "electric": {
+          "generating": 100
+        },
+        "grass": {
+          "farming": 100
+        },
+        "ice": {
+          "watering": 50
+        },
+        "fighting": {
+          "mining": 50,
+          "transporting": 50
+        },
+        "poison": {
+          "research": 50
+        },
+        "ground": {
+          "mining": 100
+        },
+        "flying": {
+          "transporting": 100
+        },
+        "psychic": {
+          "research": 100
+        },
+        "bug": {
+          "farming": 50
+        },
+        "rock": {
+          "mining": 100
+        },
+        "ghost": {
+          "research": 50
+        },
+        "dragon": {
+          "kindling": 50,
+          "mining": 50
+        },
+        "dark": {
+          "mining": 50
+        },
+        "steel": {
+          "mining": 100
+        },
+        "fairy": {
+          "caring": 100
+        },
+        "light": {
+          "caring": 50,
+          "generating": 50
+        }
       },
       "races": {
-        "dragon": { "kindling": 100 },
-        "beast": { "transporting": 50 },
-        "humanoid": { "research": 50 },
-        "aquatic": { "watering": 50 },
-        "avian": { "transporting": 100 },
-        "insect": { "farming": 50 },
-        "plant": { "farming": 100 },
-        "mineral": { "mining": 100 },
-        "undead": { "mining": 50 },
-        "demon": { "kindling": 50 },
-        "elemental": { "generating": 50 },
-        "aberration": { "research": 100 },
-        "spirit": { "caring": 50 },
-        "celestial": { "caring": 100 },
-        "deity": { "generating": 100 },
-        "alien": { "research": 50 }
+        "dragon": {
+          "kindling": 100
+        },
+        "beast": {
+          "transporting": 50
+        },
+        "humanoid": {
+          "research": 50
+        },
+        "aquatic": {
+          "watering": 50
+        },
+        "avian": {
+          "transporting": 100
+        },
+        "insect": {
+          "farming": 50
+        },
+        "plant": {
+          "farming": 100
+        },
+        "mineral": {
+          "mining": 100
+        },
+        "undead": {
+          "mining": 50
+        },
+        "demon": {
+          "kindling": 50
+        },
+        "elemental": {
+          "generating": 50
+        },
+        "aberration": {
+          "research": 100
+        },
+        "spirit": {
+          "caring": 50
+        },
+        "celestial": {
+          "caring": 100
+        },
+        "deity": {
+          "generating": 100
+        },
+        "alien": {
+          "research": 50
+        }
       }
     },
     "wrongWorkPercent": 12.5,
@@ -1806,23 +2094,74 @@
       "brokenPartAilmentChance": 30
     },
     "foods": {
-      "beastFeed": { "fullness": 40, "sanity": 0 },
-      "spiritFruit": { "fullness": 20, "sanity": 0 },
-      "lingzhi": { "fullness": 15, "sanity": 5 },
-      "ginseng": { "fullness": 15, "sanity": 5 },
-      "snowLotus": { "fullness": 15, "sanity": 5 },
-      "fleeceflower": { "fullness": 15, "sanity": 5 },
-      "calmPill": { "fullness": 5, "sanity": 40 },
-      "spiritRiceCongee": { "fullness": 80, "sanity": 20 },
-      "heartBondCake": { "fullness": 80, "sanity": 20 },
-      "fireDragonSoup": { "fullness": 80, "sanity": 20 },
-      "mysticTortoiseBroth": { "fullness": 80, "sanity": 20 },
-      "galeChaserCake": { "fullness": 80, "sanity": 20 },
-      "beastLureCake": { "fullness": 80, "sanity": 20 },
-      "hundredFlowerCake": { "fullness": 80, "sanity": 20 },
-      "goldenFishFeast": { "fullness": 80, "sanity": 20 },
-      "treasureSeekerSoup": { "fullness": 80, "sanity": 20 },
-      "eightTreasureFeast": { "fullness": 80, "sanity": 20 }
+      "beastFeed": {
+        "fullness": 40,
+        "sanity": 0
+      },
+      "spiritFruit": {
+        "fullness": 20,
+        "sanity": 0
+      },
+      "lingzhi": {
+        "fullness": 15,
+        "sanity": 5
+      },
+      "ginseng": {
+        "fullness": 15,
+        "sanity": 5
+      },
+      "snowLotus": {
+        "fullness": 15,
+        "sanity": 5
+      },
+      "fleeceflower": {
+        "fullness": 15,
+        "sanity": 5
+      },
+      "calmPill": {
+        "fullness": 5,
+        "sanity": 40
+      },
+      "spiritRiceCongee": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "heartBondCake": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "fireDragonSoup": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "mysticTortoiseBroth": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "galeChaserCake": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "beastLureCake": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "hundredFlowerCake": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "goldenFishFeast": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "treasureSeekerSoup": {
+        "fullness": 80,
+        "sanity": 20
+      },
+      "eightTreasureFeast": {
+        "fullness": 80,
+        "sanity": 20
+      }
     },
     "workerAffinity": 1,
     "workerAffinityDays": 3
@@ -2103,6 +2442,25 @@
           },
           {
             "itemId": "awakeningPillRock",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          { "itemId": "awakeningPillFungal", "weight": 0.15789473684210525, "min": 1, "max": 1 },
+          {
+            "itemId": "awakeningPillGlitter",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillPlastic",
+            "weight": 0.15789473684210525,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "itemId": "awakeningPillGlass",
             "weight": 0.15789473684210525,
             "min": 1,
             "max": 1
@@ -2392,7 +2750,11 @@
     "destiny": {
       "baseSlots": 1,
       "choiceCount": 3,
-      "rarityWeights": { "common": 60, "rare": 30, "epic": 10 }
+      "rarityWeights": {
+        "common": 60,
+        "rare": 30,
+        "epic": 10
+      }
     }
   },
   "challenge": {
@@ -2436,14 +2798,29 @@
   },
   "auction": {
     "sessionDays": 7,
-    "lotCount": { "min": 3, "max": 6 },
-    "lotWeights": { "equipment": 3, "unique": 1, "egg": 3, "book": 2, "item": 3 },
+    "lotCount": {
+      "min": 3,
+      "max": 6
+    },
+    "lotWeights": {
+      "equipment": 3,
+      "unique": 1,
+      "egg": 3,
+      "book": 2,
+      "item": 3
+    },
     "startPercent": 100,
     "npcMinPercent": 90,
     "npcMaxPercent": 250,
-    "equipmentRarityWeights": { "epic": 1, "legendary": 3 },
+    "equipmentRarityWeights": {
+      "epic": 1,
+      "legendary": 3
+    },
     "equipmentMinRollPercent": 50,
-    "itemCount": { "min": 1, "max": 3 },
+    "itemCount": {
+      "min": 1,
+      "max": 3
+    },
     "bookReusableChance": 50,
     "eggCatchRatePower": -1,
     "eggValuePerFloor": 1000,
@@ -2455,13 +2832,27 @@
   "gacha": {
     "costBase": 500,
     "pullOptions": [
-      { "count": 1, "costMultiplier": 1 },
-      { "count": 10, "costMultiplier": 9 }
+      {
+        "count": 1,
+        "costMultiplier": 1
+      },
+      {
+        "count": 10,
+        "costMultiplier": 9
+      }
     ],
     "rankWeights": [100, 70, 45, 30, 20, 12, 6, 3, 1],
-    "traitKindWeights": { "positive": 79, "negative": 11, "rare": 10 },
-    "traitKindFloorGrowth": { "rare": 0.02 },
-    "traitKindFloorFalloff": { "negative": 0.05 }
+    "traitKindWeights": {
+      "positive": 79,
+      "negative": 11,
+      "rare": 10
+    },
+    "traitKindFloorGrowth": {
+      "rare": 0.02
+    },
+    "traitKindFloorFalloff": {
+      "negative": 0.05
+    }
   },
   "sects": {
     "rejoinCooldownDays": 30,
@@ -2540,6 +2931,11 @@
       "minItemPrice": 1000,
       "itemWeightPower": -0.5,
       "extraItemIds": [
+        "fungalZCrystal",
+
+        "glitterZCrystal",
+        "plasticZCrystal",
+        "glassZCrystal",
         "fusionCharm",
         "greatFusionCharm",
         "ultraFusionCharm",
@@ -2909,6 +3305,11 @@
     },
     "imbue": {
       "lineIds": {
+        "fungal": "affixImbueFungal",
+
+        "glitter": "affixImbueGlitter",
+        "plastic": "affixImbuePlastic",
+        "glass": "affixImbueGlass",
         "normal": "affixImbueNormal",
         "fire": "affixImbueFire",
         "water": "affixImbueWater",
@@ -3014,6 +3415,11 @@
   },
   "itemGroups": {
     "demonCore": [
+      "demonCoreFungal",
+
+      "demonCoreGlitter",
+      "demonCorePlastic",
+      "demonCoreGlass",
       "demonCoreNormal",
       "demonCoreFire",
       "demonCoreWater",
@@ -3036,6 +3442,30 @@
     ]
   },
   "zones": {
+    "portals": {
+      "spawnChance": 15,
+      "maxOpen": 3,
+      "durationDays": 7,
+      "steps": { "min": 8, "max": 12 },
+      "stepWeights": {
+        "battle": 45,
+        "elite": 8,
+        "treasure": 12,
+        "rareTreasure": 3,
+        "spring": 8,
+        "hive": 14,
+        "gather": 10
+      },
+      "floorsPerHostility": 2,
+      "floorsPerHive": 1,
+      "startHives": 1,
+      "hivesPerDay": 1,
+      "maxHives": 8,
+      "stabilizeCost": 5000,
+      "stabilizeDays": 5,
+      "gatherRolls": 2
+    },
+
     "floorOffset": -3,
     "steps": {
       "min": 5,
@@ -3046,7 +3476,9 @@
       "elite": 10,
       "treasure": 20,
       "rareTreasure": 5,
-      "spring": 10
+      "spring": 10,
+      "hive": 0,
+      "gather": 0
     },
     "springHealPercent": 40,
     "guardianRareRolls": 2,
@@ -3165,6 +3597,25 @@
         },
         {
           "itemId": "spiritStoneRock",
+          "weight": 8,
+          "min": 1,
+          "max": 1
+        },
+        { "itemId": "spiritStoneFungal", "weight": 8, "min": 1, "max": 1 },
+        {
+          "itemId": "spiritStoneGlitter",
+          "weight": 8,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "spiritStonePlastic",
+          "weight": 8,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "spiritStoneGlass",
           "weight": 8,
           "min": 1,
           "max": 1
@@ -3306,6 +3757,25 @@
           "min": 1,
           "max": 1
         },
+        { "itemId": "fungalTeraShard", "weight": 4, "min": 1, "max": 1 },
+        {
+          "itemId": "glitterTeraShard",
+          "weight": 4,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "plasticTeraShard",
+          "weight": 4,
+          "min": 1,
+          "max": 1
+        },
+        {
+          "itemId": "glassTeraShard",
+          "weight": 4,
+          "min": 1,
+          "max": 1
+        },
         {
           "itemId": "groundTeraShard",
           "weight": 4,
@@ -3436,6 +3906,28 @@
         },
         {
           "itemId": "demonCoreRock",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        { "itemId": "demonCoreFungal", "weight": 1, "min": 1, "max": 1, "minTier": 2 },
+        {
+          "itemId": "demonCoreGlitter",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "demonCorePlastic",
+          "weight": 1,
+          "min": 1,
+          "max": 1,
+          "minTier": 2
+        },
+        {
+          "itemId": "demonCoreGlass",
           "weight": 1,
           "min": 1,
           "max": 1,
@@ -3815,5 +4307,232 @@
         "spiritValue": 5
       }
     }
-  }
+  },
+  "bodyRefinement": {
+    "costPerLevel": 200,
+    "removeCostPercent": 25,
+    "tagBonuses": [
+      { "tag": "flying", "count": 2, "hooks": [{ "type": "airborne", "params": {} }] },
+      {
+        "tag": "aquatic",
+        "count": 2,
+        "hooks": [{ "type": "statModifier", "params": { "percent": { "speed": 15 } } }]
+      },
+      {
+        "tag": "aquatic",
+        "count": 4,
+        "hooks": [
+          { "type": "statModifier", "params": { "percent": { "speed": 15 } } },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "self",
+              "effects": [{ "do": "placeField", "fieldId": "deepWater" }]
+            }
+          }
+        ]
+      },
+      {
+        "tag": "lava",
+        "count": 2,
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "self",
+              "effects": [{ "do": "placeField", "fieldId": "volcanicTerrain" }]
+            }
+          }
+        ]
+      },
+      {
+        "tag": "lava",
+        "count": 3,
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "self",
+              "effects": [{ "do": "placeField", "fieldId": "volcanicTerrain" }]
+            }
+          },
+          { "type": "statModifier", "params": { "percent": { "speed": 15 } } }
+        ]
+      },
+      { "tag": "shadow", "count": 2, "hooks": [{ "type": "dodge", "params": { "percent": 10 } }] },
+      {
+        "tag": "shadow",
+        "count": 4,
+        "hooks": [
+          { "type": "dodge", "params": { "percent": 10 } },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "self",
+              "effects": [{ "do": "status", "to": "self", "statusId": "shadowForm", "turns": 1 }]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "hatchery": {
+    "roomCount": 3,
+    "eggsPerRoom": 4,
+    "defaultHabitatId": "basic",
+    "habitats": [
+      { "id": "basic", "buildCost": 0 },
+      { "id": "outside", "buildCost": 2000 },
+      { "id": "crystal", "buildCost": 8000 },
+      { "id": "lava", "buildCost": 6000, "hatchTraitId": "lavaImmuneTraitPhereon" },
+      { "id": "water", "buildCost": 4000, "hatchTraitId": "waterBreathingTraitPhereon" },
+      { "id": "slime", "buildCost": 4000, "hatchTraitId": "slimeTraitPhereon" },
+      { "id": "ice", "buildCost": 6000, "hatchTraitId": "coldResistantTraitPhereon" }
+    ],
+    "eggTypes": [
+      "normal",
+      "lava",
+      "aquatic",
+      "floral",
+      "stone",
+      "ice",
+      "light",
+      "dark",
+      "slime",
+      "crystal"
+    ],
+    "eggTypeByElement": {
+      "fire": "lava",
+      "water": "aquatic",
+      "grass": "floral",
+      "bug": "floral",
+      "fungal": "floral",
+      "rock": "stone",
+      "ground": "stone",
+      "steel": "stone",
+      "ice": "ice",
+      "light": "light",
+      "fairy": "light",
+      "psychic": "light",
+      "dark": "dark",
+      "ghost": "dark",
+      "poison": "slime",
+      "glass": "crystal",
+      "plastic": "crystal",
+      "glitter": "crystal"
+    },
+    "defaultEggType": "normal",
+    "baseStability": 100,
+    "rules": [
+      { "habitatIds": ["crystal"], "growth": 10, "stability": 10 },
+      { "habitatIds": ["ice"], "stability": 25 },
+      {
+        "habitatIds": ["outside"],
+        "notEggTypes": ["floral", "stone"],
+        "growth": -25,
+        "stability": -25
+      },
+      { "habitatIds": ["slime"], "notEggTypes": ["slime"], "stability": -50 },
+      { "habitatIds": ["water"], "notEggTypes": ["aquatic"], "stability": -25 },
+      { "habitatIds": ["ice"], "notEggTypes": ["ice"], "growth": -40 },
+      { "habitatIds": ["lava"], "eggTypes": ["stone"], "growth": 15 },
+      { "habitatIds": ["water"], "eggTypes": ["floral"], "growth": 25 },
+      { "eggTypes": ["aquatic"], "notHabitatIds": ["water"], "stability": -50 },
+      { "eggTypes": ["slime"], "stability": -50 },
+      { "eggTypes": ["slime"], "habitatIds": ["slime"], "growth": 50 },
+      { "eggTypes": ["slime"], "notHabitatIds": ["slime"], "growth": -50 },
+      { "eggTypes": ["lava"], "growth": 25 },
+      { "eggTypes": ["lava"], "notHabitatIds": ["lava"], "stability": -35 },
+      { "eggTypes": ["stone"], "growth": -25, "stability": 50 },
+      { "eggTypes": ["ice"], "stability": 50 },
+      { "eggTypes": ["ice"], "notHabitatIds": ["ice"], "growth": -50 }
+    ],
+    "neighborRules": [
+      { "eggTypes": ["floral"], "neighborEggTypes": ["floral"], "growth": 10, "stability": 20 },
+      { "eggTypes": ["floral"], "neighborEggTypes": ["light"], "growth": 20, "stability": 10 },
+      { "notEggTypes": ["light"], "neighborEggTypes": ["light"], "growth": 10 },
+      { "notEggTypes": ["dark"], "neighborEggTypes": ["dark"], "growth": -10 },
+      { "eggTypes": ["dark"], "notNeighborEggTypes": ["dark"], "growth": 15 }
+    ],
+    "minHatchChance": 5,
+    "genePercentPerExcessStability": 0.5,
+    "dailySteps": 1,
+    "hatcher": {
+      "statPerPoint": 10,
+      "diminishEvery": 10,
+      "diminishFactor": 0.75,
+      "sameEggTypeGrowth": 10,
+      "habitatEggTypes": {
+        "crystal": "crystal",
+        "ice": "ice",
+        "lava": "lava",
+        "water": "aquatic",
+        "slime": "slime"
+      },
+      "habitatGrowth": 10
+    },
+    "upgradeCap": 3,
+    "upgrades": [
+      { "id": "growth", "price": 3000, "effects": [{ "kind": "bonus", "growth": 10 }] },
+      { "id": "stability", "price": 3000, "effects": [{ "kind": "bonus", "stability": 10 }] },
+      { "id": "symbiotic", "price": 3000, "effects": [{ "kind": "sameSpecies", "growth": 10 }] },
+      { "id": "supporting", "price": 4000, "effects": [{ "kind": "readyEggs", "stability": 10 }] },
+      { "id": "boosting", "price": 5000, "effects": [{ "kind": "boostOthers", "steps": 1 }] },
+      { "id": "energizing", "price": 2000, "effects": [{ "kind": "hatchCare" }] },
+      {
+        "id": "embiggening",
+        "price": 8000,
+        "effects": [{ "kind": "hatchTrait", "traitId": "giantTraitPhereon" }]
+      },
+      { "id": "potential", "price": 12000, "effects": [{ "kind": "hatchGenes", "percent": 20 }] },
+      {
+        "id": "delayed",
+        "price": 6000,
+        "effects": [
+          { "kind": "bonus", "growthPercent": -50 },
+          { "kind": "hatchLevels", "levels": 9 }
+        ]
+      },
+      {
+        "id": "focusing",
+        "price": 6000,
+        "effects": [{ "kind": "excessGenes", "target": "highest", "multiplier": 2 }]
+      },
+      {
+        "id": "equalizing",
+        "price": 6000,
+        "effects": [{ "kind": "excessGenes", "target": "lowest", "multiplier": 2 }]
+      },
+      { "id": "consuming", "price": 3000, "effects": [{ "kind": "onFail", "spreadSteps": 2 }] },
+      { "id": "continuous", "price": 5000, "effects": [{ "kind": "onFail", "battlesLeft": 3 }] },
+      { "id": "soulCollector", "price": 5000, "effects": [{ "kind": "onFail", "soulPoints": 5 }] },
+      {
+        "id": "mutating",
+        "price": 9000,
+        "habitatIds": ["slime"],
+        "effects": [{ "kind": "randomTrait" }]
+      },
+      {
+        "id": "obsidianFarm",
+        "price": 9000,
+        "habitatIds": ["lava"],
+        "effects": [
+          { "kind": "hatchItem", "eggTypes": ["lava"], "itemId": "spiritStoneFire", "count": 1 }
+        ]
+      },
+      {
+        "id": "fruiting",
+        "price": 4000,
+        "habitatIds": ["outside"],
+        "effects": [
+          { "kind": "dailyItem", "eggTypes": ["floral"], "itemId": "spiritStoneGrass", "count": 1 }
+        ]
+      }
+    ]
+  },
+  "essences": { "offerSize": 3, "rarityWeights": { "common": 60, "rare": 35, "mythic": 5 } }
 }

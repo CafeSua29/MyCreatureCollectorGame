@@ -153,6 +153,12 @@ const rebirth: StatusHookHandler = {
   rebirthPercent: (params) => (params as { hpPercent: number }).hpPercent
 }
 
+/** Cuối lượt mất máu bằng lượng của trạng thái (Mania: 3% tổng máu mọi quái đã hồi lúc dính). */
+const amountDamage: StatusHookHandler = {
+  validateParams: emptyParams,
+  dealsAmountAtTurnEnd: () => true
+}
+
 export const SIRALIM_STATUS_HOOKS: Readonly<Record<string, StatusHookHandler>> = {
   endsOnDamage,
   thaw,
@@ -171,5 +177,6 @@ export const SIRALIM_STATUS_HOOKS: Readonly<Record<string, StatusHookHandler>> =
   autoGuard,
   stuckAtBottom,
   invert,
-  rebirth
+  rebirth,
+  amountDamage
 }

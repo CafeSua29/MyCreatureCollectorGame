@@ -230,6 +230,7 @@ export function checkConfig(data: GameData, issues: string[]): void {
   push(checkNumber(config.fuseCostPerLevel, 'fuseCostPerLevel', 0))
   checkFuseChanceConfig(data, issues)
   push(checkInteger(config.fusion?.inheritSkills, 'fusion.inheritSkills', 0))
+  push(checkNumber(config.fusion?.keptTraitPercent, 'fusion.keptTraitPercent', 0, 100))
   push(checkNumber(config.sacrifice?.costPerLevel, 'sacrifice.costPerLevel', 0))
   push(checkNumber(config.sacrifice?.statPercentPerStack, 'sacrifice.statPercentPerStack', 0))
   // config.rebirth kiểm tra ở validateRebirth.ts.
@@ -269,6 +270,24 @@ export function checkConfig(data: GameData, issues: string[]): void {
     issues.push(`config.boss.traitId "${boss.traitId}" phải trỏ tới trait loại "boss"`)
   }
   push(checkNumber(boss.chance, 'boss.chance', 0, 100))
+  if (boss.scoutPricePerFloor !== undefined) {
+    push(checkNumber(boss.scoutPricePerFloor, 'boss.scoutPricePerFloor', 0))
+  }
+  if (boss.advantages !== undefined) {
+    push(checkNumber(boss.advantages.randomChance, 'boss.advantages.randomChance', 0, 100))
+    const counts = boss.advantages.countWeights
+    if (!Array.isArray(counts) || !counts.some((weight) => weight > 0)) {
+      issues.push('config.boss.advantages.countWeights phải là danh sách có trọng số > 0')
+    } else {
+      for (const weight of counts) push(checkNumber(weight, 'boss.advantages.countWeights', 0))
+    }
+    for (const entry of boss.advantages.entries) {
+      if (data.traits[entry.traitId]?.kind !== 'boss') {
+        issues.push(`config.boss.advantages: "${entry.traitId}" phải là trait loại "boss"`)
+      }
+      push(checkNumber(entry.weight, 'boss.advantages.weight', Number.MIN_VALUE))
+    }
+  }
   push(checkInteger(boss.multiplierMin, 'boss.multiplierMin', 1))
   push(checkInteger(boss.multiplierMax, 'boss.multiplierMax', boss.multiplierMin ?? 1))
   push(checkNumber(boss.eggChance, 'boss.eggChance', 0, 100))
@@ -336,6 +355,28 @@ export function checkConfig(data: GameData, issues: string[]): void {
     const guard = asObject(battle[command])
     push(checkInteger(guard?.priority, `battle.${command}.priority`))
     push(checkNumber(guard?.damageTakenPercent, `battle.${command}.damageTakenPercent`, -100))
+  }
+  const stamina = asObject(config.stamina)
+  for (const key of [
+    'max',
+    'regenPercent',
+    'regenFlat',
+    'restPercent',
+    'overexertHpPercent',
+    'statusCost',
+    'restWeight',
+    'exhaustedPenalty'
+  ]) {
+    push(checkNumber(stamina?.[key], `stamina.${key}`, 0))
+  }
+  if (!Array.isArray(stamina?.costByPower))
+    issues.push('config.stamina.costByPower phải là danh sách')
+  else {
+    stamina.costByPower.forEach((tier: unknown, i) => {
+      const entry = asObject(tier)
+      push(checkNumber(entry?.upToPower, `stamina.costByPower[${i}].upToPower`, 0))
+      push(checkNumber(entry?.cost, `stamina.costByPower[${i}].cost`, 0))
+    })
   }
   const chain = asObject(battle.traitChain)
   push(checkInteger(chain?.maxDepth, 'battle.traitChain.maxDepth', 0))

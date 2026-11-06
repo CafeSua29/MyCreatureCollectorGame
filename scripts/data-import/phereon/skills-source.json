@@ -1,0 +1,4342 @@
+[
+  {
+    "id": "AbsorbFire",
+    "target": "instant",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove burn from all characters within radius 2. Restore hp equal to the amount removed. gain 1 ap if 4 or more were removed."
+  },
+  {
+    "id": "AbsorbSeed",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy allied seedling to gain 2 ap and 2 magic/strength charges."
+  },
+  {
+    "id": "Adapt",
+    "target": "targetAlly",
+    "range": null,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target gains mg/str charges equal to their amount of status effects (with duration). Enlightened: They also gain 1 ap."
+  },
+  {
+    "id": "Aegis",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 6,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain 100% shield"
+  },
+  {
+    "id": "AmplifyFire",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal 10 fire dmg to adjacent characters."
+  },
+  {
+    "id": "AmplifyGrass",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove poison from adjacent characters."
+  },
+  {
+    "id": "AmplifyIce",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Adjacent allies gain haste for a turn."
+  },
+  {
+    "id": "AmplifyLight",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Enlighten adjacent allies for a turn."
+  },
+  {
+    "id": "AmplifyShadow",
+    "target": "instant",
+    "range": 2,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Curse adjacent characters for a turn. Turn tiles into grass."
+  },
+  {
+    "id": "AmplifyStone",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Adjacent characters become vulnerable for a turn."
+  },
+  {
+    "id": "AmplifyWater",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Adjacent allies gain haste for a turn. Turn tiles into grass."
+  },
+  {
+    "id": "AnimateDead",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 15,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Ressurrect the last (non-token) character that died as ally with 1 ap. (Unique enemies don't die) The character restores 20% hp and has increased armor for 2 turns Permanently increases LRes by 1 Reduces beauty by 25% and max morale by 20"
+  },
+  {
+    "id": "AnimatePlant",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove non-defending/attacking/blocking from a floral token. Changes movement type/action. Always grants 1 ap and +1 speed."
+  },
+  {
+    "id": "Antidote",
+    "target": "targetAlly",
+    "range": 2,
+    "mana": 1,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "turn poison effect into regeneration with equal duration. (up to 5)"
+  },
+  {
+    "id": "Apocalypse",
+    "target": "instant",
+    "range": null,
+    "mana": 10,
+    "cd": 3,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Deal mg*3 dmg to ALL characters Irradiate each character for remaining battle. Turn all tiles into wasteland."
+  },
+  {
+    "id": "AquaBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Create water tiles on target tile and neighbours. Requires grass connection (max 7 tiles path)."
+  },
+  {
+    "id": "Assassinate",
+    "target": "targetEnemy",
+    "range": 8,
+    "mana": 4,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Teleport to a cursed enemy (random surrounding space) Deals mg damage"
+  },
+  {
+    "id": "BackStab",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": true,
+    "desc": "Teleport behind a character and perform a free attack on them"
+  },
+  {
+    "id": "Banish",
+    "target": "targetOtherCharacter",
+    "range": 2,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Consume all shadow tiles on the map. Deal true dmg equal to the amount to target character"
+  },
+  {
+    "id": "Barrier",
+    "target": "instant",
+    "range": null,
+    "mana": 1,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain 5 shield. Requires/Uses up a magic charge."
+  },
+  {
+    "id": "Bedazzle",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Increase the duration of all active blind effects by 1."
+  },
+  {
+    "id": "Bite",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 3,
+    "cd": 3,
+    "dmg": ["Basic"],
+    "attacks": true,
+    "desc": "attack target with a basic attack and apply bleed for 3 turns Restore hp equal to half the dmg dealt"
+  },
+  {
+    "id": "BlackHole",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 8,
+    "cd": 1,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "pulls characters in target area towards you and deal mg dmg Only affects as many as empty tiles surrounding you Minimum range of 3"
+  },
+  {
+    "id": "Blessing",
+    "target": "instant",
+    "range": 0,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Shield all allies in shadowform or in shadow by mg. Shield all enlightened allies by mg."
+  },
+  {
+    "id": "BlindingLight",
+    "target": "instant",
+    "range": null,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "ALL adjacent characers become blinded for 2 turns"
+  },
+  {
+    "id": "Blink",
+    "target": "targetEmptyTile",
+    "range": 2,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to free tile."
+  },
+  {
+    "id": "Blizzard",
+    "target": "instant",
+    "range": null,
+    "mana": 10,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Freeze water and lava. Turn many random tiles into snow. Clear all burn debuffs. Freeze all characters."
+  },
+  {
+    "id": "BloodHealing",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal target by 10 Caster loses 5 hp"
+  },
+  {
+    "id": "BloodShield",
+    "target": "instant",
+    "range": null,
+    "mana": 1,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Lose 2 hp. Gain 5 shield."
+  },
+  {
+    "id": "BulbConduit",
+    "target": "targetOtherAlly",
+    "range": 5,
+    "mana": 1,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice target bulb: Removes all temporary effects, transferring them to all neighbours (Positive and negative)"
+  },
+  {
+    "id": "BulbExplosion",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 1,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Explode target bulb All characters in radius 2 take true damage equal to its current mana"
+  },
+  {
+    "id": "BulbJump",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Jump to a free tile Spawn a slimeBulb on the previous tile (also turns tile into slime)"
+  },
+  {
+    "id": "BulbShield",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spend all mana Shield target by that amount"
+  },
+  {
+    "id": "BulbShot",
+    "target": "targetEnemy",
+    "range": 5,
+    "mana": 0,
+    "cd": 2,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Spend all mana Deal water dmg to target equal to that amount"
+  },
+  {
+    "id": "BulbThrow",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Throw an adjacent bulb. (same size or smaller) Targeting character: bulb lands next to target. The target becomes infected for a turn. Targeting empty tile: bulb lands on the tile, the tile becomes slime."
+  },
+  {
+    "id": "Burrow",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move from one tile to another of the same type valid tiles: earth,grass,stone,lava,sand,snow Defend for a turn"
+  },
+  {
+    "id": "CallWorm",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Targets a random non-elite worm on the field: It burrows to target tile. (It defends if it matches their previous tile)"
+  },
+  {
+    "id": "CelestialStrike",
+    "target": "targetEnemy",
+    "range": 8,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Requires adjacent tiles to be of equal shadow and non-shadow amount. Deal 5*true dmg to target enemy."
+  },
+  {
+    "id": "ChainLightning",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal 2+mg dmg to target. Chains twice. (can't hit the same target twice)"
+  },
+  {
+    "id": "ChainSnipe",
+    "target": "straightLineCharacter",
+    "range": 5,
+    "mana": 4,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal 2+mg dmg to target in straight line. Chains twice to adjacent characters. (can't hit the same target twice) Regain 2 ap if 3 targets are hit."
+  },
+  {
+    "id": "Charge",
+    "target": "straightLineEmptyTile",
+    "range": 6,
+    "mana": 0,
+    "cd": 4,
+    "dmg": [],
+    "attacks": true,
+    "desc": "Charge in a straight line and attack the enemy next in line. (Similar to centaur base movement) Interrupted by water/lava"
+  },
+  {
+    "id": "ChargeUp",
+    "target": "instant",
+    "range": 1,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain magic buff (+50% mg) for remaining battle."
+  },
+  {
+    "id": "Claws",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 1,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Deal str+2 slashing dmg"
+  },
+  {
+    "id": "Cleanse",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove ALL temporary effects from target"
+  },
+  {
+    "id": "Collect",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Absorb all other connected tiles of current tile type (max range 4). Gain shield equal to the amount. If collecting darkslime, also gain mg/str charges equal to half the amount. (Darkslime->Grass/Other->Earth->Wasteland)"
+  },
+  {
+    "id": "Command",
+    "target": "targetOtherAlly",
+    "range": 2,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "restores 2 ap of a stubborn character"
+  },
+  {
+    "id": "Conceal",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Put target ally into shadowForm for 1 turn"
+  },
+  {
+    "id": "Conduit",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 1,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "removes all temporary effects from Sylvie, transferring them to all neighbours (duration +1) (Positive and negative)"
+  },
+  {
+    "id": "Constrict",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Entangle target for a turn."
+  },
+  {
+    "id": "ConstructPylon",
+    "target": "targetAny",
+    "range": 2,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawn a small pylon with 0ap for the turn. (It has crystal armor and various movement abilities.) Or target pylon to grant it 2 ap."
+  },
+  {
+    "id": "Consume",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy target character with hp less than twice your strength. Restore hp equal to the dmg dealt Regenerate for 2 turns"
+  },
+  {
+    "id": "ConsumeBulb",
+    "target": "targetAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Consume target bulb Infect self and increase strength for 2 turns Bulb at 5+ mana: also increase armor Bulb at 10+ mana: durations +1 Bulb at 20+ mana: gain 1 ap."
+  },
+  {
+    "id": "ConsumeMana",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy target non-token character with hp less than twice your strength. Permanently gain 2 mana"
+  },
+  {
+    "id": "CopySkill",
+    "target": "targetOtherCharacter",
+    "range": null,
+    "mana": 3,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Permanently replace this skill with the first skill of target character. (That you don't already know)"
+  },
+  {
+    "id": "Corrupt",
+    "target": "targetCharacter",
+    "range": 5,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Infect target for 1 turn. Target tile into slime."
+  },
+  {
+    "id": "Cover",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target smaller ally loses all ap (min. 1 required) and becomes immune to all dmg for a turn. User loses own invulnerability and all shield if possible."
+  },
+  {
+    "id": "Crash",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 2,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Jump against an enemy. user and target take (user str+ each others armor) basic dmg (land in random surrounding space). Or jump towards target empty tile, turning it into stone, spreading its previous type to adjacent tiles. min range of 2"
+  },
+  {
+    "id": "CreateLava",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn stone 3 tiles around caster to lava and vaporize water/slime"
+  },
+  {
+    "id": "CreateStone",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Create Stone in radius 2 around caster."
+  },
+  {
+    "id": "CreateWater",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Create Water in radius 2 around caster."
+  },
+  {
+    "id": "Crush",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 1,
+    "cd": 3,
+    "dmg": ["Basic"],
+    "attacks": false,
+    "desc": "deal 2*str basic dmg"
+  },
+  {
+    "id": "CrystalBeam",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 5,
+    "cd": 3,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Lose 2 hp Damages all characters in a line by (mg + str) radiant dmg. Shield self for a turn."
+  },
+  {
+    "id": "Crystallize",
+    "target": "targetAlly",
+    "range": null,
+    "mana": 1,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target ally loses 2 hp and gains 5 shield."
+  },
+  {
+    "id": "CrystalShard",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "lose 2 hp to deal mg slashing dmg"
+  },
+  {
+    "id": "CrystalStorm",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Lose 5 hp to deal mg slashing dmg to anyone in radius 1"
+  },
+  {
+    "id": "Cure",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "remove ALL temporary effects from self"
+  },
+  {
+    "id": "Curse",
+    "target": "targetCharacter",
+    "range": 4,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Curse target for mg/2 turns"
+  },
+  {
+    "id": "CursedFlame",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 4,
+    "cd": 2,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Deal mg shadow dmg and increase burn by 1."
+  },
+  {
+    "id": "Darkness",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Turn mg+5 random tiles into shadow. Increase global shadow dmg by 1% for each grass tile affected. Remove all \"enlightened\" effects."
+  },
+  {
+    "id": "DarkRevive",
+    "target": "targetEmptyTile",
+    "range": 2,
+    "mana": 10,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Ressurrect the last (non-token) character that died, as a token. (Unique enemies don't die) Character gains 2ap and strength/magic buff for the remaining battle."
+  },
+  {
+    "id": "DeepFreeze",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 10,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Freeze target character for 2 effective turns: - Won't be able to act. - Armor increases by 5. - Will be immune to further stun effects for the remaining battle"
+  },
+  {
+    "id": "Defrost",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove frozen from target. Gain mg shield."
+  },
+  {
+    "id": "Detonate",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 1,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Sacrifice self!!! Deal mg damage to adjacent characters."
+  },
+  {
+    "id": "Discharge",
+    "target": "instant",
+    "range": null,
+    "mana": 8,
+    "cd": 2,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal mg electric damage to all characters in range 2"
+  },
+  {
+    "id": "Dispel",
+    "target": "targetEnemy",
+    "range": 5,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Lower enemy shield by mg*2"
+  },
+  {
+    "id": "Displace",
+    "target": "targetCharacter",
+    "range": 4,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target character moves to a random adjacent tile, prioritizing different terrain."
+  },
+  {
+    "id": "Dive",
+    "target": "targetEmptyTile",
+    "range": 6,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move from water to water."
+  },
+  {
+    "id": "Dodge",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move to a free tile. You need to be adjacent to an enemy. Target tile can't be adjacent to an enemy."
+  },
+  {
+    "id": "DragonFlight",
+    "target": "straightLineEmptyTile",
+    "range": 7,
+    "mana": 4,
+    "cd": 3,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "fly in a straight line, turning all tiles into lava also deals mg fire dmg to any character"
+  },
+  {
+    "id": "DrainCurse",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove curse from enemy and restore hp."
+  },
+  {
+    "id": "DrainEffects",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "drain every temporary effect of target character (same duration)"
+  },
+  {
+    "id": "DrainEssence",
+    "target": "targetOtherCharacter",
+    "range": 4,
+    "mana": 0,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Drain mana from a character (up to full)"
+  },
+  {
+    "id": "DrainLava",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Useable on lava: Gain 2*mg shield. Turns tile to stone."
+  },
+  {
+    "id": "DrainLife",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Deal mg true dmg. Restore hp equal to dmg dealt. Enlightened: Also gain that much shield."
+  },
+  {
+    "id": "DrainMana",
+    "target": "targetOtherAlly",
+    "range": 8,
+    "mana": 0,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Drain all mana from an ally in shadow/shadowForm (until full)"
+  },
+  {
+    "id": "DrainShadow",
+    "target": "instant",
+    "range": null,
+    "mana": 1,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Useable on shadow: Gain +50% strength/magic for a turn Turns tile to earth"
+  },
+  {
+    "id": "DrainSlime",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain a magic charge. Remove slime."
+  },
+  {
+    "id": "DrainWater",
+    "target": "instant",
+    "range": null,
+    "mana": 3,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Drain Water around you, gaining 1 magic charge/2 shield each"
+  },
+  {
+    "id": "Drown",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 1,
+    "cd": 4,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Deal str*2 water dmg. You need to be in water."
+  },
+  {
+    "id": "EarthQuake",
+    "target": "instant",
+    "range": null,
+    "mana": 10,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal mg+str dmg to all other characters on the same tile type (Doesn't work on water)"
+  },
+  {
+    "id": "ElectricCharge",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 5,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal mg electric dmg in a line and stun them for a turn. Requires/Uses up 2 magic charges."
+  },
+  {
+    "id": "Electrify",
+    "target": "instant",
+    "range": 3,
+    "mana": 5,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Affects all connected tiles. (Requires standing on shadow or water) Deal mg electric dmg to ALL characters. Shadow: tiles turn into water afterwards. Water: each tile has a 50% chance to turn into earth afterwards. (connection range is max 7 tiles)"
+  },
+  {
+    "id": "Electrocute",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 7,
+    "cd": 3,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Target a character: Deal mg electric dmg to them and connected characters. Max chain range: 7"
+  },
+  {
+    "id": "ElectroNet",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 5,
+    "cd": 5,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Tame an animal forever and change it's dmg type to electric, if successful. (chance based on targets remaining health, level and the user's magicstrength). Stuns target for a turn."
+  },
+  {
+    "id": "ElementalPower",
+    "target": "instant",
+    "range": 3,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Trigger an effect based on the current tile: Lava: Become fire coated for remaining battle Water: Cleanse all temporary effects Grass: Regenerate for 2 turns. Earth: Defend for a turn. Stone: Gain hardened skin for 3 turns. Snow/Ice: Gain immunity for a turn. Slime: Gain slimeTrail for 2 turns. Shadow: Enter shadowForm for a turn. Wasteland: Lower own max hp by 1. Gain magic/strength buff for remaining battle"
+  },
+  {
+    "id": "Empower",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 10,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fully heal target and set StrengthBuff and Focused for 3 turns."
+  },
+  {
+    "id": "EmpowerHebi",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 2,
+    "cd": 50,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Summon your companion in her true form to the battlefield Reduces MAX morale by 5 each use(can't be used to lower max morale to 0 or lower)"
+  },
+  {
+    "id": "Encase",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "gives the target Shield for 2 turns Also disables their physical attacks"
+  },
+  {
+    "id": "Energize",
+    "target": "targetAlly",
+    "range": 1,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Shield for mg and 1 ap to target ally"
+  },
+  {
+    "id": "EnergizeBulb",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target bulb. Fully heal it. Restore mg mana to it."
+  },
+  {
+    "id": "EnergyBlaster",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 0,
+    "cd": 0,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg light dmg to anyone in radius 2. Turn affected tiles into wasteland."
+  },
+  {
+    "id": "EnergyBomb",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 20,
+    "cd": 2,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg radiant dmg to anyone in radius 2."
+  },
+  {
+    "id": "EnergyClaws",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Deal str+mg slashing dmg"
+  },
+  {
+    "id": "EnergyRailGun",
+    "target": "straightLine",
+    "range": 9,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by 2*mg true dmg."
+  },
+  {
+    "id": "EnergyVenom",
+    "target": "targetOtherCharacter",
+    "range": 4,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Poison target for 3 turns."
+  },
+  {
+    "id": "Enhance",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "increases armor and strength for 1 turn"
+  },
+  {
+    "id": "Enlighten",
+    "target": "targetOtherCharacter",
+    "range": 4,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Enlighten target for 1 + mg/5 turns Enlightened: also apply focus, if target is an ally."
+  },
+  {
+    "id": "Entangle",
+    "target": "targetEnemy",
+    "range": 3,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "entangle target on grass for 2 rounds, removing the grass"
+  },
+  {
+    "id": "Eruption",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 7,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "target Lava tile: dmg each character in 1 tile radius by mg also increases burn by 2 20% chance to turn surrounding tiles into lava"
+  },
+  {
+    "id": "Evaporate",
+    "target": "targetEnemy",
+    "range": 5,
+    "mana": 20,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "destroy target enemy (non boss/giant)"
+  },
+  {
+    "id": "ExpandWater",
+    "target": "targetAny",
+    "range": 7,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn target tile into water. (Tile needs to be adjacent to 2 other water tiles) Then turn adjacent non-water tiles into grass."
+  },
+  {
+    "id": "Explosion",
+    "target": "targetAlly",
+    "range": 0,
+    "mana": 1,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Sacrifice self!!! Deal 3+mg*2 damage in 2 range radius Heat affected tiles"
+  },
+  {
+    "id": "ExtractMana",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "extract 1+mg mana from enemy User is slowed for 4 turns"
+  },
+  {
+    "id": "FairyArtillery",
+    "target": "straightLine",
+    "range": 10,
+    "mana": 5,
+    "cd": 5,
+    "dmg": ["Slashing", "Poison", "Shadow", "Fire"],
+    "attacks": false,
+    "desc": "Deal 5 dmg to a random target in a cone. Repeats 5 times. Random damage type (Slashing/Fire/Shadow/Poison). (Affected by precision)"
+  },
+  {
+    "id": "FamiliarBond",
+    "target": "targetOtherAlly",
+    "range": 7,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target Avy: Teleport to a random nearby tile. If Avy has an adjacent enemy, prioritize tiles near enemies. If not, prioritize tiles that are also not adjacent to enemies."
+  },
+  {
+    "id": "FieryTeleport",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 5,
+    "cd": 4,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg fire dmg to ALL surrounding characters. Teleport to target tile Starting and target tile turn into lava"
+  },
+  {
+    "id": "FinalPower",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroys self! Can only target the druid: Restores hp and mana equal to own. Transfer any magic/strength charges. Also grants 1 ap."
+  },
+  {
+    "id": "Fireball",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal 1 + mg fire dmg"
+  },
+  {
+    "id": "FireBreath",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 6,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg fire dmg in a cone Heat tiles"
+  },
+  {
+    "id": "FireClaws",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 2,
+    "cd": 0,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal str fire dmg"
+  },
+  {
+    "id": "FireFlight",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 6,
+    "cd": 3,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Fly to a free tile and turn it into lava, deal mg fire dmg to characters nearby"
+  },
+  {
+    "id": "FireLance",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 6,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by mg fire dmg Heat tiles."
+  },
+  {
+    "id": "FireLeap",
+    "target": "targetEmptyTile",
+    "range": 3,
+    "mana": 3,
+    "cd": 0,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Jump to a free tile and turn it into lava, deal mg/2 fire dmg to characters nearby"
+  },
+  {
+    "id": "FireShield",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain mg shield. Apply 3 burn to self"
+  },
+  {
+    "id": "FireTailWhip",
+    "target": "targetAny",
+    "range": 1,
+    "mana": 3,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": true,
+    "desc": "Perform a swing attack with fire dmg."
+  },
+  {
+    "id": "FireTongue",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Burn an enemy for 5 or fireCoat an ally for 3 turns (afflict burn 3 on attacks)"
+  },
+  {
+    "id": "Fission",
+    "target": "targetOtherAlly",
+    "range": null,
+    "mana": 5,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice target non-token ally. ALL characters fully restore mana and restore 1 ap. Also apply radiation for remaining battle. (Used in many skill combos)"
+  },
+  {
+    "id": "FlameStrike",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 10,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg dmg to anyone in radius 1 around the target"
+  },
+  {
+    "id": "FlashFreeze",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Freeze self for a turn (Removed at the start of next turn) Also freezes tile"
+  },
+  {
+    "id": "FlashHeal",
+    "target": "targetAlly",
+    "range": 2,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heals target/self for 5."
+  },
+  {
+    "id": "Flow",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "target a character on water. Push them up to 5 tiles. Ally: gain strength buff for a turn. Enemy: becomes vulnerable for a turn."
+  },
+  {
+    "id": "FlowingShadow",
+    "target": "instant",
+    "range": 1,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Requires the whole field to be either shadow and/or water. Affect all tiles, based on current terrain. Water: Character gains mg shield, then turns into shadow. Shadow: Character takes 2x mg water dmg, then turns into water."
+  },
+  {
+    "id": "Fly",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fly to a free tile"
+  },
+  {
+    "id": "Focus",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Set Focused for 2 Turns"
+  },
+  {
+    "id": "ForkedLightning",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "deal 2+mg electric dmg to target and a random neighbour"
+  },
+  {
+    "id": "Freeze",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Freeze target character: - Won't be able to act for a turn. - Armor increases by 5. - Will be immune to further stun effects for the remaining battle"
+  },
+  {
+    "id": "FrostBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Deal mg frost dmg to anyone in radius 1 around the target Requires grass connection (max 7 tiles path)."
+  },
+  {
+    "id": "FrostBolt",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 4,
+    "cd": 1,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Deal mg ice dmg"
+  },
+  {
+    "id": "FrostFlight",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 6,
+    "cd": 3,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Fly to a free tile and cool surrounding tiles, Deal mg ice dmg to characters nearby"
+  },
+  {
+    "id": "FrostNova",
+    "target": "instant",
+    "range": null,
+    "mana": 8,
+    "cd": 2,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Deal mg damage to all characters in range 2 and freeze them Also freezes tiles"
+  },
+  {
+    "id": "FrostTouch",
+    "target": "targetCharacter",
+    "range": 1,
+    "mana": 4,
+    "cd": 6,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Extend the duration of \"Frozen\" by 1."
+  },
+  {
+    "id": "FullHeal",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 15,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fully heals target/self. Removes ALL temporary effects."
+  },
+  {
+    "id": "FungalArmor",
+    "target": "instant",
+    "range": 3,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "All characters in fungal network gain hardened skin for a turn."
+  },
+  {
+    "id": "FungalCall",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 8,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Pulls spore-affected characters in target area towards you and increase spores by mg. Only affects as many as empty tiles surrounding you Minimum range of 3"
+  },
+  {
+    "id": "FungalFlight",
+    "target": "straightLineEmptyTile",
+    "range": 7,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fly in a straight line, turning all tiles into grass Also apply own spores to all passed characters. Cleanses own spores."
+  },
+  {
+    "id": "FungalGrowth",
+    "target": "instant",
+    "range": 3,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn all tiles adjacent to the fungal network into grass."
+  },
+  {
+    "id": "FungalMissiles",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 6,
+    "cd": 2,
+    "dmg": ["Poison"],
+    "attacks": false,
+    "desc": "Deal mg poison dmg in a cone. Hits up to \"fungal network count\" random targets. Affected by precision."
+  },
+  {
+    "id": "FungalPulse",
+    "target": "instant",
+    "range": 3,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Poison"],
+    "attacks": false,
+    "desc": "Deal mg poison dmg to all characters adjacent to the fungal network."
+  },
+  {
+    "id": "FungalRain",
+    "target": "instant",
+    "range": null,
+    "mana": 10,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Apply spores to ALL characters. Amount equal to characters in fungal network."
+  },
+  {
+    "id": "FungalShift",
+    "target": "targetOtherAlly",
+    "range": 7,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Switch places with any other character within the fungal network."
+  },
+  {
+    "id": "FungalSpeed",
+    "target": "instant",
+    "range": 3,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "All other characters in fungal network gain 1 ap."
+  },
+  {
+    "id": "GeneExtract",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 2,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Unlocks the target species as summon weakens target for 2 Turns (unlock doesn't work on bosses/giants or unique characters)"
+  },
+  {
+    "id": "GhostBeam",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 4,
+    "cd": 1,
+    "dmg": ["Basic", "Poison", "Slashing", "Fire", "Frost", "Water", "True", "Shadow"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by mg dmg. Turn affected tiles into your current tile. Damage type based on tile:"
+  },
+  {
+    "id": "GhostBulb",
+    "target": "targetEmptyTile",
+    "range": 2,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a flying slimebulb with shadowform for 2 turns. (It regenerates mana each turn equal to half of casters mg. Starts with a turn worth of mana)"
+  },
+  {
+    "id": "GhostWrap",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Entangle target enemy for 2 turns."
+  },
+  {
+    "id": "Grab",
+    "target": "straightLineCharacter",
+    "range": 3,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Pull target one tile towards you."
+  },
+  {
+    "id": "GrassBlink",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "teleport to a grass tile surrounded with grass (only the target tile needs to be empty) Turns those tiles into earth"
+  },
+  {
+    "id": "GrassExplosion",
+    "target": "targetAlly",
+    "range": 0,
+    "mana": 3,
+    "cd": 6,
+    "dmg": ["Poison"],
+    "attacks": false,
+    "desc": "Sacrifice self!!! Deal mg poison dmg to all characters in radius 2. Turn tiles into grass"
+  },
+  {
+    "id": "GrassTrail",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "set grassTrail for 4 Turns"
+  },
+  {
+    "id": "GreaterHeal",
+    "target": "targetAlly",
+    "range": 2,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heals target/self for 10hp or 20% (whichever is higher)"
+  },
+  {
+    "id": "GrowShadow",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target a shadow tile: spread shadow to 3 nearby tiles Otherwise create one"
+  },
+  {
+    "id": "Growth",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn non-lava tiles in radius of 3 around target to grass, rejuvenating allies and poisoning enemies already on grass for 2 turns"
+  },
+  {
+    "id": "Guard",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Defend for one turn. Weaken self for 2 turns."
+  },
+  {
+    "id": "HardenSkin",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 5,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "increases armor of target by 4 for 1+ mg/2 turns"
+  },
+  {
+    "id": "Hatch",
+    "target": "targetAlly",
+    "range": 0,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Hatch into normal form, dealing 5 fire dmg to surrounding characters (radius 2) Also heats tiles"
+  },
+  {
+    "id": "Heal",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal target/self for 5hp or 10% of max hp. (Whichever is higher)"
+  },
+  {
+    "id": "HealingClaws",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 4,
+    "cd": 2,
+    "dmg": ["Slashing"],
+    "attacks": true,
+    "desc": "Attack target with a basic slashing attack Heal allies around the user by half the damage dealt"
+  },
+  {
+    "id": "HealingFlame",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Enemy target: deal mg fire dmg Ally target: heal for 5. (Target lava character: also regenerate for 2 turns)"
+  },
+  {
+    "id": "HealingWeb",
+    "target": "targetAlly",
+    "range": 2,
+    "mana": 6,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heals target/self for 50% Removes poison"
+  },
+  {
+    "id": "HeatWave",
+    "target": "instant",
+    "range": 3,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Increases burn of already burning characters by 2. 5% chance for each tile to heat up."
+  },
+  {
+    "id": "HeavyPush",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Push target 4 tiles. On collision deal str dmg to both characters"
+  },
+  {
+    "id": "HiddenPower",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 10,
+    "cd": 2,
+    "dmg": ["Basic", "Frost", "Shadow", "Radiant", "Slashing", "Poison", "Fire"],
+    "attacks": false,
+    "desc": "Target a seal. Deal mg dmg to characters within 2 range. (Damage type changes based on targeted seal)"
+  },
+  {
+    "id": "HiveRecall",
+    "target": "targetOtherCharacter",
+    "range": 7,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to an insect queen. (random adjacent tile)"
+  },
+  {
+    "id": "HolyLight",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Shield target for mg If target was enlightened, also empower it for a turn. (+50% magic/strength) Enlightened: gain back 1 ap"
+  },
+  {
+    "id": "HolyPower",
+    "target": "instant",
+    "range": null,
+    "mana": 8,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Enlighten every ally for 3 turns"
+  },
+  {
+    "id": "HolySwitch",
+    "target": "targetOtherAlly",
+    "range": 4,
+    "mana": 1,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Switch places with another ally Both need to be enlightened"
+  },
+  {
+    "id": "HyperBlast",
+    "target": "straightLine",
+    "range": 7,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Damages all characters in a line and adjacent tiles by 3*mg fire dmg. Requires/Uses up permanent magic buff."
+  },
+  {
+    "id": "IceBeam",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 8,
+    "cd": 2,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by mg ice dmg Cool tiles."
+  },
+  {
+    "id": "IceBlock",
+    "target": "instant",
+    "range": null,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Freeze self for 5 turns Also freezes tile"
+  },
+  {
+    "id": "IceClaws",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 2,
+    "cd": 0,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Deal str frost dmg"
+  },
+  {
+    "id": "Ignite",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 3,
+    "cd": 2,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Target burning target: Deals true damage equal to 3*duration to target Removes burn"
+  },
+  {
+    "id": "Immunity",
+    "target": "targetAlly",
+    "range": 1,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Grants immunity for 2 turns. (Can't gain any further status effects)"
+  },
+  {
+    "id": "ImprovedTentacle",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 8,
+    "cd": 4,
+    "dmg": ["Frost"],
+    "attacks": false,
+    "desc": "Spawns a Tentacle for current battle."
+  },
+  {
+    "id": "Infect",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Infect target for 3 rounds. Lose 10% or 3 hp each turn. \"Slime\" characters will heal instead. Spreads on death (with increased duration)."
+  },
+  {
+    "id": "InfectBite",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 4,
+    "cd": 3,
+    "dmg": ["Basic"],
+    "attacks": true,
+    "desc": "attack target with a basic attack and infect it for 2 turns Restore hp equal to half the dmg dealt"
+  },
+  {
+    "id": "InkSpurt",
+    "target": "targetAny",
+    "range": 1,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn target tile into slime and move away from it. If there is a character on the tile, blind it for 2 turns."
+  },
+  {
+    "id": "InnerHealing",
+    "target": "targetOtherAlly",
+    "range": 2,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Uses targets mana to heal their hp, up to full 1:1 ratio"
+  },
+  {
+    "id": "InsectMarch",
+    "target": "targetAny",
+    "range": 1,
+    "mana": 2,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Choose a direction. All other allied insects move a tile in that direction."
+  },
+  {
+    "id": "InsectSwarm",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 20,
+    "dmg": [],
+    "attacks": false,
+    "desc": "All enemies become vulnerable for a turn."
+  },
+  {
+    "id": "Integrate",
+    "target": "targetOtherCharacter",
+    "range": null,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy self. Target gains 1ap and gains hardened skin for the battle. Also grant target mg/str charges equal to own."
+  },
+  {
+    "id": "Invigorate",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "restore 1 ap to target"
+  },
+  {
+    "id": "Jump",
+    "target": "targetEmptyTile",
+    "range": 2,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Jump to an empty tile."
+  },
+  {
+    "id": "KineticPush",
+    "target": "straightLineCharacter",
+    "range": 4,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Push target 3 tiles. On collision, deal mg dmg to both characters"
+  },
+  {
+    "id": "KnockBack",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Push target 2 tiles. On collision deal str dmg to both characters"
+  },
+  {
+    "id": "LaserBeam",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 10,
+    "cd": 2,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by 2*mg radiant dmg."
+  },
+  {
+    "id": "LaserEyes",
+    "target": "straightLineCharacter",
+    "range": 8,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Damages target in a line by mg radiant dmg. Dmg +25% for each tile of distance. Path has to be empty."
+  },
+  {
+    "id": "LavaBeam",
+    "target": "straightLine",
+    "range": 7,
+    "mana": 8,
+    "cd": 3,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by mg fire dmg. Heat tiles"
+  },
+  {
+    "id": "LavaBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 2,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg fire dmg to anyone in radius 1 around the target. Turn own tile into stone. Requires lava connection (max 7 tiles path)."
+  },
+  {
+    "id": "LavaBurst",
+    "target": "instant",
+    "range": null,
+    "mana": 6,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg damage to all characters in range 2 and heat tiles"
+  },
+  {
+    "id": "LavaDive",
+    "target": "targetEmptyTile",
+    "range": 8,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move from lava to lava."
+  },
+  {
+    "id": "LavaPath",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 8,
+    "cd": 3,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Turn all tiles in a straight line to lava. deal 1 + mg fire dmg to every character"
+  },
+  {
+    "id": "LavaSplash",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg+1 fire dmg User needs to stand on lava Lava will be moved to target"
+  },
+  {
+    "id": "LavaTrail",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "set LavaTrail for 2 Turns"
+  },
+  {
+    "id": "LifeTap",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Lose 2 hp. Turn current tile into shadow On shadow: enter shadowform for a turn instead."
+  },
+  {
+    "id": "LightBlast",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg light damage to all surrounding characters. Enlightened characters get shielded by mg instead. Clears shadow. Enlightened: also blind damaged characters for 2 turns"
+  },
+  {
+    "id": "LightCircle",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 10,
+    "cd": 2,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg radiant dmg to anyone around the target. If a character is in the center, heal them by the total dmg dealt."
+  },
+  {
+    "id": "LightFlash",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Blind target for 1 turn. Enlightened: +1 duration."
+  },
+  {
+    "id": "LightningBolt",
+    "target": "straightLineCharacter",
+    "range": 7,
+    "mana": 4,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal mg electric dmg to a target in a line"
+  },
+  {
+    "id": "LightningStorm",
+    "target": "instant",
+    "range": null,
+    "mana": 15,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal mg electric dmg to up to 4 random enemies"
+  },
+  {
+    "id": "LightningStrike",
+    "target": "targetEnemy",
+    "range": 10,
+    "mana": 5,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal mg electric dmg"
+  },
+  {
+    "id": "LightRay",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 8,
+    "cd": 2,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg light damage to target and blind for 2 turns Enlightened characters get shielded instead. Clears shadow Enlightened: also affects nearby characters for half the effect."
+  },
+  {
+    "id": "LightShape",
+    "target": "instant",
+    "range": null,
+    "mana": 8,
+    "cd": 1,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg radiant dmg to all enemies User needs to be enlightened. Tiles within range 3 around user need to be empty."
+  },
+  {
+    "id": "LightSpear",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 10,
+    "cd": 3,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by (mg + str) Enlightened characters get shielded instead. Clears shadow Enlightened: defend for a turn."
+  },
+  {
+    "id": "LightSting",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 1,
+    "cd": 5,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Deal mg true dmg to target Also apply regeneration for mg turns. Enlightened target doesn't take dmg. Enlightened: restore own hp equal to the dmg dealt."
+  },
+  {
+    "id": "LightWave",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 6,
+    "cd": 3,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg light dmg to all characters in a cone Enlightened characters are immune Clears shadow Enlightened: also blind damaged characters for 2 turns"
+  },
+  {
+    "id": "Liquify",
+    "target": "targetOtherCharacter",
+    "range": null,
+    "mana": 5,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy self and target of same species. Create darkslime in radius 2 around target."
+  },
+  {
+    "id": "LivingAmmo",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a rock spirit for current battle. It is one size smaller than the user, if possible."
+  },
+  {
+    "id": "LongJump",
+    "target": "targetEmptyTile",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Jump to a free tile"
+  },
+  {
+    "id": "MagicArmor",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain mg shield."
+  },
+  {
+    "id": "MagicCheer",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Set \"High morale\" buff for 1 Turn Doesn't stack with naturally high morale Removes \"Low morale\" until end of combat"
+  },
+  {
+    "id": "MagicFire",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Targeting character on lava: Ally: strengthen target for 1 turn (duration + mg/5) Enemy: increase burn by 2 + mg/3 Targeting other tile: Lava: drain to firecoat self for 3 turns (attacks apply burn) Stone: turns into lava Other: turns into stone"
+  },
+  {
+    "id": "MagicGrass",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Targeting character on grass: Ally: use grass to increase armor for 2 turns (duration + mg/5) Enemy: use grass to entangle the enemy for 2 turns (effectively 1) Targeting other tile: Grass: spread to nearby tiles Water: drain water to apply regeneration to ALL allies on grass for 2 turns Other: grow grass on tile"
+  },
+  {
+    "id": "MagicGuard",
+    "target": "instant",
+    "range": 3,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gain mg shield. Apply shield to all adjacent allies equal to own."
+  },
+  {
+    "id": "MagicIce",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Targeting character on ice/snow: Ally: increase magic for 1 turn (duration + mg/5) Enemy: loses 2+mg mana Targeting other tile: Ice: Shatter to turn nearby tiles into snow. Water: turn into ice. Lava: turn into stone. Other: turns into snow."
+  },
+  {
+    "id": "MagicMissile",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 6,
+    "cd": 2,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Deal mg shadow dmg in a cone. Hits up to \"1 + magic charge count\" random targets. Affected by precision."
+  },
+  {
+    "id": "MagicPull",
+    "target": "straightLineCharacter",
+    "range": 6,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Pull target towards you and deal mg + str dmg If the path is interrupted, deal mg dmg to both instead Minimum range of 3 required."
+  },
+  {
+    "id": "MagicShadow",
+    "target": "targetAny",
+    "range": 2,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Targeting a character in shadow: Ally: use shadow to grant shadowform for a turn Enemy: use shadow to entangle the enemy for 2 turns. Targeting other tile: Shadow: spread to 2 nearest tiles Other: turn tile into shadow"
+  },
+  {
+    "id": "MagicShield",
+    "target": "targetAlly",
+    "range": null,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target gains mg shield."
+  },
+  {
+    "id": "MagicTame",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Tame an animal forever (chance based on Level and magicstrength)."
+  },
+  {
+    "id": "Martyr",
+    "target": "targetAlly",
+    "range": 0,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice self!!! Fully heal all Allies"
+  },
+  {
+    "id": "MassCurse",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Curse everyone in radius 2 for 3 turns"
+  },
+  {
+    "id": "MassHeal",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal everyone in radius 1 by 5"
+  },
+  {
+    "id": "MassPull",
+    "target": "instant",
+    "range": 6,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Pull the first character in each direction towards you. max 6 range."
+  },
+  {
+    "id": "Meditate",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 7,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Enlighten self for 3 turns. Enlightened: defend for 2 turns"
+  },
+  {
+    "id": "Meteor",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 15,
+    "cd": 4,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal 2*mg fire dmg to anyone in targeted tile and half to neighbours Changes tiles into lava and stone"
+  },
+  {
+    "id": "MeteorStorm",
+    "target": "instant",
+    "range": null,
+    "mana": 15,
+    "cd": 3,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal 1 + mg/2 fire dmg to all enemies and changes affected tiles to lava."
+  },
+  {
+    "id": "MindBlast",
+    "target": "targetEnemy",
+    "range": 6,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Deal mg true dmg. Deal bonus dmg equal to target's magic strength"
+  },
+  {
+    "id": "MindPrison",
+    "target": "targetEnemy",
+    "range": 7,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Stun target enemy for 3 turns."
+  },
+  {
+    "id": "MistForm",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn on shadowForm for 1 turn"
+  },
+  {
+    "id": "MoonStrike",
+    "target": "targetEnemy",
+    "range": 8,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Radiant", "Shadow"],
+    "attacks": false,
+    "desc": "Only usable when surrounded by shadow. Deal mg radiant dmg to all adjacent characters and turn those tiles into earth. Then deal 3*shadow dmg to target enemy. Enlightened: Gain magic buff (+50%) for 2 turns."
+  },
+  {
+    "id": "Motivate",
+    "target": "instant",
+    "range": 2,
+    "mana": 2,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Grant each other ally with high morale +1 str/mg charge."
+  },
+  {
+    "id": "NatureBlessing",
+    "target": "targetOtherCharacter",
+    "range": 4,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Ally: set Regeneration (heal 10%) for 2 turns Enemy: poison target for 2 turns"
+  },
+  {
+    "id": "NegativeBeam",
+    "target": "straightLineCharacter",
+    "range": 6,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Damages all characters between you and target ally by 2*(combined mg) true dmg. One character needs to be dark or in shadowform, while the other needs to be light or enlightened."
+  },
+  {
+    "id": "Net",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 2,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Tame an animal forever. (chance based on targets remaining health, level and the user's magicstrength). Entangles target for 2 turns."
+  },
+  {
+    "id": "Overwhelming",
+    "target": "targetOtherAlly",
+    "range": 2,
+    "mana": 1,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Grants StrengthBuff and Focused to Aila for 2 turns"
+  },
+  {
+    "id": "ParasiteAttach",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "sacrifice self to poison and slow an enemy for 5 turns"
+  },
+  {
+    "id": "PerilEyes",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Stun target for a turn. Only usable with 2+ ap left."
+  },
+  {
+    "id": "Pet",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target creature or beastgirl gains high morale buff for 3 turns. (They also lose low morale for remaining battle)"
+  },
+  {
+    "id": "Pierce",
+    "target": "straightLineCharacter",
+    "range": 3,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal str dmg to characters in a line. (Base damage-type)"
+  },
+  {
+    "id": "PoisonArrow",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 6,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal mg fire dmg in an arc"
+  },
+  {
+    "id": "PoisonBolt",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["Poison"],
+    "attacks": false,
+    "desc": "deal 1+mg poison dmg"
+  },
+  {
+    "id": "PoisonCloud",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Poisons everyone in radius 2 for 3 turns"
+  },
+  {
+    "id": "PoisonFlight",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fly to a free tile and apply poison to nearby characters for 2 turns Also poisons user"
+  },
+  {
+    "id": "PoisonHeal",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heals target/self by 10 Also poisons for 5 turns"
+  },
+  {
+    "id": "PoisonStep",
+    "target": "targetOtherCharacter",
+    "range": 5,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to a poisoned character (random surrounding space)."
+  },
+  {
+    "id": "PoisonSting",
+    "target": "straightLineCharacter",
+    "range": 3,
+    "mana": 2,
+    "cd": 3,
+    "dmg": ["Poison"],
+    "attacks": false,
+    "desc": "Deal 1 + str/2 poison dmg to target and next character."
+  },
+  {
+    "id": "PoisonTongue",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Poison an enemy for 4 Turns or poisonCoat an ally for 5 turns (afflict poison (3 turns) on attacks"
+  },
+  {
+    "id": "Portal",
+    "target": "targetEmptyTile",
+    "range": 6,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to a free tile and take all surrounding characters with you Their position relative to the user stays the same. All target tiles must be unoccupied"
+  },
+  {
+    "id": "PortalPull",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 6,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Pulls allies in target area towards you. Only affects as many as empty tiles surrounding you. Minimum range of 3."
+  },
+  {
+    "id": "PortalRailGun",
+    "target": "straightLine",
+    "range": 15,
+    "mana": 0,
+    "cd": 0,
+    "dmg": ["Radiant", "True"],
+    "attacks": false,
+    "desc": "Damages all enemy characters in a line by 3*mg true dmg. Turn affected tiles into wasteland."
+  },
+  {
+    "id": "PortalSlice",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Enemy moves to a random nearby tile If impossible, destroy it instantly. (Doesn't work on bigger characters/bosses)"
+  },
+  {
+    "id": "PowerFlight",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fly to a free tile and push surrounding characters away. Deal str dmg to them if pushed away."
+  },
+  {
+    "id": "PowerHeal",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fully heals ally and strengthens for a turn"
+  },
+  {
+    "id": "PowerPunch",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "push target 3 tiles. If obstructed, damage it and colliding character by str*2"
+  },
+  {
+    "id": "PowerSpark",
+    "target": "straightLine",
+    "range": 5,
+    "mana": 4,
+    "cd": 2,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal 3*mg electric dmg to one random character in a cone"
+  },
+  {
+    "id": "PrismBeam",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 4,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Target a character: Deal mg/2 electric dmg to them and connected characters. Max range: 7"
+  },
+  {
+    "id": "Proliferate",
+    "target": "instant",
+    "range": 3,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn adjacent tiles of connected grass tiles into grass. (connection range is max 7 tiles)"
+  },
+  {
+    "id": "Protect",
+    "target": "targetOtherAlly",
+    "range": 3,
+    "mana": 5,
+    "cd": 6,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Gives another ally 100% shield."
+  },
+  {
+    "id": "Push",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "push target 1 tile away"
+  },
+  {
+    "id": "Quench",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "remove all burn effects in radius 1 Turns lava into stone"
+  },
+  {
+    "id": "QuickBurrow",
+    "target": "targetEmptyTile",
+    "range": 3,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move from one tile to another of the same type valid tiles: earth,grass,stone,lava,sand,snow. Defend for a turn."
+  },
+  {
+    "id": "QuickDive",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move from water to water"
+  },
+  {
+    "id": "Quicken",
+    "target": "targetAlly",
+    "range": 1,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Apply haste for a turn."
+  },
+  {
+    "id": "QuickFlower",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 8,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a healing Flower in water for the current battle Turns tile into earth"
+  },
+  {
+    "id": "QuickStrike",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": true,
+    "desc": "Perform a free melee attack"
+  },
+  {
+    "id": "RadialBurst",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 3,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Deal mg radiant damage to all characters 2 tiles away from caster. Enlightened characters get shielded by mg instead. Enlightened: also blind damaged characters for 2 turns. On shadow/shadowform: also weaken damaged characters for 2 turns."
+  },
+  {
+    "id": "RadiationBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Deal 2*mg true dmg to anyone in radius 1 around the target. Apply 2 radiation to ALL characters. Requires grass connection (max 7 tiles path)."
+  },
+  {
+    "id": "Rage",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "set StrengthBuff (dmg+50%) and Vulnerable for 2 turns"
+  },
+  {
+    "id": "RailGun",
+    "target": "straightLine",
+    "range": 9,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by 2*mg light dmg"
+  },
+  {
+    "id": "Rain",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove lava. Turn tiles into water."
+  },
+  {
+    "id": "Ram",
+    "target": "straightLineEmptyTile",
+    "range": 3,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Charge in a straight line and deal str+1 basic dmg to the next character and push them away."
+  },
+  {
+    "id": "Rapture",
+    "target": "targetOtherCharacter",
+    "range": 7,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy target character with less (or same) hp than your magic strength. Gain exp equal to the targets level. Enlightened: gain twice as much exp."
+  },
+  {
+    "id": "Reclaim",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice self: Give hp/mana back to summoner."
+  },
+  {
+    "id": "Regenerate",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal self for 25%"
+  },
+  {
+    "id": "Rejuvenate",
+    "target": "targetAlly",
+    "range": 4,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Set regeneration for 3 turns."
+  },
+  {
+    "id": "RemoveSlime",
+    "target": "instant",
+    "range": null,
+    "mana": 1,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Remove slime in radius 4 around caster. (Replaces it with earth)"
+  },
+  {
+    "id": "Rend",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 1,
+    "cd": 2,
+    "dmg": ["Slashing", "Basic"],
+    "attacks": false,
+    "desc": "deal 2*str dmg Enemy needs to bleed"
+  },
+  {
+    "id": "Repel",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Push away adjacent characters."
+  },
+  {
+    "id": "Replenish",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 20,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target Mya: drain mana (up to full). Gain 2 mana for each point drained Restores 2 ap"
+  },
+  {
+    "id": "Replicate",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 1,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice half your hp: Spawn a copy of yourself for the remaining battle. Copy will have 0 ap and all skills start on cooldown. Reclaim hp/mana left on the copy at the end of combat."
+  },
+  {
+    "id": "Reroll",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Changes first skill into a random magic one."
+  },
+  {
+    "id": "Rescue",
+    "target": "targetOtherAlly",
+    "range": 6,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport ally to a random furthest empty space next to you. Shield for mg*2. Heal by 1."
+  },
+  {
+    "id": "Resonance",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal 2*mg true dmg to a character of the same type."
+  },
+  {
+    "id": "Ressurrect",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 15,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Ressurrect the last (non-token) character that died as ally (Unique enemies don't die) The character restores 1 hp and is shielded for a turn but starts with no ap."
+  },
+  {
+    "id": "Restoration",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal target by 5. Set regeneration for 2 turns."
+  },
+  {
+    "id": "Restructure",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Useable on stone: Heal self by 5 and shield for mg."
+  },
+  {
+    "id": "RevealTentacles",
+    "target": "instant",
+    "range": 1,
+    "mana": 0,
+    "cd": 50,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns tentacles on surrounding water spaces (Replaces existing ones)"
+  },
+  {
+    "id": "RideWorm",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 2,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "target a worm: Push them up to 5 tiles. (free charge attack possible) User moves to an adjacent space afterwards, if possible."
+  },
+  {
+    "id": "RitualDagger",
+    "target": "targetCharacter",
+    "range": 1,
+    "mana": 1,
+    "cd": 1,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Target self: Lose 5 hp. Gain 1 ap. Target other character: Deal str/2 +1 slashing dmg."
+  },
+  {
+    "id": "RockBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 2,
+    "cd": 2,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Target a tile. Deal mg slashing dmg to the nearest character in each direction. (max 5 range) Requires grass connection (max 7 tiles path)."
+  },
+  {
+    "id": "RockSpear",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 8,
+    "cd": 3,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by (mg + str). Spread earth/stone if caster stands on it."
+  },
+  {
+    "id": "RockSplinter",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 3,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Deal mg+str slashing dmg to the first character in each direction. max 5 range"
+  },
+  {
+    "id": "RootBurn",
+    "target": "instant",
+    "range": 3,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn all grass tiles in radius 2 into lava."
+  },
+  {
+    "id": "RootDrain",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Drain mg hp from the target Entangles target and user for 2 rounds User and target need to stand on grass"
+  },
+  {
+    "id": "RootHeal",
+    "target": "instant",
+    "range": 0,
+    "mana": 10,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal all allies(and self) on grass by 10 and shield them for mg User also needs to stand on grass"
+  },
+  {
+    "id": "RootSpike",
+    "target": "targetCharacter",
+    "range": 8,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["Radiant", "Shadow"],
+    "attacks": false,
+    "desc": "Target character on shadow: Deal mg shadow dmg. Enlightened: Consume shadow tile to deal 2x radiant dmg instead. If target is enlightened, shield it instead."
+  },
+  {
+    "id": "Rush",
+    "target": "straightLineEmptyTile",
+    "range": 5,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "rush to target and damage all character in the path by 1+str/2. (Natural damage type)"
+  },
+  {
+    "id": "Sacrifice",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice self Fully restore mana of ALL other characters and restore 1 ap. Also apply radiation for remaining battle"
+  },
+  {
+    "id": "SandBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Create grass tiles within a radius of 2 around target.. Requires sand connection to target (max 7 tiles path)."
+  },
+  {
+    "id": "SandStorm",
+    "target": "targetAny",
+    "range": 1,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Choose a direction. Spread all sand tiles in that direction. Then blind all enemies on sand for 2 turns."
+  },
+  {
+    "id": "SandThrow",
+    "target": "targetCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Blind target for 2 turns."
+  },
+  {
+    "id": "SandVeil",
+    "target": "targetCharacter",
+    "range": 5,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target gains 2*mg shield. Needs to be on sand."
+  },
+  {
+    "id": "Scald",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 4,
+    "cd": 2,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "User needs to stand on water: Deal mg water dmg in a cone. Applies 2 burn."
+  },
+  {
+    "id": "ScorpionVenom",
+    "target": "targetCharacter",
+    "range": 1,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target gains 5 turns of poison. Stunned and weakened for 2 turns."
+  },
+  {
+    "id": "SealFriend",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 0,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Recruit enemy seal."
+  },
+  {
+    "id": "SeedBoost",
+    "target": "targetAlly",
+    "range": 1,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Applies strengthbuff, focused and hardened skin to a seedling for 2 turns"
+  },
+  {
+    "id": "SeedBurst",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target seedling loses up to mg hp All surrounding characters take the same amount of damage"
+  },
+  {
+    "id": "SeedHeal",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 4,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heal a seedling for 10 and apply hardened skin for 2 turns"
+  },
+  {
+    "id": "ShadowAttack",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 4,
+    "cd": 2,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Teleport to a free shadow tile and deal 1+mg/2 shadow dmg to every surrounding enemy"
+  },
+  {
+    "id": "ShadowBlast",
+    "target": "targetEnemy",
+    "range": 5,
+    "mana": 3,
+    "cd": 2,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Deal mg shadow dmg to target +1 dmg for each shadow tile adjacent to it."
+  },
+  {
+    "id": "ShadowBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 2,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal mg shadow dmg to anyone in radius 1 around the target. Turns targets into shadow and own tile into earth. Requires shadow connection (max 7 tiles path)."
+  },
+  {
+    "id": "ShadowBond",
+    "target": "targetOtherAlly",
+    "range": 5,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Switch places with another ally Both need to be in shadow/shadowform."
+  },
+  {
+    "id": "ShadowClaws",
+    "target": "targetCharacter",
+    "range": 5,
+    "mana": 2,
+    "cd": 0,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Spend 1 magic charge. Needs to target a shadow tile. Ally: grant strength buff for a turn. Enemy: deal mg shadow dmg."
+  },
+  {
+    "id": "ShadowCloak",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Lose 2 hp. Apply shadow form to each surrounding ally for a turn."
+  },
+  {
+    "id": "ShadowFlight",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fly to a free tile turn target tile into shadow"
+  },
+  {
+    "id": "ShadowForm",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "toggles ShadowForm (drains 2 mana each turn outside shadow) Gain 1 mana back, when turning it off"
+  },
+  {
+    "id": "ShadowPrison",
+    "target": "targetEnemy",
+    "range": 5,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Put enemy into shadowform for 2 turns Enemy has to be in shadow"
+  },
+  {
+    "id": "ShadowPulse",
+    "target": "instant",
+    "range": 3,
+    "mana": 5,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Need to stand on a shadow tile: spread shadow to 10 nearby tiles (up to 6 range)"
+  },
+  {
+    "id": "ShadowRoots",
+    "target": "targetCharacter",
+    "range": 7,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target floral character. Turn target tile and neighbours into shadow."
+  },
+  {
+    "id": "ShadowSpear",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 10,
+    "cd": 3,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by (mg + str). Spread shadow if caster stands in it."
+  },
+  {
+    "id": "ShadowStep",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport from a shadow tile to another Only possible in shadow/shadowForm"
+  },
+  {
+    "id": "ShadowTrail",
+    "target": "instant",
+    "range": null,
+    "mana": 3,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Add shadow trail and haste for a turn."
+  },
+  {
+    "id": "ShadowWaters",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Each other ally on water gains shadowtrail for a turn."
+  },
+  {
+    "id": "ShadowWave",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 6,
+    "cd": 2,
+    "dmg": ["Shadow"],
+    "attacks": false,
+    "desc": "Deal mg shadow dmg to all characters in a cone"
+  },
+  {
+    "id": "Shatter",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target frozen character. Unfreeze them and halve their hp."
+  },
+  {
+    "id": "Shift",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Transform at the cost of 5 hp. (Lasts 5 turns). Sets ap to 1. (Unusable by most characters)"
+  },
+  {
+    "id": "ShootBulb",
+    "target": "targetEmptyTile",
+    "range": 7,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target slime: Spawns a slimebulb (Regenerates mana each turn based on casters mg)"
+  },
+  {
+    "id": "SideStep",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move to a nearby tile and gain 1 ap."
+  },
+  {
+    "id": "SilentHunt",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy target enemy with less hp than your strength. Gain focus for a turn. If it's your first turn, grant 2 ap to each allied creature. (inactive if user is also a creature)"
+  },
+  {
+    "id": "SkillController",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": ""
+  },
+  {
+    "id": "Slice",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 2,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Deal str+5 slashing dmg"
+  },
+  {
+    "id": "SlimeArtillery",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 4,
+    "cd": 0,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Deal mg water dmg to anyone in targeted tile and half to neighbours. Changes target into slime. (Chance for neighbours to change)"
+  },
+  {
+    "id": "SlimeBolt",
+    "target": "targetAny",
+    "range": 3,
+    "mana": 3,
+    "cd": 0,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Deal mg water dmg to an enemy OR turn target tile into slime. (Each surrounding tile has a 30% chance to turn into slime)"
+  },
+  {
+    "id": "SlimeHeal",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heals target/self by 5. \"slime\" characters are also shielded for mg"
+  },
+  {
+    "id": "SlimeRain",
+    "target": "instant",
+    "range": null,
+    "mana": 15,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Slow all enemies and turn tiles in radius 1 around them into slime"
+  },
+  {
+    "id": "SlimeRush",
+    "target": "straightLineEmptyTile",
+    "range": 4,
+    "mana": 4,
+    "cd": 3,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Rush to target and damage all character in the path by str turn tiles into slime."
+  },
+  {
+    "id": "SlimeTeleport",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to a slime tile"
+  },
+  {
+    "id": "SlimeTrail",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Set slimeTrail for 2 Turns (turns tiles you walk on into slime)"
+  },
+  {
+    "id": "Snow",
+    "target": "instant",
+    "range": null,
+    "mana": 8,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Freeze water and lava Turn some random tiles into snow Clear all burn debuffs Slow all characters for 2 turns"
+  },
+  {
+    "id": "SoftGround",
+    "target": "targetAny",
+    "range": 7,
+    "mana": 2,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn target tile into sand."
+  },
+  {
+    "id": "SolarBeam",
+    "target": "instant",
+    "range": null,
+    "mana": 0,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Lose 2 hp. Turn current tile into shadow"
+  },
+  {
+    "id": "SoulBlast",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 0,
+    "cd": 2,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Damages all characters in a line and adjacent tiles by 3*mg true dmg. Lowers max morale by 10."
+  },
+  {
+    "id": "SoulBurst",
+    "target": "instant",
+    "range": 7,
+    "mana": 0,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Damages all adjacent characters by 2*mg true dmg and blind them for 2 turns. Lowers own max morale by 10."
+  },
+  {
+    "id": "SoulDevour",
+    "target": "targetOtherCharacter",
+    "range": 2,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Destroy target non-token character with hp less than your magic strength. Permanently increase base max mana by 1"
+  },
+  {
+    "id": "SoulHeal",
+    "target": "targetAlly",
+    "range": 5,
+    "mana": 0,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Restore 50% of a target's hp. Lower own max morale by 5."
+  },
+  {
+    "id": "SoulShield",
+    "target": "targetAlly",
+    "range": 1,
+    "mana": 0,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Use 10 morale. Target gains 50% shield."
+  },
+  {
+    "id": "SoulStrike",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 0,
+    "cd": 1,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Use 20 morale. Deal 20 true dmg. (Ignores shield) (Damage done can't destroy target)"
+  },
+  {
+    "id": "Spark",
+    "target": "targetOtherCharacter",
+    "range": 1,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal mg electric dmg"
+  },
+  {
+    "id": "SpawnBulb",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target slime: Spawns a slimebulb. (Regenerates mana each turn equal to half of casters mg. Starts with a turn worth of mana)"
+  },
+  {
+    "id": "SpawnCursedPlant",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a cursed Flower for the current battle Turns tile into shadow"
+  },
+  {
+    "id": "SpawnDrone",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns an InsectDrone for the current battle. It starts with 0 mana."
+  },
+  {
+    "id": "SpawnFireBug",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 8,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a flying Firebug for the current battle."
+  },
+  {
+    "id": "SpawnFirePlant",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a fire flower, that shoots fireballs (requires lava tile) Turns tile into stone"
+  },
+  {
+    "id": "SpawnHealFlower",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a healing Flower in water for the current battle Turns tile into earth"
+  },
+  {
+    "id": "SpawnHybridFlower",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 7,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a magic Flower in water or grass for the current battle Turns tile into earth"
+  },
+  {
+    "id": "SpawnLavaDrone",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a LavaDrone for the current battle. It starts with 0 mana."
+  },
+  {
+    "id": "SpawnOmniFlower",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 9,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns an omni Flower for the current battle"
+  },
+  {
+    "id": "SpawnParasite",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a Parasite for current battle"
+  },
+  {
+    "id": "SpawnPoisonFlower",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a poison Flower on grass for the current battle Turns tile into earth"
+  },
+  {
+    "id": "SpawnShadowPlant",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 7,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a shadow/fire flower for the current battle Turns tile into shadow"
+  },
+  {
+    "id": "SpawnSnake",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 10,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawn a snake girl."
+  },
+  {
+    "id": "SpawnSoldierDrone",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 8,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a soldier drone for the current battle."
+  },
+  {
+    "id": "SpawnSpore",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Sacrifice half your hp: Spawns a spore on a non-lava tile for current battle Character will have the same hp/mana and 0 ap Turns surrounding tiles into earth"
+  },
+  {
+    "id": "SpawnSymbiote",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 4,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a Symbiote for current battle"
+  },
+  {
+    "id": "SpawnTentacle",
+    "target": "targetEmptyTile",
+    "range": 1,
+    "mana": 5,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a tentacle on a slime tile for current battle. Turns tile into earth."
+  },
+  {
+    "id": "SpawnVine",
+    "target": "targetEmptyTile",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target grass (turns into earth): Spawns vines that block enemies (will engage them in combat)"
+  },
+  {
+    "id": "SpawnWisp",
+    "target": "targetEmptyTile",
+    "range": 4,
+    "mana": 8,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a wisp for the current battle"
+  },
+  {
+    "id": "SpawnWorm",
+    "target": "targetEmptyTile",
+    "range": 7,
+    "mana": 8,
+    "cd": 8,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns a Sandworm with 2 ap and strengthbuff/haste and focus for a turn. Needs to target a sand tile surrounded by sand."
+  },
+  {
+    "id": "SpiritBurst",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target a spirit. Deal mg dmg to surrounding characters. (Damage type changes based on targeted spirit)"
+  },
+  {
+    "id": "SpiritHeal",
+    "target": "instant",
+    "range": 0,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Heals every ally in shadow or shadowform by 5. Shield them for mg,"
+  },
+  {
+    "id": "Splash",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 2,
+    "cd": 1,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "User needs to stand on water. Water will be moved to target. Deal mg dmg and slow the target for 1 turn. When targeting an empty water tile, expand it."
+  },
+  {
+    "id": "SporeBurst",
+    "target": "targetCharacter",
+    "range": 5,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["True"],
+    "attacks": false,
+    "desc": "Target character with spores: Deal dmg equal to it's duration and cleanse the effect afterwards. Apply spores to adjacent characters equal to the amount."
+  },
+  {
+    "id": "SporeShot",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Apply spores to another character. Amount equal to fungal network size. (Connected chain of fungal characters)"
+  },
+  {
+    "id": "SporeStorm",
+    "target": "instant",
+    "range": 3,
+    "mana": 10,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spawns spores on up to 3 tiles (within range 3)"
+  },
+  {
+    "id": "SporeStrike",
+    "target": "targetCharacter",
+    "range": 1,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Apply spores to any character. Amount equal to fungal network size. (Connected chain of fungal characters)"
+  },
+  {
+    "id": "SpreadShadow",
+    "target": "instant",
+    "range": null,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spread shadow to 2 nearby tiles (up to 5 tiles away) Needs to stand in shadow"
+  },
+  {
+    "id": "SpreadSlime",
+    "target": "instant",
+    "range": null,
+    "mana": 1,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Spread slime to a nearby tile (up to 5 tiles away) Needs to stand on slime"
+  },
+  {
+    "id": "Sprout",
+    "target": "targetCharacter",
+    "range": 2,
+    "mana": 3,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Applies grassTrail to ANY character for 2 + mg/4 turns"
+  },
+  {
+    "id": "StalkPrey",
+    "target": "targetEnemy",
+    "range": 6,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to a bleeding enemy (random surrounding space). Remove \"defending\" from target. If user was in shadow form, exit and strengthen self for a turn. (+50% str)"
+  },
+  {
+    "id": "Sting",
+    "target": "straightLineCharacter",
+    "range": 2,
+    "mana": 1,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal 2+str dmg to target and next character."
+  },
+  {
+    "id": "StormConduit",
+    "target": "instant",
+    "range": 2,
+    "mana": 5,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Connect with characters with electric dmg type in a line. They recursively connect to others. Deal 2*mg electric dmg to non-electric characters in between. Max chain range: 7"
+  },
+  {
+    "id": "Strengthen",
+    "target": "targetAlly",
+    "range": 3,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "set StrengthBuff (dmg+50%) for 2 turns"
+  },
+  {
+    "id": "Suffocate",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 1,
+    "cd": 2,
+    "dmg": ["Basic"],
+    "attacks": false,
+    "desc": "deal 3*str dmg"
+  },
+  {
+    "id": "SummonCopy",
+    "target": "targetOtherCharacter",
+    "range": 3,
+    "mana": 10,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target another character(non-boss/unique/giant) Weaken the target and spawn a token with their stats as an ally. (Unit will have full hp/mana and 0ap)"
+  },
+  {
+    "id": "SunShine",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 5,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Remove all shadow from the map. Earth also turns into grass. Dispel all shadow forms. Increase active enlightenment effects of all characters by 1. Increase radiant dmg by 1% for each shadow tile removed."
+  },
+  {
+    "id": "SunStrike",
+    "target": "targetEnemy",
+    "range": 8,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Shadow", "Radiant"],
+    "attacks": false,
+    "desc": "Unusable when adjacent to shadow. Deal mg shadow dmg to all adjacent characters and turn those tiles into shadow. Then deal 3*radiant dmg to target enemy. Enlightened: Gain focus for a turn."
+  },
+  {
+    "id": "SuperBeam",
+    "target": "straightLine",
+    "range": 7,
+    "mana": 0,
+    "cd": 1,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Damages all characters in a line and adjacent tiles by 3*mg fire dmg. Requires/Uses up supercharge. (trait)"
+  },
+  {
+    "id": "SuperSpeed",
+    "target": "instant",
+    "range": 2,
+    "mana": 3,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Gain 4 ap (can exceed max). Requires/Uses up supercharge. (trait)"
+  },
+  {
+    "id": "SuperThrow",
+    "target": "straightLine",
+    "range": 7,
+    "mana": 0,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Throw an adjacent smaller or same sized character in a straight line (chosen randomly) Targeting character: character lands next to target. Both take dmg equal to the thrower's str + twice the other's armor Targeting empty tile: character lands on the tile"
+  },
+  {
+    "id": "Swipe",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal str damage to all surrounding characters. (flexible damage type)"
+  },
+  {
+    "id": "Switch",
+    "target": "targetOtherAlly",
+    "range": 4,
+    "mana": 4,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Switch places with Ally"
+  },
+  {
+    "id": "SwordThrow",
+    "target": "straightLine",
+    "range": 6,
+    "mana": 0,
+    "cd": 2,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Lose 10 hp. Damages all characters in a line by 2*str slashing dmg."
+  },
+  {
+    "id": "SymbioteAttach",
+    "target": "targetOtherAlly",
+    "range": 1,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "sacrifice self to apply regeneration and strengthen an ally for 5 turns"
+  },
+  {
+    "id": "TailWhip",
+    "target": "targetOtherCharacter",
+    "range": 2,
+    "mana": 1,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal str dmg."
+  },
+  {
+    "id": "TalonStrike",
+    "target": "targetEnemy",
+    "range": 3,
+    "mana": 1,
+    "cd": 2,
+    "dmg": ["Slashing"],
+    "attacks": false,
+    "desc": "Fly to an enemy (random surrounding space). Deal str slashing dmg."
+  },
+  {
+    "id": "Taunt",
+    "target": "targetEnemy",
+    "range": 3,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Move enemy to random nearest empty space next to you. You lose all ap. (Spent on defend if possible)"
+  },
+  {
+    "id": "Teleport",
+    "target": "targetEmptyTile",
+    "range": 7,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Teleport to free tile."
+  },
+  {
+    "id": "TeleportCharge",
+    "target": "straightLineEmptyTile",
+    "range": 7,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "teleport in a straight line"
+  },
+  {
+    "id": "TentacleSwarm",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 10,
+    "cd": 10,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Stand on slime: Spawns a tentacle on each slime tile in a cone."
+  },
+  {
+    "id": "TerrainBlast",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 5,
+    "cd": 1,
+    "dmg": ["Basic", "Poison", "Slashing", "Fire", "Frost", "Water", "True", "Shadow"],
+    "attacks": false,
+    "desc": "Damages all characters in a radius of 1 around target by mg dmg. Turn affected tiles into target tile. Damage type based on tile:"
+  },
+  {
+    "id": "Throw",
+    "target": "targetAny",
+    "range": 5,
+    "mana": 0,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Throw an adjacent smaller character (chosen randomly) Targeting character: character lands next to target. Both take dmg equal to the thrower's str + the other's armor Targeting empty tile: character lands on the tile"
+  },
+  {
+    "id": "TimeStop",
+    "target": "instant",
+    "range": 1,
+    "mana": 10,
+    "cd": 8,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Take another turn after this one. \"TimeStop\" can only be used once per battle."
+  },
+  {
+    "id": "Toxin",
+    "target": "targetCharacter",
+    "range": 3,
+    "mana": 3,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "poison target for 5 rounds"
+  },
+  {
+    "id": "TransferMana",
+    "target": "targetOtherAlly",
+    "range": 4,
+    "mana": 6,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "target gains 5 mana"
+  },
+  {
+    "id": "Transport",
+    "target": "targetEmptyTile",
+    "range": 5,
+    "mana": 5,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Fly to a free tile and take all surrounding characters with you Their position relative to the user stays the same. All target tiles must be unoccupied"
+  },
+  {
+    "id": "Tremor",
+    "target": "instant",
+    "range": null,
+    "mana": 2,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Deal str dmg to surrounding characters and push them 2 tiles away"
+  },
+  {
+    "id": "Tsunami",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 10,
+    "cd": 2,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Target Water tile-> turn all tiles in radius 2 into water and Damage every character on a tile that changed by mg + 5"
+  },
+  {
+    "id": "VineRepel",
+    "target": "instant",
+    "range": null,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Push away adjacent characters and clear their radiation effects. Also turn wasteland into grass in radius of 2."
+  },
+  {
+    "id": "VineWave",
+    "target": "straightLine",
+    "range": 3,
+    "mana": 5,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "deal mg dmg to all characters in a cone and turn tiles into grass Seedling characters are immune"
+  },
+  {
+    "id": "WaterBolt",
+    "target": "targetEnemy",
+    "range": 4,
+    "mana": 3,
+    "cd": 1,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Deal 1+mg water dmg."
+  },
+  {
+    "id": "WaterFall",
+    "target": "targetAny",
+    "range": 4,
+    "mana": 8,
+    "cd": 4,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Deal mg water dmg to anyone in targeted and half to neighbours. Changes tiles into water"
+  },
+  {
+    "id": "WaterPath",
+    "target": "straightLine",
+    "range": 5,
+    "mana": 4,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn all tiles in a straight line into water."
+  },
+  {
+    "id": "WaterRecall",
+    "target": "targetOtherAlly",
+    "range": 6,
+    "mana": 3,
+    "cd": 7,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target Lumira: teleport her towards you (random space) turn all tiles around her into water Fully shield her and heal for 5."
+  },
+  {
+    "id": "WaterShield",
+    "target": "targetCharacter",
+    "range": 4,
+    "mana": 3,
+    "cd": 0,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Target on water gains 2*mg shield. Drains water tile."
+  },
+  {
+    "id": "WaterSpear",
+    "target": "straightLine",
+    "range": 4,
+    "mana": 5,
+    "cd": 3,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Damages all characters in a line by mg water dmg. Spread water if caster stands on it."
+  },
+  {
+    "id": "WaterSpurt",
+    "target": "targetAny",
+    "range": 1,
+    "mana": 1,
+    "cd": 2,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Turn target tile into water and move away from it. If there is a character on the tile, soak it for 2 turns."
+  },
+  {
+    "id": "WaterTendrils",
+    "target": "instant",
+    "range": null,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Water"],
+    "attacks": false,
+    "desc": "Deal mg damage to enemies in range 2. User needs to stand near water."
+  },
+  {
+    "id": "Weaken",
+    "target": "targetEnemy",
+    "range": 3,
+    "mana": 3,
+    "cd": 3,
+    "dmg": [],
+    "attacks": false,
+    "desc": "weaken character (dmg-40%) for 2 Turns"
+  },
+  {
+    "id": "WhiteHole",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 5,
+    "cd": 2,
+    "dmg": ["Radiant"],
+    "attacks": false,
+    "desc": "Pulls characters in target area towards you and deal mg radiant dmg Only affects as many as empty tiles surrounding you Minimum range of 3 Uses 5 morale."
+  },
+  {
+    "id": "WindBloom",
+    "target": "targetAny",
+    "range": 6,
+    "mana": 2,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "target a tile and push back characters on adjacent tiles. Requires grass connection (max 7 tiles path)."
+  },
+  {
+    "id": "WindStorm",
+    "target": "targetAny",
+    "range": 1,
+    "mana": 4,
+    "cd": 1,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Choose a direction. Push all enemies in that direction."
+  },
+  {
+    "id": "WorldsEnd",
+    "target": "straightLine",
+    "range": 7,
+    "mana": 25,
+    "cd": 2,
+    "dmg": ["Fire"],
+    "attacks": false,
+    "desc": "Deal 2 * mg dmg to all characters in a cone. Irradiate them for the remaining battle. Apply 1 radiation to ALL other characters. Turns tiles into wasteland"
+  },
+  {
+    "id": "WormFriend",
+    "target": "targetEnemy",
+    "range": 1,
+    "mana": 0,
+    "cd": 5,
+    "dmg": [],
+    "attacks": false,
+    "desc": "Recruit enemy worm."
+  },
+  {
+    "id": "Zap",
+    "target": "targetEnemy",
+    "range": 2,
+    "mana": 3,
+    "cd": 0,
+    "dmg": ["Electric"],
+    "attacks": false,
+    "desc": "Deal 1 + mg electric dmg."
+  }
+]

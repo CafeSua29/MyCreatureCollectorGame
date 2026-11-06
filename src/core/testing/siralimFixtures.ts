@@ -32,6 +32,14 @@ export const SIRALIM_TEST_STATUSES: StatusDef[] = [
   },
   { id: 'shelled', kind: 'buff', hooks: [hook('shell')], battleOnly: true },
   {
+    id: 'mania',
+    kind: 'debuff',
+    duration: D1,
+    hooks: [hook('amountDamage')],
+    battleOnly: true,
+    excludeFromRandom: true
+  },
+  {
     id: 'frozen',
     kind: 'debuff',
     hooks: [hook('skipTurn', { chance: 100 }), hook('thaw', { chance: 100 })],
@@ -108,6 +116,14 @@ const trait = (id: string, hooks: { type: string; params: unknown }[]): TraitDef
 
 /** Trait mẫu: hào quang, bộ đếm, trigger. */
 export const SIRALIM_TEST_TRAITS: TraitDef[] = [
+  // Luôn có trạng thái, luân phiên (kiểu Inherit the Earth) và vẫn hành động (kiểu Frost Affinity).
+  trait('inheritEarth', [
+    hook('enforcedStatuses', { scope: 'any', statusIds: ['scorned', 'silenced'] })
+  ]),
+  trait('frostAffinity', [
+    hook('enforcedStatuses', { scope: 'self', statusIds: ['frozen'] }),
+    hook('actsThroughStatus', { statusIds: ['frozen'] })
+  ]),
   trait('vigor', [
     hook('aura', { scope: 'side', hooks: [hook('damageTakenModifier', { percent: -50 })] })
   ]),

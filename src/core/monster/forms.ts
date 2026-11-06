@@ -2,7 +2,7 @@
 // (formsOf, canHaveGmaxFactor) ở inventory/speciesForms.ts.
 
 import { formsOf } from '../inventory'
-import type { GameData, Monster } from '../model'
+import type { GameData, Monster, NormalSpecies } from '../model'
 
 /** Đá Mega quái đang cầm (ô đồ): theo đá tự kích hoạt (auto) hay không. */
 function heldStoneFormIds(data: GameData, monster: Monster, auto: boolean): string[] {
@@ -32,4 +32,15 @@ export function autoMegaForm(data: GameData, monster: Monster): string | undefin
   if (monster.fused) return undefined
   const forms = formsOf(data, monster.speciesId, 'mega').map((form) => form.id)
   return heldStoneFormIds(data, monster, true).find((formId) => forms.includes(formId))
+}
+
+/**
+ * Hệ Tera có thể tung khi quái sinh ra (loài không ghi `teraElementId`): một hệ của loài; loài
+ * không hệ thì mọi hệ của game, như Tera ngẫu nhiên của Pokémon (mục "Tera" ở transformation.md).
+ */
+export function teraElementChoices(
+  data: GameData,
+  species: Pick<NormalSpecies, 'elementIds'>
+): readonly string[] {
+  return species.elementIds.length > 0 ? species.elementIds : Object.keys(data.elements)
 }

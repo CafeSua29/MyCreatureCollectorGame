@@ -247,5 +247,1301 @@
     "equipmentSlots": 2,
     "transforms": true,
     "formationIds": ["sixHarmonies", "fourSymbols", "dragonGate", "fiveElements"]
+  },
+  {
+    "id": "wlSportsgirl",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "celfin",
+          "skillIds": ["aquaflip", "staticShock", "amplify"]
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": ["rebound", "peckWilderlocke", "mudThrow"]
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": ["smokeBombWilderlocke", "seedBlast", "dash", "fertilize"]
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": ["enweb", "infest", "charmWilderlocke", "stun"]
+        }
+      ],
+      [
+        {
+          "speciesId": "puppip",
+          "skillIds": ["swash", "icyBreath", "charmWilderlocke", "peckWilderlocke"]
+        },
+        {
+          "speciesId": "woolio",
+          "skillIds": ["snowballWilderlocke", "headbuttWilderlocke", "mudThrow"]
+        },
+        {
+          "speciesId": "mestic",
+          "skillIds": ["staticShock", "psychicPulse", "jinxWilderlocke"]
+        }
+      ],
+      [
+        {
+          "speciesId": "wispurr",
+          "skillIds": ["zephyrWilderlocke", "arcLightning", "downpour", "rebound"]
+        },
+        {
+          "speciesId": "lumidile",
+          "skillIds": ["joltwave", "lightUp", "amplify"]
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": ["rockFling", "screechWilderlocke", "rebound", "stun"]
+        }
+      ],
+      [
+        {
+          "speciesId": "pylume",
+          "skillIds": ["scorchWilderlocke", "fireball", "zephyrWilderlocke", "flatterWilderlocke"]
+        },
+        {
+          "speciesId": "quabble",
+          "skillIds": ["vaporBlow", "assistWilderlocke", "distract", "featherGuard"]
+        },
+        {
+          "speciesId": "scurrow",
+          "skillIds": ["headbuttWilderlocke", "damocles", "razorWing", "rageWilderlocke"]
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": [
+            "sonicBoomWilderlocke",
+            "hypnosisWilderlocke",
+            "sharpenWilderlocke",
+            "updraft"
+          ]
+        }
+      ],
+      [
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "drairet",
+          "skillIds": []
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": []
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "kodol",
+          "skillIds": []
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "vullet",
+          "skillIds": []
+        },
+        {
+          "speciesId": "scurrow",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "lumidile",
+          "skillIds": []
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": []
+        },
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lumidile",
+          "skillIds": []
+        },
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "vullet",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lirora",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": []
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "kodol",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lumidile",
+          "skillIds": []
+        },
+        {
+          "speciesId": "amarily",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        },
+        {
+          "speciesId": "scurrow",
+          "skillIds": []
+        },
+        {
+          "speciesId": "vullet",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "saplink",
+          "skillIds": []
+        },
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        },
+        {
+          "speciesId": "flottel",
+          "skillIds": []
+        }
+      ]
+    ]
+  },
+  {
+    "id": "wlHiker",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "furlash",
+          "skillIds": ["rockFling", "lashOutWilderlocke", "mudThrow", "barricade"]
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": ["constrictionWilderlocke", "enweb", "dustPowder"]
+        },
+        {
+          "speciesId": "relit",
+          "skillIds": ["dustDevil", "batteringRam", "erode"]
+        }
+      ],
+      [
+        {
+          "speciesId": "relit",
+          "skillIds": ["rockFling", "burrow", "camouflageWilderlocke"]
+        },
+        {
+          "speciesId": "possel",
+          "skillIds": ["dash", "mudThrow", "poisonSpit"]
+        }
+      ],
+      [
+        {
+          "speciesId": "aspini",
+          "skillIds": ["rockFling", "seedBlast", "assistWilderlocke", "tauntWilderlocke"]
+        },
+        {
+          "speciesId": "tuftwig",
+          "skillIds": ["scatterLeaves", "startle", "fertilize", "natureCure"]
+        },
+        {
+          "speciesId": "tadfodil",
+          "skillIds": ["bubbleBomb", "sleepSpores", "startle", "scatterLeaves"]
+        }
+      ],
+      [
+        {
+          "speciesId": "scurrow",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "saplink",
+          "skillIds": []
+        },
+        {
+          "speciesId": "puppip",
+          "skillIds": []
+        },
+        {
+          "speciesId": "amarily",
+          "skillIds": []
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "ligouste",
+          "skillIds": []
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "relit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "puppip",
+          "skillIds": []
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pylume",
+          "skillIds": []
+        },
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "aspini",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pupyro",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "woolio",
+          "skillIds": []
+        },
+        {
+          "speciesId": "relit",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "relit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pylume",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tadfodil",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "relit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "shellker",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "ligouste",
+          "skillIds": []
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "aspini",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "kodol",
+          "skillIds": []
+        },
+        {
+          "speciesId": "woolio",
+          "skillIds": []
+        },
+        {
+          "speciesId": "aspini",
+          "skillIds": []
+        }
+      ]
+    ]
+  },
+  {
+    "id": "wlFisherman",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "lumidile",
+          "skillIds": ["zapWilderlocke", "lightUp", "hypnosisWilderlocke"]
+        },
+        {
+          "speciesId": "glimmum",
+          "skillIds": ["flameLick", "willOWispWilderlocke", "neuroshock", "oilSlick"]
+        },
+        {
+          "speciesId": "pylume",
+          "skillIds": ["gustWilderlocke", "dash", "flatterWilderlocke", "flameLick"]
+        },
+        {
+          "speciesId": "flottel",
+          "skillIds": ["bubbleBomb", "assistWilderlocke", "mirrorBolt"]
+        }
+      ],
+      [
+        {
+          "speciesId": "medilly",
+          "skillIds": [
+            "arcLightning",
+            "hypnosisWilderlocke",
+            "psychicPulse",
+            "constrictionWilderlocke"
+          ]
+        },
+        {
+          "speciesId": "flottel",
+          "skillIds": ["rainDanceWilderlocke", "drench", "bubbleBomb", "amplify"]
+        },
+        {
+          "speciesId": "scurrow",
+          "skillIds": ["lashOutWilderlocke", "rageWilderlocke", "tauntWilderlocke"]
+        }
+      ],
+      [
+        {
+          "speciesId": "tadfodil",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "glimmum",
+          "skillIds": []
+        },
+        {
+          "speciesId": "celfin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "mestic",
+          "skillIds": []
+        },
+        {
+          "speciesId": "quabble",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "ligouste",
+          "skillIds": []
+        },
+        {
+          "speciesId": "mestic",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flottel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "celfin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "vullet",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "woolio",
+          "skillIds": []
+        },
+        {
+          "speciesId": "puppip",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tadfodil",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flottel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "puppip",
+          "skillIds": []
+        },
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lumidile",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "puppip",
+          "skillIds": []
+        },
+        {
+          "speciesId": "celfin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "mestic",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flottel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "quabble",
+          "skillIds": []
+        },
+        {
+          "speciesId": "scurrow",
+          "skillIds": []
+        },
+        {
+          "speciesId": "puppip",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "celfin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lumidile",
+          "skillIds": []
+        },
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "croaver",
+          "skillIds": []
+        },
+        {
+          "speciesId": "saplink",
+          "skillIds": []
+        },
+        {
+          "speciesId": "flottel",
+          "skillIds": []
+        }
+      ]
+    ]
+  },
+  {
+    "id": "wlBugCatcher",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "sylmoth",
+          "skillIds": ["zephyrWilderlocke", "petalSwirl", "enweb", "updraft"]
+        }
+      ],
+      [
+        {
+          "speciesId": "scarava",
+          "skillIds": ["hornThrustWilderlocke", "flareHit", "fireball", "scorchWilderlocke"]
+        },
+        {
+          "speciesId": "thermolt",
+          "skillIds": ["assistWilderlocke", "screechWilderlocke", "mirrorBolt", "jinxWilderlocke"]
+        }
+      ],
+      [
+        {
+          "speciesId": "flutterfly",
+          "skillIds": ["sonicBoomWilderlocke", "vaporBlow", "burrow", "divingStrike"]
+        },
+        {
+          "speciesId": "prowloom",
+          "skillIds": ["constrictionWilderlocke", "stun", "poisonBite", "tauntWilderlocke"]
+        }
+      ],
+      [
+        {
+          "speciesId": "flufferpie",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flufferpie",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "scurrow",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pupyro",
+          "skillIds": []
+        },
+        {
+          "speciesId": "flufferpie",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "saplink",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pupyro",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flufferpie",
+          "skillIds": []
+        },
+        {
+          "speciesId": "ligouste",
+          "skillIds": []
+        },
+        {
+          "speciesId": "kodol",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pupyro",
+          "skillIds": []
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "ligouste",
+          "skillIds": []
+        },
+        {
+          "speciesId": "saplink",
+          "skillIds": []
+        },
+        {
+          "speciesId": "moscoon",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        },
+        {
+          "speciesId": "moscoon",
+          "skillIds": []
+        },
+        {
+          "speciesId": "aspini",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "purrachne",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tadfodil",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flutterfly",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lirora",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "tadfodil",
+          "skillIds": []
+        }
+      ]
+    ]
+  },
+  {
+    "id": "wlStudent",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "lirora",
+          "skillIds": ["snowballWilderlocke", "howlWilderlocke", "claw"]
+        },
+        {
+          "speciesId": "lumidile",
+          "skillIds": ["blitz", "claw", "neuroshock"]
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": ["peckWilderlocke", "silence", "claw"]
+        }
+      ],
+      [
+        {
+          "speciesId": "vullet",
+          "skillIds": ["razorWing", "dash", "stun", "smokeBombWilderlocke"]
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": ["zephyrWilderlocke", "gustWilderlocke", "silence", "shiver"]
+        },
+        {
+          "speciesId": "lirora",
+          "skillIds": ["snowballWilderlocke", "maul", "numb", "sharpenWilderlocke"]
+        },
+        {
+          "speciesId": "puppip",
+          "skillIds": ["swash", "icyBreath", "charmWilderlocke", "aquaflip"]
+        }
+      ],
+      [
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "wispurr",
+          "skillIds": []
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        },
+        {
+          "speciesId": "lirora",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "flufferpie",
+          "skillIds": []
+        },
+        {
+          "speciesId": "quabble",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "saplink",
+          "skillIds": []
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "flottel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "lirora",
+          "skillIds": []
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": []
+        },
+        {
+          "speciesId": "quabble",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "amarily",
+          "skillIds": []
+        },
+        {
+          "speciesId": "glimmum",
+          "skillIds": []
+        },
+        {
+          "speciesId": "quabble",
+          "skillIds": []
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "quabble",
+          "skillIds": []
+        },
+        {
+          "speciesId": "glimmum",
+          "skillIds": []
+        },
+        {
+          "speciesId": "mestic",
+          "skillIds": []
+        },
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "kodol",
+          "skillIds": []
+        },
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        },
+        {
+          "speciesId": "mestic",
+          "skillIds": []
+        },
+        {
+          "speciesId": "celfin",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "lirora",
+          "skillIds": []
+        },
+        {
+          "speciesId": "vullet",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pylume",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "mestic",
+          "skillIds": []
+        },
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "kodol",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tadfodil",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "wispurr",
+          "skillIds": ["zephyrWilderlocke", "joltwave", "downpour", "coldGust"]
+        },
+        {
+          "speciesId": "celfin",
+          "skillIds": ["blitz", "bubbleBomb", "amplify", "aquaflip"]
+        },
+        {
+          "speciesId": "dandrift",
+          "skillIds": []
+        },
+        {
+          "speciesId": "dandrift",
+          "skillIds": ["brambleWhip", "zephyrWilderlocke", "sleepSpores", "razorWing"]
+        }
+      ]
+    ]
+  },
+  {
+    "id": "wlStrongman",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 0,
+    "rewardMultiplier": 1.5,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "shellker",
+          "skillIds": [
+            "entangleWilderlocke",
+            "burrow",
+            "strengthSapWilderlocke",
+            "hornThrustWilderlocke"
+          ]
+        }
+      ],
+      [
+        {
+          "speciesId": "shellker",
+          "skillIds": ["tauntWilderlocke", "scatterLeaves", "burrow"]
+        },
+        {
+          "speciesId": "thermolt",
+          "skillIds": ["fireball", "screechWilderlocke", "corrosiveFumes"]
+        },
+        {
+          "speciesId": "amarily",
+          "skillIds": [
+            "entangleWilderlocke",
+            "flareHit",
+            "lashOutWilderlocke",
+            "strengthSapWilderlocke"
+          ]
+        }
+      ],
+      [
+        {
+          "speciesId": "scouverine",
+          "skillIds": ["poisonBite", "rageWilderlocke", "charmWilderlocke", "dash"]
+        },
+        {
+          "speciesId": "pylume",
+          "skillIds": ["flareHit", "willOWispWilderlocke", "flatterWilderlocke", "gustWilderlocke"]
+        },
+        {
+          "speciesId": "thermolt",
+          "skillIds": ["fireball", "lightUp", "hypnosisWilderlocke", "screechWilderlocke"]
+        }
+      ],
+      [
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "relit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "shellker",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        },
+        {
+          "speciesId": "vullet",
+          "skillIds": []
+        },
+        {
+          "speciesId": "scarava",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "esculin",
+          "skillIds": []
+        },
+        {
+          "speciesId": "ligouste",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "pylume",
+          "skillIds": []
+        },
+        {
+          "speciesId": "sculkit",
+          "skillIds": []
+        },
+        {
+          "speciesId": "celfin",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        },
+        {
+          "speciesId": "amarily",
+          "skillIds": []
+        },
+        {
+          "speciesId": "pylume",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "pylume",
+          "skillIds": []
+        },
+        {
+          "speciesId": "duskadee",
+          "skillIds": []
+        },
+        {
+          "speciesId": "scurrow",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "thermolt",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        },
+        {
+          "speciesId": "cupine",
+          "skillIds": []
+        },
+        {
+          "speciesId": "amarily",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "woolio",
+          "skillIds": []
+        },
+        {
+          "speciesId": "wispurr",
+          "skillIds": []
+        }
+      ],
+      [
+        {
+          "speciesId": "sparkodile",
+          "skillIds": []
+        },
+        {
+          "speciesId": "possel",
+          "skillIds": []
+        },
+        {
+          "speciesId": "tuftwig",
+          "skillIds": []
+        }
+      ]
+    ]
+  },
+  {
+    "id": "wlChampion",
+    "kind": "regular",
+    "elementIds": [],
+    "teamSize": {
+      "min": 1,
+      "max": 4
+    },
+    "levelOffset": 5,
+    "rewardMultiplier": 3,
+    "tamerRealmOffset": 0,
+    "tamerSkillIds": ["healingArt"],
+    "aiProfile": "standard",
+    "equipmentSlots": 0,
+    "transforms": false,
+    "formationIds": [],
+    "fixedTeams": [
+      [
+        {
+          "speciesId": "cinderarch",
+          "skillIds": ["twinTorch", "hypnosisWilderlocke", "hornThrustWilderlocke", "fireball"]
+        },
+        {
+          "speciesId": "fenrora",
+          "skillIds": ["novaSnap", "polarWind", "jinxWilderlocke", "stalagtite"]
+        }
+      ],
+      [
+        {
+          "speciesId": "wispurr",
+          "skillIds": ["downpour", "zephyrWilderlocke", "assistWilderlocke", "hasteWilderlocke"]
+        },
+        {
+          "speciesId": "harwhal",
+          "skillIds": ["hornThrustWilderlocke", "bubbleBomb", "numb", "iceSlash"]
+        },
+        {
+          "speciesId": "medilly",
+          "skillIds": [
+            "joltwave",
+            "willOWispWilderlocke",
+            "hypnosisWilderlocke",
+            "tauntWilderlocke"
+          ]
+        },
+        {
+          "speciesId": "drapiere",
+          "skillIds": ["waterWhips", "slice", "dash", "sharpenWilderlocke"]
+        }
+      ],
+      [
+        {
+          "speciesId": "meridor",
+          "skillIds": ["solarLance", "screechWilderlocke", "divingStrike", "whirlwindWilderlocke"]
+        },
+        {
+          "speciesId": "raidol",
+          "skillIds": ["arcLightning", "diversion", "screechWilderlocke", "jinxWilderlocke"]
+        },
+        {
+          "speciesId": "glimmire",
+          "skillIds": ["corrosiveFumes", "oilSlick", "assistWilderlocke", "fireball"]
+        }
+      ],
+      [
+        {
+          "speciesId": "shellker",
+          "skillIds": ["entangleWilderlocke", "overgrowth", "caltrops", "hornThrustWilderlocke"]
+        },
+        {
+          "speciesId": "loplar",
+          "skillIds": ["brambleWhip", "rockWall", "mudslide", "strengthSapWilderlocke"]
+        },
+        {
+          "speciesId": "cerbanero",
+          "skillIds": ["twinTorch", "howlWilderlocke", "branchBash", "lashOutWilderlocke"]
+        }
+      ]
+    ]
   }
 ]

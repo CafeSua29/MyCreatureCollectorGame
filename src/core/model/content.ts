@@ -7,6 +7,8 @@ import type { TrainerClass } from './trainers'
 import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
 import type { SerumEffectDef } from './implant'
+import type { BodyRefinementDef } from './refinement'
+import type { EssenceDef } from './essences'
 import type { DeityDef } from './deities'
 import type { AchievementDef, TitleDef } from './achievements'
 import type { ArtifactSpiritDef } from './artifactSpirits'
@@ -183,6 +185,10 @@ export interface StatusDef {
   drainsToSource?: true
   /** Trạng thái đánh dấu, không hook: skill khác đọc (Minimize: `alwaysHitsVsStatusIds`, ×2 đòn đạp). */
   marker?: true
+  /** Không ra từ hiệu ứng "buff / debuff ngẫu nhiên" (Mania của Siralim). */
+  excludeFromRandom?: true
+  /** Đòn của quái mang tính như đặc biệt (Liquefy của WILDERLOCKE). */
+  forcesSpecialDamage?: true
   /** Không dùng được skill âm thanh (Throat Chop). */
   blocksSoundSkills?: true
   /** Hết hạn thì dính trạng thái này (Yawn → ngủ). */
@@ -193,8 +199,78 @@ export interface StatusDef {
   skillElementOverride?: string
   /** Dùng skill hệ trong danh sách thì nổ: mất % max HP, skill thất bại (Powder: lửa, 25%). */
   explodesOnElement?: { elementIds: string[]; percent: number }
+  /**
+   * Skill gây sát thương của quái mang trạng thái đổi mục tiêu: `allEnemies` = đánh mọi địch,
+   * `enemy` = chỉ một địch (Multitarget / Unitarget của Cassette Beasts; element-reactions.md).
+   */
+  skillTargetOverride?: 'allEnemies' | 'enemy'
+  /**
+   * Mỗi mục tiêu bị skill gây sát thương hệ `elementId` trúng (của bất kỳ quái nào), quái mang trạng
+   * thái mất `percent`% max HP (Conductive của Cassette Beasts; element-reactions.md).
+   */
+  conductsElement?: { elementId: string; percent: number }
+  /** Thể lực đổi mỗi cuối lượt (AP Boost +, AP Drain −, Gemstone Wall; docs/rules/stamina.md). */
+  staminaPerTurn?: number
+  /**
+   * Trạng thái là tường (Wall của Cassette Beasts, docs/rules/cassette-mechanics.md): hệ của tường
+   * (đòn khắc hệ này phá tường), số đòn chặn. `special`: dựng thì gỡ tường thường, tường thường
+   * không gỡ nó. `attackSkillId`: đòn tường tự đánh đầu lượt của quái (Abramacabra).
+   */
+  wall?: WallDef
+  /** Tường của quái mang trạng thái không chặn skill tầm xa (Window của Cassette Beasts). */
+  seeThroughWall?: true
+  /** Skill cận chiến của quái mang trạng thái thành tầm xa (Spring-Loaded của Cassette Beasts). */
+  meleeAsRanged?: true
+  /** Mỗi lần biến hình / hợp thể / đổi dạng, quái mất % max HP (Glass Bonds của Cassette Beasts). */
+  damageOnTransform?: number
   /** Quái hoang mang trạng thái này dễ bắt hơn (× số này, lấy số lớn nhất; ngủ 2,5, tê liệt 1,5). */
   catchMultiplier?: number
+}
+
+/** Tường của một trạng thái (`StatusDef.wall`). */
+export interface WallDef {
+  elementId: string
+  hits: number
+  special?: true
+  attackSkillId?: string
+  /**
+   * Mỗi lần tường chặn một đòn, chọn một kết quả theo trọng số chạy lên kẻ đánh (Apple Tree: 33% độc,
+   * 67% kẻ đánh hồi 10% máu hiện tại); hiệu ứng skill với quái dùng = chủ tường, mục tiêu = kẻ đánh.
+   */
+  onBlocked?: { weight: number; effects: EffectDef[] }[]
+}
+
+// ---------- Skill bị động ----------
+
+/**
+ * Phần bị động của skill: `hooks` (hook trait, như trait của quái), `onEntry` / `turnEnd` (hiệu ứng
+ * skill lên chính quái khi vào sân / cuối mỗi lượt), `onBattleStart` (một lần mỗi trận, lần đầu quái
+ * ra sân). `usable`: vẫn dùng bằng lệnh được (Camouflage).
+ */
+export interface PassiveSkill {
+  hooks?: TraitHookDef[]
+  onEntry?: EffectDef[]
+  onBattleStart?: EffectDef[]
+  turnEnd?: EffectDef[]
+  usable?: true
+}
+
+// ---------- Phản ứng hệ ----------
+
+/** Một cặp (hệ skill, hệ mục tiêu) của phản ứng hệ. */
+export interface ElementReactionPair {
+  attackElementId: string
+  defenderElementId: string
+}
+
+/**
+ * Phản ứng hệ (src/data/elementReactions.json, docs/rules/element-reactions.md): skill hệ này trúng
+ * mục tiêu mang hệ kia thì mục tiêu chịu `effects` (hiệu ứng skill timing afterHits). Tên ở i18n.
+ */
+export interface ElementReactionDef {
+  id: string
+  pairs: ElementReactionPair[]
+  effects: EffectDef[]
 }
 
 // ---------- Minion ----------
@@ -450,6 +526,8 @@ export interface NormalSpecies {
   partnerSkillId?: string
   /** Ghi đè chỉ số làm việc suy từ hệ / race (docs/rules/dwelling.md). */
   workStats?: WorkStats
+  /** Loại trứng (config.hatchery.eggTypes); bỏ trống = suy theo hệ (docs/rules/hatchery.md). */
+  eggType?: string
   /** Tốc độ làm việc gốc (%); không ghi = config.dwelling.baseWorkSpeed. */
   workSpeed?: number
   /**
@@ -713,7 +791,12 @@ export interface Skill {
    * Khắc hệ đặc biệt: `against` ghi đè hệ số lên hệ bên nhận (Freeze-Dry: nước 2), `extraElementIds`
    * nhân thêm bảng của hệ khác (Flying Press: bay).
    */
-  effectiveness?: { against?: Record<string, number>; extraElementIds?: string[] }
+  effectiveness?: {
+    against?: Record<string, number>
+    extraElementIds?: string[]
+    /** Không bị kháng: hệ số khắc chế dưới 1 (không tính miễn nhiễm) tính là 1. */
+    noResist?: true
+  }
   /** Dùng được khi đang dính các trạng thái mất lượt này (Sleep Talk, Snore: ngủ). */
   usableWhileStatusIds?: string[]
   /** Bị Magic Coat phản lại (cờ `reflectable` của Pokémon). */
@@ -757,6 +840,21 @@ export interface Skill {
    * bỏ qua bậc né; né của trait vẫn tính.
    */
   alwaysHits?: true
+  /** Tối đa số lần dùng mỗi trận (Flash của WILDERLOCKE: 3); hết lượt thì skill bị chặn. */
+  maxUsesPerBattle?: number
+  /** Số đòn theo % máu còn lại của quái dùng: mốc giảm dần, máu ≤ `atOrBelowPercent` thì đánh `hits` đòn (Pummel). */
+  hitsByHp?: { atOrBelowPercent: number; hits: number }[]
+  /** Sát thương tối thiểu / tối đa theo % max HP mục tiêu (Razor Wing, Snowball của WILDERLOCKE). */
+  damageFloorPercent?: number
+  damageCapPercent?: number
+  /** Mỗi lần dùng thứ chẵn đổi hệ / loại đòn (Meteor, Vapor Blow của WILDERLOCKE). */
+  alternateUse?: { elementId?: string; category?: SkillCategory }
+  /** Luôn nhắm địch nhiều máu nhất (Damocles của WILDERLOCKE). */
+  targetsHighestHpFoe?: true
+  /** Bậc của chỉ số công đang dùng tính gấp đôi cho đòn này (Water Spurt của WILDERLOCKE). */
+  doublesAttackStage?: true
+  /** Dùng chỉ số của đồng đội trên sân để tính công (Mirror Bolt của WILDERLOCKE). */
+  attackFromAlly?: NonHpStat
   /** Họ skill (họ spell của Siralim: Booze, Arsenal, Arrow, Ultimate) cho trait tác động cả họ. */
   tags?: SkillTag[]
   /** Phần spell Siralim: hiệu ứng / sức mạnh viết bằng "ngôn ngữ" trait (mục "Spell Siralim"). */
@@ -822,6 +920,15 @@ export interface Skill {
    * chạy các hiệu ứng này (hồi 50% max HP).
    */
   onAlly?: EffectDef[]
+  /**
+   * Nhắm được địch (lệnh `targetFoe`, TARGET_ONE của Cassette Beasts): skill trạng thái nhắm self mà
+   * đặt được lên quái bất kỳ (Wall); hiệu ứng khi nhắm địch.
+   */
+  onFoe?: EffectDef[]
+  /** Đòn phá mọi tường của mục tiêu rồi trúng như thường (Hurricane, Cosmic Kunai). */
+  destroysWalls?: true
+  /** Dùng tường của chính quái làm đạn: không có tường thì thất bại, power × lượt còn lại (Throw). */
+  consumesWall?: true
   /** Pursuit: địch rút về trong lượt thì đánh trước khi nó rời sân, % sát thương này (×2 = 200). */
   pursuit?: { damagePercent: number }
   /** Round: dùng xong thì đồng đội đang chờ dùng cùng skill đi ngay sau. */
@@ -831,8 +938,22 @@ export interface Skill {
    * Minimize), bỏ qua accuracy và né.
    */
   alwaysHitsVsStatusIds?: string[]
+  /**
+   * Mọi loài cùng hệ với skill học được qua sách (tường / Coating / Camouflage của Cassette Beasts):
+   * tính là loài học được khi xét độ hiếm sách, có trong sách rơi theo map có loài cùng hệ.
+   */
+  bookForElement?: true
+  /** Chỉ dùng được khi quái đang có lớp phủ hệ (Paint Swipe). */
+  requiresCoating?: true
+  /** Thể lực tốn khi dùng bằng lệnh; bỏ trống = suy theo power (docs/rules/stamina.md). */
+  staminaCost?: number
   /** Đòn không hệ (Struggle, Bide; hệ "???" của Pokémon): khắc chế luôn 1, không STAB. */
   typeless?: true
+  /**
+   * Skill bị động (passive của Cassette Beasts, docs/rules/element-reactions.md): có tác dụng khi quái
+   * biết nó, không dùng bằng lệnh trừ khi `usable`.
+   */
+  passive?: PassiveSkill
   /**
    * Đòn hệ Stellar (Tera Starstorm của Terapagos Stellar): khắc chế cố định như Tera Blast Stellar
    * (lên quái đang Tera theo config, không thì trung tính).
@@ -867,6 +988,11 @@ export interface SkillCharge {
   invulnerable?: InvulnerableKind
   /** Hiệu ứng ngôn ngữ trait chạy lượt nạp (Skull Bash +1 thủ, Meteor Beam +1 đặc công). */
   onCharge?: unknown[]
+  /**
+   * Chỉ nạp ở một số lần dùng: `firstUse` chỉ lần đầu trong trận (Hurricane của WILDERLOCKE),
+   * `afterFirstUse` lần đầu đánh ngay, các lần sau phải nạp (Crystal Beam).
+   */
+  rule?: 'firstUse' | 'afterFirstUse'
   /** Môi trường làm đánh ngay không cần nạp (Solar Beam: nắng; Electro Shot: mưa). */
   skipInFieldIds?: string[]
 }
@@ -891,6 +1017,8 @@ export type FixedDamage =
   | { kind: 'flat'; amount: number }
   /** Theo level quái dùng × % trong [min, max] (Night Shade 100; Psywave 50–150). */
   | { kind: 'level'; minPercent?: number; maxPercent?: number }
+  /** % max HP của mục tiêu (game gốc 100 HP cố định: Psychic Pulse của WILDERLOCKE). */
+  | { kind: 'maxHpPercent'; percent: number }
   /** % máu hiện tại của mục tiêu (Super Fang, Nature's Madness, Ruination: 50). */
   | { kind: 'targetHpPercent'; percent: number }
   /** Máu mục tiêu về bằng máu quái dùng (Endeavor). */
@@ -915,6 +1043,7 @@ export const FIXED_DAMAGE_KINDS = [
   'stored',
   'flat',
   'level',
+  'maxHpPercent',
   'targetHpPercent',
   'hpDifference',
   'userHp',
@@ -995,7 +1124,8 @@ export const MOVE_FLAGS = [
 
 export type MoveFlag = (typeof MOVE_FLAGS)[number]
 
-export const SKILL_TAGS = ['booze', 'arsenal', 'arrow', 'ultimate', 'minion'] as const
+/** `cataclysm`: spell của race Cataclysm (Siralim, Death and Destruction dùng ngẫu nhiên một spell họ này). */
+export const SKILL_TAGS = ['booze', 'arsenal', 'arrow', 'ultimate', 'minion', 'cataclysm'] as const
 
 export type SkillTag = (typeof SKILL_TAGS)[number]
 
@@ -1745,6 +1875,8 @@ export interface RawGameData {
   eventModifiers: EventModifierDef[]
   zones: RawZoneDef[]
   serumEffects: SerumEffectDef[]
+  bodyRefinements: BodyRefinementDef[]
+  essences: EssenceDef[]
   deities: DeityDef[]
   artifactSpirits: ArtifactSpiritDef[]
   achievements: AchievementDef[]
@@ -1752,6 +1884,7 @@ export interface RawGameData {
   sects: SectDef[]
   sectRanks: SectRankDef[]
   npcNames: NpcNameDef[]
+  elementReactions: ElementReactionDef[]
   text: TextData
 }
 
@@ -1825,6 +1958,10 @@ export interface GameData {
   zones: Record<string, ZoneDef>
   /** Hiệu ứng cấy ghép của huyết thanh (docs/rules/implant.md). */
   serumEffects: Record<string, SerumEffectDef>
+  /** Kiểu luyện thể (docs/rules/body-refinement.md). */
+  bodyRefinements: Record<string, BodyRefinementDef>
+  /** Tinh chất (docs/rules/essences.md). */
+  essences: Record<string, EssenceDef>
   /** Thần linh (docs/rules/deities.md). */
   deities: Record<string, DeityDef>
   /** Loại khí linh (docs/rules/artifact-spirits.md). */
@@ -1836,6 +1973,9 @@ export interface GameData {
   sects: Record<string, SectDef>
   sectRanks: Record<string, SectRankDef>
   npcNames: Record<string, NpcNameDef>
+  elementReactions: Record<string, ElementReactionDef>
+  /** Phản ứng theo cặp hệ: khóa `elementReactionKey` (dựng khi tạo GameData). */
+  elementReactionIndex: Record<string, ElementReactionDef>
   /** Chữ nội dung theo ngôn ngữ; logic core không dùng, chỉ tra qua contentName. */
   text: TextData
 }

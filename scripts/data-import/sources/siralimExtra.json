@@ -1,0 +1,2830 @@
+{
+  "source": "siralim",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Abacus",
+      "elements": ["fire"],
+      "raceId": "easternDragon",
+      "stats": {
+        "hp": 112,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "Tired of his students using an abacus behind his back to solve exercises in class, a math teacher decided to take desperate measures by contacting someone versed in the art of magic. His salary, unfortunately, did not allow him to hire the services of an expert, so he decided to search the underworld until he found someone. After a long haggling session, a price was agreed upon, and two weeks later that Mage handed the professor a box. He was satisfied, and opened it in the middle of class with the intention of scaring his students, saying 'This is what happens when you use an abacus too much, so be caAAAAAARGH!' The Abacus turned out to be more aggressive and vastly more dangerous than anticipated, and amid the laughter of his students, the teacher ran out the door with the Abacus chasing behind him."
+    },
+    {
+      "name": "Almighty Cataclysm",
+      "elements": ["grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 144,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Though cataclysms are human-sized, they can be stored in containers, as long as they stay sealed."
+    },
+    {
+      "name": "Ancient Spacecat",
+      "elements": ["psychic"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spacecat Sorcery",
+      "flavor": "Spacecats have spent over a thousand years studying the behavior of humans and other creatures that inhabit this world."
+    },
+    {
+      "name": "Ancloudysaur",
+      "elements": ["flying", "grass"],
+      "raceId": "ornithischian",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Ancloudysaurs are the only Elementasaurs that don't require food. Their bodies consist mainly of gas, and they absorb elements from the atmosphere to survive. Still, they need to drink water—or at least the elements it's made of—which they can combine internally if needed. Because they dwell miles above the ground, they remained unknown until about a hundred years ago."
+    },
+    {
+      "name": "Astral Spacecat",
+      "elements": ["psychic"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spacecat Sorcery",
+      "flavor": "Spacecats have only recently appeared in Siralim and other nations, and the Astral Spacecat is one of the most playful of them all. It's always seen with its beloved little ball, which it uses to show off amazing tricks! But what most don't realize is that the ball isn't just a toy — it's a sophisticated device that can read the emotions of any creature and transmit that information to its feline user."
+    },
+    {
+      "name": "Bad Apple",
+      "elements": ["ghost"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "Everyone knows rotten fruits can be dangerous, but some pieces are deadly, and not just when eaten. Some trees in Rodia, due to past battles or nearby rituals, are infused with magic. When their fruit begins to rot, it absorbes this magic and comes to life. The result is a vicious, mobile creature that will attack anyone unlucky enough to cross its path."
+    },
+    {
+      "name": "Bane of Piety",
+      "elements": ["ghost"],
+      "raceId": "divineBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "This creature worships no God, yet it can cast their unique spells as if chosen by all. Bound to multiple sacred relics, it accesses divine powers that should be exclusive to Gods. Its very existence puzzles clerics and enrages devotees, proving that divine grace can be replicated without faith... or perhaps even turned against it."
+    },
+    {
+      "name": "Bashcloak",
+      "elements": ["ghost"],
+      "raceId": "chiropteran",
+      "stats": {
+        "hp": 137,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "Dark, humid places are these creatures’ favorites. They share nests with bats and never feed on them, since they get rid of mosquitoes and other insects that could transmit diseases to them. In return, they continually give off a mist that makes it more difficult for these winged mammals to be preyed upon. When faced with threats, they take flight as high as possible and plummet on their would-be hunters to finish them off."
+    },
+    {
+      "name": "Benthic Guardian",
+      "elements": ["water", "grass"],
+      "raceId": "ursid",
+      "stats": {
+        "hp": 144,
+        "attack": 36,
+        "defense": 108,
+        "spAttack": 72,
+        "spDefense": 108,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Guardian Nature",
+      "flavor": "The Ferino River—the longest in Rodia—starts at the northern kingdom of Vanelin, crosses Siralim's western border, and flows through the kingdom of Undolim before emptying into the great Crimson Ocean. Along its entire length live the Benthic Guardians, creatures strictl controlled by Rodia's laws. They fiercely protect the waters, destroying anyone who dares pollute them. The problem? These guardians see anything unusual in the river as \"waste,\" making crossing their territory as dangerous as facing a bear's den."
+    },
+    {
+      "name": "Besieged Beast",
+      "elements": ["light"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 126,
+        "attack": 65,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 50
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Life",
+      "flavor": "Among the many creatures who coexist and trade across Siralim, Andolin, and other kingdoms, the Besieged Beasts stand out as especially intriguing. They emerge during battles—particularly city sieges—to barter, taking advantage of the people's desperate needs. They accept all kinds of gold and jewels in return for ammunition, food, and healing supplies. Some regard them as lifesavers, but those who've tried to attack quickly saw them vanish, losing a trade that could have saved their lives. Historians tell that once, these beasts endured a terrible siege by a wicked witch, only to be rescued at the last moment by an army of humans and other beings."
+    },
+    {
+      "name": "Black Spacecat",
+      "elements": ["psychic"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 72,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spacecat Sorcery",
+      "flavor": "Humans, in particular, feel a strong affinity for Spacecats, who never miss a chance to charm them with their wide array of feline antics."
+    },
+    {
+      "name": "Blipzor",
+      "elements": ["psychic"],
+      "raceId": "machine",
+      "stats": {
+        "hp": 144,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Robodomi Sorcery",
+      "flavor": "Robodomi can learn from their experiences as they operate. It's helped them write books, compose music, and even come up with battle strategies."
+    },
+    {
+      "name": "Bomballoon",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 90,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "This creature is always the first to arrive at a party and is eager to have fun. It naturally emits helium, so it can inflate a floating balloon with just a little effort. If someone stays too close, they'll find their voice becoming highter-pitched—perfect for some laughs!"
+    },
+    {
+      "name": "Brambled Egg",
+      "elements": ["grass"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Eggxotic Nature",
+      "flavor": "Every good egg knows that hibernation ends long before Easter, a very special time for them. Still, some don't want to wake up. The real world can be a drag, after all. Big mistake! Wake up egg—you missed spring, and now plants are growing all over you. It's not the end of the world though, as long as your shell doesn't get crushed. A little extra coverage never hurt anyone."
+    },
+    {
+      "name": "Brockiosaurus",
+      "elements": ["rock", "grass"],
+      "raceId": "sauropod",
+      "stats": {
+        "hp": 144,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "In its day, the Brockiosaurus moved like it had been pushing mountains for centuries. Its cliff-like back was home to glowing lichens and wandering birds, and many mistook it for a rock formation—until the ground began to creak. It's said the oldest druids consulted it like an oracle, carving questions futilely into its basalt shell. They went extinct quickly due to respiratory problems, but scientists revived them, drastically shrinking their size and making them faster."
+    },
+    {
+      "name": "Calumnier Belle",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Calumnier Death",
+      "flavor": "Calumniers have long fought humans and often found themselves outnumbered, losing many villages in the process."
+    },
+    {
+      "name": "Calumnier Bete",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Calumnier Death",
+      "flavor": "In the great city of Eshal, a group of Calumniers decided to end the long feud with humans once and for all. They learned the human language and, using their diplomatic skills, forged a peace that has never been broken since."
+    },
+    {
+      "name": "Calumnier Dandy",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 83
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Calumnier Death",
+      "flavor": "Calumniers make their home in the swamps, building villages both on the ground and high up in the trees. They often link homes and shops with intricate hanging walkways."
+    },
+    {
+      "name": "Calumnier Fop",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Calumnier Death",
+      "flavor": "In the Yselhof swamp, the Calumniers build their biggest city—so vast it can be seen from miles away when viewed from a high vantage point."
+    },
+    {
+      "name": "Calumnier Partycrasher",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Calumnier Death",
+      "flavor": "Calumniers and humans have made several agreements that allow them to live in peace. Most of these deals involve resource gathering in the swamps and permission to build roads through their lands without harming their villages or way of life."
+    },
+    {
+      "name": "Calumnier Socialite",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 90,
+        "spAttack": 72,
+        "spDefense": 90,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Calumnier Death",
+      "flavor": "Trade deals between humans, other intelligent races, and Calumniers are common these days. Both sides benefit, and entire neighborhoods in cities like Siralim are made up almost entirely of Calumniers. Calumnier Socialites live in these urban areas. They move in high society and excel at trading information. But if threatened, they're skilled enough with a dagger to take down a group of enemies."
+    },
+    {
+      "name": "Celestial Scarapin",
+      "elements": ["light"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 90,
+        "spAttack": 72,
+        "spDefense": 90,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Life",
+      "flavor": "In the lush jungles, many creatures have evolved to blend seamlessly with their surroundings. The Celestial Scarapin, when hungry, hides its body in the foliage, leaving only its tail and wings visible, which resemble flowers. It waits for its prey to approach, then strikes with deadly precision. When attacking, it absorbs some of the damage and transforms it into energy that strengthens its skin."
+    },
+    {
+      "name": "Chatter",
+      "elements": ["psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "They say this terrifying animated mouth has a bottomless hunger. Some speculate it is because it lacks the organs needed to actually process what it eats. However, it clearly also lacks the organs that would regulate hunger in the first place—so most people just assume it doesn't need to eat at all and is simply a jerk."
+    },
+    {
+      "name": "Chronoshatter Wyrm",
+      "elements": ["dragon", "fire"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "Created as part of a doctoral project at Andolin's magic university, this creature was built to record events and the exact time they'd happen—so it could warn when the moment was close. Now, Chronoshatter Wyrms are prized helpers, coordinating builders, fishing boats, and other workers so no one has to keep track of time themselves."
+    },
+    {
+      "name": "Clingslime",
+      "elements": ["psychic"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "This living slime sticks firmly to any surface or creature it touches, wrapping it in a sticky purple layer. Though it can detach at will, its goo continues to drain the victim's energy slowly. The shells of these creatures shimmer with a rainbow glow, and in some cities, they've recently become trendy as lighting fixtures in gambling dens."
+    },
+    {
+      "name": "Cootie",
+      "elements": ["ghost"],
+      "raceId": "ancientCreature",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 83
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "Cooties feed exclusively on plant matter, regardless of the species, size, or condition. Moss, fallen autumn leaves, or even ancient tree trunks—anything goes. Though they rarely touch the latter, finding them unappetizing, they'll make do if there's nothing else left after a forest fire. They reproduce on the hottest summer nights, drawing others of their kind with rainbow-colored flashes visible for miles. For centuries, the people of Rodia have gathered around their mating grounds to watch the light show."
+    },
+    {
+      "name": "Copycat",
+      "elements": ["psychic"],
+      "raceId": "mimic",
+      "stats": {
+        "hp": 108,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "This creature shows up in chaotic moments or big crowds, when people aren't paying attention. It mimics the nearest creature that grabs its interest with eerie precision—gestures, voice, even surface memories. It doesn't have a clear goal or a set way of attacking, but those who've spent time with it swear the copy eventually starts to believe it's the real thing."
+    },
+    {
+      "name": "Cosmic Cataclysm",
+      "elements": ["psychic", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 151,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 83
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Some Cataclysms are used for assassination, hidden among the victim's belongings before they explode."
+    },
+    {
+      "name": "Critical Mass",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "Critical Mass is a floating sphere of pure energy that hums with a strange, constant sound. Whenever something gets too close, it begins to vibrate more intensely, building up energy. Once it hits a certain threshold, it explodes outward with violent force, damaging everything nearby—only to reassemble itself moments later, ready to start the process all over again."
+    },
+    {
+      "name": "Cursed Effigy",
+      "elements": ["ghost"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Effigy Death",
+      "flavor": "Effigies have the advantage of never needing to eat or rest, making them stand out from other creatures. On top of that, they're immune to every virus and bacteria known to exist. But their weakness lies in fungal parasites. If not caught quickly, an Effigy can lost its identity overnight, becoming a hollow shell with no emotions, memories, or will of its own."
+    },
+    {
+      "name": "Dancing Effigy",
+      "elements": ["ghost"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 108,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Effigy Death",
+      "flavor": "Centuries ago, in the forests of Andolin, a human society was known for its voodoo dolls. Things took a turn when the magic running through these cloth beings gave them intelligence, and they took matters into their own hands—often in violent ways."
+    },
+    {
+      "name": "Darknonychus",
+      "elements": ["dark", "grass"],
+      "raceId": "theropod",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Of all the Elementasaurs, the Darknonychus is the most avoided—even by its own kind. Its body seems out of sync with space-time, constantly shifting and distorting, making it an extremely dangerous foe when it attacks. Strangely, small wildlife around it either thrives or withers in moments, with no clear pattern."
+    },
+    {
+      "name": "Denizen Gemini",
+      "elements": ["grass"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Denizen Nature",
+      "flavor": "Two beings forever linked by fate and cursed to never part. One seeks peace, the other thrives on conflict. Legends warn that if they ever move in sync, the tides will defy the moon and the seas will lie calm. Their dance is fierce, exacting, and wildly unpredictable."
+    },
+    {
+      "name": "Doedoodle",
+      "elements": ["grass"],
+      "raceId": "human",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "These watchdogs were originally used to guard bank vaults until 367 years ago, when they were replaced by stronger, often inanimate magical creatures. Most Doedoodles ended up as household pets, and over time, very few were trained for combat. But organized crime groups kept breeding and training them to be tougher, often enhancing them with magical treatments. Nowadays, their fur has become tougher, and parts of their body are covered in sharp, armored plates that are just as dangerous as their bite."
+    },
+    {
+      "name": "Dollface",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "This animated puppet was created with one goal in mind: murder. All it takes is placing a strand of hair, a nail, or any small part of the victim's body on its face. From that moment, Dollface knows exactly where to find them and begins its hunt, carrying out the only purpose it was created for; ending their life."
+    },
+    {
+      "name": "Dozen of Rot",
+      "elements": ["poison", "ghost"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "These eggs were infected by a malicious spirit that ruined what should have been a delicious meal. Eating the green substance that leaks from their shells results in immediate possession, leading to uncontrollable homicidal behavior. Some criminal organizations use these to dispose of unwanted subordinates, forcing them to eat the eggs in crowded places, taking out both the target and those around them."
+    },
+    {
+      "name": "Draconic Strix",
+      "elements": ["dragon", "psychic"],
+      "raceId": "bird",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "Draconic Strixes are nocturnal birds of prey that have absorbed the essence of Dragons through feeding on their corpses over generations. Their scales are harder than tempered steel, and their gaze terrifies even ghosts. They don't speak but communicate through shrieks that cause visions in those who hear them. They only attack when absolutely sure they won't get hurt."
+    },
+    {
+      "name": "Dust Fairy",
+      "elements": ["flying", "grass"],
+      "raceId": "fey",
+      "stats": {
+        "hp": 90,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 108
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "Fairies may seem cute, but no one dares approach a Dust Fairy. Known for spreading countless diseases, they've even caught the attention of scientists who hope to study them and develop vaccines. Some with less noble intentions release them in enemy camps, hoping the diseases they spread will weaken their foes before battle."
+    },
+    {
+      "name": "Egg Over Breezy",
+      "elements": ["flying", "grass"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 108
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Eggxotic Nature",
+      "flavor": "Who says eggs can't float on air? Why not? This powerful egg has transcended space, time, quantum physics, and anything else you can think of. It can be in multiple places at once, take on different shapes. Its shell might be lounging on a beach, soaking up the sun, or whatever shells do at the beach. Its egg white can turn into a cloud, and it even holds the yolk inside its soft, cotton-like fluff. The only limit is its imagination!"
+    },
+    {
+      "name": "Egg-Drop Sleuth",
+      "elements": ["psychic"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 83
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Eggxotic Sorcery",
+      "flavor": "\"Being an egg never stopped me from becoming a detective,\" the Egg-Drop Sleuth said during the interview. \"People think eggs are fragile and simple-minded, that you can just crack us open like we're good for nothing else,\" he said, shaking his magnifying glass. \"But if we judged by looks alone, we'd never know that some eggs actually have two or three yolks inside!\""
+    },
+    {
+      "name": "Eggs Benedictator",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Eggxotic Chaos",
+      "flavor": "No egg can escape the will of an Eggs Benedictator. Dressed in the finest colors and with an air of dignified simplicity, they lead their troops with a firm hand... or hard shell, into battle. Minimizing casualties is their goal—if it's possible. Though it's a little tricky when your entire army is covered in shells that could break just by bumping into the kitchen counter."
+    },
+    {
+      "name": "Elegant Denizen",
+      "elements": ["psychic"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Denizen Sorcery",
+      "flavor": "With a distinguished bearing and impeccable manners, this abyssal dweller doesn't speak, but its gaze judges as if it has spent centuries in a God's court. It communicates with slow, deliberate gestures and never attacks without first straightening its hat. It is said that those defeated by this creature are condemned to eternal good manners."
+    },
+    {
+      "name": "Explosive Cataclysm",
+      "elements": ["fire", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 126,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Many nations, including Siralim, have harsh laws against creating Cataclysms."
+    },
+    {
+      "name": "Eye of the Gorgon",
+      "elements": ["ghost"],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "This creature isn't a Gorgon but the fragment left when one is only partially destroyed. It drifts as a massive magical eye, filled with residual magic, able to petrify weak creatures with its gaze—even through reflections or shadows. Its pupil never blinks, and its presence subtly distorts the visual memory of those nearby. Some claim to have fought one but can never clearly explain how the encounter ended."
+    },
+    {
+      "name": "Falconer Effigy",
+      "elements": ["ghost"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Effigy Death",
+      "flavor": "Effigies were once a ruthless species that almost conquered an entire nation. Today, they coexist peacefully with humans and other intelligent beings in the great cities."
+    },
+    {
+      "name": "Frosty Freezy",
+      "elements": ["ice", "grass"],
+      "raceId": "cervid",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "It's easy to assume that Frosty Freezy is a creature of snow and ice, but in reality, it can often be found lounging on a beach, enjoying a cold treat. Its body naturally emits an intense cold, and not only does it thrive in the heat, but it actually enjoys it. However, if it gets exposed to too much cold, it starts to hallucinate and eventually freezes solid until someone comes to its aid."
+    },
+    {
+      "name": "Furious Spacecat",
+      "elements": ["psychic"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 115,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spacecat Sorcery",
+      "flavor": "Most intelligent beings think highly of the Spacecats, though some suspect they're secretly plotting to take over other nations."
+    },
+    {
+      "name": "Fury Stormer",
+      "elements": ["electric", "grass"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "Along the shores of the continent and nearby islands dwell gentle flying creatures that survive mostly on carrion and fish near the water's surface. But during fierce storms, powerful winds can sweep them far from their homes, sometimes miles away. If they're threatened by land dwellers, their panic can trigger a brutal assault capable of wiping out whole settlements."
+    },
+    {
+      "name": "Gemstone Trader",
+      "elements": ["rock", "psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 101,
+        "spDefense": 72,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "This amphibian's friendly appearance has fooled countless wrongdoers. In truth, it's incredibly strong and vengeful. Always carrying a pouch of gemstones, it's willing to barter for food, gear, or magic. Anyone who tries to scam or push a clearly dishonest trade will face its wrath, ending up beaten and robbed of their belongings."
+    },
+    {
+      "name": "Genetic Anomaly",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 79,
+        "defense": 79,
+        "spAttack": 79,
+        "spDefense": 79,
+        "speed": 68
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "The Genetic Anomaly can store a vast array of objects and creatures within itself, slowly consuming them and absorbing the nutrients it can process. Preferring dark, damp environments like sewers, it is incredibly stealthy, allowing it to hunt without its prey ever knowing until it's too late. When its DNA merges with another creature's, it produces a substance capable of replicating some of their traits if consumed."
+    },
+    {
+      "name": "Glacial Cataclysm",
+      "elements": ["ice", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 137,
+        "attack": 54,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Cataclysms are creatures created in secret, illegal labs."
+    },
+    {
+      "name": "Gloopidator",
+      "elements": ["poison", "fire"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 122,
+        "attack": 68,
+        "defense": 79,
+        "spAttack": 79,
+        "spDefense": 79,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Concoction Chaos",
+      "flavor": "Venedon spent hundreds of years trying to bring the Concoctions to life, but given his lack of scientific knowledge, these creatures are quite simple-looking."
+    },
+    {
+      "name": "Gold Spacecat",
+      "elements": ["psychic"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 137,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spacecat Sorcery",
+      "flavor": "Don't let their polite and friendly nature fool you — Spacecats are some of the sharpest minds in the world. And when it comes to money, no one does it better than the Gold Spacecat. These financial wizards manage the entire Spacecat economy, offering top-tier advice on spending and investments. In no time at all, they've made their mark on the economies of Siralim and beyond."
+    },
+    {
+      "name": "Gravebound Eidolon",
+      "elements": ["ghost"],
+      "raceId": "flower",
+      "stats": {
+        "hp": 126,
+        "attack": 79,
+        "defense": 79,
+        "spAttack": 79,
+        "spDefense": 79,
+        "speed": 68
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "This creature wasn't born, didn't die, and wasn't called forth—it just showed up one morning by a nameless grave. Since then, it roams Rodia's oldest cemeteries, dragging chains it never wore. It only fights if stopped, and its enemies are hit with a deep, haunting nostalgia for lives they never had. When it leaves, it sometimes leaves behind withered flowers where its opponent fell."
+    },
+    {
+      "name": "Grivix",
+      "elements": ["psychic"],
+      "raceId": "machine",
+      "stats": {
+        "hp": 115,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Robodomi Sorcery",
+      "flavor": "Living beings and Robodomi share only the ability to see and hear the world. But Robodomi can process massive amounts of data in seconds with the help of certain devices."
+    },
+    {
+      "name": "Haunting Glass",
+      "elements": ["ghost", "psychic"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "It looks like an ordinary oval mirror, but its surface doesn't reflect the present—instead, it shows distorted fragments of other people's memories. Whoever gazes into it can see moments they never lived, guilt that isn't theirs, and even alternate endings that never happened. Though considered harmless, some get trapped in front of it for days, trying to figure out if what they see was ever real."
+    },
+    {
+      "name": "Healing Effigy",
+      "elements": ["ghost"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 137,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 79,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Effigy Death",
+      "flavor": "While Effigies can't lose blood, they do face other challenges during battle. The Healing Effigy typically trains in medicine, first aid, or nursing, giving them the ability to save countless creatures in a variety of situations. But above all, they're the masters of patching up wounds, treating burns, and handling the unfortunate mishaps that come with being a creature of buttons and cloth."
+    },
+    {
+      "name": "Holyguanodon",
+      "elements": ["light", "grass"],
+      "raceId": "ornithischian",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Most Elementasaur species don't form herds, but none ignore each other. When they meet, they recognize one another and often exchange some kind of gesture. Sometimes, they even fight over territory."
+    },
+    {
+      "name": "Hot Lips",
+      "elements": ["fire"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "These floating crimson lips drift through the air, trailing a haze of steam that stings the eyes. Normally harmless, they flutter about cheerfully and only stop when they catch the scent of something spicy to snack on. Most people steer clear of them due to the irritating vapors they exhale. But when threatened, their expression twists into a furious snarl—and then they lunge in for a bite."
+    },
+    {
+      "name": "I Scream Man",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "No one knows where he gets his ice cream, but he always has one ready to offer. He smiles like he knows something you don't, and he probably does. A research team from the Magic University of Neralim studied the spoon he always carries and found it to be an ordinary kitchen utensil. He claims his flavors never repeat... but beware, eating too much can erase your memories."
+    },
+    {
+      "name": "Iron Maiden",
+      "elements": ["steel", "ghost"],
+      "raceId": "metal",
+      "stats": {
+        "hp": 144,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "Torture devices have long held a notorious reputation, used across countless generations all over the world. But as times changed, some nations officially outlawed their use—at least on paper. This, of course, left behind a massive stockpile of now-obsolete instruments like the Iron Maiden. Rather than destroy them, places like Rodia decided to enchant them and put them to use: fighting on the front lines or patrolling rough neighborhoods to scare criminals into behaving."
+    },
+    {
+      "name": "Jack Frost",
+      "elements": ["ice", "psychic"],
+      "raceId": "cervid",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "An ancient curse created malevolent spirits that rise during snowstorms on the winter solstice. Legends say that hunting them for their carrot noses grants powers, though the carrot itself holds no such magic. However, it does affect their behavior—because to regrow the carrot, they must feed on the ears, toes, and noses of other creatures."
+    },
+    {
+      "name": "Jack o' Lantern",
+      "elements": ["psychic"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 65,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "Many of these creatures work as guides for travelers in dense forests. However, there have been cases where some used their services as a trap. Once deep in the woods with their clients, they turned on them, making them their victims. That's why, today, any guide must be accredited by the Rodian government to guarantee the safety of their journey."
+    },
+    {
+      "name": "Jackal Swarm",
+      "elements": ["fire"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 115,
+        "attack": 86,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 86
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "One jackal poses little danger to any fighter, but when they come in a swarm, the threat multiplies. Attacks across wide-open areas like prairies or barren plains can be deadly enough. Yet, the true nightmare is in rugged mountains or canyons, where these animals stalk silently and launch coordinated strikes from above, able to destroy a small group in moments."
+    },
+    {
+      "name": "Junkyard",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 54,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "Sometimes, strange objects from distant places wash up on the shores of Rodia. A scientist from Vanelin managed to get his hands on one of these items and started experimenting with it. Though he never fully figured out how it originally worked, he infused it with magic to make it move again. And sure enough, it started moving. Now, the sorcerer is working on recreating his experiment to sell it on the black market."
+    },
+    {
+      "name": "Kaleido-toad",
+      "elements": ["psychic"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 126,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 90,
+        "spDefense": 65,
+        "speed": 50
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mireling Sorcery",
+      "flavor": "Whether mutation or god, the Kaleidotoad is a chromatic rarity—an unstable genetic mix born from some ancient arcane experiment by the Mireling Spellscatterers. Its colors shift with its mood, and its hypnotic gaze can unsettle even the steadiest soul. Some follow it like a prophet, while others hunt it out of superstition. The former often end up slaves to its whims, and the latter usually meet the same fate."
+    },
+    {
+      "name": "Kegstruct",
+      "elements": ["psychic"],
+      "raceId": "metal",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "No one knows if it was built for festive or warlike purposes, but the truth is it fulfills both with deadly efficiency. Its body is made of barrels reinforced with enchanted metal, and inside ferments an explosive substance that changes its effect depending on the situation. Some use it as fuel, others as a ritual drink, and the boldest wield it as a weapon. Whatever the case, it must never be tipped over without reason: it has already destroyed more than one tavern by accident."
+    },
+    {
+      "name": "King Croak",
+      "elements": ["ghost"],
+      "raceId": "human",
+      "stats": {
+        "hp": 137,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "King Croaks are a species of giant frogs found in certain forests and swamps. They're much more intelligent than common frogs and interact with each other in ways similar to chimpanzees. Constant play-fighting is part of their daily life, and the group is led by the individual who commands the most respect—usually the strongest. Leader or not, it's not uncommon to find these creatures for sale on the black market, where it's recently become trendy to outfit them with crowns."
+    },
+    {
+      "name": "Klyptar",
+      "elements": ["psychic"],
+      "raceId": "machine",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Robodomi Sorcery",
+      "flavor": "Some Robodomi go into energy-saving mode, standing still and silent for hours. But even in this state, they can still share information. This is thanks to the Klyptar, which act as flawless receivers and transmitters between these synthetic beings, no matter how far apart they are."
+    },
+    {
+      "name": "Knight Effigy",
+      "elements": ["dark", "ghost"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Effigy Death",
+      "flavor": "Effigies are firm believers in dismantling class systems. While nobility no longer holds much meaning, remnants of feudalism still linger, and the Knight Effigies are determined to put an end to it. These brave warriors are highly sought after, known for their physical toughness and unmatched swordsmanship, able to keep fighting even in the face of serious wounds."
+    },
+    {
+      "name": "Lucanian Archunter",
+      "elements": ["fire"],
+      "raceId": "insectfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Lucanian Chaos",
+      "flavor": "Lucanians have been integrated into society since the dawn of civilization, though many prefer simpler lives in wild environments, either living alone or in small communities."
+    },
+    {
+      "name": "Lucanian Armiger",
+      "elements": ["ghost"],
+      "raceId": "insectfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Lucanian Death",
+      "flavor": "Lucanians are creatures skilled in both physical and magical attacks."
+    },
+    {
+      "name": "Lucanian Aspectal",
+      "elements": ["psychic"],
+      "raceId": "insectfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Lucanian Sorcery",
+      "flavor": "Often, Lucanians pretend not to know how to speak to avoid conversations they don't want to have, which has led to the widespread belief that not all of them can communicate."
+    },
+    {
+      "name": "Lucanian Illuminator",
+      "elements": ["light"],
+      "raceId": "insectfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 50
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Lucanian Life",
+      "flavor": "Lucanians are known for drinking large quantities of alcohol and can get quite upset if they arrive at a tavern only to find it runs out of stock."
+    },
+    {
+      "name": "Lucanian Soulbinder",
+      "elements": ["ghost", "psychic"],
+      "raceId": "insectfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Lucanian Sorcery",
+      "flavor": "Lucanians have a silly sense of humor, usually revolving around bad puns."
+    },
+    {
+      "name": "Lucanian Windrider",
+      "elements": ["flying", "grass"],
+      "raceId": "insectfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Lucanian Nature",
+      "flavor": "Lucanians have learned to use magic to modify their vocal cords, allowing them to produce more complex sounds and communicate with other intelligent beings."
+    },
+    {
+      "name": "Lunaris",
+      "elements": ["psychic", "light"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Life",
+      "flavor": "This creature appears only on full moon nights, wrapped in a silver glow that seems to blur the edges of its body. Its presence affects the sleep of those around it, causing shared visions among people who have never met. It's believed to act as a link between people's dreams and their memories of the moon, though whether it's a messenger, guardian, or mere cosmic accident remains unclear."
+    },
+    {
+      "name": "Manticore Conquerer",
+      "elements": ["poison", "fire"],
+      "raceId": "chimera",
+      "stats": {
+        "hp": 112,
+        "attack": 76,
+        "defense": 58,
+        "spAttack": 58,
+        "spDefense": 58,
+        "speed": 76
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Manticore Chaos",
+      "flavor": "The long tail of a Manticore is a dangerous weapon. However, the poison of its stinger is only deadly to humans."
+    },
+    {
+      "name": "Marionette Ballerina",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 108,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Marionettes are finely carved wooden figures brought to life by a strong spell—they have no will of their own."
+    },
+    {
+      "name": "Marionette Charlatan",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Marionettes aren't alive and don't have any awareness."
+    },
+    {
+      "name": "Marionette Demoiselle",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Marionettes usually follow set programming, but their owners can take control anytime and command them to do anything."
+    },
+    {
+      "name": "Marionette Evangelist",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Marionette Evangelists are among the oldest of their kind, programmed to deliver sermons with a stirring voice and grand gestures. They can preach for weeks in town squares, churches, funerals, or taverns without ever changing a word. What's eerie is that nobody recalls who wrote their speeches, and some parts come from texts that are impossible to find."
+    },
+    {
+      "name": "Marionette Harlequin",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Traveling fairs often use several Marionettes in their acts, and Marionette Harlequins are the crowd favorite. They spin stories and effortlessly pull off dangerous acrobatics and juggling tricks that would take humans years to learn. In battle, they're tricky and loud, always ready to feint and counterattack."
+    },
+    {
+      "name": "Marionette Hypnotist",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Marionettes require careful, regular upkeep to prevent damage from moisture and wood pests."
+    },
+    {
+      "name": "Marionette Medium",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "In Rodia, buying a Marionette without a licence from the local kingdom is considered illegal trafficking."
+    },
+    {
+      "name": "Marionette Primadonna",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Some believe Marionettes are conscious—there are even folk stories about it—but studies say otherwise."
+    },
+    {
+      "name": "Marionette Virtuoso",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Marionette Chaos",
+      "flavor": "Besides following preset routines, a Marionette's owner can give broad orders that require no micromanagement."
+    },
+    {
+      "name": "Mechto",
+      "elements": ["steel", "psychic"],
+      "raceId": "machine",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Robodomi Sorcery",
+      "flavor": "Robodomi can transfer a ton of information in seconds, but quantum engineering has given some cybernetic creatures abilities that go beyond that. Mechto represents the peak of this technology, capable of copying other synthetic creatures' unique abilities and transferring them to any other being it comes into contact with."
+    },
+    {
+      "name": "Megalodon",
+      "elements": ["grass"],
+      "raceId": "shark",
+      "stats": {
+        "hp": 144,
+        "attack": 101,
+        "defense": 90,
+        "spAttack": 36,
+        "spDefense": 90,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "This colossal sea beast has endless rows of blade-like teeth sharp enough to tear massive holes into ordinary ships. Once believed extinct, it has reappeared in recent years, forcing seafarers to reinforce their vessels with protective magical varnish. The reason for its return remains unknown, though some suspect it may be tied to recent genetic engineering experiments that have revived other ancient creatures."
+    },
+    {
+      "name": "Melishell",
+      "elements": ["grass"],
+      "raceId": "alienRace",
+      "stats": {
+        "hp": 137,
+        "attack": 54,
+        "defense": 90,
+        "spAttack": 72,
+        "spDefense": 90,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "The Melishell, native to the deep ocean, has adapted to life on land. Its shell hosts a variety of insects, who provide it with food in exchange for protection. While not the fastest creature, its claws can easily pierce the flesh of predators, leading most to simply ignore it rather than risk confrontation."
+    },
+    {
+      "name": "Melodic Denizen",
+      "elements": ["light"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Denizen Life",
+      "flavor": "The Melodic Denizen glides through reefs, playing a sea harp with unmatched grace. Its melodies gently sway the currents, affect sea creatures, and stir the emotions of those who hear it. Sailors say its song can bring dead coral back to life... or shatter a heart in an instant."
+    },
+    {
+      "name": "Mimpling",
+      "elements": ["fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "Mimplings are aggressive, relentless creatures with an insatiable hunger, capable of sensing happiness from miles away. While they'll kill if they have to, they prefer to feast whenever they can. They can feed on the brains of almost any living creature, but their particular fondness for those with positive emotions often means they'll go weeks, even months, without eating if they can't find the right prey."
+    },
+    {
+      "name": "Miracle Spider",
+      "elements": ["psychic"],
+      "raceId": "arachnid",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "Once worshiped as river goddesses for their magic, Miracle Spiders dwell in caves near the river's source, using simple spells to catch fish. As cities grew, they started mixing more with humans and other races. Nowadays, many live in towns and often work as talented magic teachers."
+    },
+    {
+      "name": "Mireling Arbitrator",
+      "elements": ["light"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mireling Life",
+      "flavor": "At night in the swamp gathering where Mirelings croak together, the Mireling Arbitrator acts as judge, executioner, and spectacle all in one. Its word holds unquestionable power: whatever it declares true becomes reality, even if the reasons aren't clear. Few dare contradict it, and none do so twice. Some of them abandon their tribe and become solitary creatures wandering the swamps, living peaceful and quiet lives."
+    },
+    {
+      "name": "Mireling Corruptor",
+      "elements": ["ghost"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mireling Death",
+      "flavor": "Deep in the rotting swamps where neither light nor sound dare trespass, the Mireling Corruptor grows parasitic fungi from its own flesh. Its empty gaze and perpetual grin stand in stark contrast to the crude skull of hardened sludge it always carries. It taints the earth it walks on, leaving poisonous fungal gardens blooming in its wake. Some say it isn't a creature at all, but a spirit that seeks only to keep its habitat undisturbed."
+    },
+    {
+      "name": "Mireling Dart Frog",
+      "elements": ["grass"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mireling Nature",
+      "flavor": "Agile and deadly, the Mireling Dart-Frog blends into the foliage until it's far too late. It can launch crystallized spines coated in neuroparalytic venom from its webbed fingers, and it climbs any surface to strike from a safer, more surprising vantage point. Some lizardfolk tribes see them as guardian spirits—though they still keep their distance, treating them more like a curse than a blessing."
+    },
+    {
+      "name": "Mireling Spellscatterer",
+      "elements": ["psychic"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mireling Sorcery",
+      "flavor": "Wise among the Mirelings, the Mireling Spellscatterer wears robes made of bark and lichens and carries a staff carved with symbols representing the lunar cycles. It can corrupt enemy spells and return them altered, like a distorted reflection in a murky pond. Notably, it can disrupt magical concealment spells so those using them become fully visible to its kind. In groups, they can turn powerful magical barriers into deadly traps for those trapped inside."
+    },
+    {
+      "name": "Mireling Striker",
+      "elements": ["fire"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 115,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mireling Chaos",
+      "flavor": "The fiercest of the Mirelings, the Mireling Striker wields thick, veiny muscles to strike with deadly precision and bone-crushing force. It picks up every languange it encounters, making it the go-to for dealing with other species. Its training begins at birth and ends only when its fists can punch through stone without a scratch."
+    },
+    {
+      "name": "Mythicant Chromis",
+      "elements": ["psychic"],
+      "raceId": "hymenopteran",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 83
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Mythicant Sorcery",
+      "flavor": "Some editions of the Andolin novel which inspired these creatures were published with color illustrations. Through one of these versions, the Mythicant Chromis were born. They can resonate with others of their kind to create ephemeral copies of themselves that attack multiple enemies. Additionally, their strikes and spells materialize more vividly than expected, easily piercing through armor and magical defenses."
+    },
+    {
+      "name": "Nightmare (Creature)",
+      "elements": ["dark", "ghost"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "This bed is cursed, ensuring that anyone who lies on it will be plagued by terrifying nightmares. At first glance, it might seem like a normal bed, able to disguise its true form. But if someone falls asleep on it, they'll be trapped in a nightmare that brings their deepest fears to life, and they'll never be able to wake up on their own."
+    },
+    {
+      "name": "Noble Effigy",
+      "elements": ["ghost"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Effigy Death",
+      "flavor": "While no Effigy holds an official title, some are considered leaders among their kind. They're the sharpest and most cunning of their species, though calling them \"noble\" would be an exaggeration. After all, these creatures would never allow such privileges to exist within their own ranks. Still, they tend to dress in elaborate, eye-catching clothing, which is how the people of Siralim and other cities ended up dubbing them \"noble.\""
+    },
+    {
+      "name": "Nuclear Cataclysm",
+      "elements": ["fire", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 137,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 40
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "If a Cataclysm is left in storage too long, it will inevitably burst its container, causing a dangerous explosion."
+    },
+    {
+      "name": "Oceanic Cataclysm",
+      "elements": ["water", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 151,
+        "attack": 54,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 47
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Making a Cataclysm is risky—sometimes it results in the lab blowing up."
+    },
+    {
+      "name": "Ol' Nog",
+      "elements": ["fire"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 122,
+        "attack": 86,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 58
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "Goblins from Litepo Island remained cut off from the world for millennia. Legend says they came after a slave ship sank, but it's uncertain whether they were the only ones who survived. Since there were no big animals around, they learned to hunt by hurling stones and sticks at small creatures like rodents, fish, and birds to get meat. Eventually, they created a weapon that was not only highly accurate and lethal but also returned to the thrower's hand by itself."
+    },
+    {
+      "name": "One-Punch Snowman",
+      "elements": ["ice", "fire"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 108,
+        "defense": 72,
+        "spAttack": 54,
+        "spDefense": 72,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "When the storms rage on the winter solstice, these malevolent spirits rise from the earth to consume anything alive. While they rest in the ground, waiting for the snow to form their bodies, some focus all their power into one arm, making it capable of delivering a single, devastating punch that can destroy anything in its path."
+    },
+    {
+      "name": "Operatic Denizen",
+      "elements": ["grass"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Denizen Nature",
+      "flavor": "This creature, perfectly dressed for tragedy, sings with a power that can shatter both coral and hearts. The most imaginative sailor legends claim its high notes summon storms and its low ones alter ocean currents, but the truth is these phenomena simply inspire its singing one way or another. If it ever locks eyes with you during a sustained note, be sure to applaud when it finishes."
+    },
+    {
+      "name": "Orc Bowman",
+      "elements": ["fire"],
+      "raceId": "orc",
+      "stats": {
+        "hp": 115,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "Deep in the lush Allimber valley, a tribe of orcs has thrived on the surface for millennia. Though many live quietly as hunters, a few are drawn by the stories of wealth and fame told by travelers and traders. With bows crafted from the forest's wood, these orcs leave their home to seek their own destiny beyond the valley."
+    },
+    {
+      "name": "Ouroboros",
+      "elements": ["steel", "psychic"],
+      "raceId": "serpent",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "This playful snake can be found in many different environments. It's one of the largest reptiles known, but it doesn't pose much of a threat to travelers or other creatures, as it feeds only on its own tail. Without this self-sustaining cycle, it would grow uncontrollably, struggle to move, and eventually die due to its inability to produce enough blood to sustain its size. Fortunately, its bite cauterizes any wound it causes, and its tail has no nerves, so it doesn't feel pain."
+    },
+    {
+      "name": "Pandemic Cataclysm",
+      "elements": ["poison", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 101,
+        "spDefense": 72,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Cataclysms are highly unstable magical creations that constantly leak dangerous spells. They should only be removed from their container when used in combat."
+    },
+    {
+      "name": "Parasitic Copycat",
+      "elements": ["ghost"],
+      "raceId": "mimic",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "This creature shows up in chaotic moments or big crowds, when people aren't paying attention. It mimics the nearest creature that grabs its interest with eerie precision—gestures, voice, even surface memories. It doesn't have a clear goal or a set way of attacking, but those who've spent time with it swear the copy eventually starts to believe it's the real thing."
+    },
+    {
+      "name": "Pearlescent Denizen",
+      "elements": ["psychic"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Denizen Sorcery",
+      "flavor": "Legend says it was born from the echo of an ancient song, trapped inside a pearl for a thousand years. Its shimmering shell emits vibrations that alter the thoughts of those who hear them, erasing fears or awakening long-forgotten memories. On some islands, it is worshipped as the guardian of secrets the sea chose not to return."
+    },
+    {
+      "name": "Peculiar Spacecat",
+      "elements": ["psychic"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spacecat Sorcery",
+      "flavor": "From the very beginning, Spacecats adapted quickly and carved out an important place in society in record time."
+    },
+    {
+      "name": "Phenomenal Possum",
+      "elements": ["psychic"],
+      "raceId": "marsupial",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "Rodia has very strict rules when it comes to waste management, especially when it involves magical materials. The Phenomenal Possum is a perfect example of why these laws are so severe, with heavy penalties for violations. This creature is loud, stinks to high heaven, and, on top of that, loves to cause trouble."
+    },
+    {
+      "name": "Plains Felkat",
+      "elements": ["grass"],
+      "raceId": "human",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "It was once believed that Plains Felkats were not intelligent creatures, but a scholar from Andolin set out to study them and proved this belief wrong. They simply didn't want anything to do with species prone to war. However, as times changed and trade grew, some humans began interacting with Plains Felkats, and once their incredible skills became clear, they started joining police forces across Rodia's towns and cities. They are fast, stealthy, and relentless. Their extremely keen sense of smell lets them track anyone from just a trace of blood, making it easy to catch many criminals."
+    },
+    {
+      "name": "Prismagician",
+      "elements": ["psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "The head of this creature gives off a mysterious multicolored glow, often compared to a rainbow. It can absorb small sources of visible light and alter their color at will. When many Prismagicians gather in one place, they can darken a large area or emit powerful beams of light in any color to confuse enemies or put on a dazzling show. Some of them even work with theater companies, handling lighting and special effects."
+    },
+    {
+      "name": "Ripper",
+      "elements": ["fire"],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 108,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 54,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "These malicious spirits haunt the night, seeking out victims to kill in brutal, savage ways. Their knife is rumored to be cursed, though in reality, it's more of a multi-purpose weapon. Once they wound someone with it, the Ripper can track them down, no matter how far they run or how much time has passed."
+    },
+    {
+      "name": "Romulette",
+      "elements": ["fire"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 54,
+        "spDefense": 90,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Eggxotic Chaos",
+      "flavor": "The Egg-Front was never better protected than by the Romulette Order. From a young age, they're trained in the ancient art of the stone omelette—a cooking style that lets them create a tough shield out of... well, other eggs that didn't have the best of fates. Plus, they look pretty awesome in their helmets."
+    },
+    {
+      "name": "Scorched Egg",
+      "elements": ["fire", "psychic"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 90,
+        "spAttack": 72,
+        "spDefense": 90,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Eggxotic Sorcery",
+      "flavor": "Also knows as the \"Fierce Warm Egg,\" \"Egg Slammed Into Molten Rock,\" or \"Satan, Lord of the Underworld.\" This egg is more than just cooked—it can withstand blazing heat and roll through lava like a fire-breathing dragon. It constantly leaks glowing yolk, though if it gets too hot, it'll lose its yolk altogether and stop oozing."
+    },
+    {
+      "name": "Sculpt",
+      "elements": ["psychic"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 47
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "This creature was born straight from the nightmares of a noble's son who had an intense fear of clowns. The sorcerer behind its creation had a questionable reputation, but at least he achieved his goal... if you only consider what he was trying to do. The creature wasted no time in screaming and attacking the sorcerer, who disappeared without a trace. Now, the family who hired him is nowhere to be found."
+    },
+    {
+      "name": "Sky Cataclysm",
+      "elements": ["flying", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 137,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Crafting a Cataclysm requires sacrificing multiple spell gems, and the element of those gems determines what kind of creature it creates."
+    },
+    {
+      "name": "Slash Shifter",
+      "elements": ["fire"],
+      "raceId": "lycanthrope",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 65,
+        "spAttack": 65,
+        "spDefense": 65,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "These creatures live in the dry plateaus of Andolin, where they dig complex tunnels used as homes, hunting grounds, and defense. They're extremely violent—crossing their territory is not recommended. Nowadays, every good map marks their zones as dangerous, and well-equipped groups often hunt them. Rodia's government is debating whether to try making peace with these fierce beasts before they vanish forever."
+    },
+    {
+      "name": "Snow Stalker",
+      "elements": ["ice", "grass"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "During the snowstorms of the winter solstice, an evil spirit stirs from its slumber to feast. This dangerous creature was once believed to devour the souls of its victims, but that myth has been completely debunked. However, some still believe that eating the carrot on its nose grants incredible powers—everything from acquiring the abilities and memories of those the Snow Stalker has claimed to even achieving immortality. Though the legend no longer holds the weight it once did, hunting the Snow Stalker remains a cherished tradition."
+    },
+    {
+      "name": "Solaris",
+      "elements": ["light"],
+      "raceId": "ancientCreature",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Life",
+      "flavor": "This creature emits a bright, steady light but produces no heat. It floats silently with the same expression, unsettling anyone who watches it for too long. Often found over ancient battlefields or sites of tragedy, as if trying to purify what can no longer be changed. Sometimes it removes its sunglasses as a sign of respect for the fallen."
+    },
+    {
+      "name": "Soulwarper",
+      "elements": ["ghost"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "A coven of witches, desperate to end a demon possession outbreak in their village, summoned the Soulwarper. This creature's bite can tear away parasitic spirits and return them to where they came from by swallowing them whole. However, Soulwarpers also consume dead wood, and once their soul feast was over, the witches were forced to banish them to save their houses from destruction."
+    },
+    {
+      "name": "Spectral Monarch",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 126,
+        "attack": 79,
+        "defense": 79,
+        "spAttack": 79,
+        "spDefense": 79,
+        "speed": 68
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "This creature possesses extraordinary strength and a fierce aggression that's hard to control. It feeds on the life force of its victims, and every time it kills one, it temporarily grows more powerful by stealing their innate abilities for several minutes. It was created in a secret laboratory by the Ugeda River, where a group of renegade sorcerers sought to bring forth a creature that would help them amass great fortune."
+    },
+    {
+      "name": "Spelljuggler Bedazzler",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spelljuggler Sorcery",
+      "flavor": "The Spelljugglers were once hunted by the authorities, but their leader—who knows the law inside out—managed to prove that they weren't a criminal organization."
+    },
+    {
+      "name": "Spelljuggler Connoisseur",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spelljuggler Sorcery",
+      "flavor": "The Spelljuggler order is led by a famous sorcerer from Siralim who's been outwitting the authorities for over 10 years."
+    },
+    {
+      "name": "Spelljuggler Conservator",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spelljuggler Sorcery",
+      "flavor": "Spelljugglers work alone or in small groups and only answer to their leader when necessary—usually to pay the 1% of their earnings, as per the contract they signed."
+    },
+    {
+      "name": "Spelljuggler Instructor",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spelljuggler Sorcery",
+      "flavor": "Spelljugglers are humans who've undergone a voluntary transfusion of altered blood, changing them forever."
+    },
+    {
+      "name": "Spelljuggler Opportunist",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spelljuggler Sorcery",
+      "flavor": "Many humans join the Spelljuggler order to make a fortune, but others are after the power the altered blood gives them."
+    },
+    {
+      "name": "Spelljuggler Trapezist",
+      "elements": ["psychic"],
+      "raceId": "human",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Spelljuggler Sorcery",
+      "flavor": "The Spelljugglers are a mercenary group that will join any cause as long as the reward is right."
+    },
+    {
+      "name": "Spellsword",
+      "elements": ["psychic"],
+      "raceId": "metal",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 65,
+        "spAttack": 90,
+        "spDefense": 65,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "The Red Hat order isn't the only group that can channel magic into their melee or ranged weapons. Though officials advise against such practices without guidance, numerous mercenaries, soldiers, and bandits who pick up some magic specialize in this risky skill. Many grow into fearsome fighters, but occasionally, it ends with a sudden and violent burst of molten steel right in the would-be Spellsword's face."
+    },
+    {
+      "name": "Splitsoul",
+      "elements": ["ghost", "light"],
+      "raceId": "metal",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 54,
+        "spDefense": 90,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Life",
+      "flavor": "Many fighters go to war torn between duty and regret—wanting to defend their home but sorrowful over the lives they took. Though death claimed them through magic and steel, their spirits linger as lost souls chasing the justice they were denied. Splitsouls are often seen wandering roads traveled by bandits and killers, ever watchful and willing to protect those in peril."
+    },
+    {
+      "name": "Storm Cataclysm",
+      "elements": ["electric", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "Cataclysms are a hot commodity in the black market, which is why authorities in Siralim and other nations created a device that detects them within a 100-meter range."
+    },
+    {
+      "name": "Swarmed Hive",
+      "elements": ["grass"],
+      "raceId": "hive",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 54,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "It doesn't move, it doesn't speak, and it doesn't seem alive in the usual sense. However, it emits a constant buzzing that changes in intensity depending on how many creatures come near. Inside, a single conscious swarm acts as one mind, able to leave the hive to build new nests or fiercely protect its home. Unlike regular bee hives, these have no queen—they reproduce by cloning themselves once or even twice before they die."
+    },
+    {
+      "name": "Syringe",
+      "elements": ["ghost"],
+      "raceId": "alienRace",
+      "stats": {
+        "hp": 108,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "The origin of this creature is a complete mystery. The first one appeared suddenly in a crowded street in Siralim, and it stayed there, completely still, until the authorities took it away. When the Rodian government allowed further study, it was discovered that the creature was an empty shell—nothing inside. Since then, more have appeared across the continent, with no one understanding how or why. A simple spell is all it takes to control them like puppets."
+    },
+    {
+      "name": "Terra Cataclysm",
+      "elements": ["rock", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 162,
+        "attack": 72,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "To create a Cataclysm, magic has to be focused intensely for days."
+    },
+    {
+      "name": "The End",
+      "elements": ["ghost"],
+      "raceId": "human",
+      "stats": {
+        "hp": 144,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "It's said The End was created by a careless wizard who was too lazy to take out the trash and got swallowed by the creature's crushing gravitational pull one night as he slept. In truth, this myth was spread by a student at the Magic University of Vanelin to ridicule the professor who created the creature. The kingdom's rulers quickly fired the professor and banned The End's use and spread, but smugglers still sell them on the black market."
+    },
+    {
+      "name": "The Heap",
+      "elements": ["ghost"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 144,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 90,
+        "spDefense": 90,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "When magical creatures die and aren't consumed by others, their bodies start to decompose. However, sometimes these remains start to move across the ground or water, drawn together by a strange magnetism. When they gather in large enough numbers, they come to life, forming a terrifying creature that devours anything magical in its path."
+    },
+    {
+      "name": "Thunder-Rex",
+      "elements": ["electric", "grass"],
+      "raceId": "theropod",
+      "stats": {
+        "hp": 137,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 61
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Though many Elementasaurs went extinct ages ago, some survive to this day, whether naturally or by other means."
+    },
+    {
+      "name": "Tipsy Denizen",
+      "elements": ["grass"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Denizen Nature",
+      "flavor": "Tipsy Denizens are notorious drinkers, never without their bottle of fermented seaweed and rarely ever sober. They stagger across the reefs, laughing and singing in a language few surface dwellers understand. Despite their unsteady gait, their wild moves have sunk more corsairs than Rodia's navy is willing to admit. If you see one toasting alone, don't even think about interrupting."
+    },
+    {
+      "name": "Toadstool",
+      "elements": ["ghost"],
+      "raceId": "fungus",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "It doesn't take much to realize that eating this mushroom could lead to serious health issues. In fact, one of the deadliest poisons in existence comes from these creatures, and when synthesized, it can cause devastating effects in a matter of seconds. Interestingly, the magical properties of this creature make its venom effective even against golems or spirits—beings that aren't traditionally considered alive."
+    },
+    {
+      "name": "Tormented Bunny",
+      "elements": ["fire"],
+      "raceId": "lagomorph",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Chaos",
+      "flavor": "This creature began as a therapeutic device for people suffering from chronic nightmares. The bad dreams were meant to be channeled into these plush rabbits—but after a few months, they started to come alive. Haunted by the only memories they'd ever known, they began to lash out at anyone they encountered. It was later discovered that the bunnies had been sold without proper safety testing. Authorities are still searching for those responsible."
+    },
+    {
+      "name": "Training Dummy",
+      "elements": ["grass"],
+      "raceId": "cervid",
+      "stats": {
+        "hp": 144,
+        "attack": 54,
+        "defense": 101,
+        "spAttack": 54,
+        "spDefense": 101,
+        "speed": 43
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Nature",
+      "flavor": "This creature was originally designated as a combat training tool for military academies, but over time it developed an inexplicable kind of pride. It always positions itself in the center of the field, stands firm against any attack, and celebrates each hit as if part of a grand choreography. Some say if you manage to hit it ten thousand times without missing, it bows slightly as a sign of respect. Others believe it just does this because its back hurts."
+    },
+    {
+      "name": "Triflaratops",
+      "elements": ["grass"],
+      "raceId": "ornithischian",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 54,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Elementasaurs existed long before humans."
+    },
+    {
+      "name": "Underdweller Fearmonger",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 54,
+        "defense": 90,
+        "spAttack": 72,
+        "spDefense": 90,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Underdweller Death",
+      "flavor": "Underdwellers weren't expected to become the allies everyone relies on in the city's shadows. They possess natural caution and a sharp business sense, despite have stayed hidden for thousands of years in their small swamp villages."
+    },
+    {
+      "name": "Underdweller Hexblade",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 54,
+        "spAttack": 72,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Underdweller Death",
+      "flavor": "Underdwellers come from swampy lands, but as cities grew, they adapted to living on the fringes of society."
+    },
+    {
+      "name": "Underdweller Mischiefmaker",
+      "elements": ["ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 108,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Underdweller Death",
+      "flavor": "When shady business needs doing, many turn to the Underdwellers—silent, efficient, and always fair in their dealings. They slip in, slip out, and leave no trace but a satisfied client. But not every plan works out. That's where the Underdweller Mischiefmaker comes in. These tight-lipped tacticians thrive in chaos, always ready with backup plans and silent retreats. If something goes wrong, they don't panic—they vanish, dragging their team to safety before fading into the dark themselves."
+    },
+    {
+      "name": "Underdweller Ripper",
+      "elements": ["fire"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 108,
+        "attack": 101,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Underdweller Chaos",
+      "flavor": "No one knows the city's underground like the Underdwellers. Moving through darkness is always quicker and safer, and the Underdweller Ripper uses this to stalk victims by their footsteps above. When the target turns into a quiet alley, the ripper emerges, knife ready to end the hunt."
+    },
+    {
+      "name": "Underdweller Ritesmaster",
+      "elements": ["grass"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 90,
+        "attack": 72,
+        "defense": 72,
+        "spAttack": 90,
+        "spDefense": 72,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Underdweller Nature",
+      "flavor": "Underdwellers thrive in the shadows, especially when the job requires discretion. For them, staying unknown is a mark of pride, and no Underdweller worth their salt lets their name circulate where it shouldn't."
+    },
+    {
+      "name": "Underdweller Rot-thief",
+      "elements": ["poison", "ghost"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Underdweller Death",
+      "flavor": "Life for Underdwellers once centered on hunting and gathering. Today, information is their most prized possession, and they've earned a reputation as the most discreet traders of secrets."
+    },
+    {
+      "name": "Uralos Warchief",
+      "elements": ["normal", "grass"],
+      "raceId": "god",
+      "stats": {
+        "hp": 137,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 54,
+        "spDefense": 72,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Uralos Nature",
+      "flavor": "While Uraloses are generally self-sufficient and prefer independence, some have integrated into Rodia's society over the past few decades. The Uralos Warchiefs are the strategists of their kind, leading their people with a cool, calculating mind to defend their lands. Without them, it is clear that the island they have inhabited since the dawn of time would have been invaded long ago."
+    },
+    {
+      "name": "Veliceoraptor",
+      "elements": ["ice", "grass"],
+      "raceId": "theropod",
+      "stats": {
+        "hp": 108,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 90
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Named for the chilling roars it lets out as it lunges, the Veliceoraptor is pure deadly speed. It hunts in packs and leaves no tracks—except for the ice that forms under its feed, hard to spot in its natural habitat. Once thought a northern legend, blue bones found in glaciers tell a different story. Some time ago, scientists brought them back to life, but a security failure sent many to the Frostbitten Caverns, where they've thrived since."
+    },
+    {
+      "name": "Vinosaurus",
+      "elements": ["grass"],
+      "raceId": "sauropod",
+      "stats": {
+        "hp": 126,
+        "attack": 90,
+        "defense": 90,
+        "spAttack": 54,
+        "spDefense": 90,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "Elementaurs live in lands far from the kingdom of Rodia and are highly prized by the dark elites of Siralim and other cities."
+    },
+    {
+      "name": "Volcanic Cataclysm",
+      "elements": ["fire", "grass"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 144,
+        "attack": 90,
+        "defense": 72,
+        "spAttack": 72,
+        "spDefense": 72,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Cataclysm Nature",
+      "flavor": "The process of creating a cataclysm is life-threatening, and that's why criminal syndicates force people to work on them."
+    },
+    {
+      "name": "Wacky Burger",
+      "elements": ["psychic"],
+      "raceId": "giant",
+      "stats": {
+        "hp": 115,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 65
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "This burger has the annoying habit of staying put in the middle of the road, waiting for someone to come close enough to try and eat it. As soon as someone comes too close, it'll spring into action and attempt to devour them instead. Unfortunately for Wacky Burger, this trick is old, and no one in their right mind would trust a giant burger just sitting there on its own. Caravans typically go around them or have their guards take action when they spot one."
+    },
+    {
+      "name": "Weapons Dealer",
+      "elements": ["ghost"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 115,
+        "attack": 90,
+        "defense": 65,
+        "spAttack": 72,
+        "spDefense": 65,
+        "speed": 54
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Death",
+      "flavor": "Weapons Dealers are wandering merchants draped in layers of tattered cloth, with a coat of chainmail beneath it all. They're always ready to trade any kind of weapon, though the price can shift depending on the buyer's circumstances. They know the smuggling routes well and offer everything from enchanted daggers to cursed hand cannons. Their eyes gleam when they spot something valuable in your pouch, and their deals aren't limited to gold or coins—secrets, favors, or tools may serve as payment."
+    },
+    {
+      "name": "Windactyl",
+      "elements": ["flying", "grass"],
+      "raceId": "pterosaur",
+      "stats": {
+        "hp": 108,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 90,
+        "spDefense": 54,
+        "speed": 101
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "category": "Elementasaur Nature",
+      "flavor": "The flight of the Windactyl is nearly invisible to the eye, but the deafening roar that comes before it clearly warns of its presence—usually when it's already too late. That's why this flying Elementasaur rules the most treacherous canyons. According to the monks of the Roda order, who built the Temple of the Sigh near the source of the Ponce River, hunting a Windactyl without being seen is a test of spiritual enlightenment."
+    },
+    {
+      "name": "Zarnox",
+      "elements": ["psychic"],
+      "raceId": "machine",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 90,
+        "spAttack": 72,
+        "spDefense": 90,
+        "speed": 36
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Robodomi Sorcery",
+      "flavor": "Robodomi don't feel emotions, but they can understand them and pick up on them through things like facial expressions or tone of voice."
+    },
+    {
+      "name": "Zeuschund",
+      "elements": ["psychic"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 126,
+        "attack": 72,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 79
+      },
+      "tier": "medium",
+      "catchRate": 20,
+      "category": "Exotic Sorcery",
+      "flavor": "Zeuschunds are forest dogs from Undolim, trained by humans much like wolves were. The became loyal partners, working hand-in-paw with their human friends on many tasks. Unlike wolves, these dogs have orc-like strength, making them fierce allies in the hunt and on the battlefield. But their true power shows after death—if they've bonded deeply with their friends, a sudden heartbeat brings them back. Fueled by raw energy, they rise again, unstoppable and capable of crushing foes that seemed unbeatable."
+    },
+    {
+      "name": "Zyphra",
+      "elements": ["psychic"],
+      "raceId": "machine",
+      "stats": {
+        "hp": 115,
+        "attack": 54,
+        "defense": 54,
+        "spAttack": 101,
+        "spDefense": 54,
+        "speed": 72
+      },
+      "tier": "medium",
+      "catchRate": 40,
+      "genderless": true,
+      "category": "Robodomi Sorcery",
+      "flavor": "Sometimes, Robodomi that break down beyond repair can't be fixed with traditional methods, and their remains could cause serious environmental harm. That's why abandonment is heavily penalized."
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Apollinaire",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Davey",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Dr. Concocto",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Furious Frank",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Greybeard",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Grom’met",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Loki",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Pandora",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Pumking",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Sir Roquefort",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "The Bearon",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "The First Spawn",
+      "reason": "nhân vật độc nhất"
+    },
+    {
+      "name": "Zantai",
+      "reason": "nhân vật độc nhất"
+    }
+  ]
+}

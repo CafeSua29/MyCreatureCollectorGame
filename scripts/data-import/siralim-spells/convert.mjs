@@ -78,7 +78,8 @@ for (const entry of planned) {
     counts.reused++
     continue
   }
-  const conversion = conversions[entry.id]
+  // Mục nhập bổ sung có id thêm hậu tố vì trùng: quy đổi ghi theo `conversionKey` (siralim-update/ids.mjs).
+  const conversion = conversions[entry.conversionKey ?? entry.id]
   if (!conversion) {
     remaining.push(entry)
     counts.pending++

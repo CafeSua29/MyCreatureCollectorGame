@@ -56,6 +56,21 @@ const BOSS_MULTIPLIER = { min: 2, max: 3 }
 /** Theo hệ: tên vi / en, tầng mở (hệ hiếm / mạnh mở muộn hơn), thời tiết, địa hình. */
 const ELEMENT_ZONES = {
   normal: ['Thánh Địa Vạn Thú', 'Sanctuary of Beasts', 3, { clear: 70, fog: 30 }, {}],
+  glass: [
+    'Mê Cung Lưu Ly',
+    'Glass Labyrinth',
+    10,
+    { sun: 60, sandstorm: 40 },
+    { crystalTerrain: 60, none: 40 }
+  ],
+  plastic: ['Nghĩa Địa Đồ Chơi', 'Toy Graveyard', 10, { clear: 60, fog: 40 }, {}],
+  fungal: [
+    'Rừng Nấm Cổ',
+    'Ancient Mycelium Forest',
+    6,
+    { fog: 60, clear: 40 },
+    { swampTerrain: 50, none: 50 }
+  ],
   fire: [
     'Hỏa Diệm Sơn',
     'Blazing Caldera',
@@ -540,7 +555,124 @@ function lineZone(root) {
   })
 }
 
-const missingElements = elements.filter((id) => !ELEMENT_ZONES[id])
+/**
+ * Mẫu cổng thế giới (mục "Cổng thế giới" ở zones.md, Portal của Portals of Phereon): theo môi trường của
+ * gốc; quái là loài Portals of Phereon có hệ chính thuộc chủ đề, thiếu thì thêm loài cùng hệ.
+ */
+const PORTAL_THEMES = [
+  [
+    'Lava',
+    'Cổng Dung Nham',
+    'Lava Portal',
+    ['fire'],
+    { sun: 60, ashfall: 40 },
+    { volcanicTerrain: 70, none: 30 }
+  ],
+  [
+    'Water',
+    'Cổng Đại Dương',
+    'Water Portal',
+    ['water'],
+    { rain: 70, clear: 30 },
+    { deepWater: 60, none: 40 }
+  ],
+  [
+    'Forest',
+    'Cổng Rừng Rậm',
+    'Forest Portal',
+    ['grass'],
+    { clear: 60, rain: 40 },
+    { grassyTerrain: 70, none: 30 }
+  ],
+  [
+    'Frost',
+    'Cổng Băng Giá',
+    'Frost Portal',
+    ['ice'],
+    { snow: 70, blizzard: 30 },
+    { frozenGround: 70, none: 30 }
+  ],
+  [
+    'Shadow',
+    'Cổng Bóng Tối',
+    'Shadow Portal',
+    ['dark', 'ghost'],
+    { darkness: 60, fog: 40 },
+    { cursedGround: 70, none: 30 }
+  ],
+  [
+    'Light',
+    'Cổng Thánh Quang',
+    'Light Portal',
+    ['light'],
+    { sun: 60, clear: 40 },
+    { holyGround: 70, none: 30 }
+  ],
+  [
+    'Swamp',
+    'Cổng Đầm Lầy',
+    'Swamp Portal',
+    ['poison'],
+    { toxicMiasma: 50, rain: 50 },
+    { swampTerrain: 70, none: 30 }
+  ],
+  [
+    'Fungal',
+    'Cổng Nấm',
+    'Fungal Portal',
+    ['fungal'],
+    { fog: 70, clear: 30 },
+    { swampTerrain: 50, none: 50 }
+  ],
+  [
+    'Stone',
+    'Cổng Đá Tảng',
+    'Stone Portal',
+    ['rock', 'ground'],
+    { sandstorm: 60, clear: 40 },
+    { crystalTerrain: 40, none: 60 }
+  ],
+  [
+    'Wild',
+    'Cổng Hoang Dã',
+    'Wild Portal',
+    ['normal', 'electric'],
+    { clear: 60, thunderstorm: 40 },
+    { electricTerrain: 30, none: 70 }
+  ]
+]
+const PORTAL_SOURCE = 'portalsOfPhereon'
+/** Số loài tối thiểu của một cổng; thiếu thì lấy thêm loài cùng hệ của mọi nguồn. */
+const PORTAL_MIN_SPECIES = 12
+
+function portalZone([suffix, , , elementIds, weather, terrain]) {
+  const id = `portal${suffix}`
+  const inTheme = (s) => elementIds.includes(s.elementIds[0])
+  const own = candidates.filter((s) => s.source === PORTAL_SOURCE && inTheme(s))
+  const fill = candidates
+    .filter((s) => s.source !== PORTAL_SOURCE && inTheme(s))
+    .sort((a, b) => hashUnit(id, a.id) - hashUnit(id, b.id))
+    .slice(0, Math.max(0, PORTAL_MIN_SPECIES - own.length))
+  return {
+    ...buildZone({
+      id,
+      encounters: [...own, ...fill].map((s) => ({ speciesId: s.id, weight: encounterWeight(s) })),
+      weather,
+      terrain,
+      elementIds: [elementIds[0]],
+      requirements: [],
+      drops: [],
+      bossDrops: [],
+      treasure: [],
+      rareTreasure: []
+    }),
+    portal: true
+  }
+}
+
+// Hệ không có loài nào mang làm hệ chính (Kim tuyến, như gốc) thì không có hiểm địa.
+const zoneElements = elements.filter((id) => candidates.some((s) => s.elementIds[0] === id))
+const missingElements = zoneElements.filter((id) => !ELEMENT_ZONES[id])
 if (missingElements.length > 0)
   throw new Error(`Hệ chưa có hiểm địa: ${missingElements.join(', ')}`)
 const missingGroups = raceGroupIds.filter((id) => !RACE_ZONES[id])
@@ -548,10 +680,11 @@ if (missingGroups.length > 0)
   throw new Error(`Nhóm race chưa có hiểm địa: ${missingGroups.join(', ')}`)
 
 const zones = [
-  ...elements.map(elementZone),
+  ...zoneElements.map(elementZone),
   ...raceGroupIds.map(raceZone),
   ancientZone(),
-  ...lineRoots.map(lineZone)
+  ...lineRoots.map(lineZone),
+  ...PORTAL_THEMES.map(portalZone)
 ]
 // Thần cai quản map hiểm địa theo hệ chủ đạo (deityAssign.mjs, docs/rules/deities.md).
 const deityOfElement = new Map(
@@ -567,11 +700,14 @@ for (const [language, index] of [
   ['en', 1]
 ]) {
   const names = {
-    ...Object.fromEntries(elements.map((id) => [`zone${capital(id)}`, ELEMENT_ZONES[id][index]])),
+    ...Object.fromEntries(
+      zoneElements.map((id) => [`zone${capital(id)}`, ELEMENT_ZONES[id][index]])
+    ),
     ...Object.fromEntries(
       raceGroupIds.map((id) => [`zoneRace${capital(id)}`, RACE_ZONES[id][index]])
     ),
     [ANCIENT_ZONE.id]: ANCIENT_ZONE.names[index],
+    ...Object.fromEntries(PORTAL_THEMES.map((theme) => [`portal${theme[0]}`, theme[index + 1]])),
     ...Object.fromEntries(
       lineRoots.map((root) => {
         const name = speciesNames[language][root.id]

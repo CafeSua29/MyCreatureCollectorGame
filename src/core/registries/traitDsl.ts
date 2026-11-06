@@ -4,12 +4,13 @@
 // traitConditions.ts, chạy hiệu ứng ở battle/traitEffects.ts.
 
 import { raceRefIds } from './races'
-import { asObject, checkInteger, checkNumber } from '../shared'
+import { asObject, checkEnumList, checkInteger, checkNumber } from '../shared'
 import {
   GLOBAL_FIELD_LAYERS,
   MOVE_FLAGS,
   NON_HP_STATS,
   SKILL_CATEGORIES,
+  STAGE_STATS,
   SKILL_TAGS,
   SKILL_TARGETS,
   STATUS_KINDS,
@@ -91,6 +92,9 @@ export const COUNTER_NAMES = [
   'damageDealtPercent',
   'healingReceivedPercent',
   'stageTotal',
+  'skillUsesOnTarget',
+  'skillUsesOfElement',
+  'knownSkillsOfElement',
   'sealedSkills',
   'foeBuffs',
   'equipmentStatLines',
@@ -99,7 +103,8 @@ export const COUNTER_NAMES = [
   'berriesEaten',
   'stockpile',
   'skillUses',
-  'fieldStreak'
+  'fieldStreak',
+  'stamina'
 ] as const
 
 export type CounterName = (typeof COUNTER_NAMES)[number]
@@ -210,6 +215,7 @@ export type DslCondition =
   | { if: 'critical' }
   /** Đòn của sự kiện khắc hệ (hệ số > 1; kiểu Weakness Policy). */
   | { if: 'superEffective' }
+  | { if: 'notVeryEffective' }
   | { if: 'skillTag'; tags: SkillTag[] }
   | { if: 'skillTarget'; targets: SkillTarget[] }
   | { if: 'skill'; skillIds: string[] }
@@ -217,6 +223,11 @@ export type DslCondition =
   /** Skill có một trong các cờ loại chiêu (`moveFlags`), hoặc `contact` / `recoil` (Reckless). */
   | { if: 'moveFlag'; flags: MoveFlagCondition[] }
   | { if: 'skillSameElement'; value: boolean }
+  | { if: 'counterMultipleOf'; counter: CounterSpec; every: number }
+  | { if: 'skillPriority'; min: number }
+  | { if: 'skillPowerAtMost'; power: number }
+  | { if: 'facing'; who: DslWho }
+  | { if: 'lastSkillCategory'; who: DslWho; categories: SkillCategory[] }
   /**
    * Lớp toàn sân không ở môi trường mặc định (`fieldIds`: đang là một trong các môi trường này;
    * Steel Roller: có địa hình, Rising Voltage: địa hình điện).
@@ -331,12 +342,18 @@ export const CONDITION_TYPES = [
   'noGainedStats',
   'critical',
   'superEffective',
+  'notVeryEffective',
   'skillTag',
   'skillTarget',
   'skill',
   'skillElement',
   'moveFlag',
   'skillSameElement',
+  'counterMultipleOf',
+  'skillPriority',
+  'skillPowerAtMost',
+  'facing',
+  'lastSkillCategory',
   'fieldActive',
   'roomActive',
   'grounded',
@@ -444,7 +461,19 @@ const CONDITION_CHECKS: Readonly<Record<DslCondition['if'], ConditionChecker>> =
   },
   critical: none,
   superEffective: none,
+  notVeryEffective: none,
   skillSameElement: boolValue,
+  counterMultipleOf: (obj, field, data) => [
+    ...checkCounter(obj.counter, `${field}.counter`, data),
+    ...checkInteger(obj.every, `${field}.every`, 1)
+  ],
+  skillPriority: (obj, field) => checkInteger(obj.min, `${field}.min`),
+  skillPowerAtMost: (obj, field) => checkNumber(obj.power, `${field}.power`, 0),
+  facing: whoCheck,
+  lastSkillCategory: (obj, field, data) => [
+    ...whoCheck(obj, field, data),
+    ...checkEnumList(obj.categories, `${field}.categories`, SKILL_CATEGORIES)
+  ],
   moveFlag: (obj, field) =>
     Array.isArray(obj.flags) && obj.flags.length > 0
       ? obj.flags.flatMap((flag) => checkOneOf(MOVE_FLAG_CONDITIONS, flag, `${field}.flags`))
@@ -599,7 +628,7 @@ export type AmountSpec = (
   | { hp: 'current' | 'max' | 'missing'; of: DslWho; percent: number }
   | { event: true; percent: number }
   | { flat: number }
-  | { record: RecordAmount; of: DslWho; percent: number; side?: true }
+  | { record: RecordAmount; of: DslWho; percent: number; side?: RecordScope }
 ) & {
   /** Nhân lượng với giá trị bộ đếm (trait kiểu "mỗi minion / mỗi đồng đội cùng race"). */
   per?: CounterSpec
@@ -609,6 +638,12 @@ export type AmountSpec = (
 export const RECORD_AMOUNTS = ['damageDealt', 'damageTaken', 'healingReceived'] as const
 
 export type RecordAmount = (typeof RECORD_AMOUNTS)[number]
+
+/**
+ * Phạm vi bản ghi: bỏ trống = riêng quái `of`; true = cả phe của nó; 'all' = mọi quái trong trận
+ * (Mania: "máu mọi quái đã hồi").
+ */
+export type RecordScope = true | 'all'
 
 export function checkAmount(value: unknown, field: string, data?: GameData): string[] {
   const obj = asObject(value)
@@ -622,7 +657,9 @@ export function checkAmount(value: unknown, field: string, data?: GameData): str
   }
   if (obj.record !== undefined) {
     issues.push(...checkOneOf(RECORD_AMOUNTS, obj.record, `${field}.record`))
-    if (obj.side !== undefined && obj.side !== true) issues.push(`${field}.side chỉ được là true`)
+    if (obj.side !== undefined && obj.side !== true && obj.side !== 'all') {
+      issues.push(`${field}.side chỉ được là true hoặc "all"`)
+    }
   } else if (obj.stat !== undefined) {
     issues.push(...checkOneOf(AMOUNT_STATS, obj.stat, `${field}.stat`))
   } else {
@@ -688,6 +725,17 @@ export type TraitEffect = EffectCommon &
     | { do: 'damage'; to: EffectTarget; amount: AmountSpec; times?: number }
     | { do: 'heal'; to: EffectTarget; amount: AmountSpec }
     | { do: 'stage'; to: EffectTarget; stats: StageSelector; delta: number }
+    /** Đổi thể lực (dương = hồi, âm = mất; docs/rules/stamina.md). */
+    | {
+        do: 'stamina'
+        to: EffectTarget
+        /** Đúng một trong ba: số điểm (âm = mất), % thể lực tối đa, kéo lên ít nhất % tối đa. */
+        amount?: number
+        percent?: number
+        atLeastPercent?: number
+        /** Hút: lấy tối đa `amount` từ quái này (không quá phần nó còn, phần `to` thiếu). */
+        from?: EffectTarget
+      }
     | {
         do: 'flatStat'
         to: EffectTarget
@@ -788,6 +836,21 @@ export type TraitEffect = EffectCommon &
     /** Bậc trận đang âm về 0 (kiểu White Herb); bậc dương giữ nguyên. */
     /** Xóa bậc bị hạ của `to`; `all`: xóa mọi bậc (Clear Smog, Haze). */
     | { do: 'restoreStages'; to: EffectTarget; all?: true }
+    | { do: 'amplifyStages'; to: EffectTarget; amount: number }
+    | {
+        do: 'removeStages'
+        to: EffectTarget
+        sign: 'positive' | 'negative'
+        stats?: StageStat[]
+        amount?: number
+      }
+    | {
+        do: 'transferStages'
+        from: EffectTarget
+        to: EffectTarget
+        sign: 'positive' | 'negative'
+        stats?: StageStat[]
+      }
     /**
      * Lấy món đang lắp của `from` (lọc `tags`; bỏ trống = mọi món): có `to` thì chuyển sang `to`
      * (Thief, Covet), không thì bỏ (Knock Off, Incinerate, Corrosive Gas). Hết trận trả lại.
@@ -937,6 +1000,7 @@ export const TRAIT_EFFECT_TYPES = [
   'damage',
   'heal',
   'stage',
+  'stamina',
   'flatStat',
   'status',
   'cure',
@@ -956,6 +1020,9 @@ export const TRAIT_EFFECT_TYPES = [
   'maxHp',
   'maxHpToCurrent',
   'restoreStages',
+  'removeStages',
+  'amplifyStages',
+  'transferStages',
   'takeItems',
   'swapItems',
   'eatItems',
@@ -1040,6 +1107,30 @@ function checkNonHpList(value: unknown, field: string): string[] {
   return value.flatMap((stat) => checkOneOf(NON_HP_STATS, stat, field))
 }
 
+const STAMINA_MODES = ['amount', 'percent', 'atLeastPercent'] as const
+
+/** Hiệu ứng `stamina`: đúng một cách tính; `atLeastPercent` trong (0, 100]; `from` chỉ đi với amount > 0. */
+function checkStaminaEffect(obj: Record<string, unknown>, field: string): string[] {
+  const issues = checkTarget(obj.to, `${field}.to`)
+  const modes = STAMINA_MODES.filter((key) => obj[key] !== undefined)
+  if (modes.length !== 1) {
+    return [...issues, `${field} phải có đúng một trong ${STAMINA_MODES.join(' / ')}`]
+  }
+  const value = obj[modes[0]]
+  if (typeof value !== 'number' || !Number.isFinite(value) || value === 0) {
+    issues.push(`${field}.${modes[0]} phải là số khác 0`)
+  } else if (modes[0] === 'atLeastPercent' && (value < 0 || value > 100)) {
+    issues.push(`${field}.atLeastPercent phải trong (0, 100]`)
+  }
+  if (obj.from !== undefined) {
+    issues.push(...checkTarget(obj.from, `${field}.from`))
+    if (modes[0] !== 'amount' || typeof value !== 'number' || value <= 0) {
+      issues.push(`${field}.from chỉ dùng với amount dương`)
+    }
+  }
+  return issues
+}
+
 const EFFECT_CHECKS: Readonly<Record<TraitEffectType, EffectChecker>> = {
   damage: (obj, field, data) => [
     ...checkTarget(obj.to, `${field}.to`),
@@ -1060,6 +1151,7 @@ const EFFECT_CHECKS: Readonly<Record<TraitEffectType, EffectChecker>> = {
     }
     return issues
   },
+  stamina: checkStaminaEffect,
   flatStat: (obj, field, data) => [
     ...checkTarget(obj.to, `${field}.to`),
     ...checkStatSelector(obj.stats, `${field}.stats`),
@@ -1247,6 +1339,22 @@ const EFFECT_CHECKS: Readonly<Record<TraitEffectType, EffectChecker>> = {
     ...checkAmount(obj.amount, `${field}.amount`, data)
   ],
   maxHpToCurrent: targetOnly,
+  amplifyStages: (obj, field) => [
+    ...checkTarget(obj.to, `${field}.to`),
+    ...checkInteger(obj.amount, `${field}.amount`, 1)
+  ],
+  removeStages: (obj, field) => [
+    ...checkTarget(obj.to, `${field}.to`),
+    ...checkOneOf(['positive', 'negative'], obj.sign, `${field}.sign`),
+    ...(obj.stats === undefined ? [] : checkEnumList(obj.stats, `${field}.stats`, STAGE_STATS)),
+    ...(obj.amount === undefined ? [] : checkInteger(obj.amount, `${field}.amount`, 1))
+  ],
+  transferStages: (obj, field) => [
+    ...checkTarget(obj.from, `${field}.from`),
+    ...checkTarget(obj.to, `${field}.to`),
+    ...checkOneOf(['positive', 'negative'], obj.sign, `${field}.sign`),
+    ...(obj.stats === undefined ? [] : checkEnumList(obj.stats, `${field}.stats`, STAGE_STATS))
+  ],
   restoreStages: (obj, field) => [
     ...checkTarget(obj.to, `${field}.to`),
     ...(obj.all === undefined || obj.all === true ? [] : [`${field}.all chỉ được là true`])

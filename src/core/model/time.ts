@@ -141,3 +141,6 @@ export type DayEvent =
   | { type: 'worldBossLeft'; speciesId: string; tierId: string | null }
   /** Đóng phiên Đấu giá hành (docs/rules/auction.md). */
   | AuctionDayEvent
+  /** Cổng thế giới mở / đóng vì hết hạn (docs/rules/zones.md mục "Cổng thế giới"). */
+  | { type: 'portalOpened'; portalId: string; zoneId: string }
+  | { type: 'portalClosed'; portalId: string; zoneId: string }

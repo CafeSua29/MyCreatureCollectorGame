@@ -144,6 +144,10 @@ export function startChargeIfNeeded(
     delete volatile.charging
     return false
   }
+  if (charge.rule) {
+    const used = (d.battle.records[user.id]?.skillUses?.[skill.id] ?? 0) > 0
+    if (charge.rule === 'firstUse' ? used : !used) return false
+  }
   // Sky Drop: nhấc mục tiêu lên cùng; không nhấc được thì thất bại (mất lượt, không nạp).
   if (skill.carriesTarget && !liftTarget(data, d, { user, skill, targetId })) {
     log(d, { type: 'skillFailed', monsterId: user.id, skillId: skill.id, reason: 'condition' })

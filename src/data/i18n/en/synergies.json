@@ -1,4 +1,8 @@
 {
+  "elementGlass": "Same element: Glass",
+  "elementPlastic": "Same element: Plastic",
+  "elementGlitter": "Same element: Glitter",
+  "elementFungal": "Same element: Fungal",
   "raceDragon": "Kindred: Dragon",
   "raceOrc": "Kindred: Orc",
   "raceElf": "Kindred: Elf",

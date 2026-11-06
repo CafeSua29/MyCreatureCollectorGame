@@ -14,6 +14,16 @@ Gán loài vào biome đã làm ở bước 5d (luật ở "Dữ liệu map ng�
 - **Cân nặng:** xem mục dưới.
 - **Giờ hoạt động riêng của loài** (`activeTime`, `calendar.md`): đã nhập Pokémon Gen 2 / 4 (PokeAPI) và 705 động vật (EltonTraits, Wikidata). Còn thiếu: Pokémon Gen 5+ và dạng vùng miền (PokeAPI không có bảng gặp theo giờ của SM / SwSh / Legends / SV; chờ nguồn như Bulbapedia / Serebii theo khu vực), động vật tên chung không khớp được tên khoa học (danh sách `missing` ở `animal-active-time-report.json`). Đang suy theo race / hệ.
 
+## Đợt game creature collector 2026-11-04 (còn chờ)
+
+Đã nhập ở `docs/rules/content-sources-real.md` mục "Đợt game creature collector của chủ project" (kể cả trait / spell Siralim bổ sung và rà race). Còn lại:
+
+- **Pet Lands**: asset chỉ có mã `PetCreature0...`, tên hiển thị (nếu có) nằm trong dữ liệu nén Oodle. Chờ: chủ project quyết định (tạm bỏ qua 2026-11-04); cần CUE4Parse + file `oo2core`, không có sẵn trong 3 thư viện Steam; không tải từ nguồn bên thứ ba.
+- **Tên thật của 8 Pochimoon gốc**: `PochimoonName` trong `.ucas` nén Oodle, đang dùng tên tạm "X Pochimoon". Chờ: cùng công cụ trên.
+- **WILDERLOCKE**: bản đầy đủ chưa phát hành (dự kiến 2027). Chờ: game ra mắt thì chạy lại `game-files/extract.py <thư mục Steam> wilderlocke` (đổi đường dẫn "WILDERLOCKE Demo" nếu cần) để lấy thêm quái, chiêu, passive; 7 quái mới có tên, chưa có dữ liệu.
+- **Creature Clicker**: `game.exe` có vẻ đóng gói nén, không mở nên chưa đọc được hệ thật. Chờ: nguồn khác.
+- **Hệ / race ước lượng**: The Vision Of The Ant, Void Monsters (game chỉ có rune), Beastmancer (đã xác nhận game không có hệ), Fantasy Idle Dungeon, BioKept, Dinotica, Creature Clicker: đoán hoặc đặt tay theo tên. FaeTerra và Koltera 1 có hệ thật; Kin's Chronicle có hệ khi file ghi. Race của Koltera vẫn đặt tay. Một phần loài VotA, Void giữ `mythicBeast` vì tên không gợi con vật.
+
 ## Cân nặng thật
 
 - Đã có số thật: Pokémon (PokeAPI, `scripts/data-import/pokemon-size-import.mjs`); động vật thật / tuyệt chủng 842 / 1.787 loài (`scripts/data-import/animal-size-import.mjs`: AnAge theo tên tiếng Anh, Wikidata → tên khoa học → PanTHERIA / AnAge, chi / họ / bộ lấy trung bình nhân, khối lượng Wikidata; con non = con trưởng thành × 0,15 cân nặng, × 0,5 chiều cao). Loài còn lại dùng ước lượng theo race và tổng chỉ số (`battle.md` mục "Bắt quái").
@@ -27,3 +37,7 @@ Gán loài vào biome đã làm ở bước 5d (luật ở "Dữ liệu map ng�
 ## Bộ phận và điểm yếu theo loài
 
 - Tầm chiêu và vị trí ra đòn đã làm (`docs/rules/hit-locations.md`), nhưng bộ phận / điểm yếu mới ghi theo **nhóm race** (`raceGroups.json`). Nên ghi riêng cho race / loài lệch nhóm (chim không bay vẫn có cánh, rắn không có chân, cá không có chân, quái nhiều đầu...) và điểm yếu theo nguồn khi có (Monster Hunter: bảng hitzone theo bộ phận; Pokémon không có). Thêm `bodyParts` / `weakPoints` ở `races.json` / `species.json` (tối đa 2 điểm yếu), không cần sửa code. Chờ: nguồn hitzone Monster Hunter (wiki) và thời gian rà tay; không chặn việc khác.
+
+## Monster Hunter
+
+Hệ theo nguyên tố đòn của gốc chưa đọc được: infobox wiki ghi nguyên tố bằng template lồng (`element = {{Element|Fire}}...`) mà `infoboxParams` cắt ở dấu `|` nên chỉ còn hệ theo lớp quái (Rathian chỉ có hệ Rồng, thiếu Lửa). Quái ghi `None` đã thành không hệ (2026-11-06, `data.md` mục "Loài không hệ"). **Chờ:** sửa trình đọc infobox cho template lồng rồi chạy lại `monster-hunter-fetch.mjs` với `update.elements` (đổi hệ ~300 loài nên cần chủ project duyệt hướng: nguyên tố đòn làm hệ chính, lớp làm hệ phụ). Sinh lại cả gán map (`biomes-import.mjs`, chỉ lấy `encounters`).

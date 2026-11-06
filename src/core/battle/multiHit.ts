@@ -25,6 +25,17 @@ export function rollHitCount(
   return [Math.max(count, raisedMin(skill.hits, minHitsBonus)), next]
 }
 
+/**
+ * Skill với số đòn cố định theo máu còn lại của quái dùng (`hitsByHp`, Pummel): mốc thấp nhất mà máu
+ * còn ≤ mốc thắng; không khớp mốc nào thì 1 đòn. Skill khác giữ nguyên.
+ */
+export function withHitsByHp(skill: Skill, hpPercent: number): Skill {
+  if (!skill.hitsByHp) return skill
+  const steps = [...skill.hitsByHp].sort((a, b) => a.atOrBelowPercent - b.atOrBelowPercent)
+  const hits = steps.find((step) => hpPercent <= step.atOrBelowPercent)?.hits ?? 1
+  return { ...skill, hits: { min: hits, max: hits } }
+}
+
 function rollBaseHitCount(
   config: BattleConfig,
   { min, max }: HitRange,

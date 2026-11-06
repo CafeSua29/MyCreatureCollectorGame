@@ -51,6 +51,21 @@ export interface SkillEffectContext {
 /** Phần trạng thái tạm được truyền khi rút về: mọi thứ (kiểu Baton Pass) hoặc chỉ thế thân. */
 export type PassOn = 'all' | 'substitute'
 
+/**
+ * Yêu cầu rút về: `passOn` truyền trạng thái tạm (Baton Pass), `onlyIfResisted` chỉ rút khi đòn bị
+ * kháng (Ricochet của WILDERLOCKE), `incomingEffects` chạy lên quái vào thay (Diversion, Magnet Swap).
+ */
+export interface SwitchOutRequest {
+  passOn?: PassOn
+  onlyIfResisted?: true
+  incomingEffects?: unknown[]
+  /**
+   * Quái vào thay nhận lớp phủ hệ của quái rút về trong ngần ấy lượt (Crossfade: đổi dạng mà giữ hệ).
+   * Skill do trait / chiêu khác gọi thì không có tác dụng, như gốc.
+   */
+  coatIncomingTurns?: number
+}
+
 /** Dọn hiệu ứng theo phe: phe tính từ quái dùng skill; hazardsOnly: chỉ bẫy (hook vào sân). */
 export interface SideFieldClear {
   side: SideFieldTarget
@@ -85,7 +100,7 @@ export interface SkillEffectResult {
   /** Quái dùng skill tạo thế thân bằng `hpCostPercent`% max HP của mình (kiểu Substitute). */
   substitute: { hpCostPercent: number } | null
   /** Quái dùng skill rút về sau chiêu (quái thay do trận đấu chọn); null = không rút về. */
-  switchOut: { passOn?: PassOn } | null
+  switchOut: SwitchOutRequest | null
   /** Quái ăn ngay đồ cầm có nhãn `tags` (bỏ trống = mọi đồ cầm) đang lắp (kiểu Teatime). */
   heldItemEats: { monsterId: string; tags?: string[] }[]
   /**
@@ -97,6 +112,22 @@ export interface SkillEffectResult {
   holdReductions: { monsterId: string; turns: number }[]
   /** Quái bị ép rời sân, quái dự bị ngẫu nhiên vào thay (Roar, Dragon Tail). */
   forceSwitches: string[]
+  /** Quái đổi hệ tạm tới khi rời sân / hết trận (biến hệ của phản ứng hệ). */
+  elementChanges: { monsterId: string; elementIds: string[]; turns?: number }[]
+  /** Tường dựng lên quái (`hpCostPercent`: quái dùng mất % max HP; Glass / Plastic Wall, Air Wall). */
+  walls: { monsterId: string; statusId: string; turns?: number; hpCostPercent?: number }[]
+  /** Tường của `fromId` chuyển sang `toId` (Revolving Door). */
+  wallSteals: { fromId: string; toId: string }[]
+  /** Quái phá tường của mình, hồi thể lực = lượt còn lại × `staminaPerTurn` (Recycle). */
+  wallRecycles: { monsterId: string; staminaPerTurn: number }[]
+  /** Skill vừa dùng gần nhất của quái bị thay bằng Booby Trap (Sticker Trick). */
+  boobyTraps: { monsterId: string; turns: number; power: number }[]
+  /** Lớp phủ hệ của `fromId` chuyển sang `toId`, còn nguyên lượt (Paint Swipe). */
+  coatingTransfers: { fromId: string; toId: string }[]
+  /** Phá mọi tường trên sân, quái có tường mất máu theo `power` × lượt còn lại (Crumble). */
+  wallCrumbles: { power: number; elementId: string }[]
+  /** Quái cộng một lần cộng hưởng, đủ `threshold` lần thì gục (Resonance của phản ứng hệ). */
+  resonances: { monsterId: string; threshold: number }[]
 }
 
 /** Kết quả không đổi gì (chỉ chuyển RNG). */
@@ -119,7 +150,15 @@ export const noChanges = (rng: RngState): SkillEffectResult => ({
   heldItemEats: [],
   protect: null,
   holdReductions: [],
-  forceSwitches: []
+  forceSwitches: [],
+  elementChanges: [],
+  walls: [],
+  wallSteals: [],
+  wallRecycles: [],
+  boobyTraps: [],
+  wallCrumbles: [],
+  coatingTransfers: [],
+  resonances: []
 })
 
 /** Thông tin AI trận đấu đưa cho handler để chấm giá trị hiệu ứng lên một mục tiêu. */

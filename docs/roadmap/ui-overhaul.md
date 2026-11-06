@@ -27,3 +27,11 @@ Phần core / dữ liệu đã làm (bước 3.3): chữ nội dung ở `src/dat
 - **Định dạng số theo ngôn ngữ:** `formatNumber` nhận ngôn ngữ; Việt dùng dấu phẩy thập phân (`1,2K`), Anh dùng dấu chấm (`1.2K`). Thêm test cho cả hai. Ngày giờ cũng định dạng theo ngôn ngữ.
 - **Save không chứa chữ hiển thị**, đổi ngôn ngữ không ảnh hưởng save. Biệt danh người chơi giữ nguyên.
 - CLAUDE.md, comment trong code vẫn viết tiếng Việt.
+
+## Xem trước sát thương, do thám boss (2026-11-04)
+
+Core đã có, chờ làm UI cùng đợt: thanh máu đối thủ hiện khoảng `previewSkillDamage` (chủ project lưu ý: chỉ tương đối vì có chí mạng, né nên hiện khoảng và % trúng, rê chuột xem chi tiết); nút do thám ở màn tầng và màn báo cáo `bossScoutReport`.
+
+## Portals of Phereon (chờ UI)
+
+Màn hình luyện thể, phòng ấp (môi trường, người ấp, nâng cấp), chọn tinh chất, danh sách cổng thế giới (hung hiểm, tổ quái, ngày đóng, gia cố), và phần chọn trait / gen ở màn fuse (`keptTraitCapacity`, `keepTraitIds`, `geneSources`). Hiện `previewFusion` đã trả sức chứa cho UI.

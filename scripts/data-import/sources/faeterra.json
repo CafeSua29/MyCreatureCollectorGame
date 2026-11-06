@@ -1,0 +1,1528 @@
+{
+ "source": "faeterra",
+ "origin": "fantasy",
+ "species": [
+  {
+   "name": "Axol",
+   "elements": [
+    "water"
+   ],
+   "raceId": "caudate",
+   "tier": "small",
+   "category": "#001 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Axolotto",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Axolotto",
+   "elements": [
+    "water"
+   ],
+   "raceId": "caudate",
+   "tier": "medium",
+   "category": "#002 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Axolgrotto",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Axolgrotto",
+   "elements": [
+    "water"
+   ],
+   "raceId": "caudate",
+   "tier": "peak",
+   "category": "#003 WATER Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Soltrix",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "small",
+   "category": "#004 FIRE Fae",
+   "evolutions": [
+    {
+     "name": "Solray",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Solray",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "category": "#005 FIRE Fae",
+   "evolutions": [
+    {
+     "name": "Solsune",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Solsune",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "peak",
+   "category": "#006 FIRE Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Fawneer",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "cervid",
+   "tier": "small",
+   "category": "#007 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Stagneer",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Stagneer",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "cervid",
+   "tier": "medium",
+   "category": "#008 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Vixoneer",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Vixoneer",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "cervid",
+   "tier": "mythic",
+   "category": "#009 LEAF Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Wooty",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "owl",
+   "tier": "small",
+   "category": "#010 AIR Fae",
+   "evolutions": [
+    {
+     "name": "Wootowl",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Wootowl",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "owl",
+   "tier": "medium",
+   "category": "#011 AIR Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Mr.Mot",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "insectivore",
+   "tier": "small",
+   "category": "#012 BEAST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Fenpaw",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "small",
+   "category": "#013 BEAST Fae",
+   "evolutions": [
+    {
+     "name": "Fenclaw",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Fenclaw",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "category": "#014 BEAST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Lunarva",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "small",
+   "category": "#015 INSECT Fae",
+   "evolutions": [
+    {
+     "name": "Lunacoon",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Lunacoon",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "medium",
+   "category": "#016 INSECT Fae",
+   "evolutions": [
+    {
+     "name": "Lunaveil",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Lunaveil",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "peak",
+   "category": "#017 INSECT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Peckidae",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "bird",
+   "tier": "small",
+   "category": "#018 AIR Fae",
+   "evolutions": [
+    {
+     "name": "Foepecker",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Foepecker",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "bird",
+   "tier": "medium",
+   "category": "#019 AIR Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Samubee",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "small",
+   "category": "#020 INSECT Fae",
+   "evolutions": [
+    {
+     "name": "Raiwasp",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Raiwasp",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "medium",
+   "category": "#021 INSECT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Linx",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "felid",
+   "tier": "small",
+   "category": "#022 LIGHTNING Fae",
+   "evolutions": [
+    {
+     "name": "Eldenbolt",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Eldenbolt",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "felid",
+   "tier": "medium",
+   "category": "#023 LIGHTNING Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Turto",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "turtle",
+   "tier": "small",
+   "category": "#024 EARTH Fae",
+   "evolutions": [
+    {
+     "name": "Turtoil",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Turtoil",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "turtle",
+   "tier": "medium",
+   "category": "#025 EARTH Fae",
+   "evolutions": [
+    {
+     "name": "Turtank",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Turtank",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "turtle",
+   "tier": "peak",
+   "category": "#026 EARTH Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Carapinch",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "crustacean",
+   "tier": "small",
+   "category": "#027 EARTH Fae",
+   "evolutions": [
+    {
+     "name": "Caraclench",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Caraclench",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "crustacean",
+   "tier": "medium",
+   "category": "#028 EARTH Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Maycelia",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "fungus",
+   "tier": "small",
+   "category": "#029 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Mayfairy",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Mayfairy",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "fungus",
+   "tier": "medium",
+   "category": "#030 LEAF Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Smallfin",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cetacean",
+   "tier": "small",
+   "category": "#031 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Bullywhale",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Bullywhale",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cetacean",
+   "tier": "medium",
+   "category": "#032 WATER Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Manaray",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "small",
+   "category": "#033 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Manabliss",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Manabliss",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "category": "#034 WATER Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Pluckpea",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "category": "#035 MAGIC Fae",
+   "evolutions": [
+    {
+     "name": "Tarotpea",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Tarotpea",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "flower",
+   "tier": "medium",
+   "category": "#036 MAGIC Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Magpy",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "bird",
+   "tier": "small",
+   "category": "#037 MAGIC Fae",
+   "evolutions": [
+    {
+     "name": "Jinx",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Jinx",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "bird",
+   "tier": "medium",
+   "category": "#038 MAGIC Fae",
+   "evolutions": [
+    {
+     "name": "Halorae",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Halorae",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "bird",
+   "tier": "peak",
+   "category": "#039 MAGIC Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Spook'em",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "ghost",
+   "tier": "small",
+   "category": "#040 SHADOW Fae",
+   "evolutions": [
+    {
+     "name": "Phantom",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Phantom",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "category": "#041 SHADOW Fae",
+   "evolutions": [
+    {
+     "name": "Grimgeist",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Grimgeist",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "ghost",
+   "tier": "peak",
+   "category": "#042 SHADOW Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Radu",
+   "elements": [
+    "light"
+   ],
+   "raceId": "chiropteran",
+   "tier": "small",
+   "category": "#043 LIGHT Fae",
+   "evolutions": [
+    {
+     "name": "Vladubat",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Vladubat",
+   "elements": [
+    "light"
+   ],
+   "raceId": "chiropteran",
+   "tier": "medium",
+   "category": "#044 LIGHT Fae",
+   "evolutions": [
+    {
+     "name": "Draculite",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Draculite",
+   "elements": [
+    "light"
+   ],
+   "raceId": "chiropteran",
+   "tier": "peak",
+   "category": "#045 LIGHT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Geohog",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "insectivore",
+   "tier": "small",
+   "category": "#046 EARTH Fae",
+   "evolutions": [
+    {
+     "name": "Hedgequake",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Hedgequake",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "insectivore",
+   "tier": "medium",
+   "category": "#047 EARTH Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Twigleon",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "lizard",
+   "tier": "small",
+   "category": "#048 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Spineleaf",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Spineleaf",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "category": "#049 LEAF Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Manti",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "neopteron",
+   "tier": "small",
+   "category": "#050 INSECT Fae",
+   "evolutions": [
+    {
+     "name": "Mantivex",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Mantivex",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "neopteron",
+   "tier": "medium",
+   "category": "#051 INSECT Fae",
+   "evolutions": [
+    {
+     "name": "Mantiblade",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Mantiblade",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "neopteron",
+   "tier": "peak",
+   "category": "#052 INSECT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Boarig",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "suid",
+   "tier": "small",
+   "category": "#053 BEAST Fae",
+   "evolutions": [
+    {
+     "name": "Barontusk",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Barontusk",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "suid",
+   "tier": "medium",
+   "category": "#054 BEAST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Charyena",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "small",
+   "category": "#055 FIRE Fae",
+   "evolutions": [
+    {
+     "name": "Charskull",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Charskull",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "category": "#056 FIRE Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Harpy",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "harpyfolk",
+   "tier": "small",
+   "category": "#057 AIR Fae",
+   "evolutions": [
+    {
+     "name": "Shenhawk",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Shenhawk",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "harpyfolk",
+   "tier": "medium",
+   "category": "#058 AIR Fae",
+   "evolutions": [
+    {
+     "name": "Aviance",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Aviance",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "harpyfolk",
+   "tier": "peak",
+   "category": "#059 AIR Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Sadpa",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "primate",
+   "tier": "small",
+   "category": "#060 BEAST Fae",
+   "evolutions": [
+    {
+     "name": "Bamterra",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Bamterra",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "primate",
+   "tier": "medium",
+   "category": "#061 BEAST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Hoblin",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "goblin",
+   "tier": "small",
+   "category": "#062 SHADOW Fae",
+   "evolutions": [
+    {
+     "name": "Revenant",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Revenant",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "goblin",
+   "tier": "medium",
+   "category": "#063 SHADOW Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Pyrepaw",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "felid",
+   "tier": "small",
+   "category": "#064 FIRE Fae",
+   "evolutions": [
+    {
+     "name": "Tigairius",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Tigairius",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "felid",
+   "tier": "medium",
+   "category": "#065 FIRE Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Shocktooth",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "theropod",
+   "tier": "small",
+   "category": "#066 LIGHTNING Fae",
+   "evolutions": [
+    {
+     "name": "Zaptor",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Zaptor",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "theropod",
+   "tier": "medium",
+   "category": "#067 LIGHTNING Fae",
+   "evolutions": [
+    {
+     "name": "Voltarex",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Voltarex",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "theropod",
+   "tier": "peak",
+   "category": "#068 LIGHTNING Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Ceratop",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "ornithischian",
+   "tier": "small",
+   "category": "#069 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Trihorn",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Trihorn",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "ornithischian",
+   "tier": "medium",
+   "category": "#070 LEAF Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Mudile",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "crocodilian",
+   "tier": "small",
+   "category": "#071 EARTH Fae",
+   "evolutions": [
+    {
+     "name": "Crocjaw",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Crocjaw",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "crocodilian",
+   "tier": "medium",
+   "category": "#072 EARTH Fae",
+   "evolutions": [
+    {
+     "name": "Dunegator",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Dunegator",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "crocodilian",
+   "tier": "peak",
+   "category": "#073 EARTH Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Kwarm",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "beetle",
+   "tier": "small",
+   "category": "#074 EARTH Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Scaragold",
+   "elements": [
+    "bug"
+   ],
+   "raceId": "beetle",
+   "tier": "small",
+   "category": "#075 INSECT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Ward",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "golem",
+   "tier": "small",
+   "category": "#076 FROST Fae",
+   "evolutions": [
+    {
+     "name": "Aegice",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Aegice",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "golem",
+   "tier": "medium",
+   "category": "#077 FROST Fae",
+   "evolutions": [
+    {
+     "name": "Sentinel",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Sentinel",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "golem",
+   "tier": "peak",
+   "category": "#078 FROST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Palibear",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "ursid",
+   "tier": "small",
+   "category": "#079 FROST Fae",
+   "evolutions": [
+    {
+     "name": "Excalibear",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Excalibear",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "ursid",
+   "tier": "medium",
+   "category": "#080 FROST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Po-coi",
+   "elements": [
+    "dragon",
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "small",
+   "category": "#081 DRAGON / WATER Fae",
+   "evolutions": [
+    {
+     "name": "Dra-icoi",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Dra-icoi",
+   "elements": [
+    "dragon",
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "category": "#082 DRAGON / WATER Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Marlin",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "small",
+   "category": "#083 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Marslash",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Marslash",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "category": "#084 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Saberfin",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Saberfin",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "peak",
+   "category": "#085 WATER Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Lumenia",
+   "elements": [
+    "light"
+   ],
+   "raceId": "fey",
+   "tier": "small",
+   "category": "#086 LIGHT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Gambit",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "livingObject",
+   "tier": "small",
+   "category": "#087 MAGIC Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Occultress",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "category": "#088 SHADOW Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Snowstump",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "proboscid",
+   "tier": "small",
+   "category": "#089 FROST Fae",
+   "evolutions": [
+    {
+     "name": "Mammofrost",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Mammofrost",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "proboscid",
+   "tier": "medium",
+   "category": "#090 FROST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Narlance",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "cetacean",
+   "tier": "small",
+   "category": "#091 FROST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Entroot",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "tree",
+   "tier": "small",
+   "category": "#092 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Entrina",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Entrina",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "tree",
+   "tier": "medium",
+   "category": "#093 LEAF Fae",
+   "evolutions": [
+    {
+     "name": "Enchantress",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Enchantress",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "tree",
+   "tier": "peak",
+   "category": "#094 LEAF Fae",
+   "evolutions": []
+  },
+  {
+   "name": "B.A.R",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "machine",
+   "tier": "small",
+   "category": "#095 MAGIC Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Joltin",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "lagomorph",
+   "tier": "small",
+   "category": "#096 LIGHTNING Fae",
+   "evolutions": [
+    {
+     "name": "Shen-obi",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Shen-obi",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "lagomorph",
+   "tier": "medium",
+   "category": "#097 LIGHTNING Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Kileon",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "lizard",
+   "tier": "small",
+   "category": "#098 BEAST Fae",
+   "evolutions": [
+    {
+     "name": "Fataleon",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Fataleon",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "category": "#099 BEAST Fae",
+   "evolutions": [
+    {
+     "name": "Imortaleon",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Imortaleon",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "lizard",
+   "tier": "peak",
+   "category": "#100 BEAST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Toracle",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "small",
+   "category": "#101 WATER Fae",
+   "evolutions": [
+    {
+     "name": "Tidaulis",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Tidaulis",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "category": "#102 WATER Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Avion",
+   "elements": [
+    "dragon"
+   ],
+   "raceId": "machine",
+   "tier": "small",
+   "category": "#103 DRAGON Fae",
+   "evolutions": [
+    {
+     "name": "Navjet",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Navjet",
+   "elements": [
+    "dragon"
+   ],
+   "raceId": "machine",
+   "tier": "medium",
+   "category": "#104 DRAGON Fae",
+   "evolutions": [
+    {
+     "name": "Acewing",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Acewing",
+   "elements": [
+    "dragon"
+   ],
+   "raceId": "machine",
+   "tier": "peak",
+   "category": "#105 DRAGON Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Palakin",
+   "elements": [
+    "light"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "category": "#106 LIGHT Fae",
+   "evolutions": [
+    {
+     "name": "Palaknight",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Palaknight",
+   "elements": [
+    "light"
+   ],
+   "raceId": "human",
+   "tier": "medium",
+   "category": "#107 LIGHT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Draygo",
+   "elements": [
+    "dragon"
+   ],
+   "raceId": "westernDragon",
+   "tier": "small",
+   "category": "#108 DRAGON Fae",
+   "evolutions": [
+    {
+     "name": "Hydroth",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Hydroth",
+   "elements": [
+    "dragon"
+   ],
+   "raceId": "westernDragon",
+   "tier": "medium",
+   "category": "#109 DRAGON Fae",
+   "evolutions": [
+    {
+     "name": "Soveringon",
+     "level": 32
+    }
+   ]
+  },
+  {
+   "name": "Soveringon",
+   "elements": [
+    "dragon"
+   ],
+   "raceId": "westernDragon",
+   "tier": "peak",
+   "category": "#110 DRAGON Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Magnox",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "fangedBeast",
+   "tier": "small",
+   "category": "#111 FIRE Fae",
+   "evolutions": [
+    {
+     "name": "Magnar",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Magnar",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "fangedBeast",
+   "tier": "medium",
+   "category": "#112 FIRE Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Swanblossom",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "waterfowl",
+   "tier": "mythic",
+   "category": "#113 AIR Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Atlas",
+   "elements": [
+    "light"
+   ],
+   "raceId": "giant",
+   "tier": "mythic",
+   "category": "#114 LIGHT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Nebula",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "eldritch",
+   "tier": "mythic",
+   "category": "#115 SHADOW Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Anu",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "god",
+   "tier": "mythic",
+   "category": "#116 MAGIC Fae",
+   "evolutions": [
+    {
+     "name": "Anunaku",
+     "level": 16
+    }
+   ]
+  },
+  {
+   "name": "Anunaku",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "god",
+   "tier": "medium",
+   "category": "#117 MAGIC Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Stellaria",
+   "elements": [
+    "light"
+   ],
+   "raceId": "angel",
+   "tier": "mythic",
+   "category": "#118 LIGHT Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Solios",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "god",
+   "tier": "mythic",
+   "category": "#119 FIRE Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Drax",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "westernDragon",
+   "tier": "mythic",
+   "category": "#120 BEAST Fae",
+   "evolutions": []
+  },
+  {
+   "name": "Jemini",
+   "elements": [
+    "psychic"
+   ],
+   "raceId": "changeling",
+   "tier": "mythic",
+   "category": "#121 MAGIC Fae",
+   "evolutions": []
+  }
+ ]
+}

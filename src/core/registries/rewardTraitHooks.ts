@@ -55,6 +55,32 @@ const eggHatchBoost: TraitHookHandler = {
   eggHatchExtra: (params) => (params as { extraCount: number }).extraCount
 }
 
+// ---------- eggGrowthPercent / eggStabilityPercent: trứng chứa quái mang hook ở phòng ấp ----------
+
+const eggGrowthPercent: TraitHookHandler = {
+  validateParams: validateNonZeroPercent,
+  eggGrowthPercent: scaledPercent
+}
+
+const eggStabilityPercent: TraitHookHandler = {
+  validateParams: validateNonZeroPercent,
+  eggStabilityPercent: scaledPercent
+}
+
+// ---------- hatcherBonus: % sức ấp của quái mang hook khi làm người ấp ----------
+
+const hatcherBonus: TraitHookHandler = {
+  validateParams: validateNonZeroPercent,
+  hatcherPowerPercent: scaledPercent
+}
+
+// ---------- traitInheritBonus: % truyền thêm một trait cho con khi breed ----------
+
+const traitInheritBonus: TraitHookHandler = {
+  validateParams: validateNonZeroPercent,
+  traitExtraInheritPercent: scaledPercent
+}
+
 // ---------- affinityGainPercent: % lượng thân mật tăng (kiểu Soothe Bell) ----------
 
 const affinityGainPercent: TraitHookHandler = {
@@ -100,6 +126,10 @@ export const REWARD_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
   expRewardModifier,
   moneyRewardModifier,
   eggHatchBoost,
+  eggGrowthPercent,
+  eggStabilityPercent,
+  traitInheritBonus,
+  hatcherBonus,
   affinityGainPercent,
   inheritNature,
   effortGainBonus,

@@ -15,6 +15,7 @@ import {
 } from '../model'
 import { Draft, aliveOnField, clearOnFieldState, findMonster, log, slotsOf } from './draft'
 import { transformBlocker } from './transform'
+import { punishTransform } from './statuses'
 import { bestCandidateScore } from './ai'
 import { incomingShare } from './transformAi'
 
@@ -116,6 +117,7 @@ export function applyMerge(data: GameData, d: Draft, side: BattleSide): void {
   slotsOf(d.battle, side)[partnerSlot] = lead.id
   d.battle.transformsUsed[side].push('merge')
   log(d, { type: 'merged', side, monsterId: lead.id, partnerId: partner.id })
+  punishTransform(data, d, lead)
 }
 
 /**

@@ -17,7 +17,8 @@ import {
   type Monster,
   type MonsterBattleContext,
   type Stats,
-  type StatusInstance
+  type StatusInstance,
+  type WallDef
 } from '../model'
 
 export function hasStatus(monster: Monster, statusId: string): boolean {
@@ -74,6 +75,40 @@ export function conflictingStatus(
       status.statusId !== statusId && data.statuses[status.statusId]?.exclusiveGroup === group
   )
   return conflict?.statusId ?? null
+}
+
+/** Một tường đang có của quái: trạng thái, định nghĩa, số đòn còn chặn được. */
+export interface WallStatus {
+  statusId: string
+  def: WallDef
+  hitsLeft: number
+}
+
+/** Mọi tường đang có của quái, cũ trước (tường cuối nhận đòn trước; docs/rules/cassette-mechanics.md). */
+export function wallStatusesOf(data: GameData, monster: Monster): WallStatus[] {
+  return monster.statuses.flatMap((status) => {
+    const def = data.statuses[status.statusId]?.wall
+    if (!def) return []
+    return [
+      {
+        statusId: status.statusId,
+        def,
+        hitsLeft: status.amount ? status.amount.toNumber() : def.hits
+      }
+    ]
+  })
+}
+
+/** Số lượt còn lại của trạng thái trên quái; null = không theo lượt hoặc không có. */
+export const statusTurnsLeft = (monster: Monster, statusId: string): number | null =>
+  monster.statuses.find((status) => status.statusId === statusId)?.turnsLeft ?? null
+
+/** Tường thường của một hệ (Elemental Wall: tường theo hệ quái dùng); null nếu dữ liệu không có. */
+export function basicWallOfElement(data: GameData, elementId: string): string | null {
+  const found = Object.values(data.statuses).find(
+    (status) => status.wall?.elementId === elementId && !status.wall.special
+  )
+  return found?.id ?? null
 }
 
 /** Thời hạn mới dài hơn: null (không theo lượt / kéo dài mãi) dài hơn mọi số lượt. */

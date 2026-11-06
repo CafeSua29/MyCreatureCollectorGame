@@ -1067,5 +1067,201 @@
         }
       }
     ]
+  },
+  {
+    "id": "fungalSpores",
+    "maxStacks": 5,
+    "leaveChance": 20,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "hp": "max",
+                "of": "other",
+                "percent": 3,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "portalSpirits",
+    "maxStacks": 3,
+    "leaveChance": 10,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "stat": "spAttack",
+                "of": "self",
+                "percent": 10,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "portalWorms",
+    "maxStacks": 3,
+    "leaveChance": 15,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 5,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "portalDrones",
+    "maxStacks": 5,
+    "leaveChance": 15,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 3,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "portalBulbs",
+    "maxStacks": 3,
+    "leaveChance": 15,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 3,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "portalTentacles",
+    "maxStacks": 3,
+    "leaveChance": 15,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 4,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "portalFlora",
+    "maxStacks": 3,
+    "leaveChance": 15,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "randomFoe",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 3,
+                "per": {
+                  "of": "minionStacks"
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
   }
 ]

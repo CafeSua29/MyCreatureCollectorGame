@@ -10,6 +10,7 @@ import type { GameData, Monster, Skill } from '../model'
 import { Draft, log, monsterBattleContext } from './draft'
 import { ignoresTargetAbility } from './damage'
 import { loseHp } from './hpChanges'
+import { punishTransform } from './statuses'
 
 /** Đổi max HP mà giữ máu đã mất; còn sống thì còn ít nhất 1 máu. */
 function changeKeepingDamage(data: GameData, monster: Monster, change: () => void): void {
@@ -62,6 +63,7 @@ export function changeBattleForm(
   })
   setFormElements(d, monster, form.elementIds)
   log(d, { type: 'formChanged', monsterId: monster.id, speciesId })
+  punishTransform(data, d, monster)
 }
 
 /** Quái về dạng thường (hệ trước khi đổi dạng); không ở dạng trong trận thì thôi. */

@@ -18,7 +18,7 @@ import {
 } from '../model'
 import { dayPhaseOf, moonPhaseOf, seasonOf } from '../registries'
 import { recoverMarket } from '../shop'
-import { safariDailyTask } from '../world'
+import { portalDailyTask, safariDailyTask } from '../world'
 import { soulLinkDailyTask } from '../tamer'
 import { ageOneDay } from './oldAge'
 import { imprintOneDay } from './imprint'
@@ -30,6 +30,7 @@ import { expeditionDailyTask } from './expeditions'
 import { beastTideDailyTask } from './beastTide'
 import { labDailyTask } from './implant'
 import { worldBossDailyTask } from './worldBoss'
+import { hatcheryDailyTask } from './hatchery'
 
 /** Lịch của một mốc giờ cho UI / mô phỏng (docs/rules/calendar.md). */
 export interface CalendarView {
@@ -92,7 +93,11 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   trades: tradesDailyTask,
   // Đấu giá hành: tới ngày đóng thì đóng phiên (thắng / thua, ký gửi), mở phiên mới
   // (docs/rules/auction.md). Sau market: đồ ký gửi bán theo độ bão hòa đã hồi trong ngày.
-  auction: auctionDailyTask
+  auction: auctionDailyTask,
+  // Phòng ấp: trứng trong phòng tiến bước theo sức lớn, dừng ở 1 (docs/rules/hatchery.md).
+  hatchery: hatcheryDailyTask,
+  // Cổng thế giới: tổ quái mọc, cổng hết hạn đóng, tung mở cổng mới (docs/rules/zones.md).
+  portals: portalDailyTask
 }
 
 /**

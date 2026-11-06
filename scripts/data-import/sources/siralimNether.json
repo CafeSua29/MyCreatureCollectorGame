@@ -1,0 +1,85 @@
+{
+ "source": "siralim",
+ "origin": "fantasy",
+ "species": [
+  {
+   "name": "Ceaseless Gladiator",
+   "elements": [
+    "fighting",
+    "fire"
+   ],
+   "raceId": "human",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Undying: After this creature takes damage, it gains Shelled. This creature intercepts all damage dealt to its allies."
+  },
+  {
+   "name": "Deathwalker",
+   "elements": [
+    "ghost"
+   ],
+   "raceId": "wraith",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Inherit the Earth: All creatures always have Scorned. This debuff switches back and forth with Silenced at the start of this creature's turn."
+  },
+  {
+   "name": "Inner Darkness",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "wraith",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Shadows Converge: After your creatures take damage during their turn, this creature deals the same amount of damage to a random enemy."
+  },
+  {
+   "name": "Scylla",
+   "elements": [
+    "water",
+    "dark"
+   ],
+   "raceId": "leviathan",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Torn Betwixt: After this creature is killed, its partner gains 200% of its stats."
+  },
+  {
+   "name": "Charybdis",
+   "elements": [
+    "water"
+   ],
+   "raceId": "leviathan",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Torn Betwixt: After this creature is killed, its partner gains 200% of its stats."
+  },
+  {
+   "name": "Judgment",
+   "elements": [
+    "light"
+   ],
+   "raceId": "angel",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Sacrilege: At the start of Judgment's turn, it sets all enemies' Health to 20%. This creature starts battles at the top of the Timeline."
+  },
+  {
+   "name": "Mercy",
+   "elements": [
+    "light"
+   ],
+   "raceId": "angel",
+   "tier": "mythic",
+   "catchRate": 5,
+   "category": "Nether Boss",
+   "flavor": "Nether Boss. Boneyard: At the start of Mercy's turn, it kills enemies that are below 5% Health. This creature starts battles at the bottom of the Timeline."
+  }
+ ]
+}

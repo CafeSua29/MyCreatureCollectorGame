@@ -4,7 +4,7 @@
 // sách của trận trên tầng: thời hạn modifier, trận thắng của chuỗi event, hệ số của modifier.
 
 import { eventModifierMultiplier, tickModifierList } from '../registries'
-import { createBiomeBossEgg } from '../progression'
+import { createBiomeBossEgg, grantEssenceOffer } from '../progression'
 import { pick, rollPercent } from '../shared'
 import {
   dayOf,
@@ -17,7 +17,7 @@ import {
   type SpecialBattle,
   type SpecialBattleKind
 } from '../model'
-import { battleBiome, closeZoneVisit } from '../world'
+import { battleBiome, closeZoneVisit, conquerPortal, destroyPortalHive } from '../world'
 import { Draft, log } from './draft'
 import { gainBiomeSkillBooks, gainDrop, grantItemRewards } from './rewards'
 import { rollGuardianRewards } from './zones'
@@ -173,13 +173,28 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
     lossPenaltyPercent: () => null,
     onWin(data, d) {
       // Thắng trận thường / tinh anh: không hồi máu (người chơi tự dùng vật phẩm giữa các bước).
-      if (d.battle.special?.kind !== 'zone' || !d.battle.special.guardian) return
+      if (d.battle.special?.kind !== 'zone') return
+      const portalId = d.zones.visit?.portalId
+      if (d.battle.special.hive && portalId !== undefined) {
+        d.zones = destroyPortalHive(d.zones, portalId)
+      }
+      if (!d.battle.special.guardian) return
       const zone = data.zones[d.battle.special.zoneId]
       log(d, { type: 'zoneCompleted', zoneId: zone.id })
       let rewards: ItemReward[]
       ;[rewards, d.rng] = rollGuardianRewards(data, d.rng, { zone, options: d.options })
       grantItemRewards(d, rewards)
       d.zones = closeZoneVisit(data, d)
+      if (portalId === undefined) return
+      // Đóng cổng thế giới: mở cổng kế tiếp hung hiểm hơn, được chọn tinh chất (essences.md).
+      ;[d.zones, d.rng] = conquerPortal(data, d.rng, {
+        zones: d.zones,
+        portalId,
+        day: dayOf(d.time)
+      })
+      const offered = grantEssenceOffer(data, d)
+      d.essences = offered.essences
+      d.rng = offered.rng
     },
     onLoss(data, d) {
       if (d.battle.special?.kind !== 'zone') return

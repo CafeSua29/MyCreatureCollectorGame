@@ -53,6 +53,8 @@
 - Quái bên trong được random sẵn lúc tạo trứng (tất định). Nở khi bộ đếm về 0, sau khi trận kết thúc: vào đội nếu còn chỗ, không thì vào kho (sau quái vừa bắt trong trận); log `eggHatched`.
 - `listEggs` chỉ cho biết id và số trận còn lại (không lộ quái bên trong).
 
+Phòng ấp theo môi trường (trứng đặt trong phòng, độ ổn định lúc nở) ở `hatchery.md`. Trứng nở (mọi loại) nhận tinh chất tăng trưởng (`essences.md`). Hook `traitInheritBonus { percent }` (gen Mutating, Stud của Portals of Phereon): breed có % truyền thêm một trait của bên mang hook nếu còn ô.
+
 ## Ấp trứng có hoàn cảnh
 
 Như truyện ngự thú (ấp bằng linh thạch, ấp ở linh địa). Code: `progression/incubation.ts` (`infuseEgg`, `incubateEggs`, `warmEggsAtRest`), gen đột biến dùng chung với breeding ở `progression/genes.ts`. Số ở `config.egg.incubation` (`balance.json`, số tạm, xem `balance-systems.md` mục "Ấp trứng có hoàn cảnh"). Áp dụng cho mọi trứng (breeding, boss, truyền thừa, thám hiểm, event).

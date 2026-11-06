@@ -98,6 +98,11 @@ export interface HitLocationCounts {
   offBalance: Record<BattleSide, number>
   /** Bộ phận người chơi khám phá lần đầu (ghi Dex). */
   revealed: number
+  /** Số phản ứng hệ, cả hai phe (docs/rules/element-reactions.md). */
+  reactions: number
+  /** Số lần Nghỉ / quá sức, cả hai phe (docs/rules/stamina.md). */
+  rests: number
+  overexerted: number
 }
 
 export const emptyHitLocationCounts = (): HitLocationCounts => ({
@@ -106,7 +111,10 @@ export const emptyHitLocationCounts = (): HitLocationCounts => ({
   outOfReach: { player: 0, enemy: 0 },
   broken: 0,
   offBalance: { player: 0, enemy: 0 },
-  revealed: 0
+  revealed: 0,
+  reactions: 0,
+  rests: 0,
+  overexerted: 0
 })
 
 /** Cộng số đếm vị trí ra đòn của một trận vào target. */
@@ -119,6 +127,9 @@ export function addHitLocationCounts(target: HitLocationCounts, add: HitLocation
   target.offBalance.player += add.offBalance.player
   target.offBalance.enemy += add.offBalance.enemy
   target.revealed += add.revealed
+  target.reactions += add.reactions
+  target.rests += add.rests
+  target.overexerted += add.overexerted
 }
 
 export interface BattleRun {
@@ -331,6 +342,12 @@ function collectStats(
       if (event.success) recruit.intimidateWins++
     } else if (event.type === 'frenzy') {
       frenzies[enemyIds.has(event.monsterId) ? 'enemy' : 'player']++
+    } else if (event.type === 'elementReaction') {
+      hitLocations.reactions++
+    } else if (event.type === 'rested') {
+      hitLocations.rests++
+    } else if (event.type === 'overexerted') {
+      hitLocations.overexerted++
     } else if (event.type === 'aimedHit') {
       if (!enemyIds.has(event.monsterId)) hitLocations.aimed++
       if (!enemyIds.has(event.monsterId) && event.weakPoint) hitLocations.weak++

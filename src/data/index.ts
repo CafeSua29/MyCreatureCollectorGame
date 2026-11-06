@@ -45,6 +45,8 @@ import events from './events.json'
 import eventModifiers from './eventModifiers.json'
 import zones from './zones.json'
 import serumEffects from './serumEffects.json'
+import bodyRefinements from './bodyRefinements.json'
+import essences from './essences.json'
 import deities from './deities.json'
 import artifactSpirits from './artifactSpirits.json'
 import achievements from './achievements.json'
@@ -52,6 +54,7 @@ import titles from './titles.json'
 import sects from './sects.json'
 import sectRanks from './sectRanks.json'
 import npcNames from './npcNames.json'
+import elementReactions from './elementReactions.json'
 import textConfig from './i18n/config.json'
 
 // Mỗi ngôn ngữ là một folder i18n/<mã>/ (language.json + một file cho mỗi loại nội dung). Tự tìm
@@ -130,6 +133,8 @@ export const rawGameData = {
   eventModifiers,
   zones,
   serumEffects,
+  bodyRefinements,
+  essences,
   deities,
   artifactSpirits,
   achievements,
@@ -137,5 +142,6 @@ export const rawGameData = {
   sects,
   sectRanks,
   npcNames,
+  elementReactions,
   text: { ...textConfig, languages: collectLanguages() }
 } as unknown as RawGameData

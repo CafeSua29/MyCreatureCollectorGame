@@ -19,7 +19,13 @@ import {
   spiritsOf
 } from '../inventory'
 import { abilityTraitId } from '../monster'
-import { NON_HP_STATS, mergePartnerOf, type MoveFlag, type StageStat } from '../model'
+import {
+  NON_HP_STATS,
+  battleSkillIds,
+  mergePartnerOf,
+  type MoveFlag,
+  type StageStat
+} from '../model'
 import type {
   BattleField,
   FieldPlacement,
@@ -66,6 +72,7 @@ import { bloodlineTraitOf } from './bloodlines'
 import { polarityTraitOf } from './polarity'
 import { affinityTierOf } from './affinityTiers'
 import { activeTalents } from './talents'
+import { refinementHooks } from './bodyRefinement'
 import { teamBonusHooks } from './teamBonuses'
 
 export interface TraitContext {
@@ -101,6 +108,8 @@ export interface DamageContext {
   /** Tỉ lệ máu hiện tại / max HP, trong [0, 1]. */
   attackerHpRatio: number
   defenderHpRatio: number
+  /** Đòn có chí mạng không; bỏ trống = chưa biết (sát thương dự kiến của AI). */
+  critical?: boolean
 }
 
 /** Phần đóng góp vào chỉ số: flat cộng thẳng, percent tính bằng % (10 = +10%). */
@@ -252,6 +261,14 @@ export interface TraitHookHandler extends PassiveTraitPhases {
   modifyCatchRate?(params: unknown, scale: number, ctx: TraitContext): number
   /** Các trạng thái quái mang trait không bị dính (không đổi theo cấp trait). */
   immuneStatusIds?(params: unknown): readonly string[]
+  /** % thể lực tối đa cộng thêm (docs/rules/stamina.md). */
+  staminaMaxPercent?(params: unknown, scale: number): number
+  /** % giá thể lực của skill cộng thêm (âm = giảm). */
+  staminaCostPercent?(params: unknown, scale: number): number
+  /** % đòn tầm xa của quái đi xuyên tường địch (Ricochet, docs/rules/cassette-mechanics.md). */
+  wallIgnoreChance?(params: unknown): number
+  /** Không chịu phản ứng hệ của skill hệ này (docs/rules/element-reactions.md). */
+  blocksElementReaction?(params: unknown, elementId: string): boolean
   /** Miễn nhiễm skill hệ này (sát thương 0, như khắc hệ ×0). Không đổi theo cấp trait. */
   immuneToElement?(params: unknown, elementId: string): boolean
   /** Quái không đứng trên mặt đất (kiểu Levitate): địa hình không tác dụng. */
@@ -379,6 +396,13 @@ export interface TraitHookHandler extends PassiveTraitPhases {
   effortGainPercent?(params: unknown, scale: number): number
   /** Số trận trứng giảm thêm mỗi trận thắng khi quái mang trait ở trong đội. Không đổi theo cấp. */
   eggHatchExtra?(params: unknown): number
+  /** Điểm % sức lớn / độ ổn định của trứng chứa quái mang hook ở phòng ấp (docs/rules/hatchery.md). */
+  eggGrowthPercent?(params: unknown, scale: number): number
+  eggStabilityPercent?(params: unknown, scale: number): number
+  /** % sức ấp của quái mang hook khi làm người ấp (gen Incubating của gốc: gấp đôi). */
+  hatcherPowerPercent?(params: unknown, scale: number): number
+  /** % truyền thêm một trait của quái mang hook cho con khi breed (Mutating, Stud của Portals of Phereon). */
+  traitExtraInheritPercent?(params: unknown, scale: number): number
   /** % thọ nguyên của quái mang trait (âm = bớt; LIFESPAN_MODIFIERS ở lifespan.ts). */
   lifespanPercent?(params: unknown, scale: number): number
   /** Điểm % cộng vào ngưỡng HP kích hoạt cuồng bạo (docs/rules/frenzy.md). */
@@ -669,6 +693,8 @@ export const HOOK_SOURCE_KINDS = [
   'bloodline',
   'polarity',
   'implant',
+  'passiveSkill',
+  'refinement',
   'rule'
 ] as const
 
@@ -687,6 +713,8 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'formation':
     case 'partner':
     case 'implant':
+    case 'passiveSkill':
+    case 'refinement':
       return kind
     case 'trait':
     case 'race':
@@ -988,6 +1016,15 @@ function ownHooks(
       kind: 'implant',
       ownerId
     })
+  }
+  // Luyện thể (docs/rules/body-refinement.md): kiểu đang lắp và thưởng bộ theo nhãn, như trait cấp 1.
+  for (const { hooks, sourceId } of refinementHooks(data, monster)) {
+    push(hooks, 1, sourceId, { kind: 'refinement', ownerId })
+  }
+  // Skill bị động quái đang biết (docs/rules/element-reactions.md); sourceId = id skill.
+  for (const skillId of battleSkillIds(monster)) {
+    const hooks = data.skills[skillId]?.passive?.hooks
+    if (hooks) push(hooks, 1, skillId, { kind: 'passiveSkill', ownerId })
   }
   // Thiên phú đã nâng ở nhánh đang mở (docs/rules/monster-talents.md): hệ số = cấp; sourceId = id nút.
   for (const { node, rank } of activeTalents(data, monster)) {

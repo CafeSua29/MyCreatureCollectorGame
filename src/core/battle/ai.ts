@@ -8,6 +8,9 @@
 // như các ứng viên riêng; Z-Move (docs/rules/z-moves.md) cũng là ứng viên riêng.
 
 import { expectedDamage, newStatsMemo, type StatsMemo } from './damage'
+import { reactionEffectsOn } from './elementReactions'
+import { isBoobyTrapped } from './boobyTraps'
+import { currentStamina, maxStamina, staminaCostOf } from './stamina'
 import { getCurrentHp, getMaxHp, holdTurnsLeft, skillMasteryBonus } from '../monster'
 import {
   SKILL_EFFECTS,
@@ -83,7 +86,7 @@ interface Candidate {
   /** Skill (bỏ trống = lệnh `guard`). */
   skillId?: string
   /** Lệnh phòng thủ / khiêu khích thay cho skill. */
-  guard?: 'defend' | 'provoke'
+  guard?: 'defend' | 'provoke' | 'rest'
   /** Ô địch được nhắm (chỉ skill `enemy`). */
   target?: number
   /** Thế mạnh / thế nhanh (docs/rules/move-styles.md); bỏ trống = thế thường. */
@@ -355,11 +358,16 @@ function meetsRequirementsAtChoice(
 
 /** Mọi lựa chọn (skill, mục tiêu) dùng được của một quái, kèm điểm. */
 function listCandidates(data: GameData, d: Draft, ctx: ChooserContext): Candidate[] {
-  const candidates: Candidate[] = guardCandidates(data, ctx.user)
+  const candidates: Candidate[] = [
+    ...guardCandidates(data, ctx.user),
+    ...restCandidates(data, d, ctx.user)
+  ]
   const tempSkillIds = d.battle.volatiles[ctx.user.id]?.tempSkillIds ?? []
   for (const skillId of new Set([...battleSkillIds(ctx.user), ...tempSkillIds])) {
     const chosen = data.skills[skillId]
     if (isSkillBlocked(data, d, { user: ctx.user, skill: chosen })) continue
+    // Skill đã bị thay bằng Booby Trap: dùng là tự đánh mình, AI không chọn.
+    if (isBoobyTrapped(d, ctx.user.id, skillId)) continue
     if (holdTurnsLeft(d.battle, ctx.user, chosen) > 0) continue
     // Chấm skill thật khi dùng (đang Dynamax: chiêu Max một mục tiêu; Tera Blast...; synergy cộng
     // hiệu ứng, power ở công thức sát thương), lệnh vẫn ghi skill gốc.
@@ -503,6 +511,29 @@ function guardCandidates(data: GameData, user: Monster): Candidate[] {
     { guard: 'provoke', score: provokeWeight * missing, plannedDamage: [] }
   ]
   return candidates.filter((candidate) => candidate.score > 0)
+}
+
+/** Nghỉ: điểm theo phần thể lực đã mất (docs/rules/stamina.md); đầy thì không xét. */
+function restCandidates(data: GameData, d: Draft, user: Monster): Candidate[] {
+  const max = maxStamina(data, d, user)
+  const missing = 1 - currentStamina(data, d, user) / max
+  const score = missing * data.config.stamina.restWeight
+  return score > 0 ? [{ guard: 'rest', score, plannedDamage: [] }] : []
+}
+
+/**
+ * Điểm mất nếu dùng skill làm quá sức: phần máu hiện tại sẽ mất theo phần thiếu và mất lượt kế tiếp
+ * (không gục vì quá sức khi còn lựa chọn khác).
+ */
+function overexertAiCost(data: GameData, d: Draft, user: Monster, skill: Skill): number {
+  const deficit = staminaCostOf(data, d, user, skill) - currentStamina(data, d, user)
+  if (deficit <= 0) return 0
+  const { overexertHpPercent, exhaustedPenalty } = data.config.stamina
+  const lost = getMaxHp(data, user)
+    .times(deficit * overexertHpPercent)
+    .div(100)
+  const share = Math.min(1, lost.div(getCurrentHp(data, user)).toNumber())
+  return share + exhaustedPenalty
 }
 
 /** Điểm của một skill lên các mục tiêu: cộng điểm từng mục tiêu (mục "AI trận đấu"). */
@@ -657,35 +688,40 @@ function scoreSkill(
         plannedDamage.push({ monsterId: target.id, amount: dealt.times(hitChance) })
       }
     }
+    const effectContext = {
+      data,
+      user: ctx.user,
+      target,
+      targetIsAlly: isAlly,
+      stages: d.battle.stages,
+      expectedDamage: dealt,
+      field: effectiveField(data, d),
+      side: ctx.side,
+      allies: ctx.allies,
+      foes: ctx.foes,
+      allyReserves: ctx.allyReserves,
+      foeReserves: ctx.foeReserves,
+      volatiles: d.battle.volatiles,
+      isBoss: d.battle.isBoss,
+      chanceMultiplier,
+      battleTurn: d.battle.turn
+    }
     for (const effect of skill.effects) {
       const handler = SKILL_EFFECTS[effect.type]
       // Hiệu ứng cả chiêu chạy một lần (lên mục tiêu trúng đầu tiên) nên chỉ chấm một lần.
       if (handler.timing === 'perSkill' && index > 0) continue
-      const value = handler.aiValue(effect.params, {
-        data,
-        user: ctx.user,
-        target,
-        targetIsAlly: isAlly,
-        stages: d.battle.stages,
-        expectedDamage: dealt,
-        field: effectiveField(data, d),
-        side: ctx.side,
-        allies: ctx.allies,
-        foes: ctx.foes,
-        allyReserves: ctx.allyReserves,
-        foeReserves: ctx.foeReserves,
-        volatiles: d.battle.volatiles,
-        isBoss: d.battle.isBoss,
-        chanceMultiplier,
-        battleTurn: d.battle.turn
-      })
-      addEffect(hitChance * value)
+      addEffect(hitChance * handler.aiValue(effect.params, effectContext))
+    }
+    // Phản ứng hệ: buff cho địch là điểm âm, debuff là điểm dương (element-reactions.md).
+    for (const effect of reactionEffectsOn(data, d, { user: ctx.user, skill, target })) {
+      addEffect(hitChance * SKILL_EFFECTS[effect.type].aiValue(effect.params, effectContext))
     }
     addEffect(hitChance * spellAiValue(data, spellTargetEffects(skill)))
     if (index === 0) addEffect(hitChance * spellAiValue(data, spellAfterEffects(skill)))
     if (index === 0) firstHitChance = hitChance
   })
   addEffect(-selfCostAiValue(data, ctx.user, skill, firstHitChance))
+  addEffect(-overexertAiCost(data, d, ctx.user, skill))
   return {
     skillId: skill.id,
     ...(aim !== undefined ? { aim } : {}),

@@ -117,6 +117,7 @@ export interface ActionErrorParams {
   soulNotFound: { soulId: string }
   // ---------- Skill ----------
   skillNotKnown: { monsterId: string; skillId: string }
+  skillIsPassive: { monsterId: string; skillId: string }
   skillOnHold: { monsterId: string; skillId: string; turnsLeft: number }
   /** Quái đang cuồng bạo, không nhận lệnh (docs/rules/frenzy.md). */
   monsterFrenzied: { monsterId: string }
@@ -391,6 +392,36 @@ export interface ActionErrorParams {
   /** Đang trong hiểm địa: không hồi máu ở thị trấn, không rời thị trấn, không vào phó bản khác. */
   zoneInProgress: NoParams
   noZoneVisit: NoParams
+  /** Mẫu cổng thế giới không vào thẳng được (vào qua một cổng đang mở). */
+  zoneIsPortal: { zoneId: string }
+  portalNotFound: { portalId: string }
+  /** Cổng đã tới ngày đóng. */
+  portalClosed: { portalId: string }
+  // ---------- Luyện thể (docs/rules/body-refinement.md) ----------
+  unknownRefinement: { refinementId: string }
+  /** Quái không có bộ phận của kiểu luyện thể. */
+  noSuchBodyPart: { monsterId: string; partId: string }
+  refinementAlreadyApplied: { monsterId: string; refinementId: string }
+  noRefinement: { monsterId: string; partId: string }
+  // ---------- Phòng ấp (docs/rules/hatchery.md) ----------
+  unknownHabitat: { habitatId: string }
+  roomNotFound: { roomIndex: string }
+  habitatAlreadyBuilt: { roomIndex: number; habitatId: string }
+  roomFull: { roomIndex: number; max: number }
+  unknownHatcheryUpgrade: { upgradeId: string }
+  hatcheryUpgradeOwned: { roomIndex: number; upgradeId: string }
+  /** Nâng cấp không dùng được ở môi trường hiện tại của phòng. */
+  hatcheryUpgradeWrongHabitat: { roomIndex: number; upgradeId: string }
+  hatcheryUpgradeCap: { roomIndex: number; max: number }
+  /** Người ấp phải là quái trong kho. */
+  hatcherNotInStorage: { monsterId: string }
+  // ---------- Tinh chất (docs/rules/essences.md) ----------
+  noEssenceOffer: NoParams
+  essenceNotOffered: { essenceId: string }
+  // ---------- Chọn trait / gen khi fuse (docs/rules/fusing.md) ----------
+  cannotKeepTrait: { traitId: string }
+  tooManyKeptTraits: { monsterId: string; max: number }
+  keptTraitsExclusive: NoParams
   // ---------- Câu cá và khai thác (docs/rules/gathering.md) ----------
   /** Map của tầng đang đứng không có chỗ câu cá / mỏ. */
   gatheringUnavailable: { method: string; biomeId: string }
@@ -559,6 +590,8 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   notEquippable: ({ itemId }) => `Vật phẩm "${itemId}" không lắp vào ô được`,
   soulNotFound: ({ soulId }) => `Không có hồn phách "${soulId}"`,
   skillNotKnown: ({ monsterId, skillId }) => `Quái "${monsterId}" không biết skill "${skillId}"`,
+  skillIsPassive: ({ monsterId, skillId }) =>
+    `Skill "${skillId}" của quái "${monsterId}" là skill bị động, không dùng bằng lệnh được`,
   skillOnHold: ({ monsterId, skillId, turnsLeft }) =>
     `Skill "${skillId}" của quái "${monsterId}" còn phải chờ ${turnsLeft} lượt`,
   monsterFrenzied: ({ monsterId }) => `Quái "${monsterId}" đang cuồng bạo, không nghe lệnh`,
@@ -776,6 +809,31 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   zoneInProgress: () =>
     'Đang trong hiểm địa (không hồi máu, không rời thị trấn, không vào phó bản khác)',
   noZoneVisit: () => 'Không trong hiểm địa nào',
+  zoneIsPortal: ({ zoneId }) => `"${zoneId}" là mẫu cổng thế giới, vào qua một cổng đang mở`,
+  portalNotFound: ({ portalId }) => `Không có cổng "${portalId}"`,
+  portalClosed: ({ portalId }) => `Cổng "${portalId}" đã đóng`,
+  unknownRefinement: ({ refinementId }) => `Không có kiểu luyện thể "${refinementId}"`,
+  noSuchBodyPart: ({ monsterId, partId }) => `Quái "${monsterId}" không có bộ phận "${partId}"`,
+  refinementAlreadyApplied: ({ monsterId, refinementId }) =>
+    `Quái "${monsterId}" đã luyện "${refinementId}"`,
+  noRefinement: ({ monsterId, partId }) => `Bộ phận "${partId}" của "${monsterId}" chưa luyện`,
+  unknownHabitat: ({ habitatId }) => `Không có môi trường "${habitatId}"`,
+  roomNotFound: ({ roomIndex }) => `Không có phòng ấp "${roomIndex}"`,
+  habitatAlreadyBuilt: ({ roomIndex, habitatId }) =>
+    `Phòng ${roomIndex} đã là môi trường "${habitatId}"`,
+  roomFull: ({ roomIndex, max }) => `Phòng ${roomIndex} đã đủ ${max} trứng`,
+  unknownHatcheryUpgrade: ({ upgradeId }) => `Không có nâng cấp phòng "${upgradeId}"`,
+  hatcheryUpgradeOwned: ({ roomIndex, upgradeId }) =>
+    `Phòng ${roomIndex} đã có nâng cấp "${upgradeId}"`,
+  hatcheryUpgradeWrongHabitat: ({ roomIndex, upgradeId }) =>
+    `Nâng cấp "${upgradeId}" không hợp môi trường phòng ${roomIndex}`,
+  hatcheryUpgradeCap: ({ roomIndex, max }) => `Phòng ${roomIndex} đã đủ ${max} nâng cấp`,
+  hatcherNotInStorage: ({ monsterId }) => `Người ấp "${monsterId}" phải ở trong kho`,
+  noEssenceOffer: () => 'Không có lựa chọn tinh chất nào đang chờ',
+  essenceNotOffered: ({ essenceId }) => `Tinh chất "${essenceId}" không có trong lựa chọn`,
+  cannotKeepTrait: ({ traitId }) => `Không giữ được trait "${traitId}" (không thuộc hai quái)`,
+  tooManyKeptTraits: ({ monsterId, max }) => `Quái "${monsterId}" chỉ được giữ ${max} trait`,
+  keptTraitsExclusive: () => 'Các trait chọn giữ loại trừ nhau',
   gatheringUnavailable: ({ method, biomeId }) =>
     `Map "${biomeId}" không có chỗ ${method === 'fishing' ? 'câu cá' : 'khai thác'}`,
   gatheringToolMissing: ({ method }) =>

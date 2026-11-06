@@ -1,0 +1,707 @@
+{
+ "source": "koltera",
+ "origin": "fantasy",
+ "update": {
+  "elements": true,
+  "stats": true
+ },
+ "species": [
+  {
+   "name": "Otto",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mustelid",
+   "tier": "medium",
+   "stats": {
+    "hp": 100,
+    "attack": 80,
+    "defense": 50,
+    "spAttack": 80,
+    "spDefense": 100,
+    "speed": 70
+   },
+   "category": "Starter Water Fable"
+  },
+  {
+   "name": "Arbowl",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "owl",
+   "tier": "medium",
+   "stats": {
+    "hp": 100,
+    "attack": 60,
+    "defense": 70,
+    "spAttack": 60,
+    "spDefense": 80,
+    "speed": 90
+   },
+   "category": "Starter Air Fable"
+  },
+  {
+   "name": "Firox",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 100,
+    "attack": 70,
+    "defense": 60,
+    "spAttack": 70,
+    "spDefense": 90,
+    "speed": 80
+   },
+   "category": "Starter Fire Fable"
+  },
+  {
+   "name": "Rok",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "golem",
+   "tier": "medium",
+   "stats": {
+    "hp": 100,
+    "attack": 60,
+    "defense": 90,
+    "spAttack": 60,
+    "spDefense": 80,
+    "speed": 70
+   },
+   "category": "Starter Earth Fable"
+  },
+  {
+   "name": "Croakle",
+   "elements": [
+    "water"
+   ],
+   "raceId": "anuran",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Water Fable"
+  },
+  {
+   "name": "Shrubark",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "tree",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 60,
+    "defense": 60,
+    "spAttack": 60,
+    "spDefense": 100,
+    "speed": 100
+   },
+   "category": "Uncommon Earth Fable"
+  },
+  {
+   "name": "Shellbunny",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "lagomorph",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 70,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 110
+   },
+   "category": "Rare Fire Fable"
+  },
+  {
+   "name": "Pengrum",
+   "elements": [
+    "water"
+   ],
+   "raceId": "penguin",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Water Fable"
+  },
+  {
+   "name": "Seaserpa",
+   "elements": [
+    "water"
+   ],
+   "raceId": "serpent",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 90,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 90
+   },
+   "category": "Rare Water Fable"
+  },
+  {
+   "name": "Coralite",
+   "elements": [
+    "water"
+   ],
+   "raceId": "cnidarian",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 90,
+    "defense": 80,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 60
+   },
+   "category": "Uncommon Water Fable"
+  },
+  {
+   "name": "Beedle",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "medium",
+   "stats": {
+    "hp": 70,
+    "attack": 80,
+    "defense": 50,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 120
+   },
+   "category": "Uncommon Air Fable"
+  },
+  {
+   "name": "Goledon",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "golem",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 90,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 50
+   },
+   "category": "Common Earth Fable"
+  },
+  {
+   "name": "Ratpack",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "rodent",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Fire Fable"
+  },
+  {
+   "name": "Tuskador",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "proboscid",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Earth Fable"
+  },
+  {
+   "name": "Cindertail",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 90,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 90
+   },
+   "category": "Rare Fire Fable"
+  },
+  {
+   "name": "Leafiana",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Earth Fable"
+  },
+  {
+   "name": "Sandmite",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "arachnid",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 90,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 90
+   },
+   "category": "Rare Earth Fable"
+  },
+  {
+   "name": "Blokion",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "felid",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 90,
+    "defense": 50,
+    "spAttack": 90,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Earth Fable"
+  },
+  {
+   "name": "Paratoot",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "parrot",
+   "tier": "medium",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 80,
+    "spAttack": 70,
+    "spDefense": 80,
+    "speed": 100
+   },
+   "category": "Uncommon Air Fable"
+  },
+  {
+   "name": "Stagsol",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "cervid",
+   "tier": "peak",
+   "stats": {
+    "hp": 80,
+    "attack": 70,
+    "defense": 80,
+    "spAttack": 70,
+    "spDefense": 110,
+    "speed": 110
+   },
+   "category": "Rare Earth Fable"
+  },
+  {
+   "name": "Nebuloth",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 90,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 90
+   },
+   "category": "Rare Fire Fable"
+  },
+  {
+   "name": "Aviando",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "bird",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Air Fable"
+  },
+  {
+   "name": "Agardae",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "slime",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Earth Fable"
+  },
+  {
+   "name": "Laventoad",
+   "elements": [
+    "water"
+   ],
+   "raceId": "anuran",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Water Fable"
+  },
+  {
+   "name": "Nibbles",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "rodent",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Air Fable"
+  },
+  {
+   "name": "Tricera",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "ornithischian",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 100,
+    "defense": 70,
+    "spAttack": 100,
+    "spDefense": 60,
+    "speed": 50
+   },
+   "category": "Common Earth Fable"
+  },
+  {
+   "name": "Buteo",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "raptor",
+   "tier": "peak",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 100,
+    "speed": 110
+   },
+   "category": "Rare Fire Fable"
+  },
+  {
+   "name": "Ferracoon",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mustelid",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Air Fable"
+  },
+  {
+   "name": "Angrose",
+   "elements": [
+    "water"
+   ],
+   "raceId": "flower",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 90,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 90
+   },
+   "category": "Rare Water Fable"
+  },
+  {
+   "name": "Prismare",
+   "elements": [
+    "water"
+   ],
+   "raceId": "equid",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Water Fable"
+  },
+  {
+   "name": "Fluffpup",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Fire Fable"
+  },
+  {
+   "name": "Polairian",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "ursid",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 80,
+    "defense": 110,
+    "spAttack": 80,
+    "spDefense": 90,
+    "speed": 80
+   },
+   "category": "Rare Fire Fable"
+  },
+  {
+   "name": "Frostkit",
+   "elements": [
+    "water"
+   ],
+   "raceId": "felid",
+   "tier": "peak",
+   "stats": {
+    "hp": 90,
+    "attack": 90,
+    "defense": 90,
+    "spAttack": 90,
+    "spDefense": 90,
+    "speed": 90
+   },
+   "category": "Rare Water Fable"
+  },
+  {
+   "name": "Swimpo",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Water Fable"
+  },
+  {
+   "name": "Eatsa",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "peak",
+   "stats": {
+    "hp": 130,
+    "attack": 70,
+    "defense": 90,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 90
+   },
+   "category": "Rare Air Fable"
+  },
+  {
+   "name": "Bunbun",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "lagomorph",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 80,
+    "defense": 80,
+    "spAttack": 80,
+    "spDefense": 80,
+    "speed": 80
+   },
+   "category": "Uncommon Fire Fable"
+  },
+  {
+   "name": "Cirquil",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "rodent",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "defense": 70,
+    "spAttack": 70,
+    "spDefense": 70,
+    "speed": 70
+   },
+   "category": "Common Air Fable"
+  },
+  {
+   "name": "Sylvera",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "fey",
+   "tier": "mythic",
+   "stats": {
+    "hp": 100,
+    "attack": 110,
+    "defense": 100,
+    "spAttack": 110,
+    "spDefense": 120,
+    "speed": 120
+   },
+   "category": "Legendary Fire Fable"
+  },
+  {
+   "name": "Suijin",
+   "elements": [
+    "water"
+   ],
+   "raceId": "god",
+   "tier": "mythic",
+   "stats": {
+    "hp": 130,
+    "attack": 130,
+    "defense": 130,
+    "spAttack": 130,
+    "spDefense": 130,
+    "speed": 130
+   },
+   "category": "Legendary Water Fable"
+  },
+  {
+   "name": "Titanwing",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBird",
+   "tier": "mythic",
+   "stats": {
+    "hp": 160,
+    "attack": 150,
+    "defense": 160,
+    "spAttack": 150,
+    "spDefense": 140,
+    "speed": 140
+   },
+   "category": "Legendary Air Fable"
+  },
+  {
+   "name": "Barblade",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "mythic",
+   "stats": {
+    "hp": 130,
+    "attack": 180,
+    "defense": 140,
+    "spAttack": 180,
+    "spDefense": 200,
+    "speed": 200
+   },
+   "category": "Legendary Air Fable"
+  }
+ ]
+}

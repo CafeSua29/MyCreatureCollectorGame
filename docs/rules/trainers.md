@@ -45,3 +45,7 @@ Code: model `model/trainers.ts`; sinh đội `world/trainers.ts` (`generateTrain
 - Hiển thị tư chất của quái NPC (`aptitudeOf` theo `aptitudeFloor` của người chơi; chờ UI, `ui-overhaul.md`).
 - Kẻ lạ thách đấu: event `strangerChallenge`, chế độ NPC `event` (`events.md`). Danh hiệu theo huy hiệu / giải đấu / đấu trường là thưởng thành tựu (`gymBadges`, `stat tournamentsWon`, `arenaRank`; `achievements.md`). Trận tông môn (luận võ, thi thăng chức, tông chiến) là chế độ `sectDuel` / `sectPromotion` / `sectWar` (`sects.md`); `battle.trainer` có thêm `memberId` / `npcNameId` tùy chọn.
 - NPC Mega (cần đá Mega ảo; boss cũng chưa Mega, `transformation.md`).
+
+## Đội cố định
+
+`TrainerClass.fixedTeams` (tùy chọn): danh sách đội đặt sẵn, mỗi con `{ speciesId, skillIds }` (như đội đặt tay của game gốc). Có thì `generateTrainerTeam` chọn đều một đội thay vì sinh theo hệ, level vẫn theo tầng; trận đạo quán vẫn sinh theo hệ đạo quán. Kiểm tra dữ liệu: loài, skill tồn tại, không có đội rỗng. Dùng cho 7 lớp WILDERLOCKE (`content-sources-real.md`).

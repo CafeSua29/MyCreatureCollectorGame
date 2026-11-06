@@ -44,3 +44,5 @@ Dạy skill **ngoài learnset** (技能书, như TM / TR / Move Tutor của Pok�
 
 - Dữ liệu (`gameData/validateSkillBooks.ts`): `config.skillBook` (số ≥ 0, tỉ lệ 0–100, `shopMax ≥ shopMin`, `partyMultiplier ≥ 1`, hệ dùng chung tồn tại, bậc có id không trùng / `minLearners` giảm dần / `priceMultiplier` > 0, mốc power tăng dần, trường lạ), `bookSkillIds`, `eggSkillIds`.
 - Save: `inventory.books` (skill tồn tại và có sách, `reusable` boolean, số lượng ≥ 1, không trùng chồng), `extraSkillIds` của quái (skill tồn tại, có sách, không trùng). Version 37 (`state.md`).
+
+- **Sách theo hệ** (`Skill.bookForElement`, 2026-11-06): mọi loài cùng hệ với skill tính là loài học được: cộng vào `skillLearnerCount` (độ hiếm sách theo số loài học), có trong sách rơi theo loài của map / Tàng thư các / boss thế giới (`learnsetSkillIds`, tra `elementBookSkillIds`). Tương thích khi học vẫn theo luật chung (cùng hệ). Dùng cho tường / Coating / Camouflage của Cassette Beasts (`cassette-mechanics.md`).

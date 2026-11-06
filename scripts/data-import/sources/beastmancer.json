@@ -1,0 +1,1191 @@
+{
+  "source": "beastmancer",
+  "origin": "fantasy",
+  "prune": true,
+  "update": {
+    "stats": true,
+    "elements": true
+  },
+  "species": [
+    {
+      "name": "Swamp Gecko",
+      "elements": [
+        "water"
+      ],
+      "raceId": "lizard",
+      "tier": "small",
+      "stats": {
+        "hp": 46,
+        "attack": 52,
+        "defense": 53,
+        "spAttack": 52,
+        "spDefense": 53,
+        "speed": 33
+      },
+      "category": "Basic monster",
+      "flavor": "This all too common monster can (unfortunately) also be found on the islands, just like seemingly everywhere else. For those not in the know, these pests make up the majority of the incidents between monsters and regular citizens."
+    },
+    {
+      "name": "Eye Bat",
+      "elements": [
+        "flying"
+      ],
+      "raceId": "chiropteran",
+      "tier": "small",
+      "stats": {
+        "hp": 41,
+        "attack": 46,
+        "defense": 47,
+        "spAttack": 46,
+        "spDefense": 47,
+        "speed": 64
+      },
+      "category": "Basic monster",
+      "flavor": "Another common monster that has spread to the island by smuggling itself aboard ships traveling there."
+    },
+    {
+      "name": "Carcinus",
+      "elements": [
+        "water"
+      ],
+      "raceId": "crustacean",
+      "tier": "small",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 54,
+        "spAttack": 48,
+        "spDefense": 54,
+        "speed": 40
+      },
+      "category": "Basic monster",
+      "flavor": "Carcinus is a monster commonly found on coast areas that hides inside it's tough shell from stronger monster's, that tend to just leave it be as it is too much of a hassle for most of them to crack open the hard shell to eat it."
+    },
+    {
+      "name": "Merfolk Soldier",
+      "elements": [
+        "water",
+        "fighting"
+      ],
+      "raceId": "merfolk",
+      "tier": "small",
+      "stats": {
+        "hp": 47,
+        "attack": 48,
+        "defense": 49,
+        "spAttack": 48,
+        "spDefense": 49,
+        "speed": 49
+      },
+      "category": "Basic monster",
+      "flavor": "The scouts of the merfolk clan, known to look for settlements near the coast or boats for their clan to raid, though they are also known for ambushing individuals or small groups themselves, which is how most get acquainted with them."
+    },
+    {
+      "name": "Cannon Testudo",
+      "elements": [
+        "water"
+      ],
+      "raceId": "turtle",
+      "tier": "small",
+      "stats": {
+        "hp": 46,
+        "attack": 46,
+        "defense": 52,
+        "spAttack": 46,
+        "spDefense": 52,
+        "speed": 47
+      },
+      "category": "Basic monster",
+      "flavor": "The ranged fighters of the testudo clan, this turtle-like monster bombards his foes with a hail of shots from his arm cannon. It is a well known fact that this monster has a larger cannon hidden in his shell, but will not to use it till it has gained sufficient experience with it's smaller one. The reason why is not currently known."
+    },
+    {
+      "name": "Wizard Testudo",
+      "elements": [
+        "psychic",
+        "rock"
+      ],
+      "raceId": "human",
+      "tier": "small",
+      "stats": {
+        "hp": 44,
+        "attack": 47,
+        "defense": 52,
+        "spAttack": 47,
+        "spDefense": 52,
+        "speed": 48
+      },
+      "category": "Basic monster",
+      "flavor": "The supportive spellcasters of the testudo clan, these wizards are well known for the rituals they perform in large groups and their versatile magic abilities that makes them quite suitable in rockie Beastmancer teams."
+    },
+    {
+      "name": "Kobold Hunter",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "lizardfolk",
+      "tier": "small",
+      "stats": {
+        "hp": 42,
+        "attack": 50,
+        "defense": 47,
+        "spAttack": 50,
+        "spDefense": 47,
+        "speed": 55
+      },
+      "category": "Basic monster",
+      "flavor": "If you find yourself in a cave and sudden have a stone tipped spear chucked at you, chances are good that it is one of these fellas."
+    },
+    {
+      "name": "Kobold Warrior",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "lizardfolk",
+      "tier": "small",
+      "stats": {
+        "hp": 45,
+        "attack": 48,
+        "defense": 49,
+        "spAttack": 48,
+        "spDefense": 49,
+        "speed": 51
+      },
+      "category": "Basic monster",
+      "flavor": "Small, but highly agressive is probably the easiest way to describe the kobold warrior. These frontlines fighters of the kobold packs have considerable strength for their size."
+    },
+    {
+      "name": "Kobold Shaman",
+      "elements": [
+        "psychic"
+      ],
+      "raceId": "lizardfolk",
+      "tier": "small",
+      "stats": {
+        "hp": 44,
+        "attack": 48,
+        "defense": 50,
+        "spAttack": 48,
+        "spDefense": 50,
+        "speed": 49
+      },
+      "category": "Basic monster",
+      "flavor": "The shamans are the spellcasters of the kobold packs. Though able to use magic they are among the least capable of the magical monsters on the islands."
+    },
+    {
+      "name": "Earth Formican",
+      "elements": [
+        "rock",
+        "bug"
+      ],
+      "raceId": "insectoid",
+      "tier": "small",
+      "stats": {
+        "hp": 43,
+        "attack": 47,
+        "defense": 48,
+        "spAttack": 47,
+        "spDefense": 48,
+        "speed": 57
+      },
+      "category": "Basic monster",
+      "flavor": "The most common of the Insect like formican monsters that lives underground. The yellow and green earth formican are very toxic and are immune to poisons that are not tailored specifically to their physiology making them rather troublesome monsters for laymen to get rid of."
+    },
+    {
+      "name": "Ratkin Brigand",
+      "elements": [
+        "water",
+        "fighting"
+      ],
+      "raceId": "human",
+      "tier": "small",
+      "stats": {
+        "hp": 49,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 51,
+        "spDefense": 53,
+        "speed": 33
+      },
+      "category": "Basic monster",
+      "flavor": "These ratmen scurry along the roads alongside ratkin raiders in search of lone or small groups of wanderers to rob. Unlike human brigards, ratkin can fortunately be bribed with alchohol to peacefully leave."
+    },
+    {
+      "name": "Ratkin Raider",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "beastfolk",
+      "tier": "small",
+      "stats": {
+        "hp": 47,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 51,
+        "spDefense": 53,
+        "speed": 35
+      },
+      "category": "Basic monster",
+      "flavor": "Like the Brigard, the Ratkin Raiders are either on the lookout for looting targets or drunk off their tail from booze given to them by travelers."
+    },
+    {
+      "name": "Umbra",
+      "elements": [
+        "flying",
+        "ghost"
+      ],
+      "raceId": "ghost",
+      "tier": "small",
+      "stats": {
+        "hp": 42,
+        "attack": 43,
+        "defense": 48,
+        "spAttack": 43,
+        "spDefense": 48,
+        "speed": 65
+      },
+      "category": "Basic monster",
+      "flavor": "Often mistaken for vengeful ghosts, these monsters dwell around ruined towns and other places where death lingers in the air. No one is sure where they come from or why they do this."
+    },
+    {
+      "name": "Ratkin Assassin",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "rodent",
+      "tier": "small",
+      "stats": {
+        "hp": 47,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 51,
+        "spDefense": 53,
+        "speed": 37
+      },
+      "category": "Basic monster",
+      "flavor": "often not seen alongside it's fellow rodent monsters, this sneaky ratkin hides where people are most likely to venture alone to ambush isolated prey."
+    },
+    {
+      "name": "Ghoul",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "ghoul",
+      "tier": "small",
+      "stats": {
+        "hp": 50,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 51,
+        "spDefense": 53,
+        "speed": 33
+      },
+      "category": "Basic monster",
+      "flavor": "Undead-like creatures that often roam catacombs and cemeteries. Often found on large groups alongside their variants."
+    },
+    {
+      "name": "Ghoul Archer",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "ghoul",
+      "tier": "small",
+      "stats": {
+        "hp": 46,
+        "attack": 52,
+        "defense": 50,
+        "spAttack": 52,
+        "spDefense": 50,
+        "speed": 40
+      },
+      "category": "Basic monster",
+      "flavor": "Often found with their unarmed brethren, these undead-like monsters uses a basic curved bow to support from afar. Feared by normal people for their crippling shots that lets their fellow ghouls catch up to their prey."
+    },
+    {
+      "name": "Spectre Knight",
+      "elements": [
+        "ghost",
+        "dark"
+      ],
+      "raceId": "wraith",
+      "tier": "small",
+      "stats": {
+        "hp": 46,
+        "attack": 46,
+        "defense": 47,
+        "spAttack": 46,
+        "spDefense": 47,
+        "speed": 59
+      },
+      "weightKg": 1000,
+      "category": "Basic monster",
+      "flavor": "Many stories of vengeful knights that have lost their head and seeking vengeance stems from this creature."
+    },
+    {
+      "name": "Fire Formican",
+      "elements": [
+        "fire",
+        "bug"
+      ],
+      "raceId": "crystal",
+      "tier": "small",
+      "stats": {
+        "hp": 42,
+        "attack": 47,
+        "defense": 49,
+        "spAttack": 47,
+        "spDefense": 49,
+        "speed": 57
+      },
+      "category": "Basic monster",
+      "flavor": "Formican that has devoured red crystals and gained pyrokinetic abilities as a result."
+    },
+    {
+      "name": "Ice Formican",
+      "elements": [
+        "ice",
+        "bug"
+      ],
+      "raceId": "crystal",
+      "tier": "small",
+      "stats": {
+        "hp": 42,
+        "attack": 47,
+        "defense": 49,
+        "spAttack": 47,
+        "spDefense": 49,
+        "speed": 57
+      },
+      "category": "Basic monster",
+      "flavor": "formican that has devoured blue crystals and gained cryokinetic abilities as a result."
+    },
+    {
+      "name": "Snow Gecko",
+      "elements": [
+        "ice",
+        "water"
+      ],
+      "raceId": "lizard",
+      "tier": "small",
+      "stats": {
+        "hp": 44,
+        "attack": 48,
+        "defense": 50,
+        "spAttack": 48,
+        "spDefense": 50,
+        "speed": 49
+      },
+      "category": "Basic monster",
+      "flavor": "Swamp Geckos that venture into freezing environments have a chance to mutate into this variant rather than freeze to death due to a wild trait that allows them to rapidly change to fit their surroundings."
+    },
+    {
+      "name": "Sand Gecko",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "lizard",
+      "tier": "small",
+      "stats": {
+        "hp": 47,
+        "attack": 51,
+        "defense": 53,
+        "spAttack": 51,
+        "spDefense": 53,
+        "speed": 33
+      },
+      "category": "Basic monster",
+      "flavor": "Gecko monster that has adapted to hot climate. When these blights were discovered there was some heated debate whether all the gecko species originated from one common ancestor or if each kind could change to the other type by occupying new territory with different climate."
+    },
+    {
+      "name": "Simion",
+      "elements": [
+        "steel"
+      ],
+      "raceId": "primate",
+      "tier": "small",
+      "stats": {
+        "hp": 47,
+        "attack": 49,
+        "defense": 50,
+        "spAttack": 49,
+        "spDefense": 50,
+        "speed": 46
+      },
+      "category": "Basic monster",
+      "flavor": "Often found in jungle environments these gorilla like monsters are the pest monsters of the jungle, not very strong on their own, but they usually attack in large packs."
+    },
+    {
+      "name": "Vine Elemental",
+      "elements": [
+        "flying",
+        "grass"
+      ],
+      "raceId": "elementalSpirit",
+      "tier": "small",
+      "stats": {
+        "hp": 46,
+        "attack": 46,
+        "defense": 48,
+        "spAttack": 46,
+        "spDefense": 48,
+        "speed": 56
+      },
+      "category": "Basic monster",
+      "flavor": "One of the few plant monsters not consisting of wood. The vine elemental consist of a tangle of vines along a bark skeleton structure controlled by a flower-like plant atop it's torso."
+    },
+    {
+      "name": "Finfolk Archer",
+      "elements": [
+        "water",
+        "fighting"
+      ],
+      "raceId": "human",
+      "tier": "small",
+      "stats": {
+        "hp": 49,
+        "attack": 51,
+        "defense": 49,
+        "spAttack": 51,
+        "spDefense": 49,
+        "speed": 41
+      },
+      "category": "Basic monster",
+      "flavor": "Physical ranged soldier of the finfolk military."
+    },
+    {
+      "name": "Finfolk Guard",
+      "elements": [
+        "water",
+        "fighting"
+      ],
+      "raceId": "human",
+      "tier": "small",
+      "stats": {
+        "hp": 50,
+        "attack": 45,
+        "defense": 54,
+        "spAttack": 45,
+        "spDefense": 54,
+        "speed": 41
+      },
+      "category": "Basic monster",
+      "flavor": "Spear-wielding melee combatant of the finfolk military."
+    },
+    {
+      "name": "Finfolk Magus",
+      "elements": [
+        "water",
+        "psychic"
+      ],
+      "raceId": "merfolk",
+      "tier": "small",
+      "stats": {
+        "hp": 49,
+        "attack": 49,
+        "defense": 51,
+        "spAttack": 49,
+        "spDefense": 51,
+        "speed": 41
+      },
+      "category": "Basic monster",
+      "flavor": "Magical support unit of the finfolk military."
+    },
+    {
+      "name": "Shinobi Testudo",
+      "elements": [],
+      "raceId": "turtle",
+      "tier": "medium",
+      "stats": {
+        "hp": 62,
+        "attack": 64,
+        "defense": 71,
+        "spAttack": 64,
+        "spDefense": 71,
+        "speed": 89
+      },
+      "category": "Rare monster",
+      "flavor": "The shinobi is not only the melee fighter of the testudo clan, but a menace to all who underestimate them, as their ability to teleport contradicts its otherwise slow movement speed and has left many with injuries and stolen possessions. They are also deceptively powerful in close quarters, able to unleash sudden deadly strikes."
+    },
+    {
+      "name": "Testudo King",
+      "elements": [],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 80,
+        "attack": 64,
+        "defense": 76,
+        "spAttack": 64,
+        "spDefense": 76,
+        "speed": 60
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": ""
+    },
+    {
+      "name": "Kobold Warchief",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "lizardfolk",
+      "tier": "medium",
+      "stats": {
+        "hp": 72,
+        "attack": 71,
+        "defense": 72,
+        "spAttack": 71,
+        "spDefense": 72,
+        "speed": 61
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": ""
+    },
+    {
+      "name": "Treant",
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "tree",
+      "tier": "medium",
+      "stats": {
+        "hp": 77,
+        "attack": 70,
+        "defense": 77,
+        "spAttack": 70,
+        "spDefense": 77,
+        "speed": 49
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Often mistaken for a tree, this goliath of a monster is the bane of lumberjacks everywhere, luckily it is very slow and can easily be outrun which is recommended for leyfolk."
+    },
+    {
+      "name": "Undine",
+      "elements": [
+        "water"
+      ],
+      "raceId": "mythicBeast",
+      "tier": "medium",
+      "stats": {
+        "hp": 67,
+        "attack": 67,
+        "defense": 69,
+        "spAttack": 67,
+        "spDefense": 69,
+        "speed": 81
+      },
+      "category": "Rare monster",
+      "flavor": ""
+    },
+    {
+      "name": "Noctua Druid",
+      "elements": [
+        "psychic",
+        "ice"
+      ],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 73,
+        "attack": 70,
+        "defense": 72,
+        "spAttack": 70,
+        "spDefense": 72,
+        "speed": 63
+      },
+      "category": "Rare monster",
+      "flavor": "It might look like a cute teddybear, but beware, because beneath his fluffy exterior is a mage rivaling even the most adept spellcasters. Many novice beastmancers have learned why is it not a good idea to anger them the hard way, including my idiot younger brother."
+    },
+    {
+      "name": "Noctua Scout",
+      "elements": [
+        "grass",
+        "dark"
+      ],
+      "raceId": "owl",
+      "tier": "medium",
+      "stats": {
+        "hp": 64,
+        "attack": 72,
+        "defense": 63,
+        "spAttack": 72,
+        "spDefense": 63,
+        "speed": 85
+      },
+      "category": "Rare monster",
+      "flavor": "Silent as the night the noctua scout prowls the forests their kin inhabit, their arrows punishing any unsuspecting visitors, rarely ever missing."
+    },
+    {
+      "name": "Noctua Guardian",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "lepidopteran",
+      "tier": "medium",
+      "stats": {
+        "hp": 75,
+        "attack": 68,
+        "defense": 69,
+        "spAttack": 68,
+        "spDefense": 69,
+        "speed": 70
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "These feathered behemoths are the frontline warriors of the noctua tribe. Fortunately they are rarely seen far from clan nesting areas they guard. Make no mistake though, if you encounter an angry one unprepared, you are not likely to see the next light of day."
+    },
+    {
+      "name": "Ghoul Champion",
+      "elements": [
+        "ghost",
+        "fighting"
+      ],
+      "raceId": "ghoul",
+      "tier": "medium",
+      "stats": {
+        "hp": 76,
+        "attack": 72,
+        "defense": 73,
+        "spAttack": 72,
+        "spDefense": 73,
+        "speed": 55
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Big hulking undead-like monsters that often appear alongside their smaller cousins. Their skins is bright red and they wear a minimal armor and wield an axe with decent skill hinting at a higher intelligence than their more common variant, but it has not been scientifically established yet."
+    },
+    {
+      "name": "Gargoyle",
+      "elements": [
+        "rock",
+        "dark"
+      ],
+      "raceId": "golem",
+      "tier": "medium",
+      "stats": {
+        "hp": 61,
+        "attack": 72,
+        "defense": 55,
+        "spAttack": 72,
+        "spDefense": 55,
+        "speed": 104
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "These deadly critters like to hide in the darkness of caves or on masonry where their appearance is often mistaken for a statue when they are still. Hated by many as they hunt both animal and human Indiscriminately."
+    },
+    {
+      "name": "Queen Formican",
+      "elements": [
+        "bug",
+        "poison"
+      ],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 74,
+        "attack": 72,
+        "defense": 63,
+        "spAttack": 72,
+        "spDefense": 63,
+        "speed": 77
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "A single queen formican can create an entire colony on it's own in just a few months if it finds a cave with plenty of crystals.  These brightly yellow formicans are much larger than the other formicans species and are deadly poisonous."
+    },
+    {
+      "name": "Horror",
+      "elements": [
+        "ghost",
+        "poison"
+      ],
+      "raceId": "eldritch",
+      "tier": "medium",
+      "stats": {
+        "hp": 86,
+        "attack": 69,
+        "defense": 82,
+        "spAttack": 69,
+        "spDefense": 82,
+        "speed": 31
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "you better have a strong stomach if you wish to deal with this undead behemoth as their stench have rendered many unprepared unconscious, if that was not enough their mere presence is deadly as they constantly release poisonous vapor from their bodies."
+    },
+    {
+      "name": "Demonic Knight",
+      "elements": [
+        "dark",
+        "steel"
+      ],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 73,
+        "attack": 69,
+        "defense": 70,
+        "spAttack": 69,
+        "spDefense": 70,
+        "speed": 70
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "They may looks like a mere variant of the spectre knight, but don't be fooled, their massive axes will cleave even the toughest monsters in twain."
+    },
+    {
+      "name": "Fenrir",
+      "elements": [],
+      "raceId": "canid",
+      "tier": "medium",
+      "stats": {
+        "hp": 78,
+        "attack": 62,
+        "defense": 65,
+        "spAttack": 62,
+        "spDefense": 65,
+        "speed": 87
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": ""
+    },
+    {
+      "name": "Garudon",
+      "elements": [],
+      "raceId": "mythicBird",
+      "tier": "medium",
+      "stats": {
+        "hp": 66,
+        "attack": 71,
+        "defense": 62,
+        "spAttack": 71,
+        "spDefense": 62,
+        "speed": 88
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": ""
+    },
+    {
+      "name": "Dagon",
+      "elements": [
+        "water"
+      ],
+      "raceId": "merfolk",
+      "tier": "medium",
+      "stats": {
+        "hp": 68,
+        "attack": 72,
+        "defense": 64,
+        "spAttack": 72,
+        "spDefense": 64,
+        "speed": 80
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "These aquatic quadrupeds are often found domesticated by finfolk or merfolk as their attack animals. And good thing too as wild Dagon are extremely ferocious and will attack anything that move."
+    },
+    {
+      "name": "Merfolk Captain",
+      "elements": [
+        "water",
+        "fighting"
+      ],
+      "raceId": "merfolk",
+      "tier": "medium",
+      "stats": {
+        "hp": 70,
+        "attack": 69,
+        "defense": 70,
+        "spAttack": 69,
+        "spDefense": 70,
+        "speed": 71
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Merfolk grown to large sizes through unknown circumstances, they train rigorously to be heavy assault troops or body guards for their clan."
+    },
+    {
+      "name": "Stone Golem",
+      "elements": [
+        "rock"
+      ],
+      "raceId": "golem",
+      "tier": "medium",
+      "stats": {
+        "hp": 78,
+        "attack": 65,
+        "defense": 82,
+        "spAttack": 65,
+        "spDefense": 82,
+        "speed": 49
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "For as huge and intimidating as they may looks Stone golems are not very dangerous compared to most monsters, they move slow and do not have any special abilities. Almost as if they kind has lost their true powers in some sort of terrible event."
+    },
+    {
+      "name": "Vorax",
+      "elements": [
+        "rock",
+        "steel"
+      ],
+      "raceId": "metal",
+      "tier": "medium",
+      "stats": {
+        "hp": 77,
+        "attack": 70,
+        "defense": 71,
+        "spAttack": 70,
+        "spDefense": 71,
+        "speed": 60
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "These big hulking brutes roam destroyed civilization after other scavengers have left, picking up the last scraps of metal and stone to reinforce their armor."
+    },
+    {
+      "name": "Wolvenaur",
+      "elements": [],
+      "raceId": "centaur",
+      "tier": "medium",
+      "stats": {
+        "hp": 69,
+        "attack": 70,
+        "defense": 62,
+        "spAttack": 70,
+        "spDefense": 62,
+        "speed": 87
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "These centaur-like beastmen can be found in spaces with wide open terrain where they hunt using their formidable speed and deadly glaive."
+    },
+    {
+      "name": "Plague Champion",
+      "elements": [
+        "dark",
+        "fighting"
+      ],
+      "raceId": "zombie",
+      "tier": "medium",
+      "stats": {
+        "hp": 75,
+        "attack": 73,
+        "defense": 64,
+        "spAttack": 73,
+        "spDefense": 64,
+        "speed": 70
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Grotesque hulking undead monsters, their bodies are lined with pores filled with poisonous gasses strong enough to kill a man, and their skin is sickly purple."
+    },
+    {
+      "name": "Flauros",
+      "elements": [
+        "fire",
+        "rock"
+      ],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 75,
+        "attack": 73,
+        "defense": 64,
+        "spAttack": 73,
+        "spDefense": 64,
+        "speed": 70
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Spiky stone beasts found in extremely hot territory. These monsters can breathe fire hot enough to melt just about anything, but are fortunately only found in active volcano areas, so encounters with humans are rare."
+    },
+    {
+      "name": "Obsidian Golem",
+      "elements": [
+        "rock",
+        "fire"
+      ],
+      "raceId": "golem",
+      "tier": "medium",
+      "stats": {
+        "hp": 75,
+        "attack": 68,
+        "defense": 75,
+        "spAttack": 68,
+        "spDefense": 75,
+        "speed": 59
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Thought to be the true form of the lumping stone golems, the obsidian golems are  significantly more dangerous. Possessing almost complete immunity to almost every debuff expect freeze, wielding two clubs each the size of a full grown man to bash their enemies to pulp and the unique fire shield, which is most powerful reflect shield known. They are not to be taken lightly if you manage to encounter them, but you are almost certain not to encounter them unless you search them out, as they only reside close to lava environment."
+    },
+    {
+      "name": "Alpha Simion",
+      "elements": [
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "medium",
+      "stats": {
+        "hp": 78,
+        "attack": 62,
+        "defense": 74,
+        "spAttack": 62,
+        "spDefense": 74,
+        "speed": 69
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Simion who rise to the top of their packs undergo a transformation, increasing their size and turning their fur bright orange and their skin red-ish pink alongside growing a massive horn and other small bone protrusions. All to seemingly indicate they will not hide anymore unlike their smaller brethren. They meet every challenge head-on, and they have the might to do so too."
+    },
+    {
+      "name": "Troll",
+      "elements": [],
+      "raceId": "troll",
+      "tier": "medium",
+      "stats": {
+        "hp": 79,
+        "attack": 72,
+        "defense": 73,
+        "spAttack": 72,
+        "spDefense": 73,
+        "speed": 51
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Trolls ain't very complicated monsters, but they not don't need to as they pack a massive punch."
+    },
+    {
+      "name": "Viverrus",
+      "elements": [
+        "fighting"
+      ],
+      "raceId": "human",
+      "tier": "medium",
+      "stats": {
+        "hp": 67,
+        "attack": 73,
+        "defense": 55,
+        "spAttack": 73,
+        "spDefense": 55,
+        "speed": 95
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Sneaky, cunning and elusive. The Viverrus can most closely be compared to an assassin, you are not likely to see them unless they are trying to kill you. Even more so than a human assassin as they possess they ability to teleport."
+    },
+    {
+      "name": "Forest Guardian",
+      "elements": [
+        "grass",
+        "fighting"
+      ],
+      "raceId": "tree",
+      "tier": "medium",
+      "stats": {
+        "hp": 73,
+        "attack": 66,
+        "defense": 73,
+        "spAttack": 66,
+        "spDefense": 73,
+        "speed": 68
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": ""
+    },
+    {
+      "name": "Golem Rider",
+      "elements": [
+        "rock",
+        "psychic"
+      ],
+      "raceId": "golem",
+      "tier": "medium",
+      "stats": {
+        "hp": 78,
+        "attack": 68,
+        "defense": 74,
+        "spAttack": 68,
+        "spDefense": 74,
+        "speed": 59
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Two monsters working as one the golem rider is an offensive focused monster that can deal massive amounts of damage quickly."
+    },
+    {
+      "name": "Araneus",
+      "elements": [
+        "bug"
+      ],
+      "raceId": "arachnid",
+      "tier": "medium",
+      "stats": {
+        "hp": 70,
+        "attack": 74,
+        "defense": 65,
+        "spAttack": 74,
+        "spDefense": 65,
+        "speed": 71
+      },
+      "weightKg": 1000,
+      "category": "Rare monster",
+      "flavor": "Humanoid monster with arachnid features. The Araneus is a terror on the battlefield, cleaving enemies apart with it's scythe and draining them of health and morale with his deadly spells. The mysterious scythe they carry is covered in a rune language that no one has been able to decipher to this day."
+    },
+    {
+      "name": "Triffida",
+      "elements": [
+        "grass",
+        "bug"
+      ],
+      "raceId": "giant",
+      "tier": "large",
+      "stats": {
+        "hp": 99,
+        "attack": 96,
+        "defense": 91,
+        "spAttack": 96,
+        "spDefense": 91,
+        "speed": 85
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "Terrifying tales of a giant plantlike monster lurking in the jungles of the isles has been told to me over strong mugs of alcohol."
+    },
+    {
+      "name": "Messorius",
+      "elements": [
+        "flying",
+        "ghost"
+      ],
+      "raceId": "skeleton",
+      "tier": "large",
+      "stats": {
+        "hp": 86,
+        "attack": 100,
+        "defense": 83,
+        "spAttack": 100,
+        "spDefense": 83,
+        "speed": 109
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "Rumours of a monster that is more akin to a god of death caught my ear. Hovering menacingly in the air, face like a skull and scythes like a reaper. Whispered was it's name: \"Messorius\"."
+    },
+    {
+      "name": "Scilla",
+      "elements": [
+        "water",
+        "dark"
+      ],
+      "raceId": "merfolk",
+      "tier": "large",
+      "stats": {
+        "hp": 91,
+        "attack": 101,
+        "defense": 84,
+        "spAttack": 101,
+        "spDefense": 84,
+        "speed": 98
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "The shadowy ruler of the finfolk clans. A single Scilla can rule over massive a clan, but some prefer several smaller clans. Whatever the case they are very cooperative with their fellow finfolk and also prefer peaceful solutions with the other ocean clans. Do not take this for weakness though, as like the ocean itself they can go from their peaceful calm state into a raging storm."
+    },
+    {
+      "name": "Abaddon",
+      "elements": [
+        "dark"
+      ],
+      "raceId": "fiend",
+      "tier": "large",
+      "stats": {
+        "hp": 99,
+        "attack": 96,
+        "defense": 91,
+        "spAttack": 96,
+        "spDefense": 91,
+        "speed": 85
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "A mythic monster that has caused destruction on such a historic scale that many religions mention it by name and portray it as an anti-god or very high ranking demon."
+    },
+    {
+      "name": "Merfolk General",
+      "elements": [
+        "water",
+        "fighting"
+      ],
+      "raceId": "merfolk",
+      "tier": "large",
+      "stats": {
+        "hp": 92,
+        "attack": 94,
+        "defense": 89,
+        "spAttack": 94,
+        "spDefense": 89,
+        "speed": 103
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "Leader of the militant merfolk ocean clan. The merfolk general is the highest ranking officer their military structure."
+    },
+    {
+      "name": "Colossus",
+      "elements": [
+        "rock",
+        "bug"
+      ],
+      "raceId": "golem",
+      "tier": "large",
+      "stats": {
+        "hp": 98,
+        "attack": 96,
+        "defense": 97,
+        "spAttack": 96,
+        "spDefense": 97,
+        "speed": 77
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "A towering giant covered in nigh unpierceable armour. A single colossus can force an army to change direction to avoid it."
+    },
+    {
+      "name": "Arch Garudon",
+      "elements": [
+        "electric"
+      ],
+      "raceId": "mythicBird",
+      "tier": "large",
+      "stats": {
+        "hp": 90,
+        "attack": 92,
+        "defense": 93,
+        "spAttack": 92,
+        "spDefense": 93,
+        "speed": 101
+      },
+      "weightKg": 1000,
+      "category": "Legendary monster",
+      "flavor": "Garudon surviving a furious thunderstorm as a trial of their electrical mastery become Arch Garudons. It is quite frankly a suicidal task, so not many of these exist. Two hundred at most."
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Samael",
+      "reason": "nhân vật độc nhất (thiên thần / ác quỷ có tên riêng)"
+    },
+    {
+      "name": "Sathanus",
+      "reason": "nhân vật độc nhất (thiên thần / ác quỷ có tên riêng)"
+    }
+  ]
+}

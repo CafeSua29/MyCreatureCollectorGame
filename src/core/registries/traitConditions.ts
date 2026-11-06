@@ -15,8 +15,16 @@ import {
   type StatusKind,
   type TurnLog
 } from '../model'
-import type { CounterSpec, DslCondition, DslWho, MoveFlagCondition, RecordAmount } from './traitDsl'
+import type {
+  CounterSpec,
+  DslCondition,
+  DslWho,
+  MoveFlagCondition,
+  RecordAmount,
+  RecordScope
+} from './traitDsl'
 import { equipmentStatLineCount, equipmentStatPercents } from './traitHooks'
+import { staminaOf } from './combatTraitQueries'
 
 /** Góc nhìn khi tính điều kiện: các quái liên quan (kèm bối cảnh trận nếu có) và sự kiện. */
 export interface DslView {
@@ -96,17 +104,20 @@ const percentOf = (part: Decimal, whole: Decimal): number =>
 export function recordTotal(
   ctx: MonsterBattleContext | undefined,
   key: RecordAmount,
-  side: boolean
+  scope: RecordScope | undefined
 ): Decimal {
   if (!ctx) return BIG_ZERO
-  if (!side) return ctx.record[key]
-  return ctx.teamIds.reduce((sum, id) => sum.plus(ctx.records[id]?.[key] ?? BIG_ZERO), BIG_ZERO)
+  if (scope === undefined) return ctx.record[key]
+  const ids = scope === 'all' ? Object.keys(ctx.records) : ctx.teamIds
+  return ids.reduce((sum, id) => sum.plus(ctx.records[id]?.[key] ?? BIG_ZERO), BIG_ZERO)
 }
 
 /** Giá trị một bộ đếm; thiếu bối cảnh trận thì các bộ đếm trận là 0. */
 export function counterValue(view: DslView, spec: CounterSpec): number {
   const found = resolveWho(view, spec.who ?? 'self')
-  const raw = found ? baseCounter(view.data, found.monster, found.ctx, spec, view.skill) : 0
+  const raw = found
+    ? baseCounter(view.data, found.monster, found.ctx, spec, view.skill, view.target?.id)
+    : 0
   const value = spec.divisor === undefined ? raw : Math.floor(raw / spec.divisor)
   const total = value + (spec.bonus ?? 0)
   return spec.max === undefined ? total : Math.min(spec.max, total)
@@ -117,9 +128,11 @@ function baseCounter(
   monster: Monster,
   ctx: MonsterBattleContext | undefined,
   spec: CounterSpec,
-  skill: Skill | undefined
+  skill: Skill | undefined,
+  targetId?: string
 ): number {
   const record = ctx?.record
+  const skillElementOf = (id: string): string => data.skills[id]?.elementId ?? ''
   switch (spec.of) {
     case 'turnsOnField':
       return ctx?.turnsOnField ?? 0
@@ -127,6 +140,15 @@ function baseCounter(
       return record?.berriesEaten ?? 0
     case 'stockpile':
       return ctx?.volatiles[monster.id]?.stockpile ?? 0
+    case 'stamina':
+      return staminaOf(data, monster, ctx)
+    case 'skillUsesOnTarget':
+      // Số lần quái đã dùng skill đang xét lên mục tiêu đang xét (Decompose, Short Circuit).
+      return skill && targetId ? (record?.skillTargetUses?.[`${skill.id}|${targetId}`] ?? 0) : 0
+    case 'skillUsesOfElement':
+      return (spec.elementIds ?? []).reduce((sum, id) => sum + (record?.elementUses?.[id] ?? 0), 0)
+    case 'knownSkillsOfElement':
+      return monster.skillIds.filter((id) => spec.elementIds?.includes(skillElementOf(id))).length
     case 'skillUses':
       // Số lần quái đã dùng skill đang xét trong trận (Trump Card).
       return skill ? (record?.skillUses?.[skill.id] ?? 0) : 0
@@ -219,7 +241,7 @@ function baseCounter(
         m.elementIds.some((id) => spec.elementIds?.includes(id))
       ).length
     case 'distinctElementsOnSide':
-      return new Set(sideOnField(monster, ctx).map((m) => m.elementIds[0])).size
+      return new Set(sideOnField(monster, ctx).flatMap((m) => m.elementIds.slice(0, 1))).size
     case 'damageTakenPercent':
       return percentOf(record?.damageTaken ?? BIG_ZERO, getMaxHp(data, monster))
     case 'damageDealtPercent':
@@ -358,6 +380,31 @@ function isConditionMet(view: DslView, condition: DslCondition, readStat?: StatR
       return view.critical === true
     case 'superEffective':
       return view.effectiveness !== undefined && view.effectiveness > 1
+    case 'notVeryEffective':
+      return view.effectiveness !== undefined && view.effectiveness > 0 && view.effectiveness < 1
+    case 'counterMultipleOf': {
+      const value = counterValue(view, condition.counter)
+      return value > 0 && value % condition.every === 0
+    }
+    case 'skillPriority':
+      return view.skill !== undefined && view.skill.priority >= condition.min
+    case 'facing': {
+      // Hai quái phe đối nhau đứng cùng chỉ số ô (ô 0 đối ô 0); quái lớn đứng mọi ô nên đối mọi quái.
+      const other = resolveWho(view, condition.who)
+      const own = view.selfCtx?.slotIndexes ?? []
+      const theirs = other?.ctx?.slotIndexes ?? []
+      return (
+        other !== undefined &&
+        other.ctx?.side !== view.selfCtx?.side &&
+        own.some((slot) => theirs.includes(slot))
+      )
+    }
+    case 'skillPowerAtMost':
+      return view.skill !== undefined && view.skill.power <= condition.power
+    case 'lastSkillCategory': {
+      const category = resolveWho(view, condition.who)?.ctx?.record.lastSkillCategory
+      return category !== undefined && condition.categories.includes(category)
+    }
     case 'skillSameElement':
       return (
         view.skill !== undefined &&

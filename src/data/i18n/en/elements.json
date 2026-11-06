@@ -1,4 +1,8 @@
 {
+  "glass": "Glass",
+  "plastic": "Plastic",
+  "glitter": "Glitter",
+  "fungal": "Fungal",
   "normal": "Normal",
   "fire": "Fire",
   "water": "Water",

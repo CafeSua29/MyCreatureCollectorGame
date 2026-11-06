@@ -1,0 +1,623 @@
+[
+  {
+    "attacker": "Poison",
+    "defender": "Astral",
+    "hint": "NEGATIVE",
+    "message": "Disturbed",
+    "statuses": [["Berserk", 3]]
+  },
+  {
+    "attacker": "Poison",
+    "defender": "Earth",
+    "hint": "POSITIVE",
+    "message": "Tipped",
+    "statuses": [["Contact Dmg Poison", 3]]
+  },
+  {
+    "attacker": "Poison",
+    "defender": "Fire",
+    "hint": "POSITIVE",
+    "message": "Fueled",
+    "statuses": [["AP Boost", 3]]
+  },
+  {
+    "attacker": "Poison",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Poison Coating", 3]]
+  },
+  {
+    "attacker": "Poison",
+    "defender": "Metal",
+    "hint": "POSITIVE",
+    "message": "Tipped",
+    "statuses": [["Contact Dmg Poison", 3]]
+  },
+  {
+    "attacker": "Poison",
+    "defender": "Plant",
+    "hint": "NEGATIVE",
+    "message": "Absorbed",
+    "statuses": [["Poisoned", 3]]
+  },
+  {
+    "attacker": "Plastic",
+    "defender": "Astral",
+    "hint": "NEGATIVE",
+    "message": "Distracted",
+    "statuses": [["AP Drain", 3]]
+  },
+  {
+    "attacker": "Plastic",
+    "defender": "Fire",
+    "hint": "POSITIVE",
+    "message": "Smoke",
+    "statuses": [["Evasion Up", 3]]
+  },
+  {
+    "attacker": "Plastic",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Plastic Coating", 3]]
+  },
+  {
+    "attacker": "Plastic",
+    "defender": "Lightning",
+    "hint": "NEGATIVE",
+    "message": "Insulated",
+    "statuses": [["Unitarget", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Air",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Astral",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Beast",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Earth",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Fire",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Glass",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Ice",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Lightning",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Metal",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Plant",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Plastic",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Poison",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Glitter",
+    "defender": "Water",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glitter Coating", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Air",
+    "hint": "POSITIVE",
+    "message": "Updraft",
+    "statuses": [["Air Wall", 2]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Astral",
+    "hint": "POSITIVE",
+    "message": "Energised",
+    "statuses": [["AP Boost", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Fire Coating", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Ice",
+    "hint": "TRANSMUTATION",
+    "message": "Melted",
+    "statuses": [["Water Coating", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Metal",
+    "hint": "NEGATIVE",
+    "message": "Melted",
+    "statuses": [["Burned", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Plant",
+    "hint": "NEGATIVE",
+    "message": "Ignited",
+    "statuses": [["Burned", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Plastic",
+    "hint": "TRANSMUTATION",
+    "message": "Melted",
+    "statuses": [["Poison Coating", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Poison",
+    "hint": "NEGATIVE",
+    "message": "Ignited",
+    "statuses": [["Burned", 3]]
+  },
+  {
+    "attacker": "Fire",
+    "defender": "Water",
+    "hint": "POSITIVE",
+    "message": "Steamed",
+    "statuses": [["Healing Steam", 3]]
+  },
+  {
+    "attacker": "Earth",
+    "defender": "Astral",
+    "hint": "POSITIVE",
+    "message": "Energised",
+    "statuses": [["AP Boost", 3]]
+  },
+  {
+    "attacker": "Earth",
+    "defender": "Fire",
+    "hint": "NEGATIVE",
+    "message": "Extinguished",
+    "statuses": [
+      ["Melee Attack Down", 3],
+      ["Ranged Attack Down", 3]
+    ]
+  },
+  {
+    "attacker": "Earth",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Earth Coating", 3]]
+  },
+  {
+    "attacker": "Earth",
+    "defender": "Lightning",
+    "hint": "NEGATIVE",
+    "message": "Grounded",
+    "statuses": [["Unitarget", 3]]
+  },
+  {
+    "attacker": "Earth",
+    "defender": "Plastic",
+    "hint": "NEGATIVE",
+    "message": "Buried",
+    "statuses": [
+      ["Evasion Down", 3],
+      ["Speed Down", 3]
+    ]
+  },
+  {
+    "attacker": "Ice",
+    "defender": "Air",
+    "hint": "NEGATIVE",
+    "message": "Chilled",
+    "statuses": [["Accuracy Down", 3]]
+  },
+  {
+    "attacker": "Ice",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Ice Coating", 3]]
+  },
+  {
+    "attacker": "Ice",
+    "defender": "Lightning",
+    "hint": "POSITIVE",
+    "message": "Conducted",
+    "statuses": [["Multitarget", 3]]
+  },
+  {
+    "attacker": "Ice",
+    "defender": "Water",
+    "hint": "TRANSMUTATION",
+    "message": "Frozen",
+    "statuses": [
+      ["Ice Coating", 3],
+      ["Flinched", 1]
+    ]
+  },
+  {
+    "attacker": "Astral",
+    "defender": "Air",
+    "hint": "NEGATIVE",
+    "message": "Drained",
+    "statuses": [["AP Drain", 3]]
+  },
+  {
+    "attacker": "Astral",
+    "defender": "Astral",
+    "hint": "POSITIVE",
+    "message": "Energised",
+    "statuses": [["AP Boost", 3]]
+  },
+  {
+    "attacker": "Astral",
+    "defender": "Earth",
+    "hint": "NEGATIVE",
+    "message": "Drained",
+    "statuses": [["AP Drain", 3]]
+  },
+  {
+    "attacker": "Astral",
+    "defender": "Fire",
+    "hint": "NEGATIVE",
+    "message": "Drained",
+    "statuses": [["AP Drain", 3]]
+  },
+  {
+    "attacker": "Astral",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Astral Coating", 3]]
+  },
+  {
+    "attacker": "Astral",
+    "defender": "Water",
+    "hint": "NEGATIVE",
+    "message": "Drained",
+    "statuses": [["AP Drain", 3]]
+  },
+  {
+    "attacker": "Beast",
+    "defender": "Glass",
+    "hint": "NEGATIVE",
+    "message": "Shattered",
+    "statuses": [["Glass Shards", 3]]
+  },
+  {
+    "attacker": "Beast",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Beast Coating", 3]]
+  },
+  {
+    "attacker": "Plant",
+    "defender": "Earth",
+    "hint": "NEGATIVE",
+    "message": "Seeded",
+    "statuses": [["Leeched", 3]]
+  },
+  {
+    "attacker": "Plant",
+    "defender": "Fire",
+    "hint": "POSITIVE",
+    "message": "Smoke",
+    "statuses": [["Evasion Up", 3]]
+  },
+  {
+    "attacker": "Plant",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Plant Coating", 3]]
+  },
+  {
+    "attacker": "Plant",
+    "defender": "Lightning",
+    "hint": "NEGATIVE",
+    "message": "Grounded",
+    "statuses": [["Unitarget", 3]]
+  },
+  {
+    "attacker": "Plant",
+    "defender": "Poison",
+    "hint": "POSITIVE",
+    "message": "Potentiated",
+    "statuses": [
+      ["Melee Attack Up", 3],
+      ["Ranged Attack Up", 3]
+    ]
+  },
+  {
+    "attacker": "Plant",
+    "defender": "Water",
+    "hint": "NEGATIVE",
+    "message": "Sapped",
+    "statuses": [["Leeched", 3]]
+  },
+  {
+    "attacker": "Metal",
+    "defender": "Astral",
+    "hint": "NEGATIVE",
+    "message": "Disturbed",
+    "statuses": [["Berserk", 3]]
+  },
+  {
+    "attacker": "Metal",
+    "defender": "Earth",
+    "hint": "NEGATIVE",
+    "message": "Smashed",
+    "statuses": [
+      ["Melee Defence Down", 3],
+      ["Ranged Defence Down", 3]
+    ]
+  },
+  {
+    "attacker": "Metal",
+    "defender": "Glass",
+    "hint": "NEGATIVE",
+    "message": "Shattered",
+    "statuses": [["Glass Shards", 3]]
+  },
+  {
+    "attacker": "Metal",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Metal Coating", 3]]
+  },
+  {
+    "attacker": "Metal",
+    "defender": "Ice",
+    "hint": "NEGATIVE",
+    "message": "Smashed",
+    "statuses": [
+      ["Melee Defence Down", 3],
+      ["Ranged Defence Down", 3]
+    ]
+  },
+  {
+    "attacker": "Metal",
+    "defender": "Lightning",
+    "hint": "POSITIVE",
+    "message": "Conducted",
+    "statuses": [["Multitarget", 3]]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Astral",
+    "hint": "POSITIVE",
+    "message": "Energised",
+    "statuses": [["AP Boost", 3]]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Earth",
+    "hint": "NEGATIVE",
+    "message": "Eroded",
+    "statuses": [
+      ["Melee Defence Down", 3],
+      ["Ranged Defence Down", 3]
+    ]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Fire",
+    "hint": "NEGATIVE",
+    "message": "Extinguished",
+    "statuses": [
+      ["Melee Attack Down", 3],
+      ["Ranged Attack Down", 3]
+    ]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Water Coating", 3]]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Ice",
+    "hint": "POSITIVE",
+    "message": "Bulked Up",
+    "statuses": [
+      ["Melee Defence Up", 3],
+      ["Ranged Defence Up", 3]
+    ]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Lightning",
+    "hint": "POSITIVE",
+    "message": "Conducted",
+    "statuses": [["Multitarget", 3]]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Metal",
+    "hint": "NEGATIVE",
+    "message": "Corroded",
+    "statuses": [
+      ["Melee Defence Down", 3],
+      ["Ranged Defence Down", 3]
+    ]
+  },
+  {
+    "attacker": "Water",
+    "defender": "Plant",
+    "hint": "POSITIVE",
+    "message": "Absorbed",
+    "statuses": [["Healing Leaf", 3]]
+  },
+  {
+    "attacker": "Glass",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Glass Coating", 3]]
+  },
+  {
+    "attacker": "Glass",
+    "defender": "Lightning",
+    "hint": "NEGATIVE",
+    "message": "Insulated",
+    "statuses": [["Unitarget", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Air",
+    "hint": "NEGATIVE",
+    "message": "Electrified",
+    "statuses": [["Conductive", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Earth",
+    "hint": "TRANSMUTATION",
+    "message": "Vitrified",
+    "statuses": [["Glass Coating", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Lightning Coating", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Ice",
+    "hint": "NEGATIVE",
+    "message": "Electrified",
+    "statuses": [["Conductive", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Metal",
+    "hint": "NEGATIVE",
+    "message": "Electrified",
+    "statuses": [["Conductive", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Plastic",
+    "hint": "POSITIVE",
+    "message": "Static",
+    "statuses": [["Contact Dmg Lightning", 3]]
+  },
+  {
+    "attacker": "Lightning",
+    "defender": "Water",
+    "hint": "NEGATIVE",
+    "message": "Electrified",
+    "statuses": [["Conductive", 3]]
+  },
+  {
+    "attacker": "Air",
+    "defender": "Astral",
+    "hint": "POSITIVE",
+    "message": "Energised",
+    "statuses": [["AP Boost", 3]]
+  },
+  {
+    "attacker": "Air",
+    "defender": "Fire",
+    "hint": "NEGATIVE",
+    "message": "Extinguished",
+    "statuses": [
+      ["Melee Attack Down", 3],
+      ["Ranged Attack Down", 3]
+    ]
+  },
+  {
+    "attacker": "Air",
+    "defender": "Glass",
+    "hint": "NEGATIVE",
+    "message": "Resonating",
+    "statuses": [["Resonance", 1]]
+  },
+  {
+    "attacker": "Air",
+    "defender": "Glitter",
+    "hint": "TRANSMUTATION",
+    "message": "Sparkly",
+    "statuses": [["Air Coating", 3]]
+  },
+  {
+    "attacker": "Air",
+    "defender": "Lightning",
+    "hint": "POSITIVE",
+    "message": "Conducted",
+    "statuses": [["Multitarget", 3]]
+  },
+  {
+    "attacker": "Air",
+    "defender": "Plant",
+    "hint": "NEGATIVE",
+    "message": "Uprooted",
+    "statuses": [["AP Drain", 3]]
+  }
+]

@@ -117,7 +117,7 @@ export const cnt = (of, extra = {}) => ({ of, ...extra })
 
 // ---------- Hook ----------
 
-const h = (type, params) => ({ type, params })
+export const h = (type, params) => ({ type, params })
 export const statMod = (percent) => h('statModifier', { percent })
 export const aura = (scope, hooks, stacks = false, when) =>
   h('aura', { scope, ...(stacks ? { stacks: true } : {}), hooks, ...(when ? { when } : {}) })
@@ -195,6 +195,10 @@ export const E = {
   dmg: (to, amount, extra = {}) => ({ do: 'damage', to, amount, ...extra }),
   heal: (to, amount) => ({ do: 'heal', to, amount }),
   stage: (to, statsOrSelector, delta) => ({ do: 'stage', to, stats: statsOrSelector, delta }),
+  stamina: (to, amount) => ({ do: 'stamina', to, amount }),
+  staminaPercent: (to, percent) => ({ do: 'stamina', to, percent }),
+  staminaAtLeast: (to, atLeastPercent) => ({ do: 'stamina', to, atLeastPercent }),
+  drainStamina: (to, from, amount) => ({ do: 'stamina', to, from, amount }),
   flat: (to, statsOrSelector, amount, from) =>
     from
       ? { do: 'flatStat', to, stats: statsOrSelector, amount, from }

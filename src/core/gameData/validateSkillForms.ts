@@ -78,9 +78,25 @@ export function checkSkillFormFields(data: GameData, skill: Skill, where: string
     issues.push(...checkNumber(carry?.maxWeightKg, `${where}: carriesTarget.maxWeightKg`, 0))
     if (skill.charge === undefined) issues.push(`${where}: carriesTarget cần charge`)
   }
+  if (skill.onFoe !== undefined) {
+    checkEffects(SKILL_EFFECTS, skill.onFoe, `${where}: onFoe`, data, issues)
+    if (skill.target !== 'self') issues.push(`${where}: onFoe chỉ cho skill nhắm self`)
+  }
+  for (const flag of [
+    'destroysWalls',
+    'consumesWall',
+    'bookForElement',
+    'requiresCoating'
+  ] as const) {
+    if (skill[flag] !== undefined && skill[flag] !== true) {
+      issues.push(`${where}: ${flag} chỉ được là true`)
+    }
+  }
   if (skill.onAlly !== undefined) {
     checkEffects(SKILL_EFFECTS, skill.onAlly, `${where}: onAlly`, data, issues)
-    if (skill.target !== 'enemy') issues.push(`${where}: onAlly chỉ cho skill nhắm enemy`)
+    if (skill.target !== 'enemy' && skill.target !== 'self') {
+      issues.push(`${where}: onAlly chỉ cho skill nhắm enemy / self`)
+    }
   }
   if (skill.pursuit !== undefined) {
     issues.push(

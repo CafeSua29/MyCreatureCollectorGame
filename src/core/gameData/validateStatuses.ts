@@ -1,7 +1,7 @@
 // Kiểm tra trạng thái bất thường (statuses.json) và miễn nhiễm theo hệ (elements.json).
 
-import { STATUS_HOOKS, TRAIT_HOOKS } from '../registries'
-import { MOVE_FLAGS, STATUS_KINDS, type GameData, type StatusDef } from '../model'
+import { SKILL_EFFECTS, STATUS_HOOKS, TRAIT_HOOKS } from '../registries'
+import { MOVE_FLAGS, STATUS_KINDS, type EffectDef, type GameData, type StatusDef } from '../model'
 import { asObject, checkEnumList, checkInteger, checkNumber, isFiniteNumber } from '../shared'
 import { checkEffects } from './checks'
 
@@ -10,6 +10,85 @@ import { checkEffects } from './checks'
  * lượt, như độc nặng); hook có trong registry (hooks: registry trạng thái, traitHooks: registry
  * trait), ít nhất một hook; nhóm loại trừ (nếu có) là chuỗi không rỗng; overwritesGroup cần nhóm.
  */
+/** Trường `wall` của trạng thái (docs/rules/cassette-mechanics.md). */
+function checkWallDef(data: GameData, status: StatusDef, where: string, issues: string[]): void {
+  const wall = asObject(status.wall)
+  const at = `${where}: wall`
+  if (!wall) {
+    issues.push(`${at} phải là object`)
+    return
+  }
+  if (typeof wall.elementId !== 'string' || !Object.hasOwn(data.elements, wall.elementId)) {
+    issues.push(`${at}: hệ không tồn tại "${String(wall.elementId)}"`)
+  }
+  issues.push(...checkInteger(wall.hits, `${at}.hits`, 1))
+  if (wall.special !== undefined && wall.special !== true) {
+    issues.push(`${at}.special chỉ được là true`)
+  }
+  const attack = wall.attackSkillId
+  if (attack !== undefined && (typeof attack !== 'string' || !data.skills[attack])) {
+    issues.push(`${at}.attackSkillId: skill không tồn tại "${String(attack)}"`)
+  }
+  if (wall.onBlocked !== undefined) {
+    if (!Array.isArray(wall.onBlocked) || wall.onBlocked.length === 0) {
+      issues.push(`${at}.onBlocked phải là danh sách không rỗng`)
+    } else {
+      wall.onBlocked.forEach((entry: unknown, i) => {
+        const outcome = asObject(entry)
+        issues.push(
+          ...checkNumber(outcome?.weight, `${at}.onBlocked[${i}].weight`, Number.MIN_VALUE)
+        )
+        checkEffects(
+          SKILL_EFFECTS,
+          outcome?.effects as EffectDef[],
+          `${at}.onBlocked[${i}]`,
+          data,
+          issues
+        )
+      })
+    }
+  }
+}
+
+/** Trường trạng thái của phản ứng hệ (docs/rules/element-reactions.md). */
+function checkReactionStatusFields(
+  data: GameData,
+  status: StatusDef,
+  where: string,
+  issues: string[]
+): void {
+  const { skillTargetOverride: override, conductsElement } = status
+  if (override !== undefined && override !== 'allEnemies' && override !== 'enemy') {
+    issues.push(`${where}: skillTargetOverride phải là allEnemies / enemy`)
+  }
+  if (status.wall !== undefined) checkWallDef(data, status, where, issues)
+  if (status.staminaPerTurn !== undefined && !isFiniteNumber(status.staminaPerTurn)) {
+    issues.push(`${where}: staminaPerTurn phải là số`)
+  }
+  for (const flag of ['seeThroughWall', 'meleeAsRanged'] as const) {
+    if (status[flag] !== undefined && status[flag] !== true) {
+      issues.push(`${where}: ${flag} chỉ được là true`)
+    }
+  }
+  if (status.damageOnTransform !== undefined) {
+    issues.push(
+      ...checkNumber(status.damageOnTransform, 'damageOnTransform', Number.MIN_VALUE, 100).map(
+        (problem) => `${where}: ${problem}`
+      )
+    )
+  }
+  if (conductsElement === undefined) return
+  const rule = asObject(conductsElement)
+  if (typeof rule?.elementId !== 'string' || !Object.hasOwn(data.elements, rule.elementId)) {
+    issues.push(`${where}: conductsElement: hệ không tồn tại "${String(rule?.elementId)}"`)
+  }
+  issues.push(
+    ...checkNumber(rule?.percent, 'percent', Number.MIN_VALUE).map(
+      (problem) => `${where}: conductsElement: ${problem}`
+    )
+  )
+}
+
 export function checkStatuses(data: GameData, issues: string[]): void {
   for (const status of Object.values(data.statuses)) {
     const where = `Trạng thái "${status.id}"`
@@ -19,12 +98,20 @@ export function checkStatuses(data: GameData, issues: string[]): void {
     // Trạng thái có hành vi riêng qua cờ (Embargo: disablesItems) thì không cần hook.
     const hasBehavior =
       status.disablesItems === true ||
+      status.forcesSpecialDamage === true ||
       status.blocksRepeatSkill === true ||
       status.imprisons === true ||
       status.blocksHealing === true ||
       status.blocksSoundSkills === true ||
       status.onEndStatusId !== undefined ||
       status.skillElementOverride !== undefined ||
+      status.skillTargetOverride !== undefined ||
+      status.conductsElement !== undefined ||
+      status.wall !== undefined ||
+      status.staminaPerTurn !== undefined ||
+      status.seeThroughWall === true ||
+      status.meleeAsRanged === true ||
+      status.damageOnTransform !== undefined ||
       status.explodesOnElement !== undefined ||
       status.marker === true
     if (
@@ -55,7 +142,8 @@ export function checkStatuses(data: GameData, issues: string[]): void {
       'blocksHealing',
       'blocksSoundSkills',
       'drainsToSource',
-      'marker'
+      'marker',
+      'excludeFromRandom'
     ] as const) {
       if (status[flag] !== undefined && status[flag] !== true)
         issues.push(`${where}: ${flag} chỉ được là true`)
@@ -76,6 +164,7 @@ export function checkStatuses(data: GameData, issues: string[]): void {
     ) {
       issues.push(`${where}: skillElementOverride: hệ không tồn tại "${String(override)}"`)
     }
+    checkReactionStatusFields(data, status, where, issues)
     if (status.explodesOnElement !== undefined) {
       const rule = asObject(status.explodesOnElement)
       const ids = rule?.elementIds

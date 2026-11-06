@@ -1,0 +1,314 @@
+[
+  {
+    "id": "essenceBeastSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["spDefense"],
+      "percent": 15,
+      "raceGroupIds": ["beast"]
+    }
+  },
+  {
+    "id": "essenceAvianSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["hp"],
+      "percent": 15,
+      "raceGroupIds": ["avian"]
+    }
+  },
+  {
+    "id": "essenceReptileSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["spAttack"],
+      "percent": 15,
+      "raceGroupIds": ["reptile"]
+    }
+  },
+  {
+    "id": "essenceElementalSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["speed"],
+      "percent": 15,
+      "raceGroupIds": ["elemental"]
+    }
+  },
+  {
+    "id": "essenceAquaticSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["spDefense"],
+      "percent": 15,
+      "raceGroupIds": ["aquatic"]
+    }
+  },
+  {
+    "id": "essenceSpiritSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["attack"],
+      "percent": 15,
+      "raceGroupIds": ["spirit"]
+    }
+  },
+  {
+    "id": "essenceAmorphousSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["hp"],
+      "percent": 15,
+      "raceGroupIds": ["amorphous"]
+    }
+  },
+  {
+    "id": "essenceMineralSpark",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": ["attack"],
+      "percent": 15,
+      "raceGroupIds": ["mineral"]
+    }
+  },
+  {
+    "id": "essenceBalance",
+    "rarity": "common",
+    "effect": {
+      "kind": "growth",
+      "stats": "lowest",
+      "percent": 10
+    }
+  },
+  {
+    "id": "essenceCorrosion",
+    "rarity": "common",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceCorrosionTrait"
+    }
+  },
+  {
+    "id": "essenceDefensiveHealing",
+    "rarity": "common",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceDefensiveHealingTrait"
+    }
+  },
+  {
+    "id": "essenceSpiritBond",
+    "rarity": "common",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceSpiritBondTrait"
+    }
+  },
+  {
+    "id": "essenceIngraining",
+    "rarity": "common",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceIngrainingTrait"
+    }
+  },
+  {
+    "id": "essenceHarpyBlessing",
+    "rarity": "rare",
+    "effect": {
+      "kind": "growth",
+      "stats": ["speed"],
+      "percent": 15
+    }
+  },
+  {
+    "id": "essenceAcid",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceAcidTrait"
+    }
+  },
+  {
+    "id": "essenceEverFlame",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceEverFlameTrait"
+    }
+  },
+  {
+    "id": "essenceIllusionary",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceIllusionaryTrait"
+    }
+  },
+  {
+    "id": "essenceFear",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceFearTrait"
+    }
+  },
+  {
+    "id": "essenceShadowBlessing",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceShadowBlessingTrait"
+    }
+  },
+  {
+    "id": "essenceFocusStrength",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceFocusStrengthTrait"
+    }
+  },
+  {
+    "id": "essenceFocusMagic",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceFocusMagicTrait"
+    }
+  },
+  {
+    "id": "essenceFocusArmor",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceFocusArmorTrait"
+    }
+  },
+  {
+    "id": "essencePowerArmor",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essencePowerArmorTrait"
+    }
+  },
+  {
+    "id": "essenceLavaShield",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceLavaShieldTrait"
+    }
+  },
+  {
+    "id": "essenceHarpyEggs",
+    "rarity": "rare",
+    "effect": {
+      "kind": "egg",
+      "growth": 0,
+      "stability": 20
+    }
+  },
+  {
+    "id": "essenceInsectEggs",
+    "rarity": "rare",
+    "effect": {
+      "kind": "egg",
+      "growth": 20,
+      "stability": 0
+    }
+  },
+  {
+    "id": "essenceFusionMastery",
+    "rarity": "rare",
+    "effect": {
+      "kind": "fusionTraitChoices",
+      "extra": 1
+    }
+  },
+  {
+    "id": "essenceTypeMastery",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceTypeMasteryTrait"
+    }
+  },
+  {
+    "id": "essenceResistance",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceResistanceTrait"
+    }
+  },
+  {
+    "id": "essenceWisdom",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceWisdomTrait"
+    }
+  },
+  {
+    "id": "essenceFungalMastery",
+    "rarity": "rare",
+    "effect": {
+      "kind": "battleTrait",
+      "traitId": "essenceFungalMasteryTrait"
+    }
+  },
+  {
+    "id": "essenceBreedingBlessing",
+    "rarity": "mythic",
+    "effect": {
+      "kind": "egg",
+      "growth": 0,
+      "stability": 100
+    }
+  },
+  {
+    "id": "essenceFusionBlessing",
+    "rarity": "mythic",
+    "effect": {
+      "kind": "fusionTraitChoices",
+      "extra": 10
+    }
+  },
+  {
+    "id": "essenceArcaneFocus",
+    "rarity": "mythic",
+    "effect": {
+      "kind": "growth",
+      "stats": ["spAttack"],
+      "percent": 50
+    }
+  },
+  {
+    "id": "essencePowerFocus",
+    "rarity": "mythic",
+    "effect": {
+      "kind": "growth",
+      "stats": ["attack"],
+      "percent": 50
+    }
+  },
+  {
+    "id": "essenceCapacityFocus",
+    "rarity": "mythic",
+    "effect": {
+      "kind": "growth",
+      "stats": ["hp", "spDefense"],
+      "percent": 50
+    }
+  }
+]

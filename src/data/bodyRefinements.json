@@ -1,0 +1,875 @@
+[
+  {
+    "id": "refineClawArms",
+    "partId": "arms",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 8
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "bleeding",
+              "turns": 2,
+              "chance": 25
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineScaledArms",
+    "partId": "arms",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 5,
+            "defense": 8
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineLavaArms",
+    "partId": "arms",
+    "tags": ["lava"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 8
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "burn",
+              "chance": 20
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineEnhancedArms",
+    "partId": "arms",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 12
+          }
+        }
+      }
+    ],
+    "costMultiplier": 2
+  },
+  {
+    "id": "refinePincerArms",
+    "partId": "arms",
+    "tags": ["aquatic"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 10
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "bleeding",
+              "turns": 2,
+              "chance": 15
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineTentacleArms",
+    "partId": "arms",
+    "tags": ["aquatic"],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "snared",
+              "turns": 1,
+              "chance": 20
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refinePlantArms",
+    "partId": "arms",
+    "tags": ["plant"],
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 3
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineShadowArms",
+    "partId": "arms",
+    "tags": ["shadow"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 10
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "eroded",
+              "turns": 1,
+              "chance": 15
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineLavaLegs",
+    "partId": "legs",
+    "tags": ["lava"],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "placeField",
+              "fieldId": "volcanicTerrain",
+              "chance": 25
+            }
+          ]
+        }
+      },
+      {
+        "type": "fieldDamageImmunity",
+        "params": {
+          "fieldIds": ["volcanicTerrain"]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refinePlantLegs",
+    "partId": "legs",
+    "tags": ["plant"],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "placeField",
+              "fieldId": "grassyTerrain",
+              "chance": 25
+            }
+          ]
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spDefense": 5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineScaleLegs",
+    "partId": "legs",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 10
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 5
+              },
+              "chance": 30
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineFinLegs",
+    "partId": "legs",
+    "tags": ["aquatic"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 10
+          }
+        }
+      },
+      {
+        "type": "fieldDamageImmunity",
+        "params": {
+          "fieldIds": ["deepWater"]
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineSpiderLegs",
+    "partId": "legs",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 8
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "snared",
+              "turns": 1,
+              "chance": 20
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineMistLegs",
+    "partId": "legs",
+    "tags": ["shadow"],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "shadowForm",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineInsectWings",
+    "partId": "wings",
+    "tags": ["flying"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 10
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineBatWings",
+    "partId": "wings",
+    "tags": ["flying", "shadow"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 6,
+            "spAttack": 6
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineFeatherWings",
+    "partId": "wings",
+    "tags": ["flying"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 8,
+            "spDefense": 5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineMagicWings",
+    "partId": "wings",
+    "tags": ["flying"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 10
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineFluffyTail",
+    "partId": "tail",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spDefense": 8
+          }
+        }
+      },
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 5
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineFinTail",
+    "partId": "tail",
+    "tags": ["aquatic"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 6,
+            "hp": 5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineTailFeathers",
+    "partId": "tail",
+    "tags": ["flying"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 6
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineMagicTail",
+    "partId": "tail",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 8
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineSnakeTail",
+    "partId": "tail",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 3,
+              "chance": 15
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineLifeTail",
+    "partId": "tail",
+    "tags": ["plant"],
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 4
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineLavaTail",
+    "partId": "tail",
+    "tags": ["lava"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 6,
+            "spAttack": 6
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineHorns",
+    "partId": "head",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 8
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineTwinHorns",
+    "partId": "head",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 12,
+            "defense": -3
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineHalo",
+    "partId": "head",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spDefense": 10
+          }
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "barrierBuff",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 10
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 2
+  },
+  {
+    "id": "refineMagicEyes",
+    "partId": "head",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "seeInvisible",
+        "params": {}
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineSensoryEars",
+    "partId": "head",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "dodge",
+        "params": {
+          "percent": 5
+        }
+      },
+      {
+        "type": "critChance",
+        "params": {
+          "percent": 5
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineBloodCore",
+    "partId": "torso",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 10
+        }
+      }
+    ],
+    "costMultiplier": 2
+  },
+  {
+    "id": "refineStableCore",
+    "partId": "torso",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 8,
+            "spDefense": 8
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineManaCore",
+    "partId": "torso",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 6,
+            "spDefense": 6
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineLightCore",
+    "partId": "torso",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "blind",
+              "turns": 1,
+              "chance": 30
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refinePoisonGlands",
+    "partId": "torso",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["poison", "badPoison"]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 3,
+              "chance": 10
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineShadowCore",
+    "partId": "torso",
+    "tags": ["shadow"],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "spAttack": 8
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineLavaCore",
+    "partId": "torso",
+    "tags": ["lava"],
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["burn"]
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refinePlantCore",
+    "partId": "torso",
+    "tags": ["plant"],
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 3
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "costMultiplier": 1
+  },
+  {
+    "id": "refineArmorPlates",
+    "partId": "torso",
+    "tags": [],
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 15,
+            "speed": -5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1.5
+  },
+  {
+    "id": "refineGills",
+    "partId": "torso",
+    "tags": ["aquatic"],
+    "hooks": [
+      {
+        "type": "fieldDamageImmunity",
+        "params": {
+          "fieldIds": ["deepWater"]
+        }
+      },
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 5
+          }
+        }
+      }
+    ],
+    "costMultiplier": 1
+  }
+]

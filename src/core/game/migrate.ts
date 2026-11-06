@@ -1151,7 +1151,42 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
     }
   },
   // v101 → v102: phi thăng và thiên mệnh (docs/rules/ascension.md): chưa phi thăng, Phàm nhân.
-  101: (save) => ({ ...save, version: 102, ascension: newAscensionState(), destinies: [] })
+  101: (save) => ({ ...save, version: 102, ascension: newAscensionState(), destinies: [] }),
+  // v102 → v103: trạng thái tạm thêm bộ đếm cộng hưởng (tùy chọn); save cũ không có, không đổi gì.
+  102: (save) => ({ ...save, version: 103 }),
+  // v103 → v104: bản ghi trận thêm lastSkillCategory, skillTargetUses, elementUses (tùy chọn);
+  // thêm scoutedBossFloors (chưa do thám tầng nào).
+  103: (save) => ({ ...save, scoutedBossFloors: [], version: 104 }),
+  // v104 → v105: trạng thái tạm thêm tường, bẫy Booby Trap, lượt lớp phủ hệ (tùy chọn); không đổi gì.
+  104: (save) => ({ ...save, version: 105 }),
+  // v105 → v106: lợi thế boss tung ngẫu nhiên, do thám giữ lợi thế đã tung; bỏ danh sách tầng cũ.
+  105: (save) => {
+    const { scoutedBossFloors: _floors, ...rest } = save
+    return { ...rest, scoutedBosses: [], version: 106 }
+  },
+  // v106 → v107: luyện thể, phòng ấp, tinh chất, cổng thế giới (Portals of Phereon).
+  106: addPhereonSystems,
+  // v107 → v108: tường thành trạng thái (docs/rules/cassette-mechanics.md); tường đang dở trong trận
+  // kiểu cũ (`volatiles.*.wall`) bỏ đi.
+  107: dropVolatileWalls,
+  // v108 → v109: bản ghi trận thêm thể lực (tùy chọn, bỏ trống = đầy); không đổi gì.
+  108: (save) => ({ ...save, version: 109 })
+}
+
+/**
+ * v106 → v107: mọi quái chưa luyện thể (body-refinement.md), phòng ấp chưa dựng (hatchery.md), chưa có
+ * tinh chất (essences.md), chưa có cổng thế giới nào (zones.md); lượt vào đang có giữ nguyên.
+ */
+function addPhereonSystems(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, refinements: {} })
+  const migrated = mapEggMonsters(mapAllMonsters(save, none), none)
+  return {
+    ...migrated,
+    hatchery: { rooms: [] },
+    essences: { owned: [], offer: null },
+    zones: { ...asObject(save.zones), portals: [], nextPortalId: 1 },
+    version: 107
+  }
 }
 
 /**
@@ -1286,6 +1321,20 @@ function addArtifactSpirits(save: SaveObject): SaveObject {
     trial: trial ? { kind: 'realm', ...trial } : save.trial,
     spiritPools: []
   }
+}
+
+/** v107 → v108: bỏ `wall` trong trạng thái tạm của trận đang dở. */
+function dropVolatileWalls(save: SaveObject): SaveObject {
+  const battle = asObject(save.battle)
+  const volatiles = asObject(battle?.volatiles)
+  if (!battle || !volatiles) return { ...save, version: 108 }
+  const cleaned = Object.fromEntries(
+    Object.entries(volatiles).map(([id, value]) => {
+      const { wall: _wall, ...rest } = asObject(value) ?? {}
+      return [id, rest]
+    })
+  )
+  return { ...save, version: 108, battle: { ...battle, volatiles: cleaned } }
 }
 
 /**

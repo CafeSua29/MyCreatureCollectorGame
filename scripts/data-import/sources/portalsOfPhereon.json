@@ -1,0 +1,3368 @@
+{
+ "source": "portalsOfPhereon",
+ "origin": "fantasy",
+ "prune": true,
+ "update": {
+  "race": true,
+  "stats": true,
+  "elements": true,
+  "evolutions": true
+ },
+ "species": [
+  {
+   "name": "Fire Plant",
+   "elements": [
+    "grass",
+    "fire"
+   ],
+   "raceId": "flower",
+   "tier": "peak",
+   "stats": {
+    "hp": 53,
+    "attack": 73,
+    "defense": 40,
+    "spAttack": 131,
+    "spDefense": 149,
+    "speed": 73
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound plant that wades through molten rock. Its strikes leave burns.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Tentacle",
+   "elements": [
+    "poison",
+    "water"
+   ],
+   "raceId": "slime",
+   "tier": "small",
+   "stats": {
+    "hp": 67,
+    "attack": 65,
+    "defense": 40,
+    "spAttack": 32,
+    "spDefense": 38,
+    "speed": 48
+   },
+   "category": "Portal creature",
+   "flavor": "A slime-coated tentacle that oozes slowly across the ground. It strikes with crashing water.",
+   "eggType": "slime"
+  },
+  {
+   "name": "Heal Flower",
+   "elements": [
+    "grass",
+    "light"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 20,
+    "attack": 32,
+    "defense": 52,
+    "spAttack": 135,
+    "spDefense": 43,
+    "speed": 8
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound flower that stays rooted and waits for prey. It attacks with searing light.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Phoenix",
+   "elements": [
+    "fire",
+    "flying"
+   ],
+   "raceId": "mythicBird",
+   "tier": "small",
+   "stats": {
+    "hp": 52,
+    "attack": 41,
+    "defense": 33,
+    "spAttack": 58,
+    "spDefense": 60,
+    "speed": 47
+   },
+   "category": "Portal creature",
+   "flavor": "A lava-born phoenix that drifts high above the portal worlds. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Unicorn",
+   "elements": [
+    "light"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 54,
+    "attack": 67,
+    "defense": 39,
+    "spAttack": 90,
+    "spDefense": 92,
+    "speed": 78
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed unicorn that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Pegasus",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "equid",
+   "tier": "small",
+   "stats": {
+    "hp": 40,
+    "attack": 54,
+    "defense": 34,
+    "spAttack": 32,
+    "spDefense": 37,
+    "speed": 94
+   },
+   "category": "Portal creature",
+   "flavor": "A wild pegasus that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Light Lizard",
+   "elements": [
+    "water",
+    "light"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "stats": {
+    "hp": 82,
+    "attack": 55,
+    "defense": 77,
+    "spAttack": 89,
+    "spDefense": 47,
+    "speed": 70
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling lizard that moves freely between land and water. It attacks with searing light.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Fire Lizard",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "stats": {
+    "hp": 83,
+    "attack": 88,
+    "defense": 77,
+    "spAttack": 38,
+    "spDefense": 63,
+    "speed": 70
+   },
+   "category": "Portal creature",
+   "flavor": "A lava-born lizard that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Plant Lizard",
+   "elements": [
+    "water",
+    "poison"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "stats": {
+    "hp": 85,
+    "attack": 62,
+    "defense": 88,
+    "spAttack": 41,
+    "spDefense": 72,
+    "speed": 72
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling lizard that moves freely between land and water. Its attacks carry venom.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Naga",
+   "elements": [
+    "water"
+   ],
+   "raceId": "lizardfolk",
+   "tier": "medium",
+   "stats": {
+    "hp": 88,
+    "attack": 86,
+    "defense": 76,
+    "spAttack": 34,
+    "spDefense": 50,
+    "speed": 86
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling naga that moves freely between land and water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Poison Lizard",
+   "elements": [
+    "water",
+    "poison"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "stats": {
+    "hp": 90,
+    "attack": 84,
+    "defense": 84,
+    "spAttack": 40,
+    "spDefense": 46,
+    "speed": 76
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling lizard that moves freely between land and water. Its attacks carry venom.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Light Bug",
+   "elements": [
+    "light"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 71,
+    "attack": 49,
+    "defense": 40,
+    "spAttack": 126,
+    "spDefense": 60,
+    "speed": 74
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed bug that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Soldier Bug",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 83,
+    "attack": 104,
+    "defense": 112,
+    "spAttack": 32,
+    "spDefense": 37,
+    "speed": 53
+   },
+   "category": "Portal creature",
+   "flavor": "A wild bug that moves freely between land and water.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Butterfly",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "small",
+   "stats": {
+    "hp": 54,
+    "attack": 49,
+    "defense": 32,
+    "spAttack": 58,
+    "spDefense": 41,
+    "speed": 57
+   },
+   "category": "Portal creature",
+   "flavor": "A wild butterfly that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Lava Bug",
+   "elements": [
+    "fire",
+    "flying"
+   ],
+   "raceId": "insectoid",
+   "tier": "small",
+   "stats": {
+    "hp": 20,
+    "attack": 52,
+    "defense": 46,
+    "spAttack": 100,
+    "spDefense": 17,
+    "speed": 55
+   },
+   "category": "Portal creature",
+   "flavor": "A lava-born bug that drifts high above the portal worlds.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Lava Worm",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "annelid",
+   "tier": "medium",
+   "stats": {
+    "hp": 116,
+    "attack": 131,
+    "defense": 40,
+    "spAttack": 63,
+    "spDefense": 23,
+    "speed": 48
+   },
+   "category": "Portal creature",
+   "flavor": "A lava-born worm that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Floater",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 96,
+    "attack": 54,
+    "defense": 41,
+    "spAttack": 39,
+    "spDefense": 11,
+    "speed": 49
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling floater that swims the deep waters.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Bird",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "bird",
+   "tier": "small",
+   "stats": {
+    "hp": 65,
+    "attack": 78,
+    "defense": 37,
+    "spAttack": 35,
+    "spDefense": 22,
+    "speed": 53
+   },
+   "category": "Portal creature",
+   "flavor": "A wild bird that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Magic Deer",
+   "elements": [
+    "light"
+   ],
+   "raceId": "cervid",
+   "tier": "peak",
+   "stats": {
+    "hp": 106,
+    "attack": 92,
+    "defense": 37,
+    "spAttack": 43,
+    "spDefense": 146,
+    "speed": 96
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed deer that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Forest Stalker",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 46,
+    "attack": 67,
+    "defense": 31,
+    "spAttack": 28,
+    "spDefense": 24,
+    "speed": 94
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound stalker that roams the portal worlds on foot. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Naiad",
+   "elements": [
+    "water",
+    "poison"
+   ],
+   "raceId": "natureSpirit",
+   "tier": "peak",
+   "stats": {
+    "hp": 54,
+    "attack": 49,
+    "defense": 37,
+    "spAttack": 129,
+    "spDefense": 170,
+    "speed": 81
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling naiad that moves freely between land and water. Its attacks carry venom.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Wolf",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 76,
+    "attack": 116,
+    "defense": 43,
+    "spAttack": 41,
+    "spDefense": 48,
+    "speed": 96
+   },
+   "category": "Portal creature",
+   "flavor": "A wild wolf that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Mule",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "equid",
+   "tier": "small",
+   "stats": {
+    "hp": 116,
+    "attack": 35,
+    "defense": 73,
+    "spAttack": 26,
+    "spDefense": 1,
+    "speed": 39
+   },
+   "category": "Portal creature",
+   "flavor": "A wild mule that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Dragon Welp",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "drake",
+   "tier": "medium",
+   "stats": {
+    "hp": 61,
+    "attack": 82,
+    "defense": 121,
+    "spAttack": 22,
+    "spDefense": 50,
+    "speed": 85
+   },
+   "evolutions": [
+    {
+     "name": "Fire Dragon",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A lava-born welp that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Fire Dragon",
+   "elements": [
+    "fire",
+    "flying"
+   ],
+   "raceId": "westernDragon",
+   "tier": "large",
+   "stats": {
+    "hp": 139,
+    "attack": 104,
+    "defense": 103,
+    "spAttack": 94,
+    "spDefense": 74,
+    "speed": 46
+   },
+   "category": "Elemental spirit",
+   "flavor": "A lava-born dragon that drifts high above the portal worlds. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Turtle",
+   "elements": [
+    "water"
+   ],
+   "raceId": "turtle",
+   "tier": "medium",
+   "stats": {
+    "hp": 102,
+    "attack": 32,
+    "defense": 155,
+    "spAttack": 64,
+    "spDefense": 28,
+    "speed": 39
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling turtle that moves freely between land and water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Beast Plant",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "flower",
+   "tier": "medium",
+   "stats": {
+    "hp": 111,
+    "attack": 57,
+    "defense": 115,
+    "spAttack": 32,
+    "spDefense": 53,
+    "speed": 52
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound plant that roams the portal worlds on foot. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Beast Lizard",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "lizard",
+   "tier": "medium",
+   "stats": {
+    "hp": 76,
+    "attack": 72,
+    "defense": 72,
+    "spAttack": 84,
+    "spDefense": 50,
+    "speed": 66
+   },
+   "category": "Portal creature",
+   "flavor": "A wild lizard that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Light Fox",
+   "elements": [
+    "light"
+   ],
+   "raceId": "canid",
+   "tier": "medium",
+   "stats": {
+    "hp": 49,
+    "attack": 102,
+    "defense": 35,
+    "spAttack": 85,
+    "spDefense": 79,
+    "speed": 70
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed fox that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Fire Beast",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 63,
+    "attack": 79,
+    "defense": 38,
+    "spAttack": 92,
+    "spDefense": 62,
+    "speed": 85
+   },
+   "category": "Portal creature",
+   "flavor": "A lava-born beast that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Mantis",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "orthopteran",
+   "tier": "medium",
+   "stats": {
+    "hp": 24,
+    "attack": 208,
+    "defense": 37,
+    "spAttack": 31,
+    "spDefense": 54,
+    "speed": 67
+   },
+   "category": "Portal creature",
+   "flavor": "A wild mantis that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Seedling",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 39,
+    "attack": 35,
+    "defense": 78,
+    "spAttack": 28,
+    "spDefense": 32,
+    "speed": 77
+   },
+   "evolutions": [
+    {
+     "name": "Seedling Monster",
+     "level": 16
+    },
+    {
+     "name": "Seedling Battery",
+     "level": 16
+    }
+   ],
+   "category": "Portal creature",
+   "flavor": "A plant-bound seedling that roams the portal worlds on foot.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Seedling Monster",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "flower",
+   "tier": "medium",
+   "stats": {
+    "hp": 92,
+    "attack": 81,
+    "defense": 69,
+    "spAttack": 28,
+    "spDefense": 36,
+    "speed": 115
+   },
+   "evolutions": [
+    {
+     "name": "Seedling Dragon",
+     "level": 32
+    }
+   ],
+   "category": "Portal creature",
+   "flavor": "A plant-bound monster that roams the portal worlds on foot.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Seedling Dragon",
+   "elements": [
+    "grass",
+    "flying"
+   ],
+   "raceId": "westernDragon",
+   "tier": "large",
+   "stats": {
+    "hp": 172,
+    "attack": 144,
+    "defense": 107,
+    "spAttack": 27,
+    "spDefense": 58,
+    "speed": 52
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound dragon that drifts high above the portal worlds.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Seedling Battery",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "flower",
+   "tier": "medium",
+   "stats": {
+    "hp": 10,
+    "attack": 51,
+    "defense": 36,
+    "spAttack": 31,
+    "spDefense": 265,
+    "speed": 27
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound battery that roams the portal worlds on foot.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Fire Blossom",
+   "elements": [
+    "grass",
+    "fire"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 7,
+    "attack": 42,
+    "defense": 69,
+    "spAttack": 114,
+    "spDefense": 46,
+    "speed": 11
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound blossom that stays rooted and waits for prey. Its strikes leave burns.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Slime Beast",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "slime",
+   "tier": "peak",
+   "stats": {
+    "hp": 99,
+    "attack": 103,
+    "defense": 102,
+    "spAttack": 53,
+    "spDefense": 55,
+    "speed": 107
+   },
+   "category": "Portal creature",
+   "flavor": "A slime-coated beast that roams the portal worlds on foot.",
+   "eggType": "slime"
+  },
+  {
+   "name": "Slime Lizard",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "slime",
+   "tier": "peak",
+   "stats": {
+    "hp": 86,
+    "attack": 74,
+    "defense": 71,
+    "spAttack": 110,
+    "spDefense": 114,
+    "speed": 65
+   },
+   "category": "Portal creature",
+   "flavor": "A slime-coated lizard that moves freely between land and water.",
+   "eggType": "slime"
+  },
+  {
+   "name": "Leviathan",
+   "elements": [
+    "water"
+   ],
+   "raceId": "leviathan",
+   "tier": "large",
+   "stats": {
+    "hp": 201,
+    "attack": 133,
+    "defense": 75,
+    "spAttack": 26,
+    "spDefense": 41,
+    "speed": 83
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling leviathan that swims the deep waters.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "True Unicorn",
+   "elements": [
+    "light"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 88,
+    "attack": 79,
+    "defense": 38,
+    "spAttack": 84,
+    "spDefense": 46,
+    "speed": 85
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed unicorn that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Angler Fish",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "stats": {
+    "hp": 61,
+    "attack": 67,
+    "defense": 35,
+    "spAttack": 97,
+    "spDefense": 96,
+    "speed": 64
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling fish that moves freely between land and water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Shadow Ghost",
+   "elements": [
+    "dark",
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "stats": {
+    "hp": 48,
+    "attack": 66,
+    "defense": 35,
+    "spAttack": 80,
+    "spDefense": 86,
+    "speed": 105
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling ghost that slips unseen between shadows. It attacks with bolts of darkness.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Ghost Plant",
+   "elements": [
+    "grass",
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "stats": {
+    "hp": 48,
+    "attack": 33,
+    "defense": 41,
+    "spAttack": 100,
+    "spDefense": 121,
+    "speed": 76
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound plant that slips unseen between shadows. It attacks with bolts of darkness.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Lava Ghost",
+   "elements": [
+    "dark",
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "stats": {
+    "hp": 40,
+    "attack": 41,
+    "defense": 34,
+    "spAttack": 120,
+    "spDefense": 96,
+    "speed": 89
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling ghost that wades through molten rock. Its strikes leave burns.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Spirit",
+   "elements": [
+    "dark",
+    "light"
+   ],
+   "raceId": "ghost",
+   "tier": "medium",
+   "stats": {
+    "hp": 40,
+    "attack": 26,
+    "defense": 37,
+    "spAttack": 115,
+    "spDefense": 105,
+    "speed": 97
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling spirit that slips unseen between shadows. It attacks with searing light.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Shadow Beast",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 89,
+    "attack": 106,
+    "defense": 40,
+    "spAttack": 37,
+    "spDefense": 69,
+    "speed": 79
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling beast that roams the portal worlds on foot.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Shadow Insect",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 57,
+    "attack": 62,
+    "defense": 36,
+    "spAttack": 64,
+    "spDefense": 134,
+    "speed": 66
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling insect that roams the portal worlds on foot.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Shadow Lizard",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "lizard",
+   "tier": "peak",
+   "stats": {
+    "hp": 94,
+    "attack": 113,
+    "defense": 121,
+    "spAttack": 54,
+    "spDefense": 65,
+    "speed": 73
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling lizard that moves freely between land and water. It attacks with bolts of darkness.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Ghostwing",
+   "elements": [
+    "dark",
+    "ghost"
+   ],
+   "raceId": "wraith",
+   "tier": "small",
+   "stats": {
+    "hp": 34,
+    "attack": 76,
+    "defense": 31,
+    "spAttack": 29,
+    "spDefense": 67,
+    "speed": 53
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling ghostwing that drifts high above the portal worlds. It attacks with bolts of darkness.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Spectre",
+   "elements": [
+    "normal",
+    "ghost"
+   ],
+   "raceId": "wraith",
+   "tier": "small",
+   "stats": {
+    "hp": 63,
+    "attack": 62,
+    "defense": 33,
+    "spAttack": 46,
+    "spDefense": 54,
+    "speed": 33
+   },
+   "category": "Portal creature",
+   "flavor": "A wild spectre that drifts high above the portal worlds. It attacks with bolts of darkness.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Glider",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "marsupial",
+   "tier": "medium",
+   "stats": {
+    "hp": 101,
+    "attack": 27,
+    "defense": 33,
+    "spAttack": 7,
+    "spDefense": 213,
+    "speed": 38
+   },
+   "category": "Portal creature",
+   "flavor": "A wild glider that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Swamp Slime",
+   "elements": [
+    "water"
+   ],
+   "raceId": "slime",
+   "tier": "medium",
+   "stats": {
+    "hp": 75,
+    "attack": 76,
+    "defense": 35,
+    "spAttack": 88,
+    "spDefense": 83,
+    "speed": 64
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling slime that moves freely between land and water. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Mosquito",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "insectoid",
+   "tier": "small",
+   "stats": {
+    "hp": 34,
+    "attack": 36,
+    "defense": 35,
+    "spAttack": 33,
+    "spDefense": 58,
+    "speed": 93
+   },
+   "category": "Portal creature",
+   "flavor": "A wild mosquito that drifts high above the portal worlds. Nothing seems to dull its attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Glow Worm",
+   "elements": [
+    "light"
+   ],
+   "raceId": "annelid",
+   "tier": "medium",
+   "stats": {
+    "hp": 116,
+    "attack": 65,
+    "defense": 84,
+    "spAttack": 43,
+    "spDefense": 53,
+    "speed": 59
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed worm that roams the portal worlds on foot.",
+   "eggType": "light"
+  },
+  {
+   "name": "Poison Plant",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 23,
+    "attack": 36,
+    "defense": 59,
+    "spAttack": 69,
+    "spDefense": 95,
+    "speed": 9
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound plant that stays rooted and waits for prey. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Vine",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 23,
+    "attack": 56,
+    "defense": 92,
+    "spAttack": 65,
+    "spDefense": 40,
+    "speed": 14
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound vine that stays rooted and waits for prey. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Kraken",
+   "elements": [
+    "water"
+   ],
+   "raceId": "leviathan",
+   "tier": "mythic",
+   "stats": {
+    "hp": 146,
+    "attack": 6,
+    "defense": 67,
+    "spAttack": 136,
+    "spDefense": 235,
+    "speed": 40
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling kraken that swims the deep waters.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Kraken Tentacle",
+   "elements": [
+    "water"
+   ],
+   "raceId": "leviathan",
+   "tier": "small",
+   "stats": {
+    "hp": 21,
+    "attack": 98,
+    "defense": 80,
+    "spAttack": 38,
+    "spDefense": 44,
+    "speed": 8
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling tentacle that stays rooted and waits for prey.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Mushroom Core",
+   "elements": [
+    "fungal"
+   ],
+   "raceId": "fungus",
+   "tier": "mythic",
+   "stats": {
+    "hp": 229,
+    "attack": 110,
+    "defense": 100,
+    "spAttack": 116,
+    "spDefense": 28,
+    "speed": 47
+   },
+   "category": "Portal creature",
+   "flavor": "A wild core that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Spore",
+   "elements": [
+    "fungal"
+   ],
+   "raceId": "fungus",
+   "tier": "small",
+   "stats": {
+    "hp": 23,
+    "attack": 113,
+    "defense": 60,
+    "spAttack": 56,
+    "spDefense": 26,
+    "speed": 12
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound spore that stays rooted and waits for prey.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Lava Fish",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "fish",
+   "tier": "mythic",
+   "stats": {
+    "hp": 180,
+    "attack": 48,
+    "defense": 100,
+    "spAttack": 85,
+    "spDefense": 153,
+    "speed": 64
+   },
+   "category": "Portal creature",
+   "flavor": "A lava-born fish that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Super Hybrid",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "chimera",
+   "tier": "mythic",
+   "stats": {
+    "hp": 112,
+    "attack": 115,
+    "defense": 62,
+    "spAttack": 133,
+    "spDefense": 123,
+    "speed": 86
+   },
+   "category": "Portal creature",
+   "flavor": "A wild hybrid that drifts high above the portal worlds. Nothing seems to dull its attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Cursed Plant",
+   "elements": [
+    "grass",
+    "dark"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 8,
+    "attack": 43,
+    "defense": 63,
+    "spAttack": 118,
+    "spDefense": 48,
+    "speed": 11
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound plant that stays rooted and waits for prey. It attacks with bolts of darkness.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Shadow Plant",
+   "elements": [
+    "grass",
+    "dark"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 8,
+    "attack": 46,
+    "defense": 75,
+    "spAttack": 53,
+    "spDefense": 97,
+    "speed": 11
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound plant that stays rooted and waits for prey. It attacks with bolts of darkness.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Hybrid Flower",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "flower",
+   "tier": "small",
+   "stats": {
+    "hp": 26,
+    "attack": 40,
+    "defense": 58,
+    "spAttack": 77,
+    "spDefense": 80,
+    "speed": 10
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound flower that stays rooted and waits for prey.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Omni Flower",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "flower",
+   "tier": "medium",
+   "stats": {
+    "hp": 20,
+    "attack": 73,
+    "defense": 39,
+    "spAttack": 197,
+    "spDefense": 83,
+    "speed": 8
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound flower that stays rooted and waits for prey. Nothing seems to dull its attacks.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Kitsune",
+   "elements": [
+    "normal",
+    "light"
+   ],
+   "raceId": "canid",
+   "tier": "large",
+   "stats": {
+    "hp": 97,
+    "attack": 74,
+    "defense": 30,
+    "spAttack": 136,
+    "spDefense": 155,
+    "speed": 68
+   },
+   "category": "Portal creature",
+   "flavor": "A wild kitsune that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Life Root",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "tree",
+   "tier": "mythic",
+   "stats": {
+    "hp": 76,
+    "attack": 96,
+    "defense": 126,
+    "spAttack": 185,
+    "spDefense": 91,
+    "speed": 57
+   },
+   "category": "Portal creature",
+   "flavor": "A wild root that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Wisp",
+   "elements": [
+    "normal",
+    "ghost"
+   ],
+   "raceId": "wisp",
+   "tier": "small",
+   "stats": {
+    "hp": 12,
+    "attack": 30,
+    "defense": 37,
+    "spAttack": 104,
+    "spDefense": 41,
+    "speed": 67
+   },
+   "category": "Portal creature",
+   "flavor": "A wild wisp that drifts high above the portal worlds. It attacks with searing light.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Grass Spirit",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 43,
+    "attack": 54,
+    "defense": 44,
+    "spAttack": 31,
+    "spDefense": 30,
+    "speed": 88
+   },
+   "evolutions": [
+    {
+     "name": "Grass Cat",
+     "level": 16
+    },
+    {
+     "name": "Plant Spider",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound spirit that roams the portal worlds on foot. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Fire Spirit",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 27,
+    "attack": 27,
+    "defense": 44,
+    "spAttack": 52,
+    "spDefense": 36,
+    "speed": 104
+   },
+   "evolutions": [
+    {
+     "name": "Fire Cat",
+     "level": 16
+    },
+    {
+     "name": "Lava Drinker",
+     "level": 16
+    },
+    {
+     "name": "Lavorm",
+     "level": 16
+    },
+    {
+     "name": "Dragon Welp",
+     "level": 16
+    },
+    {
+     "name": "Lava Frog",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A lava-born spirit that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Water Spirit",
+   "elements": [
+    "water"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 38,
+    "attack": 26,
+    "defense": 42,
+    "spAttack": 50,
+    "spDefense": 51,
+    "speed": 83
+   },
+   "evolutions": [
+    {
+     "name": "Water Fish",
+     "level": 16
+    },
+    {
+     "name": "Water Spider",
+     "level": 16
+    },
+    {
+     "name": "Orb Fish",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling spirit that moves freely between land and water. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Grass Cat",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "felid",
+   "tier": "medium",
+   "stats": {
+    "hp": 80,
+    "attack": 78,
+    "defense": 38,
+    "spAttack": 65,
+    "spDefense": 54,
+    "speed": 104
+   },
+   "evolutions": [
+    {
+     "name": "Grass Steed",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound cat that roams the portal worlds on foot. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Fire Cat",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "felid",
+   "tier": "medium",
+   "stats": {
+    "hp": 55,
+    "attack": 58,
+    "defense": 39,
+    "spAttack": 94,
+    "spDefense": 65,
+    "speed": 108
+   },
+   "evolutions": [
+    {
+     "name": "Hell Beast",
+     "level": 32
+    },
+    {
+     "name": "Fire Snake",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A lava-born cat that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Water Fish",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "stats": {
+    "hp": 49,
+    "attack": 78,
+    "defense": 37,
+    "spAttack": 64,
+    "spDefense": 88,
+    "speed": 104
+   },
+   "evolutions": [
+    {
+     "name": "Shell Drake",
+     "level": 32
+    },
+    {
+     "name": "Sea Serpent",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling fish that swims the deep waters. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Grass Steed",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "flower",
+   "tier": "large",
+   "stats": {
+    "hp": 128,
+    "attack": 92,
+    "defense": 61,
+    "spAttack": 83,
+    "spDefense": 82,
+    "speed": 115
+   },
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound steed that roams the portal worlds on foot.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Hell Beast",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "fiend",
+   "tier": "large",
+   "stats": {
+    "hp": 94,
+    "attack": 139,
+    "defense": 31,
+    "spAttack": 110,
+    "spDefense": 84,
+    "speed": 102
+   },
+   "category": "Elemental spirit",
+   "flavor": "A lava-born beast that wades through molten rock. Its blades cut deep.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Sea Serpent",
+   "elements": [
+    "water"
+   ],
+   "raceId": "leviathan",
+   "tier": "large",
+   "stats": {
+    "hp": 109,
+    "attack": 228,
+    "defense": 37,
+    "spAttack": 26,
+    "spDefense": 46,
+    "speed": 113
+   },
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling serpent that hunts along shallow water. Its blades cut deep.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Shell Drake",
+   "elements": [
+    "water"
+   ],
+   "raceId": "drake",
+   "tier": "large",
+   "stats": {
+    "hp": 126,
+    "attack": 108,
+    "defense": 145,
+    "spAttack": 64,
+    "spDefense": 93,
+    "speed": 25
+   },
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling drake that hunts along shallow water. Its blades cut deep.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Fire Snake",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "serpent",
+   "tier": "large",
+   "stats": {
+    "hp": 88,
+    "attack": 108,
+    "defense": 87,
+    "spAttack": 126,
+    "spDefense": 97,
+    "speed": 53
+   },
+   "category": "Elemental spirit",
+   "flavor": "A lava-born snake that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Orb Fish",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "medium",
+   "stats": {
+    "hp": 53,
+    "attack": 39,
+    "defense": 44,
+    "spAttack": 137,
+    "spDefense": 114,
+    "speed": 33
+   },
+   "evolutions": [
+    {
+     "name": "Shell Drake",
+     "level": 32
+    },
+    {
+     "name": "Sea Serpent",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling fish that swims the deep waters. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Plant Spider",
+   "elements": [
+    "grass",
+    "poison"
+   ],
+   "raceId": "arachnid",
+   "tier": "medium",
+   "stats": {
+    "hp": 50,
+    "attack": 93,
+    "defense": 86,
+    "spAttack": 46,
+    "spDefense": 54,
+    "speed": 90
+   },
+   "evolutions": [
+    {
+     "name": "Poison Arachnid",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound spider that roams the portal worlds on foot. Its attacks carry venom.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Lavorm",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "annelid",
+   "tier": "medium",
+   "stats": {
+    "hp": 77,
+    "attack": 39,
+    "defense": 87,
+    "spAttack": 105,
+    "spDefense": 78,
+    "speed": 33
+   },
+   "evolutions": [
+    {
+     "name": "Hell Beast",
+     "level": 32
+    },
+    {
+     "name": "Fire Snake",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A lava-born lavorm that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Lava Frog",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "anuran",
+   "tier": "medium",
+   "stats": {
+    "hp": 87,
+    "attack": 94,
+    "defense": 45,
+    "spAttack": 78,
+    "spDefense": 60,
+    "speed": 57
+   },
+   "evolutions": [
+    {
+     "name": "Hell Beast",
+     "level": 32
+    },
+    {
+     "name": "Fire Snake",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A lava-born frog that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Water Spider",
+   "elements": [
+    "water"
+   ],
+   "raceId": "arachnid",
+   "tier": "medium",
+   "stats": {
+    "hp": 43,
+    "attack": 111,
+    "defense": 51,
+    "spAttack": 92,
+    "spDefense": 64,
+    "speed": 59
+   },
+   "evolutions": [
+    {
+     "name": "Silk Spider",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling spider that moves freely between land and water. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Lava Drinker",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 49,
+    "attack": 61,
+    "defense": 78,
+    "spAttack": 99,
+    "spDefense": 69,
+    "speed": 64
+   },
+   "evolutions": [
+    {
+     "name": "Lava Spider",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A lava-born drinker that wades through molten rock. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Death Fly",
+   "elements": [
+    "dark",
+    "flying"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 45,
+    "attack": 32,
+    "defense": 44,
+    "spAttack": 97,
+    "spDefense": 95,
+    "speed": 108
+   },
+   "category": "Elemental spirit",
+   "flavor": "A shadow-dwelling fly that drifts high above the portal worlds. It attacks with bolts of darkness.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Hole Worm",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "annelid",
+   "tier": "large",
+   "stats": {
+    "hp": 86,
+    "attack": 122,
+    "defense": 37,
+    "spAttack": 141,
+    "spDefense": 150,
+    "speed": 24
+   },
+   "category": "Elemental spirit",
+   "flavor": "A shadow-dwelling worm that roams the portal worlds on foot. Nothing seems to dull its attacks.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Stinger",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 44,
+    "attack": 127,
+    "defense": 77,
+    "spAttack": 60,
+    "spDefense": 26,
+    "speed": 86
+   },
+   "category": "Portal creature",
+   "flavor": "A wild stinger that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Shade",
+   "elements": [
+    "dark",
+    "ghost"
+   ],
+   "raceId": "wraith",
+   "tier": "large",
+   "stats": {
+    "hp": 66,
+    "attack": 120,
+    "defense": 31,
+    "spAttack": 150,
+    "spDefense": 38,
+    "speed": 155
+   },
+   "category": "Elemental spirit",
+   "flavor": "A shadow-dwelling shade that slips unseen between shadows. It attacks with bolts of darkness.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Strider",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 53,
+    "attack": 66,
+    "defense": 32,
+    "spAttack": 30,
+    "spDefense": 15,
+    "speed": 96
+   },
+   "category": "Portal creature",
+   "flavor": "A wild strider that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Mandragora",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "flower",
+   "tier": "peak",
+   "stats": {
+    "hp": 101,
+    "attack": 88,
+    "defense": 73,
+    "spAttack": 88,
+    "spDefense": 139,
+    "speed": 31
+   },
+   "category": "Portal creature",
+   "flavor": "A slime-coated mandragora that roams the portal worlds on foot.",
+   "eggType": "slime"
+  },
+  {
+   "name": "Slime Bulb",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "slime",
+   "tier": "small",
+   "stats": {
+    "hp": 19,
+    "attack": 39,
+    "defense": 48,
+    "spAttack": 45,
+    "spDefense": 53,
+    "speed": 87
+   },
+   "category": "Portal creature",
+   "flavor": "A wild bulb that stays rooted and waits for prey.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Ghost Bulb",
+   "elements": [
+    "normal",
+    "ghost"
+   ],
+   "raceId": "ghost",
+   "tier": "small",
+   "stats": {
+    "hp": 22,
+    "attack": 42,
+    "defense": 69,
+    "spAttack": 49,
+    "spDefense": 57,
+    "speed": 52
+   },
+   "category": "Portal creature",
+   "flavor": "A wild bulb that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Ring Beast",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "large",
+   "stats": {
+    "hp": 98,
+    "attack": 49,
+    "defense": 65,
+    "spAttack": 247,
+    "spDefense": 45,
+    "speed": 57
+   },
+   "category": "Elemental spirit",
+   "flavor": "A light-blessed beast that drifts high above the portal worlds. Nothing seems to dull its attacks.",
+   "eggType": "light"
+  },
+  {
+   "name": "Ice Spirit",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 31,
+    "attack": 25,
+    "defense": 83,
+    "spAttack": 35,
+    "spDefense": 34,
+    "speed": 82
+   },
+   "evolutions": [
+    {
+     "name": "Ice Ball",
+     "level": 16
+    },
+    {
+     "name": "Frost Weaver",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A frost-touched spirit that roams the portal worlds on foot. Its touch freezes flesh.",
+   "eggType": "ice"
+  },
+  {
+   "name": "Ice Beast",
+   "elements": [
+    "ice",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "large",
+   "stats": {
+    "hp": 85,
+    "attack": 85,
+    "defense": 56,
+    "spAttack": 145,
+    "spDefense": 112,
+    "speed": 78
+   },
+   "category": "Elemental spirit",
+   "flavor": "A frost-touched beast that drifts high above the portal worlds. Its touch freezes flesh.",
+   "eggType": "ice"
+  },
+  {
+   "name": "Frost Weaver",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "bird",
+   "tier": "medium",
+   "stats": {
+    "hp": 62,
+    "attack": 77,
+    "defense": 49,
+    "spAttack": 89,
+    "spDefense": 63,
+    "speed": 80
+   },
+   "category": "Elemental spirit",
+   "flavor": "A frost-touched weaver that roams the portal worlds on foot. Its touch freezes flesh.",
+   "eggType": "ice"
+  },
+  {
+   "name": "Ice Ball",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 55,
+    "attack": 87,
+    "defense": 42,
+    "spAttack": 101,
+    "spDefense": 61,
+    "speed": 74
+   },
+   "evolutions": [
+    {
+     "name": "Ice Beast",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A frost-touched ball that roams the portal worlds on foot. Its touch freezes flesh.",
+   "eggType": "ice"
+  },
+  {
+   "name": "Rock Spirit",
+   "elements": [
+    "rock"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 31,
+    "attack": 26,
+    "defense": 127,
+    "spAttack": 28,
+    "spDefense": 17,
+    "speed": 61
+   },
+   "evolutions": [
+    {
+     "name": "Rock Golem",
+     "level": 16
+    },
+    {
+     "name": "Rock Crab",
+     "level": 16
+    },
+    {
+     "name": "Rock Hugger",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A stone-shelled spirit that roams the portal worlds on foot.",
+   "eggType": "stone"
+  },
+  {
+   "name": "Rock Golem",
+   "elements": [
+    "rock"
+   ],
+   "raceId": "golem",
+   "tier": "medium",
+   "stats": {
+    "hp": 65,
+    "attack": 82,
+    "defense": 151,
+    "spAttack": 30,
+    "spDefense": 22,
+    "speed": 69
+   },
+   "evolutions": [
+    {
+     "name": "Rock Guardian",
+     "level": 32
+    },
+    {
+     "name": "Rock Thrower",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A stone-shelled golem that roams the portal worlds on foot.",
+   "eggType": "stone"
+  },
+  {
+   "name": "Rock Crab",
+   "elements": [
+    "rock"
+   ],
+   "raceId": "crustacean",
+   "tier": "medium",
+   "stats": {
+    "hp": 63,
+    "attack": 93,
+    "defense": 128,
+    "spAttack": 40,
+    "spDefense": 47,
+    "speed": 48
+   },
+   "category": "Elemental spirit",
+   "flavor": "A stone-shelled crab that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "stone"
+  },
+  {
+   "name": "Rock Guardian",
+   "elements": [
+    "rock",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "large",
+   "stats": {
+    "hp": 64,
+    "attack": 108,
+    "defense": 151,
+    "spAttack": 111,
+    "spDefense": 71,
+    "speed": 55
+   },
+   "category": "Elemental spirit",
+   "flavor": "A stone-shelled guardian that drifts high above the portal worlds. Its blades cut deep.",
+   "eggType": "stone"
+  },
+  {
+   "name": "Mana Worm",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "annelid",
+   "tier": "peak",
+   "stats": {
+    "hp": 97,
+    "attack": 90,
+    "defense": 34,
+    "spAttack": 116,
+    "spDefense": 135,
+    "speed": 48
+   },
+   "category": "Portal creature",
+   "flavor": "A wild worm that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Spiked Seal",
+   "elements": [
+    "water",
+    "poison"
+   ],
+   "raceId": "pinniped",
+   "tier": "small",
+   "stats": {
+    "hp": 25,
+    "attack": 43,
+    "defense": 128,
+    "spAttack": 27,
+    "spDefense": 23,
+    "speed": 44
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling seal that moves freely between land and water. Its attacks carry venom.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Light Spirit",
+   "elements": [
+    "light"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 25,
+    "attack": 62,
+    "defense": 37,
+    "spAttack": 46,
+    "spDefense": 38,
+    "speed": 82
+   },
+   "evolutions": [
+    {
+     "name": "Light Orb",
+     "level": 16
+    },
+    {
+     "name": "Light Bee",
+     "level": 16
+    },
+    {
+     "name": "Spirit Beast",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A light-blessed spirit that roams the portal worlds on foot. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Light Bee",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "hymenopteran",
+   "tier": "medium",
+   "stats": {
+    "hp": 63,
+    "attack": 75,
+    "defense": 68,
+    "spAttack": 83,
+    "spDefense": 73,
+    "speed": 58
+   },
+   "category": "Elemental spirit",
+   "flavor": "A light-blessed bee that drifts high above the portal worlds. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Light Orb",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 65,
+    "attack": 43,
+    "defense": 42,
+    "spAttack": 131,
+    "spDefense": 95,
+    "speed": 45
+   },
+   "evolutions": [
+    {
+     "name": "Ring Beast",
+     "level": 32
+    },
+    {
+     "name": "Holy Spirit",
+     "level": 32
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A light-blessed orb that drifts high above the portal worlds. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Holy Spirit",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "large",
+   "stats": {
+    "hp": 15,
+    "attack": 112,
+    "defense": 42,
+    "spAttack": 48,
+    "spDefense": 152,
+    "speed": 191
+   },
+   "category": "Elemental spirit",
+   "flavor": "A light-blessed spirit that drifts high above the portal worlds. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Shadow Spirit",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 35,
+    "attack": 58,
+    "defense": 43,
+    "spAttack": 31,
+    "spDefense": 38,
+    "speed": 86
+   },
+   "evolutions": [
+    {
+     "name": "Death Fly",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A shadow-dwelling spirit that slips unseen between shadows. It attacks with bolts of darkness.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Night Crawler",
+   "elements": [
+    "normal",
+    "dark"
+   ],
+   "raceId": "annelid",
+   "tier": "small",
+   "stats": {
+    "hp": 45,
+    "attack": 66,
+    "defense": 32,
+    "spAttack": 30,
+    "spDefense": 53,
+    "speed": 64
+   },
+   "category": "Portal creature",
+   "flavor": "A wild crawler that moves freely between land and water. It attacks with bolts of darkness.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Lava Spider",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 96,
+    "attack": 122,
+    "defense": 126,
+    "spAttack": 80,
+    "spDefense": 51,
+    "speed": 84
+   },
+   "category": "Elemental spirit",
+   "flavor": "A lava-born spider that roams the portal worlds on foot. Its strikes leave burns.",
+   "eggType": "lava"
+  },
+  {
+   "name": "Glow Fly",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 78,
+    "attack": 36,
+    "defense": 105,
+    "spAttack": 60,
+    "spDefense": 55,
+    "speed": 86
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed fly that drifts high above the portal worlds. Nothing seems to dull its attacks.",
+   "eggType": "light"
+  },
+  {
+   "name": "Burrower",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "annelid",
+   "tier": "peak",
+   "stats": {
+    "hp": 129,
+    "attack": 119,
+    "defense": 167,
+    "spAttack": 24,
+    "spDefense": 17,
+    "speed": 63
+   },
+   "category": "Portal creature",
+   "flavor": "A wild burrower that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Horror",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "eldritch",
+   "tier": "large",
+   "stats": {
+    "hp": 145,
+    "attack": 63,
+    "defense": 160,
+    "spAttack": 63,
+    "spDefense": 95,
+    "speed": 34
+   },
+   "category": "Portal creature",
+   "flavor": "A wild horror that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Brute",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "troll",
+   "tier": "peak",
+   "stats": {
+    "hp": 119,
+    "attack": 93,
+    "defense": 157,
+    "spAttack": 31,
+    "spDefense": 37,
+    "speed": 82
+   },
+   "category": "Portal creature",
+   "flavor": "A wild brute that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Rock Hugger",
+   "elements": [
+    "rock"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 49,
+    "attack": 46,
+    "defense": 91,
+    "spAttack": 131,
+    "spDefense": 70,
+    "speed": 32
+   },
+   "category": "Elemental spirit",
+   "flavor": "A stone-shelled hugger that moves freely between land and water.",
+   "eggType": "stone"
+  },
+  {
+   "name": "Guardian",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "golem",
+   "tier": "large",
+   "stats": {
+    "hp": 76,
+    "attack": 94,
+    "defense": 126,
+    "spAttack": 109,
+    "spDefense": 84,
+    "speed": 70
+   },
+   "category": "Portal creature",
+   "flavor": "A wild guardian that roams the portal worlds on foot. Nothing seems to dull its attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Sky Worm",
+   "elements": [
+    "normal",
+    "flying"
+   ],
+   "raceId": "annelid",
+   "tier": "large",
+   "stats": {
+    "hp": 156,
+    "attack": 110,
+    "defense": 144,
+    "spAttack": 34,
+    "spDefense": 40,
+    "speed": 76
+   },
+   "category": "Portal creature",
+   "flavor": "A wild worm that drifts high above the portal worlds.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Cat Seal",
+   "elements": [
+    "water"
+   ],
+   "raceId": "pinniped",
+   "tier": "medium",
+   "stats": {
+    "hp": 57,
+    "attack": 53,
+    "defense": 78,
+    "spAttack": 86,
+    "spDefense": 43,
+    "speed": 103
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling seal that moves freely between land and water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Dark Seal",
+   "elements": [
+    "dark"
+   ],
+   "raceId": "pinniped",
+   "tier": "medium",
+   "stats": {
+    "hp": 89,
+    "attack": 98,
+    "defense": 67,
+    "spAttack": 53,
+    "spDefense": 30,
+    "speed": 82
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling seal that hunts along shallow water.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Frost Seal",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "pinniped",
+   "tier": "medium",
+   "stats": {
+    "hp": 59,
+    "attack": 63,
+    "defense": 67,
+    "spAttack": 113,
+    "spDefense": 67,
+    "speed": 52
+   },
+   "category": "Portal creature",
+   "flavor": "A frost-touched seal that hunts along shallow water.",
+   "eggType": "ice"
+  },
+  {
+   "name": "Swamp Seal",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "pinniped",
+   "tier": "medium",
+   "stats": {
+    "hp": 91,
+    "attack": 74,
+    "defense": 36,
+    "spAttack": 86,
+    "spDefense": 68,
+    "speed": 65
+   },
+   "category": "Portal creature",
+   "flavor": "A plant-bound seal that hunts along shallow water.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Holy Seal",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "pinniped",
+   "tier": "large",
+   "stats": {
+    "hp": 66,
+    "attack": 74,
+    "defense": 34,
+    "spAttack": 199,
+    "spDefense": 113,
+    "speed": 75
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed seal that drifts high above the portal worlds. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Portal Ripper",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "eldritch",
+   "tier": "mythic",
+   "stats": {
+    "hp": 81,
+    "attack": 75,
+    "defense": 93,
+    "spAttack": 53,
+    "spDefense": 295,
+    "speed": 34
+   },
+   "category": "Portal creature",
+   "flavor": "A wild ripper that moves freely between land and water.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Mana Tank",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "machine",
+   "tier": "peak",
+   "stats": {
+    "hp": 202,
+    "attack": 57,
+    "defense": 181,
+    "spAttack": 28,
+    "spDefense": 33,
+    "speed": 18
+   },
+   "category": "Portal creature",
+   "flavor": "A wild tank that stays rooted and waits for prey.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Fenrir",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "canid",
+   "tier": "peak",
+   "stats": {
+    "hp": 103,
+    "attack": 118,
+    "defense": 81,
+    "spAttack": 89,
+    "spDefense": 45,
+    "speed": 85
+   },
+   "category": "Portal creature",
+   "flavor": "A wild fenrir that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Fungal Spirit",
+   "elements": [
+    "fungal"
+   ],
+   "raceId": "fungus",
+   "tier": "small",
+   "stats": {
+    "hp": 36,
+    "attack": 36,
+    "defense": 76,
+    "spAttack": 29,
+    "spDefense": 34,
+    "speed": 80
+   },
+   "evolutions": [
+    {
+     "name": "Fungal Soldier",
+     "level": 16
+    },
+    {
+     "name": "Fungal Glider",
+     "level": 16
+    },
+    {
+     "name": "Fungal Strider",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound spirit that roams the portal worlds on foot.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Fungal Strider",
+   "elements": [
+    "fungal"
+   ],
+   "raceId": "fungus",
+   "tier": "medium",
+   "stats": {
+    "hp": 89,
+    "attack": 97,
+    "defense": 67,
+    "spAttack": 28,
+    "spDefense": 20,
+    "speed": 118
+   },
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound strider that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Fungal Glider",
+   "elements": [
+    "fungal",
+    "flying"
+   ],
+   "raceId": "fungus",
+   "tier": "medium",
+   "stats": {
+    "hp": 75,
+    "attack": 59,
+    "defense": 39,
+    "spAttack": 36,
+    "spDefense": 104,
+    "speed": 108
+   },
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound glider that drifts high above the portal worlds.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Glow Fish",
+   "elements": [
+    "water"
+   ],
+   "raceId": "fish",
+   "tier": "peak",
+   "stats": {
+    "hp": 72,
+    "attack": 57,
+    "defense": 101,
+    "spAttack": 100,
+    "spDefense": 80,
+    "speed": 110
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling fish that moves freely between land and water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Spirit Beast",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 43,
+    "attack": 29,
+    "defense": 36,
+    "spAttack": 102,
+    "spDefense": 144,
+    "speed": 66
+   },
+   "category": "Elemental spirit",
+   "flavor": "A light-blessed beast that drifts high above the portal worlds. It attacks with searing light.",
+   "eggType": "light"
+  },
+  {
+   "name": "Sand Worm",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "annelid",
+   "tier": "medium",
+   "stats": {
+    "hp": 102,
+    "attack": 96,
+    "defense": 42,
+    "spAttack": 34,
+    "spDefense": 70,
+    "speed": 77
+   },
+   "category": "Portal creature",
+   "flavor": "A wild worm that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Oasis",
+   "elements": [
+    "water"
+   ],
+   "raceId": "natureSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 85,
+    "attack": 22,
+    "defense": 31,
+    "spAttack": 48,
+    "spDefense": 79,
+    "speed": 25
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling oasis that moves freely between land and water. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Elemental Seed",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "peak",
+   "stats": {
+    "hp": 69,
+    "attack": 9,
+    "defense": 112,
+    "spAttack": 127,
+    "spDefense": 120,
+    "speed": 83
+   },
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound seed that roams the portal worlds on foot.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Tentacle Clone",
+   "elements": [
+    "poison"
+   ],
+   "raceId": "slime",
+   "tier": "large",
+   "stats": {
+    "hp": 89,
+    "attack": 29,
+    "defense": 42,
+    "spAttack": 130,
+    "spDefense": 195,
+    "speed": 76
+   },
+   "category": "Portal creature",
+   "flavor": "A slime-coated clone that oozes slowly across the ground.",
+   "eggType": "slime"
+  },
+  {
+   "name": "Rock Thrower",
+   "elements": [
+    "rock"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "large",
+   "stats": {
+    "hp": 83,
+    "attack": 119,
+    "defense": 185,
+    "spAttack": 37,
+    "spDefense": 51,
+    "speed": 84
+   },
+   "category": "Elemental spirit",
+   "flavor": "A stone-shelled thrower that roams the portal worlds on foot.",
+   "eggType": "stone"
+  },
+  {
+   "name": "Dark Moth",
+   "elements": [
+    "dark",
+    "flying"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "peak",
+   "stats": {
+    "hp": 91,
+    "attack": 81,
+    "defense": 72,
+    "spAttack": 86,
+    "spDefense": 124,
+    "speed": 65
+   },
+   "category": "Portal creature",
+   "flavor": "A shadow-dwelling moth that drifts high above the portal worlds.",
+   "eggType": "dark"
+  },
+  {
+   "name": "Light Moth",
+   "elements": [
+    "light",
+    "flying"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "medium",
+   "stats": {
+    "hp": 56,
+    "attack": 68,
+    "defense": 65,
+    "spAttack": 86,
+    "spDefense": 84,
+    "speed": 59
+   },
+   "category": "Portal creature",
+   "flavor": "A light-blessed moth that drifts high above the portal worlds.",
+   "eggType": "light"
+  },
+  {
+   "name": "Fungal Soldier",
+   "elements": [
+    "fungal"
+   ],
+   "raceId": "fungus",
+   "tier": "medium",
+   "stats": {
+    "hp": 75,
+    "attack": 86,
+    "defense": 88,
+    "spAttack": 42,
+    "spDefense": 43,
+    "speed": 85
+   },
+   "category": "Elemental spirit",
+   "flavor": "A wild soldier that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Elexolotl",
+   "elements": [
+    "electric",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 25,
+    "attack": 40,
+    "defense": 39,
+    "spAttack": 98,
+    "spDefense": 124,
+    "speed": 94
+   },
+   "category": "Elemental spirit",
+   "flavor": "A wild elexolotl that drifts high above the portal worlds. Sparks jump from its body when it attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Cyclops",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "giant",
+   "tier": "medium",
+   "stats": {
+    "hp": 142,
+    "attack": 85,
+    "defense": 112,
+    "spAttack": 21,
+    "spDefense": 26,
+    "speed": 34
+   },
+   "category": "Portal creature",
+   "flavor": "A wild cyclops that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Triclops",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "giant",
+   "tier": "medium",
+   "stats": {
+    "hp": 60,
+    "attack": 40,
+    "defense": 66,
+    "spAttack": 126,
+    "spDefense": 43,
+    "speed": 85
+   },
+   "category": "Portal creature",
+   "flavor": "A wild triclops that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Silk Spider",
+   "elements": [
+    "water"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 98,
+    "attack": 90,
+    "defense": 56,
+    "spAttack": 60,
+    "spDefense": 132,
+    "speed": 124
+   },
+   "category": "Elemental spirit",
+   "flavor": "A water-dwelling spider that roams the portal worlds on foot.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Poison Arachnid",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "arachnid",
+   "tier": "large",
+   "stats": {
+    "hp": 137,
+    "attack": 134,
+    "defense": 59,
+    "spAttack": 61,
+    "spDefense": 78,
+    "speed": 91
+   },
+   "category": "Elemental spirit",
+   "flavor": "A plant-bound arachnid that roams the portal worlds on foot. Its blades cut deep.",
+   "eggType": "floral"
+  },
+  {
+   "name": "Electro Spirit",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "elementalSpirit",
+   "tier": "small",
+   "stats": {
+    "hp": 27,
+    "attack": 27,
+    "defense": 44,
+    "spAttack": 52,
+    "spDefense": 36,
+    "speed": 104
+   },
+   "evolutions": [
+    {
+     "name": "Elexolotl",
+     "level": 16
+    },
+    {
+     "name": "Static Spider",
+     "level": 16
+    },
+    {
+     "name": "Elemental Seed",
+     "level": 16
+    }
+   ],
+   "category": "Elemental spirit",
+   "flavor": "A wild spirit that roams the portal worlds on foot. Sparks jump from its body when it attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Pylon",
+   "elements": [
+    "electric",
+    "flying"
+   ],
+   "raceId": "machine",
+   "tier": "medium",
+   "stats": {
+    "hp": 9,
+    "attack": 84,
+    "defense": 44,
+    "spAttack": 195,
+    "spDefense": 61,
+    "speed": 27
+   },
+   "category": "Portal creature",
+   "flavor": "A wild pylon that drifts high above the portal worlds. Sparks jump from its body when it attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Desert Seal",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "pinniped",
+   "tier": "peak",
+   "stats": {
+    "hp": 94,
+    "attack": 80,
+    "defense": 38,
+    "spAttack": 136,
+    "spDefense": 86,
+    "speed": 86
+   },
+   "category": "Portal creature",
+   "flavor": "A wild seal that hunts along shallow water.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Spike Slime",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "slime",
+   "tier": "medium",
+   "stats": {
+    "hp": 34,
+    "attack": 101,
+    "defense": 34,
+    "spAttack": 117,
+    "spDefense": 73,
+    "speed": 62
+   },
+   "category": "Portal creature",
+   "flavor": "A wild slime that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Static Spider",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "arachnid",
+   "tier": "peak",
+   "stats": {
+    "hp": 85,
+    "attack": 112,
+    "defense": 35,
+    "spAttack": 101,
+    "spDefense": 113,
+    "speed": 74
+   },
+   "category": "Elemental spirit",
+   "flavor": "A wild spider that roams the portal worlds on foot. Sparks jump from its body when it attacks.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Sea Horse",
+   "elements": [
+    "water"
+   ],
+   "raceId": "equid",
+   "tier": "peak",
+   "stats": {
+    "hp": 62,
+    "attack": 95,
+    "defense": 80,
+    "spAttack": 110,
+    "spDefense": 83,
+    "speed": 91
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling horse that swims the deep waters. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Mole",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "insectivore",
+   "tier": "small",
+   "stats": {
+    "hp": 49,
+    "attack": 80,
+    "defense": 35,
+    "spAttack": 33,
+    "spDefense": 29,
+    "speed": 64
+   },
+   "category": "Portal creature",
+   "flavor": "A wild mole that stays rooted and waits for prey. Its blades cut deep.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Toxtle",
+   "elements": [
+    "water"
+   ],
+   "raceId": "turtle",
+   "tier": "medium",
+   "stats": {
+    "hp": 39,
+    "attack": 69,
+    "defense": 133,
+    "spAttack": 73,
+    "spDefense": 31,
+    "speed": 74
+   },
+   "category": "Portal creature",
+   "flavor": "A water-dwelling toxtle that hunts along shallow water. It strikes with crashing water.",
+   "eggType": "aquatic"
+  },
+  {
+   "name": "Goblin",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "goblin",
+   "tier": "medium",
+   "stats": {
+    "hp": 98,
+    "attack": 112,
+    "defense": 77,
+    "spAttack": 27,
+    "spDefense": 36,
+    "speed": 70
+   },
+   "category": "Portal creature",
+   "flavor": "A wild goblin that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Elf",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "elf",
+   "tier": "medium",
+   "stats": {
+    "hp": 54,
+    "attack": 66,
+    "defense": 41,
+    "spAttack": 99,
+    "spDefense": 60,
+    "speed": 100
+   },
+   "category": "Portal creature",
+   "flavor": "A wild elf that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Orc",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "orc",
+   "tier": "large",
+   "stats": {
+    "hp": 133,
+    "attack": 96,
+    "defense": 136,
+    "spAttack": 35,
+    "spDefense": 99,
+    "speed": 62
+   },
+   "category": "Portal creature",
+   "flavor": "A wild orc that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Human",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "stats": {
+    "hp": 42,
+    "attack": 35,
+    "defense": 71,
+    "spAttack": 40,
+    "spDefense": 25,
+    "speed": 77
+   },
+   "category": "Portal creature",
+   "flavor": "A wild human that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Human Knight",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "stats": {
+    "hp": 31,
+    "attack": 51,
+    "defense": 114,
+    "spAttack": 20,
+    "spDefense": 12,
+    "speed": 63
+   },
+   "category": "Portal creature",
+   "flavor": "A wild knight that roams the portal worlds on foot.",
+   "eggType": "normal"
+  },
+  {
+   "name": "Human Mage",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "human",
+   "tier": "small",
+   "stats": {
+    "hp": 46,
+    "attack": 31,
+    "defense": 70,
+    "spAttack": 36,
+    "spDefense": 22,
+    "speed": 85
+   },
+   "category": "Portal creature",
+   "flavor": "A wild mage that roams the portal worlds on foot.",
+   "eggType": "normal"
+  }
+ ],
+ "excluded": [
+  {
+   "name": "Robot, ForestDragon, WaterDragon, Spiderling, SlimeGod, Toad, TinyShroom, BigShroom, SkyWhale, IceStrider, Rift, Lamia",
+   "reason": "không có CharacterData trong bản game đã cài (v0.32)"
+  },
+  {
+   "name": "Loài gợi dục của gốc",
+   "reason": "chủ project chốt không nhập nội dung người lớn"
+  }
+ ]
+}

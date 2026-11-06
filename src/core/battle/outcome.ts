@@ -4,6 +4,10 @@ import { recordQuestEvent, refillQuestBoard } from '../quests'
 import {
   autoEvolve,
   createBossEgg,
+  applyEssenceGrowth,
+  hatchFromRoom,
+  settleRoomHatch,
+  type RoomHatch,
   hatchMonster,
   incubateEggs,
   rollAilmentOf,
@@ -378,7 +382,7 @@ export function applyWin(data: GameData, d: Draft): void {
     partnerAmount(data, d.party, 'eggStepBonus') +
     charmEffect(data, d.inventory, 'eggStepBonus')
   const biome = battleBiome(data, d, d.battle)
-  const ticked = incubateEggs(data, d.rng, { eggs: d.eggs, steps: eggSteps, biome })
+  const ticked = incubateEggs(data, d.rng, { eggs: d.eggs, steps: eggSteps, biome, room: d })
   d.eggs = ticked.eggs
   d.rng = ticked.rng
 
@@ -454,8 +458,26 @@ export function applyWin(data: GameData, d: Draft): void {
       log(d, { type: 'eggWaiting', eggId: egg.id })
       continue
     }
+    // Trứng ở phòng ấp tung độ ổn định: hỏng thì mất trứng (docs/rules/hatchery.md).
+    let hatch: RoomHatch
+    ;[hatch, d.rng] = hatchFromRoom(data, d.rng, { state: d, egg })
+    const settled = settleRoomHatch(data, d, { egg, succeeded: hatch.outcome === 'hatched' })
+    d.eggs = settled.eggs
+    d.inventory = settled.inventory
+    if (hatch.outcome === 'retry') {
+      d.eggs.push({ ...egg, battlesLeft: hatch.battlesLeft })
+      log(d, { type: 'eggFailed', eggId: egg.id })
+      continue
+    }
+    if (hatch.outcome === 'lost') {
+      log(d, { type: 'eggFailed', eggId: egg.id })
+      continue
+    }
     let monster: Monster
-    ;[monster, d.rng] = hatchMonster(data, d.rng, { monster: egg.monster, day: dayOf(d.time) })
+    ;[monster, d.rng] = hatchMonster(data, d.rng, {
+      monster: applyEssenceGrowth(data, d.essences, hatch.monster),
+      day: dayOf(d.time)
+    })
     const destination = hasPartyRoom(data, d.party, monster) ? 'party' : 'storage'
     if (destination === 'party') d.party.push(monster)
     else d.storage.push(monster)

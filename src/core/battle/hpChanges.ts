@@ -10,6 +10,7 @@ import {
   changeAffinity,
   findStatusHook,
   fieldHealMultiplier,
+  hasAbilityFlag,
   forEachTraitHook,
   traitNegateChance,
   traitRevive,
@@ -311,6 +312,8 @@ function cureOnHit(data: GameData, d: Draft, target: Monster, skill: Skill): voi
 /** Trạng thái hết khi bị quái khác làm mất máu (ngủ của Siralim). */
 function wakeOnDamage(data: GameData, d: Draft, target: Monster, info: DamageInfo): void {
   if (!info.source || info.source.id === target.id) return
+  // Nocturnal của WILDERLOCKE: đòn của quái này không làm mục tiêu tỉnh.
+  if (hasAbilityFlag(data, info.source, 'keepsTargetAsleep')) return
   for (const status of [...target.statuses]) {
     const ends = data.statuses[status.statusId].hooks.some((hook) => hook.type === 'endsOnDamage')
     if (ends) removeStatus(d, target, status.statusId)

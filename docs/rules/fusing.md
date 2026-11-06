@@ -24,7 +24,7 @@
     - Quái con breeding từ mẹ fuse nhận `lineage` của mẹ nên cũng chịu cùng giới hạn đó.
   - `fusingBonusStats` += ½ chỉ số `withFusingBonus` của quái phụ (gồm bonus của nó, gồm boss / level / gen, không gồm trait, nên phần tăng từ shiny không truyền qua bonus), **giữ số thực** (chỉ số cuối vẫn làm tròn như thường).
   - `traitSlots` + 1, tối đa 6.
-  - **Trait thường:** pool = trait chiếm ô của cả hai, trait trùng gộp cấp (cộng); xáo trộn rồi lấy dần cho đủ số ô; bốc phải trait loại trừ với trait đã chọn thì **bỏ cả hai** và bốc bù tiếp; hết pool thì chấp nhận thiếu ô. Pool ít hơn số ô thì giữ hết (trừ cặp loại trừ).
+  - **Trait thường:** pool = trait chiếm ô của cả hai, trait trùng gộp cấp (cộng); trait chọn giữ vào ô trước (mục "Chọn trait và gen"), phần còn lại xáo trộn rồi lấy dần cho đủ số ô; bốc phải trait loại trừ với trait đã chọn thì **bỏ cả hai** và bốc bù tiếp; hết pool thì chấp nhận thiếu ô. Pool ít hơn số ô thì giữ hết (trừ cặp loại trừ).
   - **Trait boss** gộp cấp (cộng cấp của cả hai). **`bossMultiplier` = cao nhất** của hai quái.
   - **`shinyStacks` cộng dồn**, trait shiny cấp = tổng (qua `addShinyStacks`).
   - **`sacrificeStacks` cộng dồn** (stack hiến tế của quái phụ, không +1; `sacrifice.md`).
@@ -32,7 +32,17 @@
   - **Cấy ghép giữ của quái gốc** (`implantBonusStats`, `implantEffects`, `implantAttempts`, `implantFails`; hiệu ứng của quái phụ mất); phần cấy của quái phụ đã nằm trong chỉ số `withFusingBonus` của nó nên ½ tự truyền qua `fusingBonusStats` (`implant.md`).
   - `lineage` thêm `baseSpeciesId` và lineage của quái phụ, **không lặp loài**.
   - Giữ: hệ Tera, Gmax Factor, cấp Dynamax (quái fuse không Mega / Gigantamax được, Dynamax / Tera thì được; `transformation.md`); level, EXP, gen, gender (kể cả `none`: quái gốc không giới tính thì quái fuse cũng vậy), biệt danh, máu đã mất (max HP tăng nên HP hiện tại tăng theo), skill chờ học. Xóa `pendingEvolutionIds` (quái fuse không tiến hóa).
-  - `previewFusion(data, base, sub, boostItemId?)` cho UI xem trước phần chắc chắn (kể cả `canFuse`, `newSpeciesIds`, tỉ lệ thành công `successChance` đã cộng bùa, mức hợp race `raceMatch`, skill kế thừa được `inheritableSkillIds`); trait random lúc fuse nên không xem trước được. UI hỏi xác nhận, ghi rõ "thất bại sẽ mất cả hai quái" (hoặc "mất quái phụ" khi có Bùa Hộ Mệnh).
+  - `previewFusion(data, base, sub, { boostItemId?, essences? })` cho UI xem trước phần chắc chắn (kể cả `canFuse`, `newSpeciesIds`, tỉ lệ thành công `successChance` đã cộng bùa, mức hợp race `raceMatch`, skill kế thừa được `inheritableSkillIds`); trait random lúc fuse nên không xem trước được. UI hỏi xác nhận, ghi rõ "thất bại sẽ mất cả hai quái" (hoặc "mất quái phụ" khi có Bùa Hộ Mệnh).
+
+## Chọn trait và gen
+
+Theo GeneSelection của Portals of Phereon (chủ project yêu cầu 2026-11-05). Code: `progression/fusionChoices.ts`. Số `config.fusion.keptTraitPercent` (50). Lựa chọn của skill ở mục "Kế thừa skill".
+
+- Action `fuse` có thêm `keepTraitIds?` và `geneSources?`. Kiểm tra trước khi tung, lỗi thì state giữ nguyên.
+- **Giữ trait**: mỗi bên chọn tối đa ⌈số trait chiếm ô × `keptTraitPercent` %⌉ + tinh chất `fusionTraitChoices` (`essences.md`), không vượt số trait của bên đó (`keptTraitCapacity`, `previewFusion.keptTraitCapacity`). Trait có ở cả hai bên tính cho quái gốc, vẫn gộp cấp. Trait giữ **vào ô trước và không bị bỏ**; ô còn lại tung như cũ, trait bốc ra loại trừ với trait giữ thì bỏ qua. Lỗi: `cannotKeepTrait { traitId }`, `tooManyKeptTraits { monsterId, max }`, `keptTraitsExclusive`, `malformedAction`. Công thức gốc: `(số trait + 1) / 2`, nên cùng kết quả.
+- **Gen**: `geneSources` theo từng chỉ số `base` (mặc định) hoặc `sub`: lấy gen của bên đó (`chosenGenes`). Sai dạng: `malformedAction`.
+- **Tinh chất tăng trưởng** cộng gen cho quái vừa fuse, sau khi chọn gen (`applyEssenceGrowth`).
+- **Lệch gốc**: gốc không chọn gen nào thì lấy trung bình hai bên, chọn cả hai có thể +1 gen, tốn pha lê cho lựa chọn đặc biệt. Game để mặc định **giữ gen quái gốc** (không làm yếu lần fuse không chọn gì), không tốn thêm, chưa có chọn cả hai.
 
 ## Kế thừa skill
 

@@ -1,0 +1,1287 @@
+{
+ "source": "wilderlocke",
+ "origin": "fantasy",
+ "update": {
+  "evolutions": "add"
+ },
+ "species": [
+  {
+   "name": "Saplink",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 45,
+    "attack": 48,
+    "spAttack": 56,
+    "defense": 29,
+    "spDefense": 39,
+    "speed": 53
+   },
+   "category": "flora monster",
+   "evolutions": [
+    {
+     "name": "Iguanium",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Iguanium",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 72,
+    "attack": 78,
+    "spAttack": 90,
+    "defense": 58,
+    "spDefense": 63,
+    "speed": 71
+   },
+   "category": "flora monster",
+   "evolutions": []
+  },
+  {
+   "name": "Thermolt",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 44,
+    "attack": 37,
+    "spAttack": 60,
+    "defense": 34,
+    "spDefense": 48,
+    "speed": 43
+   },
+   "category": "pyro monster",
+   "evolutions": [
+    {
+     "name": "Infernewt",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Infernewt",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 69,
+    "attack": 60,
+    "spAttack": 88,
+    "defense": 54,
+    "spDefense": 78,
+    "speed": 65
+   },
+   "category": "pyro monster",
+   "evolutions": []
+  },
+  {
+   "name": "Flottel",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 44,
+    "attack": 34,
+    "spAttack": 49,
+    "defense": 41,
+    "spDefense": 65,
+    "speed": 32
+   },
+   "category": "aqua monster",
+   "evolutions": [
+    {
+     "name": "Mantide",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Mantide",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 68,
+    "attack": 54,
+    "spAttack": 71,
+    "defense": 63,
+    "spDefense": 105,
+    "speed": 48
+   },
+   "category": "aqua monster",
+   "evolutions": []
+  },
+  {
+   "name": "Mestic",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 37,
+    "attack": 32,
+    "spAttack": 41,
+    "defense": 34,
+    "spDefense": 53,
+    "speed": 27
+   },
+   "category": "thunder monster",
+   "evolutions": [
+    {
+     "name": "Medilly",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Medilly",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 60,
+    "attack": 54,
+    "spAttack": 68,
+    "defense": 48,
+    "spDefense": 88,
+    "speed": 39
+   },
+   "category": "thunder monster",
+   "evolutions": []
+  },
+  {
+   "name": "Sculkit",
+   "elements": [
+    "flying",
+    "ground"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 44,
+    "attack": 43,
+    "spAttack": 36,
+    "defense": 51,
+    "spDefense": 43,
+    "speed": 49
+   },
+   "category": "wind / terra monster",
+   "evolutions": [
+    {
+     "name": "Scuraptor",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Scuraptor",
+   "elements": [
+    "flying",
+    "ground"
+   ],
+   "raceId": "theropod",
+   "tier": "medium",
+   "stats": {
+    "hp": 69,
+    "attack": 95,
+    "spAttack": 44,
+    "defense": 61,
+    "spDefense": 68,
+    "speed": 78
+   },
+   "category": "wind / terra monster",
+   "evolutions": []
+  },
+  {
+   "name": "Vullet",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 42,
+    "attack": 51,
+    "spAttack": 29,
+    "defense": 32,
+    "spDefense": 44,
+    "speed": 53
+   },
+   "category": "wind monster",
+   "evolutions": [
+    {
+     "name": "Glipard",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Glipard",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 58,
+    "attack": 66,
+    "spAttack": 43,
+    "defense": 48,
+    "spDefense": 54,
+    "speed": 78
+   },
+   "category": "wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Glimmum",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 37,
+    "attack": 32,
+    "spAttack": 36,
+    "defense": 43,
+    "spDefense": 51,
+    "speed": 26
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Glimmire",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Glimmire",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 54,
+    "attack": 48,
+    "spAttack": 61,
+    "defense": 49,
+    "spDefense": 75,
+    "speed": 37
+   },
+   "category": "neutral monster",
+   "evolutions": []
+  },
+  {
+   "name": "Shellker",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 61,
+    "attack": 54,
+    "spAttack": 44,
+    "defense": 112,
+    "spDefense": 68,
+    "speed": 27
+   },
+   "category": "flora monster",
+   "evolutions": []
+  },
+  {
+   "name": "Cinderarch",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 70,
+    "attack": 70,
+    "spAttack": 88,
+    "defense": 58,
+    "spDefense": 58,
+    "speed": 78
+   },
+   "category": "pyro monster",
+   "evolutions": []
+  },
+  {
+   "name": "Woolio",
+   "elements": [
+    "ice",
+    "ground"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 49,
+    "attack": 46,
+    "spAttack": 32,
+    "defense": 58,
+    "spDefense": 66,
+    "speed": 41
+   },
+   "category": "frost / terra monster",
+   "evolutions": []
+  },
+  {
+   "name": "Quabble",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 38,
+    "attack": 44,
+    "spAttack": 37,
+    "defense": 31,
+    "spDefense": 32,
+    "speed": 46
+   },
+   "category": "aqua monster",
+   "evolutions": [
+    {
+     "name": "Drapiere",
+     "level": 24
+    }
+   ]
+  },
+  {
+   "name": "Drapiere",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 73,
+    "attack": 88,
+    "spAttack": 68,
+    "defense": 58,
+    "spDefense": 61,
+    "speed": 92
+   },
+   "category": "aqua monster",
+   "evolutions": []
+  },
+  {
+   "name": "Aspini",
+   "elements": [
+    "grass",
+    "ground"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 47,
+    "attack": 58,
+    "spAttack": 34,
+    "defense": 49,
+    "spDefense": 66,
+    "speed": 27
+   },
+   "category": "flora / terra monster",
+   "evolutions": [
+    {
+     "name": "Loplar",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Loplar",
+   "elements": [
+    "grass",
+    "ground"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 67,
+    "attack": 75,
+    "spAttack": 54,
+    "defense": 65,
+    "spDefense": 88,
+    "speed": 51
+   },
+   "category": "flora / terra monster",
+   "evolutions": []
+  },
+  {
+   "name": "Scurrow",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 43,
+    "attack": 54,
+    "spAttack": 34,
+    "defense": 37,
+    "spDefense": 46,
+    "speed": 41
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Furlash",
+     "level": 24
+    }
+   ]
+  },
+  {
+   "name": "Furlash",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 61,
+    "attack": 85,
+    "spAttack": 44,
+    "defense": 51,
+    "spDefense": 61,
+    "speed": 61
+   },
+   "category": "neutral monster",
+   "evolutions": []
+  },
+  {
+   "name": "Possel",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 44,
+    "attack": 46,
+    "spAttack": 29,
+    "defense": 37,
+    "spDefense": 61,
+    "speed": 48
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Scouverine",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Scouverine",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 64,
+    "attack": 77,
+    "spAttack": 37,
+    "defense": 48,
+    "spDefense": 102,
+    "speed": 54
+   },
+   "category": "neutral monster",
+   "evolutions": []
+  },
+  {
+   "name": "Relit",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 43,
+    "attack": 44,
+    "spAttack": 29,
+    "defense": 61,
+    "spDefense": 48,
+    "speed": 34
+   },
+   "category": "terra monster",
+   "evolutions": [
+    {
+     "name": "Reliroc",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Reliroc",
+   "elements": [
+    "ground"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 64,
+    "attack": 63,
+    "spAttack": 37,
+    "defense": 102,
+    "spDefense": 58,
+    "speed": 58
+   },
+   "category": "terra monster",
+   "evolutions": []
+  },
+  {
+   "name": "Flufferpie",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 34,
+    "attack": 29,
+    "spAttack": 39,
+    "defense": 29,
+    "spDefense": 44,
+    "speed": 29
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Moscoon",
+     "level": 12
+    }
+   ]
+  },
+  {
+   "name": "Moscoon",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 48,
+    "attack": 29,
+    "spAttack": 32,
+    "defense": 92,
+    "spDefense": 68,
+    "speed": 20
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Sylmoth",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Sylmoth",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "lepidopteran",
+   "tier": "peak",
+   "stats": {
+    "hp": 61,
+    "attack": 46,
+    "spAttack": 78,
+    "defense": 46,
+    "spDefense": 56,
+    "speed": 80
+   },
+   "category": "wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Meridor",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 66,
+    "attack": 65,
+    "spAttack": 75,
+    "defense": 51,
+    "spDefense": 68,
+    "speed": 71
+   },
+   "category": "wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Lumidile",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 43,
+    "attack": 58,
+    "spAttack": 48,
+    "defense": 31,
+    "spDefense": 37,
+    "speed": 43
+   },
+   "category": "thunder monster",
+   "evolutions": [
+    {
+     "name": "Sparkodile",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Sparkodile",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 65,
+    "attack": 92,
+    "spAttack": 82,
+    "defense": 44,
+    "spDefense": 51,
+    "speed": 56
+   },
+   "category": "thunder monster",
+   "evolutions": []
+  },
+  {
+   "name": "Pylume",
+   "elements": [
+    "fire",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 45,
+    "attack": 41,
+    "spAttack": 61,
+    "defense": 31,
+    "spDefense": 37,
+    "speed": 56
+   },
+   "category": "pyro / wind monster",
+   "evolutions": [
+    {
+     "name": "Vulcatrice",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Vulcatrice",
+   "elements": [
+    "fire",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 72,
+    "attack": 65,
+    "spAttack": 99,
+    "defense": 54,
+    "spDefense": 85,
+    "speed": 58
+   },
+   "category": "pyro / wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Cupine",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 43,
+    "attack": 58,
+    "spAttack": 34,
+    "defense": 37,
+    "spDefense": 39,
+    "speed": 46
+   },
+   "category": "flora monster",
+   "evolutions": [
+    {
+     "name": "Vercupine",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Vercupine",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 69,
+    "attack": 85,
+    "spAttack": 54,
+    "defense": 61,
+    "spDefense": 51,
+    "speed": 95
+   },
+   "category": "flora monster",
+   "evolutions": []
+  },
+  {
+   "name": "Purrachne",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 39,
+    "attack": 44,
+    "spAttack": 27,
+    "defense": 41,
+    "spDefense": 41,
+    "speed": 41
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Prowloom",
+     "level": 24
+    }
+   ]
+  },
+  {
+   "name": "Prowloom",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 61,
+    "attack": 78,
+    "spAttack": 41,
+    "defense": 44,
+    "spDefense": 65,
+    "speed": 75
+   },
+   "category": "neutral monster",
+   "evolutions": []
+  },
+  {
+   "name": "Ligouste",
+   "elements": [
+    "water"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 37,
+    "attack": 36,
+    "spAttack": 43,
+    "defense": 32,
+    "spDefense": 32,
+    "speed": 41
+   },
+   "category": "aqua monster",
+   "evolutions": [
+    {
+     "name": "Flutterfly",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Flutterfly",
+   "elements": [
+    "water",
+    "flying"
+   ],
+   "raceId": "insectoid",
+   "tier": "medium",
+   "stats": {
+    "hp": 68,
+    "attack": 70,
+    "spAttack": 54,
+    "defense": 51,
+    "spDefense": 48,
+    "speed": 116
+   },
+   "category": "aqua / wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Duskadee",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 44,
+    "attack": 48,
+    "spAttack": 41,
+    "defense": 32,
+    "spDefense": 39,
+    "speed": 58
+   },
+   "category": "wind monster",
+   "evolutions": [
+    {
+     "name": "Corcroak",
+     "level": 24
+    }
+   ]
+  },
+  {
+   "name": "Corcroak",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 68,
+    "attack": 54,
+    "spAttack": 65,
+    "defense": 54,
+    "spDefense": 78,
+    "speed": 88
+   },
+   "category": "wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Pupyro",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 36,
+    "attack": 32,
+    "spAttack": 39,
+    "defense": 34,
+    "spDefense": 49,
+    "speed": 24
+   },
+   "category": "pyro monster",
+   "evolutions": [
+    {
+     "name": "Scarava",
+     "level": 18
+    }
+   ]
+  },
+  {
+   "name": "Scarava",
+   "elements": [
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 59,
+    "attack": 68,
+    "spAttack": 75,
+    "defense": 51,
+    "spDefense": 41,
+    "speed": 61
+   },
+   "category": "pyro monster",
+   "evolutions": []
+  },
+  {
+   "name": "Puppip",
+   "elements": [
+    "water",
+    "ice"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 46,
+    "attack": 48,
+    "spAttack": 44,
+    "defense": 34,
+    "spDefense": 61,
+    "speed": 41
+   },
+   "category": "aqua / frost monster",
+   "evolutions": [
+    {
+     "name": "Harwhal",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Harwhal",
+   "elements": [
+    "water",
+    "ice"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 64,
+    "attack": 85,
+    "spAttack": 54,
+    "defense": 44,
+    "spDefense": 66,
+    "speed": 68
+   },
+   "category": "aqua / frost monster",
+   "evolutions": []
+  },
+  {
+   "name": "Lirora",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 45,
+    "attack": 51,
+    "spAttack": 46,
+    "defense": 37,
+    "spDefense": 44,
+    "speed": 48
+   },
+   "category": "frost monster",
+   "evolutions": [
+    {
+     "name": "Fenrora",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Fenrora",
+   "elements": [
+    "ice"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 67,
+    "attack": 77,
+    "spAttack": 71,
+    "defense": 48,
+    "spDefense": 56,
+    "speed": 83
+   },
+   "category": "frost monster",
+   "evolutions": []
+  },
+  {
+   "name": "Amarily",
+   "elements": [
+    "grass",
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 47,
+    "attack": 37,
+    "spAttack": 48,
+    "defense": 34,
+    "spDefense": 61,
+    "speed": 54
+   },
+   "category": "flora / pyro monster",
+   "evolutions": [
+    {
+     "name": "Cerbanero",
+     "level": 30
+    }
+   ]
+  },
+  {
+   "name": "Cerbanero",
+   "elements": [
+    "grass",
+    "fire"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 78,
+    "attack": 88,
+    "spAttack": 71,
+    "defense": 61,
+    "spDefense": 75,
+    "speed": 92
+   },
+   "category": "flora / pyro monster",
+   "evolutions": []
+  },
+  {
+   "name": "Tadfodil",
+   "elements": [
+    "water",
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 41,
+    "attack": 34,
+    "spAttack": 48,
+    "defense": 29,
+    "spDefense": 39,
+    "speed": 54
+   },
+   "category": "aqua / flora monster",
+   "evolutions": [
+    {
+     "name": "Croaver",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Croaver",
+   "elements": [
+    "water",
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 62,
+    "attack": 51,
+    "spAttack": 75,
+    "defense": 48,
+    "spDefense": 88,
+    "speed": 48
+   },
+   "category": "aqua / flora monster",
+   "evolutions": []
+  },
+  {
+   "name": "Esculin",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 42,
+    "attack": 37,
+    "spAttack": 48,
+    "defense": 32,
+    "spDefense": 41,
+    "speed": 51
+   },
+   "category": "neutral monster",
+   "evolutions": [
+    {
+     "name": "Drairet",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Drairet",
+   "elements": [
+    "normal"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 60,
+    "attack": 63,
+    "spAttack": 70,
+    "defense": 41,
+    "spDefense": 48,
+    "speed": 78
+   },
+   "category": "neutral monster",
+   "evolutions": []
+  },
+  {
+   "name": "Kodol",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 41,
+    "attack": 31,
+    "spAttack": 41,
+    "defense": 48,
+    "spDefense": 54,
+    "speed": 34
+   },
+   "category": "thunder monster",
+   "evolutions": [
+    {
+     "name": "Raidol",
+     "level": 24
+    }
+   ]
+  },
+  {
+   "name": "Raidol",
+   "elements": [
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 56,
+    "attack": 44,
+    "spAttack": 61,
+    "defense": 58,
+    "spDefense": 71,
+    "speed": 44
+   },
+   "category": "thunder monster",
+   "evolutions": []
+  },
+  {
+   "name": "Tuftwig",
+   "elements": [
+    "grass"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 39,
+    "attack": 26,
+    "spAttack": 43,
+    "defense": 32,
+    "spDefense": 41,
+    "speed": 54
+   },
+   "category": "flora monster",
+   "evolutions": [
+    {
+     "name": "Dandrift",
+     "level": 21
+    }
+   ]
+  },
+  {
+   "name": "Dandrift",
+   "elements": [
+    "grass",
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 64,
+    "attack": 51,
+    "spAttack": 71,
+    "defense": 51,
+    "spDefense": 65,
+    "speed": 82
+   },
+   "category": "flora / wind monster",
+   "evolutions": []
+  },
+  {
+   "name": "Celfin",
+   "elements": [
+    "water",
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 42,
+    "attack": 54,
+    "spAttack": 41,
+    "defense": 34,
+    "spDefense": 34,
+    "speed": 48
+   },
+   "category": "aqua / thunder monster",
+   "evolutions": [
+    {
+     "name": "Amprey",
+     "level": 27
+    }
+   ]
+  },
+  {
+   "name": "Amprey",
+   "elements": [
+    "water",
+    "electric"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "medium",
+   "stats": {
+    "hp": 68,
+    "attack": 77,
+    "spAttack": 58,
+    "defense": 54,
+    "spDefense": 54,
+    "speed": 95
+   },
+   "category": "aqua / thunder monster",
+   "evolutions": []
+  },
+  {
+   "name": "Wispurr",
+   "elements": [
+    "flying"
+   ],
+   "raceId": "mythicBeast",
+   "tier": "small",
+   "stats": {
+    "hp": 64,
+    "attack": 37,
+    "spAttack": 65,
+    "defense": 58,
+    "spDefense": 85,
+    "speed": 75
+   },
+   "category": "wind monster",
+   "evolutions": []
+  }
+ ]
+}

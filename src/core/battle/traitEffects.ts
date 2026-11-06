@@ -56,7 +56,12 @@ import { emitTraitEvent, queueOf } from './eventQueue'
 import { heal, loseHp, removeStatus, reviveMonster } from './hpChanges'
 import { amountStatValue, extremeStat, statDamage } from './damage'
 import { applyStageChange, stageCause } from './stageChanges'
-import { inflictStatus, rollRandomStatusId, hazardDamageFactor, statusTickAmount } from './statuses'
+import {
+  hazardDamageFactor,
+  inflictStatus,
+  rollRandomStatusId,
+  statusBurstAmount
+} from './statuses'
 import { addMinion, removeMinions, rollRandomMinionId } from './minions'
 import { insertExtraAction, movePendingAction } from './actionQueue'
 import { clearGlobalField, enterField, placeField } from './environment'
@@ -66,6 +71,7 @@ import { giveEquipment, swapEquipment, takeEquipment } from './itemLedger'
 import { eatHeldItems } from './heldItems'
 import { pendingSkillOf } from './actionQueue'
 import { POKEMON_EFFECT_RUNNERS } from './pokemonEffects'
+import { changeStamina, drainStamina, staminaChangeOf } from './stamina'
 
 /** Một lần chạy hiệu ứng: chủ trait, hệ số, các quái của sự kiện. */
 export interface EffectRun {
@@ -209,7 +215,8 @@ function perFactor(run: EffectRun, amount: AmountSpec): number {
 function amountOwner(run: EffectRun, of: string, target?: Monster): Monster | undefined {
   if (of === 'subject') return run.subject
   if (of === 'target') return target ?? run.other
-  if (of === 'other') return run.other
+  // Sự kiện không có bên kia (cuối lượt, vào sân): "bên kia" là từng mục tiêu của hiệu ứng.
+  if (of === 'other') return run.other ?? target
   return run.owner
 }
 
@@ -238,9 +245,7 @@ function basePlainAmount(
   if (!monster) return BIG_ZERO
   if ('record' in amount) {
     const ctx = monsterBattleContext(data, d, monster)
-    return recordTotal(ctx, amount.record, amount.side === true)
-      .times(percent)
-      .div(100)
+    return recordTotal(ctx, amount.record, amount.side).times(percent).div(100)
   }
   if ('stat' in amount) {
     return amountStatValue(battleStats(data, d, monster), amount.stat)
@@ -607,7 +612,13 @@ function randomTraitId(data: GameData, d: Draft): string | undefined {
 }
 
 /** Thêm trait tạm cho quái trên sân (mất khi rời sân). */
-function gainTrait(data: GameData, d: Draft, monster: Monster, traitId: string, level = 1): void {
+export function gainTrait(
+  data: GameData,
+  d: Draft,
+  monster: Monster,
+  traitId: string,
+  level = 1
+): void {
   const volatile = d.battle.volatiles[monster.id]
   if (!volatile || isFainted(data, monster)) return
   const gained = (volatile.gainedTraits ??= [])
@@ -756,6 +767,14 @@ const EFFECT_RUNNERS: Runners = {
       }
     })
   },
+  stamina(data, d, run, effect) {
+    const donors = effect.from ? resolveEffectTargets(data, d, run, effect.from) : []
+    forTargets(data, d, run, effect.to, (target) => {
+      if (effect.from)
+        drainStamina(data, d, { donors, receiver: target, amount: effect.amount ?? 0 })
+      else changeStamina(data, d, target, staminaChangeOf(data, d, target, effect))
+    })
+  },
   flatStat(data, d, run, effect) {
     const donors = effect.from ? resolveEffectTargets(data, d, run, effect.from) : []
     forTargets(data, d, run, effect.to, (target) => {
@@ -831,18 +850,9 @@ const EFFECT_RUNNERS: Runners = {
     forTargets(data, d, run, effect.to, (target) => {
       for (const statusId of effect.statusIds) {
         const status = target.statuses.find((s) => s.statusId === statusId)
-        const hook = data.statuses[statusId].hooks.find((h) => h.type === 'turnEndDamage')
-        if (!status || !hook || isFainted(data, target)) continue
-        const params = hook.params as { percent: number; basis?: 'max' | 'current' }
-        const percent = params.percent * ((status.potency ?? 100) / 100) * effect.turns
-        const factor = hazardDamageFactor(data, d, sideOf(d, target.id))
-        const amount = statusTickAmount(
-          data,
-          d,
-          target,
-          { statusId, percent, basis: params.basis ?? 'max' },
-          factor
-        )
+        if (!status || isFainted(data, target)) continue
+        const amount = statusBurstAmount(data, d, target, status, effect.turns)
+        if (!amount) continue
         if (effect.remove) removeStatus(d, target, statusId)
         loseHp(
           data,
@@ -998,6 +1008,63 @@ const EFFECT_RUNNERS: Runners = {
       giveEquipment(d, target, [{ storage: 'stack', itemId }], { temporary: true })
       delete recordOf(d, target.id).lastConsumedItemId
       log(d, { type: 'itemRecycled', monsterId: target.id, itemId })
+    })
+  },
+  amplifyStages(data, d, run, effect) {
+    forTargets(data, d, run, effect.to, (target) => {
+      const stages = d.battle.stages[target.id]
+      if (!stages) return
+      for (const stat of STAGE_STATS) {
+        const value = stages[stat] ?? 0
+        if (value === 0) continue
+        applyStageChange(data, d, {
+          targetId: target.id,
+          stat,
+          delta: Math.sign(value) * effect.amount,
+          cause: 'self',
+          echoed: true
+        })
+      }
+    })
+  },
+  removeStages(data, d, run, effect) {
+    forTargets(data, d, run, effect.to, (target) => {
+      if (
+        hasAbilityFlag(data, target, 'stagesUnremovable', monsterBattleContext(data, d, target))
+      ) {
+        return
+      }
+      const stages = d.battle.stages[target.id]
+      if (!stages) return
+      for (const stat of effect.stats ?? STAGE_STATS) {
+        const value = stages[stat] ?? 0
+        if (effect.sign === 'positive' ? value <= 0 : value >= 0) continue
+        const size = Math.min(Math.abs(value), effect.amount ?? Math.abs(value))
+        const next = value - Math.sign(value) * size
+        if (next === 0) delete stages[stat]
+        else stages[stat] = next
+      }
+    })
+  },
+  transferStages(data, d, run, effect) {
+    const sources = resolveEffectTargets(data, d, run, effect.from)
+    forTargets(data, d, run, effect.to, (target) => {
+      for (const source of sources) {
+        const stages = d.battle.stages[source.id]
+        if (!stages || source.id === target.id) continue
+        for (const stat of effect.stats ?? STAGE_STATS) {
+          const value = stages[stat] ?? 0
+          if (effect.sign === 'positive' ? value <= 0 : value >= 0) continue
+          delete stages[stat]
+          applyStageChange(data, d, {
+            targetId: target.id,
+            stat,
+            delta: value,
+            cause: 'foe',
+            sourceId: source.id
+          })
+        }
+      }
     })
   },
   restoreStages(data, d, run, effect) {

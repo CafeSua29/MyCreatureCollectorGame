@@ -16,9 +16,10 @@ import {
   pick,
   rollPercent
 } from '../shared'
-import { getMaxHp, isFainted, percentOfMaxHp } from '../monster'
+import { getCurrentHp, getMaxHp, isFainted, percentOfMaxHp } from '../monster'
 import type { GameData, Monster, Skill, SkillTarget, StageStat } from '../model'
 import { isBattleStageStat } from './paramChecks'
+import { checkTraitEffects } from './traitDsl'
 import { statLowerBlockingField } from './fieldQueries'
 import { stageTraitEffects, statLowerBlockingTrait } from './stageTraitQueries'
 import { FIELD_SKILL_EFFECTS } from './fieldSkillEffects'
@@ -35,7 +36,8 @@ import {
   noChanges,
   otherSide,
   type PassOn,
-  type SkillEffectHandler
+  type SkillEffectHandler,
+  SwitchOutRequest
 } from './skillEffectTypes'
 
 /** Mục tiêu nhắm phe mình (hiệu ứng lên `target` là quái ta). */
@@ -144,6 +146,8 @@ interface HealParams {
   percent: number
   /** Bỏ trống = self. target chỉ cho skill nhắm phe mình (không hồi máu cho địch). */
   who?: 'self' | 'target'
+  /** Lượng theo máu tối đa (mặc định) hay máu hiện tại của quái được hồi (Apple Tree). */
+  basis?: 'max' | 'current'
 }
 
 const healedMonster = (params: unknown, user: Monster, target: Monster): Monster =>
@@ -160,6 +164,9 @@ const heal: SkillEffectHandler = {
     if (obj.who !== undefined && obj.who !== 'self' && obj.who !== 'target') {
       issues.push('who phải là "self" hoặc "target"')
     }
+    if (obj.basis !== undefined && obj.basis !== 'max' && obj.basis !== 'current') {
+      issues.push('basis phải là "max" hoặc "current"')
+    }
     return issues
   },
   checkTarget(params, target) {
@@ -172,7 +179,9 @@ const heal: SkillEffectHandler = {
   // (hàm heal dùng chung của battle/draft.ts).
   apply(params, { data, user, target, rng }) {
     const monster = healedMonster(params, user, target)
-    const amount = percentOfMaxHp(getMaxHp(data, monster), (params as HealParams).percent)
+    const typed = params as HealParams
+    const pool = typed.basis === 'current' ? getCurrentHp(data, monster) : getMaxHp(data, monster)
+    const amount = percentOfMaxHp(pool, typed.percent)
     return { ...noChanges(rng), heals: [{ monsterId: monster.id, amount }] }
   },
   aiValue(params, { data, user, target }) {
@@ -229,7 +238,9 @@ const applyStatus: SkillEffectHandler = {
     const { statusId, chance } = params as ApplyStatusParams
     if (targetIsAlly) return 0
     const value = statusAiValue(data, field, { monster: target, side: otherSide(side) }, statusId)
-    return value * (effectChance(chance, chanceMultiplier) / 100)
+    // Buff lên địch (phản ứng hệ, skill có mặt xấu) có hại cho phe quái dùng.
+    const sign = data.statuses[statusId].kind === 'buff' ? -1 : 1
+    return sign * value * (effectChance(chance, chanceMultiplier) / 100)
   }
 }
 
@@ -297,6 +308,7 @@ const forceSwitch: SkillEffectHandler = {
 // ---------- switchOut: quái dùng skill rút về, quái dự bị vào thay (kiểu U-turn) ----------
 
 const PASS_ONS: readonly PassOn[] = ['all', 'substitute']
+const SWITCH_OUT_KEYS = ['passOn', 'onlyIfResisted', 'incomingEffects', 'coatIncomingTurns']
 
 const switchOut: SkillEffectHandler = {
   // Một lần cho cả chiêu, sau mọi hiệu ứng khác; chỉ khi trúng ít nhất một mục tiêu.
@@ -304,20 +316,28 @@ const switchOut: SkillEffectHandler = {
   switchesUserOut: true,
   // passOn: truyền trạng thái tạm cho quái vào thay (all: bậc trận, thế thân, Perish Song như
   // Baton Pass; substitute: chỉ thế thân như Shed Tail); bỏ trống = không truyền (U-turn).
-  validateParams(params) {
+  validateParams(params, data) {
     const obj = asObject(params)
     if (!obj) return ['params phải là object']
-    const issues = Object.keys(obj).some((key) => key !== 'passOn')
-      ? ['hook này chỉ có tham số passOn']
+    const issues = Object.keys(obj).some((key) => !SWITCH_OUT_KEYS.includes(key))
+      ? [`hook này chỉ có tham số ${SWITCH_OUT_KEYS.join(', ')}`]
       : []
+    if (obj.onlyIfResisted !== undefined && obj.onlyIfResisted !== true) {
+      issues.push('onlyIfResisted chỉ được là true')
+    }
+    if (obj.incomingEffects !== undefined) {
+      issues.push(...checkTraitEffects(obj.incomingEffects, 'incomingEffects', data))
+    }
+    if (obj.coatIncomingTurns !== undefined) {
+      issues.push(...checkInteger(obj.coatIncomingTurns, 'coatIncomingTurns', 1))
+    }
     if (obj.passOn !== undefined && !(PASS_ONS as readonly unknown[]).includes(obj.passOn)) {
       issues.push('passOn phải là "all" hoặc "substitute"')
     }
     return issues
   },
   apply(params, { rng }) {
-    const { passOn } = params as { passOn?: PassOn }
-    return { ...noChanges(rng), switchOut: passOn === undefined ? {} : { passOn } }
+    return { ...noChanges(rng), switchOut: { ...(params as SwitchOutRequest) } }
   },
   // AI không đổi quái (mục "AI trận đấu"): rút về không cộng điểm, chỉ phần sát thương / hiệu ứng khác.
   aiValue: () => 0

@@ -227,6 +227,35 @@ export function perishAtTurnEnd(data: GameData, d: Draft): void {
   }
 }
 
+// ---------- Cộng hưởng ----------
+
+/**
+ * Resonance (docs/rules/element-reactions.md): mỗi lần cộng một, đủ `threshold` lần thì mất hết máu
+ * còn lại. Boss hoang không bị (như Perish Song, để không hạ boss chỉ bằng vài đòn); rời sân thì mất.
+ */
+export function addResonance(
+  data: GameData,
+  d: Draft,
+  { monsterId, threshold }: { monsterId: string; threshold: number }
+): void {
+  const volatile = d.battle.volatiles[monsterId]
+  const monster = findMonster(d, monsterId)
+  if (!volatile || isFainted(data, monster)) return
+  if (d.battle.isBoss && sideOf(d, monsterId) === 'enemy') return
+  const count = (volatile.resonance ?? 0) + 1
+  log(d, { type: 'resonance', monsterId, count, threshold })
+  if (count < threshold) {
+    volatile.resonance = count
+    return
+  }
+  delete volatile.resonance
+  loseHp(data, d, monster, getCurrentHp(data, monster), (amount) => ({
+    type: 'perished',
+    monsterId,
+    amount
+  }))
+}
+
 // ---------- Truyền khi rút về ----------
 
 /** Phần trạng thái tạm của quái rút về cần giữ lại để truyền (lấy trước khi nó rời sân). */

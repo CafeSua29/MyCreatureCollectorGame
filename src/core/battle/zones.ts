@@ -1,6 +1,7 @@
 // Hiểm địa (docs/rules/zones.md): vào ở thị trấn khi đạt điều kiện, khám phá từng bước (loại bước
 // theo registry ZONE_STEPS), bước cuối là boss canh giữ, rời giữa chừng. Việc sau trận hiểm địa ở
-// SPECIAL_BATTLE_RULES.zone (specialBattles.ts).
+// SPECIAL_BATTLE_RULES.zone (specialBattles.ts). Cổng thế giới (mục "Cổng thế giới") dùng chung luồng
+// khám phá: vào bằng enterPortal, trọng số bước của config.zones.portals, thêm bước tổ quái / thu thập.
 
 import { ActionError, pickWeighted, type RngState } from '../shared'
 import { addItems, removeItems, rollChestItems } from '../inventory'
@@ -12,6 +13,8 @@ import {
   generateAnyBossEncounter,
   generateEncounter,
   generateFloorBossEncounter,
+  portalVisit,
+  requirePortal,
   requireZone,
   rollZoneVisit,
   zoneSite,
@@ -58,6 +61,7 @@ export function enterZone(data: GameData, state: GameState, zoneId: string): Gam
   requireTown(state)
   assertNoTournament(state)
   const zone = requireZone(data, zoneId)
+  if (zone.portal) throw new ActionError('zoneIsPortal', { zoneId })
   assertZoneOpen(state, zoneId)
   assertZoneRequirements(data, state, zone)
   const [visit, rng] = rollZoneVisit(data, state.rng, { zoneId, highestFloor: state.highestFloor })
@@ -67,6 +71,16 @@ export function enterZone(data: GameData, state: GameState, zoneId: string): Gam
     inventory: consumeEntryItems(zone, state),
     zones: { ...state.zones, visit }
   }
+}
+
+/** Vào một cổng thế giới đang mở (thị trấn): tiếp tục từ số bước đã đi của cổng, không cần điều kiện. */
+export function enterPortal(data: GameData, state: GameState, portalId: string): GameState {
+  assertReadyForBattle(data, state)
+  requireTown(state)
+  assertNoTournament(state)
+  if (state.zones.visit) throw new ActionError('zoneInProgress')
+  const visit = portalVisit(data, state, requirePortal(state, portalId))
+  return { ...state, zones: { ...state.zones, visit } }
 }
 
 /** Rời hiểm địa giữa hai bước: giữ mọi thứ đã nhận, hiểm địa khóa như lượt vào đã xong. */
@@ -98,7 +112,7 @@ function openTreasure(
     table,
     kind,
     visit
-  }: { table: ZoneLootTable; kind: 'treasure' | 'rareTreasure'; visit: ZoneVisit }
+  }: { table: ZoneLootTable; kind: 'treasure' | 'rareTreasure' | 'gather'; visit: ZoneVisit }
 ): GameState {
   const [items, rng] = rollChestItems(data, state.rng, {
     entries: table.items,
@@ -120,12 +134,12 @@ function openZoneBattle(
     visit,
     site,
     kind
-  }: Pick<StepContext, 'visit' | 'site'> & { kind: 'battle' | 'elite' | 'guardian' }
+  }: Pick<StepContext, 'visit' | 'site'> & { kind: 'battle' | 'elite' | 'guardian' | 'hive' }
 ): GameState {
   const generate =
     kind === 'guardian'
       ? generateFloorBossEncounter
-      : kind === 'elite'
+      : kind === 'elite' || kind === 'hive'
         ? generateAnyBossEncounter
         : generateEncounter
   const encounter = generate(data, state.rng, site, state.nextMonsterId)
@@ -133,7 +147,12 @@ function openZoneBattle(
   return openBattle(data, marked, {
     site,
     encounter,
-    special: { kind: 'zone', zoneId: visit.zoneId, guardian: kind === 'guardian' }
+    special: {
+      kind: 'zone',
+      zoneId: visit.zoneId,
+      guardian: kind === 'guardian',
+      ...(kind === 'hive' ? { hive: true as const } : {})
+    }
   })
 }
 
@@ -151,6 +170,19 @@ const ZONE_STEPS: Record<
     openTreasure(data, state, { table: zone.treasure, kind: 'treasure', visit }),
   rareTreasure: (data, state, { zone, visit }) =>
     openTreasure(data, state, { table: zone.rareTreasure, kind: 'rareTreasure', visit }),
+  // Tổ quái của cổng thế giới: trận tinh anh, thắng thì cổng bớt một tổ (specialBattles.ts).
+  hive: (data, state, { visit, site }) =>
+    openZoneBattle(data, state, { visit, site, kind: 'hive' }),
+  // Công trình thu thập của cổng: rương thường tung gatherRolls lượt.
+  gather: (data, state, { zone, visit }) =>
+    openTreasure(data, state, {
+      table: {
+        ...zone.treasure,
+        rolls: zone.treasure.rolls * data.config.zones.portals.gatherRolls
+      },
+      kind: 'gather',
+      visit
+    }),
   // Linh tuyền: hồi % max HP cho mọi quái trong đội, kể cả quái đã gục.
   spring: (data, state, { visit }) => {
     const healPercent = data.config.zones.springHealPercent
@@ -159,9 +191,10 @@ const ZONE_STEPS: Record<
   }
 }
 
-/** Loại bước theo trọng số của config (bỏ loại trọng số 0). */
-function rollStepKind(data: GameData, rng: RngState): [ZoneStepKind, RngState] {
-  const weights = data.config.zones.stepWeights
+/** Loại bước theo trọng số của config (cổng thế giới: trọng số riêng; bỏ loại trọng số 0). */
+function rollStepKind(data: GameData, rng: RngState, visit: ZoneVisit): [ZoneStepKind, RngState] {
+  const { zones } = data.config
+  const weights = visit.portalId === undefined ? zones.stepWeights : zones.portals.stepWeights
   const kinds = ZONE_STEP_KINDS.filter((kind) => weights[kind] > 0)
   return pickWeighted(rng, kinds, (kind) => weights[kind])
 }
@@ -180,7 +213,7 @@ export function exploreZone(data: GameData, state: GameState): GameState {
   if (visit.stepsTaken + 1 >= visit.steps) {
     return openZoneBattle(data, state, { visit, site, kind: 'guardian' })
   }
-  const [kind, rng] = rollStepKind(data, state.rng)
+  const [kind, rng] = rollStepKind(data, state.rng, visit)
   const next = { ...visit, stepsTaken: visit.stepsTaken + 1 }
   return ZONE_STEPS[kind](data, { ...state, rng }, { zone, site, visit: next })
 }

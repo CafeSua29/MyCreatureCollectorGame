@@ -66,9 +66,11 @@ export const TRADE_WANTS: Readonly<Record<TradeWantKind, TradeWantHandler>> = {
       want.kind === 'race' && raceMatches(data, monster.raceId, want.raceId),
     isValid: (data, want) => want.kind === 'race' && Object.hasOwn(data.races, want.raceId)
   },
-  // Một hệ của loài đó.
+  // Một hệ của loài đó; loài không hệ thì đòi đúng loài.
   element: {
     roll({ species, minLevel, rng }) {
+      if (species.elementIds.length === 0)
+        return TRADE_WANTS.species.roll({ species, minLevel, rng })
       let elementId: string
       ;[elementId, rng] = pick(rng, species.elementIds)
       return [{ kind: 'element', elementId, minLevel }, rng]

@@ -383,16 +383,16 @@ describe('Minimize', () => {
 })
 
 describe('kiểm tra dữ liệu', () => {
-  it('bide cần fixedDamage stored; onAlly chỉ cho skill nhắm enemy; formOverrides cần thay đổi', () => {
+  it('bide cần fixedDamage stored; onAlly chỉ cho skill nhắm enemy / self; formOverrides cần thay đổi', () => {
     const issues = dataIssuesAfter((r) => {
       r.skills.push(
         attack('badBide', { bide: { turns: 2 } }),
-        attack('badAlly', { target: 'self', category: 'status', power: 0, onAlly: [] }),
+        attack('badAlly', { target: 'allAllies', category: 'status', power: 0, onAlly: [] }),
         attack('badForm', { formOverrides: [{ speciesIds: ['weakling'] }] })
       )
     }).join('\n')
     expect(issues).toContain('bide cần fixedDamage kiểu stored')
-    expect(issues).toContain('onAlly chỉ cho skill nhắm enemy')
+    expect(issues).toContain('onAlly chỉ cho skill nhắm enemy / self')
     expect(issues).toContain('cần ít nhất một trong')
   })
 })

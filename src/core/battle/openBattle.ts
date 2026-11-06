@@ -12,6 +12,9 @@ import {
 } from '../registries'
 import { equipBossUnique, type Encounter, type FloorSite } from '../world'
 import { isFainted } from '../monster'
+import { essenceBattleTraitIds } from '../progression'
+import { rollBossAdvantages } from './bossScout'
+import { gainTrait } from './traitEffects'
 import {
   bestRealmReached,
   GLOBAL_FIELD_LAYERS,
@@ -274,8 +277,38 @@ export function openBattle(
   const onField = [...occupantIds(battle.enemySlots), ...occupantIds(battle.playerSlots)].map(
     (id) => findMonster(d, id)
   )
+  applyBossAdvantage(data, d, encounter)
+  applyEssenceTraits(data, d)
   triggerEntryEffects(data, d, onField)
   // Trait vào sân (đầu trận) có thể hạ quái: phân thắng thua / chờ thay quái như cuối lượt.
   settleAfterTurn(data, d)
   return d
+}
+
+/** Tinh chất trong trận (docs/rules/essences.md): mọi quái của người chơi nhận trait tạm tới hết trận. */
+function applyEssenceTraits(data: GameData, d: Draft): void {
+  for (const traitId of essenceBattleTraitIds(data, d.essences)) {
+    for (const monster of playerFighters(data, d)) gainTrait(data, d, monster, traitId)
+  }
+}
+
+/**
+ * Lợi thế boss (docs/rules/shiny-boss.md mục "Lợi thế boss"): tung ngẫu nhiên mỗi trận boss; boss tầng đã do
+ * thám dùng lợi thế đã tung lúc do thám (rồi bỏ khỏi danh sách, lần sau phải do thám lại). Thành trait tạm
+ * của mọi quái địch; boss thế giới (HP vô hạn) không có.
+ */
+function applyBossAdvantage(data: GameData, d: Draft, encounter: Encounter): void {
+  if (!encounter.isBoss || !data.config.boss.advantages) return
+  if (d.battle.enemies.some((enemy) => enemy.endlessHp)) return
+  const scouted = d.scoutedBosses.find((entry) => entry.floor === encounter.advantageFloor)
+  let traitIds: string[]
+  if (scouted) {
+    traitIds = scouted.advantageTraitIds
+    d.scoutedBosses = d.scoutedBosses.filter((entry) => entry !== scouted)
+  } else {
+    ;[traitIds, d.rng] = rollBossAdvantages(data, d.rng)
+  }
+  for (const traitId of traitIds) {
+    for (const enemy of d.battle.enemies) gainTrait(data, d, enemy, traitId)
+  }
 }

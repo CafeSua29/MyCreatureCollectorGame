@@ -15,6 +15,8 @@
 // - Giữ: baseSpeciesId, race, hệ, skill, level, EXP, gen, gender, biệt danh, máu đã mất,
 //   skill chờ học. Xóa hướng tiến hóa chờ chọn (quái fuse không tiến hóa).
 // - Kế thừa tối đa config.fusion.inheritSkills skill người chơi chọn của quái phụ (fusionSkills.ts).
+// - Người chơi chọn trait giữ (chắc chắn vào ô trước) và gen từng chỉ số lấy của bên nào
+//   (fusionChoices.ts); tinh chất tăng trưởng cộng gen cho quái vừa fuse (essences.ts).
 
 import { assertNotBond } from '../tamer'
 import { recordQuestEvent } from '../quests'
@@ -59,11 +61,22 @@ import {
   type FuseRaceMatch,
   type FusionAidItem,
   type GameData,
+  type EssenceState,
   type GameState,
   type Monster,
+  type StatName,
   type TraitInstance
 } from '../model'
 import { fuseRaceMatch, fuseSuccessChance } from './fusionChance'
+import {
+  NO_FUSION_CHOICES,
+  chosenGenes,
+  keptTraitCapacity,
+  parseFusionChoices,
+  type FusionChoices,
+  type GeneSource
+} from './fusionChoices'
+import { applyEssenceGrowth } from './essences'
 import {
   NO_SKILL_INHERITANCE,
   applySkillInheritance,
@@ -115,7 +128,7 @@ export function previewFusion(
   data: GameData,
   base: Monster,
   sub: Monster,
-  boostItemId?: string
+  { boostItemId, essences = NO_ESSENCES }: { boostItemId?: string; essences?: EssenceState } = {}
 ): {
   canFuse: boolean
   newSpeciesIds: string[]
@@ -131,6 +144,8 @@ export function previewFusion(
   inheritableSkillIds: string[]
   /** Điểm hồn tinh hoàn lại từ quái phụ (docs/rules/soul-levels.md). */
   soulCrystalRefund: number
+  /** Số trait mỗi bên được chọn giữ (mục "Chọn trait và gen"). */
+  keptTraitCapacity: { base: number; sub: number }
 } {
   const newSpeciesIds = newFusionSpecies(base, sub)
   const boostItem = findFusionAid(data, boostItemId, 'boost')
@@ -145,9 +160,15 @@ export function previewFusion(
     shinyStacks: base.shinyStacks + sub.shinyStacks,
     bossMultiplier: Math.max(base.bossMultiplier, sub.bossMultiplier),
     inheritableSkillIds: inheritableSkillIds(data, base, sub),
-    soulCrystalRefund: soulFuseRefund(data, sub)
+    soulCrystalRefund: soulFuseRefund(data, sub),
+    keptTraitCapacity: {
+      base: keptTraitCapacity(data, essences, base),
+      sub: keptTraitCapacity(data, essences, sub)
+    }
   }
 }
+
+const NO_ESSENCES: EssenceState = { owned: [], offer: null }
 
 const isSlotTrait = (data: GameData, trait: TraitInstance): boolean =>
   usesTraitSlot(data.traits[trait.id].kind)
@@ -171,40 +192,57 @@ export function pickFusionTraits(
   data: GameData,
   rng: RngState,
   pool: TraitInstance[],
-  slots: number
+  slots: number,
+  /** Trait chọn giữ: vào ô trước, không bị bỏ; trait bốc ra loại trừ với chúng thì bỏ qua. */
+  kept: readonly TraitInstance[] = []
 ): [TraitInstance[], RngState] {
   let shuffled: TraitInstance[]
   ;[shuffled, rng] = shuffle(rng, pool)
+  const groupOf = (trait: TraitInstance): string | undefined => data.traits[trait.id].exclusiveGroup
+  const keptGroups = new Set(kept.map(groupOf).filter((g) => g !== undefined))
   const selected: TraitInstance[] = []
   for (const trait of shuffled) {
-    if (selected.length >= slots) break
-    const group = data.traits[trait.id].exclusiveGroup
-    const clash =
-      group === undefined
-        ? -1
-        : selected.findIndex((t) => data.traits[t.id].exclusiveGroup === group)
+    if (kept.length + selected.length >= slots) break
+    const group = groupOf(trait)
+    if (group !== undefined && keptGroups.has(group)) continue
+    const clash = group === undefined ? -1 : selected.findIndex((t) => groupOf(t) === group)
     if (clash >= 0) selected.splice(clash, 1)
     else selected.push(trait)
   }
-  return [selected, rng]
+  return [[...kept.slice(0, slots), ...selected], rng]
 }
 
-/** Kết quả fuse của quái gốc (quái phụ do nơi gọi xóa đi); `inheritance` đã qua kiểm tra. */
+/** Lựa chọn của người chơi khi fuse (đã qua kiểm tra). */
+export interface FusionPlan {
+  inheritance?: SkillInheritance
+  choices?: FusionChoices
+  essences?: EssenceState
+}
+
+/** Kết quả fuse của quái gốc (quái phụ do nơi gọi xóa đi); lựa chọn đã qua kiểm tra. */
 export function fuseMonsters(
   data: GameData,
   rng: RngState,
   base: Monster,
   sub: Monster,
-  inheritance: SkillInheritance = NO_SKILL_INHERITANCE
+  {
+    inheritance = NO_SKILL_INHERITANCE,
+    choices = NO_FUSION_CHOICES,
+    essences = NO_ESSENCES
+  }: FusionPlan = {}
 ): [Monster, RngState] {
   const { config } = data
   const gain = fusionBonusGain(data, sub)
   const fusingBonusStats = mapBigStats((stat) => base.fusingBonusStats[stat].plus(gain[stat]))
   const traitSlots = Math.min(traitSlotCap(data, base), base.traitSlots + 1)
 
-  const pool = mergeDuplicates([...base.traits, ...sub.traits].filter((t) => isSlotTrait(data, t)))
+  const merged = mergeDuplicates(
+    [...base.traits, ...sub.traits].filter((t) => isSlotTrait(data, t))
+  )
+  const kept = merged.filter((t) => choices.keepTraitIds.includes(t.id))
+  const pool = merged.filter((t) => !choices.keepTraitIds.includes(t.id))
   let slotTraits: TraitInstance[]
-  ;[slotTraits, rng] = pickFusionTraits(data, rng, pool, traitSlots)
+  ;[slotTraits, rng] = pickFusionTraits(data, rng, pool, traitSlots, kept)
 
   const lineage = [...base.lineage]
   for (const speciesId of [sub.baseSpeciesId, ...sub.lineage]) {
@@ -215,6 +253,7 @@ export function fuseMonsters(
   // phụ mất theo nó).
   let fused: Monster = {
     ...base,
+    genes: chosenGenes(base, sub, choices.geneSources),
     speciesId: config.fusedSpeciesId,
     fused: true,
     lineage,
@@ -250,6 +289,8 @@ export function fuseMonsters(
     .reduce((sum, t) => sum + t.level, 0)
   if (bossLevel > 0) fused = mergeTraitLevel(fused, config.boss.traitId, bossLevel)
   fused = addShinyStacks(data, fused, base.shinyStacks + sub.shinyStacks)
+  // Tinh chất tăng trưởng: quái vừa fuse nhận thêm gen (docs/rules/essences.md).
+  fused = applyEssenceGrowth(data, essences, fused)
   return [applySkillInheritance(data, fused, sub, inheritance), rng]
 }
 
@@ -264,6 +305,10 @@ export interface FuseOrder {
   protectItemId?: string
   inheritSkillIds?: readonly string[]
   forgetSkillIds?: readonly string[]
+  /** Trait chọn giữ (mục "Chọn trait và gen" ở fusing.md). */
+  keepTraitIds?: readonly string[]
+  /** Gen từng chỉ số lấy của quái gốc (mặc định) hay quái phụ. */
+  geneSources?: Partial<Record<StatName, GeneSource>>
   /** Xác nhận bỏ món đang lắp không đủ chỗ về túi (docs/rules/capacity.md). */
   discardOverflow?: boolean
 }
@@ -298,6 +343,7 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   const protectItem = findFusionAid(data, order.protectItemId, 'protect')
   const isProtected = protectItem !== null && fusionAidProtectsBase(protectItem)
   const inheritance = parseSkillInheritance(data, base, sub, order)
+  const choices = parseFusionChoices(data, { essences: state.essences, base, sub }, order)
   // Kiểm tra trước khi tung: đội phải còn ít nhất 1 con kể cả khi thất bại.
   if (worstCaseParty(state, order, isProtected).length === 0) {
     throw new ActionError('partyWouldBeEmpty')
@@ -320,7 +366,13 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   const [succeeded, rolledRng] = rollPercent(state.rng, chance)
   let rng = rolledRng
   let result: Monster | null = isProtected ? base : null
-  if (succeeded) [result, rng] = fuseMonsters(data, rng, base, sub, inheritance)
+  if (succeeded) {
+    ;[result, rng] = fuseMonsters(data, rng, base, sub, {
+      inheritance,
+      choices,
+      essences: state.essences
+    })
+  }
   // Mốc lý lịch trên quái gốc còn lại: fuse thành công, hoặc thất bại nhưng được hộ mệnh.
   if (result) {
     const kind = succeeded ? 'fused' : 'fuseFailed'

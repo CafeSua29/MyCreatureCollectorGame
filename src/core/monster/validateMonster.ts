@@ -233,6 +233,22 @@ export function checkBigStats(value: unknown, where: string, min: number): strin
 }
 
 /** Hiệu ứng cấy: id trong serumEffects.json → cấp nguyên khác 0 (docs/rules/implant.md). */
+/** Luyện thể: bộ phận → kiểu của đúng bộ phận đó (docs/rules/body-refinement.md). */
+function checkRefinements(data: GameData, value: unknown, where: string): string[] {
+  const refinements = asObject(value)
+  if (!refinements) return [`${where} phải là object`]
+  return Object.entries(refinements).flatMap(([partId, refinementId]) => {
+    const refinement =
+      typeof refinementId === 'string' && Object.hasOwn(data.bodyRefinements, refinementId)
+        ? data.bodyRefinements[refinementId]
+        : undefined
+    if (!refinement) return [`${where}.${partId}: kiểu luyện thể lạ "${String(refinementId)}"`]
+    return refinement.partId === partId
+      ? []
+      : [`${where}.${partId}: kiểu "${refinement.id}" thuộc bộ phận "${refinement.partId}"`]
+  })
+}
+
 function checkImplantEffects(data: GameData, value: unknown, where: string): string[] {
   const effects = asObject(value)
   if (!effects) return [`${where} phải là object`]
@@ -339,6 +355,7 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   // Cấy ghép thất bại trừ chỉ số nên được phép âm (docs/rules/implant.md).
   issues.push(...checkBigStats(monster.implantBonusStats, at('implantBonusStats'), -Infinity))
   issues.push(...checkImplantEffects(data, monster.implantEffects, at('implantEffects')))
+  issues.push(...checkRefinements(data, monster.refinements, at('refinements')))
   issues.push(...checkInteger(monster.implantAttempts, at('implantAttempts'), 0))
   issues.push(...checkInteger(monster.implantFails, at('implantFails'), 0))
   if (monster.implantFails > monster.implantAttempts) {

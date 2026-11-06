@@ -1,0 +1,2286 @@
+{
+  "source": "idleMonsterFrontier",
+  "origin": "fantasy",
+  "species": [
+    {
+      "name": "Eagle",
+      "elements": ["normal"],
+      "raceId": "raptor",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Eagle Eye."
+    },
+    {
+      "name": "Rat",
+      "elements": ["normal"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 48,
+        "attack": 58,
+        "defense": 53,
+        "spAttack": 39,
+        "spDefense": 44,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Indecisive."
+    },
+    {
+      "name": "Toad",
+      "elements": ["normal"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 48,
+        "attack": 39,
+        "defense": 44,
+        "spAttack": 58,
+        "spDefense": 53,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Mage (Beasts)",
+      "flavor": "Core trait: Healer."
+    },
+    {
+      "name": "Wasp",
+      "elements": ["normal"],
+      "raceId": "hymenopteran",
+      "stats": {
+        "hp": 36,
+        "attack": 63,
+        "defense": 50,
+        "spAttack": 36,
+        "spDefense": 36,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Vengeful (Human)."
+    },
+    {
+      "name": "Dog",
+      "elements": ["normal"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Combo Hitter."
+    },
+    {
+      "name": "Beetle",
+      "elements": ["bug", "normal"],
+      "raceId": "beetle",
+      "stats": {
+        "hp": 65,
+        "attack": 37,
+        "defense": 51,
+        "spAttack": 37,
+        "spDefense": 51,
+        "speed": 47
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Vampire."
+    },
+    {
+      "name": "Slime",
+      "elements": ["normal"],
+      "raceId": "slime",
+      "stats": {
+        "hp": 4,
+        "attack": 169,
+        "defense": 87,
+        "spAttack": 11,
+        "spDefense": 8,
+        "speed": 11
+      },
+      "tier": "small",
+      "category": "Common Mage (Beasts)",
+      "flavor": "Core trait: Slime."
+    },
+    {
+      "name": "Scarlet Viper",
+      "elements": ["normal"],
+      "raceId": "serpent",
+      "stats": {
+        "hp": 30,
+        "attack": 80,
+        "defense": 55,
+        "spAttack": 40,
+        "spDefense": 35,
+        "speed": 50
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Venomous."
+    },
+    {
+      "name": "Bat",
+      "elements": ["flying", "normal"],
+      "raceId": "chiropteran",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Weasel."
+    },
+    {
+      "name": "Elephant",
+      "elements": ["bug", "normal"],
+      "raceId": "proboscid",
+      "stats": {
+        "hp": 74,
+        "attack": 37,
+        "defense": 55,
+        "spAttack": 28,
+        "spDefense": 51,
+        "speed": 46
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Rage."
+    },
+    {
+      "name": "Pirahna",
+      "elements": ["normal"],
+      "raceId": "fish",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Sneaky."
+    },
+    {
+      "name": "Scorpion",
+      "elements": ["bug", "normal"],
+      "raceId": "arachnid",
+      "stats": {
+        "hp": 30,
+        "attack": 90,
+        "defense": 60,
+        "spAttack": 30,
+        "spDefense": 30,
+        "speed": 50
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Hamstring."
+    },
+    {
+      "name": "Octopus",
+      "elements": ["normal"],
+      "raceId": "cephalopod",
+      "stats": {
+        "hp": 48,
+        "attack": 63,
+        "defense": 55,
+        "spAttack": 127,
+        "spDefense": 87,
+        "speed": 40
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Beasts)",
+      "flavor": "Core trait: Multi-hitter."
+    },
+    {
+      "name": "Mammoth",
+      "elements": ["flying", "normal"],
+      "raceId": "lepidopteran",
+      "stats": {
+        "hp": 90,
+        "attack": 75,
+        "defense": 83,
+        "spAttack": 60,
+        "spDefense": 75,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Beasts)",
+      "flavor": "Core trait: Taunt."
+    },
+    {
+      "name": "Golden Beetle",
+      "elements": ["bug", "normal"],
+      "raceId": "beetle",
+      "stats": {
+        "hp": 62,
+        "attack": 124,
+        "defense": 93,
+        "spAttack": 47,
+        "spDefense": 54,
+        "speed": 39
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Beasts)",
+      "flavor": "Core trait: Vampire."
+    },
+    {
+      "name": "Golden Viper",
+      "elements": ["normal"],
+      "raceId": "serpent",
+      "stats": {
+        "hp": 59,
+        "attack": 119,
+        "defense": 89,
+        "spAttack": 45,
+        "spDefense": 52,
+        "speed": 56
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Beasts)",
+      "flavor": "Core trait: Venomous."
+    },
+    {
+      "name": "Blood Hornet",
+      "elements": ["normal"],
+      "raceId": "hymenopteran",
+      "stats": {
+        "hp": 59,
+        "attack": 59,
+        "defense": 59,
+        "spAttack": 104,
+        "spDefense": 82,
+        "speed": 56
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Beasts)",
+      "flavor": "Core trait: Lobotomise."
+    },
+    {
+      "name": "Golden Shambler",
+      "elements": ["normal"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 76,
+        "attack": 107,
+        "defense": 92,
+        "spAttack": 46,
+        "spDefense": 61,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Beasts)",
+      "flavor": "Core trait: Ethereal."
+    },
+    {
+      "name": "Manticore",
+      "elements": ["normal"],
+      "raceId": "chimera",
+      "stats": {
+        "hp": 111,
+        "attack": 93,
+        "defense": 102,
+        "spAttack": 74,
+        "spDefense": 93,
+        "speed": 46
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Beasts)",
+      "flavor": "Core trait: Connoisseur."
+    },
+    {
+      "name": "Griffin",
+      "elements": ["normal"],
+      "raceId": "chimera",
+      "stats": {
+        "hp": 98,
+        "attack": 137,
+        "defense": 117,
+        "spAttack": 59,
+        "spDefense": 78,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Beasts)",
+      "flavor": "Core trait: Backstab."
+    },
+    {
+      "name": "Sphinx",
+      "elements": ["normal"],
+      "raceId": "chimera",
+      "stats": {
+        "hp": 79,
+        "attack": 159,
+        "defense": 119,
+        "spAttack": 60,
+        "spDefense": 70,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Beasts)",
+      "flavor": "Core trait: Merciless."
+    },
+    {
+      "name": "Lupogriff",
+      "elements": ["normal"],
+      "raceId": "chimera",
+      "stats": {
+        "hp": 61,
+        "attack": 81,
+        "defense": 71,
+        "spAttack": 162,
+        "spDefense": 111,
+        "speed": 34
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Beasts)",
+      "flavor": "Core trait: Growl."
+    },
+    {
+      "name": "Caterpillar",
+      "elements": ["normal"],
+      "raceId": "larva",
+      "stats": {
+        "hp": 79,
+        "attack": 40,
+        "defense": 60,
+        "spAttack": 179,
+        "spDefense": 129,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Beasts)",
+      "flavor": "Core trait: Born Again."
+    },
+    {
+      "name": "Greedy Wyvern",
+      "elements": ["dragon", "normal"],
+      "raceId": "wyvern",
+      "stats": {
+        "hp": 104,
+        "attack": 146,
+        "defense": 125,
+        "spAttack": 63,
+        "spDefense": 83,
+        "speed": 39
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Beasts)",
+      "flavor": "Core trait: Thief."
+    },
+    {
+      "name": "Infernal Wyvern",
+      "elements": ["dragon", "normal"],
+      "raceId": "wyvern",
+      "stats": {
+        "hp": 87,
+        "attack": 43,
+        "defense": 65,
+        "spAttack": 196,
+        "spDefense": 141,
+        "speed": 27
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Beasts)",
+      "flavor": "Core trait: Fire Bath."
+    },
+    {
+      "name": "Flying Monkey",
+      "elements": ["normal"],
+      "raceId": "primate",
+      "stats": {
+        "hp": 85,
+        "attack": 170,
+        "defense": 127,
+        "spAttack": 64,
+        "spDefense": 74,
+        "speed": 40
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Beasts)",
+      "flavor": "Core trait: Nimble."
+    },
+    {
+      "name": "T. Rex",
+      "elements": ["dragon", "normal"],
+      "raceId": "theropod",
+      "stats": {
+        "hp": 123,
+        "attack": 164,
+        "defense": 143,
+        "spAttack": 20,
+        "spDefense": 72,
+        "speed": 38
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Beasts)",
+      "flavor": "Core trait: Rampage."
+    },
+    {
+      "name": "Giant Gorilla",
+      "elements": ["bug", "normal"],
+      "raceId": "primate",
+      "stats": {
+        "hp": 74,
+        "attack": 222,
+        "defense": 148,
+        "spAttack": 74,
+        "spDefense": 74,
+        "speed": 37
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Beasts)",
+      "flavor": "Core trait: Pound."
+    },
+    {
+      "name": "Phoenix",
+      "elements": ["normal"],
+      "raceId": "mythicBird",
+      "stats": {
+        "hp": 97,
+        "attack": 48,
+        "defense": 73,
+        "spAttack": 218,
+        "spDefense": 158,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Beasts)",
+      "flavor": "Core trait: Magic Immunity."
+    },
+    {
+      "name": "Tiger",
+      "elements": ["normal"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 73,
+        "attack": 242,
+        "defense": 158,
+        "spAttack": 48,
+        "spDefense": 61,
+        "speed": 48
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Beasts)",
+      "flavor": "Core trait: Eternal Flame."
+    },
+    {
+      "name": "Warrior",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 57,
+        "attack": 48,
+        "defense": 52,
+        "spAttack": 38,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Humans)",
+      "flavor": "Core trait: Steely."
+    },
+    {
+      "name": "Mage",
+      "elements": ["psychic", "fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 36,
+        "attack": 45,
+        "defense": 41,
+        "spAttack": 54,
+        "spDefense": 45,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Mage (Humans)",
+      "flavor": "Core trait: Staff Bash."
+    },
+    {
+      "name": "Barbarian",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 48,
+        "attack": 58,
+        "defense": 53,
+        "spAttack": 39,
+        "spDefense": 44,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Humans)",
+      "flavor": "Core trait: Deep Cut."
+    },
+    {
+      "name": "Elementalist",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 39,
+        "attack": 39,
+        "defense": 39,
+        "spAttack": 69,
+        "spDefense": 54,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Mage (Humans)",
+      "flavor": "Core trait: Burn."
+    },
+    {
+      "name": "Paladin",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 39,
+        "attack": 59,
+        "defense": 49,
+        "spAttack": 49,
+        "spDefense": 44,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Warrior (Humans)",
+      "flavor": "Core trait: Healing Aura."
+    },
+    {
+      "name": "Elf",
+      "elements": ["fighting"],
+      "raceId": "elf",
+      "stats": {
+        "hp": 28,
+        "attack": 55,
+        "defense": 41,
+        "spAttack": 55,
+        "spDefense": 41,
+        "speed": 69
+      },
+      "tier": "small",
+      "category": "Common Mage (Humans)",
+      "flavor": "Core trait: Arcane Knowledge."
+    },
+    {
+      "name": "Ogre",
+      "elements": ["fighting"],
+      "raceId": "troll",
+      "stats": {
+        "hp": 57,
+        "attack": 57,
+        "defense": 57,
+        "spAttack": 29,
+        "spDefense": 43,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Humans)",
+      "flavor": "Core trait: Vengeful (Human)."
+    },
+    {
+      "name": "Morlock warrior",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 57,
+        "attack": 48,
+        "defense": 52,
+        "spAttack": 38,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Humans)",
+      "flavor": "Core trait: Piercing (Physical)."
+    },
+    {
+      "name": "Morlock Wizard",
+      "elements": ["psychic", "fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 48,
+        "attack": 58,
+        "defense": 53,
+        "spAttack": 39,
+        "spDefense": 44,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Mage (Humans)",
+      "flavor": "Core trait: Darkness."
+    },
+    {
+      "name": "Morlock Monk",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 36,
+        "attack": 27,
+        "defense": 32,
+        "spAttack": 73,
+        "spDefense": 54,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Mage (Humans)",
+      "flavor": "Core trait: Holy Spirit."
+    },
+    {
+      "name": "Hag",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 36,
+        "attack": 36,
+        "defense": 36,
+        "spAttack": 63,
+        "spDefense": 50,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Mage (Humans)",
+      "flavor": "Core trait: Dispell."
+    },
+    {
+      "name": "Wizard",
+      "elements": ["psychic", "fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 62,
+        "attack": 78,
+        "defense": 70,
+        "spAttack": 93,
+        "spDefense": 78,
+        "speed": 39
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Humans)",
+      "flavor": "Core trait: Inferno."
+    },
+    {
+      "name": "Pit Fighter",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 86,
+        "attack": 101,
+        "defense": 93,
+        "spAttack": 29,
+        "spDefense": 57,
+        "speed": 54
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Humans)",
+      "flavor": "Core trait: Killing Streak."
+    },
+    {
+      "name": "Centaur",
+      "elements": ["fighting"],
+      "raceId": "centaur",
+      "stats": {
+        "hp": 84,
+        "attack": 91,
+        "defense": 88,
+        "spAttack": 42,
+        "spDefense": 63,
+        "speed": 53
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Humans)",
+      "flavor": "Core trait: Horse Energy."
+    },
+    {
+      "name": "Treant",
+      "elements": ["grass", "fighting"],
+      "raceId": "tree",
+      "stats": {
+        "hp": 62,
+        "attack": 62,
+        "defense": 62,
+        "spAttack": 109,
+        "spDefense": 86,
+        "speed": 39
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Humans)",
+      "flavor": "Core trait: Healer."
+    },
+    {
+      "name": "Halberdier",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 73,
+        "attack": 102,
+        "defense": 88,
+        "spAttack": 44,
+        "spDefense": 58,
+        "speed": 55
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Humans)",
+      "flavor": "Core trait: Rend."
+    },
+    {
+      "name": "Acolyte",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 90,
+        "attack": 30,
+        "defense": 60,
+        "spAttack": 105,
+        "spDefense": 98,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Humans)",
+      "flavor": "Core trait: Psychic Shield."
+    },
+    {
+      "name": "Dwarf",
+      "elements": ["fighting"],
+      "raceId": "dwarf",
+      "stats": {
+        "hp": 103,
+        "attack": 103,
+        "defense": 103,
+        "spAttack": 15,
+        "spDefense": 59,
+        "speed": 37
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Humans)",
+      "flavor": "Core trait: Magic Armor."
+    },
+    {
+      "name": "Golem",
+      "elements": ["rock", "fighting"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 103,
+        "attack": 103,
+        "defense": 103,
+        "spAttack": 15,
+        "spDefense": 59,
+        "speed": 37
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Humans)",
+      "flavor": "Core trait: Harden."
+    },
+    {
+      "name": "Dreadnaught",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 115,
+        "attack": 115,
+        "defense": 115,
+        "spAttack": 57,
+        "spDefense": 86,
+        "speed": 32
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Humans)",
+      "flavor": "Core trait: Follow Through."
+    },
+    {
+      "name": "Elder",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 59,
+        "attack": 78,
+        "defense": 69,
+        "spAttack": 157,
+        "spDefense": 108,
+        "speed": 49
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Humans)",
+      "flavor": "Core trait: Ancient Power."
+    },
+    {
+      "name": "Cherub",
+      "elements": ["fighting"],
+      "raceId": "angel",
+      "stats": {
+        "hp": 61,
+        "attack": 81,
+        "defense": 71,
+        "spAttack": 162,
+        "spDefense": 111,
+        "speed": 34
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Humans)",
+      "flavor": "Core trait: Repurpose."
+    },
+    {
+      "name": "Amazon",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 111,
+        "attack": 111,
+        "defense": 111,
+        "spAttack": 56,
+        "spDefense": 84,
+        "speed": 46
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Humans)",
+      "flavor": "Core trait: Big Flex."
+    },
+    {
+      "name": "Brute",
+      "elements": ["fighting"],
+      "raceId": "alienRace",
+      "stats": {
+        "hp": 77,
+        "attack": 193,
+        "defense": 135,
+        "spAttack": 19,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Humans)",
+      "flavor": "Core trait: Savage."
+    },
+    {
+      "name": "Nymph",
+      "elements": ["fighting"],
+      "raceId": "fey",
+      "stats": {
+        "hp": 141,
+        "attack": 80,
+        "defense": 110,
+        "spAttack": 80,
+        "spDefense": 110,
+        "speed": 38
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Humans)",
+      "flavor": "Core trait: Ally."
+    },
+    {
+      "name": "Minotaur",
+      "elements": ["fighting"],
+      "raceId": "beastfolk",
+      "stats": {
+        "hp": 67,
+        "attack": 200,
+        "defense": 133,
+        "spAttack": 67,
+        "spDefense": 67,
+        "speed": 28
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Humans)",
+      "flavor": "Core trait: Gore."
+    },
+    {
+      "name": "Two Head",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 175,
+        "attack": 58,
+        "defense": 116,
+        "spAttack": 58,
+        "spDefense": 116,
+        "speed": 36
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Humans)",
+      "flavor": "Core trait: Double Trouble."
+    },
+    {
+      "name": "Yogi",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 65,
+        "attack": 22,
+        "defense": 43,
+        "spAttack": 238,
+        "spDefense": 151,
+        "speed": 41
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Humans)",
+      "flavor": "Core trait: Enlightened."
+    },
+    {
+      "name": "Angel",
+      "elements": ["fighting"],
+      "raceId": "angel",
+      "stats": {
+        "hp": 117,
+        "attack": 70,
+        "defense": 93,
+        "spAttack": 163,
+        "spDefense": 140,
+        "speed": 47
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Humans)",
+      "flavor": "Core trait: Resurrection."
+    },
+    {
+      "name": "Mermaid",
+      "elements": ["fighting"],
+      "raceId": "merfolk",
+      "stats": {
+        "hp": 97,
+        "attack": 218,
+        "defense": 158,
+        "spAttack": 48,
+        "spDefense": 73,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Humans)",
+      "flavor": "Core trait: Poseidon's Kiss."
+    },
+    {
+      "name": "Holy Maiden",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 117,
+        "attack": 187,
+        "defense": 152,
+        "spAttack": 47,
+        "spDefense": 82,
+        "speed": 47
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Humans)",
+      "flavor": "Core trait: Divine Inspiration."
+    },
+    {
+      "name": "Demon Knight",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Demons)",
+      "flavor": "Core trait: Deflect."
+    },
+    {
+      "name": "Flying Demon",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 39,
+        "attack": 59,
+        "defense": 49,
+        "spAttack": 49,
+        "spDefense": 44,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Warrior (Demons)",
+      "flavor": "Core trait: Multi-hitter."
+    },
+    {
+      "name": "Demon Squire",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 57,
+        "attack": 57,
+        "defense": 57,
+        "spAttack": 29,
+        "spDefense": 43,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Demons)",
+      "flavor": "Core trait: Steely."
+    },
+    {
+      "name": "Arch Demon",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 39,
+        "attack": 49,
+        "defense": 44,
+        "spAttack": 59,
+        "spDefense": 49,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Vengeful (Beast)."
+    },
+    {
+      "name": "Bonemancer",
+      "elements": ["ghost", "dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 36,
+        "attack": 36,
+        "defense": 36,
+        "spAttack": 63,
+        "spDefense": 50,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Healer."
+    },
+    {
+      "name": "Demon Spawn",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 30,
+        "attack": 50,
+        "defense": 40,
+        "spAttack": 70,
+        "spDefense": 50,
+        "speed": 50
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Weasel."
+    },
+    {
+      "name": "Mud Wraith",
+      "elements": ["ghost", "dark"],
+      "raceId": "wraith",
+      "stats": {
+        "hp": 61,
+        "attack": 17,
+        "defense": 39,
+        "spAttack": 52,
+        "spDefense": 56,
+        "speed": 65
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Mud Shield."
+    },
+    {
+      "name": "Eyes of Null",
+      "elements": ["dark"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Eagle Eye."
+    },
+    {
+      "name": "Beast",
+      "elements": ["normal"],
+      "raceId": "mythicBeast",
+      "stats": {
+        "hp": 65,
+        "attack": 37,
+        "defense": 51,
+        "spAttack": 37,
+        "spDefense": 51,
+        "speed": 47
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Taunt."
+    },
+    {
+      "name": "Ghoul",
+      "elements": ["ghost", "dark"],
+      "raceId": "ghoul",
+      "stats": {
+        "hp": 36,
+        "attack": 63,
+        "defense": 50,
+        "spAttack": 36,
+        "spDefense": 36,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Warrior (Demons)",
+      "flavor": "Core trait: Strange Magic."
+    },
+    {
+      "name": "Fire Spirit",
+      "elements": ["fire", "dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 39,
+        "attack": 29,
+        "defense": 34,
+        "spAttack": 79,
+        "spDefense": 59,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Inferno."
+    },
+    {
+      "name": "Shaman",
+      "elements": ["psychic", "dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 48,
+        "attack": 29,
+        "defense": 39,
+        "spAttack": 68,
+        "spDefense": 58,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Mage (Demons)",
+      "flavor": "Core trait: Cure."
+    },
+    {
+      "name": "Null Spawn",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 90,
+        "attack": 75,
+        "defense": 83,
+        "spAttack": 60,
+        "spDefense": 75,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Demons)",
+      "flavor": "Core trait: Lobotomize."
+    },
+    {
+      "name": "Kobold Wizard",
+      "elements": ["psychic", "dark"],
+      "raceId": "lizardfolk",
+      "stats": {
+        "hp": 76,
+        "attack": 76,
+        "defense": 76,
+        "spAttack": 76,
+        "spDefense": 76,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Demons)",
+      "flavor": "Core trait: Necromancer."
+    },
+    {
+      "name": "Null",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 59,
+        "attack": 45,
+        "defense": 52,
+        "spAttack": 119,
+        "spDefense": 89,
+        "speed": 56
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Demons)",
+      "flavor": "Core trait: Slime."
+    },
+    {
+      "name": "Null Knight",
+      "elements": ["dark"],
+      "raceId": "human",
+      "stats": {
+        "hp": 62,
+        "attack": 124,
+        "defense": 93,
+        "spAttack": 47,
+        "spDefense": 54,
+        "speed": 39
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Demons)",
+      "flavor": "Core trait: Slime."
+    },
+    {
+      "name": "Cave Walker",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 45,
+        "attack": 121,
+        "defense": 83,
+        "spAttack": 61,
+        "spDefense": 53,
+        "speed": 57
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Demons)",
+      "flavor": "Core trait: Indecisive."
+    },
+    {
+      "name": "Giant Toad",
+      "elements": ["bug", "dark"],
+      "raceId": "anuran",
+      "stats": {
+        "hp": 59,
+        "attack": 74,
+        "defense": 67,
+        "spAttack": 89,
+        "spDefense": 74,
+        "speed": 56
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Demons)",
+      "flavor": "Core trait: Optimized Heal."
+    },
+    {
+      "name": "Rokurokubi",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 45,
+        "attack": 30,
+        "defense": 38,
+        "spAttack": 151,
+        "spDefense": 98,
+        "speed": 57
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Demons)",
+      "flavor": "Core trait: Optimized Spotter."
+    },
+    {
+      "name": "Demon Viper",
+      "elements": ["dark"],
+      "raceId": "serpent",
+      "stats": {
+        "hp": 98,
+        "attack": 137,
+        "defense": 117,
+        "spAttack": 59,
+        "spDefense": 78,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Demons)",
+      "flavor": "Core trait: Hemotoxic."
+    },
+    {
+      "name": "Demon Mammoth",
+      "elements": ["dark"],
+      "raceId": "lepidopteran",
+      "stats": {
+        "hp": 143,
+        "attack": 72,
+        "defense": 108,
+        "spAttack": 54,
+        "spDefense": 99,
+        "speed": 45
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Demons)",
+      "flavor": "Core trait: Taunt."
+    },
+    {
+      "name": "The Maw",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 115,
+        "attack": 115,
+        "defense": 115,
+        "spAttack": 57,
+        "spDefense": 86,
+        "speed": 32
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Demons)",
+      "flavor": "Core trait: Blood Pact."
+    },
+    {
+      "name": "Hell Hound",
+      "elements": ["dark"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 79,
+        "attack": 60,
+        "defense": 70,
+        "spAttack": 159,
+        "spDefense": 119,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Demons)",
+      "flavor": "Core trait: Team Player."
+    },
+    {
+      "name": "Unknown Horror",
+      "elements": ["ghost", "dark"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 148,
+        "attack": 37,
+        "defense": 92,
+        "spAttack": 92,
+        "spDefense": 120,
+        "speed": 31
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Demons)",
+      "flavor": "Core trait: Fortitude."
+    },
+    {
+      "name": "Skull of Null",
+      "elements": ["ghost", "dark"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 107,
+        "attack": 107,
+        "defense": 107,
+        "spAttack": 107,
+        "spDefense": 107,
+        "speed": 27
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Demons)",
+      "flavor": "Core trait: Giant Killer."
+    },
+    {
+      "name": "Succubus",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 67,
+        "attack": 200,
+        "defense": 133,
+        "spAttack": 67,
+        "spDefense": 67,
+        "speed": 28
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Demons)",
+      "flavor": "Core trait: Distraction."
+    },
+    {
+      "name": "Echidna",
+      "elements": ["dark"],
+      "raceId": "insectivore",
+      "stats": {
+        "hp": 85,
+        "attack": 64,
+        "defense": 74,
+        "spAttack": 170,
+        "spDefense": 127,
+        "speed": 40
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Demons)",
+      "flavor": "Core trait: Constrictor."
+    },
+    {
+      "name": "Demon Guard",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 139,
+        "attack": 148,
+        "defense": 144,
+        "spAttack": 17,
+        "spDefense": 78,
+        "speed": 33
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Demons)",
+      "flavor": "Core trait: Cleave."
+    },
+    {
+      "name": "Duke of Null",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 97,
+        "attack": 48,
+        "defense": 73,
+        "spAttack": 218,
+        "spDefense": 158,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Demons)",
+      "flavor": "Core trait: Blink."
+    },
+    {
+      "name": "Demon King",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 95,
+        "attack": 238,
+        "defense": 166,
+        "spAttack": 24,
+        "spDefense": 59,
+        "speed": 48
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Demons)",
+      "flavor": "Core trait: Elitist."
+    },
+    {
+      "name": "Kraken",
+      "elements": ["dark"],
+      "raceId": "leviathan",
+      "stats": {
+        "hp": 74,
+        "attack": 99,
+        "defense": 86,
+        "spAttack": 198,
+        "spDefense": 136,
+        "speed": 37
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Demons)",
+      "flavor": "Core trait: Multi Hitter."
+    },
+    {
+      "name": "Black Widow",
+      "elements": ["dark"],
+      "raceId": "arachnid",
+      "stats": {
+        "hp": 74,
+        "attack": 49,
+        "defense": 62,
+        "spAttack": 247,
+        "spDefense": 161,
+        "speed": 37
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Demons)",
+      "flavor": "Core trait: Neurotoxic."
+    },
+    {
+      "name": "Gargoyle",
+      "elements": ["rock", "ghost"],
+      "raceId": "golem",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Healing Aura."
+    },
+    {
+      "name": "Flying Skeleton",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 53,
+        "attack": 53,
+        "defense": 53,
+        "spAttack": 26,
+        "spDefense": 40,
+        "speed": 66
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Indecisive."
+    },
+    {
+      "name": "Undead Mage",
+      "elements": ["psychic", "ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 39,
+        "attack": 49,
+        "defense": 44,
+        "spAttack": 59,
+        "spDefense": 49,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Mage (Undead)",
+      "flavor": "Core trait: Healer."
+    },
+    {
+      "name": "Undead Wizard",
+      "elements": ["psychic", "ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 28,
+        "attack": 46,
+        "defense": 37,
+        "spAttack": 64,
+        "spDefense": 46,
+        "speed": 69
+      },
+      "tier": "small",
+      "category": "Common Mage (Undead)",
+      "flavor": "Core trait: Inferno."
+    },
+    {
+      "name": "Nightmare Wraith",
+      "elements": ["ghost"],
+      "raceId": "wraith",
+      "stats": {
+        "hp": 48,
+        "attack": 39,
+        "defense": 44,
+        "spAttack": 58,
+        "spDefense": 53,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Mage (Undead)",
+      "flavor": "Core trait: Sharp Tongue."
+    },
+    {
+      "name": "Skeleton Pirahna",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 39,
+        "attack": 59,
+        "defense": 49,
+        "spAttack": 49,
+        "spDefense": 44,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Multi Hitter."
+    },
+    {
+      "name": "Morte",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 48,
+        "attack": 68,
+        "defense": 58,
+        "spAttack": 29,
+        "spDefense": 39,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Deep Cut."
+    },
+    {
+      "name": "Undead Bat",
+      "elements": ["flying", "ghost"],
+      "raceId": "chiropteran",
+      "stats": {
+        "hp": 39,
+        "attack": 29,
+        "defense": 34,
+        "spAttack": 79,
+        "spDefense": 59,
+        "speed": 49
+      },
+      "tier": "small",
+      "category": "Common Mage (Undead)",
+      "flavor": "Core trait: Backstab."
+    },
+    {
+      "name": "Crypt Lurker",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 48,
+        "attack": 48,
+        "defense": 48,
+        "spAttack": 48,
+        "spDefense": 48,
+        "speed": 48
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Zombie."
+    },
+    {
+      "name": "Skeleton",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 45,
+        "attack": 45,
+        "defense": 45,
+        "spAttack": 45,
+        "spDefense": 45,
+        "speed": 67
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Vengeful (Demon)."
+    },
+    {
+      "name": "Bonemare",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 45,
+        "attack": 62,
+        "defense": 54,
+        "spAttack": 27,
+        "spDefense": 36,
+        "speed": 67
+      },
+      "tier": "small",
+      "category": "Common Warrior (Undead)",
+      "flavor": "Core trait: Haste."
+    },
+    {
+      "name": "Skeleton Mage",
+      "elements": ["psychic", "ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 76,
+        "attack": 61,
+        "defense": 69,
+        "spAttack": 92,
+        "spDefense": 84,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Undead)",
+      "flavor": "Core trait: Necromancer."
+    },
+    {
+      "name": "Shadow Wraith",
+      "elements": ["ghost"],
+      "raceId": "wraith",
+      "stats": {
+        "hp": 45,
+        "attack": 76,
+        "defense": 61,
+        "spAttack": 106,
+        "spDefense": 76,
+        "speed": 57
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Undead)",
+      "flavor": "Core trait: Darkness."
+    },
+    {
+      "name": "Vampire",
+      "elements": ["ghost"],
+      "raceId": "vampire",
+      "stats": {
+        "hp": 90,
+        "attack": 75,
+        "defense": 83,
+        "spAttack": 60,
+        "spDefense": 75,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Undead)",
+      "flavor": "Core trait: Vampire."
+    },
+    {
+      "name": "Undead Null Spawn",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 103,
+        "attack": 59,
+        "defense": 81,
+        "spAttack": 59,
+        "spDefense": 81,
+        "speed": 37
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Undead)",
+      "flavor": "Core trait: Lobotomize."
+    },
+    {
+      "name": "Skull of Morte",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 76,
+        "attack": 107,
+        "defense": 92,
+        "spAttack": 46,
+        "spDefense": 61,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Undead)",
+      "flavor": "Core trait: Deflect."
+    },
+    {
+      "name": "Dream Wraith",
+      "elements": ["ghost"],
+      "raceId": "wraith",
+      "stats": {
+        "hp": 73,
+        "attack": 44,
+        "defense": 58,
+        "spAttack": 102,
+        "spDefense": 88,
+        "speed": 55
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Undead)",
+      "flavor": "Core trait: Strange Magic."
+    },
+    {
+      "name": "Flay",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 140,
+        "attack": 42,
+        "defense": 91,
+        "spAttack": 28,
+        "spDefense": 84,
+        "speed": 35
+      },
+      "tier": "medium",
+      "category": "Rare Warrior (Undead)",
+      "flavor": "Core trait: Soulless."
+    },
+    {
+      "name": "Cerberus",
+      "elements": ["ghost"],
+      "raceId": "canid",
+      "stats": {
+        "hp": 79,
+        "attack": 159,
+        "defense": 119,
+        "spAttack": 60,
+        "spDefense": 70,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Undead)",
+      "flavor": "Core trait: Multi Hitter."
+    },
+    {
+      "name": "Bone Druid",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 77,
+        "attack": 58,
+        "defense": 67,
+        "spAttack": 154,
+        "spDefense": 116,
+        "speed": 48
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Undead)",
+      "flavor": "Core trait: Mud Shield."
+    },
+    {
+      "name": "Skeletaur",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 95,
+        "attack": 95,
+        "defense": 95,
+        "spAttack": 95,
+        "spDefense": 95,
+        "speed": 47
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Undead)",
+      "flavor": "Core trait: Combat Blessing."
+    },
+    {
+      "name": "Banshee",
+      "elements": ["ghost"],
+      "raceId": "wraith",
+      "stats": {
+        "hp": 98,
+        "attack": 39,
+        "defense": 68,
+        "spAttack": 156,
+        "spDefense": 127,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Undead)",
+      "flavor": "Core trait: Wail."
+    },
+    {
+      "name": "Elemental",
+      "elements": ["ghost"],
+      "raceId": "elementalSpirit",
+      "stats": {
+        "hp": 95,
+        "attack": 19,
+        "defense": 57,
+        "spAttack": 170,
+        "spDefense": 132,
+        "speed": 47
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Undead)",
+      "flavor": "Core trait: Overwhelm."
+    },
+    {
+      "name": "Wheel",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 104,
+        "attack": 104,
+        "defense": 104,
+        "spAttack": 104,
+        "spDefense": 104,
+        "speed": 39
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Undead)",
+      "flavor": "Core trait: Mesmerize."
+    },
+    {
+      "name": "Werewolf",
+      "elements": ["ghost"],
+      "raceId": "lycanthrope",
+      "stats": {
+        "hp": 107,
+        "attack": 192,
+        "defense": 149,
+        "spAttack": 21,
+        "spDefense": 64,
+        "speed": 27
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Undead)",
+      "flavor": "Core trait: Howl."
+    },
+    {
+      "name": "Tarantula",
+      "elements": ["ghost"],
+      "raceId": "arachnid",
+      "stats": {
+        "hp": 104,
+        "attack": 167,
+        "defense": 135,
+        "spAttack": 42,
+        "spDefense": 73,
+        "speed": 39
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Undead)",
+      "flavor": "Core trait: Deadly Aim."
+    },
+    {
+      "name": "Samurai King",
+      "elements": ["ghost"],
+      "raceId": "human",
+      "stats": {
+        "hp": 63,
+        "attack": 211,
+        "defense": 137,
+        "spAttack": 42,
+        "spDefense": 53,
+        "speed": 53
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Undead)",
+      "flavor": "Core trait: Bushido."
+    },
+    {
+      "name": "Wendigo",
+      "elements": ["ghost"],
+      "raceId": "zombie",
+      "stats": {
+        "hp": 137,
+        "attack": 183,
+        "defense": 160,
+        "spAttack": 23,
+        "spDefense": 80,
+        "speed": 46
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Undead)",
+      "flavor": "Core trait: Cannibal."
+    },
+    {
+      "name": "Pegasus",
+      "elements": ["ghost"],
+      "raceId": "equid",
+      "stats": {
+        "hp": 117,
+        "attack": 47,
+        "defense": 82,
+        "spAttack": 187,
+        "spDefense": 152,
+        "speed": 47
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Undead)",
+      "flavor": "Core trait: Physical Immunity."
+    },
+    {
+      "name": "Bone Sigil",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "stats": {
+        "hp": 76,
+        "attack": 25,
+        "defense": 50,
+        "spAttack": 277,
+        "spDefense": 176,
+        "speed": 25
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Undead)",
+      "flavor": "Core trait: Sacred Symbol."
+    },
+    {
+      "name": "Cannonball",
+      "elements": ["psychic"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 98,
+        "attack": 117,
+        "defense": 107,
+        "spAttack": 78,
+        "spDefense": 88,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Accursed)",
+      "flavor": "Core trait: Cool Explosion."
+    },
+    {
+      "name": "Gem",
+      "elements": ["psychic"],
+      "raceId": "crystal",
+      "stats": {
+        "hp": 132,
+        "attack": 19,
+        "defense": 75,
+        "spAttack": 132,
+        "spDefense": 132,
+        "speed": 31
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Accursed)",
+      "flavor": "Core trait: Shimmer."
+    },
+    {
+      "name": "Rat King",
+      "elements": ["psychic"],
+      "raceId": "rodent",
+      "stats": {
+        "hp": 111,
+        "attack": 130,
+        "defense": 121,
+        "spAttack": 37,
+        "spDefense": 74,
+        "speed": 46
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Accursed)",
+      "flavor": "Core trait: Entangle."
+    },
+    {
+      "name": "Ghost",
+      "elements": ["ghost", "psychic"],
+      "raceId": "ghost",
+      "stats": {
+        "hp": 65,
+        "attack": 65,
+        "defense": 65,
+        "spAttack": 195,
+        "spDefense": 130,
+        "speed": 41
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Accursed)",
+      "flavor": "Core trait: Ectoplasm."
+    },
+    {
+      "name": "War Turtle",
+      "elements": ["psychic"],
+      "raceId": "turtle",
+      "stats": {
+        "hp": 104,
+        "attack": 167,
+        "defense": 135,
+        "spAttack": 42,
+        "spDefense": 73,
+        "speed": 39
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Accursed)",
+      "flavor": "Core trait: Turtle Time."
+    },
+    {
+      "name": "Mantis",
+      "elements": ["psychic"],
+      "raceId": "orthopteran",
+      "stats": {
+        "hp": 102,
+        "attack": 41,
+        "defense": 71,
+        "spAttack": 163,
+        "spDefense": 132,
+        "speed": 51
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Accursed)",
+      "flavor": "Core trait: Exoskeleton."
+    },
+    {
+      "name": "Ancient Astronaut",
+      "elements": ["psychic"],
+      "raceId": "ancientCreature",
+      "stats": {
+        "hp": 97,
+        "attack": 242,
+        "defense": 170,
+        "spAttack": 24,
+        "spDefense": 61,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Accursed)",
+      "flavor": "Core trait: Ascendant."
+    },
+    {
+      "name": "Dark Pope",
+      "elements": ["dark", "psychic"],
+      "raceId": "eldritch",
+      "stats": {
+        "hp": 95,
+        "attack": 24,
+        "defense": 59,
+        "spAttack": 238,
+        "spDefense": 166,
+        "speed": 48
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Accursed)",
+      "flavor": "Core trait: Last Supper."
+    },
+    {
+      "name": "Wyrm",
+      "elements": ["dragon", "psychic"],
+      "raceId": "westernDragon",
+      "stats": {
+        "hp": 119,
+        "attack": 214,
+        "defense": 166,
+        "spAttack": 24,
+        "spDefense": 71,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Accursed)",
+      "flavor": "Core trait: Purge."
+    },
+    {
+      "name": "Monkey",
+      "elements": ["normal"],
+      "raceId": "primate",
+      "stats": {
+        "hp": 36,
+        "attack": 63,
+        "defense": 50,
+        "spAttack": 36,
+        "spDefense": 36,
+        "speed": 68
+      },
+      "tier": "small",
+      "category": "Common Warrior (Beasts)",
+      "flavor": "Core trait: Little Friend."
+    },
+    {
+      "name": "Clown",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 76,
+        "attack": 61,
+        "defense": 69,
+        "spAttack": 92,
+        "spDefense": 84,
+        "speed": 38
+      },
+      "tier": "medium",
+      "category": "Rare Mage (Demons)",
+      "flavor": "Core trait: Last Laugh."
+    },
+    {
+      "name": "Acrobat",
+      "elements": ["flying", "fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 95,
+        "attack": 151,
+        "defense": 123,
+        "spAttack": 38,
+        "spDefense": 66,
+        "speed": 47
+      },
+      "tier": "peak",
+      "category": "Epic Warrior (Humans)",
+      "flavor": "Core trait: Flip Out."
+    },
+    {
+      "name": "Juggler",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 79,
+        "attack": 40,
+        "defense": 60,
+        "spAttack": 179,
+        "spDefense": 129,
+        "speed": 33
+      },
+      "tier": "peak",
+      "category": "Epic Mage (Humans)",
+      "flavor": "Core trait: Misdirection."
+    },
+    {
+      "name": "Lion",
+      "elements": ["normal"],
+      "raceId": "felid",
+      "stats": {
+        "hp": 63,
+        "attack": 63,
+        "defense": 63,
+        "spAttack": 190,
+        "spDefense": 127,
+        "speed": 53
+      },
+      "tier": "large",
+      "category": "Legendary Mage (Beasts)",
+      "flavor": "Core trait: Pride."
+    },
+    {
+      "name": "Mascot",
+      "elements": ["normal"],
+      "raceId": "livingObject",
+      "stats": {
+        "hp": 104,
+        "attack": 167,
+        "defense": 135,
+        "spAttack": 42,
+        "spDefense": 73,
+        "speed": 39
+      },
+      "tier": "large",
+      "category": "Legendary Warrior (Beasts)",
+      "flavor": "Core trait: Bad Hug."
+    },
+    {
+      "name": "Ringmaster",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 97,
+        "attack": 242,
+        "defense": 170,
+        "spAttack": 24,
+        "spDefense": 61,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Warrior (Humans)",
+      "flavor": "Core trait: Whip Crack."
+    },
+    {
+      "name": "Ringmistress",
+      "elements": ["fighting"],
+      "raceId": "human",
+      "stats": {
+        "hp": 97,
+        "attack": 24,
+        "defense": 61,
+        "spAttack": 242,
+        "spDefense": 170,
+        "speed": 36
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Humans)",
+      "flavor": "Core trait: Beast Tamer."
+    },
+    {
+      "name": "Topsy",
+      "elements": ["psychic", "dark"],
+      "raceId": "fiend",
+      "stats": {
+        "hp": 95,
+        "attack": 48,
+        "defense": 71,
+        "spAttack": 214,
+        "spDefense": 155,
+        "speed": 48
+      },
+      "tier": "mythic",
+      "category": "Master Mage (Demons)",
+      "flavor": "Core trait: Heavy Waves."
+    },
+    {
+      "name": "Cyclops",
+      "elements": ["fighting"],
+      "raceId": "giant",
+      "tier": "large",
+      "style": "bruiser",
+      "category": "Boss warrior (Humans)"
+    },
+    {
+      "name": "Dark One",
+      "elements": ["dark"],
+      "raceId": "fiend",
+      "tier": "large",
+      "style": "caster",
+      "category": "Boss mage (Demons)"
+    },
+    {
+      "name": "Skelesnake",
+      "elements": ["ghost"],
+      "raceId": "skeleton",
+      "tier": "large",
+      "style": "bruiser",
+      "category": "Boss warrior (Undead)"
+    }
+  ]
+}

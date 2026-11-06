@@ -45,6 +45,40 @@
       "masteryExpPerFloor": 60
     },
     {
+      "id": "duoRefined",
+      "members": [
+        {
+          "speciesId": "emberling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": [],
+          "refinements": [
+            "refineEnhancedArms",
+            "refineBloodCore",
+            "refineSensoryEars",
+            "refineSpiderLegs",
+            "refineInsectWings",
+            "refineMagicTail"
+          ]
+        },
+        {
+          "speciesId": "sproutling",
+          "levelOffset": -5,
+          "genes": "wild",
+          "traits": [],
+          "refinements": [
+            "refineEnhancedArms",
+            "refineBloodCore",
+            "refineSensoryEars",
+            "refineSpiderLegs",
+            "refineInsectWings",
+            "refineMagicTail"
+          ]
+        }
+      ],
+      "masteryExpPerFloor": 60
+    },
+    {
       "id": "full6",
       "members": [
         {
@@ -154,6 +188,14 @@
       "id": "current"
     },
     {
+      "id": "noReactions",
+      "withoutElementReactions": true
+    },
+    {
+      "id": "noStamina",
+      "config": { "stamina": { "costByPower": [], "statusCost": 0 } }
+    },
+    {
       "id": "blood50",
       "assumedPurity": 50
     },
@@ -167,7 +209,9 @@
     },
     {
       "id": "immortalMight5",
-      "ascensionUpgrades": { "immortalMight": 5 }
+      "ascensionUpgrades": {
+        "immortalMight": 5
+      }
     },
     {
       "id": "hard",

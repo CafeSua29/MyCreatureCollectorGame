@@ -32,13 +32,9 @@ const fuseWith = (
   inheritSkillIds: string[],
   forgetSkillIds: string[] = []
 ): Monster =>
-  fuseMonsters(
-    data,
-    createRng(1),
-    base,
-    sub,
-    parseSkillInheritance(data, base, sub, { inheritSkillIds, forgetSkillIds })
-  )[0]
+  fuseMonsters(data, createRng(1), base, sub, {
+    inheritance: parseSkillInheritance(data, base, sub, { inheritSkillIds, forgetSkillIds })
+  })[0]
 
 describe('kế thừa skill khi fuse — học ngay / chờ học', () => {
   it('còn ô: học ngay, ghi extraSkillIds, quái hợp lệ', () => {
@@ -112,7 +108,7 @@ describe('kế thừa skill khi fuse — thuần thục ½', () => {
   it('số cực lớn: cấp thuần thục rất cao vẫn hữu hạn, khớp tổng exp', () => {
     const bigSub = { ...sub, skillMastery: { blast: mastery(2_000_001) } }
     const inheritance = parseSkillInheritance(data, base, bigSub, { inheritSkillIds: ['blast'] })
-    const fused = fuseMonsters(data, createRng(1), base, bigSub, inheritance)[0]
+    const fused = fuseMonsters(data, createRng(1), base, bigSub, { inheritance })[0]
     expect(fused.skillMastery.blast.level).toBe(1_000_000)
     expect(fused.skillMastery.blast.exp.isFinite()).toBe(true)
     expect(fused.skillMastery.blast.exp).toEqual(masteryExpForLevel(data, 1_000_000))
@@ -218,9 +214,13 @@ describe('action fuse — kế thừa skill', () => {
 
 describe('config.fusion', () => {
   it('inheritSkills nguyên ≥ 0 (0 = tắt kế thừa); sai thì báo lỗi dữ liệu', () => {
-    expect(dataIssuesAfter((raw) => (raw.config.fusion = { inheritSkills: 0 }))).toEqual([])
+    expect(
+      dataIssuesAfter((raw) => (raw.config.fusion = { inheritSkills: 0, keptTraitPercent: 50 }))
+    ).toEqual([])
     for (const inheritSkills of [-1, 1.5]) {
-      const issues = dataIssuesAfter((raw) => (raw.config.fusion = { inheritSkills }))
+      const issues = dataIssuesAfter(
+        (raw) => (raw.config.fusion = { inheritSkills, keptTraitPercent: 50 })
+      )
       expect(issues.join(' | ')).toMatch(/config\.fusion\.inheritSkills/)
     }
   })

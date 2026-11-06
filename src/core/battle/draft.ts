@@ -427,6 +427,7 @@ function buildBattleContext(
   return {
     // Vào sân giữa lượt: firstTurn là lượt sau nên phần còn lại của lượt này tính 0.
     turnsOnField: d.battle.turn - volatile.firstTurn + 1,
+    slotIndexes: slotsOf(d.battle, side).flatMap((id, index) => (id === monster.id ? [index] : [])),
     allies: aliveOnField(data, d, side)
       .map((entry) => entry.monster)
       .filter((ally) => ally.id !== monster.id),

@@ -77,6 +77,7 @@ import { chooseReplacements } from './trainerAi'
 import { specialRule } from './specialBattles'
 import { frenziedPlayerSlots } from './frenzy'
 import { battleInstabilityFor, foreignEncounterSite } from './instability'
+import { isPassiveOnly } from './passiveSkills'
 
 /** Trận quái hoang thường trên tầng: không bí cảnh, độ kiếp, trận đặc biệt, NPC. */
 const NO_SPECIAL_BATTLE = { trial: null, tribulation: null, special: null, trainer: null }
@@ -212,6 +213,9 @@ export function submitTurn(
       ) {
         throw new ActionError('skillNotKnown', { monsterId: monster.id, skillId: command.skillId })
       }
+      if (isPassiveOnly(data.skills[command.skillId])) {
+        throw new ActionError('skillIsPassive', { monsterId: monster.id, skillId: command.skillId })
+      }
       if (lockedSkillIds(data, monster).includes(command.skillId)) {
         throw new ActionError('humanFormSkillLocked', {
           monsterId: monster.id,
@@ -240,6 +244,11 @@ export function submitTurn(
           throw malformedAction('targetAlly chỉ dùng cho skill có onAlly')
         }
       }
+      if (command.targetFoe !== undefined) {
+        if (command.targetFoe !== true || !data.skills[command.skillId].onFoe) {
+          throw malformedAction('targetFoe chỉ dùng cho skill có onFoe')
+        }
+      }
       if (command.switchTo !== undefined) {
         if (!skillSwitchesUserOut(data.skills[command.skillId])) {
           throw malformedAction('switchTo chỉ dùng cho skill có hiệu ứng rút về')
@@ -251,8 +260,8 @@ export function submitTurn(
       assertCanEscape(data, battle)
       assertNotTrapped(data, state, battle.playerSlots[command.slot])
       claimIncoming(data, state, command.monsterId, switchTargets)
-    } else if (command.kind === 'defend' || command.kind === 'provoke') {
-      // Phòng thủ / khiêu khích luôn dùng được.
+    } else if (command.kind === 'defend' || command.kind === 'provoke' || command.kind === 'rest') {
+      // Phòng thủ / khiêu khích / nghỉ luôn dùng được.
     } else if (command.kind === 'combo') {
       // Hợp kích kỹ kiểm tra theo cặp lệnh ở validateComboCommands.
     } else if (command.kind === 'item') {

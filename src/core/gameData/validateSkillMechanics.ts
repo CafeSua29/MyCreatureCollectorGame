@@ -2,7 +2,8 @@
 // loại đòn lúc đánh, bỏ qua bậc / ability, khắc hệ đặc biệt.
 
 import { asObject, checkEnumList, checkInteger, checkNumber } from '../shared'
-import { checkTraitEffects } from '../registries'
+import { SKILL_EFFECTS, TRAIT_HOOKS, checkTraitEffects } from '../registries'
+import { checkEffectTargets, checkEffects, checkKnownFields, fieldList } from './checks'
 import {
   FIXED_DAMAGE_KINDS,
   INVULNERABLE_KINDS,
@@ -13,6 +14,7 @@ import {
   SKILL_CATEGORY_RULES,
   SKILL_REACHES,
   type GameData,
+  type PassiveSkill,
   type Skill
 } from '../model'
 
@@ -37,7 +39,9 @@ function checkEffectiveness(data: GameData, value: unknown, where: string, issue
     issues.push(`${where}: effectiveness phải là object`)
     return
   }
-  for (const key of Object.keys(obj).filter((k) => k !== 'against' && k !== 'extraElementIds')) {
+  for (const key of Object.keys(obj).filter(
+    (k) => k !== 'against' && k !== 'extraElementIds' && k !== 'noResist'
+  )) {
     issues.push(`${where}: effectiveness: trường lạ "${key}"`)
   }
   const against = obj.against === undefined ? {} : asObject(obj.against)
@@ -101,6 +105,7 @@ function checkFixedDamage(data: GameData, value: unknown, where: string, issues:
       if (obj.categories !== undefined)
         checkCategories(obj.categories, `${field}.categories`, issues)
       return
+    case 'maxHpPercent':
     case 'targetHpPercent':
       issues.push(...checkNumber(obj.percent, `${field}.percent`, Number.MIN_VALUE, 100))
       return
@@ -274,8 +279,54 @@ function checkCallFields(data: GameData, skill: Skill, where: string, issues: st
 }
 
 /** Kiểm tra trường cơ chế chiêu của một skill. */
+const PASSIVE_FIELDS = fieldList<PassiveSkill>({
+  hooks: true,
+  onEntry: true,
+  onBattleStart: true,
+  turnEnd: true,
+  usable: true
+})
+
+/** Phần bị động của skill (docs/rules/element-reactions.md). */
+function checkPassive(data: GameData, skill: Skill, where: string, issues: string[]): void {
+  const passive = skill.passive
+  if (passive === undefined) return
+  const at = `${where}: passive`
+  if (!asObject(passive)) {
+    issues.push(`${at} phải là object`)
+    return
+  }
+  checkKnownFields(passive, PASSIVE_FIELDS, at, 'skill bị động', issues)
+  if (passive.usable !== undefined && passive.usable !== true) {
+    issues.push(`${at}.usable chỉ được là true`)
+  }
+  if (passive.hooks !== undefined)
+    checkEffects(TRAIT_HOOKS, passive.hooks, `${at}.hooks`, data, issues)
+  for (const key of ['onEntry', 'onBattleStart', 'turnEnd'] as const) {
+    if (passive[key] === undefined) continue
+    checkEffects(SKILL_EFFECTS, passive[key], `${at}.${key}`, data, issues)
+    checkEffectTargets(passive[key], 'self', `${at}.${key}`, issues)
+  }
+  if (
+    !passive.hooks?.length &&
+    !passive.onEntry?.length &&
+    !passive.onBattleStart?.length &&
+    !passive.turnEnd?.length
+  ) {
+    issues.push(`${at} cần ít nhất một hook / hiệu ứng`)
+  }
+  if (passive.usable) return
+  if (skill.category !== 'status' || skill.power !== 0 || skill.target !== 'self') {
+    issues.push(`${at}: skill chỉ bị động phải là skill trạng thái power 0 nhắm self`)
+  }
+}
+
 export function checkSkillMechanics(data: GameData, skill: Skill, where: string): string[] {
   const issues: string[] = []
+  checkPassive(data, skill, where, issues)
+  if (skill.staminaCost !== undefined) {
+    issues.push(...checkInteger(skill.staminaCost, `${where}: staminaCost`, 0))
+  }
   if (skill.attackFrom !== undefined) {
     const obj = asObject(skill.attackFrom)
     if (!obj || (obj.who !== 'self' && obj.who !== 'target') || !isNonHpStat(obj.stat)) {

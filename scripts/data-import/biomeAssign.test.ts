@@ -119,6 +119,12 @@ describe('habitatScore', () => {
     expect(primary).toBeGreaterThan(secondary ?? Infinity)
   })
 
+  it('loài không hệ sống được mọi map, điểm hệ trung tính (0)', () => {
+    const angel = species('angel', { elementIds: [] })
+    expect(habitatScore(angel, field, ctx)).toBe(0)
+    expect(habitatScore(angel, volcano, ctx)).toBe(0)
+  })
+
   it('race thủy sinh chỉ sống ở map có hệ nước; relaxed bỏ luật này', () => {
     const fish = species('fish', { raceId: 'aquatic', elementIds: ['normal'] })
     expect(habitatScore(fish, field, ctx)).toBeNull()

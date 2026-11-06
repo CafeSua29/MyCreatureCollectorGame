@@ -15,6 +15,8 @@ import type { ArtifactSpirit, SpiritPool } from './artifactSpirits'
 import type { QuestState } from './quests'
 import type { AlchemyState, CookingState, SmithingState } from './alchemy'
 import type { DwellingState } from './dwelling'
+import type { EssenceState } from './essences'
+import type { HatcheryState } from './hatchery'
 import type { Decimal } from '../shared'
 import type {
   EquipmentRarity,
@@ -152,6 +154,10 @@ export interface GameState {
   capacity: CapacityState
   /** Hiểm địa: lượt vào đang diễn ra, ngày mở lại của từng hiểm địa (docs/rules/zones.md). */
   zones: ZoneState
+  /** Phòng ấp theo môi trường (docs/rules/hatchery.md). */
+  hatchery: HatcheryState
+  /** Tinh chất (docs/rules/essences.md). */
+  essences: EssenceState
   /** Boss thế giới: lần xuất hiện đang diễn ra, thưởng chờ nhận (docs/rules/world-boss.md). */
   worldBoss: WorldBossState
   /** Bộ sưu tập: loài đã gặp / đã sở hữu, mốc thưởng đã nhận (docs/rules/dex.md). */
@@ -166,6 +172,8 @@ export interface GameState {
   titles: TitleState
   /** Phi thăng: Tiên nguyên, nâng cấp Tiên giới, thành tích cao nhất (docs/rules/ascension.md). */
   ascension: AscensionState
+  /** Các tầng đã do thám boss (docs/rules/shiny-boss.md). */
+  scoutedBosses: ScoutedBoss[]
   /** Thiên mệnh đang mang (id); rỗng = Phàm nhân. Chỉ đổi khi phi thăng. */
   destinies: string[]
   battle: BattleState | null
@@ -304,6 +312,8 @@ export interface Egg {
    * trứng có hoàn cảnh"); hiệu ứng đã áp thẳng vào quái bên trong, mảng này để đếm và cho UI.
    */
   infusions: string[]
+  /** Phòng ấp đang đặt trứng (chỉ số trong HatcheryState.rooms); bỏ trống = mang theo (docs/rules/hatchery.md). */
+  roomIndex?: number
 }
 
 /** Hai phe của trận. */
@@ -323,6 +333,8 @@ export type TriggerLogSource =
   | 'formation'
   | 'partner'
   | 'implant'
+  | 'passiveSkill'
+  | 'refinement'
 
 /**
  * Cộng hưởng / trận pháp đang có tác dụng với một phe trong trận (docs/rules/team.md), tính lúc vào
@@ -391,6 +403,8 @@ export interface MonsterBattleContext {
   absorbBoosts: readonly string[]
   /** Phe của quái. */
   side: BattleSide
+  /** Các ô sân quái đang đứng (quái lớn đứng mọi ô; điều kiện `facing`). */
+  slotIndexes?: readonly number[]
   /** Lượt hiện tại của trận (BattleState.turn). */
   battleTurn: number
   /** Bậc trận hiện tại của quái. */
@@ -494,6 +508,12 @@ export type NonHpStat = Exclude<StatName, 'hp'>
  * khi hết trận. Trait đếm theo bản ghi (Harbinger, Tellur...).
  */
 export interface BattleRecord {
+  /** Đã chạy hiệu ứng `onBattleStart` của skill bị động (Camouflage) trong trận này. */
+  battleStartPassivesDone?: true
+  /** Thể lực đã mất (docs/rules/stamina.md); bỏ trống = đầy. */
+  staminaUsed?: number
+  /** Lượt quái kiệt sức vì quá sức: lệnh nào cũng thành Nghỉ. */
+  exhaustedTurn?: number
   /** Số lượt đã hành động bằng lệnh của nó. */
   turnsTaken: number
   /** Số lần dùng skill physical gây sát thương (Attack của Siralim). */
@@ -513,6 +533,12 @@ export interface BattleRecord {
   healingReceived: Decimal
   /** Hành động gần nhất trong lượt của nó; null = chưa hành động. */
   lastAction: 'attack' | 'cast' | null
+  /** Loại skill vừa dùng (điều kiện `lastSkillCategory`). */
+  lastSkillCategory?: 'physical' | 'special' | 'status'
+  /** Số lần dùng skill theo mục tiêu, khóa `skillId|monsterId` (bộ đếm `skillUsesOnTarget`). */
+  skillTargetUses?: Record<string, number>
+  /** Số skill đã dùng theo hệ (bộ đếm `skillUsesOfElement`). */
+  elementUses?: Record<string, number>
   /** Số trait tạm đã nhận trong trận. */
   traitsGained: number
   /** Trait kích hoạt "một lần mỗi trận" đã dùng (id trait / trạng thái / minion). */
@@ -564,6 +590,8 @@ export interface VolatileState {
   firstTurn: number
   /** Số lượt còn lại trước khi gục (Perish Song); bỏ trống = không đếm. */
   perishTurns?: number
+  /** Số lần cộng hưởng đã nhận (Resonance, docs/rules/element-reactions.md); bỏ trống = 0. */
+  resonance?: number
   /** Máu còn lại của thế thân (Substitute); bỏ trống = không có thế thân. */
   substituteHp?: Decimal
   /** Số quái địch đã hạ gục bằng skill trong lần ra sân này; bỏ trống = chưa hạ quái nào. */
@@ -592,6 +620,10 @@ export interface VolatileState {
   /** Lượt (BattleState.turn) quái đang phòng thủ / khiêu khích (lệnh defend / provoke). */
   defending?: number
   provoking?: number
+  /** Skill bị Sticker Trick thay bằng Booby Trap: dùng thì tự mất máu (`power` đòn tự đánh). */
+  boobyTraps?: { skillId: string; turnsLeft: number; power: number }[]
+  /** Lượt còn lại của lớp phủ hệ (biến hệ có thời hạn); bỏ trống = tới khi rời sân. */
+  coatingTurnsLeft?: number
   /** Hệ / race gốc khi bị đổi trong trận; trả lại khi rời sân hoặc hết trận. */
   originalIdentity?: { elementIds: string[]; raceId: string }
   /**
@@ -1108,6 +1140,9 @@ export type BattleEvent =
   | { type: 'comboFailed'; monsterId: string; comboId: string }
   /** Lệnh phòng thủ / khiêu khích (kể cả do trait / buff tự làm). */
   | { type: 'defend'; monsterId: string }
+  /** Lệnh Nghỉ và quá sức (docs/rules/stamina.md). */
+  | { type: 'rested'; monsterId: string }
+  | { type: 'overexerted'; monsterId: string; deficit: number; damage: Decimal }
   | { type: 'provoke'; monsterId: string }
   /** Mục tiêu né đòn (tung né độc lập sau accuracy). */
   | { type: 'dodge'; monsterId: string; attackerId: string }
@@ -1135,6 +1170,24 @@ export type BattleEvent =
   | { type: 'flatStat'; monsterId: string; stat: StatName; amount: Decimal }
   | { type: 'statusPotency'; monsterId: string; statusId: string; potency: number }
   | { type: 'identityChanged'; monsterId: string; elementIds: string[]; raceId: string }
+  /** Tường (docs/rules/element-reactions.md): dựng, chặn một đòn, vỡ, bị lấy, tái chế. */
+  | { type: 'wallRaised'; monsterId: string; statusId: string }
+  | { type: 'wallBlocked'; monsterId: string; userId: string; hitsLeft: number }
+  | { type: 'wallBroken'; monsterId: string; userId?: string }
+  | { type: 'wallStolen'; monsterId: string; fromId: string }
+  /** Sticker Trick đặt bẫy lên skill; dùng skill bị bẫy thì Booby Trap tự đánh (log selfDamage). */
+  | { type: 'boobyTrapped'; monsterId: string; skillId: string }
+  | { type: 'boobyTrapSprung'; monsterId: string; skillId: string }
+  /** Quái cộng thêm một lần cộng hưởng; đủ `threshold` lần thì gục (log perished theo sau). */
+  | { type: 'resonance'; monsterId: string; count: number; threshold: number }
+  /** Phản ứng hệ xảy ra trên mục tiêu (docs/rules/element-reactions.md). */
+  | {
+      type: 'elementReaction'
+      monsterId: string
+      reactionId: string
+      attackElementId: string
+      defenderElementId: string
+    }
   /** Đòn đơn mục tiêu bị chuyển sang quái khác (khiêu khích, chặn đòn, Blind, Confused). */
   | { type: 'redirected'; monsterId: string; fromId: string }
   /** Đang có trạng thái cùng nhóm loại trừ nên không dính (đang độc thì không dính độc nặng). */
@@ -1156,6 +1209,8 @@ export type BattleEvent =
   | { type: 'beastTideFailed'; shopClosedUntilDay: number }
   | { type: 'eggDropped'; eggId: string }
   | { type: 'eggHatched'; monsterId: string; destination: 'party' | 'storage' }
+  /** Trứng ở phòng ấp hỏng lúc nở (tung độ ổn định thất bại, docs/rules/hatchery.md). */
+  | { type: 'eggFailed'; eggId: string }
   /** Quái ta bị hạ gục mắc chấn thương khi trận kết thúc (docs/rules/dwelling.md). */
   | { type: 'ailmentGained'; monsterId: string; ailmentId: string }
   /** Thắng trận làm xong yêu cầu "cùng chiến đấu" của quái đang dưỡng dục (imprinting.md). */
@@ -1257,3 +1312,9 @@ export type BattleEvent =
   | { type: 'itemWorldBonus'; bonus: 'affix' | 'spiritValue' }
   | { type: 'itemWorldFailed' }
   | { type: 'lost'; moneyLost: Decimal }
+
+/** Boss tầng đã do thám: lợi thế đã tung trước cho lần đánh tới (docs/rules/shiny-boss.md). */
+export interface ScoutedBoss {
+  floor: number
+  advantageTraitIds: string[]
+}

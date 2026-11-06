@@ -19,6 +19,7 @@ import {
 } from './checks'
 
 const FIELDS = fieldList<TrainerClass>({
+  fixedTeams: true,
   id: true,
   kind: true,
   elementIds: true,
@@ -78,6 +79,19 @@ function checkTrainerClass(data: GameData, trainer: TrainerClass, issues: string
   }
   issues.push(...checkInteger(trainer.equipmentSlots, `${where}: equipmentSlots`, 0))
   if (typeof trainer.transforms !== 'boolean') issues.push(`${where}: transforms phải là boolean`)
+  for (const team of trainer.fixedTeams ?? []) {
+    if (team.length === 0) issues.push(`${where}: fixedTeams có đội rỗng`)
+    for (const member of team) {
+      if (data.species[member.speciesId]?.kind !== 'normal') {
+        issues.push(`${where}: fixedTeams: loài không tồn tại "${member.speciesId}"`)
+      }
+      for (const skillId of member.skillIds) {
+        if (!Object.hasOwn(data.skills, skillId)) {
+          issues.push(`${where}: fixedTeams: skill không tồn tại "${skillId}"`)
+        }
+      }
+    }
+  }
   checkIdList(
     trainer.formationIds,
     data.formations,

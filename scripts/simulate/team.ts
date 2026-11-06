@@ -4,6 +4,7 @@ import {
   BIG_ONE,
   DataError,
   ageDaysAtPercent,
+  availableRefinements,
   computeStats,
   createRng,
   floorBig,
@@ -49,6 +50,8 @@ export interface MonsterBlueprint {
   /** Gen đều cho mọi chỉ số. */
   genes: Decimal
   traits: readonly TraitInstance[]
+  /** Kiểu luyện thể đang lắp (body-refinement.md). */
+  refinements?: readonly string[]
 }
 
 /**
@@ -63,6 +66,22 @@ export function bestNatureId(data: GameData, monster: Monster): string {
     : (['spAttack', 'attack'] as const)
   const match = Object.values(data.natures).find((n) => n.up === up && n.down === down)
   return match?.id ?? monster.natureId
+}
+
+/** Kiểu luyện thể của bản mẫu mà quái có bộ phận (loài khác nhau có bộ phận khác nhau). */
+function refinementsFor(
+  data: GameData,
+  monster: Monster,
+  ids: readonly string[]
+): Record<string, string> {
+  const available = availableRefinements(data, monster)
+  const result: Record<string, string> = {}
+  for (const id of ids) {
+    if (!data.bodyRefinements[id]) throw new DataError([`Kiểu luyện thể lạ "${id}"`])
+    const refinement = available.find((entry) => entry.id === id)
+    if (refinement) result[refinement.partId] = id
+  }
+  return result
 }
 
 /**
@@ -94,7 +113,8 @@ export function buildMonster(
     ...rolled,
     ageDays: ageDaysAtPercent(data, rolled, data.config.lifespan.spawnAgePercent.starter),
     genes: uniformBigStats(blueprint.genes),
-    traits: blueprint.traits.map((trait) => ({ ...trait }))
+    traits: blueprint.traits.map((trait) => ({ ...trait })),
+    refinements: refinementsFor(data, rolled, blueprint.refinements ?? [])
   }
   const monster: Monster = { ...built, natureId: bestNatureId(data, built) }
   const issues = validateMonster(data, monster, `quái mẫu ${blueprint.speciesId}`)
@@ -112,7 +132,8 @@ export function buildTeam(data: GameData, team: TeamSpec, floor: number, seed: n
       speciesId: member.speciesId,
       level: memberLevel(data, floor, member.levelOffset),
       genes: geneValue(data, floor, member.genes),
-      traits: member.traits
+      traits: member.traits,
+      refinements: member.refinements
     })
     return monster
   })

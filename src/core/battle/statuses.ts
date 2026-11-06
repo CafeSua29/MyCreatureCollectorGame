@@ -20,6 +20,7 @@ import {
   hasAbilityFlag,
   isIndirectDamageImmune,
   statusBlockingField,
+  type EnforcedStatusRule,
   type StatusConversion,
   type StatusDurationRule,
   type TraitHookHandler
@@ -46,6 +47,7 @@ import {
   monsterField
 } from './draft'
 import { emitTraitEvent } from './eventQueue'
+import { endCoating } from './coatings'
 import { heal, loseHp, removeStatus } from './hpChanges'
 import { isBlockedByLockIn } from './multiTurnMoves'
 import { extremeStat, statDamage } from './damage'
@@ -128,7 +130,9 @@ function blockedReason(
 
 /** Trạng thái ngẫu nhiên của một loại (chia đều trên mọi trạng thái loại đó). */
 export function rollRandomStatusId(data: GameData, d: Draft, kind: StatusKind): string | undefined {
-  const pool = Object.values(data.statuses).filter((status) => status.kind === kind)
+  const pool = Object.values(data.statuses).filter(
+    (status) => status.kind === kind && !status.excludeFromRandom
+  )
   if (pool.length === 0) return undefined
   let chosen: (typeof pool)[number]
   ;[chosen, d.rng] = pick(d.rng, pool)
@@ -267,6 +271,24 @@ function forEachStatusHookOf(
  * chặn, kháng debuff (tỉ lệ) rồi dính: thời hạn (dữ liệu / tùy chọn / luật trait), potency (trait
  * của bên gây), lượng. Dính lại thì lấy thời hạn dài hơn.
  */
+/**
+ * Quái vừa biến hình / hợp thể / đổi dạng: mỗi trạng thái `damageOnTransform` (Glass Bonds) làm nó
+ * mất % max HP, ít nhất 1 (docs/rules/element-reactions.md).
+ */
+export function punishTransform(data: GameData, d: Draft, monster: Monster): void {
+  for (const { statusId } of [...monster.statuses]) {
+    const percent = data.statuses[statusId]?.damageOnTransform
+    if (!percent || isFainted(data, monster)) continue
+    const amount = maxBig(1, getMaxHp(data, monster).times(percent).div(100).floor())
+    loseHp(data, d, monster, amount, (dealt) => ({
+      type: 'statusDamage',
+      monsterId: monster.id,
+      statusId,
+      amount: dealt
+    }))
+  }
+}
+
 export function inflictStatus(
   data: GameData,
   d: Draft,
@@ -415,6 +437,8 @@ function applyStatus(
 
 /** Chữa mọi debuff của quái (skill / trait chữa trạng thái), log từng trạng thái. Buff giữ nguyên. */
 export function cureAllStatuses(data: GameData, d: Draft, monster: Monster): void {
+  // Lớp phủ hệ gỡ được như trạng thái (gốc: "removable").
+  endCoating(d, monster.id)
   for (const status of [...monster.statuses]) {
     if (data.statuses[status.statusId].kind !== 'debuff') continue
     monster.statuses = monster.statuses.filter((s) => s.statusId !== status.statusId)
@@ -439,6 +463,71 @@ export function canInflictStatus(
   return blockedReason(data, d, monster, statusId) === null
 }
 
+/** Trait cho quái vẫn hành động dù đang có trạng thái làm mất lượt (Frost Affinity, Sleepwalking). */
+function actsThrough(data: GameData, d: Draft, monster: Monster, statusId: string): boolean {
+  let result = false
+  forEachTraitHook(
+    data,
+    monster,
+    (handler, params) => {
+      if (handler.actsThroughStatus?.(params, statusId)) result = true
+    },
+    ctxOf(data, d, monster)
+  )
+  return result
+}
+
+/** Các quái còn sống trên sân thuộc phạm vi luật "luôn có trạng thái", tính từ phe quái mang trait. */
+function enforcedTargets(
+  data: GameData,
+  d: Draft,
+  holder: Monster,
+  scope: EnforcedStatusRule['scope']
+): Monster[] {
+  if (scope === 'self') return [holder]
+  const side = sideOf(d, holder.id)
+  const sides =
+    scope === 'side' ? [side] : scope === 'foes' ? [opponentOf(side)] : [side, opponentOf(side)]
+  return sides.flatMap((s) => aliveOnField(data, d, s).map((entry) => entry.monster))
+}
+
+/**
+ * Đồng bộ trait "luôn có trạng thái" (hook `enforcedStatuses`, Inherit the Earth): quái trong phạm vi
+ * luôn có trạng thái đang tới phiên, kể cả vừa hết hạn, bị chữa hay miễn nhiễm. Phiên suy từ số lượt
+ * trên sân của quái mang nên không cần lưu thêm state; đổi phiên lúc sang lượt mới để lệnh chọn đầu
+ * lượt không bị chặn giữa chừng ("đầu lượt" của Siralim, trait-dsl.md). Quái mang rời sân thì trạng
+ * thái hết theo thời hạn của nó.
+ */
+export function syncEnforcedStatuses(data: GameData, d: Draft): void {
+  for (const side of ['player', 'enemy'] as const) {
+    for (const { monster: holder } of aliveOnField(data, d, side)) {
+      const ctx = ctxOf(data, d, holder)
+      const rules: EnforcedStatusRule[] = []
+      forEachTraitHook(
+        data,
+        holder,
+        (handler, params) => {
+          const rule = handler.enforcedStatusRule?.(params)
+          if (rule) rules.push(rule)
+        },
+        ctx
+      )
+      for (const rule of rules) {
+        const phase = Math.max(0, (ctx?.turnsOnField ?? 1) - 1) % rule.statusIds.length
+        const statusId = rule.statusIds[phase]
+        for (const target of enforcedTargets(data, d, holder, rule.scope)) {
+          for (const other of rule.statusIds) {
+            if (other !== statusId) removeStatus(d, target, other)
+          }
+          if (!target.statuses.some((status) => status.statusId === statusId)) {
+            applyStatus(data, d, target, statusId, {})
+          }
+        }
+      }
+    }
+  }
+}
+
 /**
  * Tung mất lượt theo các trạng thái đang có (theo thứ tự trạng thái); trạng thái đầu tiên trúng
  * thì ghi log và các trạng thái sau không tung nữa. Trả về true nếu quái mất lượt.
@@ -450,6 +539,7 @@ export function rollSkipTurn(data: GameData, d: Draft, monster: Monster, skill?:
     if (skippedBy !== null || !handler.skipTurnChance) return
     // Sleep Talk / Snore dùng được khi đang ngủ.
     if (skill?.usableWhileStatusIds?.includes(statusId)) return
+    if (actsThrough(data, d, monster, statusId)) return
     let skipped: boolean
     ;[skipped, d.rng] = rollPercent(d.rng, handler.skipTurnChance(params))
     if (skipped) skippedBy = statusId
@@ -615,6 +705,84 @@ function drainToSource(
 }
 
 /** Bomb nổ cuối lượt: mất % max HP × potency rồi hết trạng thái. */
+/**
+ * Sát thương "gây ngay N lượt sát thương của trạng thái" (hiệu ứng statusBurst): theo % máu
+ * (turnEndDamage), theo lần nổ (Bomb: detonate, một lần mỗi lượt) hoặc theo lượng đã lưu (Mania);
+ * trạng thái không gây sát thương thì undefined.
+ */
+export function statusBurstAmount(
+  data: GameData,
+  d: Draft,
+  monster: Monster,
+  status: StatusInstance,
+  turns: number
+): Decimal | undefined {
+  const factor = hazardDamageFactor(data, d, sideOf(d, monster.id))
+  const potency = (status.potency ?? 100) / 100
+  for (const hook of data.statuses[status.statusId].hooks) {
+    const handler = STATUS_HOOKS[hook.type]
+    if (handler?.dealsAmountAtTurnEnd?.(hook.params)) {
+      if (!status.amount || status.amount.lte(0)) continue
+      return maxBig(1, status.amount.times(potency).times(turns).times(factor).ceil())
+    }
+    const percent =
+      hook.type === 'turnEndDamage'
+        ? (hook.params as { percent: number }).percent
+        : handler?.detonatePercent?.(hook.params)
+    if (percent === undefined) continue
+    const basis =
+      hook.type === 'turnEndDamage'
+        ? ((hook.params as { basis?: 'max' | 'current' }).basis ?? 'max')
+        : 'max'
+    return statusTickAmount(
+      data,
+      d,
+      monster,
+      { statusId: status.statusId, percent: percent * potency * turns, basis },
+      factor
+    )
+  }
+  return undefined
+}
+
+/**
+ * Trạng thái gây sát thương cuối lượt bằng lượng đã lưu lúc dính (Mania): lượng × potency × hệ số
+ * trận boss, cộng % sát thương trạng thái của trait; không giảm lượng sau mỗi lần.
+ */
+function applyAmountDamage(data: GameData, d: Draft, monster: Monster, factor: number): void {
+  for (const status of [...monster.statuses]) {
+    const def = data.statuses[status.statusId]
+    const deals = def.hooks.some((h) => STATUS_HOOKS[h.type]?.dealsAmountAtTurnEnd?.(h.params))
+    if (!deals || !status.amount || status.amount.lte(0) || isFainted(data, monster)) continue
+    if (isIndirectDamageImmune(data, monster, ctxOf(data, d, monster))) continue
+    const modifier = sumHooks(data, d, monster, (h, p, s) =>
+      h.statusDamagePercent?.(p, s, status.statusId)
+    )
+    const amount = maxBig(
+      1,
+      status.amount
+        .times(status.potency ?? 100)
+        .times(factor)
+        .times(Math.max(0, 1 + modifier / 100))
+        .div(100)
+        .ceil()
+    )
+    loseHp(
+      data,
+      d,
+      monster,
+      amount,
+      (dealt) => ({
+        type: 'statusDamage',
+        monsterId: monster.id,
+        statusId: status.statusId,
+        amount: dealt
+      }),
+      { kind: 'indirect', statusId: status.statusId }
+    )
+  }
+}
+
 function detonateStatuses(data: GameData, d: Draft, monster: Monster, factor: number): void {
   for (const status of [...monster.statuses]) {
     const hook = data.statuses[status.statusId].hooks.find((h) => h.type === 'detonate')
@@ -748,6 +916,7 @@ export function statusesAtTurnEnd(data: GameData, d: Draft): void {
     for (const { monster } of aliveOnField(data, d, side)) {
       // Miễn sát thương gián tiếp (kiểu Magic Guard): không mất máu, thời hạn vẫn giảm.
       applyStatusDamage(data, d, monster, factor)
+      if (!isFainted(data, monster)) applyAmountDamage(data, d, monster, factor)
       if (!isFainted(data, monster)) detonateStatuses(data, d, monster, factor)
       if (!isFainted(data, monster)) autoGuards(data, d, monster)
       if (!isFainted(data, monster)) tickStatuses(data, d, monster, onField)

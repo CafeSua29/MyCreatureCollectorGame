@@ -8,7 +8,9 @@
       "elementId": "normal",
       "signatureStat": "hp",
       "signatureChannel": "moneyPercent",
-      "themes": ["grassland"]
+      "themes": [
+        "grassland"
+      ]
     },
     {
       "id": "hoaDuc",
@@ -17,7 +19,10 @@
       "elementId": "fire",
       "signatureStat": "attack",
       "signatureChannel": "expPercent",
-      "themes": ["volcanic", "geothermal"]
+      "themes": [
+        "volcanic",
+        "geothermal"
+      ]
     },
     {
       "id": "thuyDuc",
@@ -26,7 +31,10 @@
       "elementId": "water",
       "signatureStat": "spDefense",
       "signatureChannel": "catchRatePercent",
-      "themes": ["coast", "lake"]
+      "themes": [
+        "coast",
+        "lake"
+      ]
     },
     {
       "id": "loiCong",
@@ -35,7 +43,11 @@
       "elementId": "electric",
       "signatureStat": "speed",
       "signatureChannel": "expPercent",
-      "themes": ["storm", "ocean", "monsoon"]
+      "themes": [
+        "storm",
+        "ocean",
+        "monsoon"
+      ]
     },
     {
       "id": "mocDuc",
@@ -44,7 +56,10 @@
       "elementId": "grass",
       "signatureStat": "hp",
       "signatureChannel": "recruitPercent",
-      "themes": ["temperateForest", "mediterranean"]
+      "themes": [
+        "temperateForest",
+        "mediterranean"
+      ]
     },
     {
       "id": "suongThan",
@@ -53,7 +68,13 @@
       "elementId": "ice",
       "signatureStat": "spAttack",
       "signatureChannel": "catchRatePercent",
-      "themes": ["frozen", "taiga", "tundra", "glacier", "polarSea"]
+      "themes": [
+        "frozen",
+        "taiga",
+        "tundra",
+        "glacier",
+        "polarSea"
+      ]
     },
     {
       "id": "chienThan",
@@ -62,7 +83,10 @@
       "elementId": "fighting",
       "signatureStat": "attack",
       "signatureChannel": "expPercent",
-      "themes": ["savannah", "steppe"]
+      "themes": [
+        "savannah",
+        "steppe"
+      ]
     },
     {
       "id": "onThan",
@@ -71,7 +95,10 @@
       "elementId": "poison",
       "signatureStat": "spDefense",
       "signatureChannel": "dropRatePercent",
-      "themes": ["swamp", "wasteland"]
+      "themes": [
+        "swamp",
+        "wasteland"
+      ]
     },
     {
       "id": "thoDuc",
@@ -80,7 +107,10 @@
       "elementId": "ground",
       "signatureStat": "defense",
       "signatureChannel": "moneyPercent",
-      "themes": ["desert", "coldDesert"]
+      "themes": [
+        "desert",
+        "coldDesert"
+      ]
     },
     {
       "id": "phongBa",
@@ -89,7 +119,11 @@
       "elementId": "flying",
       "signatureStat": "speed",
       "signatureChannel": "shinyChancePercent",
-      "themes": ["sky", "canyon", "snowMountain"]
+      "themes": [
+        "sky",
+        "canyon",
+        "snowMountain"
+      ]
     },
     {
       "id": "mongThan",
@@ -98,7 +132,10 @@
       "elementId": "psychic",
       "signatureStat": "spAttack",
       "signatureChannel": "shinyChancePercent",
-      "themes": ["crystalCave", "psychicRealm"]
+      "themes": [
+        "crystalCave",
+        "psychicRealm"
+      ]
     },
     {
       "id": "tamThan",
@@ -107,7 +144,10 @@
       "elementId": "bug",
       "signatureStat": "speed",
       "signatureChannel": "recruitPercent",
-      "themes": ["jungle", "mangrove"]
+      "themes": [
+        "jungle",
+        "mangrove"
+      ]
     },
     {
       "id": "sonThan",
@@ -116,7 +156,10 @@
       "elementId": "rock",
       "signatureStat": "defense",
       "signatureChannel": "dropRatePercent",
-      "themes": ["mountain", "karst"]
+      "themes": [
+        "mountain",
+        "karst"
+      ]
     },
     {
       "id": "diemVuong",
@@ -125,7 +168,10 @@
       "elementId": "ghost",
       "signatureStat": "spAttack",
       "signatureChannel": "recruitPercent",
-      "themes": ["haunted", "ruins"]
+      "themes": [
+        "haunted",
+        "ruins"
+      ]
     },
     {
       "id": "longVuong",
@@ -134,7 +180,11 @@
       "elementId": "dragon",
       "signatureStat": "attack",
       "signatureChannel": "moneyPercent",
-      "themes": ["abyss", "coralReef", "kelpForest"]
+      "themes": [
+        "abyss",
+        "coralReef",
+        "kelpForest"
+      ]
     },
     {
       "id": "daDuThan",
@@ -143,7 +193,10 @@
       "elementId": "dark",
       "signatureStat": "attack",
       "signatureChannel": "dropRatePercent",
-      "themes": ["cave", "chaos"]
+      "themes": [
+        "cave",
+        "chaos"
+      ]
     },
     {
       "id": "kimDuc",
@@ -152,7 +205,11 @@
       "elementId": "steel",
       "signatureStat": "defense",
       "signatureChannel": "moneyPercent",
-      "themes": ["industrial", "saltFlat", "hydrothermal"]
+      "themes": [
+        "industrial",
+        "saltFlat",
+        "hydrothermal"
+      ]
     },
     {
       "id": "hoaThan",
@@ -161,7 +218,10 @@
       "elementId": "fairy",
       "signatureStat": "spDefense",
       "signatureChannel": "shinyChancePercent",
-      "themes": ["magicForest", "cloudForest"]
+      "themes": [
+        "magicForest",
+        "cloudForest"
+      ]
     },
     {
       "id": "thaiDuong",
@@ -170,7 +230,53 @@
       "elementId": "light",
       "signatureStat": "spAttack",
       "signatureChannel": "expPercent",
-      "themes": ["holy"]
+      "themes": [
+        "holy"
+      ]
+    },
+    {
+      "id": "luuLy",
+      "vi": "Lưu Ly Tinh Quân",
+      "en": "Glass Star Lord",
+      "elementId": "glass",
+      "signatureStat": "spAttack",
+      "signatureChannel": "shinyChancePercent",
+      "themes": [
+        "glassland"
+      ]
+    },
+    {
+      "id": "khuonDuc",
+      "vi": "Khuôn Đúc Tinh Quân",
+      "en": "Mold Star Lord",
+      "elementId": "plastic",
+      "signatureStat": "defense",
+      "signatureChannel": "dropRatePercent",
+      "themes": [
+        "junkyard"
+      ]
+    },
+    {
+      "id": "leHoi",
+      "vi": "Lễ Hội Tinh Quân",
+      "en": "Festival Star Lord",
+      "elementId": "glitter",
+      "signatureStat": "speed",
+      "signatureChannel": "moneyPercent",
+      "themes": [
+        "festival"
+      ]
+    },
+    {
+      "id": "khuanMau",
+      "vi": "Khuẩn Mẫu Tinh Quân",
+      "en": "Mycelium Star Lord",
+      "elementId": "fungal",
+      "signatureStat": "hp",
+      "signatureChannel": "dropRatePercent",
+      "themes": [
+        "mycelium"
+      ]
     }
   ]
 }
