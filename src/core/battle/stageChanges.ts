@@ -130,6 +130,30 @@ function copyStagesToOthers(
 }
 
 /**
+ * Voodoo của Temtem (cờ `spreadsDebuffsToPartner` của quái gây ra): hạ bậc quái phe địch thì hạ cùng
+ * bậc lên đồng đội của nó (một lần, không lan tiếp).
+ */
+function spreadLowerToPartner(
+  data: GameData,
+  d: Draft,
+  target: Monster,
+  change: StageChange
+): void {
+  if (change.sourceId === undefined) return
+  const source = findMonster(d, change.sourceId)
+  if (sideOf(d, source.id) === sideOf(d, target.id)) return
+  if (
+    !hasAbilityFlag(data, source, 'spreadsDebuffsToPartner', monsterBattleContext(data, d, source))
+  )
+    return
+  const partner = aliveOnField(data, d, sideOf(d, target.id)).find(
+    (entry) => entry.monster.id !== target.id
+  )?.monster
+  if (!partner) return
+  applyStageChange(data, d, { ...change, targetId: partner.id, echoed: true })
+}
+
+/**
  * Đổi bậc một quái: quái gục thì bỏ qua; hạ bậc thì xét chặn theo nguyên nhân; bị phe địch hạ bậc
  * thật (sau kẹp giới hạn) thì chạy trait stageOnStatLowered của nó.
  */
@@ -170,6 +194,7 @@ export function applyStageChange(data: GameData, d: Draft, rawChange: StageChang
     })
   }
   if (changed !== 0 && !change.echoed) copyStagesToOthers(data, d, target, change.stat, changed)
+  if (changed < 0 && !change.echoed) spreadLowerToPartner(data, d, target, change)
   if (changed > 0) emitTraitEvent(d, { type: 'statGain', subjectId: target.id })
   if (changed > 0 && !change.echoed) copyFoeBoost(data, d, target, { stat: change.stat, changed })
   if (changed < 0) emitTraitEvent(d, { type: 'statLoss', subjectId: target.id })

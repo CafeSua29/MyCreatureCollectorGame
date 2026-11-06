@@ -10,18 +10,18 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 
 - `GameState.stats`: số nguyên ≥ 0 theo khóa `STAT_KEYS` (đếm số lần làm việc nên là `number`, dừng ở `MAX_SAFE_INTEGER`). Chỉ đếm việc **không suy ra được từ state**; số suy ra được (tầng cao nhất, cảnh giới, huy hiệu, bậc đấu trường, tầng tháp, Dex) điều kiện đọc thẳng state. Cộng chỉ qua `bumpStat` / `countCaught`, gọi ở chỗ phát sinh:
 
-| Khóa                                         | Chỗ cộng                                                                                                                                     |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Khóa                                               | Chỗ cộng                                                                                                                              |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `battlesWon`, `bossesDefeated`, `trainersDefeated` | `finish` (`battle/outcome.ts`) khi thắng; boss không tính Thiên Kiếp (độ kiếp đếm riêng); NPC = trận có `battle.trainer` (mọi chế độ) |
-| `monstersCaught`, `shinyCaught`              | `finish` (quái bắt bằng bóng / Thị Uy, mọi kết quả trận), nhận quái xin theo (`recordRecruit`), khu bảo tồn (`takeCaught`)                    |
-| `eggsHatched`                                | trứng nở sau trận thắng, trứng truyền thừa nở khi đội trống (`refillEmptyParty`)                                                             |
-| `fusions`, `breeds`                          | fuse thành công, nhận trứng breed                                                                                                            |
-| `tribulationsPassed`                         | độ kiếp thắng (`battle/tribulation.ts`)                                                                                                      |
-| `tournamentsWon`                             | vô địch giải đấu                                                                                                                            |
-| `pillsCrafted`, `itemsForged`, `dishesCooked` | số lần luyện thành công theo nơi luyện (`CRAFT_STATION_RULES.craftedStat`); đúc trang bị cộng `itemsForged`                                  |
-| `oldAgeDeaths`                               | quái tọa hóa (`ageOneDay`)                                                                                                                   |
-| `questsCompleted`                            | nhận thưởng nhiệm vụ (`claimQuest`; điểm thiên phú ngự thú sư, `tamer-talents.md`; save v93)                                                 |
-| `gachaPulls`                                 | số trứng quay ở Cây thần (`pullGacha`, `gacha.md`; save v96)                                           |
+| `monstersCaught`, `shinyCaught`                    | `finish` (quái bắt bằng bóng / Thị Uy, mọi kết quả trận), nhận quái xin theo (`recordRecruit`), khu bảo tồn (`takeCaught`)            |
+| `eggsHatched`                                      | trứng nở sau trận thắng, trứng truyền thừa nở khi đội trống (`refillEmptyParty`)                                                      |
+| `fusions`, `breeds`                                | fuse thành công, nhận trứng breed                                                                                                     |
+| `tribulationsPassed`                               | độ kiếp thắng (`battle/tribulation.ts`)                                                                                               |
+| `tournamentsWon`                                   | vô địch giải đấu                                                                                                                      |
+| `pillsCrafted`, `itemsForged`, `dishesCooked`      | số lần luyện thành công theo nơi luyện (`CRAFT_STATION_RULES.craftedStat`); đúc trang bị cộng `itemsForged`                           |
+| `oldAgeDeaths`                                     | quái tọa hóa (`ageOneDay`)                                                                                                            |
+| `questsCompleted`                                  | nhận thưởng nhiệm vụ (`claimQuest`; điểm thiên phú ngự thú sư, `tamer-talents.md`; save v93)                                          |
+| `gachaPulls`                                       | số trứng quay ở Cây thần (`pullGacha`, `gacha.md`; save v96)                                                                          |
 
 - Thêm khóa: thêm vào `STAT_KEYS` + gọi `bumpStat` ở chỗ phát sinh + migrate thêm khóa 0 (kiểm tra save đòi đủ khóa).
 
@@ -30,22 +30,22 @@ Code: `model/achievements.ts` (type, `STAT_KEYS`, `ACHIEVEMENT_CONDITION_TYPES`,
 - `src/data/achievements.json`: `{ id, condition, tiers: [{ value, rewards }], repeat? }`, tên ở i18n `achievements`.
 - **Điều kiện** `{ type, ...params }` theo registry `ACHIEVEMENT_CONDITIONS` (thêm loại = thêm mục; mỗi mục có trường, kiểm tra params, tiến độ đọc từ state, trần tiến độ):
 
-| Loại                    | Tiến độ                                                                                          | Trần             |
-| ----------------------- | ------------------------------------------------------------------------------------------------ | ---------------- |
-| `stat { key }`          | bộ đếm                                                                                           | không            |
-| `dexOwned`              | số loài đã sở hữu (Dex)                                                                          | không            |
-| `dexPercent`            | % loài đã sở hữu (`dexOwnedPercent`)                                                             | 100              |
-| `shinySpecies`          | số loài đã có bản shiny                                                                          | không            |
-| `researchCompleted`     | số loài đã Hoàn thành nghiên cứu (`researchCompletedCount`, `species-research.md`)                | không            |
-| `highestFloor`          | tầng cao nhất từng đạt (`aptitudeFloor`, kể cả trước khi phi thăng)                         | không            |
-| `tamerRealm`            | cảnh giới ngự thú sư                                                                             | không            |
-| `towerFloor`            | tầng tháp thí luyện cao nhất (`tower.highest`)                                                   | không            |
-| `gymBadges`             | số huy hiệu (đạo quán `wins > 0`)                                                                | không            |
-| `arenaRank`             | bậc đấu trường                                                                                   | không            |
-| `ownSpecies { speciesIds }` | số loài trong danh sách đã từng sở hữu (Dex)                                                 | số loài của danh sách |
-| `aptitude { tierId }`   | số quái đang sở hữu (đội + kho) có tư chất từ bậc này (`hasAptitudeAtLeast`)                      | không            |
-| `speciesRank { rankId }` | số loài đã sở hữu có phẩm cấp từ bậc này (`speciesRankOf` / `speciesRankIndex`)                 | không            |
-| `challengeFloor { difficulty?, modes? }` | tầng cao nhất nếu mức thấp nhất từng dùng không dễ hơn `difficulty` và đang chơi đủ chế độ `modes` (`nuzlocke` / `hardcore` / `randomizer`), không thì 0 (`challenge-modes.md`) | không |
+| Loại                                     | Tiến độ                                                                                                                                                                         | Trần                  |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| `stat { key }`                           | bộ đếm                                                                                                                                                                          | không                 |
+| `dexOwned`                               | số loài đã sở hữu (Dex)                                                                                                                                                         | không                 |
+| `dexPercent`                             | % loài đã sở hữu (`dexOwnedPercent`)                                                                                                                                            | 100                   |
+| `shinySpecies`                           | số loài đã có bản shiny                                                                                                                                                         | không                 |
+| `researchCompleted`                      | số loài đã Hoàn thành nghiên cứu (`researchCompletedCount`, `species-research.md`)                                                                                              | không                 |
+| `highestFloor`                           | tầng cao nhất từng đạt (`aptitudeFloor`, kể cả trước khi phi thăng)                                                                                                             | không                 |
+| `tamerRealm`                             | cảnh giới ngự thú sư                                                                                                                                                            | không                 |
+| `towerFloor`                             | tầng tháp thí luyện cao nhất (`tower.highest`)                                                                                                                                  | không                 |
+| `gymBadges`                              | số huy hiệu (đạo quán `wins > 0`)                                                                                                                                               | không                 |
+| `arenaRank`                              | bậc đấu trường                                                                                                                                                                  | không                 |
+| `ownSpecies { speciesIds }`              | số loài trong danh sách đã từng sở hữu (Dex)                                                                                                                                    | số loài của danh sách |
+| `aptitude { tierId }`                    | số quái đang sở hữu (đội + kho) có tư chất từ bậc này (`hasAptitudeAtLeast`)                                                                                                    | không                 |
+| `speciesRank { rankId }`                 | số loài đã sở hữu có phẩm cấp từ bậc này (`speciesRankOf` / `speciesRankIndex`)                                                                                                 | không                 |
+| `challengeFloor { difficulty?, modes? }` | tầng cao nhất nếu mức thấp nhất từng dùng không dễ hơn `difficulty` và đang chơi đủ chế độ `modes` (`nuzlocke` / `hardcore` / `randomizer`), không thì 0 (`challenge-modes.md`) | không                 |
 
 - **Bậc**: `tiers` không rỗng, `value` số dương tăng ngặt, không vượt trần của điều kiện. **Không trần**: `repeat { factor, rewards }` sinh tiếp sau bậc cuối, mỗi bậc = max(bậc trước + 1, ⌈bậc trước × factor⌉) (`factor` > 1); bậc lặp không thưởng danh hiệu (mỗi danh hiệu một nguồn); điều kiện có trần không được có `repeat`. Bậc vượt `MAX_SAFE_INTEGER` coi như không có (tiến độ không bao giờ tới).
 - **Thưởng** `rewards { moneyPerFloor?, items?: [{ itemId, count }], titleId? }`: tiền = `moneyPerFloor × highestFloor` (như Dex), vật phẩm gộp chồng, danh hiệu (đã có thì thôi).

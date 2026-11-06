@@ -193,6 +193,12 @@ export interface StatusDef {
   blocksSoundSkills?: true
   /** Hết hạn thì dính trạng thái này (Yawn → ngủ). */
   onEndStatusId?: string
+  /** Dính lần nữa khi đang có thì thành trạng thái này (Cold → Frozen của Temtem). */
+  stacksInto?: string
+  /** Hết hạn thì quái gục (Doomed của Temtem). */
+  faintsOnEnd?: true
+  /** Ability của quái mang không có tác dụng (như Gastro Acid, có thời hạn; Intimidator của Temtem). */
+  suppressesAbility?: true
   /** Mất khi quái không còn trạng thái này (Nightmare cần ngủ). */
   requiresStatusId?: string
   /** Skill của quái mang trạng thái đổi sang hệ này (Electrify: điện). */
@@ -667,12 +673,56 @@ export const SKILL_CATEGORIES = ['physical', 'special', 'status'] as const
 export type SkillCategory = (typeof SKILL_CATEGORIES)[number]
 
 /**
- * enemy: một địch (người chơi chọn); allEnemies: mọi địch; ally: đồng đội còn lại; allAllies: quái
- * dùng và đồng đội còn lại trên sân (kiểu Howl, Life Dew).
+ * enemy: một địch (người chơi chọn; lệnh `targetAlly` nhắm đồng đội); allEnemies: mọi địch; ally: đồng đội
+ * còn lại; allAllies: quái dùng và đồng đội còn lại trên sân (kiểu Howl, Life Dew); allOthers: mọi quái khác
+ * trên sân, cả đồng đội (Earthquake, Surf trong trận đôi; All Other Temtem); all: mọi quái trên sân kể cả
+ * quái dùng (All của Temtem); foesOrAlly: mọi địch, hoặc đồng đội nếu lệnh `targetAlly` (Other Team or Ally).
  */
-export const SKILL_TARGETS = ['enemy', 'allEnemies', 'self', 'ally', 'allAllies'] as const
+export const SKILL_TARGETS = [
+  'enemy',
+  'allEnemies',
+  'self',
+  'ally',
+  'allAllies',
+  'allOthers',
+  'all',
+  'foesOrAlly'
+] as const
 
 export type SkillTarget = (typeof SKILL_TARGETS)[number]
+
+/** Chuỗi của skill (`Skill.chain`). */
+export interface SkillChain {
+  steps: number
+  damagePercents?: number[]
+}
+
+/** Kiểu mục tiêu nhắm phía địch (có thể trúng cả phe mình): skill gây hại, luật như đòn vào địch. */
+export const OFFENSIVE_TARGETS: readonly SkillTarget[] = [
+  'enemy',
+  'allEnemies',
+  'allOthers',
+  'all',
+  'foesOrAlly'
+]
+
+/** Skill nhắm phía địch (có thể trúng cả phe mình). */
+export const isOffensiveTarget = (target: SkillTarget): boolean =>
+  OFFENSIVE_TARGETS.includes(target)
+
+/** Kiểu mục tiêu đánh nhiều quái (sát thương lan × hệ số đòn lan khi trúng từ 2 quái). */
+export const isSpreadTarget = (target: SkillTarget): boolean =>
+  target === 'allEnemies' || target === 'allOthers' || target === 'all' || target === 'foesOrAlly'
+
+/** Đòn lan bị giảm sát thương: đánh nhiều quái, trúng từ 2 quái, skill không có `fullSpread`. */
+export const isReducedSpread = (
+  skill: Pick<Skill, 'target' | 'fullSpread'>,
+  hits: number
+): boolean => isSpreadTarget(skill.target) && hits > 1 && skill.fullSpread !== true
+
+/** Lệnh `targetAlly` đổi mục tiêu sang đồng đội (đòn đơn nhắm địch, Other Team or Ally). */
+export const canTargetAllyByCommand = (target: SkillTarget): boolean =>
+  target === 'enemy' || target === 'foesOrAlly'
 
 /**
  * Tầm chiêu (docs/rules/hit-locations.md): `melee` cận chiến (quái đứng trên đất không với tới quái
@@ -775,6 +825,14 @@ export interface Skill {
   selfDamagePercent?: number
   /** Phản lực: quái dùng mất % tổng sát thương vừa gây (Double-Edge 33, Head Smash 50). */
   recoilPercent?: number
+  /** Đánh nhiều quái vẫn đủ sát thương, không × `spreadMultiplier` (chiêu Temtem: gốc không giảm). */
+  fullSpread?: true
+  /**
+   * Chuỗi (Chain Lightning / Chain Heal của Temtem; chỉ skill `enemy` / `ally`): sau mục tiêu được chọn, nảy sang
+   * các quái kế tiếp theo chiều kim đồng hồ (kể cả quái dùng) tới `steps` quái; `damagePercents[i]` = %
+   * sát thương ở bước i; một quái chặn được đòn (né, bảo vệ, hút, trượt) thì chuỗi dừng.
+   */
+  chain?: SkillChain
   /** Không hạ gục mục tiêu: luôn chừa ít nhất 1 máu (False Swipe, Hold Back). */
   leavesOneHp?: true
   /** Chỉ số công thay cho công / đặc công (Foul Play: công của mục tiêu; Body Press: thủ quái dùng). */

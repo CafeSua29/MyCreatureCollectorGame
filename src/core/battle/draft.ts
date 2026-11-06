@@ -469,9 +469,10 @@ function buildBattleContext(
           })
         : {},
     field: monsterField(data, d, monster),
-    // Gastro Acid... hoặc quái khác trên sân có Neutralizing Gas.
+    // Gastro Acid, trạng thái tắt ability (Intimidator)... hoặc quái khác trên sân có Neutralizing Gas.
     abilitySuppressed:
       volatile.abilitySuppressed === true ||
+      hasAbilitySuppressingStatus(data, monster) ||
       (['player', 'enemy'] as const).some((onSide) =>
         aliveOnField(data, d, onSide).some(
           ({ monster: other }) =>
@@ -506,9 +507,13 @@ function battleAbilityHasFlag(
   flag: AbilityFlag
 ): boolean {
   const volatile = d.battle.volatiles[monster.id]
-  if (volatile?.abilitySuppressed) return false
+  if (volatile?.abilitySuppressed || hasAbilitySuppressingStatus(data, monster)) return false
   return abilityHasFlag(data, monster, flag, volatile?.abilityOverride)
 }
+
+/** Quái đang mang trạng thái tắt ability (`suppressesAbility`). */
+const hasAbilitySuppressingStatus = (data: GameData, monster: Monster): boolean =>
+  monster.statuses.some((status) => data.statuses[status.statusId]?.suppressesAbility === true)
 
 /**
  * Môi trường thực tế của trận (battle-environment.md mục "Tắt thời tiết"): có quái còn sống trên
@@ -708,4 +713,22 @@ export function putOnField(
     d.battle.participants.push(monsterId)
   }
   log(d, { type: 'enter', side, slot, monsterId })
+}
+
+/**
+ * Quái còn sống trên sân theo chiều kim đồng hồ bắt đầu sau quái `startId` (không gồm nó): ô phe của nó theo
+ * thứ tự rồi ô phe kia ngược thứ tự (hai phe đối mặt). Transmog, chuỗi của Temtem (`Skill.chain`).
+ */
+export function clockwiseFrom(data: GameData, d: Draft, startId: string): Monster[] {
+  const side = sideOf(d, startId)
+  const ring = [...slotsOf(d.battle, side), ...[...slotsOf(d.battle, opponentOf(side))].reverse()]
+  const start = ring.indexOf(startId)
+  const result: Monster[] = []
+  for (let step = 1; step < ring.length; step++) {
+    const id = ring[(start + step) % ring.length]
+    if (id === null || id === startId || result.some((monster) => monster.id === id)) continue
+    const monster = findMonster(d, id)
+    if (!isFainted(data, monster)) result.push(monster)
+  }
+  return result
 }

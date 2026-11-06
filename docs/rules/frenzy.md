@@ -14,7 +14,7 @@ Một hàm duy nhất `frenzyRole(data, battle, { side, monster })` (`registries
 | `boss` (boss hoang)                      | như trên, trận boss (`battle.isBoss`)                                                                                                                                                                 |
 | `tamed` (quái có chủ: người chơi, NPC)   | **chỉ khi race có `frenzyProne: true`** (race khó kiểm soát)                                                                                                                                          |
 | `unbound` (quái người chơi chưa khế ước) | race khác, khi `contractRealm` null (chủ project chốt 2026-10-25: quái chưa khế ước khó điều khiển; quái NPC luôn đã khế ước nên không có); quái có chủ đã khế ước, race khác không bao giờ cuồng bạo |
-| `worldBoss` (boss thế giới)              | phe địch trận boss thế giới (`battle.special.kind === 'worldBoss'`, `world-boss.md`); kích hoạt theo lượt (`fromTurn`)                                                                               |
+| `worldBoss` (boss thế giới)              | phe địch trận boss thế giới (`battle.special.kind === 'worldBoss'`, `world-boss.md`); kích hoạt theo lượt (`fromTurn`)                                                                                |
 | không có                                 | Thiên Kiếp (phe địch trận độ kiếp, `awakening.md`)                                                                                                                                                    |
 
 - Chủ project chốt 2026-10-25: chỉ quái hoang luôn cuồng bạo được; quái đã bắt (người chơi, NPC) chỉ loài khó kiểm soát. Claude chọn theo race (dữ liệu, không viết cứng): **Rồng (`dragon`), Khủng long (`dinosaur`), Ác quỷ (`demon`), Khổng lồ (`giant`), Dị thể (`aberration`)**. Trường tùy chọn `frenzyProne` (boolean) của race, thiếu = không (`gameData/validateFrenzy.ts`). Quái người chơi race đó vẫn cuồng bạo trong trận độ kiếp.
@@ -34,12 +34,12 @@ Bước cuối cùng của cuối lượt (`frenzyAtTurnEnd`, `battle/frenzy.ts`
 
 ## Hiệu ứng (tới hết trận)
 
-| Vai trò | Ngưỡng HP | Công / đặc công | Hành động thêm mỗi lượt |
-| ------- | --------- | --------------- | ----------------------- |
-| `tamed` | 50%       | +30%            | 25%                     |
-| `wild`  | 50%       | +15%            | 10%                     |
-| `boss`  | 50%       | +20%            | 15%                     |
-| `worldBoss` | từ lượt 5 | +30%        | 25%                     |
+| Vai trò     | Ngưỡng HP | Công / đặc công | Hành động thêm mỗi lượt |
+| ----------- | --------- | --------------- | ----------------------- |
+| `tamed`     | 50%       | +30%            | 25%                     |
+| `wild`      | 50%       | +15%            | 10%                     |
+| `boss`      | 50%       | +20%            | 15%                     |
+| `worldBoss` | từ lượt 5 | +30%            | 25%                     |
 
 - **% công / đặc công** (`statPercent`) cộng vào tổng % ở bước trait (luật "mọi nguồn % chỉ cộng", nguồn % `frenzy` ở `stats-traits.md`): `MonsterBattleContext.frenzyStatPercent` → `forEachTraitHook` thêm một hook `statModifier` (nguồn hook `frenzy`). AI chấm sát thương đã tính vì đi qua `computeStats`.
 - **Hành động thêm**: sau khi quái cuồng bạo dùng skill (`runSkillCommand`, kể cả quái người chơi), tung `extraActionChance` **một lần mỗi lượt cho mỗi quái** (`claimFrenzyRoll`, `actionQueue.ts`: tung ở lần dùng skill đầu tiên trong lượt, không tung lại ở hành động thêm hay hành động thêm do trait); trúng thì chèn ngay sau một hành động do **AI chung** chọn (không hợp kích), log `frenzyAction { monsterId }`. Quái lớn / thực thể hợp thể sau này cũng chỉ tối đa 1 (cùng id quái).

@@ -69963,5 +69963,5021 @@
         }
       }
     ]
+  },
+  {
+    "id": "adaptiveTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "identity",
+              "to": "self",
+              "elementFromSkill": true
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "aerobicTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["flying"]
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": -2
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["flying"]
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": -2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "aggressorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "airSpecialistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 15,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["flying"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "amphibianTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "anaerobicTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack"],
+              "delta": -1
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "antibodiesTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense", "spDefense"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "apothecaryTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            },
+            {
+              "if": "notSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "arcaneWrapTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -20,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "attackTTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "identity",
+              "to": "self",
+              "elementFromSkill": true
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "identity",
+              "to": "self",
+              "elementFromSkill": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "autotomyTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "evadingTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "avengerTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "allies",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed", "spAttack"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "backhandedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["status"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "regeneratedTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "benefactorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "allies",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "subject",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "birdSeasonTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 100,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["flying"]
+            },
+            {
+              "if": "element",
+              "who": "target",
+              "elementIds": ["flying"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "bodyStretchTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "rest",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 7
+              }
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "regeneratedTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "bookLungsTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "botanistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 15,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["grass"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "botanophobiaTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["grass"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "brawnyTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 20,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "bruiserTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 15,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["fighting"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "brumationTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "rest",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense"],
+              "delta": 2
+            },
+            {
+              "do": "reduceHold",
+              "to": "self",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "bullyTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "statusCount",
+              "who": "target",
+              "kind": "debuff",
+              "min": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "burglarTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "hasStatus",
+              "who": "target",
+              "statusIds": ["asleepTemtem", "exhaustedTemtem"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "seizedTemtem",
+              "turns": 99
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "hasStatus",
+              "who": "target",
+              "statusIds": ["asleepTemtem", "exhaustedTemtem"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "seizedTemtem",
+              "turns": 99
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "caffeinatedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["asleepTemtem"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "callosityTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "camaraderieTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -50,
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "sameRaceOnSide"
+              },
+              "min": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "camouflageTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "evadingTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "channelerTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cobwebTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 2,
+              "if": [
+                {
+                  "if": "hasStatus",
+                  "who": "target",
+                  "statusIds": ["trappedTemtem"]
+                }
+              ]
+            },
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "trappedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 2,
+              "if": [
+                {
+                  "if": "hasStatus",
+                  "who": "target",
+                  "statusIds": ["trappedTemtem"]
+                }
+              ]
+            },
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "trappedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "coldBloodedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["coldTemtem", "frozenTemtem"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "coldNaturedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusIds": ["coldTemtem"],
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "frozenTemtem"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "comebackerTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 32,
+          "when": [
+            {
+              "if": "hitThisTurn",
+              "who": "self",
+              "by": "target"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "commonFactorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "nullifiedTemtem",
+              "turns": 1
+            },
+            {
+              "do": "status",
+              "to": "side",
+              "statusId": "nullifiedTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "confidentTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "notVeryEffective"
+              }
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 2
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "notVeryEffective"
+              }
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "confinedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusIds": ["trappedTemtem"],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense", "spDefense"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "contagiousTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "leave",
+          "scope": "foes",
+          "effects": [
+            {
+              "do": "status",
+              "to": "subject",
+              "statusId": "poison",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "contemplationTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "rest",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 2
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cowardsRestTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "rest",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "evadingTemtem",
+              "turns": 2
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "invigoratedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "deceitAuraTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "invertsPriority",
+        "params": {
+          "exceptAtLeast": 3
+        }
+      }
+    ]
+  },
+  {
+    "id": "defuserTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "seizedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "demoralizeTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "foes",
+              "stats": ["speed"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "determinedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "stageMultiplier",
+        "params": {
+          "loss": 0
+        }
+      }
+    ]
+  },
+  {
+    "id": "digiProtectionTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -75,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["steel"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "aura",
+        "params": {
+          "scope": "allies",
+          "hooks": [
+            {
+              "type": "damageTakenWhen",
+              "params": {
+                "percent": -30,
+                "when": [
+                  {
+                    "if": "skillElement",
+                    "elementIds": ["steel"]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "disgraceTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "leave",
+          "scope": "foes",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "subject",
+              "stats": ["defense", "spDefense"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dozingHitTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "notVeryEffective"
+              }
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "asleepTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "notVeryEffective"
+              }
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "asleepTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "dreadedAlarmTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "foes",
+          "statusIds": ["alertedTemtem"],
+          "effects": [
+            {
+              "do": "damage",
+              "to": "subject",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "earthboundTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["ground"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense"],
+              "delta": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["ground"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "effectiveDenialTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -30,
+          "when": [
+            {
+              "if": "superEffective"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "efficientTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "staminaCostPercent",
+        "params": {
+          "percent": -30,
+          "damaging": true
+        }
+      }
+    ]
+  },
+  {
+    "id": "electricCustodianTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "intercept",
+        "params": {
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -15,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "electricSynthesizeTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "absorbElement",
+        "params": {
+          "elementIds": ["electric"],
+          "healPercent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "energizedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "regen",
+        "params": {
+          "percent": 6
+        }
+      }
+    ]
+  },
+  {
+    "id": "energyReservesTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "hpFellBelow",
+              "who": "self",
+              "percent": 45
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 4
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "invigoratedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "enragedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 30,
+          "when": [
+            {
+              "if": "hpBelow",
+              "who": "self",
+              "percent": 30
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "escapistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "statusImmunity",
+              "params": {
+                "statusIds": ["trappedTemtem"]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "cure",
+              "to": "allies",
+              "kind": "debuff",
+              "statusIds": ["trappedTemtem"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "faintedCurseTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "when": [
+            {
+              "if": "notSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fastChargeTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "allies",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "element",
+              "who": "subject",
+              "elementIds": ["steel"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "subject",
+              "stats": ["speed"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "feverRushTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusKind": "debuff",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "finalStandTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "when": [
+            {
+              "if": "hpBelow",
+              "who": "self",
+              "percent": 30
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense", "spDefense"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "flawedCrystalTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric", "psychic", "poison"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "friendshipTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "damageDealtModifier",
+              "params": {
+                "percent": 15,
+                "when": [
+                  {
+                    "if": "hitThisTurn",
+                    "who": "target"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "frighteningTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "gearSuppressedTemtem",
+              "turns": 3
+            },
+            {
+              "do": "status",
+              "to": "allies",
+              "statusId": "gearSuppressedTemtem",
+              "turns": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "furorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 33,
+          "when": [
+            {
+              "if": "hpBelow",
+              "who": "self",
+              "percent": 33
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "goingAwayGiftTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "transferStages",
+              "from": "self",
+              "to": "allies",
+              "sign": "positive"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "goodFriendTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "intercept",
+        "params": {
+          "when": [
+            {
+              "if": "hitThisTurn",
+              "who": "subject"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "gottaGoFastTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "conditionalPriority",
+        "params": {
+          "amount": 0,
+          "maxPriority": 0,
+          "setTo": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "guardianTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "allies",
+          "hooks": [
+            {
+              "type": "stageMultiplier",
+              "params": {
+                "loss": 0
+              }
+            },
+            {
+              "type": "statusImmunity",
+              "params": {
+                "statusIds": [
+                  "coldTemtem",
+                  "frozenTemtem",
+                  "burnedTemtem",
+                  "poison",
+                  "doomedTemtem"
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hakaTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "foes",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack", "spAttack"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "allies",
+              "stats": ["attack", "spAttack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "halfFullTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "hpAbove",
+              "who": "self",
+              "percent": 99
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack", "defense", "spAttack", "spDefense"],
+              "delta": 2
+            },
+            {
+              "do": "damage",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 50
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "heatDischargeTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "burnedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "heaterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "burnedTemtem",
+              "turns": 1
+            },
+            {
+              "do": "status",
+              "to": "allies",
+              "statusId": "burnedTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hostileTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack", "spAttack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hoverTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["ground"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hurryWartTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "reduceHold",
+              "to": "self",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hydrologistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 15,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "hypnotistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "turnsOnField"
+              },
+              "min": 2
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "asleepTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ignisFatuusTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "any",
+          "when": [
+            {
+              "if": "notSelf",
+              "who": "subject"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "evadingTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "igniteProtectionTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "burnedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "immunityTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["poison"]
+        }
+      },
+      {
+        "type": "elementDamageTaken",
+        "params": {
+          "elementIds": ["poison"],
+          "percent": -100
+        }
+      }
+    ]
+  },
+  {
+    "id": "individualistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "abilityFlag",
+        "params": {
+          "flag": "sparesAllies"
+        }
+      }
+    ]
+  },
+  {
+    "id": "inductorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "any",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "any",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "infectiousTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "healingModifier",
+              "params": {
+                "received": -100
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "aura",
+        "params": {
+          "scope": "foes",
+          "hooks": [
+            {
+              "type": "healingModifier",
+              "params": {
+                "received": -100
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "inhibiterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "foes",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "isSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "subject",
+              "statusId": "inhibitedTemtem"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "innerShieldTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "abilityFlag",
+        "params": {
+          "flag": "bouncesStatusMoves"
+        }
+      }
+    ]
+  },
+  {
+    "id": "intimidatorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "traitSuppressedTemtem",
+              "turns": 3
+            },
+            {
+              "do": "status",
+              "to": "allies",
+              "statusId": "traitSuppressedTemtem",
+              "turns": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "iridescenceTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "effectiveness",
+        "params": {
+          "mode": "neutralTaken"
+        }
+      },
+      {
+        "type": "damageTakenModifier",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "jackOfAllTradesTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "any",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack"],
+              "delta": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "any",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "kineticTransferTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stamina",
+              "to": "self",
+              "eventHpPercent": 15
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stamina",
+              "to": "self",
+              "eventHpPercent": 15
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "landingTransmogTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "transformInto",
+              "to": "self",
+              "from": "nextClockwise",
+              "keepStages": true,
+              "baseStats": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lastRushTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 33,
+          "when": [
+            {
+              "if": "counterBelow",
+              "counter": {
+                "of": "livingDiff"
+              },
+              "max": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "lonelinessTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "abilityFlag",
+              "params": {
+                "flag": "blocksSynergy"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "marathonistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "staminaCostPercent",
+        "params": {
+          "percent": -50
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": -1
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "meditationTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "rest",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "regeneratedTemtem",
+              "turns": 1
+            },
+            {
+              "do": "cure",
+              "to": "self",
+              "kind": "debuff"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mentalAllianceTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statWhen",
+        "params": {
+          "percent": {
+            "spAttack": 15
+          },
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "elementOnSide",
+                "elementIds": ["psychic"]
+              },
+              "min": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mineralCrusherTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "element",
+              "who": "target",
+              "elementIds": ["ground", "rock"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mirroringTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "damage",
+              "to": "other",
+              "amount": {
+                "event": true,
+                "percent": 25
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mithridatismTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["poison"]
+        }
+      },
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -22,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "motivatorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stamina",
+              "to": "self",
+              "percent": 15
+            },
+            {
+              "do": "stamina",
+              "to": "allies",
+              "percent": 15
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mucousTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -30,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["electric", "poison"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["coldTemtem", "frozenTemtem", "burnedTemtem"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "naturalConversionTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": -10,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["grass"]
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "skillElement",
+                "elementIds": ["grass"]
+              }
+            },
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "neurotoxinsTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "any",
+          "statusIds": ["poison"],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "subject",
+              "stats": ["defense", "spDefense"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "neutralityTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": [
+            "asleepTemtem",
+            "burnedTemtem",
+            "coldTemtem",
+            "frozenTemtem",
+            "exhaustedTemtem",
+            "isolatedTemtem",
+            "seizedTemtem",
+            "trappedTemtem",
+            "nullifiedTemtem",
+            "traitSuppressedTemtem",
+            "gearSuppressedTemtem",
+            "inhibitedTemtem",
+            "poison",
+            "doomedTemtem"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "parrierTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -25,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "patientTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillHold",
+              "min": 1
+            }
+          ],
+          "effects": [
+            {
+              "do": "stamina",
+              "to": "self",
+              "percent": 15
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillHold",
+              "min": 1
+            }
+          ],
+          "effects": [
+            {
+              "do": "stamina",
+              "to": "self",
+              "percent": 15
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "physgulpTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "physmasterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "pigmentInverterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "when": [
+            {
+              "if": "notVeryEffective"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "nullifiedTemtem",
+              "turns": 3
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "notVeryEffective"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "nullifiedTemtem",
+              "turns": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "plethoricTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statWhen",
+        "params": {
+          "percent": {
+            "speed": 30
+          },
+          "when": [
+            {
+              "if": "hpAbove",
+              "who": "self",
+              "percent": 69
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "powerNapTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "when": [
+            {
+              "if": "hasStatus",
+              "who": "self",
+              "statusIds": ["asleepTemtem"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 15
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "predatoryTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "kill",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "pridefulTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "kill",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack", "spAttack"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "protectiveCrystalTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "damageTakenWhen",
+              "params": {
+                "percent": -20,
+                "when": [
+                  {
+                    "if": "skillElement",
+                    "elementIds": ["electric", "psychic", "fire"]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "aura",
+        "params": {
+          "scope": "allies",
+          "hooks": [
+            {
+              "type": "damageTakenWhen",
+              "params": {
+                "percent": -10,
+                "when": [
+                  {
+                    "if": "category",
+                    "categories": ["physical", "special"]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "protectorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "stage",
+              "to": "allies",
+              "stats": ["defense", "spDefense"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "protostarTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "doomedTemtem",
+              "turns": 5
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "notSelf",
+                "who": "other"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "do": "revive",
+              "to": "self",
+              "hpPercent": 100
+            },
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "providentTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["ground", "fire", "fighting"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "punchBagTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -30,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["fighting"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "puppetMasterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "redirectToAlly",
+        "params": {
+          "when": [
+            {
+              "if": "hpBelow",
+              "who": "self",
+              "percent": 45
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "pyromaniacTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 15,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["fire"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "receptiveTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusDurationBonus",
+        "params": {
+          "turns": 1,
+          "on": "received",
+          "statusIds": [
+            "invigoratedTemtem",
+            "immuneTemtem",
+            "regeneratedTemtem",
+            "evadingTemtem",
+            "alertedTemtem"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "refurbishedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "turnsOnField"
+              },
+              "min": 3
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "regeneratedTemtem",
+              "turns": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "rejuvenateTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 10
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "relaxedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "when": [
+            {
+              "if": "noDamageSinceTurnEnd"
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 15
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "resilientTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "surviveLethal",
+        "params": {
+          "fromFullHp": false,
+          "chance": 100
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "hpBelow",
+              "who": "self",
+              "percent": 1
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 2
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "doomedTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "resistantTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusDurationBonus",
+        "params": {
+          "turns": -1,
+          "on": "received",
+          "statusIds": [
+            "poison",
+            "burnedTemtem",
+            "asleepTemtem",
+            "coldTemtem",
+            "exhaustedTemtem",
+            "isolatedTemtem",
+            "seizedTemtem",
+            "trappedTemtem"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "restedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statWhen",
+        "params": {
+          "percent": {
+            "attack": 30,
+            "spAttack": 30
+          },
+          "when": [
+            {
+              "if": "counterBelow",
+              "counter": {
+                "of": "turnsOnField"
+              },
+              "max": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "royalJellyTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 5
+              }
+            },
+            {
+              "do": "heal",
+              "to": "allies",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 5
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "ruminantTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["grass"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack", "speed"],
+              "delta": 1
+            }
+          ]
+        }
+      },
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["grass"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "rusherTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "foes",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "safeRetreatTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "healOnLeave",
+        "params": {
+          "percent": 10
+        }
+      }
+    ]
+  },
+  {
+    "id": "scavengerTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "any",
+          "when": [
+            {
+              "if": "notSelf",
+              "who": "subject"
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 20
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "seismicTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 10
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "selfCareTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical", "special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "regeneratedTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "selfEsteemTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": [
+            "asleepTemtem",
+            "burnedTemtem",
+            "coldTemtem",
+            "frozenTemtem",
+            "exhaustedTemtem",
+            "isolatedTemtem",
+            "seizedTemtem",
+            "trappedTemtem",
+            "traitSuppressedTemtem",
+            "gearSuppressedTemtem",
+            "inhibitedTemtem",
+            "poison"
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusKind": "debuff",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "senseiTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "attackStat",
+        "params": {
+          "stat": "spAttack",
+          "weight": 100,
+          "categories": ["physical"]
+        }
+      },
+      {
+        "type": "attackStat",
+        "params": {
+          "stat": "attack",
+          "weight": 100,
+          "categories": ["special"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "sentinelTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "statusImmunity",
+              "params": {
+                "statusIds": ["asleepTemtem"]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "cure",
+              "to": "allies",
+              "kind": "debuff",
+              "statusIds": ["asleepTemtem"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "seppukuTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "when": [
+            {
+              "if": "overexerting",
+              "who": "self"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "doomedTemtem",
+              "turns": 4
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "settlingTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "when": [
+            {
+              "if": "counterMultipleOf",
+              "counter": {
+                "of": "turnsOnField"
+              },
+              "every": 2
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack", "spAttack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "shaolinTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 10,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "sharedPainTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "redirectToAlly",
+        "params": {
+          "when": [
+            {
+              "if": "hitThisTurn",
+              "who": "self"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "shinobiTacticsTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 10,
+          "when": [
+            {
+              "if": "skillPriority",
+              "min": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "shortCircuitTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "stageMultiplier",
+              "params": {
+                "gain": 0,
+                "loss": 0
+              }
+            }
+          ]
+        }
+      },
+      {
+        "type": "aura",
+        "params": {
+          "scope": "foes",
+          "hooks": [
+            {
+              "type": "stageMultiplier",
+              "params": {
+                "gain": 0,
+                "loss": 0
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "skullHelmetTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -25,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["psychic", "fighting"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["exhaustedTemtem"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "snowstormTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "coldTemtem",
+              "turns": 2
+            },
+            {
+              "do": "status",
+              "to": "allies",
+              "statusId": "coldTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "softTouchTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 12,
+          "when": [
+            {
+              "if": "hasStatus",
+              "who": "target",
+              "statusIds": ["asleepTemtem"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "abilityFlag",
+        "params": {
+          "flag": "keepsTargetAsleep"
+        }
+      }
+    ]
+  },
+  {
+    "id": "solidifierTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "attackStat",
+        "params": {
+          "stat": "attack",
+          "weight": 100,
+          "categories": ["special"],
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "sourceReplicatorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusIds": [
+            "alertedTemtem",
+            "regeneratedTemtem",
+            "evadingTemtem",
+            "immuneTemtem",
+            "invigoratedTemtem"
+          ],
+          "effects": [
+            {
+              "do": "moveStatuses",
+              "from": "self",
+              "to": "allies",
+              "kind": "buff",
+              "copy": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "specgulpTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "specmasterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spiritualTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack"],
+              "delta": 1
+            },
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "splitterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": [
+            "asleepTemtem",
+            "burnedTemtem",
+            "coldTemtem",
+            "frozenTemtem",
+            "exhaustedTemtem",
+            "isolatedTemtem",
+            "seizedTemtem",
+            "trappedTemtem",
+            "traitSuppressedTemtem",
+            "gearSuppressedTemtem",
+            "inhibitedTemtem",
+            "poison"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spoilsportTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "skillTarget",
+              "targets": ["foesOrAlly"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "spreaderTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "spreadsSingleTarget",
+        "params": {
+          "categories": ["special"],
+          "powerPercent": 85
+        }
+      }
+    ]
+  },
+  {
+    "id": "stabmasterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 35,
+          "when": [
+            {
+              "if": "skillSameElement",
+              "value": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "strikingTransmogTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "skillTarget",
+              "targets": ["enemy"]
+            },
+            {
+              "if": "notSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "transformInto",
+              "to": "self",
+              "from": "other",
+              "keepStages": true,
+              "baseStats": true
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "transmogGuardTemtem",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "strongLiverTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "absorbElement",
+        "params": {
+          "elementIds": ["poison"],
+          "healPercent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "superconductivityTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "abilityFlag",
+        "params": {
+          "flag": "grantsSynergy"
+        }
+      }
+    ]
+  },
+  {
+    "id": "supernovaTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "doomedTemtem",
+              "turns": 5
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "when": [
+            {
+              "if": "not",
+              "condition": {
+                "if": "notSelf",
+                "who": "other"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "do": "revive",
+              "to": "self",
+              "hpPercent": 100
+            },
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 30
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "synergyAdeptTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "synergyBoost",
+              "params": {
+                "percent": 15
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "synergyMasterTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "hooks": [
+            {
+              "type": "synergyBoost",
+              "params": {
+                "percent": 25
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "synertyperTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 25,
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "sameElementOnSide"
+              },
+              "min": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tacticalStrikeTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 12,
+          "when": [
+            {
+              "if": "skillHold",
+              "min": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tagTeamTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -15,
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "sameElementOnSide"
+              },
+              "min": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tardyRushTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statWhen",
+        "params": {
+          "percent": {
+            "speed": 85,
+            "attack": 10
+          },
+          "when": [
+            {
+              "if": "counterAtLeast",
+              "counter": {
+                "of": "turnsOnField"
+              },
+              "min": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "targetReplicatorTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "allies",
+          "statusIds": [
+            "alertedTemtem",
+            "regeneratedTemtem",
+            "evadingTemtem",
+            "immuneTemtem",
+            "invigoratedTemtem"
+          ],
+          "effects": [
+            {
+              "do": "moveStatuses",
+              "from": "subject",
+              "to": "self",
+              "kind": "buff",
+              "copy": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "teamElusiveTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -100,
+          "when": [
+            {
+              "if": "skillTarget",
+              "targets": ["allEnemies", "allOthers", "all", "foesOrAlly"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "thickSkinTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["flying"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tirelessTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "overexertion",
+        "params": {
+          "hpPercent": -50,
+          "skipsExhaustion": true
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "overexert",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["attack"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxicAffinityTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxicFarewellTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "when": [
+            {
+              "if": "notSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "foes",
+              "statusId": "poison",
+              "turns": 1
+            },
+            {
+              "do": "damage",
+              "to": "foes",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 7
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxicSkinTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "oncePerBattle": true,
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxifierTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "attackStat",
+        "params": {
+          "stat": "spAttack",
+          "weight": 100,
+          "categories": ["physical"],
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 10,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["poison"]
+            },
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "toxinCrusherTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "element",
+              "who": "target",
+              "elementIds": ["poison"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tranceTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "oncePerBattle": true,
+          "when": [
+            {
+              "if": "hpBelow",
+              "who": "self",
+              "percent": 30
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack", "spDefense"],
+              "delta": 2
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "regeneratedTemtem",
+              "turns": 3
+            },
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "asleepTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "traumaTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["physical"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense"],
+              "delta": -1
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spDefense"],
+              "delta": -1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "triApothecaryTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "when": [
+            {
+              "if": "category",
+              "categories": ["special"]
+            },
+            {
+              "if": "notSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "poison",
+              "turns": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "triPhytologistTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "exhaustedTemtem",
+              "turns": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "unnoticedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "turnEnd",
+          "scope": "self",
+          "when": [
+            {
+              "if": "noDamageSinceTurnEnd"
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["speed"],
+              "delta": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "vigorousTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "overexerting",
+              "who": "self"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "viralCombustionTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusIds": ["poison"],
+          "effects": [
+            {
+              "do": "status",
+              "to": "other",
+              "statusId": "burnedTemtem",
+              "turns": 4
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "voltaicChargeTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 20
+        }
+      }
+    ]
+  },
+  {
+    "id": "voodooTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "abilityFlag",
+        "params": {
+          "flag": "spreadsDebuffsToPartner"
+        }
+      }
+    ]
+  },
+  {
+    "id": "warmGiftTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "leave",
+          "scope": "foes",
+          "effects": [
+            {
+              "do": "status",
+              "to": "subject",
+              "statusId": "burnedTemtem",
+              "turns": 3
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "warmBloodedTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["coldTemtem", "frozenTemtem"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterAffinityTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 50,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterCustodianTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "intercept",
+        "params": {
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["water"]
+            }
+          ],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["spAttack"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "waterSynthesizerTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "absorbElement",
+        "params": {
+          "elementIds": ["water"],
+          "healPercent": 25
+        }
+      }
+    ]
+  },
+  {
+    "id": "waxBathTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -25,
+          "when": [
+            {
+              "if": "skillElement",
+              "elementIds": ["fire"]
+            }
+          ]
+        }
+      },
+      {
+        "type": "statusImmunity",
+        "params": {
+          "statusIds": ["burnedTemtem"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "welcomerTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "allies",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "subject",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 10
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "withdrawalTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "rest",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "heal",
+              "to": "self",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 20
+              }
+            },
+            {
+              "do": "cure",
+              "to": "self",
+              "kind": "debuff",
+              "statusIds": ["asleepTemtem", "poison"]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "wreckedFarewellTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "faint",
+          "scope": "self",
+          "when": [
+            {
+              "if": "notSelf",
+              "who": "other"
+            }
+          ],
+          "effects": [
+            {
+              "do": "stamina",
+              "to": "other",
+              "percent": -10
+            },
+            {
+              "do": "stage",
+              "to": "other",
+              "stats": ["attack", "spAttack"],
+              "delta": -2
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "zenTemtem",
+    "kind": "rare",
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "statusGained",
+          "scope": "self",
+          "statusIds": ["asleepTemtem"],
+          "effects": [
+            {
+              "do": "stage",
+              "to": "self",
+              "stats": ["defense", "spDefense"],
+              "delta": 2
+            }
+          ]
+        }
+      }
+    ]
   }
 ]

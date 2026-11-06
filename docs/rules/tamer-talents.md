@@ -23,19 +23,19 @@ Code: `model/tamerTalents.ts` (kiểu, `TAMER_BONUS_TYPES`), `registries/tamerTa
 
 Danh hiệu đang đeo (`achievements.md`), nút thiên phú ngự thú sư, buff chức vị tông môn (× (chức vị + 1), `sects.md`), nâng cấp Tiên giới và thiên mệnh (`ascension.md`, kèm bảng kênh riêng của mục đó) **cùng cộng vào một bộ kênh** (`TAMER_BONUS_TYPES`); nơi dùng chỉ hỏi `tamerBonusAmount(data, state, kênh)` (tổng % hoặc lượt) / `tamerBonusMultiplier` (1 + % / 100, không dưới 0), không biết nguồn nào cộng. Thêm kênh = thêm vào `TAMER_BONUS_TYPES` + một mục `TAMER_BONUSES` + gọi ở nơi dùng. Kênh `...Percent` có params `{ percent }` (khác 0, ≥ −100), `tamerSkillCooldown` có `{ turns }` (nguyên ≥ 1).
 
-| Kênh | Nơi dùng |
-| ---- | -------- |
-| `expPercent`, `moneyPercent`, `dropRatePercent` | nhân EXP / tiền / tỉ lệ đồ rơi sau trận thắng (`applyWin`) |
-| `catchRatePercent` | nhân tỉ lệ bắt trong trận và khu bảo tồn |
-| `recruitPercent` | cộng vào `recruitBonusPercent` (thu phục, Thị Uy; `recruit.md`) |
-| `shinyChancePercent` | nhân tỉ lệ shiny ở mọi chỗ Bùa Lấp Lánh nhân |
-| `alchemySuccessPercent`, `smithingSuccessPercent`, `cookingSuccessPercent` | cộng vào % thành công của nơi luyện tương ứng (`CRAFT_STATION_RULES.bonusChannel`, `craftChance`) |
-| `shopPricePercent` | nhân giá mua ở cửa hàng thị trấn (`shopBuyPrice`, cùng modifier event) và cửa hàng tạm của event (`tempShopPrice`); âm = rẻ hơn |
-| `dwellingOutputPercent` | cộng vào cùng tổng % với công trình `outputBoost` (Linh mạch) ở `buildingPowers` (mọi công trình trừ `outputBoost`; `dwelling.md`) |
-| `teamStatPercent` | % mọi chỉ số quái **phe người chơi trong trận**, nguồn % mới **`tamerBonus`** (`STAT_PERCENT_SOURCES`, qua `MonsterBattleContext.tamerBonusStatPercent`, như thưởng sưu tập) |
-| `manaPercent` | linh lực tối đa đầu trận của người chơi × (1 + % / 100) (`newBattleTamer`, trước khi áp đạo thương / phản phệ) |
-| `contractLevelPercent` | giới hạn level khế ước × (1 + % / 100), làm tròn xuống (`contractLevelLimit` / `realmToContract` nhận `levelPercent`; `playerContractLevelLimit` cho khế ước, tỉ lệ khế ước, không nghe lệnh; `tamer.md`) |
-| `tamerSkillCooldown` | hồi chiêu kỹ năng ngự thú sư của người chơi − số lượt, không dưới 0 (`tamerSkillCooldown`, `battle/tamerSkills.ts`) |
+| Kênh                                                                       | Nơi dùng                                                                                                                                                                                                  |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `expPercent`, `moneyPercent`, `dropRatePercent`                            | nhân EXP / tiền / tỉ lệ đồ rơi sau trận thắng (`applyWin`)                                                                                                                                                |
+| `catchRatePercent`                                                         | nhân tỉ lệ bắt trong trận và khu bảo tồn                                                                                                                                                                  |
+| `recruitPercent`                                                           | cộng vào `recruitBonusPercent` (thu phục, Thị Uy; `recruit.md`)                                                                                                                                           |
+| `shinyChancePercent`                                                       | nhân tỉ lệ shiny ở mọi chỗ Bùa Lấp Lánh nhân                                                                                                                                                              |
+| `alchemySuccessPercent`, `smithingSuccessPercent`, `cookingSuccessPercent` | cộng vào % thành công của nơi luyện tương ứng (`CRAFT_STATION_RULES.bonusChannel`, `craftChance`)                                                                                                         |
+| `shopPricePercent`                                                         | nhân giá mua ở cửa hàng thị trấn (`shopBuyPrice`, cùng modifier event) và cửa hàng tạm của event (`tempShopPrice`); âm = rẻ hơn                                                                           |
+| `dwellingOutputPercent`                                                    | cộng vào cùng tổng % với công trình `outputBoost` (Linh mạch) ở `buildingPowers` (mọi công trình trừ `outputBoost`; `dwelling.md`)                                                                        |
+| `teamStatPercent`                                                          | % mọi chỉ số quái **phe người chơi trong trận**, nguồn % mới **`tamerBonus`** (`STAT_PERCENT_SOURCES`, qua `MonsterBattleContext.tamerBonusStatPercent`, như thưởng sưu tập)                              |
+| `manaPercent`                                                              | linh lực tối đa đầu trận của người chơi × (1 + % / 100) (`newBattleTamer`, trước khi áp đạo thương / phản phệ)                                                                                            |
+| `contractLevelPercent`                                                     | giới hạn level khế ước × (1 + % / 100), làm tròn xuống (`contractLevelLimit` / `realmToContract` nhận `levelPercent`; `playerContractLevelLimit` cho khế ước, tỉ lệ khế ước, không nghe lệnh; `tamer.md`) |
+| `tamerSkillCooldown`                                                       | hồi chiêu kỹ năng ngự thú sư của người chơi − số lượt, không dưới 0 (`tamerSkillCooldown`, `battle/tamerSkills.ts`)                                                                                       |
 
 - Danh hiệu dùng được mọi kênh (trước đây chỉ 7 kênh `TITLE_EFFECT_TYPES`; bỏ, thay bằng `TAMER_BONUS_TYPES`; `titlePercent` / `titleMultiplier` thay bằng `tamerBonusAmount` / `tamerBonusMultiplier`).
 

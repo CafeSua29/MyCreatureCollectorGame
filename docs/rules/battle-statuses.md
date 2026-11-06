@@ -43,3 +43,11 @@ Tách từ `battle.md`. Buff / debuff Siralim ở `trait-dsl.md`.
 - **Miễn theo cờ chiêu:** hệ có `immuneMoveFlags` (hệ Cỏ: `powder`) hoặc hook trait `moveFlagImmunity { flags }` (Overcoat) miễn skill mang cờ đó của quái khác (thất bại, log `skillFailed`).
 - **`seeded`** (Leech Seed, Sappy Seed): mất ⅛ max HP cuối lượt, lượng mất hồi cho quái gieo (`drainsToSource`; trạng thái giữ `sourceId`) nếu nó còn trên sân; quái mất máu có Liquid Ooze thì quái gieo mất lượng đó. Lệch: gốc hồi cho quái đang ở ô của quái gieo.
 - **Trạng thái đánh dấu** `marker` (không cần hook): `minimized` (Minimize) cho skill khác đọc (`alwaysHitsVsStatusIds`, power ×2; `pokemon-moves-flow.md`).
+
+## Bổ sung 2026-11-06 (Temtem)
+
+- Cờ `stacksInto` (id trạng thái, khác chính nó): dính lần nữa khi đang có thì bỏ trạng thái này và dính trạng thái kia (cùng tùy chọn lượt / nguồn; qua các bước chặn của trạng thái kia). Cold → Frozen của Temtem.
+- Cờ `faintsOnEnd` (cần `duration`): hết hạn thì quái gục (mất toàn bộ máu còn lại, log `perished`). Doomed của Temtem.
+- Thời hạn khi nhận: hook `statusDurationBonus { on: received }` cộng / bớt lượt cho trạng thái quái mang dính; về 0 thì không dính (log `statusImmune`). Nhóm loại trừ (`overwritesGroup`) chỉ gỡ trạng thái cũ khi trạng thái mới dính thật.
+- 15 trạng thái Temtem (`*Temtem`; Poisoned dùng lại `poison`): bảng ở `content-sources-temtem.md`.
+- Cờ `suppressesAbility` (2026-11-07): ability của quái mang không tác dụng tới khi trạng thái hết (như Gastro Acid nhưng có thời hạn; bối cảnh trận `abilitySuppressed`). Trait Suppressed của Intimidator.

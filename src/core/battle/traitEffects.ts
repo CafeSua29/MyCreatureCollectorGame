@@ -7,7 +7,7 @@
 import { clearScreens, placeSideField } from './sideFields'
 import { changeBattleForm, revertBattleForm } from './battleForms'
 import { retreatFromField } from './fleeTraits'
-import { startPerish } from './volatiles'
+import { reduceHold, startPerish } from './volatiles'
 import { activeTransform, getCurrentHp, getMaxHp, isFainted } from '../monster'
 import {
   equipmentTraitInstances,
@@ -42,6 +42,7 @@ import {
 import {
   Draft,
   aliveOnField,
+  clockwiseFrom,
   battleStats,
   canEnterSlot,
   log,
@@ -71,7 +72,7 @@ import { giveEquipment, swapEquipment, takeEquipment } from './itemLedger'
 import { eatHeldItems } from './heldItems'
 import { pendingSkillOf } from './actionQueue'
 import { POKEMON_EFFECT_RUNNERS } from './pokemonEffects'
-import { changeStamina, drainStamina, staminaChangeOf } from './stamina'
+import { changeStamina, drainStamina, exhaust, staminaChangeOf } from './stamina'
 
 /** Một lần chạy hiệu ứng: chủ trait, hệ số, các quái của sự kiện. */
 export interface EffectRun {
@@ -190,7 +191,20 @@ function rawEffectTargets(
       const left = slot > 0 ? slotsOf(d.battle, side)[slot - 1] : null
       return onSide.filter((m) => m.id === left)
     }
+    case 'nextClockwise':
+      return nextClockwise(data, d, run.owner)
   }
+}
+
+/**
+ * Quái kế tiếp theo chiều kim đồng hồ quanh sân (Landing Transmog của Temtem): ô của phe mình theo thứ
+ * tự, rồi ô phe địch ngược thứ tự (hai phe đối mặt), bỏ ô trống / quái gục / quái cùng loài với chủ.
+ */
+function nextClockwise(data: GameData, d: Draft, owner: Monster): Monster[] {
+  const next = clockwiseFrom(data, d, owner.id).find(
+    (monster) => monster.speciesId !== owner.speciesId
+  )
+  return next ? [next] : []
 }
 
 /** Quái ít máu nhất (theo tỉ lệ máu) trong danh sách. */
@@ -772,7 +786,7 @@ const EFFECT_RUNNERS: Runners = {
     forTargets(data, d, run, effect.to, (target) => {
       if (effect.from)
         drainStamina(data, d, { donors, receiver: target, amount: effect.amount ?? 0 })
-      else changeStamina(data, d, target, staminaChangeOf(data, d, target, effect))
+      else changeStamina(data, d, target, staminaChangeOf(data, d, target, effect, run.amount))
     })
   },
   flatStat(data, d, run, effect) {
@@ -1172,6 +1186,12 @@ const EFFECT_RUNNERS: Runners = {
       const maxHp = getMaxHp(data, target)
       target.damageTaken = minBig(maxHp.minus(1), maxHp.times(1 - effect.percent / 100).floor())
     })
+  },
+  exhaust(data, d, run, effect) {
+    forTargets(data, d, run, effect.to, (target) => exhaust(d, target))
+  },
+  reduceHold(data, d, run, effect) {
+    forTargets(data, d, run, effect.to, (target) => reduceHold(data, d, target, effect.turns))
   },
   defend(_data, d, run, effect) {
     for (const target of resolveEffectTargets(_data, d, run, effect.to)) guard(d, target, 'defend')

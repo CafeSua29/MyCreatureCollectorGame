@@ -42,7 +42,28 @@ export function skillPriority(
     },
     ctx
   )
-  return priority
+  return invertedPriority(data, monster, priority, ctx)
+}
+
+/**
+ * Deceit Aura của Temtem (hook `invertsPriority`): có quái trên sân mang hook thì priority đảo dấu, trừ
+ * priority ≥ `exceptAtLeast` (Ultra). Nhiều hook: ngưỡng thấp nhất; không ở trong trận thì giữ nguyên.
+ */
+function invertedPriority(
+  data: GameData,
+  monster: Monster,
+  priority: number,
+  ctx?: MonsterBattleContext
+): number {
+  if (!ctx) return priority
+  let floor: number | undefined
+  for (const onField of [monster, ...ctx.allies, ...ctx.foes]) {
+    forEachTraitHook(data, onField, (handler, params) => {
+      const value = handler.priorityInversionFloor?.(params)
+      if (value !== undefined) floor = floor === undefined ? value : Math.min(floor, value)
+    })
+  }
+  return floor !== undefined && priority < floor ? -priority : priority
 }
 
 /**

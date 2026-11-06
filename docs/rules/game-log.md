@@ -15,28 +15,28 @@ Code: `model/gameLog.ts` (kiểu `GameLogEntry`, `appendLog`), `game/reducer.ts`
 
 Union theo chủ đề (thêm loại = thêm vào union con đúng chủ đề + một mục ở `GAME_LOG_FIELDS`; TypeScript báo nếu thiếu):
 
-| Union con | Nguồn | Loại |
-| --- | --- | --- |
-| `DayEvent` (`model/time.ts`) | thời gian trôi (`advanceTime`, việc theo ngày) | `diedOfOldAge`, `legacyEggHatched`, `monsterAutoJoined`, `gameOver` (Nuzlocke, `challenge-modes.md`), `nearingLifespanEnd`, `imprintRequest`, `imprintFinished`, `expeditionReturned`, `cropRipe`, `bondBroken`, `beastTideWarning`, `beastTideArrived`, `worldBossAppeared`, `worldBossLeft`, `auctionWon`, `auctionLost`, `consignmentSold`, `consignmentReturned` (`auction.md`; `lifespan.md` và mục của từng việc) |
-| `EventLogEntry` (`model/events.ts`) | chọn lựa chọn event, sau trận event, thú triều (`events.md`) | `eventResolved`, `itemGained`, `itemSpent`, `moneyGained`, `moneyLost`, `equipmentGained`, `eggGained`, `monsterJoined`, `monsterRefused`, `equipmentLost`, `partyHealed`, `statusApplied`, `statusImmune`, `modifierAdded`, `tempShopOpened`, `chainStarted`, `chainAdvanced`, `chainEnded`, `battleStarted`, `beastTideArrived` (lúc vào thị trấn), `beastTideRetreated` |
-| `SafariLogEntry` (`model/safari.ts`) | action khu bảo tồn (`safari-zone.md`) | `safariEncounter`, `safariThrowBall`, `safariBreakFree`, `safariCaught`, `safariLure`, `safariFled`, `safariSkipped`, `safariVisitEnded` |
-| `ActionLogEntry` (`model/gameLog.ts`) | action khác | xem bảng dưới |
+| Union con                             | Nguồn                                                        | Loại                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DayEvent` (`model/time.ts`)          | thời gian trôi (`advanceTime`, việc theo ngày)               | `diedOfOldAge`, `legacyEggHatched`, `monsterAutoJoined`, `gameOver` (Nuzlocke, `challenge-modes.md`), `nearingLifespanEnd`, `imprintRequest`, `imprintFinished`, `expeditionReturned`, `cropRipe`, `bondBroken`, `beastTideWarning`, `beastTideArrived`, `worldBossAppeared`, `worldBossLeft`, `auctionWon`, `auctionLost`, `consignmentSold`, `consignmentReturned` (`auction.md`; `lifespan.md` và mục của từng việc) |
+| `EventLogEntry` (`model/events.ts`)   | chọn lựa chọn event, sau trận event, thú triều (`events.md`) | `eventResolved`, `itemGained`, `itemSpent`, `moneyGained`, `moneyLost`, `equipmentGained`, `eggGained`, `monsterJoined`, `monsterRefused`, `equipmentLost`, `partyHealed`, `statusApplied`, `statusImmune`, `modifierAdded`, `tempShopOpened`, `chainStarted`, `chainAdvanced`, `chainEnded`, `battleStarted`, `beastTideArrived` (lúc vào thị trấn), `beastTideRetreated`                                              |
+| `SafariLogEntry` (`model/safari.ts`)  | action khu bảo tồn (`safari-zone.md`)                        | `safariEncounter`, `safariThrowBall`, `safariBreakFree`, `safariCaught`, `safariLure`, `safariFled`, `safariSkipped`, `safariVisitEnded`                                                                                                                                                                                                                                                                                |
+| `ActionLogEntry` (`model/gameLog.ts`) | action khác                                                  | xem bảng dưới                                                                                                                                                                                                                                                                                                                                                                                                           |
 
-| Loại | Trường | Action (file luật) |
-| --- | --- | --- |
-| `gathered` | `method, tier, lureItemId, items, encounter` | `fish` / `mine` (`gathering.md`) |
-| `presetMissing` | `presetId, monsterIds, items` | `applyTeamPreset` khi có quái / món bỏ qua (`roster.md`) |
-| `crafted` | `station, recipeId, successes, failures` | `craft` (`alchemy.md`, `cooking.md`) |
-| `zoneStep` | `zoneId, result` (`ZoneStepResult`) | `exploreZone` (`zones.md`) |
-| `portalOpened` / `portalClosed` | `portalId, zoneId` | việc theo ngày (`zones.md` mục "Cổng thế giới") |
-| `fused` | `baseId, outcome` (`success` / `failed` / `protected`) | `fuse` (`fusing.md`) |
-| `breakthrough` | `success, realm` (cảnh giới sau lần thử) | `tamerBreakthrough` (`tamer.md`) |
-| `contractAttempted` | `monsterId, outcome` (`success` / `failed` / `escaped`) | `formContract` (`tamer.md`) |
-| `implanted` | `monsterId, tierId, success, fails, died` | `implant` (`implant.md`); bản mệnh chết thêm `bondBroken` |
-| `researchLevelUp` | `speciesId, level` (cấp mới) | mọi action, ghi ở `gameReducer` (`species-research.md`) |
-| `equipmentCast` | `instanceId, itemId, rarity` | `castEquipment` (`equipment-forge.md`) |
-| `equipmentSalvaged` | `instanceIds, enhanceStones, refiningStones, soulPoints, spirits` (tổng cả lần) | `salvageEquipment` (`equipment-forge.md`) |
-| `gachaPulled` | `eggIds` (theo thứ tự) | `pullGacha` (`gacha.md`) |
+| Loại                            | Trường                                                                          | Action (file luật)                                        |
+| ------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `gathered`                      | `method, tier, lureItemId, items, encounter`                                    | `fish` / `mine` (`gathering.md`)                          |
+| `presetMissing`                 | `presetId, monsterIds, items`                                                   | `applyTeamPreset` khi có quái / món bỏ qua (`roster.md`)  |
+| `crafted`                       | `station, recipeId, successes, failures`                                        | `craft` (`alchemy.md`, `cooking.md`)                      |
+| `zoneStep`                      | `zoneId, result` (`ZoneStepResult`)                                             | `exploreZone` (`zones.md`)                                |
+| `portalOpened` / `portalClosed` | `portalId, zoneId`                                                              | việc theo ngày (`zones.md` mục "Cổng thế giới")           |
+| `fused`                         | `baseId, outcome` (`success` / `failed` / `protected`)                          | `fuse` (`fusing.md`)                                      |
+| `breakthrough`                  | `success, realm` (cảnh giới sau lần thử)                                        | `tamerBreakthrough` (`tamer.md`)                          |
+| `contractAttempted`             | `monsterId, outcome` (`success` / `failed` / `escaped`)                         | `formContract` (`tamer.md`)                               |
+| `implanted`                     | `monsterId, tierId, success, fails, died`                                       | `implant` (`implant.md`); bản mệnh chết thêm `bondBroken` |
+| `researchLevelUp`               | `speciesId, level` (cấp mới)                                                    | mọi action, ghi ở `gameReducer` (`species-research.md`)   |
+| `equipmentCast`                 | `instanceId, itemId, rarity`                                                    | `castEquipment` (`equipment-forge.md`)                    |
+| `equipmentSalvaged`             | `instanceIds, enhanceStones, refiningStones, soulPoints, spirits` (tổng cả lần) | `salvageEquipment` (`equipment-forge.md`)                 |
+| `gachaPulled`                   | `eggIds` (theo thứ tự)                                                          | `pullGacha` (`gacha.md`)                                  |
 
 ## Save
 

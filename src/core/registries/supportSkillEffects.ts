@@ -12,7 +12,13 @@ import {
   statusTurnsLeft,
   wallStatusesOf
 } from '../monster'
-import type { BattleStages, GameData, Monster, StatName } from '../model'
+import {
+  isOffensiveTarget,
+  type BattleStages,
+  type GameData,
+  type Monster,
+  type StatName
+} from '../model'
 import { elementEffectiveness } from './elementReactions'
 import { isBattleStageStat } from './paramChecks'
 import { checkElements, hasElement } from './fieldHookUtils'
@@ -30,8 +36,7 @@ const ALLY_ONLY = ['chỉ dùng cho skill nhắm phe mình (self / ally / allAll
 const cureStatus: SkillEffectHandler = {
   timing: 'afterHits',
   validateParams: validateEmptyParams,
-  checkTarget: (_params, target) =>
-    target === 'enemy' || target === 'allEnemies' ? ALLY_ONLY : [],
+  checkTarget: (_params, target) => (isOffensiveTarget(target) ? ALLY_ONLY : []),
   apply: (_params, { target, rng }) => ({ ...noChanges(rng), statusCures: [target.id] }),
   aiValue: (_params, { data, target, targetIsAlly }) =>
     targetIsAlly ? statusValue(data, target) : 0
@@ -229,8 +234,7 @@ const reduceHold: SkillEffectHandler = {
     const obj = asObject(params)
     return obj ? checkInteger(obj.turns, 'turns', 1) : ['params phải là object']
   },
-  checkTarget: (_params, target) =>
-    target === 'enemy' || target === 'allEnemies' ? ALLY_ONLY : [],
+  checkTarget: (_params, target) => (isOffensiveTarget(target) ? ALLY_ONLY : []),
   apply(params, { target, rng }) {
     const { turns } = params as { turns: number }
     return { ...noChanges(rng), holdReductions: [{ monsterId: target.id, turns }] }

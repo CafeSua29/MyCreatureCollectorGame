@@ -514,6 +514,11 @@ export interface BattleRecord {
   staminaUsed?: number
   /** Lượt quái kiệt sức vì quá sức: lệnh nào cũng thành Nghỉ. */
   exhaustedTurn?: number
+  /**
+   * Đang dùng skill quá sức (bật lúc trả giá, xóa khi phạt xong trong cùng hành động; điều kiện trait
+   * `overexerting`).
+   */
+  overexerting?: true
   /** Số lượt đã hành động bằng lệnh của nó. */
   turnsTaken: number
   /** Số lần dùng skill physical gây sát thương (Attack của Siralim). */

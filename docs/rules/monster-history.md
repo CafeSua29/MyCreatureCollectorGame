@@ -21,7 +21,7 @@ Ghi nguồn gốc và cột mốc của mỗi quái (như trainer memo của Pok
 | `legacy`        | `parentSpeciesId` (loài gốc của quái đã chết)                                                                         | `createLegacyEgg` (ấp hồn phách, `soul-relics.md`)                       |
 | `recruit`       | `method` (`afterBattle` / `intimidate` / `bossSubmit`)                                                                | quái thu phục (`recruit.md`)                                             |
 | `safari`        |                                                                                                                       | `throwSafariBall` bắt được (thị trấn: `metFloor` null; `safari-zone.md`) |
-| `trade`         | `npcNameId` (tên NPC, chủ cũ)                                                                                         | `acceptTrade` (thị trấn: `metFloor` null; `trades.md`)                    |
+| `trade`         | `npcNameId` (tên NPC, chủ cũ)                                                                                         | `acceptTrade` (thị trấn: `metFloor` null; `trades.md`)                   |
 | `gacha`         |                                                                                                                       | `pullGacha` (thị trấn: `metFloor` null; `gacha.md`)                      |
 | `unknown`       |                                                                                                                       | chỉ có ở save cũ (migrate v25)                                           |
 

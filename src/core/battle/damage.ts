@@ -132,6 +132,7 @@ function effectivenessModes(input: DamageFormulaInput): Set<EffectivenessMode> {
         if (mode === 'reverse' || (mode === 'alwaysStrong' && side === 'dealt')) modes.add(mode)
         if ((mode === 'neverWeak' || mode === 'noResist') && side === 'taken') modes.add(mode)
         if (mode === 'neutral' && side === 'dealt') modes.add(mode)
+        if (mode === 'neutralTaken' && side === 'taken') modes.add('neutral')
       },
       ctx
     )
@@ -783,7 +784,17 @@ function rawDamage(
     .times(guardMultiplier(input))
     .times(masteryPowerMultiplier(input))
     // Synergy theo đồng đội trên sân (ngoài trận không có bối cảnh trận nên không áp).
-    .times(synergyPowerMultiplier(skill, arena?.attackerContext?.allies ?? []))
+    .times(
+      synergyPowerMultiplier(
+        {
+          data,
+          user: attacker,
+          allies: arena?.attackerContext?.allies ?? [],
+          ctx: arena?.attackerContext
+        },
+        skill
+      )
+    )
     .times(stylePowerMultiplier(data, skill, input.style))
     // Quái lớn chỉ hành động 1 lần mỗi lượt (docs/rules/monster-size.md).
     .times(sizeDamageMultiplier(data, attacker))

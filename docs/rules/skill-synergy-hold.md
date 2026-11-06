@@ -9,7 +9,8 @@ Code: `battle/skillSynergy.ts` (synergy), `monster/hold.ts` (`holdTurnsLeft`, `h
 ## Synergy
 
 - Trường `synergy: { partnerElementIds, powerBonusPercent?, effects? }`. Có tác dụng khi quái dùng skill có **đồng đội còn sống trên sân** (không gồm chính nó) mang một hệ trong `partnerElementIds`, theo **hệ hiện tại** (`elementIds` của quái, Tera đã đổi hệ thì tính hệ Tera). Đồng đội đầu tiên khớp là đồng đội synergy.
-- `powerBonusPercent`: power × (1 + %/100), nhân trong công thức sát thương chung `rawDamage` (đánh thật và AI dự đoán cùng một chỗ; đọc đồng đội từ bối cảnh trận `attackerContext.allies`, ngoài trận không áp).
+- `powerBonusPercent`: power × (1 + %/100), nhân trong công thức sát thương chung `rawDamage` (đánh thật và AI dự đoán cùng một chỗ; đọc đồng đội từ bối cảnh trận `attackerContext.allies`, ngoài trận không áp). Hook trait `synergyBoost { percent }` của quái dùng (kể cả hào quang) nhân thêm ×(1 + %/100) khi synergy có tác dụng (Synergy Adept / Master của Temtem).
+- Cờ trait `blocksSynergy` (Isolated, Loneliness của Temtem): quái dùng mang cờ thì không có synergy; đồng đội mang cờ không làm đồng đội synergy. Cờ `grantsSynergy` (Superconductivity): đồng đội mang cờ luôn khớp hệ. Xét chung ở `synergyPartner` (`battle/skillSynergy.ts`).
 - `effects`: hiệu ứng skill (registry hiệu ứng skill có sẵn, theo `timing` như `effects` gốc) chạy thêm sau hiệu ứng gốc (`withSynergyEffects`). AI chấm qua `aiValue` của hiệu ứng như hiệu ứng gốc.
 - Xét một lần mỗi lần dùng (sau khi skill không bị chặn / ngắt, trước khi chọn mục tiêu); có tác dụng thì log `synergy { monsterId, skillId, partnerId }`. Áp cho mọi lần dùng kể cả skill do trait / minion (`reactive`).
 - Chiêu Max / G-Max không có synergy (quái Dynamax dùng chiêu Max, không phải skill gốc). Quái một mình trên sân không có synergy (quái lớn / thực thể hợp thể sau này cũng vậy vì không có đồng đội trên sân).

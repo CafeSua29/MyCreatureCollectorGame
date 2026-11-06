@@ -51,7 +51,7 @@ import {
   type SpellSlot
 } from './artifactTraitHooks'
 import { checkConditions, checkTrigger, type DslCondition, type TriggerDef } from './traitDsl'
-import { checkAllConditions } from './traitConditions'
+import { checkAllConditions, type DslView } from './traitConditions'
 import { ACTION_TRAIT_HOOKS } from './actionTraitHooks'
 import { COMBAT_TRAIT_HOOKS } from './combatTraitHooks'
 import { CONDITIONAL_TRAIT_HOOKS } from './conditionalTraitHooks'
@@ -182,6 +182,16 @@ export const BERRY_ITEM_TAG = 'berry'
 
 export type HeldUse = 'trigger' | 'survive' | 'damage' | 'actFirst' | 'hit' | 'charge'
 
+/** Phần đổi luật quá sức của một hook `overexertion` (gộp mọi hook của quái). */
+export interface OverexertionRule {
+  /** % máu mất do quá sức cộng thêm (âm = giảm, −100 = không mất). */
+  hpPercent: number
+  /** Không mất lượt kế tiếp. */
+  skipsExhaustion: boolean
+  /** Máu mất do quá sức không làm gục (còn ít nhất 1 HP). */
+  cannotFaint: boolean
+}
+
 export interface TraitHookHandler extends PassiveTraitPhases {
   /**
    * Lúc hook làm đồ cầm tiêu hao kích hoạt rồi đồ mất khỏi ô; bỏ trống = hook tác dụng liên tục khi
@@ -263,8 +273,12 @@ export interface TraitHookHandler extends PassiveTraitPhases {
   immuneStatusIds?(params: unknown): readonly string[]
   /** % thể lực tối đa cộng thêm (docs/rules/stamina.md). */
   staminaMaxPercent?(params: unknown, scale: number): number
-  /** % giá thể lực của skill cộng thêm (âm = giảm). */
-  staminaCostPercent?(params: unknown, scale: number): number
+  /** % giá thể lực của skill cộng thêm (âm = giảm); `skill` để lọc skill gây sát thương (Efficient). */
+  staminaCostPercent?(params: unknown, scale: number, skill: Skill): number
+  /** % sát thương cộng thêm khi synergy của skill có tác dụng (Synergy Master của Temtem). */
+  synergyBoostPercent?(params: unknown, scale: number): number
+  /** Luật quá sức riêng của quái (Tireless của Temtem; docs/rules/stamina.md mục "Quá sức"). */
+  overexertion?(params: unknown, scale: number): OverexertionRule
   /** % đòn tầm xa của quái đi xuyên tường địch (Ricochet, docs/rules/cassette-mechanics.md). */
   wallIgnoreChance?(params: unknown): number
   /** Không chịu phản ứng hệ của skill hệ này (docs/rules/element-reactions.md). */
@@ -367,6 +381,12 @@ export interface TraitHookHandler extends PassiveTraitPhases {
   priorityBonus?(params: unknown, category: SkillCategory): number
   /** Priority cộng theo skill / máu (Gale Wings: hệ Bay khi đầy máu; Triage: skill hồi máu). */
   conditionalPriorityBonus?(params: unknown, skill: Skill, fullHp: boolean): number
+  /** Đòn đơn nhắm địch của quái mang đánh mọi địch, trả % power khi có từ 2 địch (Spreader). */
+  singleTargetSpreadPercent?(params: unknown, skill: Skill): number | undefined
+  /** Đòn đơn của địch nhắm quái mang bị đẩy sang đồng đội của nó (Puppet Master). */
+  redirectsToAlly?(params: unknown, view: DslView): boolean
+  /** Priority dưới mức này bị đảo dấu khi quái mang ở trên sân (Deceit Aura). */
+  priorityInversionFloor?(params: unknown): number
   /**
    * Skill loại `category` được hook này cộng priority thì thất bại lên quái phe địch mang một
    * trong các hệ `targetElementIds` (Prankster trước hệ Bóng tối).

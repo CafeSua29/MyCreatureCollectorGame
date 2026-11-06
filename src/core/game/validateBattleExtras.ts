@@ -415,6 +415,9 @@ export function checkRecords(
     if (record.exhaustedTurn !== undefined) {
       issues.push(...checkInteger(record.exhaustedTurn, `${path}.exhaustedTurn`, 1))
     }
+    if (record.overexerting !== undefined && record.overexerting !== true) {
+      issues.push(`${path}.overexerting chỉ được là true`)
+    }
     for (const field of RECORD_COUNTS)
       issues.push(...checkInteger(record[field], `${path}.${field}`, 0))
     for (const field of RECORD_AMOUNTS) issues.push(...checkBig(record[field], `${path}.${field}`))

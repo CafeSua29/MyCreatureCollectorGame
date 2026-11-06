@@ -883,7 +883,7 @@
       {
         "type": "protectFrom",
         "params": {
-          "targets": ["allEnemies"]
+          "targets": ["allEnemies", "allOthers", "all", "foesOrAlly"]
         }
       }
     ]

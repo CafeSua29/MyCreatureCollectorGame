@@ -1078,12 +1078,30 @@ export interface StaminaConfig {
   overexertHpPercent: number
   /** Giá theo power, tăng dần `upToPower`; power lớn hơn mọi mức thì lấy mức cuối. */
   costByPower: { upToPower: number; cost: number }[]
-  /** Giá skill trạng thái. */
+  /** Giá gốc skill trạng thái không ghi giá; cộng thêm theo hiệu ứng (`statusEffectCost`). */
   statusCost: number
+  statusEffectCost: StatusEffectCostConfig
   /** AI: điểm Nghỉ khi cạn thể lực (× phần thể lực đã mất). */
   restWeight: number
   /** AI: điểm trừ thêm vì mất lượt khi quá sức. */
   exhaustedPenalty: number
+}
+
+/**
+ * Điểm giá cộng thêm theo hiệu ứng của skill trạng thái không ghi giá (stamina.md mục "Giá suy ra"); mốc
+ * theo giá PP của chiêu Pokémon cùng loại hiệu ứng.
+ */
+export interface StatusEffectCostConfig {
+  /** Mỗi bậc chỉ số tăng / giảm. */
+  perStage: number
+  /** Mỗi % max HP hồi. */
+  perHealPercent: number
+  /** Mỗi trạng thái gây ra. */
+  perStatus: number
+  /** Mỗi môi trường đặt / xóa. */
+  perField: number
+  /** Mỗi hiệu ứng khác. */
+  perEffect: number
 }
 
 export interface BattleConfig {

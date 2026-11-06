@@ -113,6 +113,11 @@ export interface BattleForm {
   originalElementIds: string[]
   /** Về dạng thường khi rời sân (Zen Mode, Stance Change); bỏ trống = giữ tới hết trận. */
   untilLeave?: true
+  /**
+   * Dạng chép chỉ số gốc của loài khác (Transmog của Temtem): `speciesId` là loài thường bất kỳ, chỉ số tính
+   * từ chỉ số gốc của loài đó với level / gen / điểm của chính quái.
+   */
+  copied?: true
 }
 
 /** Quái phụ của thực thể hợp thể. */

@@ -101,6 +101,10 @@ interface ConditionalPriorityParams {
   fullHp?: true
   /** Chỉ skill hồi máu: có hiệu ứng heal / drain (Triage). */
   healing?: true
+  /** Chỉ skill có priority gốc ≤ số này (Gotta Go Fast của Temtem: tới Normal). */
+  maxPriority?: number
+  /** Đặt priority bằng số này thay vì cộng `amount` (Gotta Go Fast: lên High). */
+  setTo?: number
 }
 
 /** Skill hồi máu (Triage): hiệu ứng heal / drain, hoặc spell hồi máu. */
@@ -116,6 +120,10 @@ const conditionalPriority: TraitHookHandler = {
     if (obj.elementIds !== undefined) {
       issues.push(...checkEnumList(obj.elementIds, 'elementIds', Object.keys(data.elements)))
     }
+    if (obj.maxPower !== undefined) issues.push(...checkNumber(obj.maxPower, 'maxPower', 1))
+    for (const key of ['maxPriority', 'setTo'] as const) {
+      if (obj[key] !== undefined) issues.push(...checkInteger(obj[key], key))
+    }
     for (const flag of ['fullHp', 'healing'] as const) {
       if (obj[flag] !== undefined && obj[flag] !== true) issues.push(`${flag} chỉ được là true`)
     }
@@ -127,7 +135,8 @@ const conditionalPriority: TraitHookHandler = {
     if (p.fullHp && !fullHp) return 0
     if (p.maxPower !== undefined && (skill.power <= 0 || skill.power > p.maxPower)) return 0
     if (p.healing && !isHealingSkill(skill)) return 0
-    return p.amount
+    if (p.maxPriority !== undefined && skill.priority > p.maxPriority) return 0
+    return p.setTo === undefined ? p.amount : Math.max(0, p.setTo - skill.priority)
   }
 }
 
@@ -196,8 +205,42 @@ const fleeWhenLowHp: TraitHookHandler = {
   }
 }
 
+// ---------- invertsPriority: đảo priority mọi skill trên sân (Deceit Aura của Temtem) ----------
+
+const invertsPriority: TraitHookHandler = {
+  validateParams(params) {
+    const obj = asObject(params)
+    return obj ? checkInteger(obj.exceptAtLeast, 'exceptAtLeast', 1) : ['params phải là object']
+  },
+  priorityInversionFloor: (params) => (params as { exceptAtLeast: number }).exceptAtLeast
+}
+
+// ---------- spreadsSingleTarget: đòn đơn thành đánh mọi địch (Spreader của Temtem) ----------
+
+interface SpreadsSingleTargetParams {
+  categories: SkillCategory[]
+  powerPercent: number
+}
+
+const spreadsSingleTarget: TraitHookHandler = {
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return [
+      ...checkEnumList(obj.categories, 'categories', SKILL_CATEGORIES),
+      ...checkNumber(obj.powerPercent, 'powerPercent', Number.MIN_VALUE)
+    ]
+  },
+  singleTargetSpreadPercent(params, skill) {
+    const { categories, powerPercent } = params as SpreadsSingleTargetParams
+    return categories.includes(skill.category) ? powerPercent : undefined
+  }
+}
+
 export const ACTION_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
   conditionalPriority,
+  spreadsSingleTarget,
+  invertsPriority,
   skipTurnChance,
   skipEveryOtherTurn,
   randomSkillChance,

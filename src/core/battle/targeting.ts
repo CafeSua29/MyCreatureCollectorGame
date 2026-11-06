@@ -13,8 +13,22 @@ import {
   hasTraitFlag
 } from '../registries'
 import { pick, rollPercent } from '../shared'
-import type { BattleSide, GameData, Monster, Skill } from '../model'
-import { Draft, aliveOnField, log, monsterBattleContext, opponentOf, sideOf } from './draft'
+import {
+  isOffensiveTarget,
+  type BattleSide,
+  type GameData,
+  type Monster,
+  type Skill
+} from '../model'
+import {
+  Draft,
+  aliveOnField,
+  clockwiseFrom,
+  log,
+  monsterBattleContext,
+  opponentOf,
+  sideOf
+} from './draft'
 import { emitTraitEvent } from './eventQueue'
 
 export interface TargetRequest {
@@ -78,6 +92,31 @@ function interceptor(data: GameData, d: Draft, user: Monster, target: Monster): 
   return null
 }
 
+/**
+ * Mục tiêu đẩy đòn đơn nhắm nó sang đồng đội (hook `redirectToAlly`: Puppet Master, Shared Pain của
+ * Temtem); null = không đẩy hoặc không có đồng đội còn sống.
+ */
+function redirectedToAlly(
+  data: GameData,
+  d: Draft,
+  user: Monster,
+  target: Monster
+): Monster | null {
+  const ally = aliveOnField(data, d, sideOf(d, target.id)).find(
+    (entry) => entry.monster.id !== target.id
+  )?.monster
+  if (!ally) return null
+  const ctx = monsterBattleContext(data, d, target)
+  const view = { data, self: target, selfCtx: ctx, other: user }
+  const redirects = hasTraitFlag(
+    data,
+    target,
+    (handler, params) => handler.redirectsToAlly?.(params, view),
+    ctx
+  )
+  return redirects ? ally : null
+}
+
 /** % đòn đơn mục tiêu của quái dùng đổi sang mục tiêu ngẫu nhiên (trait / hào quang). */
 function randomTargetChance(data: GameData, d: Draft, user: Monster): number {
   let miss = 1
@@ -122,6 +161,8 @@ function singleFoeTarget(data: GameData, d: Draft, req: TargetRequest): Monster 
   if (provoker && provoker.id !== chosen.id) chosen = provoker
   const guardian = interceptor(data, d, user, chosen)
   if (guardian) chosen = guardian
+  const pushed = guardian ? null : redirectedToAlly(data, d, user, chosen)
+  if (pushed) chosen = pushed
   const blind = hasStatusFlag(data, user, (handler, params) => handler.randomizesTarget?.(params))
   if (blind || rolls(d, randomTargetChance(data, d, user))) chosen = pickOne(d, foes)
   if (chosen.id !== original.id)
@@ -141,7 +182,33 @@ function confusedTarget(data: GameData, d: Draft, req: TargetRequest): Monster |
   return allies.length > 0 ? pickOne(d, allies) : undefined
 }
 
+/** Mục tiêu thật của lần dùng skill (sau mọi luật đổi mục tiêu, Individualist). */
 export function resolveTargets(data: GameData, d: Draft, req: TargetRequest): Monster[] {
+  const targets = chainedTargets(data, d, req, rawTargets(data, d, req))
+  // Individualist của Temtem: đòn gây hại của quái mang không trúng đồng đội.
+  const harmful = req.skill.power > 0 || isOffensiveTarget(req.skill.target)
+  if (!harmful || !hasAbilityFlag(data, req.user, 'sparesAllies')) return targets
+  return targets.filter(
+    (target) => target.id === req.user.id || sideOf(d, target.id) !== sideOf(d, req.user.id)
+  )
+}
+
+/** Chuỗi (`Skill.chain`): sau mục tiêu đầu, các quái kế tiếp theo chiều kim đồng hồ (kể cả quái dùng). */
+function chainedTargets(
+  data: GameData,
+  d: Draft,
+  req: TargetRequest,
+  targets: Monster[]
+): Monster[] {
+  const chain = req.skill.chain
+  if (!chain) return targets
+  // Chuỗi nhắm đồng đội mà không có đồng đội: bắt đầu từ chính quái dùng (Chain Heal khi đứng một mình).
+  const first = targets[0] ?? (req.skill.target === 'ally' ? req.user : undefined)
+  if (!first || targets.length > 1) return targets
+  return [first, ...clockwiseFrom(data, d, first.id).slice(0, chain.steps - 1)]
+}
+
+function rawTargets(data: GameData, d: Draft, req: TargetRequest): Monster[] {
   const { side, user, skill } = req
   switch (skill.target) {
     case 'self':
@@ -174,6 +241,15 @@ export function resolveTargets(data: GameData, d: Draft, req: TargetRequest): Mo
       return [target]
     }
     case 'allEnemies':
+    case 'foesOrAlly':
       return aliveOnField(data, d, opponentOf(side)).map((entry) => entry.monster)
+    case 'allOthers':
+    case 'all': {
+      // Địch trước, rồi đồng đội, rồi chính quái dùng (all) như thứ tự trúng đòn của gốc.
+      const foes = aliveOnField(data, d, opponentOf(side)).map((entry) => entry.monster)
+      const own = aliveOnField(data, d, side).map((entry) => entry.monster)
+      const allies = own.filter((monster) => monster.id !== user.id)
+      return skill.target === 'all' ? [...foes, ...allies, user] : [...foes, ...allies]
+    }
   }
 }

@@ -1170,7 +1170,11 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   // kiểu cũ (`volatiles.*.wall`) bỏ đi.
   107: dropVolatileWalls,
   // v108 → v109: bản ghi trận thêm thể lực (tùy chọn, bỏ trống = đầy); không đổi gì.
-  108: (save) => ({ ...save, version: 109 })
+  108: (save) => ({ ...save, version: 109 }),
+  // v109 → v110: bản ghi trận thêm cờ đang quá sức (tùy chọn); không đổi gì.
+  109: (save) => ({ ...save, version: 110 }),
+  // v110 → v111: dạng trong trận thêm cờ chép loài khác `copied` (tùy chọn); không đổi gì.
+  110: (save) => ({ ...save, version: 111 })
 }
 
 /**

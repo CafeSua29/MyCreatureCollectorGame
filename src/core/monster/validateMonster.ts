@@ -150,7 +150,13 @@ function checkBattleForm(data: GameData, value: unknown, path: string): string[]
   if (!form) return [`${path} không hợp lệ`]
   const issues: string[] = []
   const species = typeof form.speciesId === 'string' ? data.species[form.speciesId] : undefined
-  if (species?.kind !== 'normal' || species.formKind !== 'battleOnly') {
+  if (form.copied !== undefined && form.copied !== true)
+    issues.push(`${path}.copied chỉ được là true`)
+  if (form.copied === true) {
+    if (species?.kind !== 'normal') {
+      issues.push(`${path}.speciesId: loài không tồn tại "${String(form.speciesId)}"`)
+    }
+  } else if (species?.kind !== 'normal' || species.formKind !== 'battleOnly') {
     issues.push(`${path}.speciesId: không phải dạng trong trận "${String(form.speciesId)}"`)
   }
   checkOriginalElements(data, form.originalElementIds, `${path}.originalElementIds`, issues)

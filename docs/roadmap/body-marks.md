@@ -6,13 +6,13 @@ Chủ project yêu cầu 2026-11-03 (bổ sung cùng ngày: chỉ sẹo / đột
 
 ## Năm loại dấu ấn
 
-| Loại | Nghĩa | Tốt / xấu | Nguồn chính | Mất đi | Di truyền |
-| ---- | ----- | --------- | ----------- | ------ | --------- |
-| `scar` (sẹo) | Thương tật vĩnh viễn ở một bộ phận | Xấu | Bộ phận bị phá, bị chí mạng, gục trong trận, trạng thái nặng | Chữa (Thầy thuốc, đan), luân hồi, hoặc tự **chai thành sẹo chiến** | Không |
-| `mutation` (đột biến) | Bộ phận biến dạng | Tốt hoặc **hai mặt** (+ một chỉ số, − chỉ số khác) | Bộ phận bị phá (hiếm), thắng khi suýt chết, môi trường / hiểm địa, đan dược, linh dịch, bẩm sinh | Chỉ Thầy thuốc bỏ theo ý người chơi | Có |
-| `adaptation` (thích nghi) | Cơ thể quen dần với thứ hay gặp | Tốt | Bị đánh nhiều lần bởi một hệ / dính nhiều lần một trạng thái / đánh nhiều trận trong một thời tiết, địa hình | Không mất | Tỉ lệ thấp |
-| `trauma` (ám ảnh) | Nỗi sợ sau thất bại | Xấu, chỉ khi gặp thứ gây ra nó | Gục nhiều lần dưới tay một loài / một hệ | **Vượt qua**: hạ đúng thứ đó đủ số lần thì thành dấu `resolve` | Không |
-| `trophy` (chiến tích) | Huân chương của con quái | Tốt, theo đối tượng | Hạ boss, boss thế giới, hạ nhiều quái một race, vượt ám ảnh (`resolve`), độ kiếp thành công | Không mất | Không |
+| Loại                      | Nghĩa                              | Tốt / xấu                                          | Nguồn chính                                                                                                  | Mất đi                                                             | Di truyền  |
+| ------------------------- | ---------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ---------- |
+| `scar` (sẹo)              | Thương tật vĩnh viễn ở một bộ phận | Xấu                                                | Bộ phận bị phá, bị chí mạng, gục trong trận, trạng thái nặng                                                 | Chữa (Thầy thuốc, đan), luân hồi, hoặc tự **chai thành sẹo chiến** | Không      |
+| `mutation` (đột biến)     | Bộ phận biến dạng                  | Tốt hoặc **hai mặt** (+ một chỉ số, − chỉ số khác) | Bộ phận bị phá (hiếm), thắng khi suýt chết, môi trường / hiểm địa, đan dược, linh dịch, bẩm sinh             | Chỉ Thầy thuốc bỏ theo ý người chơi                                | Có         |
+| `adaptation` (thích nghi) | Cơ thể quen dần với thứ hay gặp    | Tốt                                                | Bị đánh nhiều lần bởi một hệ / dính nhiều lần một trạng thái / đánh nhiều trận trong một thời tiết, địa hình | Không mất                                                          | Tỉ lệ thấp |
+| `trauma` (ám ảnh)         | Nỗi sợ sau thất bại                | Xấu, chỉ khi gặp thứ gây ra nó                     | Gục nhiều lần dưới tay một loài / một hệ                                                                     | **Vượt qua**: hạ đúng thứ đó đủ số lần thì thành dấu `resolve`     | Không      |
+| `trophy` (chiến tích)     | Huân chương của con quái           | Tốt, theo đối tượng                                | Hạ boss, boss thế giới, hạ nhiều quái một race, vượt ám ảnh (`resolve`), độ kiếp thành công                  | Không mất                                                          | Không      |
 
 ## Dữ liệu
 

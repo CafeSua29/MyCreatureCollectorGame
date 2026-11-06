@@ -21,21 +21,21 @@ Code: `battle/reach.ts` (tầm chiêu: `skillReach`, `canReach`, `markSwoop`), `
 - **Bộ phận của quái** (`monsterBodyPlan`): trường `bodyParts` của loài, không thì của race, không thì của nhóm race (race trộn mặc định nhóm như `weightKg`), không thì `hitLocations.defaultBodyParts` (đầu, thân, chân). Theo loài hiện tại (quái fuse: loài gốc), không theo dạng biến hình. Không lưu trong save.
 - **Điểm yếu** `weakPoints`: cùng thứ tự kế thừa; tối đa `hitLocations.maxWeakPoints` (2) bộ phận, phải nằm trong bộ phận của chính mục đó (kiểm tra dữ liệu); loài đổi bộ phận mà không ghi điểm yếu thì giữ điểm yếu của race còn có trong bộ phận mới. Mặc định theo nhóm race (2026-10-30; số Claude đặt, 0–2 điểm yếu để cân bằng: nhóm cứng / vô hình không có điểm yếu, nhóm lớn mạnh có 2):
 
-  | Nhóm                                                | Bộ phận                      | Điểm yếu    |
-  | --------------------------------------------------- | ---------------------------- | ----------- |
-  | dragon                                              | đầu, thân, chân, cánh, đuôi  | đầu, cánh   |
-  | demon                                               | đầu, thân, tay, chân, cánh, đuôi | cánh    |
-  | avian                                               | đầu, thân, chân, cánh, đuôi  | cánh        |
-  | celestial                                           | đầu, thân, tay, chân, cánh   | cánh        |
-  | insect                                              | đầu, thân, chân, cánh        | chân        |
-  | dinosaur                                            | đầu, thân, chân, đuôi        | đầu         |
-  | beast                                               | đầu, thân, chân, đuôi        | chân        |
-  | reptile                                             | đầu, thân, chân, đuôi        | đuôi        |
-  | aquatic                                             | đầu, thân, đuôi              | đuôi        |
-  | humanoid, shapeshifter, undead, aberration, alien   | đầu, thân, tay, chân         | đầu         |
-  | plant                                               | đầu, thân, chân              | đầu         |
-  | mineral, deity                                      | đầu, thân, tay, chân         | không có    |
-  | amorphous, elemental, spirit                        | thân                         | không có    |
+  | Nhóm                                              | Bộ phận                          | Điểm yếu  |
+  | ------------------------------------------------- | -------------------------------- | --------- |
+  | dragon                                            | đầu, thân, chân, cánh, đuôi      | đầu, cánh |
+  | demon                                             | đầu, thân, tay, chân, cánh, đuôi | cánh      |
+  | avian                                             | đầu, thân, chân, cánh, đuôi      | cánh      |
+  | celestial                                         | đầu, thân, tay, chân, cánh       | cánh      |
+  | insect                                            | đầu, thân, chân, cánh            | chân      |
+  | dinosaur                                          | đầu, thân, chân, đuôi            | đầu       |
+  | beast                                             | đầu, thân, chân, đuôi            | chân      |
+  | reptile                                           | đầu, thân, chân, đuôi            | đuôi      |
+  | aquatic                                           | đầu, thân, đuôi                  | đuôi      |
+  | humanoid, shapeshifter, undead, aberration, alien | đầu, thân, tay, chân             | đầu       |
+  | plant                                             | đầu, thân, chân                  | đầu       |
+  | mineral, deity                                    | đầu, thân, tay, chân             | không có  |
+  | amorphous, elemental, spirit                      | thân                             | không có  |
 
 - Chưa có: bộ phận / điểm yếu riêng theo loài (mọi loài đang theo nhóm race; loài không có cánh trong nhóm có cánh như chim cánh cụt vẫn có cánh; chờ nguồn, xem `docs/roadmap/biome-content.md` mục "Bộ phận và điểm yếu theo loài"). Thêm bằng `bodyParts` / `weakPoints` của loài / race, không cần sửa code. Tay (2026-10-31) cho nhóm có tay rõ ràng (người, ác ma, thiên thần, thần, xác sống, ngoài hành tinh, dị thể, biến hình, khoáng vật kiểu golem); thú bốn chân tính chi trước là chân, khủng long / côn trùng / thực vật chưa có tay (chờ dữ liệu theo loài như trên).
 
@@ -70,16 +70,17 @@ Chỉ đòn **nhắm bộ phận** gây mất thế (đòn thường không), n�
   - **Hiệu ứng khi trúng** (`hitEffects`): một lần cho cả chiêu lên mục tiêu, sau hiệu ứng `afterHits` của skill, khi sát thương > 0 và mục tiêu còn sống; tỉ lệ nhân như hiệu ứng phụ của skill (Serene Grace, thuần thục, Shield Dust...) × `weakPointChanceMultiplier` (2) nếu trúng điểm yếu. Thế thân chặn như hiệu ứng skill.
 - Số hiện tại:
 
-  | Bộ phận | Accuracy | Sát thương | Chí mạng | Khi trúng                 | Phá (≥ % max HP) → hiệu ứng | Đồ rơi khi phá | Hạ gục: yêu đan |
-  | ------- | -------- | ---------- | -------- | ------------------------- | --------------------------- | -------------- | --------------- |
-  | đầu     | −25%     | 0          | +1 bậc   | 10% choáng (flinch)       | 30% → hỗn loạn (confusion)  | +25%           | × 0,5 (vỡ đan)  |
-  | thân    | 0        | 0          | 0        | không                     | 50% → −1 bậc thủ            | +25%           | không đổi       |
-  | tay     | −10%     | −10%       | 0        | 20% −1 bậc công           | 30% → −2 bậc công           | +25%           | không đổi       |
-  | chân    | −10%     | −10%       | 0        | 20% −1 bậc tốc độ         | 30% → −2 bậc tốc độ         | +25%           | không đổi       |
-  | cánh    | −15%     | −10%       | 0        | 30% hạ xuống đất          | 25% → hạ xuống đất          | +25%           | không đổi       |
-  | đuôi    | −15%     | −10%       | 0        | 20% −1 bậc né             | 25% → −1 bậc né             | +50% (cắt đuôi) | không đổi      |
+  | Bộ phận | Accuracy | Sát thương | Chí mạng | Khi trúng           | Phá (≥ % max HP) → hiệu ứng | Đồ rơi khi phá  | Hạ gục: yêu đan |
+  | ------- | -------- | ---------- | -------- | ------------------- | --------------------------- | --------------- | --------------- |
+  | đầu     | −25%     | 0          | +1 bậc   | 10% choáng (flinch) | 30% → hỗn loạn (confusion)  | +25%            | × 0,5 (vỡ đan)  |
+  | thân    | 0        | 0          | 0        | không               | 50% → −1 bậc thủ            | +25%            | không đổi       |
+  | tay     | −10%     | −10%       | 0        | 20% −1 bậc công     | 30% → −2 bậc công           | +25%            | không đổi       |
+  | chân    | −10%     | −10%       | 0        | 20% −1 bậc tốc độ   | 30% → −2 bậc tốc độ         | +25%            | không đổi       |
+  | cánh    | −15%     | −10%       | 0        | 30% hạ xuống đất    | 25% → hạ xuống đất          | +25%            | không đổi       |
+  | đuôi    | −15%     | −10%       | 0        | 20% −1 bậc né       | 25% → −1 bậc né             | +50% (cắt đuôi) | không đổi       |
 
   Điểm yếu: sát thương +50%, tỉ lệ hiệu ứng khi trúng ×2, sát thương tính vào phá bộ phận ×2.
+
 - Thiết kế: nhắm bộ phận thường **không lợi về sát thương kỳ vọng** (accuracy × sát thương ≤ 1) mà đổi lấy hiệu ứng (đầu: chí mạng / choáng; tay: yếu công; chân: chậm; cánh: kéo quái bay xuống để đòn cận chiến với tới; đuôi: mất thăng bằng nên dễ bị đánh trúng, đồ rơi). Đuôi đổi từ −công sang −né ngày 2026-10-31 khi thêm tay, để mỗi bộ phận một tác dụng riêng. Điểm yếu thì lợi rõ (đầu 0,75 × 1,5 = 1,125; chân 0,9 × 0,9 × 1,5 ≈ 1,22; thân 1,5).
 
 ## Phá bộ phận và đòn hạ gục

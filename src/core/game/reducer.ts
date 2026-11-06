@@ -210,7 +210,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 109
+export const SAVE_VERSION = 111
 
 export function createGameState(options: {
   seed: number

@@ -26,3 +26,7 @@ Code: `battle/battleForms.ts` (`changeBattleForm`, `revertBattleForm`, `battleFo
 - Hook `disguise { forms, categories, hpCostPercent }` (Disguise: vật lý / đặc biệt, mất ⅛ máu; Ice Face: vật lý, không mất máu): còn ở dạng thường mà trúng đòn đúng loại thì không mất máu vì đòn, đổi sang dạng (giữ tới hết trận), log `disguiseBroken`; sau thế thân (thế thân nhận đòn trước); đòn bỏ qua ability (Mold Breaker, Moongeist Beam) không bị chặn.
 - Biến hình Ultra Burst (Necrozma) là loại biến hình riêng (`transformation.md`), không phải dạng trong trận.
 - Skill đổi theo dạng: `formOverrides` (`pokemon-moves-flow.md`).
+
+## Dạng chép (2026-11-07)
+
+`BattleForm.copied: true`: dạng chép chỉ số gốc của **loài thường bất kỳ** (không cần `formKind: battleOnly`), do `transformInto { baseStats }` đặt (`copyStatSpecies`, `battle/battleForms.ts`; Transmog của Temtem, `content-sources-temtem.md`). Chỉ số tính từ chỉ số gốc của loài đó với level / gen / điểm của quái; máu đã mất giữ nguyên; hệ / ability / skill do `transformInto` đổi; giữ tới hết trận (không có `untilLeave`). Save v111.

@@ -43,7 +43,7 @@ import type {
   Skill,
   TacticWeights
 } from '../model'
-import { battleSkillIds, isBattleOnlyMove } from '../model'
+import { battleSkillIds, isBattleOnlyMove, isReducedSpread } from '../model'
 import {
   Draft,
   actingSlots,
@@ -303,6 +303,8 @@ interface TargetChoice {
   targets: readonly Monster[]
   isAlly: boolean
   target?: number
+  /** Quái phe mình cũng trúng (allOthers / all): điểm của phần này bị trừ. */
+  friendly?: readonly Monster[]
 }
 
 /** Mọi cách nhắm của skill theo `target` của nó (không có mục tiêu thì rỗng). */
@@ -322,9 +324,21 @@ function targetChoices(
         target: slot
       }))
     case 'allEnemies':
+    case 'foesOrAlly':
       return opponents.length > 0
         ? [{ targets: opponents.map((entry) => entry.monster), isAlly: false }]
         : []
+    case 'allOthers':
+    case 'all': {
+      // Đòn trúng cả phe mình: chấm phần lên địch, trừ phần lên phe mình (friendly).
+      const friendly = [
+        ...(ally ? [ally.monster] : []),
+        ...(skill.target === 'all' ? [ctx.user] : [])
+      ]
+      return opponents.length > 0 || friendly.length > 0
+        ? [{ targets: opponents.map((entry) => entry.monster), isAlly: false, friendly }]
+        : []
+    }
     case 'self':
       return [{ targets: [ctx.user], isAlly: true }]
     case 'ally':
@@ -375,14 +389,21 @@ function listCandidates(data: GameData, d: Draft, ctx: ChooserContext): Candidat
     // Mỗi thế dùng được là một ứng viên riêng (chiêu Max không có thế).
     const styles = actual.maxMove ? [] : usableStyles(data, ctx.user, chosen)
     for (const style of [undefined, ...styles]) {
-      const skill = withSynergyEffects(styledSkill(data, actual, style), partnersOf(ctx))
+      const scene = {
+        data,
+        user: ctx.user,
+        allies: partnersOf(ctx),
+        ctx: monsterBattleContext(data, d, ctx.user)
+      }
+      const skill = withSynergyEffects(scene, styledSkill(data, actual, style))
       for (const choice of targetChoices(data, d, ctx, skill)) {
         const { isAlly, target } = choice
         const targets = choice.targets.filter((monster) =>
           meetsRequirementsAtChoice(data, d, { user: ctx.user, skill, target: monster })
         )
         if (targets.length === 0) continue
-        const scored = scoreSkill(data, d, ctx, { skill, targets, isAlly, style })
+        const friendly = choice.friendly ?? []
+        const scored = scoreSkill(data, d, ctx, { skill, targets, isAlly, style, friendly })
         candidates.push({ ...scored, skillId, target, ...(style ? { style } : {}) })
       }
     }
@@ -564,7 +585,9 @@ function scoreSkill(
     targets,
     isAlly,
     partner,
-    style
+    style,
+    friendly = [],
+    friendlyPart = false
   }: {
     skill: Skill
     targets: readonly Monster[]
@@ -573,10 +596,14 @@ function scoreSkill(
     partner?: Monster
     /** Thế của ứng viên (skill đã đổi theo thế; power nhân trong công thức sát thương). */
     style?: MoveStyle
+    /** Quái phe mình cũng trúng (allOthers / all): chấm như địch rồi trừ. */
+    friendly?: readonly Monster[]
+    /** Lần chấm phần phe mình: không tính chi phí của quái dùng (đã tính ở lần chính), đòn lan. */
+    friendlyPart?: boolean
   }
 ): Omit<Candidate, 'target'> {
   const { ai } = data.config
-  const spread = skill.target === 'allEnemies' && targets.length > 1
+  const spread = isReducedSpread(skill, friendlyPart ? 2 : targets.length + friendly.length)
   // Chiến thuật của quái (docs/rules/auto-battle.md): trọng số từng phần điểm.
   const weights = tacticWeights(data, ctx.user)
   let score = 0
@@ -720,8 +747,21 @@ function scoreSkill(
     if (index === 0) addEffect(hitChance * spellAiValue(data, spellAfterEffects(skill)))
     if (index === 0) firstHitChance = hitChance
   })
-  addEffect(-selfCostAiValue(data, ctx.user, skill, firstHitChance))
-  addEffect(-overexertAiCost(data, d, ctx.user, skill))
+  if (!friendlyPart) {
+    addEffect(-selfCostAiValue(data, ctx.user, skill, firstHitChance))
+    addEffect(-overexertAiCost(data, d, ctx.user, skill))
+  }
+  // Đòn trúng phe mình: phần điểm "như đánh địch" lên quái phe mình là phần mất.
+  if (friendly.length > 0) {
+    score -= scoreSkill(data, d, ctx, {
+      skill,
+      targets: friendly,
+      isAlly: false,
+      partner,
+      style,
+      friendlyPart: true
+    }).score
+  }
   return {
     skillId: skill.id,
     ...(aim !== undefined ? { aim } : {}),

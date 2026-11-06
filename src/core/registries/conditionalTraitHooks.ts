@@ -138,7 +138,11 @@ export const ABILITY_FLAGS = [
   'reflectsStatDrops',
   'copiesFoeBoosts',
   'ignoresElementStatusImmunity',
-  'noContact'
+  'noContact',
+  'blocksSynergy',
+  'grantsSynergy',
+  'spreadsDebuffsToPartner',
+  'sparesAllies'
 ] as const
 
 export type AbilityFlag = (typeof ABILITY_FLAGS)[number]

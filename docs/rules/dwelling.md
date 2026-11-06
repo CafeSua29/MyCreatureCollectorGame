@@ -78,22 +78,22 @@ Như ailment của Palworld (Sprain, Weakened, Fracture, Ulcer, Depression), m�
 - Không có bệnh nào của nguồn đó / tỉ lệ 0 thì không tốn RNG.
 - **Hiện có 9 bệnh** (nguồn; bộ phận; sức làm việc còn lại; chỉ số trong trận; bậc thuốc; trọng số):
 
-  | Bệnh | Nguồn | Bộ phận | Sức | Chỉ số | Thuốc | Trọng số |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Bầm dập `bruise` | trận | (chung) | 90% | mọi chỉ số trừ HP −5% | 1 | 5 |
-  | Bong gân `sprain` | làm việc, trận | tay, chân | 70% | tốc độ −20% | 1 | 5 |
-  | Gãy xương `fracture` | trận | tay, chân, đuôi | 30% | công −20%, tốc độ −30% | 2 | 2 |
-  | Chấn động `concussion` | trận | đầu | 60% | đặc công / đặc thủ −20% | 2 | 2 |
-  | Gãy cánh `brokenWing` | trận | cánh | 60% | tốc độ −40% | 2 | 2 |
-  | Gãy xương sườn `brokenRibs` | trận | thân | 50% | thủ −20%, max HP −10% | 2 | 2 |
-  | Suy nhược `weakened` | làm việc | | 60% | mọi chỉ số trừ HP −10% | 1 | 4 |
-  | Loét dạ dày `ulcer` | làm việc | | 50% | max HP −15% | 2 | 2 |
-  | Trầm cảm `depression` | làm việc | | 0% | công / đặc công −15% | 3 | 1 |
+  | Bệnh                        | Nguồn          | Bộ phận         | Sức | Chỉ số                  | Thuốc | Trọng số |
+  | --------------------------- | -------------- | --------------- | --- | ----------------------- | ----- | -------- |
+  | Bầm dập `bruise`            | trận           | (chung)         | 90% | mọi chỉ số trừ HP −5%   | 1     | 5        |
+  | Bong gân `sprain`           | làm việc, trận | tay, chân       | 70% | tốc độ −20%             | 1     | 5        |
+  | Gãy xương `fracture`        | trận           | tay, chân, đuôi | 30% | công −20%, tốc độ −30%  | 2     | 2        |
+  | Chấn động `concussion`      | trận           | đầu             | 60% | đặc công / đặc thủ −20% | 2     | 2        |
+  | Gãy cánh `brokenWing`       | trận           | cánh            | 60% | tốc độ −40%             | 2     | 2        |
+  | Gãy xương sườn `brokenRibs` | trận           | thân            | 50% | thủ −20%, max HP −10%   | 2     | 2        |
+  | Suy nhược `weakened`        | làm việc       |                 | 60% | mọi chỉ số trừ HP −10%  | 1     | 4        |
+  | Loét dạ dày `ulcer`         | làm việc       |                 | 50% | max HP −15%             | 2     | 2        |
+  | Trầm cảm `depression`       | làm việc       |                 | 0%  | công / đặc công −15%    | 3     | 1        |
 
 - **Ảnh hưởng**: sức làm việc × `workPercent` % (nhân cùng đói / tinh thần); chỉ số × `statPercents` qua nguồn % `ailment` (cộng chung tổng % ở bước áp trait như mọi nguồn, `stats-traits.md`; có tác dụng mọi nơi `computeStats` được gọi, gồm trận đánh). Khác **trọng thương** sau độ kiếp (`awakening.md`): trọng thương đếm theo trận, bệnh khỏi theo ngày / thuốc.
 - **Khỏi bệnh**:
   - Thuốc (hiệu ứng `cureAilment { tier }`): chữa bệnh có `cureTier` ≤ bậc thuốc; không bệnh / thuốc yếu hơn thì không tác dụng, không mất thuốc. Thuốc trị thương `medicineLow` (bậc 1; cửa hàng trọng số 10, luyện đan: Linh Chi → 3, cấp 1), Thuốc trị thương tốt `medicine` (bậc 2; cửa hàng trọng số 5, Linh Chi + Nhân Sâm → 2, cấp 3), Thuốc trị thương thượng hạng `medicineHigh` (bậc 3; Nhân Sâm + Tuyết Liên + Hà Thủ Ô → 1, cấp 6) (như Medical Supplies các bậc của Palworld).
-  - Nghỉ: quái không làm ở động phủ (đội, kho rảnh, thám hiểm) mỗi ngày + 1 `restDays`, đủ `idleCureDays` (7) thì tự khỏi (game tự thêm để không bắt buộc thuốc).   - **NPC hồi máu ở thị trấn** (`healParty`) chữa mọi bệnh / chấn thương của cả đội (chủ project chốt 2026-11-01); đội đầy máu mà còn bệnh vẫn hồi được. Quái trong kho / đang làm việc thì dùng thuốc hoặc nghỉ.
+  - Nghỉ: quái không làm ở động phủ (đội, kho rảnh, thám hiểm) mỗi ngày + 1 `restDays`, đủ `idleCureDays` (7) thì tự khỏi (game tự thêm để không bắt buộc thuốc). - **NPC hồi máu ở thị trấn** (`healParty`) chữa mọi bệnh / chấn thương của cả đội (chủ project chốt 2026-11-01); đội đầy máu mà còn bệnh vẫn hồi được. Quái trong kho / đang làm việc thì dùng thuốc hoặc nghỉ.
 - Kiểm tra: dữ liệu (`weight` ≥ 0, `causes` không rỗng thuộc `AILMENT_CAUSES`, `workPercent` 0–100, `statPercents` hợp lệ, `bodyParts` là id trong `bodyParts.json` và chỉ cho bệnh có nguồn `battle`, `cureTier` nguyên ≥ 1; `sickChanceMax` / `starvingSickChance` / `faintAilmentChance` / `brokenPartAilmentChance` 0–100, `idleCureDays` ≥ 1, `sickSanity` ≤ max); save (`validateMonster`: id bệnh tồn tại, `restDays` nguyên trong [0, idleCureDays)). Save v92.
 - `MonsterView.work.ailmentId`, `MonsterView.statPercents.ailment`.
 

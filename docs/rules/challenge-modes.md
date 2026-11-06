@@ -17,12 +17,12 @@ Code: `model/challenge.ts` (`DIFFICULTIES`, `CHALLENGE_MODES`, `ChallengeOptions
 
 - 4 mức `easy` / `normal` / `hard` / `nightmare` (Dễ / Thường / Khó / Ác mộng). Số ở `config.challenge.difficulties.<mức>`:
 
-| Mức      | levelPercent | geneMultiplier | frenzyThresholdPercent | frenzyExtraActionPercent | rewardPercent | expPercent |
-| -------- | ------------ | -------------- | ---------------------- | ------------------------ | ------------- | ---------- |
-| Dễ       | −10%         | ×0,7           | −10                    | −5                       | −20           | +25        |
-| Thường   | 0            | ×1             | 0                      | 0                        | 0             | 0          |
-| Khó      | +10%         | ×1,3           | +10                    | +5                       | +20           | −17        |
-| Ác mộng  | +20%         | ×1,8           | +20                    | +10                      | +50           | −30        |
+| Mức     | levelPercent | geneMultiplier | frenzyThresholdPercent | frenzyExtraActionPercent | rewardPercent | expPercent |
+| ------- | ------------ | -------------- | ---------------------- | ------------------------ | ------------- | ---------- |
+| Dễ      | −10%         | ×0,7           | −10                    | −5                       | −20           | +25        |
+| Thường  | 0            | ×1             | 0                      | 0                        | 0             | 0          |
+| Khó     | +10%         | ×1,3           | +10                    | +5                       | +20           | −17        |
+| Ác mộng | +20%         | ×1,8           | +20                    | +10                      | +50           | −30        |
 
 - **Lệch roadmap** (theo mô phỏng 2026-11-03, `simulation-features.md` mục "Độ khó"): roadmap ghi level địch **+5 / +10 cố định** và **một % thưởng chung cho cả EXP**. Mô phỏng cho thấy cả hai làm độ khó gần như không có tác dụng: +5 / +10 nhạt dần theo tầng (game không trần level), và quái level cao tự cho thêm EXP (EXP theo level², đường cong EXP level³) cộng +% thưởng bù đúng phần khó thêm, nên chơi liên tục ở Khó / Ác mộng không chậm hơn Thường. Đổi thành **% level** và **`expPercent` riêng** bù phần EXP tự tăng (EXP mỗi trận gần như Thường: Khó 1,1² × 0,83 ≈ 1, Ác mộng 1,2² × 0,7 ≈ 1, Dễ 0,9² × 1,25 ≈ 1); tiền / đồ rơi vẫn +20 / +50% làm phần thưởng của độ khó. **Ác mộng không bắt buộc qua được** (chủ project chốt 2026-11-03).
 

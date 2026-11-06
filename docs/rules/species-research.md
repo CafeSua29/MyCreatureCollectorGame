@@ -12,15 +12,15 @@ Code: `model/research.ts` (type, `RESEARCH_TASK_KINDS`, `RESEARCH_TASK_SCOPES`, 
 - `config.research.speciesTasks: { [speciesId]: { kind, thresholds, points }[] }`: **nhiệm vụ riêng** thêm sau mẫu chung (tùy chọn, chủ project thêm dần; loài phải thuộc Dex). Nhiều nhiệm vụ cùng loại việc dùng chung một bộ đếm.
 - Lệch roadmap: mẫu nhiệm vụ để trong `balance.json` thay file `researchTasks.json` riêng (toàn là số cân bằng, không có chữ; đỡ một loại file dữ liệu).
 
-| Loại việc (`kind`)     | Chỗ đếm                                                                                                    | Mẫu (số tạm)               |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------- |
-| `caught`               | quái bắt bằng bóng / Thị Uy (hết trận, mọi kết quả), quái xin theo (`recordRecruit`), khu bảo tồn          | 1 / 3 / 5 / 10 / 25 × 10 đ |
-| `defeated`             | quái địch đã gục khi trận kết thúc (mọi kết quả, cả quái của NPC)                                          | 5 / 20 / 50 / 100 × 10 đ   |
-| `mainElementSkillSeen` | số lần mỗi quái trong trận (**cả hai phe**) dùng bằng lệnh skill cùng hệ chính (hệ đầu) của loài nó (`skillUses`) | 5 / 20 × 10 đ       |
+| Loại việc (`kind`)     | Chỗ đếm                                                                                                                      | Mẫu (số tạm)                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| `caught`               | quái bắt bằng bóng / Thị Uy (hết trận, mọi kết quả), quái xin theo (`recordRecruit`), khu bảo tồn                            | 1 / 3 / 5 / 10 / 25 × 10 đ  |
+| `defeated`             | quái địch đã gục khi trận kết thúc (mọi kết quả, cả quái của NPC)                                                            | 5 / 20 / 50 / 100 × 10 đ    |
+| `mainElementSkillSeen` | số lần mỗi quái trong trận (**cả hai phe**) dùng bằng lệnh skill cùng hệ chính (hệ đầu) của loài nó (`skillUses`)            | 5 / 20 × 10 đ               |
 | `evolvedInto`          | tiến hóa (cả dị biến) ra loài đó: sau trận thắng, chọn hướng, kẹo / đá tiến hóa (`recordEvolutionResearch` đọc log tiến hóa) | 1 / 3 × 20 đ, `evolvedForm` |
-| `hatched`              | trứng nở sau trận thắng, trứng truyền thừa nở                                                              | 1 / 5 × 20 đ               |
-| `caughtWithStatus`     | bắt bằng bóng khi quái đang có trạng thái `debuff` (xét trước khi Heal Ball chữa)                          | 1 / 5 × 10 đ               |
-| `caughtShiny`          | quái bắt (như `caught`) có shiny                                                                           | 1 × 50 đ                   |
+| `hatched`              | trứng nở sau trận thắng, trứng truyền thừa nở                                                                                | 1 / 5 × 20 đ                |
+| `caughtWithStatus`     | bắt bằng bóng khi quái đang có trạng thái `debuff` (xét trước khi Heal Ball chữa)                                            | 1 / 5 × 10 đ                |
+| `caughtShiny`          | quái bắt (như `caught`) có shiny                                                                                             | 1 × 50 đ                    |
 
 - Cộng chỉ qua `recordResearch` / `recordMonsterResearch` / `recordCaughtResearch` / `recordEvolutionResearch` ở chỗ phát sinh (như `bumpStat` của thành tựu). Quái tính **loài hiện tại và loài gốc** (`dexSpeciesOf`, chung với Dex: quái fuse tính loài gốc), chỉ loài thuộc Dex. Bộ đếm nguyên, dừng ở `MAX_SAFE_INTEGER`.
 - Thêm loại việc: thêm vào `RESEARCH_TASK_KINDS` + gọi hàm cộng ở chỗ phát sinh.
@@ -34,14 +34,14 @@ Code: `model/research.ts` (type, `RESEARCH_TASK_KINDS`, `RESEARCH_TASK_SCOPES`, 
 
 `config.research.benefits: { level, type, percent? }[]` (cấp trong [1, cấp tối đa]); loại mở thông tin không có `percent`, loại % có `percent` khác 0, ≥ −100, cộng dồn các lợi ích cùng loại đã đạt rồi nhân `1 + % / 100` (`researchMultiplier`), nhân cùng mọi nguồn khác của kênh đó.
 
-| Cấp (tạm) | Loại                         | Tác dụng                                                                                                                  |
-| --------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 2         | `revealProfile`              | trang Dex mở chỉ số gốc / race / hệ (`dexEntry.profileRevealed`; UI ẩn khi chưa mở)                                         |
-| 4         | `revealLearnset`             | trang Dex mở learnset và tiến hóa (`learnsetRevealed`)                                                                     |
-| 5         | `catchRatePercent` 10        | tỉ lệ bắt loài đó (`battleCatchChance`, `safariCatchChance`)                                                               |
-| 6         | `revealWeakPoints`           | biết mọi điểm yếu của loài (Dex `revealedParts` = mọi bộ phận; AI phe người chơi dùng qua `revealedBodyParts`), thêm cách biết điểm yếu ngoài đánh trúng (`hit-locations.md`) |
-| 7         | `expPercent` 20              | EXP từ quái loài đó bị hạ / bị bắt (`battleExp`, từng quái; cả EXP ngự thú sư lấy từ EXP trận)                              |
-| 10        | `shinyChancePercent` 100     | tỉ lệ shiny của loài đó ở mọi chỗ Bùa Lấp Lánh nhân: quái hoang / boss tầng (`EncounterOdds.speciesShinyMultiplier`, nhân theo loài vừa tung), khu bảo tồn, con breeding (theo loài con) |
+| Cấp (tạm) | Loại                     | Tác dụng                                                                                                                                                                                 |
+| --------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2         | `revealProfile`          | trang Dex mở chỉ số gốc / race / hệ (`dexEntry.profileRevealed`; UI ẩn khi chưa mở)                                                                                                      |
+| 4         | `revealLearnset`         | trang Dex mở learnset và tiến hóa (`learnsetRevealed`)                                                                                                                                   |
+| 5         | `catchRatePercent` 10    | tỉ lệ bắt loài đó (`battleCatchChance`, `safariCatchChance`)                                                                                                                             |
+| 6         | `revealWeakPoints`       | biết mọi điểm yếu của loài (Dex `revealedParts` = mọi bộ phận; AI phe người chơi dùng qua `revealedBodyParts`), thêm cách biết điểm yếu ngoài đánh trúng (`hit-locations.md`)            |
+| 7         | `expPercent` 20          | EXP từ quái loài đó bị hạ / bị bắt (`battleExp`, từng quái; cả EXP ngự thú sư lấy từ EXP trận)                                                                                           |
+| 10        | `shinyChancePercent` 100 | tỉ lệ shiny của loài đó ở mọi chỗ Bùa Lấp Lánh nhân: quái hoang / boss tầng (`EncounterOdds.speciesShinyMultiplier`, nhân theo loài vừa tung), khu bảo tồn, con breeding (theo loài con) |
 
 ## Thưởng theo cấp
 

@@ -71,7 +71,14 @@
       { "upToPower": 130, "cost": 25 },
       { "upToPower": 1000, "cost": 30 }
     ],
-    "statusCost": 10,
+    "statusCost": 15,
+    "statusEffectCost": {
+      "perStage": 1,
+      "perHealPercent": 0.5,
+      "perStatus": 5,
+      "perField": 10,
+      "perEffect": 3
+    },
     "restWeight": 0.6,
     "exhaustedPenalty": 0.5
   },
@@ -81,6 +88,44 @@
     "stageValuePerStep": 0.15,
     "healWeight": 1,
     "statusWeights": {
+"gearSuppressedTemtem": 0.1,
+
+      "inhibitedTemtem": 0.2,
+
+      "transmogGuardTemtem": 0.05,
+
+      "traitSuppressedTemtem": 0.15,
+
+      "doomedTemtem": 0.3,
+
+      "nullifiedTemtem": 0.05,
+
+      "immuneTemtem": 0.15,
+
+      "evadingTemtem": 0.2,
+
+      "regeneratedTemtem": 0.2,
+
+      "alertedTemtem": 0.05,
+
+      "trappedTemtem": 0.1,
+
+      "seizedTemtem": 0.05,
+
+      "isolatedTemtem": 0.05,
+
+      "invigoratedTemtem": 0.15,
+
+      "exhaustedTemtem": 0.15,
+
+      "frozenTemtem": 0.25,
+
+      "coldTemtem": 0.1,
+
+      "burnedTemtem": 0.2,
+
+      "asleepTemtem": 0.25,
+
       "appleTree": 0.15,
 
       "abramacabra": 0.15,

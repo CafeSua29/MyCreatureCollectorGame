@@ -301,6 +301,12 @@ export type DslCondition =
   | { if: 'commanded'; who: DslWho; speciesIds?: string[] }
   /** Có quái trên sân (mọi phe, kể cả chủ) mang một trong các ability này (Aura Break). */
   | { if: 'abilityOnField'; abilityIds: string[] }
+  /** Quái `who` đang dùng skill quá sức (stamina.md; Vigorous, Seppuku của Temtem). */
+  | { if: 'overexerting'; who: DslWho }
+  /** Skill đang xét có hold ≥ `min` lượt (Patient, Tactical Strike của Temtem). */
+  | { if: 'skillHold'; min: number }
+  /** Mục tiêu đang xét là bước `step` (0 = mục tiêu đầu) của chuỗi có tối đa `maxSize` quái (Chain Heal). */
+  | { if: 'chainStep'; step: number; maxSize?: number }
 
 /**
  * Cờ chiêu dùng trong điều kiện moveFlag: cờ `moveFlags` cộng contact, recoil (phản lực) và
@@ -377,7 +383,10 @@ export const CONDITION_TYPES = [
   'foeStatSumLower',
   'hpFellBelow',
   'commanded',
-  'levelAtLeast'
+  'levelAtLeast',
+  'overexerting',
+  'skillHold',
+  'chainStep'
 ] as const satisfies readonly DslCondition['if'][]
 
 type ConditionChecker = (obj: Record<string, unknown>, field: string, data: GameData) => string[]
@@ -555,6 +564,12 @@ const CONDITION_CHECKS: Readonly<Record<DslCondition['if'], ConditionChecker>> =
       ? []
       : checkIdList(obj.speciesIds, `${field}.speciesIds`, data.species, { label: 'loài' }))
   ],
+  overexerting: whoCheck,
+  skillHold: (obj, field) => checkInteger(obj.min, `${field}.min`, 1),
+  chainStep: (obj, field) => [
+    ...checkInteger(obj.step, `${field}.step`, 0),
+    ...(obj.maxSize === undefined ? [] : checkInteger(obj.maxSize, `${field}.maxSize`, 1))
+  ],
   levelAtLeast: (obj, field, data) => [
     ...whoCheck(obj, field, data),
     ...checkInteger(obj.level, `${field}.level`, 1)
@@ -692,7 +707,8 @@ export const EFFECT_TARGETS = [
   'faintedAllies',
   'lowestHpAlly',
   'lowestHpFoe',
-  'leftAlly'
+  'leftAlly',
+  'nextClockwise'
 ] as const
 
 export type EffectTarget = (typeof EFFECT_TARGETS)[number]
@@ -729,10 +745,15 @@ export type TraitEffect = EffectCommon &
     | {
         do: 'stamina'
         to: EffectTarget
-        /** Đúng một trong ba: số điểm (âm = mất), % thể lực tối đa, kéo lên ít nhất % tối đa. */
+        /**
+         * Đúng một trong bốn: số điểm (âm = mất), % thể lực tối đa, kéo lên ít nhất % tối đa, hoặc
+         * `eventHpPercent`: % lượng của sự kiện tính theo tỉ lệ max HP của quái nhận (15% sát thương
+         * gây ra = 15% × sát thương / max HP × thể lực tối đa; Kinetic Transfer của Temtem).
+         */
         amount?: number
         percent?: number
         atLeastPercent?: number
+        eventHpPercent?: number
         /** Hút: lấy tối đa `amount` từ quái này (không quá phần nó còn, phần `to` thiếu). */
         from?: EffectTarget
       }
@@ -908,8 +929,18 @@ export type TraitEffect = EffectCommon &
      * tới khi rời sân (Mimic).
      */
     | { do: 'learnSkill'; to: EffectTarget; permanent?: true }
-    /** Biến thành `from` trong trận: hệ, ability, bậc trận, skill, chỉ số trừ HP (Transform). */
-    | { do: 'transformInto'; to: EffectTarget; from: EffectTarget }
+    /**
+     * Biến thành `from` trong trận: hệ, ability, bậc trận, skill, chỉ số trừ HP (Transform); `keepStages`:
+     * không chép bậc trận; `baseStats`: chép chỉ số gốc của loài (kể cả HP) thay chỉ số trận, tính theo
+     * level / gen của chính quái, giữ tới hết trận (Transmog của Temtem).
+     */
+    | {
+        do: 'transformInto'
+        to: EffectTarget
+        from: EffectTarget
+        keepStages?: true
+        baseStats?: true
+      }
     /** Đổi ô sân với `with` cùng phe (Ally Switch). */
     | { do: 'swapPositions'; with: EffectTarget }
     /** Đánh dấu trạng thái tạm của chủ hiệu ứng (Destiny Bond, Grudge, Magic Coat, Snatch). */
@@ -956,6 +987,10 @@ export type TraitEffect = EffectCommon &
      * có tác dụng (như Pokémon).
      */
     | { do: 'focus'; to: EffectTarget; stages: number }
+    /** Giảm `turns` lượt chờ của mọi skill đang chờ (hold) của quái `to` (Brumation, Hurry-wart). */
+    | { do: 'reduceHold'; to: EffectTarget; turns: number }
+    /** Quái `to` mất lượt kế tiếp như quá sức (stamina.md; Rush, Strangle của Temtem). */
+    | { do: 'exhaust'; to: EffectTarget }
     | {
         do: 'identity'
         to: EffectTarget
@@ -1001,6 +1036,8 @@ export const TRAIT_EFFECT_TYPES = [
   'heal',
   'stage',
   'stamina',
+  'reduceHold',
+  'exhaust',
   'flatStat',
   'status',
   'cure',
@@ -1107,7 +1144,7 @@ function checkNonHpList(value: unknown, field: string): string[] {
   return value.flatMap((stat) => checkOneOf(NON_HP_STATS, stat, field))
 }
 
-const STAMINA_MODES = ['amount', 'percent', 'atLeastPercent'] as const
+const STAMINA_MODES = ['amount', 'percent', 'atLeastPercent', 'eventHpPercent'] as const
 
 /** Hiệu ứng `stamina`: đúng một cách tính; `atLeastPercent` trong (0, 100]; `from` chỉ đi với amount > 0. */
 function checkStaminaEffect(obj: Record<string, unknown>, field: string): string[] {
@@ -1437,7 +1474,10 @@ const EFFECT_CHECKS: Readonly<Record<TraitEffectType, EffectChecker>> = {
   learnSkill: targetOnly,
   transformInto: (obj, field) => [
     ...checkTarget(obj.to, `${field}.to`),
-    ...checkTarget(obj.from, `${field}.from`)
+    ...checkTarget(obj.from, `${field}.from`),
+    ...(['keepStages', 'baseStats'] as const).flatMap((flag) =>
+      obj[flag] === undefined || obj[flag] === true ? [] : [`${field}.${flag} chỉ được là true`]
+    )
   ],
   swapPositions: (obj, field) => checkTarget(obj.with, `${field}.with`),
   markVolatile: (obj, field) => checkOneOf(VOLATILE_MARKS, obj.mark, `${field}.mark`),
@@ -1497,6 +1537,11 @@ const EFFECT_CHECKS: Readonly<Record<TraitEffectType, EffectChecker>> = {
   focus: (obj, field) => [
     ...checkTarget(obj.to, `${field}.to`),
     ...checkInteger(obj.stages, `${field}.stages`, 1)
+  ],
+  exhaust: targetOnly,
+  reduceHold: (obj, field) => [
+    ...checkTarget(obj.to, `${field}.to`),
+    ...checkInteger(obj.turns, `${field}.turns`, 1)
   ],
   identity: (obj, field, data) => {
     const issues = checkTarget(obj.to, `${field}.to`)
@@ -1617,6 +1662,8 @@ export function checkTraitEffects(value: unknown, field: string, data: GameData)
  * statusEnded: trạng thái hết hạn / bị gỡ. statusDamage: mất máu vì trạng thái. statGain /
  * statLoss: tăng / bị giảm chỉ số. defend / provoke. minionGained. timelineTop: bị đưa lên đầu
  * Timeline. spellTargeted: bị địch nhắm bằng skill special / status đơn mục tiêu. maxHpGained.
+ * rest: nghỉ (lệnh Nghỉ / lượt kiệt sức). overexert: dùng skill quá sức (trước khi mất máu). leave:
+ * rời sân khi đổi quái (quái rời đã ở ngoài sân nên chỉ quái khác phản ứng; Contagious của Temtem).
  */
 export const TRAIT_EVENTS = [
   'entry',
@@ -1647,7 +1694,10 @@ export const TRAIT_EVENTS = [
   'fieldChanged',
   'roomSet',
   'berryEaten',
-  'transformed'
+  'transformed',
+  'rest',
+  'overexert',
+  'leave'
 ] as const
 
 export type TraitEventType = (typeof TRAIT_EVENTS)[number]

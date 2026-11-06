@@ -46,4 +46,3 @@ Các cơ chế chiêu của Cassette Beasts và của phản ứng hệ, làm th
 
 - `transmute { elementId | elementFromUser, turns? }` / `transmuteRandom { elementIds?, turns? }`: có `turns` thì biến hệ hết sau ngần ấy lượt (`VolatileState.coatingTurnsLeft`, `battle/coatings.ts`): trả hệ gốc, log `identityChanged`; không có `turns` thì tới khi rời sân (Soak). Lớp phủ của gốc (phản ứng hệ, Coating, Camouflage): 3 lượt. Gỡ được như trạng thái (`cureAllStatuses`, gốc "removable").
 - **Coating** (đủ 13 hệ + Elemental Coating theo hệ quái dùng): gốc TARGET_ONE_ALLY: chính quái hoặc đồng đội (`targetAlly`, `onAlly`).
-

@@ -263,14 +263,15 @@ describe('Pollen Puff', () => {
     expect(damageTo(log, 'b')).toBe(0)
   })
 
-  it('targetAlly với skill không có onAlly là lệnh sai', () => {
+  // Đòn đơn nhắm địch nhắm được đồng đội bằng targetAlly (friendlyFire.test.ts); skill nhắm phe mình thì không.
+  it('targetAlly với skill không có onAlly và không nhắm địch là lệnh sai', () => {
     const state = makeBattleState(
-      [fighter('a', ['hit']), fighter('b', ['idle'])],
+      [fighter('a', ['hit', 'idle']), fighter('b', ['idle'])],
       [fighter('e', ['idle'])]
     )
     expect(() =>
       submit(state, [
-        skillCmd('hit', { targetAlly: true }),
+        skillCmd('idle', { targetAlly: true }),
         { slot: 1, kind: 'skill', skillId: 'idle' }
       ])
     ).toThrow()

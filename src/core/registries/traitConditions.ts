@@ -49,6 +49,8 @@ export interface DslView {
   effectiveness?: number
   /** Hành động do trait / minion gây ra (không phải lượt của quái hành động). */
   reactive?: boolean
+  /** Bước của chuỗi đang xét (`Skill.chain`): chỉ số mục tiêu, số mục tiêu của chuỗi. */
+  chain?: { index: number; size: number }
 }
 
 /** Quái và bối cảnh của `who` trong góc nhìn; không có thì undefined. */
@@ -540,6 +542,16 @@ function isConditionMet(view: DslView, condition: DslCondition, readStat?: StatR
         return ability !== null && condition.abilityIds.includes(ability)
       })
     }
+    case 'overexerting':
+      return resolveWho(view, condition.who)?.ctx?.record.overexerting === true
+    case 'chainStep':
+      return (
+        view.chain !== undefined &&
+        view.chain.index === condition.step &&
+        (condition.maxSize === undefined || view.chain.size <= condition.maxSize)
+      )
+    case 'skillHold':
+      return view.skill !== undefined && (view.skill.hold ?? 0) >= condition.min
     case 'inForm': {
       const formId = whoOf(condition.who)?.battleForm?.speciesId
       return (

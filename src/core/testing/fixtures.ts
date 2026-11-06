@@ -267,6 +267,13 @@ export function makeRawData(): RawGameData {
         overexertHpPercent: 2,
         costByPower: [],
         statusCost: 0,
+        statusEffectCost: {
+          perStage: 0,
+          perHealPercent: 0,
+          perStatus: 0,
+          perField: 0,
+          perEffect: 0
+        },
         restWeight: 0,
         exhaustedPenalty: 0.5
       },

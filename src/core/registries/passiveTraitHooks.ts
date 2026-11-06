@@ -50,7 +50,9 @@ export interface StatBlend {
   weight: number
 }
 
-export type EffectivenessMode = 'alwaysStrong' | 'reverse' | 'neverWeak' | 'neutral' | 'noResist'
+/** neutralTaken: đòn nhắm quái mang bỏ qua khắc / kháng hệ (Nullified của Temtem). */
+export type EffectivenessMode =
+  'alwaysStrong' | 'reverse' | 'neverWeak' | 'neutral' | 'noResist' | 'neutralTaken'
 
 /** Đổi trạng thái sắp dính sang loại khác / sang quái khác. */
 export interface StatusConversion {
@@ -133,7 +135,12 @@ export interface PassiveTraitPhases {
   randomTargetChance?(params: unknown, scale: number): number
   statusDurationRule?(params: unknown): StatusDurationRule
   /** Số lượt cộng thêm cho trạng thái quái mang gây ra (kiểu gậy kéo dài); 0 = không áp. */
-  statusDurationBonusTurns?(params: unknown, statusId: string, kind: StatusKind): number
+  statusDurationBonusTurns?(
+    params: unknown,
+    statusId: string,
+    kind: StatusKind,
+    on: 'inflicted' | 'received'
+  ): number
   /** % potency cộng thêm cho trạng thái quái mang trait gây ra. */
   inflictedPotencyPercent?(params: unknown, scale: number, statusId: string): number
   /** % sát thương trạng thái quái mang trait nhận vào cộng thêm. */
@@ -608,7 +615,8 @@ const EFFECTIVENESS_MODES: readonly EffectivenessMode[] = [
   'reverse',
   'neverWeak',
   'neutral',
-  'noResist'
+  'noResist',
+  'neutralTaken'
 ]
 
 const effectiveness: TraitHookHandler = {
@@ -690,6 +698,14 @@ const intercept: TraitHookHandler = {
     if (!checkAllConditions(view, p.when)) return 0
     return p.chance === undefined ? 100 : clampChance(p.chance * scale)
   }
+}
+
+// Puppet Master / Shared Pain của Temtem: đòn đơn của địch nhắm quái mang chuyển sang đồng đội khi đủ
+// điều kiện (view: self = quái mang, other = quái dùng skill).
+const redirectToAlly: TraitHookHandler = {
+  validateParams: (params, data) =>
+    withObject(params, (obj) => checkConditions(obj.when, 'when', data)),
+  redirectsToAlly: (params, view) => checkAllConditions(view, (params as Conditional).when)
 }
 
 const damageShare: TraitHookHandler = {
@@ -792,18 +808,25 @@ const statusConversion: TraitHookHandler = {
 
 /** Lọc trạng thái theo loại / danh sách id (bỏ trống = mọi trạng thái). */
 interface StatusDurationBonusParams {
+  /** Số lượt cộng thêm (âm = bớt; về 0 thì trạng thái không dính). */
   turns: number
   kind?: StatusKind
   statusIds?: string[]
+  /** inflicted (mặc định): trạng thái quái mang gây ra; received: trạng thái nó dính (Resistant). */
+  on?: 'inflicted' | 'received'
 }
 
 // Trang bị kiểu gậy (mục "Trang bị và đồ cầm"): mọi trạng thái do quái mang gây ra (kể cả ngủ) được
 // cộng thêm số lượt vào số lượt đã tung; trạng thái không hết theo lượt thì không đổi. Số lượt
-// không đổi theo cấp (quy ước cấp trait).
+// không đổi theo cấp (quy ước cấp trait). `on: received`: trạng thái quái mang dính (Receptive, Resistant).
 const statusDurationBonus: TraitHookHandler = {
   validateParams: (params, data) =>
     withObject(params, (obj) => {
-      const issues = checkInteger(obj.turns, 'turns', 1)
+      const issues = checkInteger(obj.turns, 'turns')
+      if (obj.turns === 0) issues.push('turns phải khác 0')
+      if (obj.on !== undefined && obj.on !== 'inflicted' && obj.on !== 'received') {
+        issues.push('on phải là inflicted / received')
+      }
       if (obj.kind !== undefined && !(STATUS_KINDS as readonly unknown[]).includes(obj.kind)) {
         issues.push('kind phải là buff / debuff')
       }
@@ -814,8 +837,9 @@ const statusDurationBonus: TraitHookHandler = {
       }
       return issues
     }),
-  statusDurationBonusTurns(params, statusId, kind) {
+  statusDurationBonusTurns(params, statusId, kind, on) {
     const p = params as StatusDurationBonusParams
+    if ((p.on ?? 'inflicted') !== on) return 0
     if (p.kind !== undefined && p.kind !== kind) return 0
     if (p.statusIds !== undefined && !p.statusIds.includes(statusId)) return 0
     return p.turns
@@ -993,6 +1017,7 @@ export const PASSIVE_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
   turnOrderStat,
   startPosition,
   intercept,
+  redirectToAlly,
   damageShare,
   randomTarget,
   seeInvisible,

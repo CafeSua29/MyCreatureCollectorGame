@@ -21,9 +21,7 @@
       "steel": 2,
       "fungal": 2
     },
-    "statusImmunities": [
-      "burn"
-    ]
+    "statusImmunities": ["burn", "burnedTemtem"]
   },
   {
     "id": "water",
@@ -49,9 +47,7 @@
       "plastic": 0.5,
       "fungal": 0.5
     },
-    "statusImmunities": [
-      "paralysis"
-    ]
+    "statusImmunities": ["paralysis"]
   },
   {
     "id": "grass",
@@ -68,12 +64,8 @@
       "steel": 0.5,
       "fungal": 0.5
     },
-    "statusImmunities": [
-      "seeded"
-    ],
-    "immuneMoveFlags": [
-      "powder"
-    ]
+    "statusImmunities": ["seeded"],
+    "immuneMoveFlags": ["powder"]
   },
   {
     "id": "ice",
@@ -88,9 +80,7 @@
       "steel": 0.5,
       "fungal": 2
     },
-    "statusImmunities": [
-      "freeze"
-    ]
+    "statusImmunities": ["freeze"]
   },
   {
     "id": "fighting",
@@ -119,10 +109,7 @@
       "steel": 0,
       "fairy": 2
     },
-    "statusImmunities": [
-      "poison",
-      "badPoison"
-    ]
+    "statusImmunities": ["poison", "badPoison"]
   },
   {
     "id": "ground",
@@ -161,7 +148,8 @@
       "dark": 0,
       "steel": 0.5,
       "light": 0.5
-    }
+    },
+    "statusImmunities": ["asleepTemtem"]
   },
   {
     "id": "bug",
@@ -233,10 +221,7 @@
       "fairy": 2,
       "glass": 2
     },
-    "statusImmunities": [
-      "poison",
-      "badPoison"
-    ]
+    "statusImmunities": ["poison", "badPoison"]
   },
   {
     "id": "fairy",

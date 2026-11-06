@@ -65,6 +65,32 @@ export interface InflictOptions {
    * có hạn thì bỏ qua.
    */
   turnsBonus?: number
+  /** Bản lan của Voodoo (không lan tiếp). */
+  echoed?: true
+}
+
+/** Đồng đội còn sống trên sân của `monster` (không gồm nó). */
+function partnerOnField(data: GameData, d: Draft, monster: Monster): Monster | undefined {
+  return aliveOnField(data, d, sideOf(d, monster.id)).find(
+    (entry) => entry.monster.id !== monster.id
+  )?.monster
+}
+
+/**
+ * Voodoo của Temtem (cờ `spreadsDebuffsToPartner` của quái gây ra): debuff gây lên quái phe địch cũng
+ * gây lên đồng đội của nó (một lần, không lan tiếp).
+ */
+function spreadDebuffToPartner(
+  data: GameData,
+  d: Draft,
+  { monster, statusId, options }: { monster: Monster; statusId: string; options: InflictOptions }
+): void {
+  const { source } = options
+  if (options.echoed || !source || data.statuses[statusId].kind !== 'debuff') return
+  if (sideOf(d, source.id) === sideOf(d, monster.id)) return
+  if (!hasAbilityFlag(data, source, 'spreadsDebuffsToPartner', ctxOf(data, d, source))) return
+  const partner = partnerOnField(data, d, monster)
+  if (partner) inflictStatus(data, d, partner, statusId, { ...options, echoed: true })
 }
 
 const ctxOf = (data: GameData, d: Draft, monster: Monster): MonsterBattleContext | undefined =>
@@ -217,17 +243,21 @@ function durationAfterRules(
   }
   if (source) readRules(source, 'inflicted')
   readRules(monster, 'received')
-  if (result === null || !source) return result
+  if (result === null) return result
   let bonus = 0
-  forEachTraitHook(
-    data,
-    source,
-    (handler, params) => {
-      bonus += handler.statusDurationBonusTurns?.(params, statusId, kind) ?? 0
-    },
-    ctxOf(data, d, source)
-  )
-  return result + bonus
+  const addBonus = (owner: Monster, on: 'inflicted' | 'received'): void => {
+    forEachTraitHook(
+      data,
+      owner,
+      (handler, params) => {
+        bonus += handler.statusDurationBonusTurns?.(params, statusId, kind, on) ?? 0
+      },
+      ctxOf(data, d, owner)
+    )
+  }
+  if (source) addBonus(source, 'inflicted')
+  addBonus(monster, 'received')
+  return Math.max(0, result + bonus)
 }
 
 /** Lượng của trạng thái theo lượng: Barrier kẹp theo % chỉ số cao nhất, Inverted theo max HP. */
@@ -393,6 +423,22 @@ function applyStatus(
   options: InflictOptions
 ): void {
   const def = data.statuses[statusId]
+  // Cold của Temtem: dính lần nữa khi đang có thì thành trạng thái khác (Frozen), cùng thời hạn mới.
+  if (def.stacksInto && monster.statuses.some((status) => status.statusId === statusId)) {
+    removeStatus(d, monster, statusId)
+    inflictStatus(data, d, monster, def.stacksInto, options)
+    return
+  }
+  let turns: number | null
+  if (options.turns !== undefined) turns = options.turns
+  else [turns, d.rng] = rollStatusDuration(data, d.rng, statusId)
+  turns = durationAfterRules(data, d, { monster, source: options.source, statusId, turns })
+  if (turns !== null && options.turnsBonus) turns += options.turnsBonus
+  // Bớt lượt về 0 (Resistant của Temtem: trạng thái 1 lượt không dính).
+  if (turns === 0) {
+    log(d, { type: 'statusImmune', monsterId: monster.id, statusId })
+    return
+  }
   if (def.overwritesGroup && def.exclusiveGroup !== undefined) {
     for (const status of [...monster.statuses]) {
       if (
@@ -403,11 +449,6 @@ function applyStatus(
       }
     }
   }
-  let turns: number | null
-  if (options.turns !== undefined) turns = options.turns
-  else [turns, d.rng] = rollStatusDuration(data, d.rng, statusId)
-  turns = durationAfterRules(data, d, { monster, source: options.source, statusId, turns })
-  if (turns !== null && options.turnsBonus) turns += options.turnsBonus
   const potency = options.source
     ? 100 +
       sumHooks(data, d, options.source, (h, p, s) => h.inflictedPotencyPercent?.(p, s, statusId))
@@ -424,6 +465,7 @@ function applyStatus(
     turns: current?.turnsLeft ?? turns ?? 0
   })
   const source = options.source
+  spreadDebuffToPartner(data, d, { monster, statusId, options })
   emitTraitEvent(d, { type: 'statusGained', subjectId: monster.id, otherId: source?.id, statusId })
   if (source && source.id !== monster.id && def.kind === 'debuff') {
     emitTraitEvent(d, {
@@ -849,6 +891,14 @@ function tickStatuses(data: GameData, d: Draft, monster: Monster, attempts: numb
     // Yawn: hết hạn thì dính trạng thái kế tiếp (ngủ).
     const next = data.statuses[ended.statusId]?.onEndStatusId
     if (next) inflictStatus(data, d, monster, next)
+    // Doomed của Temtem: hết đếm ngược thì gục.
+    if (data.statuses[ended.statusId]?.faintsOnEnd) {
+      loseHp(data, d, monster, getCurrentHp(data, monster), (amount) => ({
+        type: 'perished',
+        monsterId: monster.id,
+        amount
+      }))
+    }
   }
   dropUnsupportedStatuses(data, d, monster)
 }

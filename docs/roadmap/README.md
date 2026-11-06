@@ -95,18 +95,18 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
           5v. Âm / Dương hóa. **Đã xong** (luật ở `docs/rules/polarity.md`; quái hoang / boss có cực theo tầng đang đánh thay cho `highestFloor`).
    6. Extract / inject trait. **Đã xong** (2026-10-31; luật ở `docs/rules/trait-crystals.md`; tinh thể rơi đồ để sau).
       6b. Hiến tế. **Đã xong** (2026-10-31; luật ở `docs/rules/sacrifice.md`; độ thuần không vượt độ thuần cao hơn của hai quái thay cho cộng thẳng; chặn quái khóa đã làm ở bước 11b, `roster.md`.md`, bộ lọc hàng loạt ở `bulk-actions.md`).
-      6c. Phòng Thí Nghiệm: cấy ghép (`implant`). **Đã xong** (2026-10-31; luật ở `docs/rules/implant.md`; bậc huyết thanh ở `balance.json` thay `serums.json`, bản mệnh cấy được (chết thì đạo thương), kết quả qua mốc lý lịch thay log riêng; huyết thanh hiệu ứng + registry `SERUM_EFFECTS` làm ngay sau (5 hiệu ứng theo hook có sẵn, cấp có dấu); hỏi khi túi đầy đã làm cùng sức chứa (`docs/rules/capacity.md`, 2026-10-31, save v77)).
-      6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần đã làm ở 6b, `sacrifice.md`).
-      6e. Thức tỉnh và độ kiếp. **Đã xong** ở bước 5l+.1 (luật ở `docs/rules/awakening.md`).
-      6f. Hóa hình. **Đã xong** ở bước 5l+.2 (luật ở `docs/rules/human-form.md`).
-      6g. Thiên tài địa bảo. **Đã xong** ở bước 5l+.3 (luật ở `docs/rules/treasures.md`).
-      6h. Luyện đan và linh điền. **Đã xong** ở bước 5l+.4 (luật ở `docs/rules/alchemy.md`).
-      6i. Ấp trứng có hoàn cảnh. **Đã xong** (2026-10-31; luật ở mục "Ấp trứng có hoàn cảnh" của `docs/rules/breeding-eggs.md`; Ôn Dưỡng Lò là bùa mua ở cửa hàng thay `keyItem`, linh địa theo hệ chủ đạo của map, gen +2% mỗi viên thay 10% theo mô phỏng).
-      6j. Hồn tinh. **Đã xong** ở bước 5l+.10 (luật ở `docs/rules/soul-levels.md`).
-      6k. Linh thực. **Đã xong** (2026-10-31; luật ở `docs/rules/cooking.md`; nguồn % `meal` chỉ trong trận như thưởng sưu tập; % thân mật chỉ khi thắng trận; thêm công thức nấu mồi dụ; kỹ năng đồng hành nấu ăn chưa có).
-      6l. ~~Bánh breed~~: **bỏ khỏi kế hoạch** (chủ project chốt 2026-10-31; xóa `breeding-cakes.md`).
-      6m. Luân hồi quái. **Đã xong** (2026-10-31; luật ở `docs/rules/rebirth.md`; hồi đầy máu khi luân hồi, gen +10% ít nhất +1, đan rơi 10% từ boss tầng / chợ đen / luyện đan cấp 8).
-      6n. Câu cá và khai thác. **Đã xong** (2026-11-01; luật ở `docs/rules/gathering.md`; dụng cụ là bùa cấp mua một lần thay `keyItem`, quái suy từ loài của map theo hệ / nhóm race thay bảng `fishingTable` từng map, bảng vật phẩm chung ở config có món theo hệ map, lần không có trận chỉ tốn giờ, không đếm thời hạn theo trận).
+6c. Phòng Thí Nghiệm: cấy ghép (`implant`). **Đã xong** (2026-10-31; luật ở `docs/rules/implant.md`; bậc huyết thanh ở `balance.json`thay`serums.json`, bản mệnh cấy được (chết thì đạo thương), kết quả qua mốc lý lịch thay log riêng; huyết thanh hiệu ứng + registry `SERUM_EFFECTS` làm ngay sau (5 hiệu ứng theo hook có sẵn, cấp có dấu); hỏi khi túi đầy đã làm cùng sức chứa (`docs/rules/capacity.md`, 2026-10-31, save v77)).
+6d. Huyết mạch và Phản tổ. **Đã xong** (2026-10-31, làm trước hiến tế; luật ở `docs/rules/bloodline.md`; phần hiến tế cộng độ thuần đã làm ở 6b, `sacrifice.md`).
+6e. Thức tỉnh và độ kiếp. **Đã xong** ở bước 5l+.1 (luật ở `docs/rules/awakening.md`).
+6f. Hóa hình. **Đã xong** ở bước 5l+.2 (luật ở `docs/rules/human-form.md`).
+6g. Thiên tài địa bảo. **Đã xong** ở bước 5l+.3 (luật ở `docs/rules/treasures.md`).
+6h. Luyện đan và linh điền. **Đã xong** ở bước 5l+.4 (luật ở `docs/rules/alchemy.md`).
+6i. Ấp trứng có hoàn cảnh. **Đã xong** (2026-10-31; luật ở mục "Ấp trứng có hoàn cảnh" của `docs/rules/breeding-eggs.md`; Ôn Dưỡng Lò là bùa mua ở cửa hàng thay `keyItem`, linh địa theo hệ chủ đạo của map, gen +2% mỗi viên thay 10% theo mô phỏng).
+6j. Hồn tinh. **Đã xong** ở bước 5l+.10 (luật ở `docs/rules/soul-levels.md`).
+6k. Linh thực. **Đã xong** (2026-10-31; luật ở `docs/rules/cooking.md`; nguồn % `meal`chỉ trong trận như thưởng sưu tập; % thân mật chỉ khi thắng trận; thêm công thức nấu mồi dụ; kỹ năng đồng hành nấu ăn chưa có).
+6l. ~~Bánh breed~~: **bỏ khỏi kế hoạch** (chủ project chốt 2026-10-31; xóa`breeding-cakes.md`).
+6m. Luân hồi quái. **Đã xong** (2026-10-31; luật ở `docs/rules/rebirth.md`; hồi đầy máu khi luân hồi, gen +10% ít nhất +1, đan rơi 10% từ boss tầng / chợ đen / luyện đan cấp 8).
+6n. Câu cá và khai thác. **Đã xong** (2026-11-01; luật ở `docs/rules/gathering.md`; dụng cụ là bùa cấp mua một lần thay `keyItem`, quái suy từ loài của map theo hệ / nhóm race thay bảng `fishingTable` từng map, bảng vật phẩm chung ở config có món theo hệ map, lần không có trận chỉ tốn giờ, không đếm thời hạn theo trận).
    7. Tự động đánh. **Đã xong** phần core ở bước 5l+.7 (luật ở `docs/rules/auto-battle.md`).
       7b. Đấu với ngự thú sư NPC. **Đã xong** ở bước 5l+.8 (luật ở `docs/rules/trainers.md`).
       7c. Bí cảnh và tháp thí luyện. **Đã xong** ở bước 5l+.9 (`docs/rules/trials.md`).
@@ -128,16 +128,16 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
    11. Sức chứa kho quái / túi trang bị + thao tác hàng loạt. Sức chứa **đã xong** (2026-10-31, làm sớm cùng cấy ghép; luật ở `docs/rules/capacity.md`); thao tác hàng loạt **đã xong** (2026-11-03; luật ở `docs/rules/bulk-actions.md`; bán có xem trước tổng tiền ở core, bộ lọc cấp áp cho cả trang bị).
        11b. Khóa quái, yêu thích, đội hình mẫu. **Đã xong** (2026-11-02; luật ở `docs/rules/roster.md`; làm cùng Bí kíp ở Tàng Bảo Các; khóa còn chặn fuse / cấy ghép có thể mất quái; thứ thiếu ghi log ngoài trận `presetMissing`, `game-log.md`).
        11c. **Tính năng lấy từ game khác** (chủ project chốt 2026-11-03), theo thứ tự phụ thuộc: luật trận dùng chung trước (đổi cân bằng nhiều, mô phỏng sớm), sticker sau thể lực (có thuộc tính giảm thể lực), Bootleg sau sticker (tăng tỉ lệ thuộc tính), thoái hóa sau Bootleg (giữ hệ Bootleg), ân huệ bí cảnh sau thể lực (ân huệ hồi thể lực):
-          1. Phản ứng hệ. **Đã xong** (2026-11-03; luật ở `docs/rules/element-reactions.md`; dùng lại đổi hệ tạm của Soak thay `transmutedElementId`, một mục nhiều cặp thay một mục mỗi cặp, thêm trạng thái đổi mục tiêu / dẫn hệ; chủ project yêu cầu thêm: ba hệ Thủy tinh / Nhựa / Kim tuyến, đủ mọi cặp trên bảng 22 hệ, save v103; chiêu gốc chưa nhập ghi ở `element-reactions.md`).
-          2. Thể lực cho skill. **Đã xong** (2026-11-05; luật ở `docs/rules/stamina.md`; làm trước vì tường của Cassette Beasts cần; lưu phần đã mất ở bản ghi trận thay `BattleFighter.stamina`, 1 AP của Cassette Beasts = 10 thể lực; trait Phereon dựa trên AP / mana đã xong 2026-11-06, `content-sources-real.md`).
-          3. Sticker skill (`skill-stickers.md`).
-          4. Dấu ấn trên quái (`body-marks.md`).
-          5. Biến thể Bootleg (`bootleg.md`).
-          6. Thoái hóa (`devolution.md`).
-          7. Bậc sao (`star-rank.md`).
-          8. Bộ trang bị (`equipment-sets.md`).
-          9. Ân huệ trong lượt bí cảnh (`trial-boons.md`).
-          10. Chuyên môn ngự thú sư (`tamer-specializations.md`; sau ân huệ vì dùng chung loại hiệu ứng hook trận theo phe).
+       1. Phản ứng hệ. **Đã xong** (2026-11-03; luật ở `docs/rules/element-reactions.md`; dùng lại đổi hệ tạm của Soak thay `transmutedElementId`, một mục nhiều cặp thay một mục mỗi cặp, thêm trạng thái đổi mục tiêu / dẫn hệ; chủ project yêu cầu thêm: ba hệ Thủy tinh / Nhựa / Kim tuyến, đủ mọi cặp trên bảng 22 hệ, save v103; chiêu gốc chưa nhập ghi ở `element-reactions.md`).
+       2. Thể lực cho skill. **Đã xong** (2026-11-05; luật ở `docs/rules/stamina.md`; làm trước vì tường của Cassette Beasts cần; lưu phần đã mất ở bản ghi trận thay `BattleFighter.stamina`, 1 AP của Cassette Beasts = 10 thể lực; trait Phereon dựa trên AP / mana đã xong 2026-11-06, `content-sources-real.md`; giá theo game gốc (PP, Charges, mana), giá suy ra theo hiệu ứng, chiêu / trait / trạng thái Temtem đã xong 2026-11-06, `content-sources-temtem.md`).
+       3. Sticker skill (`skill-stickers.md`).
+       4. Dấu ấn trên quái (`body-marks.md`).
+       5. Biến thể Bootleg (`bootleg.md`).
+       6. Thoái hóa (`devolution.md`).
+       7. Bậc sao (`star-rank.md`).
+       8. Bộ trang bị (`equipment-sets.md`).
+       9. Ân huệ trong lượt bí cảnh (`trial-boons.md`).
+       10. Chuyên môn ngự thú sư (`tamer-specializations.md`; sau ân huệ vì dùng chung loại hiệu ứng hook trận theo phe).
    12. Hệ thống event. **Đã xong** ở bước 5l+.11 (luật ở `docs/rules/events.md`).
        12b. Đấu giá hành. **Đã xong** (2026-11-03; luật ở `docs/rules/auction.md`; ký gửi lấy giá bán ở cửa hàng làm mốc thay giá gốc để không in tiền, giá khởi điểm = 100% giá trị, lô trang bị tách thường / unique, bể đồ hiếm dùng chung với chợ đen).
        12c. Độ khó và chế độ thử thách. **Đã xong** (2026-11-03; luật ở `docs/rules/challenge-modes.md`; khu Nuzlocke gồm cả hiểm địa (`zone:<id>`), bí cảnh / tháp không có lượt gặp; boss giữ loài khi Randomizer (đồ rơi / mở tầng tra theo loài); Hardcore không đổi seed khi mở; Randomizer xáo learnset qua dữ liệu của game `gameDataFor`; độ khó đổi sang % level + `expPercent` theo mô phỏng; phần còn lại (mô phỏng Nuzlocke) ở `challenge-extras.md`, làm khi có lối chơi cẩn thận trong mô phỏng).

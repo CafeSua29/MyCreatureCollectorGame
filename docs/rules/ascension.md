@@ -49,14 +49,14 @@ Danh sách và số ở `src/data/destinies.json` (36 thiên mệnh: 16 thườn
 
 Nâng cấp Tiên giới và thiên mệnh cộng vào **kênh thưởng ngự thú sư** (`tamer-talents.md` mục "Kênh thưởng"), nơi dùng không biết nguồn nào. Kênh mới của mục này:
 
-| Kênh | Nơi dùng |
-| ---- | -------- |
-| `teamDamagePercent` | nhân sát thương skill của phe người chơi trong `rawDamage` (qua `MonsterBattleContext.tamerBonusDamagePercent`) |
-| `contractResonancePercent` | % của phần cộng hưởng khế ước (`contractStatPercent`) của từng quái, cộng vào nguồn % `tamerBonus` trong trận |
-| `breakthroughCostPercent` | nhân giá tiền đột phá |
-| `startFloorPercent`, `keepMoneyPercent` | tầng khởi đầu, tiền giữ (trên) |
-| `destinySlots { slots }` | số ô thiên mệnh |
-| `partySlotPenalty { slots }` | số ô đội bớt đi (chỉ bớt: thêm ô đụng tới cộng hưởng đội, kiểm tra dữ liệu theo `partySize`) |
+| Kênh                                    | Nơi dùng                                                                                                        |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `teamDamagePercent`                     | nhân sát thương skill của phe người chơi trong `rawDamage` (qua `MonsterBattleContext.tamerBonusDamagePercent`) |
+| `contractResonancePercent`              | % của phần cộng hưởng khế ước (`contractStatPercent`) của từng quái, cộng vào nguồn % `tamerBonus` trong trận   |
+| `breakthroughCostPercent`               | nhân giá tiền đột phá                                                                                           |
+| `startFloorPercent`, `keepMoneyPercent` | tầng khởi đầu, tiền giữ (trên)                                                                                  |
+| `destinySlots { slots }`                | số ô thiên mệnh                                                                                                 |
+| `partySlotPenalty { slots }`            | số ô đội bớt đi (chỉ bớt: thêm ô đụng tới cộng hưởng đội, kiểm tra dữ liệu theo `partySize`)                    |
 
 ## Thành tựu, mở khóa
 

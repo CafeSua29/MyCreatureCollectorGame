@@ -193,7 +193,20 @@
     },
     {
       "id": "noStamina",
-      "config": { "stamina": { "costByPower": [], "statusCost": 0 } }
+      "withoutSkillFields": ["staminaCost"],
+      "config": {
+        "stamina": {
+          "costByPower": [],
+          "statusCost": 0,
+          "statusEffectCost": {
+            "perStage": 0,
+            "perHealPercent": 0,
+            "perStatus": 0,
+            "perField": 0,
+            "perEffect": 0
+          }
+        }
+      }
     },
     {
       "id": "blood50",

@@ -104,6 +104,9 @@ export function checkStatuses(data: GameData, issues: string[]): void {
       status.blocksHealing === true ||
       status.blocksSoundSkills === true ||
       status.onEndStatusId !== undefined ||
+      status.stacksInto !== undefined ||
+      status.faintsOnEnd === true ||
+      status.suppressesAbility === true ||
       status.skillElementOverride !== undefined ||
       status.skillTargetOverride !== undefined ||
       status.conductsElement !== undefined ||
@@ -143,7 +146,9 @@ export function checkStatuses(data: GameData, issues: string[]): void {
       'blocksSoundSkills',
       'drainsToSource',
       'marker',
-      'excludeFromRandom'
+      'excludeFromRandom',
+      'faintsOnEnd',
+      'suppressesAbility'
     ] as const) {
       if (status[flag] !== undefined && status[flag] !== true)
         issues.push(`${where}: ${flag} chỉ được là true`)
@@ -151,7 +156,11 @@ export function checkStatuses(data: GameData, issues: string[]): void {
     if (status.overwritesGroup && group === undefined) {
       issues.push(`${where}: overwritesGroup cần exclusiveGroup`)
     }
-    for (const key of ['onEndStatusId', 'requiresStatusId'] as const) {
+    if (status.faintsOnEnd && status.duration === undefined) {
+      issues.push(`${where}: faintsOnEnd cần duration (đếm ngược)`)
+    }
+    if (status.stacksInto === status.id) issues.push(`${where}: stacksInto không được là chính nó`)
+    for (const key of ['onEndStatusId', 'requiresStatusId', 'stacksInto'] as const) {
       const ref = status[key]
       if (ref !== undefined && (typeof ref !== 'string' || !Object.hasOwn(data.statuses, ref))) {
         issues.push(`${where}: ${key}: trạng thái không tồn tại "${String(ref)}"`)

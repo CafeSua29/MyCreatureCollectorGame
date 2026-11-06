@@ -66,6 +66,23 @@ export function changeBattleForm(
   punishTransform(data, d, monster)
 }
 
+/**
+ * Chép chỉ số gốc của loài `speciesId` (Transmog của Temtem): dạng `copied` giữ tới hết trận, máu đã mất
+ * giữ nguyên; hệ / ability / skill do nơi gọi đổi (`transformInto`).
+ */
+export function copyStatSpecies(
+  data: GameData,
+  d: Draft,
+  monster: Monster,
+  speciesId: string
+): void {
+  if (data.species[speciesId]?.kind !== 'normal' || isFainted(data, monster)) return
+  const originalElementIds = monster.battleForm?.originalElementIds ?? baseElementIds(d, monster)
+  changeKeepingDamage(data, monster, () => {
+    monster.battleForm = { speciesId, originalElementIds, copied: true }
+  })
+}
+
 /** Quái về dạng thường (hệ trước khi đổi dạng); không ở dạng trong trận thì thôi. */
 export function revertBattleForm(data: GameData, d: Draft, monster: Monster): void {
   const form = monster.battleForm

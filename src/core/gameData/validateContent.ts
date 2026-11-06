@@ -175,6 +175,10 @@ export function checkSkills(data: GameData, issues: string[]): void {
     checkEffects(SKILL_EFFECTS, skill.effects, where, data, issues)
     checkEffectTargets(skill.effects, skill.target, where, issues)
     if (skill.hits !== undefined) checkHits(skill, where, issues)
+    if (skill.fullSpread !== undefined && skill.fullSpread !== true) {
+      issues.push(`${where}: fullSpread chỉ được là true`)
+    }
+    if (skill.chain !== undefined) checkChain(skill, where, issues)
     if (skill.firstTurnOnly !== undefined && skill.firstTurnOnly !== true) {
       issues.push(`${where}: firstTurnOnly chỉ được là true`)
     }
@@ -391,4 +395,27 @@ export function checkTraits(data: GameData, issues: string[]): void {
       issues.push(`Nhóm loại trừ "${group}" chỉ có một trait (${members[0]})`)
     }
   }
+}
+
+/** `chain`: `steps` nguyên ≥ 2, chỉ skill `enemy` / `ally` không đánh nhiều lần; `damagePercents` đủ `steps` số > 0. */
+function checkChain(skill: Skill, where: string, issues: string[]): void {
+  const chain = asObject(skill.chain)
+  if (!chain) {
+    issues.push(`${where}: chain phải là object`)
+    return
+  }
+  issues.push(...checkInteger(chain.steps, `${where}: chain.steps`, 2))
+  if (skill.target !== 'enemy' && skill.target !== 'ally') {
+    issues.push(`${where}: chain chỉ dùng cho skill nhắm enemy / ally`)
+  }
+  if (skill.hits !== undefined) issues.push(`${where}: chain không dùng cùng hits`)
+  const percents = chain.damagePercents
+  if (percents === undefined) return
+  if (!Array.isArray(percents) || percents.length !== chain.steps) {
+    issues.push(`${where}: chain.damagePercents phải có đúng chain.steps số`)
+    return
+  }
+  percents.forEach((value: unknown, i) =>
+    issues.push(...checkNumber(value, `${where}: chain.damagePercents[${i}]`, Number.MIN_VALUE))
+  )
 }

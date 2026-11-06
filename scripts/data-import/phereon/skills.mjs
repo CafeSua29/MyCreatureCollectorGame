@@ -6,8 +6,8 @@
 // - str → vật lý, mg → đặc biệt; sát thương thật bỏ qua thủ. Hệ theo loại sát thương, không có thì theo từ khóa.
 // - Ô địa hình → môi trường (bảng TILE); di chuyển trên lưới → +1 bậc né; đẩy / kéo không sát thương → −1 bậc
 //   tốc độ của mục tiêu; triệu hồi → minion; "hút mana" → −1 bậc công đặc biệt.
-// - Hồi chiêu / mana: game chưa có (chờ thể lực, stamina.md); chiêu hồi lâu hoặc tốn nhiều mana thì giới hạn lần
-//   dùng mỗi trận (cd ≥ 8 hoặc mana ≥ 15: 1 lần; cd ≥ 5 hoặc mana ≥ 10: 2 lần).
+// - Mana → thể lực (stamina.md): 1 mana = 5 thể lực (`staminaCost`). Hồi chiêu game không có: chiêu hồi lâu
+//   thì giới hạn lần dùng mỗi trận (cd ≥ 8: 1 lần; cd ≥ 5: 2 lần).
 // - Điều kiện đứng trên ô X của gốc không giữ (game 2v2 không có ô): chiêu dùng được ở mọi địa hình.
 
 import { readFileSync } from 'node:fs'
@@ -379,12 +379,12 @@ function tileEffect(text) {
   return null
 }
 
-const usesLimit = (row) =>
-  row.cd >= 8 || row.mana >= 15
-    ? { maxUsesPerBattle: 1 }
-    : row.cd >= 5 || row.mana >= 10
-      ? { maxUsesPerBattle: 2 }
-      : {}
+/** 1 mana của gốc = 5 thể lực (thanh mana gốc ~20, thang thể lực 100; stamina.md). */
+export const MANA_STAMINA = 5
+
+/** Giới hạn lần dùng mỗi trận thay hồi chiêu (game không có hồi chiêu). */
+export const usesLimit = (row) =>
+  row.cd >= 8 ? { maxUsesPerBattle: 1 } : row.cd >= 5 ? { maxUsesPerBattle: 2 } : {}
 
 const hasDebuff = (text) => STATUS_RULES.some(([re]) => re.test(text))
 
@@ -427,6 +427,7 @@ export function convertSkill(row) {
     target,
     effects,
     priority: 0,
+    staminaCost: row.mana * MANA_STAMINA,
     ...usesLimit(row),
     ...(physical && row.range !== null && row.range <= 1 ? { contact: true } : {}),
     ...(power > 0 ? { reach: row.range !== null && row.range <= 1 ? 'melee' : 'ranged' } : {})

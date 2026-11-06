@@ -5,7 +5,13 @@
 
 import { asObject, checkInteger, checkNumber } from '../shared'
 import { isStatusImmune } from '../monster'
-import { SKILL_CATEGORIES, type SkillCategory, type SkillTarget, type StatName } from '../model'
+import {
+  OFFENSIVE_TARGETS,
+  SKILL_CATEGORIES,
+  type SkillCategory,
+  type SkillTarget,
+  type StatName
+} from '../model'
 import { isStageStat } from './paramChecks'
 import { validateEmptyParams } from './traitHookUtils'
 import {
@@ -233,7 +239,7 @@ const protectFrom: FieldHookHandler = {
     const obj = asObject(params)
     if (!obj) return ['params phải là object']
     const issues = [
-      ...checkSubsetList(obj.targets, ['enemy', 'allEnemies'], 'targets'),
+      ...checkSubsetList(obj.targets, OFFENSIVE_TARGETS, 'targets'),
       ...checkSubsetList(obj.categories, SKILL_CATEGORIES, 'categories')
     ]
     if (obj.minPriority !== undefined) issues.push(...checkInteger(obj.minPriority, 'minPriority'))

@@ -369,6 +369,10 @@ export function checkConfig(data: GameData, issues: string[]): void {
   ]) {
     push(checkNumber(stamina?.[key], `stamina.${key}`, 0))
   }
+  const effectCost = asObject(stamina?.statusEffectCost)
+  for (const key of ['perStage', 'perHealPercent', 'perStatus', 'perField', 'perEffect']) {
+    push(checkNumber(effectCost?.[key], `stamina.statusEffectCost.${key}`, 0))
+  }
   if (!Array.isArray(stamina?.costByPower))
     issues.push('config.stamina.costByPower phải là danh sách')
   else {

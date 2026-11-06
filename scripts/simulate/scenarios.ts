@@ -122,7 +122,7 @@ export interface Variant {
 }
 
 /** Trường skill biến thể được bỏ (skill-synergy-hold.md, move-styles.md, hit-locations.md). */
-export const SKILL_FIELD_TOGGLES = ['hold', 'synergy', 'styles', 'reach'] as const
+export const SKILL_FIELD_TOGGLES = ['hold', 'synergy', 'styles', 'reach', 'staminaCost'] as const
 export type SkillFieldToggle = (typeof SKILL_FIELD_TOGGLES)[number]
 
 export interface ProgressionSpec {

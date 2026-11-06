@@ -51,7 +51,10 @@ import {
 import {
   STAGE_STATS,
   battleSkillIds,
+  canTargetAllyByCommand,
   isBattleOnlyMove,
+  isOffensiveTarget,
+  isReducedSpread,
   type BattleSide,
   type GameData,
   type Monster,
@@ -179,10 +182,15 @@ export interface SkillUse {
   aim?: string
 }
 
-/** Pollen Puff nhắm đồng đội: skill thành skill trạng thái nhắm đồng đội với hiệu ứng `onAlly`. */
+/**
+ * Lệnh `targetAlly`: Pollen Puff (có `onAlly`) thành skill trạng thái nhắm đồng đội với hiệu ứng `onAlly`;
+ * đòn đơn nhắm địch / Other Team or Ally đánh thẳng vào đồng đội như gốc (Wake Up, chiêu trận đôi).
+ */
 export function allyVersion(skill: Skill): Skill {
-  if (!skill.onAlly) return skill
-  return { ...skill, category: 'status', power: 0, target: 'ally', effects: skill.onAlly }
+  if (skill.onAlly) {
+    return { ...skill, category: 'status', power: 0, target: 'ally', effects: skill.onAlly }
+  }
+  return canTargetAllyByCommand(skill.target) ? { ...skill, target: 'ally' } : skill
 }
 
 /**
@@ -716,6 +724,35 @@ function electrified(data: GameData, user: Monster, skill: Skill): Skill {
   return skill
 }
 
+/** Lần dùng ở bước `index` của chuỗi: power × `damagePercents[index]`% (không có chuỗi thì giữ nguyên). */
+function chainStepUse(use: SkillUse, index: number): SkillUse {
+  const percent = use.skill.chain?.damagePercents?.[index]
+  if (percent === undefined || percent === 100) return use
+  const power = Math.max(1, Math.round((use.skill.power * percent) / 100))
+  return { ...use, skill: { ...use.skill, power } }
+}
+
+/**
+ * Spreader của Temtem (hook `spreadsSingleTarget`): đòn đơn nhắm địch đúng loại đánh mọi địch, đủ sát
+ * thương mỗi quái nhưng power × `powerPercent`% khi có từ 2 địch trên sân.
+ */
+function spreadByTrait(data: GameData, d: Draft, user: Monster, skill: Skill): Skill {
+  if (skill.target !== 'enemy' || skill.power <= 0 || skill.hits) return skill
+  let percent: number | undefined
+  forEachTraitHook(
+    data,
+    user,
+    (handler, params) => {
+      percent ??= handler.singleTargetSpreadPercent?.(params, skill)
+    },
+    monsterBattleContext(data, d, user)
+  )
+  if (percent === undefined) return skill
+  const foes = aliveOnField(data, d, opponentOf(sideOf(d, user.id))).length
+  const power = foes > 1 ? Math.max(1, Math.round((skill.power * percent) / 100)) : skill.power
+  return { ...skill, target: 'allEnemies', fullSpread: true, power }
+}
+
 /**
  * Multitarget / Unitarget (element-reactions.md): trạng thái đổi mục tiêu skill gây sát thương nhắm
  * địch. Skill đánh nhiều lần và skill tự nhắm kẻ vừa đánh giữ nguyên (luật "Skill đánh nhiều lần").
@@ -1005,8 +1042,16 @@ function runSpellEffects(
     user,
     skill,
     target,
-    amount
-  }: { user: Monster; skill: Skill; target: Monster; amount: Decimal },
+    amount,
+    chain
+  }: {
+    user: Monster
+    skill: Skill
+    target: Monster
+    amount: Decimal
+    /** Bước của chuỗi (`Skill.chain`; điều kiện `chainStep`). */
+    chain?: { index: number; size: number }
+  },
   effects: readonly TraitEffect[]
 ): void {
   if (effects.length === 0) return
@@ -1022,7 +1067,8 @@ function runSpellEffects(
     target,
     targetCtx,
     skill,
-    amount
+    amount,
+    ...(chain ? { chain } : {})
   }
   const run = { owner: user, scale: 1, subject: target, other: target, amount, skillId: skill.id }
   runTraitEffects(data, d, { ...run, view }, effects)
@@ -1097,11 +1143,12 @@ function traitRepeats(
  * hiệu ứng synergy vào skill (power cộng ở công thức sát thương).
  */
 function withSynergy(data: GameData, d: Draft, use: SkillUse): SkillUse {
-  const allies = monsterBattleContext(data, d, use.user)?.allies ?? []
-  const partner = synergyPartner(use.skill, allies)
+  const ctx = monsterBattleContext(data, d, use.user)
+  const scene = { data, user: use.user, allies: ctx?.allies ?? [], ctx }
+  const partner = synergyPartner(scene, use.skill)
   if (!partner) return use
   log(d, { type: 'synergy', monsterId: use.user.id, skillId: use.skill.id, partnerId: partner.id })
-  return { ...use, skill: withSynergyEffects(use.skill, allies) }
+  return { ...use, skill: withSynergyEffects(scene, use.skill) }
 }
 
 /** Z-Move xuyên Max Guard: chỉ gây protectDamagePercent % sát thương lên mục tiêu đó. */
@@ -1156,13 +1203,18 @@ function performSkillOnce(
             retargetedByStatus(
               data,
               user,
-              springLoaded(
+              spreadByTrait(
                 data,
+                d,
                 user,
-                electrified(
+                springLoaded(
                   data,
                   user,
-                  zSkill ?? styledSkill(data, battleSkill(data, d, user, original), chosen.style)
+                  electrified(
+                    data,
+                    user,
+                    zSkill ?? styledSkill(data, battleSkill(data, d, user, original), chosen.style)
+                  )
                 )
               )
             )
@@ -1261,15 +1313,20 @@ function applyToTargets(data: GameData, d: Draft, use: SkillUse): TargetsOutcome
     log(d, { type: 'noTarget', monsterId: user.id })
     return { ...FAILED, totalDealt: BIG_ZERO }
   }
-  const targetsOpponent = skill.target === 'enemy' || skill.target === 'allEnemies'
-  const spread = skill.target === 'allEnemies' && targets.length > 1
+  const targetsOpponent = isOffensiveTarget(skill.target)
+  const spread = isReducedSpread(skill, targets.length)
   if (targetsOpponent) markSwoop(data, d, { user, skill, targets })
 
   let firstHit: Monster | null = null
   let totalDealt = BIG_ZERO
   let knockouts = 0
   let requirementFailed = false
-  for (const target of targets) {
+  // Chuỗi (Chain Lightning): mục tiêu trước chặn được đòn thì dừng; mỗi bước một % sát thương.
+  let chainStopped = false
+  for (const [index, target] of targets.entries()) {
+    if (skill.chain && chainStopped) break
+    chainStopped = skill.chain !== undefined
+    const stepUse = chainStepUse(use, index)
     const hitsFoe = sideOf(d, target.id) !== sideOf(d, user.id)
     if (!meetsRequirements(data, d, use, target)) {
       if (!requirementFailed) {
@@ -1323,7 +1380,9 @@ function applyToTargets(data: GameData, d: Draft, use: SkillUse): TargetsOutcome
     }
     if (skill.breaksScreens && hitsFoe) breakScreens(data, d, { user, target })
     if (skill.stealsBoosts && hitsFoe) stealBoosts(data, d, { user, target })
-    const strike = protection === 'pierced' ? piercingStrike(data, use, target) : { ...use, target }
+    chainStopped = false
+    const strike =
+      protection === 'pierced' ? piercingStrike(data, stepUse, target) : { ...stepUse, target }
     const wasStanding = !isFainted(data, target)
     const { total: dealt, walled } = strikeTarget(data, d, strike, { spread, aimed })
     applySkillEffects(data, d, { ...strike, walled }, 'afterHits', dealt, firstHit !== null)
@@ -1339,7 +1398,13 @@ function applyToTargets(data: GameData, d: Draft, use: SkillUse): TargetsOutcome
       )
     }
     runElementReactions(data, d, { user, skill, target, walled })
-    runSpellEffects(data, d, { user, skill, target, amount: dealt }, spellTargetEffects(skill))
+    const chain = skill.chain ? { index, size: targets.length } : undefined
+    runSpellEffects(
+      data,
+      d,
+      { user, skill, target, amount: dealt, chain },
+      spellTargetEffects(skill)
+    )
     if (hitsFoe && dealt.gt(0) && skill.category === 'physical') {
       emitTraitEvent(d, {
         type: 'attacked',

@@ -20,12 +20,12 @@
 
 Thứ tự ô trong config chỉ quyết định ô nào được chọn loài trước (để không trùng), không phải vị trí trên màn chọn.
 
-| Ô | Điều kiện | Ý nghĩa |
-| --- | --- | --- |
-| 1 | `lineHasForm ["mega", "gmax"]` | biến hình mạnh: chuỗi có Mega hoặc Gigantamax (~86 loài) |
-| 2 | `bloodline` | **phản tổ được**: thuộc ít nhất một nhóm huyết mạch (`bloodline.md`) |
-| 3 | `evolvesToRank "S"` | **tiềm long** (Claude chọn làm "loài đặc biệt"): dạng cuối phẩm cấp S trở lên, kiểu bộ ba bán thần Dratini / Larvitar / Bagon, rồng con D&D (~152 loài) |
-| 4 | không điều kiện | tự do: mọi loài dạng đầu có tiến hóa (~954 loài) |
+| Ô   | Điều kiện                      | Ý nghĩa                                                                                                                                                 |
+| --- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | `lineHasForm ["mega", "gmax"]` | biến hình mạnh: chuỗi có Mega hoặc Gigantamax (~86 loài)                                                                                                |
+| 2   | `bloodline`                    | **phản tổ được**: thuộc ít nhất một nhóm huyết mạch (`bloodline.md`)                                                                                    |
+| 3   | `evolvesToRank "S"`            | **tiềm long** (Claude chọn làm "loài đặc biệt"): dạng cuối phẩm cấp S trở lên, kiểu bộ ba bán thần Dratini / Larvitar / Bagon, rồng con D&D (~152 loài) |
+| 4   | không điều kiện                | tự do: mọi loài dạng đầu có tiến hóa (~954 loài)                                                                                                        |
 
 - Kiểm tra dữ liệu (`gameData/validateStarters.ts`): ít nhất một ô; `conditions` là danh sách; điều kiện có `kind` đã biết, không trường lạ, params đúng; **ô phải có ít nhất một loài** (chỉ dựng danh sách khi phần dữ liệu khác không lỗi); `level` nguyên ≥ 1, `money` ≥ 0, vật phẩm tồn tại và gộp chồng theo id, số lượng nguyên ≥ 1; trường lạ của `config.starter` báo lỗi.
 - **Không có nhãn ô** trên thẻ (chủ project chốt 2026-10-31: vị trí và loại ô đều random để người chơi tự khám phá).
@@ -42,11 +42,11 @@ Bước 8c (2026-11-01). Loài khởi đầu **mở khóa dần qua các lần c
 - **Game mới:** `createNewGame` nhận `unlockedStarterIds`; loài chọn là ứng viên của ô thì như cũ, không thì phải thuộc danh sách và vẫn `isStarterEligible`, sai → `notStarter`. Con của loài đã mở random bằng `rollUnlockedStarter(data, seed, { speciesId })` từ RNG **sau** các ô (luật như ô: level, gen / trait / shiny theo seed, tuổi, Gmax Factor), nên ứng viên của ô không đổi và màn chọn hiển thị đúng con sẽ nhận.
 - **Kiểm tra dữ liệu:** `unlocks` là danh sách; mục không trường lạ; `speciesIds` loài tồn tại, làm khởi đầu được; điều kiện qua `checkTypedParams` của thành tựu; `value` số > 0, không vượt trần tiến độ của điều kiện; `unlockOwnedLines` boolean.
 
-| Mở | Điều kiện (số tạm) |
-| --- | --- |
+| Mở                                   | Điều kiện (số tạm)           |
+| ------------------------------------ | ---------------------------- |
 | 3 loài khởi đầu Pokémon thế hệ 1 → 9 | `dexOwned` 50, 100, ..., 450 |
-| 10 rồng con D&D (sắc / kim loại) | `highestFloor` 50 |
-| Cá Chép Vàng (→ Rồng phương Đông) | `tamerRealm` 3 |
-| Imugi (→ Yong) | `towerFloor` 20 |
+| 10 rồng con D&D (sắc / kim loại)     | `highestFloor` 50            |
+| Cá Chép Vàng (→ Rồng phương Đông)    | `tamerRealm` 3               |
+| Imugi (→ Yong)                       | `towerFloor` 20              |
 
 - Lệch roadmap: không có loài Sơn Hải Kinh dạng đầu có tiến hóa nên thay bằng Cá Chép Vàng / Imugi; điều kiện `ascensions` đã có (số lần phi thăng, `ascension.md`), chưa mục mở khóa nào dùng.

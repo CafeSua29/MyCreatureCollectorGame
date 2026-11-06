@@ -334,6 +334,7 @@ export function enterFieldTogether(
     for (const outgoing of displaced) {
       cureOnLeave(data, d, findMonster(d, outgoing))
       healOnLeave(data, d, findMonster(d, outgoing))
+      emitTraitEvent(d, { type: 'leave', subjectId: outgoing })
     }
     // Z-Memento / Z-Parting Shot (docs/rules/z-moves.md): quái vào thay được hồi đầy máu.
     const healsEntrant = displaced.some((id) => d.battle.volatiles[id]?.healsReplacement)

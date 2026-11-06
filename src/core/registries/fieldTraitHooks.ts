@@ -79,7 +79,7 @@ const wallIgnoreChance: TraitHookHandler = {
   wallIgnoreChance: (params) => (params as { percent: number }).percent
 }
 
-// ---------- staminaMaxPercent / staminaCostPercent: thể lực tối đa, giá skill ----------
+// ---------- staminaMaxPercent / staminaCostPercent / overexertion: thể lực (stamina.md) ----------
 
 const validateStaminaPercent = (params: unknown): string[] => {
   const obj = asObject(params)
@@ -91,9 +91,66 @@ const staminaMaxPercent: TraitHookHandler = {
   staminaMaxPercent: (params, scale) => (params as { percent: number }).percent * scale
 }
 
+interface StaminaCostParams {
+  percent: number
+  /** Chỉ skill gây sát thương (power > 0; Efficient của Temtem). */
+  damaging?: true
+}
+
 const staminaCostPercent: TraitHookHandler = {
-  validateParams: validateStaminaPercent,
-  staminaCostPercent: (params, scale) => (params as { percent: number }).percent * scale
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    return [
+      ...validateStaminaPercent(params),
+      ...(obj.damaging === undefined || obj.damaging === true ? [] : ['damaging chỉ được là true'])
+    ]
+  },
+  staminaCostPercent(params, scale, skill) {
+    const { percent, damaging } = params as StaminaCostParams
+    return damaging && skill.power <= 0 ? 0 : percent * scale
+  }
+}
+
+interface OverexertionParams {
+  hpPercent?: number
+  skipsExhaustion?: true
+  cannotFaint?: true
+}
+
+const OVEREXERTION_FLAGS = ['skipsExhaustion', 'cannotFaint'] as const
+
+// Synergy Adept / Master của Temtem: synergy có tác dụng thì sát thương +%.
+const synergyBoost: TraitHookHandler = {
+  validateParams: (params) => {
+    const obj = asObject(params)
+    return obj ? checkNumber(obj.percent, 'percent', Number.MIN_VALUE) : ['params phải là object']
+  },
+  synergyBoostPercent: (params, scale) => (params as { percent: number }).percent * scale
+}
+
+// Tireless của Temtem: giảm máu mất, không mất lượt; cannotFaint: máu mất không làm gục.
+const overexertion: TraitHookHandler = {
+  validateParams(params) {
+    const obj = asObject(params)
+    if (!obj) return ['params phải là object']
+    const issues = OVEREXERTION_FLAGS.flatMap((flag) =>
+      obj[flag] === undefined || obj[flag] === true ? [] : [`${flag} chỉ được là true`]
+    )
+    if (obj.hpPercent !== undefined) issues.push(...checkNumber(obj.hpPercent, 'hpPercent', -100))
+    if (obj.hpPercent === undefined && OVEREXERTION_FLAGS.every((flag) => !obj[flag])) {
+      issues.push('cần ít nhất một trong hpPercent / skipsExhaustion / cannotFaint')
+    }
+    return issues
+  },
+  overexertion(params, scale) {
+    const { hpPercent, skipsExhaustion, cannotFaint } = params as OverexertionParams
+    return {
+      hpPercent: (hpPercent ?? 0) * scale,
+      skipsExhaustion: skipsExhaustion === true,
+      cannotFaint: cannotFaint === true
+    }
+  }
 }
 
 // ---------- airborne: không đứng trên mặt đất (kiểu Levitate) ----------
@@ -387,6 +444,8 @@ export const FIELD_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
   wallIgnoreChance,
   staminaMaxPercent,
   staminaCostPercent,
+  overexertion,
+  synergyBoost,
   airborne,
   grounded,
   trapped,

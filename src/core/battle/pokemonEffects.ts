@@ -9,6 +9,7 @@ import { STAGE_STATS, type GameData, type Monster, type StageStat } from '../mod
 import type { EffectTarget, TraitEffect } from '../registries'
 import { Draft, battleStats, changeStage, log, sideOf, slotsOf } from './draft'
 import { loseHp, heal } from './hpChanges'
+import { copyStatSpecies } from './battleForms'
 import { addFlatStat, changeIdentity, resolveEffectTargets, type EffectRun } from './traitEffects'
 
 type Effect<T extends TraitEffect['do']> = Extract<TraitEffect, { do: T }>
@@ -286,11 +287,17 @@ function transformInto(
     if (!volatile || target.id === source.id) continue
     changeIdentity(d, target, { elementIds: [...source.elementIds] })
     setAbilityOf(d, target, currentAbility(d, data, source))
-    for (const stat of STAGE_STATS)
-      setStage(data, d, target.id, stat, d.battle.stages[source.id]?.[stat] ?? 0)
-    const sourceStats = battleStats(data, d, source)
-    for (const stat of ['attack', 'defense', 'spAttack', 'spDefense', 'speed'] as const) {
-      setStatTo(data, d, target, stat, sourceStats[stat])
+    if (!effect.keepStages) {
+      for (const stat of STAGE_STATS)
+        setStage(data, d, target.id, stat, d.battle.stages[source.id]?.[stat] ?? 0)
+    }
+    if (effect.baseStats) {
+      copyStatSpecies(data, d, target, source.battleForm?.speciesId ?? source.baseSpeciesId)
+    } else {
+      const sourceStats = battleStats(data, d, source)
+      for (const stat of ['attack', 'defense', 'spAttack', 'spDefense', 'speed'] as const) {
+        setStatTo(data, d, target, stat, sourceStats[stat])
+      }
     }
     volatile.tempSkillIds = [...new Set([...(volatile.tempSkillIds ?? []), ...source.skillIds])]
     volatile.sealedSkillIds = [...new Set([...(volatile.sealedSkillIds ?? []), ...target.skillIds])]

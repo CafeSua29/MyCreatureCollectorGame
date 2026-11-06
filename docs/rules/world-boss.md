@@ -45,12 +45,12 @@ Code: lịch / loài / sinh boss / bậc thưởng `world/worldBoss.ts`, việc 
 
 ## Số (tạm, theo mô phỏng 2026-11-01)
 
-| Bậc | Ngưỡng (× máu đơn vị) | Tiền (× moneyPerLevel × level) | Vật phẩm                                                               | Sách | Trứng |
-| --- | --------------------- | ------------------------------ | ---------------------------------------------------------------------- | ---- | ----- |
-| C   | 0,5                   | 5                              | Hồn tinh nhỏ 2, Kẹo M 1                                                | 1    | 0%    |
-| B   | 1,5                   | 10                             | Hồn tinh nhỏ 3, Kẹo M 2, Kẹo L 1                                       | 1    | 0%    |
-| A   | 3                     | 20                             | Hồn tinh lớn 1, Kẹo L 2, Kẹo Hiếm 1, Tẩy luyện thạch 1                 | 2    | 0%    |
-| S   | 6                     | 40                             | Hồn tinh lớn 2, Kẹo L 2, Kẹo XL 1, Kẹo Hiếm 2, Phá Cảnh Đan 1          | 2    | 5%    |
-| SS  | 12                    | 80                             | Hồn tinh lớn 3, Kẹo XL 2, Kẹo Hiếm 3, Phá Cảnh Đan 1, Luân Hồi Đan 1   | 3    | 10%   |
+| Bậc | Ngưỡng (× máu đơn vị) | Tiền (× moneyPerLevel × level) | Vật phẩm                                                             | Sách | Trứng |
+| --- | --------------------- | ------------------------------ | -------------------------------------------------------------------- | ---- | ----- |
+| C   | 0,5                   | 5                              | Hồn tinh nhỏ 2, Kẹo M 1                                              | 1    | 0%    |
+| B   | 1,5                   | 10                             | Hồn tinh nhỏ 3, Kẹo M 2, Kẹo L 1                                     | 1    | 0%    |
+| A   | 3                     | 20                             | Hồn tinh lớn 1, Kẹo L 2, Kẹo Hiếm 1, Tẩy luyện thạch 1               | 2    | 0%    |
+| S   | 6                     | 40                             | Hồn tinh lớn 2, Kẹo L 2, Kẹo XL 1, Kẹo Hiếm 2, Phá Cảnh Đan 1        | 2    | 5%    |
+| SS  | 12                    | 80                             | Hồn tinh lớn 3, Kẹo XL 2, Kẹo Hiếm 3, Phá Cảnh Đan 1, Luân Hồi Đan 1 | 3    | 10%   |
 
 - Mục tiêu (đo bằng phần `worldBoss` của mô phỏng, `simulation-features.md`): đội đủ 6 quái ở tầng 10 đạt ít nhất C khoảng 70%, ít nhất B khoảng 50%, S trở lên khoảng 20%, SS dưới 10%; đội ít quái thường không đạt bậc nào.

@@ -34,6 +34,7 @@ import { getItemCount } from '../inventory'
 import { activeTransform, holdTurnsLeft, isFainted, lockedSkillIds, masteryOf } from '../monster'
 import {
   battleSkillIds,
+  canTargetAllyByCommand,
   isMergedAway,
   mergePartnerOf,
   MOVE_STYLES,
@@ -240,8 +241,14 @@ export function submitTurn(
       if (command.style !== undefined) validateStyle(data, monster, command)
       if (command.aim !== undefined) validateAim(data, battle, command)
       if (command.targetAlly !== undefined) {
-        if (command.targetAlly !== true || !data.skills[command.skillId].onAlly) {
-          throw malformedAction('targetAlly chỉ dùng cho skill có onAlly')
+        const skill = data.skills[command.skillId]
+        if (
+          command.targetAlly !== true ||
+          !(skill.onAlly || canTargetAllyByCommand(skill.target))
+        ) {
+          throw malformedAction(
+            'targetAlly chỉ dùng cho skill có onAlly hoặc nhắm một địch / đội địch'
+          )
         }
       }
       if (command.targetFoe !== undefined) {

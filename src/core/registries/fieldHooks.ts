@@ -12,6 +12,7 @@
 import { asObject, checkNumber } from '../shared'
 import {
   SKILL_CATEGORIES,
+  isOffensiveTarget,
   type GameData,
   type Skill,
   type SkillCategory,
@@ -129,8 +130,7 @@ const accuracyMultiplier: FieldHookHandler = {
     const affected = hasSkill(
       data,
       monster,
-      (skill) =>
-        (skill.target === 'enemy' || skill.target === 'allEnemies') && affectsAccuracy(typed, skill)
+      (skill) => isOffensiveTarget(skill.target) && affectsAccuracy(typed, skill)
     )
     return affected ? multiplierSign(typed.multiplier) : 0
   }
