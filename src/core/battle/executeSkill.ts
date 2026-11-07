@@ -8,6 +8,7 @@
 // synergy theo đồng đội (skillSynergy.ts), skill đang chờ (hold), thế mạnh / nhanh (moveStyles.ts).
 // Áp kết quả hiệu ứng ở skillResults.ts, trạng thái tạm ở volatiles.ts.
 
+import { recordMarkCrit } from './marks'
 import { computeDamage, skillEffectivenessOn, statDamage, type DamagePartner } from './damage'
 import { rollHitCount, withHitsByHp } from './multiHit'
 import {
@@ -403,6 +404,10 @@ function strikeOnce(
         critical: result.critical,
         info: { kind: 'skill', source: user, skill, reactive: use.reactive }
       })
+  // Đòn chí mạng lớn vào quái ta để lại sẹo lúc hết trận (docs/rules/marks.md).
+  if (!shielded && dealt.gt(0) && result.critical) {
+    recordMarkCrit(data, d, { target, attacker: user, partId: aimed?.part.id, dealt })
+  }
   // Đồ cầm kiểu Air Balloon: bay tới khi bị đánh trúng.
   if (!shielded && dealt.gt(0)) {
     consumeHeldWhere(data, d, target, (handler, params) => handler.isAirborne?.(params) ?? false)

@@ -60,3 +60,22 @@ export function checkConditionalPercent(value: unknown): string[] {
     issues.push('percent không được đổi hp (hook có điều kiện)')
   return issues
 }
+
+/**
+ * Thay chỗ giữ trong params hook (chuỗi đúng bằng khóa của `fills`, sticker `$skill` / `$choice`, dấu
+ * ấn `$target`); chỗ giữ không có giá trị (undefined) giữ nguyên. Không sửa đầu vào.
+ */
+export function fillPlaceholders(
+  value: unknown,
+  fills: Readonly<Record<string, string | undefined>>
+): unknown {
+  if (typeof value === 'string')
+    return Object.hasOwn(fills, value) ? (fills[value] ?? value) : value
+  if (Array.isArray(value)) return value.map((entry) => fillPlaceholders(entry, fills))
+  if (typeof value === 'object' && value !== null) {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [key, fillPlaceholders(entry, fills)])
+    )
+  }
+  return value
+}

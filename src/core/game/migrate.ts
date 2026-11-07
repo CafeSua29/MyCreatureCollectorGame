@@ -1177,7 +1177,9 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   // v110 → v111: dạng trong trận thêm cờ chép loài khác `copied` (tùy chọn); không đổi gì.
   110: (save) => ({ ...save, version: 111 }),
   // v111 → v112: sticker skill (skill-stickers.md) và Bootleg (bootleg.md).
-  111: addStickersAndBootleg
+  111: addStickersAndBootleg,
+  // v112 → v113: dấu ấn trên quái (marks.md).
+  112: addMarks
 }
 
 /**
@@ -1347,6 +1349,12 @@ function addStickersAndBootleg(save: SaveObject): SaveObject {
     dex: dex ? { ...dex, bootlegSeen: [], bootlegOwned: [] } : save.dex,
     rogueFusion: newRogueFusionState()
   }
+}
+
+/** v112 → v113: mọi quái (kể cả trong trứng) chưa có dấu ấn, bộ đếm rỗng. */
+function addMarks(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, marks: [], markCounters: {} })
+  return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 113 }
 }
 
 /** v107 → v108: bỏ `wall` trong trạng thái tạm của trận đang dở. */

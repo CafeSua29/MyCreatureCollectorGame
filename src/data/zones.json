@@ -6093,7 +6093,8 @@
           "weight": 40
         }
       ],
-      "deityId": "onThan"
+      "deityId": "onThan",
+      "markHazardPercent": 3
     },
     "requirements": [
       {
@@ -15218,7 +15219,8 @@
           "weight": 50
         }
       ],
-      "deityId": "khuanMau"
+      "deityId": "khuanMau",
+      "markHazardPercent": 3
     },
     "requirements": [
       {
@@ -29374,7 +29376,8 @@
           "weight": 40
         }
       ],
-      "deityId": "daDuThan"
+      "deityId": "daDuThan",
+      "markHazardPercent": 2
     },
     "requirements": [
       {
@@ -35033,7 +35036,8 @@
           "weight": 30
         }
       ],
-      "deityId": "onThan"
+      "deityId": "onThan",
+      "markHazardPercent": 2
     },
     "requirements": [],
     "treasure": {

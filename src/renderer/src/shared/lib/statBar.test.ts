@@ -16,7 +16,8 @@ describe('statBar', () => {
         location: 'party',
         index,
         equipmentSlots: 3,
-        scene: { party: [], place: null, aptitudeFloor: 1, time: 0 }
+        scene: { party: [], place: null, aptitudeFloor: 1, time: 0 },
+        highestFloor: 1
       })
     )
     expect(statBarScale(views)).toEqual(230) // 30 + 100 × 2

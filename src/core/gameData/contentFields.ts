@@ -293,6 +293,7 @@ const BIOME_FIELDS = fieldList<Biome>({
   doubleChance: true,
   shinyChance: true,
   bootlegChance: true,
+  markHazardPercent: true,
   encounters: true,
   drops: true,
   bossDrops: true,

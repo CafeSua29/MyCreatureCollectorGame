@@ -6,6 +6,7 @@ import {
   bestRealmReached,
   CHALLENGE_MODES,
   DIFFICULTIES,
+  MARK_KINDS,
   STAT_KEYS,
   type ChallengeMode,
   type Difficulty,
@@ -13,7 +14,8 @@ import {
   type AchievementDef,
   type AchievementRewards,
   type GameData,
-  type GameState
+  type GameState,
+  type MarkInstance
 } from '../model'
 import { checkIdList } from './paramChecks'
 import { aptitudeFloor, hasAptitudeAtLeast } from './aptitude'
@@ -21,6 +23,7 @@ import { dexOwnedPercent } from './dex'
 import { researchCompletedCount } from './research'
 import { speciesRankIndex, speciesRankOf } from './speciesRank'
 import { difficultyRank, hasChallengeMode } from './challenge'
+import { findMarkDef, markDefOfKind } from './marks'
 
 /** Phần state điều kiện thành tựu đọc. */
 export type AchievementScope = Pick<
@@ -70,6 +73,21 @@ const checkKnownId = (value: unknown, known: object, label: string): string[] =>
   typeof value === 'string' && Object.hasOwn(known, value)
     ? []
     : [`${label} không tồn tại "${String(value)}"`]
+
+function checkOptionalMarkKind(params: Record<string, unknown>): string[] {
+  return params.kind === undefined || MARK_KINDS.some((kind) => kind === params.kind)
+    ? []
+    : [`loại dấu lạ "${String(params.kind)}"`]
+}
+
+/** Dấu (loại `kind`, bỏ trống = mọi loại) của mọi quái đang sở hữu. */
+function ownedMarks(data: GameData, state: AchievementScope, kind: unknown): MarkInstance[] {
+  return [...state.party, ...state.storage].flatMap((monster) =>
+    monster.marks.filter(
+      (mark) => kind === undefined || findMarkDef(data, mark.markId)?.kind === kind
+    )
+  )
+}
 
 export const ACHIEVEMENT_CONDITIONS: Readonly<
   Record<AchievementConditionType, AchievementConditionHandler>
@@ -171,6 +189,32 @@ export const ACHIEVEMENT_CONDITIONS: Readonly<
       const inModes = modes.every((mode) => hasChallengeMode(state.options, mode))
       return hardEnough && inModes ? aptitudeFloor(state) : 0
     },
+    maxProgress: () => null
+  },
+  // Dấu ấn (docs/rules/marks.md) trên quái đang sở hữu (đội + kho). { kind? }: số loại dấu khác nhau
+  // (bỏ trống = mọi loại).
+  markIds: {
+    fields: ['kind'],
+    validateParams: checkOptionalMarkKind,
+    parse: (params) => params,
+    progress: (params, state, data) =>
+      new Set(ownedMarks(data, state, params.kind).map(({ markId }) => markId)).size,
+    maxProgress: () => null
+  },
+  // Số chiến tích vượt qua nỗi sợ (cách nhận `resolve`) trên quái đang sở hữu.
+  resolvedFears: plain(
+    (state, data) =>
+      ownedMarks(data, state, 'trophy').filter(
+        ({ markId }) => markDefOfKind(data, markId, 'trophy')?.trigger === 'resolve'
+      ).length
+  ),
+  // { kind? }: cấp cao nhất của một dấu loại đó trên quái đang sở hữu.
+  markLevel: {
+    fields: ['kind'],
+    validateParams: checkOptionalMarkKind,
+    parse: (params) => params,
+    progress: (params, state, data) =>
+      ownedMarks(data, state, params.kind).reduce((best, mark) => Math.max(best, mark.level), 0),
     maxProgress: () => null
   }
 }

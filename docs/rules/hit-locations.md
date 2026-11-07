@@ -41,6 +41,8 @@ Code: `battle/reach.ts` (tầm chiêu: `skillReach`, `canReach`, `markSwoop`), `
 
 - **Chấn thương theo bộ phận** (`dwelling.md` mục "Bệnh và chấn thương"): khi trận kết thúc, quái của người chơi bị hạ gục bằng đòn nhắm (`knockoutPart`) hoặc bị phá bộ phận (`brokenParts`) mắc chấn thương gắn với bộ phận đó (đầu → chấn động, cánh → gãy cánh, thân → gãy xương sườn, tay / chân → bong gân / gãy xương...).
 
+- **Dấu ấn theo bộ phận** (`marks.md`): hết trận, mỗi bộ phận bị phá của quái ta tung đột biến (0,5%) rồi sẹo (8%) ở đúng bộ phận đó; đòn chí mạng lớn để lại sẹo ở bộ phận bị nhắm; sẹo / đột biến của bộ phận quái không còn thì không có tác dụng. Skill ra chiêu bằng bộ phận (`bodyPart`) bị sẹo của bộ phận đó làm yếu qua điều kiện `skillBodyPart`.
+
 ## Khám phá điểm yếu
 
 Như Persona / Shin Megami Tensei (điểm yếu của địch chưa biết cho tới khi đánh trúng, rồi được ghi lại): **bộ phận** của quái luôn thấy (nhìn là biết có cánh, có đuôi), **điểm yếu thì không**.

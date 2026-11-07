@@ -7,6 +7,7 @@ import type { TrainerClass } from './trainers'
 import type { TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
 import type { SerumEffectDef } from './implant'
+import type { MarkDef } from './marks'
 import type { BodyRefinementDef } from './refinement'
 import type { EssenceDef } from './essences'
 import type { DeityDef } from './deities'
@@ -1701,6 +1702,11 @@ export interface Biome {
   shinyChance?: number
   /** % quái hoang ra Bootleg ở biome này; bỏ trống = config.bootleg.wildChance (bootleg.md). */
   bootlegChance?: number
+  /**
+   * Hiểm địa dấu ấn (đầm độc, vùng phóng xạ linh khí...; docs/rules/marks.md): mỗi trận ở map này,
+   * mỗi quái ta đã ra sân tung % này một đột biến ngẫu nhiên. Bỏ trống = không có.
+   */
+  markHazardPercent?: number
   encounters: EncounterEntry[]
   drops: DropEntry[]
   /** Đồ rơi chung cho mọi boss của biome (boss tầng và boss ngẫu nhiên), ngoài đồ riêng. */
@@ -1945,6 +1951,7 @@ export interface RawGameData {
   eventModifiers: EventModifierDef[]
   zones: RawZoneDef[]
   serumEffects: SerumEffectDef[]
+  marks: MarkDef[]
   bodyRefinements: BodyRefinementDef[]
   essences: EssenceDef[]
   deities: DeityDef[]
@@ -2030,6 +2037,8 @@ export interface GameData {
   zones: Record<string, ZoneDef>
   /** Hiệu ứng cấy ghép của huyết thanh (docs/rules/implant.md). */
   serumEffects: Record<string, SerumEffectDef>
+  /** Dấu ấn trên quái (docs/rules/marks.md). */
+  marks: Record<string, MarkDef>
   /** Kiểu luyện thể (docs/rules/body-refinement.md). */
   bodyRefinements: Record<string, BodyRefinementDef>
   /** Tinh chất (docs/rules/essences.md). */

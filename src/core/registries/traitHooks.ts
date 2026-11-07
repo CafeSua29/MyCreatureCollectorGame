@@ -66,6 +66,7 @@ import { FRENZY_TRAIT_HOOKS } from './frenzyTraitHooks'
 import { raceMatchesAny, raceRefIds } from './races'
 import { uniformPercent } from './statPercentSources'
 import { stickerTraitHooks } from './stickers'
+import { markHookEntries } from './marks'
 import { SURVIVAL_TRAIT_HOOKS, type LethalSurvival } from './survivalTraitHooks'
 import { STAGE_TRAIT_HOOKS, type StageTraitEffect, type StageTraitEvent } from './stageTraitHooks'
 import { percentToMultiplier, scaleStats, validatePartialStats } from './traitHookUtils'
@@ -717,6 +718,7 @@ export const HOOK_SOURCE_KINDS = [
   'passiveSkill',
   'refinement',
   'sticker',
+  'mark',
   'rule'
 ] as const
 
@@ -738,6 +740,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'passiveSkill':
     case 'refinement':
     case 'sticker':
+    case 'mark':
       return kind
     case 'trait':
     case 'race':
@@ -1053,6 +1056,11 @@ function ownHooks(
   // chỉ số bị động...), như trait cấp 1; sourceId = id sticker.
   for (const { hook, stickerId } of stickerTraitHooks(data, monster)) {
     push([hook], 1, stickerId, { kind: 'sticker', ownerId })
+  }
+  // Dấu ấn (docs/rules/marks.md): hook của dấu đang có tác dụng (và trait của dấu) × hệ số cấp;
+  // sourceId = id mục dấu.
+  for (const { hooks, scale, markId } of markHookEntries(data, monster)) {
+    push(hooks, scale, markId, { kind: 'mark', ownerId })
   }
   // Thiên phú đã nâng ở nhánh đang mở (docs/rules/monster-talents.md): hệ số = cấp; sourceId = id nút.
   for (const { node, rank } of activeTalents(data, monster)) {

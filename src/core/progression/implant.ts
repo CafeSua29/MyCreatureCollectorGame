@@ -22,7 +22,16 @@ import {
   type Decimal,
   type RngState
 } from '../shared'
-import { addMilestone, assertNotBusy, assertNotLocked, dieForever, implantChance } from '../monster'
+import {
+  addMilestone,
+  assertNotBusy,
+  assertNotLocked,
+  dieForever,
+  implantChance,
+  markLogEntries,
+  noteMarkChanges,
+  rollPartMarkGain
+} from '../monster'
 import { woundIfBondDied } from '../tamer'
 import { locateOwned } from '../roster'
 import {
@@ -162,8 +171,22 @@ export function implant(data: GameData, state: GameState, order: ImplantOrder): 
   })
   const died = fails >= maxFails
   const failedLog: GameLogEntry = { ...logBase, success: false, fails, died }
-  if (!died) return appendLog({ ...replace(failed), money: paid.money, rng }, failedLog)
-  return loseMonster(data, appendLog({ ...paid, rng }, failedLog), failed)
+  if (died) return loseMonster(data, appendLog({ ...paid, rng }, failedLog), failed)
+  // Cấy hỏng còn sống: tung sẹo ở bộ phận implantScarPartId (docs/rules/marks.md).
+  const { scarOnImplantFailPercent, implantScarPartId } = data.config.marks
+  const [scarred, after] = rollPartMarkGain(data, rng, {
+    monster: failed,
+    kind: 'scar',
+    partId: implantScarPartId,
+    chance: scarOnImplantFailPercent,
+    origin: { source: 'implant', floor: null }
+  })
+  const noted = noteMarkChanges(data, scarred.monster, scarred.changes, day)
+  return appendLog(
+    { ...replace(noted), money: paid.money, rng: after },
+    failedLog,
+    ...markLogEntries(monster.id, scarred.changes)
+  )
 }
 
 /** Thất bại lần cuối: quái chết hẳn, rời đội / kho; bản mệnh thì ngự thú sư bị đạo thương. */

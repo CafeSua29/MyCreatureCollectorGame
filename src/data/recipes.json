@@ -2208,5 +2208,29 @@
     "minLevel": 4,
     "successChance": 65,
     "exp": 20
+  },
+  {
+    "id": "mutagenElixir",
+    "output": { "itemId": "mutagenElixir", "count": 1 },
+    "inputs": [
+      { "itemId": "snowLotus", "count": 1 },
+      { "groupId": "demonCore", "count": 2, "sameItem": true }
+    ],
+    "money": 3000,
+    "minLevel": 6,
+    "successChance": 50,
+    "exp": 20
+  },
+  {
+    "id": "regenerationPill",
+    "output": { "itemId": "regenerationPill", "count": 1 },
+    "inputs": [
+      { "itemId": "lingzhi", "count": 2 },
+      { "itemId": "ginseng", "count": 2 }
+    ],
+    "money": 1000,
+    "minLevel": 4,
+    "successChance": 70,
+    "exp": 10
   }
 ]

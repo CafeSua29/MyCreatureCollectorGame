@@ -299,6 +299,9 @@ export function checkBiomes(data: GameData, issues: string[]): void {
     if (biome.bootlegChance !== undefined) {
       issues.push(...checkNumber(biome.bootlegChance, `${where}: bootlegChance`, 0, 100))
     }
+    if (biome.markHazardPercent !== undefined) {
+      issues.push(...checkNumber(biome.markHazardPercent, `${where}: markHazardPercent`, 0, 100))
+    }
     if (biome.shinyChance !== undefined) {
       issues.push(...checkNumber(biome.shinyChance, `${where}: shinyChance`, 0, 100))
     }

@@ -137,6 +137,7 @@ import {
   infuseEgg,
   newLabState,
   rebirthMonster,
+  treatMark,
   sacrifice,
   warmEggsAtRest
 } from '../progression'
@@ -224,7 +225,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 112
+export const SAVE_VERSION = 113
 
 export function createGameState(options: {
   seed: number
@@ -689,6 +690,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return sacrifice(data, state, action)
     case 'rebirthMonster':
       return rebirthMonster(data, state, action.monsterId)
+    case 'treatMark':
+      return treatMark(data, state, action)
     case 'implant':
       return implant(data, state, action)
     case 'expandCapacity':

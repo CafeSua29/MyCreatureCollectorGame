@@ -46,6 +46,7 @@ import events from './events.json'
 import eventModifiers from './eventModifiers.json'
 import zones from './zones.json'
 import serumEffects from './serumEffects.json'
+import marks from './marks.json'
 import bodyRefinements from './bodyRefinements.json'
 import essences from './essences.json'
 import deities from './deities.json'
@@ -135,6 +136,7 @@ export const rawGameData = {
   eventModifiers,
   zones,
   serumEffects,
+  marks,
   bodyRefinements,
   essences,
   deities,

@@ -52,6 +52,7 @@ import { upgradeSoulLevels } from './soulLevels'
 import { allocateTalents, allocateTamerTalents } from './talents'
 import { tuneTeamTraits } from './traitCrystals'
 import { implantSharePercent, implantTeam } from './implant'
+import { tallyTeamMarks, treatTeamMarks } from './marks'
 import { sacrificeSpareFodder } from './sacrifice'
 import { rebirthWhenPossible } from './rebirth'
 import { highestFavorRank, runDeities } from './deities'
@@ -859,6 +860,8 @@ function afterBattle(
     run.economy.implantFails += implanted.count.failed
     run.economy.implantEffects += implanted.count.effectSerums
     run.economy.implantSharePercent = implantSharePercent(data, run.state, teamIds)
+    // Dấu ấn (marks.ts): chữa sẹo / ám ảnh rẻ ở Thầy thuốc, rồi đo đội mẫu.
+    recordTeamMarks(data, run, teamIds)
     // Miếu thần linh sau cùng (deities.ts): dâng hương cho thần của tầng cao nhất, đổi tín vật.
     run.state = runDeities(data, run.state, run.economy)
   }
@@ -904,6 +907,21 @@ function keepSampleTeam(data: GameData, state: GameState, teamIds: ReadonlySet<s
  * Ở thị trấn (growth.ts): mua bóng, dùng mồi dụ, fuse quái đội mẫu với nguyên liệu trong kho, hiến tế
  * nguyên liệu hết dùng (sacrifice.ts), breeding, đưa con mạnh hơn vào đội mẫu, học / chọn trận pháp.
  */
+/** Chữa dấu xấu rẻ ở Thầy thuốc rồi ghi số đo dấu ấn của đội mẫu (lần đo cuối). */
+function recordTeamMarks(data: GameData, run: Run, teamIds: Set<string>): void {
+  const treated = treatTeamMarks(data, run.state, teamIds)
+  run.state = treated.state
+  run.economy.marksTreated += treated.treated
+  const tally = tallyTeamMarks(data, run.state, teamIds)
+  const per = (count: number): number => count / Math.max(1, tally.monsters)
+  run.economy.scarsPerMonster = per(tally.byKind.scar)
+  run.economy.mutationsPerMonster = per(tally.byKind.mutation)
+  run.economy.adaptationsPerMonster = per(tally.byKind.adaptation)
+  run.economy.traumasPerMonster = per(tally.byKind.trauma)
+  run.economy.trophiesPerMonster = per(tally.byKind.trophy)
+  run.economy.markStatPercent = per(tally.statPercent)
+}
+
 function runGrowth(data: GameData, run: Run, teamIds: Set<string>): void {
   let state = buyBalls(data, run.state)
   const baited = applyBaitWhenNeeded(data, state, teamIds)

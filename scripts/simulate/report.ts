@@ -35,6 +35,8 @@ export function formatDecimal(value: Decimal): string {
 }
 
 const formatRatio = (value: number): string => value.toFixed(2)
+/** Làm tròn 2 chữ số thập phân (số đo trung bình nhỏ như số dấu mỗi quái). */
+const round2 = (value: number): number => Math.round(value * 100) / 100
 
 /** Tỉ lệ dạng %, 1 chữ số thập phân; mẫu số 0 thì "-". */
 export function formatPercent(part: number, total: number): string {
@@ -390,6 +392,13 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['implantFail', count.implantFails],
     ['implantEffect', count.implantEffects],
     ['implantShare%', Math.round(count.implantSharePercent)],
+    ['markTreat', count.marksTreated],
+    ['scar/mon', round2(count.scarsPerMonster)],
+    ['mutation/mon', round2(count.mutationsPerMonster)],
+    ['adapt/mon', round2(count.adaptationsPerMonster)],
+    ['trauma/mon', round2(count.traumasPerMonster)],
+    ['trophy/mon', round2(count.trophiesPerMonster)],
+    ['markStat%', round2(count.markStatPercent)],
     ['expand', count.capacityExpansions],
     ['storagePeak', count.storagePeak],
     ['bagPeak', count.bagPeak],
@@ -409,8 +418,9 @@ function economyCell(count: FloorUnlock['economy']): string {
     ['research', count.researchRewards],
     ['researchLv', count.researchLevelPeak]
   ]
+  // Số âm cũng hiện (% chỉ số từ dấu ấn có thể âm khi sẹo nhiều hơn đột biến).
   return parts
-    .filter(([, n]) => n > 0)
+    .filter(([, n]) => n !== 0)
     .map(([key, n]) => `${key}:${n}`)
     .join(' ')
 }

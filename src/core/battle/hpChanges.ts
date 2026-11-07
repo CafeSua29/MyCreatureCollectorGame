@@ -36,6 +36,7 @@ import { activeProtect } from './volatiles'
 import { punishTurnStartContact, storeBideDamage } from './multiTurnMoves'
 import { partnerTeamBonus } from '../tamer'
 import { dissolveRogueFusion } from './rogueFusion'
+import { recordMarkFaint, recordMarkHit } from './marks'
 
 /**
  * Loại mất máu: skill (đòn của quái), indirect (trạng thái, môi trường, bẫy, trait của quái khác),
@@ -250,6 +251,8 @@ function recordDamage(
     }
   }
   const fromFoe = source !== undefined && isFoeOf(d, source, target)
+  // Thích nghi theo hệ (docs/rules/marks.md): quái ta trúng đòn skill của địch.
+  if (fromFoe && info.kind === 'skill' && info.skill) recordMarkHit(data, d, target, info.skill)
   if (fromFoe) {
     targetRecord.timesDamaged++
     const volatile = d.battle.volatiles[target.id]
@@ -371,6 +374,8 @@ function faint(data: GameData, d: Draft, target: Monster, info: DamageInfo): voi
     target.affinity = changeAffinity(data, target, -data.config.affinity.loss.faint).affinity
   }
   log(d, { type: 'faint', monsterId: target.id })
+  // Dấu ấn (docs/rules/marks.md): kẻ hạ gục quái ta (ám ảnh), quái địch quái ta hạ (chiến tích).
+  recordMarkFaint(data, d, { target, source: info.source, skill: info.skill })
   recordOf(d, target.id).deaths++
   d.battle.counters.deaths++
   emitTraitEvent(d, { type: 'faint', subjectId: target.id, otherId: info.source?.id })

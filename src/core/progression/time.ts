@@ -3,13 +3,20 @@
 // (DAILY_TASKS). Mục sau có việc theo ngày (thị trường động, đấu giá, động phủ...) thêm một mục
 // vào DAILY_TASKS, không sửa advanceTime.
 
-import { tickSpiritVirusDay } from '../monster'
+import {
+  markLogEntries,
+  noteMarkChanges,
+  rollPartMarkGain,
+  tickSpiritVirusDay,
+  type MarkResult
+} from '../monster'
 import {
   HOURS_PER_DAY,
   appendLog,
   dayOf,
   hourOf,
   type DayEvent,
+  type GameLogEntry,
   type DayPhase,
   type GameData,
   type GameState,
@@ -63,6 +70,36 @@ export type DailyTask = (
   day: number
 ) => GameState
 
+/**
+ * Linh dịch qua một ngày: quái đang nhiễm ở đội bớt một ngày; quái vừa khỏi (thành miễn dịch) tung
+ * mutationOnVirusCurePercent % một đột biến (log ngoài trận, lý lịch).
+ */
+function spiritVirusDailyTask(
+  data: GameData,
+  state: GameState,
+  _events: DayEvent[],
+  day: number
+): GameState {
+  let { rng } = state
+  const logs: GameLogEntry[] = []
+  const party = state.party.map((monster) => {
+    const ticked = tickSpiritVirusDay(monster)
+    if (ticked.spiritVirus?.state !== 'immune' || monster.spiritVirus?.state !== 'infected') {
+      return ticked
+    }
+    let cured: MarkResult
+    ;[cured, rng] = rollPartMarkGain(data, rng, {
+      monster: ticked,
+      kind: 'mutation',
+      chance: data.config.marks.mutationOnVirusCurePercent,
+      origin: { source: 'virus', floor: null }
+    })
+    logs.push(...markLogEntries(monster.id, cured.changes))
+    return noteMarkChanges(data, cured.monster, cured.changes, day)
+  })
+  return appendLog({ ...state, rng, party }, ...logs)
+}
+
 /** Việc theo ngày, chạy theo thứ tự mỗi lần qua một ngày. */
 export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   aging: ageOneDay,
@@ -86,7 +123,8 @@ export const DAILY_TASKS: Readonly<Record<string, DailyTask>> = {
   // Tâm linh tương thông: quái đã khế ước thêm một ngày khế ước (docs/rules/tamer.md mục "Khế ước").
   soulLink: soulLinkDailyTask,
   // Linh dịch: quái đang nhiễm ở đội bớt một ngày; kho đứng yên (docs/rules/spirit-virus.md).
-  spiritVirus: (_data, state) => ({ ...state, party: state.party.map(tickSpiritVirusDay) }),
+  // Khỏi bệnh có thể để lại đột biến nhỏ (docs/rules/marks.md).
+  spiritVirus: spiritVirusDailyTask,
   // Tông môn: đồng môn tích cống hiến / lên chức, làm mới nhiệm vụ tông (docs/rules/sects.md).
   sect: sectDailyTask,
   // Trao đổi với NPC: làm mới bảng đề nghị khi tới ngày (docs/rules/trades.md).

@@ -35,6 +35,7 @@ Code: lịch / loài / sinh boss / bậc thưởng `world/worldBoss.ts`, việc 
   - vật phẩm cố định `items` (hồn tinh, Kẹo EXP M–XL, Kẹo Hiếm, nguyên liệu hiếm: Tẩy luyện thạch, Phá Cảnh Đan, Luân Hồi Đan);
   - `skillBooks` sách kỹ năng trong learnset của loài boss (`rollSkillBooks`, như sách theo map: skill đội học được × `partyMultiplier`, `reusableDropChance` % là Chân kinh);
   - `eggChance` % một trứng loài boss (dạng đầu, `createSpeciesEgg`, lý lịch `bossEgg`).
+- **Chiến tích dấu ấn** (`marks.md`): trận boss thế giới kết thúc với kết quả thắng thì mọi quái ta đã ra sân nhận / lên cấp chiến tích cách nhận `worldBoss` (Chiến binh diệt thế).
 - Tên hiển thị của bậc (C / B / A / S / SS) lấy theo id; chưa có: hiển thị ở UI (chờ UI, `ui-overhaul.md`).
 
 ## State và dữ liệu

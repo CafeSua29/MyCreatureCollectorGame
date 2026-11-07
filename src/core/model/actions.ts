@@ -300,6 +300,11 @@ export type GameAction =
    */
   | { type: 'rebirthMonster'; monsterId: string }
   /**
+   * Thầy thuốc ở thị trấn (docs/rules/marks.md): bỏ một sẹo / đột biến / ám ảnh (id + đối tượng) của
+   * quái, giá theo cấp dấu.
+   */
+  | { type: 'treatMark'; monsterId: string; markId: string; targetId?: string }
+  /**
    * Phòng Thí Nghiệm ở thị trấn (docs/rules/implant.md): cấy huyết thanh thứ `serumIndex` của danh
    * sách hàng vào quái; thất bại trừ chỉ số, thất bại lần cuối mất quái.
    */

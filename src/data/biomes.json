@@ -32323,7 +32323,8 @@
     "gathering": {
       "fishing": true,
       "mining": true
-    }
+    },
+    "markHazardPercent": 2
   },
   {
     "id": "greyMountains",
@@ -76179,7 +76180,8 @@
       }
     ],
     "elementIds": ["dark", "psychic", "fire", "poison"],
-    "deityId": "daDuThan"
+    "deityId": "daDuThan",
+    "markHazardPercent": 3
   },
   {
     "id": "southernChaosWastes",
@@ -77417,7 +77419,8 @@
     "deityId": "onThan",
     "gathering": {
       "mining": true
-    }
+    },
+    "markHazardPercent": 3
   },
   {
     "id": "realmOfKhorne",
@@ -243733,7 +243736,8 @@
     "deityId": "khuonDuc",
     "gathering": {
       "mining": true
-    }
+    },
+    "markHazardPercent": 2
   },
   {
     "id": "rioCarnival",

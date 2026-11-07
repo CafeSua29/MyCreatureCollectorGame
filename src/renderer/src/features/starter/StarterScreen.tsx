@@ -67,7 +67,8 @@ export function StarterScreen({
         location: 'party',
         index,
         equipmentSlots,
-        scene: { party: [], place: null, aptitudeFloor: 1, time: 0 }
+        scene: { party: [], place: null, aptitudeFloor: 1, time: 0 },
+        highestFloor: 1
       })
     )
   }, [data, shown])

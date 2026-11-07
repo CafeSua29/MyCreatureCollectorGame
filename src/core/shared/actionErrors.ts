@@ -178,6 +178,11 @@ export interface ActionErrorParams {
   // ---------- Luân hồi (docs/rules/rebirth.md) ----------
   /** Level chưa đủ cho lần luân hồi kế tiếp. */
   levelTooLowForRebirth: { need: number; have: number }
+  // ---------- Dấu ấn (docs/rules/marks.md) ----------
+  /** Quái không có dấu này (id + đối tượng). */
+  markNotFound: { monsterId: string; markId: string }
+  /** Thầy thuốc không bỏ được loại dấu này (thích nghi, chiến tích). */
+  markNotTreatable: { markId: string }
   // ---------- Cấy ghép (docs/rules/implant.md) ----------
   /** Không có huyết thanh ở vị trí này trong danh sách hàng của Phòng Thí Nghiệm. */
   serumNotFound: { serumIndex: number }
@@ -663,6 +668,8 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
     `Quái "${subId}" không cùng race và cùng lineage với quái chính "${baseId}"`,
   sacrificeStackLimit: ({ max }) => `Số stack hiến tế không được vượt ${max}`,
   levelTooLowForRebirth: ({ need, have }) => `Cần level ${need} để luân hồi, đang ${have}`,
+  markNotFound: ({ monsterId, markId }) => `Quái "${monsterId}" không có dấu ấn "${markId}"`,
+  markNotTreatable: ({ markId }) => `Thầy thuốc không bỏ được dấu ấn "${markId}"`,
   serumNotFound: ({ serumIndex }) => `Phòng Thí Nghiệm không có huyết thanh thứ ${serumIndex}`,
   rosterFull: ({ capacity }) => `Đội đã đủ và kho quái đã đầy (${capacity} con)`,
   bagFull: ({ capacity }) => `Túi trang bị đã đầy (${capacity} chỗ)`,

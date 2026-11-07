@@ -32,7 +32,10 @@ import {
   monsterExpForLevel,
   gainExp,
   getMaxHp,
-  percentOfMaxHp
+  marksOfKind,
+  percentOfMaxHp,
+  removeMark,
+  rollPartMarkGain
 } from '../monster'
 import {
   STAT_NAMES,
@@ -43,6 +46,7 @@ import {
   type FavoriteFields,
   type GameData,
   type Item,
+  type MarkInstance,
   type Monster,
   type StatName,
   type WorkType
@@ -444,6 +448,38 @@ const setPolarity: ItemEffectHandler = {
   }
 }
 
+// ---------- mutate / cureScar: dấu ấn (Dị Biến Dịch, Sinh Cơ Đan; docs/rules/marks.md) ----------
+
+const ITEM_MARK_ORIGIN = { source: 'item', floor: null } as const
+
+const mutate: ItemEffectHandler = {
+  validateParams: (params) => (asObject(params) ? [] : ['params phải là object']),
+  // Không còn bộ phận nào nhận được đột biến: không có tác dụng, không mất đan.
+  apply: () => null,
+  applyRandom(_params, { data, monster, rng }) {
+    const [result, after] = rollPartMarkGain(data, rng, {
+      monster,
+      kind: 'mutation',
+      chance: 100,
+      origin: ITEM_MARK_ORIGIN
+    })
+    return [result.changes.length > 0 ? result.monster : null, after]
+  }
+}
+
+const cureScar: ItemEffectHandler = {
+  validateParams: (params) => (asObject(params) ? [] : ['params phải là object']),
+  // Chữa sẹo cấp cao nhất (cùng cấp: sẹo có trước); không có sẹo thì không mất đan.
+  apply(_params, { data, monster }) {
+    const scars = marksOfKind(data, monster, 'scar').map(({ mark }) => mark)
+    const worst = scars.reduce<MarkInstance | undefined>(
+      (best, mark) => (best === undefined || mark.level > best.level ? mark : best),
+      undefined
+    )
+    return worst ? removeMark(monster, worst, 'item').monster : null
+  }
+}
+
 // ---------- addExp: + EXP theo tầng cao nhất (Kẹo EXP) ----------
 
 const addExp: ItemEffectHandler = {
@@ -504,6 +540,8 @@ export const ITEM_EFFECTS: Readonly<Record<string, ItemEffectHandler>> = {
   addAffinity,
   addPurity: addPurityEffect,
   setPolarity,
+  mutate,
+  cureScar,
   ...TREASURE_EFFECTS
 }
 

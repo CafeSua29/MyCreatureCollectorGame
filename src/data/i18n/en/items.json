@@ -1743,5 +1743,7 @@
   "fusedMaterial": "Fused Material",
   "cyberMaterial": "Cyber Material",
   "ritualCandle": "Ritual Candle",
-  "hackingGlove": "Hacking Glove"
+  "hackingGlove": "Hacking Glove",
+  "mutagenElixir": "Mutagen Elixir",
+  "regenerationPill": "Regeneration Pill"
 }

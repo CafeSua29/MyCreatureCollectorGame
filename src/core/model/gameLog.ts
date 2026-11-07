@@ -6,6 +6,7 @@ import type { Decimal } from '../shared'
 import type { CraftStation } from './alchemy'
 import type { EquipmentRarity } from './content'
 import type { EventLogEntry } from './events'
+import type { MarkLogEntry } from './marks'
 import type { GatheringEncounter, GatheringMethod } from './gathering'
 import type { SafariLogEntry } from './safari'
 import type { PresetEquipment } from './teamPresets'
@@ -53,6 +54,11 @@ export type ActionLogEntry =
   | { type: 'breakthrough'; success: boolean; realm: number }
   /** Khế ước quái (docs/rules/tamer.md mục "Khế ước"). */
   | { type: 'contractAttempted'; monsterId: string; outcome: ContractOutcome }
+  /**
+   * Quái nhận / lên cấp / mất dấu ấn ngoài trận (đan, Thầy thuốc, event, luân hồi, breeding, linh
+   * dịch...; docs/rules/marks.md). Dấu trong trận ghi ở log trận.
+   */
+  | MarkLogEntry
   /**
    * Cấy ghép huyết thanh bậc `tierId` (docs/rules/implant.md): `fails` = số lần thất bại sau lần
    * này; `died` = thất bại lần cuối, quái chết hẳn (hồn phách id = monsterId).

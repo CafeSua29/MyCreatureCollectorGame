@@ -32,6 +32,7 @@ import { emptySkillSlots } from '../monster'
 import { SKILL_EFFECTS } from './skillEffects'
 import { hasSecondaryEffect } from './traitConditions'
 import { hasBagRoom } from './capacity'
+import { fillPlaceholders } from './traitHookUtils'
 
 /** Tiền tố id sticker ("s<số>", chung bộ đếm nextItemId với trang bị). */
 const STICKER_ID_PREFIX = 's'
@@ -262,19 +263,6 @@ export function stickerExtraSlots(data: GameData, monster: Monster): number {
   return slots
 }
 
-/** Thay chỗ giữ `$skill` / `$choice` trong params (chuỗi đúng bằng chỗ giữ). */
-function fillPlaceholders(value: unknown, fill: { skillId: string; choice?: string }): unknown {
-  if (value === SKILL_PLACEHOLDER) return fill.skillId
-  if (value === CHOICE_PLACEHOLDER) return fill.choice ?? value
-  if (Array.isArray(value)) return value.map((entry) => fillPlaceholders(entry, fill))
-  if (typeof value === 'object' && value !== null) {
-    return Object.fromEntries(
-      Object.entries(value).map(([key, entry]) => [key, fillPlaceholders(entry, fill)])
-    )
-  }
-  return value
-}
-
 /**
  * Params hiệu ứng của một thuộc tính đã tung: giá trị (× `emptySlots` nếu `perEmptySlot`) ghi vào
  * `valueParam`, chỗ giữ thay bằng skill / lựa chọn.
@@ -289,7 +277,10 @@ export function stickerEffectParams(
     attribute.valueParam === undefined
       ? attribute.effect.params
       : lineParams({ hook: attribute.effect, valueParam: attribute.valueParam }, value)
-  return fillPlaceholders(params, { skillId, choice: roll.choice })
+  return fillPlaceholders(params, {
+    [SKILL_PLACEHOLDER]: skillId,
+    [CHOICE_PLACEHOLDER]: roll.choice
+  })
 }
 
 /** Mỗi thuộc tính của các sticker trên quái kèm params đã tính. */

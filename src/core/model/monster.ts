@@ -7,6 +7,7 @@ import type { EquippedItem } from './state'
 import type { Decimal } from '../shared'
 import type { MonsterHistory } from './history'
 import type { Imprint } from './imprint'
+import type { MarkInstance } from './marks'
 import type { SkillMastery } from './mastery'
 import type { StickerInstance } from './stickers'
 import type { BigStats, Stats } from './stats'
@@ -322,6 +323,17 @@ export interface Monster {
    * hóa giữ.
    */
   polarity: MonsterPolarity | null
+  /**
+   * Dấu ấn (docs/rules/marks.md): sẹo / đột biến theo bộ phận (mỗi bộ phận tối đa một sẹo và một đột
+   * biến), dấu theo đối tượng (mỗi cặp id dấu + đối tượng một mục). Quái hoang có thể mang sẵn; con
+   * breeding nhận đột biến / thích nghi di truyền; fuse giữ của quái gốc.
+   */
+  marks: MarkInstance[]
+  /**
+   * Bộ đếm của dấu ấn (thích nghi, ám ảnh, chiến tích theo race): khóa `<id dấu>:<id đối tượng>` →
+   * số nguyên ≥ 1 (về 0 thì bỏ khóa).
+   */
+  markCounters: Record<string, number>
 }
 
 /** Hai cực Âm / Dương (docs/rules/polarity.md). */

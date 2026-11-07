@@ -226,7 +226,8 @@ describe('MonsterView, save, migrate', () => {
     location: 'party',
     index: 0,
     equipmentSlots: 3,
-    scene: { party: [], place: null, aptitudeFloor: 1, time: 0 }
+    scene: { party: [], place: null, aptitudeFloor: 1, time: 0 },
+    highestFloor: 1
   } as const
 
   it('MonsterView: %, buff dự kiến, yêu cầu và hạn; đã xong thì không còn yêu cầu', () => {

@@ -38,6 +38,7 @@ import type { SoulImprint, SoulRemnant } from './soul'
 import type { RecruitMethod, RecruitState } from './recruit'
 import type { SafariState } from './safari'
 import type { LabState } from './implant'
+import type { MarkBattleRecord, MarkLogEntry } from './marks'
 import type { CapacityState } from './capacity'
 import type { ZoneState } from './zones'
 import type { WorldBossState } from './worldBoss'
@@ -342,6 +343,7 @@ export type TriggerLogSource =
   | 'passiveSkill'
   | 'refinement'
   | 'sticker'
+  | 'mark'
 
 /**
  * Cộng hưởng / trận pháp đang có tác dụng với một phe trong trận (docs/rules/team.md), tính lúc vào
@@ -577,6 +579,8 @@ export interface BattleRecord {
   brokenParts?: string[]
   /** Bộ phận trúng đòn skill hạ gục quái gần nhất (yêu đan dễ vỡ khi trúng đầu); bỏ trống = không nhắm. */
   knockoutPart?: string
+  /** Việc trong trận dấu ấn cần (docs/rules/marks.md); chỉ quái ta, bỏ trống = chưa có. */
+  marks?: MarkBattleRecord
 }
 
 /** Bộ đếm chung của trận (mục "Ngôn ngữ trait" ở trait-dsl.md). */
@@ -1253,6 +1257,8 @@ export type BattleEvent =
   | { type: 'eggFailed'; eggId: string }
   /** Quái ta bị hạ gục mắc chấn thương khi trận kết thúc (docs/rules/dwelling.md). */
   | { type: 'ailmentGained'; monsterId: string; ailmentId: string }
+  /** Quái nhận / lên cấp / mất dấu ấn (docs/rules/marks.md). */
+  | MarkLogEntry
   /** Thắng trận làm xong yêu cầu "cùng chiến đấu" của quái đang dưỡng dục (imprinting.md). */
   | { type: 'imprintProgress'; monsterId: string; completed: number; total: number }
   /** Nhiều hướng tiến hóa cùng đủ điều kiện; chờ người chơi chọn (chooseEvolution). */

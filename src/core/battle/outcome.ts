@@ -118,6 +118,7 @@ import {
 import { restoreItemLedger } from './itemLedger'
 import { brokenPartDropMultiplier, knockoutCoreMultiplier } from './hitLocations'
 import { buryFallen, refillAfterBattleDeaths } from './permadeath'
+import { rollBattleMarks } from './marks'
 import { battleBlessingMultiplier, deityTokenDrops, grantBattleFavor } from './deities'
 
 /** Kết thúc trận; quái đã bắt vào đội (còn chỗ) hoặc vào kho. */
@@ -150,6 +151,8 @@ export function finish(data: GameData, d: Draft, outcome: BattleOutcome): void {
   buryFallen(data, d)
   // Chấn thương trận (docs/rules/dwelling.md mục "Bệnh và chấn thương"): quái ta bị hạ gục.
   injureFallen(data, d)
+  // Dấu ấn (docs/rules/marks.md): quái ta nhận sẹo / đột biến / thích nghi / ám ảnh / chiến tích.
+  rollBattleMarks(data, d, outcome)
   // Cùng thứ tự với lúc báo nơi về khi bắt (partyAfterJoining).
   const joined = partyAfterJoining(data, d.party, d.battle.captured)
   d.storage.push(...d.battle.captured.filter((monster) => !joined.includes(monster)))

@@ -15,6 +15,10 @@ import {
   conflictingStatus,
   isFainted,
   isStatusImmune,
+  markLogEntries,
+  noteMarkChanges,
+  rollPartMarkGain,
+  type MarkResult,
   rollStatusDuration,
   startHistory,
   withStatus
@@ -208,6 +212,28 @@ const applyStatus: Applier = (ctx, params) => {
   ctx.state = { ...ctx.state, rng, party }
 }
 
+/**
+ * Mỗi quái còn sống trong `count` quái đầu đội tung `chance` % một đột biến ngẫu nhiên (ăn / uống
+ * thứ lạ như Mewgenics; docs/rules/marks.md); log và lý lịch.
+ */
+const mutateParty: Applier = (ctx, params) => {
+  const { count, chance } = params as { count: number; chance: number }
+  const { data } = ctx
+  let { rng } = ctx.state
+  let left = count
+  const day = dayOf(ctx.state.time)
+  const origin = { source: 'event', floor: ctx.floor >= 1 ? ctx.floor : null } as const
+  const party = ctx.state.party.map((monster) => {
+    if (left <= 0 || isFainted(data, monster)) return monster
+    left--
+    let result: MarkResult
+    ;[result, rng] = rollPartMarkGain(data, rng, { monster, kind: 'mutation', chance, origin })
+    for (const entry of markLogEntries(monster.id, result.changes)) logResult(ctx, entry)
+    return noteMarkChanges(data, result.monster, result.changes, day)
+  })
+  ctx.state = { ...ctx.state, rng, party }
+}
+
 /** Thêm modifier; đang có thì làm mới thời hạn. */
 const addModifier: Applier = (ctx, params) => {
   const { modifierId } = params as { modifierId: string }
@@ -308,6 +334,7 @@ export const EVENT_RESULT_APPLIERS: Readonly<Record<EventResultType, Applier>> =
   giveMonster,
   healParty,
   applyStatus,
+  mutateParty,
   addModifier,
   openTempShop,
   startChain,

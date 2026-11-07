@@ -58361,5 +58361,31 @@
   { "id": "fusedMaterial", "category": "material", "price": 2000 },
   { "id": "cyberMaterial", "category": "material", "price": 5000 },
   { "id": "ritualCandle", "category": "material", "price": 25000 },
-  { "id": "hackingGlove", "category": "keyItem" }
+  { "id": "hackingGlove", "category": "keyItem" },
+  {
+    "id": "mutagenElixir",
+    "category": "consumable",
+    "price": 4000,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "mutate",
+        "params": {}
+      }
+    ]
+  },
+  {
+    "id": "regenerationPill",
+    "category": "consumable",
+    "price": 2500,
+    "use": "field",
+    "target": "ally",
+    "effects": [
+      {
+        "type": "cureScar",
+        "params": {}
+      }
+    ]
+  }
 ]

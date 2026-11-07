@@ -43,7 +43,8 @@ import {
   emptyEffortValues,
   rollBootleg,
   teraElementChoices,
-  withBootleg
+  withBootleg,
+  rollChildMarks
 } from '../monster'
 import {
   bumpStat,
@@ -262,6 +263,8 @@ export function makeOffspring(
     traits,
     shinyStacks: 0,
     bootlegElementId: null,
+    marks: [],
+    markCounters: {},
     bossMultiplier: Math.max(father.bossMultiplier, mother.bossMultiplier),
     fused: mother.fused,
     lineage: mother.fused ? [...mother.lineage] : [],
@@ -386,13 +389,14 @@ export function makeOffspring(
   // Bootleg (docs/rules/bootleg.md) tung sau cùng: nhận hệ Bootleg của mẹ rồi bố, không thì như quái hoang.
   let bootlegElementId: string | null
   ;[bootlegElementId, rng] = childBootleg(data, rng, { species, parents: [mother, father] })
-  return [
-    withBootleg(
+  // Dấu ấn (docs/rules/marks.md): đột biến / thích nghi di truyền và đột biến bẩm sinh, sau cùng.
+  return rollChildMarks(data, rng, {
+    child: withBootleg(
       { ...child, teraElementId, natureId, abilitySlot, bloodlines, polarity, workTraits },
       bootlegElementId
     ),
-    rng
-  ]
+    parents: [mother, father]
+  })
 }
 
 /**

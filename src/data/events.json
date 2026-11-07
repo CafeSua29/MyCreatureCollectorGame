@@ -674,5 +674,115 @@
         ]
       }
     ]
+  },
+  {
+    "id": "strangeSpring",
+    "group": "explore",
+    "weight": 3,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "drink",
+        "outcomes": [
+          {
+            "weight": 30,
+            "results": [
+              {
+                "type": "mutateParty",
+                "params": {
+                  "count": 2,
+                  "chance": 50
+                }
+              }
+            ]
+          },
+          {
+            "weight": 50,
+            "results": [
+              {
+                "type": "healParty",
+                "params": {}
+              }
+            ]
+          },
+          {
+            "weight": 20,
+            "results": [
+              {
+                "type": "applyStatus",
+                "params": {
+                  "statusId": "poison",
+                  "count": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "strangeFruit",
+    "group": "explore",
+    "weight": 3,
+    "minFloor": 1,
+    "options": [
+      {
+        "id": "eat",
+        "outcomes": [
+          {
+            "weight": 40,
+            "results": [
+              {
+                "type": "mutateParty",
+                "params": {
+                  "count": 1,
+                  "chance": 100
+                }
+              }
+            ]
+          },
+          {
+            "weight": 35,
+            "results": [
+              {
+                "type": "healParty",
+                "params": {}
+              }
+            ]
+          },
+          {
+            "weight": 25,
+            "results": [
+              {
+                "type": "applyStatus",
+                "params": {
+                  "statusId": "poison",
+                  "count": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "leave",
+        "outcomes": [
+          {
+            "weight": 1,
+            "results": []
+          }
+        ]
+      }
+    ]
   }
 ]

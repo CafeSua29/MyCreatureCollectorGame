@@ -48,6 +48,7 @@
 - `ailment` (`dwelling.md` mục "Bệnh và chấn thương"): null hoặc `{ id, restDays }` (bệnh trong `ailments.json`, số ngày đã nghỉ < `needs.idleCureDays`); quái mới khỏe.
 - `implantBonusStats` / `implantEffects` / `implantAttempts` / `implantFails` (`implant.md`): tổng cấy ghép từng chỉ số (`Decimal`, được âm), cấp hiệu ứng cấy theo id (nguyên khác 0, âm = hiệu ứng ngược), số lần đã cấy, số lần thất bại (nguyên ≥ 0, thất bại ≤ số lần và < `implant.maxFails`). Fuse giữ của quái gốc, tiến hóa giữ, breeding / quái hoang / boss / trứng 0.
 - `polarity` (`polarity.md`): Âm / Dương, `null` (không cực) / `{ pole: 'yin' | 'yang', traitId }` (trait loại `polarity`). Quái hoang / boss từ tầng mở khóa có tỉ lệ có cực, con breeding theo bố mẹ cùng cực, trứng boss theo boss; đổi bằng đá chuyển cực; fuse (quái gốc), tiến hóa giữ.
+- `marks` / `markCounters` (`marks.md`): dấu ấn `{ markId, targetId?, level, origin: { source, floor, opponentSpeciesId? }, winBattles?, resolveCount? }` (mỗi cặp id + đối tượng một mục, mỗi bộ phận tối đa một sẹo và một đột biến, cấp ≤ `maxLevel`) và bộ đếm `"<id dấu>:<đối tượng>"` → nguyên ≥ 1. Quái hoang / boss có thể mang sẵn; con breeding nhận đột biến / thích nghi di truyền; fuse giữ của quái gốc; luân hồi xóa sẹo / ám ảnh.
 - `spiritVirus` (`spirit-virus.md`): linh dịch, `null` (chưa từng nhiễm) / `{ state: 'infected', daysLeft }` (nguyên ≥ 1) / `{ state: 'immune' }`. Quái mới, con breeding, quái hoang `null`; tiến hóa giữ; fuse giữ trạng thái tốt hơn của hai quái.
 - `abilitySlot` (`abilities.md`): ô ability `first` / `second` / `hidden`; ability thật tính theo loài hiện tại (dạng Mega khi đang Mega). Quái hoang tung ô (loài có ability), con breeding theo mẹ; tiến hóa, fuse giữ.
 - `talentRanks` (`monster-talents.md`): id nút thiên phú → cấp (nguyên ≥ 1, không quá `maxRank`); điểm không lưu (suy từ `maxLevelReached` / `awakening`). Quái mới, con breeding, quái hoang `{}`; tiến hóa, fuse (quái gốc) giữ.
@@ -82,6 +83,7 @@
   - Breeding (thị trấn): `breed { fatherId, motherId }`.
   - Hiến tế (NPC fusing, thị trấn): `sacrifice { baseId, subIds }` (nhiều quái phụ = hàng loạt; `sacrifice.md`).
   - Luân hồi (NPC luân hồi, thị trấn): `rebirthMonster { monsterId }` (`rebirth.md`).
+  - Thầy thuốc (thị trấn): `treatMark { monsterId, markId, targetId? }` bỏ sẹo / đột biến / ám ảnh (`marks.md`).
   - Cấy ghép (Phòng Thí Nghiệm, thị trấn): `implant { monsterId, serumIndex }` (`implant.md`). `GameState.lab = { stock, restockDay }`: huyết thanh đang bán, ngày đổi hàng.
   - Ấp trứng (`breeding-eggs.md` mục "Ấp trứng có hoàn cảnh"): `infuseEgg { eggId, itemId }` (ngoài trận, ở đâu cũng được; lỗi `eggNotFound { eggId }`, `notSpiritStone { itemId }`, `eggInfusionsFull { eggId, max }`), `buyCharm { itemId }` (cửa hàng thị trấn; lỗi `charmNotForSale { itemId, reason: notSold | owned }`).
   - Sức chứa (NPC kho đồ, thị trấn): `expandCapacity { kind }` (`capacity.md`). `GameState.capacity = { storage, bag }`: số lần đã mở rộng. `releaseMonster` / `releaseMonsters` / `fuse` / `sacrifice` / `implant` nhận thêm `discardOverflow?` (xác nhận bỏ món đang lắp không đủ chỗ về túi).
@@ -169,6 +171,7 @@
 - Lệnh nhắm bộ phận mà quái ở ô mục tiêu không có bộ phận đó (`hit-locations.md`): `bodyPartMissing { monsterId, partId }`.
 - Hiến tế (`sacrifice.md`): quái chính nằm trong `subIds` `sacrificeSameMonster`, khác race / lineage `sacrificeMismatch { baseId, subId }`, stack vượt số nguyên an toàn `sacrificeStackLimit { max }`.
 - Luân hồi (`rebirth.md`): level hiện tại chưa đủ `levelTooLowForRebirth { need, have }`; thiếu đan dùng `notEnoughItem`.
+- Dấu ấn (`marks.md`): quái không có dấu (id + đối tượng) `markNotFound { monsterId, markId }`; Thầy thuốc không bỏ được loại dấu (thích nghi, chiến tích) `markNotTreatable { markId }`.
 - Cấy ghép (`implant.md`): `serumNotFound { serumIndex }`; quái duy nhất của đội cấy khi lần thất bại kế tiếp sẽ mất quái `partyWouldBeEmpty`.
 - Sức chứa (`capacity.md`): `rosterFull { capacity }` (bóng, Thị Uy, nhận quái xin theo, khu bảo tồn, cất kho), `bagFull { capacity }` (mua / đúc / tháo trang bị), `bagOverflow { lost }` (mất quái mà món không đủ chỗ về túi, chưa xác nhận).
 - Extract / inject trait (`trait-crystals.md`): `traitNotOnMonster { monsterId, traitId }`, `traitNotExtractable { traitId, kind }`, hết ô `traitSlotsFull { monsterId, slots }`, gộp cấp vượt số nguyên an toàn `traitLevelLimit { traitId, max }`.

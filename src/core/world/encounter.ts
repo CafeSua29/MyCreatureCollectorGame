@@ -10,6 +10,7 @@ import {
   rollWorkTraits,
   rollWildBloodlines,
   rollSpawnPolarity,
+  rollSpawnMarks,
   uniformBigStats,
   emptySoulLevels,
   emptyEffortValues,
@@ -240,6 +241,8 @@ export function rollMonster(
     traits,
     shinyStacks: 0,
     bootlegElementId: null,
+    marks: [],
+    markCounters: {},
     bossMultiplier: 1,
     fused: false,
     lineage: [],
@@ -488,10 +491,12 @@ function rollWildFromSpec(
   let monster: Monster
   ;[monster, rng] = rollMonster(data, rng, spec, id)
   ;[monster, rng] = rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)
-  return rollSpawnPolarity(data, rng, monster, {
+  ;[monster, rng] = rollSpawnPolarity(data, rng, monster, {
     floor: site.floor,
     chance: data.config.polarity.wildChance
   })
+  // Dấu ấn sẵn (docs/rules/marks.md) tung sau cùng để không đổi kết quả random phía trước.
+  return rollSpawnMarks(data, rng, { monster, floor: site.floor })
 }
 
 /** Sinh một quái hoang thường của tầng (loài theo map của tầng). */
@@ -575,17 +580,18 @@ export function generateGatheringEncounter(
   return { enemies: [monster], isBoss: false, rng, nextMonsterId: nextMonsterId + 1 }
 }
 
-/** Tuổi rồi cực của boss (tung sau cùng, sau mọi luật boss khác). */
+/** Tuổi, cực rồi dấu ấn sẵn của boss (tung sau cùng, sau mọi luật boss khác). */
 function rollBossAgeAndPolarity(
   data: GameData,
   rng: RngState,
   { site, boss }: { site: FloorSite; boss: Monster }
 ): [Monster, RngState] {
   ;[boss, rng] = rollSpawnAge(data, rng, boss, data.config.lifespan.spawnAgePercent.boss)
-  return rollSpawnPolarity(data, rng, boss, {
+  ;[boss, rng] = rollSpawnPolarity(data, rng, boss, {
     floor: site.floor,
     chance: data.config.polarity.bossChance
   })
+  return rollSpawnMarks(data, rng, { monster: boss, floor: site.floor })
 }
 
 /** Gắn bossMultiplier: số nguyên random trong khoảng của biome, hoặc của config nếu không ghi đè. */

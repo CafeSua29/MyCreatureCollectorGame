@@ -250,6 +250,13 @@ describe('các bảng kết quả', () => {
         implantFails: 1,
         implantEffects: 2,
         implantSharePercent: 4.6,
+        marksTreated: 1,
+        scarsPerMonster: 1 / 3,
+        mutationsPerMonster: 0,
+        adaptationsPerMonster: 0,
+        traumasPerMonster: 0,
+        trophiesPerMonster: 0,
+        markStatPercent: -1.5,
         capacityExpansions: 0,
         storagePeak: 3,
         bagPeak: 0,
@@ -386,7 +393,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 buildings:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
+        'sold:4 affinity:2 buildings:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 markTreat:1 scar/mon:0.33 markStat%:-1.5 storagePeak:3 incense:4 favorRank:2',
         ''
       ],
       [
@@ -460,7 +467,7 @@ describe('các bảng kết quả', () => {
         '1',
         '1',
         'money:2',
-        'sold:4 affinity:2 buildings:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 storagePeak:3 incense:4 favorRank:2',
+        'sold:4 affinity:2 buildings:1 sacrifice:2 implant:3 implantFail:1 implantEffect:2 implantShare%:5 markTreat:1 scar/mon:0.33 markStat%:-1.5 storagePeak:3 incense:4 favorRank:2',
         'mở nhờ boss ngẫu nhiên'
       ],
       ['t', '3', ...blanks, 'kẹt sau 9 trận'],

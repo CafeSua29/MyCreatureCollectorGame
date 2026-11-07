@@ -3,7 +3,7 @@
 // Hết lượt gặp / hết bóng / tự rời thì ra khu (cả lượt tốn clock.hours.safari, tính ở reducer).
 
 import { recordQuestEvent } from '../quests'
-import { autoLockCaught, getBaseSpecies, startHistory } from '../monster'
+import { autoLockCaught, getBaseSpecies, rollSpawnMarks, startHistory } from '../monster'
 import { getItemCount, removeItems } from '../inventory'
 import {
   charmEffect,
@@ -143,6 +143,8 @@ function rollSafariMonster(data: GameData, state: GameState): [Monster, RngState
   const id = `m${state.nextMonsterId}`
   let [monster, rng] = rollMonster(data, state.rng, spec, id)
   ;[monster, rng] = rollSpawnAge(data, rng, monster, data.config.lifespan.spawnAgePercent.wild)
+  // Quái hoang của khu bảo tồn cũng có thể mang dấu ấn sẵn (docs/rules/marks.md; ngoài tầng).
+  ;[monster, rng] = rollSpawnMarks(data, rng, { monster, floor: 0 })
   return [monster, rng, state.nextMonsterId + 1]
 }
 

@@ -2,6 +2,7 @@
 // cục (src/data/eventModifiers.json), state event trong GameState, trận event / thú triều trong
 // BattleState, config.
 
+import type { MarkLogEntry } from './marks'
 import type { RogueFusionVariant } from './rogueFusion'
 import type { Decimal } from '../shared'
 import type { DropEntry, EffectDef, EquipmentRarity, NormalRarity } from './content'
@@ -31,6 +32,7 @@ export const EVENT_RESULT_TYPES = [
   'giveMonster',
   'healParty',
   'applyStatus',
+  'mutateParty',
   'addModifier',
   'openTempShop',
   'startChain',
@@ -174,6 +176,8 @@ export interface EventState {
 
 export type EventLogEntry =
   | { type: 'eventResolved'; eventId: string; optionId: string }
+  /** Event đổi dấu ấn của quái (Suối lạ, Quả lạ; docs/rules/marks.md). */
+  | MarkLogEntry
   | { type: 'itemGained'; itemId: string; count: number }
   | { type: 'itemSpent'; itemId: string; count: number }
   | { type: 'moneyGained'; amount: Decimal }

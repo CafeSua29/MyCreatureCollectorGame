@@ -249,7 +249,8 @@ describe('MonsterView, kiểm tra quái, save', () => {
       location: 'party',
       index: 0,
       equipmentSlots: 3,
-      scene: { party: [], place: null, aptitudeFloor: 1, time: 0 }
+      scene: { party: [], place: null, aptitudeFloor: 1, time: 0 },
+      highestFloor: 1
     })
     expect(view).toMatchObject({ affinity: 150, affinityTierId: 'familiar' })
   })

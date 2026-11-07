@@ -100,6 +100,17 @@ export interface EconomyCount {
   /** Lần cấy là huyết thanh hiệu ứng (gồm cả thất bại). */
   implantEffects: number
   implantSharePercent: number
+  /**
+   * Dấu ấn (marks.ts): lần chữa ở Thầy thuốc; số dấu trung bình mỗi quái đội mẫu theo loại và % chỉ
+   * số trung bình từ dấu (lần đo cuối).
+   */
+  marksTreated: number
+  scarsPerMonster: number
+  mutationsPerMonster: number
+  adaptationsPerMonster: number
+  traumasPerMonster: number
+  trophiesPerMonster: number
+  markStatPercent: number
   /** Sức chứa (expandCapacityWhenFull): lần mở rộng; chỗ dùng cao nhất thấy ở thị trấn. */
   capacityExpansions: number
   storagePeak: number
@@ -160,6 +171,13 @@ export const newEconomyCount = (): EconomyCount => ({
   implantFails: 0,
   implantEffects: 0,
   implantSharePercent: 0,
+  marksTreated: 0,
+  scarsPerMonster: 0,
+  mutationsPerMonster: 0,
+  adaptationsPerMonster: 0,
+  traumasPerMonster: 0,
+  trophiesPerMonster: 0,
+  markStatPercent: 0,
   capacityExpansions: 0,
   storagePeak: 0,
   bagPeak: 0,

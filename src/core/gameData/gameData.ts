@@ -38,6 +38,7 @@ import { checkTeamData } from './validateTeam'
 import { checkMasteryConfig } from './validateMastery'
 import { checkStickerAttributes, checkStickerConfig } from './validateStickers'
 import { checkBootlegConfig } from './validateBootleg'
+import { checkMarkConfig, checkMarkDefs } from './validateMarks'
 import { checkRogueFusionConfig } from './validateRogueFusion'
 import { checkFusionPower } from './validateFusionPower'
 import { checkSynergyHold } from './validateSynergyHold'
@@ -231,6 +232,7 @@ export function createGameData(raw: RawGameData): GameData {
     eventModifiers: indexById(raw.eventModifiers, 'eventModifiers', issues),
     zones: indexZones(raw, issues),
     serumEffects: indexById(raw.serumEffects, 'serumEffects', issues),
+    marks: indexById(raw.marks, 'marks', issues),
     bodyRefinements: indexById(raw.bodyRefinements, 'bodyRefinements', issues),
     essences: indexById(raw.essences, 'essences', issues),
     deities: indexById(raw.deities, 'deities', issues),
@@ -264,6 +266,8 @@ export function createGameData(raw: RawGameData): GameData {
   checkStickerConfig(data, issues)
   checkStickerAttributes(data, issues)
   checkBootlegConfig(data, issues)
+  checkMarkConfig(data, issues)
+  checkMarkDefs(data, issues)
   checkRogueFusionConfig(data, issues)
   checkFusionPower(data, issues)
   checkItems(data, issues)

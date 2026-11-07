@@ -49,7 +49,10 @@ export const ACHIEVEMENT_CONDITION_TYPES = [
   'ownSpecies',
   'aptitude',
   'speciesRank',
-  'challengeFloor'
+  'challengeFloor',
+  'markIds',
+  'resolvedFears',
+  'markLevel'
 ] as const
 
 export type AchievementConditionType = (typeof ACHIEVEMENT_CONDITION_TYPES)[number]

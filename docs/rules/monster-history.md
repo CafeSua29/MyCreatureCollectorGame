@@ -55,3 +55,4 @@ Mốc "chờ" có sẵn trong type, nhưng save chứa nó bị kiểm tra chặ
 - `MonsterView.history`: bản sao lý lịch đầy đủ (`roster.md`).
 - Kiểm tra save: kind hợp lệ, đủ trường, không trường lạ, loài thường / bóng tồn tại, ngày nguyên ≥ 0, tầng / level / số nguyên ≥ 1, trường gặp cùng null hoặc cùng có giá trị, số mốc ≤ `maxMilestones`.
 - Nguồn gốc `bootlegGift { gift: 'house' | 'quest' }`: quà Bootleg (`rogue-fusion.md`).
+- Mốc `markGained { markId, targetId?, level, source, floor?, opponentSpeciesId? }` / `markRemoved { markId, targetId?, reason }`: nhận / lên cấp / mất dấu ấn (`marks.md`; "Gãy sừng ở trận tầng 5", "Vượt qua nỗi sợ loài X"). Trường `?` là tùy chọn (bỏ trống hợp lệ, có thì kiểm như bắt buộc).

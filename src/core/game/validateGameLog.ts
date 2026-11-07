@@ -76,6 +76,8 @@ const GAME_LOG_FIELDS: { readonly [T in GameLogType]: FieldsOf<T> } = {
   ascended: ['count', 'essenceGained', 'startFloor'],
   destiniesChosen: ['destinyIds'],
   contractAttempted: ['monsterId', 'outcome'],
+  markGained: ['monsterId', 'markId', 'level', 'source'],
+  markRemoved: ['monsterId', 'markId', 'reason'],
   implanted: ['monsterId', 'tierId', 'success', 'fails', 'died'],
   researchLevelUp: ['speciesId', 'level'],
   equipmentCast: ['instanceId', 'itemId', 'rarity'],

@@ -33,6 +33,7 @@ Union theo chủ đề (thêm loại = thêm vào union con đúng chủ đề +
 | `breakthrough`                  | `success, realm` (cảnh giới sau lần thử)                                        | `tamerBreakthrough` (`tamer.md`)                          |
 | `contractAttempted`             | `monsterId, outcome` (`success` / `failed` / `escaped`)                         | `formContract` (`tamer.md`)                               |
 | `implanted`                     | `monsterId, tierId, success, fails, died`                                       | `implant` (`implant.md`); bản mệnh chết thêm `bondBroken` |
+| `markGained` / `markRemoved`    | `monsterId, markId, targetId?, level, source` / `..., reason`                   | `treatMark`, `useItem`, `rebirthMonster`, `implant`, linh dịch theo ngày, event `mutateParty` (`marks.md`; cùng dạng `MarkLogEntry` với log trận)|
 | `researchLevelUp`               | `speciesId, level` (cấp mới)                                                    | mọi action, ghi ở `gameReducer` (`species-research.md`)   |
 | `equipmentCast`                 | `instanceId, itemId, rarity`                                                    | `castEquipment` (`equipment-forge.md`)                    |
 | `equipmentSalvaged`             | `instanceIds, enhanceStones, refiningStones, soulPoints, spirits` (tổng cả lần) | `salvageEquipment` (`equipment-forge.md`)                 |

@@ -2,6 +2,7 @@
 // trait, quái của sự kiện, mục tiêu đòn... Hàm thuần, không sửa gì.
 
 import { raceMatchesAny } from './races'
+import { bodyPlanSpeciesId } from './bodyParts'
 import { isLayerFieldIn } from './fieldIds'
 import { abilityTraitId, activeTransform, getCurrentHp, getMaxHp, isGrounded } from '../monster'
 import { BIG_ZERO, assertNever, minBig, type Decimal } from '../shared'
@@ -334,6 +335,13 @@ function isConditionMet(view: DslView, condition: DslCondition, readStat?: StatR
       const monster = whoOf(condition.who)
       return monster?.elementIds.some((id) => condition.elementIds.includes(id)) ?? false
     }
+    case 'species': {
+      const monster = whoOf(condition.who)
+      const speciesId = monster && bodyPlanSpeciesId(view.data, monster)
+      return typeof speciesId === 'string' && condition.speciesIds.includes(speciesId)
+    }
+    case 'skillBodyPart':
+      return view.skill?.bodyPart !== undefined && condition.partIds.includes(view.skill.bodyPart)
     case 'sameElement': {
       const monster = whoOf(condition.who)
       return monster?.elementIds.some((id) => view.self.elementIds.includes(id)) ?? false

@@ -3,6 +3,7 @@
 
 import type { RecruitMethod } from './recruit'
 import type { DeathCause } from './soul'
+import type { MarkRemoval, MarkSource } from './marks'
 
 /** Bóng đã bắt quái (Monster.history.origin của quái hoang / boss bắt được). */
 interface CaughtOrigin {
@@ -91,6 +92,21 @@ type MilestoneEvent =
   | ({ kind: 'atavized' } & SpeciesChange)
   /** Chết hẳn (chỉ có trong lý lịch của hồn phách / hồn khí, soul-relics.md). */
   | { kind: 'died'; cause: DeathCause }
+  /**
+   * Nhận / lên cấp dấu ấn (marks.md): cấp sau khi nhận, nguồn, tầng (bỏ trống = ngoài tầng), loài đối
+   * thủ liên quan.
+   */
+  | {
+      kind: 'markGained'
+      markId: string
+      targetId?: string
+      level: number
+      source: MarkSource
+      floor?: number
+      opponentSpeciesId?: string
+    }
+  /** Mất dấu ấn (chữa, luân hồi, vượt qua nỗi sợ, chai thành sẹo chiến). */
+  | { kind: 'markRemoved'; markId: string; targetId?: string; reason: MarkRemoval }
 
 export type MilestoneKind = Milestone['kind']
 

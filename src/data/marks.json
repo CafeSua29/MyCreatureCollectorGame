@@ -1,0 +1,392 @@
+[
+  {
+    "id": "blindEye",
+    "kind": "scar",
+    "partId": "head",
+    "weight": 3,
+    "hooks": [{ "type": "accuracyModifier", "params": { "percent": -10 } }],
+    "hardensInto": "warScarHead"
+  },
+  {
+    "id": "brokenHorn",
+    "kind": "scar",
+    "partId": "head",
+    "weight": 2,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": -8, "when": [{ "if": "moveFlag", "flags": ["contact"] }] }
+      }
+    ],
+    "hardensInto": "warScarHead"
+  },
+  {
+    "id": "chestWound",
+    "kind": "scar",
+    "partId": "torso",
+    "weight": 3,
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "defense": -8 } } }],
+    "hardensInto": "warScarTorso"
+  },
+  {
+    "id": "deepBurn",
+    "kind": "scar",
+    "partId": "torso",
+    "weight": 1,
+    "statusIds": ["burn"],
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "defense": -10 } } }],
+    "hardensInto": "warScarTorso"
+  },
+  {
+    "id": "venomScar",
+    "kind": "scar",
+    "partId": "torso",
+    "weight": 1,
+    "statusIds": ["badPoison"],
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "hp": -8 } } }],
+    "hardensInto": "warScarTorso"
+  },
+  {
+    "id": "frostScar",
+    "kind": "scar",
+    "partId": "torso",
+    "weight": 1,
+    "statusIds": ["freeze"],
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "speed": -8 } } }],
+    "hardensInto": "warScarTorso"
+  },
+  {
+    "id": "woundedArm",
+    "kind": "scar",
+    "partId": "arms",
+    "weight": 3,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": -15, "when": [{ "if": "skillBodyPart", "partIds": ["arms"] }] }
+      },
+      { "type": "statModifier", "params": { "percent": { "attack": -4 } } }
+    ],
+    "hardensInto": "warScarArms"
+  },
+  {
+    "id": "limp",
+    "kind": "scar",
+    "partId": "legs",
+    "weight": 3,
+    "hooks": [
+      { "type": "statModifier", "params": { "percent": { "speed": -10 } } },
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": -10, "when": [{ "if": "skillBodyPart", "partIds": ["legs"] }] }
+      }
+    ],
+    "hardensInto": "warScarLegs"
+  },
+  {
+    "id": "tornWing",
+    "kind": "scar",
+    "partId": "wings",
+    "weight": 3,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": -15, "when": [{ "if": "skillBodyPart", "partIds": ["wings"] }] }
+      },
+      { "type": "statModifier", "params": { "percent": { "speed": -5 } } }
+    ],
+    "hardensInto": "warScarWings"
+  },
+  {
+    "id": "stumpTail",
+    "kind": "scar",
+    "partId": "tail",
+    "weight": 3,
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": -15, "when": [{ "if": "skillBodyPart", "partIds": ["tail"] }] }
+      },
+      { "type": "statModifier", "params": { "percent": { "speed": -5 } } }
+    ],
+    "hardensInto": "warScarTail"
+  },
+  {
+    "id": "thirdEye",
+    "kind": "mutation",
+    "partId": "head",
+    "weight": 2,
+    "hooks": [
+      { "type": "accuracyModifier", "params": { "percent": 15 } },
+      { "type": "seeInvisible", "params": {} }
+    ]
+  },
+  {
+    "id": "stoneHorn",
+    "kind": "mutation",
+    "partId": "head",
+    "weight": 3,
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "defense": 10 } } }]
+  },
+  {
+    "id": "stoneSkin",
+    "kind": "mutation",
+    "partId": "torso",
+    "weight": 3,
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "defense": 15, "speed": -10 } } }]
+  },
+  {
+    "id": "fireLungs",
+    "kind": "mutation",
+    "partId": "torso",
+    "weight": 2,
+    "hooks": [
+      { "type": "elementDamageTaken", "params": { "elementIds": ["fire"], "percent": -25 } },
+      { "type": "elementDamageTaken", "params": { "elementIds": ["water"], "percent": 15 } }
+    ]
+  },
+  {
+    "id": "thirdArm",
+    "kind": "mutation",
+    "partId": "arms",
+    "weight": 2,
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "attack": 12 } } }]
+  },
+  {
+    "id": "springLegs",
+    "kind": "mutation",
+    "partId": "legs",
+    "weight": 3,
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "speed": 12, "defense": -6 } } }]
+  },
+  {
+    "id": "batWings",
+    "kind": "mutation",
+    "partId": "wings",
+    "weight": 2,
+    "traitId": "levitate",
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "spDefense": -5 } } }]
+  },
+  {
+    "id": "twinTail",
+    "kind": "mutation",
+    "partId": "tail",
+    "weight": 3,
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "speed": 15, "defense": -8 } } }]
+  },
+  {
+    "id": "elementAdapted",
+    "kind": "adaptation",
+    "target": "element",
+    "threshold": 20,
+    "maxLevel": 10,
+    "hooks": [
+      { "type": "elementDamageTaken", "params": { "elementIds": ["$target"], "percent": -5 } }
+    ]
+  },
+  {
+    "id": "statusAdapted",
+    "kind": "adaptation",
+    "target": "status",
+    "threshold": 5,
+    "hooks": [{ "type": "debuffResist", "params": { "chance": 10, "statusIds": ["$target"] } }]
+  },
+  {
+    "id": "weatherAdapted",
+    "kind": "adaptation",
+    "target": "weather",
+    "threshold": 5,
+    "hooks": [
+      {
+        "type": "statModifierInWeather",
+        "params": {
+          "weatherIds": ["$target"],
+          "percent": { "attack": 4, "spAttack": 4, "defense": 4, "spDefense": 4, "speed": 4 }
+        }
+      }
+    ]
+  },
+  {
+    "id": "terrainAdapted",
+    "kind": "adaptation",
+    "target": "terrain",
+    "threshold": 5,
+    "hooks": [
+      {
+        "type": "terrainStatModifier",
+        "params": {
+          "terrainIds": ["$target"],
+          "percent": { "attack": 4, "spAttack": 4, "defense": 4, "spDefense": 4, "speed": 4 }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fearSpecies",
+    "kind": "trauma",
+    "target": "species",
+    "resolveInto": "conquerSpecies",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": -15,
+          "when": [{ "if": "species", "who": "other", "speciesIds": ["$target"] }]
+        }
+      },
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": 15,
+          "when": [{ "if": "species", "who": "other", "speciesIds": ["$target"] }]
+        }
+      }
+    ]
+  },
+  {
+    "id": "fearElement",
+    "kind": "trauma",
+    "target": "element",
+    "resolveInto": "conquerElement",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": -10,
+          "when": [{ "if": "element", "who": "other", "elementIds": ["$target"] }]
+        }
+      },
+      { "type": "elementDamageTaken", "params": { "elementIds": ["$target"], "percent": 10 } }
+    ]
+  },
+  {
+    "id": "conquerSpecies",
+    "kind": "trophy",
+    "trigger": "resolve",
+    "target": "species",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 20,
+          "when": [{ "if": "species", "who": "other", "speciesIds": ["$target"] }]
+        }
+      },
+      {
+        "type": "damageTakenWhen",
+        "params": {
+          "percent": -10,
+          "when": [{ "if": "species", "who": "other", "speciesIds": ["$target"] }]
+        }
+      }
+    ]
+  },
+  {
+    "id": "conquerElement",
+    "kind": "trophy",
+    "trigger": "resolve",
+    "target": "element",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": {
+          "percent": 10,
+          "when": [{ "if": "element", "who": "other", "elementIds": ["$target"] }]
+        }
+      },
+      { "type": "elementDamageTaken", "params": { "elementIds": ["$target"], "percent": -15 } }
+    ]
+  },
+  {
+    "id": "bossSlayer",
+    "kind": "trophy",
+    "trigger": "bossKill",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": 3, "when": [{ "if": "bossBattle", "value": true }] }
+      }
+    ]
+  },
+  {
+    "id": "worldBossVeteran",
+    "kind": "trophy",
+    "trigger": "worldBoss",
+    "hooks": [
+      {
+        "type": "damageDealtModifier",
+        "params": { "percent": 5, "when": [{ "if": "bossBattle", "value": true }] }
+      }
+    ]
+  },
+  {
+    "id": "raceSlayer",
+    "kind": "trophy",
+    "trigger": "raceKills",
+    "target": "race",
+    "threshold": 50,
+    "hooks": [{ "type": "damageVsRace", "params": { "raceIds": ["$target"], "percent": 5 } }]
+  },
+  {
+    "id": "tribulationSurvivor",
+    "kind": "trophy",
+    "trigger": "tribulation",
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 3,
+            "attack": 3,
+            "spAttack": 3,
+            "defense": 3,
+            "spDefense": 3,
+            "speed": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "warScarHead",
+    "kind": "trophy",
+    "trigger": "hardened",
+    "partId": "head",
+    "hooks": [{ "type": "critChanceModifier", "params": { "percent": 10 } }]
+  },
+  {
+    "id": "warScarTorso",
+    "kind": "trophy",
+    "trigger": "hardened",
+    "partId": "torso",
+    "hooks": [{ "type": "damageTakenModifier", "params": { "percent": -5 } }]
+  },
+  {
+    "id": "warScarArms",
+    "kind": "trophy",
+    "trigger": "hardened",
+    "partId": "arms",
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "attack": 8 } } }]
+  },
+  {
+    "id": "warScarLegs",
+    "kind": "trophy",
+    "trigger": "hardened",
+    "partId": "legs",
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "speed": 8 } } }]
+  },
+  {
+    "id": "warScarWings",
+    "kind": "trophy",
+    "trigger": "hardened",
+    "partId": "wings",
+    "hooks": [{ "type": "dodge", "params": { "percent": 8 } }]
+  },
+  {
+    "id": "warScarTail",
+    "kind": "trophy",
+    "trigger": "hardened",
+    "partId": "tail",
+    "hooks": [{ "type": "statModifier", "params": { "percent": { "spDefense": 8 } } }]
+  }
+]

@@ -3,6 +3,7 @@
 // (thắng lên tầng + phần thưởng mốc; thua 1 HP + trọng thương; thua quá maxFailures lần thì chết hẳn,
 // để lại hồn phách).
 
+import { grantTribulationTrophy } from './marks'
 import { woundIfBondDied } from '../tamer'
 import {
   addMilestone,
@@ -157,6 +158,8 @@ export function settleTribulation(data: GameData, d: Draft, outcome: 'won' | 'lo
       : lost(data, d, monster, tribulation.tier)
   if (result !== null) {
     d.party[index] = result
+    // Độ kiếp thành công: chiến tích của quái độ kiếp (docs/rules/marks.md).
+    if (outcome === 'won') grantTribulationTrophy(data, d, monster.id)
     return
   }
   // Chết hẳn: rời đội và mọi chỗ trận còn trỏ tới nó (trận đã kết thúc).

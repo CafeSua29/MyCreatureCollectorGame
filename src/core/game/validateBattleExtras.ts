@@ -450,6 +450,7 @@ export function checkRecords(
       }
     }
     checkRecordParts(data, record, path, issues)
+    checkRecordMarks(data, record, path, issues)
   }
 }
 
@@ -493,6 +494,96 @@ function checkRecordParts(
   if (record.knockoutPart !== undefined && !isPart(record.knockoutPart)) {
     issues.push(`${path}.knockoutPart phải là id bộ phận`)
   }
+}
+
+/** Bảng id → số lần nguyên ≥ 1 với id thuộc `known`. */
+function checkCountTable(
+  value: unknown,
+  known: Readonly<Record<string, unknown>>,
+  path: string,
+  issues: string[]
+): void {
+  if (value === undefined) return
+  const table = asObject(value)
+  if (!table) issues.push(`${path} phải là object`)
+  for (const [id, count] of Object.entries(table ?? {})) {
+    if (!Object.hasOwn(known, id)) issues.push(`${path}: id không tồn tại "${id}"`)
+    issues.push(...checkInteger(count, `${path}.${id}`, 1))
+  }
+}
+
+/** Danh sách object, mỗi mục kiểm bằng `check`. */
+function checkObjectList(
+  value: unknown,
+  path: string,
+  issues: string[],
+  check: (entry: Record<string, unknown>, at: string) => void
+): void {
+  if (value === undefined) return
+  if (!Array.isArray(value)) {
+    issues.push(`${path} phải là danh sách`)
+    return
+  }
+  value.forEach((entry: unknown, i) => {
+    const object = asObject(entry)
+    if (object) check(object, `${path}[${i}]`)
+    else issues.push(`${path}[${i}] phải là object`)
+  })
+}
+
+/**
+ * Phần dấu ấn của bản ghi trận (docs/rules/marks.md): đếm theo hệ / trạng thái, môi trường đã gặp,
+ * vết chí mạng (bộ phận), kẻ hạ gục, quái đã hạ (race tồn tại, loài nếu có).
+ */
+export function checkRecordMarks(
+  data: GameData,
+  record: Record<string, unknown>,
+  path: string,
+  issues: string[]
+): void {
+  if (record.marks === undefined) return
+  const marks = asObject(record.marks)
+  const at = `${path}.marks`
+  if (!marks) {
+    issues.push(`${at} phải là object`)
+    return
+  }
+  checkCountTable(marks.hitElements, data.elements, `${at}.hitElements`, issues)
+  checkCountTable(marks.statuses, data.statuses, `${at}.statuses`, issues)
+  const fields = marks.fields
+  if (
+    fields !== undefined &&
+    (!Array.isArray(fields) ||
+      !fields.every((id) => typeof id === 'string' && Object.hasOwn(data.fieldEffects, id)))
+  ) {
+    issues.push(`${at}.fields phải là danh sách id môi trường`)
+  }
+  const isSpecies = (id: unknown): boolean =>
+    id === undefined || (typeof id === 'string' && Object.hasOwn(data.species, id))
+  checkObjectList(marks.critWounds, `${at}.critWounds`, issues, (wound, where) => {
+    if (typeof wound.partId !== 'string' || !Object.hasOwn(data.bodyParts, wound.partId)) {
+      issues.push(`${where}.partId phải là id bộ phận`)
+    }
+    if (!isSpecies(wound.opponentSpeciesId)) issues.push(`${where}.opponentSpeciesId không hợp lệ`)
+  })
+  checkObjectList(marks.faintedBy, `${at}.faintedBy`, issues, (foe, where) => {
+    if (!isSpecies(foe.speciesId)) issues.push(`${where}.speciesId không hợp lệ`)
+    const element = foe.elementId
+    if (
+      element !== undefined &&
+      (typeof element !== 'string' || !Object.hasOwn(data.elements, element))
+    ) {
+      issues.push(`${where}.elementId không hợp lệ`)
+    }
+  })
+  checkObjectList(marks.kills, `${at}.kills`, issues, (kill, where) => {
+    if (!isSpecies(kill.speciesId)) issues.push(`${where}.speciesId không hợp lệ`)
+    if (typeof kill.raceId !== 'string' || !Object.hasOwn(data.races, kill.raceId)) {
+      issues.push(`${where}.raceId phải là id race`)
+    }
+    if (!Array.isArray(kill.elementIds)) issues.push(`${where}.elementIds phải là danh sách`)
+    if (typeof kill.boss !== 'boolean') issues.push(`${where}.boss phải là boolean`)
+  })
 }
 
 /** Sổ món lắp trước khi bị lấy / tráo trong trận (battle.itemLedger): danh sách món theo id quái. */

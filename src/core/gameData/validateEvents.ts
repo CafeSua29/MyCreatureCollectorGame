@@ -151,6 +151,13 @@ const EVENT_RESULT_CHECKS: Readonly<Record<EventResultType, ResultCheck>> = {
   },
   giveMonster: { fields: [], check: () => [] },
   healParty: { fields: [], check: () => [] },
+  mutateParty: {
+    fields: ['count', 'chance'],
+    check: (params) => [
+      ...checkInteger(params.count, 'count', 1),
+      ...checkNumber(params.chance, 'chance', 0, 100)
+    ]
+  },
   applyStatus: {
     fields: ['statusId', 'count'],
     check(params, { data }) {

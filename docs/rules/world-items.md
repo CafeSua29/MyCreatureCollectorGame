@@ -6,7 +6,7 @@
 
 - Người chơi ở **thị trấn** hoặc một **tầng** (`GameState.location` = `{ type: 'town' }` hoặc `{ type: 'floor', floor: N }`). Game mới bắt đầu ở thị trấn, đã mở tầng 1.
 - `travel { to }` (ngoài trận): đi tới thị trấn hoặc một tầng đã mở: `floor` là số nguyên an toàn trong `[1, highestFloor]` (`isValidFloor`, `world/floors.ts`). Tầng chưa mở: `ActionError` `floorLocked`; tầng 0 / âm / số lẻ / không phải số, điểm đến lạ: `malformedAction`.
-- Ở thị trấn: Cây thần (gacha trứng, `gacha.md`), NPC hồi máu miễn phí (chữa cả trạng thái bất thường, sạc lại Tera Orb), NPC đổi hệ Tera (`changeTeraElement`, `transformation.md`), NPC học lại skill, NPC breeding, NPC fusing, cửa hàng (mục "Cửa hàng và vứt vật phẩm"). Ở tầng: đánh quái hoang (`startWildBattle`), gọi boss tầng (`challengeBoss`).
+- Ở thị trấn: Cây thần (gacha trứng, `gacha.md`), NPC hồi máu miễn phí (chữa cả trạng thái bất thường, sạc lại Tera Orb), NPC đổi hệ Tera (`changeTeraElement`, `transformation.md`), NPC học lại skill, NPC breeding, NPC fusing, Thầy thuốc (`treatMark`, bỏ sẹo / đột biến / ám ảnh, `marks.md`), cửa hàng (mục "Cửa hàng và vứt vật phẩm"). Ở tầng: đánh quái hoang (`startWildBattle`), gọi boss tầng (`challengeBoss`).
 - Quản lý quái, dùng vật phẩm, nghỉ ngơi, chọn tiến hóa, học skill chờ: dùng ở đâu cũng được.
 - **Đền dịch chuyển** (thị trấn): đặt / đổi **độ bất ổn tầng** (thuộc tính bất lợi cho trận quái hoang / boss trên tầng, thưởng thêm; thuộc tính ẩn lộ khi ra tầng): `instability.md`.
 - **Khí Linh Các** (thị trấn): triệu khí linh bằng Dẫn Hồn Châu, di dời / gộp / nuôi khí linh, phối linh ở Linh trì, vào Khí giới bí cảnh của một món (Phá Giới Phù bán ở cửa hàng để rời giữa chừng): `artifact-spirits.md`.

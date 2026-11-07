@@ -1,5 +1,6 @@
 // Kiểm tra một quái so với dữ liệu game (loài, trait, skill, shiny, ô trait...).
 
+import { checkMonsterMarks } from './marks'
 import { traitSlotCap } from './awakening'
 import { skillCapacity } from './humanForm'
 import { checkShinyConsistency } from './shiny'
@@ -379,6 +380,14 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   issues.push(...checkBigStats(monster.implantBonusStats, at('implantBonusStats'), -Infinity))
   issues.push(...checkImplantEffects(data, monster.implantEffects, at('implantEffects')))
   issues.push(...checkRefinements(data, monster.refinements, at('refinements')))
+  // Dấu ấn (docs/rules/marks.md).
+  issues.push(
+    ...checkMonsterMarks(
+      data,
+      { marks: monster.marks, counters: monster.markCounters },
+      { marks: at('marks'), counters: at('markCounters') }
+    )
+  )
   issues.push(...checkInteger(monster.implantAttempts, at('implantAttempts'), 0))
   issues.push(...checkInteger(monster.implantFails, at('implantFails'), 0))
   if (monster.implantFails > monster.implantAttempts) {

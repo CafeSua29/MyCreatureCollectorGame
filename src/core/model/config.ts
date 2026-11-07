@@ -29,6 +29,7 @@ import type { SectConfig } from './sects'
 import type { TeamPresetConfig } from './teamPresets'
 import type { TradeConfig } from './trades'
 import type { StickerConfig, StickerRarity } from './stickers'
+import type { MarkConfig } from './marks'
 import type { RogueFusionConfig } from './rogueFusion'
 import type { FusionPowerConfig } from './fusionPower'
 import type { AuctionConfig } from './auction'
@@ -125,6 +126,8 @@ export interface BalanceConfig {
   crystal: CrystalConfig
   skillBook: SkillBookConfig
   stickers: StickerConfig
+  /** Dấu ấn trên quái (docs/rules/marks.md). */
+  marks: MarkConfig
   shop: ShopConfig
   market: MarketConfig
   equipment: EquipmentConfig

@@ -4,8 +4,24 @@
 
 import { ActionError, BIG_ONE, maxBig, spendMoney, toBig, type Decimal } from '../shared'
 import { removeItems } from '../inventory'
-import { addMilestone, assertNotBusy, mapBigStats, resetMonsterLevel } from '../monster'
-import { dayOf, type GameData, type GameState, type Monster, type RebirthConfig } from '../model'
+import {
+  addMilestone,
+  assertNotBusy,
+  clearRebirthMarks,
+  mapBigStats,
+  markLogEntries,
+  noteMarkChanges,
+  resetMonsterLevel,
+  type MarkResult
+} from '../monster'
+import {
+  appendLog,
+  dayOf,
+  type GameData,
+  type GameState,
+  type Monster,
+  type RebirthConfig
+} from '../model'
 
 /** Điều kiện của lần luân hồi kế tiếp (lần thứ `count`). */
 export interface RebirthRequirements {
@@ -27,12 +43,12 @@ export function rebirthRequirements(config: RebirthConfig, rebirths: number): Re
 }
 
 /**
- * Quái sau khi luân hồi (không kiểm tra điều kiện, không trả giá): level 1, rebirths + 1, gen +
+ * Quái sau khi luân hồi (không kiểm tra điều kiện, không trả giá) kèm dấu ấn mất: level 1, rebirths + 1, gen +
  * genePercent % (làm tròn xuống, ít nhất +1), tuổi 0, hồi đầy máu và bỏ trạng thái (thân xác mới;
  * max HP tụt theo level nên giữ máu đã mất thì gục). maxLevelReached giữ nên thọ nguyên và điểm
  * thiên phú theo level không tụt.
  */
-export function applyRebirth(data: GameData, monster: Monster, day: number): Monster {
+export function applyRebirth(data: GameData, monster: Monster, day: number): MarkResult {
   const { genePercent } = data.config.rebirth
   const genes = mapBigStats((stat) => {
     const gene = monster.genes[stat]
@@ -45,7 +61,13 @@ export function applyRebirth(data: GameData, monster: Monster, day: number): Mon
     genes,
     ageDays: 0
   }
-  return addMilestone(data, reborn, { day, kind: 'reborn', count: rebirths })
+  // Thân xác mới: sẹo và ám ảnh mất (docs/rules/marks.md).
+  const marked = clearRebirthMarks(data, reborn)
+  const noted = noteMarkChanges(data, marked.monster, marked.changes, day)
+  return {
+    monster: addMilestone(data, noted, { day, kind: 'reborn', count: rebirths }),
+    changes: marked.changes
+  }
 }
 
 /** NPC luân hồi ở thị trấn: quái ở đội hoặc kho, không đang làm việc, đủ level / tiền / đan. */
@@ -64,8 +86,11 @@ export function rebirthMonster(data: GameData, state: GameState, monsterId: stri
   const inventory =
     need.pills > 0 ? removeItems(state.inventory, config.pillItemId, need.pills) : state.inventory
   const paid = spendMoney({ ...state, inventory }, need.money)
-  const reborn = applyRebirth(data, monster, dayOf(state.time))
+  const { monster: reborn, changes } = applyRebirth(data, monster, dayOf(state.time))
   const update = (monsters: Monster[]): Monster[] =>
     monsters.map((m) => (m.id === monsterId ? reborn : m))
-  return { ...paid, party: update(paid.party), storage: update(paid.storage) }
+  return appendLog(
+    { ...paid, party: update(paid.party), storage: update(paid.storage) },
+    ...markLogEntries(monsterId, changes)
+  )
 }

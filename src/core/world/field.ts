@@ -19,12 +19,26 @@ import {
   recordEvolutionResearch
 } from '../registries'
 import { locateOwned } from '../roster'
-import { assertNotBusy, fulfillImprint, isImprintRequested } from '../monster'
+import {
+  assertNotBusy,
+  fulfillImprint,
+  isImprintRequested,
+  markChangesBetween,
+  markLogEntries,
+  noteMarkChanges
+} from '../monster'
 import { enterTown } from '../shop'
 import { isValidFloor } from './floors'
 import { evolutionScene } from './evolutionPlace'
 import { revealInstability } from './instability'
-import { dayOf, type GameData, type GameState, type Location, type Monster } from '../model'
+import {
+  appendLog,
+  dayOf,
+  type GameData,
+  type GameState,
+  type Location,
+  type Monster
+} from '../model'
 
 function requireNoBattle(state: GameState): void {
   if (state.battle) throw new ActionError('inBattle')
@@ -179,15 +193,24 @@ export function applyItem(
     ...(typeof skillId === 'string' ? { skillId } : {})
   })
   // Cho ăn đúng món quái đang đòi (dưỡng dục) luôn có tác dụng, kể cả khi món không làm gì khác.
-  const after = fulfillImprint(applied?.monster ?? monster, { kind: 'feed', itemId })
-  if (after === monster) throw new ActionError('itemNoEffect', { itemId, monsterId })
+  const fed = fulfillImprint(applied?.monster ?? monster, { kind: 'feed', itemId })
+  if (fed === monster) throw new ActionError('itemNoEffect', { itemId, monsterId })
+  // Đan đổi dấu ấn (Dị Biến Dịch, Sinh Cơ Đan; docs/rules/marks.md): lý lịch và log.
+  const changes = markChangesBetween(monster, fed, {
+    origin: { source: 'item', floor: null },
+    reason: 'item'
+  })
+  const after = noteMarkChanges(data, fed, changes, dayOf(state.time))
 
-  return {
-    ...replace(after),
-    rng: applied?.rng ?? state.rng,
-    research: recordEvolutionResearch(data, state.research, applied?.events ?? []),
-    inventory: removeItems(state.inventory, itemId, count)
-  }
+  return appendLog(
+    {
+      ...replace(after),
+      rng: applied?.rng ?? state.rng,
+      research: recordEvolutionResearch(data, state.research, applied?.events ?? []),
+      inventory: removeItems(state.inventory, itemId, count)
+    },
+    ...markLogEntries(monsterId, changes)
+  )
 }
 
 // Xuất lại cho bên ngoài core (UI chọn skill khi dùng vật phẩm, script mô phỏng cho ăn địa bảo).

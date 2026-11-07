@@ -192,6 +192,10 @@ export type DslCondition =
   | { if: 'race'; who: DslWho; raceIds: string[] }
   | { if: 'sameRace'; who: DslWho }
   | { if: 'element'; who: DslWho; elementIds: string[] }
+  /** Quái `who` là một trong các loài (loài quyết định bộ phận: quái fuse là loài gốc; marks.md). */
+  | { if: 'species'; who: DslWho; speciesIds: string[] }
+  /** Skill đang xét ra chiêu bằng một trong các bộ phận (`Skill.bodyPart`; hit-locations.md). */
+  | { if: 'skillBodyPart'; partIds: string[] }
   | { if: 'sameElement'; who: DslWho }
   | { if: 'isSelf'; who: DslWho }
   | { if: 'notSelf'; who: DslWho }
@@ -332,6 +336,8 @@ export const CONDITION_TYPES = [
   'race',
   'sameRace',
   'element',
+  'species',
+  'skillBodyPart',
   'sameElement',
   'isSelf',
   'notSelf',
@@ -440,6 +446,12 @@ const CONDITION_CHECKS: Readonly<Record<DslCondition['if'], ConditionChecker>> =
     ...whoCheck(obj, field, data),
     ...checkIdList(obj.elementIds, `${field}.elementIds`, data.elements, { label: 'hệ' })
   ],
+  species: (obj, field, data) => [
+    ...whoCheck(obj, field, data),
+    ...checkIdList(obj.speciesIds, `${field}.speciesIds`, data.species, { label: 'loài' })
+  ],
+  skillBodyPart: (obj, field, data) =>
+    checkIdList(obj.partIds, `${field}.partIds`, data.bodyParts, { label: 'bộ phận' }),
   sameElement: whoCheck,
   isSelf: whoCheck,
   notSelf: whoCheck,

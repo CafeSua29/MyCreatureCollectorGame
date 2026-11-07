@@ -15,6 +15,7 @@ Code: `progression/rebirth.ts` (`rebirthMonster`, `rebirthRequirements`, `applyR
   - `pillsPerRebirth × n` **Luân Hồi Đan** (`pillItemId`, category `material`; thiếu `notEnoughItem`, kiểm tra trước tiền); `pillsPerRebirth` = 0 thì không cần đan;
   - tiền `costBase × n²` (`Decimal`, thiếu `notEnoughMoney`).
 - **Reset:** level 1, EXP về mức của level 1 theo nhóm tăng trưởng (`expForLevel(1, …)`). **`maxLevelReached` giữ nguyên** nên thọ nguyên và điểm thiên phú theo level không tụt. Hồi đầy máu, bỏ mọi trạng thái (thân xác mới; max HP tụt theo level nên giữ máu đã mất thì quái gục ngay). Lệch roadmap (roadmap không nói tới máu): thêm để quái không gục sau luân hồi.
+- **Dấu ấn** (`marks.md`): luân hồi xóa sẹo, ám ảnh và bộ đếm ám ảnh (thân xác mới, log ngoài trận `markRemoved`); đột biến, thích nghi, chiến tích giữ.
 - **Giữ:** loài (không về dạng gốc) và **mọi thuộc tính khác trên quái** (skill, thuần thục, gen phần cũ, trait, thức tỉnh, hiến tế, hồn tinh, cấy ghép, trang bị, thân mật, hóa hình, dưỡng dục, thiên phú, tính cách, Âm / Dương, huyết mạch, khế ước, bản mệnh...). `applyRebirth` chỉ đổi đúng các trường kể ở đây, nên **trường mới thêm vào `Monster` mặc định giữ** khi luân hồi. Không dưỡng dục lại (`imprinting.md`: `startImprint` bỏ qua quái đã có `imprint`).
 - **Nhận mỗi lần:**
   - +`statPercentPerRebirth` (10)% mọi chỉ số kể cả max HP mỗi lần đã luân hồi, **tuyến tính** (nguồn % `rebirth`, cộng vào tổng % ở bước áp trait, `stats-traits.md`);

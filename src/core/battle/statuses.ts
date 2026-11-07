@@ -3,6 +3,7 @@
 // môi trường chặn, thời hạn và potency theo trait), mất lượt, cuối lượt (sát thương theo % máu,
 // tan băng, Bomb nổ, thoát Snared, tự phòng thủ / khiêu khích, giảm thời hạn).
 
+import { recordMarkStatus } from './marks'
 import {
   conflictingStatus,
   getCurrentHp,
@@ -466,6 +467,8 @@ function applyStatus(
   })
   const source = options.source
   spreadDebuffToPartner(data, d, { monster, statusId, options })
+  // Thích nghi theo trạng thái (docs/rules/marks.md): quái ta dính debuff.
+  recordMarkStatus(data, d, monster, statusId)
   emitTraitEvent(d, { type: 'statusGained', subjectId: monster.id, otherId: source?.id, statusId })
   if (source && source.id !== monster.id && def.kind === 'debuff') {
     emitTraitEvent(d, {

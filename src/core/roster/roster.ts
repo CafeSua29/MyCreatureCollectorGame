@@ -32,7 +32,9 @@ import {
 import { contentName } from '../gameData'
 import {
   evolutionInfo,
+  isMarkTreatable,
   rebirthRequirements,
+  treatMarkCost,
   type EvolutionInfo,
   type RebirthRequirements,
   workSpeedPercent,
@@ -62,7 +64,10 @@ import {
   type EvolutionScene,
   polarityStatPercent,
   sacrificeStatPercent,
-  rebirthStatPercent
+  rebirthStatPercent,
+  findMarkDef,
+  isMarkActive,
+  markPartId
 } from '../registries'
 import { BIG_ZERO, cloneData, maxBig, type Decimal } from '../shared'
 import { equipmentSlotCount } from '../inventory'
@@ -83,6 +88,8 @@ import {
   type ImprintRequest,
   type LanguageCode,
   type MasteryMilestone,
+  type MarkKind,
+  type MarkOrigin,
   type Monster,
   type Pole,
   type MonsterHistory,
@@ -128,6 +135,8 @@ export interface MonsterPlace {
   equipmentSlots: number
   /** Hoàn cảnh xét tiến hóa (đội, nơi đang ở) cho `evolutions`. */
   scene: EvolutionScene
+  /** Tầng cao nhất đang mở (giá theo tầng: Thầy thuốc, docs/rules/marks.md). */
+  highestFloor: number
 }
 
 export interface MonsterView {
@@ -256,6 +265,28 @@ export interface MonsterView {
   rebirth: { count: number; statPercent: number; next: RebirthRequirements }
   /** Cấy ghép: tổng đã cấy, tỉ lệ lần tới, số lần thất bại / tối đa (docs/rules/implant.md). */
   implant: ImplantView
+  /** Dấu ấn theo thứ tự nhận (docs/rules/marks.md). */
+  marks: MarkView[]
+}
+
+/** Một dấu ấn của quái cho UI. */
+export interface MarkView {
+  markId: string
+  kind: MarkKind
+  targetId?: string
+  /** Bộ phận (sẹo, đột biến, sẹo chiến); dấu không theo bộ phận thì không có. */
+  partId?: string
+  level: number
+  maxLevel: number | null
+  /** Dấu có tác dụng (bộ phận còn trên quái). */
+  active: boolean
+  origin: MarkOrigin
+  /** Sẹo: số trận thắng đã ra sân / số trận để bắt đầu có cơ hội chai thành sẹo chiến. */
+  harden?: { battles: number; need: number }
+  /** Ám ảnh: số lần đã hạ đúng đối tượng / số lần cần để vượt qua. */
+  resolve?: { count: number; need: number }
+  /** Giá Thầy thuốc bỏ dấu; loại không bỏ được = null. */
+  treatCost: Decimal | null
 }
 
 /** Cấy ghép cho MonsterView. */
@@ -504,7 +535,7 @@ function awakeningView(data: GameData, monster: Monster): AwakeningView {
 export function buildMonsterView(
   data: GameData,
   monster: Monster,
-  { location, index, equipmentSlots, scene }: MonsterPlace
+  { location, index, equipmentSlots, scene, highestFloor }: MonsterPlace
 ): MonsterView {
   const breakdown = computeStats(data, monster)
   const stats = breakdown.final
@@ -617,8 +648,38 @@ export function buildMonsterView(
       nextChance: implantChance(data, monster),
       fails: monster.implantFails,
       maxFails: data.config.implant.maxFails
-    }
+    },
+    marks: markViews(data, monster, highestFloor)
   }
+}
+
+/** Dấu ấn của quái cho UI (dấu không còn mục dữ liệu bị bỏ qua). */
+function markViews(data: GameData, monster: Monster, highestFloor: number): MarkView[] {
+  const { scarHardenBattles, resolveThreshold } = data.config.marks
+  return monster.marks.flatMap((mark): MarkView[] => {
+    const def = findMarkDef(data, mark.markId)
+    if (!def) return []
+    const partId = markPartId(def)
+    return [
+      {
+        markId: mark.markId,
+        kind: def.kind,
+        ...(mark.targetId === undefined ? {} : { targetId: mark.targetId }),
+        ...(partId === undefined ? {} : { partId }),
+        level: mark.level,
+        maxLevel: def.maxLevel ?? null,
+        active: isMarkActive(data, monster, mark),
+        origin: { ...mark.origin },
+        ...(def.kind === 'scar'
+          ? { harden: { battles: mark.winBattles ?? 0, need: scarHardenBattles } }
+          : {}),
+        ...(def.kind === 'trauma'
+          ? { resolve: { count: mark.resolveCount ?? 0, need: resolveThreshold } }
+          : {}),
+        treatCost: isMarkTreatable(def) ? treatMarkCost(data, mark.level, highestFloor) : null
+      }
+    ]
+  })
 }
 
 function bloodlineView(data: GameData, monster: Monster): BloodlineView {
@@ -685,7 +746,8 @@ export function getMonsterView(
     location,
     index,
     equipmentSlots,
-    scene
+    scene,
+    highestFloor: state.highestFloor
   })
 }
 
@@ -803,9 +865,12 @@ export function listMonsters(
   const views: MonsterView[] = []
   const equipmentSlots = equipmentSlotCount(data, state)
   const scene = evolutionScene(data, state)
+  const { highestFloor } = state
   if (location !== 'storage') {
     state.party.forEach((m, index) =>
-      views.push(buildMonsterView(data, m, { location: 'party', index, equipmentSlots, scene }))
+      views.push(
+        buildMonsterView(data, m, { location: 'party', index, equipmentSlots, scene, highestFloor })
+      )
     )
   }
   if (location !== 'party') {
@@ -815,7 +880,8 @@ export function listMonsters(
           location: 'storage',
           index,
           equipmentSlots,
-          scene
+          scene,
+          highestFloor
         })
       )
     )

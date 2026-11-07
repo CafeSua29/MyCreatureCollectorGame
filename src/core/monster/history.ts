@@ -4,6 +4,8 @@
 import { asObject, checkInteger } from '../shared'
 import {
   DEATH_CAUSES,
+  MARK_REMOVALS,
+  MARK_SOURCES,
   RECRUIT_METHODS,
   type GameData,
   type HistoryOrigin,
@@ -94,6 +96,31 @@ const serumTierField: FieldCheck = (data, value, where) =>
     ? []
     : [`${where}: bậc huyết thanh không tồn tại "${String(value)}"`]
 
+const markField: FieldCheck = (data, value, where) =>
+  typeof value === 'string' && Object.hasOwn(data.marks, value)
+    ? []
+    : [`${where}: dấu ấn không tồn tại "${String(value)}"`]
+
+const markSourceField: FieldCheck = (_data, value, where) =>
+  MARK_SOURCES.some((source) => source === value)
+    ? []
+    : [`${where}: nguồn dấu ấn không hợp lệ "${String(value)}"`]
+
+const markRemovalField: FieldCheck = (_data, value, where) =>
+  MARK_REMOVALS.some((reason) => reason === value)
+    ? []
+    : [`${where}: lý do mất dấu không hợp lệ "${String(value)}"`]
+
+/** Trường tùy chọn: bỏ trống hợp lệ, có thì kiểm như trường bắt buộc. */
+const optional =
+  (check: FieldCheck): FieldCheck =>
+  (data, value, where) =>
+    value === undefined ? [] : check(data, value, where)
+
+/** Đối tượng của dấu: chuỗi (đối tượng đúng loại kiểm ở validateMonster qua dấu của quái). */
+const targetField: FieldCheck = (_data, value, where) =>
+  typeof value === 'string' ? [] : [`${where} phải là chuỗi`]
+
 const positiveInteger: FieldCheck = (_data, value, where) => checkInteger(value, where, 1)
 const nonNegativeInteger: FieldCheck = (_data, value, where) => checkInteger(value, where, 0)
 
@@ -142,7 +169,20 @@ const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
   mutatedEvolution: { fields: SPECIES_CHANGE },
   imprintPerfected: { fields: {} },
   atavized: { fields: SPECIES_CHANGE },
-  died: { fields: { cause: deathCauseField } }
+  died: { fields: { cause: deathCauseField } },
+  markGained: {
+    fields: {
+      markId: markField,
+      targetId: optional(targetField),
+      level: positiveInteger,
+      source: markSourceField,
+      floor: optional(positiveInteger),
+      opponentSpeciesId: optional(speciesField)
+    }
+  },
+  markRemoved: {
+    fields: { markId: markField, targetId: optional(targetField), reason: markRemovalField }
+  }
 }
 
 /** Kiểm tra một object có `kind` theo bảng luật: kind hợp lệ, đủ trường, không trường lạ. */

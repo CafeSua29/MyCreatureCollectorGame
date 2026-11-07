@@ -7,6 +7,7 @@
 // Perish Song → tự bỏ chạy ở fleeTraits.ts → biến hình → ngự thú sư → cuồng bạo ở frenzy.ts), phân
 // thắng thua / chờ thay quái. Quái người chơi cuồng bạo: lệnh do AI chọn (frenzy.ts).
 
+import { recordMarkFields } from './marks'
 import { isFainted } from '../monster'
 import {
   findStatusHook,
@@ -577,7 +578,9 @@ function endOfTurn(data: GameData, d: Draft): void {
     fleesAtTurnEnd,
     transformsAtTurnEnd,
     tamersAtTurnEnd,
-    frenzyAtTurnEnd
+    frenzyAtTurnEnd,
+    // Dấu ấn: quái ta trên sân ghi thời tiết / địa hình (thích nghi, docs/rules/marks.md).
+    recordMarkFields
   ]
   for (const step of steps) {
     if (battleOver(data, d)) return

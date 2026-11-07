@@ -37,6 +37,7 @@
   - **Hiến tế** (`sacrifice.md`): con luôn `sacrificeStacks = 0` (bố mẹ không mất nên truyền là nhân bản stack).
   - **Luân hồi** (`rebirth.md`): con luôn `rebirths = 0`, cùng lý do.
   - **Cấy ghép** (`implant.md`): con luôn `implantBonusStats` = 0, `implantEffects` = `{}`, `implantAttempts` = `implantFails` = 0 (cùng lý do như hiến tế).
+  - **Dấu ấn** (`marks.md`, tung sau cùng): mỗi đột biến / thích nghi của mẹ rồi bố truyền theo % của mục (25% / 5%, giữ cấp; đột biến chỉ khi con có bộ phận đó và bộ phận còn trống); sẹo / ám ảnh / chiến tích không truyền; 1% đột biến bẩm sinh mới.
 - **Sức chứa** (`capacity.md`): trứng tới lúc nở mà đội đủ và kho đầy thì vẫn là trứng (`battlesLeft` dừng ở 0, log `eggWaiting`), nở ở trận thắng sau khi có chỗ.
   - **Âm / Dương** (`polarity.md`, tung sau cùng): bố mẹ cùng cực thì con cùng cực (trait cực tính random lại); khác cực / một bên không cực thì con không cực.
   - Quái con random sẵn khi tạo trứng, bọc bằng `wrapEgg` (nở sau 5–10 trận thắng như trứng boss). Id trứng / quái lấy từ `nextMonsterId`.

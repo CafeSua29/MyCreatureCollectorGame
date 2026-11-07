@@ -184,6 +184,32 @@ export function makeRawData(): RawGameData {
         bossDropChance: 0,
         reusableDropChance: 2
       },
+      // Dấu ấn: mọi tỉ lệ 0 để test cũ không đổi RNG (fixture không có mục dấu; test dấu ấn tự thêm
+      // FIXTURE_MARKS và tỉ lệ).
+      marks: {
+        mutationOnBreakPercent: 0,
+        scarOnBreakPercent: 0,
+        critScarHpPercent: 40,
+        scarOnCritPercent: 0,
+        critDefaultPartId: 'torso',
+        scarOnFaintPercent: 0,
+        scarOnStatusPercent: 0,
+        nearDeathHpPercent: 5,
+        mutationOnNearDeathPercent: 0,
+        traumaThreshold: 3,
+        resolveThreshold: 3,
+        scarHardenBattles: 100,
+        scarHardenPercent: 10,
+        mutationOnVirusCurePercent: 0,
+        scarOnImplantFailPercent: 0,
+        implantScarPartId: 'torso',
+        wildMarkPercent: 0,
+        wildMutationShare: 25,
+        birthMutationPercent: 0,
+        mutationInheritPercent: 25,
+        adaptationInheritPercent: 5,
+        treatCostPerLevel: 500
+      },
       // Bootleg tỉ lệ quái hoang 0 để test cũ không đổi RNG; test Bootleg tự đổi.
       bootleg: {
         wildChance: 0,
@@ -1955,6 +1981,7 @@ export function makeRawData(): RawGameData {
       { id: 'fusionMastery', rarity: 'rare', effect: { kind: 'fusionTraitChoices', extra: 1 } },
       { id: 'eggWarmth', rarity: 'rare', effect: { kind: 'egg', growth: 20, stability: 20 } }
     ],
+    marks: [],
     serumEffects: [
       {
         id: 'regeneration',
@@ -3108,6 +3135,8 @@ function baseFields(): Omit<
     traits: [],
     shinyStacks: 0,
     bootlegElementId: null,
+    marks: [],
+    markCounters: {},
     bossMultiplier: 1,
     fused: false,
     lineage: [],

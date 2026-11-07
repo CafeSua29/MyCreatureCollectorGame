@@ -114,6 +114,8 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   rebirth: { percent: (data, monster) => uniformPercent(rebirthStatPercent(data, monster)) },
   // Hiệu ứng cấy ghép có hook % chỉ số (docs/rules/implant.md; đi qua hook, nguồn hook `implant`).
   implant: {},
+  // Dấu ấn có hook % chỉ số (docs/rules/marks.md; đi qua hook, nguồn hook `mark`).
+  marks: {},
   // Trait làm việc có % chỉ số (Work Slave, Hooligan, Lucky; docs/rules/dwelling.md).
   workTraits: { percent: workTraitStatPercent },
   // Bệnh / chấn thương đang mắc (docs/rules/dwelling.md mục "Bệnh và chấn thương").
@@ -202,6 +204,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   meal: 'meal',
   blessing: 'blessing',
   implant: 'implant',
+  mark: 'marks',
   passiveSkill: 'traits',
   refinement: 'traits',
   sticker: 'equipment',
