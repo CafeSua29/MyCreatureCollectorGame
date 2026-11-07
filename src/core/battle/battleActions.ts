@@ -10,6 +10,7 @@
 // (bất kể thắng, thua hay chạy) mới vào đội, hoặc vào kho nếu đội đầy. Nhờ vậy nó không
 // thể bị đưa ra sân thay quái ngay trong trận vừa bắt.
 
+import { openRogueFusion, rollRogueFusionStart } from './rogueFusion'
 import { ActionError, malformedAction, rollPercent } from '../shared'
 import {
   blessingMultiplier,
@@ -105,7 +106,13 @@ export function startWildBattle(data: GameData, state: GameState): GameState {
     site,
     rules: battleRules({ trial: null, instability })
   })
-  const encounter = generateEncounter(data, rng, encounterSite, state.nextMonsterId)
+  // Rogue Fusion (docs/rules/rogue-fusion.md): tỉ lệ thay trận hoang thường; tỉ lệ 0 không tốn RNG.
+  const [rogue, afterRogue] = rollRogueFusionStart(data, rng)
+  if (rogue) {
+    const opened = openRogueFusion(data, state, { site: encounterSite, rng: afterRogue })
+    if (opened) return opened
+  }
+  const encounter = generateEncounter(data, afterRogue, encounterSite, state.nextMonsterId)
   return openBattle(data, state, { site, encounter })
 }
 
@@ -161,6 +168,9 @@ export function requireBattleStart(data: GameData, state: GameState): FloorSite 
     // Nghiên cứu loài (docs/rules/species-research.md): hệ số riêng của loài vừa tung.
     speciesShinyMultiplier: (speciesId: string) =>
       researchMultiplier(data, state.research, speciesId, 'shinyChancePercent'),
+    // Độ bất ổn tầng: + % tỉ lệ Bootleg mỗi mức (docs/rules/bootleg.md).
+    bootlegMultiplier:
+      1 + (data.config.bootleg.instabilityPercentPerLevel * state.instability.level) / 100,
     bossChanceMultiplier:
       partnerMultiplier(data, state.party, 'bossChancePercent') *
       eventModifierMultiplier(data, modifiers, 'bossChancePercent')

@@ -268,6 +268,9 @@ export function openBattle(
   for (const enemy of battle.enemies) {
     if (battle.isBoss) log(d, { type: 'bossAppeared', monsterId: enemy.id })
     if (enemy.shinyStacks > 0) log(d, { type: 'shinyAppeared', monsterId: enemy.id })
+    if (enemy.bootlegElementId !== null) {
+      log(d, { type: 'bootlegAppeared', monsterId: enemy.id, elementId: enemy.bootlegElementId })
+    }
   }
   const fighters = playerFighters(data, d).filter((m) => !isFainted(data, m))
   initialSlots(data, fighters).forEach((monsterId, slot) => {

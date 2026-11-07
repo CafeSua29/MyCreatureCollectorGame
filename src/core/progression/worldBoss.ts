@@ -2,7 +2,7 @@
 // mỗi chu kỳ everyDays ngày (loài, tầng tham chiếu, seed boss tung lúc xuất hiện), hết thời gian thì
 // kỷ lục đổi thành thưởng chờ nhận ở thị trấn. Trận ở battle/worldBoss.ts.
 
-import { addBooks, addItems, learnsetSkillIds, rollSkillBooks } from '../inventory'
+import { addItems, learnsetSkillIds, rollSkillBooks } from '../inventory'
 import { ActionError, BIG_ZERO, nextUint32, pickWeighted, rollPercent, toBig } from '../shared'
 import {
   dayOf,
@@ -20,6 +20,7 @@ import {
   worldBossTierOf,
   worldBossWindow
 } from '../world'
+import { receiveBooks } from '../registries'
 import { createSpeciesEgg } from './eggs'
 
 /** Lần xuất hiện mới ở chu kỳ của `day`: loài theo trọng số, tầng cao nhất, seed boss. */
@@ -103,9 +104,17 @@ function grantReward(data: GameData, state: GameState, reward: WorldBossReward):
     count: tier.skillBooks,
     reusableChance: data.config.skillBook.reusableDropChance
   })
-  for (const book of books) inventory = addBooks(inventory, book, 1)
-  const [hasEgg, afterEggRoll] = rollPercent(afterBooks, tier.eggChance)
-  const next = { ...state, rng: afterEggRoll, inventory, money: state.money.plus(money) }
+  // Bí kíp có thể thành sticker (docs/rules/skill-stickers.md).
+  let received = { inventory, rng: afterBooks, nextItemId: state.nextItemId }
+  for (const book of books) received = receiveBooks(data, { ...state, ...received }, book, 1)
+  const [hasEgg, afterEggRoll] = rollPercent(received.rng, tier.eggChance)
+  const next = {
+    ...state,
+    rng: afterEggRoll,
+    inventory: received.inventory,
+    nextItemId: received.nextItemId,
+    money: state.money.plus(money)
+  }
   if (!hasEgg) return next
   const [egg, rng] = createSpeciesEgg(data, afterEggRoll, {
     speciesId: reward.speciesId,

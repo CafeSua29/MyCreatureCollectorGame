@@ -1,11 +1,5 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vitest/config'
-import { limitCpu } from './scripts/simulate/cpuLimit.mjs'
-
-// Test chạy cả các test mô phỏng nặng: dùng chung giới hạn 60% CPU của mô phỏng (docs/rules/
-// simulation.md mục "Chạy song song"). Ghim vitest vào phần CPU được dùng (tiến trình con kế thừa)
-// và không chạy nhiều tiến trình test hơn số luồng đó (mặc định vitest dùng số luồng − 1).
-const cpuThreads = limitCpu().threads
 
 export default defineConfig({
   resolve: {
@@ -20,9 +14,9 @@ export default defineConfig({
     // So sánh Decimal theo giá trị trong expect (xem file).
     setupFiles: ['src/core/testing/setup.ts'],
     environment: 'node',
-    maxWorkers: cpuThreads,
     // Dữ liệu thật gần 20.000 loài: test dựng / duyệt dữ liệu thật và test mô phỏng chậm hơn mặc định
-    // 5 giây khi cả bộ test chạy song song (docs/rules/testing.md).
-    testTimeout: 30_000
+    // 5 giây khi cả bộ test chạy song song (docs/rules/testing.md). Chạy toàn bộ CPU (số luồng − 1
+    // tiến trình) thì máy nghẽn bộ nhớ: test mô phỏng nặng chạy riêng 26 giây lên 39 giây.
+    testTimeout: 60_000
   }
 })

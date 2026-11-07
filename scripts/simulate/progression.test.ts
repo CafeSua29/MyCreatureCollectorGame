@@ -68,7 +68,7 @@ describe('runProgression', () => {
       expect(g.fuses + g.fuseFails).toBeLessThanOrEqual(g.captures + 1)
       expect(g.teamLost).toBeLessThanOrEqual(g.fuseFails)
     }
-  }, 30_000)
+  })
 
   it('everyWins: đội mạnh mở lần lượt từng tầng; mỗi tầng ít nhất `wins` trận quái hoang', () => {
     const result = runProgression(data, options())
@@ -116,7 +116,7 @@ describe('runProgression', () => {
     expect(result.stuckAtFloor).toBe(1)
     expect(result.stuckReason).toBe('maxBattles')
     expect(result.unlocks).toEqual([])
-  }, 20_000) // nhiều trận (cả trận NPC mỗi ngày, trainers.ts): chậm khi cả bộ test chạy song song
+  })
 
   it('đội lên level thật theo EXP (tiến hóa, học skill đi qua action hợp lệ)', () => {
     // weakling tiến hóa thành strongling ở level 10; tầng N cho quái level 2N − 1.
@@ -138,7 +138,7 @@ describe('runProgression', () => {
     // Trần 1 lượt: mỗi trận boss tối đa 1 lượt; trận quái hoang vẫn theo maxTurns.
     expect(boss.turns).toBeLessThanOrEqual(boss.battles)
     expect(wild.turns).toBeGreaterThan(wild.battles)
-  }, 40_000) // nhiều trận (cả trận NPC và trận tông môn mỗi ngày, trainers.ts, sects.ts): chậm khi cả bộ test chạy song song
+  })
 
   it('levelTarget: farm tới khi level trung bình ≥ level boss tầng + margin rồi mới đánh boss', () => {
     // Fixture: quái level 1 cho 0 EXP (expFactor 0,5), tầng 3 quái level 5, boss tầng 3 level 6.

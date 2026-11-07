@@ -3,6 +3,7 @@
 // quá số ô; lý lịch trong phần hồn của hồn khí (soul-relics.md). Từng món đã được kiểm tra ở validateInventory / validateShop / validateMonster.
 
 import { equipmentIdNumber, equipmentSlotCount } from '../inventory'
+import { stickerIdNumber } from '../registries'
 import { validateHistory } from '../monster'
 import type { GameData } from '../model'
 import { asObject, checkInteger } from '../shared'
@@ -71,6 +72,25 @@ function allEquipmentInstances(state: Raw): Raw[] {
   })
 }
 
+/** Id mọi sticker trong save: trong túi và trên skill của quái (kể cả trong trứng, trong trận). */
+function allStickerIds(state: Raw): string[] {
+  const battle = asObject(state.battle)
+  const monsters = [
+    ...listOf(state.party),
+    ...listOf(state.storage),
+    ...listOf(state.eggs).map((egg) => asObject(egg)?.monster),
+    ...listOf(battle?.enemies),
+    ...listOf(battle?.captured)
+  ]
+  const onMonsters = monsters.flatMap((monster) =>
+    Object.values(asObject(asObject(monster)?.skillStickers) ?? {})
+  )
+  return [...listOf(asObject(state.inventory)?.stickers), ...onMonsters].flatMap((sticker) => {
+    const id = asObject(sticker)?.id
+    return typeof id === 'string' ? [id] : []
+  })
+}
+
 /** Lý lịch trong phần hồn của hồn khí (phần còn lại kiểm tra ở validateEquipmentInstance). */
 function checkSoulHistories(data: GameData, instances: readonly Raw[], issues: string[]): void {
   for (const instance of instances) {
@@ -91,13 +111,19 @@ export function validateEquipmentState(data: GameData, state: Raw): string[] {
   const ids = instances.flatMap((instance) =>
     typeof instance.id === 'string' ? [instance.id] : []
   )
-  for (const id of ids) {
+  // Sticker dùng chung bộ đếm nextItemId (docs/rules/skill-stickers.md).
+  let maxLabel = ''
+  for (const id of [...ids, ...allStickerIds(state)]) {
     if (seen.has(id)) issues.push(`id món trang bị bị trùng "${id}"`)
     seen.add(id)
-    maxId = Math.max(maxId, equipmentIdNumber(id) ?? 0)
+    const number = equipmentIdNumber(id) ?? stickerIdNumber(id) ?? 0
+    if (number > maxId) {
+      maxId = number
+      maxLabel = id
+    }
   }
   if (typeof state.nextItemId === 'number' && state.nextItemId <= maxId) {
-    issues.push(`nextItemId phải lớn hơn mọi id món trang bị (hiện có e${maxId})`)
+    issues.push(`nextItemId phải lớn hơn mọi id món trang bị (hiện có ${maxLabel})`)
   }
   const realm = asObject(state.tamer)?.realm
   const ascension = asObject(state.ascension)

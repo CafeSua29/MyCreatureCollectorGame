@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { defined } from '@core/testing'
-import { DEFAULT_SCENARIOS, MACHINE_SHARE, autoWorkers, parseCliArgs, planWorkers } from './cli'
+import { DEFAULT_SCENARIOS, autoWorkers, parseCliArgs, planWorkers } from './cli'
 
 describe('parseCliArgs', () => {
   it('không tham số: kịch bản mặc định, số worker tự chọn (null)', () => {
@@ -48,45 +48,45 @@ describe('--parts / --teams', () => {
 
 describe('autoWorkers', () => {
   it('ít việc: mỗi worker ít nhất 3 việc', () => {
-    expect(autoWorkers(8, 14)).toBe(4)
-    expect(autoWorkers(8, 3)).toBe(1)
+    expect(autoWorkers(12, 14)).toBe(4)
+    expect(autoWorkers(12, 3)).toBe(1)
   })
 
-  it('nhiều việc: số luồng CPU được dùng', () => {
-    expect(autoWorkers(8, 95)).toBe(8)
-    expect(autoWorkers(8, 1e9)).toBe(8)
+  it('nhiều việc: số luồng CPU của máy trừ luồng chính', () => {
+    expect(autoWorkers(12, 95)).toBe(11)
+    expect(autoWorkers(12, 1e9)).toBe(11)
   })
 
   it('biên: 0 việc, 1 luồng, 0 luồng: tối thiểu 1', () => {
-    expect(autoWorkers(8, 0)).toBe(1)
+    expect(autoWorkers(12, 0)).toBe(1)
     expect(autoWorkers(1, 100)).toBe(1)
     expect(autoWorkers(0, 100)).toBe(1)
   })
 })
 
 describe('planWorkers', () => {
-  const machine = { cpuThreads: 8, totalMemoryMb: 32_768, mainHeapLimitMb: 4096 }
-  // 60% RAM trừ heap luồng chính và phần ngoài heap của nó.
-  const budget = 32_768 * MACHINE_SHARE - 4096 - 256
+  const machine = { cpuThreads: 12, totalMemoryMb: 32_768, mainHeapLimitMb: 4096 }
+  // Toàn bộ RAM trừ heap luồng chính và phần ngoài heap của nó.
+  const budget = 32_768 - 4096 - 256
 
-  it('tự chọn: trần CPU, heap chia đều phần RAM còn lại; tổng không vượt 60% RAM', () => {
+  it('tự chọn: số luồng − 1, heap chia đều RAM còn lại; tổng không vượt RAM máy', () => {
     const plan = planWorkers(machine, 1000, null)
-    expect(plan.workers).toBe(8)
-    expect(plan.workerHeapMb).toBe(Math.floor(budget / 8 - 256))
-    const totalMb = 4096 + 256 + 8 * (defined(plan.workerHeapMb, 'heap') + 256)
-    expect(totalMb).toBeLessThanOrEqual(32_768 * MACHINE_SHARE)
+    expect(plan.workers).toBe(11)
+    expect(plan.workerHeapMb).toBe(Math.floor(budget / 11 - 256))
+    const totalMb = 4096 + 256 + 11 * (defined(plan.workerHeapMb, 'heap') + 256)
+    expect(totalMb).toBeLessThanOrEqual(32_768)
   })
 
-  it('--workers N: lớn hơn trần CPU thì hạ xuống; nhỏ hơn thì giữ, heap mỗi worker lớn hơn', () => {
-    expect(planWorkers(machine, 1000, 50).workers).toBe(8)
+  it('--workers N: lớn hơn số luồng thì hạ xuống; nhỏ hơn thì giữ, heap mỗi worker lớn hơn', () => {
+    expect(planWorkers(machine, 1000, 50).workers).toBe(12)
     const plan = planWorkers(machine, 1000, 2)
     expect(plan.workers).toBe(2)
     expect(plan.workerHeapMb).toBe(Math.floor(budget / 2 - 256))
   })
 
   it('RAM ít: bớt worker để mỗi worker có ít nhất 1 GB heap', () => {
-    const small = { cpuThreads: 11, totalMemoryMb: 8192, mainHeapLimitMb: 2048 }
-    // (8192 × 0,6 − 2048 − 256) / (1024 + 256) = 2,04 → 2 worker
+    const small = { cpuThreads: 12, totalMemoryMb: 4096, mainHeapLimitMb: 1024 }
+    // (4096 − 1024 − 256) / (1024 + 256) = 2,2 → 2 worker
     expect(planWorkers(small, 1000, null).workers).toBe(2)
   })
 
@@ -95,5 +95,12 @@ describe('planWorkers', () => {
     expect(planWorkers(machine, 1, null)).toEqual({ workers: 1, workerHeapMb: null })
     const tiny = { cpuThreads: 8, totalMemoryMb: 2048, mainHeapLimitMb: 1024 }
     expect(planWorkers(tiny, 1000, 8)).toEqual({ workers: 1, workerHeapMb: null })
+  })
+
+  it('máy cực lớn: số worker theo số việc, heap hữu hạn', () => {
+    const huge = { cpuThreads: 1024, totalMemoryMb: 1e9, mainHeapLimitMb: 4096 }
+    const plan = planWorkers(huge, 30, null)
+    expect(plan.workers).toBe(10)
+    expect(Number.isFinite(defined(plan.workerHeapMb, 'heap'))).toBe(true)
   })
 })

@@ -323,6 +323,22 @@ export type GameAction =
    * định danh `{ storage: 'book', skillId, reusable }`.
    */
   | { type: 'useSkillBook'; monsterId: string; item: ItemRef }
+  /**
+   * Dán sticker trong túi lên quái (ngoài trận; docs/rules/skill-stickers.md): quái đã biết skill thì
+   * thay sticker cũ; chưa biết thì học như sách, đủ ô thì quên `replaceSkillId`.
+   */
+  | { type: 'applySticker'; monsterId: string; stickerId: string; replaceSkillId?: string }
+  /** Ritual Candle: hiến quái, Rogue Fusion kế tiếp có Bootleg (docs/rules/rogue-fusion.md). */
+  | { type: 'lightRitualCandle'; monsterId: string; discardOverflow?: boolean }
+  /** Hacking Glove: tốn Cyber Material, Rogue Fusion kế tiếp có Bootleg hệ ngẫu nhiên. */
+  | { type: 'hackRogueFusion' }
+  /** Đổi Fused Material lấy vật phẩm (thị trấn). */
+  | { type: 'exchangeFusedMaterial'; itemId: string; count: number }
+  /** Quà Bootleg của nhà Bootleg / bảng nhiệm vụ (thị trấn, mỗi loại một lần). */
+  | { type: 'claimBootlegHouseGift' }
+  | { type: 'claimQuestBootlegGift' }
+  /** Bóc sticker khỏi skill của quái về túi (quái vẫn giữ skill). */
+  | { type: 'peelSticker'; monsterId: string; skillId: string }
   /** Dùng vật phẩm lên quái trong đội hoặc kho; count > 1 chỉ với kẹo EXP (bỏ trống = 1). */
   /** skillId: skill chọn lúc dùng (vật phẩm cần skill, docs/rules/treasures.md). */
   | { type: 'useItem'; itemId: string; monsterId: string; count?: number; skillId?: string }
@@ -363,6 +379,8 @@ export type GameAction =
   | { type: 'enhanceEquipment'; instanceId: string }
   /** Thợ rèn: tung lại mọi dòng phụ không khóa của món (trong túi hoặc đang lắp). */
   | { type: 'rerollEquipmentAffixes'; instanceId: string; lockedLineIndexes?: number[] }
+  /** Tẩy luyện sticker ở Thợ rèn (docs/rules/skill-stickers.md): vị trí thuộc tính khóa. */
+  | { type: 'rerollSticker'; stickerId: string; lockedIndexes?: number[] }
   /** Thợ rèn: phân giải các món trong túi (món đang lắp phải tháo trước). */
   | { type: 'salvageEquipment'; instanceIds: string[] }
   /** Đúc trang bị (luyện khí) từ món gốc thường và `cores` yêu đan cùng hệ `elementId`. */

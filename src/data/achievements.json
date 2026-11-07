@@ -546,6 +546,16 @@
     }
   },
   {
+    "id": "bootlegCollection",
+    "condition": { "type": "bootlegForms" },
+    "tiers": [
+      { "value": 1, "rewards": { "moneyPerFloor": 5000 } },
+      { "value": 10, "rewards": { "moneyPerFloor": 20000 } },
+      { "value": 50, "rewards": { "moneyPerFloor": 100000 } }
+    ],
+    "repeat": { "factor": 2, "rewards": { "moneyPerFloor": 200000 } }
+  },
+  {
     "id": "pioneer",
     "condition": {
       "type": "highestFloor"

@@ -4,7 +4,7 @@
 
 import { difficultyTable } from './difficulty'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { totalmem } from 'node:os'
+import { availableParallelism, totalmem } from 'node:os'
 import { resolve } from 'node:path'
 import { getHeapStatistics } from 'node:v8'
 import type { GameData } from '@core'
@@ -63,13 +63,12 @@ function print(text: string): void {
 }
 
 /**
- * args: [đường dẫn kịch bản] [--workers N] [--parts a,b] [--teams a,b] (cli.ts); cpuThreads: số
- * luồng CPU tiến trình đã được ghim (limitCpu ở run.mjs).
+ * args: [đường dẫn kịch bản] [--workers N] [--parts a,b] [--teams a,b] (cli.ts).
  */
-export async function main(args: readonly string[], cpuThreads: number): Promise<void> {
+export async function main(args: readonly string[]): Promise<void> {
   const started = performance.now()
   const options = parseCliArgs(args)
-  const machine = machineResources(cpuThreads)
+  const machine = machineResources()
   const { raw, data } = loadGameData()
   const scenarios = parseScenarios(
     data,
@@ -182,9 +181,9 @@ function outputTables(
   ]
 }
 
-function machineResources(cpuThreads: number): MachineResources {
+function machineResources(): MachineResources {
   return {
-    cpuThreads,
+    cpuThreads: availableParallelism(),
     totalMemoryMb: totalmem() / BYTES_PER_MB,
     mainHeapLimitMb: getHeapStatistics().heap_size_limit / BYTES_PER_MB
   }

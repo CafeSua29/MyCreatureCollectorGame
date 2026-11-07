@@ -1,7 +1,6 @@
 // Nhận phần thưởng sau trận vào túi kèm log (dùng chung cho đồ rơi, trận NPC, rương bí cảnh, tháp).
 
 import {
-  addBooks,
   addEquipment,
   addItems,
   equipmentInstanceId,
@@ -12,7 +11,7 @@ import {
   type BookKey
 } from '../inventory'
 import { getMaxHp, percentOfMaxHp } from '../monster'
-import { hasBagRoom } from '../registries'
+import { hasBagRoom, receiveBooks } from '../registries'
 import { BIG_ZERO, maxBig, minBig, type Decimal } from '../shared'
 import type {
   Biome,
@@ -87,10 +86,25 @@ export function gainBiomeSkillBooks(
     count,
     reusableChance
   })
-  for (const book of books) {
-    d.inventory = addBooks(d.inventory, book, 1)
-    log(d, { type: 'skillBookDropped', skillId: book.skillId, reusable: book.reusable })
-  }
+  for (const book of books) gainSkillBook(data, d, book)
+}
+
+/**
+ * Nhận một cuốn sách trong trận (rơi, rương, thưởng): Bí kíp có thể thành sticker
+ * (docs/rules/skill-stickers.md), log skillBookDropped.
+ */
+export function gainSkillBook(data: GameData, d: Draft, book: BookKey): void {
+  const received = receiveBooks(data, d, book, 1)
+  d.inventory = received.inventory
+  d.rng = received.rng
+  d.nextItemId = received.nextItemId
+  const sticker = received.stickers[0]
+  log(d, {
+    type: 'skillBookDropped',
+    skillId: book.skillId,
+    reusable: book.reusable,
+    ...(sticker ? { sticker: { id: sticker.id, rarity: sticker.rarity } } : {})
+  })
 }
 
 /**

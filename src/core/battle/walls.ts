@@ -11,7 +11,7 @@ import {
   wallStatusesOf,
   type WallStatus
 } from '../monster'
-import { elementEffectiveness, forEachTraitHook } from '../registries'
+import { elementEffectiveness, forEachTraitHook, stickerSkillBonus } from '../registries'
 import { BIG_ZERO, maxBig, pick, pickWeighted, rollPercent, toBig } from '../shared'
 import type { GameData, Monster, Skill } from '../model'
 import {
@@ -139,10 +139,13 @@ export function wallAbsorbs(
   const walls = wallStatusesOf(data, target)
   const wall = walls.at(-1)
   if (!wall) return false
-  if (skill.destroysWalls) {
+  // Sticker Destroys Walls / Ignores Walls (docs/rules/skill-stickers.md).
+  const sticker = stickerSkillBonus(data, user, skill.id)
+  if (skill.destroysWalls || sticker.destroysWalls) {
     breakWalls(data, d, target, user.id)
     return false
   }
+  if (sticker.ignoresWalls) return false
   const exposed = target.statuses.some((status) => data.statuses[status.statusId]?.seeThroughWall)
   if (exposed && skillReach(skill) === 'ranged') return false
   if (rollsPastWall(data, d, user, skill)) return false

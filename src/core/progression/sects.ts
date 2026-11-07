@@ -2,11 +2,12 @@
 // Các, việc theo ngày (đồng môn tích cống hiến và lên chức, làm mới nhiệm vụ). Trận luận võ, thi
 // thăng chức, tông chiến ở battle/sectBattles.ts.
 
-import { addByRef, parseItemRef, requireItemCount } from '../inventory'
+import { parseItemRef, requireItemCount } from '../inventory'
 import { rollQuest } from '../quests'
 import {
   addBonusTalentPoints,
   addSectContribution,
+  receiveByRef,
   sectRankForContribution,
   sectRankThreshold
 } from '../registries'
@@ -244,11 +245,9 @@ export function buySectItem(
   const need = entry.cost * count
   const have = state.sect.contribution
   if (need > have) throw new ActionError('notEnoughContribution', { need, have })
-  return {
-    ...state,
-    inventory: addByRef(state.inventory, ref, count),
-    sect: { ...state.sect, contribution: have - need }
-  }
+  // Bí kíp đổi về có thể thành sticker (docs/rules/skill-stickers.md).
+  const { stickers: _stickers, ...received } = receiveByRef(data, state, ref, count)
+  return { ...state, ...received, sect: { ...state.sect, contribution: have - need } }
 }
 
 /** Một ngày của đệ tử: + cống hiến ngẫu nhiên × (chức vị + 1), lên chức theo cống hiến tổng. */

@@ -2,7 +2,7 @@
 // với TEMP_SHOP_POOL_CHECKS ở gameData/validateEvents.ts), mua bằng buyEventItem. Cửa hàng mất khi
 // rời chỗ gặp hoặc đi tiếp (khám phá, đánh quái hoang).
 
-import { assertBagRoom, tamerBonusMultiplier } from '../registries'
+import { assertBagRoom, receiveByRef, tamerBonusMultiplier } from '../registries'
 import {
   ActionError,
   malformedAction,
@@ -15,7 +15,6 @@ import {
   type RngState
 } from '../shared'
 import {
-  addByRef,
   addEquipment,
   equipmentInstanceId,
   isSameItemRef,
@@ -218,14 +217,21 @@ export function buyEventItem(
   if (entry.storage === 'instance') assertBagRoom(data, state)
   const price = tempShopPrice(data, state, { entry, priceMultiplier: shop.priceMultiplier })
   const paid = spendMoney(state, price.times(count))
-  const inventory =
+  // Bí kíp mua về có thể thành sticker (docs/rules/skill-stickers.md).
+  const { inventory, rng, nextItemId } =
     entry.storage === 'instance'
-      ? addEquipment(state.inventory, entry.instance)
-      : addByRef(state.inventory, entry, count)
+      ? { ...state, inventory: addEquipment(state.inventory, entry.instance) }
+      : receiveByRef(data, state, entry, count)
   const stock = shop.stock.flatMap((candidate) => {
     if (candidate !== found || candidate.remaining === null) return [candidate]
     const remaining = candidate.remaining - count
     return remaining > 0 ? [{ ...candidate, remaining }] : []
   })
-  return { ...paid, inventory, events: { ...state.events, tempShop: { ...shop, stock } } }
+  return {
+    ...paid,
+    inventory,
+    rng,
+    nextItemId,
+    events: { ...state.events, tempShop: { ...shop, stock } }
+  }
 }

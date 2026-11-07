@@ -1,0 +1,1557 @@
+[
+  {
+    "id": "altAttackHp",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "attackStat",
+      "params": {
+        "stat": "hp"
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "altAttackAttack",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "attackStat",
+      "params": {
+        "stat": "attack"
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "altAttackDefense",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "attackStat",
+      "params": {
+        "stat": "defense"
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "altAttackSpAttack",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "attackStat",
+      "params": {
+        "stat": "spAttack"
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "altAttackSpDefense",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "attackStat",
+      "params": {
+        "stat": "spDefense"
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "altAttackSpeed",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "attackStat",
+      "params": {
+        "stat": "speed"
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "extraHit",
+    "rarity": "uncommon",
+    "weight": 1,
+    "effect": {
+      "type": "extraHits",
+      "params": {
+        "value": 1
+      }
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "heal",
+    "rarity": "uncommon",
+    "weight": 0.16,
+    "effect": {
+      "type": "heal",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "damagePerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 1,
+    "effect": {
+      "type": "power",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true,
+    "requires": ["damaging"]
+  },
+  {
+    "id": "expPerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "exp",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "accuracyPerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "accuracy",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 20
+    },
+    "perEmptySlot": true,
+    "requires": ["hasAccuracy"]
+  },
+  {
+    "id": "critDamagePerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "critDamage",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 50
+    },
+    "perEmptySlot": true,
+    "requires": ["damaging"]
+  },
+  {
+    "id": "critRatePerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "critChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 30
+    },
+    "perEmptySlot": true,
+    "requires": ["damaging"]
+  },
+  {
+    "id": "effectChancePerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "effectChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 20
+    },
+    "perEmptySlot": true,
+    "requires": ["hasSecondary"]
+  },
+  {
+    "id": "splashPerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "splash",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 35
+    },
+    "perEmptySlot": true,
+    "requires": ["damaging", "singleTarget"]
+  },
+  {
+    "id": "priorityPerEmptySlot",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "priorityChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 30
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "statusDuration",
+    "rarity": "uncommon",
+    "weight": 1,
+    "effect": {
+      "type": "statusTurns",
+      "params": {
+        "value": 1
+      }
+    },
+    "requires": ["inflictsStatus"]
+  },
+  {
+    "id": "damage",
+    "rarity": "uncommon",
+    "weight": 1,
+    "effect": {
+      "type": "power",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 20
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "exp",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "exp",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 20
+    }
+  },
+  {
+    "id": "accuracy",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "accuracy",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 30
+    },
+    "requires": ["hasAccuracy"]
+  },
+  {
+    "id": "critDamage",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "critDamage",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 30,
+      "max": 100
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "critRate",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "critChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 50
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "effectChance",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "effectChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 30
+    },
+    "requires": ["hasSecondary"]
+  },
+  {
+    "id": "splash",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "splash",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 70
+    },
+    "requires": ["damaging", "singleTarget"]
+  },
+  {
+    "id": "priority",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "priorityChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 30
+    }
+  },
+  {
+    "id": "typeAdvantageCrit",
+    "rarity": "uncommon",
+    "weight": 0.2,
+    "effect": {
+      "type": "typeAdvantageCrit",
+      "params": {}
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "apRefund",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "staminaRefund",
+      "params": {
+        "chance": 0,
+        "amount": 10
+      }
+    },
+    "valueParam": "chance",
+    "range": {
+      "min": 10,
+      "max": 90
+    },
+    "requires": ["costsStamina"]
+  },
+  {
+    "id": "apRefundAll",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "staminaRefund",
+      "params": {
+        "chance": 0,
+        "all": true
+      }
+    },
+    "valueParam": "chance",
+    "range": {
+      "min": 1,
+      "max": 60
+    },
+    "requires": ["costsStamina"]
+  },
+  {
+    "id": "useSmackAfterAttack",
+    "rarity": "rare",
+    "weight": 0.5,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "smack"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "smack"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 10,
+      "max": 90
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "useSpitAfterAttack",
+    "rarity": "rare",
+    "weight": 0.5,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "spit"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "spit"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 10,
+      "max": 90
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "useAtBattleStart",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "self",
+              "oncePerBattle": true,
+              "chance": 0,
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "$skill"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.chance",
+    "range": {
+      "min": 30,
+      "max": 90
+    }
+  },
+  {
+    "id": "useAtRoundEnd",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "turnEnd",
+              "scope": "self",
+              "chance": 0,
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "$skill"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.chance",
+    "range": {
+      "min": 1,
+      "max": 25
+    }
+  },
+  {
+    "id": "useAfterAttacks",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "allies",
+              "chance": 0,
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "$skill"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "allies",
+              "chance": 0,
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "$skill"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 1,
+      "max": 25
+    }
+  },
+  {
+    "id": "useWhenHit",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attacked",
+              "scope": "self",
+              "chance": 0,
+              "effects": [
+                {
+                  "do": "cast",
+                  "skillId": "$skill"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.chance",
+    "range": {
+      "min": 1,
+      "max": 25
+    }
+  },
+  {
+    "id": "buffUser",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "$choice"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "$choice"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 5,
+      "max": 50
+    },
+    "choices": [
+      "potentiated",
+      "bulkedUp",
+      "agile",
+      "softSpeedUp",
+      "healingMist",
+      "energised",
+      "conducted"
+    ]
+  },
+  {
+    "id": "buffUserContactDamagePoison",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "tipped"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "tipped"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 5,
+      "max": 50
+    },
+    "elementIds": ["poison"]
+  },
+  {
+    "id": "buffUserContactDamageElectric",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "staticCharged"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "staticCharged"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 5,
+      "max": 50
+    },
+    "elementIds": ["electric"]
+  },
+  {
+    "id": "buffUserContactDamageGlass",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "shattered"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "self",
+                  "statusId": "shattered"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 5,
+      "max": 50
+    },
+    "elementIds": ["glass"]
+  },
+  {
+    "id": "buffUserWall",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "wallChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 5,
+      "max": 50
+    }
+  },
+  {
+    "id": "compatibility",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "compatibility",
+      "params": {}
+    }
+  },
+  {
+    "id": "debuffTarget",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "other",
+                  "statusId": "$choice"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "other",
+                  "statusId": "$choice"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 1,
+      "max": 50
+    },
+    "choices": [
+      "extinguished",
+      "eroded",
+      "buried",
+      "chilled",
+      "disturbed",
+      "drained",
+      "grounded",
+      "poison",
+      "burn",
+      "confused",
+      "sleep"
+    ],
+    "requires": ["singleTarget"]
+  },
+  {
+    "id": "destroysWalls",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "destroysWalls",
+      "params": {}
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "extraSlot",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "extraSlot",
+      "params": {}
+    }
+  },
+  {
+    "id": "ignoresWalls",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "ignoresWalls",
+      "params": {}
+    },
+    "requires": ["damaging"]
+  },
+  {
+    "id": "multitarget",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "multitargetChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 10,
+      "max": 75
+    },
+    "requires": ["singleTarget"]
+  },
+  {
+    "id": "shared",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "side",
+              "effects": [
+                {
+                  "do": "tempSkill",
+                  "to": "allies",
+                  "skillId": "$skill"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "healPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.16,
+    "effect": {
+      "type": "heal",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveHp",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.hp",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveHpPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.hp",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveAttack",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.attack",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveAttackPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.attack",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveDefense",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.defense",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveDefensePerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.defense",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveSpAttack",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.spAttack",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveSpAttackPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.spAttack",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveSpDefense",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.spDefense",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveSpDefensePerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.spDefense",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveSpeed",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.speed",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveSpeedPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent.speed",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveAccuracy",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "accuracyModifier",
+            "params": {
+              "percent": 0
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveAccuracyPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "accuracyModifier",
+            "params": {
+              "percent": 0
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "passiveEvasion",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "evasion",
+            "params": {
+              "percent": 0
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent",
+    "range": {
+      "min": 1,
+      "max": 10
+    }
+  },
+  {
+    "id": "passiveEvasionPerEmptySlot",
+    "rarity": "rare",
+    "weight": 0.2,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "evasion",
+            "params": {
+              "percent": 0
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": "hooks.0.params.percent",
+    "range": {
+      "min": 1,
+      "max": 10
+    },
+    "perEmptySlot": true
+  },
+  {
+    "id": "useAgain",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "repeatChance",
+      "params": {}
+    },
+    "valueParam": "value",
+    "range": {
+      "min": 1,
+      "max": 20
+    }
+  },
+  {
+    "id": "useRandom",
+    "rarity": "rare",
+    "weight": 1,
+    "effect": {
+      "type": "trait",
+      "params": {
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "attack",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "cast",
+                  "pool": "global"
+                }
+              ]
+            }
+          },
+          {
+            "type": "trigger",
+            "params": {
+              "on": "cast",
+              "scope": "self",
+              "chance": 0,
+              "when": [
+                {
+                  "if": "skill",
+                  "skillIds": ["$skill"]
+                }
+              ],
+              "effects": [
+                {
+                  "do": "cast",
+                  "pool": "global"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "valueParam": ["hooks.0.params.chance", "hooks.1.params.chance"],
+    "range": {
+      "min": 1,
+      "max": 20
+    }
+  }
+]

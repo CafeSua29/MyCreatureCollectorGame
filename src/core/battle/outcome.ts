@@ -58,10 +58,10 @@ import {
   tamerBonusMultiplier,
   hasPartyRoom,
   partyAfterJoining,
-  hasRosterRoom
+  hasRosterRoom,
+  stickerExpPercent
 } from '../registries'
 import {
-  addBooks,
   elementZCrystalOf,
   isBookableSkill,
   isSkillBookUsefulForParty,
@@ -104,7 +104,8 @@ import { revertTransforms } from './transform'
 import { clearBattleOnlyStatuses } from './statuses'
 import { cureOnBattleEnd } from './turnEndTraits'
 import { TRAINER_MODE_RULES, dropTrainerRewards, trainerMoneyMultiplier } from './trainerModes'
-import { gainDrop, gainEquipment, gainNewEquipment } from './rewards'
+import { gainDrop, gainEquipment, gainNewEquipment, gainSkillBook } from './rewards'
+import { grantBossFusedMaterial } from './rogueFusion'
 import { TRIAL_KIND_RULES } from './trialOutcome'
 import { rollRecruitOffer, tickRecruitBait } from './recruit'
 import {
@@ -328,7 +329,12 @@ export function applyWin(data: GameData, d: Draft): void {
   d.party = d.party.map((monster) => {
     if (!participants.includes(monster.id) || isFainted(data, monster)) return monster
     const trained = addEffortValues(data, monster, battleEffortGain(data, monster, defeated))
-    const result = gainExp(data, trained, expWithTraits(data, trained, partnerExp))
+    const activated = d.battle.records[monster.id]?.activatedSkills
+    const result = gainExp(
+      data,
+      trained,
+      expWithTraits(data, trained, { exp: partnerExp, activated })
+    )
     for (const event of result.events) log(d, event)
     let infected: Monster
     ;[infected, d.rng] = spiritVirusWinGenes(data, d.rng, {
@@ -420,6 +426,8 @@ export function applyWin(data: GameData, d: Draft): void {
     }
     if (d.battle.isBoss) {
       dropSkillBook(data, d, { boss: enemy, dropMultiplier: enemyDropMultiplier })
+      // Fused Material khi hạ boss (gốc: trận tĩnh, docs/rules/rogue-fusion.md).
+      grantBossFusedMaterial(data, d)
     }
     if (d.battle.isBoss) {
       let eggDropped: boolean
@@ -767,10 +775,17 @@ function dropEquipment(
  * EXP quái nhận theo trait của chính nó (kiểu Chăm chỉ / Lười biếng) cộng linh dịch và giai đoạn
  * tuổi (mục "Tuổi và thọ nguyên"), làm tròn xuống; hệ số còn > 0 thì không dưới minExp (quái level thấp vẫn có EXP).
  */
-function expWithTraits(data: GameData, monster: Monster, exp: Decimal): Decimal {
-  // Quái nhận qua trao đổi với NPC được thêm EXP (docs/rules/trades.md).
+function expWithTraits(
+  data: GameData,
+  monster: Monster,
+  { exp, activated }: { exp: Decimal; activated: Readonly<Record<string, number>> | undefined }
+): Decimal {
+  // Quái nhận qua trao đổi với NPC được thêm EXP (docs/rules/trades.md); sticker Exp chỉ khi skill
+  // mang nó đã được dùng trong trận (bộ đếm EXP theo chiêu, skill-stickers.md).
+  const extraPercent =
+    spiritVirusExpPercent(data, monster) + stickerExpPercent(data, monster, activated)
   const multiplier =
-    traitExpMultiplier(data, monster, spiritVirusExpPercent(data, monster)) *
+    traitExpMultiplier(data, monster, extraPercent) *
     ageExpMultiplier(data, monster) *
     tradeExpMultiplier(data, monster)
   if (multiplier === 1) return exp
@@ -898,8 +913,7 @@ function dropSkillBook(
   ;[skillId, d.rng] = pickWeighted(d.rng, skillIds, weightOf)
   let reusable: boolean
   ;[reusable, d.rng] = rollPercent(d.rng, reusableDropChance)
-  d.inventory = addBooks(d.inventory, { skillId, reusable }, 1)
-  log(d, { type: 'skillBookDropped', skillId, reusable })
+  gainSkillBook(data, d, { skillId, reusable })
 }
 
 /**

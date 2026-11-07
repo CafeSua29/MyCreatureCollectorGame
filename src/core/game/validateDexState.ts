@@ -33,7 +33,16 @@ export function validateDexState(data: GameData, value: unknown): string[] {
   const issues: string[] = []
   checkKnownFields(
     dex,
-    ['seen', 'owned', 'shinyOwned', 'claimedMilestones', 'claimedRegions', 'hitParts'],
+    [
+      'seen',
+      'owned',
+      'shinyOwned',
+      'bootlegSeen',
+      'bootlegOwned',
+      'claimedMilestones',
+      'claimedRegions',
+      'hitParts'
+    ],
     'dex',
     'Bộ sưu tập',
     issues
@@ -46,11 +55,45 @@ export function validateDexState(data: GameData, value: unknown): string[] {
   for (const id of checkSpeciesList(data, dex.shinyOwned, 'dex.shinyOwned', issues)) {
     if (!owned.has(id)) issues.push(`dex.shinyOwned: loài "${id}" chưa có trong dex.owned`)
   }
+  const bootlegSeen = new Set(checkBootlegKeys(data, dex.bootlegSeen, 'dex.bootlegSeen', issues))
+  for (const key of checkBootlegKeys(data, dex.bootlegOwned, 'dex.bootlegOwned', issues)) {
+    if (!bootlegSeen.has(key))
+      issues.push(`dex.bootlegOwned: "${key}" chưa có trong dex.bootlegSeen`)
+  }
   const milestoneIds = data.config.dex.milestones.map((m) => m.id)
   checkClaimedIds(dex.claimedMilestones, milestoneIds, 'dex.claimedMilestones', issues)
   checkClaimedIds(dex.claimedRegions, Object.keys(data.biomes), 'dex.claimedRegions', issues)
   checkHitParts(data, dex.hitParts, issues)
   return issues
+}
+
+/**
+ * Danh sách khóa Bootleg `speciesId:elementId` (docs/rules/bootleg.md): loài thuộc Dex, hệ tồn tại,
+ * không trùng. Trả các khóa là chuỗi.
+ */
+function checkBootlegKeys(
+  data: GameData,
+  value: unknown,
+  path: string,
+  issues: string[]
+): string[] {
+  if (!Array.isArray(value)) {
+    issues.push(`${path} phải là danh sách`)
+    return []
+  }
+  const keys = value.filter((key): key is string => typeof key === 'string')
+  if (keys.length !== value.length) issues.push(`${path} chỉ chứa chuỗi`)
+  if (new Set(keys).size !== keys.length) issues.push(`${path} có khóa trùng`)
+  for (const key of keys) {
+    const [speciesId, elementId, extra] = key.split(':')
+    const ok =
+      extra === undefined &&
+      isDexSpecies(data.species[speciesId]) &&
+      elementId !== undefined &&
+      Object.hasOwn(data.elements, elementId)
+    if (!ok) issues.push(`${path}: khóa không hợp lệ "${key}" (cần loài Dex:hệ)`)
+  }
+  return keys
 }
 
 /**

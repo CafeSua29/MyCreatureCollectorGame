@@ -3,6 +3,7 @@
 // (docs/rules/battle-merge.md). Thêm loại mới = thêm vào
 // TRANSFORM_KINDS + một handler ở battle/transformHandlers.ts + một mục ở HUMAN_FORM_ON_TRANSFORM.
 
+import { FUSION_POWER_SKILL_ID } from './content'
 import type { Monster } from './monster'
 
 /** Loại biến hình; mỗi phe dùng mỗi loại tối đa một lần mỗi trận. */
@@ -100,6 +101,11 @@ export interface BattleTransform {
   mergePartner?: MergePartner
   /** Hợp thể, chỉ trên quái phụ: id quái chính đang mang nó (quái phụ không ở trên sân). */
   mergedIntoId?: string
+  /**
+   * Hợp thể của Rogue Fusion (docs/rules/rogue-fusion.md), chỉ trên quái chính: không hết lượt, bị hạ
+   * thì tan ra (hai thành phần hồi đầy máu) thay vì cùng gục.
+   */
+  rogue?: true
 }
 
 /**
@@ -142,7 +148,10 @@ export const isMergedAway = (monster: Monster): boolean =>
  */
 export function battleSkillIds(monster: Monster): string[] {
   const partner = mergePartnerOf(monster)
-  return partner ? [...new Set([...monster.skillIds, ...partner.skillIds])] : monster.skillIds
+  // Thực thể hợp thể có thêm Fusion Power (docs/rules/fusion-power.md).
+  return partner
+    ? [...new Set([...monster.skillIds, ...partner.skillIds, FUSION_POWER_SKILL_ID])]
+    : monster.skillIds
 }
 
 /** Biến hình boss sẽ dùng ở lượt đầu (tung khi mở trận boss). */

@@ -322,6 +322,14 @@ export function validateItemCommand(
     if (item.category === 'ball' && isDynamaxed(found.target)) {
       throw new ActionError('cannotCatchDynamaxed', { monsterId: targetId })
     }
+    // Rogue Fusion: thực thể hợp thể không bắt được (docs/rules/rogue-fusion.md).
+    if (
+      item.category === 'ball' &&
+      found.target.battleTransform?.rogue &&
+      !found.target.battleTransform.ended
+    ) {
+      throw new ActionError('cannotCatchFusion', { monsterId: targetId })
+    }
     // Đội đủ và kho đầy (kể cả quái đã bắt trong trận): báo lỗi ngay, không mất bóng (capacity.md).
     if (
       item.category === 'ball' &&

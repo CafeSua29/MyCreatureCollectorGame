@@ -22,6 +22,7 @@ import {
   assertBagRoom,
   bagFreeSlots,
   hasBagRoom,
+  receiveByRef,
   speciesRankIndex,
   speciesRankOf
 } from '../registries'
@@ -300,7 +301,9 @@ function deliverEntry(
 ): [GameState, AuctionReceived] {
   if (entry.storage !== 'instance') {
     const received: AuctionReceived = { kind: 'item', item: entry, count, held: false }
-    return [{ ...state, inventory: addByRef(state.inventory, entry, count) }, received]
+    // Bí kíp thắng đấu giá có thể thành sticker (docs/rules/skill-stickers.md).
+    const { stickers: _stickers, ...gained } = receiveByRef(data, state, entry, count)
+    return [{ ...state, ...gained }, received]
   }
   const item: ItemRef = { storage: 'instance', instanceId: entry.instance.id }
   if (hasBagRoom(data, state)) {

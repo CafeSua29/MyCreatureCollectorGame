@@ -41,7 +41,9 @@ import {
   uniformBigStats,
   emptySoulLevels,
   emptyEffortValues,
-  teraElementChoices
+  rollBootleg,
+  teraElementChoices,
+  withBootleg
 } from '../monster'
 import {
   bumpStat,
@@ -259,6 +261,7 @@ export function makeOffspring(
     fusingBonusStats,
     traits,
     shinyStacks: 0,
+    bootlegElementId: null,
     bossMultiplier: Math.max(father.bossMultiplier, mother.bossMultiplier),
     fused: mother.fused,
     lineage: mother.fused ? [...mother.lineage] : [],
@@ -270,6 +273,7 @@ export function makeOffspring(
     traitSlots: Math.max(father.traitSlots, mother.traitSlots),
     pendingSkillIds: [],
     extraSkillIds: [],
+    skillStickers: {},
     pendingEvolutionIds: [],
     statuses: [],
     // Con breeding không thừa hưởng trang bị; Gmax Factor, cấp Dynamax không di truyền (như
@@ -379,7 +383,36 @@ export function makeOffspring(
     parents: [father, mother],
     shinyStacks: child.shinyStacks
   })
-  return [{ ...child, teraElementId, natureId, abilitySlot, bloodlines, polarity, workTraits }, rng]
+  // Bootleg (docs/rules/bootleg.md) tung sau cùng: nhận hệ Bootleg của mẹ rồi bố, không thì như quái hoang.
+  let bootlegElementId: string | null
+  ;[bootlegElementId, rng] = childBootleg(data, rng, { species, parents: [mother, father] })
+  return [
+    withBootleg(
+      { ...child, teraElementId, natureId, abilitySlot, bloodlines, polarity, workTraits },
+      bootlegElementId
+    ),
+    rng
+  ]
+}
+
+/**
+ * Hệ Bootleg của con: lần lượt mẹ, bố (bên nào Bootleg) tung `inheritPercent` % nhận hệ đó (hệ trùng
+ * hệ thường của loài con thì không tính); không nhận thì tung như quái hoang.
+ */
+function childBootleg(
+  data: GameData,
+  rng: RngState,
+  { species, parents }: { species: NormalSpecies; parents: readonly Monster[] }
+): [string | null, RngState] {
+  const { inheritPercent, wildChance } = data.config.bootleg
+  for (const parent of parents) {
+    const elementId = parent.bootlegElementId
+    if (elementId === null || species.elementIds.includes(elementId)) continue
+    let inherited: boolean
+    ;[inherited, rng] = rollPercent(rng, inheritPercent)
+    if (inherited) return [elementId, rng]
+  }
+  return rollBootleg(data, rng, { species, chance: wildChance })
 }
 
 /** NPC breeding ở thị trấn: trả tiền, nhận một trứng. */

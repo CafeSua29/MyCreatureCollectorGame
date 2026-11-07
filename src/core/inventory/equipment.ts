@@ -28,6 +28,7 @@ import {
   type NormalRarity,
   type SoulImprint,
   type StatName,
+  type StickerInstance,
   type UniqueEquipmentDef
 } from '../model'
 import { addItems } from './inventory'
@@ -382,9 +383,28 @@ export function returnEquippedItem(inventory: Inventory, entry: EquippedItem): I
     : addEquipment(inventory, entry.instance)
 }
 
-/** Trả mọi món đang lắp trên quái về túi (thả quái, quái phụ khi fuse, fuse thất bại). */
+/**
+ * Trả mọi món đang lắp và sticker đang dán trên quái về túi, không giới hạn sức chứa (mất quái ngoài ý
+ * người chơi; docs/rules/capacity.md).
+ */
 export function returnEquipment(inventory: Inventory, monster: Monster): Inventory {
-  return monster.equipment.reduce(returnEquippedItem, inventory)
+  const withEquipment = monster.equipment.reduce(returnEquippedItem, inventory)
+  return Object.values(monster.skillStickers).reduce(addSticker, withEquipment)
+}
+
+/** Thêm sticker vào túi (docs/rules/skill-stickers.md). */
+export function addSticker(inventory: Inventory, sticker: StickerInstance): Inventory {
+  return { ...inventory, stickers: [...inventory.stickers, sticker] }
+}
+
+/** Lấy một sticker khỏi túi theo id; không có thì ném stickerNotFound. */
+export function takeSticker(inventory: Inventory, stickerId: string): [StickerInstance, Inventory] {
+  const sticker = inventory.stickers.find((entry) => entry.id === stickerId)
+  if (!sticker) throw new ActionError('stickerNotFound', { stickerId })
+  return [
+    sticker,
+    { ...inventory, stickers: inventory.stickers.filter((entry) => entry !== sticker) }
+  ]
 }
 
 /** Thêm món trang bị vào túi. */

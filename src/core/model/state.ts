@@ -48,6 +48,8 @@ import type { SectState } from './sects'
 import type { TeamPresetState } from './teamPresets'
 import type { TradeState } from './trades'
 import type { AuctionState } from './auction'
+import type { StickerInstance, StickerRarity } from './stickers'
+import type { RogueFusionState, RogueFusionVariant } from './rogueFusion'
 
 // ---------- State game (được lưu vào save) ----------
 
@@ -125,6 +127,8 @@ export interface GameState {
   trades: TradeState
   /** Đấu giá hành ở thị trấn: phiên đang mở, đồ ký gửi, món giữ hộ (docs/rules/auction.md). */
   auction: AuctionState
+  /** Rogue Fusion: điềm báo của trận kế tiếp, quà Bootleg (docs/rules/rogue-fusion.md). */
+  rogueFusion: RogueFusionState
   /** Đội hình mẫu (docs/rules/roster.md mục "Đội hình mẫu"). */
   teamPresets: TeamPresetState
   /**
@@ -254,6 +258,8 @@ export interface Inventory {
   souls: SoulRemnant[]
   /** Kho khí linh: khí linh đã thu phục chưa gắn vào món (docs/rules/artifact-spirits.md). */
   spirits: ArtifactSpirit[]
+  /** Sticker skill (món riêng, docs/rules/skill-stickers.md), theo thứ tự nhận. */
+  stickers: StickerInstance[]
 }
 
 /** Định danh item gộp được (số lượng): theo id, tinh thể theo trait + cấp, sách theo skill + loại. */
@@ -335,6 +341,7 @@ export type TriggerLogSource =
   | 'implant'
   | 'passiveSkill'
   | 'refinement'
+  | 'sticker'
 
 /**
  * Cộng hưởng / trận pháp đang có tác dụng với một phe trong trận (docs/rules/team.md), tính lúc vào
@@ -556,6 +563,11 @@ export interface BattleRecord {
   lastConsumedItemId?: string
   /** Số lần dùng từng skill bằng lệnh của quái trong trận (Last Resort, Trump Card); bỏ trống = 0. */
   skillUses?: Record<string, number>
+  /**
+   * Bộ đếm EXP theo chiêu: số lần mỗi skill được dùng / kích hoạt trong trận, mọi cách dùng (lệnh,
+   * trait, sticker); thuộc tính sticker Exp chỉ áp khi skill mang nó có trong đây (skill-stickers.md).
+   */
+  activatedSkills?: Record<string, number>
   /**
    * Vị trí ra đòn (docs/rules/hit-locations.md): sát thương đã dồn vào từng bộ phận, tính bằng % max
    * HP lúc trúng (điểm yếu × weakPointBreakMultiplier); bỏ trống = chưa bị nhắm.
@@ -924,7 +936,13 @@ export type BattleEvent =
   | { type: 'canLearnSkill'; monsterId: string; skillId: string }
   | { type: 'drop'; itemId: string }
   /** Rơi một sách kỹ năng (docs/rules/skill-books.md), đã vào túi. */
-  | { type: 'skillBookDropped'; skillId: string; reusable: boolean }
+  /** Sách rơi; Bí kíp thành sticker thì kèm id và độ hiếm (docs/rules/skill-stickers.md). */
+  | {
+      type: 'skillBookDropped'
+      skillId: string
+      reusable: boolean
+      sticker?: { id: string; rarity: StickerRarity }
+    }
   /** Bậc trận đang âm của quái về 0 (kiểu White Herb). */
   | { type: 'stagesRestored'; monsterId: string; stats: StageStat[] }
   /** Rơi một món trang bị (kể cả món unique boss đang mang), đã vào túi. */
@@ -1134,6 +1152,15 @@ export type BattleEvent =
    * log traitTriggered ngay trước cho biết trait nào gây ra.
    */
   | { type: 'traitDamage'; monsterId: string; amount: Decimal }
+  /** Sticker Splash Damage: đồng đội của mục tiêu mất máu theo % đòn (docs/rules/skill-stickers.md). */
+  | { type: 'splashDamage'; monsterId: string; sourceId: string; amount: Decimal }
+  /** Thuộc tính sticker kích hoạt theo tỉ lệ (nhắm cả phe, dùng lại, hoàn thể lực). */
+  | {
+      type: 'stickerTriggered'
+      monsterId: string
+      skillId: string
+      effect: 'multitarget' | 'repeat' | 'refund'
+    }
   /** Quái vừa gục sống lại nhờ trait (kiểu Phượng hoàng tái sinh), còn `amount` máu. */
   | { type: 'revived'; monsterId: string; amount: Decimal }
   /**
@@ -1202,6 +1229,14 @@ export type BattleEvent =
   | { type: 'mutatedEvolution'; monsterId: string; fromSpeciesId: string; toSpeciesId: string }
   /** Gặp quái hoang shiny (để UI làm hiệu ứng). */
   | { type: 'shinyAppeared'; monsterId: string }
+  /** Trận Rogue Fusion: hợp thể xuất hiện (docs/rules/rogue-fusion.md). */
+  | { type: 'rogueFusionAppeared'; monsterId: string; variant: RogueFusionVariant }
+  /** Rogue Fusion bị hạ: tan ra, hai thành phần hồi đầy máu. */
+  | { type: 'rogueFusionDissolved'; monsterId: string; partnerId: string }
+  /** Lần đầu có Cyber Material: nhận Hacking Glove. */
+  | { type: 'hackingGloveGained' }
+  /** Quái địch Bootleg xuất hiện (docs/rules/bootleg.md): UI làm hiệu ứng. */
+  | { type: 'bootlegAppeared'; monsterId: string; elementId: string }
   | { type: 'bossAppeared'; monsterId: string }
   /** Hạ / bắt boss tầng ở tầng highestFloor: mở tầng mới. */
   | { type: 'floorUnlocked'; floor: number; biomeId: string }

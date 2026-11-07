@@ -143,7 +143,15 @@ describe('createNewGame', () => {
       highestFloor: 1,
       nextItemId: 1,
       options: defaultGameOptions({ lifespanEnabled: true, permadeathEnabled: false }),
-      inventory: { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
+      inventory: {
+        stacks: {},
+        crystals: [],
+        books: [],
+        equipment: [],
+        souls: [],
+        spirits: [],
+        stickers: []
+      }
     })
     expect(state.shop.stock).toEqual(shop.stock)
     expect(state.shop.stock).toHaveLength(3)

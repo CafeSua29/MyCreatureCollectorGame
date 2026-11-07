@@ -8,7 +8,13 @@
 // thắng thua / chờ thay quái. Quái người chơi cuồng bạo: lệnh do AI chọn (frenzy.ts).
 
 import { isFainted } from '../monster'
-import { findStatusHook, forEachTraitHook, skillPriority, traitActsLast } from '../registries'
+import {
+  findStatusHook,
+  forEachTraitHook,
+  skillPriority,
+  stickerSkillBonus,
+  traitActsLast
+} from '../registries'
 import { BIG_ZERO, nextFloat, rollPercent } from '../shared'
 import type {
   BattleCommand,
@@ -61,6 +67,7 @@ import { coatingsAtTurnEnd } from './coatings'
 import { traitsAtTurnEnd } from './turnEndTraits'
 import { cudChewAtTurnEnd } from './heldItems'
 import { chooseAiCommands } from './ai'
+import { spawnSwarmFusion } from './rogueFusion'
 import { chooseSkillWithTraits, rollActsFirst, traitSkipsTurn } from './actionTraits'
 import { fleesAtTurnEnd } from './fleeTraits'
 import { failUnfinishedCombos, runComboCommand } from './combos'
@@ -176,6 +183,23 @@ function commandPriority(
   }
 }
 
+/**
+ * Sticker Priority Chance (docs/rules/skill-stickers.md): lệnh skill có tỉ lệ +1 priority lượt này
+ * (gốc: skill được ưu tiên); tung lúc xếp thứ tự, tỉ lệ 0 không tốn RNG.
+ */
+function stickerPriority(
+  data: GameData,
+  d: Draft,
+  monster: Monster,
+  command: BattleCommand
+): number {
+  if (command.kind !== 'skill' || command.zMove) return 0
+  const chance = stickerSkillBonus(data, monster, command.skillId).priorityChance
+  let hit: boolean
+  ;[hit, d.rng] = rollPercent(d.rng, chance)
+  return hit ? 1 : 0
+}
+
 interface OrderedAction extends TurnAction {
   timeline: number
   /** Đi trước mọi quái cùng mức priority lượt này (kiểu Quick Claw). */
@@ -213,7 +237,8 @@ export function orderActions(
       slot: command.slot,
       monsterId,
       command,
-      priority: commandPriority(data, d, monster, command),
+      priority:
+        commandPriority(data, d, monster, command) + stickerPriority(data, d, monster, command),
       actsLast: actsLastOf(data, d, monster),
       // Thế đã dùng ở lượt trước đổi tốc độ xếp thứ tự lượt này (docs/rules/move-styles.md).
       speed: battleStats(data, d, monster)[orderStat(data, d, monster)].times(
@@ -279,6 +304,8 @@ export function settleAfterTurn(data: GameData, d: Draft, start?: SideSlots): vo
     if (enemiesWiped(data, d)) return endTribulation(data, d, 'won')
   }
   if (partyWiped(data, d)) return applyLoss(data, d)
+  // Swarm: đủ quái bầy bị hạ thì hợp thể xuất hiện trước khi xét thắng (docs/rules/rogue-fusion.md).
+  spawnSwarmFusion(data, d)
   if (enemiesWiped(data, d)) return applyWin(data, d)
   // Hết số lượt tối đa của trận đặc biệt (boss thế giới): trận kết thúc, không phần thưởng chung.
   if (isSpecialTimeUp(data, d.battle)) {

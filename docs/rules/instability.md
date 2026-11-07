@@ -62,3 +62,4 @@ Biến thể `instabilityLevel` (quét tầng, mọi tầng dùng mức đó, th
 
 - Hiển thị (Đền dịch chuyển, danh sách thuộc tính hiện / ẩn): chờ UI (`ui-overhaul.md`).
 - "Người chơi" chơi liên tục chưa dùng độ bất ổn (chỉ đo bằng biến thể quét tầng): thêm khi cần cân bằng nhịp tiến trình có độ bất ổn.
+- Bootleg: mỗi mức độ bất ổn + `bootleg.instabilityPercentPerLevel` (10) % tỉ lệ quái Bootleg (`bootleg.md`).

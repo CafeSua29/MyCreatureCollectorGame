@@ -23,7 +23,8 @@ import {
   seasonWeatherMultiplier,
   skillInField,
   stageTraitEffects,
-  traitAccuracyFactor
+  traitAccuracyFactor,
+  stickerSkillBonus
 } from '../registries'
 import { BIG_ZERO, maxBig, nextFloat, pickWeighted, rollPercent } from '../shared'
 import {
@@ -268,9 +269,15 @@ export function skillAccuracy(
               : stages[target.id]?.evasion
         })
       : 1
+  // Sticker Accuracy nhân tỉ lệ trúng như gốc (docs/rules/skill-stickers.md).
+  const stickerFactor = user ? 1 + stickerSkillBonus(data, user, skill.id).accuracyPercent / 100 : 1
   return Math.min(
     100,
-    base * fieldAccuracyMultiplier(data, field, resolved) * traitFactor * stageFactor
+    base *
+      fieldAccuracyMultiplier(data, field, resolved) *
+      traitFactor *
+      stageFactor *
+      stickerFactor
   )
 }
 

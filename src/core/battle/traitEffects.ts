@@ -464,7 +464,8 @@ function randomTempSkill(
 /** Chủ trait dùng một skill (cast do trait): mục tiêu là `target` nếu có, không thì mặc định. */
 /** Skill chiêu gọi được (không phải chiêu Max / Z, không bị loại, không nạp lượt nếu cấm). */
 function allowedCall(skill: Skill, effect: Extract<TraitEffect, { do: 'cast' }>): boolean {
-  if (skill.maxMove || skill.zMove) return false
+  // Fusion Power chỉ thực thể hợp thể dùng (docs/rules/fusion-power.md).
+  if (skill.maxMove || skill.zMove || skill.fusionPower) return false
   if (effect.excludeSkillIds?.includes(skill.id)) return false
   return !(effect.excludeCharge && skill.charge)
 }

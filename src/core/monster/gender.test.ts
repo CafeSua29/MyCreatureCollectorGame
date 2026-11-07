@@ -216,7 +216,8 @@ describe('đá tiến hóa ngoài trận', () => {
         books: [],
         equipment: [],
         souls: [],
-        spirits: []
+        spirits: [],
+        stickers: []
       }
     }
     const next = gameReducer(stoneData, state, {
@@ -259,7 +260,8 @@ describe('thuốc đổi giới tính', () => {
         books: [],
         equipment: [],
         souls: [],
-        spirits: []
+        spirits: [],
+        stickers: []
       }
     }
     expectActionError(

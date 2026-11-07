@@ -167,6 +167,8 @@ describe('save Bộ sưu tập', () => {
       seen: ['weakling', 'strongling'],
       owned: ['weakling', 'strongling'],
       shinyOwned: [],
+      bootlegSeen: [],
+      bootlegOwned: [],
       claimedMilestones: [],
       claimedRegions: [],
       hitParts: {}

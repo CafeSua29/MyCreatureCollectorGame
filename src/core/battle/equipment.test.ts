@@ -193,7 +193,8 @@ describe('rơi trang bị khi thắng', () => {
         books: [],
         equipment: [],
         souls: [],
-        spirits: []
+        spirits: [],
+        stickers: []
       },
       nextItemId: 4
     }

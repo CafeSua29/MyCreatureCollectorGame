@@ -90,3 +90,4 @@ Code: folder `src/core/events/` (gặp / chọn event `encounters.ts`, kết qu�
 - Chữ mô tả event, nhãn lựa chọn, màn hình event / cửa hàng tạm / thú triều (đếm ngược báo trước): chờ UI (`ui-overhaul.md`). Vòng tự đánh dừng khi có `events.pending`: việc của UI (`auto-battle.md`).
 - Event theo thời khắc / mùa / tuần trăng: trường `dayPhases`, `seasons`, `moonPhases` của `EventDef` (`calendar.md`); Trăng máu chỉ ban đêm.
 - Event tung sẵn giá trị để hiện trước khi chọn (ví dụ loài của quái bị thương): chưa cần (kết quả tất định theo RNG của save nên không reroll được); thêm khi làm UI nếu cần.
+- Thú triều: quái các đợt có tỉ lệ Bootleg × `bootleg.beastTideMultiplier` (5) (`bootleg.md`).

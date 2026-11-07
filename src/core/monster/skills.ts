@@ -7,6 +7,7 @@ import { getBaseSpecies } from './validateMonster'
 import { ActionError, levelCost, spendMoney, type Decimal } from '../shared'
 import { locateOwned } from '../roster'
 import { hasKeyItemFor } from '../inventory'
+import { returnForgottenStickers } from './stickerSlots'
 import type { BattleEvent, GameData, GameState, Inventory, Monster } from '../model'
 
 /**
@@ -79,7 +80,7 @@ function requireNoBattle(state: GameState): void {
 }
 
 /** Thêm skillId vào bộ skill, quên forgetSkillId nếu đã đủ ô. */
-function withSkillLearned(
+export function withSkillLearned(
   data: GameData,
   monster: Monster,
   skillId: string,
@@ -110,11 +111,24 @@ export function learnPendingSkill(
   const { monster, replace } = locateOwned(state, monsterId)
   if (!monster.pendingSkillIds.includes(skillId))
     throw new ActionError('skillNotPending', { skillId })
-  return replace({
-    ...monster,
-    skillIds: withSkillLearned(data, monster, skillId, forgetSkillId),
-    pendingSkillIds: monster.pendingSkillIds.filter((id) => id !== skillId)
+  return withLearned(data, state, {
+    monster: {
+      ...monster,
+      skillIds: withSkillLearned(data, monster, skillId, forgetSkillId),
+      pendingSkillIds: monster.pendingSkillIds.filter((id) => id !== skillId)
+    },
+    replace
   })
+}
+
+/** Ghi quái vừa học skill: sticker trên skill đã quên về túi (docs/rules/skill-stickers.md). */
+function withLearned(
+  data: GameData,
+  state: GameState,
+  { monster, replace }: { monster: Monster; replace: (updated: Monster) => GameState }
+): GameState {
+  const returned = returnForgottenStickers(data, state, monster)
+  return { ...replace(returned.monster), inventory: returned.inventory }
 }
 
 export function skipPendingSkill(state: GameState, monsterId: string, skillId: string): GameState {
@@ -142,10 +156,13 @@ export function relearnSkill(
   if (!relearnableSkills(data, monster, state.inventory).includes(skillId)) {
     throw new ActionError('cannotRelearnSkill', { skillId })
   }
-  const next = replace({
-    ...monster,
-    skillIds: withSkillLearned(data, monster, skillId, forgetSkillId),
-    pendingSkillIds: monster.pendingSkillIds.filter((id) => id !== skillId)
+  const next = withLearned(data, state, {
+    monster: {
+      ...monster,
+      skillIds: withSkillLearned(data, monster, skillId, forgetSkillId),
+      pendingSkillIds: monster.pendingSkillIds.filter((id) => id !== skillId)
+    },
+    replace
   })
   return spendMoney(next, relearnCost(data, monster))
 }

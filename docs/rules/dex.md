@@ -22,6 +22,7 @@ Code: `registries/dex.ts` (loài nào tính, %, hệ số chí mạng, thưởng
 - **Một chỗ duy nhất:** `gameReducer` gọi `syncDex` sau mọi action (action không đổi gì thì giữ nguyên state, không ghi). Nhờ vậy mọi cách có / gặp quái (bắt, thu phục, khu bảo tồn, nở trứng, tiến hóa, event, quái khởi đầu ở `createNewGame`) đều được tính mà không phải gọi ở từng tính năng.
 - **Đã sở hữu** (kèm đã gặp): loài hiện tại và loài gốc của mọi quái trong **đội và kho** (quái fuse tính loài gốc vì loài hiện tại là loài fuse chung). Trứng chưa nở không tính.
 - **Shiny đã có** (`shinyOwned` ⊆ `owned`): loài của quái shiny (`shinyStacks > 0`) trong đội và kho.
+- **Bootleg đã gặp / đã có** (`bootlegSeen`, `bootlegOwned` ⊆ `bootlegSeen`): khóa `loài:hệ` của quái Bootleg (`bootleg.md`); thưởng sưu tập bằng thành tựu `bootlegCollection`.
 - **Đã gặp:** quái địch trong trận đang diễn ra (quái hoang, boss, NPC, event), quái đang gặp ở khu bảo tồn.
 - Không bao giờ bớt (quái chết, bị thả vẫn giữ).
 
@@ -54,7 +55,7 @@ Code: `registries/dex.ts` (loài nào tính, %, hệ số chí mạng, thưởng
 
 ## State, save
 
-- `GameState.dex = { seen, owned, shinyOwned, claimedMilestones, claimedRegions }` (id loài không trùng; đã sở hữu thì đã gặp). Kiểm tra save (`validateDexState`): loài thuộc Dex, không trùng, `owned` ⊆ `seen`, `shinyOwned` ⊆ `owned`, mốc / map đã nhận tồn tại và không trùng. Save v56: migrate điền Dex từ đội và kho; v57: điền `shinyOwned` từ quái shiny, `claimedRegions` rỗng (`state-versions.md`).
+- `GameState.dex = { seen, owned, shinyOwned, bootlegSeen, bootlegOwned, claimedMilestones, claimedRegions }` (id loài không trùng; đã sở hữu thì đã gặp). Kiểm tra save (`validateDexState`): loài thuộc Dex, không trùng, `owned` ⊆ `seen`, `shinyOwned` ⊆ `owned`, mốc / map đã nhận tồn tại và không trùng. Save v56: migrate điền Dex từ đội và kho; v57: điền `shinyOwned` từ quái shiny, `claimedRegions` rỗng (`state-versions.md`).
 - `createGameState` (test, mô phỏng) bắt đầu Dex rỗng; action đầu tiên làm đổi state sẽ ghi.
 
 ## Chưa có
@@ -63,3 +64,4 @@ Code: `registries/dex.ts` (loài nào tính, %, hệ số chí mạng, thưởng
 - Ghi nhận giới tính đã gặp (Pokémon HOME có), mô tả tiếng Việt, chữ cho loài của các nguồn chưa có (xem trên).
 - Thành tựu đọc `state.dex` (`dexOwned`, `dexPercent`, `shinySpecies`, `ownSpecies`, `speciesRank`; `achievements.md`). Mở khóa quái khởi đầu cũng đọc `state.dex` (`dexOwned`, chuỗi đã sở hữu; `starters.md`). Nghiên cứu loài (`species-research.md`) có bộ đếm riêng `state.research`, dùng chung `dexSpeciesOf` / `isDexSpecies`; trang loài `dexEntry` nhận `{ dex, research }`, kèm cấp nghiên cứu, cờ mở thông tin, điểm yếu mở theo cấp.
 - Giữ Dex qua phi thăng (`ascension.md`).
+- Mốc `dex50` thêm 1 Nến nghi lễ (gốc: Hoylake tặng Ritual Candle khi đủ 120 mục Bestiary; `rogue-fusion.md`).

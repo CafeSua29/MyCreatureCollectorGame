@@ -3,7 +3,7 @@
 // linh điền lớn, thân mật quái làm việc), lấy đồ về túi, cộng % luyện.
 
 import { addBooks, addItems, learnsetSkillIds, removeItems, rollSkillBooks } from '../inventory'
-import { changeAffinity, tamerBonusAmount, workerPower } from '../registries'
+import { changeAffinity, receiveBooks, tamerBonusAmount, workerPower } from '../registries'
 import { assertNotBusy, isFainted } from '../monster'
 import { biomeOfFloor } from '../world'
 import {
@@ -246,7 +246,7 @@ export function unassignWorker(state: GameState, monsterId: string): GameState {
 }
 
 /** Lấy hết đồ và sách trong kho động phủ về túi (thị trấn); kho rỗng thì không đổi gì. */
-export function collectDwelling(state: GameState): GameState {
+export function collectDwelling(data: GameData, state: GameState): GameState {
   requireTown(state)
   const { stacks, books } = state.dwelling.storage
   const entries = Object.entries(stacks)
@@ -255,10 +255,16 @@ export function collectDwelling(state: GameState): GameState {
     (current, [itemId, count]) => addItems(current, itemId, count),
     state.inventory
   )
-  const inventory = books.reduce((current, book) => addBooks(current, book, book.count), withItems)
+  // Sách về túi lúc nhận: Bí kíp có thể thành sticker (docs/rules/skill-stickers.md).
+  const received = books.reduce(
+    (current, { count, ...book }) => receiveBooks(data, { ...state, ...current }, book, count),
+    { inventory: withItems, rng: state.rng, nextItemId: state.nextItemId }
+  )
   return {
     ...state,
-    inventory,
+    inventory: received.inventory,
+    rng: received.rng,
+    nextItemId: received.nextItemId,
     dwelling: { ...state.dwelling, storage: { stacks: {}, books: [] } }
   }
 }

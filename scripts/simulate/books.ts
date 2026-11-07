@@ -2,14 +2,18 @@
 // trên kệ sách mà đội mẫu dùng được (đủ tiền); sau mỗi trận, mỗi cuốn trong
 // túi dạy cho quái đội mẫu học được mà skill mạnh hơn skill yếu nhất đang biết (còn ô thì học luôn);
 // Bí kíp mỗi cuốn một quái, Chân kinh dạy mọi quái hợp. Đủ ô thì skill vào chờ học, phần chọn skill
-// chờ học (handlePendingSkills) thay skill yếu nhất như skill học theo level.
+// chờ học (handlePendingSkills) thay skill yếu nhất như skill học theo level. Sticker (Bí kíp có thuộc
+// tính, docs/rules/skill-stickers.md): dán lên quái đội mẫu đã biết skill mà chưa có sticker, không
+// thì dạy như sách (đủ ô thì thay skill yếu nhất).
 
 import {
   isSkillBookCompatible,
   itemBuyPrice,
+  skillCapacity,
   type GameData,
   type GameState,
-  type Monster
+  type Monster,
+  type StickerInstance
 } from '@core'
 import { simAct, shopStock } from './events'
 
@@ -49,7 +53,53 @@ export function buySkillBooks(
   return { state, bought }
 }
 
-/** Dùng sách trong túi lên quái đội mẫu; trả state mới và số lần dùng sách. */
+/** Skill yếu nhất (power thấp nhất) quái đang biết. */
+const weakestSkill = (data: GameData, monster: Monster): string =>
+  monster.skillIds.reduce((weakest, id) =>
+    data.skills[id].power < data.skills[weakest].power ? id : weakest
+  )
+
+/** Quái đội mẫu nhận sticker: đã biết skill mà chưa có sticker trước, không thì quái nên học skill. */
+function stickerTarget(
+  data: GameData,
+  team: readonly Monster[],
+  sticker: StickerInstance
+): Monster | undefined {
+  const { skillId } = sticker
+  return (
+    team.find((m) => m.skillIds.includes(skillId) && !(skillId in m.skillStickers)) ??
+    team.find((m) => wantsSkill(data, m, skillId))
+  )
+}
+
+/** Dán sticker trong túi lên quái đội mẫu (stickerTarget); trả state mới và số sticker đã dán. */
+function applyStickers(
+  data: GameData,
+  state: GameState,
+  teamIds: ReadonlySet<string>
+): { state: GameState; used: number } {
+  let used = 0
+  for (const sticker of state.inventory.stickers) {
+    const team = state.party.filter((m) => teamIds.has(m.id))
+    const monster = stickerTarget(data, team, sticker)
+    if (!monster) continue
+    const known = monster.skillIds.includes(sticker.skillId)
+    const full = !known && monster.skillIds.length >= skillCapacity(data, monster)
+    const replaced = full ? weakestSkill(data, monster) : undefined
+    // Không bỏ skill đang mang sticker khác (giữ thuộc tính đã có).
+    if (replaced !== undefined && replaced in monster.skillStickers) continue
+    state = simAct(data, state, {
+      type: 'applySticker',
+      monsterId: monster.id,
+      stickerId: sticker.id,
+      ...(replaced === undefined ? {} : { replaceSkillId: replaced })
+    })
+    used++
+  }
+  return { state, used }
+}
+
+/** Dùng sách và sticker trong túi lên quái đội mẫu; trả state mới và số lần dùng. */
 export function teachSkillBooks(
   data: GameData,
   state: GameState,
@@ -68,5 +118,6 @@ export function teachSkillBooks(
       left--
     }
   }
-  return { state, used }
+  const stickers = applyStickers(data, state, teamIds)
+  return { state: stickers.state, used: used + stickers.used }
 }

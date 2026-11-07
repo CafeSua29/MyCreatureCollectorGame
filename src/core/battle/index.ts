@@ -42,3 +42,4 @@ export {
 } from './recruit'
 export * from './eventBattles'
 export { battleDeityId } from './deities'
+export * from './rogueFusion'

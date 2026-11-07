@@ -2,10 +2,7 @@
 // npm run simulate [đường dẫn kịch bản] [--workers N] [--parts a,b] [--teams a,b].
 
 import { parseArgs } from 'node:util'
-import { MACHINE_SHARE } from './cpuLimit.mjs'
 import { SIM_PARTS, type SimPart } from './jobs'
-
-export { MACHINE_SHARE }
 
 export const DEFAULT_SCENARIOS = 'scripts/simulate/scenarios.json'
 
@@ -66,16 +63,16 @@ const THREAD_OVERHEAD_MB = 256
 const MIN_WORKER_HEAP_MB = 1024
 
 /**
- * Số worker tự chọn: số luồng CPU được dùng (limitCpu, cpuLimit.mjs) nhưng không quá
+ * Số worker tự chọn: số luồng CPU của máy trừ luồng chính, nhưng không quá
  * ⌊số việc / MIN_JOBS_PER_WORKER⌋, tối thiểu 1.
  */
 export function autoWorkers(cpuThreads: number, jobCount: number): number {
   const byJobs = Math.floor(jobCount / MIN_JOBS_PER_WORKER)
-  return Math.max(1, Math.min(cpuThreads, byJobs))
+  return Math.max(1, Math.min(cpuThreads - 1, byJobs))
 }
 
 export interface MachineResources {
-  /** Số luồng CPU được dùng, tiến trình đã được ghim vào chừng này luồng (limitCpu, cpuLimit.mjs). */
+  /** Số luồng CPU của máy (os.availableParallelism). */
   cpuThreads: number
   totalMemoryMb: number
   /** Trần heap của luồng chính (luồng chính vẫn giữ dữ liệu và kết quả khi có worker). */
@@ -90,16 +87,16 @@ export interface WorkerPlan {
 }
 
 /**
- * Chọn số worker và trần heap mỗi worker sao cho cả lần chạy dùng tối đa MACHINE_SHARE CPU và RAM.
- * `--workers N` lớn hơn trần thì bị hạ xuống trần.
+ * Chọn số worker và trần heap mỗi worker: dùng toàn bộ CPU và RAM của máy (chủ project chốt
+ * 2026-11-07). Trần heap chia đều RAM còn lại để một worker không chiếm hết RAM; `--workers N` lớn
+ * hơn số luồng hoặc số việc thì bị hạ xuống.
  */
 export function planWorkers(
   machine: MachineResources,
   jobCount: number,
   requested: number | null
 ): WorkerPlan {
-  const memoryBudgetMb =
-    machine.totalMemoryMb * MACHINE_SHARE - machine.mainHeapLimitMb - THREAD_OVERHEAD_MB
+  const memoryBudgetMb = machine.totalMemoryMb - machine.mainHeapLimitMb - THREAD_OVERHEAD_MB
   const memoryCap = Math.floor(memoryBudgetMb / (MIN_WORKER_HEAP_MB + THREAD_OVERHEAD_MB))
   const wanted = requested ?? autoWorkers(machine.cpuThreads, jobCount)
   const workers = Math.max(1, Math.min(wanted, machine.cpuThreads, memoryCap, jobCount))

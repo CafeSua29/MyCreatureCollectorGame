@@ -105,6 +105,14 @@ import { canReach, markSwoop, skillReach } from './reach'
 import { consumeWall, wallAbsorbs } from './walls'
 import { startCoating } from './coatings'
 import { overexert, payStamina } from './stamina'
+import {
+  afterStickerUse,
+  refundStickerStamina,
+  stickerBonusOf,
+  stickerRepeats,
+  stickerSplash,
+  stickerSpread
+} from './stickers'
 import { springBoobyTrap } from './boobyTraps'
 import { isPassiveOnly } from './passiveSkills'
 import { changeIdentity, runTraitEffects } from './traitEffects'
@@ -225,6 +233,7 @@ function applySkillEffects(
     const handler = SKILL_EFFECTS[effect.type]
     return handler.timing === timing && !(skipUserOnly && handler.userOnly?.(effect.params))
   })
+  const sticker = stickerBonusOf(data, user, skill)
   return runSkillEffects(
     data,
     d,
@@ -249,8 +258,10 @@ function applySkillEffects(
           : 1) *
         traitSecondaryChanceMultiplier(data, user, monsterBattleContext(data, d, user)) *
         sideSecondaryChanceMultiplier(data, d.battle.field, sideOf(d, user.id)) *
-        skillMasteryBonus(data, user, skill).secondaryChanceMultiplier,
-      statusTurnsBonus: styleStatusTurnsBonus(data, skill, style)
+        skillMasteryBonus(data, user, skill).secondaryChanceMultiplier *
+        (1 + sticker.effectChancePercent / 100),
+      // Sticker Status Duration Boost: +lượt cho trạng thái skill gây (docs/rules/skill-stickers.md).
+      statusTurnsBonus: styleStatusTurnsBonus(data, skill, style) + sticker.statusTurns
     },
     effects
   )
@@ -466,7 +477,9 @@ function strikeTarget(
     skill.power > 0 && skill.zMove === undefined
       ? traitExtraHits(data, d, user, skill)
       : { count: 0, percent: 100 }
-  hitCount += extra.count
+  // Sticker Extra Hit: thêm đòn đủ sát thương (docs/rules/skill-stickers.md).
+  const stickerHits = skill.power > 0 ? stickerBonusOf(data, user, skill).extraHits : 0
+  hitCount += extra.count + stickerHits
   const damagePercent = ((hit.damagePercent ?? 100) * extra.percent) / 100
   let total = BIG_ZERO
   let landed = 0
@@ -493,11 +506,12 @@ function strikeTarget(
     applySkillEffects(data, d, hit, 'perHit', dealt)
     if (immune || isFainted(data, target) || isFainted(data, user)) break
   }
-  if (skill.hits || extra.count > 0) {
+  if (skill.hits || extra.count > 0 || stickerHits > 0) {
     log(d, { type: 'hitCount', monsterId: user.id, targetId: target.id, hits: landed })
   }
   // Mất thế: trúng điểm yếu (thế thân nhận thay thì không), bị kháng hệ (hit-locations.md).
   if (aimed) afterAimedStrike(data, d, { user, target, aimed, dealt: bodyDealt, resisted })
+  stickerSplash(data, d, { user, target, skill, dealt: total })
   // Tường chặn mọi đòn (không đòn nào xuyên qua) thì hiệu ứng và phản ứng không tới mục tiêu.
   return { total, walled: walled && total.lte(0) }
 }
@@ -1203,17 +1217,23 @@ function performSkillOnce(
             retargetedByStatus(
               data,
               user,
-              spreadByTrait(
+              stickerSpread(
                 data,
                 d,
                 user,
-                springLoaded(
+                spreadByTrait(
                   data,
+                  d,
                   user,
-                  electrified(
+                  springLoaded(
                     data,
                     user,
-                    zSkill ?? styledSkill(data, battleSkill(data, d, user, original), chosen.style)
+                    electrified(
+                      data,
+                      user,
+                      zSkill ??
+                        styledSkill(data, battleSkill(data, d, user, original), chosen.style)
+                    )
                   )
                 )
               )
@@ -1656,6 +1676,7 @@ export function executeSkill(data: GameData, d: Draft, rawUse: SkillUse): void {
     !use.reactive && !use.partner && holdTurnsLeft(d.battle, use.user, use.skill) === 0
   const deficit = paysStamina ? payStamina(data, d, use.user, use.skill) : 0
   runResolvedSkill(data, d, use)
+  if (paysStamina) refundStickerStamina(data, d, use.user, use.skill)
   if (deficit > 0) overexert(data, d, use.user, deficit)
 }
 
@@ -1703,7 +1724,9 @@ function runResolvedSkill(data: GameData, d: Draft, use: SkillUse): void {
   // Z-Move: phe hết lượt Z-Move và Z-Power chạy khi quái thật sự dùng; không lặp theo trait (như
   // Pokémon: Parental Bond không áp, Instruct không gọi lại được Z-Move).
   const zSkill = ownAction && use.zMove ? startZMove(data, d, use) : null
-  const repeats = zSkill ? NO_REPEATS : traitRepeats(data, d, use.user, use.skill)
+  const repeats = zSkill
+    ? NO_REPEATS
+    : stickerRepeats(data, d, use, traitRepeats(data, d, use.user, use.skill))
   const damagePercent = ((use.damagePercent ?? 100) * repeats.percent) / 100
   let used = false
   let knockouts = 0
@@ -1716,6 +1739,15 @@ function runResolvedSkill(data: GameData, d: Draft, use: SkillUse): void {
     used = true
   }
   if (!used) return
+  if (!use.partner) {
+    // Bộ đếm EXP theo chiêu: mọi lần skill được dùng / kích hoạt (sticker Exp, skill-stickers.md).
+    const activated = recordOf(d, use.user.id)
+    activated.activatedSkills = {
+      ...activated.activatedSkills,
+      [use.skill.id]: (activated.activatedSkills?.[use.skill.id] ?? 0) + 1
+    }
+    afterStickerUse(data, d, use.user, use.skill)
+  }
   if (ownAction) {
     // Sau khi dùng: skill kế tiếp trong lượt thấy skill này là "vừa dùng" (Round, Fusion Flare).
     recordSkillThisTurn(d, use.skill.id, use.side)

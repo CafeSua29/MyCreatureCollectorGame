@@ -29,7 +29,15 @@ const isSameCrystal = (stack: CrystalStack, key: CrystalKey): boolean =>
 
 /** Túi mới từ số lượng theo id (ví dụ đồ khởi đầu), chưa có tinh thể, sách và trang bị. */
 export function createInventory(stacks: Readonly<Record<string, number>> = {}): Inventory {
-  return { stacks: { ...stacks }, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
+  return {
+    stacks: { ...stacks },
+    crystals: [],
+    books: [],
+    equipment: [],
+    souls: [],
+    spirits: [],
+    stickers: []
+  }
 }
 
 /** Số lượng một item gộp chồng theo id (0 nếu không có). */

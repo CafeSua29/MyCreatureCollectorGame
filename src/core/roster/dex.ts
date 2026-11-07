@@ -16,7 +16,7 @@ import {
 } from '../registries'
 import { speciesInfoText } from '../gameData'
 import { researchStatus, type ResearchStatus } from './research'
-import type { DexState, GameData, GameState, LanguageCode } from '../model'
+import type { DexState, GameData, GameState, LanguageCode, Monster } from '../model'
 
 // Câu hỏi về Dex cho UI / mô phỏng (core dùng thẳng registries).
 export {
@@ -35,6 +35,8 @@ export const newDexState = (): DexState => ({
   seen: [],
   owned: [],
   shinyOwned: [],
+  bootlegSeen: [],
+  bootlegOwned: [],
   claimedMilestones: [],
   claimedRegions: [],
   hitParts: {}
@@ -68,25 +70,54 @@ export function syncDex(data: GameData, state: GameState): GameState {
   const ownedMonsters = [...state.party, ...state.storage]
   const owned = ownedMonsters.flatMap((m) => dexSpeciesOf(data, m))
   const shiny = ownedMonsters.filter((m) => m.shinyStacks > 0).flatMap((m) => dexSpeciesOf(data, m))
-  const met = [
-    ...(state.battle?.enemies ?? []),
-    ...(state.safari.visit ? [state.safari.visit.encounter.monster] : [])
-  ].flatMap((m) => dexSpeciesOf(data, m))
+  const met = metMonsters(state).flatMap((m) => dexSpeciesOf(data, m))
   const nextOwned = withNew(state.dex.owned, owned)
   const nextSeen = withNew(state.dex.seen, [...owned, ...met])
   const nextShiny = withNew(state.dex.shinyOwned, shiny)
+  // Bootleg theo loài + hệ (docs/rules/bootleg.md).
+  const bootlegOwned = ownedMonsters.flatMap((m) => bootlegKeysOf(data, m))
+  const bootlegMet =
+    met.length === 0 ? [] : metMonsters(state).flatMap((m) => bootlegKeysOf(data, m))
+  const nextBootlegOwned = withNew(state.dex.bootlegOwned, bootlegOwned)
+  const nextBootlegSeen = withNew(state.dex.bootlegSeen, [...bootlegOwned, ...bootlegMet])
   if (
     nextOwned === state.dex.owned &&
     nextSeen === state.dex.seen &&
-    nextShiny === state.dex.shinyOwned
+    nextShiny === state.dex.shinyOwned &&
+    nextBootlegOwned === state.dex.bootlegOwned &&
+    nextBootlegSeen === state.dex.bootlegSeen
   ) {
     return state
   }
   return {
     ...state,
-    dex: { ...state.dex, owned: nextOwned, seen: nextSeen, shinyOwned: nextShiny }
+    dex: {
+      ...state.dex,
+      owned: nextOwned,
+      seen: nextSeen,
+      shinyOwned: nextShiny,
+      bootlegOwned: nextBootlegOwned,
+      bootlegSeen: nextBootlegSeen
+    }
   }
 }
+
+/** Quái đang gặp (quái địch trong trận, quái của lượt khu bảo tồn). */
+const metMonsters = (state: GameState): Monster[] => [
+  ...(state.battle?.enemies ?? []),
+  ...(state.safari.visit ? [state.safari.visit.encounter.monster] : [])
+]
+
+/** Khóa Dex Bootleg của quái: `speciesId:elementId` cho mỗi loài Dex của nó; không Bootleg thì rỗng. */
+export function bootlegKeysOf(data: GameData, monster: Monster): string[] {
+  const elementId = monster.bootlegElementId
+  if (elementId === null) return []
+  return dexSpeciesOf(data, monster).map((speciesId) => bootlegDexKey(speciesId, elementId))
+}
+
+/** Khóa Dex Bootleg của một loài và một hệ. */
+export const bootlegDexKey = (speciesId: string, elementId: string): string =>
+  `${speciesId}:${elementId}`
 
 /** Cộng tiền × highestFloor và vật phẩm của một phần thưởng Dex. */
 function grantReward(

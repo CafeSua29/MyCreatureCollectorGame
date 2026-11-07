@@ -296,6 +296,9 @@ export function checkBiomes(data: GameData, issues: string[]): void {
   for (const biome of allMaps(data)) {
     const where = `Biome "${biome.id}"`
     issues.push(...checkNumber(biome.doubleChance, `${where}: doubleChance`, 0, 100))
+    if (biome.bootlegChance !== undefined) {
+      issues.push(...checkNumber(biome.bootlegChance, `${where}: bootlegChance`, 0, 100))
+    }
     if (biome.shinyChance !== undefined) {
       issues.push(...checkNumber(biome.shinyChance, `${where}: shinyChance`, 0, 100))
     }

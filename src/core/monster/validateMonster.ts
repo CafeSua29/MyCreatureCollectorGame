@@ -29,7 +29,12 @@ import {
   memoInReadOnlyScope
 } from '../shared'
 import { checkElementIds, isTeraElement } from '../gameData'
-import { canHaveGmaxFactor, isBookableSkill, validateEquippedItems } from '../inventory'
+import {
+  canHaveGmaxFactor,
+  isBookableSkill,
+  validateEquippedItems,
+  validateSkillStickers
+} from '../inventory'
 import { checkLifeFields } from './life'
 import { validateHistory } from './history'
 import { validateImprint } from './imprint'
@@ -206,6 +211,10 @@ function checkMergeFields(
   path: string
 ): string[] {
   const { mergePartner, mergedIntoId } = transform
+  // Rogue Fusion (docs/rules/rogue-fusion.md): chỉ trên quái chính của hợp thể.
+  if (transform.rogue !== undefined && (transform.rogue !== true || mergePartner === undefined)) {
+    return [`${path}.rogue chỉ được là true trên quái chính hợp thể`]
+  }
   if (mergePartner === undefined && mergedIntoId === undefined) return []
   if (transform.kind !== 'merge') return [`${path}: trường hợp thể chỉ có ở biến hình "merge"`]
   if (mergePartner !== undefined && mergedIntoId !== undefined) {
@@ -340,6 +349,14 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
 
   if (!(monster.raceId in data.races)) addIssue(`race không tồn tại "${monster.raceId}"`)
   checkOriginalElements(data, monster.elementIds, at('elementIds'), issues)
+  // Hệ Bootleg (docs/rules/bootleg.md): null hoặc id hệ tồn tại.
+  if (
+    monster.bootlegElementId !== null &&
+    (typeof monster.bootlegElementId !== 'string' ||
+      !Object.hasOwn(data.elements, monster.bootlegElementId))
+  ) {
+    issues.push(`${at('bootlegElementId')} phải là null hoặc id hệ tồn tại`)
+  }
 
   issues.push(...checkInteger(monster.level, at('level'), 1))
   issues.push(...checkBig(monster.exp, at('exp'), 0))
@@ -492,12 +509,22 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
     }
   }
 
+  // Sticker trên skill (docs/rules/skill-stickers.md); hỏng thì tính số ô như không có sticker.
+  const stickerIssues = validateSkillStickers(data, monster.skillStickers, {
+    skillIds: Array.isArray(monster.skillIds) ? monster.skillIds : [],
+    path: at('skillStickers')
+  })
+  issues.push(...stickerIssues)
+  const capacity = skillCapacity(
+    data,
+    stickerIssues.length > 0 ? { ...monster, skillStickers: {} } : monster
+  )
   if (
     !Array.isArray(monster.skillIds) ||
     monster.skillIds.length === 0 ||
-    monster.skillIds.length > skillCapacity(data, monster)
+    monster.skillIds.length > capacity
   ) {
-    addIssue(`cần từ 1 đến ${skillCapacity(data, monster)} skill`)
+    addIssue(`cần từ 1 đến ${capacity} skill`)
   } else {
     if (new Set(monster.skillIds).size !== monster.skillIds.length) addIssue('skill bị lặp')
     for (const skillId of monster.skillIds) {

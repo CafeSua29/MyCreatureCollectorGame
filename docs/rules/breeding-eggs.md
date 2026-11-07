@@ -17,6 +17,7 @@
   - **Trait:** random lại, tối đa 2 trait, 1 lấy từ bố và 1 lấy từ mẹ.
   - **Gen:** mỗi chỉ số dựa trên giá trị cao nhất của bố mẹ, random tăng hoặc giảm, không có trần, tối thiểu 1.
   - Tỉ lệ thấp ra **shiny**.
+  - **Bootleg** (`bootleg.md`, tung sau cùng): mẹ rồi bố Bootleg mỗi bên 25% truyền hệ Bootleg, không thì tỉ lệ như quái hoang.
   - Tỉ lệ thấp ra **đột biến**: tất cả gen đều tăng.
   - **Biến hình** (`transformation.md`): hệ Tera random trong hệ của con (tung sau shiny), không Gmax Factor, cấp Dynamax 0.
   - **Chiêu trứng** (egg move, như Pokémon thế hệ 6 trở đi; `inheritedEggSkills` ở `progression/breeding.ts`): loài con có `eggSkillIds` (dữ liệu loài, chỉ dạng đầu chuỗi; Pokémon nhập từ game gốc) thì con học mọi chiêu trứng mà **bố hoặc mẹ đang biết** (`skillIds`), theo thứ tự trong dữ liệu, sau skill level 1. Quá số ô thì bỏ skill cũ nhất (chiêu trứng được ưu tiên; skill level bị bỏ vẫn học lại được theo learnset). Chiêu trứng ghi vào `extraSkillIds` nên NPC học lại được (`skill-books.md`). Không tốn RNG. Chiêu trứng không học được qua sách (trừ khi cũng có trong `bookSkillIds` / cùng hệ theo luật sách).

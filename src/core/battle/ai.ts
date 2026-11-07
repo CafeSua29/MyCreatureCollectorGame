@@ -11,6 +11,7 @@ import { expectedDamage, newStatsMemo, type StatsMemo } from './damage'
 import { reactionEffectsOn } from './elementReactions'
 import { isBoobyTrapped } from './boobyTraps'
 import { currentStamina, maxStamina, staminaCostOf } from './stamina'
+import { stickerBonusOf } from './stickers'
 import { getCurrentHp, getMaxHp, holdTurnsLeft, skillMasteryBonus } from '../monster'
 import {
   SKILL_EFFECTS,
@@ -624,10 +625,11 @@ function scoreSkill(
     canAim(skill) &&
     (ctx.side === 'player' || d.battle.trainer !== null)
   let aim: string | undefined
-  // Hiệu ứng phụ: trait kiểu Serene Grace × mốc thuần thục của skill (như lúc đánh thật).
+  // Hiệu ứng phụ: trait kiểu Serene Grace × mốc thuần thục × sticker của skill (như lúc đánh thật).
   const chanceMultiplier =
     traitSecondaryChanceMultiplier(data, ctx.user) *
-    skillMasteryBonus(data, ctx.user, skill).secondaryChanceMultiplier
+    skillMasteryBonus(data, ctx.user, skill).secondaryChanceMultiplier *
+    (1 + stickerBonusOf(data, ctx.user, skill).effectChancePercent / 100)
   targets.forEach((target, index) => {
     // Illusion: AI thấy địch mang hệ của loài nó giả, máu / chỉ số vẫn là thật.
     const seen = isAlly ? target : perceivedFoe(data, d, target)
@@ -794,8 +796,14 @@ function selfCostAiValue(data: GameData, user: Monster, skill: Skill, hitChance:
  * phong cách món của nó). Mọi gợi ý khớp skill thì nhân dồn; Magic Room tắt món nên tắt cả gợi ý.
  */
 function aiHintMultiplier(data: GameData, d: Draft, user: Monster, skill: Skill): number {
-  if (monsterBattleContext(data, d, user)?.itemsDisabled) return 1
-  let multiplier = 1
+  // Orb Fusion còn đầy máu thì dùng Fusion Power (gốc, docs/rules/rogue-fusion.md).
+  const orbFull =
+    skill.fusionPower === true &&
+    user.damageTaken.lte(0) &&
+    user.statuses.some((status) => status.statusId === data.config.rogueFusion.orbStatusId)
+  const orb = orbFull ? data.config.fusionPower.orbAiMultiplier : 1
+  if (monsterBattleContext(data, d, user)?.itemsDisabled) return orb
+  let multiplier = orb
   for (const entry of user.equipment) {
     if (entry.storage !== 'instance') continue
     const hints = findEquipmentItem(data, entry.instance.baseItemId)?.unique?.aiHints ?? []

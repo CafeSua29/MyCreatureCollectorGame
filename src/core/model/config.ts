@@ -28,6 +28,9 @@ import type { TamerTalentConfig } from './tamerTalents'
 import type { SectConfig } from './sects'
 import type { TeamPresetConfig } from './teamPresets'
 import type { TradeConfig } from './trades'
+import type { StickerConfig, StickerRarity } from './stickers'
+import type { RogueFusionConfig } from './rogueFusion'
+import type { FusionPowerConfig } from './fusionPower'
 import type { AuctionConfig } from './auction'
 import type { AscensionConfig } from './ascension'
 import type { ChallengeConfig } from './challenge'
@@ -106,6 +109,9 @@ export interface BalanceConfig {
   /** Giá học lại skill ở thị trấn = relearnCostPerLevel × level quái. */
   relearnCostPerLevel: number
   shiny: ShinyConfig
+  bootleg: BootlegConfig
+  rogueFusion: RogueFusionConfig
+  fusionPower: FusionPowerConfig
   boss: BossConfig
   egg: EggConfig
   breeding: BreedingConfig
@@ -118,6 +124,7 @@ export interface BalanceConfig {
   rebirth: RebirthConfig
   crystal: CrystalConfig
   skillBook: SkillBookConfig
+  stickers: StickerConfig
   shop: ShopConfig
   market: MarketConfig
   equipment: EquipmentConfig
@@ -985,6 +992,24 @@ export interface ShinyConfig {
   traitId: string
   /** % quái hoang ra shiny (biome có thể ghi đè bằng Biome.shinyChance). */
   wildChance: number
+}
+
+/** Biến thể Bootleg (docs/rules/bootleg.md, Bootleg của Cassette Beasts). */
+export interface BootlegConfig {
+  /** % quái sinh ra là Bootleg (biome có thể ghi đè bằng Biome.bootlegChance). */
+  wildChance: number
+  /** % boss (trận tĩnh của gốc: boss tầng, boss ngẫu nhiên, boss thế giới) là Bootleg. */
+  staticChance: number
+  /** % con breeding nhận hệ Bootleg của bố / mẹ Bootleg (mẹ trước). */
+  inheritPercent: number
+  /** Hệ số thưởng EXP / tiền khi hạ / bắt quái Bootleg (nhân như shiny). */
+  rewardMultiplier: number
+  /** Nhân tỉ lệ Bootleg của quái trong đợt thú triều (docs/rules/events.md). */
+  beastTideMultiplier: number
+  /** % tỉ lệ Bootleg cộng thêm mỗi mức độ bất ổn tầng (docs/rules/instability.md). */
+  instabilityPercentPerLevel: number
+  /** % độ hiếm sticker khi quái Bootleg dùng Bí kíp thường (gốc 66,6% uncommon, 16,7% rare). */
+  stickerRarityChances: Record<StickerRarity, number>
 }
 
 /** Cân nặng ước lượng (mục "Cân nặng" ở battle.md). */

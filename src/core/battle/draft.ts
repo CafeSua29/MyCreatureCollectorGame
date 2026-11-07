@@ -424,20 +424,21 @@ function buildBattleContext(
   const foeSide = opponentOf(side)
   // Đếm gục / còn sống cả đội tốn kém (tính max HP từng quái) mà ít trait dùng: tính khi cần.
   const fainted = (team: Monster[]): number => team.filter((m) => isFainted(data, m)).length
+  // Quái còn sống trên sân mỗi phe tính một lần (dùng ở nhiều trường; mỗi lần tra max HP từng quái).
+  const aliveAllies = aliveOnField(data, d, side).map((entry) => entry.monster)
+  const aliveFoes = aliveOnField(data, d, foeSide).map((entry) => entry.monster)
   return {
     // Vào sân giữa lượt: firstTurn là lượt sau nên phần còn lại của lượt này tính 0.
     turnsOnField: d.battle.turn - volatile.firstTurn + 1,
     slotIndexes: slotsOf(d.battle, side).flatMap((id, index) => (id === monster.id ? [index] : [])),
-    allies: aliveOnField(data, d, side)
-      .map((entry) => entry.monster)
-      .filter((ally) => ally.id !== monster.id),
+    allies: aliveAllies.filter((ally) => ally.id !== monster.id),
     knockouts: volatile.knockouts ?? 0,
     absorbBoosts: volatile.absorbBoosts ?? [],
     side,
     battleTurn: d.battle.turn,
     stages: d.battle.stages[monster.id] ?? {},
     isBossBattle: d.battle.isBoss,
-    foes: aliveOnField(data, d, foeSide).map((entry) => entry.monster),
+    foes: aliveFoes,
     volatiles: d.battle.volatiles,
     record: d.battle.records[monster.id] ?? emptyRecord(),
     records: d.battle.records,
@@ -445,9 +446,7 @@ function buildBattleContext(
     counters: d.battle.counters,
     itemsDisabled: itemsDisabledFor(data, d, monster),
     // Unnerve: địch trên sân làm berry của quái không tác dụng (như Pokémon: không ăn được).
-    berriesBlocked: aliveOnField(data, d, foeSide).some(({ monster: foe }) =>
-      battleAbilityHasFlag(data, d, foe, 'blocksFoeBerries')
-    ),
+    berriesBlocked: aliveFoes.some((foe) => battleAbilityHasFlag(data, d, foe, 'blocksFoeBerries')),
     teamBonuses: d.battle.teamBonuses[side],
     frenzyStatPercent: frenzyStatPercent(data, d, { side, monster }),
     collectionStatPercent: side === 'player' ? collectionStatPercent(data, d.dex) : 0,
@@ -473,11 +472,8 @@ function buildBattleContext(
     abilitySuppressed:
       volatile.abilitySuppressed === true ||
       hasAbilitySuppressingStatus(data, monster) ||
-      (['player', 'enemy'] as const).some((onSide) =>
-        aliveOnField(data, d, onSide).some(
-          ({ monster: other }) =>
-            other.id !== monster.id && abilityHasFlag(data, other, 'suppressesAbilities')
-        )
+      [...aliveAllies, ...aliveFoes].some(
+        (other) => other.id !== monster.id && abilityHasFlag(data, other, 'suppressesAbilities')
       ),
     pendingSkill: pendingSkillOf(d, monster.id),
     previousSkill: previousSkillThisTurn(d),

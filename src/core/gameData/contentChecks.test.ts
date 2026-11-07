@@ -119,7 +119,15 @@ describe('config.ai (AI trận đấu)', () => {
         lowHpTargetWeight: 0,
         stageValuePerStep: 0,
         healWeight: 0,
-        statusWeights: { poison: 0, burn: 0, paralysis: 0, sleep: 0 },
+        statusWeights: {
+          poison: 0,
+          burn: 0,
+          paralysis: 0,
+          sleep: 0,
+          flinch: 0,
+          rogueOrb: 0,
+          potentiated: 0
+        },
         fieldWeight: 0,
         defendWeight: 0,
         provokeWeight: 0,

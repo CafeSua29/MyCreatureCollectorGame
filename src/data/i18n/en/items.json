@@ -1739,5 +1739,9 @@
   "luuLyToken": "Glass Star Lord Token",
   "khuonDucToken": "Mold Star Lord Token",
   "leHoiToken": "Festival Star Lord Token",
-  "khuanMauToken": "Mycelium Star Lord Token"
+  "khuanMauToken": "Mycelium Star Lord Token",
+  "fusedMaterial": "Fused Material",
+  "cyberMaterial": "Cyber Material",
+  "ritualCandle": "Ritual Candle",
+  "hackingGlove": "Hacking Glove"
 }

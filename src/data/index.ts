@@ -15,6 +15,7 @@ import statuses from './statuses.json'
 import minions from './minions.json'
 import fieldEffects from './fieldEffects.json'
 import equipmentAffixes from './equipmentAffixes.json'
+import stickerAttributes from './stickerAttributes.json'
 import tamerSkills from './tamerSkills.json'
 import tamerRealms from './tamerRealms.json'
 import affinityTiers from './affinityTiers.json'
@@ -103,6 +104,7 @@ export const rawGameData = {
   minions,
   fieldEffects,
   equipmentAffixes,
+  stickerAttributes,
   tamerSkills,
   tamerRealms,
   affinityTiers,

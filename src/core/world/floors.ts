@@ -36,6 +36,8 @@ export interface EncounterOdds {
   speciesShinyMultiplier?: (speciesId: string) => number
   /** Nhân tỉ lệ gặp boss ngẫu nhiên. */
   bossChanceMultiplier: number
+  /** Nhân tỉ lệ Bootleg (độ bất ổn tầng, thú triều; docs/rules/bootleg.md). */
+  bootlegMultiplier: number
 }
 
 /** Tầng hợp lệ: số nguyên an toàn ≥ 1. */

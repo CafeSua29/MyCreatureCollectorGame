@@ -103,7 +103,7 @@ Như ailment của Palworld (Sprain, Weakened, Fracture, Ulcer, Depression), m�
 - `upgradeBuilding { buildingId }` (thị trấn): xây (0 → 1) hoặc nâng một cấp; lỗi `unknownBuilding`, `buildingMaxLevel { buildingId, maxLevel }`, `notEnoughMoney`, `notEnoughItem`. Công trình `garden` thêm ô trống (thay `buyPlot` cũ).
 - `assignWorker { buildingId, monsterId }` (thị trấn): quái **trong kho** (`monsterNotInStorage`), rảnh (`monsterBusy`), không gục (`monsterFainted`; trọng thương vẫn làm được); công trình đã xây (`buildingNotBuilt`) còn ô (`buildingSlotsFull { buildingId, slots }`). Quái nhận `assignment { kind: 'dwelling', id: buildingId }` (dùng chung `expeditions.md`: một quái một việc, bị khóa: không vào đội, không fuse / breed / thả / dùng kẹo).
 - `unassignWorker { monsterId }` (ngoài trận, ở đâu cũng được): quái không làm ở động phủ thì `monsterNotWorking`.
-- `collectDwelling` (thị trấn): lấy hết đồ / sách trong kho động phủ về túi (không lo túi đầy giữa chừng; kho rỗng thì không đổi gì).
+- `collectDwelling` (thị trấn): lấy hết đồ / sách trong kho động phủ về túi (không lo túi đầy giữa chừng; kho rỗng thì không đổi gì). Bí kíp tung độ hiếm sticker lúc lấy về (`receiveBooks`, `skill-stickers.md`).
 - **Việc theo ngày** `dwelling` (`DAILY_TASKS`): bỏ quái đã rời kho (tọa hóa) khỏi công trình; mỗi công trình có sức > 0 làm việc theo `effect` (theo thứ tự `buildings.json`); linh điền lớn (`growCrops`); quái làm việc + `workerAffinity` (1) thân mật vào ngày chia hết cho `workerAffinityDays` (3). Quái làm việc vẫn già đi như quái trong kho.
 
 ## Linh điền

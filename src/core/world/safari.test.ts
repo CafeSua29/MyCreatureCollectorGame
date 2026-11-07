@@ -157,6 +157,17 @@ describe('danh sách loài', () => {
     expect(rollSafariRoster(safariData({ rosterSize: 1 }), 3)[0]).toHaveLength(1)
   })
 
+  it('nhóm tung nhớ theo bộ dữ liệu: cùng seed cùng kết quả, bộ dữ liệu khác không dùng nhầm', () => {
+    const wide = safariData({ rosterSize: 50, unmappedChance: 0 })
+    expect(rollSafariRoster(wide, 5)).toEqual(rollSafariRoster(wide, 5))
+    // Bộ dữ liệu mới (biến thể mô phỏng) đổi tỉ lệ nhóm: kết quả theo config mới, không theo bộ cũ.
+    const [onlyUnmapped] = rollSafariRoster(safariData({ rosterSize: 1, unmappedChance: 100 }), 5)
+    const [onlyMapped] = rollSafariRoster(wide, 5)
+    expect(onlyMapped[0]).toBe('weakling')
+    expect(onlyUnmapped).toHaveLength(1)
+    expect(onlyUnmapped).not.toContain('weakling')
+  })
+
   it('trọng số: catchRate thấp nặng hơn, phẩm cấp cao nhẹ hơn, luôn > 0', () => {
     const weakling = sure.species.weakling
     if (weakling.kind !== 'normal') throw new Error('fixture')

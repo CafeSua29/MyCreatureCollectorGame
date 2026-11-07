@@ -113,18 +113,8 @@ const ITEMS: Item[] = [
 ]
 
 const data = makeEquipmentData((raw) => {
+  // Chùn bước (flinch 1 lượt) đã có sẵn trong fixture chung (Rogue Fusion dùng).
   raw.items.push(...ITEMS)
-  raw.statuses.push({
-    id: 'flinch',
-    kind: 'debuff',
-    duration: { min: 1, max: 1 },
-    battleOnly: true,
-    hooks: [{ type: 'skipTurn', params: { chance: 100 } }]
-  })
-  raw.config.ai = {
-    ...raw.config.ai,
-    statusWeights: { ...raw.config.ai.statusWeights, flinch: 0.1 }
-  }
 })
 
 const gear = (baseItemId: string, value: number): Monster['equipment'][number] =>

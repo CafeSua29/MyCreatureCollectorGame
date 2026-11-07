@@ -109,6 +109,8 @@ function dexFromOwned(monsters: readonly Monster[]): GameState['dex'] {
     seen: [...owned],
     owned,
     shinyOwned,
+    bootlegSeen: [],
+    bootlegOwned: [],
     claimedMilestones: [],
     claimedRegions: [],
     hitParts: {}
@@ -150,7 +152,8 @@ describe('migrateState', () => {
       books: [],
       equipment: [],
       souls: [],
-      spirits: []
+      spirits: [],
+      stickers: []
     })
   })
 
@@ -392,14 +395,23 @@ describe('migrate v7 → v8: túi đồ chia phần', () => {
       books: [],
       equipment: [],
       souls: [],
-      spirits: []
+      spirits: [],
+      stickers: []
     })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 
   it('túi rỗng hoặc thiếu hẳn túi: thành túi rỗng', () => {
     const state = legacyGameState({ seed: 3, party: [makeMonster()] })
-    const empty = { stacks: {}, crystals: [], books: [], equipment: [], souls: [], spirits: [] }
+    const empty = {
+      stacks: {},
+      crystals: [],
+      books: [],
+      equipment: [],
+      souls: [],
+      spirits: [],
+      stickers: []
+    }
     expect(migrateState(asV7(state, {}), migrateData).inventory).toEqual(empty)
     expect(migrateState(asV7(state, undefined), migrateData).inventory).toEqual(empty)
   })

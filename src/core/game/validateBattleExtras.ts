@@ -438,15 +438,8 @@ export function checkRecords(
     if (record.lastConsumedItemId !== undefined && typeof record.lastConsumedItemId !== 'string') {
       issues.push(`${path}.lastConsumedItemId phải là id vật phẩm`)
     }
-    if (record.skillUses !== undefined) {
-      const uses = asObject(record.skillUses)
-      if (!uses) issues.push(`${path}.skillUses phải là object`)
-      for (const [skillId, count] of Object.entries(uses ?? {})) {
-        if (!Object.hasOwn(data.skills, skillId)) {
-          issues.push(`${path}.skillUses: skill không tồn tại "${skillId}"`)
-        }
-        issues.push(...checkInteger(count, `${path}.skillUses.${skillId}`, 1))
-      }
+    for (const key of ['skillUses', 'activatedSkills'] as const) {
+      checkSkillCounts(data, record[key], `${path}.${key}`, issues)
     }
     for (const key of ['skillTargetUses', 'elementUses'] as const) {
       if (record[key] === undefined) continue
@@ -457,6 +450,18 @@ export function checkRecords(
       }
     }
     checkRecordParts(data, record, path, issues)
+  }
+}
+
+/** Bộ đếm theo skill của bản ghi trận (bỏ trống được): skill tồn tại, số lần nguyên ≥ 1. */
+function checkSkillCounts(data: GameData, value: unknown, path: string, issues: string[]): void {
+  if (value === undefined) return
+  const uses = asObject(value)
+  if (!uses) issues.push(`${path} phải là object`)
+  for (const [skillId, count] of Object.entries(uses ?? {})) {
+    if (!Object.hasOwn(data.skills, skillId))
+      issues.push(`${path}: skill không tồn tại "${skillId}"`)
+    issues.push(...checkInteger(count, `${path}.${skillId}`, 1))
   }
 }
 

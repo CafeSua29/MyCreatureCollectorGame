@@ -54,6 +54,7 @@ Như hợp thể quỷ của Shin Megami Tensei. Code: `progression/fusionSkills
 - Skill kế thừa ghi vào `extraSkillIds` (dùng chung với sách kỹ năng, `skill-books.md`), kể cả khi chỉ vào chờ học, nên NPC học lại skill dạy lại được ở mọi level.
 - **Không kế thừa** (`inheritableSkillIds`, cùng luật `isBookableSkill`): chiêu Max / G-Max / Max Guard, hợp kích kỹ (thực tế không nằm trong `skillIds`). Thần thông thức tỉnh là skill thường nên kế thừa như skill thường (`awakening.md`). Skill ở ô nhân hình đang khóa của quái phụ (quái phụ không ở nhân hình) không kế thừa (`lockedSkillIds`, `human-form.md`); sức chứa skill của quái gốc theo `skillCapacity`.
 - Không đổi save. Mô phỏng (`lineage.csv`): "người chơi" kế thừa skill power cao nhất, quên skill yếu hơn (`chooseInheritance`); cột `skillPower`, `inheritedSkills`.
+- Skill quên để học skill kế thừa mang sticker thì sticker về túi (như đồ tự về túi); quên skill mang sticker Extra Slots mà quái gốc còn đủ skill thì `stickerSlotInUse` trước khi tung (`skill-stickers.md`).
 
 ## Fuse thất bại và bùa fuse
 

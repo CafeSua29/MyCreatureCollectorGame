@@ -1739,5 +1739,9 @@
   "luuLyToken": "Tín Vật Lưu Ly Tinh Quân",
   "khuonDucToken": "Tín Vật Khuôn Đúc Tinh Quân",
   "leHoiToken": "Tín Vật Lễ Hội Tinh Quân",
-  "khuanMauToken": "Tín Vật Khuẩn Mẫu Tinh Quân"
+  "khuanMauToken": "Tín Vật Khuẩn Mẫu Tinh Quân",
+  "fusedMaterial": "Vật liệu hợp thể",
+  "cyberMaterial": "Vật liệu số",
+  "ritualCandle": "Nến nghi lễ",
+  "hackingGlove": "Găng tay hack"
 }

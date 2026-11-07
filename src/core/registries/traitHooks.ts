@@ -65,6 +65,7 @@ import { LIFESPAN_TRAIT_HOOKS } from './lifespanTraitHooks'
 import { FRENZY_TRAIT_HOOKS } from './frenzyTraitHooks'
 import { raceMatchesAny, raceRefIds } from './races'
 import { uniformPercent } from './statPercentSources'
+import { stickerTraitHooks } from './stickers'
 import { SURVIVAL_TRAIT_HOOKS, type LethalSurvival } from './survivalTraitHooks'
 import { STAGE_TRAIT_HOOKS, type StageTraitEffect, type StageTraitEvent } from './stageTraitHooks'
 import { percentToMultiplier, scaleStats, validatePartialStats } from './traitHookUtils'
@@ -715,6 +716,7 @@ export const HOOK_SOURCE_KINDS = [
   'implant',
   'passiveSkill',
   'refinement',
+  'sticker',
   'rule'
 ] as const
 
@@ -735,6 +737,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'implant':
     case 'passiveSkill':
     case 'refinement':
+    case 'sticker':
       return kind
     case 'trait':
     case 'race':
@@ -1045,6 +1048,11 @@ function ownHooks(
   for (const skillId of battleSkillIds(monster)) {
     const hooks = data.skills[skillId]?.passive?.hooks
     if (hooks) push(hooks, 1, skillId, { kind: 'passiveSkill', ownerId })
+  }
+  // Sticker dán trên skill (docs/rules/skill-stickers.md): hook trait của thuộc tính (tự dùng skill,
+  // chỉ số bị động...), như trait cấp 1; sourceId = id sticker.
+  for (const { hook, stickerId } of stickerTraitHooks(data, monster)) {
+    push([hook], 1, stickerId, { kind: 'sticker', ownerId })
   }
   // Thiên phú đã nâng ở nhánh đang mở (docs/rules/monster-talents.md): hệ số = cấp; sourceId = id nút.
   for (const { node, rank } of activeTalents(data, monster)) {

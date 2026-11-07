@@ -36,6 +36,7 @@ const EVENT_BIG_FIELDS: EventBigFields = {
   tamerExpGained: 'amount',
   lost: 'moneyLost',
   traitDamage: 'amount',
+  splashDamage: 'amount',
   revived: 'amount',
   barrierAbsorbed: 'amount',
   maxHpChanged: 'amount',

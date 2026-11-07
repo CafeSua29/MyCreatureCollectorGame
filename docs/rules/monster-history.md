@@ -54,3 +54,4 @@ Mốc "chờ" có sẵn trong type, nhưng save chứa nó bị kiểm tra chặ
 - Breed: con ghi loài bố mẹ (nguồn `egg`). Fuse: quái gốc giữ lý lịch của mình, thêm mốc; lý lịch quái phụ mất theo nó. Tiến hóa giữ lý lịch, thêm mốc. Chết hẳn: hồn phách chép lý lịch (thêm mốc `died`), luyện hồn khí thì chép sang `soul.history` của món (`soul-relics.md`).
 - `MonsterView.history`: bản sao lý lịch đầy đủ (`roster.md`).
 - Kiểm tra save: kind hợp lệ, đủ trường, không trường lạ, loài thường / bóng tồn tại, ngày nguyên ≥ 0, tầng / level / số nguyên ≥ 1, trường gặp cùng null hoặc cùng có giá trị, số mốc ≤ `maxMilestones`.
+- Nguồn gốc `bootlegGift { gift: 'house' | 'quest' }`: quà Bootleg (`rogue-fusion.md`).

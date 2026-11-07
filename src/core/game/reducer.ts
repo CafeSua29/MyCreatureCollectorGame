@@ -140,7 +140,14 @@ import {
   sacrifice,
   warmEggsAtRest
 } from '../progression'
-import { applySkillBook, learnPendingSkill, relearnSkill, skipPendingSkill } from '../monster'
+import {
+  applySkillBook,
+  applySticker,
+  learnPendingSkill,
+  peelSticker,
+  relearnSkill,
+  skipPendingSkill
+} from '../monster'
 import {
   equipItem,
   moveToParty,
@@ -185,6 +192,7 @@ import {
   formContract,
   enhanceEquipment,
   rerollEquipmentAffixes,
+  rerollSticker,
   salvageEquipment,
   castEquipment,
   imbueEquipment,
@@ -195,7 +203,13 @@ import {
   moveSpirits,
   feedSpirit,
   breedSpirits,
-  collectSpiritPool
+  collectSpiritPool,
+  claimBootlegHouseGift,
+  claimQuestBootlegGift,
+  exchangeFusedMaterial,
+  hackRogueFusion,
+  newRogueFusionState,
+  lightRitualCandle
 } from '../roster'
 import {
   appendLog,
@@ -210,7 +224,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 111
+export const SAVE_VERSION = 112
 
 export function createGameState(options: {
   seed: number
@@ -273,6 +287,7 @@ export function createGameState(options: {
     sect: newSectState(),
     trades: newTradeState(),
     auction: newAuctionState(),
+    rogueFusion: newRogueFusionState(),
     teamPresets: newTeamPresetState(),
     trial: null,
     spiritPools: [],
@@ -448,7 +463,7 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
     case 'unassignWorker':
       return unassignWorker(state, action.monsterId)
     case 'collectDwelling':
-      return collectDwelling(state)
+      return collectDwelling(data, state)
     case 'stockFeedBox':
       return stockFeedBox(data, state, action)
     case 'takeFeedBox':
@@ -686,6 +701,20 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return relearnSkill(data, state, action.monsterId, action.skillId, action.forgetSkillId)
     case 'useSkillBook':
       return applySkillBook(data, state, action.monsterId, action.item)
+    case 'applySticker':
+      return applySticker(data, state, action)
+    case 'peelSticker':
+      return peelSticker(data, state, action)
+    case 'lightRitualCandle':
+      return lightRitualCandle(data, state, action)
+    case 'hackRogueFusion':
+      return hackRogueFusion(data, state)
+    case 'exchangeFusedMaterial':
+      return exchangeFusedMaterial(data, state, action)
+    case 'claimBootlegHouseGift':
+      return claimBootlegHouseGift(data, state)
+    case 'claimQuestBootlegGift':
+      return claimQuestBootlegGift(data, state)
     case 'useItem':
       return applyItem(data, state, action)
     case 'discardItem':
@@ -718,6 +747,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return enhanceEquipment(data, state, action.instanceId)
     case 'rerollEquipmentAffixes':
       return rerollEquipmentAffixes(data, state, action)
+    case 'rerollSticker':
+      return rerollSticker(data, state, action)
     case 'salvageEquipment':
       return salvageEquipment(data, state, action.instanceIds)
     case 'castEquipment':

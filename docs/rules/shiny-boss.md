@@ -12,6 +12,8 @@
 - Hạ hoặc bắt quái shiny: EXP và tiền × hệ số shiny (xem Phần thưởng).
 - Shiny từ breeding và cộng dồn khi fuse: xem mục Breeding và Fusing.
 
+Biến thể Bootleg (hệ khác hệ loài, độc lập với shiny): `bootleg.md`.
+
 ## Boss
 
 - Chỉ số khởi điểm ×2–5 (random). Khó bắt hơn quái thường. Boss tầng sau mạnh hơn nhờ level và gen theo tầng.

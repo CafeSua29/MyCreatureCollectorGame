@@ -88,6 +88,8 @@ export const ACHIEVEMENT_CONDITIONS: Readonly<
   dexOwned: plain((state) => state.dex.owned.length),
   dexPercent: plain((state, data) => dexOwnedPercent(data, state.dex), 100),
   shinySpecies: plain((state) => state.dex.shinyOwned.length),
+  // Số Bootleg (loài + hệ) đã sở hữu (docs/rules/bootleg.md).
+  bootlegForms: plain((state) => state.dex.bootlegOwned.length),
   // Số loài đã Hoàn thành nghiên cứu (docs/rules/species-research.md; Bùa Lấp Lánh ở bậc 100).
   researchCompleted: plain((state, data) => researchCompletedCount(data, state.research)),
   // Tầng cao nhất từng đạt (cùng mốc với tư chất, đổi theo phi thăng ở một chỗ).

@@ -635,10 +635,14 @@ function skillHasFlag(skill: Skill, flags: readonly MoveFlagCondition[]): boolea
   return flags.some((flag) => {
     if (flag === 'contact') return skill.contact === true
     if (flag === 'recoil') return (skill.recoilPercent ?? 0) > 0
-    if (flag === 'secondary') return skill.effects.some((effect) => hasChance(effect.params))
+    if (flag === 'secondary') return hasSecondaryEffect(skill)
     return skill.moveFlags?.includes(flag) === true
   })
 }
+
+/** Skill có hiệu ứng phụ (hiệu ứng có tỉ lệ `chance` < 100: Sheer Force, sticker Effect Chance). */
+export const hasSecondaryEffect = (skill: Skill): boolean =>
+  skill.effects.some((effect) => hasChance(effect.params))
 
 /** Params hiệu ứng skill có tỉ lệ `chance` < 100 (hiệu ứng phụ; ≥ 100 là chắc chắn, effectChance). */
 const hasChance = (params: unknown): boolean =>

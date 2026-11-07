@@ -10,6 +10,7 @@ import type { SerumEffectDef } from './implant'
 import type { BodyRefinementDef } from './refinement'
 import type { EssenceDef } from './essences'
 import type { DeityDef } from './deities'
+import type { StickerAttributeDef } from './stickers'
 import type { AchievementDef, TitleDef } from './achievements'
 import type { ArtifactSpiritDef } from './artifactSpirits'
 import type { EventDef, EventModifierDef } from './events'
@@ -938,6 +939,11 @@ export interface Skill {
    * dùng), `signature` = Z-Move riêng của loài (số cố định). Không nằm trong learnset.
    */
   zMove?: ZMoveKind
+  /**
+   * Skill gốc của Fusion Power (docs/rules/fusion-power.md): chỉ thực thể hợp thể có, chiêu thật sinh
+   * theo cặp loài lúc dùng; không có sách, không ở learnset.
+   */
+  fusionPower?: true
   /** Power Z-Move khi skill gây sát thương này thành Z-Move (thay bảng power; như Pokémon). */
   zPower?: number
   /**
@@ -1135,7 +1141,10 @@ export type ZMoveKind = (typeof ZMOVE_KINDS)[number]
 
 /** Chiêu chỉ có trong trận (chiêu Max, Z-Move): không học, không có thế, luôn trúng... */
 export const isBattleOnlyMove = (skill: Skill): boolean =>
-  skill.maxMove !== undefined || skill.zMove !== undefined
+  skill.maxMove !== undefined || skill.zMove !== undefined || skill.fusionPower === true
+
+/** Id skill gốc của Fusion Power (kiểm tra dữ liệu bắt buộc có, mang cờ `fusionPower`). */
+export const FUSION_POWER_SKILL_ID = 'fusionPower'
 
 /**
  * Phần spell Siralim của skill (mục "Spell Siralim" ở battle.md). Chi tiết hiệu ứng / bộ đếm /
@@ -1690,6 +1699,8 @@ export interface Biome {
   doubleChance: number
   /** % quái hoang ra shiny ở biome này; bỏ trống = config.shiny.wildChance. */
   shinyChance?: number
+  /** % quái hoang ra Bootleg ở biome này; bỏ trống = config.bootleg.wildChance (bootleg.md). */
+  bootlegChance?: number
   encounters: EncounterEntry[]
   drops: DropEntry[]
   /** Đồ rơi chung cho mọi boss của biome (boss tầng và boss ngẫu nhiên), ngoài đồ riêng. */
@@ -1903,6 +1914,7 @@ export interface RawGameData {
   minions: MinionDef[]
   fieldEffects: FieldEffectDef[]
   equipmentAffixes: EquipmentAffixDef[]
+  stickerAttributes: StickerAttributeDef[]
   tamerSkills: TamerSkill[]
   tamerRealms: TamerRealmDef[]
   affinityTiers: AffinityTierDef[]
@@ -1963,6 +1975,8 @@ export interface GameData {
   fieldEffects: Record<string, FieldEffectDef>
   /** Dòng phụ của trang bị (không có chữ riêng: UI mô tả theo hook). */
   equipmentAffixes: Record<string, EquipmentAffixDef>
+  /** Thuộc tính sticker skill (docs/rules/skill-stickers.md; không có chữ riêng như dòng phụ). */
+  stickerAttributes: Record<string, StickerAttributeDef>
   /** Kỹ năng ngự thú sư (docs/rules/tamer.md). */
   tamerSkills: Record<string, TamerSkill>
   /** Tên cảnh giới theo thứ tự (key = thứ tự trong JSON: cảnh giới 0, 1, 2...). */

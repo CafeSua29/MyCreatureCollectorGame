@@ -8,7 +8,7 @@ Code: `registries/capacity.ts` (điểm duy nhất: `capacityOf`, `bagUsed`, `ba
 
 ## Sức chứa
 
-- Hai loại (`CAPACITY_KINDS`): **kho quái** (`storage`, không tính đội) và **túi trang bị** (`bag`: món trang bị trong túi + hồn phách `inventory.souls` + khí linh trong kho khí linh `inventory.spirits` (`artifact-spirits.md`); không tính món đang lắp, khí linh ở Linh trì, món đang đi Khí giới bí cảnh). **Item gộp chồng** (thuốc, bóng, đá, đồ cầm tiêu hao, tinh thể...) **không giới hạn**.
+- Hai loại (`CAPACITY_KINDS`): **kho quái** (`storage`, không tính đội) và **túi trang bị** (`bag`: món trang bị trong túi + hồn phách `inventory.souls` + khí linh trong kho khí linh `inventory.spirits` (`artifact-spirits.md`) + sticker skill `inventory.stickers` (`skill-stickers.md`); không tính món đang lắp, sticker đang dán, khí linh ở Linh trì, món đang đi Khí giới bí cảnh). **Item gộp chồng** (thuốc, bóng, đá, đồ cầm tiêu hao, tinh thể...) **không giới hạn**.
 - `capacityOf` = `base` + `perExpansion` × số lần đã mở rộng + `realmBonus` × số mốc cảnh giới đã đạt (`countMilestonesReached` với `tamer.realmMilestones` 2, 5, 10 rồi gấp đôi mãi, như ô đồ cầm). Theo cảnh giới cao nhất từng đạt nên phi thăng không làm giảm sức chứa (`ascension.md`). Số ở `balance.json` khóa `capacity` (số tạm của roadmap):
 
   | Loại    | Ban đầu | Mỗi lần mở rộng | Giá lần thứ k | Mỗi mốc cảnh giới (không gian ngự thú) |
@@ -36,6 +36,7 @@ Code: `registries/capacity.ts` (điểm duy nhất: `capacityOf`, `bagUsed`, `ba
 
 - **Đồ rơi** (quái hoang, boss, trận NPC, rương bí cảnh / tháp; `gainEquipment`): món **bị mất**, log trận `equipmentLost { itemId, rarity }`. Event tặng trang bị: mất, log kết quả event `equipmentLost`.
 - **Không mua** món trang bị ở cửa hàng / cửa hàng tạm, **không đúc** (`castEquipment`), **không tháo** món trang bị từ quái về túi: `bagFull { capacity }` (state giữ nguyên, không mất tiền). Đồ cầm gộp chồng vẫn tháo được. Luyện hồn khí đổi một hồn phách lấy một món nên không bị chặn.
+- **Sticker** (`skill-stickers.md`): Bí kíp nhận khi túi đầy là Bí kíp thường (không thành sticker); bóc sticker / quên skill mang sticker khi túi đầy báo `bagFull`. Sticker trên quái bị mất tính như món đang lắp ở hai mục dưới.
 - **Mất quái theo ý người chơi** (thả `releaseMonster`, quái phụ fuse, fuse có thể mất quái gốc khi không có Bùa Hộ Mệnh, quái phụ hiến tế, cấy ghép mà lần thất bại kế tiếp sẽ mất quái): món đang lắp không đủ chỗ về túi thì báo `bagOverflow { lost }` (số món sẽ mất, `equipmentOverflow`, xét trường hợp xấu nhất); gửi lại action với **`discardOverflow: true`** (xác nhận) thì món trang bị về túi tới khi đầy, phần còn lại **mất** (`returnEquipmentWithinCapacity`); đồ gộp chồng luôn về túi.
 - **Mất quái ngoài ý người chơi** (tọa hóa, chết trong độ kiếp, chết thật trong trận, quái bỏ trốn khi khế ước thất bại, tự tháo vì hết điều kiện lắp): đồ vẫn về túi và **được vượt sức chứa**; hồn phách luôn vào túi (kể cả cấy ghép). Túi đang vượt thì mọi đường thêm món ở trên vẫn bị chặn tới khi bán / phân giải bớt.
 

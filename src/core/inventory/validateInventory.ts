@@ -7,6 +7,7 @@ import { asObject, checkInteger } from '../shared'
 import { itemStorage } from './itemRules'
 import { isBookableSkill } from './skillBooks'
 import { validateArtifactSpirits, validateEquipmentInstance } from './validateEquipment'
+import { validateStickerList } from './validateStickers'
 
 function checkStacks(data: GameData, value: unknown, path: string, issues: string[]): void {
   const stacks = asObject(value)
@@ -104,6 +105,7 @@ export function validateInventory(data: GameData, value: unknown, path = 'invent
       issues.push(...validateEquipmentInstance(data, instance, `${path}.equipment[${i}]`))
     )
   }
+  issues.push(...validateStickerList(data, inventory.stickers, `${path}.stickers`))
   // Kho khí linh: chỉ khí linh đã thu phục (docs/rules/artifact-spirits.md).
   issues.push(
     ...validateArtifactSpirits(data, inventory.spirits, {

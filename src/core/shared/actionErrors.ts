@@ -131,6 +131,26 @@ export interface ActionErrorParams {
   unknownSkill: { skillId: string }
   /** Sách kỹ năng không có tác dụng (không mất sách): đã biết / đang chờ học, hoặc không tương thích. */
   skillBookNoEffect: { monsterId: string; skillId: string; reason: 'known' | 'incompatible' }
+  // ---------- Rogue Fusion, quà Bootleg (docs/rules/rogue-fusion.md) ----------
+  /** Thực thể Rogue Fusion không bắt được (bắt thành phần sau khi nó tan). */
+  cannotCatchFusion: { monsterId: string }
+  /** Điềm báo đang có hiệu lực (nến / găng), chưa gặp Rogue Fusion. */
+  omenActive: { omen: 'candle' | 'hack' }
+  /** Vật phẩm không đổi được bằng Fused Material. */
+  notExchangeable: { itemId: string }
+  /** Quà đã nhận / chưa đủ điều kiện / không có loài để tặng. */
+  giftClaimed: { gift: 'house' | 'quest' }
+  giftLocked: { need: number; have: number }
+  giftUnavailable: { gift: 'house' | 'quest' }
+  // ---------- Sticker skill (docs/rules/skill-stickers.md) ----------
+  /** Không có sticker id này trong túi. */
+  stickerNotFound: { stickerId: string }
+  /** Skill của sticker không tương thích với quái (như sách kỹ năng), sticker không có Compatibility. */
+  stickerIncompatible: { monsterId: string; skillId: string }
+  /** Skill của quái không mang sticker nào. */
+  noSticker: { monsterId: string; skillId: string }
+  /** Bỏ sticker này (bóc, quên skill) làm mất ô Extra Slots đang có skill. */
+  stickerSlotInUse: { monsterId: string; skillId: string }
   // ---------- Tiến hóa, breeding, fusing ----------
   notPendingEvolution: { speciesId: string }
   evolutionConditionsUnmet: { speciesId: string }
@@ -604,6 +624,20 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   skillNotPending: ({ skillId }) => `Skill "${skillId}" không nằm trong danh sách chờ học`,
   cannotRelearnSkill: ({ skillId }) => `Quái không thể học lại skill "${skillId}"`,
   unknownSkill: ({ skillId }) => `Skill không tồn tại "${skillId}"`,
+  cannotCatchFusion: ({ monsterId }) =>
+    `Không bắt được hợp thể "${monsterId}": hạ để nó tan rồi bắt từng thành phần`,
+  omenActive: ({ omen }) => `Điềm báo "${omen}" đang có hiệu lực tới trận Rogue Fusion kế tiếp`,
+  notExchangeable: ({ itemId }) => `Không đổi được "${itemId}" bằng Fused Material`,
+  giftClaimed: ({ gift }) => `Đã nhận quà Bootleg "${gift}"`,
+  giftLocked: ({ need, have }) => `Cần hoàn thành ${need} nhiệm vụ (mới có ${have})`,
+  giftUnavailable: ({ gift }) => `Không có loài để tặng quà Bootleg "${gift}"`,
+  stickerNotFound: ({ stickerId }) => `Không có sticker "${stickerId}" trong túi`,
+  stickerIncompatible: ({ monsterId, skillId }) =>
+    `Quái "${monsterId}" không học được skill "${skillId}" của sticker`,
+  noSticker: ({ monsterId, skillId }) =>
+    `Skill "${skillId}" của quái "${monsterId}" không mang sticker`,
+  stickerSlotInUse: ({ monsterId, skillId }) =>
+    `Bỏ sticker trên skill "${skillId}" làm quái "${monsterId}" thiếu ô skill, quên bớt skill trước`,
   skillBookNoEffect: ({ skillId, reason }) =>
     reason === 'known'
       ? `Sách "${skillId}" không có tác dụng: quái đã biết hoặc đang chờ học skill này`

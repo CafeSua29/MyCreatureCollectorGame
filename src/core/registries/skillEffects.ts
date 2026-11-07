@@ -205,11 +205,15 @@ interface ApplyStatusParams {
   chance?: number
   /** Số lượt cố định thay thời hạn của trạng thái (Psychic Noise: 2). */
   turns?: number
+  /** Gây lên chính quái dùng (buff kèm đòn: Fusion Power), một lần cho cả chiêu. */
+  self?: true
 }
 
 const applyStatus: SkillEffectHandler = {
+  inflictsStatus: true,
   // Gây một lần cho cả chiêu, kể cả chiêu đánh nhiều lần.
   timing: 'afterHits',
+  userOnly: (params) => (params as ApplyStatusParams).self === true,
   validateParams(params, data) {
     const obj = asObject(params)
     if (!obj) return ['params phải là object']
@@ -219,14 +223,16 @@ const applyStatus: SkillEffectHandler = {
     }
     if (obj.chance !== undefined) issues.push(...checkNumber(obj.chance, 'chance', 0, 100))
     if (obj.turns !== undefined) issues.push(...checkInteger(obj.turns, 'turns', 1))
+    if (obj.self !== undefined && obj.self !== true) issues.push('self chỉ được là true')
     return issues
   },
-  apply(params, { target, rng, chanceMultiplier }) {
-    const { statusId, chance, turns } = params as ApplyStatusParams
+  apply(params, { user, target, rng, chanceMultiplier }) {
+    const { statusId, chance, turns, self } = params as ApplyStatusParams
     const [hit, next] = rollPercent(rng, effectChance(chance, chanceMultiplier))
+    const monsterId = self ? user.id : target.id
     return {
       ...noChanges(next),
-      statusChanges: hit ? [{ monsterId: target.id, statusId, ...(turns ? { turns } : {}) }] : []
+      statusChanges: hit ? [{ monsterId, statusId, ...(turns ? { turns } : {}) }] : []
     }
   },
   styled(params, mod) {
@@ -234,8 +240,14 @@ const applyStatus: SkillEffectHandler = {
     const chance = shiftedChance(typed.chance, mod.chanceShift)
     return chance === undefined ? typed : { ...typed, chance }
   },
-  aiValue(params, { data, target, targetIsAlly, field, side, chanceMultiplier }) {
-    const { statusId, chance } = params as ApplyStatusParams
+  aiValue(params, { data, user, target, targetIsAlly, field, side, chanceMultiplier }) {
+    const { statusId, chance, self } = params as ApplyStatusParams
+    // Buff lên chính mình: điểm như trạng thái đó trên phe mình (buff có lợi).
+    if (self) {
+      const own = statusAiValue(data, field, { monster: user, side }, statusId)
+      const sign = data.statuses[statusId].kind === 'buff' ? 1 : -1
+      return sign * own * (effectChance(chance, chanceMultiplier) / 100)
+    }
     if (targetIsAlly) return 0
     const value = statusAiValue(data, field, { monster: target, side: otherSide(side) }, statusId)
     // Buff lên địch (phản ứng hệ, skill có mặt xấu) có hại cho phe quái dùng.
@@ -252,6 +264,7 @@ interface ApplyRandomStatusParams {
 }
 
 const applyRandomStatus: SkillEffectHandler = {
+  inflictsStatus: true,
   timing: 'afterHits',
   validateParams(params, data) {
     const obj = asObject(params)

@@ -2,7 +2,7 @@
 // luyện, đồ nhận khi phân giải, giá và bảng bậc khi đúc. Hàm thuần, action ở roster/forgeActions.ts.
 
 import { toBig, type Decimal } from '../shared'
-import type { EquipmentInstance, GameData, NormalRarity } from '../model'
+import type { EquipmentInstance, GameData, NormalRarity, StickerInstance } from '../model'
 import { boostRareWeights } from './equipment'
 
 /** Giá cường hóa món cấp n → n + 1. */
@@ -58,6 +58,26 @@ export function imbueCost(
 
 /** Tổng Đá cường hóa đã dùng để đưa món từ cấp 1 lên `level`: 1 + 2 + … + (level − 1). */
 export const enhanceStonesUsed = (level: number): number => (level * (level - 1)) / 2
+
+/**
+ * Tẩy luyện sticker (docs/rules/skill-stickers.md): (1 + số thuộc tính khóa) × giá theo độ hiếm, đá
+ * Tẩy luyện thạch và tiền × highestFloor.
+ */
+export function stickerRerollCost(
+  data: GameData,
+  {
+    sticker,
+    locked,
+    highestFloor
+  }: { sticker: StickerInstance; locked: number; highestFloor: number }
+): { stones: number; money: Decimal } {
+  const { stones, moneyPerFloor } = data.config.stickers.reroll
+  const factor = 1 + locked
+  return {
+    stones: factor * stones[sticker.rarity],
+    money: toBig(moneyPerFloor[sticker.rarity]).times(factor).times(highestFloor)
+  }
+}
 
 /** Tẩy luyện: (1 + số dòng khóa) × rerollCost[bậc] Tẩy luyện thạch. */
 export const rerollCost = (data: GameData, instance: EquipmentInstance, locked: number): number =>

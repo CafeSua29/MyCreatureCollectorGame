@@ -36,6 +36,10 @@ import { checkImprintData } from './validateImprint'
 import { checkElementStatusImmunities, checkStatuses } from './validateStatuses'
 import { checkTeamData } from './validateTeam'
 import { checkMasteryConfig } from './validateMastery'
+import { checkStickerAttributes, checkStickerConfig } from './validateStickers'
+import { checkBootlegConfig } from './validateBootleg'
+import { checkRogueFusionConfig } from './validateRogueFusion'
+import { checkFusionPower } from './validateFusionPower'
 import { checkSynergyHold } from './validateSynergyHold'
 import { checkMoveStylesConfig, checkSkillStyles } from './validateMoveStyles'
 import { checkFrenzyData } from './validateFrenzy'
@@ -196,6 +200,7 @@ export function createGameData(raw: RawGameData): GameData {
     minions: indexById(raw.minions, 'minions', issues),
     fieldEffects: indexById(raw.fieldEffects, 'fieldEffects', issues),
     equipmentAffixes: indexById(raw.equipmentAffixes, 'equipmentAffixes', issues),
+    stickerAttributes: indexById(raw.stickerAttributes, 'stickerAttributes', issues),
     tamerSkills: indexById(raw.tamerSkills, 'tamerSkills', issues),
     tamerRealms: indexById(raw.tamerRealms, 'tamerRealms', issues),
     affinityTiers: indexById(raw.affinityTiers, 'affinityTiers', issues),
@@ -256,6 +261,11 @@ export function createGameData(raw: RawGameData): GameData {
   checkSkillStyles(data, issues)
   checkEquipmentConfig(data, issues)
   checkEquipmentAffixes(data, issues)
+  checkStickerConfig(data, issues)
+  checkStickerAttributes(data, issues)
+  checkBootlegConfig(data, issues)
+  checkRogueFusionConfig(data, issues)
+  checkFusionPower(data, issues)
   checkItems(data, issues)
   checkBiomeEquipmentDrops(data, issues)
   checkBiomes(data, issues)

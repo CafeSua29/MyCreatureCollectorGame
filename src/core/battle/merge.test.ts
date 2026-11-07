@@ -104,7 +104,8 @@ describe('hợp thể: bắt đầu', () => {
     expect(getMaxHp(data, a).eq(maxA.plus(maxB))).toBe(true)
     expect(a.damageTaken.toNumber()).toBe(10)
     expect(a.elementIds).toEqual(['fire', 'grass'])
-    expect(battleSkillIds(a)).toEqual(['idle', 'strike', 'wave'])
+    // Skill của cả hai, thêm Fusion Power của thực thể hợp thể (docs/rules/fusion-power.md).
+    expect(battleSkillIds(a)).toEqual(['idle', 'strike', 'wave', 'fusionPower'])
     // Hợp thể lượt này, cuối lượt còn 2 lượt.
     expect(a.battleTransform?.turnsLeft).toBe(2)
     expect(member(after, 'b').battleTransform?.mergedIntoId).toBe('a')

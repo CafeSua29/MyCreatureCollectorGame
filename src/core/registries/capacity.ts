@@ -2,7 +2,7 @@
 // được bao nhiêu, còn chỗ không": nơi nhận quái / trang bị gọi các hàm ở đây, không tự đếm.
 
 import { ActionError, countMilestonesReached, toBig, type Decimal } from '../shared'
-import { returnEquippedItem } from '../inventory'
+import { addSticker, returnEquippedItem } from '../inventory'
 import {
   bestRealmReached,
   type CapacityKind,
@@ -30,10 +30,16 @@ export function capacityOf(data: GameData, state: CapacityHolder, kind: Capacity
 
 /**
  * Số chỗ túi trang bị đang dùng: món trong túi + hồn phách + khí linh trong kho khí linh
- * (docs/rules/artifact-spirits.md; món đang lắp không tính).
+ * (docs/rules/artifact-spirits.md) + sticker (docs/rules/skill-stickers.md); món đang lắp, sticker
+ * đang dán không tính.
  */
-export const bagUsed = (inventory: Pick<Inventory, 'equipment' | 'souls' | 'spirits'>): number =>
-  inventory.equipment.length + inventory.souls.length + inventory.spirits.length
+export const bagUsed = (
+  inventory: Pick<Inventory, 'equipment' | 'souls' | 'spirits' | 'stickers'>
+): number =>
+  inventory.equipment.length +
+  inventory.souls.length +
+  inventory.spirits.length +
+  inventory.stickers.length
 
 /** Số chỗ túi còn trống (âm = đang vượt sức chứa, chỉ xảy ra khi đồ tự về túi lúc quái chết hẳn). */
 export const bagFreeSlots = (
@@ -58,11 +64,13 @@ export function assertBagRoom(
   }
 }
 
-/** Số món trang bị (bản riêng) đang lắp trên quái: chiếm chỗ túi nếu về túi. */
+/** Số món trang bị (bản riêng) đang lắp và sticker đang dán trên quái: chiếm chỗ túi nếu về túi. */
 export const equippedInstanceCount = (monsters: readonly Monster[]): number =>
   monsters.reduce(
     (total, monster) =>
-      total + monster.equipment.filter((entry) => entry.storage === 'instance').length,
+      total +
+      monster.equipment.filter((entry) => entry.storage === 'instance').length +
+      Object.keys(monster.skillStickers).length,
     0
   )
 
@@ -131,8 +139,8 @@ export function assertOverflowConfirmed(
 }
 
 /**
- * Trả món đang lắp của quái về túi trong giới hạn sức chứa (đồ gộp chồng luôn về): món trang bị
- * không còn chỗ thì mất (đã được xác nhận trước bằng assertOverflowConfirmed).
+ * Trả món đang lắp và sticker đang dán của quái về túi trong giới hạn sức chứa (đồ gộp chồng luôn
+ * về): món trang bị / sticker không còn chỗ thì mất (đã được xác nhận trước bằng assertOverflowConfirmed).
  */
 export function returnEquipmentWithinCapacity(
   data: GameData,
@@ -141,12 +149,16 @@ export function returnEquipmentWithinCapacity(
   monster: Monster
 ): Inventory {
   const capacity = capacityOf(data, holder, 'bag')
-  return monster.equipment.reduce(
+  const withEquipment = monster.equipment.reduce(
     (current, entry) =>
       entry.storage === 'instance' && bagUsed(current) >= capacity
         ? current
         : returnEquippedItem(current, entry),
     inventory
+  )
+  return Object.values(monster.skillStickers).reduce(
+    (current, sticker) => (bagUsed(current) >= capacity ? current : addSticker(current, sticker)),
+    withEquipment
   )
 }
 

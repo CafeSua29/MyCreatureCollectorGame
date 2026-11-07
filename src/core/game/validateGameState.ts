@@ -13,6 +13,7 @@ import { validateQuestState } from './validateQuestState'
 import { validateSectState } from './validateSectState'
 import { validateTeamPresetState, validateTradeState } from './validateTradeState'
 import { validateAuctionState } from './validateAuctionState'
+import { validateRogueFusionState } from './validateRogueFusionState'
 import { validateDwellingState } from './validateDwellingState'
 import { validateExpeditionState } from './validateExpeditionState'
 import { checkBattleTrainer, validateTrainerState } from './validateTrainerState'
@@ -730,6 +731,7 @@ export function validateGameState(data: GameData, value: unknown): string[] {
     checkEgg: (egg, path) => checkEgg(data, egg, path, issues),
     issues
   })
+  issues.push(...validateRogueFusionState(data, state.rogueFusion))
 
   // Hồn phách giữ id của quái đã chết: không trùng quái đang sống, cùng bộ đếm nextMonsterId.
   checkIds(

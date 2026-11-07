@@ -237,6 +237,8 @@ export interface SkillEffectHandler {
    * trên skill (cần ô sân của quái dùng); vật phẩm ném có hiệu ứng này thì kiểm tra dữ liệu báo lỗi.
    */
   switchesUserOut?: true
+  /** Hiệu ứng gây trạng thái (thuộc tính sticker cần skill gây trạng thái, skill-stickers.md). */
+  inflictsStatus?: true
   /**
    * Hiệu ứng `afterHits` chỉ lên quái dùng skill (tự đổi bậc, tự hồi máu): chạy một lần cho cả chiêu,
    * ở mục tiêu trúng đầu tiên, kể cả skill đánh mọi địch (như Pokémon: Clanging Scales −1 thủ một lần).

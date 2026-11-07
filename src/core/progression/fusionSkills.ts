@@ -5,6 +5,8 @@
 import { ActionError, malformedAction } from '../shared'
 import { isBookableSkill } from '../inventory'
 import {
+  assertSlotsFit,
+  detachOrphanStickers,
   lockedSkillIds,
   masteryExpForLevel,
   masteryOf,
@@ -131,4 +133,19 @@ export function applySkillInheritance(
     result = withExtraSkill(result, skillId)
   }
   return { ...result, skillIds, pendingSkillIds, skillMastery }
+}
+
+/**
+ * Skill quên khi kế thừa mang sticker Extra Slots mà quái gốc còn đủ skill: ném stickerSlotInUse
+ * trước khi tung (docs/rules/skill-stickers.md).
+ */
+export function assertInheritanceKeepsSlots(
+  data: GameData,
+  base: Monster,
+  sub: Monster,
+  inheritance: SkillInheritance
+): void {
+  const learned = applySkillInheritance(data, base, sub, inheritance)
+  const detached = detachOrphanStickers(learned).monster
+  for (const skillId of inheritance.forgetSkillIds) assertSlotsFit(data, detached, skillId)
 }

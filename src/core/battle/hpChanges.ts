@@ -35,6 +35,7 @@ import { emitTraitEvent } from './eventQueue'
 import { activeProtect } from './volatiles'
 import { punishTurnStartContact, storeBideDamage } from './multiTurnMoves'
 import { partnerTeamBonus } from '../tamer'
+import { dissolveRogueFusion } from './rogueFusion'
 
 /**
  * Loại mất máu: skill (đòn của quái), indirect (trạng thái, môi trường, bẫy, trait của quái khác),
@@ -347,7 +348,11 @@ export function loseHp(
     recordDamage(data, d, target, dealt, info)
     wakeOnDamage(data, d, target, info)
   }
-  if (dealt.gt(0) && isFainted(data, target)) faint(data, d, target, info)
+  if (dealt.gt(0) && isFainted(data, target)) {
+    // Rogue Fusion bị hạ thì tan ra thay vì gục (docs/rules/rogue-fusion.md).
+    if (dissolveRogueFusion(data, d, target)) return dealt
+    faint(data, d, target, info)
+  }
   return dealt
 }
 

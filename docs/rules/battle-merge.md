@@ -52,3 +52,5 @@ Code: `battle/merge.ts` (điều kiện `mergeBlocker`, cặp `mergePairOf`, h�
 ## Chưa có
 
 - UI (hiển thị thực thể, nút kỹ năng): chờ `docs/roadmap/ui-overhaul.md`.
+- Rogue Fusion (`rogue-fusion.md`): phe địch hợp thể sẵn lúc mở trận (`battleTransform.rogue`: không hết lượt, bị hạ thì tan ra, hai thành phần hồi đầy máu), không cần kỹ năng ngự thú sư.
+- Fusion Power (`fusion-power.md`): thực thể hợp thể có thêm skill `fusionPower`, chiêu thật cố định theo cặp loài (hệ, mục tiêu, tầm, buff / debuff), 100 thể lực.

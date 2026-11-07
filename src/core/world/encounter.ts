@@ -13,11 +13,14 @@ import {
   uniformBigStats,
   emptySoulLevels,
   emptyEffortValues,
-  teraElementChoices
+  rollBootleg,
+  teraElementChoices,
+  withBootleg
 } from '../monster'
 import {
   activeTimeMultiplier,
   ageDaysAtPercent,
+  dayPhaseOf,
   bloodlineGroupsOf,
   difficultyNumbers,
   isLargeMonster,
@@ -39,6 +42,7 @@ import {
 import {
   DEFAULT_GROWTH_RATE,
   type AbilitySlot,
+  type DayPhase,
   STAT_NAMES,
   STELLAR,
   type GameData,
@@ -189,6 +193,8 @@ export interface MonsterRollSpec {
    * Hệ số shiny theo loài vừa tung (nghiên cứu loài, docs/rules/species-research.md); bỏ trống = 1.
    */
   speciesShinyMultiplier?: (speciesId: string) => number
+  /** % ra Bootleg (docs/rules/bootleg.md); bỏ trống = config.bootleg.wildChance. */
+  bootlegChance?: number
   /** Trọng số loại trait riêng (Cây thần, docs/rules/gacha.md); bỏ trống = config.wild.traitKindWeights. */
   traitKindWeights?: TraitKindWeights
   /** Quái có già đi không (= options.lifespanEnabled của game). */
@@ -233,6 +239,7 @@ export function rollMonster(
     fusingBonusStats: uniformBigStats(0),
     traits,
     shinyStacks: 0,
+    bootlegElementId: null,
     bossMultiplier: 1,
     fused: false,
     lineage: [],
@@ -243,6 +250,7 @@ export function rollMonster(
     traitSlots: data.config.traitSlots.initial,
     pendingSkillIds: [],
     extraSkillIds: [],
+    skillStickers: {},
     pendingEvolutionIds: [],
     statuses: [],
     equipment: [],
@@ -328,29 +336,67 @@ export function rollMonster(
   // Trait làm việc (docs/rules/dwelling.md) tung cuối cùng, sau shiny (quái shiny có trait shiny).
   let workTraits: string[]
   ;[workTraits, rng] = rollWorkTraits(data, rng, monster)
-  return [{ ...monster, teraElementId, natureId, abilitySlot, bloodlines, workTraits }, rng]
+  // Bootleg (docs/rules/bootleg.md) tung sau cùng để không đổi kết quả random của quái cũ.
+  let bootlegElementId: string | null
+  ;[bootlegElementId, rng] = rollBootleg(data, rng, {
+    species,
+    chance: spec.bootlegChance ?? data.config.bootleg.wildChance
+  })
+  return [
+    withBootleg(
+      { ...monster, teraElementId, natureId, abilitySlot, bloodlines, workTraits },
+      bootlegElementId
+    ),
+    rng
+  ]
 }
+
+/** % Bootleg của boss (trận tĩnh của gốc: 2%) × hệ số hoàn cảnh (docs/rules/bootleg.md). */
+const staticBootlegChance = (data: GameData, site: FloorSite): number =>
+  data.config.bootleg.staticChance * (site.odds?.bootlegMultiplier ?? 1)
 
 const biomeShinyChance = (data: GameData, biome: Biome): number =>
   biome.shinyChance ?? data.config.shiny.wildChance
 
+/** Danh sách gặp đã nhân hệ số, nhớ theo (bộ dữ liệu, danh sách gốc, thời khắc). */
+const encountersAtCache = new WeakMap<
+  GameData,
+  WeakMap<readonly EncounterEntry[], Map<DayPhase, readonly EncounterEntry[]>>
+>()
+
 /**
  * Trọng số gặp nhân hệ số theo thời khắc của loài (docs/rules/calendar.md: loài ban ngày gặp nhiều
- * hơn ban ngày...); ngoài lịch (time null) giữ nguyên.
+ * hơn ban ngày...); ngoài lịch (time null) giữ nguyên. Hệ số chỉ phụ thuộc thời khắc nên nhớ lại
+ * (mỗi lần tung quái mà dựng lại cả danh sách thì tốn ~2% thời gian trận của mô phỏng).
  */
-const encountersAt = (
+function encountersAt(
   data: GameData,
   encounters: readonly EncounterEntry[],
   time: number | null
-): readonly EncounterEntry[] =>
-  time === null
-    ? encounters
-    : encounters.map((entry) => ({
-        ...entry,
-        weight:
-          entry.weight *
-          activeTimeMultiplier(data, data.species[entry.speciesId] as NormalSpecies, time)
-      }))
+): readonly EncounterEntry[] {
+  if (time === null) return encounters
+  const phase = dayPhaseOf(data, time)
+  let byList = encountersAtCache.get(data)
+  if (!byList) {
+    byList = new WeakMap()
+    encountersAtCache.set(data, byList)
+  }
+  let byPhase = byList.get(encounters)
+  if (!byPhase) {
+    byPhase = new Map()
+    byList.set(encounters, byPhase)
+  }
+  const cached = byPhase.get(phase)
+  if (cached) return cached
+  const result = encounters.map((entry) => ({
+    ...entry,
+    weight:
+      entry.weight *
+      activeTimeMultiplier(data, data.species[entry.speciesId] as NormalSpecies, time)
+  }))
+  byPhase.set(phase, result)
+  return result
+}
 
 /**
  * Spec chung của tầng: loài theo trọng số × thời khắc, level quái thường, hệ số gen, tỉ lệ shiny
@@ -368,6 +414,8 @@ function floorRollSpec(
     levelMax: levels.max,
     geneMultiplier: floorGeneMultiplier(data, floor),
     shinyChance: biomeShinyChance(data, biome) * (odds?.shinyMultiplier ?? 1),
+    bootlegChance:
+      (biome.bootlegChance ?? data.config.bootleg.wildChance) * (odds?.bootlegMultiplier ?? 1),
     ...(odds?.speciesShinyMultiplier
       ? { speciesShinyMultiplier: odds.speciesShinyMultiplier }
       : {}),
@@ -616,7 +664,11 @@ export function generateBoss(
   }))
   let monster: Monster
   // Boss giữ loài khi bật Randomizer: đồ rơi / môi trường riêng của boss tra theo loài.
-  ;[monster, rng] = rollMonster(data, rng, enemyRollSpec(data, site, encounters), id)
+  const spec = {
+    ...enemyRollSpec(data, site, encounters),
+    bootlegChance: staticBootlegChance(data, site)
+  }
+  ;[monster, rng] = rollMonster(data, rng, spec, id)
   ;[monster, rng] = rollBossMultiplier(data, rng, biome, monster)
   ;[monster, rng] = rollBossTransformTraits(data, rng, { floor: site.floor, boss: monster })
   return rollBossAgeAndPolarity(data, rng, { site, boss: monster })
@@ -635,7 +687,8 @@ export function generateFloorBoss(
   const spec = withDifficulty(data, site, {
     ...floorRollSpec(data, site, [{ speciesId: biome.floorBossSpeciesId, weight: 1 }]),
     levelMin: level,
-    levelMax: level
+    levelMax: level,
+    bootlegChance: staticBootlegChance(data, site)
   })
   let monster: Monster
   ;[monster, rng] = rollMonster(data, rng, spec, id)
@@ -746,6 +799,8 @@ export function generateTribulationEncounter(
     levelMin: level,
     levelMax: level,
     shinyChance: 0,
+    // Thiên Kiếp không phải loài gặp được: không Bootleg.
+    bootlegChance: 0,
     aging: false
   }
   let enemy: Monster

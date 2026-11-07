@@ -38,6 +38,7 @@ export const ACHIEVEMENT_CONDITION_TYPES = [
   'dexOwned',
   'dexPercent',
   'shinySpecies',
+  'bootlegForms',
   'researchCompleted',
   'highestFloor',
   'tamerRealm',

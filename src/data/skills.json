@@ -81818,5 +81818,42 @@
         }
       ]
     }
+  },
+  {
+    "id": "smack",
+    "elementId": "normal",
+    "category": "physical",
+    "power": 30,
+    "accuracy": 100,
+    "target": "enemy",
+    "effects": [],
+    "priority": 0,
+    "contact": true,
+    "typeless": true,
+    "staminaCost": 0
+  },
+  {
+    "id": "spit",
+    "elementId": "normal",
+    "category": "special",
+    "power": 30,
+    "accuracy": 100,
+    "target": "enemy",
+    "effects": [],
+    "priority": 0,
+    "typeless": true,
+    "staminaCost": 0
+  },
+  {
+    "id": "fusionPower",
+    "elementId": "normal",
+    "category": "physical",
+    "power": 200,
+    "accuracy": 100,
+    "target": "enemy",
+    "effects": [],
+    "priority": 0,
+    "staminaCost": 100,
+    "fusionPower": true
   }
 ]

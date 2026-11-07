@@ -79,6 +79,11 @@ const deathCauseField: FieldCheck = (_data, value, where) =>
     ? []
     : [`${where}: kiểu chết không hợp lệ "${String(value)}"`]
 
+const bootlegGiftField: FieldCheck = (_data, value, where) =>
+  value === 'house' || value === 'quest'
+    ? []
+    : [`${where}: quà Bootleg không hợp lệ "${String(value)}"`]
+
 const recruitMethodField: FieldCheck = (_data, value, where) =>
   RECRUIT_METHODS.some((method) => method === value)
     ? []
@@ -112,6 +117,7 @@ const ORIGIN_RULES: Record<HistoryOriginKind, FieldRules> = {
   trade: { npcNameId: npcNameField },
   gacha: {},
   auction: {},
+  bootlegGift: { gift: bootlegGiftField },
   unknown: {}
 }
 

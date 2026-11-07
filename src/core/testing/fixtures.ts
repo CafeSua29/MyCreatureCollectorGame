@@ -184,6 +184,74 @@ export function makeRawData(): RawGameData {
         bossDropChance: 0,
         reusableDropChance: 2
       },
+      // Bootleg tỉ lệ quái hoang 0 để test cũ không đổi RNG; test Bootleg tự đổi.
+      bootleg: {
+        wildChance: 0,
+        staticChance: 0,
+        inheritPercent: 25,
+        rewardMultiplier: 1.5,
+        beastTideMultiplier: 5,
+        instabilityPercentPerLevel: 10,
+        stickerRarityChances: { uncommon: 66.6, rare: 16.7 }
+      },
+      // Fusion Power như dữ liệu thật, trạng thái của fixture.
+      fusionPower: {
+        power: { single: 200, teamBuff: 150, teamDebuff: 112 },
+        statusTurns: 3,
+        shortStatusTurns: { flinch: 1 },
+        buffStatusIds: ['potentiated'],
+        debuffStatusIds: ['poison', 'burn', 'flinch'],
+        contactStatusByElement: {},
+        orbAiMultiplier: 100
+      },
+      // Rogue Fusion như dữ liệu thật nhưng tỉ lệ gặp 0 để test cũ không đổi RNG; test tự bật.
+      rogueFusion: {
+        chance: 0,
+        variantWeights: { standard: 1, flood: 0, swarm: 0, orb: 0 },
+        orbUnlockFloor: 1,
+        floodElementIds: ['fire', 'water'],
+        seenSpeciesChance: 0,
+        remasterChance: 0,
+        swarmRemasterChance: 0,
+        bootlegChances: { standard: 0, flood: 0, swarm: 0, orb: 0 },
+        swarmSize: 3,
+        swarmFusionAfter: 2,
+        orbStatusId: 'rogueOrb',
+        orbBarrierPercent: 100,
+        flinchStatusId: 'flinch',
+        fusedMaterial: { standard: 1, flood: 1, swarm: 1, orb: 5 },
+        cyberChances: { standard: 0, flood: 0, swarm: 0, orb: 100 },
+        bossFusedMaterial: 0,
+        fusedMaterialItemId: 'fusedMaterial',
+        cyberMaterialItemId: 'cyberMaterial',
+        hackingGloveItemId: 'hackingGlove',
+        ritualCandleItemId: 'ritualCandle',
+        candleSpeciesPercent: 50,
+        exchange: [{ itemId: 'ritualCandle', cost: 50 }],
+        houseGiftLevel: 5,
+        questGiftQuests: 2
+      },
+      // Sticker như gốc nhưng tỉ lệ 0 để test cũ không đổi RNG; test sticker tự đổi tỉ lệ.
+      stickers: {
+        rarityChances: { uncommon: 0, rare: 0 },
+        uncommonCounts: {
+          uncommon: [
+            { count: 1, weight: 3 },
+            { count: 2, weight: 2 }
+          ],
+          rare: [
+            { count: 1, weight: 1 },
+            { count: 2, weight: 2 }
+          ]
+        },
+        rareCounts: { uncommon: 0, rare: 1 },
+        maxAttributes: 3,
+        maxSkillSlots: 16,
+        reroll: {
+          stones: { uncommon: 1, rare: 2 },
+          moneyPerFloor: { uncommon: 100, rare: 300 }
+        }
+      },
       // Cửa hàng luôn 3 món; test số món tự đổi stockMin / stockMax.
       shop: {
         stockMin: 3,
@@ -284,7 +352,15 @@ export function makeRawData(): RawGameData {
         lowHpTargetWeight: 0.2,
         stageValuePerStep: 0.15,
         healWeight: 1,
-        statusWeights: { poison: 0.3, burn: 0.25, paralysis: 0.2, sleep: 0.35 },
+        statusWeights: {
+          poison: 0.3,
+          burn: 0.25,
+          paralysis: 0.2,
+          sleep: 0.35,
+          flinch: 0.1,
+          rogueOrb: 0.5,
+          potentiated: 0.3
+        },
         fieldWeight: 0.3,
         defendWeight: 0,
         provokeWeight: 0,
@@ -1497,6 +1573,128 @@ export function makeRawData(): RawGameData {
     // Số giống balance thật; ngủ 1–3 lượt (tung), còn lại cố định.
     minions: [],
     equipmentAffixes: [],
+    // Thuộc tính sticker mẫu: đủ loại hiệu ứng chính (cộng số, cờ, theo ô trống, lựa chọn, hook trait).
+    stickerAttributes: [
+      {
+        id: 'damage',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'power', params: {} },
+        valueParam: 'value',
+        range: { min: 10, max: 20 },
+        requires: ['damaging']
+      },
+      {
+        id: 'damagePerSlot',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'power', params: {} },
+        valueParam: 'value',
+        range: { min: 5, max: 5 },
+        perEmptySlot: true,
+        requires: ['damaging']
+      },
+      {
+        id: 'accuracy',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'accuracy', params: {} },
+        valueParam: 'value',
+        range: { min: 10, max: 10 },
+        requires: ['hasAccuracy']
+      },
+      {
+        id: 'heal',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'heal', params: {} },
+        valueParam: 'value',
+        range: { min: 10, max: 10 }
+      },
+      {
+        id: 'exp',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'exp', params: {} },
+        valueParam: 'value',
+        range: { min: 50, max: 50 }
+      },
+      {
+        id: 'extraHit',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'extraHits', params: { value: 1 } },
+        requires: ['damaging']
+      },
+      {
+        id: 'typeAdvantageCrit',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'typeAdvantageCrit', params: {} },
+        requires: ['damaging']
+      },
+      {
+        id: 'statusDuration',
+        rarity: 'uncommon',
+        weight: 1,
+        effect: { type: 'statusTurns', params: { value: 1 } },
+        requires: ['inflictsStatus']
+      },
+      {
+        id: 'compatibility',
+        rarity: 'rare',
+        weight: 1,
+        effect: { type: 'compatibility', params: {} }
+      },
+      {
+        id: 'extraSlot',
+        rarity: 'rare',
+        weight: 1,
+        effect: { type: 'extraSlot', params: {} }
+      },
+      {
+        id: 'useAgain',
+        rarity: 'rare',
+        weight: 1,
+        effect: { type: 'repeatChance', params: {} },
+        valueParam: 'value',
+        range: { min: 100, max: 100 }
+      },
+      {
+        id: 'passiveSpeed',
+        rarity: 'rare',
+        weight: 1,
+        effect: {
+          type: 'trait',
+          params: { hooks: [{ type: 'statModifier', params: { percent: { speed: 0 } } }] }
+        },
+        valueParam: 'hooks.0.params.percent.speed',
+        range: { min: 10, max: 10 }
+      },
+      {
+        id: 'useAtRoundEnd',
+        rarity: 'rare',
+        weight: 0,
+        effect: {
+          type: 'trait',
+          params: {
+            hooks: [
+              {
+                type: 'trigger',
+                params: {
+                  on: 'turnEnd',
+                  scope: 'self',
+                  chance: 0,
+                  effects: [{ do: 'cast', skillId: '$skill' }]
+                }
+              }
+            ]
+          }
+        },
+        valueParam: 'hooks.0.params.chance',
+        range: { min: 100, max: 100 }
+      }
+    ],
     // Kỹ năng ngự thú sư mẫu: mỗi mục tiêu một kỹ năng, số tròn.
     tamerSkills: [
       {
@@ -2029,6 +2227,29 @@ export function makeRawData(): RawGameData {
       }
     ],
     statuses: [
+      // Chùn bước 1 lượt và quả cầu của Orb Fusion (docs/rules/rogue-fusion.md).
+      {
+        id: 'flinch',
+        kind: 'debuff',
+        duration: { min: 1, max: 1 },
+        battleOnly: true,
+        hooks: [{ type: 'skipTurn', params: { chance: 100 } }]
+      },
+      {
+        id: 'potentiated',
+        kind: 'buff',
+        duration: { min: 3, max: 3 },
+        battleOnly: true,
+        hooks: [],
+        traitHooks: [{ type: 'statModifier', params: { percent: { attack: 50, spAttack: 50 } } }]
+      },
+      {
+        id: 'rogueOrb',
+        kind: 'buff',
+        battleOnly: true,
+        hooks: [{ type: 'barrier', params: { capPercent: 200 } }],
+        traitHooks: [{ type: 'statModifier', params: { percent: { hp: 100 } } }]
+      },
       {
         id: 'poison',
         kind: 'debuff',
@@ -2341,6 +2562,8 @@ export function makeRawData(): RawGameData {
     ],
     skills: [
       skill({ id: 'strike' }),
+      // Skill gốc của Fusion Power (docs/rules/fusion-power.md).
+      skill({ id: 'fusionPower', power: 200, staminaCost: 100, fusionPower: true }),
       skill({ id: 'quick', power: 10, priority: 1 }),
       skill({ id: 'shaky', accuracy: 50 }),
       skill({ id: 'blast', elementId: 'fire', category: 'special' }),
@@ -2598,6 +2821,11 @@ export function makeRawData(): RawGameData {
       // Đá của Thợ rèn: không bán để hàng của test cũ không đổi.
       { id: FIXTURE_ENHANCE_STONE_ID, category: 'material', price: 100 },
       { id: FIXTURE_REFINING_STONE_ID, category: 'material', price: 1500 },
+      // Rogue Fusion (docs/rules/rogue-fusion.md).
+      { id: 'fusedMaterial', category: 'material', price: 2000 },
+      { id: 'cyberMaterial', category: 'material', price: 5000 },
+      { id: 'ritualCandle', category: 'material', price: 25000 },
+      { id: 'hackingGlove', category: 'keyItem' },
       // Yêu đan của nhóm FIXTURE_CORE_GROUP_ID (ăn được như dữ liệu thật): không bán.
       ...FIXTURE_CORE_IDS.map((id) => ({
         id,
@@ -2879,6 +3107,7 @@ function baseFields(): Omit<
     gender: 'female',
     traits: [],
     shinyStacks: 0,
+    bootlegElementId: null,
     bossMultiplier: 1,
     fused: false,
     lineage: [],
@@ -2920,6 +3149,7 @@ function baseFields(): Omit<
     skillMastery: {},
     natureId: 'hardy',
     extraSkillIds: [],
+    skillStickers: {},
     soulLevels: { hp: 0, attack: 0, defense: 0, spAttack: 0, spDefense: 0, speed: 0 },
     effortValues: { hp: 0, attack: 0, defense: 0, spAttack: 0, spDefense: 0, speed: 0 },
     abilitySlot: 'first',
@@ -2954,7 +3184,7 @@ export function makeInventory(
   equipment: EquipmentInstance[] = [],
   books: BookStack[] = []
 ): Inventory {
-  return { stacks, crystals, books, equipment, souls: [], spirits: [] }
+  return { stacks, crystals, books, equipment, souls: [], spirits: [], stickers: [] }
 }
 
 /**

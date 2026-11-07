@@ -2,6 +2,7 @@
 
 import { getBaseSpecies } from './validateMonster'
 import { shinyFactor } from './shiny'
+import { bootlegRewardFactor } from './bootleg'
 import { offerSkills } from './skills'
 import { BIG_ZERO, maxBig, toBig, type BigValue, type Decimal } from '../shared'
 import { expForLevel, levelFromExp, monsterGrowthRate } from './growthRates'
@@ -22,9 +23,11 @@ export function resetMonsterLevel(data: GameData, monster: Monster): Monster {
   }
 }
 
-/** Hệ số thưởng của quái địch: × hệ số shiny × bossMultiplier. */
+/** Hệ số thưởng của quái địch: × hệ số shiny × hệ số Bootleg × bossMultiplier. */
 function rewardFactor(data: GameData, enemy: Monster): Decimal {
-  return shinyFactor(data, enemy).times(enemy.bossMultiplier)
+  return shinyFactor(data, enemy)
+    .times(bootlegRewardFactor(data, enemy))
+    .times(enemy.bossMultiplier)
 }
 
 /** EXP gốc của quái địch theo level, chưa nhân hệ số thưởng: expFactor × level². */

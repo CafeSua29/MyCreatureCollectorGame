@@ -143,7 +143,15 @@ function openTideBattle(
 ): GameState {
   const config = data.config.events.beastTide
   const floor = Math.max(1, state.highestFloor + config.floorOffset)
-  const site = floorSite(data, state, floor)
+  // Thú triều: tỉ lệ Bootleg × beastTideMultiplier (docs/rules/bootleg.md).
+  const site: FloorSite = {
+    ...floorSite(data, state, floor),
+    odds: {
+      shinyMultiplier: 1,
+      bossChanceMultiplier: 1,
+      bootlegMultiplier: data.config.bootleg.beastTideMultiplier
+    }
+  }
   const waveStrength = 1 + (config.strengthPerWavePercent * (wave - 1)) / 100
   const strength = king ? waveStrength * config.kingStrength : waveStrength
   const encounter = king

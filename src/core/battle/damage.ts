@@ -31,6 +31,7 @@ import {
   skillMasteryBonus,
   type ComputeStatsOptions
 } from '../monster'
+import { NO_STICKER_BONUS } from '../inventory'
 import { expectedHitCount } from './multiHit'
 import { fixedDamageAmount } from './fixedDamage'
 import { invulnerableHitMultiplier } from './multiTurnMoves'
@@ -58,6 +59,7 @@ import {
   spellAttackBlend,
   spellDefenseIgnored,
   spellPowerMultiplier,
+  stickerSkillBonus,
   traitCritChance,
   traitCritStages,
   traitCritMultiplier,
@@ -81,6 +83,7 @@ import {
   type BattleField,
   type BattleStages,
   type BigStats,
+  type StickerSkillBonus,
   type DamageArena,
   type FixedDamage,
   type GameData,
@@ -275,13 +278,18 @@ function screenMultiplier({ data, arena, skill, attacker }: DamageFormulaInput):
  * hoặc trait miễn chí mạng thì 0; skill luôn chí mạng thì 100; không thì tỉ lệ theo bậc chí mạng
  * (skill + Focus Energy + trait critStage, như Pokémon), rồi trait % / luôn chí mạng của bên đánh.
  */
-function critChanceOf(input: DamageFormulaInput): number {
+function critChanceOf(input: DamageFormulaInput, effectiveness: number): number {
   const { data, arena, skill } = input
   if (arena && isCriticalBlocked(data, arena.field, arena.defenderSide)) return 0
   const strike = strikeOf(input)
+  const sticker = stickerOf(input)
+  // Sticker Type Advantage Crit: khắc hệ thì luôn chí mạng (docs/rules/skill-stickers.md).
+  if (sticker.typeAdvantageCrit && effectiveness > 1) return 100
   if (skill.alwaysCrit) return traitCritChance(strike, 100)
   const stage = (skill.critStage ?? 0) + (arena?.attackerFocusStages ?? 0) + traitCritStages(strike)
-  return traitCritChance(strike, critStageChance(data, stage))
+  const chance = traitCritChance(strike, critStageChance(data, stage))
+  // Sticker Crit Rate cộng thẳng điểm % như gốc (không nhân).
+  return Math.min(100, chance + sticker.critChancePercent)
 }
 
 /** % chí mạng ở bậc `stage`: bậc 0 = critChance, bậc ≥ 1 theo critStageChances (vượt thì mục cuối). */
@@ -293,7 +301,10 @@ export function critStageChance(data: GameData, stage: number): number {
 
 /** Hệ số chí mạng thật (theo trait của bên đánh) hoặc màn chắn: chí mạng bỏ qua màn chắn. */
 const critOrScreen = (input: DamageFormulaInput, critical: boolean, screen: number): number =>
-  critical ? traitCritMultiplier(strikeOf(input), input.data.config.battle.critMultiplier) : screen
+  critical
+    ? traitCritMultiplier(strikeOf(input), input.data.config.battle.critMultiplier) +
+      stickerOf(input).critDamagePercent / 100
+    : screen
 
 const percentFactor = (percent: number): number => Math.max(0, 1 + percent / 100)
 
@@ -515,6 +526,14 @@ function comboAttack(input: DamageFormulaInput, own: Decimal): Decimal {
   return own.plus(stats[input.skill.category === 'physical' ? 'attack' : 'spAttack']).div(2)
 }
 
+/** Sticker Alternative Attack: chỉ số ghi trên sticker làm công nếu cao hơn (skill-stickers.md). */
+function stickerAttack(input: DamageFormulaInput, stats: BigStats, base: Decimal): Decimal {
+  return stickerOf(input).attackStats.reduce(
+    (best, stat) => (stats[stat].gt(best) ? stats[stat] : best),
+    base
+  )
+}
+
 /** Chỉ số công thật: trộn chỉ số gốc với chỉ số thay thế theo % (spell, trait attackStat). */
 function blendedAttack(input: DamageFormulaInput, stats: BigStats, base: Decimal): Decimal {
   const spellBlend = spellAttackBlend(input.skill)
@@ -650,7 +669,17 @@ function isPhysicalStrike(
  * áp (skill chung của hai quái), chiêu Max không áp (skillMasteryBonus).
  */
 const masteryPowerMultiplier = (input: DamageFormulaInput): number =>
-  input.partner ? 1 : skillMasteryBonus(input.data, input.attacker, input.skill).powerMultiplier
+  input.partner
+    ? 1
+    : skillMasteryBonus(input.data, input.attacker, input.skill).powerMultiplier *
+      percentFactor(stickerOf(input).powerPercent)
+
+/**
+ * Hiệu lực sticker trên skill của bên đánh (docs/rules/skill-stickers.md); hợp kích kỹ không áp (skill
+ * chung của hai quái, không nằm trên quái).
+ */
+const stickerOf = (input: DamageFormulaInput): StickerSkillBonus =>
+  input.partner ? NO_STICKER_BONUS : stickerSkillBonus(input.data, input.attacker, input.skill.id)
 
 /**
  * Sát thương một đòn trước khi làm tròn, với hệ số chí mạng (hoặc màn chắn, xem critOrScreen) và
@@ -705,7 +734,11 @@ function rawDamage(
       : skill.attackFrom
         ? (skill.attackFrom.who === 'target' ? defenderStats : attackerStats)[skill.attackFrom.stat]
         : attackerStats[attackStat]
-  const attack = blendedAttack(input, attackerStats, comboAttack(input, baseAttack))
+  const attack = blendedAttack(
+    input,
+    attackerStats,
+    stickerAttack(input, attackerStats, comboAttack(input, baseAttack))
+  )
   const strike = strikeOf(input)
   const ignored = Math.min(100, traitDefenseIgnoredPercent(strike) + spellDefenseIgnored(skill))
   const defenseStat = skill.defenseStat ?? (physical ? 'defense' : 'spDefense')
@@ -996,7 +1029,7 @@ export function computeDamage(rawInput: DamageInput): DamageResult {
   }
 
   // Tỉ lệ 0 (bị chặn) và 100 (luôn chí mạng) không tốn RNG (rollPercent).
-  const [critical, afterCrit] = rollPercent(input.rng, critChanceOf(input))
+  const [critical, afterCrit] = rollPercent(input.rng, critChanceOf(input, effectiveness))
   const [roll, rng] = nextFloat(afterCrit)
   const { min, max } = varianceRange(input)
   const random = min + roll * (max - min)
@@ -1085,7 +1118,7 @@ export function damageRange(rawInput: DamageFormulaInput): DamageRange {
         }).floor()
       )
     )
-  const critPercent = critChanceOf(input)
+  const critPercent = critChanceOf(input, effectiveness)
   return {
     min: strike(false, min),
     max: strike(false, max),
@@ -1114,7 +1147,7 @@ export function expectedDamage(rawInput: DamageFormulaInput): Decimal {
         : fixed.amount
     return minBig(amount, getCurrentHp(data, input.defender))
   }
-  const critRate = Math.min(1, critChanceOf(input) / 100)
+  const critRate = Math.min(1, critChanceOf(input, effectiveness) / 100)
   const screen = screenMultiplier(input)
   const { min, max } = varianceRange(input)
   const perHit = rawDamage(input, effectiveness, {
@@ -1125,7 +1158,7 @@ export function expectedDamage(rawInput: DamageFormulaInput): Decimal {
   })
   // Mỗi đòn thật tối thiểu 1 sát thương.
   const { minHitsBonus } = skillMasteryBonus(data, input.attacker, skill)
-  const hits = expectedHitCount(battle, skill, minHitsBonus)
+  const hits = expectedHitCount(battle, skill, minHitsBonus) + stickerOf(input).extraHits
   // Đòn thứ n power × n: trung bình (n + 1) / 2 lần power gốc mỗi đòn.
   const escalation = skill.escalatingHits ? (hits + 1) / 2 : 1
   return maxBig(1, perHit).times(hits).times(escalation)

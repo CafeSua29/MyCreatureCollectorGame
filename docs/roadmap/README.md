@@ -12,9 +12,7 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [skill-stickers.md](docs/roadmap/skill-stickers.md): Sticker skill (Cassette Beasts: sách kỹ năng có độ hiếm và thuộc tính ngẫu nhiên gắn vào skill)
 - [body-marks.md](docs/roadmap/body-marks.md): Dấu ấn trên quái (sẹo, đột biến, thích nghi, ám ảnh, chiến tích; từ phá bộ phận, chí mạng, suýt chết, hiểm địa, đan dược...; đột biến di truyền)
-- [bootleg.md](docs/roadmap/bootleg.md): Biến thể Bootleg (Cassette Beasts: quái hiếm mang hệ khác loài gốc)
 - [devolution.md](docs/roadmap/devolution.md): Thoái hóa (Digimon Cyber Sleuth: về dạng trước để đổi nhánh tiến hóa)
 - [star-rank.md](docs/roadmap/star-rank.md): Bậc sao (Fomon: ghép quái cùng chuỗi tiến hóa để lên sao, không trần)
 - [equipment-sets.md](docs/roadmap/equipment-sets.md): Bộ trang bị mọi bậc (bộ ngẫu nhiên kiểu Summoners War + bộ đặt tên kiểu Diablo / Grim Dawn)
@@ -130,9 +128,9 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
        11c. **Tính năng lấy từ game khác** (chủ project chốt 2026-11-03), theo thứ tự phụ thuộc: luật trận dùng chung trước (đổi cân bằng nhiều, mô phỏng sớm), sticker sau thể lực (có thuộc tính giảm thể lực), Bootleg sau sticker (tăng tỉ lệ thuộc tính), thoái hóa sau Bootleg (giữ hệ Bootleg), ân huệ bí cảnh sau thể lực (ân huệ hồi thể lực):
        1. Phản ứng hệ. **Đã xong** (2026-11-03; luật ở `docs/rules/element-reactions.md`; dùng lại đổi hệ tạm của Soak thay `transmutedElementId`, một mục nhiều cặp thay một mục mỗi cặp, thêm trạng thái đổi mục tiêu / dẫn hệ; chủ project yêu cầu thêm: ba hệ Thủy tinh / Nhựa / Kim tuyến, đủ mọi cặp trên bảng 22 hệ, save v103; chiêu gốc chưa nhập ghi ở `element-reactions.md`).
        2. Thể lực cho skill. **Đã xong** (2026-11-05; luật ở `docs/rules/stamina.md`; làm trước vì tường của Cassette Beasts cần; lưu phần đã mất ở bản ghi trận thay `BattleFighter.stamina`, 1 AP của Cassette Beasts = 10 thể lực; trait Phereon dựa trên AP / mana đã xong 2026-11-06, `content-sources-real.md`; giá theo game gốc (PP, Charges, mana), giá suy ra theo hiệu ứng, chiêu / trait / trạng thái Temtem đã xong 2026-11-06, `content-sources-temtem.md`).
-       3. Sticker skill (`skill-stickers.md`).
+       3. Sticker skill. **Đã xong** (2026-11-07; luật ở `docs/rules/skill-stickers.md`; thuộc tính quy đổi đủ bảng gốc, cả thuộc tính cần hệ thống mới qua hook trait / registry; nhập Smack / Spit; save v112; tẩy luyện sticker ở Thợ rèn, bộ đếm EXP theo chiêu cho thuộc tính Exp làm cùng đợt).
        4. Dấu ấn trên quái (`body-marks.md`).
-       5. Biến thể Bootleg (`bootleg.md`).
+       5. Biến thể Bootleg. **Đã xong** (2026-11-07, làm sớm cùng sticker; luật ở `docs/rules/bootleg.md`; save v112; mốc thưởng sưu tập làm bằng thành tựu có bậc; tỉ lệ theo độ bất ổn / thú triều; không có đá đổi hệ vì gốc không có; cùng đợt làm Rogue Fusion và mọi cách tạo Bootleg của gốc, `docs/rules/rogue-fusion.md`).
        6. Thoái hóa (`devolution.md`).
        7. Bậc sao (`star-rank.md`).
        8. Bộ trang bị (`equipment-sets.md`).

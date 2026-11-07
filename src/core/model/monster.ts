@@ -8,6 +8,7 @@ import type { Decimal } from '../shared'
 import type { MonsterHistory } from './history'
 import type { Imprint } from './imprint'
 import type { SkillMastery } from './mastery'
+import type { StickerInstance } from './stickers'
 import type { BigStats, Stats } from './stats'
 import type { BattleForm, BattleTransform } from './transform'
 
@@ -82,6 +83,11 @@ export interface Monster {
   /** 0 = thường, 1 = shiny, 2 = shiny ×2... */
   shinyStacks: number
   /**
+   * Hệ Bootleg (docs/rules/bootleg.md): có thì quái mang đúng một hệ này thay hệ của loài, giữ qua
+   * tiến hóa; null = quái thường.
+   */
+  bootlegElementId: string | null
+  /**
    * Số stack hiến tế (docs/rules/sacrifice.md), nguyên ≥ 0, không trần: mỗi stack + % mọi chỉ số.
    * Fuse cộng stack của quái phụ; breeding không truyền.
    */
@@ -144,6 +150,11 @@ export interface Monster {
    * skill dạy lại được. Không trùng, theo thứ tự học (docs/rules/skill-books.md).
    */
   extraSkillIds: string[]
+  /**
+   * Sticker đang dán theo skill (docs/rules/skill-stickers.md): khóa luôn là skill đang biết
+   * (`skillIds`), thuộc tính chỉ áp cho skill đó. Quên skill / mất quái thì sticker về túi.
+   */
+  skillStickers: Record<string, StickerInstance>
   /** Các loài có thể tiến hóa thành, chờ người chơi chọn (khi nhiều hướng level cùng đủ). */
   pendingEvolutionIds: string[]
   /**

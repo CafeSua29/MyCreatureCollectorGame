@@ -37,13 +37,14 @@ import {
   assertNotLocked,
   betterSpiritVirus,
   computeStats,
+  detachOrphanStickers,
   fuseBloodlines,
   mapBigStats,
   mergeTraitLevel,
   soulFuseRefund,
   traitSlotCap
 } from '../monster'
-import { addSoulCrystalPoints, removeItems } from '../inventory'
+import { addSoulCrystalPoints, addSticker, removeItems } from '../inventory'
 import {
   assertOverflowConfirmed,
   fusionAidProtectsBase,
@@ -80,6 +81,7 @@ import { applyEssenceGrowth } from './essences'
 import {
   NO_SKILL_INHERITANCE,
   applySkillInheritance,
+  assertInheritanceKeepsSlots,
   inheritableSkillIds,
   parseSkillInheritance,
   type SkillInheritance
@@ -343,6 +345,7 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
   const protectItem = findFusionAid(data, order.protectItemId, 'protect')
   const isProtected = protectItem !== null && fusionAidProtectsBase(protectItem)
   const inheritance = parseSkillInheritance(data, base, sub, order)
+  assertInheritanceKeepsSlots(data, base, sub, inheritance)
   const choices = parseFusionChoices(data, { essences: state.essences, base, sub }, order)
   // Kiểm tra trước khi tung: đội phải còn ít nhất 1 con kể cả khi thất bại.
   if (worstCaseParty(state, order, isProtected).length === 0) {
@@ -378,6 +381,13 @@ export function fuse(data: GameData, state: GameState, order: FuseOrder): GameSt
     const kind = succeeded ? 'fused' : 'fuseFailed'
     const day = dayOf(state.time)
     result = addMilestone(data, result, { day, kind, subSpeciesId: sub.baseSpeciesId })
+  }
+  // Sticker trên skill quái gốc quên khi kế thừa về túi (docs/rules/skill-stickers.md; như đồ tự về
+  // túi, đã kiểm tra ô ở trên).
+  if (result) {
+    const detached = detachOrphanStickers(result)
+    result = detached.monster
+    inventory = detached.stickers.reduce(addSticker, inventory)
   }
   // Món trên quái phụ (và quái gốc nếu mất) tự về túi, kèm một phần hồn tinh đã dùng
   // (docs/rules/soul-levels.md).

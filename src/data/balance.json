@@ -298,6 +298,7 @@
       "vulnerable": 0.25,
       "weak": 0.25,
       "flinch": 0.1,
+      "rogueOrb": 0.5,
       "confusion": 0.25,
       "seeded": 0.3,
       "minimized": 0.05,
@@ -518,7 +519,8 @@
         "moneyPerFloor": 10000,
         "items": {
           "masterBall": 1,
-          "ovalCharm": 1
+          "ovalCharm": 1,
+          "ritualCandle": 1
         }
       },
       {
@@ -547,6 +549,50 @@
   "shiny": {
     "traitId": "shiny",
     "wildChance": 0.2
+  },
+  "bootleg": {
+    "wildChance": 0.1,
+    "staticChance": 2,
+    "inheritPercent": 25,
+    "rewardMultiplier": 1.5,
+    "beastTideMultiplier": 5,
+    "instabilityPercentPerLevel": 10,
+    "stickerRarityChances": { "uncommon": 66.6, "rare": 16.7 }
+  },
+  "fusionPower": {
+    "power": { "single": 200, "teamBuff": 150, "teamDebuff": 112 },
+    "statusTurns": 3,
+    "shortStatusTurns": { "lockedOn": 1, "flinch": 1, "bomb": 1 },
+    "buffStatusIds": ["potentiated", "bulkedUp", "agile", "softSpeedUp", "healingMist", "energised", "conducted", "lockedOn"],
+    "debuffStatusIds": ["extinguished", "eroded", "buried", "chilled", "disturbed", "drained", "grounded", "poison", "burn", "confused", "flinch", "bomb"],
+    "contactStatusByElement": { "poison": "tipped", "electric": "staticCharged", "glass": "shattered" },
+    "orbAiMultiplier": 100
+  },
+  "rogueFusion": {
+    "chance": 3,
+    "variantWeights": { "standard": 70, "flood": 15, "swarm": 10, "orb": 5 },
+    "orbUnlockFloor": 15,
+    "floodElementIds": ["fire", "poison", "water"],
+    "seenSpeciesChance": 1,
+    "remasterChance": 10,
+    "swarmRemasterChance": 50,
+    "bootlegChances": { "standard": 2, "flood": 5, "swarm": 10, "orb": 20 },
+    "swarmSize": 5,
+    "swarmFusionAfter": 4,
+    "orbStatusId": "rogueOrb",
+    "orbBarrierPercent": 100,
+    "flinchStatusId": "flinch",
+    "fusedMaterial": { "standard": 1, "flood": 1, "swarm": 1, "orb": 5 },
+    "cyberChances": { "standard": 5, "flood": 5, "swarm": 10, "orb": 50 },
+    "bossFusedMaterial": 1,
+    "fusedMaterialItemId": "fusedMaterial",
+    "cyberMaterialItemId": "cyberMaterial",
+    "hackingGloveItemId": "hackingGlove",
+    "ritualCandleItemId": "ritualCandle",
+    "candleSpeciesPercent": 50,
+    "exchange": [{ "itemId": "ritualCandle", "cost": 50 }],
+    "houseGiftLevel": 5,
+    "questGiftQuests": 10
   },
   "boss": {
     "traitId": "bossBlood",
@@ -714,6 +760,26 @@
       "positive": 1,
       "negative": 1,
       "rare": 3
+    }
+  },
+  "stickers": {
+    "rarityChances": { "uncommon": 5, "rare": 1.25 },
+    "uncommonCounts": {
+      "uncommon": [
+        { "count": 1, "weight": 3 },
+        { "count": 2, "weight": 2 }
+      ],
+      "rare": [
+        { "count": 1, "weight": 1 },
+        { "count": 2, "weight": 2 }
+      ]
+    },
+    "rareCounts": { "uncommon": 0, "rare": 1 },
+    "maxAttributes": 3,
+    "maxSkillSlots": 16,
+    "reroll": {
+      "stones": { "uncommon": 1, "rare": 2 },
+      "moneyPerFloor": { "uncommon": 500, "rare": 1500 }
     }
   },
   "skillBook": {

@@ -204,5 +204,6 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   implant: 'implant',
   passiveSkill: 'traits',
   refinement: 'traits',
+  sticker: 'equipment',
   rule: 'rules'
 }

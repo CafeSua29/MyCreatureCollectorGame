@@ -6,6 +6,12 @@ export interface DexState {
   owned: string[]
   /** Id loài đã sở hữu bản shiny (⊆ owned). */
   shinyOwned: string[]
+  /**
+   * Bootleg đã gặp / đã sở hữu theo loài và hệ, khóa `speciesId:elementId` (docs/rules/bootleg.md);
+   * owned ⊆ seen.
+   */
+  bootlegSeen: string[]
+  bootlegOwned: string[]
   /** Id mốc thưởng đã nhận. */
   claimedMilestones: string[]
   /** Id map đã nhận thưởng hoàn thành Dex của map. */

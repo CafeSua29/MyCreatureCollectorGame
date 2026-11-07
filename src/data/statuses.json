@@ -3301,5 +3301,15 @@
     "disablesItems": true,
     "endsWhenSourceLeaves": true,
     "excludeFromRandom": true
+  },
+  {
+    "id": "rogueOrb",
+    "kind": "buff",
+    "battleOnly": true,
+    "hooks": [{ "type": "barrier", "params": { "capPercent": 200 } }],
+    "traitHooks": [
+      { "type": "statModifier", "params": { "percent": { "hp": 100 } } },
+      { "type": "staminaCostPercent", "params": { "percent": -100 } }
+    ]
   }
 ]

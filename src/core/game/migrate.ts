@@ -16,6 +16,7 @@ import { ageDaysAtPercent, isDexSpecies, newGameStats } from '../registries'
 import { newBattleTamer } from '../tamer'
 import { masteryExpForLevel } from '../monster'
 import { gymElementIds } from '../world'
+import { newRogueFusionState } from '../roster'
 import {
   dwellingPlotCount,
   newAuctionState,
@@ -1174,7 +1175,9 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   // v109 → v110: bản ghi trận thêm cờ đang quá sức (tùy chọn); không đổi gì.
   109: (save) => ({ ...save, version: 110 }),
   // v110 → v111: dạng trong trận thêm cờ chép loài khác `copied` (tùy chọn); không đổi gì.
-  110: (save) => ({ ...save, version: 111 })
+  110: (save) => ({ ...save, version: 111 }),
+  // v111 → v112: sticker skill (skill-stickers.md) và Bootleg (bootleg.md).
+  111: addStickersAndBootleg
 }
 
 /**
@@ -1324,6 +1327,25 @@ function addArtifactSpirits(save: SaveObject): SaveObject {
     inventory: inventory ? { ...inventory, spirits: [] } : save.inventory,
     trial: trial ? { kind: 'realm', ...trial } : save.trial,
     spiritPools: []
+  }
+}
+
+/**
+ * v111 → v112: sticker skill (túi sticker rỗng, quái chưa dán), Bootleg (quái không Bootleg, Dex
+ * chưa ghi Bootleg) cho mọi quái kể cả trong trứng, Rogue Fusion (chưa điềm báo, chưa nhận quà; loài
+ * khởi đầu không chọn không còn biết nên rỗng).
+ */
+function addStickersAndBootleg(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, skillStickers: {}, bootlegElementId: null })
+  const migrated = mapEggMonsters(mapAllMonsters(save, none), none)
+  const inventory = asObject(save.inventory)
+  const dex = asObject(save.dex)
+  return {
+    ...migrated,
+    version: 112,
+    inventory: inventory ? { ...inventory, stickers: [] } : save.inventory,
+    dex: dex ? { ...dex, bootlegSeen: [], bootlegOwned: [] } : save.dex,
+    rogueFusion: newRogueFusionState()
   }
 }
 

@@ -3,6 +3,7 @@
 // Gọi từ validateGameState.
 
 import type { EventDef, GameData } from '../model'
+import { ROGUE_FUSION_VARIANTS } from '../model'
 import { validateShop } from '../shop'
 import { asObject, checkInteger, checkNumber } from '../shared'
 import { checkZoneBattle } from './validateZoneState'
@@ -224,10 +225,22 @@ export function checkBattleSpecial(
     checkWorldBossBattle(battle, state, issues)
     return
   }
+  if (special?.kind === 'rogueFusion') {
+    // Rogue Fusion (docs/rules/rogue-fusion.md): biến thể hợp lệ, swarmPending chỉ ở Swarm.
+    if (!(ROGUE_FUSION_VARIANTS as readonly unknown[]).includes(special.variant)) {
+      issues.push(`battle.special.variant không hợp lệ "${String(special.variant)}"`)
+    }
+    if (typeof special.swarmPending !== 'boolean') {
+      issues.push('battle.special.swarmPending phải là boolean')
+    } else if (special.swarmPending && special.variant !== 'swarm') {
+      issues.push('battle.special.swarmPending chỉ có ở biến thể swarm')
+    }
+    return
+  }
   if (special?.kind !== 'beastTide') {
     issues.push(
       'battle.special phải là null hoặc { kind: "event" | "beastTide" | "zone" | "gathering" | ' +
-        '"worldBoss" }'
+        '"worldBoss" | "rogueFusion" }'
     )
     return
   }

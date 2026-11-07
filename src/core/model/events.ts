@@ -2,6 +2,7 @@
 // cục (src/data/eventModifiers.json), state event trong GameState, trận event / thú triều trong
 // BattleState, config.
 
+import type { RogueFusionVariant } from './rogueFusion'
 import type { Decimal } from '../shared'
 import type { DropEntry, EffectDef, EquipmentRarity, NormalRarity } from './content'
 import type { ShopEntry } from './state'
@@ -216,6 +217,11 @@ export type SpecialBattle =
   | { kind: 'gathering'; method: GatheringMethod; ambush: boolean }
   /** Khiêu chiến boss thế giới ở thị trấn (docs/rules/world-boss.md). */
   | { kind: 'worldBoss' }
+  /**
+   * Trận Rogue Fusion trên tầng (docs/rules/rogue-fusion.md); `swarmPending` = Swarm chưa hiện hợp
+   * thể (còn đang đánh bầy).
+   */
+  | { kind: 'rogueFusion'; variant: RogueFusionVariant; swarmPending: boolean }
 
 export type SpecialBattleKind = SpecialBattle['kind']
 

@@ -42,7 +42,8 @@ import {
   newTitleState,
   normalizeNickname,
   syncDex,
-  newTeamPresetState
+  newTeamPresetState,
+  newRogueFusionState
 } from '../roster'
 import { startHistory } from '../monster'
 import { bindContract } from '../tamer'
@@ -86,6 +87,8 @@ function rollStarterMonster(
       levelMax: starter.level,
       geneMultiplier: BIG_ONE,
       shinyChance: data.config.shiny.wildChance,
+      // Quái khởi đầu không là Bootleg như gốc (docs/rules/bootleg.md).
+      bootlegChance: 0,
       aging: lifespanEnabled
     },
     STARTER_ID
@@ -136,6 +139,17 @@ export function rollUnlockedStarter(
   const { rng } = rollStarters(data, seed, lifespanEnabled)
   const [monster, after] = rollStarterMonster(data, rng, { pool: [speciesId], lifespanEnabled })
   return { monster, rng: after }
+}
+
+/** Loài ứng viên khởi đầu không được chọn (tung lại theo seed, không tốn RNG của game). */
+function starterAlternatives(
+  data: GameData,
+  options: NewGameOptions,
+  lifespanEnabled: boolean
+): string[] {
+  return rollStarters(data, options.seed, lifespanEnabled)
+    .candidates.map((monster) => monster.speciesId)
+    .filter((speciesId) => speciesId !== options.starterSpeciesId)
 }
 
 /**
@@ -285,6 +299,8 @@ export function createNewGame(data: GameData, options: NewGameOptions): GameStat
     sect: newSectState(),
     trades: newTradeState(),
     auction: newAuctionState(),
+    // Loài khởi đầu không chọn: quà Bootleg của bảng nhiệm vụ (docs/rules/rogue-fusion.md).
+    rogueFusion: newRogueFusionState(starterAlternatives(data, options, lifespanEnabled)),
     teamPresets: newTeamPresetState(),
     trial: null,
     spiritPools: [],

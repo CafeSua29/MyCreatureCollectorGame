@@ -17,7 +17,12 @@ import {
   shopEntryRef,
   takeEquipment
 } from '../inventory'
-import { assertBagRoom, eventModifierMultiplier, tamerBonusMultiplier } from '../registries'
+import {
+  assertBagRoom,
+  eventModifierMultiplier,
+  receiveByRef,
+  tamerBonusMultiplier
+} from '../registries'
 import { bestFloorReached, dayOf, type GameData, type GameState, type ShopEntry } from '../model'
 import { addMarketSale, marketSellTotal } from './market'
 
@@ -78,7 +83,9 @@ export function buyItem(
     throw new ActionError('stackLimitReached', { max: Number.MAX_SAFE_INTEGER })
   }
   const paid = spendMoney(state, shopBuyPrice(data, state, entry).times(count))
-  return { ...paid, inventory: addByRef(state.inventory, entry, count) }
+  // Bí kíp mua về có thể thành sticker (docs/rules/skill-stickers.md).
+  const { stickers: _stickers, ...received } = receiveByRef(data, state, entry, count)
+  return { ...paid, ...received }
 }
 
 /**

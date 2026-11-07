@@ -4,6 +4,7 @@
 // dạng thường khi hết trận, skill thật khi đang biến hình (chiêu Max, Tera Blast, power tối thiểu
 // của Tera) và STAB theo Tera. Phần riêng từng loại ở transformHandlers.ts.
 
+import { fusionPowerSkill } from './fusionPower'
 import { activeTransform, autoMegaForm, getMaxHp, isFainted } from '../monster'
 import { battleRules, hasTrialRule, traitStabMultiplier } from '../registries'
 import { hasKeyItemFor } from '../inventory'
@@ -385,6 +386,8 @@ export const isDynamaxed = (monster: Monster): boolean =>
  * đổi hệ / loại, skill cùng hệ Tera yếu được nâng power. Không biến hình thì giữ nguyên.
  */
 export function battleSkill(data: GameData, d: Draft, user: Monster, rawSkill: Skill): Skill {
+  // Fusion Power: chiêu thật theo cặp hợp thể (docs/rules/fusion-power.md).
+  if (rawSkill.fusionPower) return fusionPowerSkill(data, user, rawSkill)
   const skill = withFormOverride(user, rawSkill)
   const transform = activeTransform(user)
   if (transform?.kind === 'dynamax') return maxMoveFor(data, d.battle.field, user, skill)

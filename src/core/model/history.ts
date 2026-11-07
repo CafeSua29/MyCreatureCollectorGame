@@ -39,6 +39,8 @@ export type HistoryOrigin =
   | { kind: 'gacha' }
   /** Trứng thắng ở Đấu giá hành (docs/rules/auction.md). */
   | { kind: 'auction' }
+  /** Quà Bootleg (docs/rules/rogue-fusion.md): nhà Bootleg hoặc bảng nhiệm vụ. */
+  | { kind: 'bootlegGift'; gift: 'house' | 'quest' }
   /** Quái từ save cũ, trước khi có lý lịch. */
   | { kind: 'unknown' }
 

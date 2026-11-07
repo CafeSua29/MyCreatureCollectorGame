@@ -22,6 +22,7 @@ import { Draft, log } from './draft'
 import { gainBiomeSkillBooks, gainDrop, grantItemRewards } from './rewards'
 import { rollGuardianRewards } from './zones'
 import { recordWorldBossDamage } from './worldBoss'
+import { grantRogueFusionRewards } from './rogueFusion'
 
 interface SpecialBattleRule<K extends SpecialBattleKind> {
   /**
@@ -234,6 +235,25 @@ export const SPECIAL_BATTLE_RULES: { [K in SpecialBattleKind]: SpecialBattleRule
     onWin: noop,
     onLoss: noop,
     onFinish: (_data, d) => recordWorldBossDamage(d)
+  },
+  // Rogue Fusion (docs/rules/rogue-fusion.md): trận trên tầng, chạy được; bắt được thành phần sau khi
+  // hợp thể tan (thực thể hợp thể không bắt được, chặn ở validateItemCommand).
+  rogueFusion: {
+    inMap: true,
+    isFloorBattle: true,
+    canFlee: () => true,
+    fleeIsRetreat: false,
+    maxTurns: noLimit,
+    canRecruit: false,
+    canCapture: () => true,
+    moneyMultiplier: () => 1,
+    lossPenaltyPercent: () => null,
+    onWin(data, d) {
+      const special = d.battle.special
+      if (special?.kind === 'rogueFusion') grantRogueFusionRewards(data, d, special.variant)
+    },
+    onLoss: noop,
+    onFinish: noop
   }
 }
 

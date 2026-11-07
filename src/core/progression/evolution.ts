@@ -11,7 +11,7 @@
 
 import { ActionError, rollPercent, type RngState } from '../shared'
 import { locateOwned } from '../roster'
-import { addMilestone, genderAfterEvolution, offerSkills } from '../monster'
+import { addMilestone, genderAfterEvolution, offerSkills, speciesElementsFor } from '../monster'
 import {
   EVOLUTION_CONDITIONS,
   isEvolutionConditionMet,
@@ -193,7 +193,8 @@ export function evolveMonster(
       monster.humanForm === 'human' && !data.races[target.raceId].humanForm
         ? 'beast'
         : monster.humanForm,
-    elementIds: [...target.elementIds],
+    // Bootleg giữ hệ Bootleg qua tiến hóa (docs/rules/bootleg.md).
+    elementIds: speciesElementsFor(target, monster),
     pendingEvolutionIds: [],
     // Nhóm huyết mạch theo cả chuỗi tiến hóa nên thường giữ đủ; nhóm loài mới không thuộc thì bỏ.
     bloodlines: keepValidBloodlines(data, monster.bloodlines, target.id)

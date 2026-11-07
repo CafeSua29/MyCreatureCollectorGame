@@ -25,7 +25,7 @@ Code: `model/humanForm.ts` (`isHumanShape`), `HUMAN_FORM_ON_TRANSFORM` (`model/t
 - **Thọ nguyên:** đã hóa hình (cả bản thể) × `lifespanMultiplier` (1,5; mục `humanForm` của `LIFESPAN_MODIFIERS`).
 - **Mang hình người** (`isHumanShape`): `humanForm = 'human'` và trong trận chưa biến hình loại `revert` (`HUMAN_FORM_ON_TRANSFORM`: Mega, Dynamax, Hiện nguyên hình về bản thể tới hết trận, kể cả khi biến hình đã kết thúc; Tera giữ nhân hình).
   - **% chỉ số nhân hình** `statPercents` (HP −10%, công −5%, thủ −10%, đặc công +15%, đặc thủ +10%, tốc độ +15%): nguồn % `humanForm`, cộng ở bước áp trait.
-- **+1 ô skill:** đã hóa hình (`'beast'` / `'human'`) thì sức chứa skill = `maxSkills + 1` (`skillCapacity`: học skill, skill chờ học, NPC học lại, kế thừa khi fuse, `validateMonster`). **Skill ở ô sau `maxSkills`** chỉ dùng được khi mang hình người (`lockedSkillIds`): lệnh dùng nó báo `humanFormSkillLocked { monsterId, skillId }`, AI bỏ qua và dùng do trait thì thất bại (`isSkillBlocked`), không kế thừa khi fuse (quái phụ không ở nhân hình).
+- **+1 ô skill:** đã hóa hình (`'beast'` / `'human'`) thì sức chứa skill = `maxSkills + 1` (`skillCapacity`: học skill, skill chờ học, NPC học lại, kế thừa khi fuse, `validateMonster`). **Skill ở ô cuối** (ô nhân hình, sau `maxSkills` và sau ô sticker Extra Slots, `skill-stickers.md`) chỉ dùng được khi mang hình người (`lockedSkillIds`): lệnh dùng nó báo `humanFormSkillLocked { monsterId, skillId }`, AI bỏ qua và dùng do trait thì thất bại (`isSkillBlocked`), không kế thừa khi fuse (quái phụ không ở nhân hình).
 
 ## Hiện nguyên hình (trong trận)
 
