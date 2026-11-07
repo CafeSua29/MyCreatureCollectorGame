@@ -4,6 +4,8 @@
 
 NPC **Phòng Thí Nghiệm** ở thị trấn bán **huyết thanh** (`serum`). Cấy huyết thanh vào quái để **cộng thẳng** vào chỉ số gốc hoặc nhận **hiệu ứng** (hook trait), có rủi ro thất bại. Tên "inject" đã dùng cho tinh thể trait nên tính năng này dùng tên `implant`. Khác thiên tài địa bảo (`treasures.md`: tăng gen, di truyền, không rủi ro). Làm ở bước 6c (save v76); huyết thanh hiệu ứng làm ngay sau đó (cùng v76, chưa phát hành).
 
+Phòng Thí Nghiệm còn làm **thoái hóa** (`devolve`: quái về dạng trước để đổi nhánh tiến hóa; luật ở `evolution-skills.md` mục "Thoái hóa").
+
 Code: `progression/implant.ts` (`implant`, `implantCost`, `rollSerum`, `rollLabStock`, `restockLab`, `labDailyTask`, `newLabState`), registry loại hiệu ứng `registries/serumEffects.ts` (`SERUM_EFFECTS`, `rollSerumEffects`, `applySerumEffect`, `validateSerumEffects`), nguồn hook `implant` ở `registries/traitHooks.ts` (`ownHooks`), hiệu ứng `src/data/serumEffects.json` (tên ở i18n `serumEffects`), tỉ lệ `monster/implant.ts` (`implantChance`), bước gốc `monster/stats.ts`, type `model/implant.ts`, kiểm tra dữ liệu `gameData/validateImplant.ts`, kiểm tra save `game/validateLabState.ts`.
 
 ## Tính chỉ số

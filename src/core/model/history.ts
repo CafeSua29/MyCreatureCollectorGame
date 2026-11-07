@@ -90,6 +90,8 @@ type MilestoneEvent =
   | { kind: 'imprintPerfected' }
   /** Phản tổ thành loài tổ (bloodline.md). */
   | ({ kind: 'atavized' } & SpeciesChange)
+  /** Thoái hóa về dạng trước (evolution-skills.md mục "Thoái hóa"). */
+  | ({ kind: 'devolved' } & SpeciesChange)
   /** Chết hẳn (chỉ có trong lý lịch của hồn phách / hồn khí, soul-relics.md). */
   | { kind: 'died'; cause: DeathCause }
   /**

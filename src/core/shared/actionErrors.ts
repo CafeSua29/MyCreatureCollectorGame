@@ -154,6 +154,10 @@ export interface ActionErrorParams {
   // ---------- Tiến hóa, breeding, fusing ----------
   notPendingEvolution: { speciesId: string }
   evolutionConditionsUnmet: { speciesId: string }
+  noPendingEvolution: { monsterId: string }
+  evolutionNotSkippable: { monsterId: string }
+  notPreEvolution: { monsterId: string; speciesId: string }
+  fusedCannotDevolve: { monsterId: string }
   notMale: { monsterId: string }
   notFemale: { monsterId: string }
   breedSameMonster: NoParams
@@ -648,6 +652,12 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
       ? `Sách "${skillId}" không có tác dụng: quái đã biết hoặc đang chờ học skill này`
       : `Sách "${skillId}" không có tác dụng: quái không học được skill này`,
   notPendingEvolution: ({ speciesId }) => `"${speciesId}" không phải hướng tiến hóa đang chờ chọn`,
+  noPendingEvolution: ({ monsterId }) => `Quái "${monsterId}" không có hướng tiến hóa đang chờ`,
+  evolutionNotSkippable: ({ monsterId }) =>
+    `Quái "${monsterId}" không vừa thoái hóa nên không bỏ qua tiến hóa được`,
+  notPreEvolution: ({ monsterId, speciesId }) =>
+    `"${speciesId}" không phải dạng trước trực tiếp của quái "${monsterId}"`,
+  fusedCannotDevolve: ({ monsterId }) => `Quái fuse "${monsterId}" không thoái hóa được`,
   evolutionConditionsUnmet: ({ speciesId }) =>
     `Quái chưa đủ điều kiện để tiến hóa thành "${speciesId}"`,
   notMale: ({ monsterId }) => `Quái "${monsterId}" không phải con đực`,

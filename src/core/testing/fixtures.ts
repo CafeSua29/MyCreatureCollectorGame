@@ -468,6 +468,7 @@ export function makeRawData(): RawGameData {
       maxNicknameLength: 12,
       history: { maxMilestones: 50 },
       relearnCostPerLevel: 10,
+      devolutionCostPerLevel: 50,
       // Tắt shiny quái hoang để test khác không bị ảnh hưởng; test shiny tự bật.
       shiny: { traitId: 'shiny', wildChance: 0 },
       // Không biome nào có boss ngẫu nhiên trừ "lair" (tầng 2) luôn ra boss; boss ở "lair" ×3.
@@ -3146,6 +3147,7 @@ function baseFields(): Omit<
     traitSlots: 3,
     pendingSkillIds: [],
     pendingEvolutionIds: [],
+    devolvedFromSpeciesId: null,
     statuses: [],
     equipment: [],
     teraElementId: 'grass',

@@ -109,6 +109,8 @@ export interface BalanceConfig {
   maxNicknameLength: number
   /** Giá học lại skill ở thị trấn = relearnCostPerLevel × level quái. */
   relearnCostPerLevel: number
+  /** Giá thoái hóa ở Phòng Thí Nghiệm = devolutionCostPerLevel × level quái (evolution-skills.md). */
+  devolutionCostPerLevel: number
   shiny: ShinyConfig
   bootleg: BootlegConfig
   rogueFusion: RogueFusionConfig

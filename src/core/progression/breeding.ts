@@ -278,6 +278,7 @@ export function makeOffspring(
     extraSkillIds: [],
     skillStickers: {},
     pendingEvolutionIds: [],
+    devolvedFromSpeciesId: null,
     statuses: [],
     // Con breeding không thừa hưởng trang bị; Gmax Factor, cấp Dynamax không di truyền (như
     // Pokémon), hệ Tera random theo hệ của con (tung sau shiny).

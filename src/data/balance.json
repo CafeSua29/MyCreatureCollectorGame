@@ -88,7 +88,7 @@
     "stageValuePerStep": 0.15,
     "healWeight": 1,
     "statusWeights": {
-"gearSuppressedTemtem": 0.1,
+      "gearSuppressedTemtem": 0.1,
 
       "inhibitedTemtem": 0.2,
 
@@ -570,6 +570,7 @@
   },
   "maxNicknameLength": 20,
   "relearnCostPerLevel": 10,
+  "devolutionCostPerLevel": 50,
   "shiny": {
     "traitId": "shiny",
     "wildChance": 0.2
@@ -587,9 +588,35 @@
     "power": { "single": 200, "teamBuff": 150, "teamDebuff": 112 },
     "statusTurns": 3,
     "shortStatusTurns": { "lockedOn": 1, "flinch": 1, "bomb": 1 },
-    "buffStatusIds": ["potentiated", "bulkedUp", "agile", "softSpeedUp", "healingMist", "energised", "conducted", "lockedOn"],
-    "debuffStatusIds": ["extinguished", "eroded", "buried", "chilled", "disturbed", "drained", "grounded", "poison", "burn", "confused", "flinch", "bomb"],
-    "contactStatusByElement": { "poison": "tipped", "electric": "staticCharged", "glass": "shattered" },
+    "buffStatusIds": [
+      "potentiated",
+      "bulkedUp",
+      "agile",
+      "softSpeedUp",
+      "healingMist",
+      "energised",
+      "conducted",
+      "lockedOn"
+    ],
+    "debuffStatusIds": [
+      "extinguished",
+      "eroded",
+      "buried",
+      "chilled",
+      "disturbed",
+      "drained",
+      "grounded",
+      "poison",
+      "burn",
+      "confused",
+      "flinch",
+      "bomb"
+    ],
+    "contactStatusByElement": {
+      "poison": "tipped",
+      "electric": "staticCharged",
+      "glass": "shattered"
+    },
     "orbAiMultiplier": 100
   },
   "rogueFusion": {

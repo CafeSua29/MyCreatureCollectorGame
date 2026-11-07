@@ -1179,7 +1179,9 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   // v111 → v112: sticker skill (skill-stickers.md) và Bootleg (bootleg.md).
   111: addStickersAndBootleg,
   // v112 → v113: dấu ấn trên quái (marks.md).
-  112: addMarks
+  112: addMarks,
+  // v113 → v114: cờ vừa thoái hóa (evolution-skills.md mục "Thoái hóa").
+  113: addDevolvedFlag
 }
 
 /**
@@ -1355,6 +1357,12 @@ function addStickersAndBootleg(save: SaveObject): SaveObject {
 function addMarks(save: SaveObject): SaveObject {
   const none = (m: RawMonster): RawMonster => ({ ...m, marks: [], markCounters: {} })
   return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 113 }
+}
+
+/** v113 → v114: mọi quái (kể cả trong trứng) chưa thoái hóa. */
+function addDevolvedFlag(save: SaveObject): SaveObject {
+  const none = (m: RawMonster): RawMonster => ({ ...m, devolvedFromSpeciesId: null })
+  return { ...mapEggMonsters(mapAllMonsters(save, none), none), version: 114 }
 }
 
 /** v107 → v108: bỏ `wall` trong trạng thái tạm của trận đang dở. */

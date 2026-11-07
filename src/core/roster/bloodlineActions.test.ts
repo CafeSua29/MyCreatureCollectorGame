@@ -73,6 +73,12 @@ describe('phản tổ', () => {
     expect(validateGameState(data, next)).toEqual([])
   })
 
+  it('đổi loài theo luật chung: Bootleg giữ hệ Bootleg như tiến hóa', () => {
+    const bootleg = hero(FULL, { bootlegElementId: 'water', elementIds: ['water'] })
+    const a = partyOf(atavize(townState([bootleg])))
+    expect(a).toMatchObject({ speciesId: 'elderWyrm', elementIds: ['water'] })
+  })
+
   it('loài tổ không giới tính thì none; quái none sang loài có giới tính thì tung 50/50', () => {
     const toStone = gameReducer(data, townState([hero([{ groupId: 'stone', purity: 100 }])]), {
       type: 'atavize',

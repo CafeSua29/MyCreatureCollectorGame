@@ -264,6 +264,7 @@ export function checkConfig(data: GameData, issues: string[]): void {
   push(checkInteger(config.maxNicknameLength, 'maxNicknameLength', 1))
   push(checkInteger(config.history?.maxMilestones, 'history.maxMilestones', 1))
   push(checkNumber(config.relearnCostPerLevel, 'relearnCostPerLevel', 0))
+  push(checkNumber(config.devolutionCostPerLevel, 'devolutionCostPerLevel', 0))
   push(checkNumber(config.shiny?.wildChance, 'shiny.wildChance', 0, 100))
   const boss = config.boss ?? ({} as GameData['config']['boss'])
   if (data.traits[boss.traitId]?.kind !== 'boss') {

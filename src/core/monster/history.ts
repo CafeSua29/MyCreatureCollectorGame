@@ -169,6 +169,7 @@ const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
   mutatedEvolution: { fields: SPECIES_CHANGE },
   imprintPerfected: { fields: {} },
   atavized: { fields: SPECIES_CHANGE },
+  devolved: { fields: SPECIES_CHANGE },
   died: { fields: { cause: deathCauseField } },
   markGained: {
     fields: {

@@ -5,13 +5,13 @@
 // - Mỗi hướng có thể có điều kiện phụ (`conditions`, registries/evolutionConditions.ts) và tiến hóa
 //   dị biến (`mutation`): tung tỉ lệ thành loài khác, xúc tác đang lắp tăng tỉ lệ.
 // - Mỗi lần lên một bậc. Quái đã fuse không tiến hóa.
-// Khi tiến hóa: đổi loài, race, hệ theo loài mới; giữ level, EXP, gen, trait, shiny, boss,
-// biệt danh, máu đã mất; giữ skill cũ và học thêm skill của loài mới ở level ≤ level hiện tại.
-// Giới tính theo loài mới (genderAfterEvolution, mục "Loài không giới tính").
+// Khi tiến hóa: đổi loài theo luật chung changeSpecies (monster/speciesChange.ts).
+// - Quái vừa thoái hóa (devolvedFromSpeciesId, mục "Thoái hóa"): lần tự tiến hóa kế tiếp luôn hỏi
+//   người chơi kể cả khi chỉ một hướng đủ điều kiện, bỏ qua được (skipEvolution).
 
 import { ActionError, rollPercent, type RngState } from '../shared'
 import { locateOwned } from '../roster'
-import { addMilestone, genderAfterEvolution, offerSkills, speciesElementsFor } from '../monster'
+import { addMilestone, changeSpecies } from '../monster'
 import {
   EVOLUTION_CONDITIONS,
   isEvolutionConditionMet,
@@ -21,7 +21,6 @@ import {
   partySlotsOf,
   partySlotsUsed,
   type EvolutionScene,
-  keepValidBloodlines,
   recordEvolutionResearch
 } from '../registries'
 import {
@@ -180,38 +179,15 @@ export function evolveMonster(
   }: EvolutionContext & { toSpeciesId: string; mutated?: boolean }
 ): EvolutionResult {
   const target = data.species[toSpeciesId] as NormalSpecies
-  const [gender, nextRng] = genderAfterEvolution(data, rng, monster, target.id)
-  const evolved: Monster = {
-    ...monster,
-    gender,
-    speciesId: target.id,
-    baseSpeciesId: target.id,
-    // Race đổi theo loài mới như game gốc (mục "Tiến hóa" ở evolution-skills.md); race mới không có
-    // nhân hình thì quái đang ở nhân hình về bản thể (vẫn giữ mốc đã hóa hình).
-    raceId: target.raceId,
-    humanForm:
-      monster.humanForm === 'human' && !data.races[target.raceId].humanForm
-        ? 'beast'
-        : monster.humanForm,
-    // Bootleg giữ hệ Bootleg qua tiến hóa (docs/rules/bootleg.md).
-    elementIds: speciesElementsFor(target, monster),
-    pendingEvolutionIds: [],
-    // Nhóm huyết mạch theo cả chuỗi tiến hóa nên thường giữ đủ; nhóm loài mới không thuộc thì bỏ.
-    bloodlines: keepValidBloodlines(data, monster.bloodlines, target.id)
-  }
-  const newSkills = target.learnset
-    .filter((entry) => entry.level <= monster.level)
-    .sort((a, b) => a.level - b.level)
-    .map((entry) => entry.skillId)
-  const offered = offerSkills(data, evolved, newSkills)
+  const changed = changeSpecies(data, monster, { target, rng })
   const change = { fromSpeciesId: monster.speciesId, toSpeciesId: target.id }
   const kind = mutated ? 'mutatedEvolution' : 'evolved'
   return {
-    monster: addMilestone(data, offered.monster, { day, kind, ...change }),
-    rng: nextRng,
+    monster: addMilestone(data, changed.monster, { day, kind, ...change }),
+    rng: changed.rng,
     events: [
       { type: mutated ? 'mutatedEvolution' : 'evolve', monsterId: monster.id, ...change },
-      ...offered.events
+      ...changed.events
     ]
   }
 }
@@ -279,7 +255,8 @@ export function evolveVia(
 
 /**
  * Xét tự tiến hóa (sau trận thắng, sau khi lên level bằng vật phẩm): một hướng thì tiến hóa ngay;
- * nhiều hướng thì đặt pendingEvolutionIds để người chơi chọn. Quái đang chờ chọn thì giữ nguyên.
+ * nhiều hướng (hoặc quái vừa thoái hóa) thì đặt pendingEvolutionIds để người chơi chọn. Quái đang
+ * chờ chọn thì giữ nguyên.
  */
 export function autoEvolve(
   data: GameData,
@@ -288,9 +265,11 @@ export function autoEvolve(
 ): EvolutionResult {
   if (monster.pendingEvolutionIds.length > 0) return { monster, events: [], rng }
   const evolutions = levelEvolutions(data, monster, scene)
-  if (evolutions.length === 1)
+  const mustAsk = monster.devolvedFromSpeciesId !== null
+  if (evolutions.length === 1 && !mustAsk) {
     return evolveVia(data, monster, { evolution: evolutions[0], rng, day })
-  if (evolutions.length > 1) {
+  }
+  if (evolutions.length > 0) {
     const options = evolutions.map((e) => e.speciesId)
     return {
       monster: { ...monster, pendingEvolutionIds: options },
@@ -332,4 +311,21 @@ export function chooseEvolution(
     rng: result.rng,
     research: recordEvolutionResearch(data, state.research, result.events)
   }
+}
+
+/**
+ * Bỏ qua hướng tiến hóa đang chờ của quái vừa thoái hóa (ngoài trận): xóa danh sách chờ, giữ cờ
+ * vừa thoái hóa nên trận thắng sau lại hỏi (chờ đủ điều kiện nhánh khác). Quái thường không bỏ qua
+ * được (tiến hóa không hủy được, mục "Tiến hóa").
+ */
+export function skipEvolution(state: GameState, monsterId: string): GameState {
+  if (state.battle) throw new ActionError('inBattle')
+  const { monster, replace } = locateOwned(state, monsterId)
+  if (monster.pendingEvolutionIds.length === 0) {
+    throw new ActionError('noPendingEvolution', { monsterId })
+  }
+  if (monster.devolvedFromSpeciesId === null) {
+    throw new ActionError('evolutionNotSkippable', { monsterId })
+  }
+  return replace({ ...monster, pendingEvolutionIds: [] })
 }

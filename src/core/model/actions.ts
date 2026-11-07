@@ -253,6 +253,8 @@ export type GameAction =
   /** NPC hồi máu ở thị trấn: miễn phí. */
   | { type: 'healParty' }
   | { type: 'chooseEvolution'; monsterId: string; speciesId: string }
+  | { type: 'skipEvolution'; monsterId: string }
+  | { type: 'devolve'; monsterId: string; speciesId: string }
   /** forgetSkillId bắt buộc khi đã đủ ô skill. */
   | { type: 'learnPendingSkill'; monsterId: string; skillId: string; forgetSkillId?: string }
   | { type: 'skipPendingSkill'; monsterId: string; skillId: string }

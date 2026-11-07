@@ -517,6 +517,16 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
       }
     }
   }
+  // Cờ vừa thoái hóa (mục "Thoái hóa" ở evolution-skills.md): null hoặc id loài tồn tại.
+  const devolvedFrom: unknown = monster.devolvedFromSpeciesId
+  if (
+    devolvedFrom !== null &&
+    (typeof devolvedFrom !== 'string' || !(devolvedFrom in data.species))
+  ) {
+    addIssue(
+      `devolvedFromSpeciesId phải là null hoặc id loài tồn tại, có "${String(devolvedFrom)}"`
+    )
+  }
 
   // Sticker trên skill (docs/rules/skill-stickers.md); hỏng thì tính số ô như không có sticker.
   const stickerIssues = validateSkillStickers(data, monster.skillStickers, {

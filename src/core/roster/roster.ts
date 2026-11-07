@@ -31,6 +31,7 @@ import {
 } from '../monster'
 import { contentName } from '../gameData'
 import {
+  devolutionCost,
   evolutionInfo,
   isMarkTreatable,
   rebirthRequirements,
@@ -70,7 +71,7 @@ import {
   markPartId
 } from '../registries'
 import { BIG_ZERO, cloneData, maxBig, type Decimal } from '../shared'
-import { equipmentSlotCount } from '../inventory'
+import { equipmentSlotCount, preEvolutionsOf } from '../inventory'
 import { evolutionScene } from '../world'
 import { partnerSkillIdOf, partnerStrength } from '../tamer'
 import {
@@ -196,6 +197,11 @@ export interface MonsterView {
   pendingEvolutionIds: string[]
   /** Mọi hướng tiến hóa của loài hiện tại (rỗng nếu đã fuse hoặc dạng cuối). */
   evolutions: EvolutionInfo[]
+  /** Loài trước khi thoái hóa (lần tự tiến hóa sau luôn hỏi, bỏ qua được); null nếu không. */
+  devolvedFromSpeciesId: string | null
+  /** Dạng trước trực tiếp thoái hóa về được (rỗng nếu đã fuse hoặc dạng đầu) và giá thoái hóa. */
+  devolveTargetIds: string[]
+  devolutionCost: Decimal
   /** Trạng thái bất thường đang có (tên tra bằng contentName 'statuses'). */
   statuses: StatusInstance[]
   /** Món đang lắp theo thứ tự ô, và số ô của người chơi (mục "Trang bị và đồ cầm"). */
@@ -596,6 +602,9 @@ export function buildMonsterView(
     pendingSkillIds: [...monster.pendingSkillIds],
     pendingEvolutionIds: [...monster.pendingEvolutionIds],
     evolutions: evolutionInfo(data, monster, scene),
+    devolvedFromSpeciesId: monster.devolvedFromSpeciesId,
+    devolveTargetIds: monster.fused ? [] : [...preEvolutionsOf(data, monster.speciesId)],
+    devolutionCost: devolutionCost(data, monster.level),
     statuses: monster.statuses.map((status) => ({ ...status })),
     equipment: monster.equipment.map((entry) => cloneData(entry)),
     equipmentSlots,

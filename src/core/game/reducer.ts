@@ -69,6 +69,8 @@ import {
   learnRecipe,
   plantSeed,
   chooseEvolution,
+  devolve,
+  skipEvolution,
   claimWorldBossRewards,
   hoursUntilWake,
   petMonster,
@@ -225,7 +227,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 113
+export const SAVE_VERSION = 114
 
 export function createGameState(options: {
   seed: number
@@ -664,6 +666,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return setDifficulty(state, action.difficulty)
     case 'chooseEvolution':
       return chooseEvolution(data, state, action.monsterId, action.speciesId)
+    case 'skipEvolution':
+      return skipEvolution(state, action.monsterId)
+    case 'devolve':
+      return devolve(data, state, action)
     case 'learnPendingSkill':
       return learnPendingSkill(data, state, action.monsterId, action.skillId, action.forgetSkillId)
     case 'skipPendingSkill':

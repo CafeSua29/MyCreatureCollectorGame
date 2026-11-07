@@ -38,7 +38,7 @@ Khi cần một con số chưa có ở đây (tỉ lệ shiny, tỉ lệ đột 
   - Theo hệ số boss (quét tầng, đội ở level boss tầng − 1 / − 5): đội 6 con thắng boss ×2 46%, ×3 3%, ×4 và ×5 0%; đội 2 con 0% ở mọi hệ số. Hệ số boss quyết định độ khó nhiều hơn level.
   - Chơi liên tục (farm tới khi đủ level, margin tăng 2 mỗi lần thua): đội 2 con qua 10 tầng trong khoảng 2200 trận; mọi trận thắng boss tầng đều là boss ×2; margin lúc thắng tăng dần tới 60 (level 160 so với boss tầng 10 level 100), ngay giới hạn `maxMargin`. Đội 6 con không bao giờ đủ level để đánh boss tầng (chỉ 2 con tham chiến nhận EXP nên level trung bình chậm) và mở cả 10 tầng nhờ gặp boss tầng ngẫu nhiên.
   - Lần chạy này trước khi có `minExp`: quái level 1 khi đó cho 0 EXP.
-- Học lại skill: `10 × level` quái (`relearnCostPerLevel`). Đá lửa giá 500, rơi 1% ở Núi lửa.
+- Học lại skill: `10 × level` quái (`relearnCostPerLevel`). Thoái hóa: `50 × level` (`devolutionCostPerLevel`, số tạm). Đá lửa giá 500, rơi 1% ở Núi lửa.
 - Loài tiến hóa mới: Mầm Tiên → Tiên Hoa / Tiên Gai (level 16, rẽ nhánh); Trâu Sóng → Trâu Thủy Triều (level 18) hoặc Trâu Hơi Nước (Đá lửa, từ level 10). Chỉ số và `catchRate` của các loài này là số tạm.
 - Quái khởi đầu: tổng chỉ số gốc 315 (chủ project chốt 2026-10-22, xem mục "Map ngẫu nhiên theo tầng" ở `balance-content.md`).
 - Bắt quái: sàn hệ số HP 10%. `catchRate`: Mầm Tiên 45, Trâu Sóng 45, Orc Tro Than 40, Rồng Lửa Nhí 35, Hỏa Long 15. Bóng ×1 / ×1,5 / ×2,5, giá 20 / 60 / 150. Rơi: Đồng cỏ bóng thường 15%; Núi lửa bóng thường 10%, bóng tốt 5%, bóng cao cấp 1%. Trait "Thân thiện" +30% tỉ lệ bắt. Pokémon / Pal: công thức trong "Dữ liệu Pokémon / Palworld" ở `content-sources.md`.

@@ -277,6 +277,7 @@ export function fuseMonsters(
     // Huyết mạch: cộng một phần độ thuần của quái phụ (docs/rules/bloodline.md).
     bloodlines: fuseBloodlines(data, base, sub),
     pendingEvolutionIds: [],
+    devolvedFromSpeciesId: null,
     // Hấp thu thọ nguyên (mục "Tuổi và thọ nguyên"): quái gốc giữ tuổi, nhận % số năm còn lại của
     // quái phụ; tắt thọ nguyên thì không hấp thu.
     lifespanBonusYears: base.aging

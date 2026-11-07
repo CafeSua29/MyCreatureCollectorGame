@@ -255,6 +255,7 @@ export function rollMonster(
     extraSkillIds: [],
     skillStickers: {},
     pendingEvolutionIds: [],
+    devolvedFromSpeciesId: null,
     statuses: [],
     equipment: [],
     // Tạm, tung lại ở dưới (teraElementChoices); loài không hệ chưa có hệ đầu.

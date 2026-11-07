@@ -159,6 +159,11 @@ export interface Monster {
   /** Các loài có thể tiến hóa thành, chờ người chơi chọn (khi nhiều hướng level cùng đủ). */
   pendingEvolutionIds: string[]
   /**
+   * Loài trước khi thoái hóa (docs/rules/evolution-skills.md mục "Thoái hóa"): khác null thì lần tự
+   * tiến hóa kế tiếp luôn hỏi người chơi, bỏ qua được (`skipEvolution`). Mất khi đổi loài.
+   */
+  devolvedFromSpeciesId: string | null
+  /**
    * Trạng thái đang có (mỗi id tối đa một lần); còn sau trận (trừ trạng thái `battleOnly`), gục
    * thì mất hết.
    */

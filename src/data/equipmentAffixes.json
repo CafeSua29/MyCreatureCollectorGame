@@ -6,9 +6,7 @@
       "type": "statModifier",
       "params": {}
     },
-    "valueParam": [
-      "percent.hp"
-    ],
+    "valueParam": ["percent.hp"],
     "ranges": {
       "common": {
         "min": 3,
@@ -35,9 +33,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "stat"
-    ]
+    "tags": ["stat"]
   },
   {
     "id": "affixAttack",
@@ -46,9 +42,7 @@
       "type": "statModifier",
       "params": {}
     },
-    "valueParam": [
-      "percent.attack"
-    ],
+    "valueParam": ["percent.attack"],
     "ranges": {
       "common": {
         "min": 3,
@@ -75,9 +69,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "stat"
-    ]
+    "tags": ["stat"]
   },
   {
     "id": "affixDefense",
@@ -86,9 +78,7 @@
       "type": "statModifier",
       "params": {}
     },
-    "valueParam": [
-      "percent.defense"
-    ],
+    "valueParam": ["percent.defense"],
     "ranges": {
       "common": {
         "min": 3,
@@ -115,9 +105,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "stat"
-    ]
+    "tags": ["stat"]
   },
   {
     "id": "affixSpAttack",
@@ -126,9 +114,7 @@
       "type": "statModifier",
       "params": {}
     },
-    "valueParam": [
-      "percent.spAttack"
-    ],
+    "valueParam": ["percent.spAttack"],
     "ranges": {
       "common": {
         "min": 3,
@@ -155,9 +141,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "stat"
-    ]
+    "tags": ["stat"]
   },
   {
     "id": "affixSpDefense",
@@ -166,9 +150,7 @@
       "type": "statModifier",
       "params": {}
     },
-    "valueParam": [
-      "percent.spDefense"
-    ],
+    "valueParam": ["percent.spDefense"],
     "ranges": {
       "common": {
         "min": 3,
@@ -195,9 +177,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "stat"
-    ]
+    "tags": ["stat"]
   },
   {
     "id": "affixSpeed",
@@ -206,9 +186,7 @@
       "type": "statModifier",
       "params": {}
     },
-    "valueParam": [
-      "percent.speed"
-    ],
+    "valueParam": ["percent.speed"],
     "ranges": {
       "common": {
         "min": 3,
@@ -235,9 +213,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "stat"
-    ]
+    "tags": ["stat"]
   },
   {
     "id": "affixCritChance",
@@ -563,9 +539,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "buffOnDamage"
-    ]
+    "tags": ["buffOnDamage"]
   },
   {
     "id": "affixDebuffOnDamage",
@@ -611,9 +585,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "debuffOnDamage"
-    ]
+    "tags": ["debuffOnDamage"]
   },
   {
     "id": "affixStrengthVsNormal",
@@ -621,9 +593,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "normal"
-        ]
+        "elementIds": ["normal"]
       }
     },
     "valueParam": "percent",
@@ -653,9 +623,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromNormal",
@@ -663,9 +631,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "normal"
-        ]
+        "elementIds": ["normal"]
       }
     },
     "valueParam": "percent",
@@ -695,9 +661,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsFire",
@@ -705,9 +669,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "fire"
-        ]
+        "elementIds": ["fire"]
       }
     },
     "valueParam": "percent",
@@ -737,9 +699,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromFire",
@@ -747,9 +707,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "fire"
-        ]
+        "elementIds": ["fire"]
       }
     },
     "valueParam": "percent",
@@ -779,9 +737,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsWater",
@@ -789,9 +745,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "water"
-        ]
+        "elementIds": ["water"]
       }
     },
     "valueParam": "percent",
@@ -821,9 +775,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromWater",
@@ -831,9 +783,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "water"
-        ]
+        "elementIds": ["water"]
       }
     },
     "valueParam": "percent",
@@ -863,9 +813,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsElectric",
@@ -873,9 +821,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "electric"
-        ]
+        "elementIds": ["electric"]
       }
     },
     "valueParam": "percent",
@@ -905,9 +851,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromElectric",
@@ -915,9 +859,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "electric"
-        ]
+        "elementIds": ["electric"]
       }
     },
     "valueParam": "percent",
@@ -947,9 +889,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsGrass",
@@ -957,9 +897,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "grass"
-        ]
+        "elementIds": ["grass"]
       }
     },
     "valueParam": "percent",
@@ -989,9 +927,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromGrass",
@@ -999,9 +935,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "grass"
-        ]
+        "elementIds": ["grass"]
       }
     },
     "valueParam": "percent",
@@ -1031,9 +965,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsIce",
@@ -1041,9 +973,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "ice"
-        ]
+        "elementIds": ["ice"]
       }
     },
     "valueParam": "percent",
@@ -1073,9 +1003,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromIce",
@@ -1083,9 +1011,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "ice"
-        ]
+        "elementIds": ["ice"]
       }
     },
     "valueParam": "percent",
@@ -1115,9 +1041,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsFighting",
@@ -1125,9 +1049,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "fighting"
-        ]
+        "elementIds": ["fighting"]
       }
     },
     "valueParam": "percent",
@@ -1157,9 +1079,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromFighting",
@@ -1167,9 +1087,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "fighting"
-        ]
+        "elementIds": ["fighting"]
       }
     },
     "valueParam": "percent",
@@ -1199,9 +1117,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsPoison",
@@ -1209,9 +1125,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "poison"
-        ]
+        "elementIds": ["poison"]
       }
     },
     "valueParam": "percent",
@@ -1241,9 +1155,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromPoison",
@@ -1251,9 +1163,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "poison"
-        ]
+        "elementIds": ["poison"]
       }
     },
     "valueParam": "percent",
@@ -1283,9 +1193,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsGround",
@@ -1293,9 +1201,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "ground"
-        ]
+        "elementIds": ["ground"]
       }
     },
     "valueParam": "percent",
@@ -1325,9 +1231,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromGround",
@@ -1335,9 +1239,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "ground"
-        ]
+        "elementIds": ["ground"]
       }
     },
     "valueParam": "percent",
@@ -1367,9 +1269,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsFlying",
@@ -1377,9 +1277,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "flying"
-        ]
+        "elementIds": ["flying"]
       }
     },
     "valueParam": "percent",
@@ -1409,9 +1307,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromFlying",
@@ -1419,9 +1315,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "flying"
-        ]
+        "elementIds": ["flying"]
       }
     },
     "valueParam": "percent",
@@ -1451,9 +1345,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsPsychic",
@@ -1461,9 +1353,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "psychic"
-        ]
+        "elementIds": ["psychic"]
       }
     },
     "valueParam": "percent",
@@ -1493,9 +1383,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromPsychic",
@@ -1503,9 +1391,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "psychic"
-        ]
+        "elementIds": ["psychic"]
       }
     },
     "valueParam": "percent",
@@ -1535,9 +1421,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsBug",
@@ -1545,9 +1429,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "bug"
-        ]
+        "elementIds": ["bug"]
       }
     },
     "valueParam": "percent",
@@ -1577,9 +1459,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromBug",
@@ -1587,9 +1467,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "bug"
-        ]
+        "elementIds": ["bug"]
       }
     },
     "valueParam": "percent",
@@ -1619,9 +1497,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsRock",
@@ -1629,9 +1505,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "rock"
-        ]
+        "elementIds": ["rock"]
       }
     },
     "valueParam": "percent",
@@ -1661,9 +1535,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromRock",
@@ -1671,9 +1543,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "rock"
-        ]
+        "elementIds": ["rock"]
       }
     },
     "valueParam": "percent",
@@ -1703,9 +1573,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsGhost",
@@ -1713,9 +1581,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "ghost"
-        ]
+        "elementIds": ["ghost"]
       }
     },
     "valueParam": "percent",
@@ -1745,9 +1611,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromGhost",
@@ -1755,9 +1619,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "ghost"
-        ]
+        "elementIds": ["ghost"]
       }
     },
     "valueParam": "percent",
@@ -1787,9 +1649,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsDragon",
@@ -1797,9 +1657,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "dragon"
-        ]
+        "elementIds": ["dragon"]
       }
     },
     "valueParam": "percent",
@@ -1829,9 +1687,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromDragon",
@@ -1839,9 +1695,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "dragon"
-        ]
+        "elementIds": ["dragon"]
       }
     },
     "valueParam": "percent",
@@ -1871,9 +1725,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsDark",
@@ -1881,9 +1733,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "dark"
-        ]
+        "elementIds": ["dark"]
       }
     },
     "valueParam": "percent",
@@ -1913,9 +1763,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromDark",
@@ -1923,9 +1771,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "dark"
-        ]
+        "elementIds": ["dark"]
       }
     },
     "valueParam": "percent",
@@ -1955,9 +1801,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsSteel",
@@ -1965,9 +1809,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "steel"
-        ]
+        "elementIds": ["steel"]
       }
     },
     "valueParam": "percent",
@@ -1997,9 +1839,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromSteel",
@@ -2007,9 +1847,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "steel"
-        ]
+        "elementIds": ["steel"]
       }
     },
     "valueParam": "percent",
@@ -2039,9 +1877,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsFairy",
@@ -2049,9 +1885,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "fairy"
-        ]
+        "elementIds": ["fairy"]
       }
     },
     "valueParam": "percent",
@@ -2081,9 +1915,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromFairy",
@@ -2091,9 +1923,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "fairy"
-        ]
+        "elementIds": ["fairy"]
       }
     },
     "valueParam": "percent",
@@ -2123,9 +1953,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixStrengthVsLight",
@@ -2133,9 +1961,7 @@
     "hook": {
       "type": "damageVsElement",
       "params": {
-        "elementIds": [
-          "light"
-        ]
+        "elementIds": ["light"]
       }
     },
     "valueParam": "percent",
@@ -2165,9 +1991,7 @@
         "max": 45
       }
     },
-    "tags": [
-      "elementStrengthDealt"
-    ]
+    "tags": ["elementStrengthDealt"]
   },
   {
     "id": "affixStrengthFromLight",
@@ -2175,9 +1999,7 @@
     "hook": {
       "type": "damageFromElement",
       "params": {
-        "elementIds": [
-          "light"
-        ]
+        "elementIds": ["light"]
       }
     },
     "valueParam": "percent",
@@ -2207,9 +2029,7 @@
         "max": -11
       }
     },
-    "tags": [
-      "elementStrengthTaken"
-    ]
+    "tags": ["elementStrengthTaken"]
   },
   {
     "id": "affixImbueNormal",
@@ -2217,9 +2037,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "normal"
-        ]
+        "elementIds": ["normal"]
       }
     },
     "valueParam": "percent",
@@ -2249,9 +2067,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueFire",
@@ -2259,9 +2075,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "fire"
-        ]
+        "elementIds": ["fire"]
       }
     },
     "valueParam": "percent",
@@ -2291,9 +2105,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueWater",
@@ -2301,9 +2113,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "water"
-        ]
+        "elementIds": ["water"]
       }
     },
     "valueParam": "percent",
@@ -2333,9 +2143,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueElectric",
@@ -2343,9 +2151,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "electric"
-        ]
+        "elementIds": ["electric"]
       }
     },
     "valueParam": "percent",
@@ -2375,9 +2181,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueGrass",
@@ -2385,9 +2189,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "grass"
-        ]
+        "elementIds": ["grass"]
       }
     },
     "valueParam": "percent",
@@ -2417,9 +2219,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueIce",
@@ -2427,9 +2227,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "ice"
-        ]
+        "elementIds": ["ice"]
       }
     },
     "valueParam": "percent",
@@ -2459,9 +2257,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueFighting",
@@ -2469,9 +2265,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "fighting"
-        ]
+        "elementIds": ["fighting"]
       }
     },
     "valueParam": "percent",
@@ -2501,9 +2295,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbuePoison",
@@ -2511,9 +2303,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "poison"
-        ]
+        "elementIds": ["poison"]
       }
     },
     "valueParam": "percent",
@@ -2543,9 +2333,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueGround",
@@ -2553,9 +2341,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "ground"
-        ]
+        "elementIds": ["ground"]
       }
     },
     "valueParam": "percent",
@@ -2585,9 +2371,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueFlying",
@@ -2595,9 +2379,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "flying"
-        ]
+        "elementIds": ["flying"]
       }
     },
     "valueParam": "percent",
@@ -2627,9 +2409,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbuePsychic",
@@ -2637,9 +2417,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "psychic"
-        ]
+        "elementIds": ["psychic"]
       }
     },
     "valueParam": "percent",
@@ -2669,9 +2447,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueBug",
@@ -2679,9 +2455,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "bug"
-        ]
+        "elementIds": ["bug"]
       }
     },
     "valueParam": "percent",
@@ -2711,9 +2485,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueRock",
@@ -2721,9 +2493,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "rock"
-        ]
+        "elementIds": ["rock"]
       }
     },
     "valueParam": "percent",
@@ -2753,9 +2523,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueGhost",
@@ -2763,9 +2531,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "ghost"
-        ]
+        "elementIds": ["ghost"]
       }
     },
     "valueParam": "percent",
@@ -2795,9 +2561,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueDragon",
@@ -2805,9 +2569,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "dragon"
-        ]
+        "elementIds": ["dragon"]
       }
     },
     "valueParam": "percent",
@@ -2837,9 +2599,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueDark",
@@ -2847,9 +2607,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "dark"
-        ]
+        "elementIds": ["dark"]
       }
     },
     "valueParam": "percent",
@@ -2879,9 +2637,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueSteel",
@@ -2889,9 +2645,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "steel"
-        ]
+        "elementIds": ["steel"]
       }
     },
     "valueParam": "percent",
@@ -2921,9 +2675,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueFairy",
@@ -2931,9 +2683,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "fairy"
-        ]
+        "elementIds": ["fairy"]
       }
     },
     "valueParam": "percent",
@@ -2963,9 +2713,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueLight",
@@ -2973,9 +2721,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "light"
-        ]
+        "elementIds": ["light"]
       }
     },
     "valueParam": "percent",
@@ -3005,9 +2751,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueGlass",
@@ -3015,9 +2759,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "glass"
-        ]
+        "elementIds": ["glass"]
       }
     },
     "valueParam": "percent",
@@ -3047,9 +2789,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbuePlastic",
@@ -3057,9 +2797,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "plastic"
-        ]
+        "elementIds": ["plastic"]
       }
     },
     "valueParam": "percent",
@@ -3089,9 +2827,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueGlitter",
@@ -3099,9 +2835,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "glitter"
-        ]
+        "elementIds": ["glitter"]
       }
     },
     "valueParam": "percent",
@@ -3131,9 +2865,7 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   },
   {
     "id": "affixImbueFungal",
@@ -3141,9 +2873,7 @@
     "hook": {
       "type": "elementDamageDealt",
       "params": {
-        "elementIds": [
-          "fungal"
-        ]
+        "elementIds": ["fungal"]
       }
     },
     "valueParam": "percent",
@@ -3173,8 +2903,6 @@
         "max": 30
       }
     },
-    "tags": [
-      "elementImbue"
-    ]
+    "tags": ["elementImbue"]
   }
 ]

@@ -1263,9 +1263,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "normal"
-              ],
+              "elementIds": ["normal"],
               "percent": 5
             }
           }
@@ -1277,9 +1275,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "normal"
-              ],
+              "elementIds": ["normal"],
               "percent": 10
             }
           }
@@ -1291,9 +1287,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "normal"
-              ],
+              "elementIds": ["normal"],
               "percent": 15
             }
           }
@@ -1314,9 +1308,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fire"
-              ],
+              "elementIds": ["fire"],
               "percent": 5
             }
           }
@@ -1328,9 +1320,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fire"
-              ],
+              "elementIds": ["fire"],
               "percent": 10
             }
           }
@@ -1342,9 +1332,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fire"
-              ],
+              "elementIds": ["fire"],
               "percent": 15
             }
           }
@@ -1365,9 +1353,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "water"
-              ],
+              "elementIds": ["water"],
               "percent": 5
             }
           }
@@ -1379,9 +1365,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "water"
-              ],
+              "elementIds": ["water"],
               "percent": 10
             }
           }
@@ -1393,9 +1377,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "water"
-              ],
+              "elementIds": ["water"],
               "percent": 15
             }
           }
@@ -1416,9 +1398,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "electric"
-              ],
+              "elementIds": ["electric"],
               "percent": 5
             }
           }
@@ -1430,9 +1410,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "electric"
-              ],
+              "elementIds": ["electric"],
               "percent": 10
             }
           }
@@ -1444,9 +1422,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "electric"
-              ],
+              "elementIds": ["electric"],
               "percent": 15
             }
           }
@@ -1467,9 +1443,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "grass"
-              ],
+              "elementIds": ["grass"],
               "percent": 5
             }
           }
@@ -1481,9 +1455,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "grass"
-              ],
+              "elementIds": ["grass"],
               "percent": 10
             }
           }
@@ -1495,9 +1467,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "grass"
-              ],
+              "elementIds": ["grass"],
               "percent": 15
             }
           }
@@ -1518,9 +1488,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ice"
-              ],
+              "elementIds": ["ice"],
               "percent": 5
             }
           }
@@ -1532,9 +1500,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ice"
-              ],
+              "elementIds": ["ice"],
               "percent": 10
             }
           }
@@ -1546,9 +1512,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ice"
-              ],
+              "elementIds": ["ice"],
               "percent": 15
             }
           }
@@ -1569,9 +1533,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fighting"
-              ],
+              "elementIds": ["fighting"],
               "percent": 5
             }
           }
@@ -1583,9 +1545,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fighting"
-              ],
+              "elementIds": ["fighting"],
               "percent": 10
             }
           }
@@ -1597,9 +1557,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fighting"
-              ],
+              "elementIds": ["fighting"],
               "percent": 15
             }
           }
@@ -1620,9 +1578,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "poison"
-              ],
+              "elementIds": ["poison"],
               "percent": 5
             }
           }
@@ -1634,9 +1590,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "poison"
-              ],
+              "elementIds": ["poison"],
               "percent": 10
             }
           }
@@ -1648,9 +1602,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "poison"
-              ],
+              "elementIds": ["poison"],
               "percent": 15
             }
           }
@@ -1671,9 +1623,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ground"
-              ],
+              "elementIds": ["ground"],
               "percent": 5
             }
           }
@@ -1685,9 +1635,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ground"
-              ],
+              "elementIds": ["ground"],
               "percent": 10
             }
           }
@@ -1699,9 +1647,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ground"
-              ],
+              "elementIds": ["ground"],
               "percent": 15
             }
           }
@@ -1722,9 +1668,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "flying"
-              ],
+              "elementIds": ["flying"],
               "percent": 5
             }
           }
@@ -1736,9 +1680,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "flying"
-              ],
+              "elementIds": ["flying"],
               "percent": 10
             }
           }
@@ -1750,9 +1692,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "flying"
-              ],
+              "elementIds": ["flying"],
               "percent": 15
             }
           }
@@ -1773,9 +1713,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "psychic"
-              ],
+              "elementIds": ["psychic"],
               "percent": 5
             }
           }
@@ -1787,9 +1725,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "psychic"
-              ],
+              "elementIds": ["psychic"],
               "percent": 10
             }
           }
@@ -1801,9 +1737,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "psychic"
-              ],
+              "elementIds": ["psychic"],
               "percent": 15
             }
           }
@@ -1824,9 +1758,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "bug"
-              ],
+              "elementIds": ["bug"],
               "percent": 5
             }
           }
@@ -1838,9 +1770,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "bug"
-              ],
+              "elementIds": ["bug"],
               "percent": 10
             }
           }
@@ -1852,9 +1782,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "bug"
-              ],
+              "elementIds": ["bug"],
               "percent": 15
             }
           }
@@ -1875,9 +1803,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "rock"
-              ],
+              "elementIds": ["rock"],
               "percent": 5
             }
           }
@@ -1889,9 +1815,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "rock"
-              ],
+              "elementIds": ["rock"],
               "percent": 10
             }
           }
@@ -1903,9 +1827,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "rock"
-              ],
+              "elementIds": ["rock"],
               "percent": 15
             }
           }
@@ -1926,9 +1848,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ghost"
-              ],
+              "elementIds": ["ghost"],
               "percent": 5
             }
           }
@@ -1940,9 +1860,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ghost"
-              ],
+              "elementIds": ["ghost"],
               "percent": 10
             }
           }
@@ -1954,9 +1872,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ghost"
-              ],
+              "elementIds": ["ghost"],
               "percent": 15
             }
           }
@@ -1977,9 +1893,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dragon"
-              ],
+              "elementIds": ["dragon"],
               "percent": 5
             }
           }
@@ -1991,9 +1905,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dragon"
-              ],
+              "elementIds": ["dragon"],
               "percent": 10
             }
           }
@@ -2005,9 +1917,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dragon"
-              ],
+              "elementIds": ["dragon"],
               "percent": 15
             }
           }
@@ -2028,9 +1938,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dark"
-              ],
+              "elementIds": ["dark"],
               "percent": 5
             }
           }
@@ -2042,9 +1950,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dark"
-              ],
+              "elementIds": ["dark"],
               "percent": 10
             }
           }
@@ -2056,9 +1962,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dark"
-              ],
+              "elementIds": ["dark"],
               "percent": 15
             }
           }
@@ -2079,9 +1983,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "steel"
-              ],
+              "elementIds": ["steel"],
               "percent": 5
             }
           }
@@ -2093,9 +1995,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "steel"
-              ],
+              "elementIds": ["steel"],
               "percent": 10
             }
           }
@@ -2107,9 +2007,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "steel"
-              ],
+              "elementIds": ["steel"],
               "percent": 15
             }
           }
@@ -2130,9 +2028,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fairy"
-              ],
+              "elementIds": ["fairy"],
               "percent": 5
             }
           }
@@ -2144,9 +2040,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fairy"
-              ],
+              "elementIds": ["fairy"],
               "percent": 10
             }
           }
@@ -2158,9 +2052,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fairy"
-              ],
+              "elementIds": ["fairy"],
               "percent": 15
             }
           }
@@ -2181,9 +2073,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "light"
-              ],
+              "elementIds": ["light"],
               "percent": 5
             }
           }
@@ -2195,9 +2085,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "light"
-              ],
+              "elementIds": ["light"],
               "percent": 10
             }
           }
@@ -2209,9 +2097,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "light"
-              ],
+              "elementIds": ["light"],
               "percent": 15
             }
           }
@@ -2636,10 +2522,7 @@
           {
             "type": "statusImmunity",
             "params": {
-              "statusIds": [
-                "poison",
-                "badPoison"
-              ]
+              "statusIds": ["poison", "badPoison"]
             }
           },
           {
@@ -2659,10 +2542,7 @@
           {
             "type": "statusImmunity",
             "params": {
-              "statusIds": [
-                "poison",
-                "badPoison"
-              ]
+              "statusIds": ["poison", "badPoison"]
             }
           },
           {
@@ -3147,9 +3027,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "glass"
-              ],
+              "elementIds": ["glass"],
               "percent": 5
             }
           }
@@ -3161,9 +3039,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "glass"
-              ],
+              "elementIds": ["glass"],
               "percent": 10
             }
           }
@@ -3175,9 +3051,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "glass"
-              ],
+              "elementIds": ["glass"],
               "percent": 15
             }
           }
@@ -3198,9 +3072,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "plastic"
-              ],
+              "elementIds": ["plastic"],
               "percent": 5
             }
           }
@@ -3212,9 +3084,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "plastic"
-              ],
+              "elementIds": ["plastic"],
               "percent": 10
             }
           }
@@ -3226,9 +3096,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "plastic"
-              ],
+              "elementIds": ["plastic"],
               "percent": 15
             }
           }
@@ -3249,9 +3117,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "glitter"
-              ],
+              "elementIds": ["glitter"],
               "percent": 5
             }
           }
@@ -3263,9 +3129,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "glitter"
-              ],
+              "elementIds": ["glitter"],
               "percent": 10
             }
           }
@@ -3277,9 +3141,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "glitter"
-              ],
+              "elementIds": ["glitter"],
               "percent": 15
             }
           }
@@ -3300,9 +3162,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fungal"
-              ],
+              "elementIds": ["fungal"],
               "percent": 5
             }
           }
@@ -3314,9 +3174,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fungal"
-              ],
+              "elementIds": ["fungal"],
               "percent": 10
             }
           }
@@ -3328,9 +3186,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fungal"
-              ],
+              "elementIds": ["fungal"],
               "percent": 15
             }
           }
