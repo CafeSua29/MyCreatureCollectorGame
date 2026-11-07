@@ -246,6 +246,8 @@ describe('các bảng kết quả', () => {
         traitsInjected: 0,
         crystalsBought: 0,
         sacrifices: 2,
+        starFeeds: 0,
+        teamStars: 0,
         implants: 3,
         implantFails: 1,
         implantEffects: 2,

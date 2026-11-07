@@ -375,6 +375,7 @@ export function validateMonster(data: GameData, monster: Monster, path = ''): st
   issues.push(...checkBigStats(monster.fusingBonusStats, at('fusingBonusStats'), 0))
   issues.push(...checkInteger(monster.shinyStacks, at('shinyStacks'), 0))
   issues.push(...checkInteger(monster.sacrificeStacks, at('sacrificeStacks'), 0))
+  issues.push(...checkInteger(monster.starCopies, at('starCopies'), 0))
   issues.push(...checkInteger(monster.rebirths, at('rebirths'), 0))
   // Cấy ghép thất bại trừ chỉ số nên được phép âm (docs/rules/implant.md).
   issues.push(...checkBigStats(monster.implantBonusStats, at('implantBonusStats'), -Infinity))

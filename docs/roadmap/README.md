@@ -12,7 +12,6 @@ Các tính năng đã quyết định sẽ làm. Mục ghi "đã chốt thiết 
 - [biome-content.md](docs/roadmap/biome-content.md): Nội dung loài còn chờ: tiến hóa cần vật phẩm chưa có (Monster Sanctuary, Yaoling, Yo-kai), cân nặng thật còn thiếu, rà race loài mặc định
 - [evolution-content.md](docs/roadmap/evolution-content.md): Nội dung tiến hóa có điều kiện còn chờ (tiến hóa đặc biệt Pokémon, loài dị biến, Dị Biến Thạch)
 - [move-styles.md](docs/roadmap/move-styles.md): Thế mạnh / thế nhanh: 5 chiêu Legends: Arceus chưa nhập (chờ hiệu ứng mới)
-- [star-rank.md](docs/roadmap/star-rank.md): Bậc sao (Fomon: ghép quái cùng chuỗi tiến hóa để lên sao, không trần)
 - [equipment-sets.md](docs/roadmap/equipment-sets.md): Bộ trang bị mọi bậc (bộ ngẫu nhiên kiểu Summoners War + bộ đặt tên kiểu Diablo / Grim Dawn)
 - [tamer-specializations.md](docs/roadmap/tamer-specializations.md): Chuyên môn ngự thú sư (Siralim Ultimate: chọn lớp, perk và kỹ năng riêng theo lớp, xức dầu mượn perk)
 - [trial-boons.md](docs/roadmap/trial-boons.md): Ân huệ trong lượt bí cảnh / tháp (Dinotica: chọn 1 trong 3 buff tạm sau mỗi trận)
@@ -130,7 +129,7 @@ Làm lần lượt theo thứ tự dưới đây (đã được chủ project gi
        4. Dấu ấn trên quái. **Đã xong** (2026-11-07; luật ở `docs/rules/marks.md`; dấu theo đối tượng là một mục cho cả loại đối tượng với chỗ giữ `$target` thay vì một mục mỗi đối tượng; thêm điều kiện DSL `species` / `skillBodyPart`; đối tượng `status` chỉ là debuff, môi trường tách thời tiết / địa hình; save v113).
        5. Biến thể Bootleg. **Đã xong** (2026-11-07, làm sớm cùng sticker; luật ở `docs/rules/bootleg.md`; save v112; mốc thưởng sưu tập làm bằng thành tựu có bậc; tỉ lệ theo độ bất ổn / thú triều; không có đá đổi hệ vì gốc không có; cùng đợt làm Rogue Fusion và mọi cách tạo Bootleg của gốc, `docs/rules/rogue-fusion.md`).
        6. Thoái hóa. **Đã xong** (2026-11-07; luật ở `docs/rules/evolution-skills.md` mục "Thoái hóa"; luật đổi loài chung `changeSpecies` cho tiến hóa / thoái hóa / phản tổ (phản tổ nhờ đó giữ Bootleg, kiểm tra ô đội); quái khóa vẫn thoái hóa được; không món nào phải tháo vì món khóa race lắp theo cả chuỗi tiến hóa; giá `devolutionCostPerLevel` 50 × level; save v114).
-       7. Bậc sao (`star-rank.md`).
+       7. Bậc sao. **Đã xong** (2026-11-07; luật ở `docs/rules/star-rank.md`; lưu tổng số bản `starCopies` thay số sao nên bản thừa giữ làm tiến độ, bỏ lỗi thiếu nguyên liệu; giá chỉ trả khi lên sao; save v115).
        8. Bộ trang bị (`equipment-sets.md`).
        9. Ân huệ trong lượt bí cảnh (`trial-boons.md`).
        10. Chuyên môn ngự thú sư (`tamer-specializations.md`; sau ân huệ vì dùng chung loại hiệu ứng hook trận theo phe).

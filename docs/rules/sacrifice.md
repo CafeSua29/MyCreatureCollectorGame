@@ -4,7 +4,9 @@
 
 Tên chọn để không lẫn với Fuse: quái phụ **hiến mình**, quái chính mạnh lên một chút. Khác Fuse (nhận ½ chỉ số quái phụ, đổi ô trait, đổi loài, có thể thất bại): hiến tế chỉ cộng một lượng nhỏ, cố định, luôn thành công. Làm ở bước 6b (save v75).
 
-Code: `progression/sacrifice.ts` (`sacrifice`, `sacrificeCost`, `canSacrificeTo`, `absorbSacrifice`), độ thuần `monster/bloodline.ts` (`sacrificeBloodlines`), nguồn % `sacrifice` ở `registries/statPercentSources.ts` (`sacrificeStatPercent`).
+So với **bậc sao** (`star-rank.md`): hiến tế rộng hơn (cùng race), +1% mỗi quái phụ tuyến tính; bậc sao hẹp hơn (cùng chuỗi tiến hóa), +5% mỗi sao nhưng sao sau cần nhiều bản hơn (≈45 bản trở lên thì hiến tế cho nhiều % hơn trên mỗi bản). Hai cơ chế cộng dồn.
+
+Code: `progression/sacrifice.ts` (`sacrifice`, `sacrificeCost`, `canSacrificeTo`, `absorbSacrifice`), quái phụ bị tiêu `progression/feeding.ts` (dùng chung với bậc sao), độ thuần `monster/bloodline.ts` (`sacrificeBloodlines`), nguồn % `sacrifice` ở `registries/statPercentSources.ts` (`sacrificeStatPercent`).
 
 ## Luật
 

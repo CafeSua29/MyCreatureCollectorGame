@@ -323,6 +323,8 @@ export function makeOffspring(
     polarity: null,
     // Breeding không truyền stack hiến tế (bố mẹ không mất, truyền thì nhân bản; sacrifice.md).
     sacrificeStacks: 0,
+    // Con chưa ghép sao (docs/rules/star-rank.md; bố mẹ không mất, truyền thì nhân bản sao).
+    starCopies: 0,
     // Luân hồi không truyền (docs/rules/rebirth.md).
     rebirths: 0,
     // Không truyền cấy ghép, cùng lý do như hiến tế (docs/rules/implant.md).

@@ -1,5 +1,6 @@
 // Tìm quái người chơi sở hữu (đội hoặc kho) để sửa trong action ngoài trận.
 
+import { assertNotBusy } from '../monster'
 import { hasPartyRoom } from '../registries'
 import { ActionError } from '../shared'
 import type { GameData, GameState, Monster } from '../model'
@@ -26,6 +27,15 @@ export function locateOwned(
     }
   }
   throw new ActionError('monsterNotOwned', { monsterId })
+}
+
+/** Quái người chơi sở hữu (đội / kho) và không đang làm việc (assertNotBusy). */
+export function findIdleOwned(state: GameState, monsterId: string): Monster {
+  const monster =
+    state.party.find((m) => m.id === monsterId) ?? state.storage.find((m) => m.id === monsterId)
+  if (!monster) throw new ActionError('monsterNotOwned', { monsterId })
+  assertNotBusy(monster)
+  return monster
 }
 
 /**

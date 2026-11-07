@@ -94,6 +94,9 @@ export interface EconomyCount {
   crystalsBought: number
   /** Quái phụ đã hiến tế (sacrifice.ts). */
   sacrifices: number
+  /** Quái nguyên liệu đã ghép sao; số sao trung bình đội mẫu (lần đo cuối; starRank.ts). */
+  starFeeds: number
+  teamStars: number
   /** Cấy ghép (implant.ts): lần thành công, thất bại; tỉ trọng cấy ghép trong bước gốc (%, lần đo cuối). */
   implants: number
   implantFails: number
@@ -167,6 +170,8 @@ export const newEconomyCount = (): EconomyCount => ({
   traitsInjected: 0,
   crystalsBought: 0,
   sacrifices: 0,
+  starFeeds: 0,
+  teamStars: 0,
   implants: 0,
   implantFails: 0,
   implantEffects: 0,

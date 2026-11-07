@@ -29,6 +29,7 @@
   - **Trait boss** gộp cấp (cộng cấp của cả hai). **`bossMultiplier` = cao nhất** của hai quái.
   - **`shinyStacks` cộng dồn**, trait shiny cấp = tổng (qua `addShinyStacks`).
   - **`sacrificeStacks` cộng dồn** (stack hiến tế của quái phụ, không +1; `sacrifice.md`).
+  - **Bậc sao**: quái gốc giữ `starCopies` của mình, quái phụ mất sao (`star-rank.md`).
   - **`rebirths`**: của quái gốc + ⌊½ của quái phụ⌋ (`rebirth.md`).
   - **Cấy ghép giữ của quái gốc** (`implantBonusStats`, `implantEffects`, `implantAttempts`, `implantFails`; hiệu ứng của quái phụ mất); phần cấy của quái phụ đã nằm trong chỉ số `withFusingBonus` của nó nên ½ tự truyền qua `fusingBonusStats` (`implant.md`).
   - `lineage` thêm `baseSpeciesId` và lineage của quái phụ, **không lặp loài**.

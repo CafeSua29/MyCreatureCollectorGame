@@ -46,6 +46,16 @@ const member = (overrides: MonsterOverrides = {}): Monster =>
   })
 
 /** Quái hoang loài khác cùng race (fuse được với weakling). */
+/** Loài khác chuỗi tiến hóa với quái đội mẫu (weakling). */
+const pebble = (id: string): Monster =>
+  makeMonster({
+    id,
+    speciesId: 'pebble',
+    baseSpeciesId: 'pebble',
+    gender: 'none',
+    elementIds: ['normal']
+  })
+
 const fodder = (id = 'f', damageTaken = 0): Monster =>
   makeMonster({
     id,
@@ -102,16 +112,16 @@ describe('growth: bắt quái làm nguyên liệu fuse', () => {
     const same = makeBattleState([member()], [makeMonster({ id: 'e2' })])
     const sameWithBall = { ...same, inventory: addItems(same.inventory, 'masterBall', 3) }
     expect(captureCommand(data, sameWithBall, new Set(['h']))).toMatchObject({ targetId: 'e2' })
-    // Quái đội mẫu đã fuse (lineage khác) thì cùng loài không còn dùng được.
-    const fusedTeam = makeBattleState(
-      [member({ fused: true, lineage: ['strongling'] })],
-      [makeMonster({ id: 'e2' })]
-    )
-    const fusedWithBall = {
-      ...fusedTeam,
-      inventory: addItems(fusedTeam.inventory, 'masterBall', 3)
+    // Quái đội mẫu đã fuse (lineage khác): cùng chuỗi tiến hóa vẫn ghép sao được (star-rank.md);
+    // loài đã có trong lineage, khác chuỗi thì không fuse / hiến tế / ghép sao được.
+    const fusedMember = member({ speciesId: 'fused', fused: true, lineage: ['pebble'] })
+    const withFusedTeam = (enemy: Monster): GameState => {
+      const state = makeBattleState([fusedMember], [enemy])
+      return { ...state, inventory: addItems(state.inventory, 'masterBall', 3) }
     }
-    expect(captureCommand(data, fusedWithBall, new Set(['h']))).toBeNull()
+    const sameLine = withFusedTeam(makeMonster({ id: 'e2' }))
+    expect(captureCommand(data, sameLine, new Set(['h']))).toMatchObject({ targetId: 'e2' })
+    expect(captureCommand(data, withFusedTeam(pebble('e3')), new Set(['h']))).toBeNull()
   })
 })
 
@@ -255,10 +265,10 @@ describe('growth: thu phục (Thị Uy, xin theo, mồi dụ)', () => {
   })
 
   it('xin theo: nhận quái làm nguyên liệu được, từ chối quái không dùng được', () => {
-    // e2 cùng loài nhưng quái đội mẫu đã fuse: không fuse / hiến tế được.
+    // e2 loài đã có trong lineage, khác chuỗi tiến hóa: không fuse / hiến tế / ghép sao được.
     const base = makeBattleState(
-      [member({ fused: true, lineage: ['other'] })],
-      [fodder('e1'), member({ id: 'e2' })]
+      [member({ speciesId: 'fused', fused: true, lineage: ['pebble'] })],
+      [fodder('e1'), pebble('e2')]
     )
     const ended = (offerId: string): GameState => ({
       ...base,

@@ -233,6 +233,11 @@ export function checkConfig(data: GameData, issues: string[]): void {
   push(checkNumber(config.fusion?.keptTraitPercent, 'fusion.keptTraitPercent', 0, 100))
   push(checkNumber(config.sacrifice?.costPerLevel, 'sacrifice.costPerLevel', 0))
   push(checkNumber(config.sacrifice?.statPercentPerStack, 'sacrifice.statPercentPerStack', 0))
+  // Bậc sao: mỗi sao cần ít nhất 1 bản, không thì 0 bản đã có vô hạn sao (star-rank.md).
+  push(checkInteger(config.stars?.copiesBase, 'stars.copiesBase', 1))
+  push(checkInteger(config.stars?.copiesPerStar, 'stars.copiesPerStar', 0))
+  push(checkNumber(config.stars?.costPerStar, 'stars.costPerStar', 0))
+  push(checkNumber(config.stars?.statPercentPerStar, 'stars.statPercentPerStar', 0))
   // config.rebirth kiểm tra ở validateRebirth.ts.
   checkShopConfig(data, issues)
   checkMarketConfig(data, issues)

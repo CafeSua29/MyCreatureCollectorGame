@@ -65,6 +65,8 @@ import {
   type EvolutionScene,
   polarityStatPercent,
   sacrificeStatPercent,
+  starRankView,
+  type StarRankView,
   rebirthStatPercent,
   findMarkDef,
   isMarkActive,
@@ -267,6 +269,8 @@ export interface MonsterView {
   polarity: PolarityView | null
   /** Hiến tế: số stack và % mọi chỉ số đang được cộng (docs/rules/sacrifice.md). */
   sacrifice: { stacks: number; statPercent: number }
+  /** Bậc sao: số sao, số bản, bản còn thiếu, % mọi chỉ số, giá sao kế (docs/rules/star-rank.md). */
+  stars: StarRankView
   /** Luân hồi: số lần, % mọi chỉ số đang cộng, điều kiện lần sau (docs/rules/rebirth.md). */
   rebirth: { count: number; statPercent: number; next: RebirthRequirements }
   /** Cấy ghép: tổng đã cấy, tỉ lệ lần tới, số lần thất bại / tối đa (docs/rules/implant.md). */
@@ -645,6 +649,7 @@ export function buildMonsterView(
       stacks: monster.sacrificeStacks,
       statPercent: sacrificeStatPercent(data, monster)
     },
+    stars: starRankView(data, monster),
     rebirth: {
       count: monster.rebirths,
       statPercent: rebirthStatPercent(data, monster),

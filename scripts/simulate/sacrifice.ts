@@ -22,8 +22,15 @@ function teamByStacks(state: GameState, teamIds: ReadonlySet<string>): Monster[]
     .sort((a, b) => a.sacrificeStacks - b.sacrificeStacks)
 }
 
-/** Quái bắt về đem hiến tế được: mọi quái hết dùng + nguyên liệu fuse ngoài số giữ lại. */
-function offerable(data: GameData, state: GameState, teamIds: ReadonlySet<string>): Monster[] {
+/**
+ * Quái bắt về đem tiêu được (hiến tế, ghép sao starRank.ts): mọi quái hết dùng + nguyên liệu fuse
+ * ngoài số giữ lại.
+ */
+export function offerable(
+  data: GameData,
+  state: GameState,
+  teamIds: ReadonlySet<string>
+): Monster[] {
   const { fuse, stale } = spareFodder(data, state, teamIds)
   return [...stale, ...fuse.slice(SACRIFICE_POLICY.keepFuseFodder)]
 }

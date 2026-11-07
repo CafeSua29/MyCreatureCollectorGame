@@ -158,6 +158,7 @@ const MILESTONE_RULES: Record<MilestoneKind, MilestoneRule> = {
   fused: { fields: { subSpeciesId: speciesField } },
   fuseFailed: { fields: { subSpeciesId: speciesField } },
   sacrificed: { fields: { count: positiveInteger } },
+  starredUp: { fields: { from: nonNegativeInteger, to: positiveInteger } },
   implanted: { fields: { tierId: serumTierField } },
   implantFailed: { fields: { tierId: serumTierField, fails: positiveInteger } },
   floorBossDefeated: { fields: { floor: positiveInteger } },

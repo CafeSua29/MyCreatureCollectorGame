@@ -300,6 +300,7 @@ export function rollMonster(
     polarity: null,
     // Chưa từng được hiến tế (docs/rules/sacrifice.md).
     sacrificeStacks: 0,
+    starCopies: 0,
     rebirths: 0,
     // Chưa từng được cấy ghép (docs/rules/implant.md).
     implantBonusStats: uniformBigStats(0),

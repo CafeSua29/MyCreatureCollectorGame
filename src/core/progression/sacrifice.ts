@@ -3,18 +3,11 @@
 // chỉ cần cùng race và cùng lineage. Hiến tế hàng loạt: nhiều quái phụ trong một action, mỗi con
 // tính như một lần (stack, giá, độ thuần cộng dồn theo thứ tự).
 
-import { assertNotBond } from '../tamer'
 import { ActionError, levelCost, parseIdList, spendMoney, type Decimal } from '../shared'
-import {
-  addMilestone,
-  assertNotBusy,
-  assertNotLocked,
-  sacrificeBloodlines,
-  soulFuseRefund
-} from '../monster'
-import { addSoulCrystalPoints } from '../inventory'
-import { assertOverflowConfirmed, returnEquipmentWithinCapacity } from '../registries'
+import { addMilestone, sacrificeBloodlines } from '../monster'
+import { findIdleOwned } from '../roster'
 import { dayOf, type GameData, type GameState, type Monster } from '../model'
+import { assertFeedsLosable, consumeFeeds } from './feeding'
 
 /**
  * Giá hiến tế các quái phụ vào quái chính: mỗi con costPerLevel × (level chính + level phụ), cộng
@@ -60,51 +53,27 @@ function parseSubIds(order: SacrificeOrder): string[] {
   return subIds
 }
 
-/** Quái người chơi sở hữu (đội / kho), không đang làm việc. */
-function findOwned(state: GameState, monsterId: string): Monster {
-  const monster =
-    state.party.find((m) => m.id === monsterId) ?? state.storage.find((m) => m.id === monsterId)
-  if (!monster) throw new ActionError('monsterNotOwned', { monsterId })
-  assertNotBusy(monster)
-  return monster
-}
-
 /** NPC fusing ở thị trấn: hiến tế một hoặc nhiều quái phụ vào quái chính. */
 export function sacrifice(data: GameData, state: GameState, order: SacrificeOrder): GameState {
   if (state.battle) throw new ActionError('inBattle')
   if (state.location.type !== 'town') throw new ActionError('notInTown')
   const subIds = parseSubIds(order)
-  let base = findOwned(state, order.baseId)
-  const subs = subIds.map((id) => findOwned(state, id))
+  let base = findIdleOwned(state, order.baseId)
+  const subs = subIds.map((id) => findIdleOwned(state, id))
   for (const sub of subs) {
-    // Bản mệnh thú không làm quái phụ (docs/rules/tamer.md mục "Bản mệnh thú").
-    assertNotBond(sub)
-    assertNotLocked(sub)
     if (!canSacrificeTo(base, sub)) {
       throw new ActionError('sacrificeMismatch', { baseId: base.id, subId: sub.id })
     }
   }
-  if (state.party.every((m) => subIds.includes(m.id))) throw new ActionError('partyWouldBeEmpty')
-  assertOverflowConfirmed(data, state, { monsters: subs, discardOverflow: order.discardOverflow })
+  // Quái phụ: không bản mệnh, không khóa, đội còn quái, món về túi (progression/feeding.ts).
+  assertFeedsLosable(data, state, { feeds: subs, discardOverflow: order.discardOverflow })
 
   const paid = spendMoney(state, sacrificeCost(data, base, subs))
-  let inventory = paid.inventory
-  for (const sub of subs) {
-    base = absorbSacrifice(data, base, sub)
-    // Món trên quái phụ về túi, hoàn một phần hồn tinh đã dùng như quái phụ của fuse
-    // (docs/rules/soul-levels.md).
-    inventory = returnEquipmentWithinCapacity(data, state, inventory, sub)
-    inventory = addSoulCrystalPoints(data, inventory, soulFuseRefund(data, sub))
-  }
+  for (const sub of subs) base = absorbSacrifice(data, base, sub)
   base = addMilestone(data, base, {
     day: dayOf(state.time),
     kind: 'sacrificed',
     count: subs.length
   })
-  const update = (monsters: Monster[]): Monster[] =>
-    monsters.flatMap((m) => {
-      if (subIds.includes(m.id)) return []
-      return m.id === base.id ? [base] : [m]
-    })
-  return { ...paid, inventory, party: update(state.party), storage: update(state.storage) }
+  return consumeFeeds(data, { state, paid }, { receiver: base, feeds: subs })
 }

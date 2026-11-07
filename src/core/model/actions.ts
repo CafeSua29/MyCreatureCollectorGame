@@ -297,6 +297,11 @@ export type GameAction =
    */
   | { type: 'sacrifice'; baseId: string; subIds: readonly string[]; discardOverflow?: boolean }
   /**
+   * NPC fusing ở thị trấn, bậc sao (docs/rules/star-rank.md): các quái nguyên liệu `feedIds` (cùng chuỗi
+   * tiến hóa, không fuse) mất đi, quái `monsterId` nhận số bản và lên sao khi đủ.
+   */
+  | { type: 'starUp'; monsterId: string; feedIds: readonly string[]; discardOverflow?: boolean }
+  /**
    * NPC luân hồi ở thị trấn (docs/rules/rebirth.md): quái về level 1, nhận % vĩnh viễn, gen, điểm
    * thiên phú, trẻ lại.
    */

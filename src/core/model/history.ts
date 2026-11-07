@@ -69,6 +69,8 @@ type MilestoneEvent =
   | { kind: 'fuseFailed'; subSpeciesId: string }
   /** Hiến tế `count` quái phụ trong một lần (sacrifice.md), ghi trên quái chính. */
   | { kind: 'sacrificed'; count: number }
+  /** Lên bậc sao từ `from` lên `to` sao trong một lần ghép (star-rank.md). */
+  | { kind: 'starredUp'; from: number; to: number }
   /** Cấy huyết thanh bậc `tierId` thành công / thất bại lần thứ `fails` (implant.md). */
   | { kind: 'implanted'; tierId: string }
   | { kind: 'implantFailed'; tierId: string; fails: number }

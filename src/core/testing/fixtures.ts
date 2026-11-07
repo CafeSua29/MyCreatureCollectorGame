@@ -119,6 +119,8 @@ export function makeRawData(): RawGameData {
       fusion: { inheritSkills: 2, keptTraitPercent: 50 },
       // Hiến tế (docs/rules/sacrifice.md): số như dữ liệu thật.
       sacrifice: { costPerLevel: 20, statPercentPerStack: 1 },
+      // Bậc sao (docs/rules/star-rank.md): số như dữ liệu thật.
+      stars: { copiesBase: 1, copiesPerStar: 1, costPerStar: 1000, statPercentPerStar: 5 },
       // Luân hồi (docs/rules/rebirth.md): số như dữ liệu thật.
       rebirth: {
         minLevelBase: 100,
@@ -3191,6 +3193,7 @@ function baseFields(): Omit<
     bloodlines: [],
     polarity: null,
     sacrificeStacks: 0,
+    starCopies: 0,
     rebirths: 0,
     implantEffects: {},
     refinements: {},

@@ -8,13 +8,14 @@ Làm ngày 2026-11-03 (chỉ core; giao diện chọn / xác nhận chờ `ui-ov
 
 - Mỗi thao tác hàng loạt là **một action** của core nhận danh sách đã lọc (id quái, dòng item, vị trí khí linh), không gọi nhiều action lẻ, để chỉ tự lưu một lần.
 - Mỗi phần tử theo **đúng luật của action lẻ** tương ứng (vị trí NPC, khóa, bản mệnh thú, đang làm việc, vật phẩm chìa khóa, giá, ô, sức chứa...). **Một phần tử lỗi thì cả lệnh lỗi**, state giữ nguyên (không làm nửa chừng).
-- Danh sách rỗng / sai dạng / trùng: `malformedAction`. Danh sách id đọc bằng `parseIdList` (`shared/validation.ts`, dùng chung cho `salvageEquipment`, `sacrifice`, `releaseMonsters`).
+- Danh sách rỗng / sai dạng / trùng: `malformedAction`. Danh sách id đọc bằng `parseIdList` (`shared/validation.ts`, dùng chung cho `salvageEquipment`, `sacrifice`, `starUp`, `releaseMonsters`).
 - Bộ lọc nằm ở core, UI lấy kết quả lọc gửi thẳng vào action: quái dùng `listMonsters` (`roster.md`: loài, race, hệ, trait, shiny, boss, level, khóa...), item dùng `filterBagItems`.
 
 ## Quái
 
 - **Thả hàng loạt** `releaseMonsters { monsterIds, discardOverflow? }` (ngoài trận, ở đâu cũng được): mỗi con như `releaseMonster` (bản mệnh thú, quái khóa `monsterLocked`, quái đang làm việc bị chặn; `roster.md`). Đội phải còn ít nhất 1 con (`partyWouldBeEmpty`). Món đang lắp của **mọi con tính chung** khi xét chỗ trong túi: không đủ thì `bagOverflow { lost }`, gửi lại với `discardOverflow: true` (`capacity.md`). `releaseMonster` là trường hợp một con của action này.
 - **Hiến tế hàng loạt**: `sacrifice { baseId, subIds }` đã nhận nhiều quái phụ (`sacrifice.md`); UI lọc quái phụ bằng `listMonsters` (cùng race, `locked: false`).
+- **Ghép sao hàng loạt**: `starUp { monsterId, feedIds }` nhận nhiều nguyên liệu (`star-rank.md`).
 
 ## Item
 

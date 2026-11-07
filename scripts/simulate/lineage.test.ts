@@ -55,6 +55,19 @@ describe('runBreeding', () => {
       expect(row.sacrificeStacks).toBe(3)
       // 20 × 3 × (10 + 1): mẹ mới ở measureLevel, con level 1.
       expect(row.sacrificeCost).toEqual(660)
+      expect(row.stars).toBe(0)
+    }
+  })
+
+  it('breedStars: các con không chọn ghép sao thay vì hiến tế (3 bản = 2 sao)', () => {
+    const rows = runBreeding(data, breeding(), 1, { stars: true })
+    expect(rows.every((row) => row.kind === 'breedStars')).toBe(true)
+    for (const row of rows.slice(1)) {
+      if (row.note !== '') continue
+      expect(row.sacrificeStacks).toBe(0)
+      expect(row.stars).toBe(2)
+      // 1000 × (1 + 2).
+      expect(row.starCost).toEqual(3000)
     }
   })
 

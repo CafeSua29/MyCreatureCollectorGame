@@ -271,7 +271,8 @@ export function runJob(context: JobContext, job: SimJob): SimJobResult {
         type: 'lineage',
         rows: [
           ...runBreeding(data, scenarios.breeding, scenarios.seed),
-          ...runBreeding(data, scenarios.breeding, scenarios.seed, { infused: true })
+          ...runBreeding(data, scenarios.breeding, scenarios.seed, { infused: true }),
+          ...runBreeding(data, scenarios.breeding, scenarios.seed, { stars: true })
         ]
       }
     case 'fusion':

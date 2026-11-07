@@ -18,6 +18,7 @@ import {
 import { ageStatPercent } from './lifespan'
 import { polarityStatPercent } from './polarity'
 import { soulLinkTier } from './soulLink'
+import { starStatPercent } from './starRank'
 import { workTraitStatPercent } from './work'
 import type { HookSourceKind } from './traitHooks'
 
@@ -110,6 +111,8 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   polarity: { percent: polarityStatPercent },
   // Hiến tế (docs/rules/sacrifice.md): mọi chỉ số kể cả max HP, stack × statPercentPerStack.
   sacrifice: { percent: (data, monster) => uniformPercent(sacrificeStatPercent(data, monster)) },
+  // Bậc sao (docs/rules/star-rank.md): mọi chỉ số kể cả max HP, số sao × statPercentPerStar.
+  stars: { percent: (data, monster) => uniformPercent(starStatPercent(data, monster)) },
   // Luân hồi (docs/rules/rebirth.md): mọi chỉ số kể cả max HP, số lần × statPercentPerRebirth.
   rebirth: { percent: (data, monster) => uniformPercent(rebirthStatPercent(data, monster)) },
   // Hiệu ứng cấy ghép có hook % chỉ số (docs/rules/implant.md; đi qua hook, nguồn hook `implant`).

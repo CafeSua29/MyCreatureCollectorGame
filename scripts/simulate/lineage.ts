@@ -4,7 +4,8 @@
 // để đo chỉ số; tỉ lệ thành công (không bùa) ghi riêng từng đời và tỉ lệ đi tới đời đó. Mỗi lần
 // fuse "người chơi" kế thừa skill mạnh nhất của quái phụ (chooseInheritance), đo tổng power bộ
 // skill. Mỗi đời breed "người chơi" hiến tế các con không chọn vào con được chọn (absorbSacrifice,
-// docs/rules/sacrifice.md), đo stack và giá hiến tế. Biến thể breedInfused đặt đủ maxInfusions linh
+// docs/rules/sacrifice.md), đo stack và giá hiến tế; biến thể breedStars ghép sao các con đó vào con
+// được chọn thay vì hiến tế (previewStarUp, docs/rules/star-rank.md). Biến thể breedInfused đặt đủ maxInfusions linh
 // thạch cùng hệ vào mỗi trứng (infuseMonster, docs/rules/breeding-eggs.md mục "Ấp trứng có hoàn cảnh").
 
 import {
@@ -28,6 +29,8 @@ import {
   makeOffspring,
   newFusionSpecies,
   pick,
+  previewStarUp,
+  starsOf,
   rollMonster,
   sacrificeCost,
   type BigStats,
@@ -40,8 +43,11 @@ import {
 import type { BreedingSpec, FusionSpec } from './scenarios'
 import { buildMonster, deriveSeed, geneValue } from './team'
 
-/** breedInfused: breed như breed nhưng mỗi trứng đặt đủ linh thạch cùng hệ (ấp trứng có hoàn cảnh). */
-export type LineageKind = 'breed' | 'breedInfused' | 'fuse'
+/**
+ * breedInfused: breed như breed nhưng mỗi trứng đặt đủ linh thạch cùng hệ (ấp trứng có hoàn cảnh);
+ * breedStars: các con không chọn ghép sao thay vì hiến tế.
+ */
+export type LineageKind = 'breed' | 'breedInfused' | 'breedStars' | 'fuse'
 
 export interface LineageRow {
   kind: LineageKind
@@ -60,6 +66,9 @@ export interface LineageRow {
   sacrificeStacks: number
   /** Giá hiến tế ở đời này (fuse / đời 0: 0). */
   sacrificeCost: Decimal
+  /** Số sao của quái đời này và giá ghép sao ở đời này (breedStars). */
+  stars: number
+  starCost: Decimal
   /** Fuse: tỉ lệ % lần fuse ra đời này thành công (không bùa); breed / đời 0: null. */
   successChance: number | null
   /** Fuse: tỉ lệ % đi được tới đời này mà không lần nào thất bại (tích các successChance). */
@@ -128,6 +137,7 @@ function makeRow(
     floor: number
     cost: Decimal
     sacrificeCost?: Decimal
+    starCost?: Decimal
     note?: string
     successChance?: number
     reachChance?: number
@@ -149,6 +159,8 @@ function makeRow(
     cost: base.cost,
     sacrificeStacks: base.monster.sacrificeStacks,
     sacrificeCost: base.sacrificeCost ?? BIG_ZERO,
+    stars: starsOf(data, base.monster),
+    starCost: base.starCost ?? BIG_ZERO,
     successChance: base.successChance ?? null,
     reachChance: base.reachChance ?? null,
     skillPower: sumSkillPower(data, base.monster),
@@ -184,15 +196,15 @@ function rollWild(
 /**
  * Breed nhiều đời: mỗi đời bố là quái hoang cùng loài của tầng, lấy con cái có tổng gen cao nhất
  * trong offspringPerGeneration con làm mẹ đời sau (lớn tới measureLevel); các con còn lại (cùng loài,
- * level 1) hiến tế vào mẹ mới.
+ * level 1) hiến tế (hoặc ghép sao, `stars`) vào mẹ mới.
  */
 export function runBreeding(
   data: GameData,
   spec: BreedingSpec,
   seed: number,
-  { infused = false }: { infused?: boolean } = {}
+  { infused = false, stars = false }: { infused?: boolean; stars?: boolean } = {}
 ): LineageRow[] {
-  const kind: LineageKind = infused ? 'breedInfused' : 'breed'
+  const kind: LineageKind = stars ? 'breedStars' : infused ? 'breedInfused' : 'breed'
   const infusions = infused ? data.config.egg.incubation.maxInfusions : 0
   let rng = createRng(deriveSeed(seed, 'breeding', spec.speciesId))
   const level = spec.measureLevel
@@ -234,11 +246,18 @@ export function runBreeding(
       if (!best || sumStats(child.genes).gt(sumStats(best.genes))) best = child
     }
     let offered = BIG_ZERO
+    let starCost = BIG_ZERO
     if (best) {
       mother = atLevel(data, best, level)
       const siblings = children.filter((child) => child !== best)
-      offered = sacrificeCost(data, mother, siblings)
-      mother = siblings.reduce((receiver, sub) => absorbSacrifice(data, receiver, sub), mother)
+      if (stars) {
+        const preview = previewStarUp(data, mother, siblings)
+        starCost = preview.cost
+        mother = { ...mother, starCopies: preview.copies }
+      } else {
+        offered = sacrificeCost(data, mother, siblings)
+        mother = siblings.reduce((receiver, sub) => absorbSacrifice(data, receiver, sub), mother)
+      }
     }
     const note = best ? '' : 'không có con cái, giữ mẹ cũ'
     rows.push(
@@ -251,6 +270,7 @@ export function runBreeding(
           floor: spec.floor,
           cost,
           sacrificeCost: offered,
+          starCost,
           note
         },
         first

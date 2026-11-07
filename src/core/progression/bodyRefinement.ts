@@ -2,7 +2,7 @@
 // trấn. Hook và thưởng bộ ở registries/bodyRefinement.ts.
 
 import { ActionError, levelCost, spendMoney, type Decimal } from '../shared'
-import { assertNotBusy } from '../monster'
+import { findIdleOwned } from '../roster'
 import { monsterBodyPlan } from '../registries'
 import type { BodyRefinementDef, GameData, GameState, Monster } from '../model'
 
@@ -26,14 +26,6 @@ export function availableRefinements(data: GameData, monster: Monster): BodyRefi
   return Object.values(data.bodyRefinements).filter((entry) => parts.includes(entry.partId))
 }
 
-function findOwned(state: GameState, monsterId: string): Monster {
-  const monster =
-    state.party.find((m) => m.id === monsterId) ?? state.storage.find((m) => m.id === monsterId)
-  if (!monster) throw new ActionError('monsterNotOwned', { monsterId })
-  assertNotBusy(monster)
-  return monster
-}
-
 function replaceMonster(state: GameState, monster: Monster): GameState {
   const swap = (list: Monster[]): Monster[] => list.map((m) => (m.id === monster.id ? monster : m))
   return { ...state, party: swap(state.party), storage: swap(state.storage) }
@@ -54,7 +46,7 @@ export function refineBody(
   { monsterId, refinementId }: { monsterId: string; refinementId: string }
 ): GameState {
   assertTown(state)
-  const monster = findOwned(state, monsterId)
+  const monster = findIdleOwned(state, monsterId)
   const refinement = data.bodyRefinements[refinementId]
   if (!refinement) throw new ActionError('unknownRefinement', { refinementId })
   if (!monsterBodyPlan(data, monster).parts.includes(refinement.partId)) {
@@ -78,7 +70,7 @@ export function removeRefinement(
   { monsterId, partId }: { monsterId: string; partId: string }
 ): GameState {
   assertTown(state)
-  const monster = findOwned(state, monsterId)
+  const monster = findIdleOwned(state, monsterId)
   const refinementId = monster.refinements[partId]
   if (refinementId === undefined) throw new ActionError('noRefinement', { monsterId, partId })
   const refinement = data.bodyRefinements[refinementId]

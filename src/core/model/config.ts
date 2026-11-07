@@ -124,6 +124,7 @@ export interface BalanceConfig {
   fuseChance: FuseChanceConfig
   fusion: FusionConfig
   sacrifice: SacrificeConfig
+  stars: StarRankConfig
   rebirth: RebirthConfig
   crystal: CrystalConfig
   skillBook: SkillBookConfig
@@ -746,6 +747,17 @@ export interface SacrificeConfig {
   costPerLevel: number
   /** % mọi chỉ số mỗi stack hiến tế (tuyến tính). */
   statPercentPerStack: number
+}
+
+/**
+ * Bậc sao (docs/rules/star-rank.md): lên từ s sao lên s + 1 cần copiesBase + copiesPerStar × s bản cùng
+ * chuỗi tiến hóa, giá costPerStar × (s + 1); mỗi sao + statPercentPerStar % mọi chỉ số.
+ */
+export interface StarRankConfig {
+  copiesBase: number
+  copiesPerStar: number
+  costPerStar: number
+  statPercentPerStar: number
 }
 
 /** Luân hồi quái (docs/rules/rebirth.md). Lần thứ n = rebirths + 1. */

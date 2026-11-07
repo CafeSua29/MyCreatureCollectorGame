@@ -64,6 +64,7 @@ export const STAT_PERCENT_SOURCE_IDS = [
   'blessing',
   'polarity',
   'sacrifice',
+  'stars',
   'rebirth',
   'implant',
   'marks',

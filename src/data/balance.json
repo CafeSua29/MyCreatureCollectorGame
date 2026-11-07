@@ -704,6 +704,12 @@
     "costPerLevel": 20,
     "statPercentPerStack": 1
   },
+  "stars": {
+    "copiesBase": 1,
+    "copiesPerStar": 1,
+    "costPerStar": 1000,
+    "statPercentPerStar": 5
+  },
   "rebirth": {
     "minLevelBase": 100,
     "costBase": 10000,

@@ -179,6 +179,12 @@ export interface ActionErrorParams {
   sacrificeMismatch: { baseId: string; subId: string }
   /** Stack hiến tế sau khi cộng vượt giới hạn số nguyên an toàn. */
   sacrificeStackLimit: { max: number }
+  // ---------- Bậc sao (docs/rules/star-rank.md) ----------
+  starFeedSameMonster: NoParams
+  /** Quái nguyên liệu bị fuse hoặc không cùng chuỗi tiến hóa với quái chính. */
+  starFeedMismatch: { monsterId: string; feedId: string }
+  /** Tổng số bản đã ghép vượt giới hạn số nguyên an toàn. */
+  starCopiesLimit: { max: number }
   // ---------- Luân hồi (docs/rules/rebirth.md) ----------
   /** Level chưa đủ cho lần luân hồi kế tiếp. */
   levelTooLowForRebirth: { need: number; have: number }
@@ -677,6 +683,10 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   sacrificeMismatch: ({ baseId, subId }) =>
     `Quái "${subId}" không cùng race và cùng lineage với quái chính "${baseId}"`,
   sacrificeStackLimit: ({ max }) => `Số stack hiến tế không được vượt ${max}`,
+  starFeedSameMonster: () => 'Quái chính không được nằm trong danh sách quái nguyên liệu',
+  starFeedMismatch: ({ monsterId, feedId }) =>
+    `Quái "${feedId}" đã fuse hoặc không cùng chuỗi tiến hóa với quái chính "${monsterId}"`,
+  starCopiesLimit: ({ max }) => `Số bản ghép sao không được vượt ${max}`,
   levelTooLowForRebirth: ({ need, have }) => `Cần level ${need} để luân hồi, đang ${have}`,
   markNotFound: ({ monsterId, markId }) => `Quái "${monsterId}" không có dấu ấn "${markId}"`,
   markNotTreatable: ({ markId }) => `Thầy thuốc không bỏ được dấu ấn "${markId}"`,

@@ -94,6 +94,11 @@ export interface Monster {
    */
   sacrificeStacks: number
   /**
+   * Bậc sao (docs/rules/star-rank.md): tổng số bản đã ghép vào (nguyên ≥ 0, không trần); số sao suy
+   * ra từ đây (starsFromCopies). Fuse: quái gốc giữ, quái phụ mất; breeding không truyền.
+   */
+  starCopies: number
+  /**
    * Số lần luân hồi (docs/rules/rebirth.md), nguyên ≥ 0, không trần: mỗi lần + % mọi chỉ số và
    * điểm thiên phú. Fuse cộng ½ của quái phụ (làm tròn xuống); breeding không truyền.
    */

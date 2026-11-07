@@ -41,6 +41,7 @@
 - `effortValues` (`effort-values.md`): điểm nỗ lực theo chỉ số (như EV), số nguyên ≥ 0; trần 252 / chỉ số, 510 tổng chỉ áp lúc cộng. Quái mới, con breeding, quái hoang 0; tiến hóa, fuse (quái gốc) giữ.
 - `bloodlines` (`bloodline.md`): độ thuần huyết mạch `{ groupId, purity }[]` (trong (0, 100], 1 chữ số thập phân, đúng thứ tự `bloodlines.json`, chỉ nhóm loài gốc thuộc). Quái hoang / boss tung, con breeding theo bố mẹ, fuse cộng 50% của quái phụ, tiến hóa giữ (bỏ nhóm loài mới không thuộc), phản tổ bỏ nhóm vừa phản tổ.
 - `sacrificeStacks` (`sacrifice.md`): số stack hiến tế, nguyên ≥ 0, +1% mọi chỉ số mỗi stack. Hiến tế cộng stack phụ + 1, fuse cộng stack quái phụ, breeding / quái hoang 0.
+- `starCopies` (`star-rank.md`): tổng số bản đã ghép sao, nguyên ≥ 0; số sao suy ra (`starsOf`), +5% mọi chỉ số mỗi sao. Fuse giữ của quái gốc, breeding / quái hoang 0, tiến hóa giữ.
 - `rebirths` (`rebirth.md`): số lần luân hồi, nguyên ≥ 0, +10% mọi chỉ số và +3 điểm thiên phú mỗi lần. Fuse cộng ⌊½ của quái phụ⌋, breeding / quái hoang 0.
 - `workTraits` (`dwelling.md`): id trait làm việc trong `workTraits.json`, không lặp, không quá số tối đa (số mục `countWeights` − 1), không hai trait cùng nhóm; tung khi sinh (quái shiny có trait shiny), breeding thừa hưởng / đột biến, fuse / tiến hóa giữ, thêm bằng Phù cấy, xóa bằng Phù tẩy tâm.
 - `workPoints` / `workSoulLevel` (`dwelling.md`): điểm chỉ số làm việc từ Sách làm việc theo loại việc (nguyên ≥ 0), cấp hồn tinh tốc độ làm việc (nguyên ≥ 0). Fuse giữ của quái gốc, tiến hóa giữ, breeding / quái mới 0.
@@ -82,11 +83,12 @@
   - Cửa hàng (thị trấn): `sellItem { item, count }`, `buyItem { item, count }`; hàng loạt `sellItems { items }` / `discardItems { items }` (dòng `{ item, count }`, `bulk-actions.md`). `item` là định danh `ItemRef` (`{ storage: 'stack', itemId }`, `{ storage: 'crystal', traitId, level }`, `{ storage: 'book', skillId, reusable }` hoặc `{ storage: 'instance', instanceId }`).
   - Breeding (thị trấn): `breed { fatherId, motherId }`.
   - Hiến tế (NPC fusing, thị trấn): `sacrifice { baseId, subIds }` (nhiều quái phụ = hàng loạt; `sacrifice.md`).
+  - Bậc sao (NPC fusing, thị trấn): `starUp { monsterId, feedIds }` (`star-rank.md`).
   - Luân hồi (NPC luân hồi, thị trấn): `rebirthMonster { monsterId }` (`rebirth.md`).
   - Thầy thuốc (thị trấn): `treatMark { monsterId, markId, targetId? }` bỏ sẹo / đột biến / ám ảnh (`marks.md`).
   - Cấy ghép (Phòng Thí Nghiệm, thị trấn): `implant { monsterId, serumIndex }` (`implant.md`). `GameState.lab = { stock, restockDay }`: huyết thanh đang bán, ngày đổi hàng.
   - Ấp trứng (`breeding-eggs.md` mục "Ấp trứng có hoàn cảnh"): `infuseEgg { eggId, itemId }` (ngoài trận, ở đâu cũng được; lỗi `eggNotFound { eggId }`, `notSpiritStone { itemId }`, `eggInfusionsFull { eggId, max }`), `buyCharm { itemId }` (cửa hàng thị trấn; lỗi `charmNotForSale { itemId, reason: notSold | owned }`).
-  - Sức chứa (NPC kho đồ, thị trấn): `expandCapacity { kind }` (`capacity.md`). `GameState.capacity = { storage, bag }`: số lần đã mở rộng. `releaseMonster` / `releaseMonsters` / `fuse` / `sacrifice` / `implant` nhận thêm `discardOverflow?` (xác nhận bỏ món đang lắp không đủ chỗ về túi).
+  - Sức chứa (NPC kho đồ, thị trấn): `expandCapacity { kind }` (`capacity.md`). `GameState.capacity = { storage, bag }`: số lần đã mở rộng. `releaseMonster` / `releaseMonsters` / `fuse` / `sacrifice` / `starUp` / `implant` nhận thêm `discardOverflow?` (xác nhận bỏ món đang lắp không đủ chỗ về túi).
   - Fusing (thị trấn): `fuse { baseId, subId, boostItemId?, protectItemId?, inheritSkillIds?, forgetSkillIds? }` (bùa fuse, có thể thất bại: mục "Fuse thất bại và bùa fuse"; kế thừa skill của quái phụ: mục "Kế thừa skill" ở `fusing.md`).
   - Tiến hóa và skill (ngoài trận): `chooseEvolution { monsterId, speciesId }`, `learnPendingSkill { monsterId, skillId, forgetSkillId? }`, `skipPendingSkill { monsterId, skillId }`, `relearnSkill { monsterId, skillId, forgetSkillId? }` (thị trấn), `useSkillBook { monsterId, item }` (sách kỹ năng, ở đâu cũng được; `skill-books.md`).
   - Quản lý quái (ngoài trận): `moveToStorage { monsterId }`, `moveToParty { monsterId }`, `swapWithStorage { partyMonsterId, storageMonsterId }`, `reorderParty { monsterIds }`, `releaseMonster { monsterId }` (món đang lắp về túi), `releaseMonsters { monsterIds }` (hàng loạt, `bulk-actions.md`), `renameMonster { monsterId, nickname }`, `petMonster { monsterId }` (vuốt ve quái đang đòi, `imprinting.md`).
@@ -170,6 +172,7 @@
 - Lệnh thế khi chưa đủ thuần thục (`move-styles.md`): `styleLocked { monsterId, skillId, level, need }`.
 - Lệnh nhắm bộ phận mà quái ở ô mục tiêu không có bộ phận đó (`hit-locations.md`): `bodyPartMissing { monsterId, partId }`.
 - Hiến tế (`sacrifice.md`): quái chính nằm trong `subIds` `sacrificeSameMonster`, khác race / lineage `sacrificeMismatch { baseId, subId }`, stack vượt số nguyên an toàn `sacrificeStackLimit { max }`.
+- Bậc sao (`star-rank.md`): quái chính nằm trong `feedIds` `starFeedSameMonster`, nguyên liệu fuse / khác chuỗi tiến hóa `starFeedMismatch { monsterId, feedId }`, tổng số bản vượt số nguyên an toàn `starCopiesLimit { max }`.
 - Luân hồi (`rebirth.md`): level hiện tại chưa đủ `levelTooLowForRebirth { need, have }`; thiếu đan dùng `notEnoughItem`.
 - Dấu ấn (`marks.md`): quái không có dấu (id + đối tượng) `markNotFound { monsterId, markId }`; Thầy thuốc không bỏ được loại dấu (thích nghi, chiến tích) `markNotTreatable { markId }`.
 - Cấy ghép (`implant.md`): `serumNotFound { serumIndex }`; quái duy nhất của đội cấy khi lần thất bại kế tiếp sẽ mất quái `partyWouldBeEmpty`.

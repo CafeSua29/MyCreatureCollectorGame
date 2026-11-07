@@ -141,6 +141,7 @@ import {
   rebirthMonster,
   treatMark,
   sacrifice,
+  starUp,
   warmEggsAtRest
 } from '../progression'
 import {
@@ -227,7 +228,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 114
+export const SAVE_VERSION = 115
 
 export function createGameState(options: {
   seed: number
@@ -694,6 +695,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return chooseEssence(data, state, action.essenceId)
     case 'sacrifice':
       return sacrifice(data, state, action)
+    case 'starUp':
+      return starUp(data, state, action)
     case 'rebirthMonster':
       return rebirthMonster(data, state, action.monsterId)
     case 'treatMark':

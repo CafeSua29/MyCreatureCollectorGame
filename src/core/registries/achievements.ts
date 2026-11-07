@@ -24,6 +24,7 @@ import { researchCompletedCount } from './research'
 import { speciesRankIndex, speciesRankOf } from './speciesRank'
 import { difficultyRank, hasChallengeMode } from './challenge'
 import { findMarkDef, markDefOfKind } from './marks'
+import { starsOf } from './starRank'
 
 /** Phần state điều kiện thành tựu đọc. */
 export type AchievementScope = Pick<
@@ -216,7 +217,14 @@ export const ACHIEVEMENT_CONDITIONS: Readonly<
     progress: (params, state, data) =>
       ownedMarks(data, state, params.kind).reduce((best, mark) => Math.max(best, mark.level), 0),
     maxProgress: () => null
-  }
+  },
+  // Số sao cao nhất của quái đang sở hữu (docs/rules/star-rank.md).
+  monsterStars: plain((state, data) =>
+    [...state.party, ...state.storage].reduce(
+      (best, monster) => Math.max(best, starsOf(data, monster)),
+      0
+    )
+  )
 }
 
 /** Tiến độ hiện tại của thành tựu. */

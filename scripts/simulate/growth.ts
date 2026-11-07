@@ -11,6 +11,7 @@ import {
   breedCost,
   battleCatchChance,
   canSacrificeTo,
+  canStarFeed,
   computeStats,
   dayOf,
   fuseSuccessChance,
@@ -135,11 +136,16 @@ function fuseTargetFor(
 
 /**
  * Quái hoang đáng lấy về: làm nguyên liệu fuse, hoặc hiến tế được cho một quái đội mẫu (cùng race,
- * cùng lineage; sacrifice.ts hiến tế ở lần về thị trấn sau).
+ * cùng lineage; sacrifice.ts), hoặc ghép sao được (cùng chuỗi tiến hóa; starRank.ts) ở lần về thị trấn
+ * sau.
  */
 function isWantedFodder(data: GameData, team: readonly Monster[], candidate: Monster): boolean {
   if (fuseTargetFor(data, team, candidate)) return true
-  return team.some((member) => member.id !== candidate.id && canSacrificeTo(member, candidate))
+  return team.some(
+    (member) =>
+      member.id !== candidate.id &&
+      (canSacrificeTo(member, candidate) || canStarFeed(data, member, candidate))
+  )
 }
 
 /** Lý lịch của quái hoang về tay người chơi (bắt bóng, thu phục). */

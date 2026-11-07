@@ -54,6 +54,7 @@ import { tuneTeamTraits } from './traitCrystals'
 import { implantSharePercent, implantTeam } from './implant'
 import { tallyTeamMarks, treatTeamMarks } from './marks'
 import { sacrificeSpareFodder } from './sacrifice'
+import { averageTeamStars, starUpSpareFodder } from './starRank'
 import { rebirthWhenPossible } from './rebirth'
 import { highestFavorRank, runDeities } from './deities'
 import { castWithCores, enhanceTeamGear, imbueTeamGear, salvageSurplus } from './forge'
@@ -928,7 +929,12 @@ function runGrowth(data: GameData, run: Run, teamIds: Set<string>): void {
   state = baited.state
   run.growth.baitsUsed += baited.used
   state = fuseWhenPossible(data, state, teamIds, run.growth)
-  // Quái bắt về dư: hiến tế vào quái đội mẫu nhận được, hết dùng còn lại thả (sacrifice.ts).
+  // Quái bắt về dư: ghép sao trước (cùng chuỗi tiến hóa, % mỗi bản cao hơn; starRank.ts), rồi hiến
+  // tế vào quái đội mẫu nhận được, hết dùng còn lại thả (sacrifice.ts).
+  const starred = starUpSpareFodder(data, state, teamIds)
+  state = starred.state
+  run.economy.starFeeds += starred.fed
+  run.economy.teamStars = averageTeamStars(data, state, teamIds)
   const offered = sacrificeSpareFodder(data, state, teamIds)
   state = offered.state
   run.economy.sacrifices += offered.sacrificed
