@@ -723,7 +723,8 @@ export const HOOK_SOURCE_KINDS = [
   'sticker',
   'mark',
   'equipmentSet',
-  'rule'
+  'rule',
+  'boon'
 ] as const
 
 export type HookSourceKind = (typeof HOOK_SOURCE_KINDS)[number]
@@ -746,6 +747,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'sticker':
     case 'mark':
     case 'equipmentSet':
+    case 'boon':
       return kind
     case 'trait':
     case 'race':

@@ -29,7 +29,10 @@ export function rollSecretRealm(
   let rules: TrialRule[]
   ;[rules, rng] = rollTrialRules(data, rng, { count: config.ruleCount, inTower: false, elementIds })
   const floor = Math.max(1, highestFloor + config.floorOffset)
-  return [{ kind: 'realm', floor, biomeId, rules, battleCount, cleared: 0 }, rng]
+  return [
+    { kind: 'realm', floor, biomeId, rules, battleCount, cleared: 0, boons: [], boonChoices: [] },
+    rng
+  ]
 }
 
 /** Tầng và map của bí cảnh: đủ để sinh quái như một tầng thường. */

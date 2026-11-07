@@ -480,11 +480,7 @@
     "id": "wanderer",
     "kind": "named",
     "rarity": "common",
-    "pieceItemIds": [
-      "wandererHood",
-      "wandererBoots",
-      "wandererCloak"
-    ],
+    "pieceItemIds": ["wandererHood", "wandererBoots", "wandererCloak"],
     "bonuses": [
       {
         "pieces": 2,
@@ -520,10 +516,7 @@
     "id": "apprentice",
     "kind": "named",
     "rarity": "common",
-    "pieceItemIds": [
-      "apprenticeWand",
-      "apprenticeRobe"
-    ],
+    "pieceItemIds": ["apprenticeWand", "apprenticeRobe"],
     "bonuses": [
       {
         "pieces": 2,
@@ -550,11 +543,7 @@
     "id": "militia",
     "kind": "named",
     "rarity": "common",
-    "pieceItemIds": [
-      "militiaSpear",
-      "militiaShield",
-      "militiaHelm"
-    ],
+    "pieceItemIds": ["militiaSpear", "militiaShield", "militiaHelm"],
     "bonuses": [
       {
         "pieces": 2,
@@ -586,11 +575,7 @@
     "id": "ember",
     "kind": "named",
     "rarity": "uncommon",
-    "pieceItemIds": [
-      "emberGloves",
-      "emberMantle",
-      "emberBand"
-    ],
+    "pieceItemIds": ["emberGloves", "emberMantle", "emberBand"],
     "bonuses": [
       {
         "pieces": 2,
@@ -598,9 +583,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "fire"
-              ],
+              "elementIds": ["fire"],
               "percent": 10
             }
           }
@@ -629,11 +612,7 @@
     "id": "tidecaller",
     "kind": "named",
     "rarity": "uncommon",
-    "pieceItemIds": [
-      "tideCirclet",
-      "tideScale",
-      "tideAnklet"
-    ],
+    "pieceItemIds": ["tideCirclet", "tideScale", "tideAnklet"],
     "bonuses": [
       {
         "pieces": 2,
@@ -641,9 +620,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "water"
-              ],
+              "elementIds": ["water"],
               "percent": 10
             }
           }
@@ -666,11 +643,7 @@
     "id": "thornguard",
     "kind": "named",
     "rarity": "uncommon",
-    "pieceItemIds": [
-      "thornGauntlet",
-      "thornCuirass",
-      "thornGreaves"
-    ],
+    "pieceItemIds": ["thornGauntlet", "thornCuirass", "thornGreaves"],
     "bonuses": [
       {
         "pieces": 2,
@@ -678,9 +651,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "grass"
-              ],
+              "elementIds": ["grass"],
               "percent": 10
             }
           }
@@ -704,12 +675,7 @@
     "id": "stormcaller",
     "kind": "named",
     "rarity": "rare",
-    "pieceItemIds": [
-      "stormCrown",
-      "stormRod",
-      "stormBoots",
-      "stormMail"
-    ],
+    "pieceItemIds": ["stormCrown", "stormRod", "stormBoots", "stormMail"],
     "bonuses": [
       {
         "pieces": 2,
@@ -717,9 +683,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "electric"
-              ],
+              "elementIds": ["electric"],
               "percent": 12
             }
           }
@@ -761,12 +725,7 @@
     "id": "frostbound",
     "kind": "named",
     "rarity": "rare",
-    "pieceItemIds": [
-      "frostHelm",
-      "frostPlate",
-      "frostBlade",
-      "frostVeil"
-    ],
+    "pieceItemIds": ["frostHelm", "frostPlate", "frostBlade", "frostVeil"],
     "bonuses": [
       {
         "pieces": 2,
@@ -774,9 +733,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "ice"
-              ],
+              "elementIds": ["ice"],
               "percent": 12
             }
           }
@@ -819,12 +776,7 @@
     "id": "huntsman",
     "kind": "named",
     "rarity": "rare",
-    "pieceItemIds": [
-      "hunterBow",
-      "hunterHood",
-      "hunterQuiver",
-      "hunterBoots"
-    ],
+    "pieceItemIds": ["hunterBow", "hunterHood", "hunterQuiver", "hunterBoots"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1005,13 +957,7 @@
     "id": "arcanum",
     "kind": "named",
     "rarity": "epic",
-    "pieceItemIds": [
-      "arcanumStaff",
-      "arcanumHat",
-      "arcanumRobe",
-      "arcanumOrb",
-      "arcanumSlippers"
-    ],
+    "pieceItemIds": ["arcanumStaff", "arcanumHat", "arcanumRobe", "arcanumOrb", "arcanumSlippers"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1088,9 +1034,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dragon"
-              ],
+              "elementIds": ["dragon"],
               "percent": 15
             }
           }
@@ -1131,9 +1075,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dragon"
-              ],
+              "elementIds": ["dragon"],
               "percent": 25
             }
           }
@@ -1145,10 +1087,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 20
             }
           }
@@ -1175,9 +1114,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "light"
-              ],
+              "elementIds": ["light"],
               "percent": 15
             }
           }
@@ -1256,9 +1193,7 @@
           {
             "type": "elementDamageDealt",
             "params": {
-              "elementIds": [
-                "dark"
-              ],
+              "elementIds": ["dark"],
               "percent": 15
             }
           }
@@ -1324,12 +1259,7 @@
     "id": "buffaloOverlord",
     "kind": "named",
     "rarity": "unique",
-    "pieceItemIds": [
-      "bantengFang",
-      "barbarySheepHorn",
-      "bullCentaurEye",
-      "dikDikCarapace"
-    ],
+    "pieceItemIds": ["bantengFang", "barbarySheepHorn", "bullCentaurEye", "dikDikCarapace"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1355,10 +1285,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1387,12 +1314,7 @@
     "id": "fishOverlord",
     "kind": "named",
     "rarity": "unique",
-    "pieceItemIds": [
-      "arowanaHorn",
-      "eelHoundCore",
-      "electricCatfishCrown",
-      "electricEelFang"
-    ],
+    "pieceItemIds": ["arowanaHorn", "eelHoundCore", "electricCatfishCrown", "electricEelFang"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1418,10 +1340,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1481,10 +1400,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1513,12 +1429,7 @@
     "id": "mythicBeastOverlord",
     "kind": "named",
     "rarity": "unique",
-    "pieceItemIds": [
-      "bonkersMaw",
-      "conglongOrb",
-      "demigryphFang",
-      "huanglongSiralimTalon"
-    ],
+    "pieceItemIds": ["bonkersMaw", "conglongOrb", "demigryphFang", "huanglongSiralimTalon"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1544,10 +1455,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1576,12 +1484,7 @@
     "id": "canidOverlord",
     "kind": "named",
     "rarity": "unique",
-    "pieceItemIds": [
-      "chaosWarhoundMaw",
-      "dholeFang",
-      "fleshHoundMaw",
-      "grayFoxHide"
-    ],
+    "pieceItemIds": ["chaosWarhoundMaw", "dholeFang", "fleshHoundMaw", "grayFoxHide"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1607,10 +1510,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1670,10 +1570,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1702,12 +1599,7 @@
     "id": "lizardOverlord",
     "kind": "named",
     "rarity": "unique",
-    "pieceItemIds": [
-      "alitFang",
-      "dewbackTalon",
-      "goldenGeckoCarapace",
-      "greenIguanaHeart"
-    ],
+    "pieceItemIds": ["alitFang", "dewbackTalon", "goldenGeckoCarapace", "greenIguanaHeart"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1733,10 +1625,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }
@@ -1765,12 +1654,7 @@
     "id": "primateOverlord",
     "kind": "named",
     "rarity": "unique",
-    "pieceItemIds": [
-      "baboonCore",
-      "barbaryMacaqueCarapace",
-      "capuchinEye",
-      "chimpanzeeSpines"
-    ],
+    "pieceItemIds": ["baboonCore", "barbaryMacaqueCarapace", "capuchinEye", "chimpanzeeSpines"],
     "bonuses": [
       {
         "pieces": 2,
@@ -1796,10 +1680,7 @@
           {
             "type": "damageDealtModifier",
             "params": {
-              "categories": [
-                "physical",
-                "special"
-              ],
+              "categories": ["physical", "special"],
               "percent": 15
             }
           }

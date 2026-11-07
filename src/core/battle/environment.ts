@@ -281,13 +281,21 @@ export function skillAccuracy(
   )
 }
 
-/** Các môi trường trait của quái đặt khi vào sân (setFieldOnEntry). */
-function entryPlacements(data: GameData, monster: Monster): FieldPlacement[] {
+/**
+ * Các môi trường quái đặt khi vào sân (setFieldOnEntry), kể cả hook theo phe của bối cảnh trận
+ * (cộng hưởng, trận pháp, luật, ân huệ bí cảnh).
+ */
+function entryPlacements(data: GameData, d: Draft, monster: Monster): FieldPlacement[] {
   const placements: FieldPlacement[] = []
-  forEachTraitHook(data, monster, (handler, params) => {
-    const placement = handler.fieldOnEntry?.(params)
-    if (placement) placements.push(placement)
-  })
+  forEachTraitHook(
+    data,
+    monster,
+    (handler, params) => {
+      const placement = handler.fieldOnEntry?.(params)
+      if (placement) placements.push(placement)
+    },
+    monsterBattleContext(data, d, monster)
+  )
   return placements
 }
 
@@ -300,8 +308,9 @@ function entryPlacements(data: GameData, monster: Monster): FieldPlacement[] {
 export function triggerEntryEffects(data: GameData, d: Draft, monsters: readonly Monster[]): void {
   autoTransformOnEntry(data, d, monsters)
   const entrants = monsters.flatMap((monster) => {
-    const placements = entryPlacements(data, monster)
-    const changesStages = stageTraitEffects(data, monster, 'entry').length > 0
+    const placements = entryPlacements(data, d, monster)
+    const ctx = monsterBattleContext(data, d, monster)
+    const changesStages = stageTraitEffects(data, monster, 'entry', ctx).length > 0
     return placements.length > 0 || changesStages ? [{ monster, placements }] : []
   })
   const ordered = entrants.map((entrant) => {

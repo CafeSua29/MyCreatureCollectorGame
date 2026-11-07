@@ -38,6 +38,7 @@ export const CONTENT_KINDS = [
   'ailments',
   'trainers',
   'trialRules',
+  'trialBoons',
   'events',
   'eventModifiers',
   'zones',

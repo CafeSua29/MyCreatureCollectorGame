@@ -24,5 +24,7 @@
   "playerNoCrit": "No Criticals",
   "extraTraits": "Mutated Foes",
   "fusedWilds": "Fused Foes",
-  "foreignWilds": "Lost Wanderers"
+  "foreignWilds": "Lost Wanderers",
+  "noBoons": "No Boons",
+  "boonBounty": "Boon Bounty"
 }

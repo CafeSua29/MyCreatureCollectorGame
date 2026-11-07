@@ -350,5 +350,19 @@
       "weight": 6,
       "rewardPercent": 3
     }
+  },
+  {
+    "id": "noBoons",
+    "type": "noBoons",
+    "params": {},
+    "weight": 4
+  },
+  {
+    "id": "boonBounty",
+    "type": "boonChoices",
+    "params": {
+      "count": 2
+    },
+    "weight": 4
   }
 ]

@@ -192,6 +192,8 @@ export interface FloorUnlock {
   /** Bí cảnh đã vào / hoàn thành, số trận bí cảnh, số tầng tháp đã thắng (trials.ts). */
   trialsEntered: number
   trialsCompleted: number
+  /** Bí cảnh hoàn thành ở bản đối chứng tắt ân huệ (so cặp, trials.ts). */
+  trialsNoBoons: number
   trialBattles: number
   towerWins: number
   /** Tầng tháp cao nhất lúc mở tầng. */
@@ -368,6 +370,7 @@ const newCounter = (): FloorCounter => ({
   tournamentsWon: 0,
   trialsEntered: 0,
   trialsCompleted: 0,
+  trialsNoBoons: 0,
   trialBattles: 0,
   towerWins: 0
 })
@@ -847,6 +850,7 @@ function afterBattle(
       run.state = trialRun.state
       run.counter.trialsEntered += trialRun.entered
       run.counter.trialsCompleted += trialRun.completed
+      run.counter.trialsNoBoons += trialRun.completedNoBoons
       run.counter.trialBattles += trialRun.realmBattles
       run.counter.towerWins += trialRun.towerWins
     }

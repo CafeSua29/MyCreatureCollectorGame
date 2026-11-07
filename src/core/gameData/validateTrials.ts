@@ -163,7 +163,7 @@ export function checkTrialData(data: GameData, issues: string[]): void {
   }
   checkKnownFields(
     config,
-    ['tokenItemId', 'tokenBossDrops', 'realm', 'tower'],
+    ['tokenItemId', 'tokenBossDrops', 'realm', 'boons', 'tower'],
     'config.trials',
     'config',
     issues

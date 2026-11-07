@@ -86,7 +86,7 @@ import {
 import {
   dayOf,
   type BattleOutcome,
-  type BattleState,
+  type BattleRewardChannel,
   type Biome,
   type DropEntry,
   type Egg,
@@ -108,6 +108,7 @@ import { TRAINER_MODE_RULES, dropTrainerRewards, trainerMoneyMultiplier } from '
 import { gainDrop, gainEquipment, gainNewEquipment, gainSkillBook } from './rewards'
 import { grantBossFusedMaterial } from './rogueFusion'
 import { TRIAL_KIND_RULES } from './trialOutcome'
+import { battleTrialBoonRewardPercent } from './trialBoons'
 import { rollRecruitOffer, tickRecruitBait } from './recruit'
 import {
   countChainWin,
@@ -247,18 +248,15 @@ function clearBattleOnly(data: GameData, d: Draft): void {
 }
 
 /**
- * Hệ số thưởng chung của trận: 1 + (% độ bất ổn + % độ khó) / 100; độ khó dùng `expPercent` cho EXP,
- * `rewardPercent` cho tiền / đồ rơi.
+ * Hệ số thưởng chung của trận: 1 + (% độ bất ổn + % độ khó + % ân huệ bí cảnh) / 100; độ khó dùng
+ * `expPercent` cho EXP, `rewardPercent` cho tiền / đồ rơi.
  */
-function battleRewardMultiplier(
-  data: GameData,
-  battle: BattleState,
-  channel: 'reward' | 'exp'
-): number {
-  const difficulty = difficultyNumbers(data, battle.difficulty)
+function battleRewardMultiplier(data: GameData, d: Draft, channel: BattleRewardChannel): number {
+  const difficulty = difficultyNumbers(data, d.battle.difficulty)
   const percent =
-    instabilityRewardPercent(data, battle.instability) +
-    (channel === 'exp' ? difficulty.expPercent : difficulty.rewardPercent)
+    instabilityRewardPercent(data, d.battle.instability) +
+    (channel === 'exp' ? difficulty.expPercent : difficulty.rewardPercent) +
+    battleTrialBoonRewardPercent(data, d, channel)
   return 1 + percent / 100
 }
 
@@ -275,8 +273,8 @@ export function applyWin(data: GameData, d: Draft): void {
   // rồi nhân một lần cho tiền, EXP (độ khó: expPercent), tỉ lệ đồ rơi. Chúc phúc của thần cai quản map
   // (docs/rules/deities.md) và danh hiệu đang đeo (docs/rules/achievements.md) nhân tiền, EXP, tỉ lệ
   // đồ rơi theo kênh.
-  const rewardMultiplier = battleRewardMultiplier(data, d.battle, 'reward')
-  const expMultiplier = battleRewardMultiplier(data, d.battle, 'exp')
+  const rewardMultiplier = battleRewardMultiplier(data, d, 'reward')
+  const expMultiplier = battleRewardMultiplier(data, d, 'exp')
   const money = enemies
     .reduce((sum, enemy) => sum.plus(moneyReward(data, enemy)), BIG_ZERO)
     .times(sideMoneyMultiplier(data, d.battle.field, 'player'))

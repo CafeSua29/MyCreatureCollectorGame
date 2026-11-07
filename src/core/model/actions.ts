@@ -162,6 +162,9 @@ export type GameAction =
   | { type: 'enterTrial' }
   | { type: 'challengeTrial' }
   | { type: 'abandonTrial' }
+  /** Chọn một ân huệ đang chờ / bỏ lựa chọn lấy tiền (docs/rules/trial-boons.md). */
+  | { type: 'chooseTrialBoon'; boonId: string }
+  | { type: 'skipTrialBoon' }
   | { type: 'challengeTower' }
   /**
    * Khí Linh Các (thị trấn; docs/rules/artifact-spirits.md): triệu khí linh bằng Dẫn Hồn Châu, di

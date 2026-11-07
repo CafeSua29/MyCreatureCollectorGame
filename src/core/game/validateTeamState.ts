@@ -44,7 +44,21 @@ function checkRuleBonus(
   issues.push(...checkInteger(bonus.count, `${where}.count`, 1))
 }
 
-/** Một mục cộng hưởng / trận pháp / luật của phe trong trận. */
+/** Ân huệ bí cảnh (docs/rules/trial-boons.md): ân huệ tồn tại, chỉ phe người chơi, cấp nguyên ≥ 1. */
+function checkBoonBonus(
+  data: GameData,
+  bonus: Record<string, unknown>,
+  { where, side }: { where: string; side: BattleSide },
+  issues: string[]
+): void {
+  if (typeof bonus.id !== 'string' || !Object.hasOwn(data.trialBoons, bonus.id)) {
+    issues.push(`${where}: ân huệ không tồn tại "${String(bonus.id)}"`)
+  }
+  if (side !== 'player') issues.push(`${where}: ân huệ chỉ có ở phe người chơi`)
+  issues.push(...checkInteger(bonus.stacks, `${where}.stacks`, 1))
+}
+
+/** Một mục cộng hưởng / trận pháp / luật / ân huệ của phe trong trận. */
 function checkTeamBonus(
   data: GameData,
   value: unknown,
@@ -54,6 +68,10 @@ function checkTeamBonus(
   const bonus = asObject(value)
   if (bonus?.kind === 'rule') {
     checkRuleBonus(data, bonus, { where, side }, issues)
+    return
+  }
+  if (bonus?.kind === 'boon') {
+    checkBoonBonus(data, bonus, { where, side }, issues)
     return
   }
   if (bonus?.kind === 'synergy') {
@@ -83,7 +101,7 @@ function checkTeamBonus(
     issues.push(...checkNumber(bonus.strength, `${where}.strength`, 0))
     return
   }
-  issues.push(`${where}: kind phải là "synergy", "formation", "partner" hoặc "rule"`)
+  issues.push(`${where}: kind phải là "synergy", "formation", "partner", "rule" hoặc "boon"`)
 }
 
 /**

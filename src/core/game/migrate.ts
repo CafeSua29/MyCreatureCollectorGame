@@ -1185,7 +1185,16 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   // v114 → v115: bậc sao (star-rank.md).
   114: addStarCopies,
   // v115 → v116: bộ trang bị (equipment-sets.md): `setId` tùy chọn trên món, món cũ không thuộc bộ.
-  115: (save) => ({ ...save, version: 116 })
+  115: (save) => ({ ...save, version: 116 }),
+  // v116 → v117: ân huệ bí cảnh (trial-boons.md): bí cảnh đang đi chưa có ân huệ, không chờ chọn.
+  116: addTrialBoons
+}
+
+/** v116 → v117: bí cảnh đang đi (kind realm) thêm `boons: []`, `boonChoices: []`. */
+function addTrialBoons(save: SaveObject): SaveObject {
+  const trial = asObject(save.trial)
+  if (trial?.kind !== 'realm') return { ...save, version: 117 }
+  return { ...save, version: 117, trial: { ...trial, boons: [], boonChoices: [] } }
 }
 
 /**

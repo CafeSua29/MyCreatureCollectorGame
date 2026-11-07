@@ -84,7 +84,12 @@ function applyStickers(
     const monster = stickerTarget(data, team, sticker)
     if (!monster) continue
     const known = monster.skillIds.includes(sticker.skillId)
-    const full = !known && monster.skillIds.length >= skillCapacity(data, monster)
+    // Số ô tính sau khi gắn sticker như core (thuộc tính Extra Slots thêm ô, skill-stickers.md).
+    const withSticker = {
+      ...monster,
+      skillStickers: { ...monster.skillStickers, [sticker.skillId]: sticker }
+    }
+    const full = !known && monster.skillIds.length >= skillCapacity(data, withSticker)
     const replaced = full ? weakestSkill(data, monster) : undefined
     // Không bỏ skill đang mang sticker khác (giữ thuộc tính đã có).
     if (replaced !== undefined && replaced in monster.skillStickers) continue

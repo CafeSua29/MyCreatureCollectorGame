@@ -413,6 +413,10 @@ export interface ActionErrorParams {
   /** Đang đi bí cảnh: không hồi máu ở thị trấn, không rời thị trấn, không vào trận khác. */
   trialInProgress: NoParams
   noTrial: NoParams
+  /** Ân huệ bí cảnh (docs/rules/trial-boons.md): còn lựa chọn chưa chọn, không có lựa chọn, sai id. */
+  trialBoonPending: NoParams
+  noTrialBoonChoice: NoParams
+  notTrialBoonChoice: { boonId: string }
   /** Độ bất ổn tầng (docs/rules/instability.md). */
   instabilityLevelTooHigh: { level: number; max: number }
   instabilityUnchanged: { level: number }
@@ -860,6 +864,9 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   trialRestricted: ({ command }) => `Không được dùng lệnh "${command}" trong bí cảnh / tháp`,
   trialInProgress: () => 'Đang đi bí cảnh (không hồi máu, không rời thị trấn, không vào trận khác)',
   noTrial: () => 'Không trong bí cảnh nào',
+  trialBoonPending: () => 'Còn ân huệ chưa chọn (chọn hoặc bỏ trước khi đánh trận kế)',
+  noTrialBoonChoice: () => 'Không có ân huệ nào đang chờ chọn',
+  notTrialBoonChoice: ({ boonId }) => `Ân huệ "${boonId}" không nằm trong lựa chọn`,
   instabilityLevelTooHigh: ({ level, max }) => `Mức bất ổn ${level} vượt mức tối đa ${max}`,
   instabilityUnchanged: ({ level }) => `Độ bất ổn đang ở mức ${level}`,
   instabilityOff: () => 'Chưa bật độ bất ổn tầng',

@@ -347,6 +347,7 @@ export type TriggerLogSource =
   | 'sticker'
   | 'mark'
   | 'equipmentSet'
+  | 'boon'
 
 /**
  * Cộng hưởng / trận pháp đang có tác dụng với một phe trong trận (docs/rules/team.md), tính lúc vào
@@ -366,6 +367,8 @@ export type TeamBonus =
    * `count` = số lần luật có trong trận (hệ số hook).
    */
   | { kind: 'rule'; id: string; count: number }
+  /** Ân huệ của lượt bí cảnh (docs/rules/trial-boons.md), chỉ phe người chơi; hệ số hook = cấp. */
+  | { kind: 'boon'; id: string; stacks: number }
 
 export type BattlePhase = 'chooseActions' | 'chooseReplacement' | 'ended'
 
@@ -1353,6 +1356,10 @@ export type BattleEvent =
   | { type: 'trialProgress'; cleared: number; total: number }
   | { type: 'trialCompleted' }
   | { type: 'trialFailed' }
+  /** Ân huệ tung sau trận thắng bí cảnh, chờ chọn (docs/rules/trial-boons.md). */
+  | { type: 'trialBoonOffered'; boonIds: string[] }
+  /** Ân huệ bossWeaken: boss của trận bí cảnh vào trận đã mất `amount` máu. */
+  | { type: 'bossWeakened'; monsterId: string; amount: Decimal }
   | { type: 'towerFloorCleared'; floor: number }
   /**
    * Khí giới bí cảnh (docs/rules/artifact-spirits.md): qua một tầng (tầng đã qua, cấp mới của món),

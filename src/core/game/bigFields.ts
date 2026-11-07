@@ -41,7 +41,8 @@ const EVENT_BIG_FIELDS: EventBigFields = {
   barrierAbsorbed: 'amount',
   maxHpChanged: 'amount',
   flatStat: 'amount',
-  worldBossDamage: 'total'
+  worldBossDamage: 'total',
+  bossWeakened: 'amount'
 }
 
 /** Trường Decimal trong log ngoài trận (GameState.log, docs/rules/game-log.md), như EVENT_BIG_FIELDS. */
@@ -58,7 +59,8 @@ export const LOG_BIG_FIELDS: LogBigFields = {
   auctionLost: 'npcPrice',
   consignmentSold: 'earned',
   consignmentReturned: 'npcPrice',
-  ascended: 'essenceGained'
+  ascended: 'essenceGained',
+  trialBoonSkipped: 'money'
 }
 
 type Convert = (value: unknown) => unknown

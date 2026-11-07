@@ -42,6 +42,7 @@ import workTraits from './workTraits.json'
 import ailments from './ailments.json'
 import trainers from './trainers.json'
 import trialRules from './trialRules.json'
+import trialBoons from './trialBoons.json'
 import events from './events.json'
 import eventModifiers from './eventModifiers.json'
 import zones from './zones.json'
@@ -133,6 +134,7 @@ export const rawGameData = {
   ailments,
   trainers,
   trialRules,
+  trialBoons,
   events,
   eventModifiers,
   zones,

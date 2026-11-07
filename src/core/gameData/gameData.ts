@@ -89,6 +89,7 @@ import { checkExpeditionData } from './validateExpeditions'
 import { checkDwellingData } from './validateDwelling'
 import { checkTrainerData } from './validateTrainers'
 import { checkTrialData } from './validateTrials'
+import { checkTrialBoons } from './validateTrialBoons'
 import { checkZoneData } from './validateZones'
 import { checkGatheringData } from './validateGathering'
 import { checkWorldBossData } from './validateWorldBoss'
@@ -229,6 +230,7 @@ export function createGameData(raw: RawGameData): GameData {
     ailments: indexById(raw.ailments, 'ailments', issues),
     trainers: indexById(raw.trainers, 'trainers', issues),
     trialRules: indexById(raw.trialRules, 'trialRules', issues),
+    trialBoons: indexById(raw.trialBoons, 'trialBoons', issues),
     events: indexById(raw.events, 'events', issues),
     eventModifiers: indexById(raw.eventModifiers, 'eventModifiers', issues),
     zones: indexZones(raw, issues),
@@ -340,6 +342,7 @@ export function createGameData(raw: RawGameData): GameData {
   checkAutoBattleData(data, issues)
   checkTrainerData(data, issues)
   checkTrialData(data, issues)
+  checkTrialBoons(data, issues)
   checkZoneData(data, issues)
   checkGatheringData(data, issues)
   checkWorldBossData(data, issues)

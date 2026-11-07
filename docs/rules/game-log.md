@@ -27,6 +27,8 @@ Union theo chủ đề (thêm loại = thêm vào union con đúng chủ đề +
 | `gathered`                      | `method, tier, lureItemId, items, encounter`                                    | `fish` / `mine` (`gathering.md`)                          |
 | `presetMissing`                 | `presetId, monsterIds, items`                                                   | `applyTeamPreset` khi có quái / món bỏ qua (`roster.md`)  |
 | `crafted`                       | `station, recipeId, successes, failures`                                        | `craft` (`alchemy.md`, `cooking.md`)                      |
+| `trialBoonChosen`               | `boonId, stacks`                                                                | `chooseTrialBoon` (`trial-boons.md`)                      |
+| `trialBoonSkipped`              | `money` (`Decimal`)                                                             | `skipTrialBoon` (`trial-boons.md`)                        |
 | `zoneStep`                      | `zoneId, result` (`ZoneStepResult`)                                             | `exploreZone` (`zones.md`)                                |
 | `portalOpened` / `portalClosed` | `portalId, zoneId`                                                              | việc theo ngày (`zones.md` mục "Cổng thế giới")           |
 | `fused`                         | `baseId, outcome` (`success` / `failed` / `protected`)                          | `fuse` (`fusing.md`)                                      |

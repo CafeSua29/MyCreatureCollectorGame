@@ -1,16 +1,16 @@
 // Bí cảnh và tháp thí luyện (docs/rules/trials.md): luật bí cảnh (src/data/trialRules.json; tên ở
 // i18n), bí cảnh đang đi trong GameState, tháp, trận thuộc bí cảnh / tháp trong BattleState, config.
 
-import type { DropEntry } from './content'
+import type { DropEntry, NormalRarity, TraitHookDef } from './content'
 import type { ItemReward } from './trainers'
-import type { NormalRarity } from './content'
 import type { BattleSpirit, ItemWorldRun } from './artifactSpirits'
 
 /**
  * Loại luật (registry TRIAL_RULES ở registries/trialRules.ts): cấm vật phẩm, chỉ quái một hệ, môi
  * trường cố định, mọi trận là boss, cấm biến hình, cấm kỹ năng ngự thú sư, địch mạnh hơn, không hồi
  * máu giữa các trận, hook trait cho một phe, quái địch thêm trait, quái hoang là quái fuse, quái từ
- * map khác (độ bất ổn tầng, docs/rules/instability.md, dùng chung registry).
+ * map khác (độ bất ổn tầng, docs/rules/instability.md, dùng chung registry), khóa ân huệ, thêm lựa
+ * chọn ân huệ (docs/rules/trial-boons.md).
  */
 export const TRIAL_RULE_TYPES = [
   'noItems',
@@ -24,7 +24,9 @@ export const TRIAL_RULE_TYPES = [
   'sideHooks',
   'extraEnemyTraits',
   'fusedEnemies',
-  'foreignSpecies'
+  'foreignSpecies',
+  'noBoons',
+  'boonChoices'
 ] as const
 
 export type TrialRuleType = (typeof TRIAL_RULE_TYPES)[number]
@@ -63,6 +65,55 @@ export interface SecretRealm {
   battleCount: number
   /** Số trận đã thắng (trận kế tiếp là trận thứ cleared + 1; trận cuối là boss). */
   cleared: number
+  /** Ân huệ đã chọn trong lượt (docs/rules/trial-boons.md); hết lượt thì mất. */
+  boons: TrialBoonStack[]
+  /** Ân huệ đang chờ chọn sau trận thắng (rỗng = không chờ; còn chờ thì chưa đánh trận kế). */
+  boonChoices: string[]
+}
+
+/** Bậc hiếm của ân huệ: quyết định trọng số khi tung (config.trials.boons.rarityWeights) và màu UI. */
+export const TRIAL_BOON_RARITIES = ['common', 'rare', 'epic'] as const
+
+export type TrialBoonRarity = (typeof TRIAL_BOON_RARITIES)[number]
+
+/**
+ * Loại hiệu ứng của ân huệ (registry TRIAL_BOON_EFFECTS ở registries/trialBoons.ts): hook trait
+ * trong trận cho mọi quái phe người chơi, % thưởng trận, hồi máu thêm sau trận thắng, lượt tung
+ * thêm của rương, boss mất máu đầu trận.
+ */
+export const TRIAL_BOON_EFFECT_TYPES = ['hooks', 'reward', 'heal', 'chest', 'bossWeaken'] as const
+
+export type TrialBoonEffectType = (typeof TRIAL_BOON_EFFECT_TYPES)[number]
+
+/** Kênh % thưởng của trận: `reward` = tiền và tỉ lệ đồ rơi, `exp` = EXP (như độ khó / bất ổn). */
+export type BattleRewardChannel = 'reward' | 'exp'
+
+/** Một hiệu ứng của ân huệ; mọi số nhân số cấp (stacks) của ân huệ. */
+export type TrialBoonEffect =
+  /** Hook trait chỉ trong trận cho mọi quái phe người chơi (như luật sideHooks; hệ số = cấp). */
+  | { type: 'hooks'; hooks: TraitHookDef[] }
+  /** % thưởng của trận bí cảnh theo kênh (cộng với % độ khó). */
+  | { type: 'reward'; channel: BattleRewardChannel; percent: number }
+  /** % max HP hồi thêm cho cả đội sau mỗi trận thắng (cộng healPercent; luật noHealing tắt). */
+  | { type: 'heal'; percent: number }
+  /** Lượt tung món thêm của rương bí cảnh. */
+  | { type: 'chest'; rolls: number }
+  /** Quái địch của trận boss bí cảnh vào trận đã mất % max HP (tổng kẹp bossWeakenCapPercent). */
+  | { type: 'bossWeaken'; percent: number }
+
+/** Ân huệ trong trialBoons.json (tên ở i18n trialBoons). */
+export interface TrialBoonDef {
+  id: string
+  rarity: TrialBoonRarity
+  effects: TrialBoonEffect[]
+  /** Cấp tối đa (chọn lại thì + 1 cấp); bỏ trống = không trần. */
+  maxStacks?: number
+}
+
+/** Ân huệ đã chọn trong lượt bí cảnh và cấp của nó (≥ 1). */
+export interface TrialBoonStack {
+  boonId: string
+  stacks: number
 }
 
 export interface TowerState {
@@ -158,6 +209,21 @@ export interface TrialConfig {
       skillBookCount: number
       reusableBookChance: number
     }
+  }
+  /** Ân huệ trong lượt bí cảnh (docs/rules/trial-boons.md). */
+  boons: {
+    /** Số ân huệ khác nhau tung sau mỗi trận thắng (trừ trận cuối); 0 = tắt. */
+    choiceCount: number
+    rarityWeights: Record<TrialBoonRarity, number>
+    /**
+     * % trọng số gốc cộng thêm mỗi mức độ bất ổn tầng (docs/rules/instability.md): trọng số = gốc ×
+     * (1 + mức × % / 100); bậc hiếm cao cộng nhiều hơn nên bất ổn càng cao ân huệ càng hiếm.
+     */
+    instabilityRarityPercent: Record<TrialBoonRarity, number>
+    /** Trần tổng % máu boss mất đầu trận của các ân huệ bossWeaken (boss không gục vì ân huệ). */
+    bossWeakenCapPercent: number
+    /** Bỏ lựa chọn: tiền = moneyPerLevel × level tối đa của tầng sức mạnh × skipMoneyPercent %. */
+    skipMoneyPercent: number
   }
   tower: {
     ruleCount: { min: number; max: number }

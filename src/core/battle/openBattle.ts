@@ -48,6 +48,7 @@ import { rollBossTransformPlan } from './transform'
 import { isTamerWounded, newBattleTamer, partnerTeamBonus } from '../tamer'
 import { countsAsFloorBattle } from './specialBattles'
 import { applyEnemyRules, battleInstabilityFor, ruleTeamBonuses } from './instability'
+import { battleTrialBoons, trialBoonTeamBonuses, weakenTrialBosses } from './trialBoons'
 import { claimNuzlockeEncounter } from './nuzlocke'
 
 /** Boss trong trận mang món unique của loài (sinh sau cả trận để không đổi quái đã sinh). */
@@ -231,7 +232,8 @@ export function openBattle(
         : [
             ...activeTeamBonuses(data, state.party, state.formations.active),
             ...[partnerTeamBonus(data, state.party)].flatMap((bonus) => (bonus ? [bonus] : [])),
-            ...ruleTeamBonuses(data, rules, 'player')
+            ...ruleTeamBonuses(data, rules, 'player'),
+            ...trialBoonTeamBonuses(battleTrialBoons(state, trial ?? null))
           ],
       enemy: [
         ...(trainer ? activeTeamBonuses(data, enemies, trainer.formationId) : []),
@@ -281,6 +283,8 @@ export function openBattle(
     (id) => findMonster(d, id)
   )
   applyBossAdvantage(data, d, encounter)
+  // Ân huệ bossWeaken (docs/rules/trial-boons.md): sau lợi thế boss (có thể đổi max HP).
+  weakenTrialBosses(data, d)
   applyEssenceTraits(data, d)
   triggerEntryEffects(data, d, onField)
   // Trait vào sân (đầu trận) có thể hạ quái: phân thắng thua / chờ thay quái như cuối lượt.

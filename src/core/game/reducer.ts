@@ -21,6 +21,8 @@ import {
   enterItemWorld,
   leaveItemWorld,
   challengeTrial,
+  chooseTrialBoon,
+  skipTrialBoon,
   enterTrial,
   flee,
   leaveBattle,
@@ -229,7 +231,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 116
+export const SAVE_VERSION = 117
 
 export function createGameState(options: {
   seed: number
@@ -560,6 +562,10 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return challengeTrial(data, state)
     case 'abandonTrial':
       return abandonTrial(state)
+    case 'chooseTrialBoon':
+      return chooseTrialBoon(state, action.boonId)
+    case 'skipTrialBoon':
+      return skipTrialBoon(data, state)
     case 'challengeTower':
       return challengeTower(data, state)
     case 'summonSpirit':

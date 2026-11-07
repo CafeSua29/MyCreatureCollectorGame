@@ -84,6 +84,8 @@ function inRealm(rules: TrialRule[] = [], overrides: Partial<SecretRealm> = {}):
     rules,
     battleCount: 3,
     cleared: 0,
+    boons: [],
+    boonChoices: [],
     ...overrides
   }
   return { ...townState(), trial }

@@ -197,13 +197,19 @@ describe('phạm vi trận', () => {
   const on = withInstability(townState(), { level: 1, properties: [visible('rainField')] })
   const floorBattle = { trial: null, tribulation: null, special: null, trainer: null }
 
-  it('trận quái hoang / boss trên tầng có; NPC, bí cảnh, độ kiếp, thú triều, hiểm địa không', () => {
+  it('trận quái hoang / boss trên tầng và bí cảnh có; NPC, tháp, độ kiếp, thú triều không', () => {
     expect(battleInstabilityFor(on, floorBattle)).toEqual({ level: 1, ruleIds: ['rainField'] })
     expect(battleInstabilityFor(townState(), floorBattle)).toBeNull()
     const trainer = { classId: 'rookie', mode: 'floor' as const, rewardMultiplier: 1 }
     expect(battleInstabilityFor(on, { ...floorBattle, trainer } as never)).toBeNull()
+    // Bí cảnh nhận độ bất ổn (docs/rules/trial-boons.md: khó hơn đổi lấy ân huệ hiếm hơn); tháp không.
     const trial = { kind: 'realm' as const, biomeId: 'field', rules: [] }
-    expect(battleInstabilityFor(on, { ...floorBattle, trial })).toBeNull()
+    expect(battleInstabilityFor(on, { ...floorBattle, trial })).toEqual({
+      level: 1,
+      ruleIds: ['rainField']
+    })
+    const tower = { kind: 'tower' as const, biomeId: 'field', rules: [], towerFloor: 1 }
+    expect(battleInstabilityFor(on, { ...floorBattle, trial: tower })).toBeNull()
     const tribulation = { monsterId: 'h', tier: 1 }
     expect(battleInstabilityFor(on, { ...floorBattle, tribulation })).toBeNull()
     const tide = { kind: 'beastTide' as const, king: false }

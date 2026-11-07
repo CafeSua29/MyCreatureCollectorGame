@@ -25,15 +25,23 @@ import type {
 import { countsAsFloorBattle } from './specialBattles'
 
 /**
- * Độ bất ổn của trận sắp mở: chỉ trận quái hoang / boss trên tầng (không NPC, bí cảnh, tháp, độ
- * kiếp, thú triều, hiểm địa); độ bất ổn tắt thì null.
+ * Trận nhận độ bất ổn: quái hoang / boss trên tầng hoặc trong bí cảnh (docs/rules/trial-boons.md:
+ * bí cảnh khó hơn đổi lấy ân huệ hiếm hơn); không NPC, tháp, độ kiếp, thú triều, hiểm địa.
  */
+export function receivesInstability(
+  battle: Pick<BattleState, 'trial' | 'tribulation' | 'special' | 'trainer'>
+): boolean {
+  if (battle.trainer) return false
+  return battle.trial?.kind === 'realm' || countsAsFloorBattle(battle)
+}
+
+/** Độ bất ổn của trận sắp mở (receivesInstability); độ bất ổn tắt thì null. */
 export function battleInstabilityFor(
   state: Pick<GameState, 'instability'>,
   battle: Pick<BattleState, 'trial' | 'tribulation' | 'special' | 'trainer'>
 ): BattleInstability | null {
   const { level, properties } = state.instability
-  if (level === 0 || battle.trainer || !countsAsFloorBattle(battle)) return null
+  if (level === 0 || !receivesInstability(battle)) return null
   return { level, ruleIds: properties.map((property) => property.ruleId) }
 }
 

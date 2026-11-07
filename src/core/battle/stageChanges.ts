@@ -296,7 +296,9 @@ export function triggerStageTraits(
 ): void {
   if (isFainted(data, owner)) return
   let lastTraitId: string | null = null
-  for (const { traitId, effect } of stageTraitEffects(data, owner, event)) {
+  // Bối cảnh trận: hook theo phe (cộng hưởng, trận pháp, luật, ân huệ) và trait tạm cũng đổi bậc.
+  const ctx = monsterBattleContext(data, d, owner)
+  for (const { traitId, effect } of stageTraitEffects(data, owner, event, ctx)) {
     if (traitId !== lastTraitId) log(d, { type: 'traitTriggered', monsterId: owner.id, traitId })
     lastTraitId = traitId
     const targets =

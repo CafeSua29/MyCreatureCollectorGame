@@ -2740,6 +2740,21 @@
         "reusableBookChance": 15
       }
     },
+    "boons": {
+      "choiceCount": 3,
+      "rarityWeights": {
+        "common": 50,
+        "rare": 30,
+        "epic": 15
+      },
+      "instabilityRarityPercent": {
+        "common": 0,
+        "rare": 25,
+        "epic": 50
+      },
+      "bossWeakenCapPercent": 30,
+      "skipMoneyPercent": 100
+    },
     "tower": {
       "ruleCount": {
         "min": 0,

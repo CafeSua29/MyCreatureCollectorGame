@@ -66,6 +66,8 @@ export const STAT_PERCENT_SOURCES: Readonly<Record<StatPercentSourceId, StatPerc
   partner: {},
   // Luật sideHooks của bí cảnh / tháp / độ bất ổn (chỉ trong trận, docs/rules/instability.md).
   rules: {},
+  // Ân huệ của lượt bí cảnh (chỉ trong trận, docs/rules/trial-boons.md).
+  boons: {},
   // Cộng hưởng khế ước (docs/rules/tamer.md): quái đã khế ước được phần gốc + phần theo cảnh giới
   // khế ước; bản mệnh thú × resonanceMultiplier (mục "Bản mệnh thú"); cộng mức tâm linh tương thông
   // (không nhân bản mệnh). Chưa khế ước: 0.
@@ -213,5 +215,6 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   sticker: 'equipment',
   // Thưởng bộ trang bị (docs/rules/equipment-sets.md).
   equipmentSet: 'equipment',
-  rule: 'rules'
+  rule: 'rules',
+  boon: 'boons'
 }

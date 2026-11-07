@@ -39,7 +39,7 @@ Code: thuộc tính là luật trong `trialRules.json`, **cùng registry `TRIAL_
 
 ## Áp dụng
 
-- Trận nhận độ bất ổn (`battleInstabilityFor`): mức > 0 và trận **quái hoang / boss trên tầng** (`countsAsFloorBattle` và không NPC): `startWildBattle`, `challengeBoss`, trận quái hoang do event mở, trận câu cá / khai thác. **Không** áp cho NPC (kể cả gặp trên tầng), bí cảnh, tháp, độ kiếp, thú triều, hiểm địa, khu bảo tồn (không qua `openBattle`). Boss thế giới không áp (`world-boss.md`).
+- Trận nhận độ bất ổn (`receivesInstability` / `battleInstabilityFor`): mức > 0 và trận **quái hoang / boss trên tầng** (`countsAsFloorBattle` và không NPC): `startWildBattle`, `challengeBoss`, trận quái hoang do event mở, trận câu cá / khai thác; và **trận quái hoang / boss trong bí cảnh** (từ 2026-11-07, đổi lại mỗi mức nâng trọng số ân huệ hiếm, `trial-boons.md`; vào bí cảnh lộ thuộc tính ẩn; bảng gặp map khác cũng áp cho quái hoang bí cảnh). **Không** áp cho NPC (kể cả gặp trên tầng / trong bí cảnh), tháp, độ kiếp, thú triều, hiểm địa, khu bảo tồn (không qua `openBattle`). Boss thế giới không áp (`world-boss.md`).
 - Lúc mở trận chụp `BattleState.instability = { level, ruleIds }` (mọi thuộc tính, kể cả ẩn) và log `instability { level, ruleIds }`. Mọi nơi áp luật trong trận lấy luật qua `battleRules(battle)` (luật bí cảnh + thuộc tính bất ổn); đổi mức / thuộc tính sau đó không đổi trận đang đánh (chỉ đổi được ở thị trấn).
 - Thứ tự lúc mở trận (`openBattle`): bảng gặp map khác (trước khi sinh quái, chỉ `startWildBattle`), rồi quái fuse, thêm trait (`applyEnemyRules`, chỉ quái hoang / boss), món unique của boss, hệ số địch, rồi luật `sideHooks` thành mục phối hợp đội `{ kind: 'rule', id, count }` của phe (`ruleTeamBonuses`). Không có luật nào thì không tốn RNG.
 - Hook cuối lượt `regen` (và các hook `onTurnEnd`) gom kèm bối cảnh trận, nên hook của phe (cộng hưởng, trận pháp, `sideHooks`) cũng tác dụng (trước 2026-11-01 chỉ hook của chính quái).
@@ -51,7 +51,7 @@ Code: thuộc tính là luật trong `trialRules.json`, **cùng registry `TRIAL_
 
 ## Save
 
-- `GameState.instability`, `BattleState.instability` (null = không áp). Kiểm tra: mức nguyên trong [0, mức tối đa theo tầng cao nhất]; tối đa (`visiblePerLevel` + `hiddenPerLevel`) × mức thuộc tính; mỗi thuộc tính là luật có khối `instability` và loại dùng được, `hidden` boolean, loại không stackable không trùng; trận có độ bất ổn chỉ là trận quái hoang / boss trên tầng (không NPC / bí cảnh / độ kiếp / trận đặc biệt không phải trên tầng), mức ≥ 1. `battle.teamBonuses` có mục `rule` (luật `sideHooks` tồn tại, đúng phe, `count` ≥ 1); quái hoang chỉ có mục `rule`.
+- `GameState.instability`, `BattleState.instability` (null = không áp). Kiểm tra: mức nguyên trong [0, mức tối đa theo tầng cao nhất]; tối đa (`visiblePerLevel` + `hiddenPerLevel`) × mức thuộc tính; mỗi thuộc tính là luật có khối `instability` và loại dùng được, `hidden` boolean, loại không stackable không trùng; trận có độ bất ổn chỉ là trận quái hoang / boss trên tầng hoặc trong bí cảnh (không NPC / tháp / Khí giới bí cảnh / độ kiếp / trận đặc biệt không phải trên tầng), mức ≥ 1. `battle.teamBonuses` có mục `rule` (luật `sideHooks` tồn tại, đúng phe, `count` ≥ 1); quái hoang chỉ có mục `rule`.
 - v82 migrate: `instability: { level: 0, properties: [] }`, trận dở `instability: null` (`state-versions.md`).
 
 ## Mô phỏng

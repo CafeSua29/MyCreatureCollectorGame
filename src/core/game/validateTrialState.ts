@@ -47,8 +47,57 @@ function checkItemWorldRun(data: GameData, run: Record<string, unknown>, issues:
   }
 }
 
+/** Một ân huệ đã chọn { boonId, stacks }: ân huệ tồn tại, cấp nguyên trong [1, maxStacks]. */
+function checkBoonStack(
+  data: GameData,
+  value: unknown,
+  at: string,
+  issues: string[]
+): string | null {
+  const boon = asObject(value)
+  const boonId = boon?.boonId
+  if (typeof boonId !== 'string' || !Object.hasOwn(data.trialBoons, boonId)) {
+    issues.push(`${at}.boonId: ân huệ không tồn tại "${String(boonId)}"`)
+    return null
+  }
+  const { maxStacks } = data.trialBoons[boonId]
+  const stacks = boon?.stacks
+  issues.push(...checkInteger(stacks, `${at}.stacks`, 1))
+  if (maxStacks !== undefined && typeof stacks === 'number' && stacks > maxStacks) {
+    issues.push(`${at}.stacks ${stacks} vượt maxStacks ${maxStacks} của "${boonId}"`)
+  }
+  return boonId
+}
+
 /**
- * trial: null, bí cảnh { kind: realm, floor, biomeId, rules, battleCount, cleared } (cleared <
+ * Ân huệ của bí cảnh (docs/rules/trial-boons.md): boons là danh sách { boonId, stacks } không trùng
+ * id; boonChoices là danh sách id ân huệ tồn tại, không trùng.
+ */
+function checkRealmBoons(data: GameData, trial: Record<string, unknown>, issues: string[]): void {
+  if (!Array.isArray(trial.boons)) issues.push('trial.boons phải là danh sách { boonId, stacks }')
+  else {
+    const ids = trial.boons.map((entry: unknown, i) =>
+      checkBoonStack(data, entry, `trial.boons[${i}]`, issues)
+    )
+    if (new Set(ids).size !== ids.length) issues.push('trial.boons bị lặp ân huệ')
+  }
+  if (!Array.isArray(trial.boonChoices)) {
+    issues.push('trial.boonChoices phải là danh sách id ân huệ')
+    return
+  }
+  for (const id of trial.boonChoices) {
+    if (typeof id !== 'string' || !Object.hasOwn(data.trialBoons, id)) {
+      issues.push(`trial.boonChoices: ân huệ không tồn tại "${String(id)}"`)
+    }
+  }
+  if (new Set(trial.boonChoices).size !== trial.boonChoices.length) {
+    issues.push('trial.boonChoices bị lặp')
+  }
+}
+
+/**
+ * trial: null, bí cảnh { kind: realm, floor, biomeId, rules, battleCount, cleared, boons,
+ * boonChoices } (cleared <
  * battleCount) hoặc Khí giới bí cảnh { kind: itemWorld, instance, cleared }; đang đi phó bản thì ở
  * thị trấn. tower: { highest } nguyên ≥ 0.
  */
@@ -82,6 +131,7 @@ export function validateTrialState(
   ) {
     issues.push('trial.cleared phải < battleCount')
   }
+  checkRealmBoons(data, trial, issues)
   return issues
 }
 

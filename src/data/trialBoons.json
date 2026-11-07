@@ -1,0 +1,3773 @@
+[
+  {
+    "id": "clawTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "spiritTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shellTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "scaleTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spDefense": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "windTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hunterTotem",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 20,
+                "spAttack": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "guardianTotem",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 20,
+                "spDefense": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "raptorTotem",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 15,
+                "speed": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sageTotem",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 15,
+                "speed": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apexTotem",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 20,
+                "defense": 20,
+                "spAttack": 20,
+                "spDefense": 20,
+                "speed": 20
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "herbPouch",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "heal",
+        "percent": 20
+      }
+    ]
+  },
+  {
+    "id": "springWater",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "heal",
+        "percent": 40
+      }
+    ],
+    "maxStacks": 2
+  },
+  {
+    "id": "amberHeart",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodFang",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "lifesteal",
+            "params": {
+              "percent": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trophyBone",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "healOnKnockout",
+            "params": {
+              "percent": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "restingNest",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "healOnLeave",
+            "params": {
+              "percent": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cleansingDew",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "turnEndCureStatus",
+            "params": {
+              "chance": 30
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "mendingMoss",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "healingModifier",
+            "params": {
+              "received": 40
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hardHide",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -12
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 5
+  },
+  {
+    "id": "ironWill",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "debuffResist",
+            "params": {
+              "chance": 25
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "fullGuard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageTakenAtFullHp",
+            "params": {
+              "percent": -30
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "shadowStep",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "dodge",
+            "params": {
+              "percent": 8
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "weakSpotShield",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "effectivenessModifier",
+            "params": {
+              "side": "taken",
+              "when": "superEffective",
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "thornHide",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "retaliateDamage",
+            "params": {
+              "category": "physical",
+              "percentOfAttackerMaxHp": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wardingCharm",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageCap",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "lastStand",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "surviveLethal",
+            "params": {
+              "fromFullHp": true
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "predatorEye",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "critChanceModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tyrantJaw",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "luckyFeather",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "critStage",
+            "params": {
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "primalFury",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "percent": 20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "huntersMark",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "ignoreDefensePercent",
+            "params": {
+              "percent": 12
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 5
+  },
+  {
+    "id": "focusStone",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "accuracyModifier",
+            "params": {
+              "percent": 15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "firstStrike",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "actFirstChance",
+            "params": {
+              "chance": 15
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 5
+  },
+  {
+    "id": "weakSpotFang",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "effectivenessModifier",
+            "params": {
+              "side": "dealt",
+              "when": "superEffective",
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "piercingHorn",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "effectivenessModifier",
+            "params": {
+              "side": "dealt",
+              "when": "notVeryEffective",
+              "percent": 40
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kinshipStone",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stabMultiplier",
+            "params": {
+              "multiplier": 1.25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quickJab",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "lowPowerSkillBoost",
+            "params": {
+              "maxPower": 60,
+              "percent": 40
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "executioner",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsLowHp",
+            "params": {
+              "hpBelowPercent": 30,
+              "percent": 35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reaperScythe",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "executeLowHp",
+            "params": {
+              "hpBelowPercent": 10
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "meteorShard",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "turnEndDamageFoes",
+            "params": {
+              "percent": 4
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "trueAim",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "sureHit",
+            "params": {}
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "swiftHex",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "priorityModifier",
+            "params": {
+              "skillCategory": "status",
+              "amount": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "recoilBand",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "recoilImmunity",
+            "params": {}
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "desperation",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifierWhileLowHp",
+            "params": {
+              "hpBelowPercent": 50,
+              "percent": {
+                "attack": 30,
+                "spAttack": 30
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vigor",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifierWhileHighHp",
+            "params": {
+              "hpAbovePercent": 50,
+              "percent": {
+                "attack": 15,
+                "spAttack": 15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ambush",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifierFirstTurns",
+            "params": {
+              "turns": 2,
+              "percent": {
+                "attack": 30,
+                "spAttack": 30,
+                "speed": 30
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gutsTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifierWhileStatused",
+            "params": {
+              "percent": {
+                "attack": 35,
+                "spAttack": 35
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "enduranceTotem",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "staminaCostPercent",
+            "params": {
+              "percent": -15
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "deepLungs",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "staminaMaxPercent",
+            "params": {
+              "percent": 20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "goldIdol",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "reward",
+        "channel": "reward",
+        "percent": 15
+      }
+    ]
+  },
+  {
+    "id": "sageSkull",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "reward",
+        "channel": "exp",
+        "percent": 15
+      }
+    ]
+  },
+  {
+    "id": "fortuneRelic",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "reward",
+        "channel": "reward",
+        "percent": 35
+      }
+    ]
+  },
+  {
+    "id": "scholarRelic",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "reward",
+        "channel": "exp",
+        "percent": 35
+      }
+    ]
+  },
+  {
+    "id": "treasureMap",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "chest",
+        "rolls": 1
+      }
+    ]
+  },
+  {
+    "id": "dragonHoard",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "chest",
+        "rolls": 3
+      },
+      {
+        "type": "reward",
+        "channel": "reward",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "bloodRage",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 35,
+                "spAttack": 35,
+                "defense": -15,
+                "spDefense": -15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stoneSkin",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 35,
+                "spDefense": 35,
+                "speed": -15
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "windBorne",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 30,
+                "defense": -10,
+                "spDefense": -10
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "glassCannon",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "percent": 30
+            }
+          },
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": 15
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "berserkPact",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "lifesteal",
+            "params": {
+              "percent": 20
+            }
+          },
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "ancientBlood",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 15,
+                "defense": 15,
+                "spAttack": 15,
+                "spDefense": 15,
+                "speed": 15
+              }
+            }
+          },
+          {
+            "type": "regen",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apexPredator",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "critStage",
+            "params": {
+              "stages": 1
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 50
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "meteorTotem",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "turnEndDamageFoes",
+            "params": {
+              "percent": 6
+            }
+          },
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "percent": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "phoenixFeather",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "surviveLethal",
+            "params": {
+              "fromFullHp": true
+            }
+          },
+          {
+            "type": "healOnKnockout",
+            "params": {
+              "percent": 20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "kingsCrown",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 12,
+                "defense": 12,
+                "spAttack": 12,
+                "spDefense": 12,
+                "speed": 12
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "reward",
+        "channel": "reward",
+        "percent": 25
+      },
+      {
+        "type": "reward",
+        "channel": "exp",
+        "percent": 25
+      }
+    ]
+  },
+  {
+    "id": "worldTree",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 5
+            }
+          },
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -12
+            }
+          }
+        ]
+      },
+      {
+        "type": "heal",
+        "percent": 25
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "leaderFocus",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "percent": 12,
+              "when": [
+                {
+                  "if": "bossBattle",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "chieftainMark",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "bossWeaken",
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": "giantSlayer",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "percent": 25,
+              "when": [
+                {
+                  "if": "bossBattle",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kingsguardShield",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageTakenWhen",
+            "params": {
+              "percent": -20,
+              "when": [
+                {
+                  "if": "bossBattle",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "kingslayerCurse",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "bossWeaken",
+        "percent": 15
+      }
+    ]
+  },
+  {
+    "id": "titanTotem",
+    "rarity": "epic",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "percent": 20,
+              "when": [
+                {
+                  "if": "bossBattle",
+                  "value": true
+                }
+              ]
+            }
+          },
+          {
+            "type": "damageTakenWhen",
+            "params": {
+              "percent": -15,
+              "when": [
+                {
+                  "if": "bossBattle",
+                  "value": true
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "normalSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["normal"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "normalWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["normal"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "fireSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["fire"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fireWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["fire"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "waterSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["water"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "waterWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["water"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "electricSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["electric"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "electricWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["electric"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "grassSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["grass"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "grassWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["grass"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "iceSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["ice"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "iceWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["ice"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "fightingSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["fighting"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fightingWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["fighting"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "poisonSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["poison"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "poisonWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["poison"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "groundSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["ground"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "groundWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["ground"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "flyingSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["flying"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flyingWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["flying"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "psychicSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["psychic"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "psychicWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["psychic"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "bugSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["bug"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bugWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["bug"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "rockSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["rock"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rockWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["rock"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "ghostSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["ghost"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ghostWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["ghost"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "dragonSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["dragon"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dragonWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["dragon"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "darkSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["dark"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "darkWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["dark"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "steelSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["steel"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "steelWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["steel"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "fairySigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["fairy"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fairyWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["fairy"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "lightSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["light"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lightWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["light"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "glassSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["glass"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "glassWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["glass"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "plasticSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["plastic"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "plasticWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["plastic"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "glitterSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["glitter"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "glitterWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["glitter"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "fungalSigil",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": ["fungal"],
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fungalWard",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "elementDamageTaken",
+            "params": {
+              "elementIds": ["fungal"],
+              "percent": -20
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 4
+  },
+  {
+    "id": "dragonBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["dragon"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dinosaurBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["dinosaur"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "beastBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["beast"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "humanoidBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["humanoid"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aquaticBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["aquatic"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "avianBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["avian"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "insectBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["insect"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "plantBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["plant"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mineralBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["mineral"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "amorphousBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["amorphous"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shapeshifterBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["shapeshifter"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "reptileBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["reptile"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "undeadBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["undead"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "demonBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["demon"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "elementalBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["elemental"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aberrationBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["aberration"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "spiritBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["spirit"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "celestialBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["celestial"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "deityBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["deity"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "alienBane",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "damageVsRace",
+            "params": {
+              "raceIds": ["alien"],
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rainAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "weather",
+              "fieldId": "rain"
+            }
+          },
+          {
+            "type": "statModifierInWeather",
+            "params": {
+              "weatherIds": ["rain"],
+              "percent": {
+                "speed": 25
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "sunAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "weather",
+              "fieldId": "sun"
+            }
+          },
+          {
+            "type": "statModifierInWeather",
+            "params": {
+              "weatherIds": ["sun"],
+              "percent": {
+                "spAttack": 20
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "sandstormAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "weather",
+              "fieldId": "sandstorm"
+            }
+          },
+          {
+            "type": "statModifierInWeather",
+            "params": {
+              "weatherIds": ["sandstorm"],
+              "percent": {
+                "spDefense": 25
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "snowAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "weather",
+              "fieldId": "snow"
+            }
+          },
+          {
+            "type": "statModifierInWeather",
+            "params": {
+              "weatherIds": ["snow"],
+              "percent": {
+                "defense": 25
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "fogAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "weather",
+              "fieldId": "fog"
+            }
+          },
+          {
+            "type": "statModifierInWeather",
+            "params": {
+              "weatherIds": ["fog"],
+              "percent": {
+                "spDefense": 20,
+                "defense": 10
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "grassyTerrainAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "terrain",
+              "fieldId": "grassyTerrain"
+            }
+          },
+          {
+            "type": "terrainStatModifier",
+            "params": {
+              "terrainIds": ["grassyTerrain"],
+              "percent": {
+                "defense": 20
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "electricTerrainAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "terrain",
+              "fieldId": "electricTerrain"
+            }
+          },
+          {
+            "type": "terrainStatModifier",
+            "params": {
+              "terrainIds": ["electricTerrain"],
+              "percent": {
+                "speed": 25
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "mistyTerrainAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "terrain",
+              "fieldId": "mistyTerrain"
+            }
+          },
+          {
+            "type": "terrainStatModifier",
+            "params": {
+              "terrainIds": ["mistyTerrain"],
+              "percent": {
+                "spDefense": 25
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "psychicTerrainAltar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "setFieldOnEntry",
+            "params": {
+              "layer": "terrain",
+              "fieldId": "psychicTerrain"
+            }
+          },
+          {
+            "type": "terrainStatModifier",
+            "params": {
+              "terrainIds": ["psychicTerrain"],
+              "percent": {
+                "spAttack": 20
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 3
+  },
+  {
+    "id": "poisonFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "poison",
+                  "chance": 12
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "burnFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "burn",
+                  "chance": 12
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "paralysisFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "paralysis",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "freezeFang",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "freeze",
+                  "chance": 6
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sleepFang",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "sleep",
+                  "chance": 6
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bleedingFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "bleeding",
+                  "chance": 12
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blindFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "blind",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "confusedFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "confused",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cursedFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "cursed",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vulnerableFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "vulnerable",
+                  "chance": 12
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "weakFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "weak",
+                  "chance": 12
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "silencedFang",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "silenced",
+                  "chance": 8
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "snaredFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "snared",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fearedFang",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "feared",
+                  "chance": 8
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blightedFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "blighted",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "disarmedFang",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "disarmed",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "burnSpines",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onHitApplyStatus",
+            "params": {
+              "category": "physical",
+              "statuses": [
+                {
+                  "statusId": "burn",
+                  "chance": 25
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "poisonSpines",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onHitApplyStatus",
+            "params": {
+              "category": "physical",
+              "statuses": [
+                {
+                  "statusId": "poison",
+                  "chance": 25
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "paralysisSpines",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onHitApplyStatus",
+            "params": {
+              "category": "physical",
+              "statuses": [
+                {
+                  "statusId": "paralysis",
+                  "chance": 20
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bleedingSpines",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "onHitApplyStatus",
+            "params": {
+              "category": "physical",
+              "statuses": [
+                {
+                  "statusId": "bleeding",
+                  "chance": 25
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "poisonCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["poison", "badPoison"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "burnCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["burn"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "paralysisCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["paralysis"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "sleepCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["sleep", "sleeping", "drowsy"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "freezeCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["freeze", "frozen"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "confusedCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["confused", "confusion"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "bleedingCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["bleeding"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "blindCharm",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusImmunity",
+            "params": {
+              "statusIds": ["blind"]
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "poisonEssence",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusDamageModifier",
+            "params": {
+              "statusIds": ["poison"],
+              "percent": 35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "burnEssence",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusDamageModifier",
+            "params": {
+              "statusIds": ["burn"],
+              "percent": 35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bleedingEssence",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "statusDamageModifier",
+            "params": {
+              "statusIds": ["bleeding"],
+              "percent": 35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "attackRoar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "allEnemies",
+              "stat": "attack",
+              "stages": -1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "attackSurge",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "self",
+              "stat": "attack",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "attackTrophy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnKnockout",
+            "params": {
+              "stat": "attack",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "defenseRoar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "allEnemies",
+              "stat": "defense",
+              "stages": -1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "defenseSurge",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "self",
+              "stat": "defense",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "defenseTrophy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnKnockout",
+            "params": {
+              "stat": "defense",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "spAttackRoar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "allEnemies",
+              "stat": "spAttack",
+              "stages": -1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "spAttackSurge",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "self",
+              "stat": "spAttack",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "spAttackTrophy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnKnockout",
+            "params": {
+              "stat": "spAttack",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "spDefenseRoar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "allEnemies",
+              "stat": "spDefense",
+              "stages": -1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "spDefenseSurge",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "self",
+              "stat": "spDefense",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "spDefenseTrophy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnKnockout",
+            "params": {
+              "stat": "spDefense",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "speedRoar",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "allEnemies",
+              "stat": "speed",
+              "stages": -1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "speedSurge",
+    "rarity": "rare",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnEntry",
+            "params": {
+              "target": "self",
+              "stat": "speed",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  },
+  {
+    "id": "speedTrophy",
+    "rarity": "common",
+    "effects": [
+      {
+        "type": "hooks",
+        "hooks": [
+          {
+            "type": "stageOnKnockout",
+            "params": {
+              "stat": "speed",
+              "stages": 1
+            }
+          }
+        ]
+      }
+    ],
+    "maxStacks": 1
+  }
+]

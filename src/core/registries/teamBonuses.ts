@@ -15,7 +15,8 @@ import type {
   SynergyDef,
   SynergyTier,
   TeamBonus,
-  TraitHookDef
+  TraitHookDef,
+  TrialBoonDef
 } from '../model'
 import { checkIdList } from './paramChecks'
 import { partnerBattleHooks } from './partnerEffects'
@@ -298,6 +299,13 @@ export function activeTeamBonuses(
   return result
 }
 
+/**
+ * Hook trận của một ân huệ bí cảnh (gộp các hiệu ứng hooks; docs/rules/trial-boons.md). Ở đây thay
+ * vì trialBoons.ts để traitHooks.ts dùng được mà không vòng import.
+ */
+export const trialBoonHooks = (def: TrialBoonDef): TraitHookDef[] =>
+  def.effects.flatMap((effect) => (effect.type === 'hooks' ? effect.hooks : []))
+
 export interface TeamBonusHooks {
   kind: TeamBonus['kind']
   id: string
@@ -348,6 +356,11 @@ function teamBonusHooksOf(
       // Luật sideHooks (docs/rules/instability.md): params đã qua kiểm tra dữ liệu.
       const hooks = data.trialRules[bonus.id].params.hooks as readonly TraitHookDef[]
       return { hooks, scale: bonus.count }
+    }
+    case 'boon': {
+      // Ân huệ bí cảnh (docs/rules/trial-boons.md): hệ số hook = cấp.
+      const hooks = trialBoonHooks(data.trialBoons[bonus.id])
+      return hooks.length > 0 ? { hooks, scale: bonus.stacks } : null
     }
     default:
       return assertNever(bonus, 'loại phối hợp đội')

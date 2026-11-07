@@ -71,6 +71,8 @@ const GAME_LOG_FIELDS: { readonly [T in GameLogType]: FieldsOf<T> } = {
   presetMissing: ['presetId', 'monsterIds', 'items'],
   crafted: ['station', 'recipeId', 'successes', 'failures'],
   zoneStep: ['zoneId', 'result'],
+  trialBoonChosen: ['boonId', 'stacks'],
+  trialBoonSkipped: ['money'],
   fused: ['baseId', 'outcome'],
   breakthrough: ['success', 'realm'],
   ascended: ['count', 'essenceGained', 'startFloor'],

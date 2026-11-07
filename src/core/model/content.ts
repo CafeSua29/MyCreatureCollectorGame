@@ -4,7 +4,7 @@
 import type { ExpeditionDef } from './expeditions'
 import type { AilmentDef, BuildingDef, WorkStats, WorkTraitDef } from './dwelling'
 import type { TrainerClass } from './trainers'
-import type { TrialRuleDef } from './trials'
+import type { TrialBoonDef, TrialRuleDef } from './trials'
 import type { RawZoneDef, ZoneDef } from './zones'
 import type { SerumEffectDef } from './implant'
 import type { MarkDef } from './marks'
@@ -2002,6 +2002,7 @@ export interface RawGameData {
   ailments: AilmentDef[]
   trainers: TrainerClass[]
   trialRules: TrialRuleDef[]
+  trialBoons: TrialBoonDef[]
   events: EventDef[]
   eventModifiers: EventModifierDef[]
   zones: RawZoneDef[]
@@ -2086,6 +2087,8 @@ export interface GameData {
   trainers: Record<string, TrainerClass>
   /** Luật bí cảnh / tháp thí luyện (docs/rules/trials.md). */
   trialRules: Record<string, TrialRuleDef>
+  /** Ân huệ trong lượt bí cảnh (docs/rules/trial-boons.md). */
+  trialBoons: Record<string, TrialBoonDef>
   /** Event và hiệu ứng toàn cục (docs/rules/events.md). */
   events: Record<string, EventDef>
   eventModifiers: Record<string, EventModifierDef>

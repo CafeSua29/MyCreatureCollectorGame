@@ -318,7 +318,8 @@ describe('save', () => {
     const migrated = migrateState(old, data)
     expect(migrated.inventory.spirits).toEqual([])
     expect(migrated.spiritPools).toEqual([])
-    expect(migrated.trial).toEqual({ kind: 'realm', ...realm })
+    // v117 thêm ân huệ rỗng cho bí cảnh đang đi (docs/rules/trial-boons.md).
+    expect(migrated.trial).toEqual({ kind: 'realm', ...realm, boons: [], boonChoices: [] })
     expect(validateGameState(data, migrated)).toEqual([])
   })
 })

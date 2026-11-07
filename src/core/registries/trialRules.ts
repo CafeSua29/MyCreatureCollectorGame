@@ -111,7 +111,18 @@ export const TRIAL_RULES: Readonly<Record<TrialRuleType, TrialRuleHandler>> = {
   // Mỗi quái hoang thường `percent` % là quái fuse (fuse với một quái hoang khác của map).
   fusedEnemies: percentRule({ inTower: false, stackable: true }),
   // `percent` % trận quái hoang lấy bảng gặp của một map khác (đồ rơi, môi trường vẫn của map).
-  foreignSpecies: percentRule({ inTower: false, inRealm: false, stackable: true })
+  foreignSpecies: percentRule({ inTower: false, inRealm: false, stackable: true }),
+  // Ân huệ (docs/rules/trial-boons.md) chỉ có trong lượt bí cảnh: tháp không có lượt nên không có.
+  // Không tung ân huệ sau trận thắng.
+  noBoons: flag({ inTower: false, inInstability: false }),
+  // Tung thêm `count` lựa chọn ân huệ sau mỗi trận thắng.
+  boonChoices: flag({
+    fields: ['count'],
+    inTower: false,
+    inInstability: false,
+    stackable: true,
+    validateParams: (params) => checkInteger(params.count, 'count', 1)
+  })
 }
 
 const typeOf = (data: GameData, rule: TrialRule): TrialRuleType => data.trialRules[rule.ruleId].type
@@ -155,6 +166,13 @@ export function trialRulePercent(
 /** Tổng số trait thêm cho quái địch của các luật extraEnemyTraits. */
 export const extraEnemyTraitCount = (data: GameData, rules: readonly TrialRule[]): number =>
   trialRuleDefsOf(data, rules, 'extraEnemyTraits').reduce(
+    (sum, def) => sum + (def.params.count as number),
+    0
+  )
+
+/** Tổng số lựa chọn ân huệ thêm của các luật boonChoices. */
+export const extraBoonChoiceCount = (data: GameData, rules: readonly TrialRule[]): number =>
+  trialRuleDefsOf(data, rules, 'boonChoices').reduce(
     (sum, def) => sum + (def.params.count as number),
     0
   )

@@ -5,13 +5,14 @@
 import { ActionError, rollPercent } from '../shared'
 import { getItemCount, removeItems } from '../inventory'
 import { isFainted } from '../monster'
-import { hasTrialRule, trialFighters } from '../registries'
+import { battleRules, hasTrialRule, trialFighters } from '../registries'
 import {
   assertNoTournament,
   generateAnyBossEncounter,
   generateEncounter,
   generateFloorBossEncounter,
   realmSite,
+  revealInstability,
   rollBiomeTrainerClass,
   rollRegularTrainerClass,
   rollSecretRealm,
@@ -20,6 +21,7 @@ import {
 } from '../world'
 import type { BattleTrial, GameData, GameState, SecretRealm, TrialRule } from '../model'
 import { openBattle } from './openBattle'
+import { battleInstabilityFor, foreignEncounterSite } from './instability'
 import { assertReadyForBattle, openTrainerBattle, requireTown } from './trainerBattles'
 
 /** Còn quái được vào trận theo luật (luật một hệ); không thì noEligibleFighter. */
@@ -35,8 +37,9 @@ function assertEligibleFighters(
 }
 
 /**
- * Vào bí cảnh ở thị trấn: tiêu một Bí Cảnh Lệnh, sinh bí cảnh (map chủ đề, luật, số trận). Chưa mở
- * trận: người chơi đánh từng trận bằng challengeTrial (lưu game giữa hai trận được).
+ * Vào bí cảnh ở thị trấn: tiêu một Bí Cảnh Lệnh, sinh bí cảnh (map chủ đề, luật, số trận), lộ thuộc
+ * tính bất ổn ẩn (độ bất ổn áp cả trận bí cảnh, docs/rules/trial-boons.md). Chưa mở trận: người
+ * chơi đánh từng trận bằng challengeTrial (lưu game giữa hai trận được).
  */
 export function enterTrial(data: GameData, state: GameState): GameState {
   assertReadyForBattle(data, state)
@@ -50,7 +53,12 @@ export function enterTrial(data: GameData, state: GameState): GameState {
     highestFloor: state.highestFloor,
     fighters
   })
-  return { ...state, rng, trial, inventory: removeItems(state.inventory, tokenItemId, 1) }
+  return revealInstability({
+    ...state,
+    rng,
+    trial,
+    inventory: removeItems(state.inventory, tokenItemId, 1)
+  })
 }
 
 /** Bí cảnh đang đi; không có thì noTrial. */
@@ -75,6 +83,8 @@ export function challengeTrial(data: GameData, state: GameState): GameState {
   assertReadyForBattle(data, state)
   if (state.location.type !== 'town') throw new ActionError('notInTown')
   const realm = requireRealm(state)
+  // Còn ân huệ chưa chọn thì chưa đánh trận kế (docs/rules/trial-boons.md).
+  if (realm.boonChoices.length > 0) throw new ActionError('trialBoonPending')
   assertEligibleFighters(data, state, realm.rules)
   const site = realmSite(data, state, realm)
   const trial: BattleTrial = { kind: 'realm', biomeId: realm.biomeId, rules: realm.rules }
@@ -109,7 +119,18 @@ function openRealmBattle(
       )
     }
   }
-  const encounter = generateEncounter(data, rng, site, state.nextMonsterId)
+  // Thuộc tính bất ổn bảng gặp map khác (instability.md) cũng áp cho quái hoang của bí cảnh.
+  const instability = battleInstabilityFor(state, {
+    trial,
+    tribulation: null,
+    special: null,
+    trainer: null
+  })
+  const [encounterSite, afterSite] = foreignEncounterSite(data, rng, {
+    site,
+    rules: battleRules({ trial: null, instability })
+  })
+  const encounter = generateEncounter(data, afterSite, encounterSite, state.nextMonsterId)
   return openBattle(data, state, { site, encounter, trial })
 }
 

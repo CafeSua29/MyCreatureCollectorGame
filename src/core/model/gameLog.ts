@@ -44,6 +44,10 @@ export type ActionLogEntry =
     }
   /** Bước khám phá hiểm địa (docs/rules/zones.md); bước trận thì diễn biến ở log trận. */
   | { type: 'zoneStep'; zoneId: string; result: ZoneStepResult }
+  /** Chọn ân huệ bí cảnh (docs/rules/trial-boons.md): cấp sau khi chọn. */
+  | { type: 'trialBoonChosen'; boonId: string; stacks: number }
+  /** Bỏ lựa chọn ân huệ, nhận tiền. */
+  | { type: 'trialBoonSkipped'; money: Decimal }
   /** Fuse vào quái gốc `baseId` (docs/rules/fusing.md). */
   | { type: 'fused'; baseId: string; outcome: FuseOutcome }
   /** Phi thăng (docs/rules/ascension.md): lần thứ mấy, Tiên nguyên nhận, tầng khởi đầu. */

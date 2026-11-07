@@ -189,6 +189,7 @@ describe('các bảng kết quả', () => {
       arenaRank: 2,
       trialsEntered: 2,
       trialsCompleted: 1,
+      trialsNoBoons: 1,
       trialBattles: 6,
       towerWins: 3,
       towerFloor: 4,
@@ -323,7 +324,7 @@ describe('các bảng kết quả', () => {
         unlocks: []
       }
     ])
-    const blanks = new Array<string>(70).fill('')
+    const blanks = new Array<string>(71).fill('')
     expect(table.rows).toEqual([
       [
         't',
@@ -382,6 +383,7 @@ describe('các bảng kết quả', () => {
         '1',
         '0',
         '2',
+        '1/2',
         '1/2',
         '6',
         '3',
@@ -457,6 +459,7 @@ describe('các bảng kết quả', () => {
         '1',
         '0',
         '2',
+        '1/2',
         '1/2',
         '6',
         '3',

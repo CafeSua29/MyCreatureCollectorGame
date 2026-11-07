@@ -12,7 +12,7 @@ import {
   withSpirits
 } from '../inventory'
 import { isFainted } from '../monster'
-import { hasTrialRule } from '../registries'
+import { hasTrialRule, trialBoonChestRolls, trialBoonHealPercent } from '../registries'
 import { pickWeighted, rollPercent } from '../shared'
 import type {
   Biome,
@@ -27,6 +27,7 @@ import type {
 } from '../model'
 import { battleBiome } from '../world'
 import { Draft, log } from './draft'
+import { offerTrialBoons } from './trialBoons'
 import {
   gainBiomeSkillBooks,
   gainNewEquipment,
@@ -126,20 +127,28 @@ function clearItemWorldFloor(data: GameData, d: Draft): void {
 
 /**
  * Hồi healPercent % max HP cho mọi quái trong đội, kể cả quái đã gục (đứng dậy với phần máu đó;
- * không thì bí cảnh dài chỉ còn vài quái cho boss cuối). Luật noHealing tắt.
+ * không thì bí cảnh dài chỉ còn vài quái cho boss cuối), cộng % của ân huệ hồi máu (kẹp 100;
+ * docs/rules/trial-boons.md). Luật noHealing tắt.
  */
 function healBetweenBattles(data: GameData, d: Draft, realm: SecretRealm): void {
   if (hasTrialRule(data, realm.rules, 'noHealing')) return
-  healPartyPercent(data, d, data.config.trials.realm.healPercent)
+  const percent = data.config.trials.realm.healPercent + trialBoonHealPercent(data, realm.boons)
+  healPartyPercent(data, d, Math.min(100, percent))
 }
 
-/** Rương: tung món theo trọng số (bỏ món chỉ có theo tùy chọn đang tắt), số lượng đều trong khoảng. */
+/**
+ * Rương: tung món theo trọng số (bỏ món chỉ có theo tùy chọn đang tắt), số lượng đều trong khoảng;
+ * ân huệ rương thêm lượt tung (docs/rules/trial-boons.md).
+ */
 function chestItems(data: GameData, d: Draft, realm: SecretRealm): void {
   const chest = data.config.trials.realm.chest
   let rewards: ItemReward[]
   ;[rewards, d.rng] = rollChestItems(data, d.rng, {
     entries: chest.items,
-    rolls: chest.itemRolls + chest.itemRollsPerBattle * realm.battleCount,
+    rolls:
+      chest.itemRolls +
+      chest.itemRollsPerBattle * realm.battleCount +
+      trialBoonChestRolls(data, realm.boons),
     options: d.options
   })
   grantItemRewards(d, rewards)
@@ -193,7 +202,8 @@ export const TRIAL_KIND_RULES: Record<TrialKind, TrialKindRule> = {
       const cleared = realm.cleared + 1
       log(d, { type: 'trialProgress', cleared, total: realm.battleCount })
       if (cleared < realm.battleCount) {
-        d.trial = { ...realm, cleared }
+        // Ân huệ (docs/rules/trial-boons.md): tung lựa chọn sau mỗi trận thắng trừ trận cuối.
+        d.trial = offerTrialBoons(data, d, { ...realm, cleared })
         healBetweenBattles(data, d, realm)
         return
       }

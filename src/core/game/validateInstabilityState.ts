@@ -74,8 +74,8 @@ export function validateInstabilityState(data: GameData, state: Record<string, u
 }
 
 /**
- * battle.instability: null hoặc { level ≥ 1, ruleIds }; chỉ ở trận quái hoang / boss trên tầng
- * (không NPC, bí cảnh / tháp, độ kiếp, trận đặc biệt không phải trên tầng).
+ * battle.instability: null hoặc { level ≥ 1, ruleIds }; chỉ ở trận quái hoang / boss trên tầng hoặc
+ * trong bí cảnh (không NPC, tháp / Khí giới bí cảnh, độ kiếp, trận đặc biệt không phải trên tầng).
  */
 export function checkBattleInstability(
   data: GameData,
@@ -97,10 +97,10 @@ export function checkBattleInstability(
   const special = asObject(battle.special)
   if (
     battle.trainer !== null ||
-    battle.trial !== null ||
+    (battle.trial !== null && asObject(battle.trial)?.kind !== 'realm') ||
     battle.tribulation !== null ||
     (special !== null && !isFloorSpecialKind(special.kind))
   ) {
-    issues.push('battle.instability: chỉ có ở trận quái hoang / boss trên tầng')
+    issues.push('battle.instability: chỉ có ở trận quái hoang / boss trên tầng hoặc bí cảnh')
   }
 }

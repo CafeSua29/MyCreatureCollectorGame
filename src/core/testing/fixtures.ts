@@ -1331,6 +1331,15 @@ export function makeRawData(): RawGameData {
             reusableBookChance: 0
           }
         },
+        // Ân huệ (docs/rules/trial-boons.md): fixture không có ân huệ nào (trialBoons rỗng) nên
+        // chuỗi trận bí cảnh của test cũ không bị chặn chờ chọn; test ân huệ tự thêm.
+        boons: {
+          choiceCount: 3,
+          rarityWeights: { common: 60, rare: 30, epic: 10 },
+          instabilityRarityPercent: { common: 0, rare: 25, epic: 50 },
+          bossWeakenCapPercent: 50,
+          skipMoneyPercent: 100
+        },
         tower: {
           ruleCount: { min: 0, max: 0 },
           floorScale: 1,
@@ -2014,6 +2023,7 @@ export function makeRawData(): RawGameData {
         failHooks: [{ type: 'damageTakenModifier', params: { percent: 10 } }]
       }
     ],
+    trialBoons: [],
     trialRules: [
       { id: 'noItems', type: 'noItems', params: {}, weight: 1, instability: unstable(5) },
       { id: 'monoElement', type: 'monoElement', params: {}, weight: 1 },
@@ -2080,7 +2090,10 @@ export function makeRawData(): RawGameData {
         params: { percent: 100 },
         weight: 0,
         instability: unstable(10)
-      }
+      },
+      // Luật ân huệ (docs/rules/trial-boons.md): weight 0 để không đổi RNG tung luật của test cũ.
+      { id: 'noBoons', type: 'noBoons', params: {}, weight: 0 },
+      { id: 'boonBounty', type: 'boonChoices', params: { count: 2 }, weight: 0 }
     ],
     trainers: [
       {

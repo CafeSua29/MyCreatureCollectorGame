@@ -74,7 +74,7 @@ Tách từ `simulation.md` (cách chạy, luật dùng kết quả, kịch bản
 
 ## Bí cảnh và tháp thí luyện (`trials.ts`)
 
-- Chơi liên tục: cùng nhịp với ngự thú sư NPC (mỗi ngày game tối đa một lần khi ở thị trấn, sau việc NPC): có Bí Cảnh Lệnh thì vào bí cảnh và đánh lần lượt (trận cuối dùng trần lượt boss) tới khi xong hoặc không thắng (hết lượt thì bỏ cuộc); rồi leo tháp tối đa `TOWER_ATTEMPTS_PER_DAY` (3) tầng, dừng khi không thắng (tầng boss dùng trần lượt boss); hồi máu sau mỗi lần. Không dùng vật phẩm trong bí cảnh. Cột `trials` (hoàn thành / đã vào), `trialBattles`, `towerWins`, `towerFloor` (tầng tháp cao nhất lúc mở tầng) ở `progression.csv` (`trials.md`).
+- Chơi liên tục: cùng nhịp với ngự thú sư NPC (mỗi ngày game tối đa một lần khi ở thị trấn, sau việc NPC): có Bí Cảnh Lệnh thì vào bí cảnh và đánh lần lượt (trận cuối dùng trần lượt boss) tới khi xong hoặc không thắng (hết lượt thì bỏ cuộc); rồi leo tháp tối đa `TOWER_ATTEMPTS_PER_DAY` (3) tầng, dừng khi không thắng (tầng boss dùng trần lượt boss); hồi máu sau mỗi lần. Không dùng vật phẩm trong bí cảnh. Sau mỗi trận thắng có lựa chọn ân huệ thì chọn ân huệ điểm cao nhất (`bestTrialBoon`, luật chấm điểm ở `trial-boons.md` mục "Mô phỏng"); mỗi bí cảnh chạy thêm bản đối chứng tắt ân huệ từ cùng state (so cặp, chỉ đếm), cột `trialsNoBoons`. Cột `trials` (hoàn thành / đã vào), `trialBattles`, `towerWins`, `towerFloor` (tầng tháp cao nhất lúc mở tầng) ở `progression.csv` (`trials.md`).
 
 ## Độ bất ổn tầng (`floorSweep.ts`)
 

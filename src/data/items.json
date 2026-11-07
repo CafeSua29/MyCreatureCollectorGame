@@ -3834,9 +3834,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "alien"
-          ]
+          "raceIds": ["alien"]
         }
       },
       "valueParam": "percent",
@@ -3872,9 +3870,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "felid"
-          ]
+          "raceIds": ["felid"]
         }
       },
       "valueParam": "percent",
@@ -3910,9 +3906,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "canid"
-          ]
+          "raceIds": ["canid"]
         }
       },
       "valueParam": "percent",
@@ -3948,9 +3942,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "ursid"
-          ]
+          "raceIds": ["ursid"]
         }
       },
       "valueParam": "percent",
@@ -3986,9 +3978,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mustelid"
-          ]
+          "raceIds": ["mustelid"]
         }
       },
       "valueParam": "percent",
@@ -4024,9 +4014,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "rodent"
-          ]
+          "raceIds": ["rodent"]
         }
       },
       "valueParam": "percent",
@@ -4062,9 +4050,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "lagomorph"
-          ]
+          "raceIds": ["lagomorph"]
         }
       },
       "valueParam": "percent",
@@ -4100,9 +4086,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "primate"
-          ]
+          "raceIds": ["primate"]
         }
       },
       "valueParam": "percent",
@@ -4138,9 +4122,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "equid"
-          ]
+          "raceIds": ["equid"]
         }
       },
       "valueParam": "percent",
@@ -4176,9 +4158,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "cervid"
-          ]
+          "raceIds": ["cervid"]
         }
       },
       "valueParam": "percent",
@@ -4214,9 +4194,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "suid"
-          ]
+          "raceIds": ["suid"]
         }
       },
       "valueParam": "percent",
@@ -4252,9 +4230,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "proboscid"
-          ]
+          "raceIds": ["proboscid"]
         }
       },
       "valueParam": "percent",
@@ -4290,9 +4266,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "pachyderm"
-          ]
+          "raceIds": ["pachyderm"]
         }
       },
       "valueParam": "percent",
@@ -4328,9 +4302,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "chiropteran"
-          ]
+          "raceIds": ["chiropteran"]
         }
       },
       "valueParam": "percent",
@@ -4366,9 +4338,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "marsupial"
-          ]
+          "raceIds": ["marsupial"]
         }
       },
       "valueParam": "percent",
@@ -4404,9 +4374,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "xenarthran"
-          ]
+          "raceIds": ["xenarthran"]
         }
       },
       "valueParam": "percent",
@@ -4442,9 +4410,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "insectivore"
-          ]
+          "raceIds": ["insectivore"]
         }
       },
       "valueParam": "percent",
@@ -4480,9 +4446,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "megafauna"
-          ]
+          "raceIds": ["megafauna"]
         }
       },
       "valueParam": "percent",
@@ -4518,9 +4482,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "fangedBeast"
-          ]
+          "raceIds": ["fangedBeast"]
         }
       },
       "valueParam": "percent",
@@ -4556,9 +4518,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mythicBeast"
-          ]
+          "raceIds": ["mythicBeast"]
         }
       },
       "valueParam": "percent",
@@ -4594,9 +4554,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "wildBeast"
-          ]
+          "raceIds": ["wildBeast"]
         }
       },
       "valueParam": "percent",
@@ -4632,9 +4590,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "raptor"
-          ]
+          "raceIds": ["raptor"]
         }
       },
       "valueParam": "percent",
@@ -4670,9 +4626,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "owl"
-          ]
+          "raceIds": ["owl"]
         }
       },
       "valueParam": "percent",
@@ -4708,9 +4662,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "bird"
-          ]
+          "raceIds": ["bird"]
         }
       },
       "valueParam": "percent",
@@ -4746,9 +4698,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "waterfowl"
-          ]
+          "raceIds": ["waterfowl"]
         }
       },
       "valueParam": "percent",
@@ -4784,9 +4734,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "galliform"
-          ]
+          "raceIds": ["galliform"]
         }
       },
       "valueParam": "percent",
@@ -4822,9 +4770,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "penguin"
-          ]
+          "raceIds": ["penguin"]
         }
       },
       "valueParam": "percent",
@@ -4860,9 +4806,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "seabird"
-          ]
+          "raceIds": ["seabird"]
         }
       },
       "valueParam": "percent",
@@ -4898,9 +4842,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "ratite"
-          ]
+          "raceIds": ["ratite"]
         }
       },
       "valueParam": "percent",
@@ -4936,9 +4878,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "parrot"
-          ]
+          "raceIds": ["parrot"]
         }
       },
       "valueParam": "percent",
@@ -4974,9 +4914,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mythicBird"
-          ]
+          "raceIds": ["mythicBird"]
         }
       },
       "valueParam": "percent",
@@ -5012,9 +4950,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "serpent"
-          ]
+          "raceIds": ["serpent"]
         }
       },
       "valueParam": "percent",
@@ -5050,9 +4986,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "lizard"
-          ]
+          "raceIds": ["lizard"]
         }
       },
       "valueParam": "percent",
@@ -5088,9 +5022,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "turtle"
-          ]
+          "raceIds": ["turtle"]
         }
       },
       "valueParam": "percent",
@@ -5126,9 +5058,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "crocodilian"
-          ]
+          "raceIds": ["crocodilian"]
         }
       },
       "valueParam": "percent",
@@ -5164,9 +5094,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "anuran"
-          ]
+          "raceIds": ["anuran"]
         }
       },
       "valueParam": "percent",
@@ -5202,9 +5130,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "caudate"
-          ]
+          "raceIds": ["caudate"]
         }
       },
       "valueParam": "percent",
@@ -5240,9 +5166,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "fish"
-          ]
+          "raceIds": ["fish"]
         }
       },
       "valueParam": "percent",
@@ -5278,9 +5202,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "shark"
-          ]
+          "raceIds": ["shark"]
         }
       },
       "valueParam": "percent",
@@ -5316,9 +5238,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "cetacean"
-          ]
+          "raceIds": ["cetacean"]
         }
       },
       "valueParam": "percent",
@@ -5354,9 +5274,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "pinniped"
-          ]
+          "raceIds": ["pinniped"]
         }
       },
       "valueParam": "percent",
@@ -5392,9 +5310,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "sirenian"
-          ]
+          "raceIds": ["sirenian"]
         }
       },
       "valueParam": "percent",
@@ -5430,9 +5346,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "cephalopod"
-          ]
+          "raceIds": ["cephalopod"]
         }
       },
       "valueParam": "percent",
@@ -5468,9 +5382,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "crustacean"
-          ]
+          "raceIds": ["crustacean"]
         }
       },
       "valueParam": "percent",
@@ -5506,9 +5418,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "cnidarian"
-          ]
+          "raceIds": ["cnidarian"]
         }
       },
       "valueParam": "percent",
@@ -5544,9 +5454,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mollusk"
-          ]
+          "raceIds": ["mollusk"]
         }
       },
       "valueParam": "percent",
@@ -5582,9 +5490,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "leviathan"
-          ]
+          "raceIds": ["leviathan"]
         }
       },
       "valueParam": "percent",
@@ -5620,9 +5526,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "carapaceon"
-          ]
+          "raceIds": ["carapaceon"]
         }
       },
       "valueParam": "percent",
@@ -5658,9 +5562,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "beetle"
-          ]
+          "raceIds": ["beetle"]
         }
       },
       "valueParam": "percent",
@@ -5696,9 +5598,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "lepidopteran"
-          ]
+          "raceIds": ["lepidopteran"]
         }
       },
       "valueParam": "percent",
@@ -5734,9 +5634,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "hymenopteran"
-          ]
+          "raceIds": ["hymenopteran"]
         }
       },
       "valueParam": "percent",
@@ -5772,9 +5670,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "arachnid"
-          ]
+          "raceIds": ["arachnid"]
         }
       },
       "valueParam": "percent",
@@ -5810,9 +5706,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "orthopteran"
-          ]
+          "raceIds": ["orthopteran"]
         }
       },
       "valueParam": "percent",
@@ -5848,9 +5742,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "odonate"
-          ]
+          "raceIds": ["odonate"]
         }
       },
       "valueParam": "percent",
@@ -5886,9 +5778,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "myriapod"
-          ]
+          "raceIds": ["myriapod"]
         }
       },
       "valueParam": "percent",
@@ -5924,9 +5814,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "larva"
-          ]
+          "raceIds": ["larva"]
         }
       },
       "valueParam": "percent",
@@ -5962,9 +5850,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "neopteron"
-          ]
+          "raceIds": ["neopteron"]
         }
       },
       "valueParam": "percent",
@@ -6000,9 +5886,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "insectoid"
-          ]
+          "raceIds": ["insectoid"]
         }
       },
       "valueParam": "percent",
@@ -6038,9 +5922,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "theropod"
-          ]
+          "raceIds": ["theropod"]
         }
       },
       "valueParam": "percent",
@@ -6076,9 +5958,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "sauropod"
-          ]
+          "raceIds": ["sauropod"]
         }
       },
       "valueParam": "percent",
@@ -6114,9 +5994,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "ornithischian"
-          ]
+          "raceIds": ["ornithischian"]
         }
       },
       "valueParam": "percent",
@@ -6152,9 +6030,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "pterosaur"
-          ]
+          "raceIds": ["pterosaur"]
         }
       },
       "valueParam": "percent",
@@ -6190,9 +6066,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "marineReptile"
-          ]
+          "raceIds": ["marineReptile"]
         }
       },
       "valueParam": "percent",
@@ -6228,9 +6102,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "ancientCreature"
-          ]
+          "raceIds": ["ancientCreature"]
         }
       },
       "valueParam": "percent",
@@ -6266,9 +6138,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "kaiju"
-          ]
+          "raceIds": ["kaiju"]
         }
       },
       "valueParam": "percent",
@@ -6304,9 +6174,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "westernDragon"
-          ]
+          "raceIds": ["westernDragon"]
         }
       },
       "valueParam": "percent",
@@ -6342,9 +6210,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "easternDragon"
-          ]
+          "raceIds": ["easternDragon"]
         }
       },
       "valueParam": "percent",
@@ -6380,9 +6246,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "wyvern"
-          ]
+          "raceIds": ["wyvern"]
         }
       },
       "valueParam": "percent",
@@ -6418,9 +6282,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "fangedWyvern"
-          ]
+          "raceIds": ["fangedWyvern"]
         }
       },
       "valueParam": "percent",
@@ -6456,9 +6318,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "bruteWyvern"
-          ]
+          "raceIds": ["bruteWyvern"]
         }
       },
       "valueParam": "percent",
@@ -6494,9 +6354,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "piscineWyvern"
-          ]
+          "raceIds": ["piscineWyvern"]
         }
       },
       "valueParam": "percent",
@@ -6532,9 +6390,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "birdWyvern"
-          ]
+          "raceIds": ["birdWyvern"]
         }
       },
       "valueParam": "percent",
@@ -6570,9 +6426,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "snakeWyvern"
-          ]
+          "raceIds": ["snakeWyvern"]
         }
       },
       "valueParam": "percent",
@@ -6608,9 +6462,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "elderDragon"
-          ]
+          "raceIds": ["elderDragon"]
         }
       },
       "valueParam": "percent",
@@ -6646,9 +6498,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "drake"
-          ]
+          "raceIds": ["drake"]
         }
       },
       "valueParam": "percent",
@@ -6684,9 +6534,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "tree"
-          ]
+          "raceIds": ["tree"]
         }
       },
       "valueParam": "percent",
@@ -6722,9 +6570,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "flower"
-          ]
+          "raceIds": ["flower"]
         }
       },
       "valueParam": "percent",
@@ -6760,9 +6606,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "fungus"
-          ]
+          "raceIds": ["fungus"]
         }
       },
       "valueParam": "percent",
@@ -6798,9 +6642,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "algae"
-          ]
+          "raceIds": ["algae"]
         }
       },
       "valueParam": "percent",
@@ -6836,9 +6678,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "golem"
-          ]
+          "raceIds": ["golem"]
         }
       },
       "valueParam": "percent",
@@ -6874,9 +6714,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "crystal"
-          ]
+          "raceIds": ["crystal"]
         }
       },
       "valueParam": "percent",
@@ -6912,9 +6750,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "metal"
-          ]
+          "raceIds": ["metal"]
         }
       },
       "valueParam": "percent",
@@ -6950,9 +6786,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "livingObject"
-          ]
+          "raceIds": ["livingObject"]
         }
       },
       "valueParam": "percent",
@@ -6988,9 +6822,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "machine"
-          ]
+          "raceIds": ["machine"]
         }
       },
       "valueParam": "percent",
@@ -7026,9 +6858,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "slime"
-          ]
+          "raceIds": ["slime"]
         }
       },
       "valueParam": "percent",
@@ -7064,9 +6894,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "annelid"
-          ]
+          "raceIds": ["annelid"]
         }
       },
       "valueParam": "percent",
@@ -7102,9 +6930,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "changeling"
-          ]
+          "raceIds": ["changeling"]
         }
       },
       "valueParam": "percent",
@@ -7140,9 +6966,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "lycanthrope"
-          ]
+          "raceIds": ["lycanthrope"]
         }
       },
       "valueParam": "percent",
@@ -7178,9 +7002,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mimic"
-          ]
+          "raceIds": ["mimic"]
         }
       },
       "valueParam": "percent",
@@ -7216,9 +7038,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "zombie"
-          ]
+          "raceIds": ["zombie"]
         }
       },
       "valueParam": "percent",
@@ -7254,9 +7074,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "skeleton"
-          ]
+          "raceIds": ["skeleton"]
         }
       },
       "valueParam": "percent",
@@ -7292,9 +7110,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "vampire"
-          ]
+          "raceIds": ["vampire"]
         }
       },
       "valueParam": "percent",
@@ -7330,9 +7146,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "wraith"
-          ]
+          "raceIds": ["wraith"]
         }
       },
       "valueParam": "percent",
@@ -7368,9 +7182,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "lich"
-          ]
+          "raceIds": ["lich"]
         }
       },
       "valueParam": "percent",
@@ -7406,9 +7218,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mummy"
-          ]
+          "raceIds": ["mummy"]
         }
       },
       "valueParam": "percent",
@@ -7444,9 +7254,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "ghoul"
-          ]
+          "raceIds": ["ghoul"]
         }
       },
       "valueParam": "percent",
@@ -7482,9 +7290,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "ghost"
-          ]
+          "raceIds": ["ghost"]
         }
       },
       "valueParam": "percent",
@@ -7520,9 +7326,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "yokai"
-          ]
+          "raceIds": ["yokai"]
         }
       },
       "valueParam": "percent",
@@ -7558,9 +7362,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "fey"
-          ]
+          "raceIds": ["fey"]
         }
       },
       "valueParam": "percent",
@@ -7596,9 +7398,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "wisp"
-          ]
+          "raceIds": ["wisp"]
         }
       },
       "valueParam": "percent",
@@ -7634,9 +7434,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "natureSpirit"
-          ]
+          "raceIds": ["natureSpirit"]
         }
       },
       "valueParam": "percent",
@@ -7672,9 +7470,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "fiend"
-          ]
+          "raceIds": ["fiend"]
         }
       },
       "valueParam": "percent",
@@ -7710,9 +7506,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "imp"
-          ]
+          "raceIds": ["imp"]
         }
       },
       "valueParam": "percent",
@@ -7748,9 +7542,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "oni"
-          ]
+          "raceIds": ["oni"]
         }
       },
       "valueParam": "percent",
@@ -7786,9 +7578,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "elementalSpirit"
-          ]
+          "raceIds": ["elementalSpirit"]
         }
       },
       "valueParam": "percent",
@@ -7824,9 +7614,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "djinn"
-          ]
+          "raceIds": ["djinn"]
         }
       },
       "valueParam": "percent",
@@ -7862,9 +7650,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "eldritch"
-          ]
+          "raceIds": ["eldritch"]
         }
       },
       "valueParam": "percent",
@@ -7900,9 +7686,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "chimera"
-          ]
+          "raceIds": ["chimera"]
         }
       },
       "valueParam": "percent",
@@ -7938,9 +7722,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "angel"
-          ]
+          "raceIds": ["angel"]
         }
       },
       "valueParam": "percent",
@@ -7976,9 +7758,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "god"
-          ]
+          "raceIds": ["god"]
         }
       },
       "valueParam": "percent",
@@ -8014,9 +7794,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "divineBeast"
-          ]
+          "raceIds": ["divineBeast"]
         }
       },
       "valueParam": "percent",
@@ -8052,9 +7830,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "demigod"
-          ]
+          "raceIds": ["demigod"]
         }
       },
       "valueParam": "percent",
@@ -8090,9 +7866,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "human"
-          ]
+          "raceIds": ["human"]
         }
       },
       "valueParam": "percent",
@@ -8128,9 +7902,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "goblin"
-          ]
+          "raceIds": ["goblin"]
         }
       },
       "valueParam": "percent",
@@ -8166,9 +7938,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "troll"
-          ]
+          "raceIds": ["troll"]
         }
       },
       "valueParam": "percent",
@@ -8204,9 +7974,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "beastfolk"
-          ]
+          "raceIds": ["beastfolk"]
         }
       },
       "valueParam": "percent",
@@ -8242,9 +8010,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "centaur"
-          ]
+          "raceIds": ["centaur"]
         }
       },
       "valueParam": "percent",
@@ -8280,9 +8046,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "insectfolk"
-          ]
+          "raceIds": ["insectfolk"]
         }
       },
       "valueParam": "percent",
@@ -8318,9 +8082,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "merfolk"
-          ]
+          "raceIds": ["merfolk"]
         }
       },
       "valueParam": "percent",
@@ -8356,9 +8118,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "lizardfolk"
-          ]
+          "raceIds": ["lizardfolk"]
         }
       },
       "valueParam": "percent",
@@ -8394,9 +8154,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "harpyfolk"
-          ]
+          "raceIds": ["harpyfolk"]
         }
       },
       "valueParam": "percent",
@@ -8432,9 +8190,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "alienRace"
-          ]
+          "raceIds": ["alienRace"]
         }
       },
       "valueParam": "percent",
@@ -8470,9 +8226,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "hive"
-          ]
+          "raceIds": ["hive"]
         }
       },
       "valueParam": "percent",
@@ -8508,9 +8262,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "android"
-          ]
+          "raceIds": ["android"]
         }
       },
       "valueParam": "percent",
@@ -8546,9 +8298,7 @@
       "hook": {
         "type": "damageVsRace",
         "params": {
-          "raceIds": [
-            "mutant"
-          ]
+          "raceIds": ["mutant"]
         }
       },
       "valueParam": "percent",
@@ -58031,9 +57781,7 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "common": {
           "min": 5,
@@ -58056,9 +57804,7 @@
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "hooks": [
       {
@@ -58078,18 +57824,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "wanderer"
   },
@@ -58102,18 +57844,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "wanderer"
   },
@@ -58126,18 +57864,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "wanderer"
   },
@@ -58150,18 +57884,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "apprentice"
   },
@@ -58174,18 +57904,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "apprentice"
   },
@@ -58198,18 +57924,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "militia"
   },
@@ -58222,18 +57944,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense"
-      ],
+      "valueParam": ["percent.defense"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "militia"
   },
@@ -58246,18 +57964,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "common": {
           "min": 5,
           "max": 10
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "militia"
   },
@@ -58270,18 +57984,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "ember"
   },
@@ -58294,18 +58004,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "ember"
   },
@@ -58318,18 +58024,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "ember"
   },
@@ -58342,18 +58044,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "tidecaller"
   },
@@ -58366,18 +58064,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "tidecaller"
   },
@@ -58390,18 +58084,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "tidecaller"
   },
@@ -58414,18 +58104,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "thornguard"
   },
@@ -58438,18 +58124,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense"
-      ],
+      "valueParam": ["percent.defense"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "thornguard"
   },
@@ -58462,18 +58144,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "uncommon": {
           "min": 10,
           "max": 15
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "thornguard"
   },
@@ -58486,18 +58164,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "stormcaller"
   },
@@ -58510,19 +58184,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack",
-        "percent.speed"
-      ],
+      "valueParam": ["percent.spAttack", "percent.speed"],
       "ranges": {
         "rare": {
           "min": 11,
           "max": 17
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "stormcaller"
   },
@@ -58535,18 +58204,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "stormcaller"
   },
@@ -58559,18 +58224,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "stormcaller"
   },
@@ -58583,18 +58244,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "frostbound"
   },
@@ -58607,18 +58264,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense"
-      ],
+      "valueParam": ["percent.defense"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "frostbound"
   },
@@ -58631,18 +58284,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "frostbound"
   },
@@ -58655,18 +58304,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "frostbound"
   },
@@ -58679,18 +58324,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "huntsman"
   },
@@ -58703,18 +58344,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "huntsman"
   },
@@ -58727,19 +58364,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack",
-        "percent.speed"
-      ],
+      "valueParam": ["percent.attack", "percent.speed"],
       "ranges": {
         "rare": {
           "min": 11,
           "max": 17
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "huntsman"
   },
@@ -58752,18 +58384,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "rare": {
           "min": 15,
           "max": 22
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "huntsman"
   },
@@ -58776,18 +58404,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bloodMoon"
   },
@@ -58800,18 +58424,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bloodMoon"
   },
@@ -58824,18 +58444,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bloodMoon"
   },
@@ -58848,19 +58464,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack",
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.attack", "percent.spAttack"],
       "ranges": {
         "epic": {
           "min": 17,
           "max": 23
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bloodMoon"
   },
@@ -58873,18 +58484,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bloodMoon"
   },
@@ -58897,18 +58504,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bulwark"
   },
@@ -58921,18 +58524,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense"
-      ],
+      "valueParam": ["percent.defense"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bulwark"
   },
@@ -58945,19 +58544,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense",
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.defense", "percent.spDefense"],
       "ranges": {
         "epic": {
           "min": 17,
           "max": 23
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bulwark"
   },
@@ -58970,19 +58564,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp",
-        "percent.defense"
-      ],
+      "valueParam": ["percent.hp", "percent.defense"],
       "ranges": {
         "epic": {
           "min": 17,
           "max": 23
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bulwark"
   },
@@ -58995,18 +58584,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "bulwark"
   },
@@ -59019,18 +58604,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "arcanum"
   },
@@ -59043,19 +58624,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack",
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spAttack", "percent.spDefense"],
       "ranges": {
         "epic": {
           "min": 17,
           "max": 23
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "arcanum"
   },
@@ -59068,18 +58644,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "arcanum"
   },
@@ -59092,18 +58664,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "arcanum"
   },
@@ -59116,18 +58684,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "epic": {
           "min": 22,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "arcanum"
   },
@@ -59140,18 +58704,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "dragonlord"
   },
@@ -59164,19 +58724,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense",
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.defense", "percent.spDefense"],
       "ranges": {
         "legendary": {
           "min": 23,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "dragonlord"
   },
@@ -59189,18 +58744,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "dragonlord"
   },
@@ -59213,18 +58764,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "dragonlord"
   },
@@ -59237,18 +58784,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "dragonlord"
   },
@@ -59261,19 +58804,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack",
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.attack", "percent.spAttack"],
       "ranges": {
         "legendary": {
           "min": 23,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "dragonlord"
   },
@@ -59286,18 +58824,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "celestial"
   },
@@ -59310,18 +58844,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "celestial"
   },
@@ -59334,18 +58864,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "celestial"
   },
@@ -59358,19 +58884,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack",
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spAttack", "percent.spDefense"],
       "ranges": {
         "legendary": {
           "min": 23,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "celestial"
   },
@@ -59383,18 +58904,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.hp"
-      ],
+      "valueParam": ["percent.hp"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "celestial"
   },
@@ -59407,18 +58924,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.defense"
-      ],
+      "valueParam": ["percent.defense"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "celestial"
   },
@@ -59431,18 +58944,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "voidwalker"
   },
@@ -59455,18 +58964,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spDefense"
-      ],
+      "valueParam": ["percent.spDefense"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "voidwalker"
   },
@@ -59479,18 +58984,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack"
-      ],
+      "valueParam": ["percent.attack"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "voidwalker"
   },
@@ -59503,18 +59004,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.spAttack"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "voidwalker"
   },
@@ -59527,18 +59024,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.speed"
-      ],
+      "valueParam": ["percent.speed"],
       "ranges": {
         "legendary": {
           "min": 30,
           "max": 40
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "voidwalker"
   },
@@ -59551,19 +59044,14 @@
         "type": "statModifier",
         "params": {}
       },
-      "valueParam": [
-        "percent.attack",
-        "percent.spAttack"
-      ],
+      "valueParam": ["percent.attack", "percent.spAttack"],
       "ranges": {
         "legendary": {
           "min": 23,
           "max": 30
         }
       },
-      "tags": [
-        "stat"
-      ]
+      "tags": ["stat"]
     },
     "setId": "voidwalker"
   }

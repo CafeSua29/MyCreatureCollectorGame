@@ -74,3 +74,19 @@ describe('buySkillBooks', () => {
     expect(buySkillBooks(data, poor, new Set(['m1'])).bought).toBe(0)
   })
 })
+
+describe('dán sticker', () => {
+  it('sticker Extra Slots lên skill mới khi đủ ô: dán không cần quên (ô tính sau khi gắn, như core)', () => {
+    const full = makeMonster({ id: 'm1', skillIds: ['strike', 'growl', 'quick', 'idle'] })
+    const base = makeGameState({ seed: 1, party: [full] })
+    const sticker = {
+      id: 's1',
+      skillId: 'flurry',
+      rarity: 'uncommon' as const,
+      rolls: [{ attributeId: 'extraSlot' }]
+    }
+    const state: GameState = { ...base, inventory: { ...base.inventory, stickers: [sticker] } }
+    const { state: next } = teachSkillBooks(data, state, new Set(['m1']))
+    expect(next.party[0].skillIds).toEqual(['strike', 'growl', 'quick', 'idle', 'flurry'])
+  })
+})

@@ -70,7 +70,8 @@ export const STAT_PERCENT_SOURCE_IDS = [
   'marks',
   'workTraits',
   'ailment',
-  'rules'
+  'rules',
+  'boons'
 ] as const
 
 export type StatPercentSourceId = (typeof STAT_PERCENT_SOURCE_IDS)[number]
