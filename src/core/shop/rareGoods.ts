@@ -76,5 +76,5 @@ export function offeredBlackMarketItems(
 /** Trang bị gốc thường (không unique, không phải hồn khí): chợ đen, Đấu giá hành. */
 export const normalEquipmentItems = (data: GameData): EquipmentItem[] =>
   Object.values(data.items).filter(
-    (item): item is EquipmentItem => item.category === 'equipment' && isRandomEquipment(item)
+    (item): item is EquipmentItem => item.category === 'equipment' && isRandomEquipment(data, item)
   )

@@ -67,6 +67,7 @@ import { raceMatchesAny, raceRefIds } from './races'
 import { uniformPercent } from './statPercentSources'
 import { stickerTraitHooks } from './stickers'
 import { markHookEntries } from './marks'
+import { equipmentSetHooks } from './equipmentSets'
 import { SURVIVAL_TRAIT_HOOKS, type LethalSurvival } from './survivalTraitHooks'
 import { STAGE_TRAIT_HOOKS, type StageTraitEffect, type StageTraitEvent } from './stageTraitHooks'
 import { percentToMultiplier, scaleStats, validatePartialStats } from './traitHookUtils'
@@ -283,6 +284,8 @@ export interface TraitHookHandler extends PassiveTraitPhases {
   overexertion?(params: unknown, scale: number): OverexertionRule
   /** % đòn tầm xa của quái đi xuyên tường địch (Ricochet, docs/rules/cassette-mechanics.md). */
   wallIgnoreChance?(params: unknown): number
+  /** Số món cần của bộ đặt tên giảm đi (chỉ xét trên món đang lắp; docs/rules/equipment-sets.md). */
+  setPieceReduction?(params: unknown): number
   /** Không chịu phản ứng hệ của skill hệ này (docs/rules/element-reactions.md). */
   blocksElementReaction?(params: unknown, elementId: string): boolean
   /** Miễn nhiễm skill hệ này (sát thương 0, như khắc hệ ×0). Không đổi theo cấp trait. */
@@ -719,6 +722,7 @@ export const HOOK_SOURCE_KINDS = [
   'refinement',
   'sticker',
   'mark',
+  'equipmentSet',
   'rule'
 ] as const
 
@@ -741,6 +745,7 @@ export function triggerLogSource(kind: HookSourceKind): TriggerLogSource | undef
     case 'refinement':
     case 'sticker':
     case 'mark':
+    case 'equipmentSet':
       return kind
     case 'trait':
     case 'race':
@@ -827,17 +832,18 @@ const lineTouchesHp = (valueParam: string | readonly string[]): boolean =>
   )
 
 /**
- * Hook của món đang lắp: dòng trang bị (hệ số theo cấp món, như trait; id nguồn là id món gốc) và đồ
- * cầm (hệ số 1, nguồn `held`, id nguồn là id item). Room kiểu Magic Room (`itemsDisabled`) tắt mọi
- * món.
+ * Hook của món đang lắp: dòng trang bị (hệ số theo cấp món, như trait; id nguồn là id món gốc), đồ
+ * cầm (hệ số 1, nguồn `held`, id nguồn là id item) và thưởng bộ trang bị (nguồn `equipmentSet`, id
+ * nguồn là id bộ; docs/rules/equipment-sets.md). Room kiểu Magic Room (`itemsDisabled`) tắt mọi món.
  */
 function equipmentHooks(
   data: GameData,
   monster: Monster,
   {
     berriesBlocked = false,
+    setsSealed = false,
     abilityId = null
-  }: { berriesBlocked?: boolean; abilityId?: string | null } = {}
+  }: { berriesBlocked?: boolean; setsSealed?: boolean; abilityId?: string | null } = {}
 ): OwnHook[] {
   const berryAdjust = {
     ripe: abilityId !== null && traitHasAbilityFlag(data, abilityId, 'ripensBerries'),
@@ -912,6 +918,14 @@ function equipmentHooks(
       }
     }
   }
+  for (const { hook, scale, setId } of equipmentSetHooks(data, monster.equipment, { setsSealed })) {
+    result.push({
+      hook,
+      scale,
+      sourceId: setId,
+      source: { kind: 'equipmentSet', ownerId: monster.id }
+    })
+  }
   return result
 }
 
@@ -973,6 +987,7 @@ function ownHooks(
   {
     itemsDisabled = false,
     berriesBlocked = false,
+    setsSealed = false,
     withMergePartner = true,
     abilitySuppressed = false
   }: OwnHookOptions = {}
@@ -1013,7 +1028,9 @@ function ownHooks(
     : (volatile?.abilityOverride ?? abilityTraitId(data, monster))
   if (abilityId !== null)
     push(data.traits[abilityId].hooks, 1, abilityId, { kind: 'ability', ownerId })
-  if (!itemsDisabled) result.push(...equipmentHooks(data, monster, { berriesBlocked, abilityId }))
+  if (!itemsDisabled) {
+    result.push(...equipmentHooks(data, monster, { berriesBlocked, setsSealed, abilityId }))
+  }
   for (const status of monster.statuses) {
     const hooks = data.statuses[status.statusId].traitHooks
     if (hooks)
@@ -1079,6 +1096,8 @@ interface OwnHookOptions {
   itemsDisabled?: boolean
   /** Unnerve của địch: berry đang cầm không có tác dụng. */
   berriesBlocked?: boolean
+  /** Seal của địch: bộ trang bị `sealable` không có tác dụng. */
+  setsSealed?: boolean
   /** Thực thể hợp thể có tính hook của quái phụ không (mặc định có). */
   withMergePartner?: boolean
   /** Ability theo loài bị vô hiệu (Gastro Acid, skill bỏ qua ability). */
@@ -1213,6 +1232,7 @@ function resolveTraitHooks(
   const own = ownHooks(data, monster, volatile, {
     itemsDisabled: ctx?.itemsDisabled,
     berriesBlocked: ctx?.berriesBlocked,
+    setsSealed: ctx?.setsSealed,
     withMergePartner,
     abilitySuppressed: ctx?.abilitySuppressed
   })

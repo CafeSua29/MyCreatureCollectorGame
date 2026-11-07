@@ -7,6 +7,7 @@ import {
   addRandomAffix,
   rollChestItems,
   rollRarity,
+  rollSetPieceDrop,
   spiritsOf,
   withSpirits
 } from '../inventory'
@@ -144,7 +145,10 @@ function chestItems(data: GameData, d: Draft, realm: SecretRealm): void {
   grantItemRewards(d, rewards)
 }
 
-/** Rương: trang bị theo danh sách rơi của map chủ đề, bậc theo bảng của rương (rare trở lên). */
+/**
+ * Rương: trang bị theo danh sách rơi của map chủ đề, bậc theo bảng của rương (rare trở lên), và tung
+ * thêm một món bộ đặt tên (docs/rules/equipment-sets.md).
+ */
 function chestEquipment(
   data: GameData,
   d: Draft,
@@ -152,14 +156,21 @@ function chestEquipment(
 ): void {
   const chest = data.config.trials.realm.chest
   const candidates = (biome.equipmentDrops ?? []).filter((entry) => entry.weight > 0)
-  if (candidates.length === 0) return
-  for (let i = 0; i < chest.equipmentCount; i++) {
+  for (let i = 0; candidates.length > 0 && i < chest.equipmentCount; i++) {
     let entry: WeightedItem
     ;[entry, d.rng] = pickWeighted(d.rng, candidates, (candidate) => candidate.weight)
     let rarity: NormalRarity
     ;[rarity, d.rng] = rollRarity(data, d.rng, chest.equipmentRarityWeights, floor)
     gainNewEquipment(data, d, { itemId: entry.itemId, rarity })
   }
+  // Món bộ đặt tên (docs/rules/equipment-sets.md): không phụ thuộc danh sách rơi của map.
+  let piece: { itemId: string; rarity: NormalRarity } | null
+  ;[piece, d.rng] = rollSetPieceDrop(data, d.rng, {
+    chance: data.config.equipmentSets.pieceChance.chest,
+    weights: chest.equipmentRarityWeights,
+    floor
+  })
+  if (piece) gainNewEquipment(data, d, piece)
 }
 
 /** Hoàn thành bí cảnh: rương (món, trang bị, sách kỹ năng). */

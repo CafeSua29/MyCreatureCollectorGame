@@ -2,7 +2,7 @@
 // theo tỉ lệ thắng gần đây), đánh boss tầng cao nhất khi chính sách bossPolicy cho phép; mất máu
 // thì về thị trấn hồi (miễn phí). Đội lên level thật theo EXP. Đo số trận để mở từng tầng.
 
-import { autoEquip, averageSourcePercent } from './gear'
+import { autoEquip, averageSetBonuses, averageSourcePercent } from './gear'
 import {
   BIG_ZERO,
   GROWTH_RATES,
@@ -221,6 +221,11 @@ export interface FloorUnlock {
   growthLevels: Record<GrowthRate, number>
   /** Trung bình % chỉ số từ trang bị của đội mẫu lúc mở tầng (trung bình 6 chỉ số). */
   gearPercent: number
+  /**
+   * Số thưởng bộ trang bị trung bình mỗi quái đội mẫu lúc mở tầng (lần kích hoạt bộ ngẫu nhiên + mốc
+   * bộ đặt tên; docs/rules/equipment-sets.md).
+   */
+  setBonuses: number
   /** Như gearPercent, nguồn hồn tinh (soulLevels.ts). */
   soulPercent: number
   /** Như gearPercent, nguồn thiên phú (talents.ts). */
@@ -301,6 +306,7 @@ type FloorCounter = Omit<
   | 'averageLevel'
   | 'growthLevels'
   | 'gearPercent'
+  | 'setBonuses'
   | 'soulPercent'
   | 'talentPercent'
   | 'effortPercent'
@@ -574,6 +580,7 @@ function playBattle(
       averageLevel,
       growthLevels: growthLevels(state.party, teamIds),
       gearPercent,
+      setBonuses: averageSetBonuses(data, state, teamIds),
       soulPercent: averageSourcePercent(data, state, teamIds, 'soulLevel'),
       talentPercent: averageSourcePercent(data, state, teamIds, 'talent'),
       effortPercent: averageSourcePercent(data, state, teamIds, 'effort'),

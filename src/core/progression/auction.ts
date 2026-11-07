@@ -7,14 +7,17 @@ import {
   addEquipment,
   assertCanLeaveBag,
   equipmentInstanceId,
+  findEquipmentItem,
   isSkillBookUsefulForParty,
   itemBasePrice,
   itemSellPrice,
   parseItemRef,
+  pickSetPiece,
   removeByRef,
   requireItemCount,
   rollEquipment,
   rollRarity,
+  setPieceRarities,
   takeEquipment,
   uniquePoolOf
 } from '../inventory'
@@ -129,6 +132,24 @@ function eggSpeciesPool(data: GameData, state: GameState): { speciesId: string; 
   return [...weights].flatMap(([speciesId, weight]) => (weight > 0 ? [{ speciesId, weight }] : []))
 }
 
+/**
+ * Lô trang bị thành món bộ đặt tên cùng bậc với tỉ lệ pieceChance.auction (docs/rules/equipment-sets.md);
+ * bậc không có bộ đặt tên thì null, không tốn RNG.
+ */
+function swapToSetPiece(
+  data: GameData,
+  draft: LotDraft,
+  rarity: NormalRarity
+): EquipmentItem | null {
+  if (Object.keys(setPieceRarities(data, { [rarity]: 1 })).length === 0) return null
+  let swapped: boolean
+  ;[swapped, draft.rng] = rollPercent(draft.rng, data.config.equipmentSets.pieceChance.auction)
+  if (!swapped) return null
+  let itemId: string | null
+  ;[itemId, draft.rng] = pickSetPiece(data, draft.rng, rarity)
+  return itemId === null ? null : findEquipmentItem(data, itemId)
+}
+
 function rollEquipmentGood(
   data: GameData,
   draft: LotDraft,
@@ -164,7 +185,7 @@ export const AUCTION_LOTS: Readonly<Record<AuctionLotKind, AuctionLotHandler>> =
         state.highestFloor
       )
       return rollEquipmentGood(data, draft, {
-        item,
+        item: swapToSetPiece(data, draft, rarity) ?? item,
         rarity,
         minRollPercent: config.equipmentMinRollPercent
       })

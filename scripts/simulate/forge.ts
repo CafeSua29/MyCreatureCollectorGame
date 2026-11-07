@@ -87,7 +87,7 @@ export function enhanceTeamGear(
 function priciestCastable(data: GameData): string | null {
   let best: { itemId: string; price: number } | null = null
   for (const item of Object.values(data.items)) {
-    if (item.category !== 'equipment' || !isRandomEquipment(item)) continue
+    if (item.category !== 'equipment' || !isRandomEquipment(data, item)) continue
     if (best === null || item.price > best.price) best = { itemId: item.id, price: item.price }
   }
   return best?.itemId ?? null
@@ -106,7 +106,7 @@ function castTarget(data: GameData, state: GameState, teamIds: ReadonlySet<strin
     for (const entry of monster.equipment) {
       if (entry.storage !== 'instance') continue
       const item = findEquipmentItem(data, entry.instance.baseItemId)
-      if (!item || !isRandomEquipment(item)) continue
+      if (!item || !isRandomEquipment(data, item)) continue
       const rank = EQUIPMENT_RARITIES.indexOf(entry.instance.rarity)
       if (worst === null || rank < worst.rank) worst = { itemId: item.id, rank }
     }

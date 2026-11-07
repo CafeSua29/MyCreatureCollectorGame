@@ -3,6 +3,7 @@ import {
   equipped,
   makeEquipment,
   makeEquipmentData,
+  makeEquipmentSetData,
   makeGameState,
   makeInventory,
   makeMonster
@@ -27,6 +28,35 @@ describe('autoEquip', () => {
     )
     expect(rarities.sort()).toEqual(['common', 'common', 'epic'])
     expect(next.inventory.equipment.map((item) => item.id).sort()).toEqual(['e1', 'e5'])
+  })
+
+  it('bộ trang bị: đủ ô thì thay món không góp bộ để đủ bộ, không đổi qua đổi lại mãi', () => {
+    const setData = makeEquipmentSetData()
+    const piece = (
+      id: string,
+      setId: string,
+      rarity: 'common' | 'epic' = 'common'
+    ): ReturnType<typeof makeEquipment> =>
+      makeEquipment({ id, setId, rarity, rolls: [{ lineId: 'main', value: 10 }] })
+    // Đang lắp 1 món guard common (chưa đủ bộ 2 món) + 2 món fatal epic (món guard luôn kém nhất);
+    // trong túi có món guard common thứ hai: lắp vào không được tháo món guard kia.
+    const worn = [
+      piece('e1', 'guard'),
+      piece('e2', 'fatal', 'epic'),
+      piece('e3', 'fatal', 'epic')
+    ].map(equipped)
+    const state = {
+      ...makeGameState({ seed: 1, party: [makeMonster({ id: 'a', equipment: worn })] }),
+      inventory: makeInventory({}, [], [piece('e4', 'guard')]),
+      nextItemId: 5
+    }
+    const next = autoEquip(setData, state, new Set(['a']))
+    const ids = next.party[0].equipment.map((entry) =>
+      entry.storage === 'instance' ? entry.instance.id : ''
+    )
+    // Không có cách đổi nào làm đủ bộ mà không bỏ món epic: giữ nguyên (không đổi qua đổi lại).
+    expect(ids).toEqual(['e1', 'e2', 'e3'])
+    expect(next.inventory.equipment.map((item) => item.id)).toEqual(['e4'])
   })
 
   it('không lắp món unique sai race, bỏ qua quái ngoài đội mẫu', () => {

@@ -70,7 +70,9 @@ import {
   rebirthStatPercent,
   findMarkDef,
   isMarkActive,
-  markPartId
+  markPartId,
+  equipmentSetStates,
+  type EquipmentSetState
 } from '../registries'
 import { BIG_ZERO, cloneData, maxBig, type Decimal } from '../shared'
 import { equipmentSlotCount, preEvolutionsOf } from '../inventory'
@@ -116,6 +118,8 @@ export { baseStatTotal, speciesRankOf, monsterSpeciesRankOf } from '../registrie
 // Huyết mạch (docs/rules/bloodline.md): script mô phỏng đo độ thuần, UI hiển thị.
 export { bloodlineGroupsOf, mainBloodline } from '../registries'
 export { monsterWeightKg, speciesWeightKg } from '../registries'
+// Bộ trang bị (docs/rules/equipment-sets.md): UI và script mô phỏng đếm bộ đang có.
+export { equipmentSetStates, type EquipmentSetState } from '../registries'
 export {
   MONSTER_SIZES,
   hasPartyRoom,
@@ -209,6 +213,8 @@ export interface MonsterView {
   /** Món đang lắp theo thứ tự ô, và số ô của người chơi (mục "Trang bị và đồ cầm"). */
   equipment: EquippedItem[]
   equipmentSlots: number
+  /** Bộ trang bị đang có ít nhất một món: số món đếm được, số lần kích hoạt / số mốc (equipment-sets.md). */
+  equipmentSets: EquipmentSetState[]
   /** % chỉ số cộng ở bước áp trait, theo từng nguồn (trait, trang bị, trạng thái...). */
   statPercents: Record<StatPercentSourceId, Stats>
   /** Hệ Tera (id hệ hoặc Stellar), Gmax Factor, cấp Dynamax (mục "Biến hình trong trận"). */
@@ -612,6 +618,7 @@ export function buildMonsterView(
     statuses: monster.statuses.map((status) => ({ ...status })),
     equipment: monster.equipment.map((entry) => cloneData(entry)),
     equipmentSlots,
+    equipmentSets: equipmentSetStates(data, monster.equipment),
     statPercents: breakdown.percentBySource,
     teraElementId: monster.teraElementId,
     gmaxFactor: monster.gmaxFactor,

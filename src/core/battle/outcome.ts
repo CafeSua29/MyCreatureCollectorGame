@@ -68,6 +68,7 @@ import {
   isItemOffered,
   megaStonesOf,
   rollRarity,
+  rollSetPieceDrop,
   signatureZCrystalsOf,
   teraShardFor,
   uniquePoolOf
@@ -750,6 +751,15 @@ function dropEquipment(
       gainNewEquipment(data, d, { itemId: entry.itemId, rarity })
     }
   }
+  // Món bộ đặt tên rơi riêng như đồ bộ của Diablo II (docs/rules/equipment-sets.md).
+  const pieceChance = data.config.equipmentSets.pieceChance
+  let piece: { itemId: string; rarity: NormalRarity } | null
+  ;[piece, d.rng] = rollSetPieceDrop(data, d.rng, {
+    chance: chanceOf(isBoss ? pieceChance.boss : pieceChance.wild),
+    weights: isBoss ? config.bossRarityWeights : config.rarityWeights,
+    floor: d.battle.floor
+  })
+  if (piece) gainNewEquipment(data, d, piece)
   if (!isBoss) return
   const carried = enemy.equipment.flatMap((entry) =>
     entry.storage === 'instance' && entry.instance.rarity === 'unique' ? [entry.instance] : []

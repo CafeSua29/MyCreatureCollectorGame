@@ -1182,7 +1182,10 @@ const MIGRATIONS: Record<number, (save: SaveObject, data: GameData) => SaveObjec
   112: addMarks,
   // v113 → v114: cờ vừa thoái hóa (evolution-skills.md mục "Thoái hóa").
   113: addDevolvedFlag,
-  114: addStarCopies
+  // v114 → v115: bậc sao (star-rank.md).
+  114: addStarCopies,
+  // v115 → v116: bộ trang bị (equipment-sets.md): `setId` tùy chọn trên món, món cũ không thuộc bộ.
+  115: (save) => ({ ...save, version: 116 })
 }
 
 /**

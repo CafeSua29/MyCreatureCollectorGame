@@ -43,6 +43,7 @@ export const CONTENT_KINDS = [
   'zones',
   'serumEffects',
   'marks',
+  'equipmentSets',
   'bodyRefinements',
   'essences',
   'deities',

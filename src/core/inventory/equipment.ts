@@ -7,6 +7,7 @@ import {
   countMilestonesReached,
   nextInt,
   pickWeighted,
+  rollPercent,
   toBig,
   type Decimal,
   type RngState
@@ -34,6 +35,13 @@ import {
 import { addItems } from './inventory'
 import { isImbueLine } from './imbue'
 import { evolutionLineOf } from './evolutionLine'
+import {
+  equipmentRarityFor,
+  namedSetOf,
+  pickSetPiece,
+  rollEquipmentSet,
+  setPieceRarities
+} from './equipmentSets'
 
 /** Id dòng chính của mọi trang bị. */
 export const MAIN_LINE_ID = 'main'
@@ -114,11 +122,12 @@ function soulLine(traitId: string): EquipmentLineDef {
 export const isUniqueEquipment = (item: EquipmentItem): boolean => item.unique !== undefined
 
 /**
- * Món gốc có được tung ngẫu nhiên không (rơi, cửa hàng, chợ đen): không phải món unique của boss,
- * không phải món gốc hồn khí.
+ * Món gốc có được tung ngẫu nhiên không (rơi, cửa hàng, chợ đen, đúc): không phải món unique của boss,
+ * không phải món gốc hồn khí, không thuộc bộ đặt tên (món bộ đặt tên có nguồn riêng,
+ * docs/rules/equipment-sets.md).
  */
-export const isRandomEquipment = (item: EquipmentItem): boolean =>
-  item.unique === undefined && item.soulRelicStat === undefined
+export const isRandomEquipment = (data: GameData, item: EquipmentItem): boolean =>
+  item.unique === undefined && item.soulRelicStat === undefined && namedSetOf(data, item) === null
 
 /** Món gốc hồn khí có dòng chính tăng chỉ số `stat` (kiểm tra dữ liệu bắt buộc có đúng một món). */
 export function soulRelicBaseItem(data: GameData, stat: StatName): EquipmentItem | null {
@@ -161,6 +170,29 @@ export function rollRarity(
   )
   const [chosen, next] = pickWeighted(rng, entries, (entry) => entry.weight)
   return [chosen.rarity, next]
+}
+
+/**
+ * Tung rơi thêm một món bộ đặt tên (docs/rules/equipment-sets.md): `chance` % rồi bậc theo bảng của
+ * nguồn (chỉ các bậc có bộ đặt tên, hệ số theo tầng như đồ rơi) rồi món gốc đều trong các bộ bậc đó.
+ * Bảng không có bậc nào có bộ đặt tên thì null, không tốn RNG.
+ */
+export function rollSetPieceDrop(
+  data: GameData,
+  rng: RngState,
+  {
+    chance,
+    weights,
+    floor
+  }: { chance: number; weights: Partial<Record<NormalRarity, number>>; floor: number }
+): [{ itemId: string; rarity: NormalRarity } | null, RngState] {
+  const usable = setPieceRarities(data, weights)
+  if (Object.keys(usable).length === 0) return [null, rng]
+  const [dropped, afterChance] = rollPercent(rng, chance)
+  if (!dropped) return [null, afterChance]
+  const [rarity, afterRarity] = rollRarity(data, afterChance, usable, floor)
+  const [itemId, next] = pickSetPiece(data, afterRarity, rarity)
+  return [itemId === null ? null : { itemId, rarity }, next]
 }
 
 /**
@@ -270,9 +302,9 @@ export function addRandomAffix(
 }
 
 /**
- * Tạo một món trang bị mới cấp 1: dòng chính → dòng unique (món unique) → dòng phụ, mỗi dòng tung
- * giá trị trong khoảng của bậc (minRollPercent: chỉ phần trên của khoảng, mặc định 0). Món unique
- * luôn bậc `unique`.
+ * Tạo một món trang bị mới cấp 1: dòng chính → dòng unique (món unique) → dòng phụ → bộ trang bị,
+ * mỗi dòng tung giá trị trong khoảng của bậc (minRollPercent: chỉ phần trên của khoảng, mặc định 0).
+ * Món unique luôn bậc `unique`; món của bộ đặt tên luôn mang bậc của bộ (docs/rules/equipment-sets.md).
  */
 export function rollEquipment(
   data: GameData,
@@ -284,9 +316,10 @@ export function rollEquipment(
     minRollPercent = 0
   }: { itemId: string; rarity: EquipmentRarity; id: string; minRollPercent?: number }
 ): [EquipmentInstance, RngState] {
-  const lineRoll = { rarity, minRollPercent }
   const item = findEquipmentItem(data, itemId)
   if (!item) throw new Error(`Vật phẩm "${itemId}" không phải trang bị`)
+  const finalRarity = equipmentRarityFor(data, item, rarity)
+  const lineRoll = { rarity: finalRarity, minRollPercent }
   const rolls: EquipmentRoll[] = []
   let roll: EquipmentRoll
   ;[roll, rng] = rollLine(rng, { id: MAIN_LINE_ID, ranges: item.mainLine.ranges }, lineRoll)
@@ -297,7 +330,16 @@ export function rollEquipment(
   }
   let affixes: EquipmentRoll[]
   ;[affixes, rng] = rollAffixes(data, rng, lineRoll)
-  return [{ id, baseItemId: itemId, rarity, level: 1, rolls: [...rolls, ...affixes] }, rng]
+  let setId: string | null
+  ;[setId, rng] = rollEquipmentSet(data, rng, item)
+  const instance: EquipmentInstance = {
+    id,
+    baseItemId: itemId,
+    rarity: finalRarity,
+    level: 1,
+    rolls: [...rolls, ...affixes]
+  }
+  return [setId === null ? instance : { ...instance, setId }, rng]
 }
 
 /** Món unique trong pool của loài boss (theo thứ tự dữ liệu). */

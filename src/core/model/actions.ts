@@ -391,6 +391,8 @@ export type GameAction =
   | { type: 'enhanceEquipment'; instanceId: string }
   /** Thợ rèn: tung lại mọi dòng phụ không khóa của món (trong túi hoặc đang lắp). */
   | { type: 'rerollEquipmentAffixes'; instanceId: string; lockedLineIndexes?: number[] }
+  /** Thợ rèn: đổi bộ ngẫu nhiên của món (docs/rules/equipment-sets.md). */
+  | { type: 'rerollEquipmentSet'; instanceId: string }
   /** Tẩy luyện sticker ở Thợ rèn (docs/rules/skill-stickers.md): vị trí thuộc tính khóa. */
   | { type: 'rerollSticker'; stickerId: string; lockedIndexes?: number[] }
   /** Thợ rèn: phân giải các món trong túi (món đang lắp phải tháo trước). */

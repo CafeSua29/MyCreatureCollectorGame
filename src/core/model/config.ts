@@ -134,6 +134,8 @@ export interface BalanceConfig {
   shop: ShopConfig
   market: MarketConfig
   equipment: EquipmentConfig
+  /** Bộ trang bị (docs/rules/equipment-sets.md). */
+  equipmentSets: EquipmentSetConfig
   starter: StarterConfig
   transform: TransformConfig
   clock: ClockConfig
@@ -701,6 +703,19 @@ export interface LifespanConfig {
 }
 
 /** Trang bị (mục "Trang bị và đồ cầm"). Mọi tỉ lệ tính bằng %. */
+/** Bộ trang bị (docs/rules/equipment-sets.md). */
+export interface EquipmentSetConfig {
+  /**
+   * % rơi thêm một món bộ đặt tên khi hạ quái hoang / boss, mở rương bí cảnh, và % lô trang bị ở đấu
+   * giá thành món bộ đặt tên (bậc tung theo bảng của nguồn đó).
+   */
+  pieceChance: { wild: number; boss: number; chest: number; auction: number }
+  /** Bộ đặt tên có từ số món này trở lên mới được giảm số món cần (Diablo III: 3). */
+  reductionMinPieces: number
+  /** Tiền đổi bộ ngẫu nhiên ở Thợ rèn theo bậc, × tầng cao nhất. */
+  rerollMoney: Record<EquipmentRarity, number>
+}
+
 export interface EquipmentConfig {
   /** Số ô trên quái của người chơi = baseSlots + số mốc tầng đã đạt. */
   baseSlots: number

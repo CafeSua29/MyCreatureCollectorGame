@@ -4,7 +4,8 @@
 // Chạy: node scripts/data-import/biomes-import.mjs (Node thuần, chạy lại an toàn: kết quả tất định).
 // Biome làm tay (map `existing`: meadow, volcano; bản gốc ở trường `base` của file nguồn, script
 // không đọc lại biomes.json): giữ loài, boss tầng, đồ rơi; thêm loài và boss ngẫu nhiên theo cùng
-// luật với map mới. Luật ở biomeAssign.mjs; cờ câu cá / khai thác ở gathering.mjs.
+// luật với map mới. Luật ở biomeAssign.mjs; cờ câu cá / khai thác ở gathering.mjs; danh sách trang bị
+// rơi ở equipmentDrops.mjs (tính từ items.json hiện tại).
 
 import fs from 'node:fs'
 import path from 'node:path'
@@ -25,6 +26,7 @@ import {
   wildCandidates
 } from './biomeAssign.mjs'
 import { withGathering } from './gathering.mjs'
+import { equipmentDropLookup, withEquipmentDrops } from './equipmentDrops.mjs'
 
 const root = path.resolve(import.meta.dirname, '../..')
 const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'))
@@ -57,10 +59,18 @@ const gatheringLookup = {
   groupOf: new Map(readJson('src/data/races.json').map((race) => [race.id, race.groupId])),
   config: balance.gathering
 }
+// Danh sách trang bị rơi theo luật ở equipmentDrops.mjs (thiếu bước này thì sinh lại map làm mất
+// đồ rơi trang bị của mọi map).
+const dropLookup = equipmentDropLookup({
+  species,
+  races: readJson('src/data/races.json'),
+  items: readJson('src/data/items.json'),
+  equipmentSets: readJson('src/data/equipmentSets.json')
+})
 const biomes = maps.map((map) => {
   const ids = assigned.get(map.id)
   const biome = map.base ? extendExisting(map, map.base, ids) : buildBiome(map, ids)
-  return withGathering(biome, gatheringLookup)
+  return withEquipmentDrops(withGathering(biome, gatheringLookup), dropLookup)
 })
 
 /** Map mới: loài, boss, đồ rơi, môi trường theo luật. */

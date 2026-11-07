@@ -498,7 +498,7 @@ const ITEM_CATEGORY_RULES: Readonly<Record<ItemCategory, ItemCategoryRule>> = {
     check: checkHeld
   },
   equipment: {
-    fields: [...PRICED_FIELDS, 'mainLine', 'hooks', 'unique', 'soulRelicStat'],
+    fields: [...PRICED_FIELDS, 'mainLine', 'hooks', 'unique', 'soulRelicStat', 'setId'],
     check: checkEquipment
   },
   fusionAid: { fields: [...PRICED_FIELDS, 'effects'], check: checkFusionAid },

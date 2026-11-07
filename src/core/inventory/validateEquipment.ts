@@ -3,8 +3,15 @@
 // có thể đổi giữa các phiên bản.
 
 import { asObject, checkInteger, isFiniteNumber } from '../shared'
-import { EQUIPMENT_RARITIES, usesTraitSlot, type GameData, type SoulImprint } from '../model'
+import {
+  EQUIPMENT_RARITIES,
+  usesTraitSlot,
+  type EquipmentItem,
+  type GameData,
+  type SoulImprint
+} from '../model'
 import { equipmentIdNumber, findEquipmentItem, findEquipmentLine } from './equipment'
+import { findEquipmentSet } from './equipmentSets'
 import { isEquippable, itemStorage } from './itemRules'
 
 const SOUL_IMPRINT_FIELDS: readonly string[] = [
@@ -88,6 +95,28 @@ export function validateArtifactSpirits(
   )
 }
 
+/**
+ * Bộ của món (docs/rules/equipment-sets.md): bộ tồn tại; món gốc ghi bộ thì phải đúng bộ đó, món gốc
+ * không ghi bộ thì chỉ thuộc bộ ngẫu nhiên. Thiếu setId (món cũ) hợp lệ: không thuộc bộ.
+ */
+function checkInstanceSetId(
+  data: GameData,
+  setId: unknown,
+  path: string,
+  item: EquipmentItem | null
+): string[] {
+  const set = typeof setId === 'string' ? findEquipmentSet(data, setId) : null
+  if (!set) return [`${path}.setId: bộ trang bị không tồn tại "${String(setId)}"`]
+  if (!item) return []
+  if (item.setId !== undefined && item.setId !== set.id) {
+    return [`${path}.setId: món "${item.id}" thuộc bộ "${item.setId}", nhận "${set.id}"`]
+  }
+  if (item.setId === undefined && set.kind !== 'rolled') {
+    return [`${path}.setId: món "${item.id}" không thuộc bộ đặt tên "${set.id}"`]
+  }
+  return []
+}
+
 /** Kiểm tra một món trang bị ở vị trí `path`. Trả về danh sách lỗi. */
 export function validateEquipmentInstance(data: GameData, value: unknown, path: string): string[] {
   const instance = asObject(value)
@@ -129,6 +158,8 @@ export function validateEquipmentInstance(data: GameData, value: unknown, path: 
     )
   }
   if (instance.depth !== undefined) issues.push(...checkInteger(instance.depth, `${path}.depth`, 0))
+  if (instance.setId !== undefined)
+    issues.push(...checkInstanceSetId(data, instance.setId, path, item))
   if (!Array.isArray(instance.rolls)) {
     issues.push(`${path}.rolls phải là danh sách`)
     return issues

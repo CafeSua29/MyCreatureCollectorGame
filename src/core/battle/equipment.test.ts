@@ -16,6 +16,7 @@ import {
   makeField,
   makeGameState,
   makeMonster,
+  withEquipmentSetFixtures,
   type MonsterOverrides
 } from '../testing'
 import type {
@@ -127,6 +128,31 @@ describe('boss mang món unique', () => {
     const d = { ...state, battle: battleOf(state) } as Draft
     const boss = battleOf(state).enemies[0]
     expect(battleStats(data, d, boss).speed.toNumber()).toBe(Math.floor(50 * 1.25))
+  })
+})
+
+describe('rơi món bộ đặt tên khi thắng (docs/rules/equipment-sets.md)', () => {
+  const setData = (chance: number): GameData =>
+    gearData({ rarityWeights: { rare: 1 } }, (raw) => {
+      withEquipmentSetFixtures(raw)
+      raw.config.equipmentSets = {
+        ...raw.config.equipmentSets,
+        pieceChance: { wild: chance, boss: 0, chest: 0, auction: 0 }
+      }
+    })
+
+  it('tỉ lệ 100%: rơi riêng một món của bộ đặt tên bậc vừa tung, mang bộ, vào túi, ghi log', () => {
+    const won = run(setData(100), makeBattleState([fighter('a')], [prey('e1')]))
+    expect(won.inventory.equipment).toHaveLength(1)
+    const [piece] = won.inventory.equipment
+    expect(['knightHelm', 'knightPlate', 'knightBlade']).toContain(piece.baseItemId)
+    expect(piece).toMatchObject({ rarity: 'rare', setId: 'knight', level: 1 })
+    expect(eventsOf(won, 'equipmentDropped')).toHaveLength(1)
+  })
+
+  it('tỉ lệ 0%: không rơi món bộ', () => {
+    const won = run(setData(0), makeBattleState([fighter('a')], [prey('e1')]))
+    expect(won.inventory.equipment).toEqual([])
   })
 })
 

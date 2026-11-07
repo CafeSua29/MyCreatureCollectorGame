@@ -229,6 +229,8 @@ export interface EquipmentInstance {
   spirits?: ArtifactSpirit[]
   /** Số tầng Khí giới bí cảnh đã qua; bỏ trống = 0. */
   depth?: number
+  /** Bộ trang bị (docs/rules/equipment-sets.md); bỏ trống = không thuộc bộ. */
+  setId?: string
 }
 
 export interface EquipmentRoll {
@@ -344,6 +346,7 @@ export type TriggerLogSource =
   | 'refinement'
   | 'sticker'
   | 'mark'
+  | 'equipmentSet'
 
 /**
  * Cộng hưởng / trận pháp đang có tác dụng với một phe trong trận (docs/rules/team.md), tính lúc vào
@@ -442,6 +445,8 @@ export interface MonsterBattleContext {
   itemsDisabled: boolean
   /** Berry (đồ cầm nhãn berry) không tác dụng: địch trên sân có Unnerve / As One. */
   berriesBlocked: boolean
+  /** Bộ Seal của địch trên sân vô hiệu bộ `sealable` của quái (docs/rules/equipment-sets.md). */
+  setsSealed: boolean
   /** Cộng hưởng / trận pháp của phe mình (BattleState.teamBonuses). */
   teamBonuses: readonly TeamBonus[]
   /** % công / đặc công do cuồng bạo (docs/rules/frenzy.md); 0 = không cuồng bạo. */

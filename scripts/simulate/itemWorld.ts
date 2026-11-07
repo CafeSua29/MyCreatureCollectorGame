@@ -49,7 +49,7 @@ export interface ItemWorldRow {
 /** Món thường đầu tiên trong dữ liệu (không unique, không hồn khí). */
 function sampleItemId(data: GameData): string {
   for (const item of Object.values(data.items)) {
-    if (item.category === 'equipment' && isRandomEquipment(item)) return item.id
+    if (item.category === 'equipment' && isRandomEquipment(data, item)) return item.id
   }
   throw new Error('Mô phỏng Khí giới bí cảnh: dữ liệu không có trang bị thường')
 }

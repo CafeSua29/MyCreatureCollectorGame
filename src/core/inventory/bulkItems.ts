@@ -6,12 +6,14 @@ import type { EquipmentRarity, GameData, Inventory, ItemBatchEntry, ItemCategory
 import { canLeaveBag } from './itemRules'
 
 /**
- * Bộ lọc túi; bỏ trống trường = không lọc theo trường đó. Trường chỉ có ở một loại item (bậc hiếm:
- * trang bị; trait: tinh thể; cấp: tinh thể và trang bị) khi đặt thì loại khác bị loại.
+ * Bộ lọc túi; bỏ trống trường = không lọc theo trường đó. Trường chỉ có ở một loại item (bậc hiếm,
+ * bộ: trang bị; trait: tinh thể; cấp: tinh thể và trang bị) khi đặt thì loại khác bị loại.
  */
 export interface BagItemQuery {
   categories?: readonly ItemCategory[]
   rarities?: readonly EquipmentRarity[]
+  /** Bộ trang bị (docs/rules/equipment-sets.md); món không thuộc bộ bị loại. */
+  setIds?: readonly string[]
   traitIds?: readonly string[]
   minLevel?: number
   maxLevel?: number
@@ -22,6 +24,7 @@ interface BagLine {
   entry: ItemBatchEntry
   category: ItemCategory
   rarity?: EquipmentRarity
+  setId?: string
   traitId?: string
   level?: number
 }
@@ -46,6 +49,7 @@ function bagLines(data: GameData, inventory: Inventory): BagLine[] {
       entry: { item: { storage: 'instance' as const, instanceId: instance.id }, count: 1 },
       category: 'equipment' as const,
       rarity: instance.rarity,
+      setId: instance.setId,
       level: instance.level
     }))
   ]
@@ -60,6 +64,7 @@ function matchesQuery(line: BagLine, query: BagItemQuery): boolean {
   return (
     allows(query.categories, line.category) &&
     allows(query.rarities, line.rarity) &&
+    allows(query.setIds, line.setId) &&
     allows(query.traitIds, line.traitId) &&
     (query.minLevel === undefined || (level !== undefined && level >= query.minLevel)) &&
     (query.maxLevel === undefined || (level !== undefined && level <= query.maxLevel))

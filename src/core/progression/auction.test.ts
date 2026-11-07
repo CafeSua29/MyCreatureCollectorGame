@@ -13,6 +13,7 @@ import {
   makeData,
   makeEquipment,
   makeEquipmentData,
+  makeEquipmentSetData,
   makeGameState,
   makeMonster
 } from '../testing'
@@ -97,6 +98,25 @@ describe('phiên đấu giá', () => {
     const day8 = advanceTime(data, day7, DAY)
     expect(day8.auction.closeDay).toBe(15)
     expect(day8.auction.lots.map((lot) => lot.id)).toEqual(['a3', 'a4'])
+  })
+
+  it('lô trang bị thành món bộ đặt tên cùng bậc theo pieceChance.auction (equipment-sets.md)', () => {
+    const setData = (chance: number): GameData =>
+      makeEquipmentSetData((raw) => {
+        raw.config.auction.lotWeights = { equipment: 1, unique: 0, egg: 0, book: 0, item: 0 }
+        raw.config.auction.equipmentRarityWeights = { rare: 1 }
+        raw.config.equipmentSets.pieceChance.auction = chance
+      })
+    const baseIds = (gameData: GameData): string[] =>
+      opened(town(), gameData).auction.lots.map((lot) =>
+        lot.good.kind === 'item' && lot.good.entry.storage === 'instance'
+          ? lot.good.entry.instance.baseItemId
+          : ''
+      )
+    for (const id of baseIds(setData(100))) {
+      expect(['knightHelm', 'knightPlate', 'knightBlade']).toContain(id)
+    }
+    for (const id of baseIds(setData(0))) expect(id).not.toMatch(/^knight/)
   })
 
   it('mỗi loại lô theo registry; unique chỉ khi đã gặp boss; loại không có hàng thì bỏ qua', () => {

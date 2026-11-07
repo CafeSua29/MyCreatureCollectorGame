@@ -4,7 +4,7 @@
 // đầu khoảng của mọi bậc.
 
 import { TRAIT_HOOKS } from '../registries'
-import { lineParams, MAIN_LINE_ID } from '../inventory'
+import { isRandomEquipment, lineParams, MAIN_LINE_ID } from '../inventory'
 import {
   EQUIPMENT_RARITIES,
   NORMAL_RARITIES,
@@ -219,6 +219,19 @@ function checkSoulRelicItem(item: Raw, where: string, data: GameData, issues: st
 }
 
 /**
+ * Bậc dòng chính bắt buộc: món unique bậc unique; món của bộ đặt tên bậc của bộ (bậc khác kiểm tra ở
+ * validateEquipmentSets); món thường mọi bậc thường.
+ */
+function requiredRarities(data: GameData, item: Raw): readonly EquipmentRarity[] {
+  if (item.unique !== undefined) return ['unique']
+  const set =
+    typeof item.setId === 'string' && Object.hasOwn(data.equipmentSets, item.setId)
+      ? data.equipmentSets[item.setId]
+      : undefined
+  return set?.kind === 'named' ? [set.rarity] : NORMAL_RARITIES
+}
+
+/**
  * Trang bị gốc (luật của category `equipment`): dòng chính có khoảng cho mọi bậc thường (món thường)
  * hoặc bậc unique (món unique); phần unique nếu có; món gốc hồn khí theo luật riêng.
  */
@@ -236,7 +249,7 @@ export function checkEquipmentItem(
   checkLine(
     item.mainLine,
     `${where}.mainLine`,
-    { data, required: isUnique ? ['unique'] : NORMAL_RARITIES, extraFields: [] },
+    { data, required: requiredRarities(data, item), extraFields: [] },
     issues
   )
   const ranges = asObject(asObject(item.mainLine)?.ranges) ?? {}
@@ -278,6 +291,8 @@ export function checkBiomeEquipmentDrops(data: GameData, issues: string[]): void
         issues.push(`${where}: món unique "${entry.itemId}" chỉ rơi từ boss của nó`)
       } else if (item.soulRelicStat !== undefined) {
         issues.push(`${where}: món gốc hồn khí "${entry.itemId}" chỉ có khi luyện hồn khí`)
+      } else if (!isRandomEquipment(data, item)) {
+        issues.push(`${where}: món bộ đặt tên "${entry.itemId}" rơi theo luật bộ trang bị`)
       }
       if (seen.has(entry.itemId)) issues.push(`${where}: trùng món "${entry.itemId}"`)
       seen.add(entry.itemId)

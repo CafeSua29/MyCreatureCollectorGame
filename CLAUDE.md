@@ -22,7 +22,7 @@ File này nạp vào mọi phiên nên **giữ gọn**: chỉ tổng quan, kiế
 - **Nâng cấp quái:** fusing, breeding-eggs, hatchery (phòng ấp), shiny-boss, bootleg, rogue-fusion (Rogue Fusion, cách tạo Bootleg), rebirth (luân hồi), sacrifice (hiến tế), star-rank (bậc sao), body-refinement (luyện thể), implant (cấy ghép), trait-crystals (extract / inject trait), awakening (thức tỉnh, độ kiếp), human-form (hóa hình), soul-levels (hồn tinh), treasures (thiên tài địa bảo), soul-relics (hồn khí)
 - **Ngự thú sư và tiến trình:** tamer (cảnh giới, khế ước, kỹ năng), tamer-talents, achievements (+ danh hiệu), dex, species-research, quests, ascension (phi thăng, thiên mệnh), essences (tinh chất), options (thọ nguyên, chết thật), challenge-modes (độ khó, Nuzlocke...)
 - **Thế giới:** world-items (thị trấn, tầng, biome, item, cửa hàng, giá), calendar, events (+ thú triều, chợ đen), zones (hiểm địa, cổng thế giới), trials (bí cảnh, tháp), instability, deities (thần linh, Miếu), world-boss, gathering (câu cá, khai thác), safari-zone, recruit (thu phục), trainers (NPC, đạo quán, giải đấu), starters, expeditions, dwelling (động phủ), sects (tông môn), trades, auction, gacha (Cây thần), alchemy (luyện đan / khí, linh điền), cooking
-- **Đồ và kho:** equipment (+ đồ cầm), artifact-spirits (khí linh, Item World), equipment-forge (thợ rèn), roster (đội / kho), capacity, bulk-actions
+- **Đồ và kho:** equipment (+ đồ cầm), equipment-sets (bộ trang bị), artifact-spirits (khí linh, Item World), equipment-forge (thợ rèn), roster (đội / kho), capacity, bulk-actions
 - **Cân bằng:** balance-numbers (+ balance-content, balance-capture, balance-systems, balance-traits, balance-history), simulation (+ simulation-features)
 
 ## Tổng quan

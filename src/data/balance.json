@@ -967,6 +967,18 @@
     "uniqueCarriedDropChance": 10,
     "uniquePoolDropChance": 5
   },
+  "equipmentSets": {
+    "pieceChance": { "wild": 1, "boss": 10, "chest": 25, "auction": 15 },
+    "reductionMinPieces": 3,
+    "rerollMoney": {
+      "common": 200,
+      "uncommon": 400,
+      "rare": 800,
+      "epic": 2000,
+      "legendary": 5000,
+      "unique": 10000
+    }
+  },
   "starter": {
     "slots": [
       {

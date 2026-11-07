@@ -196,6 +196,7 @@ import {
   formContract,
   enhanceEquipment,
   rerollEquipmentAffixes,
+  rerollEquipmentSet,
   rerollSticker,
   salvageEquipment,
   castEquipment,
@@ -228,7 +229,7 @@ import {
 } from '../model'
 
 /** Tăng mỗi khi đổi cấu trúc GameState, kèm hàm migrate cho save cũ. */
-export const SAVE_VERSION = 115
+export const SAVE_VERSION = 116
 
 export function createGameState(options: {
   seed: number
@@ -759,6 +760,8 @@ function dispatchAction(data: GameData, state: GameState, action: GameAction): G
       return enhanceEquipment(data, state, action.instanceId)
     case 'rerollEquipmentAffixes':
       return rerollEquipmentAffixes(data, state, action)
+    case 'rerollEquipmentSet':
+      return rerollEquipmentSet(data, state, action.instanceId)
     case 'rerollSticker':
       return rerollSticker(data, state, action)
     case 'salvageEquipment':

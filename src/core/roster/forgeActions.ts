@@ -32,6 +32,7 @@ import {
   removeItems,
   rerollAffixes,
   rerollCost,
+  rerollRolledSet,
   rollEquipment,
   rollRarity,
   salvageYield,
@@ -114,7 +115,7 @@ export function castEquipment(
   }
   const core = requireImbueCore(data, elementId)
   const item = findEquipmentItem(data, itemId)
-  if (!item || !isRandomEquipment(item)) throw new ActionError('notCastable', { itemId })
+  if (!item || !isRandomEquipment(data, item)) throw new ActionError('notCastable', { itemId })
   requireCraftLevel(state, 'smithing', cast.minLevel)
   const inventory = removeItems(state.inventory, core.coreId, cores)
   assertBagRoom(data, state)
@@ -192,6 +193,31 @@ export function rerollEquipmentAffixes(
   const inventory = removeItems(state.inventory, data.config.forge.refiningStoneItemId, cost)
   const [rerolled, rng] = rerollAffixes(data, state.rng, instance, indexes)
   return replace({ ...state, inventory, rng }, rerolled)
+}
+
+/**
+ * Đổi bộ ngẫu nhiên (docs/rules/equipment-sets.md): món trong túi hoặc đang lắp, tung một bộ ngẫu nhiên
+ * khác bộ hiện tại theo trọng số; tốn rerollMoney[bậc] × tầng cao nhất tiền. Món gốc ghi bộ (bộ đặt
+ * tên, bộ cố định) hoặc không còn bộ nào khác: setNotRerollable.
+ */
+export function rerollEquipmentSet(
+  data: GameData,
+  state: GameState,
+  instanceId: unknown
+): GameState {
+  assertAtForge(state)
+  const id = requireInstanceId(instanceId)
+  const { instance, replace } = locateEquipment(state, id)
+  const item = findEquipmentItem(data, instance.baseItemId)
+  if (!item) throw new Error(`Vật phẩm "${instance.baseItemId}" không phải trang bị`)
+  if (item.setId !== undefined) throw new ActionError('setNotRerollable', { instanceId: id })
+  const [setId, rng] = rerollRolledSet(data, state.rng, instance.setId)
+  if (setId === null) throw new ActionError('setNotRerollable', { instanceId: id })
+  const money = toBig(data.config.equipmentSets.rerollMoney[instance.rarity]).times(
+    state.highestFloor
+  )
+  const paid = spendMoney(state, money)
+  return replace({ ...paid, rng }, { ...instance, setId })
 }
 
 /** Sticker trong túi hoặc đang dán trên quái của người chơi (đội, kho), kèm cách thay nó. */

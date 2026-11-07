@@ -17,6 +17,7 @@ import {
   frenzyNumbers,
   frenzyRole,
   isLargeMonster,
+  setsSealedFor,
   trialFighters,
   TRAIT_HOOKS,
   type AbilityFlag
@@ -447,6 +448,9 @@ function buildBattleContext(
     itemsDisabled: itemsDisabledFor(data, d, monster),
     // Unnerve: địch trên sân làm berry của quái không tác dụng (như Pokémon: không ăn được).
     berriesBlocked: aliveFoes.some((foe) => battleAbilityHasFlag(data, d, foe, 'blocksFoeBerries')),
+    // Seal (docs/rules/equipment-sets.md): bộ Seal của địch vô hiệu bộ `sealable` của quái, trừ khi
+    // phe mình cũng có Seal (Seal vô hiệu cả Seal của địch, như gốc).
+    setsSealed: setsSealedFor(data, { foes: aliveFoes, allies: aliveAllies }),
     teamBonuses: d.battle.teamBonuses[side],
     frenzyStatPercent: frenzyStatPercent(data, d, { side, monster }),
     collectionStatPercent: side === 'player' ? collectionStatPercent(data, d.dex) : 0,

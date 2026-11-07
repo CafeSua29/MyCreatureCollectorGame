@@ -1,0 +1,1827 @@
+[
+  {
+    "id": "energy",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "hp": 15
+          }
+        }
+      }
+    ],
+    "weight": 10
+  },
+  {
+    "id": "guard",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "defense": 15,
+            "spDefense": 15
+          }
+        }
+      }
+    ],
+    "weight": 10
+  },
+  {
+    "id": "blade",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "critChanceModifier",
+        "params": {
+          "percent": 80
+        }
+      }
+    ],
+    "weight": 10
+  },
+  {
+    "id": "focus",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "secondaryEffectChance",
+        "params": {
+          "percent": 20
+        }
+      }
+    ],
+    "weight": 10
+  },
+  {
+    "id": "endure",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "debuffResist",
+        "params": {
+          "chance": 20
+        }
+      }
+    ],
+    "weight": 10
+  },
+  {
+    "id": "nemesis",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "damaged",
+          "scope": "self",
+          "chance": 30,
+          "effects": [
+            {
+              "do": "timeline",
+              "to": "self",
+              "position": "top"
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 6,
+    "sealable": true
+  },
+  {
+    "id": "will",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "self",
+              "statusId": "immune",
+              "turns": 1
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 6
+  },
+  {
+    "id": "shield",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "status",
+              "to": "side",
+              "statusId": "barrierBuff",
+              "turns": 3,
+              "amount": {
+                "hp": "max",
+                "of": "self",
+                "percent": 15
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 6
+  },
+  {
+    "id": "revenge",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attacked",
+          "scope": "self",
+          "chance": 15,
+          "effects": [
+            {
+              "do": "attack",
+              "to": "other",
+              "damagePercent": 75
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 6,
+    "sealable": true
+  },
+  {
+    "id": "destroy",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "oncePerTurn": true,
+          "effects": [
+            {
+              "do": "maxHp",
+              "to": "other",
+              "amount": {
+                "event": true,
+                "percent": 30
+              },
+              "lose": true
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 6,
+    "sealable": true
+  },
+  {
+    "id": "fight",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "stacks": true,
+          "hooks": [
+            {
+              "type": "statModifier",
+              "params": {
+                "percent": {
+                  "attack": 8,
+                  "spAttack": 8
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 5
+  },
+  {
+    "id": "determination",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "stacks": true,
+          "hooks": [
+            {
+              "type": "statModifier",
+              "params": {
+                "percent": {
+                  "defense": 8,
+                  "spDefense": 8
+                }
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 5
+  },
+  {
+    "id": "enhance",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "entry",
+          "scope": "self",
+          "effects": [
+            {
+              "do": "maxHp",
+              "to": "side",
+              "amount": {
+                "hp": "max",
+                "of": "target",
+                "percent": 8
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 5
+  },
+  {
+    "id": "accuracy",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "stacks": true,
+          "hooks": [
+            {
+              "type": "secondaryEffectChance",
+              "params": {
+                "percent": 10
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 5
+  },
+  {
+    "id": "tolerance",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [
+      {
+        "type": "aura",
+        "params": {
+          "scope": "side",
+          "stacks": true,
+          "hooks": [
+            {
+              "type": "debuffResist",
+              "params": {
+                "chance": 10
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 5
+  },
+  {
+    "id": "seal",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [],
+    "weight": 4,
+    "seal": true,
+    "sealable": true
+  },
+  {
+    "id": "intangible",
+    "kind": "rolled",
+    "size": 2,
+    "hooks": [],
+    "weight": 2,
+    "wildcard": true
+  },
+  {
+    "id": "swift",
+    "kind": "rolled",
+    "size": 4,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "speed": 25
+          }
+        }
+      }
+    ],
+    "weight": 8
+  },
+  {
+    "id": "fatal",
+    "kind": "rolled",
+    "size": 4,
+    "hooks": [
+      {
+        "type": "statModifier",
+        "params": {
+          "percent": {
+            "attack": 35,
+            "spAttack": 35
+          }
+        }
+      }
+    ],
+    "weight": 8
+  },
+  {
+    "id": "rage",
+    "kind": "rolled",
+    "size": 4,
+    "hooks": [
+      {
+        "type": "critDamageModifier",
+        "params": {
+          "percent": 40
+        }
+      }
+    ],
+    "weight": 8
+  },
+  {
+    "id": "despair",
+    "kind": "rolled",
+    "size": 4,
+    "hooks": [
+      {
+        "type": "onAttackApplyStatus",
+        "params": {
+          "category": "any",
+          "statuses": [
+            {
+              "statusId": "flinch",
+              "chance": 25
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 6,
+    "sealable": true
+  },
+  {
+    "id": "vampire",
+    "kind": "rolled",
+    "size": 4,
+    "hooks": [
+      {
+        "type": "lifesteal",
+        "params": {
+          "percent": 35
+        }
+      }
+    ],
+    "weight": 6,
+    "sealable": true
+  },
+  {
+    "id": "violent",
+    "kind": "rolled",
+    "size": 4,
+    "hooks": [
+      {
+        "type": "trigger",
+        "params": {
+          "on": "attack",
+          "scope": "self",
+          "chance": 22,
+          "oncePerTurn": true,
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ],
+          "effects": [
+            {
+              "do": "extraTurn",
+              "to": "self"
+            }
+          ]
+        }
+      },
+      {
+        "type": "trigger",
+        "params": {
+          "on": "cast",
+          "scope": "self",
+          "chance": 22,
+          "oncePerTurn": true,
+          "when": [
+            {
+              "if": "reactive",
+              "value": false
+            }
+          ],
+          "effects": [
+            {
+              "do": "extraTurn",
+              "to": "self"
+            }
+          ]
+        }
+      }
+    ],
+    "weight": 5,
+    "sealable": true
+  },
+  {
+    "id": "wanderer",
+    "kind": "named",
+    "rarity": "common",
+    "pieceItemIds": [
+      "wandererHood",
+      "wandererBoots",
+      "wandererCloak"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "defense": 6,
+                "spDefense": 6
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "apprentice",
+    "kind": "named",
+    "rarity": "common",
+    "pieceItemIds": [
+      "apprenticeWand",
+      "apprenticeRobe"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 10
+              }
+            }
+          },
+          {
+            "type": "secondaryEffectChance",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "militia",
+    "kind": "named",
+    "rarity": "common",
+    "pieceItemIds": [
+      "militiaSpear",
+      "militiaShield",
+      "militiaHelm"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 8
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ember",
+    "kind": "named",
+    "rarity": "uncommon",
+    "pieceItemIds": [
+      "emberGloves",
+      "emberMantle",
+      "emberBand"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "fire"
+              ],
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "burn",
+                  "chance": 10
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tidecaller",
+    "kind": "named",
+    "rarity": "uncommon",
+    "pieceItemIds": [
+      "tideCirclet",
+      "tideScale",
+      "tideAnklet"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "water"
+              ],
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 3
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "thornguard",
+    "kind": "named",
+    "rarity": "uncommon",
+    "pieceItemIds": [
+      "thornGauntlet",
+      "thornCuirass",
+      "thornGreaves"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "grass"
+              ],
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "retaliateDamage",
+            "params": {
+              "category": "physical",
+              "percentOfAttackerMaxHp": 6
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "stormcaller",
+    "kind": "named",
+    "rarity": "rare",
+    "pieceItemIds": [
+      "stormCrown",
+      "stormRod",
+      "stormBoots",
+      "stormMail"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "electric"
+              ],
+              "percent": 12
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 12
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "paralysis",
+                  "chance": 15
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frostbound",
+    "kind": "named",
+    "rarity": "rare",
+    "pieceItemIds": [
+      "frostHelm",
+      "frostPlate",
+      "frostBlade",
+      "frostVeil"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "ice"
+              ],
+              "percent": 12
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 12,
+                "spDefense": 12
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "onAttackApplyStatus",
+            "params": {
+              "category": "any",
+              "statuses": [
+                {
+                  "statusId": "freeze",
+                  "chance": 8
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "huntsman",
+    "kind": "named",
+    "rarity": "rare",
+    "pieceItemIds": [
+      "hunterBow",
+      "hunterHood",
+      "hunterQuiver",
+      "hunterBoots"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "critChanceModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "accuracyModifier",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 40
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bloodMoon",
+    "kind": "named",
+    "rarity": "epic",
+    "pieceItemIds": [
+      "bloodMoonFang",
+      "bloodMoonCowl",
+      "bloodMoonCloak",
+      "bloodMoonGrips",
+      "bloodMoonSigil"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "lifesteal",
+            "params": {
+              "percent": 10
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "attack": 15,
+                "spAttack": 15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "healOnKnockout",
+            "params": {
+              "percent": 20
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 5,
+        "hooks": [
+          {
+            "type": "lifesteal",
+            "params": {
+              "percent": 20
+            }
+          },
+          {
+            "type": "damageVsLowHp",
+            "params": {
+              "hpBelowPercent": 30,
+              "percent": 25
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bulwark",
+    "kind": "named",
+    "rarity": "epic",
+    "pieceItemIds": [
+      "bulwarkHelm",
+      "bulwarkPlate",
+      "bulwarkTower",
+      "bulwarkGreaves",
+      "bulwarkTalisman"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "defense": 15,
+                "spDefense": 15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -10
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 5,
+        "hooks": [
+          {
+            "type": "aura",
+            "params": {
+              "scope": "side",
+              "stacks": true,
+              "hooks": [
+                {
+                  "type": "damageTakenModifier",
+                  "params": {
+                    "percent": -8
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arcanum",
+    "kind": "named",
+    "rarity": "epic",
+    "pieceItemIds": [
+      "arcanumStaff",
+      "arcanumHat",
+      "arcanumRobe",
+      "arcanumOrb",
+      "arcanumSlippers"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 15
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "secondaryEffectChance",
+            "params": {
+              "percent": 20
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "statusDurationBonus",
+            "params": {
+              "turns": 1
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 5,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "spAttack": 25
+              }
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dragonlord",
+    "kind": "named",
+    "rarity": "legendary",
+    "pieceItemIds": [
+      "dragonlordCrown",
+      "dragonlordScale",
+      "dragonlordClaw",
+      "dragonlordWing",
+      "dragonlordHeart",
+      "dragonlordTail"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "dragon"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "critStage",
+            "params": {
+              "stages": 1
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 5,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "dragon"
+              ],
+              "percent": 25
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 6,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 20
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "celestial",
+    "kind": "named",
+    "rarity": "legendary",
+    "pieceItemIds": [
+      "celestialHalo",
+      "celestialRobe",
+      "celestialWings",
+      "celestialSceptre",
+      "celestialSandals",
+      "celestialAegis"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "light"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "regen",
+            "params": {
+              "percent": 4
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "debuffResist",
+            "params": {
+              "chance": 30
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 5,
+        "hooks": [
+          {
+            "type": "healingModifier",
+            "params": {
+              "received": 30
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 6,
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "entry",
+              "scope": "self",
+              "effects": [
+                {
+                  "do": "status",
+                  "to": "side",
+                  "statusId": "protected"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "voidwalker",
+    "kind": "named",
+    "rarity": "legendary",
+    "pieceItemIds": [
+      "voidMask",
+      "voidShroud",
+      "voidBlade",
+      "voidCirclet",
+      "voidTreads",
+      "voidHeart"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "elementDamageDealt",
+            "params": {
+              "elementIds": [
+                "dark"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "evasion",
+            "params": {
+              "percent": 8
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "speed": 20
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 5,
+        "hooks": [
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 50
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 6,
+        "hooks": [
+          {
+            "type": "trigger",
+            "params": {
+              "on": "kill",
+              "scope": "self",
+              "oncePerTurn": true,
+              "effects": [
+                {
+                  "do": "extraTurn",
+                  "to": "self"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "buffaloOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "bantengFang",
+      "barbarySheepHorn",
+      "bullCentaurEye",
+      "dikDikCarapace"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fishOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "arowanaHorn",
+      "eelHoundCore",
+      "electricCatfishCrown",
+      "electricEelFang"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fiendOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "beastOfNurgleHeart",
+      "bloodletterCore",
+      "bloodthirsterCrown",
+      "daemonetteHide"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mythicBeastOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "bonkersMaw",
+      "conglongOrb",
+      "demigryphFang",
+      "huanglongSiralimTalon"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "canidOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "chaosWarhoundMaw",
+      "dholeFang",
+      "fleshHoundMaw",
+      "grayFoxHide"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "waterfowlOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "barHeadedGooseTalon",
+      "blackNeckedCraneSpines",
+      "duckCore",
+      "emperorGooseCore"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lizardOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "alitFang",
+      "dewbackTalon",
+      "goldenGeckoCarapace",
+      "greenIguanaHeart"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "primateOverlord",
+    "kind": "named",
+    "rarity": "unique",
+    "pieceItemIds": [
+      "baboonCore",
+      "barbaryMacaqueCarapace",
+      "capuchinEye",
+      "chimpanzeeSpines"
+    ],
+    "bonuses": [
+      {
+        "pieces": 2,
+        "hooks": [
+          {
+            "type": "statModifier",
+            "params": {
+              "percent": {
+                "hp": 10,
+                "attack": 10,
+                "defense": 10,
+                "spAttack": 10,
+                "spDefense": 10,
+                "speed": 10
+              }
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 3,
+        "hooks": [
+          {
+            "type": "damageDealtModifier",
+            "params": {
+              "categories": [
+                "physical",
+                "special"
+              ],
+              "percent": 15
+            }
+          }
+        ]
+      },
+      {
+        "pieces": 4,
+        "hooks": [
+          {
+            "type": "damageTakenModifier",
+            "params": {
+              "percent": -15
+            }
+          },
+          {
+            "type": "critDamageModifier",
+            "params": {
+              "percent": 30
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

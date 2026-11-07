@@ -211,5 +211,7 @@ export const HOOK_SOURCE_GROUPS: Readonly<Record<HookSourceKind, StatPercentSour
   passiveSkill: 'traits',
   refinement: 'traits',
   sticker: 'equipment',
+  // Thưởng bộ trang bị (docs/rules/equipment-sets.md).
+  equipmentSet: 'equipment',
   rule: 'rules'
 }

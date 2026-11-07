@@ -3827,6 +3827,4756 @@
     }
   },
   {
+    "id": "alienSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "alien"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "felidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "felid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "canidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "canid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "ursidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "ursid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "mustelidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mustelid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "rodentSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "rodent"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "lagomorphSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "lagomorph"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "primateSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "primate"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "equidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "equid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "cervidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "cervid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "suidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "suid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "proboscidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "proboscid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "pachydermSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "pachyderm"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "chiropteranSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "chiropteran"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "marsupialSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "marsupial"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "xenarthranSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "xenarthran"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "insectivoreSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "insectivore"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "megafaunaSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "megafauna"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "fangedBeastSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "fangedBeast"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "mythicBeastSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mythicBeast"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "wildBeastSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "wildBeast"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "raptorSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "raptor"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "owlSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "owl"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "birdSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "bird"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "waterfowlSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "waterfowl"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "galliformSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "galliform"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "penguinSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "penguin"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "seabirdSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "seabird"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "ratiteSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "ratite"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "parrotSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "parrot"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "mythicBirdSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mythicBird"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "serpentSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "serpent"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "lizardSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "lizard"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "turtleSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "turtle"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "crocodilianSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "crocodilian"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "anuranSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "anuran"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "caudateSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "caudate"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "fishSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "fish"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "sharkSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "shark"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "cetaceanSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "cetacean"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "pinnipedSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "pinniped"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "sirenianSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "sirenian"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "cephalopodSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "cephalopod"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "crustaceanSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "crustacean"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "cnidarianSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "cnidarian"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "molluskSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mollusk"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "leviathanSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "leviathan"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "carapaceonSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "carapaceon"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "beetleSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "beetle"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "lepidopteranSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "lepidopteran"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "hymenopteranSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "hymenopteran"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "arachnidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "arachnid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "orthopteranSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "orthopteran"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "odonateSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "odonate"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "myriapodSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "myriapod"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "larvaSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "larva"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "neopteronSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "neopteron"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "insectoidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "insectoid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "theropodSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "theropod"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "sauropodSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "sauropod"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "ornithischianSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "ornithischian"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "pterosaurSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "pterosaur"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "marineReptileSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "marineReptile"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "ancientCreatureSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "ancientCreature"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "kaijuSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "kaiju"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "westernDragonSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "westernDragon"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "easternDragonSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "easternDragon"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "wyvernSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "wyvern"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "fangedWyvernSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "fangedWyvern"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "bruteWyvernSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "bruteWyvern"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "piscineWyvernSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "piscineWyvern"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "birdWyvernSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "birdWyvern"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "snakeWyvernSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "snakeWyvern"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "elderDragonSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "elderDragon"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "drakeSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "drake"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "treeSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "tree"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "flowerSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "flower"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "fungusSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "fungus"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "algaeSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "algae"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "golemSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "golem"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "crystalSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "crystal"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "metalSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "metal"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "livingObjectSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "livingObject"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "machineSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "machine"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "slimeSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "slime"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "annelidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "annelid"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "changelingSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "changeling"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "lycanthropeSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "lycanthrope"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "mimicSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mimic"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "zombieSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "zombie"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "skeletonSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "skeleton"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "vampireSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "vampire"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "wraithSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "wraith"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "lichSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "lich"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "mummySlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mummy"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "ghoulSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "ghoul"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "ghostSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "ghost"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "yokaiSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "yokai"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "feySlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "fey"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "wispSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "wisp"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "natureSpiritSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "natureSpirit"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "fiendSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "fiend"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "impSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "imp"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "oniSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "oni"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "elementalSpiritSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "elementalSpirit"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "djinnSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "djinn"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "eldritchSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "eldritch"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "chimeraSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "chimera"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "angelSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "angel"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "godSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "god"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "divineBeastSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "divineBeast"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "demigodSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "demigod"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "humanSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "human"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "goblinSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "goblin"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "trollSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "troll"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "beastfolkSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "beastfolk"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "centaurSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "centaur"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "insectfolkSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "insectfolk"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "merfolkSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "merfolk"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "lizardfolkSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "lizardfolk"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "harpyfolkSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "harpyfolk"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "alienRaceSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "alienRace"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "hiveSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "hive"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "androidSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "android"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
+    "id": "mutantSlayer",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "damageVsRace",
+        "params": {
+          "raceIds": [
+            "mutant"
+          ]
+        }
+      },
+      "valueParam": "percent",
+      "ranges": {
+        "common": {
+          "min": 10,
+          "max": 20
+        },
+        "uncommon": {
+          "min": 20,
+          "max": 30
+        },
+        "rare": {
+          "min": 30,
+          "max": 44
+        },
+        "epic": {
+          "min": 44,
+          "max": 60
+        },
+        "legendary": {
+          "min": 60,
+          "max": 80
+        }
+      }
+    }
+  },
+  {
     "id": "fireArrowGem",
     "category": "equipment",
     "price": 400,
@@ -4638,7 +9388,8 @@
           "multiplier": 1.2
         }
       ]
-    }
+    },
+    "setId": "lizardOverlord"
   },
   {
     "id": "alligatorSnappingTurtleCrown",
@@ -5142,7 +9893,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "fishOverlord"
   },
   {
     "id": "arowanaOrb",
@@ -5759,7 +10511,8 @@
           "multiplier": 1.3
         }
       ]
-    }
+    },
+    "setId": "primateOverlord"
   },
   {
     "id": "baboonTalon",
@@ -6160,7 +10913,8 @@
           "multiplier": 1.2
         }
       ]
-    }
+    },
+    "setId": "buffaloOverlord"
   },
   {
     "id": "bantengTalon",
@@ -6240,7 +10994,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "waterfowlOverlord"
   },
   {
     "id": "barbaryMacaqueCarapace",
@@ -6279,7 +11034,8 @@
           "tags": ["stat"]
         }
       ]
-    }
+    },
+    "setId": "primateOverlord"
   },
   {
     "id": "barbaryMacaqueEye",
@@ -6357,7 +11113,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "buffaloOverlord"
   },
   {
     "id": "barkScorpionCrown",
@@ -6606,7 +11363,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "fiendOverlord"
   },
   {
     "id": "beastOfNurgleOrb",
@@ -7269,7 +12027,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "waterfowlOverlord"
   },
   {
     "id": "blackOrcOrb",
@@ -7774,7 +12533,8 @@
           "multiplier": 1.3
         }
       ]
-    }
+    },
+    "setId": "fiendOverlord"
   },
   {
     "id": "bloodletterHide",
@@ -7857,7 +12617,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "fiendOverlord"
   },
   {
     "id": "bloodthirsterOrb",
@@ -8345,7 +13106,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "mythicBeastOverlord"
   },
   {
     "id": "bonkersScepter",
@@ -8812,7 +13574,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "buffaloOverlord"
   },
   {
     "id": "bullCentaurMaw",
@@ -9504,7 +14267,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "primateOverlord"
   },
   {
     "id": "carolinaParakeetMaw",
@@ -10202,7 +14966,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "canidOverlord"
   },
   {
     "id": "chickenScepter",
@@ -10708,7 +15473,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "primateOverlord"
   },
   {
     "id": "chitalCore",
@@ -11049,7 +15815,8 @@
           "multiplier": 1.2
         }
       ]
-    }
+    },
+    "setId": "mythicBeastOverlord"
   },
   {
     "id": "corpseWeeperFang",
@@ -11715,7 +16482,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "fiendOverlord"
   },
   {
     "id": "daemonetteTalon",
@@ -12433,7 +17201,8 @@
           "multiplier": 1.2
         }
       ]
-    }
+    },
+    "setId": "mythicBeastOverlord"
   },
   {
     "id": "demigryphWing",
@@ -12632,7 +17401,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "lizardOverlord"
   },
   {
     "id": "dholeHeart",
@@ -12714,7 +17484,8 @@
           "multiplier": 1.2
         }
       ]
-    }
+    },
+    "setId": "canidOverlord"
   },
   {
     "id": "dikDikFang",
@@ -12797,7 +17568,8 @@
           "tags": ["stat"]
         }
       ]
-    }
+    },
+    "setId": "buffaloOverlord"
   },
   {
     "id": "dimetrodonCore",
@@ -13549,7 +18321,8 @@
           "multiplier": 1.3
         }
       ]
-    }
+    },
+    "setId": "waterfowlOverlord"
   },
   {
     "id": "dugtrioAlolaFang",
@@ -14339,7 +19112,8 @@
           "multiplier": 1.3
         }
       ]
-    }
+    },
+    "setId": "fishOverlord"
   },
   {
     "id": "electricCatfishCrown",
@@ -14384,7 +19158,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "fishOverlord"
   },
   {
     "id": "electricCatfishOrb",
@@ -14472,7 +19247,8 @@
           "multiplier": 1.2
         }
       ]
-    }
+    },
+    "setId": "fishOverlord"
   },
   {
     "id": "electricRayScepter",
@@ -14773,7 +19549,8 @@
           "multiplier": 1.3
         }
       ]
-    }
+    },
+    "setId": "waterfowlOverlord"
   },
   {
     "id": "emperorGooseTalon",
@@ -15776,7 +20553,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "canidOverlord"
   },
   {
     "id": "forestDragonWard",
@@ -17784,7 +22562,8 @@
           "tags": ["stat"]
         }
       ]
-    }
+    },
+    "setId": "lizardOverlord"
   },
   {
     "id": "goldenLionTamarinHeart",
@@ -18349,7 +23128,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "canidOverlord"
   },
   {
     "id": "grayFoxTalon",
@@ -18822,7 +23602,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "lizardOverlord"
   },
   {
     "id": "grevysZebraCore",
@@ -20305,7 +25086,8 @@
           }
         }
       ]
-    }
+    },
+    "setId": "mythicBeastOverlord"
   },
   {
     "id": "huayangosaurusFang",
@@ -53239,5 +58021,1550 @@
         "params": {}
       }
     ]
+  },
+  {
+    "id": "royalSignet",
+    "category": "equipment",
+    "price": 600,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        },
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        },
+        "rare": {
+          "min": 15,
+          "max": 22
+        },
+        "epic": {
+          "min": 22,
+          "max": 30
+        },
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "hooks": [
+      {
+        "type": "setPieceReduction",
+        "params": {
+          "value": 1
+        }
+      }
+    ]
+  },
+  {
+    "id": "wandererHood",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "wanderer"
+  },
+  {
+    "id": "wandererBoots",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "wanderer"
+  },
+  {
+    "id": "wandererCloak",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "wanderer"
+  },
+  {
+    "id": "apprenticeWand",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "apprentice"
+  },
+  {
+    "id": "apprenticeRobe",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "apprentice"
+  },
+  {
+    "id": "militiaSpear",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "militia"
+  },
+  {
+    "id": "militiaShield",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "militia"
+  },
+  {
+    "id": "militiaHelm",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "common": {
+          "min": 5,
+          "max": 10
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "militia"
+  },
+  {
+    "id": "emberGloves",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "ember"
+  },
+  {
+    "id": "emberMantle",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "ember"
+  },
+  {
+    "id": "emberBand",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "ember"
+  },
+  {
+    "id": "tideCirclet",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "tidecaller"
+  },
+  {
+    "id": "tideScale",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "tidecaller"
+  },
+  {
+    "id": "tideAnklet",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "tidecaller"
+  },
+  {
+    "id": "thornGauntlet",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "thornguard"
+  },
+  {
+    "id": "thornCuirass",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "thornguard"
+  },
+  {
+    "id": "thornGreaves",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "uncommon": {
+          "min": 10,
+          "max": 15
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "thornguard"
+  },
+  {
+    "id": "stormCrown",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "stormcaller"
+  },
+  {
+    "id": "stormRod",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack",
+        "percent.speed"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 11,
+          "max": 17
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "stormcaller"
+  },
+  {
+    "id": "stormBoots",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "stormcaller"
+  },
+  {
+    "id": "stormMail",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "stormcaller"
+  },
+  {
+    "id": "frostHelm",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "frostbound"
+  },
+  {
+    "id": "frostPlate",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "frostbound"
+  },
+  {
+    "id": "frostBlade",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "frostbound"
+  },
+  {
+    "id": "frostVeil",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "frostbound"
+  },
+  {
+    "id": "hunterBow",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "huntsman"
+  },
+  {
+    "id": "hunterHood",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "huntsman"
+  },
+  {
+    "id": "hunterQuiver",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack",
+        "percent.speed"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 11,
+          "max": 17
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "huntsman"
+  },
+  {
+    "id": "hunterBoots",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "rare": {
+          "min": 15,
+          "max": 22
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "huntsman"
+  },
+  {
+    "id": "bloodMoonFang",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bloodMoon"
+  },
+  {
+    "id": "bloodMoonCowl",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bloodMoon"
+  },
+  {
+    "id": "bloodMoonCloak",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bloodMoon"
+  },
+  {
+    "id": "bloodMoonGrips",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack",
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 17,
+          "max": 23
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bloodMoon"
+  },
+  {
+    "id": "bloodMoonSigil",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bloodMoon"
+  },
+  {
+    "id": "bulwarkHelm",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bulwark"
+  },
+  {
+    "id": "bulwarkPlate",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bulwark"
+  },
+  {
+    "id": "bulwarkTower",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense",
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 17,
+          "max": 23
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bulwark"
+  },
+  {
+    "id": "bulwarkGreaves",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp",
+        "percent.defense"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 17,
+          "max": 23
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bulwark"
+  },
+  {
+    "id": "bulwarkTalisman",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "bulwark"
+  },
+  {
+    "id": "arcanumStaff",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "arcanum"
+  },
+  {
+    "id": "arcanumHat",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack",
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 17,
+          "max": 23
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "arcanum"
+  },
+  {
+    "id": "arcanumRobe",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "arcanum"
+  },
+  {
+    "id": "arcanumOrb",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "arcanum"
+  },
+  {
+    "id": "arcanumSlippers",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "epic": {
+          "min": 22,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "arcanum"
+  },
+  {
+    "id": "dragonlordCrown",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "dragonlord"
+  },
+  {
+    "id": "dragonlordScale",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense",
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 23,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "dragonlord"
+  },
+  {
+    "id": "dragonlordClaw",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "dragonlord"
+  },
+  {
+    "id": "dragonlordWing",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "dragonlord"
+  },
+  {
+    "id": "dragonlordHeart",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "dragonlord"
+  },
+  {
+    "id": "dragonlordTail",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack",
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 23,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "dragonlord"
+  },
+  {
+    "id": "celestialHalo",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "celestial"
+  },
+  {
+    "id": "celestialRobe",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "celestial"
+  },
+  {
+    "id": "celestialWings",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "celestial"
+  },
+  {
+    "id": "celestialSceptre",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack",
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 23,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "celestial"
+  },
+  {
+    "id": "celestialSandals",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.hp"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "celestial"
+  },
+  {
+    "id": "celestialAegis",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.defense"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "celestial"
+  },
+  {
+    "id": "voidMask",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "voidwalker"
+  },
+  {
+    "id": "voidShroud",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spDefense"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "voidwalker"
+  },
+  {
+    "id": "voidBlade",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "voidwalker"
+  },
+  {
+    "id": "voidCirclet",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "voidwalker"
+  },
+  {
+    "id": "voidTreads",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.speed"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 30,
+          "max": 40
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "voidwalker"
+  },
+  {
+    "id": "voidHeart",
+    "category": "equipment",
+    "price": 300,
+    "mainLine": {
+      "hook": {
+        "type": "statModifier",
+        "params": {}
+      },
+      "valueParam": [
+        "percent.attack",
+        "percent.spAttack"
+      ],
+      "ranges": {
+        "legendary": {
+          "min": 23,
+          "max": 30
+        }
+      },
+      "tags": [
+        "stat"
+      ]
+    },
+    "setId": "voidwalker"
   }
 ]

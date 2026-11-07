@@ -121,6 +121,20 @@ export function makeRawData(): RawGameData {
       sacrifice: { costPerLevel: 20, statPercentPerStack: 1 },
       // Bậc sao (docs/rules/star-rank.md): số như dữ liệu thật.
       stars: { copiesBase: 1, copiesPerStar: 1, costPerStar: 1000, statPercentPerStar: 5 },
+      // Bộ trang bị (docs/rules/equipment-sets.md): số như dữ liệu thật; fixture không có bộ nào nên
+      // tung món không tốn thêm RNG.
+      equipmentSets: {
+        pieceChance: { wild: 1, boss: 10, chest: 25, auction: 15 },
+        reductionMinPieces: 3,
+        rerollMoney: {
+          common: 200,
+          uncommon: 400,
+          rare: 800,
+          epic: 2000,
+          legendary: 5000,
+          unique: 10000
+        }
+      },
       // Luân hồi (docs/rules/rebirth.md): số như dữ liệu thật.
       rebirth: {
         minLevelBase: 100,
@@ -1985,6 +1999,7 @@ export function makeRawData(): RawGameData {
       { id: 'eggWarmth', rarity: 'rare', effect: { kind: 'egg', growth: 20, stability: 20 } }
     ],
     marks: [],
+    equipmentSets: [],
     serumEffects: [
       {
         id: 'regeneration',
@@ -3454,6 +3469,7 @@ export function makeBattleContext(
     field: makeField(),
     itemsDisabled: false,
     berriesBlocked: false,
+    setsSealed: false,
     teamBonuses: [],
     frenzyStatPercent: 0,
     mealStatPercent: {},

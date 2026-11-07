@@ -197,6 +197,7 @@ describe('các bảng kết quả', () => {
       averageLevel: 3,
       growthLevels: { slow: 2.5, fast: 3.25 } as FloorUnlock['growthLevels'],
       gearPercent: 4.5,
+      setBonuses: 1.5,
       masteryLevel: 2.5,
       masteryExp: 12,
       events: {
@@ -322,7 +323,7 @@ describe('các bảng kết quả', () => {
         unlocks: []
       }
     ])
-    const blanks = new Array<string>(69).fill('')
+    const blanks = new Array<string>(70).fill('')
     expect(table.rows).toEqual([
       [
         't',
@@ -341,6 +342,7 @@ describe('các bảng kết quả', () => {
         '14',
         '3',
         '4.50',
+        '1.50',
         '2.50',
         '12.00',
         '7',
@@ -415,6 +417,7 @@ describe('các bảng kết quả', () => {
         '',
         '',
         '4.50',
+        '1.50',
         '2.50',
         '12.00',
         '7',

@@ -21,7 +21,7 @@ Làm ngày 2026-11-03 (chỉ core; giao diện chọn / xác nhận chờ `ui-ov
 
 - **Bộ lọc túi** `filterBagItems(data, inventory, query)` → danh sách dòng `ItemBatchEntry { item: ItemRef, count }` đủ số lượng đang có, theo thứ tự túi (item gộp chồng, tinh thể, sách, trang bị). Bộ lọc `BagItemQuery` (bỏ trống trường = không lọc):
   - `categories`: category item (tinh thể là `traitCrystal`, sách `skillBook`, món trang bị `equipment`).
-  - `rarities`: bậc hiếm, chỉ trang bị. `traitIds`: chỉ tinh thể. `minLevel` / `maxLevel`: cấp tinh thể hoặc cấp cường hóa trang bị.
+  - `rarities`: bậc hiếm, chỉ trang bị. `setIds`: bộ trang bị, chỉ trang bị (món không thuộc bộ bị loại; `equipment-sets.md`). `traitIds`: chỉ tinh thể. `minLevel` / `maxLevel`: cấp tinh thể hoặc cấp cường hóa trang bị.
   - Trường chỉ có ở một loại item khi đặt thì loại khác bị loại (ví dụ đặt `rarities` thì chỉ còn trang bị).
   - Không bao giờ gồm item không rời túi được (vật phẩm chìa khóa, bùa; `canLeaveBag`).
 - **Vứt hàng loạt** `discardItems { items }` (ngoài trận, ở đâu cũng được): mỗi dòng như `discardItem`.

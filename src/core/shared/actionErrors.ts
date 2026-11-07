@@ -112,6 +112,11 @@ export interface ActionErrorParams {
   lineNotRerollable: { instanceId: string; lineIndex: number }
   /** Món không còn dòng phụ nào để tẩy luyện (không có dòng phụ hoặc khóa hết). */
   nothingToReroll: { instanceId: string }
+  /**
+   * Món không đổi bộ được ở Thợ rèn: món gốc ghi bộ (bộ đặt tên, bộ cố định) hoặc không còn bộ ngẫu
+   * nhiên nào khác (docs/rules/equipment-sets.md).
+   */
+  setNotRerollable: { instanceId: string }
   // ---------- Hồn phách ----------
   /** Không có hồn phách id này trong túi (docs/rules/soul-relics.md). */
   soulNotFound: { soulId: string }
@@ -620,6 +625,7 @@ export const ACTION_ERROR_MESSAGES: ActionErrorMessages = {
   lineNotRerollable: ({ instanceId, lineIndex }) =>
     `Dòng ${lineIndex} của món "${instanceId}" không tẩy luyện được`,
   nothingToReroll: ({ instanceId }) => `Món "${instanceId}" không còn dòng phụ nào để tẩy luyện`,
+  setNotRerollable: ({ instanceId }) => `Món "${instanceId}" không đổi bộ được`,
   equipmentRaceLocked: ({ itemId, raceId }) =>
     `Món "${itemId}" chỉ lắp cho quái race "${raceId}" (hoặc có race đó trong lineage)`,
   notEquippable: ({ itemId }) => `Vật phẩm "${itemId}" không lắp vào ô được`,

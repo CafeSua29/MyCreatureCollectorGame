@@ -25,6 +25,7 @@ import { speciesRankIndex, speciesRankOf } from './speciesRank'
 import { difficultyRank, hasChallengeMode } from './challenge'
 import { findMarkDef, markDefOfKind } from './marks'
 import { starsOf } from './starRank'
+import { equipmentSetStates } from './equipmentSets'
 
 /** Phần state điều kiện thành tựu đọc. */
 export type AchievementScope = Pick<
@@ -224,7 +225,21 @@ export const ACHIEVEMENT_CONDITIONS: Readonly<
       (best, monster) => Math.max(best, starsOf(data, monster)),
       0
     )
-  )
+  ),
+  // Số bộ đặt tên khác nhau đang được quái sở hữu đeo đủ bộ (docs/rules/equipment-sets.md).
+  equipmentSetsCompleted: plain((state, data) => completedNamedSets(data, state).size)
+}
+
+/** Id bộ đặt tên đang đeo đủ (số món đếm được = số món của bộ) trên quái đội / kho. */
+function completedNamedSets(data: GameData, state: AchievementScope): Set<string> {
+  const completed = new Set<string>()
+  for (const monster of [...state.party, ...state.storage]) {
+    for (const entry of equipmentSetStates(data, monster.equipment)) {
+      const set = data.equipmentSets[entry.setId]
+      if (set.kind === 'named' && entry.count >= set.pieceItemIds.length) completed.add(set.id)
+    }
+  }
+  return completed
 }
 
 /** Tiến độ hiện tại của thành tựu. */

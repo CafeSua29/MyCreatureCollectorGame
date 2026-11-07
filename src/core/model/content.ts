@@ -1430,7 +1430,62 @@ export interface EquipmentItem extends PricedItemBase {
    * tạo khi luyện hồn khí (không rơi, không bán ở cửa hàng / chợ đen), có khoảng cho mọi bậc.
    */
   soulRelicStat?: StatName
+  /**
+   * Bộ trang bị của món gốc (docs/rules/equipment-sets.md): bộ đặt tên (món thuộc bộ, bậc ép theo bộ)
+   * hoặc bộ ngẫu nhiên cố định (không tung bộ). Bỏ trống = món tung bộ ngẫu nhiên khi tạo.
+   */
+  setId?: string
 }
+
+/** Một hook kèm hệ số khi tính thưởng bộ trang bị. */
+export interface EquipmentSetBonus {
+  /** Số món cần (bộ đặt tên: mốc, cộng dồn mọi mốc ≤ số món đang đeo). */
+  pieces: number
+  hooks: TraitHookDef[]
+}
+
+/**
+ * Bộ ngẫu nhiên kiểu rune set Summoners War: mọi món không thuộc bộ đặt tên tung một bộ theo `weight`;
+ * kích hoạt ⌊số món / size⌋ lần (hook nhân hệ số = số lần).
+ */
+export interface RolledEquipmentSetDef {
+  id: string
+  kind: 'rolled'
+  /** Số món mỗi lần kích hoạt (≥ 2; gốc: 2 hoặc 4). */
+  size: number
+  hooks: TraitHookDef[]
+  weight: number
+  /**
+   * Món "vô hình" kiểu Intangible: không có hiệu ứng riêng, một món (tối đa một) đếm như món của bộ
+   * ngẫu nhiên khác gần đủ lần kích hoạt kế tiếp nhất.
+   */
+  wildcard?: true
+  /** Kiểu Seal: đang kích hoạt thì vô hiệu các bộ `sealable` của quái phe địch trên sân. */
+  seal?: true
+  /** Bị bộ Seal của địch vô hiệu (bộ kích hoạt theo sự kiện của gốc). */
+  sealable?: true
+}
+
+/**
+ * Bộ đặt tên kiểu Diablo / Grim Dawn: các món gốc cụ thể (món gốc ghi ngược `setId`), thưởng theo số
+ * món gốc khác nhau đang đeo, cộng dồn mọi mốc.
+ */
+export interface NamedEquipmentSetDef {
+  id: string
+  kind: 'named'
+  /** Bậc của mọi món thuộc bộ (món tung ra ép bậc này; `unique` = món unique của boss). */
+  rarity: EquipmentRarity
+  pieceItemIds: string[]
+  /** Mốc tăng dần theo `pieces`. */
+  bonuses: EquipmentSetBonus[]
+}
+
+export type EquipmentSetDef = RolledEquipmentSetDef | NamedEquipmentSetDef
+
+/** Loại bộ trang bị. */
+export const EQUIPMENT_SET_KINDS = ['rolled', 'named'] as const
+
+export type EquipmentSetKind = (typeof EQUIPMENT_SET_KINDS)[number]
 
 /**
  * Tinh thể trait: một định nghĩa chung duy nhất; trait và cấp nằm ở từng chồng trong túi
@@ -1952,6 +2007,7 @@ export interface RawGameData {
   zones: RawZoneDef[]
   serumEffects: SerumEffectDef[]
   marks: MarkDef[]
+  equipmentSets: EquipmentSetDef[]
   bodyRefinements: BodyRefinementDef[]
   essences: EssenceDef[]
   deities: DeityDef[]
@@ -2039,6 +2095,8 @@ export interface GameData {
   serumEffects: Record<string, SerumEffectDef>
   /** Dấu ấn trên quái (docs/rules/marks.md). */
   marks: Record<string, MarkDef>
+  /** Bộ trang bị (docs/rules/equipment-sets.md). */
+  equipmentSets: Record<string, EquipmentSetDef>
   /** Kiểu luyện thể (docs/rules/body-refinement.md). */
   bodyRefinements: Record<string, BodyRefinementDef>
   /** Tinh chất (docs/rules/essences.md). */

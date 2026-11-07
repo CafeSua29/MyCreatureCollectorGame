@@ -53,7 +53,8 @@ export const ACHIEVEMENT_CONDITION_TYPES = [
   'markIds',
   'resolvedFears',
   'markLevel',
-  'monsterStars'
+  'monsterStars',
+  'equipmentSetsCompleted'
 ] as const
 
 export type AchievementConditionType = (typeof ACHIEVEMENT_CONDITION_TYPES)[number]

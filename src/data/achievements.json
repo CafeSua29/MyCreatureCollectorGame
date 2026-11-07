@@ -1173,5 +1173,15 @@
         "moneyPerFloor": 80000
       }
     }
+  },
+  {
+    "id": "setCollector",
+    "condition": { "type": "equipmentSetsCompleted" },
+    "tiers": [
+      { "value": 1, "rewards": { "moneyPerFloor": 2000 } },
+      { "value": 5, "rewards": { "moneyPerFloor": 10000 } },
+      { "value": 10, "rewards": { "moneyPerFloor": 40000 } }
+    ],
+    "repeat": { "factor": 2, "rewards": { "moneyPerFloor": 80000 } }
   }
 ]

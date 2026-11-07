@@ -25,6 +25,8 @@ import {
   makeMonster,
   makeRawData,
   uniformStats,
+  withEquipmentFixtures,
+  withEquipmentSetFixtures,
   withFixtureText
 } from '../testing'
 import type {
@@ -238,6 +240,23 @@ describe('chuỗi trận bí cảnh', () => {
     expect(last.trial).toBeNull()
     expect(last.highestFloor).toBe(2)
     expect(validateGameState(data, last)).toEqual([])
+  })
+
+  it('rương tung thêm món bộ đặt tên theo pieceChance.chest (docs/rules/equipment-sets.md)', () => {
+    const setData = makeTrialData((raw) => {
+      Object.assign(raw, withEquipmentFixtures(raw))
+      withEquipmentSetFixtures(raw)
+      for (const biome of raw.biomes) delete biome.equipmentDrops
+      raw.config.trials.realm.chest.equipmentRarityWeights = { rare: 1 }
+      raw.config.equipmentSets.pieceChance.chest = 100
+    })
+    const last = fightToEnd(
+      gameReducer(setData, inRealm([], { cleared: 2 }), { type: 'challengeTrial' }),
+      setData
+    )
+    expect(logOf(last)).toContainEqual({ type: 'trialCompleted' })
+    expect(last.inventory.equipment).toHaveLength(1)
+    expect(last.inventory.equipment[0]).toMatchObject({ rarity: 'rare', setId: 'knight' })
   })
 
   it('hồi máu giữa trận đỡ cả quái đã gục dậy (healPercent % max HP)', () => {

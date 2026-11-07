@@ -3,6 +3,7 @@
 export * from './artifactSpirits'
 export * from './bulkItems'
 export * from './equipment'
+export * from './equipmentSets'
 export * from './evolutionLine'
 export * from './forge'
 export * from './imbue'

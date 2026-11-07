@@ -1,6 +1,6 @@
 // Hook thuộc tính Artifact của Siralim trên trang bị (mục "Trang bị và đồ cầm" ở equipment.md,
 // "Trait Artifact Siralim" ở trait-dsl.md): ô spell, sức mạnh theo hệ ("[Class] Strength"), trait của
-// món, hệ số dòng theo nhãn, chia % chỉ số trang bị cho đồng đội. Cùng quy ước cấp với traitHooks.ts:
+// món, hệ số dòng theo nhãn, chia % chỉ số trang bị cho đồng đội, giảm số món cần của bộ trang bị. Cùng quy ước cấp với traitHooks.ts:
 // tỉ lệ / % nhân hệ số cấp; id, số lần, nhãn không đổi.
 
 import { raceRefIds } from './races'
@@ -186,7 +186,17 @@ const equipmentShare: TraitHookHandler = {
   }
 }
 
+/**
+ * Giảm số món cần của bộ đặt tên (kiểu Ring of Royal Grandeur, docs/rules/equipment-sets.md): chỉ tính
+ * khi nằm trên món đang lắp; không đổi theo cấp món (số món nguyên).
+ */
+const setPieceReduction: TraitHookHandler = {
+  validateParams: (params) => withObject(params, (obj) => checkInteger(obj.value, 'value', 1)),
+  setPieceReduction: (params) => (params as { value: number }).value
+}
+
 export const ARTIFACT_TRAIT_HOOKS: Readonly<Record<string, TraitHookHandler>> = {
+  setPieceReduction,
   spellSlot,
   spellSlotChanceBonus,
   spellSlotExtraCasts,
